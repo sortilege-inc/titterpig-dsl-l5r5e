@@ -1,0 +1,533 @@
+BASE "L5R5e_Core_Systems" {
+    NAME "Legend of the Five Rings 5th Edition - Game systems: combat, conditions, strife, honor, weapons, armor, and NPCs"
+    VERSION "0.1"
+    RELEASE_DATE "2025-06-01"
+
+    # Core Rulebook: Combat resolution, conditions, strife/composure,
+    # honor/glory/status mechanics, weapons, armor, critical strikes
+
+    # ===========================
+    # METATYPE ANCHORS
+    # ===========================
+
+    ^"Game Rules" DEF {
+        # Metatype anchor for game rules and errata references
+    }
+
+    ^"System" DEF {
+        # Metatype anchor for game system and subsystem definitions
+    }
+
+    ^"Item" DEF {
+        # Metatype anchor for item definitions
+    }
+
+    ^"Item Pattern" DEF {
+        # Metatype anchor for crafting and item pattern definitions
+    }
+
+    ^"Table" DEF {
+        # Metatype anchor for reference table definitions
+    }
+
+    ^"Social Objective" DEF {
+        # Metatype anchor for intrigue social objective definitions
+    }
+
+    ^"Optional Rule" DEF {
+        # Metatype anchor for optional/variant rule definitions
+    }
+
+    ^"Mechanic" DEF {
+        # Metatype anchor for GM-facing mechanic and design guidance
+    }
+
+    ^"Equipment" DEF {
+        # Metatype anchor for general equipment item definitions
+    }
+
+    # ===========================
+    # STRIFE AND EMOTIONAL STATE
+    # ===========================
+
+    ^"Strife" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0
+
+        # Emotional accumulation from (st) symbols on kept dice,
+        # anxieties, opposing ninjo, and narrative effects. When
+        # strife exceeds composure, character becomes Compromised.
+        # Partially removed between scenes.
+
+        RULES {
+            #L5R400aB2cD4eF6gH8iJ0k: strife_from_kept_dice
+            #L5R401lM3nO5pQ7rS9tU1v: strife_from_anxieties
+            #L5R402wX4yZ6aB8cD0eF2g: strife_removal_between_scenes
+            #L5R403hI5jK7lM9nO1pQ3r: strife_removal_equals_half_composure
+        }
+    }
+
+    ^"Compromised" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Condition when strife exceeds composure. The character's
+        # emotions are barely contained and about to boil over.
+        #
+        # Effects while Compromised:
+        # - Vigilance treated as 1 (easier to Scheme against)
+        # - Cannot keep dice with (st) symbols
+        # - May Unmask once per scene to end Compromised
+
+        RULES {
+            #L5R404sT6uV8wX0yZ2aB4c: compromised_when_strife_exceeds_composure
+            #L5R405dE7fG9hI1jK3lM5n: vigilance_reduced_to_one
+            #L5R406oP8qR0sT2uV4wX6y: cannot_keep_strife_dice
+            #L5R407zA9bC1dE3fG5hI7j: may_unmask_once_per_scene
+        }
+    }
+
+    ^"Unmask" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # When Compromised, a character may Unmask — an outward display
+        # of raw emotion that ends the Compromised condition. The player
+        # chooses how the emotion manifests. All strife is removed, but
+        # there are narrative and mechanical consequences.
+
+        UNMASK_OPTIONS {
+            ^"Bend Principles" "Compromise your beliefs. Forfeit honor."
+            ^"Expose Opening" "Emotional vulnerability reveals weakness. Enemies gain advantage."
+            ^"Honor's Challenge" "Challenge an antagonist to a duel. Must follow through."
+            ^"Inappropriate Outburst" "Lose composure publicly. Forfeit glory."
+            ^"Panicked Retreat" "Flee the scene. Forfeit honor and glory."
+            ^"Rage" "Lash out violently. Forfeit honor and glory."
+        }
+
+        RULES {
+            #L5R408kL0mN2oP4qR6sT8u: unmask_removes_all_strife
+            #L5R409vW1xY3zA5bC7dE9f: unmask_has_consequences
+            #L5R410gH2iJ4kL6mN8oP0q: unmask_once_per_scene
+        }
+    }
+
+    # ===========================
+    # FATIGUE AND INCAPACITATION
+    # ===========================
+
+    ^"Fatigue" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0
+
+        # Physical exhaustion and injury tracked as fatigue points.
+        # Suffered from damage, exertion, and some technique effects.
+        # When fatigue >= endurance, character is incapacitated.
+
+        RULES {
+            #L5R411rS3tU5vW7xY9zA1b: fatigue_from_damage
+            #L5R412cD4eF6gH8iJ0kL2m: incapacitated_at_endurance
+            #L5R413nO5pQ7rS9tU1vW3x: fatigue_recovery_between_scenes
+        }
+    }
+
+    # ===========================
+    # CONDITIONS
+    # ===========================
+
+    ^"Condition" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        ENUM ["Bleeding", "Burning", "Compromised", "Dazed", "Disoriented",
+              "Dying", "Enraged", "Exhausted", "Immobilized", "Incapacitated",
+              "Intoxicated", "Prone", "Silenced", "Unconscious"]
+
+        # Persistent status effects applied during play. Each condition
+        # has specific triggers, effects, and removal conditions.
+
+        CONDITION_DEFINITIONS {
+            ^"Bleeding" "Suffer fatigue at the start of each turn. Removed by Medicine check or end of scene."
+            ^"Burning" "Suffer fatigue at the start of each turn. Removed by spending action to extinguish."
+            ^"Compromised" "Strife exceeds composure. Vigilance = 1, cannot keep (st) dice. Removed by Unmasking."
+            ^"Dazed" "Cannot take actions requiring concentration. Removed at end of next turn."
+            ^"Disoriented" "Increase TN of all checks by 1. Removed at end of next turn."
+            ^"Dying" "At 0 endurance with critical strike. Must receive treatment or die at end of scene."
+            ^"Enraged" "+1 bonus damage on attacks but cannot Guard or use Air/Earth stances. Removed when strife drops below half composure."
+            ^"Exhausted" "Increase TN of all checks by 1. Cannot remove by normal means; requires rest."
+            ^"Immobilized" "Cannot move or make movement actions. Removed by breaking free (Fitness check)."
+            ^"Incapacitated" "Fatigue >= endurance. Cannot take actions. Unconscious in narrative scenes."
+            ^"Intoxicated" "Decrease TN of checks to resist social influence by 1, but increase TN of martial checks by 1."
+            ^"Prone" "On the ground. +1 TN for ranged attacks against you, -1 TN for melee attacks against you."
+            ^"Silenced" "Cannot speak or use verbal techniques. Removed at end of next turn."
+            ^"Unconscious" "Cannot perceive or act. Can be woken by others."
+        }
+
+        RULES {
+            #L5R414yZ6aB8cD0eF2gH4i: conditions_have_specific_triggers
+            #L5R415jK7lM9nO1pQ3rS5t: conditions_have_removal_methods
+            #L5R416uV8wX0yZ2aB4cD6e: multiple_conditions_can_stack
+        }
+    }
+
+    # ===========================
+    # COMBAT: SKIRMISH
+    # ===========================
+
+    ^"Skirmish" DEF {
+
+        # Small-scale tactical combat between individual characters
+        # and small groups. The primary combat conflict type.
+
+        STRUCTURE {
+            1 "Setup: GM describes scene, positions combatants at range bands"
+            2 "Round Start: Each character chooses a Stance"
+            3 "Initiative: TN 1 Tactics/Meditation + Void check, act in order of bonus successes"
+            4 "Turns: Each character takes actions (Attack, Scheme, Support, Guard, Movement, etc.)"
+            5 "Round End: Check for scene resolution conditions"
+            6 "Repeat from Step 2 until conflict resolved"
+        }
+
+        RULES {
+            #L5R417fG9hI1jK3lM5nO7p: skirmish_round_structure
+            #L5R418qR0sT2uV4wX6yZ8a: stance_selection_each_round
+            #L5R419bC1dE3fG5hI7jK9l: initiative_determines_turn_order
+        }
+    }
+
+    ^"Attack Action" DEF {
+
+        # Make a Martial Arts check against the target.
+        # Ring determined by stance. TN = 2 (base) modified by target's
+        # stance, range, and conditions.
+        #
+        # On success: Deal damage = weapon base damage + bonus successes.
+        # Target suffers fatigue equal to damage dealt (reduced by resistance).
+        # Bonus successes beyond TN can also trigger critical strikes.
+
+        RULES {
+            #L5R420mN2oP4qR6sT8uV0w: attack_martial_arts_check
+            #L5R421xY3zA5bC7dE9fG1h: damage_equals_weapon_plus_bonus
+            #L5R422iJ4kL6mN8oP0qR2s: target_suffers_fatigue
+            #L5R423tU5vW7xY9zA1bC3d: critical_strike_on_high_bonus
+        }
+    }
+
+    ^"Critical Strike" DEF {
+
+        # Devastating blows that cause lasting injuries beyond fatigue.
+        # Triggered when bonus successes on an Attack are high enough
+        # or when specific techniques activate.
+        #
+        # Severity = weapon deadliness + bonus successes beyond what's needed
+        # Target resists with Fitness (Earth) check
+        # If severity exceeds resistance: permanent injury/condition
+
+        SEVERITY_TABLE {
+            "1-2" "Minor: Dazed, Disoriented, or similar temporary effect"
+            "3-4" "Moderate: Bleeding, broken bone, or lasting wound"
+            "5-6" "Severe: Crippling injury, lost limb, or massive trauma"
+            "7+" "Mortal: Dying condition unless immediately treated"
+        }
+
+        RULES {
+            #L5R424eF6gH8iJ0kL2mN4o: critical_severity_calculation
+            #L5R425pQ7rS9tU1vW3xY5z: fitness_resistance_check
+            #L5R426aB8cD0eF2gH4iJ6k: shattering_parry_reduces_severity
+            #L5R427lM9nO1pQ3rS5tU7v: permanent_injury_effects
+        }
+    }
+
+    # ===========================
+    # COMBAT: DUELS
+    # ===========================
+
+    ^"Duel" DEF {
+
+        # Formal one-on-one combat, often to first blood or until one
+        # participant yields. Iaijutsu (sword-drawing) duels are the
+        # most common, but taryu-jiai (shugenja duels) also exist.
+
+        PHASES {
+            1 "Assessment: Both duelists study each other. Make Sentiment/Meditation checks to read opponent."
+            2 "Prediction: Each duelist secretly selects a ring they believe their opponent will use."
+            3 "Clash: Both duelists make checks simultaneously. If you predicted correctly, add kept dice."
+            4 "Resolution: Compare results. Winner strikes; loser may defend or yield."
+        }
+
+        RULES {
+            #L5R428wX0yZ2aB4cD6eF8g: duel_formal_structure
+            #L5R429hI1jK3lM5nO7pQ9r: iaijutsu_sword_drawing_duel
+            #L5R430sT2uV4wX6yZ8aB0c: taryu_jiai_shugenja_duel
+            #L5R431dE3fG5hI7jK9lM1n: prediction_bonus_dice
+            #L5R432oP4qR6sT8uV0wX2y: first_blood_or_yield
+        }
+    }
+
+    # ===========================
+    # COMBAT: INTRIGUE
+    # ===========================
+
+    ^"Intrigue" DEF {
+
+        # Social conflict conducted in court, negotiations, or
+        # political maneuvering. Uses social skills (Command, Courtesy,
+        # Games, Performance) against targets' vigilance.
+        # Deals strife instead of fatigue.
+
+        RULES {
+            #L5R433zA5bC7dE9fG1hI3j: intrigue_social_conflict
+            #L5R434kL6mN8oP0qR2sT4u: scheme_actions_deal_strife
+            #L5R435vW7xY9zA1bC3dE5f: vigilance_is_scheme_defense
+            #L5R436gH8iJ0kL2mN4oP6q: compromised_ends_social_resistance
+        }
+    }
+
+    # ===========================
+    # COMBAT: MASS BATTLE
+    # ===========================
+
+    ^"Mass Battle" DEF {
+
+        # Abstracted large-scale warfare. Characters contribute to
+        # their army's success through individual actions each round
+        # rather than tracking hundreds of combatants.
+
+        BATTLE_ROLES {
+            ^"Commander" "Lead troops with Tactics checks. Success shifts battle outcome."
+            ^"Vanguard" "Fight in the front lines. Martial Arts checks against enemy champions."
+            ^"Scout" "Gather intelligence. Survival/Skulduggery checks for tactical advantage."
+            ^"Support" "Heal, inspire, or sabotage. Various checks depending on action."
+        }
+
+        RULES {
+            #L5R437rS9tU1vW3xY5zA7b: mass_battle_abstracted_rounds
+            #L5R438cD0eF2gH4iJ6kL8m: individual_actions_affect_outcome
+            #L5R439nO1pQ3rS5tU7vW9x: battle_momentum_tracking
+        }
+    }
+
+    # ===========================
+    # WEAPONS
+    # ===========================
+
+    ^"Weapon" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Weapons have base damage, deadliness (critical severity bonus),
+        # range, grip requirements, and special qualities.
+
+        PROPERTIES {
+            ^"Name" STRING REQUIRED
+            ^"Category" ENUM ["Melee", "Ranged", "Unarmed"]
+            ^"Skill" STRING  # Martial Arts [Melee], [Ranged], or [Unarmed]
+            ^"Grip" ENUM ["One-Handed", "Two-Handed", "One-or-Two-Handed"]
+            ^"Range" STRING  # Range bands for ranged weapons
+            ^"Base Damage" INTEGER MIN 0 MAX 10
+            ^"Deadliness" INTEGER MIN 0 MAX 10
+            ^"Rarity" INTEGER MIN 1 MAX 9
+            ^"Qualities" LIST OF STRING
+            ^"Cost" STRING
+        }
+
+        WEAPON_EXAMPLES {
+            ^"Katana" "Melee, 1-or-2-Handed, Damage 4, Deadliness 5/7, Rarity 7, Qualities: Ceremonial, Razor-Edged, Sacred"
+            ^"Wakizashi" "Melee, 1-Handed, Damage 3, Deadliness 5/7, Rarity 6, Qualities: Ceremonial, Concealable, Razor-Edged, Sacred"
+            ^"No-dachi" "Melee, 2-Handed, Damage 6, Deadliness 6, Rarity 7, Qualities: Durable, Razor-Edged, Sacred"
+            ^"Yari (Spear)" "Melee, 2-Handed, Damage 5, Deadliness 3, Rarity 4, Qualities: Wargear"
+            ^"Naginata" "Melee, 2-Handed, Damage 6, Deadliness 5, Rarity 6, Qualities: Razor-Edged, Wargear"
+            ^"Tetsubo" "Melee, 2-Handed, Damage 7, Deadliness 2, Rarity 6, Qualities: Durable, Wargear"
+            ^"Yumi (Bow)" "Ranged, 2-Handed, Damage 5, Deadliness 3, Range 2-5, Rarity 5, Qualities: Sacred"
+            ^"Bo (Staff)" "Melee, 2-Handed, Damage 4, Deadliness 1, Rarity 2, Qualities: Mundane"
+            ^"Knife" "Melee, 1-Handed, Damage 2, Deadliness 5, Rarity 2, Qualities: Concealable, Mundane, Thrown (Range 0-2)"
+        }
+
+        WEAPON_QUALITIES {
+            "Ceremonial" "Can be worn in formal settings where weapons are normally forbidden"
+            "Concealable" "Can be hidden on person; requires check to detect"
+            "Cumbersome" "Requires 2 hands and Strength 3+ to wield effectively"
+            "Durable" "Not easily broken; +2 resistance when targeted"
+            "Mundane" "Common; not associated with samurai status"
+            "Razor-Edged" "Exceptionally sharp; additional critical severity on certain (op) spends"
+            "Sacred" "Blessed by spirits; affects supernatural creatures normally immune to mundane weapons"
+            "Snaring" "Can entangle targets; immobilize on certain (op) spends"
+            "Thrown" "Can be thrown at listed range bands"
+            "Wargear" "Military equipment; indicates warrior status"
+        }
+
+        RULES {
+            #L5R440yZ2aB4cD6eF8gH0i: weapon_damage_calculation
+            #L5R441jK3lM5nO7pQ9rS1t: deadliness_adds_to_critical_severity
+            #L5R442uV4wX6yZ8aB0cD2e: weapon_qualities_modify_combat
+        }
+    }
+
+    # ===========================
+    # ARMOR
+    # ===========================
+
+    ^"Armor" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Armor provides physical resistance (reduces fatigue from damage)
+        # and may have special qualities. Heavier armor is more protective
+        # but can be cumbersome.
+
+        PROPERTIES {
+            ^"Name" STRING REQUIRED
+            ^"Physical Resistance" INTEGER MIN 0 MAX 6
+            ^"Rarity" INTEGER MIN 1 MAX 9
+            ^"Qualities" LIST OF STRING
+            ^"Cost" STRING
+        }
+
+        ARMOR_EXAMPLES {
+            ^"Ashigaru Armor" "Physical Resistance 3, Rarity 4, Qualities: Cumbersome, Wargear"
+            ^"Lacquered Armor" "Physical Resistance 4, Rarity 6, Qualities: Cumbersome, Wargear"
+            ^"Heavy Armor" "Physical Resistance 5, Rarity 7, Qualities: Cumbersome, Wargear"
+            ^"Riding Armor" "Physical Resistance 3, Rarity 5, Qualities: Wargear"
+            ^"Robes" "Physical Resistance 1, Rarity 2, Qualities: Mundane"
+        }
+
+        RULES {
+            #L5R443fG5hI7jK9lM1nO3p: armor_reduces_fatigue_from_damage
+            #L5R444qR6sT8uV0wX2yZ4a: cumbersome_armor_penalties
+        }
+    }
+
+    # ===========================
+    # HONOR/GLORY/STATUS MECHANICS
+    # ===========================
+
+    ^"Forfeiting" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # A character can voluntarily reduce their honor, glory, or
+        # status when taking an action that conflicts with those values.
+        # The player declares the forfeit before the action.
+
+        RULES {
+            #L5R445bC7dE9fG1hI3jK5l: forfeiting_is_voluntary
+            #L5R446mN8oP0qR2sT4uV6w: player_declares_before_action
+            #L5R447xY9zA1bC3dE5fG7h: gm_determines_amount_forfeited
+        }
+    }
+
+    ^"Staking" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # A character can stake their honor, glory, or status on the
+        # outcome of an event. If the stated condition occurs, the
+        # staked amount is lost. Demonstrates commitment and conviction.
+
+        RULES {
+            #L5R448iJ0kL2mN4oP6qR8s: staking_demonstrates_commitment
+            #L5R449tU1vW3xY5zA7bC9d: loss_if_condition_met
+            #L5R450eF2gH4iJ6kL8mN0o: staking_can_convince_npcs
+        }
+    }
+
+    # ===========================
+    # ASSISTANCE AND COOPERATION
+    # ===========================
+
+    ^"Assistance" DEF {
+
+        # One or more characters can help another on a check.
+        # Helper rolls skill die (if trained) or ring die (if untrained).
+        # Main character can keep +1 die per helper.
+        # One advantage from one helper can apply.
+        # Each helper can spend 1 strife to negate 1 strife on main check.
+
+        RULES {
+            #L5R451pQ3rS5tU7vW9xY1z: helper_rolls_skill_or_ring_die
+            #L5R452aB4cD6eF8gH0iJ2k: main_keeps_plus_one_per_helper
+            #L5R453lM5nO7pQ9rS1tU3v: one_advantage_from_one_helper
+            #L5R454wX6yZ8aB0cD2eF4g: helper_spends_strife_to_negate
+        }
+    }
+
+    # ===========================
+    # DOWNTIME AND RECOVERY
+    # ===========================
+
+    ^"Downtime" DEF {
+
+        # Periods between adventures where characters can recover,
+        # train, craft, research, perform rituals, and pursue personal
+        # goals. Characters receive downtime activities based on
+        # narrative time available.
+
+        ACTIVITIES {
+            "Craft" "Create or repair items using Trade skills"
+            "Prepare" "Ready equipment, potions, or talismans for future use"
+            "Recover" "Rest and heal fatigue and conditions"
+            "Research" "Study using Scholar skills to gain information"
+            "Socialize" "Build relationships, gather rumors, influence NPCs"
+            "Train" "Practice skills and techniques (narrative, no XP)"
+            "Perform Ritual" "Conduct a ritual technique during downtime"
+        }
+
+        RULES {
+            #L5R455hI7jK9lM1nO3pQ5r: downtime_activities_per_period
+            #L5R456sT8uV0wX2yZ4aB6c: recovery_removes_fatigue
+            #L5R457dE9fG1hI3jK5lM7n: crafting_during_downtime
+        }
+    }
+
+    ^"Healing" DEF {
+
+        # Recovery from fatigue, conditions, and critical injuries.
+        # Natural healing removes some fatigue between scenes.
+        # Medicine checks can accelerate recovery.
+        # Critical injuries require specific treatment.
+
+        RULES {
+            #L5R458oP0qR2sT4uV6wX8y: natural_fatigue_recovery
+            #L5R459zA1bC3dE5fG7hI9j: medicine_check_healing
+            #L5R460kL2mN4oP6qR8sT0u: critical_injury_treatment
+        }
+    }
+
+    # ===========================
+    # TERRAIN AND ENVIRONMENT
+    # ===========================
+
+    ^"Terrain" DEF {
+
+        ENUM ["Obscuring", "Dangerous", "Entangling", "Imbalanced"]
+
+        # Terrain types that modify combat and movement.
+        #
+        # Obscuring: Provides concealment; increases TN for ranged attacks
+        # Dangerous: Causes fatigue when moving through
+        # Entangling: Costs extra movement to traverse
+        # Imbalanced: Characters risk falling prone
+
+        RULES {
+            #L5R461vW3xY5zA7bC9dE1f: terrain_modifies_combat
+            #L5R462gH4iJ6kL8mN0oP2q: terrain_modifies_movement
+        }
+    }
+
+    # ===========================
+    # SUPERNATURAL: TAINT AND SHADOWLANDS
+    # ===========================
+
+    ^"Shadowlands Taint" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 10
+
+        # Corruption from exposure to the Shadowlands or maho.
+        # Taint slowly transforms characters into monsters.
+        # At high levels, character becomes an NPC villain.
+        # Can be resisted or slowed but rarely fully removed.
+
+        RULES {
+            #L5R463rS5tU7vW9xY1zA3b: taint_from_shadowlands_exposure
+            #L5R464cD6eF8gH0iJ2kL4m: taint_from_maho_use
+            #L5R465nO7pQ9rS1tU3vW5x: taint_transforms_at_high_levels
+            #L5R466yZ8aB0cD2eF4gH6i: jade_and_crystal_resist_taint
+        }
+    }
+}

@@ -1,0 +1,129 @@
+EXTENSION "L5R5e_Daidoji_Shin_NPCs" EXTENDS "L5R5e_Core_Character" {
+    NAME "Legend of the Five Rings 5th Edition - Daidoji Shin Mysteries: Promotional NPCs"
+    VERSION "0.1"
+    RELEASE_DATE "2021-01-01"
+
+    # Promotional NPC stat blocks for the Daidoji Shin Mysteries
+    # novel series by Josh Reynolds (Aconyte Books).
+    # Published by Fantasy Flight Games, 2021.
+
+    # ===========================
+    # DAIDOJI SHIN
+    # ===========================
+
+    ^"Daidoji Shin" DEF {
+        APPLIES TO [^"NPC"]
+        # Abbreviated version also in l5r5e-0.1-children-of-five-winds-gm-tools.ttrpg
+
+        # Daidoji Shin, unrepentant wastrel with a taste for scandal
+        # and dice, coasts through his role as Crane Clan's trade
+        # envoy in the City of the Rich Frog.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 11
+            ^"Demeanor" STRING "Assertive"
+            ^"Rings" DEF {
+                ^"Air" INTEGER 5
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 5
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 5
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 40
+            ^"Skills" LIST OF STRING ["Artisan 5", "Martial 2", "Scholar 3", "Social 5", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Wealth and Resources (Water) [Trade; Material]", "Analytical Mind (Fire) [Scholar; Mental]", "Keen Eye For Detail (Air) [Artisan; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Haughty Tone (Air) [Social; Interpersonal]", "Perfectionist (Water) [Mental; Physical]", "Disdain for Righteousness (Void) [Flaw; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Extravagant robes (Physical 1, Ceremonial)", "Calligraphy set", "Tea set", "Rokugani Pony"]
+        }
+
+        ^"Whispering Winds" DEF {
+            # Once per session as an action, make Courtesy (Air) check
+            # targeting one character in the scene. TN = 6 minus target's
+            # glory rank (minimum 1). If succeed, learn a rumor about
+            # the target.
+            # (op)(op): Learn one of the target's advantages or
+            # disadvantages (target's choice).
+        }
+
+        ^"Fanning the Flames" DEF {
+            # When making a Social skill (Fire) check, may spend (op):
+            # Fire (op): One target gains the Dazed condition.
+        }
+
+        RULES {
+            #L5RDS01aB2cD4eF6gH8iJ0k: npc_daidoji_shin_stat_block
+            #L5RDS02lM3nO5pQ7rS9tU1v: npc_daidoji_shin_whispering_winds
+            #L5RDS03wX4yZ6aB8cD0eF2g: npc_daidoji_shin_fanning_the_flames
+        }
+    }
+
+    # ===========================
+    # HIRAMORI KASAMI
+    # ===========================
+
+    ^"Hiramori Kasami" DEF {
+        APPLIES TO [^"NPC"]
+        # Abbreviated version also in l5r5e-0.1-children-of-five-winds-gm-tools.ttrpg
+
+        # Kasami is the long-suffering bodyguard and reluctant friend
+        # of Daidoji Shin. She often wonders what she did to have been
+        # tasked with this role, but she is a loyal Bushi and will
+        # defend Shin with her life.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 9
+            ^"Intrigue Conflict Rank" INTEGER 7
+            ^"Demeanor" STRING "Assertive"
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 5
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 5
+            ^"Honor" INTEGER 50
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 40
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 5", "Scholar 4", "Social 4", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Sworn to Bushido (Void) [Social; Mental]", "Indomitable Will (Earth) [Interpersonal; Mental]", "Quick Reflexes (Fire) [Interpersonal; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Hot-Tempered (Water) [Social; Mental]", "Bluntness (Air) [Interpersonal]", "Impatience (Earth) [Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 6, Deadliness 5/7, Ceremonial, Razor-Edged", "Yumi: Range 2-5, Damage 5, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Lacquered Armor (Physical 4, Ceremonial, Cumbersome, Wargear)", "Wakizashi", "Quiver", "Yari", "Knife", "Plain Robes (Physical 1, Mundane)"]
+        }
+
+        ^"Crescent Moon Style" DEF {
+            # When performing a guard action, may spend (op):
+            # (op): After another character performs an Attack action
+            # targeting the Bushi or another character the Bushi is
+            # guarding, the Bushi may perform a Strike action targeting
+            # them. Persists until start of Bushi's next turn or until
+            # they perform a Strike action.
+        }
+
+        ^"Sworn Protector" DEF {
+            # Once per scene, when an Attack action check targeting
+            # another character at range 0-1 succeeds, the Bushi may
+            # intervene, becoming the target of the action instead.
+        }
+
+        RULES {
+            #L5RDS04hI5jK7lM9nO1pQ3r: npc_hiramori_kasami_stat_block
+            #L5RDS05sT6uV8wX0yZ2aB4c: npc_hiramori_kasami_crescent_moon_style
+            #L5RDS06dE7fG9hI1jK3lM5n: npc_hiramori_kasami_sworn_protector
+        }
+    }
+}

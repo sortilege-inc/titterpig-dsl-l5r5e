@@ -1,0 +1,727 @@
+BASE "L5R5e_Core_Traits" {
+    NAME "Legend of the Five Rings 5th Edition - Rings, skills, and derived attributes"
+    VERSION "0.1"
+    RELEASE_DATE "2025-06-01"
+
+    # Core Rulebook: Rings, skills, derived values, social attributes
+    # The Five Rings are the core attributes of L5R, each representing
+    # a philosophy and approach to problem-solving, not just raw capability.
+
+    # ===========================
+    # THE FIVE RINGS
+    # ===========================
+
+    ^"Ring" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary", ^"Peasant"]
+
+        INTEGER MIN 1 MAX 5
+
+        # Rings are the fundamental attributes of every character.
+        # Unlike traditional RPG stats, rings represent approaches
+        # to action rather than innate physical/mental traits.
+        # Ring value determines: dice kept, stance benefits, and
+        # derived attributes.
+
+        RULES {
+            #L5R100aB2cD4eF6gH8iJ0k: ring_value_determines_kept_dice
+            #L5R101lM3nO5pQ7rS9tU1v: ring_value_determines_approach
+            #L5R102wX4yZ6aB8cD0eF2g: starting_rings_all_at_one
+        }
+    }
+
+    ^"Air" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary", ^"Peasant"]
+
+        INTEGER MIN 1 MAX 5
+
+        # Grace, cunning, precision, and subtlety. The Air ring
+        # represents the capacity for careful action, elegant speech,
+        # and quiet observation. Air characters notice small details,
+        # act with precision, and avoid drawing attention.
+        #
+        # Air approaches: speaking carefully, moving precisely,
+        # noticing subtle clues, striking with finesse, deceiving
+        # with subtlety, crafting with delicacy.
+
+        RULES {
+            #L5R103hI5jK7lM9nO1pQ3r: air_stance_evasion
+            #L5R104sT6uV8wX0yZ2aB4c: air_opportunity_precision
+            #L5R105dE7fG9hI1jK3lM5n: air_contributes_to_focus
+            #L5R106oP8qR0sT2uV4wX6y: air_contributes_to_vigilance
+        }
+    }
+
+    ^"Earth" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary", ^"Peasant"]
+
+        INTEGER MIN 1 MAX 5
+
+        # Resilience, patience, memory, and calm. The Earth ring
+        # represents steadfastness, the ability to endure hardship,
+        # recall information accurately, and remain composed under
+        # pressure. Earth characters are reliable, thorough, and hard
+        # to move.
+        #
+        # Earth approaches: withstanding, remembering, maintaining,
+        # defending patiently, observing thoroughly, enduring.
+
+        RULES {
+            #L5R107zA9bC1dE3fG5hI7j: earth_stance_resilience
+            #L5R108kL0mN2oP4qR6sT8u: earth_opportunity_reassurance
+            #L5R109vW1xY3zA5bC7dE9f: earth_contributes_to_endurance
+            #L5R110gH2iJ4kL6mN8oP0q: earth_contributes_to_composure
+        }
+    }
+
+    ^"Fire" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary", ^"Peasant"]
+
+        INTEGER MIN 1 MAX 5
+
+        # Passion, invention, candor, and ferocity. The Fire ring
+        # represents bold action, creative thinking, and direct
+        # confrontation. Fire characters are inventive, passionate,
+        # and forceful in their actions.
+        #
+        # Fire approaches: creating, commanding, inventing, attacking
+        # aggressively, speaking passionately, inspiring others.
+
+        RULES {
+            #L5R111rS3tU5vW7xY9zA1b: fire_stance_aggressive_bonus
+            #L5R112cD4eF6gH8iJ0kL2m: fire_opportunity_inflict_strife
+            #L5R113nO5pQ7rS9tU1vW3x: fire_contributes_to_endurance
+            #L5R114yZ6aB8cD0eF2gH4i: fire_contributes_to_focus
+        }
+    }
+
+    ^"Water" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary", ^"Peasant"]
+
+        INTEGER MIN 1 MAX 5
+
+        # Flexibility, awareness, efficiency, and charm. The Water ring
+        # represents adaptability, perception, and smooth action.
+        # Water characters flow around obstacles, perceive their
+        # surroundings clearly, and accomplish tasks efficiently.
+        #
+        # Water approaches: perceiving, persuading, adapting, flowing
+        # around defenses, reading people, moving gracefully.
+
+        RULES {
+            #L5R115jK7lM9nO1pQ3rS5t: water_stance_extra_action
+            #L5R116uV8wX0yZ2aB4cD6e: water_opportunity_remove_fatigue
+            #L5R117fG9hI1jK3lM5nO7p: water_contributes_to_composure
+            #L5R118qR0sT2uV4wX6yZ8a: water_contributes_to_vigilance
+        }
+    }
+
+    ^"Void" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary", ^"Peasant"]
+
+        INTEGER MIN 1 MAX 5
+
+        # Mysticism, intuition, instinct, and wisdom. The Void ring
+        # represents connection to the spiritual, the ability to act
+        # on instinct, and transcendence of the other four elements.
+        # Void characters sense the supernatural, act on gut feelings,
+        # and see through deception.
+        #
+        # Void approaches: acting instinctively, sensing the supernatural,
+        # achieving enlightenment, meditating, divining.
+
+        RULES {
+            #L5R119bC1dE3fG5hI7jK9l: void_stance_scheme_immunity
+            #L5R120mN2oP4qR6sT8uV0w: void_opportunity_reduce_tn
+            #L5R121xY3zA5bC7dE9fG1h: void_determines_void_point_max
+            #L5R122iJ4kL6mN8oP0qR2s: void_used_for_initiative
+        }
+    }
+
+    # ===========================
+    # DERIVED ATTRIBUTES
+    # ===========================
+
+    ^"Endurance" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 1
+
+        # Represents physical stamina and ability to withstand fatigue
+        # and damage in physical conflicts.
+        # Formula: (Earth + Fire) × 2
+        # When fatigue >= endurance, character is incapacitated.
+
+        FORMULA "(Earth + Fire) × 2"
+
+        RULES {
+            #L5R123tU5vW7xY9zA1bC3d: incapacitation_at_max_fatigue
+            #L5R124eF6gH8iJ0kL2mN4o: fatigue_tracked_against_endurance
+        }
+    }
+
+    ^"Composure" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 1
+
+        # Represents emotional fortitude and ability to maintain decorum.
+        # Formula: (Earth + Water) × 2
+        # When strife > composure, character becomes Compromised.
+
+        FORMULA "(Earth + Water) × 2"
+
+        RULES {
+            #L5R125pQ7rS9tU1vW3xY5z: compromised_when_strife_exceeds
+            #L5R126aB8cD0eF2gH4iJ6k: strife_tracked_against_composure
+            #L5R127lM9nO1pQ3rS5tU7v: strife_removal_between_scenes
+        }
+    }
+
+    ^"Focus" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 1
+
+        # Represents mental sharpness and ability to concentrate.
+        # Formula: Fire + Air
+        # Used to break initiative ties.
+
+        FORMULA "Fire + Air"
+
+        RULES {
+            #L5R128wX0yZ2aB4cD6eF8g: focus_breaks_initiative_ties
+        }
+    }
+
+    ^"Vigilance" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0
+
+        # Represents passive awareness and ability to detect threats.
+        # Formula: (Air + Water) / 2 (rounded down)
+        # Serves as TN for Scheme actions targeting the character.
+        # Reduced to 1 when Compromised.
+
+        FORMULA "(Air + Water) / 2 (rounded down)"
+
+        RULES {
+            #L5R129hI1jK3lM5nO7pQ9r: vigilance_is_scheme_tn
+            #L5R130sT2uV4wX6yZ8aB0c: vigilance_drops_when_compromised
+        }
+    }
+
+    # ===========================
+    # SOCIAL ATTRIBUTES
+    # ===========================
+
+    ^"Honor" DEF {
+        APPLIES TO [^"Samurai"]
+
+        INTEGER MIN 0 MAX 100
+
+        # Measures a character's personal investment in the code of Bushido.
+        # Rank = tens digit (e.g., honor 35 = rank 3).
+        # Characters above rank 6 gain virtue advantages.
+        # Characters below rank 3 gain flaw disadvantages.
+        # Changes through roleplay: honorable actions increase,
+        # dishonorable actions decrease.
+
+        RULES {
+            #L5R131dE3fG5hI7jK9lM1n: honor_rank_calculation
+            #L5R132oP4qR6sT8uV0wX2y: forfeiting_honor_mechanics
+            #L5R133zA5bC7dE9fG1hI3j: staking_honor_mechanics
+            #L5R134kL6mN8oP0qR2sT4u: high_honor_virtue_advantages
+            #L5R135vW7xY9zA1bC3dE5f: low_honor_flaw_disadvantages
+        }
+    }
+
+    ^"Glory" DEF {
+        APPLIES TO [^"Samurai"]
+
+        INTEGER MIN 0 MAX 100
+
+        # Measures a character's reputation and fame in Rokugani society.
+        # Rank = tens digit. Reflects how well-known a character's deeds are.
+        # High glory grants fame advantages; low glory grants infamy.
+        # Changes through public deeds: heroic acts increase,
+        # shameful public acts decrease.
+
+        RULES {
+            #L5R136gH8iJ0kL2mN4oP6q: glory_rank_calculation
+            #L5R137rS9tU1vW3xY5zA7b: forfeiting_glory_mechanics
+            #L5R138cD0eF2gH4iJ6kL8m: staking_glory_mechanics
+            #L5R139nO1pQ3rS5tU7vW9x: high_glory_fame_advantages
+            #L5R140yZ2aB4cD6eF8gH0i: low_glory_infamy_disadvantages
+        }
+    }
+
+    ^"Status" DEF {
+        APPLIES TO [^"Samurai"]
+
+        INTEGER MIN 0 MAX 100
+
+        # Measures a character's social standing and rank within the
+        # Celestial Order. Rank = tens digit. Largely determined by
+        # birth and position. Changes infrequently, typically through
+        # promotion, demotion, or political upheaval.
+        # Used by GM to determine social deference and authority.
+
+        RULES {
+            #L5R141jK3lM5nO7pQ9rS1t: status_rank_calculation
+            #L5R142uV4wX6yZ8aB0cD2e: status_determines_social_deference
+            #L5R143fG5hI7jK9lM1nO3p: status_rarely_changes
+        }
+    }
+
+    # ===========================
+    # SKILL GROUPS AND SKILLS
+    # ===========================
+
+    ^"Skill" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Learned abilities representing training and experience.
+        # Combined with a ring to form dice pools (Skill dice = skill ranks).
+        # Organized into five skill groups matching the five rings.
+        # Each skill can be approached through any ring.
+        #
+        # Rank 0: Untrained
+        # Rank 1: Beginner (basic training)
+        # Rank 2: Apprentice (functional proficiency)
+        # Rank 3: Professional (competent practitioner)
+        # Rank 4: Expert (exceptional ability)
+        # Rank 5: Master (among the greatest in the land)
+
+        RULES {
+            #L5R144qR6sT8uV0wX2yZ4a: skill_ranks_equal_skill_dice
+            #L5R145bC7dE9fG1hI3jK5l: any_skill_any_ring_approach
+            #L5R146mN8oP0qR2sT4uV6w: skill_groups_match_rings
+        }
+    }
+
+    # --- ARTISAN SKILL GROUP ---
+
+    ^"Aesthetics" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Understanding and creation of visual art, including painting,
+        # sculpture, bonsai cultivation, ikebana (flower arranging),
+        # rock gardens, and calligraphy. Also the appreciation and
+        # critique of art.
+
+        SKILL_GROUP "Artisan"
+
+        RULES {
+            #L5R147xY9zA1bC3dE5fG7h: art_creation_and_appreciation
+        }
+    }
+
+    ^"Composition" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Creation of literary works: poetry, letters, essays, stories.
+        # In Rokugan, composing poetry is an essential social skill
+        # for samurai. Used for formal correspondence, love letters,
+        # and political communication.
+
+        SKILL_GROUP "Artisan"
+
+        RULES {
+            #L5R148iJ0kL2mN4oP6qR8s: literary_creation
+            #L5R149tU1vW3xY5zA7bC9d: poetry_social_importance
+        }
+    }
+
+    ^"Design" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Skill in fashion, clothing design, textile arts, and
+        # personal presentation. Creating and selecting appropriate
+        # attire for different occasions.
+
+        SKILL_GROUP "Artisan"
+
+        RULES {
+            #L5R150eF2gH4iJ6kL8mN0o: fashion_and_presentation
+        }
+    }
+
+    ^"Smithing" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Crafting of weapons, armor, and metal goods. In Rokugan,
+        # swordsmithing is a sacred art. Also covers repair and
+        # maintenance of equipment.
+
+        SKILL_GROUP "Artisan"
+
+        RULES {
+            #L5R151pQ3rS5tU7vW9xY1z: weapon_and_armor_creation
+            #L5R152aB4cD6eF8gH0iJ2k: sacred_swordsmithing
+        }
+    }
+
+    # --- MARTIAL SKILL GROUP ---
+
+    ^"Fitness" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Athletic ability, physical endurance, and body conditioning.
+        # Covers running, climbing, swimming, jumping, and resisting
+        # physical hardship. Used to resist critical strikes.
+
+        SKILL_GROUP "Martial"
+
+        RULES {
+            #L5R153lM5nO7pQ9rS1tU3v: athletic_feats
+            #L5R154wX6yZ8aB0cD2eF4g: critical_strike_resistance
+        }
+    }
+
+    ^"Martial Arts [Melee]" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Training in melee weapons: katana, wakizashi, no-dachi,
+        # naginata, yari, bo, tetsubo, and other hand-to-hand weapons.
+        # The primary combat skill for most samurai.
+
+        SKILL_GROUP "Martial"
+
+        RULES {
+            #L5R155hI7jK9lM1nO3pQ5r: melee_attack_checks
+            #L5R156sT8uV0wX2yZ4aB6c: weapon_proficiency
+        }
+    }
+
+    ^"Martial Arts [Ranged]" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Training in ranged weapons: yumi (bow), crossbow, shuriken,
+        # blowgun, and throwing weapons. Archery is highly esteemed
+        # in Rokugani culture.
+
+        SKILL_GROUP "Martial"
+
+        RULES {
+            #L5R157dE9fG1hI3jK5lM7n: ranged_attack_checks
+            #L5R158oP0qR2sT4uV6wX8y: archery_cultural_prestige
+        }
+    }
+
+    ^"Martial Arts [Unarmed]" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Training in unarmed combat and improvised weapons. Covers
+        # wrestling (sumai), punching, kicking, grappling, and
+        # use of improvised objects as weapons.
+
+        SKILL_GROUP "Martial"
+
+        RULES {
+            #L5R159zA1bC3dE5fG7hI9j: unarmed_attack_checks
+            #L5R160kL2mN4oP6qR8sT0u: grappling_and_sumai
+        }
+    }
+
+    ^"Meditation" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Mental discipline, emotional control, and spiritual focus.
+        # Used for initiative checks, calming breath actions,
+        # resisting fear, and spiritual practices.
+
+        SKILL_GROUP "Martial"
+
+        RULES {
+            #L5R161vW3xY5zA7bC9dE1f: initiative_checks
+            #L5R162gH4iJ6kL8mN0oP2q: calming_breath_strife_removal
+            #L5R163rS5tU7vW9xY1zA3b: spiritual_focus
+        }
+    }
+
+    ^"Tactics" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Strategic and tactical thinking. Used for commanding troops,
+        # planning ambushes, coordinating groups, and initiative checks.
+        # Essential for military leaders and battlefield commanders.
+
+        SKILL_GROUP "Martial"
+
+        RULES {
+            #L5R164cD6eF8gH0iJ2kL4m: military_command
+            #L5R165nO7pQ9rS1tU3vW5x: initiative_checks
+            #L5R166yZ8aB0cD2eF4gH6i: battlefield_coordination
+        }
+    }
+
+    # --- SCHOLAR SKILL GROUP ---
+
+    ^"Culture" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Knowledge of Rokugani history, customs, etiquette, heraldry,
+        # current events, and social protocols. Essential for navigating
+        # the complex social hierarchies of the Empire.
+
+        SKILL_GROUP "Scholar"
+
+        RULES {
+            #L5R167jK9lM1nO3pQ5rS7t: etiquette_knowledge
+            #L5R168uV0wX2yZ4aB6cD8e: heraldry_identification
+            #L5R169fG1hI3jK5lM7nO9p: historical_knowledge
+        }
+    }
+
+    ^"Government" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Knowledge of law, bureaucracy, political systems, and
+        # Imperial governance. Understanding of taxation, legal codes,
+        # and administrative procedures.
+
+        SKILL_GROUP "Scholar"
+
+        RULES {
+            #L5R170qR2sT4uV6wX8yZ0a: legal_knowledge
+            #L5R171bC3dE5fG7hI9jK1l: bureaucratic_navigation
+        }
+    }
+
+    ^"Medicine" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Knowledge of healing, herbal remedies, surgery, disease
+        # treatment, and poison identification. Used to treat injuries,
+        # create medicines, and diagnose illness.
+
+        SKILL_GROUP "Scholar"
+
+        RULES {
+            #L5R172mN4oP6qR8sT0uV2w: healing_treatment
+            #L5R173xY5zA7bC9dE1fG3h: poison_identification
+            #L5R174iJ6kL8mN0oP2qR4s: disease_treatment
+        }
+    }
+
+    ^"Sentiment" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Understanding of psychology, emotions, and motivations.
+        # Used to read people's emotional states, understand their
+        # desires, and predict behavior. Straddles Scholar and Social
+        # skill groups.
+
+        SKILL_GROUP "Scholar"
+
+        RULES {
+            #L5R175tU7vW9xY1zA3bC5d: emotional_reading
+            #L5R176eF8gH0iJ2kL4mN6o: motivation_analysis
+        }
+    }
+
+    ^"Theology" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Knowledge of the spiritual world: kami, Fortunes, Celestial
+        # Order, Shinseism, religious practices, and the nature of
+        # spirits. Essential for shugenja and monks.
+
+        SKILL_GROUP "Scholar"
+
+        RULES {
+            #L5R177pQ9rS1tU3vW5xY7z: spiritual_knowledge
+            #L5R178aB0cD2eF4gH6iJ8k: fortune_and_kami_lore
+            #L5R179lM1nO3pQ5rS7tU9v: ritual_understanding
+        }
+    }
+
+    # --- SOCIAL SKILL GROUP ---
+
+    ^"Command" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Asserting authority, giving orders, and demanding compliance.
+        # Used for direct commands, rallying troops, and projecting
+        # dominance in social situations.
+
+        SKILL_GROUP "Social"
+
+        RULES {
+            #L5R180wX2yZ4aB6cD8eF0g: authority_assertion
+            #L5R181hI3jK5lM7nO9pQ1r: rally_and_inspire
+        }
+    }
+
+    ^"Courtesy" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Formal etiquette, diplomatic skill, and graceful social
+        # interaction. Used for polite requests, formal appeals,
+        # gift-giving, and navigating court protocol.
+
+        SKILL_GROUP "Social"
+
+        RULES {
+            #L5R182sT4uV6wX8yZ0aB2c: formal_etiquette
+            #L5R183dE5fG7hI9jK1lM3n: diplomatic_appeals
+        }
+    }
+
+    ^"Games" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Knowledge and skill in board games (go, shogi), card games,
+        # dice games, and social competitions. Used for friendly
+        # competition, gambling, and reading opponents.
+
+        SKILL_GROUP "Social"
+
+        RULES {
+            #L5R184oP6qR8sT0uV2wX4y: game_proficiency
+            #L5R185zA7bC9dE1fG3hI5j: reading_opponents
+        }
+    }
+
+    ^"Performance" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Skill in performing arts: music, dance, storytelling,
+        # oratory, and theater. Used for entertainment, inspiring
+        # audiences, and social influence through art.
+
+        SKILL_GROUP "Social"
+
+        RULES {
+            #L5R186kL8mN0oP2qR4sT6u: artistic_performance
+            #L5R187vW9xY1zA3bC5dE7f: audience_engagement
+        }
+    }
+
+    # --- TRADE SKILL GROUP ---
+
+    ^"Commerce" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Knowledge of trade, markets, prices, and economic systems.
+        # Used for buying, selling, appraising goods, and understanding
+        # economic conditions. Traditionally beneath most samurai's
+        # notice, but practically essential.
+
+        SKILL_GROUP "Trade"
+
+        RULES {
+            #L5R188gH0iJ2kL4mN6oP8q: market_knowledge
+            #L5R189rS1tU3vW5xY7zA9b: appraisal_ability
+        }
+    }
+
+    ^"Labor" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Physical labor skills: farming, construction, carpentry,
+        # mining, and other manual trades. Most samurai disdain such
+        # work, but ronin and some monks find it essential.
+
+        SKILL_GROUP "Trade"
+
+        RULES {
+            #L5R190cD2eF4gH6iJ8kL0m: manual_labor_proficiency
+        }
+    }
+
+    ^"Seafaring" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Sailing, navigation, swimming, fishing, and knowledge of
+        # oceans and waterways. Essential for the Mantis Clan and
+        # coastal communities.
+
+        SKILL_GROUP "Trade"
+
+        RULES {
+            #L5R191nO3pQ5rS7tU9vW1x: navigation_and_sailing
+        }
+    }
+
+    ^"Skulduggery" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Criminal skills: lockpicking, pickpocketing, forgery,
+        # disguise, smuggling, and underworld knowledge. Dishonorable
+        # but sometimes necessary. Scorpion Clan speciality.
+
+        SKILL_GROUP "Trade"
+
+        RULES {
+            #L5R192yZ4aB6cD8eF0gH2i: criminal_techniques
+            #L5R193jK5lM7nO9pQ1rS3t: underworld_navigation
+        }
+    }
+
+    ^"Survival" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0 MAX 5
+
+        # Wilderness skills: tracking, foraging, shelter building,
+        # animal handling, weather reading, and navigating natural
+        # terrain. Essential for travel between cities.
+
+        SKILL_GROUP "Trade"
+
+        RULES {
+            #L5R194uV6wX8yZ0aB2cD4e: wilderness_navigation
+            #L5R195fG7hI9jK1lM3nO5p: tracking_and_foraging
+        }
+    }
+}

@@ -1,0 +1,1673 @@
+EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
+    NAME "Legend of the Five Rings 5th Edition - Shadowlands: New Player Options"
+    VERSION "0.1"
+    RELEASE_DATE "2025-06-01"
+
+    # Shadowlands (Chapters 2 and 3): Falcon Minor Clan, Toritaka family,
+    # new schools, advantages, disadvantages, Taint disadvantages,
+    # heritages, weapons, armor, personal effects, signature scrolls,
+    # item patterns, artifacts, techniques, maho, titles, opportunity
+    # tables, corruption rules, oni generation, demeanors, NPC templates.
+
+    # ===========================
+    # FALCON MINOR CLAN
+    # ===========================
+
+    ^"Falcon Minor Clan" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The Falcon guard against spiritual threats from the
+        # Spirit Realms - ghosts, gaki, and similar dangers.
+        # A Minor Clan to the north of Crab lands, they seek
+        # not only to battle yurai but to understand them.
+
+        PROPERTIES {
+            ^"Clan" STRING "Falcon" FIXED
+            ^"Ring Increase" STRING "+1 Void"
+            ^"Skill Increase" STRING "+1 Theology"
+            ^"Status" INTEGER DEFAULT 26
+        }
+
+        RULES {
+            #L5RSL01aB2cD4eF6gH8iJ0: falcon_guard_against_spirit_realm_threats
+            #L5RSL02kL3mN5oP7qR9sT1u: falcon_seek_understanding_of_spirits
+        }
+    }
+
+    ^"Toritaka Family" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The foremost family of the Falcon. Large and stocky,
+        # reflecting shared heritage with the Hida, but quiet
+        # and reserved. They stand between Mortal and Spirit
+        # Realms, controlling their own passions to effectively
+        # understand and eliminate dangers yurai bring.
+
+        PROPERTIES {
+            ^"Family" STRING "Toritaka" FIXED
+            ^"Ring Increase" STRING "+1 Earth or +1 Water"
+            ^"Skill Increases" STRING "+1 Survival, +1 Meditation"
+            ^"Glory" INTEGER DEFAULT 35
+            ^"Starting Wealth" STRING "3 koku"
+        }
+
+        RULES {
+            #L5RSL03vW4xY6zA8bC0dE2f: toritaka_foremost_falcon_family
+            #L5RSL04gH5iJ7kL9mN1oP3q: toritaka_stand_between_mortal_and_spirit_realms
+        }
+    }
+
+    # ===========================
+    # NEW SCHOOLS
+    # ===========================
+
+    ^"Asako Inquisitor School" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Formed in the third century to root out maho within
+        # the Phoenix, their remit widened to all of the Emerald
+        # Empire. They answer only to the Council of Five and
+        # the Emperor, sometimes clashing with Kuni Purifiers.
+
+        PROPERTIES {
+            ^"School" STRING "Asako Inquisitor" FIXED
+            ^"School Roles" LIST OF STRING ["Courtier", "Shugenja"]
+            ^"Starting Rings" STRING "+1 Fire, +1 Void"
+            ^"Starting Skills" STRING "Choose three: +1 Courtesy, +1 Martial Arts [Melee], +1 Martial Arts [Unarmed], +1 Meditation, +1 Performance, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 35
+            ^"Available Technique Groups" LIST OF STRING ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Rituals: Cleansing Rite, Commune with the Spirits, Divination; Shuji: Cadence, Truth Burns through Lies"
+            ^"School Ability" STRING "Traces of Passage"
+            ^"Mastery Ability" STRING "Resilient Readiness"
+        }
+
+        ^"Traces of Passage" DEF {
+            # Once per scene as a Support action, you may scry
+            # to detect any supernatural abilities used at range 0-3
+            # in the last day (such as invocations, maho, and kiho).
+            # Reduce the TN of your checks to investigate this
+            # phenomenon by your school rank.
+        }
+
+        CURRICULUM {
+            ^"Rank 1" {
+                "Scholar" SKILL_GROUP
+                "Command" SKILL
+                "Martial Arts [Melee]" SKILL
+                "Meditation" SKILL
+                "Rank 1 Fire Invocations (invocation)" TECH_GROUP
+                "Threshold Barrier (ritual)" TECHNIQUE
+                "Weight of Duty (shuji)" TECHNIQUE
+            }
+            ^"Rank 2" {
+                "Social" SKILL_GROUP
+                "Government" SKILL
+                "Meditation" SKILL
+                "Theology" SKILL
+                "Rank 1-2 Air Invocations (invocation)" TECH_GROUP
+                "Essence of Jade (invocation)" TECHNIQUE
+                "Open Hand Style (kata)" TECHNIQUE
+            }
+            ^"Rank 3" {
+                "Martial" SKILL_GROUP
+                "Medicine" SKILL
+                "Performance" SKILL
+                "Theology" SKILL
+                "Rank 1-3 Earth Invocations (invocation)" TECH_GROUP
+                "Regal Bearing (shuji)" TECHNIQUE
+                "Touchstone of Courage (shuji)" TECHNIQUE
+            }
+            ^"Rank 4" {
+                "Scholar" SKILL_GROUP
+                "Courtesy" SKILL
+                "Martial Arts [Melee]" SKILL
+                "Survival" SKILL
+                "Rank 1-4 Water Invocations (invocation)" TECH_GROUP
+                "The Soul's Blade (invocation)" TECHNIQUE
+                "Bravado (shuji)" TECHNIQUE
+            }
+            ^"Rank 5" {
+                "Social" SKILL_GROUP
+                "Composition" SKILL
+                "Skulduggery" SKILL
+                "Tactics" SKILL
+                "Rank 1-5 Fire Invocations (invocation)" TECH_GROUP
+                "Striking as Void (kata)" TECHNIQUE
+                "Rouse the Soul (shuji)" TECHNIQUE
+            }
+            ^"Rank 6" {
+                "Resilient Readiness (Mastery Ability): When you make a check to investigate a supernatural phenomenon, you may spend (op) as follows: (op)+: Increase your resistance against that phenomenon (such as a specific invocation, kiho, maho, or NPC ability) by an amount equal to the (op) you spend this way. This effect persists until the end of the scene."
+            }
+        }
+
+        RULES {
+            #L5RSL05rS6tU8vW0xY2zA4b: inquisitor_detects_supernatural_abilities
+            #L5RSL06cD7eF9gH1iJ3kL5m: inquisitor_answers_to_council_of_five
+        }
+    }
+
+    ^"Kakita Swordsmith School" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The blades they forge are renowned as the finest
+        # in Rokugan. Duelists wait years for one of these
+        # blades. Apprentices spend decades before being
+        # honored as proficient.
+
+        PROPERTIES {
+            ^"School" STRING "Kakita Swordsmith" FIXED
+            ^"School Roles" LIST OF STRING ["Artisan", "Courtier"]
+            ^"Starting Rings" STRING "+1 Air, +1 Fire"
+            ^"Starting Skills" STRING "Choose five: +1 Aesthetics, +1 Martial Arts [Melee], +1 Courtesy, +1 Culture, +1 Sentiment, +1 Smithing, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 55
+            ^"Available Technique Groups" LIST OF STRING ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Kata (choose one): Soaring Slice, Striking as Air, Striking as Fire; Shuji: = Artisan's Appraisal"
+            ^"Patterns" STRING "Kakita Pattern"
+            ^"School Ability" STRING "Sacred Art of Steel"
+            ^"Mastery Ability" STRING "Ashidaka's Method"
+        }
+
+        ^"Sacred Art of Steel" DEF {
+            # Once per game session when you make a check to
+            # craft, improve, or maintain a weapon, you may add
+            # a number of kept (ring) set to (op) results equal to
+            # your school rank.
+        }
+
+        CURRICULUM {
+            ^"Rank 1" {
+                "Artisan" SKILL_GROUP
+                "Courtesy" SKILL
+                "Culture" SKILL
+                "Martial Arts [Melee]" SKILL
+                "Rank 1 Kata (kata)" TECH_GROUP
+                "Blessing of Steel (ritual)" TECHNIQUE
+                "Well of Desire (shuji)" TECHNIQUE
+            }
+            ^"Rank 2" {
+                "Scholar" SKILL_GROUP
+                "Aesthetics" SKILL
+                "Meditation" SKILL
+                "Smithing" SKILL
+                "Rank 1-2 Rituals (ritual)" TECH_GROUP
+                "Ebb and Flow (shuji)" TECHNIQUE
+                "Tributaries of Trade (shuji)" TECHNIQUE
+            }
+            ^"Rank 3" {
+                "Martial" SKILL_GROUP
+                "Sentiment" SKILL
+                "Smithing" SKILL
+                "Theology" SKILL
+                "Rank 1-4 Air Shuji (shuji)" TECH_GROUP
+                "All Arts are One (shuji)" TECHNIQUE
+                "Dazzling Performance (shuji)" TECHNIQUE
+            }
+            ^"Rank 4" {
+                "Artisan" SKILL_GROUP
+                "Courtesy" SKILL
+                "Martial Arts [Melee]" SKILL
+                "Performance" SKILL
+                "Rank 1-4 Kata (kata)" TECH_GROUP
+                "Soul Sunder (kata)" TECHNIQUE
+                "Bravado (shuji)" TECHNIQUE
+            }
+            ^"Rank 5" {
+                "Scholar" SKILL_GROUP
+                "Aesthetics" SKILL
+                "Design" SKILL
+                "Smithing" SKILL
+                "Rank 1-5 Fire Shuji (shuji)" TECH_GROUP
+                "Buoyant Arrival (shuji)" TECHNIQUE
+                "Striking as Void (kata)" TECHNIQUE
+            }
+            ^"Rank 6" {
+                "Ashidaka's Method (Mastery Ability): When you create a new weapon, you may apply two different patterns that you know to it (instead of one)."
+            }
+        }
+
+        RULES {
+            #L5RSL07nO8pQ0rS2tU4vW6x: swordsmith_finest_blades_in_rokugan
+            #L5RSL08yZ9aB1cD3eF5gH7i: swordsmith_kakita_pattern_access
+        }
+    }
+
+    ^"Kitsu Medic School" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Skilled in martial arts but primarily healers. Important
+        # part of any Lion army, able to fight at the forefront
+        # while tending to clan wounded.
+
+        PROPERTIES {
+            ^"School" STRING "Kitsu Medic" FIXED
+            ^"School Roles" LIST OF STRING ["Artisan", "Bushi"]
+            ^"Starting Rings" STRING "+1 Earth, +1 Water"
+            ^"Starting Skills" STRING "Choose five: +1 Command, +1 Fitness, +1 Martial Arts [Melee], +1 Martial Arts [Unarmed], +1 Medicine, +1 Sentiment, +1 Survival"
+            ^"Starting Honor" INTEGER DEFAULT 44
+            ^"Available Technique Groups" LIST OF STRING ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Kata (choose one): = Crescent Moon Style, Striking as Earth, Striking as Water; Rituals (choose one): Cleansing Rite, Threshold Barrier; Shuji: Stonewall Tactics"
+            ^"School Ability" STRING "Field Medicine"
+            ^"Mastery Ability" STRING "Healer's Hands"
+        }
+
+        ^"Field Medicine" DEF {
+            # When you perform a Medicine check to remove
+            # fatigue or a condition from a friendly character, that
+            # character removes additional fatigue up to your
+            # school rank.
+        }
+
+        CURRICULUM {
+            ^"Rank 1" {
+                "Scholar" SKILL_GROUP
+                "Fitness" SKILL
+                "Martial Arts [Melee]" SKILL
+                "Survival" SKILL
+                "Rank 1 Kata (kata)" TECH_GROUP
+                "Commune with the Spirits (ritual)" TECHNIQUE
+                "Honest Assessment (shuji)" TECHNIQUE
+            }
+            ^"Rank 2" {
+                "Martial" SKILL_GROUP
+                "Medicine" SKILL
+                "Survival" SKILL
+                "Theology" SKILL
+                "Rank 1-2 Earth Shuji (shuji)" TECH_GROUP
+                "Flowing Water Strike (kata)" TECHNIQUE
+                "Rushing Avalanche Style (kata)" TECHNIQUE
+            }
+            ^"Rank 3" {
+                "Artisan" SKILL_GROUP
+                "Martial Arts [Melee]" SKILL
+                "Martial Arts [Unarmed]" SKILL
+                "Medicine" SKILL
+                "Rank 1-3 Kata (kata)" TECH_GROUP
+                "Iron in the Mountains Style (kata)" TECHNIQUE
+                "Touchstone of Courage (shuji)" TECHNIQUE
+            }
+            ^"Rank 4" {
+                "Scholar" SKILL_GROUP
+                "Command" SKILL
+                "Fitness" SKILL
+                "Survival" SKILL
+                "Rank 1-4 Water Shuji (shuji)" TECH_GROUP
+                "A Samurai's Fate (shuji)" TECHNIQUE
+                "Crashing Wave Style (kata)" TECHNIQUE
+            }
+            ^"Rank 5" {
+                "Martial" SKILL_GROUP
+                "Courtesy" SKILL
+                "Medicine" SKILL
+                "Sentiment" SKILL
+                "Rank 1-5 Kata (kata)" TECH_GROUP
+                "Rouse the Soul (shuji)" TECHNIQUE
+                "Sear the Wound (shuji)" TECHNIQUE
+            }
+            ^"Rank 6" {
+                "Healer's Hands (Mastery Ability): When you make a check to remove a condition from another character, you may receive 2 fatigue to treat the TN as 1."
+            }
+        }
+
+        RULES {
+            #L5RSL09jK0lM2nO4pQ6rS8t: medic_frontline_healer
+            #L5RSL10uV1wX3yZ5aB7cD9e: medic_removes_additional_fatigue
+        }
+    }
+
+    ^"Kuni Warden School" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Grim monks who maintain the Barracks of the Damned.
+        # Experts at subduing Tainted humans and overcoming
+        # sorcery without weapons. Some are sent to tend the
+        # spiritual needs of those exposed to corruption.
+
+        PROPERTIES {
+            ^"School" STRING "Kuni Warden" FIXED
+            ^"School Roles" LIST OF STRING ["Monk"]
+            ^"Starting Rings" STRING "+1 Fire, +1 Void"
+            ^"Starting Skills" STRING "Choose four: +1 Command, +1 Martial Arts [Melee], +1 Martial Arts [Unarmed], +1 Meditation, +1 Performance, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 34
+            ^"Available Technique Groups" LIST OF STRING ["Kiho (kiho)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Kiho (choose one): Cleansing Spirit, Flame Fist; Rituals (choose one): Cleansing Rite, Threshold Barrier; Shuji: Truth Burns through Lies"
+            ^"School Ability" STRING "Suppressing Blows"
+            ^"Mastery Ability" STRING "Sacred Fist"
+        }
+
+        ^"Suppressing Blows" DEF {
+            # When you perform an Attack action check using
+            # Martial Arts [Melee] or Martial Arts [Unarmed], you
+            # may spend (op) as follows:
+            # (op)+: One character per (op) spent this way who is in
+            # range of the weapon you used suffers the Silenced
+            # condition. Maximum (op) equal to your school rank.
+        }
+
+        CURRICULUM {
+            ^"Rank 1" {
+                "Scholar" SKILL_GROUP
+                "Martial Arts [Melee]" SKILL
+                "Martial Arts [Unarmed]" SKILL
+                "Meditation" SKILL
+                "Rank 1 Kata (kata)" TECH_GROUP
+                "Courtier's Resolve (shuji)" TECHNIQUE
+                "The Body Is an Anvil (kiho)" TECHNIQUE
+            }
+            ^"Rank 2" {
+                "Martial" SKILL_GROUP
+                "Performance" SKILL
+                "Sentiment" SKILL
+                "Theology" SKILL
+                "Rank 1-2 Fire Kiho (kiho)" TECH_GROUP
+                "Crimson Leaves Strike (kata)" TECHNIQUE
+                "Coiling Serpent Style (kata)" TECHNIQUE
+            }
+            ^"Rank 3" {
+                "Social" SKILL_GROUP
+                "Fitness" SKILL
+                "Martial Arts [Unarmed]" SKILL
+                "Theology" SKILL
+                "Rank 1-3 Earth Kiho (kiho)" TECH_GROUP
+                "Thunderclap Strike (kata)" TECHNIQUE
+                "Rallying Cry (shuji)" TECHNIQUE
+            }
+            ^"Rank 4" {
+                "Martial" SKILL_GROUP
+                "Command" SKILL
+                "Government" SKILL
+                "Skulduggery" SKILL
+                "Rank 1-4 Void Shuji (shuji)" TECH_GROUP
+                "Bravado (shuji)" TECHNIQUE
+                "Death Touch (kiho)" TECHNIQUE
+            }
+            ^"Rank 5" {
+                "Scholar" SKILL_GROUP
+                "Fitness" SKILL
+                "Martial Arts [Melee]" SKILL
+                "Meditation" SKILL
+                "Rank 1-5 Void Kiho (kiho)" TECH_GROUP
+                "Striking as Void (kata)" TECHNIQUE
+                "Sear the Wound (shuji)" TECHNIQUE
+            }
+            ^"Rank 6" {
+                "Sacred Fist (Mastery Ability): All of your kiho gain the following additional burst effect: If you have 3 or more bonus successes, your unarmed attack profiles gain the Sacred quality until the end of your next turn."
+            }
+        }
+
+        RULES {
+            #L5RSL11fG2hI4jK6lM8nO0p: warden_maintains_barracks_of_damned
+            #L5RSL12qR3sT5uV7wX9yZ1a: warden_suppresses_tainted_sorcery
+        }
+    }
+
+    ^"Mirumoto Taoist Blade School" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Monks who make swordplay integral to their quest
+        # for Enlightenment. Their blades act as part of their
+        # bodies. Isolated monastery deep within Dragon lands.
+
+        PROPERTIES {
+            ^"School" STRING "Mirumoto Taoist Blade" FIXED
+            ^"School Roles" LIST OF STRING ["Bushi", "Monk"]
+            ^"Starting Rings" STRING "+1 Void, +1 Water"
+            ^"Starting Skills" STRING "Choose four: +1 Labor, +1 Martial Arts [Melee], +1 Martial Arts [Unarmed], +1 Meditation, +1 Survival, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 48
+            ^"Available Technique Groups" LIST OF STRING ["Kata (kata)", "Kiho (kiho)", "Rituals (ritual)"]
+            ^"Starting Techniques" STRING "Kata (choose two): = Iaijutsu Cut: Rising Blade, Soaring Slice, Striking as Water; Kiho: Water Fist"
+            ^"School Ability" STRING "Sharpened Ki"
+            ^"Mastery Ability" STRING "The Effortless Path"
+        }
+
+        ^"Sharpened Ki" DEF {
+            # Your kiho that affect your unarmed attack profiles
+            # also apply to weapons you wield in a one-handed
+            # grip. When you succeed on a check to activate a
+            # kiho that affects your unarmed attack profiles or a
+            # weapon you wield in a one-handed grip, add bonus
+            # successes equal to your school rank.
+        }
+
+        CURRICULUM {
+            ^"Rank 1" {
+                "Martial" SKILL_GROUP
+                "Labor" SKILL
+                "Survival" SKILL
+                "Theology" SKILL
+                "Rank 1 Kata (kata)" TECH_GROUP
+                "Crescent Moon Style (kata)" TECHNIQUE
+                "Ki Protection (kiho)" TECHNIQUE
+            }
+            ^"Rank 2" {
+                "Scholar" SKILL_GROUP
+                "Fitness" SKILL
+                "Martial Arts [Melee]" SKILL
+                "Meditation" SKILL
+                "Rank 1-2 Water Kiho (kiho)" TECH_GROUP
+                "Flowing Water Strike (kata)" TECHNIQUE
+                "Iaijutsu Cut: Crossing Blade (kata)" TECHNIQUE
+            }
+            ^"Rank 3" {
+                "Martial" SKILL_GROUP
+                "Medicine" SKILL
+                "Survival" SKILL
+                "Theology" SKILL
+                "Rank 1-3 Earth Kiho (kiho)" TECH_GROUP
+                "Crimson Leaves Strike (kata)" TECHNIQUE
+                "Still the Elements (kiho)" TECHNIQUE
+            }
+            ^"Rank 4" {
+                "Scholar" SKILL_GROUP
+                "Composition" SKILL
+                "Martial Arts [Unarmed]" SKILL
+                "Meditation" SKILL
+                "Rank 1-4 Void Kiho (kiho)" TECH_GROUP
+                "Striking as Void (kata)" TECHNIQUE
+                "Crashing Wave Style (kata)" TECHNIQUE
+            }
+            ^"Rank 5" {
+                "Martial" SKILL_GROUP
+                "Labor" SKILL
+                "Sentiment" SKILL
+                "Theology" SKILL
+                "Rank 1-5 Kata (kata)" TECH_GROUP
+                "Touch the Void Dragon (kiho)" TECHNIQUE
+                "Way of the Edgeless Sword (kiho)" TECHNIQUE
+            }
+            ^"Rank 6" {
+                "The Effortless Path (Mastery Ability): When making a check to activate a kiho, you may spend (op) as follows: (op): If you succeed on this check, after you activate the kiho, you may perform a Strike action with a weapon you have readied in a one-handed grip."
+            }
+        }
+
+        RULES {
+            #L5RSL13bC4dE6fG8hI0jK2l: taoist_blade_kiho_apply_to_weapons
+            #L5RSL14mN5oP7qR9sT1uV3w: taoist_blade_swordplay_enlightenment
+        }
+    }
+
+    ^"Moto Avenger School" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Moto spiritualists guide spirits to their proper place.
+        # Avengers specialize in rectifying perversions of the
+        # natural order such as undeath. Many Moto fallen to
+        # the Taint have drawn Avengers from distant corners.
+
+        PROPERTIES {
+            ^"School" STRING "Moto Avenger" FIXED
+            ^"School Roles" LIST OF STRING ["Shugenja"]
+            ^"Starting Rings" STRING "+1 Air, +1 Earth"
+            ^"Starting Skills" STRING "Choose three: +1 Courtesy, +1 Culture, +1 Martial Arts [Melee], +1 Sentiment, +1 Survival, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 44
+            ^"Available Technique Groups" LIST OF STRING ["Air and Earth Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Invocations: Grasp of Earth, Tempest of Air; Shuji: Ancestry Unearthed, Honest Assessment"
+            ^"School Ability" STRING "Hands of Earth and Sky"
+            ^"Mastery Ability" STRING "Empathic Transfer"
+        }
+
+        ^"Hands of Earth and Sky" DEF {
+            # When you perform an invocation that targets at
+            # least one other character, if you succeed, you may
+            # nourish or drain:
+            # Nourish: receive fatigue up to your school rank.
+            # One target removes fatigue equal to amount received.
+            # Drain: remove fatigue up to your school rank.
+            # One target receives fatigue equal to amount removed.
+        }
+
+        CURRICULUM {
+            ^"Rank 1" {
+                "Scholar" SKILL_GROUP
+                "Command" SKILL
+                "Martial Arts [Melee]" SKILL
+                "Survival" SKILL
+                "Rank 1 Rituals (ritual)" TECH_GROUP
+                "Bind the Shadow (invocation)" TECHNIQUE
+                "Caress of Earth (invocation)" TECHNIQUE
+            }
+            ^"Rank 2" {
+                "Martial" SKILL_GROUP
+                "Culture" SKILL
+                "Medicine" SKILL
+                "Theology" SKILL
+                "Rank 1-2 Air Invocations (invocation)" TECH_GROUP
+                "Essence of Jade (invocation)" TECHNIQUE
+                "Touchstone of Courage (shuji)" TECHNIQUE
+            }
+            ^"Rank 3" {
+                "Trade" SKILL_GROUP
+                "Courtesy" SKILL
+                "Martial Arts [Melee]" SKILL
+                "Tactics" SKILL
+                "Rank 1-3 Earth Shuji (shuji)" TECH_GROUP
+                "Earthquake (invocation)" TECHNIQUE
+                "Earth Becomes Sky (invocation)" TECHNIQUE
+            }
+            ^"Rank 4" {
+                "Social" SKILL_GROUP
+                "Medicine" SKILL
+                "Sentiment" SKILL
+                "Theology" SKILL
+                "Rank 1-4 Earth Invocations (invocation)" TECH_GROUP
+                "Rise, Air (invocation)" TECHNIQUE
+                "Wolf's Proposal (shuji)" TECHNIQUE
+            }
+            ^"Rank 5" {
+                "Scholar" SKILL_GROUP
+                "Martial Arts [Melee]" SKILL
+                "Performance" SKILL
+                "Survival" SKILL
+                "Rank 1-5 Air Invocations (invocation)" TECH_GROUP
+                "Rouse the Soul (shuji)" TECHNIQUE
+                "Tomb of Jade (invocation)" TECHNIQUE
+            }
+            ^"Rank 6" {
+                "Empathic Transfer (Mastery Ability): When you nourish, you may remove one condition the target is suffering by transferring it to yourself. When you drain, you may remove one condition you are suffering by transferring it to one of your targets."
+            }
+        }
+
+        RULES {
+            #L5RSL15xY6zA8bC0dE2fG4h: avenger_guides_spirits_to_proper_place
+            #L5RSL16iJ7kL9mN1oP3qR5s: avenger_rectifies_undeath
+        }
+    }
+
+    ^"Toritaka Phantom Hunter School" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # From the days of Toritaka Yotogi, Phantom Hunters
+        # have sought out gaki and malign supernatural beings.
+        # They act in concert with Crab warriors, using legendary
+        # abilities to detect threats others cannot perceive.
+
+        PROPERTIES {
+            ^"School" STRING "Toritaka Phantom Hunter" FIXED
+            ^"School Roles" LIST OF STRING ["Shugenja"]
+            ^"Starting Rings" STRING "+1 Air, +1 Water"
+            ^"Starting Skills" STRING "Choose three: +1 Culture, +1 Government, +1 Martial Arts [Melee], +1 Sentiment, +1 Survival, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Available Technique Groups" LIST OF STRING ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Invocations: By the Light of Lord Moon; Rituals: Cleansing Rite, Commune with the Spirits, = Tea Ceremony; Shuji: Courtier's Resolve"
+            ^"School Ability" STRING "Eyes of Yotogi"
+            ^"Mastery Ability" STRING "Yotogi's Piercing Gaze"
+        }
+
+        ^"Eyes of Yotogi" DEF {
+            # Otherworldly beings treat your vigilance as being
+            # increased by your school rank. When you make a
+            # check to search for Otherworldly beings, or make an
+            # Initiative check in a conflict against them, if you
+            # succeed, add bonus successes equal to your school rank.
+        }
+
+        CURRICULUM {
+            ^"Rank 1" {
+                "Scholar" SKILL_GROUP
+                "Courtesy" SKILL
+                "Martial Arts [Melee]" SKILL
+                "Survival" SKILL
+                "Rank 1 Air Invocations (invocation)" TECH_GROUP
+                "Bo of Water (invocation)" TECHNIQUE
+                "Threshold Barrier (ritual)" TECHNIQUE
+            }
+            ^"Rank 2" {
+                "Martial" SKILL_GROUP
+                "Culture" SKILL
+                "Sentiment" SKILL
+                "Theology" SKILL
+                "Rank 1-2 Water Shuji (shuji)" TECH_GROUP
+                "Essence of Jade (invocation)" TECHNIQUE
+                "Striking as Air (kata)" TECHNIQUE
+            }
+            ^"Rank 3" {
+                "Social" SKILL_GROUP
+                "Government" SKILL
+                "Martial Arts [Melee]" SKILL
+                "Sentiment" SKILL
+                "Rank 1-3 Water Invocations (invocation)" TECH_GROUP
+                "Rise, Water (invocation)" TECHNIQUE
+                "Crescent Moon Style (kata)" TECHNIQUE
+            }
+            ^"Rank 4" {
+                "Trade" SKILL_GROUP
+                "Martial Arts [Melee]" SKILL
+                "Performance" SKILL
+                "Theology" SKILL
+                "Rank 1-4 Air Invocations (invocation)" TECH_GROUP
+                "Rouse the Soul (shuji)" TECHNIQUE
+                "Soul Sunder (kata)" TECHNIQUE
+            }
+            ^"Rank 5" {
+                "Scholar" SKILL_GROUP
+                "Command" SKILL
+                "Courtesy" SKILL
+                "Survival" SKILL
+                "Rank 1-5 Air Shuji (shuji)" TECH_GROUP
+                "Flowing Water Cut (kata)" TECHNIQUE
+                "Wrath of Kaze-no-Kami (invocation)" TECHNIQUE
+            }
+            ^"Rank 6" {
+                "Yotogi's Piercing Gaze (Mastery Ability): You can perceive beings that are normally invisible to human sight, such as spirits and characters concealed by supernatural abilities. When you deal damage to an Otherworldly being, you ignore an amount of its resistance up to your ranks in Meditation."
+            }
+        }
+
+        RULES {
+            #L5RSL17tU8vW0xY2zA4bC6d: phantom_hunter_detects_otherworldly_beings
+            #L5RSL18eF9gH1iJ3kL5mN7o: phantom_hunter_increased_vigilance
+        }
+    }
+
+    ^"Yogo Preserver School" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Yogo Preservers protect shrines containing artifacts
+        # best lost to history, such as the Black Scrolls. Using
+        # paper servants called shikigami, they poison, murder,
+        # and thieve in the name of staving off the darkness.
+
+        PROPERTIES {
+            ^"School" STRING "Yogo Preserver" FIXED
+            ^"School Roles" LIST OF STRING ["Shugenja"]
+            ^"Starting Rings" STRING "+1 Fire, +1 Void"
+            ^"Starting Skills" STRING "Choose three: +1 Aesthetics, +1 Courtesy, +1 Martial Arts [Melee], +1 Sentiment, +1 Skulduggery, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 38
+            ^"Available Technique Groups" LIST OF STRING ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Invocations: By the Light of the Lord Moon, = Embrace of Kenro-Ji-Jin, Yari of Air; Rituals: = Craft Shikigami, Threshold Barrier"
+            ^"School Ability" STRING "Warded Shikigami"
+            ^"Mastery Ability" STRING "Kingdom of Paper and Ink"
+        }
+
+        ^"Warded Shikigami" DEF {
+            # You can have a number of additional shikigami up
+            # to your school rank. Once per scene, after you
+            # perform an action, you may instruct one of your
+            # shikigami to perform an action, for which it benefits
+            # from your assistance.
+        }
+
+        CURRICULUM {
+            ^"Rank 1" {
+                "Artisan" SKILL_GROUP
+                "Culture" SKILL
+                "Martial Arts [Melee]" SKILL
+                "Theology" SKILL
+                "Rank 1 Fire Invocations (invocation)" TECH_GROUP
+                "Cloak of Night (invocation)" TECHNIQUE
+                "Reflections of P'an Ku (invocation)" TECHNIQUE
+            }
+            ^"Rank 2" {
+                "Scholar" SKILL_GROUP
+                "Aesthetics" SKILL
+                "Courtesy" SKILL
+                "Skulduggery" SKILL
+                "Rank 1-2 Air Invocations (invocation)" TECH_GROUP
+                "Hands of the Tides (invocation)" TECHNIQUE
+                "Skulk (ninjutsu)" TECHNIQUE
+            }
+            ^"Rank 3" {
+                "Trade" SKILL_GROUP
+                "Government" SKILL
+                "Smithing" SKILL
+                "Theology" SKILL
+                "Rank 1-3 Fire Invocations (invocation)" TECH_GROUP
+                "Vapor of Nightmares (invocation)" TECHNIQUE
+                "Wings of the Phoenix (invocation)" TECHNIQUE
+            }
+            ^"Rank 4" {
+                "Social" SKILL_GROUP
+                "Martial Arts [Melee]" SKILL
+                "Performance" SKILL
+                "Sentiment" SKILL
+                "Rank 1-4 Air Invocations (invocation)" TECH_GROUP
+                "Silencing Stroke (ninjutsu)" TECHNIQUE
+                "Suijin's Embrace (invocation)" TECHNIQUE
+            }
+            ^"Rank 5" {
+                "Artisan" SKILL_GROUP
+                "Culture" SKILL
+                "Government" SKILL
+                "Theology" SKILL
+                "Rank 1-5 Fire Invocations (invocation)" TECH_GROUP
+                "Ever-Changing Waves (invocation)" TECHNIQUE
+                "Tomb of Jade (invocation)" TECHNIQUE
+            }
+            ^"Rank 6" {
+                "Kingdom of Paper and Ink (Mastery Ability): When one of your shikigami performs an action, it may spend (op) as follows: (op)+: Another one of your shikigami at range 0-3 of you may perform an action. Increase the (op) cost of this ability by (op) for each of your shikigami that has acted this turn."
+            }
+        }
+
+        RULES {
+            #L5RSL19pQ0rS2tU4vW6xY8z: preserver_protects_dangerous_artifacts
+            #L5RSL20aB1cD3eF5gH7iJ9k: preserver_commands_shikigami
+        }
+    }
+
+    # ===========================
+    # NEW ADVANTAGES: DISTINCTIONS
+    # ===========================
+
+    ^"Shadowlands Distinctions" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # New distinctions from Shadowlands. When applicable,
+        # reroll up to 2 dice.
+
+        ENTRIES {
+            ^"Dead Eyes" {
+                ^"Type" STRING "Distinction"
+                ^"Ring" STRING "Earth"
+                ^"Category" LIST OF STRING ["Mental"]
+                ^"Effect" STRING "When performing a check that relies on avoiding fear or exuberant emotions (such as Meditation [Earth] to avoid running from a monstrous oni or Sentiment [Earth] to avoid being caught up in a raucous crowd), reroll up to two dice."
+            }
+
+            ^"Friend of the Nezumi" {
+                ^"Type" STRING "Distinction"
+                ^"Ring" STRING "Water"
+                ^"Category" LIST OF STRING ["Interpersonal"]
+                ^"Effect" STRING "When performing a check to interact with nezumi or one that relates to your status with them (such as Courtesy [Water] to help locate a secret tunnel near the Wall or Performance [Water] to convince a tribe to follow your lead), reroll up to two dice."
+            }
+
+            ^"Light Sleeper" {
+                ^"Type" STRING "Distinction"
+                ^"Ring" STRING "Water"
+                ^"Category" LIST OF STRING ["Physical"]
+                ^"Effect" STRING "When performing a check that calls on rapidly recovering from sleep (such as Survival [Water] to detect a threatening sound while dozing or Fitness [Water] to react even when someone else is standing watch), reroll up to two dice."
+            }
+        }
+
+        RULES {
+            #L5RSL21lM2nO4pQ6rS8tU0v: sl_distinctions_reroll_two_dice
+        }
+    }
+
+    # ===========================
+    # NEW ADVANTAGES: PASSIONS
+    # ===========================
+
+    ^"Shadowlands Passions" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # New passions from Shadowlands. When applicable,
+        # remove 3 strife after resolving the check.
+
+        ENTRIES {
+            ^"Creatures" {
+                ^"Type" STRING "Passion"
+                ^"Ring" STRING "Fire"
+                ^"Category" LIST OF STRING ["Mental"]
+                ^"Effect" STRING "After performing a check to study or hear tales of odd creatures (such as Culture [Fire] to wonder about new creatures or Performance [Fire] to entice someone to offer you a tale of encounters with Shadowlands monsters), remove 3 strife."
+            }
+        }
+
+        RULES {
+            #L5RSL22wX3yZ5aB7cD9eF1g: sl_passions_remove_three_strife
+        }
+    }
+
+    # ===========================
+    # NEW DISADVANTAGES: ADVERSITIES
+    # ===========================
+
+    ^"Shadowlands Adversities" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # New adversities from Shadowlands. When applicable,
+        # must reroll 2 dice showing (su) or (ex). If check fails,
+        # gain 1 Void point.
+
+        ENTRIES {
+            ^"Demon Wound" {
+                ^"Type" STRING "Adversity"
+                ^"Ring" STRING "Earth"
+                ^"Category" LIST OF STRING ["Spiritual", "Scar"]
+                ^"Effect" STRING "When you make a check that involves your wound (such as Fitness [Earth] to get a good night's sleep while in the Shadowlands or Meditation [Earth] to refrain from crying out in pain while near an oni), reroll two dice showing (su) or (ex). If you failed, gain 1 Void point."
+            }
+
+            ^"Lost Name" {
+                ^"Type" STRING "Adversity"
+                ^"Ring" STRING "Void"
+                ^"Category" LIST OF STRING ["Spiritual"]
+                ^"Effect" STRING "When you make a check that involves personal convictions (such as Meditation [Void] as part of your quest for Enlightenment or Survival [Void] to create a spiritually harmonious rock garden), reroll two dice showing (su) or (ex). If you failed, gain 1 Void point."
+            }
+        }
+
+        RULES {
+            #L5RSL23hI4jK6lM8nO0pQ2r: sl_adversities_reroll_successes
+            #L5RSL24sT5uV7wX9yZ1aB3c: sl_adversities_void_point_on_failure
+        }
+    }
+
+    # ===========================
+    # NEW DISADVANTAGES: ANXIETIES
+    # ===========================
+
+    ^"Shadowlands Anxieties" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # New anxieties from Shadowlands. When applicable,
+        # receive 3 strife after resolving check. First time per
+        # scene, gain 1 Void point.
+
+        ENTRIES {
+            ^"Fallen Ancestor" {
+                ^"Type" STRING "Anxiety"
+                ^"Ring" STRING "Void"
+                ^"Category" LIST OF STRING ["Spiritual", "Interpersonal"]
+                ^"Effect" STRING "After performing a check that involves the spirits or your family history (such as Theology [Void] to perform a family ritual or Sentiment [Void] to show mercy to a wounded opponent), receive 3 strife. If first time this scene, gain 1 Void point."
+            }
+
+            ^"Obtuse" {
+                ^"Type" STRING "Anxiety"
+                ^"Ring" STRING "Air"
+                ^"Category" LIST OF STRING ["Mental"]
+                ^"Effect" STRING "After performing a check to analyze or react to the emotions of others (such as Design [Air] to compliment someone's garb or Sentiment [Air] to decode a double meaning in someone else's speech), receive 3 strife. If first time this scene, gain 1 Void point."
+            }
+
+            ^"Reformed Maho-Tsukai" {
+                ^"Type" STRING "Anxiety"
+                ^"Ring" STRING "Water"
+                ^"Category" LIST OF STRING ["Interpersonal"]
+                ^"Effect" STRING "After performing a check that reminds you of your former life (such as Courtesy [Water] to speak pleasantly with a priest or Meditation [Water] to calm yourself when witnessing the aftermath of a blood magic sacrifice), receive 3 strife. If first time this scene, gain 1 Void point."
+            }
+        }
+
+        RULES {
+            #L5RSL25dE6fG8hI0jK2lM4n: sl_anxieties_receive_three_strife
+            #L5RSL26oP7qR9sT1uV3wX5y: sl_anxieties_void_point_first_per_scene
+        }
+    }
+
+    # ===========================
+    # SHADOWLANDS TAINT DISADVANTAGES
+    # ===========================
+
+    ^"Shadowlands Taint Disadvantages" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Alternative Shadowlands Taint disadvantages. When a
+        # character receives their second through fifth Taint
+        # disadvantage, the GM may allow these instead of the
+        # standard version for that ring.
+
+        ENTRIES {
+            ^"Shadowlands Taint [Kansen Whispers]" {
+                ^"Type" STRING "Adversity"
+                ^"Ring" STRING "Air"
+                ^"Category" LIST OF STRING ["Curse", "Mental"]
+                ^"Effect" STRING "When you make a check to use subtlety in your communications (such as Courtesy [Air] to convey a double-meaning in court or Composition [Air] to refine your letter declining an important invitation), reroll two dice showing (su) or (ex). If you failed, gain 1 Void point."
+            }
+
+            ^"Shadowlands Taint [Distorted Limbs]" {
+                ^"Type" STRING "Adversity"
+                ^"Ring" STRING "Earth"
+                ^"Category" LIST OF STRING ["Curse", "Physical"]
+                ^"Effect" STRING "When you make a check that calls on your physical prowess (such as Fitness [Earth] to survive a fall or Labor [Earth] to exert yourself in the field), reroll two dice showing (su) or (ex). If you failed, gain 1 Void point."
+            }
+
+            ^"Shadowlands Taint [Unnatural Skin]" {
+                ^"Type" STRING "Adversity"
+                ^"Ring" STRING "Fire"
+                ^"Category" LIST OF STRING ["Curse", "Physical"]
+                ^"Effect" STRING "Your skin is treated as concealed armor. When you make a check requiring rapid movements (such as Fitness [Fire] to vault over a falling log or Martial Arts [Unarmed] [Fire] to strike swiftly), reroll two dice showing (su) or (ex). If you failed, gain 1 Void point."
+            }
+
+            ^"Shadowlands Taint [One with the Darkness]" {
+                ^"Type" STRING "Adversity"
+                ^"Ring" STRING "Void"
+                ^"Category" LIST OF STRING ["Curse", "Physical", "Spiritual"]
+                ^"Effect" STRING "When fully covered by shadows or in an unlit location, you cannot be detected. You can conceal non-physical effects of the Taint from detection. When you make a check to intuit meaning (such as Courtesy [Void] to seek a hidden threat in a message or Survival [Void] to sense what crops will grow best), reroll two dice showing (su) or (ex). If you failed, gain 1 Void point."
+            }
+
+            ^"Shadowlands Taint [Blasphemous Appetites]" {
+                ^"Type" STRING "Adversity"
+                ^"Ring" STRING "Water"
+                ^"Category" LIST OF STRING ["Curse", "Mental", "Spiritual"]
+                ^"Effect" STRING "You have a near uncontrollable hunger for raw meat. Once sated, you remove all strife. When you make a check to notice details about those you care about (such as Sentiment [Water] to detect the emotional state of a friend or Medicine [Water] to determine their physical state), reroll two dice showing (su) or (ex). If you failed, gain 1 Void point."
+            }
+        }
+
+        RULES {
+            #L5RSL27zA8bC0dE2fG4hI6j: taint_disadvantages_are_tainted_being
+            #L5RSL28kL9mN1oP3qR5sT7u: taint_disadvantages_alternative_to_core
+        }
+    }
+
+    # ===========================
+    # NEW SAMURAI HERITAGES
+    # ===========================
+
+    ^"Shadowlands Heritages" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Unique heritages arising from Crab bloodline or
+        # Shadowlands/Taint influence. Used instead of the
+        # core heritage table during character creation.
+
+        ENTRIES {
+            ^"Blood and Mortar" {
+                ^"Roll" STRING "1"
+                ^"Modifiers" STRING "Increase status by 3"
+                ^"Other Effects" STRING "Gain Blessed Lineage advantage (assignable in excess of normal limits). While on the Wall, glory rank treated as 1 higher."
+            }
+
+            ^"Infamous Builder" {
+                ^"Roll" STRING "2-3"
+                ^"Modifiers" STRING "Decrease glory by 5"
+                ^"Other Effects" STRING "Roll d10: 1-3 Government, 4-6 Labor, 7-10 Smithing; gain +1 rank in that skill."
+            }
+
+            ^"Lost in the Darkness" {
+                ^"Roll" STRING "4-5"
+                ^"Modifiers" STRING "Increase honor by 5, decrease glory by 5"
+                ^"Other Effects" STRING "Roll d10: 1-3 Culture, 4-6 Survival, 7-10 Theology; gain +1 rank in that skill. Ancestor might still be alive in the Shadowlands."
+            }
+
+            ^"Vengeance for the Fallen" {
+                ^"Roll" STRING "6-7"
+                ^"Modifiers" STRING "Increase honor by 5"
+                ^"Other Effects" STRING "Gain Haunting (Void) adversity (assignable in excess of normal limits). Roll d10: 1-3 Fitness, 4-5 Martial Arts [Melee], 6-7 Martial Arts [Ranged], 8 Martial Arts [Unarmed], 9 Tactics, 10 Meditation; gain +1 rank in that skill."
+            }
+
+            ^"Twenty Goblin Thief" {
+                ^"Roll" STRING "8-9"
+                ^"Modifiers" STRING "Decrease glory by 3"
+                ^"Other Effects" STRING "Roll d10: 1-3 Culture, 4-6 Skulduggery, 7-10 Theology; gain +1 rank in that skill."
+            }
+
+            ^"Tainted Blood" {
+                ^"Roll" STRING "10"
+                ^"Modifiers" STRING "Decrease status by 3"
+                ^"Other Effects" STRING "Gain Fallen Ancestor disadvantage. You may reduce one ring by 1 to increase Void Ring by 1 (cannot raise above 3)."
+            }
+        }
+
+        RULES {
+            #L5RSL29vW0xY2zA4bC6dE8f: sl_heritages_crab_or_shadowlands_ancestry
+        }
+    }
+
+    # ===========================
+    # NEW WEAPONS
+    # ===========================
+
+    ^"Shadowlands Weapons" DEF {
+        APPLIES TO [^"Samurai"]
+
+        ENTRIES {
+            ^"Flyssa" { ^"Category" STRING "Sword" ^"Skill" STRING "Martial Arts [Melee]" ^"Range" STRING "1" ^"Damage" INTEGER 4 ^"Deadliness" INTEGER 4 ^"Grips" STRING "1-hand: -; 2-hand: Razor-Edged" ^"Qualities" STRING "Wargear" ^"Rarity" INTEGER 8 ^"Cost" STRING "15 koku" ^"Special" STRING "(op)(op)+: Ignore 1 point of target's physical resistance per (op)(op) spent." }
+            ^"Kabutowari" { ^"Category" STRING "Sword" ^"Skill" STRING "Martial Arts [Melee]" ^"Range" STRING "0-1" ^"Damage" INTEGER 3 ^"Deadliness" INTEGER 3 ^"Grips" STRING "1-hand: -" ^"Qualities" STRING "Durable, Snaring" ^"Rarity" INTEGER 7 ^"Cost" STRING "6 koku" }
+            ^"Tekkan" { ^"Category" STRING "Sword" ^"Skill" STRING "Martial Arts [Melee]" ^"Range" STRING "1-2" ^"Damage" INTEGER 4 ^"Deadliness" INTEGER 3 ^"Grips" STRING "1-hand: Cumbersome; 2-hand: Damage +2" ^"Qualities" STRING "Durable, Wargear" ^"Rarity" INTEGER 8 ^"Cost" STRING "50 koku" }
+            ^"Genno" { ^"Category" STRING "Hammer" ^"Skill" STRING "Martial Arts [Melee]" ^"Range" STRING "0-1" ^"Damage" INTEGER 3 ^"Deadliness" INTEGER 3 ^"Grips" STRING "1-hand: -; 2-hand: Damage +4" ^"Qualities" STRING "Durable, Mundane" ^"Rarity" INTEGER 5 ^"Cost" STRING "1 koku" ^"Special" STRING "(op)(op): If you succeed but target reduces damage to 0, they suffer Dazed and Prone." }
+            ^"Tsuruhashi" { ^"Category" STRING "Axe" ^"Skill" STRING "Martial Arts [Melee]" ^"Range" STRING "1" ^"Damage" INTEGER 4 ^"Deadliness" INTEGER 3 ^"Grips" STRING "1-hand: Cumbersome; 2-hand: Deadliness +2" ^"Qualities" STRING "Mundane" ^"Rarity" INTEGER 4 ^"Cost" STRING "5 bu" ^"Special" STRING "(op)(op): If you succeed but target reduces damage to 0, their armor gains Damaged and they suffer Bleeding." }
+            ^"Doom Crossbow" { ^"Category" STRING "Crossbow" ^"Skill" STRING "Martial Arts [Ranged]" ^"Range" STRING "3-5" ^"Damage" INTEGER 8 ^"Deadliness" INTEGER 6 ^"Grips" STRING "2-hand: -" ^"Qualities" STRING "Cumbersome, Prepare, Wargear" ^"Rarity" INTEGER 10 ^"Cost" STRING "80 koku" ^"Special" STRING "When inflicting a critical strike, increase severity by the silhouette of the target." }
+            ^"Kaiu no Oyumi" { ^"Category" STRING "Crossbow" ^"Skill" STRING "Martial Arts [Ranged]" ^"Range" STRING "2-5" ^"Damage" INTEGER 7 ^"Deadliness" INTEGER 3 ^"Grips" STRING "2-hand: -" ^"Qualities" STRING "Cumbersome, Prepare, Wargear" ^"Rarity" INTEGER 8 ^"Cost" STRING "60 koku" ^"Special" STRING "(op)(op): After performing the Attack action, immediately prepare this weapon for use again." }
+            ^"Storm Bow" { ^"Category" STRING "Crossbow" ^"Skill" STRING "Martial Arts [Ranged]" ^"Range" STRING "1-4" ^"Damage" INTEGER 4 ^"Deadliness" INTEGER 3 ^"Grips" STRING "2-hand: -" ^"Qualities" STRING "Cumbersome, Prepare, Wargear" ^"Rarity" INTEGER 9 ^"Cost" STRING "60 koku" ^"Special" STRING "(op): Each character at range 0-1 of your initial target also becomes a target of this attack." }
+            ^"Sode" { ^"Category" STRING "Shield" ^"Skill" STRING "Martial Arts [Melee]" ^"Range" STRING "0" ^"Damage" INTEGER 1 ^"Deadliness" INTEGER 1 ^"Grips" STRING "Shoulder: -" ^"Qualities" STRING "Durable, Wargear" ^"Rarity" INTEGER 8 ^"Cost" STRING "8 koku" ^"Special" STRING "Do not require free hands. Cannot be wielded with another shield. Treat physical resistance as 1 higher against projectile attacks." }
+            ^"Large Shield" { ^"Category" STRING "Shield" ^"Skill" STRING "Martial Arts [Melee]" ^"Range" STRING "0" ^"Damage" INTEGER 3 ^"Deadliness" INTEGER 2 ^"Grips" STRING "1-hand: -" ^"Qualities" STRING "Cumbersome, Durable, Wargear" ^"Rarity" INTEGER 8 ^"Cost" STRING "10 koku" ^"Special" STRING "While readied, treat physical resistance as 6. As Movement and Support action, increase TN of Attack checks targeting you by 2 until start of next turn." }
+            ^"Small Shield" { ^"Category" STRING "Shield" ^"Skill" STRING "Martial Arts [Melee]" ^"Range" STRING "0" ^"Damage" INTEGER 2 ^"Deadliness" INTEGER 2 ^"Grips" STRING "1-hand: -" ^"Qualities" STRING "Cumbersome, Durable, Wargear" ^"Rarity" INTEGER 8 ^"Cost" STRING "6 koku" ^"Special" STRING "While readied, treat physical resistance as 5. As Movement and Support action, increase TN of Attack checks targeting you by 1 until start of next turn." }
+            ^"Ballista" { ^"Category" STRING "Siege" ^"Skill" STRING "Martial Arts [Ranged]" ^"Range" STRING "3-5" ^"Damage" INTEGER 14 ^"Deadliness" INTEGER 8 ^"Grips" STRING "2-hand: -" ^"Qualities" STRING "Durable, Prepare (2)" ^"Rarity" INTEGER 7 ^"Cost" STRING "60 koku" ^"Special" STRING "Damage ignores 4 points of physical resistance." }
+            ^"O-Gata Dohou" { ^"Category" STRING "Siege" ^"Skill" STRING "Martial Arts [Ranged]" ^"Range" STRING "4-5" ^"Damage" INTEGER 16 ^"Deadliness" INTEGER 6 ^"Grips" STRING "2-hand: -" ^"Qualities" STRING "Durable, Prepare (2)" ^"Rarity" INTEGER 7 ^"Cost" STRING "120 koku" }
+        }
+
+        RULES {
+            #L5RSL30gH1iJ3kL5mN7oP9q: sl_weapons_crab_specialty
+        }
+    }
+
+    # ===========================
+    # NEW ARMOR
+    # ===========================
+
+    ^"Shadowlands Armor" DEF {
+        APPLIES TO [^"Samurai"]
+
+        ENTRIES {
+            ^"O-yoroi" { ^"Physical Resistance" INTEGER 6 ^"Qualities" STRING "Cumbersome, Resplendent, Wargear" ^"Rarity" INTEGER 8 ^"Cost" STRING "60 koku" ^"Special" STRING "While suffering Disoriented, Dazed, or Immobilized, treat physical resistance as 3." }
+            ^"Tatami Gusoku" { ^"Physical Resistance" INTEGER 3 ^"Qualities" STRING "Wargear (while equipped)" ^"Rarity" INTEGER 4 ^"Cost" STRING "7 koku" }
+            ^"Tosei-Gusoku" { ^"Physical Resistance" INTEGER 4 ^"Qualities" STRING "Cumbersome, Durable, Wargear" ^"Rarity" INTEGER 8 ^"Cost" STRING "50 koku" ^"Special" STRING "Treat physical resistance as 2 higher against projectile attacks." }
+        }
+
+        RULES {
+            #L5RSL31rS2tU4vW6xY8zA0b: sl_armor_crab_heavy_preference
+        }
+    }
+
+    # ===========================
+    # PERSONAL EFFECTS
+    # ===========================
+
+    ^"Shadowlands Personal Effects" DEF {
+        APPLIES TO [^"Samurai"]
+
+        ENTRIES {
+            ^"Climbing Kit" { ^"Cost" STRING "2 bu" ^"Rarity" INTEGER 3 }
+            ^"Engineer's Kit" { ^"Cost" STRING "3 bu" ^"Rarity" INTEGER 3 }
+            ^"Sapper's Kit" { ^"Cost" STRING "1 bu" ^"Rarity" INTEGER 3 }
+            ^"Smithy's Kit" { ^"Cost" STRING "3 bu" ^"Rarity" INTEGER 3 ^"Special" STRING "Cumbersome, silhouette 1." }
+            ^"Smoke Arrows" { ^"Cost" STRING "3 bu" ^"Rarity" INTEGER 4 ^"Special" STRING "Modify bow profile: Damage -2, Deadliness -2. Used for signaling along the Wall." }
+            ^"Spyglass" { ^"Cost" STRING "2 koku" ^"Rarity" INTEGER 5 ^"Special" STRING "See small items with great clarity at up to range 5." }
+            ^"Tate" { ^"Cost" STRING "3 bu" ^"Rarity" INTEGER 3 ^"Special" STRING "Set up as Support action. Increase TN of projectile Attack checks targeting character behind it by 2." }
+        }
+
+        RULES {
+            #L5RSL32cD3eF5gH7iJ9kL1m: sl_personal_effects_shadowlands_gear
+        }
+    }
+
+    # ===========================
+    # SIGNATURE SCROLLS
+    # ===========================
+
+    ^"Shadowlands Signature Scrolls" DEF {
+        APPLIES TO [^"Samurai"]
+
+        ENTRIES {
+            ^"Ichi's Second Sight" {
+                ^"Prerequisites" STRING "Witch Hunter, Crab Clan"
+                ^"XP Cost" INTEGER 3
+                ^"Effect" STRING "After successfully using an invocation to scry, any Supernatural or Tainted beings perceived glow faintly with an aura visible to the shugenja, even through smoke, mist, fog, or obscured vision."
+            }
+
+            ^"Hasegawa's Denial" {
+                ^"Prerequisites" STRING "Crab Clan shugenja, school rank 3"
+                ^"XP Cost" INTEGER 3
+                ^"Effect" STRING "After successfully using an invocation to smite a target, the area at range 0-3 of the target becomes Dangerous terrain for Tainted beings. Persists until start of your next turn."
+            }
+
+            ^"Maikara's Rebuke" {
+                ^"Prerequisites" STRING "Shugenja"
+                ^"XP Cost" INTEGER 3
+                ^"Effect" STRING "After successfully using a Fire invocation to smite a target, that target treats the next attack targeting them as having the Sacred quality. Persists until end of scene."
+            }
+        }
+
+        RULES {
+            #L5RSL33nO4pQ6rS8tU0vW2x: sl_signature_scrolls_special_invocation_effects
+        }
+    }
+
+    # ===========================
+    # ITEM PATTERNS
+    # ===========================
+
+    ^"Shadowlands Item Patterns" DEF {
+        APPLIES TO [^"Samurai"]
+
+        ENTRIES {
+            ^"Kakita Pattern" { ^"Effect" STRING "Bladed weapon gains +1 deadliness." ^"XP Cost" INTEGER 6 ^"Rarity Modifier" STRING "+4" }
+            ^"Kenzo Blade" { ^"Effect" STRING "Weapon gains +1 deadliness, -1 damage, and the Resplendent quality." ^"XP Cost" INTEGER 8 ^"Rarity Modifier" STRING "+5" }
+            ^"Shirogane Jade Inlay" { ^"Effect" STRING "Weapon/armor gains Sacred quality. Armor loses 1 physical resistance; weapons lose 1 deadliness. If item becomes Damaged, jade must be reapplied (TN 3 Smithing [Earth] downtime, consumes 1 finger of jade)." ^"XP Cost" INTEGER 3 ^"Rarity Modifier" STRING "+2" }
+            ^"Uchema's Technique" { ^"Effect" STRING "Armor loses Cumbersome quality and loses 1 physical resistance." ^"XP Cost" INTEGER 4 ^"Rarity Modifier" STRING "+3" }
+            ^"Yasunori Steel" { ^"Effect" STRING "Weapon loses Ceremonial, Cumbersome, and Resplendent (can never gain these). Gains Durable; if already Durable, gains +1 deadliness instead." ^"XP Cost" INTEGER 5 ^"Rarity Modifier" STRING "+4" }
+            ^"Pit-Forged Obsidian" { ^"Effect" STRING "Weapon gains Unholy quality and +2 damage. Armor gains Unholy quality and +2 physical resistance. Item becomes warm to the touch and faintly glows with infernal light." ^"XP Cost" STRING "N/A (found only)" ^"Rarity Modifier" STRING "+6" }
+        }
+
+        RULES {
+            #L5RSL34yZ5aB7cD9eF1gH3i: sl_patterns_crafting_or_found
+        }
+    }
+
+    # ===========================
+    # ARTIFACTS OF JIGOKU
+    # ===========================
+
+    ^"Artifacts of Jigoku" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Cursed objects bound to the power of Jigoku.
+        # Carrying or using reduces composure by 2 and
+        # limits unmasking to the associated form.
+
+        ENTRIES {
+            ^"The Anvil of Despair" {
+                ^"Effect" STRING "Requires a proper sacrifice for maho each time you wish to perform a Smithing check using it. Any weapon forged on it gains +2 deadliness and the Unholy quality."
+                ^"Unmasking Form" STRING "Honor's Challenge"
+            }
+
+            ^"The Black Pearls of Fu Leng" {
+                ^"Effect" STRING "While wielding, you may use maho without making a proper sacrifice. When performing a check to activate maho without sacrifice, add two kept (ring) dice showing (op)(st) results."
+                ^"Unmasking Form" STRING "Bend Principles"
+            }
+
+            ^"The Henge-Okurimono" {
+                ^"Effect" STRING "Once per game session as Support action, transform into the depicted animal. Use its ring values, derived attributes, abilities with physical/social type, but your own skill ranks and mental/spiritual advantages. Persists until you end it or are rendered unconscious; suffer Afflicted condition when reverting."
+                ^"Unmasking Form" STRING "Panicked Retreat"
+            }
+
+            ^"The Porcelain Mask of Fu Leng" {
+                ^"Effect" STRING "Once donned, cannot be removed until death. Assigned one Shadowlands Taint disadvantage. As Support action, shift mask to any face (TN 4 Sentiment to detect). As Scheme action, scry for supernatural presences (glow with sickly purple light)."
+                ^"Unmasking Form" STRING "Expose an Opening"
+            }
+        }
+
+        RULES {
+            #L5RSL35jK6lM8nO0pQ2rS4t: cursed_items_reduce_composure_by_2
+            #L5RSL36uV7wX9yZ1aB3cD5e: cursed_items_limit_unmasking_form
+        }
+    }
+
+    # ===========================
+    # BLESSED TREASURES
+    # ===========================
+
+    ^"Blessed Treasures" DEF {
+        APPLIES TO [^"Samurai"]
+
+        ENTRIES {
+            ^"The Jade Cups of Taira" {
+                ^"Type" STRING "Nemuranai"
+                ^"Qualities" STRING "Durable, Sacred"
+                ^"Quirk" STRING "Glow when Otherworldly creatures are nearby (range 0-3)."
+                ^"Sealed Invocation" STRING "Once per scene, perform Jurojin's Balm invocation using Medicine skill."
+            }
+
+            ^"Jade Petal Tea" {
+                ^"Type" STRING "Consumable"
+                ^"Effect" STRING "Remove the Afflicted condition. Ignore all Shadowlands Taint disadvantages. Persists until you suffer Afflicted or for one week in narrative time (whichever comes first)."
+            }
+
+            ^"Kishu: The Oni-Cutting Sword" {
+                ^"Type" STRING "Nemuranai (chokoto)"
+                ^"Qualities" STRING "+2 deadliness, Sacred, Durable"
+                ^"Quirk" STRING "Only cuts when wielded in the left hand."
+                ^"Sealed Invocation" STRING "Once per session, perform Bind the Shadow invocation using Martial Arts [Melee]."
+            }
+
+            ^"Obsidian Ink" {
+                ^"Type" STRING "Consumable"
+                ^"Effect" STRING "When preparing a ward with an invocation using obsidian ink, receive up to 3 strife to add that many kept (ring) showing (op) results. May also use mixed with blood to prepare a ward containing maho as if an invocation; suffer up to 3 strife to add that many kept (ring) showing (op)(st) results."
+            }
+        }
+
+        RULES {
+            #L5RSL37xY6zA8bC0dE2fG4h: blessed_treasures_combat_shadowlands
+        }
+    }
+
+    # ===========================
+    # NEW TECHNIQUES
+    # ===========================
+
+    ^"Shadowlands Techniques" DEF {
+        APPLIES TO [^"Samurai"]
+
+        ENTRIES {
+            ^"Essence of Jade" {
+                ^"Type" STRING "Invocation"
+                ^"Subtype" STRING "Earth Invocation"
+                ^"Rank" INTEGER 3
+                ^"Activation" STRING "As a Support action, make a TN 3 Theology (Earth) check targeting one position at range 0-2."
+                ^"Effect" STRING "Purify the area and remove the Defiled terrain quality from an area extending range bands around target equal to your Earth Ring. Persists for one round, plus additional rounds equal to bonus successes."
+                ^"Opportunities" STRING "(op): Persists until end of scene. (op)(op): Terrain gains Hallowed (Earth). (op): Each Tainted being increases TN of checks to resist effects by 2. (op): Choose character instead of position; area follows them. (op): All damage in area gains Sacred quality."
+            }
+
+            ^"Blessing of Steel" {
+                ^"Type" STRING "Ritual"
+                ^"Subtype" STRING "Artisan Ritual"
+                ^"Rank" INTEGER 2
+                ^"Activation" STRING "As a downtime activity, make a TN 2 Smithing check using any ring."
+                ^"Effect" STRING "Apply one effect based on ring used: Air: +1 deadliness. Earth: Remove Damaged or gain Durable. Fire: Gain one logical quality (GM approval). Water: +1 damage/-1 deadliness, or +1 supernatural resistance/-1 physical resistance. Void: Reduce TN of next check with item by 1. Only one effect per item. Persists until end of next scene in which item is used."
+            }
+
+            ^"Craft Shikigami" {
+                ^"Type" STRING "Ritual"
+                ^"Subtype" STRING "Shugenja Ritual"
+                ^"Rank" INTEGER 2
+                ^"Activation" STRING "As a downtime activity using a consecrated vessel of silhouette 0 or smaller, make an Artisan skill (Void) check. You choose the TN (minimum 1)."
+                ^"Effect" STRING "Choose a number of invocations you know up to the TN. Create a shikigami with those invocations sealed within it. While shikigami exists, you cannot use those invocations but it can. Maximum one shikigami at a time (Yogo Preserver school ability modifies this)."
+                ^"Opportunities" STRING "(op): Add one of your advantages and one disadvantage to shikigami. (op): Shikigami has different form of same silhouette. (op)+: Increase silhouette by 1 per (op). (op)+: Choose one skill; shikigami has ranks equal to (op) spent. (op)+: Increase endurance or composure by 2 per (op)."
+            }
+        }
+
+        RULES {
+            #L5RSL38iJ7kL9mN1oP3qR5s: sl_new_techniques_extend_core
+        }
+    }
+
+    # ===========================
+    # MAHO TECHNIQUES
+    # ===========================
+
+    ^"Maho Techniques" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Blood magic techniques. Require proper sacrifice
+        # and follow core rulebook maho rules (p. 224).
+
+        ENTRIES {
+            ^"Accursed Summoning" {
+                ^"Rank" INTEGER 1
+                ^"Activation" STRING "As a downtime activity, make a Theology (Void) check with TN equal to the oni's Intrigue rank."
+                ^"Effect" STRING "If you succeed, summon and bind the desired oni. If you fail, summon it (or different one) but it breaks free and you suffer Afflicted. If 3+ kept (st) results, the oni learns your name."
+                ^"Opportunities" STRING "(op)+: Each character who can see the oni within range 3 suffers strife equal to (op) spent. (op)(op): Oni instills a Shadowlands Taint disadvantage on anyone within range equal to your Taint-linked rings."
+            }
+
+            ^"Bind the Undead" {
+                ^"Rank" INTEGER 2
+                ^"Activation" STRING "As a Scheme action, make a TN 2 Theology (Fire) check targeting up to your Earth Ring undead creatures at range 0-4 (combat rank 3 or lower)."
+                ^"Effect" STRING "Bind targets to your will via voice commands. If you are killed or become Unconscious, all bound undead cease to function. Area at range 0-1 of each target gains Defiled terrain."
+                ^"Opportunities" STRING "(op)(op): One undead becomes a revenant. (op)+: Maximum range +1 per (op). (op)+: Maximum combat rank +1 per (op)."
+            }
+
+            ^"Commune with Evil" {
+                ^"Rank" INTEGER 1
+                ^"Activation" STRING "As a downtime activity, make a TN 1 Theology (Void) check."
+                ^"Effect" STRING "Scry for Otherworldly or Tainted beings at range 0-6."
+                ^"Opportunities" STRING "(op): Receive unholy blessing increasing ring value by 1 (one at a time, until end of scene). (op)(op)(op)+: Additional +1 per (op)(op)(op). (op)+: Blessing persists 1 additional round per (op)."
+            }
+
+            ^"Dark Reflection" {
+                ^"Rank" INTEGER 1
+                ^"Activation" STRING "As a Support action, make a TN 2 Theology (Water) check targeting a person, object, or location you have encountered before."
+                ^"Effect" STRING "Scry upon chosen target. Image is distorted: one minor detail is always incorrect, reflecting fears or desires."
+                ^"Opportunities" STRING "(op)(op)(op): Bind kansen within the object permanently; it gains Unholy and retains divinatory properties. As Support action, give offering of blood to scry again."
+            }
+
+            ^"Entreat the Shadow Steed" {
+                ^"Rank" INTEGER 2
+                ^"Activation" STRING "As a Support action, make a TN 2 Theology (Earth) check. Only usable in Shadowlands or near horse corpses."
+                ^"Effect" STRING "Summon an onikage and bind it to your will. It obeys commands and allows you to ride it. Reacts violently to other riders."
+                ^"Opportunities" STRING "(op)(op): Onikage retains enough flesh to pass as living; vigilance 3 or lower do not detect undead status. (op)(op)(op): Others you designate can also ride it. (op)(op)+: Summon one additional onikage per (op)(op)."
+            }
+
+            ^"Fiend's Retreat" {
+                ^"Rank" INTEGER 3
+                ^"Activation" STRING "Once per scene, as an Attack and Movement action or out-of-turn action when targeted by an attack, make a Theology (Air) check targeting one Incapacitated or minion NPC at range 2-3 (TN equal to target's vigilance)."
+                ^"Effect" STRING "Force target to exchange physical locations with you. Target becomes the target of attacks that were targeting you."
+                ^"Opportunities" STRING "(op)+: Choose one additional character to move and one additional target per (op). (op): Increase maximum range by 1 per (op)."
+            }
+
+            ^"Shape the Flesh" {
+                ^"Rank" INTEGER 4
+                ^"Activation" STRING "As a Support action, make a TN 4 Theology check."
+                ^"Effect" STRING "Augment and curse yourself based on ring used: Fire (Talons/Fangs): Unarmed damage and deadliness become 6, Unholy. Earth (Thick Hide): Physical resistance becomes 7. Air (Wings): Gain flight, ignore terrain. Water (Malleable Form): Melee/unarmed max range becomes 3. Void (Shadowy Form): Supernatural resistance becomes 7, count as Otherworldly."
+                ^"Opportunities" STRING "(op)(op): Once before end of scene, perform again with different ring and maintain both effects."
+            }
+
+            ^"Spiritual Shackles" {
+                ^"Rank" INTEGER 1
+                ^"Activation" STRING "As an Attack and Intrigue action, make a Theology (Air) check targeting one Otherworldly being at range 0-1 (TN equal to vigilance, reduced by 2 if Tainted)."
+                ^"Effect" STRING "Bind spirit inside an object of silhouette 1 or less at range 0-2. If Tainted, object gains Unholy. If you fail, suffer Afflicted."
+                ^"Opportunities" STRING "(op): Object gains one quality: Concealable, Durable, Resplendent, or Subtle. (op): Holder may release being to importune one maho or invocation without usual costs or TN adjustments."
+            }
+
+            ^"Spread Corruption" {
+                ^"Rank" INTEGER 2
+                ^"Activation" STRING "As a Support action, make a TN 2 Theology (Fire) check."
+                ^"Effect" STRING "Augment your touch with corrupting influence. Anyone whose skin you touch must resist with TN 4 Fitness or Meditation (Earth 2, Fire 5) or suffer fatigue equal to shortfall and Afflicted condition. Persists until end of scene."
+                ^"Opportunities" STRING "(op)(op): Touch effect is delayed for three rounds. (op): Ground you walk on becomes Defiled terrain. (op)(op): Increase severity of unarmed critical strikes by 2 per Taint-linked ring."
+            }
+
+            ^"Sword of Blood" {
+                ^"Rank" INTEGER 2
+                ^"Activation" STRING "As a Support action, make a TN 2 Theology (Water) check. Requires blood source; using own blood causes 3 fatigue."
+                ^"Effect" STRING "Summon a weapon of your choosing made of blood with Unholy quality."
+                ^"Opportunities" STRING "(op): Summon a pair of identical weapons. (op): At end of each turn, transform weapon into a different weapon. (op)(op): Immediately perform a Strike action. (op)(op): After inflicting a critical strike, remove fatigue equal to severity."
+            }
+
+            ^"Twisted Summons" {
+                ^"Rank" INTEGER 3
+                ^"Activation" STRING "As an Intrigue and Support action, make a TN 3 Theology (Earth) check targeting corpses at range 0-2."
+                ^"Effect" STRING "Summon an Undead Horror and bind it. If you become Compromised or Incapacitated, it breaks free. Area at range 0-2 becomes Defiled terrain."
+                ^"Opportunities" STRING "(op)+: Undead Horror absorbs up to two additional corpses per (op), gaining +2 endurance each. Every five corpses absorbed increases silhouette by 1."
+            }
+        }
+
+        RULES {
+            #L5RSL39pQ0rS2tU4vW6xY8z: maho_requires_blood_sacrifice
+            #L5RSL40aB1cD3eF5gH7iJ9k: maho_in_shadowlands_gains_fu_leng_assistance
+        }
+    }
+
+    # ===========================
+    # TITLES
+    # ===========================
+
+    ^"Shadowlands Titles" DEF {
+        APPLIES TO [^"Samurai"]
+
+        ENTRIES {
+            ^"The Damned" {
+                ^"Assigned By" STRING "Kuni daimyo or other officials. Must possess at least one Shadowlands Taint disadvantage."
+                ^"Status Award" STRING "-20 (to a maximum of 30)"
+                ^"XP to Completion" INTEGER 20
+                ^"Immediate Effects" STRING "Gain the Ferocity disadvantage."
+                ^"Title Ability" STRING "Tainted Warrior"
+                ^"Title Ability Effect" STRING "Increase the TN of all your non-Command Social skill checks by 1, and reduce the TN of all your Martial Arts [Any] skill checks targeting Tainted beings by 1 (minimum 1). Non-Tainted beings receive 1 strife whenever they make a Social skill check targeting you."
+                ^"Advancement" LIST OF STRING [
+                    "Martial Skills (Skill Group)",
+                    "Medicine (Skill)",
+                    "Survival (Skill)",
+                    "Theology (Skill)",
+                    "Rank 1-2 Kata (kata) (Tech Group)",
+                    "Heartpiercing Strike (kata)",
+                    "Rallying Cry (shuji)"
+                ]
+            }
+
+            ^"Harvester" {
+                ^"Assigned By" STRING "Hiruma or Kuni officials"
+                ^"Status Award" STRING "+10 (to a maximum of 45)"
+                ^"XP to Completion" INTEGER 20
+                ^"Title Ability" STRING "Capture Evil"
+                ^"Title Ability Effect" STRING "Reduce the TN of your Survival checks to track down a Tainted being by 1. When you inflict a critical strike on a Tainted being, you may spend (op)(op): The target suffers the Dazed, Disoriented, or Immobilized condition."
+                ^"Advancement" LIST OF STRING [
+                    "Martial Skills (Skill Group)",
+                    "Smithing (Skill)",
+                    "Survival (Skill)",
+                    "Theology (Skill)",
+                    "Rank 1-2 Kata (kata) (Tech Group)",
+                    "Rank 1-2 Rituals (ritual)",
+                    "Skulk (ninjutsu)"
+                ]
+            }
+
+            ^"Twenty-Goblin Crab" {
+                ^"Assigned By" STRING "Hida daimyo or other officials"
+                ^"Status Award" STRING "+15 (minimum 30, maximum 40), officially become samurai and member of Crab Clan"
+                ^"XP to Completion" INTEGER 20
+                ^"Title Ability" STRING "Goblin Killer"
+                ^"Title Ability Effect" STRING "When making a Martial Arts [Any] check targeting a goblin, you may spend (op)+: Each other goblin at range 0-2 of your target receives 1 strife per (op) spent."
+                ^"Advancement" LIST OF STRING [
+                    "Martial Skills (Skill Group)",
+                    "Social Skills (Skill Group)",
+                    "Culture (Skill)",
+                    "Government (Skill)",
+                    "Rank 1-2 Kata (kata) (Tech Group)",
+                    "Thunderclap Strike (kata)",
+                    "Stonewall Tactics (shuji)"
+                ]
+            }
+
+            ^"Witch Hunter" {
+                ^"Assigned By" STRING "Another Witch Hunter"
+                ^"Status Award" STRING "+10 (to a minimum of 30)"
+                ^"XP to Completion" INTEGER 45
+                ^"Title Ability" STRING "Bane of Sorcerers"
+                ^"Title Ability Effect" STRING "When you make a check to resist the effects of a maho technique, you may spend (op): Reduce the TN of your next check targeting the maho practitioner by 1 per (op). (op)(op): If you succeed on the check to resist, the maho practitioner receives strife equal to your ranks in Theology."
+                ^"Advancement" LIST OF STRING [
+                    "Martial Skills (Skill Group)",
+                    "Scholar Skills (Skill Group)",
+                    "Command (Skill)",
+                    "Skulduggery (Skill)",
+                    "Rank 1-4 Kata (kata) (Tech Group)",
+                    "Rank 1-5 Rituals (ritual) (Tech Group)",
+                    "Honest Assessment (shuji)"
+                ]
+            }
+        }
+
+        RULES {
+            #L5RSL41lM2nO4pQ6rS8tU0v: sl_titles_narrative_advancement
+            #L5RSL42wX3yZ5aB7cD9eF1g: sl_titles_grant_ability_on_completion
+        }
+    }
+
+    # ===========================
+    # OPPORTUNITY TABLES
+    # ===========================
+
+    ^"Shadowlands Opportunity Tables" DEF {
+        APPLIES TO [^"Samurai"]
+
+        ENTRIES {
+            ^"Opportunity in the Shadowlands" {
+                ^"Air (op)+" STRING "Detect a subtle sign to get your bearings. Landmark helps guide you for one scene, plus one additional scene per (op) spent."
+                ^"Earth (op)(op)" STRING "Count your vigilance as 1 higher the next time you seek to notice or avoid a hazardous situation or creature."
+                ^"Fire (op)+" STRING "Spur comrades with encouragement or criticism. One other character per (op) reduces their next TN to resist physical hardship or Shadowlands influence by 1."
+                ^"Water (op)(op)+" STRING "Find a useful item not yet corrupted. Maximum rarity 3, plus 1 for each additional (op)(op) spent."
+                ^"Void (op)(op)(op)" STRING "Ignore all (st) results on your next check by drawing on memories of un-Tainted lands."
+            }
+
+            ^"Opportunity Against Tainted Threats" {
+                ^"Air (op)(op)" STRING "Discern a weakness in your Tainted foe. Reduce TN of your next check to oppose or harm a Tainted character by 1."
+                ^"Earth (op)(op)" STRING "Weather terrible revelations. Next time you suffer strife this scene, suffer 2 fewer strife (minimum 0)."
+                ^"Fire (op)+" STRING "Righteous fury cows Tainted fiends. Each Tainted being gains 1 strife, plus 1 additional per (op)(op) spent."
+                ^"Water (op)" STRING "Adapt to fight corrupted power. Once before end of session, reduce TN to resist a Tainted power by 1 or increase TN of check targeting/affecting you with such power by 1."
+                ^"Void (op)(op) or (op)(op)(op)" STRING "(op)(op): Discern kami have fled and type of disturbance. (op)(op)(op): Also determine total combat threat rating of all Tainted beings that caused kami to flee."
+            }
+
+            ^"Opportunity While Tainted" {
+                ^"Air (op)(op)" STRING "Redirect attention away from you. TN of next check to scrutinize you or your actions increased by 1."
+                ^"Earth (op)(op)" STRING "For rest of scene, whenever you suffer fatigue reduce value suffered by 2 (minimum 0)."
+                ^"Fire (op)(op)" STRING "Add 1 kept die showing (st) to the next Martial Arts check you make. Persists until start of next turn."
+                ^"Water (op)(op)" STRING "Remove one condition: Dazed, Disoriented, Immobilized, Intoxicated, Lightly Wounded, or Prone."
+                ^"Void (op)+" STRING "Learn something relevant to the current situation, scope proportional to (op) spent. Receive 1 strife per (op) due to unnatural means."
+            }
+        }
+
+        RULES {
+            #L5RSL43hI4jK6lM8nO0pQ2r: sl_opportunity_tables_gm_option
+        }
+    }
+
+    # ===========================
+    # CORRUPTION RULES
+    # ===========================
+
+    ^"Corruption Rules" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The Taint is the result of corruption from Jigoku.
+        # It progresses from minor behavioral shifts to physical
+        # mutations and manifestation of vile powers. It can
+        # never be completely stilled - only slowed.
+
+        RULES {
+            #L5RSL44sT5uV7wX9yZ1aB3c: corruption_jade_wards_against_taint
+            #L5RSL45dE6fG8hI0jK2lM4n: corruption_jade_petal_tea_slows_progression
+            #L5RSL46oP7qR9sT1uV3wX5y: corruption_eventually_consumes_entirely
+            #L5RSL47zA8bC0dE2fG4hI6j: corruption_linked_to_supernatural_circumstances
+            #L5RSL48kL9mN1oP3qR5sT7u: corruption_afflicted_condition_represents_first_signs
+        }
+    }
+
+    # ===========================
+    # ONI GENERATION
+    # ===========================
+
+    ^"Oni Generation" DEF {
+        APPLIES TO [^"System"]
+
+        # Rules for creating custom oni antagonists. Select
+        # a base profile and add Shadowlands Powers. Oni
+        # hierarchy: Lesser Oni (shards), Powerful Oni
+        # (substantial forms), and Oni Lords (complete beings).
+        # Named oni gain +1 to all rings and up to 2 additional
+        # Shadowlands Powers.
+
+        ENTRIES {
+            ^"Vile Trickster (Lesser Oni)" {
+                ^"Combat Conflict Rank" INTEGER 4
+                ^"Intrigue Conflict Rank" INTEGER 8
+                ^"Silhouette" INTEGER 2
+                ^"Max Shadowlands Powers" INTEGER 2
+                ^"Restrictions" STRING "None"
+            }
+
+            ^"Savage Brute (Lesser Oni)" {
+                ^"Combat Conflict Rank" INTEGER 10
+                ^"Intrigue Conflict Rank" INTEGER 3
+                ^"Silhouette" INTEGER 4
+                ^"Max Shadowlands Powers" INTEGER 2
+                ^"Restrictions" STRING "Cannot select Captivating Voice, Human Mask, Illusion Master, or Scent of Weakness."
+            }
+
+            ^"Hellish Sorcerer (Powerful Oni)" {
+                ^"Combat Conflict Rank" INTEGER 8
+                ^"Intrigue Conflict Rank" INTEGER 10
+                ^"Silhouette" INTEGER 3
+                ^"Max Shadowlands Powers" STRING "Tainted Sorcery (automatic) + 2 additional"
+                ^"Restrictions" STRING "None"
+            }
+
+            ^"Monstrous Warrior (Powerful Oni)" {
+                ^"Combat Conflict Rank" INTEGER 12
+                ^"Intrigue Conflict Rank" INTEGER 4
+                ^"Silhouette" INTEGER 4
+                ^"Max Shadowlands Powers" INTEGER 4
+                ^"Restrictions" STRING "None"
+            }
+
+            ^"Warlord of Jigoku (Oni Lord)" {
+                ^"Combat Conflict Rank" INTEGER 14
+                ^"Intrigue Conflict Rank" INTEGER 10
+                ^"Silhouette" INTEGER 5
+                ^"Max Shadowlands Powers" INTEGER 5
+                ^"Restrictions" STRING "None"
+            }
+        }
+
+        RULES {
+            #L5RSL49vW0xY2zA4bC6dE8f: oni_named_gain_plus_1_all_rings_plus_2_powers
+            #L5RSL50gH1iJ3kL5mN7oP9q: oni_tainted_otherworldly_beings
+        }
+    }
+
+    # ===========================
+    # SHADOWLANDS POWERS
+    # ===========================
+
+    ^"Shadowlands Powers" DEF {
+        APPLIES TO [^"System"]
+
+        # Powers that can be purchased for oni. Each has a
+        # threat rating cost and may be purchased multiple
+        # times for additional ranks.
+
+        ENTRIES {
+            ^"Bony Carapace" { ^"Threat" STRING "(combat)+2" ^"Effect" STRING "+2 physical resistance, +1 supernatural resistance. Additional ranks: +1 physical resistance." ^"Restriction" STRING "Cannot select with Serpentine Speed." }
+            ^"Captivating Voice" { ^"Threat" STRING "(intrigue)+2" ^"Effect" STRING "As Scheme action, Social (Fire) check (TN = target vigilance). Success: target suffers 1 strife + 1 per 2 bonus successes. If aware of ninjou, +4 bonus successes. Compromised target must spend 1 Void or unmask. Additional ranks: reduce TN by 1." }
+            ^"Dark Puppet" { ^"Threat" STRING "(combat)+2, (intrigue)+2" ^"Effect" STRING "Once per scene, perform a second action at Initiative 0. Additional ranks: use one additional time per scene (once per round max)." }
+            ^"Foul Separation" { ^"Threat" STRING "(combat)+1, (intrigue)+1" ^"Effect" STRING "Tear out a body part (eye, hand, or tongue) to act separately using Oni Fragment profile. Oni reduces endurance by 5 and all rings by 1 while separated. Destroyed fragment regrows over one month. Second rank: choose 1 additional body part." }
+            ^"Human Mask" { ^"Threat" STRING "(intrigue)+4" ^"Effect" STRING "As Scheme action while unseen, weave illusion to appear as normal human (silhouette 2). TN 4 Medicine (Air) or Theology (Earth) to detect (TN 3 outside Shadowlands). Dismiss as Support action." }
+            ^"Illusion Master" { ^"Threat" STRING "(combat)+3, (intrigue)+3" ^"Effect" STRING "As Support action, create illusions up to total silhouette 8. Illusions have no substance, cannot physically harm, but can speak or conceal dangers. TN 3 skill check to see through if suspected. Contact with jade dispels." }
+            ^"Obsidian Jaws" { ^"Threat" STRING "(combat)+4" ^"Effect" STRING "Gain unarmed profile: Obsidian Bite (Range 0, Damage 4, Deadliness 8, Razor-Edged, Unholy). Additional ranks: remove 2 fatigue after inflicting critical strike." }
+            ^"Scent of Weakness" { ^"Threat" STRING "(intrigue)+3" ^"Effect" STRING "As Scheme action, Social (Air) check (TN = target vigilance). Success reveals target's ninjo including contextual details. Additional ranks: reduce TN by 1." }
+            ^"Serpentine Speed" { ^"Threat" STRING "(combat)+2" ^"Effect" STRING "+2 focus, decrease TN of Fitness checks by 1 (minimum 0). Additional ranks: +2 focus." ^"Restriction" STRING "Cannot select with Bony Carapace." }
+            ^"Shadowlands Venom" { ^"Threat" STRING "(combat)+4" ^"Effect" STRING "After inflicting Bleeding, target also suffers Lightly Wounded for one ring of oni's choice. Additional ranks: +1 TN to resist critical strikes." }
+            ^"Tainted Sorcery" { ^"Threat" STRING "(combat)+5, (intrigue)+5" ^"Effect" STRING "Gain up to three maho techniques. No spiritual backlash or channeling damage. All five rings count as having Shadowlands Taint. Additional ranks: +2 additional maho techniques." }
+        }
+
+        RULES {
+            #L5RSL51rS2tU4vW6xY8zA0b: sl_powers_add_to_threat_rating
+            #L5RSL52cD3eF5gH7iJ9kL1m: sl_powers_some_purchasable_multiple_times
+        }
+    }
+
+    # ===========================
+    # NEW DEMEANOR
+    # ===========================
+
+    ^"Shadowlands Demeanors" DEF {
+        APPLIES TO [^"Samurai"]
+
+        ENTRIES {
+            ^"Courageous" {
+                ^"Social Skill Check TN Modifiers" STRING "Air +2, Earth -2"
+                ^"Common Way of Unmasking" STRING "Angry Dismay"
+                ^"Description" STRING "The NPC loudly complains about the cowardice of others, especially concerning their lack of concern for Shadowlands threats and lack of enthusiasm for Wall duty."
+            }
+        }
+
+        RULES {
+            #L5RSL53nO4pQ6rS8tU0vW2x: sl_courageous_demeanor
+        }
+    }
+
+    # ===========================
+    # NPC TEMPLATES
+    # ===========================
+
+    ^"Crab Clan Samurai Template" DEF {
+        APPLIES TO [^"NPC Template"]
+        PROPERTIES {
+            ^"Base Profile" STRING "Any clan samurai profile"
+            ^"Combat Rank Modifier" STRING "+2"
+            ^"Ring Modifier" STRING "+1 Earth"
+            ^"Skill Modifier" STRING "+1 Martial and Trade skills"
+            ^"Replace Advantages" STRING "0-2: Expert Haggler (Water) [Social; Interpersonal], Large Stature (Earth) [Martial; Physical], Makes Things Work (Water) [Artisan; Physical], Veteran of the Shadowlands (Water) [Martial; Physical]"
+            ^"Replace Disadvantages" STRING "0-2: Wall Weary (Earth) [Social; Interpersonal], Bluntness (Air) [Social; Interpersonal], Ends Justify the Means (Void) [Scholar; Mental]"
+            ^"Add Techniques" STRING "0-2: Kata, Rituals"
+            ^"Replace Demeanor" STRING "1: Courageous, Gruff, Shrewd"
+            ^"Replace Equipment" STRING "Replace katana with tetsubo"
+        }
+
+        RULES {
+            #L5RSL54yZ5aB7cD9eF1gH3i: sl_crab_clan_samurai_template
+        }
+    }
+
+    ^"Falcon Clan Samurai Template" DEF {
+        APPLIES TO [^"NPC Template"]
+        PROPERTIES {
+            ^"Base Profile" STRING "Any clan samurai profile"
+            ^"Combat Rank Modifier" STRING "+1"
+            ^"Ring Modifier" STRING "+1 Void"
+            ^"Skill Modifier" STRING "+2 Scholar skills"
+            ^"Replace Advantages" STRING "0-2: Knowledge of Gaki (Void) [Scholar; Mental], Probing Sight (Water) [Martial; Physical], Sense for the Spirits (Void) [Martial; Spiritual]"
+            ^"Replace Disadvantages" STRING "0-2: Disdain for Courtly Matters (Air) [Social; Interpersonal], Close to the Edge (Void) [Social; Spiritual], Deals with Spirits (Fire) [Social; Interpersonal]"
+            ^"Add Techniques" STRING "0-2: Invocations, Rituals"
+            ^"Replace Demeanor" STRING "1: Detached, Gruff"
+        }
+
+        RULES {
+            #L5RSL55aB6cD8eF0gH2iJ4k: sl_falcon_clan_samurai_template
+        }
+    }
+
+    ^"Tainted Template" DEF {
+        APPLIES TO [^"NPC Template"]
+        PROPERTIES {
+            ^"Base Profile" STRING "Any clan samurai, trained ashigaru, or skillful ronin profile"
+            ^"Combat Rank Modifier" STRING "+2"
+            ^"Ring Modifier" STRING "+1 Earth"
+            ^"Skill Modifier" STRING "+1 Martial skills, -1 Social skills (minimum 0)"
+            ^"Replace Advantages" STRING "0-2: Accepts the End (Void) [Social; Mental], Knows the Enemy (Earth) [Scholar; Mental], Veteran of the Shadowlands (Water) [Martial; Physical]"
+            ^"Replace Disadvantages" STRING "1-2: Shadowlands Taint (Any) [varies]. Other 0-2: Quick to Rage (Air) [Martial; Mental], Distrust of Kuni (Water) [Social; Interpersonal], any disadvantage with Mental type"
+            ^"Replace Demeanor" STRING "1: Assertive, Detached, Gruff"
+        }
+
+        RULES {
+            #L5RSL56lM7nO9pQ1rS3tU5vW: sl_tainted_template
+        }
+    }
+
+    # ===========================
+    # BUSHIDO: COURAGE
+    # ===========================
+
+    ^"Bushido Courage" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Optional additions to honor forfeit/award tables
+        # for the tenet of Courage (Yu).
+
+        ENTRIES {
+            ^"Trifling Breaches of Courage" {
+                ^"Honor Cost" STRING "Forfeit 1 honor"
+                ^"Examples" LIST OF STRING [
+                    "Allowing fear for someone else's well-being to influence your actions",
+                    "Concealing your identity in battle",
+                    "Avoiding a conflict when you are in the right",
+                    "Saving yourself when risking yourself would have advanced your lord's goals"
+                ]
+            }
+
+            ^"Small Sacrifices of Courage" {
+                ^"Honor Award" STRING "Gain 1 honor"
+                ^"Examples" LIST OF STRING [
+                    "Accepting a challenge from an enemy of unknown skill",
+                    "Enduring a minor public humiliation to right a wrong",
+                    "Publicly attempting something in which you have no skill to serve your lord",
+                    "Refusing to back down when faced with superior forces"
+                ]
+            }
+        }
+
+        RULES {
+            #L5RSL55jK6lM8nO0pQ2rS4t: courage_binding_virtue_of_bushido
+            #L5RSL56uV7wX9yZ1aB3cD5e: courage_trifling_breaches_and_small_sacrifices
+        }
+    }
+}

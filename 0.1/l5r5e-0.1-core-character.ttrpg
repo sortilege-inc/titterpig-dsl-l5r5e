@@ -1,0 +1,495 @@
+BASE "L5R5e_Core_Character" {
+    NAME "Legend of the Five Rings 5th Edition - Character creation, clans, schools, advantages, and advancement"
+    VERSION "0.1"
+    RELEASE_DATE "2025-06-01"
+
+    # Core Rulebook: Character creation (Twenty Questions), clans, families,
+    # schools, advantages/disadvantages, and advancement system
+
+    # ===========================
+    # CHARACTER CREATION: TWENTY QUESTIONS
+    # ===========================
+
+    ^"Twenty Questions" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The character creation process is structured as twenty questions
+        # answered collaboratively between player and GM. The process
+        # determines clan, family, school, rings, skills, advantages,
+        # disadvantages, ninjo, giri, and starting equipment.
+
+        PHASES {
+            ^"Part I: Core Identity (Clan, Family, School)" DEF {
+                1 "What clan does your character belong to? (Sets starting ring, skill, status, glory)"
+                2 "What family does your character belong to? (Sets +1 ring, +1 skill, glory modifier)"
+                3 "What is your character's school, and what roles does that school fall into? (+1 ring, technique groups, starting techniques, school ability)"
+                4 "How does your character stand out within their school? (Choose a unique advantage or disadvantage)"
+            }
+            ^"Part II: Personality and Behavior" DEF {
+                5 "Who is your character's lord? And what is their duty to that lord? (Sets giri)"
+                6 "What does your character long for? And how might this be achieved? (Sets ninjo)"
+                7 "What is your character's relationship with their clan? (Determines advantages)"
+                8 "What does your character think of Bushido? (Sets starting honor)"
+                9 "What is your character's greatest accomplishment so far? (Determines skill)"
+                10 "What holds your character back most in life? (Determines anxiety or adversity)"
+                11 "What activity makes your character feel at peace? (Determines skill)"
+                12 "What concern, stake, or obligation makes your character feelستressed? (Determines disadvantage)"
+                13 "Who has your character learned the most from during their life? (Determines advantage and ring or skill)"
+            }
+            ^"Part III: Final Details" DEF {
+                14 "What do people notice first upon meeting your character? (Advantage or disadvantage)"
+                15 "How does your character react to stressful situations? (Determines anxiety)"
+                16 "What are your character's preexisting relationships with other characters?"
+                17 "How does your character feel about their position in the Celestial Order?"
+                18 "What does your character's name mean? (Choose or create name)"
+                19 "How should the other players or GM expect your character to act?"
+                20 "What is your character's personal truth? (Final narrative detail)"
+            }
+        }
+
+        RULES {
+            #L5R200aB2cD4eF6gH8iJ0k: twenty_questions_complete_character
+            #L5R201lM3nO5pQ7rS9tU1v: questions_are_collaborative
+        }
+    }
+
+    # ===========================
+    # GREAT CLANS
+    # ===========================
+
+    ^"Clan" DEF {
+        APPLIES TO [^"Samurai"]
+
+        ENUM ["Crab", "Crane", "Dragon", "Lion", "Phoenix", "Scorpion", "Unicorn"]
+
+        # The seven Great Clans are the major political and military
+        # factions of Rokugan, each founded by one of the Kami who
+        # fell from the Celestial Heavens.
+
+        RULES {
+            #L5R202wX4yZ6aB8cD0eF2g: clan_determines_starting_ring
+            #L5R203hI5jK7lM9nO1pQ3r: clan_determines_starting_skill
+            #L5R204sT6uV8wX0yZ2aB4c: clan_determines_starting_status
+        }
+    }
+
+    ^"Crab Clan" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The Defenders of the Wall. The Crab protect the Empire from
+        # the horrors of the Shadowlands. They value strength, duty,
+        # and practical skill above courtly refinement.
+
+        PROPERTIES {
+            ^"Clan" STRING "Crab" FIXED
+            ^"Clan Ring Bonus" STRING "+1 Earth"
+            ^"Clan Skill Bonus" STRING "+1 Fitness, +1 Martial Arts [Melee]"
+            ^"Clan Status" INTEGER DEFAULT 30
+        }
+
+        FAMILIES {
+            ^"Hida" "+1 Earth, +1 Fitness, Glory 40"
+            ^"Hiruma" "+1 Water, +1 Skulduggery, Glory 30"
+            ^"Kaiu" "+1 Earth, +1 Smithing, Glory 40"
+            ^"Kuni" "+1 Fire, +1 Theology, Glory 40"
+            ^"Yasuki" "+1 Air, +1 Commerce, Glory 40"
+        }
+
+        RULES {
+            #L5R205dE7fG9hI1jK3lM5n: crab_wall_defenders
+            #L5R206oP8qR0sT2uV4wX6y: crab_practical_warriors
+        }
+    }
+
+    ^"Crane Clan" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The Left Hand of the Emperor. The Crane are the undisputed
+        # masters of politics and culture, setting the standard for
+        # art, fashion, and courtly behavior.
+
+        PROPERTIES {
+            ^"Clan" STRING "Crane" FIXED
+            ^"Clan Ring Bonus" STRING "+1 Air"
+            ^"Clan Skill Bonus" STRING "+1 Aesthetics, +1 Courtesy"
+            ^"Clan Status" INTEGER DEFAULT 35
+        }
+
+        FAMILIES {
+            ^"Asahina" "+1 Earth, +1 Theology, Glory 35"
+            ^"Daidoji" "+1 Water, +1 Fitness, Glory 30"
+            ^"Doji" "+1 Air, +1 Courtesy, Glory 45"
+            ^"Kakita" "+1 Fire, +1 Aesthetics, Glory 40"
+        }
+
+        RULES {
+            #L5R207zA9bC1dE3fG5hI7j: crane_political_masters
+            #L5R208kL0mN2oP4qR6sT8u: crane_cultural_arbiters
+        }
+    }
+
+    ^"Dragon Clan" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The seekers of Enlightenment. Isolated in their mountain
+        # strongholds, the Dragon pursue individual paths of
+        # wisdom and spiritual growth.
+
+        PROPERTIES {
+            ^"Clan" STRING "Dragon" FIXED
+            ^"Clan Ring Bonus" STRING "+1 Void"
+            ^"Clan Skill Bonus" STRING "+1 Martial Arts [Melee], +1 Meditation"
+            ^"Clan Status" INTEGER DEFAULT 30
+        }
+
+        FAMILIES {
+            ^"Agasha" "+1 Fire, +1 Medicine, Glory 30"
+            ^"Kitsuki" "+1 Air, +1 Sentiment, Glory 35"
+            ^"Mirumoto" "+1 Water, +1 Martial Arts [Melee], Glory 30"
+            ^"Togashi" "+1 Void, +1 Theology, Glory 30"
+        }
+
+        RULES {
+            #L5R209vW1xY3zA5bC7dE9f: dragon_enlightenment_seekers
+            #L5R210gH2iJ4kL6mN8oP0q: dragon_mountain_isolation
+        }
+    }
+
+    ^"Lion Clan" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The Right Hand of the Emperor. The Lion are the greatest
+        # military force in the Empire, embodying martial honor
+        # and unwavering loyalty to the Emperor.
+
+        PROPERTIES {
+            ^"Clan" STRING "Lion" FIXED
+            ^"Clan Ring Bonus" STRING "+1 Fire"
+            ^"Clan Skill Bonus" STRING "+1 Command, +1 Tactics"
+            ^"Clan Status" INTEGER DEFAULT 35
+        }
+
+        FAMILIES {
+            ^"Akodo" "+1 Earth, +1 Tactics, Glory 40"
+            ^"Ikoma" "+1 Water, +1 Culture, Glory 40"
+            ^"Kitsu" "+1 Void, +1 Theology, Glory 35"
+            ^"Matsu" "+1 Fire, +1 Martial Arts [Melee], Glory 35"
+        }
+
+        RULES {
+            #L5R211rS3tU5vW7xY9zA1b: lion_military_supremacy
+            #L5R212cD4eF6gH8iJ0kL2m: lion_ancestral_honor
+        }
+    }
+
+    ^"Phoenix Clan" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The Keepers of the Tao. The Phoenix are the most spiritually
+        # attuned of the Great Clans, with the most powerful shugenja
+        # and a deep commitment to peace and balance.
+
+        PROPERTIES {
+            ^"Clan" STRING "Phoenix" FIXED
+            ^"Clan Ring Bonus" STRING "+1 Void"
+            ^"Clan Skill Bonus" STRING "+1 Culture, +1 Theology"
+            ^"Clan Status" INTEGER DEFAULT 30
+        }
+
+        FAMILIES {
+            ^"Asako" "+1 Earth, +1 Government, Glory 35"
+            ^"Isawa" "+1 Fire, +1 Theology, Glory 40"
+            ^"Kaito" "+1 Air, +1 Meditation, Glory 30"
+            ^"Shiba" "+1 Water, +1 Martial Arts [Melee], Glory 35"
+        }
+
+        RULES {
+            #L5R213nO5pQ7rS9tU1vW3x: phoenix_spiritual_power
+            #L5R214yZ6aB8cD0eF2gH4i: phoenix_pacifist_ideals
+        }
+    }
+
+    ^"Scorpion Clan" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The Underhand of the Emperor. The Scorpion serve the Empire
+        # through espionage, manipulation, and sacrificing their own
+        # honor so others need not.
+
+        PROPERTIES {
+            ^"Clan" STRING "Scorpion" FIXED
+            ^"Clan Ring Bonus" STRING "+1 Air"
+            ^"Clan Skill Bonus" STRING "+1 Courtesy, +1 Skulduggery"
+            ^"Clan Status" INTEGER DEFAULT 25
+        }
+
+        FAMILIES {
+            ^"Bayushi" "+1 Air, +1 Courtesy, Glory 30"
+            ^"Shosuro" "+1 Water, +1 Performance, Glory 25"
+            ^"Soshi" "+1 Void, +1 Theology, Glory 30"
+            ^"Yogo" "+1 Earth, +1 Medicine, Glory 25"
+        }
+
+        RULES {
+            #L5R215jK7lM9nO1pQ3rS5t: scorpion_underhand_of_emperor
+            #L5R216uV8wX0yZ2aB4cD6e: scorpion_mask_tradition
+        }
+    }
+
+    ^"Unicorn Clan" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The Explorers. The Unicorn spent centuries traveling outside
+        # the Empire, returning with foreign customs, cavalry tactics,
+        # and a broader worldview that sets them apart.
+
+        PROPERTIES {
+            ^"Clan" STRING "Unicorn" FIXED
+            ^"Clan Ring Bonus" STRING "+1 Water"
+            ^"Clan Skill Bonus" STRING "+1 Fitness, +1 Survival"
+            ^"Clan Status" INTEGER DEFAULT 30
+        }
+
+        FAMILIES {
+            ^"Ide" "+1 Air, +1 Courtesy, Glory 35"
+            ^"Iuchi" "+1 Void, +1 Theology, Glory 30"
+            ^"Moto" "+1 Earth, +1 Martial Arts [Melee], Glory 30"
+            ^"Shinjo" "+1 Water, +1 Tactics, Glory 30"
+            ^"Utaku" "+1 Fire, +1 Martial Arts [Melee], Glory 40"
+        }
+
+        RULES {
+            #L5R217fG9hI1jK3lM5nO7p: unicorn_foreign_customs
+            #L5R218qR0sT2uV4wX6yZ8a: unicorn_cavalry_traditions
+        }
+    }
+
+    # ===========================
+    # SCHOOL ROLES
+    # ===========================
+
+    ^"School Role" DEF {
+        APPLIES TO [^"Samurai"]
+
+        ENUM ["Bushi", "Courtier", "Shugenja", "Monk", "Shinobi"]
+
+        # Schools are training traditions that teach samurai their
+        # primary techniques and define their role in society.
+        #
+        # Bushi (bushi): Warriors trained in martial arts and battlefield tactics
+        # Courtier (courtier): Politicians trained in social skills and court intrigue
+        # Shugenja (shugenja): Priests who commune with the elemental kami
+        # Monk: Ascetics who pursue enlightenment through discipline
+        # Shinobi: Spies and assassins (typically Scorpion)
+
+        PROPERTIES {
+            ^"Starting Rings" STRING  # Two ring bonuses
+            ^"Starting Skills" STRING  # Multiple skill bonuses
+            ^"Starting Honor" INTEGER
+            ^"Available Technique Groups" LIST OF STRING
+            ^"Starting Techniques" LIST OF STRING
+            ^"School Ability" STRING
+            ^"Curriculum" LIST OF STRING  # Ranked advancement table
+            ^"Mastery Ability" STRING    # Rank 6 capstone
+        }
+
+        RULES {
+            #L5R219bC1dE3fG5hI7jK9l: school_determines_technique_access
+            #L5R220mN2oP4qR6sT8uV0w: school_rank_advancement
+            #L5R221xY3zA5bC7dE9fG1h: mastery_ability_at_rank_six
+        }
+    }
+
+    ^"School Rank" DEF {
+        APPLIES TO [^"Samurai"]
+
+        INTEGER MIN 1 MAX 6
+
+        # Characters advance through school ranks by completing their
+        # curriculum. Each rank unlocks new techniques, skills, and rings.
+        # Rank 6 grants the school's Mastery Ability.
+        #
+        # Advancement requires completing enough curriculum entries
+        # at each rank before advancing to the next.
+
+        RULES {
+            #L5R222iJ4kL6mN8oP0qR2s: curriculum_completion_required
+            #L5R223tU5vW7xY9zA1bC3d: rank_unlocks_technique_access
+            #L5R224eF6gH8iJ0kL2mN4o: rank_six_mastery_ability
+        }
+    }
+
+    # ===========================
+    # METATYPE ANCHORS
+    # ===========================
+
+    ^"Bond" DEF {
+        # Metatype anchor for character bond definitions
+    }
+
+    ^"Title" DEF {
+        # Metatype anchor for title/appointment definitions
+    }
+
+    # ===========================
+    # ADVANTAGES AND DISADVANTAGES
+    # ===========================
+
+    ^"Advantage" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Positive traits that benefit a character. Two types:
+        # Distinctions and Passions.
+
+        TYPES {
+            ^"Distinction" "Innate or trained positive qualities. When applicable, reroll up to 2 dice."
+            ^"Passion" "Emotional drives that energize. When applicable, remove 3 strife after resolving check."
+        }
+
+        PROPERTIES {
+            ^"Type" ENUM ["Distinction", "Passion"]
+            ^"Category" LIST OF STRING  # e.g., ["Physical", "Mental"]
+            ^"Ring" STRING      # Associated ring
+            ^"Description" STRING
+        }
+
+        RULES {
+            #L5R225pQ7rS9tU1vW3xY5z: distinction_reroll_two_dice
+            #L5R226aB8cD0eF2gH4iJ6k: passion_remove_three_strife
+            #L5R227lM9nO1pQ3rS5tU7v: gm_and_player_agree_on_applicability
+            #L5R228wX0yZ2aB4cD6eF8g: each_applies_once_per_check
+        }
+    }
+
+    ^"Disadvantage" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Negative traits that challenge a character. Two types:
+        # Adversities and Anxieties.
+
+        TYPES {
+            ^"Adversity" "Physical, mental, or social burdens. When applicable, must reroll 2 dice showing (su) or (ex). If check fails, gain 1 Void point."
+            ^"Anxiety" "Emotional triggers that cause distress. When applicable, receive 3 strife after resolving check. First time per scene, gain 1 Void point."
+        }
+
+        PROPERTIES {
+            ^"Type" ENUM ["Adversity", "Anxiety"]
+            ^"Category" LIST OF STRING
+            ^"Ring" STRING
+            ^"Description" STRING
+        }
+
+        RULES {
+            #L5R229hI1jK3lM5nO7pQ9r: adversity_reroll_successes
+            #L5R230sT2uV4wX6yZ8aB0c: adversity_void_point_on_failure
+            #L5R231dE3fG5hI7jK9lM1n: anxiety_receive_three_strife
+            #L5R232oP4qR6sT8uV0wX2y: anxiety_void_point_first_per_scene
+            #L5R233zA5bC7dE9fG1hI3j: advantages_cancel_disadvantages
+        }
+    }
+
+    ^"Advantage Interaction" DEF {
+
+        # Advantages and disadvantages interact during checks.
+        # Applied distinctions cancel applied adversities (and vice versa).
+        # Applied passions cancel applied anxieties (and vice versa).
+        # Canceled advantages/disadvantages have no effect.
+
+        INTERACTIONS {
+            "Turning Advantage: Convert own advantage to disadvantage if creates logical vulnerability. Gain 1 Void point."
+            "Seizing Target's Advantage: Spend 1 Void point to use target's advantage against them."
+            "Leveraging Disadvantage: Spend 1 Void point to use own disadvantage as advantage."
+            "Exploiting Target's Disadvantage: Spend 1 Void point to use target's disadvantage against them."
+        }
+
+        RULES {
+            #L5R234kL6mN8oP0qR2sT4u: distinction_cancels_adversity
+            #L5R235vW7xY9zA1bC3dE5f: passion_cancels_anxiety
+            #L5R236gH8iJ0kL2mN4oP6q: void_point_interaction_cost
+        }
+    }
+
+    # ===========================
+    # NINJO AND GIRI
+    # ===========================
+
+    ^"Ninjo" DEF {
+        APPLIES TO [^"Samurai"]
+
+        STRING
+
+        # Personal desire — the character's deepest longing or
+        # personal question. The tension between ninjo and giri
+        # is the core dramatic engine of L5R.
+        #
+        # Acting against ninjo: Receive 3 strife
+        # Pursuing ninjo: May remove all strife after downtime
+
+        RULES {
+            #L5R237rS9tU1vW3xY5zA7b: opposing_ninjo_causes_strife
+            #L5R238cD0eF2gH4iJ6kL8m: pursuing_ninjo_removes_strife
+            #L5R239nO1pQ3rS5tU7vW9x: ninjo_can_evolve
+        }
+    }
+
+    ^"Giri" DEF {
+        APPLIES TO [^"Samurai"]
+
+        STRING
+
+        # Sworn duty — the character's primary obligation to their
+        # lord, clan, or the Empire. Typically a concrete, achievable
+        # goal or ongoing responsibility.
+        #
+        # Success: Receive 10+ glory from lord
+        # Failure/Abandonment: Forfeit 10+ glory, receive new giri
+
+        RULES {
+            #L5R240yZ2aB4cD6eF8gH0i: giri_success_glory_reward
+            #L5R241jK3lM5nO7pQ9rS1t: giri_failure_glory_loss
+            #L5R242uV4wX6yZ8aB0cD2e: giri_can_change
+        }
+    }
+
+    ^"Complication" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Brief narrative moments arising from the tension between
+        # ninjo and giri. Only one per character per session.
+        # Character may stoically accept (no effect) or be moved
+        # by it (3 strife + 1 Void point).
+
+        RULES {
+            #L5R243fG5hI7jK9lM1nO3p: one_per_character_per_session
+            #L5R244qR6sT8uV0wX2yZ4a: accept_stoically_no_effect
+            #L5R245bC7dE9fG1hI3jK5l: moved_by_it_strife_and_void
+        }
+    }
+
+    # ===========================
+    # BUSHIDO
+    # ===========================
+
+    ^"Bushido" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The Way of the Warrior — the code of conduct that governs
+        # samurai life. Seven tenets, each associated with a clan
+        # that most embodies it. Adherence affects honor.
+
+        TENETS {
+            ^"Righteousness (Gi)" "Justice and moral correctness. Championed by the Crab."
+            ^"Courage (Yu)" "Bravery and willingness to act. Championed by the Crane."
+            ^"Compassion (Jin)" "Empathy and mercy toward others. Championed by the Phoenix."
+            ^"Respect (Rei)" "Courtesy and proper behavior. Championed by the Crane."
+            ^"Honesty (Makoto)" "Sincerity and truthfulness. Championed by the Dragon."
+            ^"Honor (Meyo)" "Personal integrity and reputation. Championed by the Lion."
+            ^"Duty (Chugo)" "Loyalty and service to one's lord. Championed by the Scorpion (in their own way)."
+        }
+
+        RULES {
+            #L5R246mN8oP0qR2sT4uV6w: bushido_affects_honor
+            #L5R247xY9zA1bC3dE5fG7h: clan_bushido_emphasis
+        }
+    }
+}

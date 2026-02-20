@@ -1,0 +1,370 @@
+BASE "L5R5e_Core_Techniques" {
+    NAME "Legend of the Five Rings 5th Edition - Technique types, categories, and core technique definitions"
+    VERSION "0.1"
+    RELEASE_DATE "2025-06-01"
+
+    # Core Rulebook: All technique types and their mechanics.
+    # Techniques are special abilities purchased with XP and unlocked
+    # through school curriculum advancement. Each has a type, rank,
+    # activation method, and associated ring/skill.
+
+    # ===========================
+    # TECHNIQUE FRAMEWORK
+    # ===========================
+
+    ^"Technique" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # All special abilities that characters can learn. Each technique
+        # belongs to a technique group and has a rank (1-5). Techniques
+        # are acquired through school curriculum or purchased with XP.
+
+        PROPERTIES {
+            ^"Name" STRING REQUIRED
+            ^"Type" ENUM ["Kata", "Kiho", "Invocation", "Ritual", "Shuji", "Maho", "Ninjutsu", "Inversion", "School Ability", "Mastery Ability"]
+            ^"Rank" INTEGER MIN 1 MAX 6
+            ^"Activation" ENUM ["Action", "Downtime Activity", "Opportunity", "Permanent", "Triggered"]
+            ^"Ring" STRING       # Associated ring or "Any"
+            ^"Skill" STRING      # Associated skill
+            ^"TN" INTEGER        # Target number if applicable
+            ^"Description" STRING
+            ^"Effects" STRING
+            ^"Opportunities" STRING  # Special (op) spend options
+            ^"Prerequisites" STRING  # School rank, ring values, etc.
+        }
+
+        RULES {
+            #L5R300aB2cD4eF6gH8iJ0k: technique_rank_limits_access
+            #L5R301lM3nO5pQ7rS9tU1v: curriculum_techniques_cost_less_xp
+            #L5R302wX4yZ6aB8cD0eF2g: non_curriculum_techniques_cost_more
+        }
+    }
+
+    # ===========================
+    # KATA (kata) — MARTIAL TECHNIQUES
+    # ===========================
+
+    ^"Kata" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Martial combat techniques practiced by bushi and warriors.
+        # Kata represent specific fighting forms, weapon techniques,
+        # and battlefield maneuvers. Available as actions or
+        # opportunity spends during combat.
+        #
+        # Symbol: (kata)
+        # Available to: Schools listing Kata in technique groups
+        # Cost: 3 XP (curriculum), rank × 3 XP (non-curriculum)
+
+        SUBCATEGORIES {
+            "General Kata" "Available to any martial character"
+            "Close Combat Kata" "Melee weapon techniques"
+            "Ranged Combat Kata" "Bow and ranged weapon techniques"
+            "Unarmed Kata" "Bare-handed combat techniques"
+        }
+
+        EXAMPLES {
+            ^"Striking as Air" RANK 1 "(kata) — Air. Action: Make Attack check using Air. +1 TN to hit you until start of next turn."
+            ^"Striking as Earth" RANK 1 "(kata) — Earth. Action: Make Attack check using Earth. Reduce crit severity by Earth ring."
+            ^"Striking as Fire" RANK 1 "(kata) — Fire. Action: Make Attack check using Fire. If (st) kept, deal +1 bonus damage."
+            ^"Striking as Water" RANK 1 "(kata) — Water. Action: Make Attack check using Water. May move 1 range band."
+            ^"Striking as Void" RANK 1 "(kata) — Void. Action: Make Attack check using Void. Ignore 1 quality on target's armor."
+            ^"Heartpiercing Strike" RANK 3 "(kata) — Fire. Action: Make devastating Attack targeting vitals."
+            ^"Lord Hida's Grip" RANK 4 "(kata) — Earth. Powerful grappling technique."
+            ^"Crescent Moon Style" RANK 5 "(kata) — Void. Master dual-wielding technique."
+        }
+
+        RULES {
+            #L5R303hI5jK7lM9nO1pQ3r: kata_require_martial_school
+            #L5R304sT6uV8wX0yZ2aB4c: kata_activated_in_combat
+            #L5R305dE7fG9hI1jK3lM5n: kata_striking_as_ring_pattern
+        }
+    }
+
+    # ===========================
+    # KIHO (kiho) — MONASTIC TECHNIQUES
+    # ===========================
+
+    ^"Kiho" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Spiritual techniques practiced by monks who align their
+        # personal ki with the cosmic forces. Each kiho has two parts:
+        # an enhancement (persistent passive benefit while in correct
+        # stance) and a burst (powerful one-time effect that can be
+        # triggered under specific conditions).
+        #
+        # Symbol: (kiho)
+        # Available to: Schools listing Kiho in technique groups (monks)
+        # Cost: 3 XP (curriculum), rank × 3 XP (non-curriculum)
+
+        STRUCTURE {
+            ^"Enhancement" "Persistent benefit active while in the kiho's associated stance"
+            ^"Burst" "Powerful one-time effect triggered by spending Void point or meeting condition"
+        }
+
+        EXAMPLES {
+            ^"Earth Needs No Eyes" RANK 1 "(kiho) — Earth. Enhancement: Ignore visibility penalties. Burst: Sense all creatures within range 2."
+            ^"Ride the Water Dragon" RANK 3 "(kiho) — Water. Enhancement: +1 movement. Burst: Move instantly up to 3 range bands."
+            ^"The Immovable Hand of Peace" RANK 5 "(kiho) — Void. Enhancement: Cannot be moved against will. Burst: End all conflicts in area."
+        }
+
+        RULES {
+            #L5R306oP8qR0sT2uV4wX6y: kiho_require_monk_school
+            #L5R307zA9bC1dE3fG5hI7j: kiho_enhancement_persistent
+            #L5R308kL0mN2oP4qR6sT8u: kiho_burst_one_time_effect
+            #L5R309vW1xY3zA5bC7dE9f: kiho_stance_requirement
+        }
+    }
+
+    # ===========================
+    # INVOCATIONS (invocation) — ELEMENTAL PRAYERS
+    # ===========================
+
+    ^"Invocation" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Prayers to the elemental kami practiced by shugenja.
+        # Invocations call upon the spirits of Air, Earth, Fire, Water,
+        # or the Fortunes to produce supernatural effects. Each requires
+        # a Theology check and has specific elemental requirements.
+        #
+        # Symbol: (invocation)
+        # Available to: Schools listing Invocations in technique groups (shugenja)
+        # Cost: 3 XP (curriculum), rank × 3 XP (non-curriculum)
+        #
+        # Can be Importuned: Spend material offerings to guarantee activation
+        # at cost of additional strife and potential consequences.
+
+        ELEMENTAL_CATEGORIES ["Air Invocations", "Earth Invocations", "Fire Invocations", "Water Invocations"]
+
+        EXAMPLES {
+            ^"Path to Inner Peace" RANK 1 "(invocation) — Air. Action: Remove strife from a target."
+            ^"Grasp of Earth" RANK 1 "(invocation) — Earth. Action: Immobilize a target with earthen bonds."
+            ^"Katana of Fire" RANK 2 "(invocation) — Fire. Action: Create a weapon of pure flame."
+            ^"Hands of the Tides" RANK 1 "(invocation) — Water. Action: Move water or heal with cleansing flow."
+            ^"Rise, Flame" RANK 3 "(invocation) — Fire. Action: Summon a devastating column of fire."
+            ^"Earthquake" RANK 5 "(invocation) — Earth. Action: Shake the earth itself, devastating structures."
+        }
+
+        RULES {
+            #L5R310gH2iJ4kL6mN8oP0q: invocations_require_shugenja_school
+            #L5R311rS3tU5vW7xY9zA1b: invocations_use_theology_check
+            #L5R312cD4eF6gH8iJ0kL2m: invocations_element_specific
+            #L5R313nO5pQ7rS9tU1vW3x: importune_mechanic_guaranteed_activation
+        }
+    }
+
+    # ===========================
+    # RITUALS (ritual) — CEREMONIAL TECHNIQUES
+    # ===========================
+
+    ^"Ritual" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Lengthy ceremonial practices performed during downtime.
+        # Rituals produce powerful but slow effects: blessings,
+        # divinations, cleansings, and communions with spirits.
+        # Less dramatic than invocations but with deeper effects.
+        #
+        # Symbol: (ritual)
+        # Available to: Schools listing Rituals in technique groups
+        # Cost: 3 XP (curriculum), rank × 3 XP (non-curriculum)
+        # Activation: Downtime activity (requires extended time)
+
+        EXAMPLES {
+            ^"Commune with the Spirits" RANK 1 "(ritual). Downtime: Communicate with local kami to learn about the area."
+            ^"Cleansing Rite" RANK 1 "(ritual). Downtime: Purify an area or object of spiritual corruption."
+            ^"Tea Ceremony" RANK 1 "(ritual). Downtime: Formal tea service that restores Void points and removes strife for participants."
+            ^"Divination" RANK 2 "(ritual). Downtime: Read omens and portents to gain insight about future events."
+            ^"Threshold Barrier" RANK 3 "(ritual). Downtime: Ward an area against supernatural intrusion."
+        }
+
+        RULES {
+            #L5R314yZ6aB8cD0eF2gH4i: rituals_require_downtime
+            #L5R315jK7lM9nO1pQ3rS5t: rituals_powerful_slow_effects
+            #L5R316uV8wX0yZ2aB4cD6e: rituals_available_to_spiritual_schools
+        }
+    }
+
+    # ===========================
+    # SHUJI (shuji) — SOCIAL TECHNIQUES
+    # ===========================
+
+    ^"Shuji" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Social and verbal techniques used by courtiers and diplomats.
+        # Shuji represent rhetorical forms, social gambits, and
+        # influence techniques. Available as actions or opportunity
+        # spends during social encounters and intrigues.
+        #
+        # Symbol: (shuji)
+        # Available to: Schools listing Shuji in technique groups (courtiers)
+        # Cost: 3 XP (curriculum), rank × 3 XP (non-curriculum)
+
+        EXAMPLES {
+            ^"Shallow Waters" RANK 1 "(shuji) — Air. Action: Read target's emotional state and intentions."
+            ^"Stirring the Embers" RANK 1 "(shuji) — Fire. Action: Provoke target into emotional outburst."
+            ^"All in Jest" RANK 1 "(shuji) — Water. Action: Defuse tense situation with humor."
+            ^"Pillar of Calm" RANK 2 "(shuji) — Earth. Action: Bolster allies' composure against social attacks."
+            ^"Tributaries of Trade" RANK 2 "(shuji) — Water. Action: Negotiate favorable trade terms."
+            ^"Dazzling Performance" RANK 3 "(shuji) — Fire. Action: Captivate audience with art or oratory."
+            ^"Bravado" RANK 3 "(shuji) — Water. Action: Project confidence to demoralize opponents."
+            ^"Lady Doji's Decree" RANK 5 "(shuji) — Void. Action: Issue irrefutable social command."
+        }
+
+        RULES {
+            #L5R317fG9hI1jK3lM5nO7p: shuji_social_techniques
+            #L5R318qR0sT2uV4wX6yZ8a: shuji_available_to_courtier_schools
+            #L5R319bC1dE3fG5hI7jK9l: shuji_used_in_intrigues
+        }
+    }
+
+    # ===========================
+    # MAHO (maho) — DARK SORCERY
+    # ===========================
+
+    ^"Maho" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Evil sorcerous techniques that draw power from blood sacrifice
+        # and pacts with kansen (malevolent spirits). Maho is forbidden
+        # throughout the Empire and practicing it is punishable by death.
+        # Maho-tsukai (blood sorcerers) risk corruption of their soul.
+        #
+        # Symbol: (maho)
+        # Available to: Rare — typically NPC villains; some schools in
+        #   Shadowlands sourcebook grant access
+        # Cost: 3 XP
+        # Special: Using maho often requires blood sacrifice (fatigue)
+        #   and risks Taint accumulation
+
+        EXAMPLES {
+            ^"Incite Haunting" RANK 1 "(maho). Action: Cause spiritual disturbance targeting a location."
+            ^"Sinful Whispers" RANK 2 "(maho). Action: Plant compulsive thoughts in target's mind."
+            ^"Dark Wings" RANK 3 "(maho). Action: Fly on wings of shadow."
+        }
+
+        RULES {
+            #L5R320mN2oP4qR6sT8uV0w: maho_forbidden_throughout_empire
+            #L5R321xY3zA5bC7dE9fG1h: maho_requires_blood_sacrifice
+            #L5R322iJ4kL6mN8oP0qR2s: maho_risks_taint
+            #L5R323tU5vW7xY9zA1bC3d: maho_punishable_by_death
+        }
+    }
+
+    # ===========================
+    # NINJUTSU (ninjutsu) — SHINOBI TECHNIQUES
+    # ===========================
+
+    ^"Ninjutsu" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Secretive techniques of spies, assassins, and shinobi.
+        # Ninjutsu covers infiltration, disguise, poison, sabotage,
+        # and assassination. Primarily associated with the Scorpion Clan
+        # but known to others who deal in shadows.
+        #
+        # Symbol: (ninjutsu)
+        # Available to: Schools listing Ninjutsu in technique groups (shinobi)
+        # Cost: 3 XP (curriculum), rank × 3 XP (non-curriculum)
+
+        EXAMPLES {
+            ^"Skulk" RANK 1 "(ninjutsu). Action: Move silently and avoid detection."
+            ^"Deadly Sting" RANK 1 "(ninjutsu). Action: Deliver a concealed weapon strike."
+            ^"Noxious Cloud" RANK 3 "(ninjutsu). Action: Create a cloud of poison or smoke."
+            ^"Silencing Stroke" RANK 4 "(ninjutsu). Action: Kill silently before target can raise alarm."
+        }
+
+        RULES {
+            #L5R324eF6gH8iJ0kL2mN4o: ninjutsu_require_shinobi_school
+            #L5R325pQ7rS9tU1vW3xY5z: ninjutsu_stealth_and_assassination
+            #L5R326aB8cD0eF2gH4iJ6k: ninjutsu_dishonored_by_society
+        }
+    }
+
+    # ===========================
+    # INVERSIONS (inversion) — VOID TECHNIQUES
+    # ===========================
+
+    ^"Inversion" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Rare and dangerous techniques that manipulate the Void itself.
+        # Practiced by ishiken (Void shugenja) and those who commune
+        # directly with the nothingness between elements. Inversions
+        # are unpredictable and can have unintended consequences.
+        #
+        # Symbol: (inversion)
+        # Available to: Schools listing Inversions (primarily Void shugenja)
+        # Cost: 3 XP (curriculum), rank × 3 XP (non-curriculum)
+        # Special: When performing an inversion, the character receives
+        #   1 fatigue for each kept (st) result. Inversions that use
+        #   Support actions also cause fatigue for kept (st) on the
+        #   supported check.
+
+        EXAMPLES {
+            ^"Void Awakening" RANK 1 "(inversion). Action: Sense supernatural presences and Void disturbances."
+            ^"Sever Ties" RANK 3 "(inversion). Action: Sever a spiritual connection or bond."
+            ^"Unmake" RANK 5 "(inversion). Action: Dissolve an object or effect into the Void."
+        }
+
+        RULES {
+            #L5R327lM9nO1pQ3rS5tU7v: inversions_require_ishiken
+            #L5R328wX0yZ2aB4cD6eF8g: inversions_cause_fatigue_on_strife
+            #L5R329hI1jK3lM5nO7pQ9r: inversions_unpredictable_consequences
+        }
+    }
+
+    # ===========================
+    # MANTRA (mantra) — MEDITATION TECHNIQUES
+    # ===========================
+
+    ^"Mantra" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Contemplative techniques combining meditation and spiritual
+        # focus. Mantras bridge kiho and invocations, allowing certain
+        # monks and priests to channel elemental energy through
+        # disciplined mental practice rather than prayer or martial arts.
+        #
+        # Symbol: (mantra)
+        # Available to: Sourcebook schools (Celestial Realms, etc.)
+
+        RULES {
+            #L5R330sT2uV4wX6yZ8aB0c: mantras_meditation_focus
+            #L5R331dE3fG5hI7jK9lM1n: mantras_bridge_kiho_invocations
+        }
+    }
+
+    # ===========================
+    # TECHNIQUE PREREQUISITES
+    # ===========================
+
+    ^"Technique Prerequisite" DEF {
+
+        # Symbol: (prereq)
+        # Requirements that must be met before a technique can be learned.
+        # Common prerequisites include school rank, ring values, skill ranks,
+        # other techniques, and clan affiliation.
+        #
+        # Curriculum techniques marked with = have no prerequisites when
+        # acquired through normal school advancement.
+
+        PREREQUISITE_TYPES {
+            "School Rank" "Character must be at least the specified school rank"
+            "Ring Value" "Character must have the specified ring at a minimum value"
+            "Skill Rank" "Character must have the specified skill at a minimum rank"
+            "Other Technique" "Character must already know a prerequisite technique"
+            "Clan" "Character must belong to a specific clan"
+            "Curriculum" "Technique appears in character's school curriculum (reduced cost)"
+        }
+
+        RULES {
+            #L5R332oP4qR6sT8uV0wX2y: prerequisites_must_be_met
+            #L5R333zA5bC7dE9fG1hI3j: curriculum_mark_no_prereq
+            #L5R334kL6mN8oP0qR2sT4u: non_curriculum_higher_cost
+        }
+    }
+}

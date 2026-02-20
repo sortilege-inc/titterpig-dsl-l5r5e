@@ -1,0 +1,1637 @@
+EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
+    NAME "Legend of the Five Rings 5th Edition - Children of the Five Winds: New Player Options"
+    VERSION "0.1"
+    RELEASE_DATE "2025-06-01"
+
+    # Children of the Five Winds (Chapters 2 and 3): Fox Minor Clan, Kitsune family,
+    # new schools, advantages, disadvantages, heritages, weapons, armor,
+    # personal effects, blessed treasures, meishodo talismans, item patterns,
+    # techniques (kata, rituals, shuji, invocation), titles, conditions, demeanor.
+
+    # ===========================
+    # FOX MINOR CLAN
+    # ===========================
+
+    ^"Fox Minor Clan" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The Fox consider themselves representatives of nature
+        # and advocates for Senkyo. With literal fox spirits in their
+        # bloodline, the Fox commune with nature and bargain with
+        # forest spirits to maintain harmony between humans and
+        # animals. After centuries of isolation, they are now considering
+        # becoming more involved in the Empire's politics.
+
+        PROPERTIES {
+            ^"Clan" STRING "Fox" FIXED
+            ^"Ring Increase" STRING "+1 Earth"
+            ^"Skill Increase" STRING "+1 Survival"
+            ^"Status" INTEGER DEFAULT 30
+        }
+
+        RULES {
+            #L5RCW01aB2cD4eF6gH8iJ0: fox_representatives_of_nature
+            #L5RCW02kL3mN5oP7qR9sT1u: fox_advocates_for_senkyo
+        }
+    }
+
+    ^"Kitsune Family" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Members of the Kitsune family are partially descended
+        # from shapeshifting foxes and enjoy a close connection
+        # with forest denizens. Outgoing on the surface, they are
+        # slow to trust outsiders due to hardships endured from
+        # Great Clan machinations.
+
+        PROPERTIES {
+            ^"Family" STRING "Kitsune" FIXED
+            ^"Ring Increase" STRING "+1 Air or +1 Water"
+            ^"Skill Increases" STRING "+1 Fitness, +1 Theology"
+            ^"Glory" INTEGER DEFAULT 40
+            ^"Starting Wealth" STRING "2 koku"
+        }
+
+        RULES {
+            #L5RCW03vW4xY6zA8bC0dE2f: kitsune_descended_from_foxes
+            #L5RCW04gH5iJ7kL9mN1oP3q: kitsune_slow_to_trust_outsiders
+        }
+    }
+
+    # ===========================
+    # NEW SCHOOLS
+    # ===========================
+
+    ^"Ganzu Guardian Tradition" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The Ganzu people of the Hidden Valley are in some ways
+        # the sixth great family of the Unicorn Clan. Their battle
+        # traditions are suited to desert terrain, teaching warriors
+        # to fight with precision and let the foe exhaust themselves.
+
+        PROPERTIES {
+            ^"School" STRING "Ganzu Guardian" FIXED
+            ^"School Roles" LIST OF STRING ["Bushi"]
+            ^"Starting Rings" STRING "+1 Earth, +1 Water"
+            ^"Starting Skills" STRING "Choose five: +1 Command, +1 Fitness, +1 Labor, +1 Martial Arts [Melee], +1 Medicine, +1 Sentiment, +1 Tactics"
+            ^"Starting Honor" INTEGER DEFAULT 45
+            ^"Available Technique Groups" LIST OF STRING ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Kata: = Slashing Sandstorm Style; Shuji (choose one): Honest Assessment, Shallow Waters"
+            ^"School Ability" STRING "Moment of Certainty"
+            ^"Mastery Ability" STRING "Measured Force"
+        }
+
+        ^"Moment of Certainty" DEF {
+            # Once per scene after you defend against damage, you
+            # may roll a number of skill dice equal to the fatigue you
+            # received this way. Choose a number of those dice up to
+            # your school rank and reserve them. Until end of scene,
+            # when you perform an Attack action check, after choosing
+            # kept dice, you may add one reserved die as an additional
+            # kept die.
+        }
+
+        CURRICULUM {
+            ^"Rank 1" {
+                "Martial" SKILL_GROUP
+                "Command" SKILL
+                "Survival" SKILL
+                "Theology" SKILL
+                "Rank 1 Water Shuji (shuji)" TECH_GROUP
+                "Distracting Flurry Style (kata)" TECHNIQUE
+                "Soaring Slice (kata)" TECHNIQUE
+            }
+            ^"Rank 2" {
+                "Social" SKILL_GROUP
+                "Fitness" SKILL
+                "Martial Arts [Melee]" SKILL
+                "Theology" SKILL
+                "Rank 1-2 Kata (kata)" TECH_GROUP
+                "Scouring Wind Style (kata)" TECHNIQUE
+                "Feigned Opening (shuji)" TECHNIQUE
+            }
+            ^"Rank 3" {
+                "Trade" SKILL_GROUP
+                "Fitness" SKILL
+                "Martial Arts [Melee]" SKILL
+                "Tactics" SKILL
+                "Rank 1-3 Earth Shuji (shuji)" TECH_GROUP
+                "Thunderbolt Style (kata)" TECHNIQUE
+                "Center the World (ritual)" TECHNIQUE
+            }
+            ^"Rank 4" {
+                "Martial" SKILL_GROUP
+                "Command" SKILL
+                "Survival" SKILL
+                "Theology" SKILL
+                "Rank 1-4 Kata (kata)" TECH_GROUP
+                "Rouse the Soul (shuji)" TECHNIQUE
+                "Regal Bearing (shuji)" TECHNIQUE
+            }
+            ^"Rank 5" {
+                "Scholar" SKILL_GROUP
+                "Command" SKILL
+                "Martial Arts [Melee]" SKILL
+                "Survival" SKILL
+                "Rank 1-5 Water Shuji (shuji)" TECH_GROUP
+                "The Immovable Hand of Peace (shuji)" TECHNIQUE
+                "Striking as Void (kata)" TECHNIQUE
+            }
+            ^"Rank 6" {
+                "Measured Force (Mastery Ability): When you use your school ability to add kept dice to a check, you may add a number of your reserved dice up to your ranks in Fitness (instead of only one)."
+            }
+        }
+
+        RULES {
+            #L5RCW05rS6tU8vW0xY2zA4b: ganzu_guardian_desert_combat
+            #L5RCW06cD7eF9gH1iJ3kL5m: ganzu_guardian_precision_fighting
+        }
+    }
+
+    ^"Ide Emissary School" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The Ide family specializes in retaining relationships
+        # through trade and good will. Emissaries learn the customs,
+        # protocols, and styles of any court they visit, from Rokugani
+        # castles to Ujik ordus to Qamarist spires of academia.
+
+        PROPERTIES {
+            ^"School" STRING "Ide Emissary" FIXED
+            ^"School Roles" LIST OF STRING ["Courtier", "Bushi"]
+            ^"Starting Rings" STRING "+1 Fire, +1 Water"
+            ^"Starting Skills" STRING "Choose five: +1 Courtesy, +1 Culture, +1 Games, +1 Government, +1 Martial Arts [Unarmed], +1 Sentiment, +1 Survival"
+            ^"Starting Honor" INTEGER DEFAULT 50
+            ^"Available Technique Groups" LIST OF STRING ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Shuji: = Glorious Entrance; Shuji (choose one): Stirring the Embers, Well of Desire"
+            ^"School Ability" STRING "Disarming Demeanor"
+            ^"Mastery Ability" STRING "Student of Many Courts"
+        }
+
+        ^"Disarming Demeanor" DEF {
+            # When you perform a Support action check, you may
+            # spend (op) as follows: (op)+: Choose one character in
+            # the scene with vigilance lower than your school ranks
+            # plus (op) spent this way. You treat that character's focus
+            # and vigilance each as 1 lower until end of scene.
+        }
+
+        CURRICULUM {
+            ^"Rank 1" {
+                "Social" SKILL_GROUP
+                "Culture" SKILL
+                "Sentiment" SKILL
+                "Survival" SKILL
+                "Rank 1 Earth Shuji (shuji)" TECH_GROUP
+                "Open-Hand Style (kata)" TECHNIQUE
+                "Cultural Exchange (ritual)" TECHNIQUE
+            }
+            ^"Rank 2" {
+                "Social" SKILL_GROUP
+                "Fitness" SKILL
+                "Government" SKILL
+                "Martial Arts [Unarmed]" SKILL
+                "Rank 1-2 Fire Shuji (shuji)" TECH_GROUP
+                "Entice with Offerings (shuji)" TECHNIQUE
+                "Solidify Gratitude (shuji)" TECHNIQUE
+            }
+            ^"Rank 3" {
+                "Trade" SKILL_GROUP
+                "Command" SKILL
+                "Meditation" SKILL
+                "Tactics" SKILL
+                "Rank 1-3 Water Shuji (shuji)" TECH_GROUP
+                "Everyone Has a Price (shuji)" TECHNIQUE
+                "Incite Wrath (shuji)" TECHNIQUE
+            }
+            ^"Rank 4" {
+                "Social" SKILL_GROUP
+                "Aesthetics" SKILL
+                "Design" SKILL
+                "Composition" SKILL
+                "Rank 1-4 Fire Shuji (shuji)" TECH_GROUP
+                "Sear the Wound (shuji)" TECHNIQUE
+                "Crashing Wave Style (kata)" TECHNIQUE
+            }
+            ^"Rank 5" {
+                "Trade" SKILL_GROUP
+                "Command" SKILL
+                "Games" SKILL
+                "Tactics" SKILL
+                "Rank 1-5 Earth Shuji (shuji)" TECH_GROUP
+                "Rouse the Soul (shuji)" TECHNIQUE
+                "Striking as Void (kata)" TECHNIQUE
+            }
+            ^"Rank 6" {
+                "Student of Many Courts (Mastery Ability, Action): Once per scene as a Support action, you may make a TN 3 Culture (Fire or Water) check targeting any number of other characters in the scene. If you succeed and chose Fire, each character gains the Emboldened condition. If you succeed and chose Water, each character removes 3 strife."
+            }
+        }
+
+        RULES {
+            #L5RCW07nO8pQ0rS2tU4vW6x: ide_emissary_cultural_adaptability
+            #L5RCW08yZ9aB1cD3eF5gH7i: ide_emissary_disarming_demeanor
+        }
+    }
+
+    ^"Iuchi Horse Lord Disciple School" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The Iuchi's Horse Lord Disciples follow an ancient tradition
+        # established by Iuchi's eldest child. Foremost experts in
+        # equine medicine, they are specialized Meishodo Masters
+        # who invoke equestrian spirits using unique talismans
+        # designed to adorn mounts rather than samurai.
+
+        PROPERTIES {
+            ^"School" STRING "Iuchi Horse Lord Disciple" FIXED
+            ^"School Roles" LIST OF STRING ["Shugenja", "Artisan"]
+            ^"Starting Rings" STRING "+1 Air, +1 Water"
+            ^"Starting Skills" STRING "Choose three: +1 Commerce, +1 Design, +1 Medicine, +1 Sentiment, +1 Survival, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Available Technique Groups" LIST OF STRING ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Invocations (choose one): Jurojin's Balm, Nature's Touch, Path to Inner Peace; Rituals: Commune with the Spirits, = Protection of the Flock; Shuji (choose one): Call to Ride, Shallow Waters"
+            ^"School Ability" STRING "The Horse Lord's Favor"
+            ^"Mastery Ability" STRING "The Noble Heart Shines Through"
+        }
+
+        ^"The Horse Lord's Favor" DEF {
+            # When you make a check to craft, improve, or maintain
+            # an item, you may imprint it with the Horse Lord's Favor,
+            # giving it one of your advantages or disadvantages. If the
+            # item is a meishodo talisman, you may give it an advantage
+            # or disadvantage from its sealed spirit. While an item with
+            # your Favor adorns a horse or Loyal Steed creature, the
+            # creature is Otherworldly and possesses the chosen trait.
+            # If a meishodo talisman, the creature may perform any
+            # techniques it contains. Sustain up to school rank items.
+            # Additionally, Medicine checks to remove fatigue or
+            # conditions from equine creatures add bonus successes
+            # equal to school rank.
+        }
+
+        CURRICULUM {
+            ^"Rank 1" {
+                "Scholar" SKILL_GROUP
+                "Courtesy" SKILL
+                "Design" SKILL
+                "Survival" SKILL
+                "Rank 1 Water Invocations (invocation)" TECH_GROUP
+                "Divination (ritual)" TECHNIQUE
+                "Sympathetic Energies (invocation)" TECHNIQUE
+            }
+            ^"Rank 2" {
+                "Artisan" SKILL_GROUP
+                "Commerce" SKILL
+                "Medicine" SKILL
+                "Theology" SKILL
+                "Rank 1-2 Rituals (ritual)" TECH_GROUP
+                "Artisan's Appraisal (shuji)" TECHNIQUE
+                "Call Upon the Wind (invocation)" TECHNIQUE
+            }
+            ^"Rank 3" {
+                "Martial" SKILL_GROUP
+                "Design" SKILL
+                "Medicine" SKILL
+                "Theology" SKILL
+                "Rank 1-3 Air Invocations (invocation)" TECH_GROUP
+                "Horse Whisperer (shuji)" TECHNIQUE
+                "Shadow of Days (ritual)" TECHNIQUE
+            }
+            ^"Rank 4" {
+                "Social" SKILL_GROUP
+                "Medicine" SKILL
+                "Survival" SKILL
+                "Theology" SKILL
+                "Rank 1-4 Earth Invocations (invocation)" TECH_GROUP
+                "Regal Bearing (shuji)" TECHNIQUE
+                "Ride the Water Dragon (kiho)" TECHNIQUE
+            }
+            ^"Rank 5" {
+                "Artisan" SKILL_GROUP
+                "Command" SKILL
+                "Survival" SKILL
+                "Theology" SKILL
+                "Rank 1-5 Water Invocations (invocation)" TECH_GROUP
+                "Buoyant Arrival (shuji)" TECHNIQUE
+                "Rouse the Soul (shuji)" TECHNIQUE
+            }
+            ^"Rank 6" {
+                "The Noble Heart Shines Through (Mastery Ability): Once per scene, spend 1 Void point to target any non-Shadowlands creature of silhouette 3 or greater, giving the target the Loyal Steed ability until end of scene. Make a Courtesy (Water) or Theology (Void) check with TN equal to target's vigilance. If you succeed, the target is favorable and willing to be ridden. Horses of the Blessed Herd (Utaku steeds) are immune."
+            }
+        }
+
+        RULES {
+            #L5RCW09jK0lM2nO4pQ6rS8t: horse_lord_meishodo_equine_mastery
+            #L5RCW10uV1wX3yZ5aB7cD9e: horse_lord_favor_imprint
+        }
+    }
+
+    ^"Kitsune Mediator School" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The Fox Clan's Kitsune Mediators are sent to places
+        # experiencing supernatural strife. They mediate between
+        # human and supernatural inhabitants, determining if
+        # problems are spiritual in nature and helping both sides
+        # reach new accords.
+
+        PROPERTIES {
+            ^"School" STRING "Kitsune Mediator" FIXED
+            ^"School Roles" LIST OF STRING ["Courtier", "Sage"]
+            ^"Starting Rings" STRING "+1 Void, +1 Water"
+            ^"Starting Skills" STRING "Choose five: +1 Command, +1 Courtesy, +1 Martial Arts [Ranged], +1 Medicine, +1 Meditation, +1 Performance, +1 Survival"
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Available Technique Groups" LIST OF STRING ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Rituals: Commune with the Spirits; Shuji (choose one): = Appreciate the Scenery, Shallow Waters"
+            ^"School Ability" STRING "Calm Counsel"
+            ^"Mastery Ability" STRING "Cool Heads Prevail"
+        }
+
+        ^"Calm Counsel" DEF {
+            # After a friendly character at range 0-4 receives strife,
+            # you may impose the Centered condition on that character.
+            # You can use this ability a number of times per scene up
+            # to your school rank.
+        }
+
+        CURRICULUM {
+            ^"Rank 1" {
+                "Social" SKILL_GROUP
+                "Aesthetics" SKILL
+                "Survival" SKILL
+                "Theology" SKILL
+                "Rank 1 Water Shuji (shuji)" TECH_GROUP
+                "Spiritual Survey (ritual)" TECHNIQUE
+                "Threshold Barrier (ritual)" TECHNIQUE
+            }
+            ^"Rank 2" {
+                "Scholar" SKILL_GROUP
+                "Courtesy" SKILL
+                "Fitness" SKILL
+                "Meditation" SKILL
+                "Rank 1-2 Rituals (ritual)" TECH_GROUP
+                "Complementary Experience (shuji)" TECHNIQUE
+                "Solidify Gratitude (shuji)" TECHNIQUE
+            }
+            ^"Rank 3" {
+                "Social" SKILL_GROUP
+                "Culture" SKILL
+                "Government" SKILL
+                "Sentiment" SKILL
+                "Rank 1-3 Earth Shuji (shuji)" TECH_GROUP
+                "Pillar of Calm (shuji)" TECHNIQUE
+                "Swaying Grass Evasion (kata)" TECHNIQUE
+            }
+            ^"Rank 4" {
+                "Scholar" SKILL_GROUP
+                "Command" SKILL
+                "Fitness" SKILL
+                "Tactics" SKILL
+                "Rank 1-4 Rituals (ritual)" TECH_GROUP
+                "Nature's Touch (invocation)" TECHNIQUE
+                "A Samurai's Fate (shuji)" TECHNIQUE
+            }
+            ^"Rank 5" {
+                "Social" SKILL_GROUP
+                "Aesthetics" SKILL
+                "Survival" SKILL
+                "Theology" SKILL
+                "Rank 1-5 Void Shuji (shuji)" TECH_GROUP
+                "By the Light of the Lord Moon (invocation)" TECHNIQUE
+                "Bend with the Storm (shuji)" TECHNIQUE
+            }
+            ^"Rank 6" {
+                "Cool Heads Prevail (Mastery Ability): Friendly Centered characters at range 0-4 from you treat their composure and endurance as increased by your ranks in Courtesy."
+            }
+        }
+
+        RULES {
+            #L5RCW11fG2hI4jK6lM8nO0p: kitsune_mediator_spiritual_mediation
+            #L5RCW12qR3sT5uV7wX9yZ1a: kitsune_mediator_calm_counsel
+        }
+    }
+
+    ^"Kitsune Naturalist School" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The shugenja of the Kitsune family are attuned to spirits
+        # of animals, plants, and primordial forces. Their tradition
+        # leads them to invoke elements in equal measure rather
+        # than favoring any single element.
+
+        PROPERTIES {
+            ^"School" STRING "Kitsune Naturalist" FIXED
+            ^"School Roles" LIST OF STRING ["Shugenja"]
+            ^"Starting Rings" STRING "+1 Air, +1 Earth"
+            ^"Starting Skills" STRING "Choose three: +1 Courtesy, +1 Fitness, +1 Meditation, +1 Sentiment, +1 Survival, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Available Technique Groups" LIST OF STRING ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Invocations: Nature's Touch; Invocations (choose two): Extinguish, Jurojin's Balm, Inari's Blessing; Rituals: Commune with the Spirits, = Spiritual Survey"
+            ^"School Ability" STRING "Natural Balance"
+            ^"Mastery Ability" STRING "Procession of Seasons"
+        }
+
+        ^"Natural Balance" DEF {
+            # When you succeed on a check to activate an invocation,
+            # if it is the first invocation of that element you have
+            # activated this scene, you may add bonus successes or
+            # kept dice set to (op) equal to your school rank.
+        }
+
+        CURRICULUM {
+            ^"Rank 1" {
+                "Scholar" SKILL_GROUP
+                "Design" SKILL
+                "Games" SKILL
+                "Survival" SKILL
+                "Rank 1 Air Invocations (invocation)" TECH_GROUP
+                "Wayfinder's Instincts (ritual)" TECHNIQUE
+                "Divination (ritual)" TECHNIQUE
+            }
+            ^"Rank 2" {
+                "Artisan" SKILL_GROUP
+                "Courtesy" SKILL
+                "Fitness" SKILL
+                "Theology" SKILL
+                "Rank 1-2 Earth Invocations (invocation)" TECH_GROUP
+                "Grasp of the Air Dragon (invocation)" TECHNIQUE
+                "Cunning Omission (shuji)" TECHNIQUE
+            }
+            ^"Rank 3" {
+                "Social" SKILL_GROUP
+                "Meditation" SKILL
+                "Sentiment" SKILL
+                "Survival" SKILL
+                "Rank 1-3 Water Invocations (invocation)" TECH_GROUP
+                "False Realm of the Fox Spirits (invocation)" TECHNIQUE
+                "Power of the Earth Dragon (invocation)" TECHNIQUE
+            }
+            ^"Rank 4" {
+                "Scholar" SKILL_GROUP
+                "Courtesy" SKILL
+                "Fitness" SKILL
+                "Survival" SKILL
+                "Rank 1-4 Fire Invocations (invocation)" TECH_GROUP
+                "Ever-Changing Waves (invocation)" TECHNIQUE
+                "Wolf's Proposal (shuji)" TECHNIQUE
+            }
+            ^"Rank 5" {
+                "Artisan" SKILL_GROUP
+                "Culture" SKILL
+                "Meditation" SKILL
+                "Theology" SKILL
+                "Rank 1-5 Air Invocations (invocation)" TECH_GROUP
+                "The Soul's Blade (invocation)" TECHNIQUE
+                "Rouse the Soul (shuji)" TECHNIQUE
+            }
+            ^"Rank 6" {
+                "Procession of Seasons (Mastery Ability): After you resolve the effects of an invocation, if you have successfully activated at least one Air, one Earth, one Fire, and one Water invocation during this scene, you may have a number of characters up to your ranks in Survival each remove half their strife and fatigue (rounded up). Once per scene."
+            }
+        }
+
+        RULES {
+            #L5RCW13bC4dE6fG8hI0jK2l: kitsune_naturalist_elemental_balance
+            #L5RCW14mN5oP7qR9sT1uV3w: kitsune_naturalist_natural_balance
+        }
+    }
+
+    ^"Sand Road Wayfinder Tradition" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Guides along the Sand Road who know the perils of each
+        # region's terrain, supernatural threats, and hostile humans.
+        # This school represents specialists from any region
+        # bordering the Sand Road.
+
+        PROPERTIES {
+            ^"School" STRING "Sand Road Wayfinder" FIXED
+            ^"School Roles" LIST OF STRING ["Bushi", "Shinobi"]
+            ^"Starting Rings" STRING "+1 Earth, +1 any other ring"
+            ^"Starting Skills" STRING "Choose five: +1 Command, +1 Commerce, +1 Labor, +1 Fitness, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Survival"
+            ^"Starting Honor" INTEGER DEFAULT 35
+            ^"Available Technique Groups" LIST OF STRING ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Kata (choose one): Striking as Air, Striking as Earth, Striking as Fire, Striking as Water; Rituals (choose one): = Traveler's Experience, = Wayfinder's Instincts"
+            ^"School Ability" STRING "Dunestrider"
+            ^"Mastery Ability" STRING "Lay of the Land"
+        }
+
+        ^"Dunestrider" DEF {
+            # At start of each scene, choose one terrain quality:
+            # Dangerous, Entangling, Imbalanced, or Obscuring.
+            # Each friendly character within a number of range bands
+            # equal to your school rank ignores negative effects of
+            # that terrain quality.
+        }
+
+        CURRICULUM {
+            ^"Rank 1" {
+                "Trade" SKILL_GROUP
+                "Command" SKILL
+                "Martial Arts [Melee]" SKILL
+                "Martial Arts [Ranged]" SKILL
+                "Rank 1 Kata (kata)" TECH_GROUP
+                "Distracting Flurry Style (kata)" TECHNIQUE
+                "Cultural Exchange (ritual)" TECHNIQUE
+            }
+            ^"Rank 2" {
+                "Martial" SKILL_GROUP
+                "Command" SKILL
+                "Medicine" SKILL
+                "Survival" SKILL
+                "Rank 1-2 Kata (kata)" TECH_GROUP
+                "Center the World (ritual)" TECHNIQUE
+                "Touchstone of Courage (shuji)" TECHNIQUE
+            }
+            ^"Rank 3" {
+                "Social" SKILL_GROUP
+                "Skulduggery" SKILL
+                "Survival" SKILL
+                "Tactics" SKILL
+                "Rank 1-3 Earth Shuji (shuji)" TECH_GROUP
+                "Iron in the Mountains Style (kata)" TECHNIQUE
+                "Skulk (ninjutsu)" TECHNIQUE
+            }
+            ^"Rank 4" {
+                "Scholar" SKILL_GROUP
+                "Meditation" SKILL
+                "Medicine" SKILL
+                "Survival" SKILL
+                "Rank 1-4 Kata (kata)" TECH_GROUP
+                "Noxious Cloud (ninjutsu)" TECHNIQUE
+                "Breath of Wind Style (kata)" TECHNIQUE
+            }
+            ^"Rank 5" {
+                "Trade" SKILL_GROUP
+                "Command" SKILL
+                "Martial Arts [Melee]" SKILL
+                "Martial Arts [Ranged]" SKILL
+                "Rank 1-5 Kata (kata)" TECH_GROUP
+                "Silencing Stroke (ninjutsu)" TECHNIQUE
+                "Rouse the Soul (shuji)" TECHNIQUE
+            }
+            ^"Rank 6" {
+                "Lay of the Land (Mastery Ability): Once per game session as a Support action or during a narrative scene, you may change which terrain quality your school ability affects. While in terrain with the chosen quality, you may add up to two bonus successes to each check you make."
+            }
+        }
+
+        RULES {
+            #L5RCW15xY6zA8bC0dE2fG4h: sand_road_wayfinder_terrain_mastery
+            #L5RCW16iJ7kL9mN1oP3qR5s: sand_road_wayfinder_dunestrider
+        }
+    }
+
+    ^"Scholar of al-Zawira Tradition" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # In the city of al-Zawira, Qamarist scholars push the
+        # bounds of knowledge in many fields. The massive scope
+        # of the Caliphate gives access to knowledge from all
+        # corners of a vast domain.
+
+        PROPERTIES {
+            ^"School" STRING "Scholar of al-Zawira" FIXED
+            ^"School Roles" LIST OF STRING ["Courtier"]
+            ^"Starting Rings" STRING "+1 Earth, +1 Fire"
+            ^"Starting Skills" STRING "Choose five: +1 Courtesy, +1 Culture, +1 Government, +1 Medicine, +1 Sentiment, +1 Survival, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 50
+            ^"Available Technique Groups" LIST OF STRING ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Rituals: = Shadow of Days; Shuji (choose one): Ancestry Unearthed, Cite the Facts, Stirring the Embers, Truth Burns through Lies"
+            ^"School Ability" STRING "Methodical Observation"
+            ^"Mastery Ability" STRING "Logical Conclusion"
+        }
+
+        ^"Methodical Observation" DEF {
+            # Once per scene when you make a Scholar skill check,
+            # you may reserve a number of dropped dice up to your
+            # school rank. Until end of scene, when you make a non-
+            # Scholar skill check, after choosing dice, you may add up
+            # to one reserved die as a kept die.
+        }
+
+        CURRICULUM {
+            ^"Rank 1" {
+                "Scholar" SKILL_GROUP
+                "Composition" SKILL
+                "Courtesy" SKILL
+                "Fitness" SKILL
+                "Rank 1 Rituals (ritual)" TECH_GROUP
+                "Glorious Entrance (shuji)" TECHNIQUE
+                "Solidify Gratitude (shuji)" TECHNIQUE
+            }
+            ^"Rank 2" {
+                "Social" SKILL_GROUP
+                "Culture" SKILL
+                "Survival" SKILL
+                "Tactics" SKILL
+                "Rank 1-2 Earth and Fire Shuji (shuji)" TECH_GROUP
+                "Shadow of Days (ritual)" TECHNIQUE
+                "Traveler's Experience (ritual)" TECHNIQUE
+            }
+            ^"Rank 3" {
+                "Scholar" SKILL_GROUP
+                "Commerce" SKILL
+                "Composition" SKILL
+                "Performance" SKILL
+                "Rank 1-3 Rituals (ritual)" TECH_GROUP
+                "Everyone Has a Price (shuji)" TECHNIQUE
+                "Wolf's Proposal (shuji)" TECHNIQUE
+            }
+            ^"Rank 4" {
+                "Social" SKILL_GROUP
+                "Government" SKILL
+                "Medicine" SKILL
+                "Theology" SKILL
+                "Rank 1-4 Air and Water Shuji (shuji)" TECH_GROUP
+                "Sear the Wound (shuji)" TECHNIQUE
+                "Pillar of Calm (shuji)" TECHNIQUE
+            }
+            ^"Rank 5" {
+                "Scholar" SKILL_GROUP
+                "Aesthetics" SKILL
+                "Command" SKILL
+                "Composition" SKILL
+                "Rank 1-5 Rituals (ritual)" TECH_GROUP
+                "Rank 1-5 Void Shuji (shuji)" TECHNIQUE
+                "Buoyant Arrival (shuji)" TECHNIQUE
+            }
+            ^"Rank 6" {
+                "Logical Conclusion (Mastery Ability): Once per game session when making a non-Scholar skill check, instead of rolling skill dice equal to your ranks in the skill used, you may roll skill dice equal to one of your Scholar skills of your choice."
+            }
+        }
+
+        RULES {
+            #L5RCW17tU8vW0xY2zA4bC6d: al_zawira_scholar_knowledge_mastery
+            #L5RCW18eF9gH1iJ3kL5mN7o: al_zawira_scholar_methodical_observation
+        }
+    }
+
+    ^"Shinjo Mounted Archer School" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # One of the Great Clans' oldest traditions. Students seek
+        # unity of horse and rider, mastering festival archery
+        # (yabusame and kasagake) and bowcraft from horseback.
+
+        PROPERTIES {
+            ^"School" STRING "Shinjo Mounted Archer" FIXED
+            ^"School Roles" LIST OF STRING ["Bushi", "Artisan"]
+            ^"Starting Rings" STRING "+1 Air, +1 Fire"
+            ^"Starting Skills" STRING "Choose five: +1 Culture, +1 Fitness, +1 Martial Arts [Ranged], +1 Meditation, +1 Performance, +1 Smithing, +1 Tactics"
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Available Technique Groups" LIST OF STRING ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Kata: = Pelting Hail Style; Kata (choose one): Hawk's Precision, Striking as Fire"
+            ^"School Ability" STRING "Unity of Horse and Rider"
+            ^"Mastery Ability" STRING "Spirit of the Sacred Horse"
+        }
+
+        ^"Unity of Horse and Rider" DEF {
+            # When you spend Void to seize the moment during a check
+            # using a bow, you may negate (st) symbols up to your school
+            # rank. If you succeed, gain bonus successes equal to the
+            # number of (st) negated. While riding your steed, all Martial
+            # Arts [Ranged] and Performance checks have unskilled
+            # assistance.
+        }
+
+        CURRICULUM {
+            ^"Rank 1" {
+                "Martial" SKILL_GROUP
+                "Courtesy" SKILL
+                "Smithing" SKILL
+                "Survival" SKILL
+                "Rank 1 Kata (kata)" TECH_GROUP
+                "Call to Ride (shuji)" TECHNIQUE
+                "Lady Shinjo's Speed (shuji)" TECHNIQUE
+            }
+            ^"Rank 2" {
+                "Artisan" SKILL_GROUP
+                "Martial Arts [Ranged]" SKILL
+                "Performance" SKILL
+                "Theology" SKILL
+                "Rank 1-2 Rituals (ritual)" TECH_GROUP
+                "Horse Whisperer (shuji)" TECHNIQUE
+                "Sudden Downpour Style (kata)" TECHNIQUE
+            }
+            ^"Rank 3" {
+                "Martial" SKILL_GROUP
+                "Performance" SKILL
+                "Smithing" SKILL
+                "Survival" SKILL
+                "Rank 1-3 Kata (kata)" TECH_GROUP
+                "Dazzling Performance (shuji)" TECHNIQUE
+                "Rallying Cry (shuji)" TECHNIQUE
+            }
+            ^"Rank 4" {
+                "Scholar" SKILL_GROUP
+                "Martial Arts [Ranged]" SKILL
+                "Meditation" SKILL
+                "Survival" SKILL
+                "Rank 1-4 Fire Shuji (shuji)" TECH_GROUP
+                "Pin the Fan (kata)" TECHNIQUE
+                "Wolf's Proposal (shuji)" TECHNIQUE
+            }
+            ^"Rank 5" {
+                "Martial" SKILL_GROUP
+                "Culture" SKILL
+                "Performance" SKILL
+                "Survival" SKILL
+                "Rank 1-5 Kata (kata)" TECH_GROUP
+                "Rouse the Soul (shuji)" TECHNIQUE
+                "Silencing Stroke (ninjutsu)" TECHNIQUE
+            }
+            ^"Rank 6" {
+                "Spirit of the Sacred Horse (Mastery Ability): Any steed you ride gains +4 endurance, +2 composure, +1 vigilance, and the Resplendent item quality. When you spend 1 or more Void points during a Martial Arts [Ranged] or Performance check, an item you have equipped gains the Sacred and Hewing item qualities, and you add kept dice set to (op) results equal to your Void ring."
+            }
+        }
+
+        RULES {
+            #L5RCW19pQ0rS2tU4vW6xY8z: shinjo_mounted_archer_unity
+            #L5RCW20aB1cD3eF5gH7iJ9k: shinjo_mounted_archer_sacred_horse
+        }
+    }
+
+    ^"Utaku Silent Shadow Yojimbo School" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # A relatively young school arising from the Unicorn's need
+        # to protect diplomats. Stoic, calm individuals with unyielding
+        # convictions and lethal fighting prowess, marrying Utaku
+        # and Shinjo traditions.
+
+        PROPERTIES {
+            ^"School" STRING "Utaku Silent Shadow Yojimbo" FIXED
+            ^"School Roles" LIST OF STRING ["Bushi", "Courtier"]
+            ^"Starting Rings" STRING "+1 Air, +1 Earth"
+            ^"Starting Skills" STRING "Choose five: +1 Courtesy, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Meditation, +1 Sentiment, +1 Survival, +1 Tactics"
+            ^"Starting Honor" INTEGER DEFAULT 45
+            ^"Available Technique Groups" LIST OF STRING ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Kata: = Crescent Moon Style; Kata (choose one): Cautious Tread, Warrior's Resolve"
+            ^"School Ability" STRING "Warden of the Five Winds"
+            ^"Mastery Ability" STRING "Reputation Sentinel"
+        }
+
+        ^"Warden of the Five Winds" DEF {
+            # When you make a check to perform the Guard action, you
+            # gain a bonus success if you or your target is mounted.
+            # When you succeed on a Guard action check, you may
+            # spend (op) as follows: (op)+: Give a target at range 0-3
+            # the Emboldened condition. Maximum (op) spent this way
+            # up to your school rank.
+        }
+
+        CURRICULUM {
+            ^"Rank 1" {
+                "Martial" SKILL_GROUP
+                "Courtesy" SKILL
+                "Sentiment" SKILL
+                "Survival" SKILL
+                "Rank 1 Kata (kata)" TECH_GROUP
+                "Call to Ride (shuji)" TECHNIQUE
+                "Stonewall Tactics (shuji)" TECHNIQUE
+            }
+            ^"Rank 2" {
+                "Social" SKILL_GROUP
+                "Tactics" SKILL
+                "Martial Arts [Melee]" SKILL
+                "Meditation" SKILL
+                "Rank 1-2 Earth Shuji (shuji)" TECH_GROUP
+                "Iron Forest Style (kata)" TECHNIQUE
+                "Tactical Assessment (kata)" TECHNIQUE
+            }
+            ^"Rank 3" {
+                "Martial" SKILL_GROUP
+                "Government" SKILL
+                "Sentiment" SKILL
+                "Survival" SKILL
+                "Rank 1-3 General Kata (kata)" TECH_GROUP
+                "Center the World (ritual)" TECHNIQUE
+                "Thunderclap Strike (kata)" TECHNIQUE
+            }
+            ^"Rank 4" {
+                "Scholar" SKILL_GROUP
+                "Command" SKILL
+                "Courtesy" SKILL
+                "Tactics" SKILL
+                "Rank 1-4 Close Combat Kata (kata)" TECH_GROUP
+                "A Samurai's Fate (shuji)" TECHNIQUE
+                "Rouse the Soul (shuji)" TECHNIQUE
+            }
+            ^"Rank 5" {
+                "Martial" SKILL_GROUP
+                "Courtesy" SKILL
+                "Sentiment" SKILL
+                "Survival" SKILL
+                "Rank 1-5 Kata (kata)" TECH_GROUP
+                "Buoyant Arrival (shuji)" TECHNIQUE
+                "The Immovable Hand of Peace (shuji)" TECHNIQUE
+            }
+            ^"Rank 6" {
+                "Reputation Sentinel (Mastery Ability): You may use the Guard action during intrigues. When you do, increase the TN of Scheme action checks against the guarded target by 1, plus an additional 1 per two bonus successes."
+            }
+        }
+
+        RULES {
+            #L5RCW21lM2nO4pQ6rS8tU0v: utaku_silent_shadow_guard_mastery
+            #L5RCW22wX3yZ5aB7cD9eF1g: utaku_silent_shadow_reputation_sentinel
+        }
+    }
+
+    ^"Ujik Nomad Tradition" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The Ujik of the Plains of Wind and Stone live as nomadic
+        # herders. Their riders are nearly unparalleled, and members
+        # must master a wide array of skills for their way of life.
+
+        PROPERTIES {
+            ^"School" STRING "Ujik Nomad" FIXED
+            ^"School Roles" LIST OF STRING ["Bushi"]
+            ^"Starting Rings" STRING "+1 Earth, +1 Water"
+            ^"Starting Skills" STRING "Choose five: +1 Fitness, +1 Martial Arts [Ranged], +1 Martial Arts [Unarmed], +1 Medicine, +1 Performance, +1 Survival, +1 Tactics"
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Available Technique Groups" LIST OF STRING ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Shuji: Call to Ride; Rituals (choose one): = Protection of the Flock, = Wayfinder's Instincts"
+            ^"School Ability" STRING "Move as the Wind"
+            ^"Mastery Ability" STRING "Legendary Endurance"
+        }
+
+        ^"Move as the Wind" DEF {
+            # When you make a Movement action check or check to
+            # travel at speed in narrative time, if you succeed, you may
+            # suffer up to 2 fatigue to add that many bonus successes.
+            # After you remove fatigue at end of scene, you may remove
+            # additional fatigue up to your school rank.
+        }
+
+        CURRICULUM {
+            ^"Rank 1" {
+                "Social" SKILL_GROUP
+                "Martial Arts [Ranged]" SKILL
+                "Martial Arts [Unarmed]" SKILL
+                "Survival" SKILL
+                "Rank 1 Kata (kata)" TECH_GROUP
+                "Traveler's Experience (ritual)" TECHNIQUE
+                "Lady Shinjo's Speed (shuji)" TECHNIQUE
+            }
+            ^"Rank 2" {
+                "Trade" SKILL_GROUP
+                "Courtesy" SKILL
+                "Martial Arts [Ranged]" SKILL
+                "Martial Arts [Unarmed]" SKILL
+                "Rank 1-2 Earth Shuji (shuji)" TECH_GROUP
+                "Descending Swarm Shot (kata)" TECHNIQUE
+                "Stalking Leopard Style (kata)" TECHNIQUE
+            }
+            ^"Rank 3" {
+                "Scholar" SKILL_GROUP
+                "Commerce" SKILL
+                "Performance" SKILL
+                "Survival" SKILL
+                "Rank 1-3 Rituals (ritual)" TECH_GROUP
+                "Thunderbolt Style (kata)" TECHNIQUE
+                "Sudden Downpour Style (kata)" TECHNIQUE
+            }
+            ^"Rank 4" {
+                "Martial" SKILL_GROUP
+                "Command" SKILL
+                "Commerce" SKILL
+                "Survival" SKILL
+                "Rank 1-4 Water Shuji (shuji)" TECH_GROUP
+                "Pin the Fan (kata)" TECHNIQUE
+                "Pillar of Calm (shuji)" TECHNIQUE
+            }
+            ^"Rank 5" {
+                "Artisan" SKILL_GROUP
+                "Martial Arts [Ranged]" SKILL
+                "Martial Arts [Unarmed]" SKILL
+                "Survival" SKILL
+                "Rank 1-5 Kata (kata)" TECH_GROUP
+                "Rouse the Soul (shuji)" TECHNIQUE
+                "Silencing Stroke (ninjutsu)" TECHNIQUE
+            }
+            ^"Rank 6" {
+                "Legendary Endurance (Mastery Ability): Increase your endurance by your ranks in Survival. While riding a mount, increase the mount's endurance by your ranks in Survival."
+            }
+        }
+
+        RULES {
+            #L5RCW23hI4jK6lM8nO0pQ2r: ujik_nomad_movement_mastery
+            #L5RCW24sT5uV7wX9yZ1aB3c: ujik_nomad_legendary_endurance
+        }
+    }
+
+    # ===========================
+    # NEW ADVANTAGES (DISTINCTIONS)
+    # ===========================
+
+    ^"Affinity with [Animal Type]" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Distinction"
+            ^"Ring" STRING "Void"
+            ^"Category" LIST OF STRING ["Fame", "Interpersonal"]
+            ^"Effect" STRING "You assisted an animal; now any animal of that type gives you extra consideration. After performing a check when interacting with this type of animal, you may reroll up to two dice."
+        }
+    }
+
+    ^"Legal Scholarship" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Distinction"
+            ^"Ring" STRING "Air"
+            ^"Category" LIST OF STRING ["Interpersonal", "Social"]
+            ^"Effect" STRING "Your family possesses old legal documents from Rokugani, Qamarist, and other legal traditions. After performing a check when interacting with a legal body or using a legal code, you may reroll up to two dice."
+        }
+    }
+
+    ^"Syncretic Philosophy" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Distinction"
+            ^"Ring" STRING "Water"
+            ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
+            ^"Effect" STRING "Exposed to many cultures and philosophies, you understand the nuances of personal moral stances. After performing a check to appeal to someone's ethics, morality, or philosophy, you may reroll up to two dice."
+        }
+    }
+
+    # ===========================
+    # NEW ADVANTAGES (PASSIONS)
+    # ===========================
+
+    ^"Horse Racing" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Passion"
+            ^"Ring" STRING "Air"
+            ^"Category" LIST OF STRING ["Physical"]
+            ^"Effect" STRING "You enjoy the bond of horse and rider in competition. After performing a check to push your horse to its limits, you remove 3 strife."
+        }
+    }
+
+    ^"Hot Pot" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Passion"
+            ^"Ring" STRING "Earth"
+            ^"Category" LIST OF STRING ["Interpersonal", "Physical"]
+            ^"Effect" STRING "You can prepare hearty communal meals and identify ingredients. After performing a check involving the preparation of a communal meal, you remove 3 strife."
+        }
+    }
+
+    ^"Stargazing" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Passion"
+            ^"Ring" STRING "Void"
+            ^"Category" LIST OF STRING ["Mental", "Spiritual"]
+            ^"Effect" STRING "You can navigate by stars and know astrological myths. After performing a check to recall an astronomical fact, you remove 3 strife."
+        }
+    }
+
+    # ===========================
+    # NEW DISADVANTAGES (ADVERSITIES)
+    # ===========================
+
+    ^"Lost Family History" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Adversity"
+            ^"Ring" STRING "Earth"
+            ^"Category" LIST OF STRING ["Interpersonal", "Material"]
+            ^"Effect" STRING "Your family lost important historical records. When you make a check to recall or find something related to your lost history, you must reroll two dice containing (su) or (ex). If you failed, you gain 1 Void point."
+        }
+    }
+
+    ^"Penalty" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Adversity"
+            ^"Ring" STRING "Fire"
+            ^"Category" LIST OF STRING ["Infamy", "Social"]
+            ^"Effect" STRING "You or your family must pay recompense for a minor offense over an extended period. When you make a check to avoid fulfilling the penalty's terms, you must reroll two dice containing (su) or (ex). If you failed, you gain 1 Void point."
+        }
+    }
+
+    ^"Schism in Status" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Adversity"
+            ^"Ring" STRING "Water"
+            ^"Category" LIST OF STRING ["Infamy", "Interpersonal"]
+            ^"Effect" STRING "A specific social group treats your status as 20 points lower. When you make a check to convince a member of this group to listen to you, you must reroll two dice containing (su) or (ex). If you failed, you gain 1 Void point."
+        }
+    }
+
+    # ===========================
+    # NEW DISADVANTAGES (ANXIETIES)
+    # ===========================
+
+    ^"Animal Signs" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Anxiety"
+            ^"Ring" STRING "Void"
+            ^"Category" LIST OF STRING ["Mental", "Spiritual"]
+            ^"Effect" STRING "You assign supernatural meaning to animal behavior. After performing a check to interpret the actions of an animal, you receive 3 strife. If first occurrence this scene, you gain 1 Void point."
+        }
+    }
+
+    ^"Disdain for Urban Sprawl" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Anxiety"
+            ^"Ring" STRING "Earth"
+            ^"Category" LIST OF STRING ["Mental"]
+            ^"Effect" STRING "You dislike dense urban areas. After performing a check to overcome some facet of city life, you receive 3 strife. If first occurrence this scene, you gain 1 Void point."
+        }
+    }
+
+    ^"Tip of the Tongue" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Anxiety"
+            ^"Ring" STRING "Air"
+            ^"Category" LIST OF STRING ["Mental"]
+            ^"Effect" STRING "You know multiple languages so fluently that your mind mixes words. After performing a check to bridge cultural or linguistic differences, you receive 3 strife. If first occurrence this scene, you gain 1 Void point."
+        }
+    }
+
+    # ===========================
+    # NEW SAMURAI HERITAGES
+    # ===========================
+
+    ^"New Samurai Heritages Table" DEF {
+        ENTRIES {
+            ^"1 - Ancestral Horse Line" {
+                ^"Effect" STRING "One of your ancestors possessed a mighty Unicorn warhorse. Increase glory by 3. Add additional warhorse to starting items (roll d10 for horse family: 1-2 Utaku, 3-4 Shinjo, 5-6 Iuchi, 7-8 Ide, 9-10 Moto)."
+            }
+            ^"2 - Heart of the Horse" {
+                ^"Effect" STRING "Your horse chose you. Increase glory by 3, decrease status by 3. Gain a horse and the Karmic Tie (Void) distinction with it."
+            }
+            ^"3-4 - Knowledge Exchange" {
+                ^"Effect" STRING "An ancestor learned techniques of another school. Decrease glory by 5. Learn one additional technique (roll d10 for category: 1-3 kata, 4-6 shuji, 7 ritual, 8 invocation, 9 kiho, 10 maho or ninjutsu). Select rank 1 technique."
+            }
+            ^"5 - Lost Banner" {
+                ^"Effect" STRING "Your family lost a symbolic banner. Decrease glory by 5. Gain Indomitable Will distinction (can exceed normal advantage limits at creation)."
+            }
+            ^"6-7 - Splintered Loyalties" {
+                ^"Effect" STRING "Related to non-Rokugani people or raised outside Rokugan. Decrease status by 5. Roll d10 for skill: 1-2 Aesthetics, 3-4 Courtesy, 5-6 Culture, 7-8 Meditation, 9-10 Commerce. Gain +1 rank."
+            }
+            ^"8 - Sacred Wilderness" {
+                ^"Effect" STRING "Ancestor established a protected sacred wilderness. Increase status by 5. Add estate to starting items with free food, shelter, and medical care."
+            }
+            ^"9 - Spirit Companion" {
+                ^"Effect" STRING "Ancestor made an agreement with a spirit. Increase status by 3, decrease glory by 3. Know one additional meishodo talisman (roll d10 for ring: 1-2 Air, 3-4 Water, 5-6 Earth, 7-8 Fire, 9-10 Void). Select rank 1 invocation."
+            }
+            ^"10 - Spiritual Debt" {
+                ^"Effect" STRING "Your family owes a spirit. Increase honor by 3, decrease glory by 3. Roll d10 for spirit's ring (1-2 Fire, 3-4 Earth, 5-6 Water, 7-8 Air, 9-10 Void). May increase matching ring by 1 and reduce another by 1 (max 3)."
+            }
+        }
+    }
+
+    # ===========================
+    # NEW WEAPONS
+    # ===========================
+
+    ^"New Weapons" DEF {
+        ENTRIES {
+            ^"Catalpa Bow" {
+                ^"Category" STRING "Ranged"
+                ^"Description" STRING "Yumi from catalpa tonewood; attractive to elemental spirits, repellent to malicious ones. Fox Clan specialty; gathered only from fallen trees."
+            }
+            ^"Charging Lance" {
+                ^"Category" STRING "Melee"
+                ^"Description" STRING "Specialized spear for horseback use. Designed to break enemy formations in cavalry charges or hurl as a javelin. Moto tactics use extensively."
+            }
+            ^"Fire Lance" {
+                ^"Category" STRING "Melee/Ranged"
+                ^"Description" STRING "Black powder polearm with firework rocket. Polearm when used in melee, ranged weapon when aiming rocket. Metal barrel versions becoming common. Ganzu weapon; forbidden in Rokugan by Imperial decree."
+            }
+            ^"Ganzu Ring Ax" {
+                ^"Category" STRING "Melee"
+                ^"Description" STRING "Large bladed disk on two-handed shaft. Wielded in momentum-based fighting style to conserve energy. Associated with Sand Road guardians."
+            }
+            ^"Katar (Punch Dagger)" {
+                ^"Category" STRING "Melee"
+                ^"Description" STRING "Triangular dagger with H-shaped horizontal grip and knuckle guard. Wedge-shaped blade designed for splitting shields and punching through armor. Often worn in pairs (khatari)."
+            }
+            ^"Saddle Cutter" {
+                ^"Category" STRING "Melee"
+                ^"Description" STRING "Weapon designed to sever stirrups and saddles rather than deal damage directly. Reflects Ujik warfare philosophy of dismounting opponents."
+            }
+        }
+    }
+
+    # ===========================
+    # NEW SHIELDS
+    # ===========================
+
+    ^"New Shields" DEF {
+        ENTRIES {
+            ^"Ide Parasol Shield" {
+                ^"Category" STRING "Shield"
+                ^"Description" STRING "Innovative peacekeeping design providing defense bonuses. Functions as both shade and shield."
+            }
+            ^"Standing Shield" {
+                ^"Category" STRING "Shield"
+                ^"Description" STRING "Heavy coverage shield providing substantial physical resistance and increased Attack TN."
+            }
+        }
+    }
+
+    # ===========================
+    # NEW ARMOR
+    # ===========================
+
+    ^"New Armor" DEF {
+        ENTRIES {
+            ^"Mirror Armor" {
+                ^"Category" STRING "Armor"
+                ^"Description" STRING "Armor with reflective plates designed to blind spirits. Effective against supernatural threats."
+            }
+            ^"Unicorn Barding" {
+                ^"Category" STRING "Armor (Horse)"
+                ^"Description" STRING "Specialized equine armor with innovations for horse comfort. Designed for extended use without distressing the mount."
+            }
+        }
+    }
+
+    # ===========================
+    # NEW PERSONAL EFFECTS
+    # ===========================
+
+    ^"New Personal Effects" DEF {
+        ENTRIES {
+            ^"Astrolabe" {
+                ^"Description" STRING "Navigation and calculation tool used for determining position by stellar observation."
+            }
+            ^"Horo (Arrow Cloak)" {
+                ^"Description" STRING "Inflatable anti-arrow defense worn by mounted riders. Billows out to deflect incoming missiles."
+            }
+            ^"Mineral-Oil Lamp" {
+                ^"Description" STRING "Qamarist technology providing superior illumination. Expensive but long-lasting."
+            }
+            ^"Prayer Rug" {
+                ^"Description" STRING "Qamarist religious item for daily prayers."
+            }
+            ^"Sand Clock" {
+                ^"Description" STRING "Luxury Qamarist timepiece for measuring intervals."
+            }
+            ^"Word of the Prophet" {
+                ^"Description" STRING "Illuminated Qamarist religious text. Banned in Rokugan but valued by scholars and the faithful."
+            }
+        }
+    }
+
+    # ===========================
+    # BLESSED TREASURES
+    # ===========================
+
+    ^"Talisman of the Sun" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Blessed Treasure (Unicorn)"
+            ^"Description" STRING "Meishodo talisman containing an imprisoned spirit. Holds invocations: By the Light of the Lord Moon, Hands of the Tides, Wings of the Phoenix. Must bask in sunlight to recharge."
+        }
+    }
+
+    ^"Yuki: Ancestral Armor" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Blessed Treasure (Unicorn)"
+            ^"Description" STRING "Shinjo's original armor, repeatedly upgraded through the centuries. Contains Shinjo's spiritual presence and a sealed invocation (Nature's Touch). An icon of Unicorn history."
+        }
+    }
+
+    ^"Ancestral Sword of the Fox Clan" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Blessed Treasure (Fox)"
+            ^"Description" STRING "Replacement sword commissioned after the Lion-Phoenix War. Inscribed with spiritual wards. Bearer suffers pain from falsehoods. Contains sealed invocation (Vapor of Nightmares)."
+        }
+    }
+
+    ^"Fox Pipe" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Blessed Treasure (Fox)"
+            ^"Description" STRING "Nemuranai talisman containing a fox spirit. Used for espionage via the Secrets on the Wind invocation."
+        }
+    }
+
+    # ===========================
+    # MEISHODO TALISMANS
+    # ===========================
+
+    ^"Meishodo Talisman System" DEF {
+        # Talismans seal spirits within objects. User performs
+        # invocations using the spirit's ring value instead of their own.
+        # Stability value determines when spirit breaks free (min 1).
+        # Stability decreases when talisman is damaged, user suffers
+        # Afflicted condition, or on poor die rolls.
+        # Stability reaches 0 = spirit shatters talisman and is unleashed.
+    }
+
+    # ===========================
+    # ITEM PATTERNS
+    # ===========================
+
+    ^"Item Patterns" DEF {
+        ENTRIES {
+            ^"Ujik Horsebow Pattern" {
+                ^"Effect" STRING "Enhanced recurve bow: +1 damage, gains Snaring quality, loses Durable quality, vulnerable to moisture."
+                ^"XP Cost" INTEGER 4
+                ^"Rarity Modifier" STRING "+3"
+            }
+            ^"Utsuko Pattern" {
+                ^"Effect" STRING "Meishodo specialist design: increases talisman stability by creator's Void ring."
+                ^"XP Cost" INTEGER 3
+                ^"Rarity Modifier" STRING "+4"
+            }
+            ^"Watered Steel Pattern" {
+                ^"Effect" STRING "Foreign metallurgy: gains Durable and Resplendent qualities. Razor-Edged weapons also gain Hewing quality."
+                ^"XP Cost" INTEGER 8
+                ^"Rarity Modifier" STRING "+6"
+            }
+        }
+    }
+
+    # ===========================
+    # NEW ITEM QUALITY
+    # ===========================
+
+    ^"Hewing" DEF {
+        # Ignores shield TN bonuses. Can decrease target's physical
+        # resistance per opportunity cost.
+    }
+
+    # ===========================
+    # NEW TECHNIQUES - KATA
+    # ===========================
+
+    ^"Cautious Tread" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Kata"
+            ^"Rank" INTEGER 1
+            ^"Description" STRING "Mount terrain navigation technique."
+        }
+    }
+
+    ^"Stalking Leopard Style" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Kata"
+            ^"Rank" INTEGER 2
+            ^"Description" STRING "Bonus damage against Disoriented or Prone targets."
+        }
+    }
+
+    ^"Distracting Flurry Style" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Kata"
+            ^"Rank" INTEGER 2
+            ^"Description" STRING "Disorientation via environmental weapons."
+        }
+    }
+
+    ^"Slashing Sandstorm Style" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Kata"
+            ^"Rank" INTEGER 2
+            ^"Description" STRING "Extra damage vs. minions with axes."
+        }
+    }
+
+    ^"Scouring Wind Style" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Kata"
+            ^"Rank" INTEGER 3
+            ^"Description" STRING "Damage defensive items instead of enemy."
+        }
+    }
+
+    ^"Sudden Downpour Style" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Kata"
+            ^"Rank" INTEGER 3
+            ^"Description" STRING "Mounted ranged attacks increase target's resist TN by mount's Water ring."
+        }
+    }
+
+    ^"Swaying Grass Evasion" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Kata"
+            ^"Rank" INTEGER 3
+            ^"Description" STRING "Terrain-based defensive evasion."
+        }
+    }
+
+    ^"Descending Swarm Shot" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Kata"
+            ^"Rank" INTEGER 3
+            ^"Description" STRING "Mark target for allies' bonus successes."
+        }
+    }
+
+    ^"Thunderbolt Style" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Kata"
+            ^"Rank" INTEGER 4
+            ^"Description" STRING "Multi-target thrown weapon attacks."
+        }
+    }
+
+    # ===========================
+    # NEW TECHNIQUES - RITUALS
+    # ===========================
+
+    ^"Cultural Exchange" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Ritual"
+            ^"Rank" INTEGER 1
+            ^"Description" STRING "Cross-cultural communication establishment."
+        }
+    }
+
+    ^"Protection of the Flock" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Ritual"
+            ^"Rank" INTEGER 2
+            ^"Description" STRING "Animal fortification against disease."
+        }
+    }
+
+    ^"Spiritual Survey" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Ritual"
+            ^"Rank" INTEGER 2
+            ^"Description" STRING "Detect local spirits and their properties."
+        }
+    }
+
+    ^"Traveler's Experience" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Ritual"
+            ^"Rank" INTEGER 2
+            ^"Description" STRING "Learn local laws and customs."
+        }
+    }
+
+    ^"Wayfinder's Instincts" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Ritual"
+            ^"Rank" INTEGER 2
+            ^"Description" STRING "Find water, food, or shelter."
+        }
+    }
+
+    ^"Center the World" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Ritual"
+            ^"Rank" INTEGER 3
+            ^"Description" STRING "Navigation ritual to find civilization."
+        }
+    }
+
+    ^"Shadow of Days" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Ritual"
+            ^"Rank" INTEGER 3
+            ^"Description" STRING "Distance calculation using astronomy."
+        }
+    }
+
+    # ===========================
+    # NEW TECHNIQUES - SHUJI
+    # ===========================
+
+    ^"Appreciate the Scenery" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Shuji"
+            ^"Ring" STRING "Void"
+            ^"Rank" INTEGER 1
+            ^"Description" STRING "Remove strife or gain Emboldened condition."
+        }
+    }
+
+    ^"Call to Ride" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Shuji"
+            ^"Ring" STRING "Water"
+            ^"Rank" INTEGER 1
+            ^"Description" STRING "Summon mount to come to you."
+        }
+    }
+
+    ^"Cite the Facts" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Shuji"
+            ^"Ring" STRING "Earth"
+            ^"Rank" INTEGER 2
+            ^"Description" STRING "Overwhelm with data; inflict Silenced condition."
+        }
+    }
+
+    ^"Solidify Gratitude" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Shuji"
+            ^"Ring" STRING "Earth"
+            ^"Rank" INTEGER 2
+            ^"Description" STRING "Gain Ally advantage via gifts or contributions."
+        }
+    }
+
+    ^"Glorious Entrance" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Shuji"
+            ^"Ring" STRING "Fire"
+            ^"Rank" INTEGER 2
+            ^"Description" STRING "Reduce action TN via impressive arrival."
+        }
+    }
+
+    ^"Cunning Omission" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Shuji"
+            ^"Ring" STRING "Air"
+            ^"Rank" INTEGER 3
+            ^"Description" STRING "Trick target into admitting concealed information."
+        }
+    }
+
+    ^"Entice with Offerings" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Shuji"
+            ^"Ring" STRING "Air"
+            ^"Rank" INTEGER 3
+            ^"Description" STRING "Distraction via valued concessions."
+        }
+    }
+
+    ^"Incite Wrath" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Shuji"
+            ^"Ring" STRING "Fire"
+            ^"Rank" INTEGER 3
+            ^"Description" STRING "Command mount or companion to attack."
+        }
+    }
+
+    ^"Complementary Experience" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Shuji"
+            ^"Ring" STRING "Water"
+            ^"Rank" INTEGER 3
+            ^"Description" STRING "Grant mutual assistance on checks."
+        }
+    }
+
+    ^"Horse Whisperer" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Shuji"
+            ^"Ring" STRING "Water"
+            ^"Rank" INTEGER 3
+            ^"Description" STRING "Make wordless requests to horses."
+        }
+    }
+
+    ^"Everyone Has a Price" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Shuji"
+            ^"Ring" STRING "Water"
+            ^"Rank" INTEGER 4
+            ^"Description" STRING "Bribe opponents to leave or cease opposition."
+        }
+    }
+
+    # ===========================
+    # NEW INVOCATION
+    # ===========================
+
+    ^"The World is Not Heavy" DEF {
+        PROPERTIES {
+            ^"Type" STRING "Invocation"
+            ^"Ring" STRING "Water"
+            ^"Rank" INTEGER 2
+            ^"Description" STRING "Increase carrying capacity; remove Cumbersome from armor for self or steed."
+        }
+    }
+
+    # ===========================
+    # NEW TITLES
+    # ===========================
+
+    ^"Animal Handler" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Title"
+            ^"Status Modifier" INTEGER 0
+            ^"Glory Modifier" INTEGER 5
+            ^"XP Cost" INTEGER 24
+            ^"Title Ability" STRING "Instinctive Command: Animals take actions after PC action."
+            ^"Advances" STRING "Trade Skills, Martial Arts, Medicine, Sentiment, shuji techniques"
+        }
+    }
+
+    ^"Doomhunter" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Title"
+            ^"Status Modifier" INTEGER 5
+            ^"Glory Modifier" INTEGER 20
+            ^"XP Cost" INTEGER 28
+            ^"Title Ability" STRING "Slayer of Immortals: Ascertain mortal weaknesses of immortal targets."
+            ^"Advances" STRING "Martial Skills, Skulduggery, Survival, Theology, rituals, ninjutsu, Soul Sunder"
+        }
+    }
+
+    ^"Imperial Peacekeeper" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Title"
+            ^"Status Modifier" INTEGER 5
+            ^"Glory Modifier" INTEGER 10
+            ^"XP Cost" INTEGER 18
+            ^"Title Ability" STRING "By Imperial Command: Remove strife from characters."
+            ^"Advances" STRING "Martial Skills, Courtesy, Command, Sentiment, Earth shuji, Cultural Exchange, Pillar of Calm"
+        }
+    }
+
+    ^"Interpreter" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Title"
+            ^"Status Modifier" INTEGER 5
+            ^"Glory Modifier" INTEGER 5
+            ^"XP Cost" INTEGER 12
+            ^"Title Ability" STRING "Linguistic Liaison: Fluency in target culture's languages. Repeatable for different cultures."
+            ^"Advances" STRING "Social Skills, Composition, Culture, Government, Rank 1 shuji, Cultural Exchange, Traveler's Experience"
+        }
+    }
+
+    ^"Scarlet Banners Ranger" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Title"
+            ^"Status Modifier" INTEGER 5
+            ^"Glory Modifier" INTEGER 10
+            ^"XP Cost" INTEGER 24
+            ^"Title Ability" STRING "Master of the Lariat: Enhanced Snaring weapon use."
+            ^"Advances" STRING "Martial Skills, Trade Skills, Government, Sentiment, Rank 1-2 kata, Cunning Omission, Thunderbolt Style"
+        }
+    }
+
+    ^"Student of Names" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Title"
+            ^"Status Modifier" INTEGER 5
+            ^"Glory Modifier" INTEGER 10
+            ^"XP Cost" INTEGER 12
+            ^"Title Ability" STRING "Meishodo Secrets: Practice Way of Names, sustain one meishodo talisman."
+            ^"Advances" STRING "Command, Culture, Survival, Theology, Rank 1 invocations, Spiritual Survey, Threshold Barrier"
+        }
+    }
+
+    ^"White Guard Veteran" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Title"
+            ^"Status Modifier" INTEGER 10
+            ^"Glory Modifier" INTEGER 15
+            ^"XP Cost" INTEGER 32
+            ^"Title Ability" STRING "Unrelenting and Inevitable: Reduce strife from Otherworldly/Tainted effects; increase resist TN of PC's attacks."
+            ^"Advances" STRING "Martial Skills, Courtesy, Command, Survival, Theology, A Samurai's Fate, Stalking Panther Style, Sudden Downpour Style"
+        }
+    }
+
+    # ===========================
+    # NEW CONDITIONS
+    # ===========================
+
+    ^"Centered Condition" DEF {
+        # Remove up to 2 strife per check.
+    }
+
+    ^"Emboldened Condition" DEF {
+        # Receive 1 fatigue to keep an additional rolled die.
+    }
+
+    ^"Possessed Condition" DEF {
+        # Spirit exerts influence; character must pursue spirit's goal
+        # or gain 2 strife. Can use spirit's skills/techniques once per
+        # scene. Removed via Meditation check or Dispel Possession
+        # social objective.
+    }
+
+    # ===========================
+    # NEW DEMEANOR
+    # ===========================
+
+    ^"Compassionate Demeanor" DEF {
+        # Reflects Jin/Compassion virtue.
+        # Fire +2, Air -1, Water -1 for social checks.
+        # Common Way of Unmasking: Hasty Action (act without thinking).
+    }
+}
