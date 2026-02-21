@@ -13,6 +13,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Centipede Minor Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
         APPLIES TO [^"Samurai"]
 
         # Founded by Isawa Moshi, one of the Eleven Daughters
@@ -22,37 +23,20 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
         # her each morning with song so she may awaken and rise.
 
         PROPERTIES {
-            ^"Clan" STRING "Centipede" FIXED
-            ^"Ring Increase" STRING "+1 Fire"
-            ^"Skill Increase" STRING "+1 Theology"
-            ^"Status" INTEGER DEFAULT 30
+            ^"Clan Name" STRING "Centipede" FIXED
+            ^"Clan Type" STRING "Minor Clan"
+            ^"Clan Ring Bonus" STRING "+1 Fire"
+            ^"Clan Skill Bonus" STRING "+1 Theology"
+            ^"Clan Status" INTEGER DEFAULT 30
+        }
+
+        FAMILIES {
+            ^"Moshi" "+1 Air or Fire, +1 Fitness, +1 Meditation, Glory 40, 3 koku"
         }
 
         RULES {
             #L5RCR01aB2cD4eF6gH8iJ0: centipede_devoted_to_amaterasu
             #L5RCR02kL3mN5oP7qR9sT1u: centipede_maintain_shrine_to_lady_sun
-        }
-    }
-
-    ^"Moshi Family" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # The sole family of the Centipede Clan, descended from
-        # Isawa Moshi and her sisters. Historically a matrilineal
-        # family, all members are trained in the worship of Lady Sun.
-        # Their prayers are answered directly by Amaterasu herself.
-
-        PROPERTIES {
-            ^"Family" STRING "Moshi" FIXED
-            ^"Ring Increase" STRING "+1 Air or +1 Fire"
-            ^"Skill Increases" STRING "+1 Fitness, +1 Meditation"
-            ^"Glory" INTEGER DEFAULT 40
-            ^"Starting Wealth" STRING "3 koku"
-        }
-
-        RULES {
-            #L5RCR03vW4xY6zA8bC0dE2f: moshi_descended_from_isawa_moshi
-            #L5RCR04gH5iJ7kL9mN1oP3q: moshi_prayers_answered_by_amaterasu
         }
     }
 

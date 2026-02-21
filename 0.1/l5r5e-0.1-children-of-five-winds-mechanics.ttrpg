@@ -13,6 +13,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Fox Minor Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
         APPLIES TO [^"Samurai"]
 
         # The Fox consider themselves representatives of nature
@@ -23,38 +24,20 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         # becoming more involved in the Empire's politics.
 
         PROPERTIES {
-            ^"Clan" STRING "Fox" FIXED
-            ^"Ring Increase" STRING "+1 Earth"
-            ^"Skill Increase" STRING "+1 Survival"
-            ^"Status" INTEGER DEFAULT 30
+            ^"Clan Name" STRING "Fox" FIXED
+            ^"Clan Type" STRING "Minor Clan"
+            ^"Clan Ring Bonus" STRING "+1 Earth"
+            ^"Clan Skill Bonus" STRING "+1 Survival"
+            ^"Clan Status" INTEGER DEFAULT 30
+        }
+
+        FAMILIES {
+            ^"Kitsune" "+1 Air or Water, +1 Fitness, +1 Theology, Glory 40, 2 koku"
         }
 
         RULES {
             #L5RCW01aB2cD4eF6gH8iJ0: fox_representatives_of_nature
             #L5RCW02kL3mN5oP7qR9sT1u: fox_advocates_for_senkyo
-        }
-    }
-
-    ^"Kitsune Family" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # Members of the Kitsune family are partially descended
-        # from shapeshifting foxes and enjoy a close connection
-        # with forest denizens. Outgoing on the surface, they are
-        # slow to trust outsiders due to hardships endured from
-        # Great Clan machinations.
-
-        PROPERTIES {
-            ^"Family" STRING "Kitsune" FIXED
-            ^"Ring Increase" STRING "+1 Air or +1 Water"
-            ^"Skill Increases" STRING "+1 Fitness, +1 Theology"
-            ^"Glory" INTEGER DEFAULT 40
-            ^"Starting Wealth" STRING "2 koku"
-        }
-
-        RULES {
-            #L5RCW03vW4xY6zA8bC0dE2f: kitsune_descended_from_foxes
-            #L5RCW04gH5iJ7kL9mN1oP3q: kitsune_slow_to_trust_outsiders
         }
     }
 

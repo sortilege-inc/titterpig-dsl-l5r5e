@@ -14,36 +14,25 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Mantis Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
         APPLIES TO [^"Samurai"]
 
         PROPERTIES {
-            ^"Clan Type" STRING "Minor Clan" FIXED
-            ^"Ring Increase" STRING "+1 Water"
-            ^"Skill Increases" STRING "+1 Seafaring"
-            ^"Status" INTEGER DEFAULT 25
+            ^"Clan Name" STRING "Mantis" FIXED
+            ^"Clan Type" STRING "Minor Clan"
+            ^"Clan Ring Bonus" STRING "+1 Water"
+            ^"Clan Skill Bonus" STRING "+1 Seafaring"
+            ^"Clan Status" INTEGER DEFAULT 25
+        }
+
+        FAMILIES {
+            # The Mantis do not have a family name. Samurai take their
+            # names from the kobune ships they sail with.
+            ^"Families of the Fleet" "+1 Fire or Water, +1 Commerce, +1 Survival, Glory 36, 7 koku"
         }
 
         RULES {
             #L5RMC01aB2cD4eF6gH8iJ0k: mantis_clan_minor_clan_traits
-        }
-    }
-
-    ^"Families of the Fleet" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # The Mantis do not have a family name. Samurai take their
-        # names from the kobune ships they sail with.
-
-        PROPERTIES {
-            ^"Family" STRING "Families of the Fleet" FIXED
-            ^"Ring Increase" STRING "+1 Fire or +1 Water"
-            ^"Skill Increases" STRING "+1 Commerce, +1 Survival"
-            ^"Glory" INTEGER DEFAULT 36
-            ^"Starting Wealth" STRING "7 koku"
-        }
-
-        RULES {
-            #L5RMC02lM3nO5pQ7rS9tU1v: mantis_families_of_the_fleet
         }
     }
 

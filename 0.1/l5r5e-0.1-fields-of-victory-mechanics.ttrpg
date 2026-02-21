@@ -14,6 +14,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Badger Minor Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
         APPLIES TO [^"Samurai"]
 
         # While most clans seem to spend all their time fighting
@@ -28,44 +29,21 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         # ensure no invaders gain entrance to Rokugan.
 
         PROPERTIES {
-            ^"Clan" STRING "Badger" FIXED
-            ^"Ring Increase" STRING "+1 Earth"
-            ^"Skill Increase" STRING "+1 Martial Arts [Unarmed]"
-            ^"Status" INTEGER DEFAULT 25
+            ^"Clan Name" STRING "Badger" FIXED
+            ^"Clan Type" STRING "Minor Clan"
+            ^"Clan Ring Bonus" STRING "+1 Earth"
+            ^"Clan Skill Bonus" STRING "+1 Martial Arts [Unarmed]"
+            ^"Clan Status" INTEGER DEFAULT 25
+        }
+
+        FAMILIES {
+            ^"Ichirō" ALIAS "Ichiro" "+1 Earth or Fire, +1 Fitness, +1 Tactics, Glory 35, 3 koku"
         }
 
         RULES {
             #L5RFV01aB2cD4eF6gH8iJ0k: badger_defend_northwest_border
             #L5RFV02lM3nO5pQ7rS9tU1v: badger_bushido_righteousness_gi_important
             #L5RFV03wX4yZ6aB8cD0eF2g: badger_bushido_courtesy_rei_less_important
-        }
-    }
-
-    ^"Ichiro Family" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # The Ichiro family dominates much of Badger life and
-        # has since the clan's founding in the early years of the
-        # Empire. Much like the Crab, from whom the Badger
-        # founder originated, the Ichiro are dedicated and direct
-        # in their actions, and they care little for anything that
-        # separates them from their duty. When not watching
-        # over the border or repelling would-be invaders, the
-        # Ichiro are dedicated to activities such as wrestling and
-        # other competitive pastimes. Many Rokugani are aware
-        # of the Badger's skills in forging weapons and armor.
-
-        PROPERTIES {
-            ^"Family" STRING "Ichiro" FIXED
-            ^"Ring Increase" STRING "+1 Earth or +1 Fire"
-            ^"Skill Increases" STRING "+1 Fitness, +1 Tactics"
-            ^"Glory" INTEGER DEFAULT 35
-            ^"Starting Wealth" STRING "3 koku"
-        }
-
-        RULES {
-            #L5RFV04hI5jK7lM9nO1pQ3r: ichiro_dominates_badger_life
-            #L5RFV05sT6uV8wX0yZ2aB4c: ichiro_dedicated_direct_crab_origins
         }
     }
 

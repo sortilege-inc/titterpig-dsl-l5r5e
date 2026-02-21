@@ -13,84 +13,31 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Imperial Families" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
         APPLIES TO [^"Samurai"]
 
-        # The three Imperial families serve the Emperor directly.
-        # They are not part of any Great Clan but hold special
+        # The Imperial families serve the Emperor directly.
+        # They function as a clan for mechanical purposes but
+        # are not part of any Great Clan. They hold special
         # authority and responsibilities within the Celestial Order.
+
+        PROPERTIES {
+            ^"Clan Name" STRING "Imperial" FIXED
+            ^"Clan Type" STRING "Imperial"
+            ^"Clan Ring Bonus" STRING "+1 Air"
+            ^"Clan Skill Bonus" STRING "+1 Government"
+            ^"Clan Status" INTEGER DEFAULT 40
+        }
+
+        FAMILIES {
+            ^"Miya" "+1 Air or Fire, +1 Courtesy, +1 Culture, Glory 44, 8 koku"
+            ^"Otomo" "+1 Air or Water, +1 Culture, +1 Sentiment, Glory 43, 9 koku"
+            ^"Seppun" "+1 Earth or Void, +1 Meditation, +1 Theology, Glory 45, 6 koku"
+        }
 
         RULES {
             #L5REE01aB2cD4eF6gH8iJ0: imperial_families_serve_emperor_directly
             #L5REE02kL3mN5oP7qR9sT1u: imperial_families_not_clan_affiliated
-        }
-    }
-
-    ^"Miya Family" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # The Miya family descends from the first Imperial Herald,
-        # tasked with carrying the Emperor's words throughout the
-        # Empire. They maintain roads, deliver edicts, create maps,
-        # and ensure the Emperor's will reaches every corner of Rokugan.
-
-        PROPERTIES {
-            ^"Family" STRING "Miya" FIXED
-            ^"Ring Increase" STRING "+1 Air or +1 Fire"
-            ^"Skill Increases" STRING "+1 Command, +1 Courtesy"
-            ^"Glory" INTEGER DEFAULT 40
-            ^"Starting Wealth" STRING "8 koku"
-        }
-
-        RULES {
-            #L5REE03vW4xY6zA8bC0dE2f: miya_imperial_heralds
-            #L5REE04gH5iJ7kL9mN1oP3q: miya_maintain_roads_and_maps
-        }
-    }
-
-    ^"Otomo Family" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # The Otomo family serves the Emperor by sowing discord
-        # among the clans, preventing any unified opposition to the
-        # Throne. They are consummate politicians who use flattery,
-        # favors, deception, bribery, and blackmail to keep the
-        # clans off-balance. Younger Imperial siblings who will not
-        # inherit the Throne are adopted into the Otomo.
-
-        PROPERTIES {
-            ^"Family" STRING "Otomo" FIXED
-            ^"Ring Increase" STRING "+1 Air or +1 Water"
-            ^"Skill Increases" STRING "+1 Culture, +1 Sentiment"
-            ^"Glory" INTEGER DEFAULT 43
-            ^"Starting Wealth" STRING "9 koku"
-        }
-
-        RULES {
-            #L5REE05rS6tU8vW0xY2zA4b: otomo_sow_discord_among_clans
-            #L5REE06cD7eF9gH1iJ3kL5m: otomo_preserve_hantei_bloodline
-        }
-    }
-
-    ^"Seppun Family" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # The Seppun are the Emperor's protectors, tracing their
-        # lineage to the first mortal to meet the Kami after their
-        # fall. They maintain the Palace Guard (physical protection)
-        # and the Hidden Guard (spiritual protection). They are also
-        # devoted adherents of Shinseism and maintain the Imperial Library.
-
-        PROPERTIES {
-            ^"Family" STRING "Seppun" FIXED
-            ^"Ring Increase" STRING "+1 Earth or +1 Void"
-            ^"Skill Increases" STRING "+1 Meditation, +1 Theology"
-            ^"Glory" INTEGER DEFAULT 45
-            ^"Starting Wealth" STRING "6 koku"
-        }
-
-        RULES {
-            #L5REE07nO8pQ0rS2tU4vW6x: seppun_emperors_protectors
-            #L5REE08yZ9aB1cD3eF5gH7i: seppun_palace_and_hidden_guard
         }
     }
 

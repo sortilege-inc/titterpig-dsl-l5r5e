@@ -14,6 +14,7 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Falcon Minor Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
         APPLIES TO [^"Samurai"]
 
         # The Falcon guard against spiritual threats from the
@@ -22,38 +23,20 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
         # not only to battle yurai but to understand them.
 
         PROPERTIES {
-            ^"Clan" STRING "Falcon" FIXED
-            ^"Ring Increase" STRING "+1 Void"
-            ^"Skill Increase" STRING "+1 Theology"
-            ^"Status" INTEGER DEFAULT 26
+            ^"Clan Name" STRING "Falcon" FIXED
+            ^"Clan Type" STRING "Minor Clan"
+            ^"Clan Ring Bonus" STRING "+1 Void"
+            ^"Clan Skill Bonus" STRING "+1 Theology"
+            ^"Clan Status" INTEGER DEFAULT 26
+        }
+
+        FAMILIES {
+            ^"Toritaka" "+1 Earth or Water, +1 Survival, +1 Meditation, Glory 35, 3 koku"
         }
 
         RULES {
             #L5RSL01aB2cD4eF6gH8iJ0: falcon_guard_against_spirit_realm_threats
             #L5RSL02kL3mN5oP7qR9sT1u: falcon_seek_understanding_of_spirits
-        }
-    }
-
-    ^"Toritaka Family" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # The foremost family of the Falcon. Large and stocky,
-        # reflecting shared heritage with the Hida, but quiet
-        # and reserved. They stand between Mortal and Spirit
-        # Realms, controlling their own passions to effectively
-        # understand and eliminate dangers yurai bring.
-
-        PROPERTIES {
-            ^"Family" STRING "Toritaka" FIXED
-            ^"Ring Increase" STRING "+1 Earth or +1 Water"
-            ^"Skill Increases" STRING "+1 Survival, +1 Meditation"
-            ^"Glory" INTEGER DEFAULT 35
-            ^"Starting Wealth" STRING "3 koku"
-        }
-
-        RULES {
-            #L5RSL03vW4xY6zA8bC0dE2f: toritaka_foremost_falcon_family
-            #L5RSL04gH5iJ7kL9mN1oP3q: toritaka_stand_between_mortal_and_spirit_realms
         }
     }
 

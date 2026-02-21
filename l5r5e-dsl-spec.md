@@ -91,11 +91,19 @@ L5R5e defines a root `Entity` ACTOR from which all other actor types inherit. Th
 
 ```ttrpg
 #L5R001aB2cD4eF6gH8iJ0kL ACTOR "Entity" DEF {
-    # Root of all actor types
+    # Root of all actor types. Rings are defined here so all
+    # actor types (Samurai, Peasant, Adversary, Minion) inherit them.
 
     PROPERTIES {
         ^"Name" STRING REQUIRED
         ^"Description" STRING
+        ^"Rings" DEF {
+            ^"Air" INTEGER MIN 1 MAX 5 DEFAULT 1
+            ^"Earth" INTEGER MIN 1 MAX 5 DEFAULT 1
+            ^"Fire" INTEGER MIN 1 MAX 5 DEFAULT 1
+            ^"Water" INTEGER MIN 1 MAX 5 DEFAULT 1
+            ^"Void" INTEGER MIN 1 MAX 5 DEFAULT 1
+        }
     }
 
     RULES {
@@ -113,13 +121,6 @@ L5R5e defines a root `Entity` ACTOR from which all other actor types inherit. Th
         ^"Family" STRING REQUIRED
         ^"School" STRING REQUIRED
         ^"School Rank" INTEGER MIN 1 MAX 6 DEFAULT 1
-        ^"Rings" DEF {
-            ^"Air" INTEGER MIN 1 MAX 5 DEFAULT 1
-            ^"Earth" INTEGER MIN 1 MAX 5 DEFAULT 1
-            ^"Fire" INTEGER MIN 1 MAX 5 DEFAULT 1
-            ^"Water" INTEGER MIN 1 MAX 5 DEFAULT 1
-            ^"Void" INTEGER MIN 1 MAX 5 DEFAULT 1
-        }
         ^"Skills" LIST OF ^"Skill"
         ^"Techniques" LIST OF ^"Technique"
         ^"Advantages" LIST OF ^"Advantage"
@@ -138,6 +139,14 @@ L5R5e defines a root `Entity` ACTOR from which all other actor types inherit. Th
         ^"Giri" STRING
         ^"Demeanor" STRING
         ^"Equipment" LIST OF STRING
+        ^"Roles" LIST OF STRING
+        ^"Titles" LIST OF ^"Title"
+        ^"Bonds" LIST OF ^"Bond"
+        ^"Bushido" DEF {
+            ^"Paramount Tenet" STRING
+            ^"Less Significant Tenet" STRING
+        }
+        ^"Experience" INTEGER MIN 0 DEFAULT 0
     }
 
     RULES {
@@ -150,12 +159,12 @@ L5R5e defines a root `Entity` ACTOR from which all other actor types inherit. Th
 #L5R009mN0oP2qR4sT6uV8w ACTOR "Adversary" DEF {
     EXTENDS #L5R001aB2cD4eF6gH8iJ0kL ^"Entity"
 
-    # NPCs, creatures, and supernatural beings with conflict ranks
+    # NPCs, creatures, and supernatural beings with conflict ranks.
+    # Supernatural adversaries can extend Adversary to raise ring MAX.
 
     PROPERTIES {
         ^"Combat Conflict Rank" INTEGER MIN 0 MAX 20
         ^"Intrigue Conflict Rank" INTEGER MIN 0 MAX 20
-        ^"Rings" DEF { ... }
         ^"Endurance" INTEGER MIN 0
         ^"Composure" INTEGER MIN 0
         ^"Focus" INTEGER MIN 0
@@ -167,21 +176,38 @@ L5R5e defines a root `Entity` ACTOR from which all other actor types inherit. Th
 #L5R011iJ2kL4mN6oP8qR0s ACTOR "Minion" DEF {
     EXTENDS #L5R009mN0oP2qR4sT6uV8w ^"Adversary"
 
-    # Weak adversaries grouped as a single entity
-
-    PROPERTIES {
-        ^"Group Size" INTEGER MIN 1 MAX 20
-    }
+    # Weak adversaries with simplified mechanics. Special rules
+    # for fatigue, critical strikes, and opportunity restrictions.
 }
 ```
 
 ### Key ACTOR Design Patterns
 
 - **Hash IDs**: Every ACTOR, DEF block, and RULE has a unique hash identifier (e.g., `#L5R001aB2cD4eF6gH8iJ0kL`). Format: `#` + system prefix (`L5R`) + 3 digits + 12 alphanumeric characters.
-- **EXTENDS**: Inheritance references both the hash ID and name of the parent.
+- **EXTENDS**: Inheritance references both the hash ID and name of the parent. Used for ACTORs and generic types (Clan, Family, School, Technique).
 - **APPLIES TO**: DEF blocks outside ACTORs use `APPLIES TO [^"Samurai", ^"Adversary"]` to declare which actors they affect.
+- **ALIAS**: Declares an alternate name for a DEF that resolves to the same definition. Used for terms with special characters (macrons, etc.) to provide an ASCII-safe synonym. The canonical form uses correct characters; the alias is accepted in references and file names.
 - **Property types**: `STRING`, `INTEGER` (with `MIN`/`MAX`/`DEFAULT`), `LIST OF`, `ENUM`, `BOOLEAN`, nested `DEF` blocks.
 - **Modifiers**: `REQUIRED`, `FIXED` (immutable), `DEFAULT` (initial value).
+
+### Romanization and Special Characters
+
+L5R5e uses Japanese terms with macrons (ō, ū) to indicate long vowels. DEF names use the correct romanized form as the canonical name, with an `ALIAS` providing the simplified ASCII form:
+
+```ttrpg
+^"Ninjō" DEF {
+    ALIAS "Ninjo"
+    # ^"Ninjō" and ^"Ninjo" both resolve to this definition
+}
+```
+
+Terms with macrons in L5R5e:
+- **Ninjō** (ALIAS "Ninjo") — personal desire
+- **Kihō** (ALIAS "Kiho") — monastic techniques
+- **Shūji** (ALIAS "Shuji") — social techniques
+- **Mahō** (ALIAS "Maho") — blood sorcery
+
+The simplified form is appropriate for file names, rule hash labels, and user input. The canonical form should be used in DEF names, descriptions, and display text.
 
 ## The Five Rings
 
@@ -315,13 +341,13 @@ L5R5e uses custom dice with symbolic faces rather than numeric results:
     FACES {
         1 "Blank"
         2 "Blank"
-        3 "(op) (st)"
+        3 "(op)"
         4 "(op)"
-        5 "(su) (st)"
+        5 "(op)"
         6 "(su) (st)"
-        7 "(su)"
+        7 "(su) (st)"
         8 "(su)"
-        9 "(su) (op)"
+        9 "(su)"
         10 "(su) (op)"
         11 "(ex) (st)"
         12 "(ex)"
@@ -359,6 +385,7 @@ L5R5e uses custom dice with symbolic faces rather than numeric results:
         4 "Modify Rolled Dice: Apply advantages/disadvantages that cause rerolls"
         5 "Choose Kept Dice: Select up to ring value dice to keep"
         6 "Resolve Symbols on Kept Dice: (ex) then (st) then (op) then (su)"
+        7 "Narrate Results: GM and player narrate outcome based on success/failure and spent opportunity"
     }
 
     RULES {
@@ -376,14 +403,14 @@ L5R5e uses custom dice with symbolic faces rather than numeric results:
     INTEGER MIN 1 MAX 8
 
     DIFFICULTY_SCALE {
-        1 "Easy"
-        2 "Average (default)"
-        3 "Hard"
-        4 "Very Hard"
-        5 "Heroic"
-        6 "Legendary"
-        7 "Mythic"
-        8 "Divine"
+        1 "Simple"
+        2 "Easy (default)"
+        3 "Average"
+        4 "Hard"
+        5 "Very Hard"
+        6 "Extremely Difficult"
+        7 "Heroic"
+        8 "Legendary"
     }
 }
 ```
@@ -519,45 +546,116 @@ Character creation is structured as a collaborative twenty-question process:
 }
 ```
 
-## Clans and Families
+## Generic Types: Clan, Family, School
 
-### Great Clan Pattern
+Three generic types define the common property shapes for character creation elements. Specific instances use `EXTENDS` to inherit from these types, paralleling how actor types use `EXTENDS ^"Entity"`.
 
-Each of the seven Great Clans follows this structure:
+### Generic Clan
 
 ```ttrpg
-^"Crab Clan" DEF {
+#L5R250aB2cD4eF6gH8iJ0k ^"Clan" DEF {
     APPLIES TO [^"Samurai"]
 
-    PROPERTIES {
-        ^"Clan" STRING "Crab" FIXED
-        ^"Clan Ring Bonus" STRING "+1 Earth"
-        ^"Clan Skill Bonus" STRING "+1 Fitness, +1 Martial Arts [Melee]"
-        ^"Clan Status" INTEGER DEFAULT 30
-    }
+    # Generic clan type. All clan definitions EXTENDS this type.
+    # A clan grants one ring increase, one skill increase, and
+    # a starting status value. Each clan contains a FAMILIES block.
 
-    FAMILIES {
-        ^"Hida" "+1 Earth, +1 Fitness, Glory 40"
-        ^"Hiruma" "+1 Water, +1 Skulduggery, Glory 30"
-        ^"Kaiu" "+1 Earth, +1 Smithing, Glory 40"
-        ^"Kuni" "+1 Fire, +1 Theology, Glory 40"
-        ^"Yasuki" "+1 Air, +1 Commerce, Glory 40"
+    PROPERTIES {
+        ^"Clan Name" STRING REQUIRED FIXED
+        ^"Clan Ring Bonus" STRING REQUIRED     # "+1 [Ring]"
+        ^"Clan Skill Bonus" STRING REQUIRED    # "+1 [Skill]"
+        ^"Clan Status" INTEGER MIN 0 MAX 100 REQUIRED
     }
 }
 ```
 
-**All seven Great Clans (Crab, Crane, Dragon, Lion, Phoenix, Scorpion, Unicorn) follow this pattern:** `PROPERTIES` block with `FIXED` clan name, ring bonus, skill bonus, status; `FAMILIES` block listing each family with ring/skill/glory bonuses.
-
-### Minor Clan Pattern (Extension)
-
-Minor clans defined in extension files follow the same structure but add the clan entry alongside families. From Shadowlands:
+### Generic Family
 
 ```ttrpg
-^"Falcon Clan" DEF {
+#L5R251lM3nO5pQ7rS9tU1v ^"Family" DEF {
+    APPLIES TO [^"Samurai"]
+
+    # Generic family type. A family grants a choice between two
+    # rings, two skill increases, starting glory, and starting wealth.
+
+    PROPERTIES {
+        ^"Family Name" STRING REQUIRED FIXED
+        ^"Ring Increase" STRING REQUIRED        # "+1 [Ring] or [Ring]"
+        ^"Skill Increases" STRING REQUIRED      # "+1 [Skill], +1 [Skill]"
+        ^"Glory" INTEGER MIN 0 MAX 100 REQUIRED
+        ^"Starting Wealth" STRING REQUIRED      # "N koku"
+    }
+}
+```
+
+### Generic School
+
+```ttrpg
+#L5R252wX4yZ6aB8cD0eF2g ^"School" DEF {
+    APPLIES TO [^"Samurai"]
+
+    # Generic school type. A school defines the character's role,
+    # ring and skill bonuses, starting honor, technique access,
+    # school ability, curriculum, and mastery ability.
+
+    PROPERTIES {
+        ^"School Name" STRING REQUIRED FIXED
+        ^"Clan" STRING REQUIRED
+        ^"Roles" LIST OF STRING REQUIRED        # ["Bushi"], ["Courtier", "Shugenja"], etc.
+        ^"Ring Increase" STRING REQUIRED         # "+1 [Ring], +1 [Ring]"
+        ^"Starting Skills" STRING REQUIRED       # "+1 [Skill], +1 [Skill], ..."
+        ^"Starting Honor" INTEGER MIN 0 MAX 100 REQUIRED
+        ^"Available Technique Groups" LIST OF STRING REQUIRED
+        ^"Starting Techniques" LIST OF STRING REQUIRED
+        ^"School Ability" STRING REQUIRED
+        ^"Mastery Ability" STRING                # Rank 6 capstone
+    }
+}
+```
+
+**Note:** `^"Technique"` also serves as a generic type (defined in `core-techniques.ttrpg`) with properties for Name, Type, Rank, Activation, Ring, Skill, TN, Description, Effects, Opportunities, and Prerequisites.
+
+## Clans and Families
+
+### Great Clan Pattern
+
+Each of the seven Great Clans extends the generic `^"Clan"` type and contains a `FAMILIES` block. Each clan grants one ring increase, one skill increase, and a starting status value:
+
+```ttrpg
+^"Crab Clan" DEF {
+    EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
     APPLIES TO [^"Samurai"]
 
     PROPERTIES {
-        ^"Clan" STRING "Falcon" FIXED
+        ^"Clan Name" STRING "Crab" FIXED
+        ^"Clan Ring Bonus" STRING "+1 Earth"
+        ^"Clan Skill Bonus" STRING "+1 Fitness"
+        ^"Clan Status" INTEGER DEFAULT 30
+    }
+
+    FAMILIES {
+        ^"Hida" "+1 Earth or Fire, +1 Command, +1 Tactics, Glory 44, 4 koku"
+        ^"Hiruma" "+1 Air or Water, +1 Skulduggery, +1 Survival, Glory 39, 3 koku"
+        ^"Kaiu" "+1 Earth or Fire, +1 Smithing, +1 Labor, Glory 40, 5 koku"
+        ^"Kuni" "+1 Earth or Void, +1 Medicine, +1 Theology, Glory 40, 4 koku"
+        ^"Yasuki" "+1 Air or Water, +1 Commerce, +1 Design, Glory 39, 10 koku"
+    }
+}
+```
+
+**Family entry format:** Each family in a `FAMILIES` block conforms to the `^"Family"` generic type shape: ring choice between two rings, two skill increases, starting glory, and starting wealth in koku.
+
+### Minor Clan Pattern (Extension)
+
+Minor clans defined in extension files follow the same structure with `EXTENDS ^"Clan"`. From Shadowlands:
+
+```ttrpg
+^"Falcon Clan" DEF {
+    EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
+    APPLIES TO [^"Samurai"]
+
+    PROPERTIES {
+        ^"Clan Name" STRING "Falcon" FIXED
         ^"Clan Type" STRING "Minor Clan"
         ^"Clan Ring Bonus" STRING "+1 Void"
         ^"Clan Skill Bonus" STRING "+1 Theology"
@@ -565,28 +663,20 @@ Minor clans defined in extension files follow the same structure but add the cla
     }
 
     FAMILIES {
-        ^"Toritaka" DEF {
-            PROPERTIES {
-                ^"Ring Increase" STRING "+1 Earth or +1 Water"
-                ^"Skill Increases" STRING "+1 Survival, +1 Meditation"
-                ^"Glory" INTEGER DEFAULT 35
-                ^"Starting Wealth" STRING "3 koku"
-            }
-        }
+        ^"Toritaka" "+1 Earth or Water, +1 Survival, +1 Meditation, Glory 35, 3 koku"
     }
 }
 ```
-
-**Note:** Extension families may use the more detailed `DEF` block pattern with explicit `PROPERTIES` instead of the compact single-line format used in core clan definitions.
 
 ## Schools
 
 ### School DEF Pattern
 
-Schools are the most complex DEF blocks, containing properties, a school ability sub-DEF, a full curriculum, and rules.
+Schools extend the generic `^"School"` type. They are the most complex DEF blocks, containing properties inherited from the generic type, a school ability sub-DEF, a full curriculum, and rules.
 
 ```ttrpg
 ^"Toritaka Phantom Hunter" DEF {
+    EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
     APPLIES TO [^"Samurai"]
 
     PROPERTIES {
@@ -652,10 +742,11 @@ Schools are the most complex DEF blocks, containing properties, a school ability
 ```
 
 **School DEF structure:**
-1. `PROPERTIES` — Name, Clan, Roles, Ring Increase, Starting Skills, Starting Honor, Available Technique Groups, Starting Techniques
-2. **School Ability sub-DEF** — Named ability with Type and Effect
-3. `CURRICULUM` — Ranks 1-6, each containing `SKILL_GROUP`, `SKILL`, `TECH_GROUP`, `TECHNIQUE` entries
-4. `RULES` — Hash-identified rules for the school
+1. `EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"` — Inherits from generic School type
+2. `PROPERTIES` — Name, Clan, Roles, Ring Increase, Starting Skills, Starting Honor, Available Technique Groups, Starting Techniques
+3. **School Ability sub-DEF** — Named ability with Type and Effect
+4. `CURRICULUM` — Ranks 1-6, each containing `SKILL_GROUP`, `SKILL`, `TECH_GROUP`, `TECHNIQUE` entries
+5. `RULES` — Hash-identified rules for the school
 
 ## Advantages and Disadvantages
 
@@ -734,7 +825,7 @@ ENTRIES ^"Shadowlands Adversities" {
 ^"Technique" DEF {
     PROPERTIES {
         ^"Name" STRING REQUIRED
-        ^"Type" ENUM ["Kata", "Kiho", "Invocation", "Ritual", "Shuji", "Maho", "Ninjutsu", "Inversion", "School Ability", "Mastery Ability"]
+        ^"Type" ENUM ["Kata", "Kihō", "Invocation", "Ritual", "Shūji", "Mahō", "Ninjutsu", "Inversion", "School Ability", "Mastery Ability"]
         ^"Rank" INTEGER MIN 1 MAX 6
         ^"Activation" ENUM ["Action", "Downtime Activity", "Opportunity", "Permanent", "Triggered"]
         ^"Ring" STRING
@@ -771,11 +862,11 @@ ENTRIES ^"Shadowlands Maho Techniques" {
 | Type | Symbol | Schools | Description |
 |------|--------|---------|-------------|
 | Kata | (kata) | Bushi | Martial combat techniques |
-| Kiho | (kiho) | Monk | Spiritual techniques with Enhancement + Burst |
+| Kihō | (kihō) | Monk | Spiritual techniques with Enhancement + Burst |
 | Invocation | (invocation) | Shugenja | Elemental prayers to kami |
 | Ritual | (ritual) | Shugenja, Monk | Downtime ceremonial practices |
-| Shuji | (shuji) | Courtier | Social and verbal techniques |
-| Maho | (maho) | Rare | Blood sorcery (forbidden) |
+| Shūji | (shūji) | Courtier | Social and verbal techniques |
+| Mahō | (mahō) | Rare | Blood sorcery (forbidden) |
 | Ninjutsu | (ninjutsu) | Shinobi | Espionage and assassination |
 | Inversion | (inversion) | Ishiken | Void manipulation |
 
@@ -1067,8 +1158,9 @@ Rules can also use the `WHEN ... THEN` pattern for conditional behavior:
 - **FORMULA** properties for derived attribute calculations
 - **UNMASK_OPTIONS** for composure-break outcomes
 - **DIFFICULTY_SCALE** for target number calibration
-- **FAMILIES** blocks on clan definitions for family listing
+- **FAMILIES** blocks on clan definitions for family listing (entries conform to `^"Family"` shape)
 - **ENTRIES** blocks for grouping catalog-style content in extensions
+- **Generic type inheritance** for Clan, Family, School, and Technique via `EXTENDS`
 - **SYMBOL_DEFINITIONS** and **RESOLUTION_ORDER** for dice symbol interpretation
 
 ### Design Benefits

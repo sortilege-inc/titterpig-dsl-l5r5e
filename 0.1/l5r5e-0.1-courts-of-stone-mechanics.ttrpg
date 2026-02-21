@@ -13,6 +13,7 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Deer Minor Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
         APPLIES TO [^"Samurai"]
 
         # The Deer seek societal balance. When the Great Clans
@@ -25,39 +26,20 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         # Speardancers carry out secret missions in the shadows.
 
         PROPERTIES {
-            ^"Clan" STRING "Deer" FIXED
-            ^"Ring Increase" STRING "+1 Air"
-            ^"Skill Increase" STRING "+1 Sentiment"
-            ^"Status" INTEGER DEFAULT 30
+            ^"Clan Name" STRING "Deer" FIXED
+            ^"Clan Type" STRING "Minor Clan"
+            ^"Clan Ring Bonus" STRING "+1 Air"
+            ^"Clan Skill Bonus" STRING "+1 Sentiment"
+            ^"Clan Status" INTEGER DEFAULT 30
+        }
+
+        FAMILIES {
+            ^"Shika" "+1 Water or Fire, +1 Courtesy, +1 Culture, Glory 35, 5 koku"
         }
 
         RULES {
             #L5RCS01aB2cD4eF6gH8iJ0: deer_seek_societal_balance
             #L5RCS02kL3mN5oP7qR9sT1u: deer_manipulators_for_balance
-        }
-    }
-
-    ^"Shika Family" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # The Shika family are descendants of the clan's founders
-        # and their first followers. Members support one another with
-        # encouragement and acceptance, but this love is reserved
-        # for the Deer alone. Outside their borders, the Shika
-        # learn to silence their hearts and coldly observe people
-        # as means to their clan's ends.
-
-        PROPERTIES {
-            ^"Family" STRING "Shika" FIXED
-            ^"Ring Increase" STRING "+1 Water or +1 Fire"
-            ^"Skill Increases" STRING "+1 Courtesy, +1 Culture"
-            ^"Glory" INTEGER DEFAULT 35
-            ^"Starting Wealth" STRING "5 koku"
-        }
-
-        RULES {
-            #L5RCS03vW4xY6zA8bC0dE2f: shika_descendants_of_founders
-            #L5RCS04gH5iJ7kL9mN1oP3q: shika_silence_hearts_outside_clan
         }
     }
 

@@ -211,6 +211,25 @@ BASE "L5R5e_Core_Traits" {
         }
     }
 
+    ^"Void Points Max" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0
+
+        # Maximum number of Void points a character can hold.
+        # Formula: Void ring value
+        # Void Points current is tracked against this maximum.
+        # Void points are spent to activate certain abilities and
+        # recovered through specific actions and rest.
+
+        FORMULA "Void"
+
+        RULES {
+            #L5R130aT2uV4wX6yZ8aB0d: void_points_max_equals_void_ring
+            #L5R130bE3fG5hI7jK9lM1o: void_points_current_tracked_against_max
+        }
+    }
+
     # ===========================
     # SOCIAL ATTRIBUTES
     # ===========================

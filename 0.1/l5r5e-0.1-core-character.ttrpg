@@ -33,7 +33,7 @@ BASE "L5R5e_Core_Character" {
                 9 "What is your character's greatest accomplishment so far? (Determines skill)"
                 10 "What holds your character back most in life? (Determines anxiety or adversity)"
                 11 "What activity makes your character feel at peace? (Determines skill)"
-                12 "What concern, stake, or obligation makes your character feelستressed? (Determines disadvantage)"
+                12 "What concern, stake, or obligation makes your character feel stressed? (Determines disadvantage)"
                 13 "Who has your character learned the most from during their life? (Determines advantage and ring or skill)"
             }
             ^"Part III: Final Details" DEF {
@@ -54,17 +54,22 @@ BASE "L5R5e_Core_Character" {
     }
 
     # ===========================
-    # GREAT CLANS
+    # GENERIC TYPES
     # ===========================
 
-    ^"Clan" DEF {
+    #L5R250aB2cD4eF6gH8iJ0k ^"Clan" DEF {
         APPLIES TO [^"Samurai"]
 
-        ENUM ["Crab", "Crane", "Dragon", "Lion", "Phoenix", "Scorpion", "Unicorn"]
+        # Generic clan type. All clan definitions EXTENDS this type.
+        # A clan grants one ring increase, one skill increase, and
+        # a starting status value. Each clan contains a FAMILIES block.
 
-        # The seven Great Clans are the major political and military
-        # factions of Rokugan, each founded by one of the Kami who
-        # fell from the Celestial Heavens.
+        PROPERTIES {
+            ^"Clan Name" STRING REQUIRED FIXED
+            ^"Clan Ring Bonus" STRING REQUIRED     # "+1 [Ring]"
+            ^"Clan Skill Bonus" STRING REQUIRED    # "+1 [Skill]"
+            ^"Clan Status" INTEGER MIN 0 MAX 100 REQUIRED
+        }
 
         RULES {
             #L5R202wX4yZ6aB8cD0eF2g: clan_determines_starting_ring
@@ -73,7 +78,63 @@ BASE "L5R5e_Core_Character" {
         }
     }
 
+    #L5R251lM3nO5pQ7rS9tU1v ^"Family" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Generic family type. Family definitions EXTENDS this type.
+        # A family grants a choice between two rings, two skill
+        # increases, starting glory, and starting wealth.
+
+        PROPERTIES {
+            ^"Family Name" STRING REQUIRED FIXED
+            ^"Ring Increase" STRING REQUIRED        # "+1 [Ring] or [Ring]"
+            ^"Skill Increases" STRING REQUIRED      # "+1 [Skill], +1 [Skill]"
+            ^"Glory" INTEGER MIN 0 MAX 100 REQUIRED
+            ^"Starting Wealth" STRING REQUIRED      # "N koku"
+        }
+
+        RULES {
+            #L5R253aB2cD4eF6gH8iJ0k: family_determines_ring_choice
+            #L5R254lM3nO5pQ7rS9tU1v: family_determines_skill_increases
+            #L5R255wX4yZ6aB8cD0eF2g: family_determines_starting_glory
+            #L5R256hI5jK7lM9nO1pQ3r: family_determines_starting_wealth
+        }
+    }
+
+    #L5R252wX4yZ6aB8cD0eF2g ^"School" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Generic school type. School definitions EXTENDS this type.
+        # A school defines the character's role, ring and skill
+        # bonuses, starting honor, technique access, school ability,
+        # curriculum, and mastery ability.
+
+        PROPERTIES {
+            ^"School Name" STRING REQUIRED FIXED
+            ^"Clan" STRING REQUIRED
+            ^"Roles" LIST OF STRING REQUIRED        # ["Bushi"], ["Courtier", "Shugenja"], etc.
+            ^"Ring Increase" STRING REQUIRED         # "+1 [Ring], +1 [Ring]"
+            ^"Starting Skills" STRING REQUIRED       # "+1 [Skill], +1 [Skill], ..."
+            ^"Starting Honor" INTEGER MIN 0 MAX 100 REQUIRED
+            ^"Available Technique Groups" LIST OF STRING REQUIRED
+            ^"Starting Techniques" LIST OF STRING REQUIRED
+            ^"School Ability" STRING REQUIRED
+            ^"Mastery Ability" STRING                # Rank 6 capstone
+        }
+
+        RULES {
+            #L5R219bC1dE3fG5hI7jK9l: school_determines_technique_access
+            #L5R220mN2oP4qR6sT8uV0w: school_rank_advancement
+            #L5R221xY3zA5bC7dE9fG1h: mastery_ability_at_rank_six
+        }
+    }
+
+    # ===========================
+    # GREAT CLANS
+    # ===========================
+
     ^"Crab Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
         APPLIES TO [^"Samurai"]
 
         # The Defenders of the Wall. The Crab protect the Empire from
@@ -81,18 +142,18 @@ BASE "L5R5e_Core_Character" {
         # and practical skill above courtly refinement.
 
         PROPERTIES {
-            ^"Clan" STRING "Crab" FIXED
+            ^"Clan Name" STRING "Crab" FIXED
             ^"Clan Ring Bonus" STRING "+1 Earth"
-            ^"Clan Skill Bonus" STRING "+1 Fitness, +1 Martial Arts [Melee]"
+            ^"Clan Skill Bonus" STRING "+1 Fitness"
             ^"Clan Status" INTEGER DEFAULT 30
         }
 
         FAMILIES {
-            ^"Hida" "+1 Earth, +1 Fitness, Glory 40"
-            ^"Hiruma" "+1 Water, +1 Skulduggery, Glory 30"
-            ^"Kaiu" "+1 Earth, +1 Smithing, Glory 40"
-            ^"Kuni" "+1 Fire, +1 Theology, Glory 40"
-            ^"Yasuki" "+1 Air, +1 Commerce, Glory 40"
+            ^"Hida" "+1 Earth or Fire, +1 Command, +1 Tactics, Glory 44, 4 koku"
+            ^"Hiruma" "+1 Air or Water, +1 Skulduggery, +1 Survival, Glory 39, 3 koku"
+            ^"Kaiu" "+1 Earth or Fire, +1 Smithing, +1 Labor, Glory 40, 5 koku"
+            ^"Kuni" "+1 Earth or Void, +1 Medicine, +1 Theology, Glory 40, 4 koku"
+            ^"Yasuki" "+1 Air or Water, +1 Commerce, +1 Design, Glory 39, 10 koku"
         }
 
         RULES {
@@ -102,6 +163,7 @@ BASE "L5R5e_Core_Character" {
     }
 
     ^"Crane Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
         APPLIES TO [^"Samurai"]
 
         # The Left Hand of the Emperor. The Crane are the undisputed
@@ -109,17 +171,17 @@ BASE "L5R5e_Core_Character" {
         # art, fashion, and courtly behavior.
 
         PROPERTIES {
-            ^"Clan" STRING "Crane" FIXED
+            ^"Clan Name" STRING "Crane" FIXED
             ^"Clan Ring Bonus" STRING "+1 Air"
-            ^"Clan Skill Bonus" STRING "+1 Aesthetics, +1 Courtesy"
+            ^"Clan Skill Bonus" STRING "+1 Culture"
             ^"Clan Status" INTEGER DEFAULT 35
         }
 
         FAMILIES {
-            ^"Asahina" "+1 Earth, +1 Theology, Glory 35"
-            ^"Daidoji" "+1 Water, +1 Fitness, Glory 30"
-            ^"Doji" "+1 Air, +1 Courtesy, Glory 45"
-            ^"Kakita" "+1 Fire, +1 Aesthetics, Glory 40"
+            ^"Asahina" "+1 Water or Void, +1 Aesthetics, +1 Theology, Glory 40, 6 koku"
+            ^"Daidoji" "+1 Earth or Water, +1 Fitness, +1 Tactics, Glory 40, 7 koku"
+            ^"Doji" "+1 Air or Water, +1 Courtesy, +1 Design, Glory 44, 8 koku"
+            ^"Kakita" "+1 Air or Fire, +1 Aesthetics, +1 Meditation, Glory 44, 7 koku"
         }
 
         RULES {
@@ -129,6 +191,7 @@ BASE "L5R5e_Core_Character" {
     }
 
     ^"Dragon Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
         APPLIES TO [^"Samurai"]
 
         # The seekers of Enlightenment. Isolated in their mountain
@@ -136,17 +199,17 @@ BASE "L5R5e_Core_Character" {
         # wisdom and spiritual growth.
 
         PROPERTIES {
-            ^"Clan" STRING "Dragon" FIXED
-            ^"Clan Ring Bonus" STRING "+1 Void"
-            ^"Clan Skill Bonus" STRING "+1 Martial Arts [Melee], +1 Meditation"
+            ^"Clan Name" STRING "Dragon" FIXED
+            ^"Clan Ring Bonus" STRING "+1 Fire"
+            ^"Clan Skill Bonus" STRING "+1 Meditation"
             ^"Clan Status" INTEGER DEFAULT 30
         }
 
         FAMILIES {
-            ^"Agasha" "+1 Fire, +1 Medicine, Glory 30"
-            ^"Kitsuki" "+1 Air, +1 Sentiment, Glory 35"
-            ^"Mirumoto" "+1 Water, +1 Martial Arts [Melee], Glory 30"
-            ^"Togashi" "+1 Void, +1 Theology, Glory 30"
+            ^"Agasha" "+1 Fire or Void, +1 Medicine, +1 Smithing, Glory 40, 4 koku"
+            ^"Kitsuki" "+1 Air or Water, +1 Government, +1 Sentiment, Glory 44, 6 koku"
+            ^"Mirumoto" "+1 Earth or Water, +1 Fitness, +1 Tactics, Glory 44, 5 koku"
+            ^"Togashi" "+1 Earth or Void, +1 Fitness, +1 Theology, Glory 45, 3 koku"
         }
 
         RULES {
@@ -156,6 +219,7 @@ BASE "L5R5e_Core_Character" {
     }
 
     ^"Lion Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
         APPLIES TO [^"Samurai"]
 
         # The Right Hand of the Emperor. The Lion are the greatest
@@ -163,17 +227,17 @@ BASE "L5R5e_Core_Character" {
         # and unwavering loyalty to the Emperor.
 
         PROPERTIES {
-            ^"Clan" STRING "Lion" FIXED
-            ^"Clan Ring Bonus" STRING "+1 Fire"
-            ^"Clan Skill Bonus" STRING "+1 Command, +1 Tactics"
+            ^"Clan Name" STRING "Lion" FIXED
+            ^"Clan Ring Bonus" STRING "+1 Water"
+            ^"Clan Skill Bonus" STRING "+1 Tactics"
             ^"Clan Status" INTEGER DEFAULT 35
         }
 
         FAMILIES {
-            ^"Akodo" "+1 Earth, +1 Tactics, Glory 40"
-            ^"Ikoma" "+1 Water, +1 Culture, Glory 40"
-            ^"Kitsu" "+1 Void, +1 Theology, Glory 35"
-            ^"Matsu" "+1 Fire, +1 Martial Arts [Melee], Glory 35"
+            ^"Akodo" "+1 Air or Earth, +1 Command, +1 Government, Glory 44, 5 koku"
+            ^"Ikoma" "+1 Air or Water, +1 Composition, +1 Performance, Glory 40, 5 koku"
+            ^"Kitsu" "+1 Void or Water, +1 Meditation, +1 Theology, Glory 40, 4 koku"
+            ^"Matsu" "+1 Earth or Fire, +1 Command, +1 Fitness, Glory 44, 5 koku"
         }
 
         RULES {
@@ -183,6 +247,7 @@ BASE "L5R5e_Core_Character" {
     }
 
     ^"Phoenix Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
         APPLIES TO [^"Samurai"]
 
         # The Keepers of the Tao. The Phoenix are the most spiritually
@@ -190,17 +255,17 @@ BASE "L5R5e_Core_Character" {
         # and a deep commitment to peace and balance.
 
         PROPERTIES {
-            ^"Clan" STRING "Phoenix" FIXED
+            ^"Clan Name" STRING "Phoenix" FIXED
             ^"Clan Ring Bonus" STRING "+1 Void"
-            ^"Clan Skill Bonus" STRING "+1 Culture, +1 Theology"
+            ^"Clan Skill Bonus" STRING "+1 Theology"
             ^"Clan Status" INTEGER DEFAULT 30
         }
 
         FAMILIES {
-            ^"Asako" "+1 Earth, +1 Government, Glory 35"
-            ^"Isawa" "+1 Fire, +1 Theology, Glory 40"
-            ^"Kaito" "+1 Air, +1 Meditation, Glory 30"
-            ^"Shiba" "+1 Water, +1 Martial Arts [Melee], Glory 35"
+            ^"Asako" "+1 Air or Fire, +1 Culture, +1 Sentiment, Glory 40, 5 koku"
+            ^"Isawa" "+1 Fire or Void, +1 Meditation, +1 Theology, Glory 44, 5 koku"
+            ^"Kaito" "+1 Air or Void, +1 Fitness, +1 Theology, Glory 40, 4 koku"
+            ^"Shiba" "+1 Earth or Water, +1 Meditation, +1 Tactics, Glory 40, 5 koku"
         }
 
         RULES {
@@ -210,6 +275,7 @@ BASE "L5R5e_Core_Character" {
     }
 
     ^"Scorpion Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
         APPLIES TO [^"Samurai"]
 
         # The Underhand of the Emperor. The Scorpion serve the Empire
@@ -217,17 +283,17 @@ BASE "L5R5e_Core_Character" {
         # honor so others need not.
 
         PROPERTIES {
-            ^"Clan" STRING "Scorpion" FIXED
+            ^"Clan Name" STRING "Scorpion" FIXED
             ^"Clan Ring Bonus" STRING "+1 Air"
-            ^"Clan Skill Bonus" STRING "+1 Courtesy, +1 Skulduggery"
-            ^"Clan Status" INTEGER DEFAULT 25
+            ^"Clan Skill Bonus" STRING "+1 Skulduggery"
+            ^"Clan Status" INTEGER DEFAULT 35
         }
 
         FAMILIES {
-            ^"Bayushi" "+1 Air, +1 Courtesy, Glory 30"
-            ^"Shosuro" "+1 Water, +1 Performance, Glory 25"
-            ^"Soshi" "+1 Void, +1 Theology, Glory 30"
-            ^"Yogo" "+1 Earth, +1 Medicine, Glory 25"
+            ^"Bayushi" "+1 Air or Fire, +1 Courtesy, +1 Design, Glory 44, 8 koku"
+            ^"Shosuro" "+1 Air or Water, +1 Courtesy, +1 Performance, Glory 40, 6 koku"
+            ^"Soshi" "+1 Air or Void, +1 Design, +1 Theology, Glory 40, 6 koku"
+            ^"Yogo" "+1 Earth or Void, +1 Composition, +1 Theology, Glory 39, 4 koku"
         }
 
         RULES {
@@ -237,6 +303,7 @@ BASE "L5R5e_Core_Character" {
     }
 
     ^"Unicorn Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
         APPLIES TO [^"Samurai"]
 
         # The Explorers. The Unicorn spent centuries traveling outside
@@ -244,18 +311,18 @@ BASE "L5R5e_Core_Character" {
         # and a broader worldview that sets them apart.
 
         PROPERTIES {
-            ^"Clan" STRING "Unicorn" FIXED
+            ^"Clan Name" STRING "Unicorn" FIXED
             ^"Clan Ring Bonus" STRING "+1 Water"
-            ^"Clan Skill Bonus" STRING "+1 Fitness, +1 Survival"
+            ^"Clan Skill Bonus" STRING "+1 Survival"
             ^"Clan Status" INTEGER DEFAULT 30
         }
 
         FAMILIES {
-            ^"Ide" "+1 Air, +1 Courtesy, Glory 35"
-            ^"Iuchi" "+1 Void, +1 Theology, Glory 30"
-            ^"Moto" "+1 Earth, +1 Martial Arts [Melee], Glory 30"
-            ^"Shinjo" "+1 Water, +1 Tactics, Glory 30"
-            ^"Utaku" "+1 Fire, +1 Martial Arts [Melee], Glory 40"
+            ^"Ide" "+1 Earth or Water, +1 Commerce, +1 Courtesy, Glory 40, 9 koku"
+            ^"Iuchi" "+1 Air or Void, +1 Meditation, +1 Theology, Glory 40, 5 koku"
+            ^"Moto" "+1 Earth or Fire, +1 Command, +1 Survival, Glory 40, 6 koku"
+            ^"Shinjo" "+1 Fire or Water, +1 Sentiment, +1 Survival, Glory 44, 8 koku"
+            ^"Utaku" "+1 Earth or Fire, +1 Survival, +1 Tactics, Glory 44, 6 koku"
         }
 
         RULES {
@@ -273,31 +340,15 @@ BASE "L5R5e_Core_Character" {
 
         ENUM ["Bushi", "Courtier", "Shugenja", "Monk", "Shinobi"]
 
-        # Schools are training traditions that teach samurai their
-        # primary techniques and define their role in society.
+        # The five primary school roles. A school may have one or
+        # more roles. Individual schools EXTENDS ^"School" (defined
+        # in the Generic Types section above).
         #
-        # Bushi (bushi): Warriors trained in martial arts and battlefield tactics
-        # Courtier (courtier): Politicians trained in social skills and court intrigue
-        # Shugenja (shugenja): Priests who commune with the elemental kami
+        # Bushi: Warriors trained in martial arts and battlefield tactics
+        # Courtier: Politicians trained in social skills and court intrigue
+        # Shugenja: Priests who commune with the elemental kami
         # Monk: Ascetics who pursue enlightenment through discipline
         # Shinobi: Spies and assassins (typically Scorpion)
-
-        PROPERTIES {
-            ^"Starting Rings" STRING  # Two ring bonuses
-            ^"Starting Skills" STRING  # Multiple skill bonuses
-            ^"Starting Honor" INTEGER
-            ^"Available Technique Groups" LIST OF STRING
-            ^"Starting Techniques" LIST OF STRING
-            ^"School Ability" STRING
-            ^"Curriculum" LIST OF STRING  # Ranked advancement table
-            ^"Mastery Ability" STRING    # Rank 6 capstone
-        }
-
-        RULES {
-            #L5R219bC1dE3fG5hI7jK9l: school_determines_technique_access
-            #L5R220mN2oP4qR6sT8uV0w: school_rank_advancement
-            #L5R221xY3zA5bC7dE9fG1h: mastery_ability_at_rank_six
-        }
     }
 
     ^"School Rank" DEF {
@@ -396,10 +447,10 @@ BASE "L5R5e_Core_Character" {
         # Canceled advantages/disadvantages have no effect.
 
         INTERACTIONS {
-            "Turning Advantage: Convert own advantage to disadvantage if creates logical vulnerability. Gain 1 Void point."
-            "Seizing Target's Advantage: Spend 1 Void point to use target's advantage against them."
-            "Leveraging Disadvantage: Spend 1 Void point to use own disadvantage as advantage."
-            "Exploiting Target's Disadvantage: Spend 1 Void point to use target's disadvantage against them."
+            "Inverting Your Advantage: Convert own advantage to disadvantage if creates logical vulnerability. Gain 1 Void point."
+            "Seizing a Target's Advantage: Spend 1 Void point to use target's advantage against them."
+            "Leveraging Your Disadvantage: Spend 1 Void point to use own disadvantage as advantage."
+            "Exploiting a Target's Disadvantage: Spend 1 Void point to use target's disadvantage against them."
         }
 
         RULES {
@@ -413,17 +464,18 @@ BASE "L5R5e_Core_Character" {
     # NINJO AND GIRI
     # ===========================
 
-    ^"Ninjo" DEF {
+    ^"Ninjō" DEF {
+        ALIAS "Ninjo"
         APPLIES TO [^"Samurai"]
 
         STRING
 
         # Personal desire — the character's deepest longing or
-        # personal question. The tension between ninjo and giri
+        # personal question. The tension between ninjō and giri
         # is the core dramatic engine of L5R.
         #
-        # Acting against ninjo: Receive 3 strife
-        # Pursuing ninjo: May remove all strife after downtime
+        # Acting against ninjō: Receive 3 strife
+        # Pursuing ninjō: May remove all strife after downtime
 
         RULES {
             #L5R237rS9tU1vW3xY5zA7b: opposing_ninjo_causes_strife
