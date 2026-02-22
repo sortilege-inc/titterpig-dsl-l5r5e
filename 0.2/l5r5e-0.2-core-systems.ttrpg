@@ -1,0 +1,2448 @@
+BASE "L5R5e_Core_Systems" {
+    NAME "Legend of the Five Rings 5th Edition - Game systems: combat, conditions, strife, honor, weapons, armor, and NPCs"
+    VERSION "0.1"
+    RELEASE_DATE "2025-06-01"
+
+    # Core Rulebook: Combat resolution, conditions, strife/composure,
+    # honor/glory/status mechanics, weapons, armor, critical strikes
+
+    # ===========================
+    # METATYPE ANCHORS
+    # ===========================
+
+    ^"Game Rules" DEF {
+        # Metatype anchor for game rules and errata references
+    }
+
+    ^"System" DEF {
+        # Metatype anchor for game system and subsystem definitions
+    }
+
+    ^"Item" DEF {
+        # Metatype anchor for item definitions
+    }
+
+    ^"Item Pattern" DEF {
+        # Metatype anchor for crafting and item pattern definitions
+    }
+
+    ^"Table" DEF {
+        # Metatype anchor for reference table definitions
+    }
+
+    ^"Social Objective" DEF {
+        # Metatype anchor for intrigue social objective definitions
+    }
+
+    ^"Optional Rule" DEF {
+        # Metatype anchor for optional/variant rule definitions
+    }
+
+    ^"Mechanic" DEF {
+        # Metatype anchor for GM-facing mechanic and design guidance
+    }
+
+    ^"Equipment" DEF {
+        # Metatype anchor for general equipment item definitions
+    }
+
+    # ===========================
+    # STRIFE AND EMOTIONAL STATE
+    # ===========================
+
+    ^"Strife" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0
+
+        # Emotional accumulation from (st) symbols on kept dice,
+        # anxieties, opposing ninjo, and narrative effects. When
+        # strife exceeds composure, character becomes Compromised.
+        # Partially removed between scenes.
+
+        RULES {
+            #L5R400aB2cD4eF6gH8iJ0k: strife_from_kept_dice
+            #L5R401lM3nO5pQ7rS9tU1v: strife_from_anxieties
+            #L5R402wX4yZ6aB8cD0eF2g: strife_removal_between_scenes
+            #L5R403hI5jK7lM9nO1pQ3r: strife_removal_equals_half_composure
+        }
+    }
+
+    ^"Compromised" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Condition when strife exceeds composure. The character's
+        # emotions are barely contained and about to boil over.
+        #
+        # Effects while Compromised:
+        # - Vigilance treated as 1 (easier to Scheme against)
+        # - Cannot keep dice with (st) symbols
+        # - May Unmask once per scene to end Compromised
+
+        RULES {
+            #L5R404sT6uV8wX0yZ2aB4c: compromised_when_strife_exceeds_composure
+            #L5R405dE7fG9hI1jK3lM5n: vigilance_reduced_to_one
+            #L5R406oP8qR0sT2uV4wX6y: cannot_keep_strife_dice
+            #L5R407zA9bC1dE3fG5hI7j: may_unmask_once_per_scene
+        }
+    }
+
+    ^"Unmask" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # When Compromised, a character may Unmask — an outward display
+        # of raw emotion that ends the Compromised condition. The player
+        # chooses how the emotion manifests. All strife is removed, but
+        # there are narrative and mechanical consequences.
+
+        # Unmask options are recommendations, not requirements.
+        # When forfeiting honor or glory, the general rule of thumb
+        # is to lose an amount equal to your rank (the tens digit)
+        # of the relevant attribute.
+        UNMASK_OPTIONS {
+            ^"Bend Principles" "Compromise your beliefs. May forfeit honor."
+            ^"Expose Opening" "Emotional vulnerability reveals weakness. Enemies may gain advantage."
+            ^"Honor's Challenge" "Challenge an antagonist to a duel. Must follow through."
+            ^"Inappropriate Outburst" "Lose composure publicly. May forfeit glory."
+            ^"Panicked Retreat" "Flee the scene. May forfeit honor and/or glory."
+            ^"Rage" "Lash out violently. May forfeit honor and/or glory."
+        }
+
+        RULES {
+            #L5R408kL0mN2oP4qR6sT8u: unmask_removes_all_strife
+            #L5R409vW1xY3zA5bC7dE9f: unmask_has_consequences
+            #L5R410gH2iJ4kL6mN8oP0q: unmask_once_per_scene
+        }
+    }
+
+    # ===========================
+    # FATIGUE AND INCAPACITATION
+    # ===========================
+
+    ^"Fatigue" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        INTEGER MIN 0
+
+        # Physical exhaustion and injury tracked as fatigue points.
+        # Suffered from damage, exertion, and some technique effects.
+        # When fatigue >= endurance, character gains the Incapacitated
+        # condition (see ^"Condition" DEF).
+
+        RULES {
+            #L5R411rS3tU5vW7xY9zA1b: fatigue_from_damage
+            #L5R412cD4eF6gH8iJ0kL2m: incapacitated_at_endurance
+            #L5R413nO5pQ7rS9tU1vW3x: fatigue_recovery_between_scenes
+        }
+    }
+
+    # ===========================
+    # CONDITIONS
+    # ===========================
+
+    ^"Condition" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        ENUM ["Afflicted", "Bleeding", "Burning", "Compromised", "Dazed",
+              "Disoriented", "Dying", "Enraged", "Exhausted", "Immobilized",
+              "Incapacitated", "Intoxicated", "Prone", "Silenced",
+              "Unconscious", "Wounded"]
+
+        # Persistent status effects applied during play. Each condition
+        # has specific triggers, effects, and removal conditions.
+
+        CONDITION_DEFINITIONS {
+
+            ^"Afflicted" {
+                DESCRIPTION "The character is possessed or otherwise tormented by an onryō (vengeful ghost), kansen, or other malevolent spiritual entity. Given time, this evil force threatens to plant the seeds of the Shadowlands Taint."
+                EFFECTS {
+                    "Vigilance counts as 1."
+                    "When making a check, after Step 5: Choose Kept Dice, the GM may alter one kept (ring) to a (op)(st) result."
+                    "When Compromised, one of the following effects occurs based on the ring last used for a check (or GM's choice):"
+                    "Air: Mistakes someone in the scene for a person from their past, accusing them of a half-remembered sin or taunting them over an ancient failure until end of scene."
+                    "Water: Health collapses; suffers a critical strike with severity 5."
+                    "Fire: Becomes possessed by a desire; also becomes ^\"Enraged\"."
+                    "Earth: Flesh becomes pale and shows signs of decay; reduce endurance by 1 until Afflicted is removed. Cumulative; if endurance reaches 0, the character perishes."
+                    "Void: Ill fortune follows every move; loses all ^\"Void Points\"."
+                }
+                REMOVED_WHEN "Rituals such as ^\"Cleansing Rite\" and other abilities can remove this condition. Every two weeks, an Afflicted character must make a TN 4 ^\"Fitness\" or ^\"Meditation\" check using any ring. If they fail, remove ^\"Afflicted\" and assign the ^\"Shadowlands Taint\" disadvantage to the ring used (or another ring if that ring already has it)."
+            }
+
+            ^"Bleeding" {
+                DESCRIPTION "The character is losing blood, internally or externally."
+                EFFECTS {
+                    "When making a check, suffer physical damage equal to the (st) symbols on kept dice, ignoring resistances."
+                    "Each time damage inflicted this way causes a ^\"Critical Strike\", the severity is treated as equal to the character's current fatigue."
+                }
+                REMOVED_WHEN "Any character at range 0-1 may make a TN 2 Medicine (Earth) check as a Support action to remove this condition."
+            }
+
+            ^"Burning" {
+                DESCRIPTION "The character is ablaze."
+                EFFECTS {
+                    "After performing an action, suffer 3 strife and 3 physical damage that ignores resistance."
+                    "Severity of critical strikes caused by this damage is 5."
+                    "Each critical strike suffered this way beyond the first before the condition is removed has its severity increased by 5."
+                }
+                REMOVED_WHEN "A character may attempt to smother flames on themselves or another character at range 0-1 by making a TN 2 Fitness (Water) check as a Movement and Support action."
+            }
+
+            ^"Compromised" {
+                DESCRIPTION "The character is emotionally distraught and distracted."
+                EFFECTS {
+                    "Cannot keep dice containing (st) symbols (to a possible minimum of 0 kept dice)."
+                    "Vigilance counts as 1."
+                }
+                REMOVED_WHEN "When strife is reduced to a value lower than or equal to composure."
+            }
+
+            ^"Dazed" {
+                DESCRIPTION "The character's vision is obscured or their focus is hampered, putting them on the defensive."
+                EFFECTS {
+                    "Increase the TN of Attack and Scheme action checks by 2."
+                }
+                REMOVED_WHEN "At the end of their turn, if the character did not perform an Attack or Scheme action."
+            }
+
+            ^"Disoriented" {
+                DESCRIPTION "The character's senses are scattered, cutting off their options to defend themself."
+                EFFECTS {
+                    "Increase the TN of Movement and Support action checks by 2."
+                }
+                REMOVED_WHEN "At the end of their turn, if the character did not perform a Movement or Support action."
+            }
+
+            ^"Dying" {
+                DESCRIPTION "The character is on the verge of death due to blood loss, organ failure, or another cause. Duration specified in rounds by the effect that applied it."
+                EFFECTS {
+                    "Character is hovering on the precipice between life and death for a number of rounds (or narrative time) specified by the applying effect."
+                    "Once the allotted time has passed, the character perishes at the end of their next turn (or after completing one task in a narrative scene)."
+                }
+                REMOVED_WHEN "Any character at range 0-1 may make a TN 4 Medicine (Air) check as a Support action. If they fail, reduce the number of rounds remaining by their shortfall."
+            }
+
+            ^"Enraged" {
+                DESCRIPTION "The character is consumed with rage and fights with a fury as devastating as it is terrifying."
+                EFFECTS {
+                    "Increase the severity of all critical strikes inflicted by and upon the character by 2."
+                    "The first time an Enraged character kills another character each scene, the Enraged character gains 1 ^\"Void Points\"."
+                }
+                REMOVED_WHEN "May make a TN 3 Meditation (Void) check as a Support action. Otherwise removed at end of scene."
+            }
+
+            ^"Exhausted" {
+                DESCRIPTION "The character is physically and mentally exhausted. Characters who go more than twenty-four hours without sleep (or less under trying circumstances, at GM's discretion) suffer this condition."
+                EFFECTS {
+                    "Does not remove fatigue and strife at the end of each scene as normal."
+                }
+                REMOVED_WHEN "After sleeping for six or more hours."
+            }
+
+            ^"Immobilized" {
+                DESCRIPTION "The character is entangled, pinned down, or otherwise incapable of movement."
+                EFFECTS {
+                    "Cannot perform Movement actions or otherwise reposition during their turn."
+                    "Cannot select a different stance during their turn."
+                }
+                REMOVED_WHEN "At the end of their turn, if the character did not perform a Movement action."
+            }
+
+            ^"Incapacitated" {
+                DESCRIPTION "The character is largely incapable of action due to the scope of the harm they have suffered."
+                EFFECTS {
+                    "Cannot perform actions that require checks."
+                    "Cannot defend against damage."
+                    "After suffering a ^\"Critical Strike\", also suffers ^\"Unconscious\" in addition to any other effects."
+                }
+                REMOVED_WHEN "When fatigue is reduced to a value lower than or equal to endurance."
+            }
+
+            ^"Intoxicated" {
+                DESCRIPTION "The character is drunk."
+                EFFECTS {
+                    "Doubles all strife suffered."
+                    "Doubles all strife removed."
+                }
+                REMOVED_WHEN "At the end of each scene, may attempt to sober up by making a TN 3 Fitness (Water) check. A downtime scene spent resting also removes this condition."
+            }
+
+            ^"Prone" {
+                DESCRIPTION "The character is flat on the ground. A character may voluntarily become Prone as a Movement action."
+                EFFECTS {
+                    "Can move a maximum of 1 range band during their turn."
+                    "At the GM's discretion, harder to spot at a distance or hit with ranged attack checks (increasing relevant TNs by 1)."
+                }
+                REMOVED_WHEN "At the end of their turn, if the character did not perform a Movement action."
+            }
+
+            ^"Silenced" {
+                DESCRIPTION "The character has been rendered temporarily speechless by shock or a swift blow."
+                EFFECTS {
+                    "Increase the TN of Scheme action checks and checks to activate invocations, ^\"Mahō\", and ^\"Shūji\" by 3."
+                }
+                REMOVED_WHEN "At the end of the character's turn, if they did not perform a Scheme action or make a check requiring speech."
+            }
+
+            ^"Unconscious" {
+                DESCRIPTION "The character has been knocked out, has fallen asleep, or has otherwise been rendered totally unaware of their surroundings."
+                EFFECTS {
+                    "Cannot move, perform actions, or otherwise significantly act upon the physical world."
+                    "Can still make checks to resist effects, but cannot make checks that represent agency."
+                    "Increase the severity of any ^\"Critical Strike\" suffered by 10."
+                    "Cannot defend against damage, but generally wakes up from loud noise, harm, or similar stimulus."
+                }
+                REMOVED_WHEN "May spend 1 ^\"Void Points\" to awaken immediately. Characters also generally awaken after several hours."
+            }
+
+            ^"Wounded" {
+                DESCRIPTION "A part of the character's body is injured badly enough to hinder their use of it. One of their rings is negatively affected, recorded along with the condition."
+                EFFECTS {
+                    "Has two forms: Lightly Wounded and Severely Wounded."
+                }
+                REMOVED_WHEN "Any character can provide treatment by making a TN 4 Medicine (Water) check as a downtime activity. If they succeed, remove Lightly Wounded or reduce Severely Wounded to Lightly Wounded. This check can be attempted once per wounded ring per week. Alternatively, once per week per wounded ring, a character may make a TN 3 Fitness check using that ring (ignoring the condition's TN modifiers); if they succeed, remove Lightly Wounded or reduce Severely Wounded to Lightly Wounded."
+
+                ^"Lightly Wounded" {
+                    EFFECTS {
+                        "Increase the TN of checks with the affected ring by 1."
+                        "If the character suffers Severely Wounded for the same ring, remove this condition."
+                        "If the character would suffer Lightly Wounded again for the same ring, remove it and suffer Severely Wounded for that ring."
+                    }
+                }
+
+                ^"Severely Wounded" {
+                    EFFECTS {
+                        "Increase the TN of checks with the affected ring by 3."
+                        "If the character suffers ^\"Lightly Wounded\" or ^\"Severely Wounded\" for the same ring, remove it and suffer the effects of a severity 8 ^\"Critical Strike\" (Permanent Injury) as if they had failed the check to resist it."
+                    }
+                }
+            }
+        }
+
+        RULES {
+            #L5R414yZ6aB8cD0eF2gH4i: conditions_have_specific_triggers
+            #L5R415jK7lM9nO1pQ3rS5t: conditions_have_removal_methods
+            #L5R416uV8wX0yZ2aB4cD6e: multiple_conditions_can_stack
+        }
+    }
+
+    # ===========================
+    # COMBAT: SKIRMISH
+    # ===========================
+
+    ^"Skirmish" DEF {
+        EXTENDS ^"Conflict Type"
+
+        # Small-scale tactical combat between individual characters
+        # and small groups. The primary combat conflict type.
+        # Ideal for bar brawls to dramatic encounters between rival groups.
+        # Follows the general Conflict Scene pattern with the following
+        # additions and alterations.
+
+        # --- INITIATIVE ---
+        # The ^"Initiative" check for a skirmish is a TN 1 ^"Tactics" check
+        # to gain a read on battlefield conditions and enemy. Characters
+        # may spend (op) from this check to get additional information about
+        # surroundings or undertake small tasks such as readying weapons or
+        # diving for cover (see ^"Opportunity" INITIATIVE_OPPORTUNITIES).
+        # Characters act in descending order of initiative value for the scene.
+        # Ties broken by lowest ^"Honor" first, then ascending order of honor.
+
+        # --- TAKING TURNS ---
+        # Each character takes one turn each round in initiative order.
+        # Skirmishes do not have a fixed round limit. When things are
+        # clearly going badly for one side, many combatants will retreat
+        # and regroup.
+
+        TURN_SUMMARY {
+            1 "Choose a ^\"Stance\", which reflects approach to the fight and grants a passive benefit."
+            2 "Move 1 ^\"Range Band\". This can be done before or after performing an action."
+            3 "Perform an action, such as guarding, maneuvering, striking a foe, or waiting."
+        }
+
+        # --- MOVEMENT AND POSITIONING ---
+        # Skirmishes make the most detailed use of ^"Range Band" of all
+        # conflict types. Once during their turn, before or after performing
+        # an action, a character may move 1 range band. This is not an action.
+        # To move further, use the Maneuver action.
+
+        # --- SKIRMISH ACTIONS ---
+
+        ACTIONS {
+
+            ^"Assist" {
+                DESCRIPTION "You offer an ally a plan of attack, an insight about the foe, or an encouraging word."
+                ACTIVATION "As an Attack, Scheme, and Support action, describe how you are helping one other character at range 0-2 with their next action."
+                EFFECTS "If the GM accepts your suggestion, you provide ^\"Assistance\" on the chosen character's next action check."
+            }
+
+            ^"Calming Breath" {
+                DESCRIPTION "During a conflict, you may inhale deeply before exhaling, drawing upon your inner strength."
+                ACTIVATION "As a Support action, you may take a deep breath to calm yourself and recover stamina."
+                EFFECTS "If your strife is greater than half your ^\"Composure\", you remove 1 strife. If your fatigue is greater than half your ^\"Endurance\", you remove 1 fatigue."
+            }
+
+            ^"Challenge" {
+                DESCRIPTION "You issue a challenge to a foe, calling for them to face you in single combat."
+                ACTIVATION "As a Scheme action, make a TN 1 ^\"Command\" check targeting one character at range 0-5. You must stake 10 ^\"Honor\" and 5 ^\"Glory\" upon the challenge, which you forfeit if you sabotage the clash."
+                EFFECTS {
+                    "If you succeed, the target must choose whether to accept or decline:"
+                    "Accept: Target stakes 10 honor and 5 glory, which they forfeit if they take any Attack or Scheme action before the clash. At the end of the round, the clash begins."
+                    "Decline: Target must forfeit glory equal to your ranks in ^\"Command\" plus your bonus successes. Each of their allies with lower glory than you suffers 2 strife. You gain 1 ^\"Void Points\"."
+                    "If you win the clash, each of your foe's allies in the skirmish suffers 3 strife. If you lose, each of your allies suffers 3 strife."
+                }
+
+                ^"Clash" {
+                    # A clash embeds a ^"Duel" within another scene. Clashes can
+                    # arise from the Challenge action or via narrative events.
+
+                    STRUCTURE {
+                        1 "Staredown: Characters receive strife equal to the round of the clash and bid strife to increase their current initiative."
+                        2 "Take Turns: Character with higher initiative takes a turn, followed by lower value (tied: lowest ^\"Honor\" acts first)."
+                        3 "Determine Winner: If a character inflicts ^\"Incapacitated\", ^\"Unconscious\", or ^\"Dying\" on their enemy (or kills them) without suffering any of these, they win. Otherwise, the clash is inconclusive."
+                    }
+
+                    FINISHING_BLOWS "Like duels, clashes use the rules for Finishing Blows when a character becomes ^\"Compromised\" or unmasks."
+
+                    INTERRUPTING "Other characters can interrupt a clash before it begins or during the clash. Using the Challenge action on an enemy involved in a clash allows a character to cut in, exchanging themselves for an ally. Any other form of interruption requires the character to forfeit 10 ^\"Honor\". Any participant they helped must also forfeit their staked honor."
+
+                    EXTENDING "After characters clash inconclusively, they may extend the clash by one round. If both characters choose to continue, they skip their turns in initiative order and do not take actions until the clash resumes at the end of the next round. If either character chooses to withdraw, the clash ends."
+                }
+            }
+
+            ^"Guard" {
+                DESCRIPTION "You focus on warding off foes from yourself or an ally by positioning yourself defensively, taking cover, throwing strategically placed strikes, or firing shots menacingly close to the enemy."
+                ACTIVATION "As a Support action using a readied weapon, make a TN 1 ^\"Tactics\" check targeting yourself or one other character within the weapon's range."
+                EFFECTS "If you succeed, you guard the target until the beginning of your next turn. Increase the TN of Attack checks against the guarded target by one, plus an additional one per two bonus successes."
+            }
+
+            ^"Maneuver" {
+                DESCRIPTION "You shift on the battlefield, moving to a more advantageous position."
+                ACTIVATION "As a Movement action, you may reposition for more distance. Optionally, you may make a TN 2 ^\"Fitness\" check as part of this action."
+                EFFECTS "Move one ^\"Range Band\". If you choose to make the ^\"Fitness\" check and succeed, you may instead move two range bands, plus one additional range band per two bonus successes."
+            }
+
+            ^"Prepare Item" {
+                DESCRIPTION "You prepare, ready, or stow one weapon or other item."
+                ACTIVATION "As a Support action, you may interact with one item."
+                EFFECTS "Prepare one item for use, ready a weapon in a grip of your choice, or stow an item."
+            }
+
+            ^"Strike" {
+                DESCRIPTION "You make an attack against a single foe."
+                ACTIVATION "As an Attack action using one readied weapon, make a TN 2 Martial Arts check using the appropriate skill for the weapon, targeting one character within the weapon's range."
+                EFFECTS "If you succeed, deal physical damage to the target equal to the weapon's base damage plus your bonus successes."
+                NEW_OPPORTUNITIES "(op): If you succeed, you inflict a ^\"Critical Strike\" on your target with severity equal to your weapon's deadliness."
+            }
+
+            ^"Unique Action" {
+                DESCRIPTION "You make a check using a skill for a mechanical or narrative effect."
+                ACTIVATION "As an action, make a skill check to attempt a task you have described to the GM."
+                EFFECTS "If you succeed, you may use the skill for its narrative effects, for implementing any sample use that can be completed in a single action, or for pursuing another task that the GM deems appropriate."
+            }
+
+            ^"Wait" {
+                DESCRIPTION "You bide your time, waiting to spring into action."
+                ACTIVATION "As an Attack, Scheme, and Support action, declare a non-Movement action you will perform after the occurrence of a specified event before the end of the round."
+                EFFECTS "After the specified event occurs before the end of the round, you may perform the action. You must still use the ring matching your ^\"Stance\" for this action. If the specified event does not occur this round, you may perform one action of your choice (other than Wait) at the end of the round."
+            }
+        }
+
+        # --- RESOLVING A SKIRMISH ---
+        # A skirmish continues until only one group of combatants remains
+        # standing in the field. The GM should conclude a skirmish when one
+        # side has vanquished or driven off all their foes, or when it becomes
+        # clear that they will claim victory. If a warrior believes they have
+        # a chance to escape and survive, most will not voluntarily choose to
+        # fight to the death. Honor forfeited when retreating can be regained,
+        # but an ignoble death is more enduring.
+
+        RULES {
+            #L5R417fG9hI1jK3lM5nO7p: skirmish_round_structure
+            #L5R418qR0sT2uV4wX6yZ8a: stance_selection_each_round
+            #L5R419bC1dE3fG5hI7jK9l: initiative_determines_turn_order
+            #L5R420mN2oP4qR6sT8uV0w: skirmish_actions
+            #L5R421xY3zA5bC7dE9fG1h: clash_embedded_duel
+            #L5R422iJ4kL6mN8oP0qR2s: free_movement_one_range_band
+        }
+    }
+
+    ^"Critical Strike" DEF {
+
+        # Particularly deadly blows that slip past a character's defenses
+        # to inflict injuries, permanent scars, or even death. When a
+        # character fails to defend against damage, they suffer a critical
+        # strike. Additionally, some effects inflict critical strikes directly.
+
+        # --- SUFFERING CRITICAL STRIKES ---
+        # A critical strike has a severity value dictated by the method
+        # by which it was inflicted:
+        # - After failing to defend against damage: severity = deadliness
+        #   of the source of damage.
+        # - From a direct effect: severity specified by the effect
+        #   (otherwise, see Unspecified Deadliness).
+        #
+        # The character must make a TN 1 ^"Fitness" check to mitigate
+        # (using a ring of their choice in narrative, or the ring their
+        # ^"Stance" dictates in conflict). If they succeed, reduce severity
+        # by 1 plus bonus successes (minimum 0). Then consult the
+        # severity table.
+
+        UNSPECIFIED_DEADLINESS {
+            "Invocations and ^\"Mahō\": Deadliness equal to the value of the ring used for the Attack action check plus kept (st) symbols on that check."
+            "^\"Kihō\": 8."
+            "Extreme Temperature (Fire, Frostbite, etc.): 5, but each repeated exposure increases by +2."
+            "Falls: Deadliness of 7. Very long falls also inflict critical strikes directly."
+            "Sufficiently Heavy Objects: Deadliness equal to three times the object's ^\"Silhouette\"."
+        }
+
+        SEVERITY_TABLE {
+            "0-2" {
+                DESCRIPTION "Close Call: The hit slices the character's hair or clothes but fails to draw blood."
+                EFFECT "If the character is wearing armor, the armor gains the Damaged quality."
+            }
+            "3-4" {
+                DESCRIPTION "Flesh Wound: The hit sinks into the character's flesh, slicing shallowly or creating a vicious contusion."
+                EFFECT "The character suffers ^\"Lightly Wounded\" for the ring used for their check to resist. If the attack had the Razor-Edged quality, also suffers ^\"Bleeding\"."
+            }
+            "5-6" {
+                DESCRIPTION "Debilitating Gash: The hit is agonizing, cutting a deep furrow in the flesh or splitting muscle and fracturing bone. The character will likely need time to recover fully."
+                EFFECT "The character suffers ^\"Severely Wounded\" for the ring used for their check to resist. If the attack had the Razor-Edged quality, also suffers ^\"Bleeding\"."
+            }
+            "7-8" {
+                DESCRIPTION "Permanent Injury: The strike leaves the character permanently injured, bearing a scar that will impact them the rest of their life."
+                EFFECT "The character suffers ^\"Bleeding\", then chooses one scar disadvantage for the ring used for their check to resist: Air (Maimed Visage or Nerve Damage), Earth (Damaged Organ or Fractured Spine), Fire (Lost Fingers or Maimed Arm), Water (Lost Eye or Lost Foot), Void (Lost Memories)."
+            }
+            "9-11" {
+                DESCRIPTION "Maiming Blow: The character is gravely hurt by the strike and might never fully recover from it."
+                EFFECT "The character suffers ^\"Bleeding\", then chooses one scar disadvantage for the ring used for their check to resist: Air (Deafness or Muteness), Earth (Damaged Heart or Damaged Organ), Fire (Lost Arm or Lost Hand), Water (Blindness or Lost Leg), Void (Cognitive Lapses)."
+            }
+            "12-13" {
+                DESCRIPTION "Agonizing Death: The blow is mortal, and the character knows it."
+                EFFECT "The character suffers ^\"Severely Wounded\" for the ring used for their check to resist, as well as ^\"Bleeding\" and ^\"Dying\" (3 rounds)."
+            }
+            "14-15" {
+                DESCRIPTION "Swift Death: The character lives just long enough to realize their demise."
+                EFFECT "The character suffers ^\"Severely Wounded\" for the ring used for their check to resist, as well as ^\"Bleeding\" and ^\"Dying\" (1 round)."
+            }
+            "16+" {
+                DESCRIPTION "Instant Death: The character dies without even a last word."
+                EFFECT "The character dies immediately."
+            }
+        }
+
+        RULES {
+            #L5R424eF6gH8iJ0kL2mN4o: critical_severity_calculation
+            #L5R425pQ7rS9tU1vW3xY5z: fitness_resistance_check
+            #L5R426aB8cD0eF2gH4iJ6k: shattering_parry_reduces_severity
+            #L5R427lM9nO1pQ3rS5tU7v: permanent_injury_effects
+        }
+    }
+
+    # ===========================
+    # COMBAT: DUELS
+    # ===========================
+
+    ^"Duel" DEF {
+        EXTENDS ^"Conflict Type"
+
+        # Stylized one-on-one engagements fought to settle disputes that
+        # cannot be put to rest with words alone. A duel is fought by
+        # individuals, but the fate of families, clans, or the entire
+        # realm might ride on a duel. Follows the general Conflict Scene
+        # pattern with the following additions and alterations.
+
+        # --- SETTING THE TERMS ---
+        # Characters must agree on:
+        # - The objective (to the first strike, to incapacitation, to
+        #   the death, or another goal).
+        # - The weapons and fighting styles allowed.
+        # If belligerents cannot agree, the reigning lord (highest
+        # ^"Status" present, or the one on whose lands the duel takes
+        # place in case of tie) decides the method and stakes.
+
+        COMMON_FORMS {
+            ^"Iaijutsu Duel (to first strike)" {
+                DESCRIPTION "Highly ritualized: ceremonial clothes, only katana and wakizashi permitted, blades must begin sheathed (drawn no earlier than first turn)."
+                OBJECTIVE "Inflict a ^\"Critical Strike\" on the opponent."
+            }
+            ^"Iaijutsu Duel (to first blood)" {
+                DESCRIPTION "Same ritual as first strike."
+                OBJECTIVE "Inflict a ^\"Critical Strike\" of severity 5 or higher on the foe."
+            }
+            ^"Iaijutsu Duel (to the death)" {
+                DESCRIPTION "Same ritual as first strike."
+                OBJECTIVE "Kill the opponent or inflict ^\"Dying\" on them."
+            }
+            ^"Sparring Bout (to incapacitation)" {
+                DESCRIPTION "Practice duels to sharpen skills. Training weapons or blunted weapons expected. Bushi and monks frequently practice these (monks favoring barehanded strikes)."
+                OBJECTIVE "Inflict ^\"Incapacitated\" on the foe."
+            }
+            ^"Warrior's Duel (to defeat)" {
+                DESCRIPTION "A rougher sort of duel favored by many rōnin who wish to prove their skill. Any weapons on hand, few regulations."
+                OBJECTIVE "Inflict ^\"Unconscious\", ^\"Dying\", or death on the opponent, or get them to yield."
+            }
+            ^"Taryu-Jiai (to incapacitation)" {
+                DESCRIPTION "Shugenja duels fought primarily with invocations. Physical strikes permitted by some clans (Crab, Scorpion), forbidden by others (Phoenix, Crane)."
+                OBJECTIVE "Inflict ^\"Incapacitated\" on the foe or demonstrate absolute superiority such that the foe surrenders."
+            }
+        }
+
+        # --- CONCESSION ---
+        # At the start of any round, a character may concede, honorably
+        # withdrawing from the contest. They have lost for all intents
+        # and purposes and are expected to fulfill the terms of defeat.
+        # However, the victor may forswear some or all stakes in the name
+        # of Compassion (e.g., telling the vanquished to cut their topknot
+        # instead of severing their head).
+
+        # --- INITIATIVE ---
+        # The ^"Initiative" check for a duel is a TN 1 ^"Meditation" check
+        # to attempt to foresee how the duel will transpire. Each character
+        # has an initiative value based on results, as usual. However, each
+        # round at the start of Phase 2: Take Turns, characters participate
+        # in a staredown that modifies initiative.
+
+        ^"Staredown" {
+            # As tension mounts, even the most stoic samurai feel building
+            # pressure. This is a special step at the start of Phase 2
+            # each round.
+            EFFECTS {
+                "Each character receives strife equal to the number of the round (1 for round 1, 2 for round 2, etc.)."
+                "After receiving this strife, each character who is not ^\"Compromised\" may bid additional strife to increase their initiative value for that round."
+                "To bid: each participating character secretly chooses a number between 0 and their ^\"Focus\" attribute. All simultaneously reveal; each suffers that strife and adds it to their initiative for the round."
+            }
+        }
+
+        # --- TAKING TURNS ---
+        # Each character takes one turn each round in order of initiative.
+        # Higher initiative acts first. If tied, lower ^"Honor" acts first.
+        # At end of round, each character's initiative value resets to its
+        # value before the staredown.
+        # No fixed round limit. At end of each round, if either character
+        # achieved their objective, the duel ends and proceeds to Resolution.
+
+        ^"Finishing Blow" {
+            # As a combatant makes a move, a gap sometimes opens in their
+            # defenses, giving their foe a chance to end the fight.
+            TRIGGER "The first time their opponent becomes ^\"Compromised\" or unmasks during a duel, a character may immediately execute a finishing blow. This is a special action that can be performed out of turn."
+            EFFECTS {
+                "Choose an Attack action and perform it against the opponent, interrupting anything the target is doing (including resolving a check — the finishing blow resolves during Step 6 of the ^\"Check\", after (st) symbols are resolved but before (op) is spent)."
+                "One finishing blow can interrupt another."
+                "If the finishing blow succeeds, instead of dealing damage, it inflicts a ^\"Critical Strike\" with severity equal to two times the deadliness of the weapon or Attack action used, plus the attacker's bonus successes. Other effects of the Attack action resolve as usual."
+                "If two characters trigger finishing blows simultaneously (e.g., from staredown strife), the one with the lower ^\"Honor\" fully executes theirs first, then the other executes theirs (assuming they are still alive)."
+                "If the duel's objective is achieved by the finishing blow, the duel ends immediately. Otherwise, the duel picks up where it left off."
+            }
+        }
+
+        # --- MOVEMENT AND RANGE ---
+        # At the start, characters move to range 2 from each other. During
+        # the duel, each character is considered to be in range of any
+        # effect their opponent resolves. At the end, they move to range 2
+        # again. Players should narrate movement as they vie for position.
+
+        # --- DUEL ACTIONS ---
+
+        ACTIONS {
+
+            ^"Calming Breath" {
+                DESCRIPTION "During a conflict, you may inhale deeply before exhaling, drawing upon your inner strength."
+                ACTIVATION "As a Support action, you may take a deep breath to calm yourself and recover stamina."
+                EFFECTS "If your strife is greater than half your ^\"Composure\", you remove 1 strife. If your fatigue is greater than half your ^\"Endurance\", you remove 1 fatigue."
+            }
+
+            ^"Center" {
+                DESCRIPTION "You let the world around you slow as the Void overtakes your senses. Everything but the moment fades as you instinctively seek victory. Your mind weaves through infinite treacherous possibilities to the outcome you desire."
+                ACTIVATION "As a Support action in Void ^\"Stance\", you may focus your energy inward, envisioning your action and seeking the perfect moment. You must name a skill when you use Center."
+                EFFECTS "Roll a number of Skill dice up to your ranks in the chosen skill and reserve any number of those dice. The next time you make a check using the chosen skill (or use Center) this scene, after rolling dice, you may replace any number of rolled dice with the reserved dice (set to the results they were showing when reserved). You cannot reserve more dice than your ranks in the skill this way."
+            }
+
+            ^"Predict" {
+                DESCRIPTION "You shift subtly to draw a reaction out of your foe by repositioning or signaling a strike you never intend to throw. By predicting your foe's reaction, you aim to win the battle in the mind."
+                ACTIVATION "As an Attack and Scheme action, you may secretly select Air, Earth, Fire, or Water and record it."
+                EFFECTS "The next time your opponent chooses their ^\"Stance\", you may reveal your selection; if it matches the stance they chose, your opponent receives 4 strife and must choose a different stance. This effect persists until the end of your next turn."
+            }
+
+            ^"Prepare Item" {
+                DESCRIPTION "You prepare, ready, or stow one weapon or other item."
+                ACTIVATION "As a Support action, you may interact with one item."
+                EFFECTS "Prepare one item for use, ready a weapon in a grip of your choice, or stow an item."
+            }
+
+            ^"Strike" {
+                DESCRIPTION "You make an attack against a single foe."
+                ACTIVATION "As an Attack action using one readied weapon, make a TN 2 Martial Arts check using the appropriate skill for the weapon, targeting one character within the weapon's range."
+                EFFECTS "If you succeed, deal physical damage to the target equal to the weapon's base damage plus your bonus successes."
+                NEW_OPPORTUNITIES "(op): If you succeed, inflict a ^\"Critical Strike\" on your target with severity equal to your weapon's deadliness."
+            }
+        }
+
+        # --- RESOLVING A DUEL ---
+        # A duel ends at the end of any round in which one or more
+        # characters achieve their objectives. During Phase 3: Resolution,
+        # each participant tallies their score.
+
+        SCORING {
+            "Achieved your objective: +6 points"
+            "Struck the enemy first: +3 points"
+            "Inflicted fatigue on the enemy: +1 point per fatigue"
+            "Inflicted one or more critical strikes on the enemy: + points equal to severity of the highest critical strike (after reductions)"
+            "Killed the enemy (in a duel to the death only): +14 points"
+            "Unmasked: -2 points"
+            "Was witnessed cheating: Automatic loss"
+        }
+
+        SCORE_RESULTS {
+            "0" "No Winner: The duel is a draw. The characters might repeat the duel or retire to tend to wounds."
+            "1" "Narrow Victory: The winner seizes the thin margin of victory."
+            "2" "Clear Victory: The character who won claims victory definitively."
+            "3-6" "Absolute Victory: The character who won gives a clear demonstration of mastery. If the winner receives a glory award, increase it by +3."
+            "7+" "No Contest: The character who won demonstrates it was never a contest. If the winner receives a glory award, increase it by +5."
+        }
+
+        # --- ONE-ROLL DUELS (OPTIONAL RULE) ---
+        ^"One-Roll Duel" DEF {
+            EXTENDS ^"Optional Rule"
+
+            # Fast resolution for groups that don't want tactical duels.
+            # Setup: Each combatant describes their intended action, detailing
+            # relevant advantages, disadvantages, terrain, and circumstances.
+            # Check: Each combatant chooses weapon(s) and makes a competitive
+            # check using the appropriate skill and the ring their description
+            # dictates. Base TN 1 (adjustable by GM). Treated as an Attack
+            # action check targeting the opponent for ability purposes.
+            # Resolution: Character with more bonus successes wins.
+            # In live-weapon duels, victor inflicts a ^"Critical Strike" with
+            # severity = 2× weapon's deadliness + bonus successes. Foe resists
+            # as usual. If neither succeeds, the one with lower shortfall wins
+            # (inelegantly) and inflicts critical strike at 2× deadliness.
+            # If tied, both are considered victorious and defeated; higher
+            # severity critical (after resistance) wins. If tied or no
+            # criticals, the outcome is inconclusive.
+        }
+
+        RULES {
+            #L5R428wX0yZ2aB4cD6eF8g: duel_formal_structure
+            #L5R429hI1jK3lM5nO7pQ9r: setting_terms_and_concession
+            #L5R430sT2uV4wX6yZ8aB0c: staredown_initiative_modification
+            #L5R431dE3fG5hI7jK9lM1n: finishing_blow_mechanics
+            #L5R432oP4qR6sT8uV0wX2y: duel_scoring_and_resolution
+        }
+    }
+
+    # ===========================
+    # COMBAT: INTRIGUE
+    # ===========================
+
+    ^"Intrigue" DEF {
+        EXTENDS ^"Conflict Type"
+
+        # Social engagements: persuading the opposition, gathering favor
+        # from superiors, sowing the seeds of plots, or subtly besmirching
+        # rivals' reputations. How the fortunes of clans rise and fall.
+        # Follows the general Conflict Scene pattern with the following
+        # additions and alterations.
+
+        # --- SOCIAL OBJECTIVES ---
+        # Overarching goals that give an intrigue structure and tell the
+        # GM when the intrigue should draw to a close. Use momentum
+        # points to track progress toward goals.
+        #
+        # At the start of Phase 1: Initiative, each participating character
+        # may choose a social objective. Any number of characters can
+        # pursue the same objective. PCs may confer, then each decides
+        # and informs the GM. The GM decides objectives for adversary
+        # NPCs (but does not reveal them). Minion NPCs generally do not
+        # need objectives.
+
+        SOCIAL_OBJECTIVES {
+
+            ^"Appeal to a Person or Group" {
+                DESCRIPTION "Convince someone to behave in a certain way — backing a claim, coming to terms, swaying a judge, or winning wide support. State target and desired outcome at outset."
+                COMPLETION "Accumulate momentum points equal to or exceeding the difficulty value on successful Social skill checks against the target. The GM sets the difficulty (target's ^\"Focus\" is a good starting value, adjustable for stubbornness or innate resistance)."
+                ACHIEVED "At end of any round with sufficient momentum, the target is persuaded. If another character has more momentum at that time, their perspective wins instead. Ties broken by highest ^\"Status\"."
+                FAILURE "Cannot be completed if: target retires from scene before completion, certain unmask events occur, grave offense is given, or significant interruptions make it impossible."
+            }
+
+            ^"Discern Someone's Qualities" {
+                DESCRIPTION "Ferret out strengths, weaknesses, or loyalties of another character. Goes deeper than understanding their social objective. State target and which features you want to uncover."
+                COMPLETION "Accumulate momentum points equal to or exceeding the difficulty value on appropriate Social skill checks against the target (or other skills like ^\"Culture\" or ^\"Sentiment\"). The GM sets the difficulty (target's ^\"Vigilance\" is a good starting value, adjustable for wariness)."
+                ACHIEVED "Learn up to three of the following about the target: social objective, ^\"Ninjō\", giri, ^\"Composure\", ^\"Endurance\", one advantage, one disadvantage. The same option cannot be selected multiple times."
+                FAILURE "Cannot be completed if target retires from scene before completion."
+            }
+
+            ^"Discredit Someone" {
+                DESCRIPTION "Provoking enemies to force them into positions where they must accept a loss lest their reputation suffer. State target at outset."
+                COMPLETION "Cause the target to become ^\"Compromised\" (by inflicting strife via (op) spends and techniques)."
+                ACHIEVED "When the target unmasks, they must forfeit ^\"Glory\" equal to their glory rank (humiliated or shamed) unless they retire from the intrigue, and the objective is considered complete."
+                FAILURE "Cannot be completed if target retires before completion. Note: provocation makes it hard to get the target's support, and many samurai respond to this humiliation with a demand for a ^\"Duel\" — or a dagger in the night."
+            }
+
+            ^"Spread a Rumor" {
+                DESCRIPTION "Place a rumor in a group to lay groundwork for future victories or lead foes astray. State the rumor at outset."
+                COMPLETION "Accumulate momentum points equal to or exceeding the difficulty value on appropriate Social skill checks. No two checks can target the same character (the rumor must appear to come from multiple sources). The GM sets the difficulty (^\"Vigilance\" of the highest-^\"Status\" character in the scene is a good starting value, adjustable for disposition toward the rumor)."
+                ACHIEVED "The rumor becomes self-sustaining within the group. Not everyone necessarily believes it, but they discuss it — it is too reputable or intriguing to fully ignore."
+                FAILURE "If the character fails at two consecutive checks to spread the rumor, it fails to take root and cannot be completed this scene."
+            }
+        }
+
+        # --- INITIATIVE ---
+        # The ^"Initiative" check for an intrigue is a TN 1 ^"Sentiment"
+        # check to politely probe other characters' strengths, weaknesses,
+        # and objectives.
+        #
+        # Intrigues are relatively freeflowing: each character takes one
+        # turn when they see fit during each round, rather than at an
+        # appointed time. Initiative values come into play when two or more
+        # characters wish to act simultaneously — highest initiative acts
+        # first. A character must forfeit 1 ^"Honor" and 1 ^"Glory" to
+        # preempt characters of higher ^"Status" (and may suffer further
+        # narrative ramifications).
+
+        # --- TAKING TURNS ---
+        # Each character takes one turn each round whenever they see fit.
+        # A character who does not wish to take a turn may pass. Once each
+        # character has taken a turn or passed, play proceeds to the next
+        # round. No fixed round limit; moves to Resolution once all
+        # objectives have been achieved or clearly cannot be achieved.
+
+        TURN_SUMMARY {
+            1 "Choose a ^\"Stance\", which reflects physical posture, tone, and rhetorical approach."
+            2 "Move a short distance within the scene, before or after performing an action."
+            3 "Perform an action, such as convincing someone or spreading a rumor to achieve a social objective."
+        }
+
+        # --- MOVEMENT AND POSITIONING ---
+        # Characters can generally be assumed to be within range to resolve
+        # effects. Movement need not be closely tracked unless relevant.
+        # If it becomes relevant, the GM adjudicates distances in
+        # ^"Range Band" units.
+
+        # --- INTRIGUE ACTIONS ---
+
+        ACTIONS {
+
+            ^"Assist" {
+                DESCRIPTION "You offer an ally an argument they might use, an insight about the opposition, or a novel idea."
+                ACTIVATION "As an Attack, Scheme, and Support action, describe how you are helping one other character at range 0-2 with their next action."
+                EFFECTS "If the GM accepts your suggestion, you provide ^\"Assistance\" on the chosen character's next action check."
+            }
+
+            ^"Calming Breath" {
+                DESCRIPTION "During a conflict, you may inhale deeply before exhaling, drawing upon your inner strength."
+                ACTIVATION "As a Support action, you may take a deep breath to calm yourself and recover stamina."
+                EFFECTS "If your strife is greater than half your ^\"Composure\", you remove 1 strife. If your fatigue is greater than half your ^\"Endurance\", you remove 1 fatigue."
+            }
+
+            ^"Persuade" {
+                DESCRIPTION "You attempt to foster or quell an idea, emotion, or desire in a person."
+                ACTIVATION "As a Scheme action, make a Social skill check targeting one or more characters who can hear you. The TN equals the highest ^\"Vigilance\" among your targets."
+                TN_MODIFICATIONS {
+                    "^\"Command\": Present a plan with authority. If each target's status rank is lower than yours, decrease TN by 1."
+                    "^\"Courtesy\": Present a proposal with honeyed words and clever implications. If each target's status rank is higher than yours, decrease TN by 1."
+                    "^\"Games\"/^\"Performance\"/Other Skills: Offer a diversion from affairs at hand. If each target's status rank is equal to yours, decrease TN by 1."
+                }
+                EFFECTS "If you succeed, add one momentum point toward an appropriate social objective, plus one additional momentum point for every two bonus successes. Any narrative ramifications of the check also resolve."
+            }
+
+            ^"Unique Action" {
+                DESCRIPTION "You make a check using a skill for a mechanical or narrative effect."
+                ACTIVATION "As an action, make a skill check to attempt a task you have described to the GM."
+                EFFECTS "If you succeed, you may use the skill for its narrative effects, for implementing any sample use that can be completed in a single action, or for pursuing another task that the GM deems appropriate."
+            }
+        }
+
+        # --- RESOLVING AN INTRIGUE ---
+        # The GM should end an intrigue once all characters' social
+        # objectives have been achieved or clearly failed, or the
+        # characters pursuing them decide to let them drop for narrative
+        # reasons. Then proceeds to Phase 3: Resolution.
+
+        RULES {
+            #L5R433zA5bC7dE9fG1hI3j: intrigue_social_conflict
+            #L5R434kL6mN8oP0qR2sT4u: social_objectives_and_momentum
+            #L5R435vW7xY9zA1bC3dE5f: vigilance_is_persuade_tn
+            #L5R436gH8iJ0kL2mN4oP6q: freeflowing_initiative_order
+        }
+    }
+
+    # ===========================
+    # COMBAT: MASS BATTLE
+    # ===========================
+
+    ^"Mass Battle" DEF {
+        EXTENDS ^"Conflict Type"
+
+        # Large-scale warfare with abstracted armies. Characters contribute
+        # as commanders and leaders directing cohorts. Follows the general
+        # Conflict Scene pattern with the following additions and alterations.
+
+        # --- ARMIES ---
+        # Abstracted representations of large groups of warriors including
+        # general acumen, training, and equipment. Like characters, armies
+        # possess attributes and abilities.
+
+        ARMY_ATTRIBUTES {
+            ^"Strength" {
+                DESCRIPTION "Abstraction of the army's ability to absorb casualties without ceasing to function. Measured against casualties (which function like fatigue for a character). Attacks deal attrition, from which casualties are applied after reductions."
+                RANGE "1-100"
+                COLLAPSE "At end of each round, if casualties exceed strength, the army is routed."
+            }
+            ^"Discipline" {
+                DESCRIPTION "Reflection of the army's psychological state and ability of troops to remain in the field. Measured against panic (which accumulates like strife for an individual)."
+                RANGE "1-100"
+                COLLAPSE "At end of each round, if panic exceeds discipline, the army suffers a morale collapse."
+            }
+        }
+
+        # --- COMMANDERS ---
+        # Each army has one commander who directs the entire army.
+        # Selected during Phase 1: Initiative. Characters with lower
+        # ^"Status" are expected to defer to those with higher status.
+        # At the beginning of each round, the commander selects the
+        # army's strategic objective for the round.
+        # If a commander is killed, the army suffers 10 panic. Then the
+        # character with highest ^"Status" assumes command (or appoints
+        # someone else).
+
+        # --- LEADERS AND COHORTS ---
+        # Each leader commands a relatively independent chunk of the army
+        # called a cohort. The commander chooses leaders during Phase 1.
+        # Generally each PC should be a leader. Each cohort is defined by
+        # its leader for targeting and effects. Cohorts do not usually
+        # suffer casualties directly; casualties apply to overall army
+        # strength. Terrain qualities affect cohorts that occupy them
+        # (damage becomes attrition).
+
+        # --- STRATEGIC OBJECTIVES ---
+        # At the beginning of each round, each commander chooses one
+        # strategic objective. Leaders must take actions to accrue
+        # momentum points toward the goal. Once fulfilled, that objective
+        # cannot be chosen again for three rounds. If not completed, it
+        # may be selected again with progress continuing.
+        # When a leader's action completes an objective, that leader is
+        # awarded 3 ^"Glory".
+
+        STRATEGIC_OBJECTIVES {
+
+            ^"Capture a Position" {
+                DESCRIPTION "Uproot the enemy from a specific fortification or piece of terrain they occupy."
+                MOMENTUM "After a leader performs an Assault action against the enemy cohort occupying the fortification, the army accrues 1 momentum point per casualty the enemy army suffered."
+                FULFILLED "After accruing momentum points equal to or exceeding the fortification's difficulty value. Alternatively, if the enemy vacates and a friendly leader successfully performs Reinforce there."
+                COMPLETION "The enemy cohort is driven out. The completing leader may have their cohort occupy the fortification immediately."
+            }
+
+            ^"Cut Off the Head" {
+                DESCRIPTION "Corner and kill a particular enemy leader. Difficulty value equals the target's ^\"Focus\" attribute."
+                MOMENTUM "After a leader performs an Assault action against the enemy leader's cohort, the army accrues 3 momentum points."
+                FULFILLED "When momentum equals or exceeds the difficulty value, the completing leader may perform a ^\"Finishing Blow\" on the target as if fighting a ^\"Duel\". Alternatively, fulfilled if one of the army's leaders kills the target in a ^\"Clash\" via Challenge."
+                COMPLETION "Against an enemy leader: enemy army suffers 10 panic. Against the enemy commander: enemy army suffers 20 panic."
+            }
+
+            ^"Draw Them In" {
+                DESCRIPTION "Draw the foe into attacking a hardened position, preparing for a counterattack."
+                MOMENTUM "After an enemy leader attacks a friendly cohort and it suffers 3 or fewer casualties: 1 momentum point. After an enemy leader Challenges or accepts a Challenge from a friendly leader: 1 momentum point."
+                FULFILLED "After accruing momentum points equal to or exceeding the enemy commander's ^\"Vigilance\"."
+                COMPLETION "Enemy army suffers 5 panic. During the next round, double all attrition the army's leaders inflict."
+            }
+
+            ^"Grind Them Down" {
+                DESCRIPTION "Focus on inflicting harm to weaken enemy forces and break their resolve."
+                MOMENTUM "After a leader performs an Assault action against any enemy cohort, the army accrues 1 momentum point per casualty the enemy army suffered."
+                FULFILLED "After accruing momentum points equal to the enemy commander's ^\"Glory\" rank plus ranks in ^\"Command\"."
+                COMPLETION "Enemy army suffers 10 panic."
+            }
+
+            ^"Seize Victory!" {
+                DESCRIPTION "Deliver a final blow to the enemy army. Can only be declared after a number of other strategic objectives have been fulfilled during the battle (GM sets number; 3 recommended)."
+                MOMENTUM "After a leader performs an Assault action against any enemy cohort, the army accrues 1 momentum point per casualty the enemy army suffered."
+                FULFILLED "After accruing momentum points equal to or exceeding the enemy commander's ^\"Focus\" plus ranks in ^\"Tactics\"."
+                COMPLETION "The enemy army is driven back and must retreat from the field. While not completely destroyed, it can no longer achieve meaningful victory."
+            }
+        }
+
+        # --- INITIATIVE ---
+        # 1. Choose Commander: Each army selects its commander.
+        # 2. Initiative Check: Commander makes a TN 1 ^"Command" check
+        #    to marshal and organize forces.
+        # 3. Select Leaders: Commander chooses leaders (may personally
+        #    be one). Must choose at least one leader.
+
+        # --- TAKING TURNS ---
+        # At start of Phase 2, the commander with the higher initiative
+        # decides if their army moves first or waits. If tied, lower
+        # ^"Honor" must move first. Then, starting with the first army,
+        # each commander alternates nominating one leader who has not
+        # acted yet to act.
+        # At the beginning of each round, each commander selects the
+        # strategic objective. A PC commander unsure what to do may make
+        # a ^"Tactics" check with TN equal to enemy commander's ^"Vigilance"
+        # for insight.
+
+        # --- MASS BATTLE ACTIONS ---
+
+        ACTIONS {
+
+            ^"Assault" {
+                DESCRIPTION "You move your cohort to a particular position, attacking the cohort of a chosen enemy leader."
+                ACTIVATION "As an Attack and Movement action, make a TN 2 ^\"Tactics\" check targeting one enemy leader's cohort."
+                EFFECTS "If you succeed, deal attrition to the enemy army equal to your ranks in ^\"Command\" plus your bonus successes."
+            }
+
+            ^"Challenge" {
+                DESCRIPTION "You stride to the forefront of your force, bellowing a challenge to the enemy leader."
+                ACTIVATION "As a Movement and Scheme action, make a TN 1 ^\"Command\" check targeting one enemy leader."
+                EFFECTS {
+                    "If you succeed, stake 10 ^\"Honor\" and 5 ^\"Glory\" (forfeit if you sabotage the clash). Target must accept or decline:"
+                    "Accept: Target stakes 10 honor and 5 glory (forfeit if they take Attack or Scheme before the clash). At end of round, enter a ^\"Clash\"."
+                    "Decline: Target forfeits glory equal to your ranks in ^\"Command\" plus bonus successes. Their army suffers 3 panic. You gain 1 ^\"Void Points\"."
+                    "If you win the clash, enemy army suffers 5 panic. If you lose, your army suffers 5 panic."
+                }
+            }
+
+            ^"Rally" {
+                DESCRIPTION "You command your troops to regroup and support an allied contingent."
+                ACTIVATION "As a Support action, make a TN 1 ^\"Command\" check targeting one friendly leader's cohort."
+                EFFECTS "If you succeed, your army removes 1 panic, plus 1 additional panic per bonus success. Whether you succeed or fail, the target counts as having ^\"Assistance\" on their next check before end of scene."
+            }
+
+            ^"Reinforce" {
+                DESCRIPTION "You call for your troops to dig in and hold a position at all costs."
+                ACTIVATION "As a Movement and Support action, make a TN 2 ^\"Tactics\" check to have your cohort dig in at one chosen position."
+                EFFECTS "If you succeed, increase the TN of Attack action checks targeting your cohort by 1, plus an additional 1 per two bonus successes. Persists for one round. If you choose an unoccupied fortification or terrain, you are considered occupying it until you narratively leave or perform an action other than Challenge or Reinforce."
+            }
+        }
+
+        # --- RETREATING ---
+        # As an action, a character can retreat from a mass battle.
+        # Must forfeit 10 ^"Honor". Must also forfeit 10 ^"Glory" if
+        # anyone knows they willingly retreated. If they leave their
+        # cohort leaderless, the army suffers 10 panic.
+        # If ordered to retreat by their lord, must stake 10 honor and
+        # 10 glory on completing whatever other task their lord assigned.
+
+        # --- READIED WEAPONS ---
+        # At the start of each round, each character may choose one
+        # (or two, if both are used one-handed) weapons to count as
+        # readied for the round.
+
+        # --- ANNIHILATING A COHORT ---
+        # At GM's discretion, if a cohort suffers casualties greater
+        # than a quarter of the army's total strength from a single
+        # action, it is wiped out. Its leader suffers a ^"Critical Strike"
+        # with severity 12, and the cohort ceases to exist.
+
+        # --- RESOLVING A MASS BATTLE ---
+
+        RESOLUTION {
+            ^"Rout" "If casualties exceed strength at end of round: all minion NPCs killed or scattered. Each PC and adversary NPC suffers a ^\"Critical Strike\" with severity 12. At GM's discretion, PCs may be captured or left for dead."
+            ^"Morale Collapse" "If panic exceeds discipline: the army breaks apart. Each PC and adversary NPC can escape in the confusion."
+            ^"Strategic Victory" "If an army achieves the Seize Victory! objective, it wins at end of round. Other armies that did not suffer rout or morale collapse withdraw relatively intact."
+        }
+
+        # --- BATTLE LENGTH AND FATIGUE ---
+        # Mass battle rounds are long in fictional time; six rounds cover
+        # a full day of fighting. After six rounds, armies generally
+        # withdraw to camps. If a commander decides to remain in the field,
+        # during Phase 1 of the seventh round and each subsequent round,
+        # the commander must make a TN 4 ^"Command" check. If they fail,
+        # the army suffers 10 panic plus panic equal to the commander's
+        # shortfall.
+
+        # --- FORTIFICATIONS ---
+
+        FORTIFICATIONS {
+            "Woods or Defensive Terrain" "Reduce attrition suffered by 1. Difficulty Value 4."
+            "Outpost" "Reduce attrition suffered by 2. Difficulty Value 6."
+            "Fortress" "Reduce attrition suffered by 3. Difficulty Value 8."
+            "Castle" "Reduce attrition suffered by 4. Difficulty Value 12."
+        }
+
+        # --- EXAMPLE ARMIES ---
+
+        EXAMPLE_ARMIES {
+
+            ^"Peasant Levy" {
+                STRENGTH 35
+                DISCIPLINE 20
+                ABILITY "Conscripted: Each leader in this army increases the TN of their Attack actions by 1."
+            }
+
+            ^"Ashigaru Army" {
+                STRENGTH 55
+                DISCIPLINE 30
+                ABILITY "Rank Formation: When a leader performs the Reinforce action, they may spend (op)+: After an enemy cohort attacks this leader's cohort, the enemy army suffers attrition equal to (op) spent this way."
+            }
+
+            ^"Elite Samurai Army" {
+                STRENGTH 50
+                DISCIPLINE 45
+                ABILITY "Hardened Veterans: When this army would remove 1 or more panic, it may remove an amount equal to the ^\"Glory\" rank of its commander instead."
+                ABILITY "Elite Training: Each cohort confers one ability upon its leader: Cavalry (after Assault success, enemy suffers panic equal to ^\"Survival\" ranks), Siege Specialists (Rally success adds bonus successes equal to ^\"Labor\" ranks), Infantry (Assault success adds bonus successes equal to ^\"Command\" ranks), Archers (after Reinforce success, enemy suffers panic equal to ^\"Tactics\" ranks), Mystics (after Rally or Reinforce success, remove casualties or panic equal to ^\"Theology\" ranks)."
+            }
+
+            ^"Shadowlands Horde" {
+                STRENGTH 65
+                DISCIPLINE 40
+                ABILITY "Relentless: This army does not suffer the effects of battle fatigue."
+                ABILITY "Monstrous Enemies: At end of each round, each opposing army suffers panic equal to this army's leader's ranks in ^\"Command\"."
+                ABILITY "Wake of the Shadowlands: After a mass battle against this army, the battlefield becomes Defiled terrain."
+            }
+        }
+
+        RULES {
+            #L5R437rS9tU1vW3xY5zA7b: mass_battle_round_structure
+            #L5R438cD0eF2gH4iJ6kL8m: commanders_and_leaders
+            #L5R439nO1pQ3rS5tU7vW9x: strategic_objectives_and_momentum
+        }
+    }
+
+    # ===========================
+    # ITEM QUALITIES
+    # ===========================
+
+    ^"Item Quality" DEF {
+        APPLIES TO [^"Item", ^"Weapon", ^"Armor", ^"Equipment"]
+
+        ENUM ["Ceremonial", "Concealable", "Cumbersome", "Damaged",
+              "Destroyed", "Durable", "Forbidden", "Mundane", "Prepare",
+              "Razor-Edged", "Resplendent", "Sacred", "Snaring", "Subtle",
+              "Unholy", "Wargear"]
+
+        # Qualities common to weapons, armor, and other items.
+
+        QUALITY_DEFINITIONS {
+
+            ^"Ceremonial" {
+                DESCRIPTION "Ceremonial equipment is indicative of the wearer's rank. It can be brought into many contexts in which similar items might not be allowed. Rarely, a character might be loaned a Ceremonial item to provide them with authority during a task."
+                EFFECTS {
+                    "While wearing one or more Ceremonial items openly, reduce TN of checks to convince others of your real or assumed identity as the known owner of that item (or one of their allies) by 1."
+                    "At the end of any scene in which you use a Ceremonial item of a character with higher ^\"Status\" without their permission, you must forfeit 3 ^\"Honor\"."
+                }
+            }
+
+            ^"Concealable" {
+                DESCRIPTION "Some weapons and armor are easy to hide on one's person, due to size or deliberate design."
+                EFFECTS {
+                    "Unless explicitly worn openly or revealed for use, a Concealable item is assumed to be hidden."
+                    "When observing the wearer of a hidden item, a character must succeed at a TN 3 Design (Air) or Smithing (Air) check to discern that the wearer is armed or armored. If the onlooker succeeds with two or more bonus successes, they also determine the type of the hidden item."
+                    "Concealable armor can be worn under loose-fitting clothes, but you can only benefit from the resistance and qualities of one set of armor at a time."
+                    "Concealable weapons can be drawn more quickly in combat. As part of an Attack action, you may ready or sheathe one Concealable weapon."
+                }
+            }
+
+            ^"Cumbersome" {
+                DESCRIPTION "This item is heavy or unwieldy, and impossible to conceal on one's person."
+                EFFECTS {
+                    "While wearing Cumbersome armor, increase the TN of your checks to maneuver in your environment (such as Movement action checks) by 1."
+                    "If you moved this turn, increase the TN of Attack action checks using a Cumbersome weapon by 1."
+                }
+            }
+
+            ^"Damaged" {
+                DESCRIPTION "Samurai must carefully maintain their kit in the field, for routine wear and tear will eventually ruin nearly any tool."
+                EFFECTS {
+                    "If a weapon or tool becomes Damaged, increase the TN of checks to use it by 1."
+                    "If armor becomes Damaged, reduce all resistances it provides by 2 (to a minimum of 0)."
+                    "If a Damaged item becomes Damaged again, it loses Damaged and becomes ^\"Destroyed\" instead. If it becomes Destroyed for any other reason, it also loses Damaged."
+                }
+            }
+
+            ^"Destroyed" {
+                DESCRIPTION "Extreme events or long use without maintenance can shatter, tear, or otherwise render an item nonfunctional."
+                EFFECTS {
+                    "A Destroyed item is broken and cannot be used for its intended function. It might still be usable as an improvised weapon or tool, at the GM's discretion."
+                }
+            }
+
+            ^"Durable" {
+                DESCRIPTION "Items crafted to last can endure damage that would destroy less well-made works."
+                EFFECTS {
+                    "If a Durable item would become ^\"Damaged\", it loses Durable instead."
+                    "If a Durable item would be ^\"Destroyed\", it loses Durable and becomes Damaged instead."
+                }
+            }
+
+            ^"Forbidden" {
+                DESCRIPTION "Rokugani laws are unforgiving, and many things are contraband. This includes many illicit substances, heretical art or literature, and foreign items that have not been transported through strictly regulated trade routes."
+                EFFECTS {
+                    "At the end of any scene in which you used a Forbidden item openly in public, you must forfeit 3 ^\"Glory\"."
+                }
+            }
+
+            ^"Mundane" {
+                DESCRIPTION "Mundane items are objects found in all contexts of daily life, and are permitted to anyone in most social contexts (within reason). People in many walks of life need tools like knives, walking sticks, and wheat threshers, even if these items can be utilized to deadly effect by someone sufficiently determined."
+                EFFECTS {
+                    "Wearing a Mundane item openly has no additional effects, though onlookers still take note of the fact that you are armed if the item could be used as a weapon."
+                }
+            }
+
+            ^"Prepare" {
+                DESCRIPTION "This item must be reloaded, reset, or otherwise prepared after use."
+                EFFECTS {
+                    "After you use this item, you cannot use it again until it has been prepared. As a Support action, while it is readied, you may prepare this item for use."
+                }
+            }
+
+            ^"Razor-Edged" {
+                DESCRIPTION "Some weapons are particularly sharp, and thus brittle, and must be carefully honed to keep functioning at their best. The traditional Rokugani katana is one such weapon — its keen edge lets it hew off limbs more easily than other swords, but it is also more susceptible to damage if swung carelessly at armored foes."
+                EFFECTS {
+                    "When you succeed at an Attack action check that deals damage to a target using a Razor-Edged item, if the damage dealt is reduced to 0 before they defend, this item becomes ^\"Damaged\"."
+                    "When you make an Attack action check with a Razor-Edged weapon, you may spend (op) as follows: +(op): Treat the deadliness of this weapon as 1 higher per (op) spent this way."
+                }
+            }
+
+            ^"Resplendent" {
+                DESCRIPTION "An item with the Resplendent quality is embellished to attract attention to its presenter or wearer."
+                EFFECTS {
+                    "While wearing one or more Resplendent items, if you would be awarded 1 or more ^\"Glory\", you receive that amount of glory plus 1 instead."
+                }
+            }
+
+            ^"Sacred" {
+                DESCRIPTION "Items with the Sacred quality are imbued with purifying power — often in the form of jade, the mystical stone said to be the tears shed by Amaterasu, the goddess of the sun and protector against the terror of the night. Such items are anathema to the denizens of the Shadowlands and other horrors that prey upon humanity."
+                EFFECTS {
+                    "When an Otherworldly being makes an Attack or Intrigue action check targeting the wearer of one or more Sacred items, increase the TN by 1."
+                    "While you are carrying one or more Sacred items, if you would gain the ^\"Afflicted\" condition, you must choose one of those items to become ^\"Damaged\" instead."
+                    "Sacred weapons ignore all resistances possessed by Otherworldly and Tainted beings."
+                }
+            }
+
+            ^"Snaring" {
+                DESCRIPTION "Flexible or, in some cases, harshly curved weapons are excellent for snaring, grabbing, and disarming."
+                EFFECTS {
+                    "When performing an Attack action with a Snaring weapon, you may spend (op) as follows: +(op): One target of the attack with vigilance lower than or equal to the (op) spent this way suffers the ^\"Immobilized\" condition."
+                }
+            }
+
+            ^"Subtle" {
+                DESCRIPTION "An item with the Subtle quality is made to not stand out, and people tend to overlook it."
+                EFFECTS {
+                    "Increase the TN of checks to ascertain information about the item by 1. At the GM's discretion, this also applies to checks to discern what the creator or wearer of the piece intends by presenting it, or to learn anything of value about that person from it."
+                }
+            }
+
+            ^"Unholy" {
+                DESCRIPTION "Some physical artifacts carry a dreadful miasma. They may have been tainted by direct exposure to the power of the Shadowlands or by foul rituals, but some are made with obsidian, said to be the shed blood of Onnotangu, the god of the moon and ancient foe of the Kami."
+                EFFECTS {
+                    "After a character suffers a ^\"Critical Strike\" from an Unholy weapon, they suffer the ^\"Afflicted\" condition."
+                    "At the end of each scene in which you use an Unholy item, you suffer the ^\"Afflicted\" condition."
+                    "Unholy weapons ignore all resistances possessed by Otherworldly beings."
+                }
+            }
+
+            ^"Wargear" {
+                DESCRIPTION "Implements seen in battle and few other contexts — items with the Wargear quality — are decidedly inappropriate for most social contexts. Wargear makes people nervous, which impedes efforts at diplomacy."
+                EFFECTS {
+                    "Whenever another character suffers 1 or more strife due to the actions of someone wearing one or more Wargear items, they suffer that amount plus 1 instead."
+                }
+            }
+        }
+
+        # --- CANCELLING ITEM QUALITIES ---
+        # Multiple instances of the same item quality do not stack.
+        # If an item would gain one quality, it loses the other instead.
+        CANCELLING_PAIRS {
+            "Concealable and Cumbersome"
+            "Ceremonial and Mundane"
+            "Damaged and Durable"
+            "Resplendent and Subtle"
+            "Subtle and Wargear"
+            "Sacred and Unholy"
+        }
+        # Removing the new quality and restoring the old one requires
+        # a TN 2 Artisan (Earth) check using an appropriate skill.
+
+        RULES {
+            #L5R440aY2aB4cD6eF8gH0i: item_quality_definitions
+            #L5R440bZ3bC5dE7fG9hI1j: cancelling_item_qualities
+        }
+    }
+
+    # ===========================
+    # WEAPONS
+    # ===========================
+
+    ^"Weapon" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # It is said that the sword is "the soul of the samurai." On the
+        # field, a samurai might wield numerous different armaments — a bow
+        # to hit targets from afar, a spear to strike from horseback, or a
+        # katana to cut down foes in the bloody fray.
+
+        # --- ATTRIBUTES OF A WEAPON ---
+        # Category: The archetype (swords, polearms, bows, etc.). Some
+        #   techniques require specific categories.
+        # Name: The name of the weapon.
+        # Skill: The specific skill used to wield the weapon, usually one
+        #   of: Martial Arts [Melee], [Ranged], or [Unarmed].
+        # Range (RNG): The distance in range bands at which an attacker
+        #   can hit a target. A single number or range of values. Range is
+        #   both a maximum AND a minimum; a target closer than the lowest
+        #   value is not considered in range.
+        # Base Damage (DMG): How quickly blows wear a defender down.
+        #   Attack actions frequently reference this value.
+        # Deadliness (DLS): The lethality of the weapon. High deadliness
+        #   more easily inflicts gruesome injuries or death (see ^"Critical Strike").
+        # Grips: The ways to wield the weapon. If multiple grips are listed,
+        #   each shows any alterations to base attributes for that grip.
+        # Qualities: Any additional effects (see ^"Item Quality").
+        # Rarity: How difficult the item is to find (1 = common, 9 = legendary).
+        # Price: The cost to acquire.
+
+        PROPERTIES {
+            ^"Name" STRING REQUIRED
+            ^"Category" STRING  # Swords, Axes, Blunt Weapons, Hand Weapons, Polearms, Bows, Crossbows, Specialist Weapons
+            ^"Skill" STRING  # Martial Arts [Melee], [Ranged], or [Unarmed]
+            ^"Range" STRING  # Range band(s), e.g. "1" or "0-1" or "2-5"
+            ^"Base Damage" INTEGER MIN 0 MAX 10
+            ^"Deadliness" INTEGER MIN 0 MAX 10
+            ^"Grips" STRING  # Grip options and attribute modifications per grip
+            ^"Qualities" LIST OF STRING  # References ^"Item Quality" values
+            ^"Rarity" INTEGER MIN 1 MAX 9
+            ^"Price" STRING
+        }
+
+        # --- READIED WEAPONS ---
+        # A weapon is readied if a character is physically prepared to use
+        # it offensively and defensively. A character may ready a weapon at
+        # will during narrative time, or as an action during a conflict scene.
+        # When readying weapons, a character may choose any number of
+        # weapons at range 0-1 they can hold at once. Maximum: one pair of
+        # 1-handed grip weapons (one in each hand) or a single 2-handed
+        # grip weapon. Readied weapons remain readied until the character
+        # sheathes, relinquishes, or drops them.
+        # When readying a weapon, the character must choose one of its
+        # grips; they may switch grips whenever they have the chance to
+        # ready a weapon.
+
+        # --- SHEATHED WEAPONS ---
+        # A weapon is sheathed if it is on a character's person, properly
+        # stowed for access but not yet readied. A character can sheathe
+        # a weapon at will during narrative time, or as an action during
+        # a conflict scene.
+
+        # ==================
+        # MELEE WEAPONS
+        # ==================
+
+        # Format: Name, Skill, Range, Damage, Deadliness, Grips, Qualities, Rarity, Price
+
+        # --- SWORDS ---
+        SWORDS {
+            ^"Bokken" "[Melee], Range 1, Damage 3, Deadliness 3, 1-hand: –, 2-hand: Damage +2, Mundane, Rarity 3, 1 bu"
+            # Swords carved of wood. Training weapon, but deadly in skilled hands.
+            # A properly shaped bokken can be used for Iaijutsu Cut techniques
+            # despite lacking Razor-Edged.
+
+            ^"Chokutō" "[Melee], Range 0-1, Damage 4, Deadliness 5, 1-hand: –, Ceremonial Razor-Edged, Rarity 7, 20 koku"
+            # Ancient design predating the katana. Straight, single-edged blade
+            # hung from a belt. Many founding Kami nemuranai have this shape.
+
+            ^"Dao" "[Melee], Range 1, Damage 3, Deadliness 5, 1-hand: –, Rarity 6, 15 koku"
+            # Cross between scimitar, saber, and machete. Broad-bellied,
+            # single-edged blade for slashing and chopping; generally wielded in pairs.
+
+            ^"Gao" "[Melee], Range 1, Damage 4, Deadliness 3, 1-hand: –, Snaring, Rarity 7, 15 koku"
+            # "Tiger hook swords." Flat iron/steel blades with hook, spike,
+            # and crescent hand guard. Can slash, capture, and stab.
+
+            ^"Jian" "[Melee], Range 0-1, Damage 4, Deadliness 4, 1-hand: –, 2-hand: Deadliness +1, Rarity 7, 15 koku"
+            # Ancient duelist's weapon. Straight, double-edged blade tapering
+            # to a point. Favored by some Mirumoto, Kitsuki, or Shiba swordmasters.
+
+            ^"Katana" "[Melee], Range 1, Damage 4, Deadliness 5, 1-hand: –, 2-hand: Deadliness +2, Ceremonial Razor-Edged, Rarity 7, 20 koku"
+            # The most revered weapon in Rokugan. Elegant, slightly curved
+            # blade of specially folded steel. Part of the daishō.
+
+            ^"Nodachi" "[Melee], Range 1-2, Damage 5, Deadliness 6, 2-hand: –, Ceremonial Razor-Edged, Rarity 8, 20 koku"
+            # Larger than katana, roughly six feet long. Worn on the back.
+            # Prized by the Matsu school for raw force.
+
+            ^"Scimitar" "[Melee], Range 1, Damage 4, Deadliness 5, 1-hand: –, Durable Razor-Edged, Rarity 8, 20 koku"
+            # Heavy sword with long, broad, curving blade. Brought from the
+            # Burning Sands by the Unicorn Clan. Often carried in place of katana.
+
+            ^"Wakizashi" "[Melee], Range 0-1, Damage 3, Deadliness 5, 1-hand: –, 2-hand: Deadliness +2, Ceremonial Razor-Edged, Rarity 7, 15 koku"
+            # Small katana-like sword, two to three feet. Represents a samurai's
+            # place in Rokugan's social order. The tool for seppuku. Part of the daishō.
+
+            ^"Zanbatō" "[Melee], Range 1-2, Damage 6, Deadliness 7, 2-hand: –, Cumbersome Wargear, Rarity 8, 40 koku"
+            # Swords with the reach of a spear, roughly six feet. Dedicated
+            # anticavalry weapons — "horse-chopping sword." Adopted by the Matsu.
+        }
+
+        # --- AXES ---
+        AXES {
+            ^"Masakari" "[Melee], Range 0-1, Damage 3, Deadliness 4, 1-hand: –, 2-hand: Deadliness +2, Mundane, Rarity 5, 3 bu"
+            # One-handed ax similar to a hatchet. Common among peasant militia
+            # and rōnin who cannot afford more prestigious weapons.
+
+            ^"Ono" "[Melee], Range 1-2, Damage 5, Deadliness 6, 2-hand: –, Wargear, Rarity 7, 5 koku"
+            # Dedicated two-handed military ax. Broad, deeply curved ax-head
+            # on a haft nearly as tall as a human. Rare outside Crab lands.
+        }
+
+        # --- BLUNT WEAPONS ---
+        BLUNT_WEAPONS {
+            ^"Club" "[Melee], Range 0-1, Damage 5, Deadliness 2, 1-hand: –, 2-hand: Damage +1, Mundane, Rarity 1, 1 bu"
+            # Perhaps the oldest weapon. Little more than a length of stout
+            # wood or shaped stone. Can be fashioned from available materials.
+
+            ^"Hammer" "[Melee], Range 0-1, Damage 5, Deadliness 2, 1-hand: –, 2-hand: Damage +2, Mundane, Rarity 4, 2 bu"
+            # Simple tool used for construction. Occasionally used as a weapon
+            # in brawls or spur-of-the-moment skirmishes.
+
+            ^"Kiseru" "[Melee], Range 0, Damage 2, Deadliness 2, 1-hand: –, Concealable Mundane, Rarity 5, 1 koku"
+            # Pipes used to smoke herbs. Metal mouthpiece and bowl connected
+            # by wood/bamboo tube. Not formally considered arms; clandestine weapons.
+
+            ^"Ōtsuchi" "[Melee], Range 1, Damage 8, Deadliness 3, 2-hand: –, Cumbersome Wargear, Rarity 8, 30 koku"
+            # Huge barrel-shaped mallet on a six-foot shaft. Built to breach
+            # doors and smash walls. Works well on armored monsters (Hida school).
+
+            ^"Tetsubō" "[Melee], Range 1-2, Damage 7, Deadliness 3, 2-hand: –, Cumbersome Durable Wargear, Rarity 5, 20 koku"
+            # Long, narrow, tall as a human. Iron or hardwood covered in steel,
+            # iron, or jade spikes/studs. Crushes armor and carapace with ease.
+        }
+
+        # --- HAND WEAPONS ---
+        HAND_WEAPONS {
+            ^"Jitte" "[Melee], Range 0, Damage 3, Deadliness 2, 1-hand: –, Concealable Snaring, Rarity 5, 5 bu"
+            # Short steel/iron rod with single prong. Designed to disarm and
+            # subdue. Carried by law enforcement as symbol of office.
+
+            ^"Knife" "[Melee], Range 0, Damage 2, Deadliness 4, 1-hand: –, 2-hand: Deadliness +2, Concealable Mundane Razor-Edged, Rarity 1, 1 koku"
+            # Dizzying array of types and styles. Combat knives (aiguchi, tantō)
+            # often equipped with small hand guards.
+
+            ^"Nunchaku" "[Melee], Range 0-1, Damage 4, Deadliness 2, 1-hand: –, 2-hand: Snaring, Rarity 6, 1 koku"
+            # Two wood or iron rods connected by chain or rope. Originally from
+            # the Islands of Spice and Silk. Adapted from a threshing tool.
+
+            ^"Tessen" "[Melee], Range 0-1, Damage 4, Deadliness 3, 1-hand: –, Ceremonial Concealable, Rarity 7, 15 koku"
+            # Fighting fans. Carried by courtiers and military leaders. Not
+            # commonly viewed as weapons; openly carried even into formal court.
+        }
+
+        # --- POLEARMS ---
+        POLEARMS {
+            ^"Bisentō" "[Melee], Range 2, Damage 4, Deadliness 6, 1-hand: Range 1, 2-hand: Damage +2, Cumbersome Durable Wargear, Rarity 8, 15 koku"
+            # Scimitar with extremely long hilt. Long yari-like shaft topped by
+            # broad, heavy curved blade. Seen among militant monks and heavy infantry.
+
+            ^"Bō" "[Melee], Range 1-2, Damage 6, Deadliness 2, 2-hand: –, Mundane, Rarity 2, 2 bu"
+            # Humble staff, roughly six feet of sturdy hardwood. Carried by
+            # travelers as walking stick and inconspicuous weapon.
+
+            ^"Ji" "[Melee], Range 2, Damage 5, Deadliness 2, 2-hand: –, Snaring Wargear, Rarity 6, 7 koku"
+            # "Dagger-spear." Designed for catching and controlling weapons.
+            # Used by Dragon and Phoenix Clans; specialty of Shiba Guardian School.
+
+            ^"Naginata" "[Melee], Range 2, Damage 6, Deadliness 6, 2-hand: –, Cumbersome Razor-Edged Wargear, Rarity 8, 10 koku"
+            # Most samurai's preferred polearm. Long flexible shaft with large,
+            # slightly curved blade forged with same ceremony as a katana.
+
+            ^"Trident" "[Melee], Range 2, Damage 4, Deadliness 4, 2-hand: –, Snaring Wargear, Rarity 7, 10 koku"
+            # Triple-headed spear associated with fishermen. Formidable polearm
+            # that can pierce, trap, and control opponents.
+
+            ^"Yari" "[Melee], Range 2, Damage 5, Deadliness 3, 2-hand: –, Wargear, Rarity 3, 5 koku"
+            # Long-shafted spear, six to eight feet. Most common weapon in
+            # Rokugan. Customary weapon of ashigaru and elite clan samurai.
+        }
+
+        # ==================
+        # RANGED WEAPONS
+        # ==================
+
+        # --- BOWS ---
+        BOWS {
+            ^"Daikyū" "[Ranged], Range 3-5, Damage 6, Deadliness 4, 2-hand: –, Wargear, Rarity 6, 6 koku"
+            # Large composite bow designed for horseback. Asymmetric shape with
+            # grip two-thirds from top. Custom-fit for a specific user.
+
+            ^"Shinjo Horsebow" "[Ranged], Range 2-4, Damage 4, Deadliness 5, 2-hand: –, Wargear, Rarity 4, 6 koku"
+            # Compact bow from the nomadic peoples west of Rokugan. Short-range
+            # weapon for raiding and cavalry attacks.
+
+            ^"Yumi" "[Ranged], Range 2-5, Damage 5, Deadliness 3, 2-hand: –, Rarity 3, 3 koku"
+            # Most common bow. Composite of horn, sinew, leather, and wood.
+            # Asymmetric grip like the daikyū but designed for standing fire.
+        }
+
+        # --- CROSSBOWS ---
+        CROSSBOWS {
+            ^"Oyumi" "[Ranged], Range 2-5, Damage 7, Deadliness 3, 2-hand: –, Prepare Wargear, Rarity 8, 40 koku"
+            # Recurve or traditional bow laid horizontally on a stout stock.
+            # Fires quarrels. Rarely seen outside Crab lands. Controversial
+            # among other clans due to reliance on mechanism over skill.
+        }
+
+        # --- ARROWS ---
+        # When used with a bow, these arrows modify the weapon's profile:
+        ARROWS {
+            ^"Willow-Leaf" "Standard Rokugani arrows. As long as a character has a quiver, they do not need to track willow-leaf arrows individually."
+            ^"Armor-Piercing" "Ignore up to 2 points of the target's physical resistance."
+            ^"Flesh-Cutter" "Deadliness +2."
+            ^"Humming-Bulb" "Damage -2, Deadliness -2. These arrows produce a loud noise audible at range 0-4 of the archer and of the path the arrow travels."
+        }
+
+        # ==================
+        # SPECIALIST WEAPONS
+        # ==================
+
+        # Weapons used by assassins and spies — a mix of improvised tools,
+        # modified agricultural implements, and bespoke weapons. They emphasize
+        # stealth and accessibility over sheer killing power.
+
+        SPECIALIST_WEAPONS {
+            ^"Blowgun" "[Ranged], Range 2-3, Damage 1, Deadliness 2, 1-hand: –, Concealable, Rarity 7, 5 bu"
+            # Hollow bamboo or reed. Primary use is to deliver poison. Can also
+            # be loaded with sand/dust to blind/disorient, or used to breathe underwater.
+
+            ^"Kama" "[Melee], Range 0-1, Damage 3, Deadliness 3, 1-hand: –, Concealable, Rarity 4, 1 koku"
+            # Sickle adapted from agricultural tool. Often used in pairs,
+            # sometimes linked at the handles by chain.
+
+            ^"Kusari-Gama" "[Melee], Range 0, Damage 3, Deadliness 3, 1-hand: –, 2-hand: Range 2-3, Concealable Snaring Wargear, Rarity 6, 5 koku"
+            # Long-hafted kama with chain and iron weight (fundo). Spin chain
+            # to entangle, then rush in with kama. Extremely versatile.
+
+            ^"Shuriken" "[Melee], Range 0, Damage 2, Deadliness 4, 1-hand (stab/slash): –, 1-hand (thrown): Martial Arts [Ranged] Range 1-3, Concealable, Rarity 6, 1 koku"
+            # Small sharpened metal discs. Designed mainly to distract; can be
+            # coated with toxins for lethality.
+        }
+
+        # ==================
+        # UNARMED PROFILES
+        # ==================
+
+        # A character always counts as having these Martial Arts [Unarmed]
+        # profiles readied, provided the relevant body parts are not occupied
+        # (such as with a weapon) or bound.
+
+        UNARMED {
+            ^"Punch" "Range 0, Damage 1, Deadliness 2, Snaring"
+            ^"Kick" "Range 1, Damage 2, Deadliness 1"
+            ^"Bite" "Range 0, Damage 0, Deadliness 3"
+        }
+
+        RULES {
+            #L5R440yZ2aB4cD6eF8gH0i: weapon_attributes_and_categories
+            #L5R441jK3lM5nO7pQ9rS1t: readied_and_sheathed_weapons
+            #L5R442uV4wX6yZ8aB0cD2e: grip_selection_and_switching
+        }
+    }
+
+    # ===========================
+    # ARMOR
+    # ===========================
+
+    ^"Armor" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Samurai armor themselves with a wide variety of garments, suiting
+        # their choices to their needs. Whether lacquered plates to protect
+        # against swords or fashionable clothes to bolster reputation at
+        # court, a samurai's garb serves many important purposes.
+
+        # --- ATTRIBUTES OF ARMOR ---
+        # Name: The name of the armor.
+        # Resistance Values (R. Values): Most armor provides defense against
+        #   one or more categories of damage. While equipped, the character
+        #   gains the indicated amounts of resistance. Common categories:
+        #   - Physical: Resistance against physical harm in its many forms.
+        #   - Supernatural: Resistance against invocations, ^"Mahō", and
+        #     other mystical effects.
+        # Qualities: Any nonstandard effects (see ^"Item Quality").
+        # Rarity: How difficult the item is to find (1 = common, 9 = legendary).
+        # Price: The cost to acquire.
+
+        PROPERTIES {
+            ^"Name" STRING REQUIRED
+            ^"Physical Resistance" INTEGER MIN 0 MAX 6
+            ^"Supernatural Resistance" INTEGER MIN 0 MAX 6
+            ^"Qualities" LIST OF STRING  # References ^"Item Quality" values
+            ^"Rarity" INTEGER MIN 1 MAX 9
+            ^"Price" STRING
+        }
+
+        # --- WEARING ARMOR ---
+        # While wearing armor, a character benefits from its resistance
+        # values and applicable qualities.
+        #
+        # If a character dons a second set of armor (e.g., concealed armor
+        # under sleeping garb, or ashigaru armor pulled over ceremonial
+        # clothes), they must choose one to count as equipped. The other
+        # does not provide its resistances or qualities until one set is
+        # removed.
+        #
+        # Exception: The GM may decide that unequipped armor's qualities
+        # still hamper the character (e.g., lacquered armor under common
+        # clothing may still impose the ^"Cumbersome" quality). This is
+        # solely at the GM's discretion.
+        #
+        # A character can benefit from one set of armor and one effect that
+        # increases their resistance at a time, combining these benefits.
+        # If a character would benefit from more than one such effect, the
+        # character chooses which increase applies.
+
+        # Format: Name, Resistance Values, Qualities, Rarity, Price
+
+        ARMOR_TABLE {
+            ^"Sleeping Garb" "Rarity 2, 1 koku"
+            # Loose robe, shift, or jinbei worn when sleeping. Those of
+            # sufficient wealth or status wear these for private lounging.
+
+            ^"Common Clothes" "Physical 1, Mundane, Rarity 1, 1 bu"
+            # Ranges from simple peasant trousers and smocks to the
+            # broad-shouldered haori or embroidered silk kimono.
+
+            ^"Ceremonial Clothes" "Physical 1, Ceremonial Resplendent, Rarity 4, 1 koku"
+            # Any garment worn during an official ceremony, from court
+            # kimono to Imperial accoutrement. Richly decorated, little protection.
+
+            ^"Sanctified Robes" "Physical 1 Supernatural 3, Ceremonial, Rarity 7, 4 koku"
+            # Vestments of shugenja, shrine keepers, and religious figures,
+            # blessed by kami. Traditionally jōe ("pure cloth") with peaked hat.
+
+            ^"Traveling Clothes" "Physical 2, Durable Mundane Subtle, Rarity 2, 2 bu"
+            # Roughspun garments designed to resist wear and tear. Anything
+            # from robes to jacket and leggings, often with hat or cloak.
+
+            ^"Concealed Armor" "Physical 2, Concealable, Rarity 4, 5 koku"
+            # Kimono, keikogi, or other garment with thin bamboo or metal
+            # plates sewn inside to turn an unexpected blade or arrow.
+
+            ^"Ashigaru Armor" "Physical 3, Wargear, Rarity 3, 5 koku"
+            # Cheap, lightweight peasant soldiery armor. Light plates sewn
+            # together protecting head, torso, and upper legs. Occasionally
+            # paired with a light helmet.
+
+            ^"Lacquered Armor" "Physical 4, Ceremonial Cumbersome Wargear, Rarity 6, 25 koku"
+            # Thick leather or steel plates stitched/riveted to leather backing.
+            # Protects torso, head, upper arms, groin, and legs above knee.
+            # At home at war and at martial ceremony.
+
+            ^"Plated Armor" "Physical 5, Cumbersome Durable Wargear, Rarity 8, 40 koku"
+            # Also known as great armor. Numerous small steel and leather plates
+            # connected by rivets, woven silk cords, leather straps, or chains.
+            # Worn over silk clothing for added piercing protection.
+        }
+
+        RULES {
+            #L5R443fG5hI7jK9lM1nO3p: armor_resistance_values
+            #L5R444qR6sT8uV0wX2yZ4a: wearing_multiple_armor_sets
+            #L5R444bR7sT9uV1wX3yZ5b: resistance_stacking_limit
+        }
+    }
+
+    # ===========================
+    # HONOR/GLORY/STATUS MECHANICS
+    # ===========================
+
+    # Honor, glory, and status are important aspects of a character.
+    # They help players roleplay and give clear indicators of costs
+    # their choices might incur and the standing of others. It usually
+    # falls to the GM to bring these attributes into the game.
+    #
+    # Players can make checks to determine an NPC's honor, glory, or
+    # status to predict their behavior. The GM can have NPCs do the
+    # same to the PCs, giving different reactions based on these values.
+
+    # --- FORFEIT AND AWARD SCALE ---
+    # When a player chooses to forfeit or stake honor or glory, or
+    # when the GM awards honor or glory, consult this scale:
+    ^"Honor and Glory Forfeit and Award Scale" DEF {
+        EXTENDS ^"Table"
+
+        SCALE {
+            "Trifling" "Forfeit: 1, Award: 1"
+            "Minor" "Forfeit: Attribute Rank, Award: 3"
+            "Major" "Forfeit: Attribute Rank x 2, Award: 6"
+            "Massive" "Forfeit: Attribute Rank x 4, Award: 9"
+        }
+        # "Attribute Rank" is the tens digit of the relevant attribute
+        # (honor or glory). A trifling breach or sacrifice is any the GM
+        # deems too small to be minor but too large to fully ignore.
+    }
+
+    # ===========================
+    # HONOR
+    # ===========================
+
+    ^"Honor in Play" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Bushidō ("way of the warrior") is the code by which nearly all
+        # samurai strive to live. Samurai are taught to reach for these
+        # ideals at the expense of personal gain. The "breaking point"
+        # when one abandons Bushidō makes for rich story material, as
+        # does when tenets inevitably conflict with each other.
+        #
+        # Honor does not align exactly with Rokugan's legal system. Some
+        # things are dishonorable but not criminal — killing someone of
+        # lower station without just cause may be within legal rights but
+        # is a severe violation of Compassion (Jin).
+
+        # --- FORFEITING AND STAKING HONOR ---
+        # Characters must forfeit honor to breach the tenets of their code,
+        # and are awarded honor when they make sacrifices in the name of
+        # those tenets. Because honor is internal to the character, this
+        # occurs regardless of how few witnesses there are.
+        #
+        # Honor cannot be gained without adversity. The GM should award
+        # honor for deeds that put the code above immediate needs or desires.
+        # Characters generally should not be awarded honor for things that
+        # cost them nothing or are not accompanied by risks.
+
+        # --- THE TENETS OF BUSHIDŌ ---
+
+        TENETS {
+
+            ^"Compassion (Jin)" {
+                DESCRIPTION "Just as the farmer does not grow crops merely to fill their own belly, the warrior does not fight for just their own sake. A samurai must be constantly aware of their duty to protect others."
+                BREACHES {
+                    "Minor: Verbal cruelty to a foe or stranger, allowing easily prevented suffering, tormenting animals."
+                    "Major: Verbal cruelty to a friend, physically harming someone for revenge alone, letting an ally die without trying to save them."
+                    "Massive: Murdering someone of lower status in cold blood, physically harming someone for fun."
+                }
+                SACRIFICES {
+                    "Minor: Giving someone a common useful item, spending two or more downtime scenes helping a friend, treating a foe's wounds after a battle."
+                    "Major: Giving up your chance to be awarded 6 or more ^\"Glory\" for someone else, saving someone's life despite knowing they may trouble you later."
+                    "Massive: Giving away an irreplaceable item, completing a dangerous heroic task for someone else who cannot repay you."
+                }
+            }
+
+            ^"Courage (Yū)" {
+                DESCRIPTION "Only fear of death can destroy life; the samurai replaces it with an understanding of danger. Common folk allow fear to swallow their hearts. An extraordinary soul is one with the courage to live as if each moment were the last."
+                BREACHES {
+                    "Minor: Allowing fear for yourself to influence your actions, leaving a lost battle to protect your lord."
+                    "Major: Allowing fear to prevent you from acting entirely, fleeing to save your own skin."
+                    "Massive: Committing a despicable act out of fear, sacrificing someone else to save yourself."
+                }
+                SACRIFICES {
+                    "Minor: Refusing to back down from an armed enemy while unarmed, accepting a challenge from a foe you know to be a superior warrior."
+                    "Major: Facing an inhuman foe such as an oni alone, preventing a comrade's massive breach, suffering a severity 8 or lower ^\"Critical Strike\" for your lord."
+                    "Massive: Preventing your lord's major or massive breach, suffering a severity 8 or higher critical strike for your lord."
+                }
+            }
+
+            ^"Courtesy (Rei)" {
+                DESCRIPTION "A samurai is neither a bully nor a brute killer. Samurai must treat their enemies with Courtesy."
+                BREACHES {
+                    "Minor: Drunkenness or coarse language in the presence of someone of higher ^\"Status\", letting an insult to your clan or family pass without remark."
+                    "Major: Directly insulting someone of equal or higher status, letting an insult to your ancestors, sensei, or lord pass without remark."
+                    "Massive: Directly insulting your lord."
+                }
+                SACRIFICES {
+                    "Minor: Paying a sincere compliment to a foe, allowing a tired foe a moment's respite, letting someone of higher status receive aid first."
+                    "Major: Giving an unarmed foe a weapon or setting aside your own weapons to fight fairly."
+                    "Massive: Taking an enemy of higher status captive without killing or maiming them."
+                }
+            }
+
+            ^"Duty and Loyalty (Chūgi)" {
+                DESCRIPTION "Actions and their consequences define those who take them. The samurai's Loyalty to their charge is unshakable."
+                BREACHES {
+                    "Minor: Refusing an order to protect your lord's interests, intentionally misinterpreting an order."
+                    "Major: Refusing an order from your lord."
+                    "Massive: Forsaking your post for another lord."
+                }
+                SACRIFICES {
+                    "Minor: Refusing to commit an act of disloyalty to your lord despite personal feelings."
+                    "Major: Refusing to obey an unjust order from someone who is not your lord."
+                    "Massive: Dying in your lord's service."
+                }
+            }
+
+            ^"Honor (Meiyo)" {
+                DESCRIPTION "Praises and curses are not what defines Honor; the samurai reserves their own judgment."
+                BREACHES {
+                    "Minor: Touching dead flesh anywhere other than at war, persuading another to act dishonorably."
+                    "Major: Neglecting your duty to pursue your earthly desires, killing in an unjustified duel."
+                    "Massive: Refusing seppuku when required."
+                }
+                SACRIFICES {
+                    "Minor: Persuading someone to abandon a dishonorable plan to help you."
+                    "Major: Negotiating to avoid an unjustified duel."
+                    "Massive: Offering to commit seppuku for failure."
+                }
+            }
+
+            ^"Righteousness (Gi)" {
+                DESCRIPTION "Set lies aside. A samurai does not make Righteousness a matter for debate; they know that there is only truth and falsehood, justice and injustice."
+                BREACHES {
+                    "Minor: Abetting or covering for a comrade's major breach of honor, lying to someone of equal or lower status for personal gain."
+                    "Major: Abetting or covering for a comrade's massive breach of honor, lying to someone of higher status for personal gain."
+                    "Massive: Murdering someone of equal or higher status, lying to your lord for selfish gain."
+                }
+                SACRIFICES {
+                    "Minor: Delivering bad news to your lord without deflecting blame, taking responsibility for the failure of a subordinate."
+                    "Major: Retiring from a post you can no longer fulfill, relinquishing a claim or large gift to your lord."
+                    "Massive: Refusing to deny true allegations of a failure requiring you to forfeit 9+ ^\"Glory\" or ^\"Status\"."
+                }
+            }
+
+            ^"Sincerity (Makoto)" {
+                DESCRIPTION "Sincerity is more complex than mere Honesty; it is the ability to speak earnestly without giving offense or compromising one's family's interests. To be truthful without causing embarrassment — to maintain one's integrity while eliding unpleasant realities."
+                BREACHES {
+                    "Minor: Breaking your word to someone of equal or lower status, misleading a friend."
+                    "Major: Breaking your word to someone of higher status, manipulating someone for fun."
+                    "Massive: Deceiving or manipulating your lord."
+                }
+                SACRIFICES {
+                    "Minor: Publicly revealing a truth that damages your reputation (a forfeit of 3 or more ^\"Glory\")."
+                    "Major: Giving (honest) testimony against a political ally that jeopardizes future relations."
+                    "Massive: Forfeiting 6 or more glory to claim responsibility for your lord's mistake."
+                }
+            }
+        }
+
+        # --- CLAN VIEWS OF BUSHIDŌ ---
+        # Each clan has paramount tenets (double forfeit AND double award)
+        # and lesser tenets (halve forfeit AND halve award, rounded up, min 1).
+
+        CLAN_PARAMOUNT_TENETS {
+            "Crab" "^\"Courage (Yū)\""
+            "Crane" "^\"Courtesy (Rei)\""
+            "Dragon" "^\"Sincerity (Makoto)\""
+            "Lion" "^\"Honor (Meiyo)\""
+            "Phoenix" "^\"Righteousness (Gi)\""
+            "Scorpion" "^\"Duty and Loyalty (Chūgi)\""
+            "Unicorn" "^\"Compassion (Jin)\""
+        }
+
+        CLAN_LESSER_TENETS {
+            "Crab" "^\"Courtesy (Rei)\""
+            "Crane" "^\"Courage (Yū)\""
+            "Dragon" "^\"Duty and Loyalty (Chūgi)\""
+            "Lion" "^\"Compassion (Jin)\""
+            "Phoenix" "^\"Sincerity (Makoto)\""
+            "Scorpion" "^\"Honor (Meiyo)\" and ^\"Righteousness (Gi)\""
+            "Unicorn" "^\"Courtesy (Rei)\""
+        }
+
+        # --- HONOR SCORES ---
+        HONOR_SCORES {
+            "100" "Honor Is Stronger than Steel: Bushidō is worth upholding at any cost, even unto death. Virtues/Flaws: 3 virtue advantages."
+            "80-99" "Never Stray from the Way: Has given up much to embody Bushidō and shall continue. Would rather forfeit personal desires than fail their own expectations. Virtues/Flaws: 2 virtue advantages."
+            "65-79" "My Honor Is My Life: Strengthened by Bushidō, can endure its hardships. May rarely slip, but cannot easily forgive themselves. Virtues/Flaws: 1 virtue advantage."
+            "30-64" "Honor Is the Ideal: Brought up to believe in Bushidō and strive to embody it. Still human and periodically succumbs to temptation, but feels guilt over betraying ideals. Virtues/Flaws: none."
+            "20-29" "Honor Is about Appearances: Does not reliably uphold Bushidō but recognizes its importance to society and plays the part. Virtues/Flaws: 1 flaw disadvantage."
+            "1-19" "Honor Is a Nicety: Believes most tenets get in the way. Reality no longer aligns with samurai ideals. Virtues/Flaws: 2 flaw disadvantages."
+            "0" "I Make My Own Code: Has completely lost faith in Bushidō and adheres to another code — or none at all. Virtues/Flaws: 3 flaw disadvantages."
+        }
+
+        RULES {
+            #L5R445bC7dE9fG1hI3jK5l: honor_forfeiting_and_awarding
+            #L5R446mN8oP0qR2sT4uV6w: bushido_tenets_and_breaches
+            #L5R446aN8oP0qR2sT4uV7x: clan_paramount_and_lesser_tenets
+            #L5R447xY9zA1bC3dE5fG7h: honor_score_thresholds
+        }
+    }
+
+    # ===========================
+    # GLORY
+    # ===========================
+
+    ^"Glory in Play" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Glory is the external measure of a character's outward success
+        # as a samurai. The higher a character's glory, the more widely
+        # they are recognized as a paragon; the lower, the more others
+        # believe they are unworthy of the name.
+
+        # --- FORFEITING GLORY ---
+        # A character must forfeit glory to undertake certain actions
+        # publicly. Unlike honor, glory relies upon external perception,
+        # so actions taken clandestinely do not require forfeiting glory
+        # (though sometimes they require staking it upon avoiding discovery).
+
+        GLORY_FORFEITS {
+            "Minor: Ignoring an insult to your person, choosing to share credit for a deed, admitting a lie publicly, declining a gift from someone of higher ^\"Status\", losing an ancestral weapon."
+            "Major: Murdering someone of lower status, choosing to leave the public eye for months, not arriving to a duel, attacking a surrendering foe."
+            "Massive: Murdering someone of equal or higher status, ordering a retreat in a ^\"Mass Battle\", refusing seppuku when required."
+        }
+
+        # --- AWARDING GLORY ---
+        # When a character is recognized for a notable deed (real or
+        # fabricated), the GM should award glory based on the degree
+        # of acclaim it represents.
+
+        GLORY_AWARDS {
+            "Minor: Receiving a gift from someone of higher ^\"Status\", beating a foe with glory 40+ in a duel or public contest, marrying or arranging a family marriage to someone of higher glory."
+            "Major: Commanding your side to victory in a ^\"Mass Battle\", defeating a foe with glory 60+ in a duel or public contest, defeating an oni or similar monster with a group, marrying or arranging a marriage to someone of higher status."
+            "Massive: Defeating a foe with glory 80+, defeating an oni alone, winning a war, marrying or arranging a marriage into the Imperial family."
+        }
+
+        # --- GLORY SCORES ---
+        GLORY_SCORES {
+            "100" "Undying Legend: A legendary hero worthy of poetry and song, known even among peasants and foreigners. Fame/Infamy: 3 fame advantages."
+            "90-99" "Renowned Hero: Counted among the greatest in their clan, exploits spread to far corners of the Empire. Fame/Infamy: 2 fame advantages."
+            "80-89" "Exceptional Samurai: Impressive deeds have garnered attention in the courts of other clans."
+            "65-79" "Respected Adept: Great accomplishment, name known outside their family. Fame/Infamy: 1 fame advantage."
+            "60-64" "Worthy Retainer: An extremely competent and valued samurai."
+            "45-59" "Reputable Samurai: Known for effectiveness and reliability."
+            "40-44" "Unremarkable Retainer: An ordinary samurai."
+            "30-39" "Samurai of No Renown: Reputation marred by failure, disappointment, or ill omen."
+            "20-29" "Disappointment: Considered incompetent or untrustworthy."
+            "10-19" "Renegade: Known for misdeeds across several provinces. Fame/Infamy: 1 infamy disadvantage."
+            "1-9" "Villain: Heinous acts known across the land. Fame/Infamy: 2 infamy disadvantages."
+            "0" "Figure of Dread: One of the most vile or scandalous individuals in the Empire. Fame/Infamy: 3 infamy disadvantages."
+        }
+
+        RULES {
+            #L5R448iJ0kL2mN4oP6qR8s: glory_forfeiting_and_awarding
+            #L5R449tU1vW3xY5zA7bC9d: glory_score_thresholds
+        }
+    }
+
+    # ===========================
+    # STATUS
+    # ===========================
+
+    ^"Status in Play" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Status is much more static than honor and glory: rarely do
+        # characters need to forfeit it, and generally they only receive
+        # it upon receiving a new title. If a character does need to
+        # forfeit status, they often reset it to a specific value (e.g.,
+        # retiring to a monastery sets status to 25). Rarely, characters
+        # can be stripped of status. To willfully endanger status, a
+        # character must stake an amount determined by the GM on covering
+        # up their actions.
+
+        # --- COMPARING STATUS ---
+        # Status is most often used to know which of two characters stands
+        # higher in the Celestial Order. The Social skills reference
+        # interacting with characters of lower, higher, or equal status,
+        # as do many examples of honor and glory forfeits/awards.
+        # Most NPCs defer to those of higher status and expect obedience
+        # from people of lower status — how they express this can hint
+        # at their true nature.
+
+        STATUS_SCORES {
+            "100" "The ruling Emperor."
+            "90-99" "The Imperial Spouse, Voice of the Emperor, Emperor's children, daimyō of Imperial families, Emerald Champion, Jade Champion, Imperial Advisor, Imperial Chancellor."
+            "80-89" "Great Clan Champion."
+            "70-79" "Minor Clan Champion, Imperial Herald, Imperial Treasurer, Great Clan family daimyō, a great general."
+            "60-69" "A hatamoto, a provincial governor, a commander of multiple companies."
+            "50-59" "A city governor, a captain of a military company, a vassal family daimyō."
+            "40-49" "Darō, Emerald/Jade Magistrate, revered sensei, clan magistrate, lieutenant."
+            "30-39" "Abbot of the Brotherhood, average Great Clan samurai."
+            "25-29" "Average Minor Clan or vassal family samurai, monk of the Brotherhood."
+            "20-24" "Village officer, disgraced samurai, rōnin."
+            "10-19" "Ashigaru, artisan, laborer."
+            "1-9" "Merchant, bandit."
+            "0" "Burakumin (entertainer, geisha, leatherworker, butcher, torturer, or gravedigger), one outside the Celestial Order."
+        }
+
+        RULES {
+            #L5R450eF2gH4iJ6kL8mN0o: status_comparison_and_forfeiting
+            #L5R450aF3gH5iJ7kL9mN1p: status_score_examples
+        }
+    }
+
+    # ===========================
+    # TITLES
+    # ===========================
+
+    ^"Title" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # A title is assigned as a result of narrative events. It functions
+        # much like a school curriculum: a character can spend experience
+        # to deepen their understanding of how to fulfill its functions,
+        # and eventually unlock a special ability after spending the listed XP.
+        #
+        # When assigned a title, a character's ^"Status" might change based
+        # on the Status Award listed in the title.
+        #
+        # A title exists in parallel to a character's ^"School". A character
+        # can only have one incomplete title at a time.
+        #
+        # Each time a character purchases an advancement, the character may
+        # allocate the XP spent to completing their title (with full value
+        # for listed advancements and half value for non-listed advancements,
+        # as with a curriculum). XP allocated to a title does NOT count
+        # toward the character's current school rank (and vice-versa).
+        #
+        # Once a character has allocated the completion cost in XP, they
+        # acquire the title ability. The title is then considered complete
+        # (though narratively the character retains it), and they may be
+        # assigned a new title as narrative events permit.
+
+        PROPERTIES {
+            ^"Assigned By" STRING  # Who can grant this title
+            ^"Status Award" STRING  # Status change on assignment (e.g. "+15 to max 40")
+            ^"XP to Completion" INTEGER  # Total XP that must be allocated
+            ^"Title Ability" STRING  # Special ability gained on completion
+            ^"Curriculum" LIST OF STRING  # Listed advancements (full XP value)
+        }
+
+        RULES {
+            #L5R450bG4hI6jK8lM0nO2p: title_assignment_and_completion
+            #L5R450cH5iJ7kL9mN1oP3q: title_xp_allocation_parallel_to_school
+        }
+    }
+
+    ^"Emerald Magistrate" DEF {
+        EXTENDS ^"Title"
+
+        # Emerald Magistrates are agents of the Emperor's Law,
+        # warrior-sages who dispense wisdom and justice.
+
+        ASSIGNED_BY "The Emerald Champion, the Emperor, and other high-ranking officials in the office of the Emerald Champion can appoint Emerald Magistrates, and do so when a samurai proves worthy of the post or when the need arises for more arbiters of the Emperor's Justice."
+        STATUS_AWARD "+15 (to a maximum of 40)"
+        XP_TO_COMPLETION 30
+
+        TITLE_ABILITY {
+            ^"Voice of Authority" "Once per game session when making a Scheme or Support action check using a Social skill, you may choose additional targets equal to your ^\"Glory\" rank. You cannot choose any additional target with vigilance higher than the highest among your initial targets."
+        }
+
+        CURRICULUM {
+            "Trade Skills" "Skill Group"
+            "Fitness" "Skill"
+            "Martial Arts [Choose One]" "Skill"
+            "Performance" "Skill"
+            "Rank 1-2 Kata" "Technique Group"
+            "Open Hand Style" "Technique (Kata)"
+            "Shallow Waters" "Technique (Shūji)"
+        }
+    }
+
+    # ===========================
+    # ADDITIONAL RULES FOR CHECKS
+    # ===========================
+
+    ^"Assistance" DEF {
+
+        # When one character dedicates significant effort to helping
+        # another (rather than accomplishing a separate goal).
+
+        # Step 3 (Assemble and Roll Dice Pool): The character making
+        # the check rolls one additional (skill) per assisting character
+        # who has 1+ ranks in the skill in use, and one additional (ring)
+        # per assisting character who has 0 ranks. Each assisting player
+        # must describe how they are helping; the GM decides if they
+        # can contribute.
+        #
+        # Step 4 (Modify Rolled Dice): At GM's discretion, up to one
+        # advantage from one assisting character can be applied.
+        #
+        # Step 5 (Choose Kept Dice): The character making the check
+        # may keep up to 1 additional die per assisting character.
+        #
+        # Step 6 (Resolve Symbols): Each assisting character may choose
+        # to suffer 1 strife to negate 1 (st) symbol on the check.
+
+        # --- LIMITS ON ASSISTANCE ---
+        # The GM is the final arbiter of whether a character's attempt
+        # to help is actually useful enough to grant this benefit, as
+        # well as whether there is a maximum number of characters who
+        # can feasibly assist. GMs should feel free to allow only one
+        # character to assist in many circumstances.
+
+        RULES {
+            #L5R451pQ3rS5tU7vW9xY1z: helper_rolls_skill_or_ring_die
+            #L5R452aB4cD6eF8gH0iJ2k: main_keeps_plus_one_per_helper
+            #L5R453lM5nO7pQ9rS1tU3v: one_advantage_from_one_helper
+            #L5R454wX6yZ8aB0cD2eF4g: helper_spends_strife_to_negate
+        }
+    }
+
+    ^"Bonus Successes and Shortfall" DEF {
+
+        # Sometimes the degree of success or failure matters.
+
+        # Bonus Successes: If a character succeeds on a check, their
+        # bonus successes are the number of (su) and (ex) symbols in
+        # excess of the target number.
+        #
+        # Shortfall: If a character fails, their shortfall is the TN
+        # minus the sum of their (su) and (ex) symbols.
+
+        RULES {
+            #L5R454aX6yZ8aB0cD2eF5h: bonus_successes_calculation
+            #L5R454bY7zA9bC1dE3fG6i: shortfall_calculation
+        }
+    }
+
+    ^"Checks to Resist Effects" DEF {
+
+        # Sometimes the target of a check can make their own check to
+        # resist. When a character succeeds at a check to resist an
+        # effect, they avoid some or all ill effects they would
+        # otherwise have suffered.
+        #
+        # When setting the TN to resist another check's effects, if
+        # no TN is listed, the GM sets one. If they want to account
+        # for the acting character's effort, they can use the acting
+        # character's bonus successes to modify the resisting TN.
+
+        RULES {
+            #L5R454cZ8aB0cD2eF4gH7j: resist_check_mechanics
+        }
+    }
+
+    ^"Competitive Checks" DEF {
+
+        # When the GM needs to compare performance of two or more
+        # characters on similar checks where neither is clearly
+        # resisting the other. The character with the most bonus
+        # successes (or smallest shortfall, if all failed) performs
+        # the task best, most quickly, or most efficiently.
+
+        RULES {
+            #L5R454dA9bC1dE3fG5hI8k: competitive_check_comparison
+        }
+    }
+
+    ^"Minimum TN" DEF {
+
+        # The TN of a check cannot be reduced below 1 by modifiers.
+        # A TN 0 check would be trivial (carrying quarter of one's
+        # weight, remembering a cousin's name) and should not normally
+        # require a check. However, if circumstances make it hard
+        # enough or it is important to know bonus successes, the GM
+        # could call for a TN 0 check.
+
+        RULES {
+            #L5R454eB0cD2eF4gH6iJ9l: minimum_tn_is_one
+        }
+    }
+
+    ^"Modifying the Dice Pool" DEF {
+
+        # Any effect that changes the contents of the dice pool (dice,
+        # results, or symbols) after it has been rolled. A die can be
+        # modified multiple times if multiple different effects instruct
+        # it. Each effect is fully resolved before resolving a different
+        # effect.
+
+        TERMINOLOGY {
+            "Specific Results: A die set to or showing a specific result refers to a face with exactly the specified symbols (e.g. 'add a (ring) set to an (op)(st) result')."
+            "Results Containing Symbols: A die result containing a specified symbol refers to any result that includes at least one instance of that symbol (e.g. 'reroll a die containing (su)')."
+            "Maximum Modification: If a single effect instructs modifying two or more dice, a single die cannot be selected multiple times. If the number exceeds eligible dice, modify as many as possible."
+        }
+
+        ADDING_AND_CANCELLING {
+            "Add a Rolled Die: During Step 4, place one die of the noted type set to the specified result. It is a rolled die."
+            "Cancel a Rolled Die: During Step 4, choose one die as instructed. It becomes a dropped die."
+            "Add a Kept Die: After Step 5, place one die of the noted type set to the specified result. It is a kept die."
+            "Cancel a Kept Die: After Step 5, choose one die as instructed. It becomes a dropped die."
+        }
+
+        OTHER_MODIFICATIONS {
+            "Alter: Pick up a die and set it to a different result as instructed."
+            "Negate: Ignore that symbol when resolving the check (but not other symbols from the same result)."
+            "Reroll: Roll a die again and use the new result."
+            "Reserve: Remove a die from the roll, set it aside or record its result. Used for a future roll as described by the effect."
+        }
+
+        # --- SIMULTANEOUS DICE MODIFICATION ---
+        # If two or more effects would modify a die, the player who
+        # made the check resolves them in order:
+        # 1. NPCs' effects (and other effects the GM controls)
+        # 2. Other player characters' effects
+        # 3. Their own character's effects
+        # If a single player controls multiple effects, that player
+        # chooses the order.
+
+        RULES {
+            #L5R454fC1dE3fG5hI7jK0m: dice_modification_rules
+            #L5R454gD2eF4gH6iJ8kL1n: simultaneous_modification_order
+        }
+    }
+
+    ^"Targeting and Checks" DEF {
+
+        # Some checks directly affect one or more other characters.
+        # These characters are considered targets of that check. If
+        # an effect specifies it, objects and positions in space can
+        # also be the target of a check.
+
+        RULES {
+            #L5R454hE3fG5hI7jK9lM2o: targeting_rules
+        }
+    }
+
+    ^"Universal Tiebreaker" DEF {
+
+        # When effects that break ties still result in a stalemate:
+        # - PCs supersede NPCs
+        # - Adversary NPCs supersede minion NPCs
+        # If there is still a tie, the GM should use a randomized
+        # means (coin flip, rock-paper-scissors, etc.).
+
+        RULES {
+            #L5R454iF4gH6iJ8kL0mN3p: universal_tiebreaker
+        }
+    }
+
+    # ===========================
+    # DOWNTIME AND RECOVERY
+    # ===========================
+
+    ^"Downtime" DEF {
+
+        # Downtime scenes encompass the passage of time — as short as a
+        # few hours of rest or as long as a journey from Otosan Uchi to
+        # the Kaiu Wall. Generally low dramatic stakes, though still
+        # important to character arcs and narrative.
+        #
+        # Time is not formally regimented; the GM and players roleplay
+        # only the moments that matter, treating anecdotes as narrative
+        # scenes interspersed within the downtime scene. A journey might
+        # last weeks but contain only a few roleplayed interactions.
+        #
+        # Characters can be called upon to make checks during downtime
+        # based on desired activities or circumstances the GM introduces.
+        # If the order and economy of actions becomes important, the GM
+        # should switch to a conflict scene. If a player wishes to jump
+        # into interpersonal interaction, the GM should briefly shift to
+        # a narrative scene.
+
+        # --- DOWNTIME ACTIVITIES ---
+        # At the start of each downtime scene, each player chooses the
+        # downtime activity their character is pursuing. Not all activities
+        # are suitable to all downtime scenes — the GM is the final arbiter
+        # of whether an activity can reasonably be completed during a
+        # particular downtime scene.
+
+        # --- LONG DOWNTIME SCENES ---
+        # During especially lengthy downtime scenes (longer than two days),
+        # each PC may pursue multiple activities sequentially. As a rule of
+        # thumb, the GM should allow one downtime activity per two days of
+        # downtime. At GM's discretion, a character might squeeze in an
+        # extra activity by sacrificing sleep and other necessities.
+        # Downtime scenes dedicated to arduous activities such as travel
+        # might not give PCs any opportunity for downtime activities besides
+        # traveling itself, or at least limit their options.
+
+        # --- EXTREMELY LONG NARRATIVE GAPS ---
+        # For time-skips of a month or more, the GM should stipulate the
+        # time passes, let players describe what their characters do, and
+        # allocate a small amount of XP to reflect growth. Such gaps are
+        # good opportunities for PCs to pursue societal obligations, return
+        # to their dōjō for training, or undertake individual endeavors
+        # that do not involve the larger group.
+
+        RULES {
+            #L5R455hI7jK9lM1nO3pQ5r: downtime_activities_per_scene
+            #L5R456sT8uV0wX2yZ4aB6c: long_downtime_one_per_two_days
+            #L5R457dE9fG1hI3jK5lM7n: extremely_long_narrative_gaps
+        }
+    }
+
+    # ===========================
+    # HARM AND HEALING
+    # ===========================
+
+    ^"Damage" DEF {
+
+        # When a character is in peril of suffering bodily harm, this
+        # is represented through damage — a numerical abstraction of
+        # the harm a character could suffer from a blow, fall, or mishap.
+
+        # --- DEALING DAMAGE ---
+        # When an effect deals damage, three possible outcomes:
+        # 1. The character reduces the damage to 0 with armor or
+        #    similar protection.
+        # 2. The character defends against the damage by receiving
+        #    fatigue equal to any remaining damage.
+        # 3. If the character does not reduce to 0 or defend, they
+        #    suffer a ^"Critical Strike" with severity based on the
+        #    damage source.
+
+        # --- INCREASING AND REDUCING DAMAGE ---
+        # Before dealing damage, first apply increases, then reductions
+        # (to a minimum of 0). If reduced to 0, the character does not
+        # need to defend. Resistance from armor and other effects is
+        # one way to reduce damage.
+
+        # --- DEFENDING AGAINST DAMAGE ---
+        # When damage remains after reductions, the character must
+        # defend by receiving fatigue equal to the remaining damage.
+        # If they cannot defend, they suffer a ^"Critical Strike".
+        # Defending is not normally optional — instinctive reactions
+        # cause dodging and rolling away. However, a character who is
+        # not ^"Incapacitated" may spend 1 ^"Void Points" to voluntarily
+        # suffer a critical strike instead of defending, seizing a
+        # tactical advantage.
+        # An ^"Incapacitated" character cannot defend and thus suffers
+        # a critical strike whenever they take damage.
+        # Note: A character CAN defend even if fatigue would exceed
+        # ^"Endurance", but this renders them ^"Incapacitated".
+
+        DAMAGE_TYPES {
+            "Physical Damage: Dealt by punches, cuts, falls, and other physical phenomena."
+            "Supernatural Damage: Dealt by invocations, ^\"Mahō\", and other mystical phenomena."
+        }
+
+        # Damage Source: determined by the effect that deals it.
+        # Weapon → that weapon is the source. Supernatural power → that
+        # power. Physical phenomenon (gravity, fire) → that phenomenon.
+
+        RULES {
+            #L5R458oP0qR2sT4uV6wX8y: damage_dealing_and_defense
+            #L5R459zA1bC3dE5fG7hI9j: damage_types_physical_supernatural
+        }
+    }
+
+    ^"Fatigue Recovery" DEF {
+
+        # --- RECOVERING FROM FATIGUE ---
+        # At the end of each scene, characters catch their breath.
+        # Each character reduces their fatigue to half their ^"Endurance"
+        # (rounded up) if it is over half their endurance.
+        # After a full night's rest, a character heals fatigue equal to
+        # two times their ^"Water" ring.
+
+        RULES {
+            #L5R460kL2mN4oP6qR8sT0u: fatigue_recovery_between_scenes
+            #L5R460aL2mN4oP6qR8sT1v: fatigue_recovery_full_rest
+        }
+    }
+
+    ^"Falling" DEF {
+
+        # The length of a fall is measured in ^"Range Band" and determines
+        # the ill effects. When a character lands, they must resist with
+        # a TN 3 ^"Fitness" (Air 1, Earth 5) check. If they succeed,
+        # reduce the number of range bands they count as having fallen
+        # by 1 plus bonus successes (minimum range 0 fall).
+
+        RULES {
+            #L5R460bM3nO5pQ7rS9tU2w: falling_damage_by_range_band
+        }
+    }
+
+    ^"Suffocation" DEF {
+
+        # At the beginning of each of their turns, a suffocating
+        # character receives 2 fatigue and 2 strife. The character does
+        # not suffer ^"Critical Strike" for wounds suffered this way.
+        # At the beginning of each turn while suffocating, if the
+        # character is suffering ^"Unconscious", they must resist with
+        # a TN 3 ^"Fitness" (Earth) check. If they fail, they perish.
+
+        RULES {
+            #L5R460cN4oP6qR8sT0uV3x: suffocation_fatigue_and_strife
+        }
+    }
+
+    ^"Death" DEF {
+
+        # Player characters are the main characters of the story.
+        # Death at a particular juncture is not always the most
+        # interesting outcome. It is a classic trope for a samurai to
+        # survive defeat and bear shame while seeking to restore honor.
+        # However, L5R is meant to evoke a setting where characters
+        # stand to lose their lives in pursuit of duties and passions.
+        # The rules are calibrated to balance dramatic tension, story
+        # flow, and fun for everyone at the table.
+
+        RULES {
+            #L5R460dO5pQ7rS9tU1vW4y: death_narrative_considerations
+        }
+    }
+
+    # ===========================
+    # TERRAIN AND ENVIRONMENT
+    # ===========================
+
+    ^"Terrain" DEF {
+
+        ENUM ["Dangerous", "Defiled", "Entangling", "Hallowed", "Imbalanced", "Obscuring"]
+
+        # Terrain features occupy a number of ^"Range Band" around a
+        # particular position, as determined by the GM. A terrain feature
+        # can be as small as range 0 or much larger, and can stretch
+        # unevenly in different directions. At the outset of a conflict,
+        # the GM establishes relevant terrain features, identifiable by
+        # checks or by spending (op) from ^"Initiative" checks.
+        # In mass battles, terrain qualities affect cohorts that occupy them.
+
+        TERRAIN_QUALITIES {
+
+            ^"Dangerous" {
+                DESCRIPTION "Physically hazardous to enter or linger in. Mundane terrain found in most regions."
+                EFFECTS "Whenever a character performs a check while within Dangerous terrain, the character suffers physical damage equal to the (st) symbols on their kept dice."
+                EXAMPLES "Fire, intense cold, thawing ice, steep inclines, jagged rocks, an uncovered foundation, rubble."
+            }
+
+            ^"Defiled" {
+                DESCRIPTION "Afflicted by the vile touch of the Shadowlands. Even the uneducated feel a pervasive sense of wrongness. Supernatural terrain found in especially unhallowed places."
+                EFFECTS "At the end of the scene, each character who was within Defiled terrain must make a TN 2 ^\"Fitness\" or ^\"Meditation\" check. Each character who fails suffers ^\"Afflicted\". Tainted beings reduce the TNs of their checks to resist effects by 1 while in Defiled terrain."
+                EXAMPLES "An oni's lair, a battlefield filled with unburned dead, a haunted castle, the secret hideout of a mahō-tsukai."
+            }
+
+            ^"Entangling" {
+                DESCRIPTION "Ground that seriously hampers mobility. Mundane terrain found in most regions."
+                EFFECTS "While within Entangling terrain, a character increases the TN of all their checks to move and for Movement actions by 2."
+                EXAMPLES "Sucking mud, brier patches, deep snow, icy ground, moving water."
+            }
+
+            ^"Hallowed" {
+                DESCRIPTION "Close to one or more of the Spirit Realms; invocations are easier to perform. Supernatural terrain found where kami dwell or miracles have occurred. Associated with one or more elements."
+                EFFECTS "While within Hallowed terrain, a character reduces the TN of their ^\"Meditation\" and ^\"Theology\" checks using the specified ring(s) by 1. Tainted beings increase the TN of their checks to resist effects by 1, or 2 if using the specified ring."
+                EXAMPLES "A shrine to a kami, a particular place of natural beauty, a location where a powerful spirit resides."
+            }
+
+            ^"Imbalanced" {
+                DESCRIPTION "Marked by a distinct absence or disquiet of kami of a certain element; invocations are harder to perform. Supernatural terrain found in regions affected by elemental imbalance. Associated with one or more elements."
+                EFFECTS "While within Imbalanced terrain, a character increases the TN of their ^\"Meditation\" and ^\"Theology\" checks using the terrain's specified ring by 1. Otherworldly beings increase the TN of their checks to resist effects by 1, or 2 if using the specified ring."
+                EXAMPLES "A forest mysteriously missing its leaves, a barren farm field, an out-of-control river."
+            }
+
+            ^"Obscuring" {
+                DESCRIPTION "Limits the visibility of and to anyone within, making it very difficult to land strikes. Mundane terrain found in most regions."
+                EFFECTS "Increase the TN of all Attack checks targeting characters within Obscuring terrain by 1. A character within Obscuring terrain generally cannot see beyond range 2 of their current position into the Obscuring terrain (though they can generally see out of it within range 2 of an edge). A character outside cannot see into it beyond range 2 of the edge."
+                EXAMPLES "Dense foliage, darkness, cramped indoor quarters, heavy rain or snow, choking smoke."
+            }
+        }
+
+        RULES {
+            #L5R461vW3xY5zA7bC9dE1f: terrain_modifies_combat
+            #L5R462gH4iJ6kL8mN0oP2q: terrain_modifies_movement
+        }
+    }
+
+    ^"Tactical Grid" DEF {
+        EXTENDS ^"Optional Rule"
+
+        # Using ^"Range Band" on a tactical grid adds granularity.
+        # Note that some distances are adjusted slightly to fit on
+        # commonly sized tactical maps.
+
+        GRID_DISTANCES {
+            "Range 0: The square the character occupies."
+            "Range 1: The squares adjacent to range 0."
+            "Range 2: The next row of squares adjacent to range 1."
+            "Range 3: The next row of squares after range 2."
+            "Range 4: The next 4 rows of squares after range 3."
+            "Range 5: The next 5 rows of squares after range 4."
+            "Range 6: Any squares on the grid beyond range 5."
+        }
+
+        ADJACENCY "Two squares are adjacent if they share an edge or a corner."
+
+        MOVEMENT {
+            "When an effect instructs a character to move 1 or more range bands, the character moves up to 3 squares per range band."
+            "Diagonal Squares: Moving into a diagonally adjacent square counts as moving 1 additional square."
+            "Difficult Squares: Exiting a square occupied by an enemy or obstacle (Entangling terrain, vertical distance, etc.) counts as moving 1 additional square (up to 3 total if also diagonal)."
+            "Resolving Movement: Each move from one square to the next is resolved sequentially. If a character cannot complete a proposed move with remaining movement, they must stop or move to a different reachable square."
+            "Combining Movement: At GM's discretion, multiple effects allowing movement can be combined (total squares = sum of range bands × 3)."
+        }
+    }
+
+    # Note: Shadowlands Taint is not a standalone mechanic; it is a
+    # type of disadvantage (adversity). It is defined in the traits
+    # and disadvantages files, not here. The ^"Afflicted" condition
+    # and ^"Defiled" terrain interact with it.
+}

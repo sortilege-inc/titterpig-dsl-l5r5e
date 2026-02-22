@@ -1,0 +1,747 @@
+BASE "L5R5e_Core_Core" {
+    NAME "Legend of the Five Rings 5th Edition - Core mechanics, ACTORs, and fundamental game rules"
+    VERSION "0.1"
+    RELEASE_DATE "2025-06-01"
+
+    # Core Rulebook: Legend of the Five Rings Roleplaying Game (FFG, 2018)
+    # Roll-and-keep system using custom Ring dice (d6) and Skill dice (d12)
+
+    #L5R001aB2cD4eF6gH8iJ0kL ACTOR "Entity" DEF {
+        # The root of all actor types in L5R 5e
+        # All ACTORs ultimately extend from Entity
+
+        PROPERTIES {
+            ^"Name" STRING REQUIRED
+            ^"Description" STRING
+            ^"Rings" DEF {
+                ^"Air" INTEGER MIN 1 MAX 5 DEFAULT 1
+                ^"Earth" INTEGER MIN 1 MAX 5 DEFAULT 1
+                ^"Fire" INTEGER MIN 1 MAX 5 DEFAULT 1
+                ^"Water" INTEGER MIN 1 MAX 5 DEFAULT 1
+                ^"Void" INTEGER MIN 1 MAX 5 DEFAULT 1
+            }
+        }
+
+        RULES {
+            #L5R002mN3oP5qR7sT9uV1w: WHEN [^"Entity" CREATED] THEN REQUIRE ^"Name"
+        }
+    }
+
+    #L5R003xY4zA6bC8dE0fG2hI ACTOR "Samurai" DEF {
+        EXTENDS #L5R001aB2cD4eF6gH8iJ0kL ^"Entity"
+
+        # Player characters and significant NPCs in Rokugan
+        # Samurai are the primary character type: warriors, courtiers,
+        # priests, and monks serving their lords and the Empire
+
+        PROPERTIES {
+            ^"Clan" STRING REQUIRED
+            ^"Family" STRING REQUIRED
+            ^"School" STRING REQUIRED
+            ^"School Rank" INTEGER MIN 1 MAX 6 DEFAULT 1
+            ^"Skills" LIST OF ^"Skill"
+            ^"Techniques" LIST OF ^"Technique"
+            ^"Advantages" LIST OF ^"Advantage"
+            ^"Disadvantages" LIST OF ^"Disadvantage"
+            ^"Honor" INTEGER MIN 0 MAX 100
+            ^"Glory" INTEGER MIN 0 MAX 100
+            ^"Status" INTEGER MIN 0 MAX 100
+            ^"Endurance" INTEGER MIN 0
+            ^"Composure" INTEGER MIN 0
+            ^"Focus" INTEGER MIN 0
+            ^"Vigilance" INTEGER MIN 0
+            ^"Fatigue" INTEGER MIN 0 DEFAULT 0
+            ^"Strife" INTEGER MIN 0 DEFAULT 0
+            ^"Void Points" INTEGER MIN 0
+            ^"Ninjō" STRING  # Personal desire
+            ^"Giri" STRING   # Sworn duty
+            ^"Demeanor" STRING
+            ^"Equipment" LIST OF STRING
+            ^"Roles" LIST OF STRING       # School roles (Bushi, Courtier, Shugenja, Monk, Shinobi, etc.)
+            ^"Titles" LIST OF ^"Title"    # Earned titles
+            ^"Bonds" LIST OF ^"Bond"      # Per Courts of Stone bonds system
+            ^"Bushido" DEF {
+                ^"Paramount Tenet" STRING  # Most important tenet
+                ^"Less Significant Tenet" STRING  # Least important tenet
+            }
+            ^"Experience" INTEGER MIN 0 DEFAULT 0  # XP earned/spent
+        }
+
+        RULES {
+            #L5R004jK5lM7nO9pQ1rS3t: WHEN [^"Samurai" CREATED] THEN REQUIRE ^"Clan", ^"School"
+            #L5R005uV6wX8yZ0aB2cD4e: WHEN [^"Strife" > ^"Composure"] THEN ^"Samurai" IS compromised
+            #L5R006fG7hI9jK1lM3nO5p: WHEN [^"Fatigue" >= ^"Endurance"] THEN ^"Samurai" IS incapacitated
+        }
+    }
+
+    #L5R007qR8sT0uV2wX4yZ6a ACTOR "Peasant" DEF {
+        EXTENDS #L5R001aB2cD4eF6gH8iJ0kL ^"Entity"
+
+        # Non-samurai: farmers, merchants, craftspeople, entertainers
+        # The vast majority of Rokugan's population
+
+        PROPERTIES {
+            ^"Rings" DEF {
+                ^"Air" INTEGER MIN 1 MAX 5 DEFAULT 1
+                ^"Earth" INTEGER MIN 1 MAX 5 DEFAULT 1
+                ^"Fire" INTEGER MIN 1 MAX 5 DEFAULT 1
+                ^"Water" INTEGER MIN 1 MAX 5 DEFAULT 1
+                ^"Void" INTEGER MIN 1 MAX 5 DEFAULT 1
+            }
+            ^"Skills" LIST OF ^"Skill"
+            ^"Endurance" INTEGER MIN 0
+            ^"Composure" INTEGER MIN 0
+        }
+
+        RULES {
+            #L5R008bC9dE1fG3hI5jK7l: WHEN [^"Peasant" INTERACTS with ^"Samurai"] THEN USE simplified mechanics
+        }
+    }
+
+    #L5R009mN0oP2qR4sT6uV8w ACTOR "Adversary" DEF {
+        EXTENDS #L5R001aB2cD4eF6gH8iJ0kL ^"Entity"
+
+        # NPCs, creatures, and supernatural beings used by the GM
+        # Adversary profiles include combat and intrigue conflict ranks
+
+        PROPERTIES {
+            ^"Combat Conflict Rank" INTEGER MIN 0 MAX 20
+            ^"Intrigue Conflict Rank" INTEGER MIN 0 MAX 20
+            ^"Rings" DEF {
+                ^"Air" INTEGER MIN 1 MAX 5
+                ^"Earth" INTEGER MIN 1 MAX 5
+                ^"Fire" INTEGER MIN 1 MAX 5
+                ^"Water" INTEGER MIN 1 MAX 5
+                ^"Void" INTEGER MIN 1 MAX 5
+            }
+            ^"Skills" LIST OF ^"Skill"
+            ^"Endurance" INTEGER MIN 0
+            ^"Composure" INTEGER MIN 0
+            ^"Focus" INTEGER MIN 0
+            ^"Vigilance" INTEGER MIN 0
+            ^"Advantages" LIST OF ^"Advantage"
+            ^"Disadvantages" LIST OF ^"Disadvantage"
+            ^"Techniques" LIST OF ^"Technique"
+            ^"Demeanor" STRING
+            ^"Favored Weapons" LIST OF STRING
+        }
+
+        RULES {
+            #L5R010xY1zA3bC5dE7fG9h: WHEN [^"Adversary" ENTERS conflict] THEN USE ^"Combat Conflict Rank" OR ^"Intrigue Conflict Rank"
+        }
+    }
+
+    ^"NPC" DEF {
+        # Metatype anchor for non-player character definitions
+    }
+
+    ^"NPC Template" DEF {
+        # Metatype anchor for NPC template overlay definitions
+    }
+
+    #L5R011iJ2kL4mN6oP8qR0s ACTOR "Minion" DEF {
+        EXTENDS #L5R009mN0oP2qR4sT6uV8w ^"Adversary"
+
+        # Weak adversaries with simplified mechanics.
+        # Minions have special rules for fatigue, critical strikes,
+        # and opportunity that distinguish them from full adversaries.
+
+        RULES {
+            #L5R012tU3vW5xY7zA9bC1d: minion_special_fatigue_handling
+            #L5R012tU3vW5xY7zA9bC2e: minion_critical_strike_rules
+            #L5R012tU3vW5xY7zA9bC3f: minion_opportunity_restrictions
+        }
+    }
+
+    #L5R013eF4gH6iJ8kL0mN2o ACTOR "Party" DEF {
+        EXTENDS #L5R001aB2cD4eF6gH8iJ0kL ^"Entity"
+
+        # A group of player characters traveling and adventuring together
+
+        PROPERTIES {
+            ^"Members" LIST OF ^"Samurai" REQUIRED
+            ^"Shared Resources" LIST OF STRING
+            ^"Current Location" STRING
+        }
+
+        RULES {
+            #L5R014pQ5rS7tU9vW1xY3z: WHEN [^"Party" ESTABLISHED] THEN REQUIRE at least 2 ^"Members"
+        }
+    }
+
+    # === DICE AND CHECK SYSTEM ===
+
+    ^"Ring Die" DEF {
+
+        # Six-sided custom die representing a character's innate ring aptitude.
+        # In text represented as (ring). Provides less potent outcomes than
+        # Skill dice but always available based on ring value.
+
+        FACES {
+            1 "Blank"
+            2 "(op) (st)"
+            3 "(op)"
+            4 "(su) (st)"
+            5 "(su)"
+            6 "(ex) (st)"
+        }
+
+        RULES {
+            #L5R015aB6cD8eF0gH2iJ4k: ring_die_pool_equals_ring_value
+            #L5R016lM7nO9pQ1rS3tU5v: ring_die_always_available
+        }
+    }
+
+    ^"Skill Die" DEF {
+
+        # Twelve-sided custom die representing trained expertise.
+        # In text represented as (skill). Provides more potent outcomes
+        # including success without strife and clean explosive success.
+
+        FACES {
+            1 "Blank"
+            2 "Blank"
+            3 "(op)"
+            4 "(op)"
+            5 "(op)"
+            6 "(su) (st)"
+            7 "(su) (st)"
+            8 "(su)"
+            9 "(su)"
+            10 "(su) (op)"
+            11 "(ex) (st)"
+            12 "(ex)"
+        }
+
+        RULES {
+            #L5R017wX8yZ0aB2cD4eF6g: skill_die_pool_equals_skill_ranks
+            #L5R018hI9jK1lM3nO5pQ7r: skill_die_provides_cleaner_results
+        }
+    }
+
+    ^"Dice Symbols" DEF {
+
+        # Four unique symbols appearing on L5R custom dice in various
+        # combinations. Resolved in specific order during Step 6 of a check.
+
+        ENUM ["Success", "Explosive Success", "Opportunity", "Strife"]
+
+        SYMBOL_DEFINITIONS {
+            ^"Success (su)" "Counts toward meeting or exceeding TN. Each (su) = 1 success."
+            ^"Explosive Success (ex)" "Counts as (su) and allows rolling 1 additional die of same type. New die may be kept or dropped."
+            ^"Opportunity (op)" "Narrative currency for secondary effects. Does not affect success or failure directly."
+            ^"Strife (st)" "Emotional accumulation. Does not affect success or failure but tracks toward Compromised condition."
+        }
+
+        RESOLUTION_ORDER ["(ex)", "(st)", "(op)", "(su)"]
+
+        RULES {
+            #L5R019sT0uV2wX4yZ6aB8c: symbol_resolution_order
+            #L5R020dE1fG3hI5jK7lM9n: explosive_success_chain_rolling
+            #L5R021oP2qR4sT6uV8wX0y: opportunity_narrative_effects
+            #L5R022zA3bC5dE7fG9hI1j: strife_accumulation_tracking
+        }
+    }
+
+    ^"Check" DEF {
+
+        # The core resolution mechanic for L5R. Roll and Keep system:
+        # 1) Assemble dice pool (Ring dice + Skill dice)
+        # 2) Roll all dice
+        # 3) Keep dice up to ring value
+        # 4) Resolve symbols on kept dice
+
+        STEPS {
+            1 "Declare Intention: Player explains what character wants to accomplish"
+            2 "Determine Details: GM assigns skill, ring (approach), and TN"
+            3 "Assemble and Roll Dice Pool: Ring dice = ring value, Skill dice = skill ranks"
+            4 "Modify Rolled Dice: Apply advantages/disadvantages that cause rerolls"
+            5 "Choose Kept Dice: Select up to ring value dice to keep"
+            6 "Resolve Symbols on Kept Dice: (ex) then (st) then (op) then (su)"
+            7 "Narrate Results: GM and player narrate the outcome based on success/failure and spent opportunity"
+        }
+
+        RULES {
+            #L5R023kL4mN6oP8qR0sT2u: dice_pool_assembly
+            #L5R024vW5xY7zA9bC1dE3f: keep_limit_equals_ring_value
+            #L5R025gH6iJ8kL0mN2oP4q: success_threshold_comparison
+            #L5R026rS7tU9vW1xY3zA5b: bonus_successes_quality
+            #L5R027cD8eF0gH2iJ4kL6m: shortfall_degree_of_failure
+        }
+    }
+
+    ^"Target Number" DEF {
+
+        INTEGER MIN 1 MAX 8
+
+        # Number of (su) and (ex) symbols needed for the check to succeed.
+        # Set by the GM based on difficulty of the task.
+
+        DIFFICULTY_SCALE {
+            1 "Simple (routine task for a trained person)"
+            2 "Easy (standard difficulty for most checks)"
+            3 "Average (requires moderate skill or effort)"
+            4 "Hard (requires significant skill or luck)"
+            5 "Very Hard (challenges even experts)"
+            6 "Extremely Difficult (requires extraordinary circumstances)"
+            7 "Heroic (near the limits of mortal ability)"
+            8 "Legendary (achievable with exploding successes)"
+        }
+
+        RULES {
+            #L5R028nO9pQ1rS3tU5vW7x: gm_sets_target_number
+            #L5R029yZ0aB2cD4eF6gH8i: default_tn_is_two
+        }
+    }
+
+    ^"Approach" DEF {
+
+        ENUM ["Air", "Earth", "Fire", "Water", "Void"]
+
+        # Each ring represents a different approach to any skill check.
+        # The GM determines which ring applies based on how the character
+        # describes their action. This determines which ring dice to roll
+        # and how many dice to keep.
+        #
+        # Air: Precision, subtlety, grace — speaking carefully, striking precisely
+        # Earth: Resilience, patience, thoroughness — enduring, remembering, defending
+        # Fire: Passion, invention, ferocity — creating, commanding, attacking aggressively
+        # Water: Flexibility, awareness, adaptation — perceiving, persuading, flowing
+        # Void: Instinct, mysticism, wisdom — intuiting, sensing the supernatural
+
+        RULES {
+            #L5R030jK1lM3nO5pQ7rS9t: approach_determines_ring_used
+            #L5R031uV2wX4yZ6aB8cD0e: approach_determines_opportunity_options
+        }
+    }
+
+    ^"Opportunity" DEF {
+
+        # (op) symbols on kept dice can be spent for additional narrative
+        # effects. Available options depend on the ring used for the check
+        # and the context (general, conflict, initiative, skill group, downtime).
+        # General opportunities are always available regardless of context.
+
+        # -----------------------------------------------
+        # GENERAL EXAMPLES OF (op)
+        # Available on any check regardless of context.
+        # -----------------------------------------------
+
+        GENERAL_OPPORTUNITIES {
+            ANY {
+                "(op): If you failed, determine the easiest way to accomplish the task you were attempting (skill and approach)."
+                "(op)+: Remove 1 strife you gained from this check per (op) spent this way."
+                "(op)(op): Provide assistance to the next character to attempt a check to accomplish something similar."
+            }
+            AIR {
+                "(op): Learn another character in the scene's demeanor (if an NPC) and current strife."
+                "(op)+: Act subtly to attract minimal attention in your efforts. Extra (op) makes the attempt even subtler."
+                "(op)(op): Notice an interesting detail about a character in the scene, such as an advantage or disadvantage. At the GM's discretion, you may establish a new detail for an NPC."
+            }
+            EARTH {
+                "(op): Reassure another character in the scene with your presence, allowing them to remove 2 strife."
+                "(op)+: Act carefully to minimize consequences of failure or other dangers that could arise from the task. Extra (op) makes the attempt even safer."
+                "(op)(op): Suddenly recall an important piece of information not directly related to the task. At the GM's discretion, you may establish a small preparatory action you took earlier, such as bringing along a common useful item."
+            }
+            FIRE {
+                "(op): Inflame another character in the scene with your presence, causing them to receive 2 strife."
+                "(op)+: Perform the task in a flashy way, drawing attention to yourself. Extra (op) attracts even more notice."
+                "(op)(op): Notice something missing or out of place in the vicinity that is not directly related to the task. At the GM's discretion, you may establish an absence, such as a lack of shoes outside indicating the occupant's absence."
+            }
+            WATER {
+                "(op): Remove 2 strife from yourself."
+                "(op)+: Perform the task efficiently, completing it more quickly or saving supplies. Extra (op) further reduces the time or materials expended."
+                "(op)(op): Spot an interesting physical detail present in your environment not directly related to your check. At the GM's discretion, you may establish a piece of terrain or a mundane object nearby."
+            }
+            VOID {
+                "(op): Choose a ring other than Void. Reduce the TN of your next check by 1 if it uses that ring."
+                "(op)+: Feel a chill down your spine, notice a sudden silence, or detect another sign of the supernatural if there is a spiritual disturbance in the scene. Extra (op) gives an increasingly precise location for the supernatural occurrence."
+                "(op)(op): Gain spiritual insight into the nature of the universe or your own heart. At the GM's discretion, you may establish a fact about your character that has not been previously revealed but relates to the situation."
+            }
+        }
+
+        # -----------------------------------------------
+        # CONFLICT AND MARTIAL SKILL EXAMPLES OF (op)
+        # Available during conflict scenes on Martial skill checks.
+        # -----------------------------------------------
+
+        CONFLICT_OPPORTUNITIES {
+            AIR {
+                "(op): Add a kept (ring) set to an (op) result to your next Martial skill check."
+                "(op)+: During a Movement action check, up to 1 range band of any distance you move per (op) spent this way may be along a vertical surface."
+                "(op)(op): Increase the TN of the next Martial Arts [Ranged] check targeting you before the start of your next turn by 2."
+            }
+            EARTH {
+                "(op): During a Movement action, ignore one terrain quality of your choice."
+                "(op)+: Reduce the severity of the next critical strike you suffer before the start of your next turn by 1 per (op) spent this way."
+                "(op)(op): Do not apply one of your disadvantages to checks until the end of your next turn."
+            }
+            FIRE {
+                "(op): Choose another character in the scene; increase the TN of the next check they make before the end of their next turn by 1 if it does not include you as a target."
+                "(op)+: During an Attack action check, increase the TN of the next check the target makes to resist a critical strike they suffer before the start of your next turn by 1 per (op) spent this way."
+                "(op)(op): Other characters must receive 2 strife to choose you as the target of their Attack and Scheme actions until the start of your next turn."
+            }
+            WATER {
+                "(op): Remove 1 fatigue."
+                "(op)+: During an Attack action check, ignore 1 point of target's physical resistance per (op) spent this way."
+                "(op)(op): Move 1 range band."
+            }
+            VOID {
+                "(op): During the next Attack action check you make before the end of your next turn, ignore one terrain quality of your choice."
+                "(op)+: During a Support action check, increase your Initiative value by 1 per (op) spent this way."
+                "(op)(op): Ignore the effects of one condition you are suffering until the end of your next turn."
+            }
+        }
+
+        # -----------------------------------------------
+        # INITIATIVE CHECK EXAMPLES OF (op)
+        # Available when making Initiative checks.
+        # -----------------------------------------------
+
+        INITIATIVE_OPPORTUNITIES {
+            AIR {
+                "(op): Assess one foe's weakness. Learn one of their disadvantages of that foe's choice."
+            }
+            EARTH {
+                "(op): Choose another character's disadvantage you know. They do not apply that disadvantage to their checks this scene."
+            }
+            FIRE {
+                "(op): Use your focus instead of your vigilance for your initiative when surprised."
+            }
+            WATER {
+                "(op): Assess the qualities of all terrain in the scene."
+            }
+            VOID {
+                "(op): Sense if there is an Otherworldly being in the scene."
+            }
+        }
+
+        # -----------------------------------------------
+        # OTHER SKILL EXAMPLES OF (op)
+        # Available on non-Martial skill checks by skill group.
+        # -----------------------------------------------
+
+        SKILL_OPPORTUNITIES {
+            AIR {
+                ARTISAN "(op): If you succeed, add the Resplendent or Subtle quality to an item that you are refining."
+                SCHOLAR "(op): Learn something about a character who created or used the item you are studying (such as one of their advantages or disadvantages of the GM's choice that affected their creation or use of the item)."
+                SOCIAL "(op): Learn if the honor, glory, or status attribute of a character in the scene is higher, lower, or equal to yours."
+                TRADE "(op): Convince a buyer to pay an additional 10% for an item you are selling."
+            }
+            EARTH {
+                ARTISAN "(op): If you succeed, add the Durable quality to an item that you are restoring."
+                SCHOLAR "(op): Remember a place where you can research or study the topic you were attempting to recall."
+                SOCIAL "(op): Increase the TN of the next Social check another character makes before the end of the scene by 1."
+                TRADE "(op): Reduce the TN of the next check another character makes with the same skill before the end of the scene by 1."
+            }
+            FIRE {
+                ARTISAN "(op): If you succeed, make one additional copy of the item you are creating."
+                SCHOLAR "(op): Extrapolate the motivations or desires of another character in the scene or wider situation."
+                SOCIAL "(op): Reduce the TN of the next Social check another character makes before the end of the scene by 1."
+                TRADE "(op): Unusual inspiration strikes; add a kept (ring) set to an (op) result to the next check you make with another skill."
+            }
+            WATER {
+                ARTISAN "(op): Add a kept (ring) set to an (op) result to the next Artisan skill check you make before the end of the game session."
+                SCHOLAR "(op): Spot a unique or identifying quality, aspect, or ability of something that you are identifying."
+                SOCIAL "(op): Add a kept (ring) set to an (op) result to your next Social check before the end of the scene."
+                TRADE "(op): Convince a seller to give you an additional 10% discount for an item you are buying."
+            }
+            VOID {
+                ARTISAN "(op): Reduce the TN of the next check you make using the item you are attuning yourself to by 1."
+                SCHOLAR "(op): Intuit whether you can learn anything of value from your current course of inquiry."
+                SOCIAL "(op): Discern the objective of another character in the scene."
+                TRADE "(op): Reduce any effect you have on your environment (and physical traces of your efforts) to a minimum."
+            }
+        }
+
+        # -----------------------------------------------
+        # DOWNTIME CHECK EXAMPLES OF (op)
+        # Available during downtime scene checks.
+        # -----------------------------------------------
+
+        DOWNTIME_OPPORTUNITIES {
+            AIR {
+                "(op)+: Learn a detail about one person in your company (such as an advantage or disadvantage of their choice) per (op) spent this way. You can learn only one detail about each person this way in a single downtime scene."
+                "(op)(op): Perform your downtime activity without letting one or more others of your choice know that you did."
+            }
+            EARTH {
+                "(op)+: Another character in your company may remove 1 strife or fatigue per (op) spent this way."
+                "(op)(op): Memorize a small but vital detail from your activity; you can recall it later without a check."
+            }
+            FIRE {
+                "(op)+: Assist one other character per (op) spent this way with their next downtime activity check this session."
+                "(op)(op): Energize another character in your company with your efforts; they may perform 1 additional downtime action this downtime (to a maximum of 2)."
+            }
+            WATER {
+                "(op)+: Remove 1 strife or fatigue per (op) spent this way."
+                "(op)(op): Make a new friend while undertaking your downtime activity."
+            }
+            VOID {
+                "(op)+: Reserve 1 dropped die from your check, to a maximum of your ranks in the skill you used. Add that die to your next check with the same skill as a kept die instead of rolling it."
+                "(op)(op): Have a brief premonition of a possible future event while undertaking your downtime activity."
+            }
+        }
+
+        RULES {
+            #L5R032fG3hI5jK7lM9nO1p: opportunity_is_optional
+            #L5R033qR4sT6uV8wX0yZ2a: ring_and_context_determine_options
+            #L5R034bC5dE7fG9hI1jK3l: stacking_opportunity_effects
+        }
+    }
+
+    ^"Void Points" DEF {
+        APPLIES TO [^"Samurai"]
+
+        INTEGER MIN 0
+
+        # Spiritual currency representing connection to the Void.
+        # Maximum = Void ring value. Recovered slowly.
+
+        STARTING_VALUE "Void ring value / 2 (rounded up)"
+        MAXIMUM "Void ring value"
+
+        USES {
+            ^"Seize the Moment" "Spend 1 Void point: Roll 1 additional (ring) and keep 1 additional die on a check."
+            ^"Shattering Parry" "Spend 1 Void point: Reduce severity of a critical strike targeting you by your school rank."
+            ^"Technique Activation" "Some techniques require spending Void points."
+        }
+
+        RECOVERY {
+            "Gain 1 when adversity disadvantage applies and check fails (1/scene per disadvantage)"
+            "Gain 1 when anxiety disadvantage triggers (1/scene per disadvantage)"
+            "Gain 1 when affected by a complication and choosing to be moved by it"
+            "Gain 1 when GM conceals TN of a check"
+        }
+
+        RULES {
+            #L5R035mN6oP8qR0sT2uV4w: seize_the_moment_mechanics
+            #L5R036xY7zA9bC1dE3fG5h: shattering_parry_reduction
+            #L5R037iJ8kL0mN2oP4qR6s: void_point_recovery_triggers
+        }
+    }
+
+    # === SCENE AND SESSION STRUCTURE ===
+
+    ^"Turn" DEF {
+
+        # The amount of time needed for a character to take one action
+        # in a structured scene. Duration is abstract and narrative.
+
+        RULES {
+            #L5R038tU9vW1xY3zA5bC7d: turn_duration_variable
+            #L5R039eF0gH2iJ4kL6mN8o: action_and_movement_per_turn
+        }
+    }
+
+    ^"Scene" DEF {
+
+        ENUM ["Narrative", "Downtime", "Conflict"]
+
+        # Basic unit of gameplay. Characters are in a specific location
+        # doing something interesting. Strife partially clears between scenes.
+
+        PROPERTIES {
+            ^"Scene Type" ENUM ["Narrative", "Downtime", "Conflict"]
+            ^"Location" STRING
+            ^"Participants" LIST OF ^"Entity"
+        }
+
+        RULES {
+            #L5R040pQ1rS3tU5vW7xY9z: strife_removal_between_scenes
+            #L5R041aB2cD4eF6gH8iJ0k: scene_transition_effects
+        }
+    }
+
+    ^"Session" DEF {
+
+        # One game session. Experience points are awarded at session end.
+        # Some effects reset between sessions.
+
+        RULES {
+            #L5R042lM3nO5pQ7rS9tU1v: experience_awards_per_session
+            #L5R043wX4yZ6aB8cD0eF2g: session_effects_reset
+        }
+    }
+
+    ^"Conflict Type" DEF {
+
+        ENUM ["Intrigue", "Duel", "Skirmish", "Mass Battle"]
+
+        # Four types of structured conflict scenes, each with specific rules.
+        #
+        # Intrigue: Social/political conflicts using social skills
+        # Duel: Formal one-on-one combat (iaijutsu or taryu-jiai)
+        # Skirmish: Small-scale tactical combat
+        # Mass Battle: Army-scale warfare using abstracted mechanics
+
+        RULES {
+            #L5R044hI5jK7lM9nO1pQ3r: intrigue_social_combat
+            #L5R045sT6uV8wX0yZ2aB4c: duel_formal_one_on_one
+            #L5R046dE7fG9hI1jK3lM5n: skirmish_tactical_combat
+            #L5R047oP8qR0sT2uV4wX6y: mass_battle_abstracted_warfare
+        }
+    }
+
+    ^"Stance" DEF {
+
+        ENUM ["Air", "Earth", "Fire", "Water", "Void"]
+
+        # In conflict scenes, each character chooses a stance at the start
+        # of their turn. The stance determines their default ring for checks
+        # and grants specific benefits.
+        #
+        # Air Stance: +1 TN for attack checks targeting you at range 1-2. Becomes +2 TN at Rank 4.
+        # Earth Stance: When other characters make Attack action checks and Scheme action checks that target you, they cannot spend (op) to inflict critical strikes or conditions on you.
+        # Fire Stance: Bonus success on Attack and Scheme checks if you keep (st)
+        # Water Stance: May perform an additional action that does not require a check. The additional action cannot be the same type as an action you've already performed that turn.
+        # Void Stance: You do not receive strife from (st) symbols on your kept dice. You can still receive strife from other sources.
+
+        RULES {
+            #L5R048zA9bC1dE3fG5hI7j: stance_chosen_at_turn_start
+            #L5R049kL0mN2oP4qR6sT8u: air_stance_evasion_bonus
+            #L5R050vW1xY3zA5bC7dE9f: earth_stance_endurance_cap
+            #L5R051gH2iJ4kL6mN8oP0q: fire_stance_aggressive_bonus
+            #L5R052rS3tU5vW7xY9zA1b: water_stance_extra_action
+            #L5R053cD4eF6gH8iJ0kL2m: void_stance_scheme_immunity
+        }
+    }
+
+    ^"Initiative" DEF {
+
+        # Turn order in conflict scenes. Characters make a TN 1 Initiative
+        # check at the start of each round using any ring of their choice.
+        # The skill used depends on the conflict type:
+        #   Intrigue: Sentiment
+        #   Duel: Meditation
+        #   Skirmish: Tactics
+        #   Mass Battle: Command
+        # Characters act in order of bonus successes (highest first),
+        # with ties broken by honor (lowest honor acts first).
+
+        RULES {
+            #L5R054nO5pQ7rS9tU1vW3x: initiative_check_void_ring
+            #L5R055yZ6aB8cD0eF2gH4i: bonus_successes_determine_order
+            #L5R056jK7lM9nO1pQ3rS5t: focus_breaks_ties
+        }
+    }
+
+    ^"Action" DEF {
+
+        # Actions available during conflict turns. Each conflict type
+        # has its own set of available actions.
+
+        INTRIGUE_ACTIONS {
+            ENUM ["Assist", "Calming Breath", "Persuade", "Unique Action"]
+        }
+
+        DUEL_ACTIONS {
+            ENUM ["Calming Breath", "Center", "Predict", "Prepare Item", "Strike"]
+        }
+
+        SKIRMISH_ACTIONS {
+            ENUM ["Assist", "Calming Breath", "Challenge", "Guard", "Maneuver", "Prepare Item", "Strike", "Unique Action", "Wait"]
+        }
+
+        MASS_BATTLE_ACTIONS {
+            ENUM ["Assault", "Challenge", "Rally", "Reinforce"]
+        }
+
+        RULES {
+            #L5R057uV8wX0yZ2aB4cD6e: actions_specific_to_conflict_type
+            #L5R058fG9hI1jK3lM5nO7p: one_action_per_turn
+        }
+    }
+
+    ^"Range Band" DEF {
+
+        ENUM ["Range 0", "Range 1", "Range 2", "Range 3", "Range 4", "Range 5", "Range 6"]
+
+        # Abstract distance measurement in conflict scenes.
+        #
+        # Range 0 — Touch (1-2 feet): Grappling range and small weapons
+        #   like knives. Longer weapons are hard to wield. Objects at
+        #   range 0 are at the person's feet or on their person.
+        # Range 1 — Sword (1-2 yards): Optimal range for fighting with
+        #   a sword. A character can generally interact with people and
+        #   objects at range 1. Most manual skills require target at range 0-1.
+        # Range 2 — Spear (3-4 yards): Range at which polearms such as
+        #   spears and naginata have the greatest advantage.
+        # Range 3 — Throw (5-10 yards): Range at which thrown missile
+        #   weapons are most effective.
+        # Range 4 — Bow (11-100 yards): Midrange for missile weapons
+        #   like bows. Generally coincides with the edge of earshot.
+        # Range 5 — Volley (100+ yards): Outer edge of range at which
+        #   missile weapons are accurate. Farthest most characters can
+        #   see any details.
+        # Range 6 — Sight (more than a few hundred yards): Maximum
+        #   distance at which one can interact with a human-sized target
+        #   (albeit minimally). To travel beyond range 6, a character
+        #   must generally travel in narrative time or downtime.
+
+        RULES {
+            #L5R062xY3zA5bC7dE9fG1h: melee_requires_range_zero
+            #L5R063iJ4kL6mN8oP0qR2s: ranged_weapons_have_range_limits
+            #L5R064tU5vW7xY9zA1bC3d: movement_in_range_bands
+        }
+    }
+
+    ^"Silhouette" DEF {
+
+        INTEGER MIN 0 MAX 5
+
+        # A measure of a character or object's physical size.
+        # Used to determine cover, targeting, and physical interactions.
+        #
+        # 0: Handheld objects, cats, small dogs
+        # 1: Children, large dogs, goblins
+        # 2: Adult humans, ningyo, tengu
+        # 3: Horses, naga, rakshasa, trolls
+        # 4: Ogres, elephants
+        # 5: Dragons
+
+        RULES {
+            #L5R064aU5vW7xY9zA1bC3e: silhouette_determines_size_category
+        }
+    }
+
+    ^"GM Role" DEF {
+
+        BOOLEAN DEFAULT false
+
+        # The Game Master creates the story framework, portrays NPCs,
+        # describes scenes, sets TNs, and arbitrates rules. Primary
+        # duty is ensuring all players have fun.
+
+        RULES {
+            #L5R065eF6gH8iJ0kL2mN4o: setting_creation_responsibility
+            #L5R066pQ7rS9tU1vW3xY5z: npc_control
+            #L5R067aB8cD0eF2gH4iJ6k: rule_arbitration_authority
+            #L5R068lM9nO1pQ3rS5tU7v: target_number_determination
+        }
+    }
+
+    ^"Experience Points" DEF {
+        APPLIES TO [^"Samurai"]
+
+        INTEGER MIN 0 MAX 999999
+
+        # Points earned through play to improve character abilities.
+        # Awarded for session participation, good roleplaying, and
+        # story milestones. Spent on skills, rings, techniques, and
+        # advantages during downtime.
+
+        ADVANCEMENT_COSTS {
+            ^"Skill Rank" COST "new rank × 2 XP (curriculum), new rank × 3 XP (non-curriculum)"
+            ^"Ring Increase" COST "new rank × 3 XP (curriculum ring)"
+            ^"Technique" COST "3 XP (curriculum), 3 × technique rank XP (non-curriculum)"
+            ^"Distinction/Passion" COST "3 XP"
+            ^"Adversity/Anxiety" COST "3 XP"
+        }
+
+        RULES {
+            #L5R069wX0yZ2aB4cD6eF8g: session_awards
+            #L5R070hI1jK3lM5nO7pQ9r: milestone_bonus
+            #L5R071sT2uV4wX6yZ8aB0c: advancement_spending_rules
+        }
+    }
+}

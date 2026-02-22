@@ -1,0 +1,429 @@
+EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
+    NAME "Legend of the Five Rings 5th Edition - Celestial Realms: GM Tools"
+    VERSION "0.1"
+    RELEASE_DATE "2025-06-01"
+
+    # Celestial Realms (Chapter 3): Titles, demeanor, NPC templates,
+    # Baku NPC, places of power mechanics, designing religious groups
+    # and supernatural encounters, Bushido tenet: Righteousness.
+
+    # ===========================
+    # NEW TITLES
+    # ===========================
+
+    ^"Bond with a Spirit" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Some individuals bond with a supernatural entity such
+        # as an elemental kami, animal spirit, or other being. Usually
+        # a shugenja who has communed with a spirit over time,
+        # but occasionally a spirit becomes fascinated with a
+        # non-shugenja and offers them abilities and challenges.
+
+        PROPERTIES {
+            ^"Title Type" STRING "Title" FIXED
+            ^"Assigned By" STRING "A spirit or other supernatural entity"
+            ^"Status Award" STRING "+5 (to a maximum of 40)"
+            ^"Glory Award" STRING "+5 (to a maximum of 40)"
+            ^"XP to Completion" INTEGER DEFAULT 25
+            ^"Title Ability" STRING "Spiritual Protector"
+        }
+
+        ^"Spiritual Protector" DEF {
+            # Once per scene, after you have received fatigue or strife
+            # due to an enemy's Attack or Scheme action, that enemy
+            # suffers the same amount of strife or fatigue you received.
+        }
+
+        CURRICULUM {
+            ^"Rank 1" {
+                "Scholar" SKILL_GROUP
+                "Aesthetics" SKILL
+                "Games" SKILL
+                "Meditation" SKILL
+                "Rank 1 Invocations (spirit's elements) (invocation)" TECH_GROUP
+                "Commune with the Spirits (ritual)" TECHNIQUE
+                "Blessing of Fertile Fields (ritual)" TECHNIQUE
+            }
+        }
+
+        RULES {
+            #L5RCR38qR9sT1uV3wX5yZ7a: bond_with_spirit_spiritual_protector
+            #L5RCR39bC0dE2fG4hI6jK8l: bond_with_spirit_invocations_limited_to_spirit_elements
+        }
+    }
+
+    ^"Moon Cultist" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Acolytes of Lord Moon, from the lowliest hinin to Imperial
+        # family members. All one needs is to practice faith
+        # unquestioningly and remind others that there is perfection
+        # in chaos.
+
+        PROPERTIES {
+            ^"Title Type" STRING "Title" FIXED
+            ^"Assigned By" STRING "Another moon cultist"
+            ^"Disadvantage" STRING "Dark Secret"
+            ^"Honor Award" STRING "-5 (to a minimum of 15)"
+            ^"XP to Completion" INTEGER DEFAULT 30
+            ^"Title Ability" STRING "Swallow the Light"
+        }
+
+        ^"Swallow the Light" DEF {
+            # Once per session as an Attack and Scheme action, make
+            # a Theology (Water) check targeting a character at range
+            # 0-1 (TN = target's vigilance). If you succeed, choose one
+            # ring. Target treats that ring as reduced by half (min 1),
+            # and you treat yours as increased by the amount reduced.
+            # Derived attributes change accordingly. Persists for
+            # rounds equal to your Void Ring.
+        }
+
+        CURRICULUM {
+            ^"Rank 1" {
+                "Scholar" SKILL_GROUP
+                "Composition" SKILL
+                "Courtesy" SKILL
+                "Fitness" SKILL
+                "Rank 1-2 Water Invocations (invocation)" TECH_GROUP
+                "Hands of the Tides (invocation)" TECHNIQUE
+                "Whispers to the Moon (ritual)" TECHNIQUE
+            }
+        }
+
+        RULES {
+            #L5RCR40mN1oP3qR5sT7uV9w: moon_cultist_swallow_the_light
+            #L5RCR41xY2zA4bC6dE8fG0h: moon_cultist_requires_dark_secret
+        }
+    }
+
+    # ===========================
+    # NEW DEMEANOR
+    # ===========================
+
+    ^"Righteous Demeanor" DEF {
+        APPLIES TO [^"NPC"]
+
+        # Reflects samurai who value Gi (Righteousness) above
+        # all else. They are infused with a thirst for the right action
+        # and strive for the true ideals of Bushido.
+
+        PROPERTIES {
+            ^"Demeanor" STRING "Righteous" FIXED
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -1, Void -1"
+            ^"Common Way of Unmasking" STRING "Righteous Irritation: This person forgets their manners and rudely points out flaws in others, particularly those who have recently disagreed with them. They pick apart even the subtlest of errors, lashing out callously at anyone who objects."
+        }
+
+        RULES {
+            #L5RCR42iJ3kL5mN7oP9qR1s: righteous_demeanor_water_plus_2_fire_minus_1_void_minus_1
+        }
+    }
+
+    # ===========================
+    # NPC TEMPLATES
+    # ===========================
+
+    ^"Phoenix Clan Samurai Template" DEF {
+        APPLIES TO [^"NPC Template"]
+
+        # Can be used with any clan samurai profile.
+        # Makes NPCs feel more like Phoenix Clan members.
+
+        PROPERTIES {
+            ^"Base Profile" STRING "Any clan samurai profile"
+            ^"Combat Rank Modifier" STRING "+1"
+            ^"Intrigue Rank Modifier" STRING "+1"
+            ^"Ring Modifier" STRING "+1 Air"
+            ^"Skill Modifier" STRING "+1 Scholar and Social skills"
+            ^"Replace Advantages" STRING "0-2: In Tune with the Spirits (Void) [Scholar, Social; Mental, Spiritual], Pledged Protector (Earth) [Martial; Mental, Physical], Talented Archer (Air) [Martial; Mental, Physical], Trained Philosopher (Fire) [Scholar; Mental]"
+            ^"Replace Disadvantages" STRING "0-2: Bitter Heart (Water) [Social; Mental], Elitist (Water) [Social; Interpersonal, Mental], Limited Perspective (Earth) [Social; Interpersonal, Mental]"
+            ^"Add Techniques" STRING "0-2: Invocations (invocation), Kata (kata), Rituals (ritual)"
+            ^"Replace Demeanor" STRING "1: Ambitious, Detached, Righteous"
+        }
+
+        RULES {
+            #L5RCR43tU4vW6xY8zA0bC2d: phoenix_template_air_ring_scholar_social_skills
+        }
+    }
+
+    ^"Centipede Clan Samurai Template" DEF {
+        APPLIES TO [^"NPC Template"]
+
+        # Can be used with any clan samurai profile.
+        # Makes NPCs feel more like Centipede Clan members.
+
+        PROPERTIES {
+            ^"Base Profile" STRING "Any clan samurai profile"
+            ^"Combat Rank Modifier" STRING "+2"
+            ^"Ring Modifier" STRING "+1 Fire"
+            ^"Skill Modifier" STRING "+1 Martial and Scholar skills"
+            ^"Replace Advantages" STRING "0-2: Pillar of Amaterasu (Fire) [Scholar; Interpersonal, Mental], Radiant Personality (Fire) [Social; Interpersonal, Mental]"
+            ^"Replace Disadvantages" STRING "0-2: Lack of Subtlety (Air) [Martial, Social; Interpersonal, Physical], Stubbornly Traditional (Earth) [Scholar, Social; Interpersonal, Mental]"
+            ^"Add Techniques" STRING "0-2: Invocations (Fire) (invocation), Kata (kata), Shuji (Fire or Air) (shuji)"
+            ^"Replace Demeanor" STRING "1: Gruff, Righteous"
+        }
+
+        RULES {
+            #L5RCR44eF5gH7iJ9kL1mN3o: centipede_template_fire_ring_martial_scholar_skills
+        }
+    }
+
+    # ===========================
+    # NEW NPC
+    # ===========================
+
+    ^"Baku" DEF {
+        APPLIES TO [^"NPC"]
+
+        # Dream-stalking creatures most commonly found in Yume-do.
+        # Appear as quadrupedal tusked beasts with flexible snouts
+        # and dappled skin. They can distort prey's perception
+        # using their Nightmare Guise ability. Persistent, more
+        # intelligent than they appear, and vicious when hungry.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 4
+            }
+            ^"Endurance" INTEGER 22
+            ^"Composure" INTEGER 15
+            ^"Focus" INTEGER 12
+            ^"Vigilance" INTEGER 6
+            ^"Demeanor" STRING "Persistent"
+            ^"Social Skill Check TN Modifiers" STRING "Water +1, Fire +2, Earth -2, Air -1"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 2", "Social 1", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Unexpected Cunning (Air) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Insatiable Hunger (Fire) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Tusks and Claws: Range 0-1, Damage 5, Deadliness 3, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Dreamhide: Physical 2, Supernatural 4"]
+        }
+
+        ^"Nightmare Guise" DEF {
+            # As a Scheme action, Sentiment (Void) check targeting
+            # any number of visible characters (TN = highest vigilance).
+            # On success, targets perceive the baku as their greatest
+            # fear and increase TN of checks targeting baku by 1.
+            # Each of baku's turns, targets must make TN 5 Theology
+            # (Void 3) check to resist. Failure: 3 strife and cannot
+            # move toward baku this round. For each failed target,
+            # baku removes 1 strife or 1 fatigue.
+        }
+
+        RULES {
+            #L5RCR45pQ6rS8tU0vW2xY4z: baku_dream_stalker_nightmare_guise
+            #L5RCR46aB7cD9eF1gH3iJ5k: baku_found_in_yume_do_persistent_hunters
+        }
+    }
+
+    # ===========================
+    # KOMAINU (Example Supernatural NPC)
+    # ===========================
+
+    ^"Komainu" DEF {
+        APPLIES TO [^"NPC"]
+
+        # Guardian spirit for shrines and temples, based on the
+        # Manifest Earth Kami profile (core rulebook p.323). A large
+        # stone creature with lion and dog attributes that animates
+        # to attack anyone entering its shrine without the proper
+        # incantation.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 8
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Modified Manifest Earth Kami (core rulebook p.323). Guardian stone lion-dog that animates to defend shrines and temples."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 5
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 15
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 5
+            ^"Silhouette" INTEGER 3
+            ^"Demeanor" STRING "Obstinate"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Void -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 3", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Massive Stature (Earth) [Martial, Trade; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Honest to a Fault (Earth) [Social, Trade; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Stone Claws and Fangs: Range 0-1, Deadliness 5, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Rocky Hide (Physical 6, Sacred)"]
+        }
+
+        ^"Living Earth Spirit" DEF {
+            # The komainu is an Otherworldly being of silhouette 3.
+            # Additionally, once per scene as an action of the
+            # appropriate types, the komainu may perform any one
+            # Earth invocation other than Rise, Earth. It counts as
+            # succeeding with 3 bonus successes and 2 (op).
+        }
+
+        ^"Living Statue" DEF {
+            # Before animating, the komainu is in all respects a
+            # large stone statue. If damaged or destroyed in this
+            # state, upon being triggered to animate, it does so
+            # entirely unharmed.
+        }
+
+        ^"Pouncing Attack" DEF {
+            # When performing an Attack action check, the komainu
+            # may spend opportunity as follows:
+            # (op): The target suffers the Dazed and Prone conditions.
+        }
+
+        RULES {
+            #L5RCR47lM8nO0pQ2rS4tU6v: komainu_guardian_spirit_animates_to_defend_shrine
+            #L5RCR48wX9yZ1aB3cD5eF7g: komainu_living_statue_indestructible_before_animation
+        }
+    }
+
+    # ===========================
+    # PLACES OF POWER
+    # ===========================
+
+    ^"Places of Power" DEF {
+        APPLIES TO [^"Mechanic"]
+
+        # Locations particularly tied to one or more Spirit Realms.
+        # Some have permanent connections (with shrines built nearby);
+        # others connect temporarily during celestial events or rituals.
+        # Each type has signs of passage, narrative effects, and
+        # mechanical effects.
+
+        RULES {
+            #L5RCR49hI0jK2lM4nO6pQ8r: tengoku_place_of_power_remove_all_strife_end_of_scene_hallowed_fire
+            #L5RCR50sT1uV3wX5yZ7aB9c: yume_do_place_of_power_focus_minus_2_hallowed_air_tn2_meditation_to_shape_terrain
+            #L5RCR51dE2fG4hI6jK8lM0n: chikusho_do_sakkaku_place_of_power_vigilance_minus_1_hallowed_air_water_humans_understand_animals
+            #L5RCR52oP3qR5sT7uV9wX1y: meido_place_of_power_composure_plus_2_entangling_hallowed_earth_recently_deceased_can_cross
+            #L5RCR53zA4bC6dE8fG0hI2j: gaki_do_place_of_power_cannot_remove_exhausted_entangling_imbalanced_earth_mazoku_redirect_travel
+            #L5RCR54kL5mN7oP9qR1sT3u: toshigoku_place_of_power_deadliness_plus_3_defiled_imbalanced_water
+            #L5RCR55vW6xY8zA0bC2dE4f: jigoku_place_of_power_endurance_composure_minus_2_dangerous_defiled_learn_maho
+        }
+    }
+
+    # ===========================
+    # BUSHIDO TENET: RIGHTEOUSNESS
+    # ===========================
+
+    ^"Righteousness (Gi)" DEF {
+        APPLIES TO [^"Mechanic"]
+
+        # The tenet of the right action. Courtesy and Honor advise
+        # reasons for action; Sincerity and Duty provide guidelines;
+        # Courage and Compassion describe means. All lead to
+        # Righteousness. The character gi contains "sheep" over
+        # "the self" - placing contentment with society over selfishness.
+
+        # Trifling Breaches (forfeit 1 honor):
+        # - Allowing fear of personal loss to influence decisions
+        # - Taking offense when another points out misjudgment
+        # - Ignoring someone else's correct action to promote your own
+        #
+        # Trifling Sacrifices (receive 1 honor):
+        # - Encouraging one of lesser status who suggested the correct action
+        # - Enduring ridicule to promote the correct action
+        # - Refusing a small yet just reward for your actions
+
+        RULES {
+            #L5RCR56gH7iJ9kL1mN3oP5q: righteousness_trifling_breaches_forfeit_1_honor
+            #L5RCR57rS8tU0vW2xY4zA6b: righteousness_trifling_sacrifices_receive_1_honor
+        }
+    }
+
+    # ===========================
+    # DESIGNING RELIGIOUS GROUPS
+    # ===========================
+
+    ^"Religious Group Design" DEF {
+        APPLIES TO [^"Mechanic"]
+
+        # Framework for creating religious groups in Rokugan.
+        # Groups require: core beliefs, focus of worship, believers,
+        # practices, place of worship, religious paraphernalia,
+        # and a place in society (conformity with Celestial Order).
+        # Groups that conform to the Celestial Order are more
+        # accepted. Those based on Jigoku or blasphemy are
+        # ruthlessly crushed by Imperial authorities.
+
+        RULES {
+            #L5RCR58cD9eF1gH3iJ5kL7m: religious_group_requires_core_beliefs_focus_believers_practices
+            #L5RCR59nO0pQ2rS4tU6vW8x: religious_group_acceptance_depends_on_celestial_order_conformity
+        }
+    }
+
+    # ===========================
+    # SUPERNATURAL ENCOUNTER DESIGN
+    # ===========================
+
+    ^"Supernatural Encounter Design" DEF {
+        APPLIES TO [^"Mechanic"]
+
+        # Guidelines for incorporating supernatural elements.
+        # Categories: overt (prominent, major plot points) vs
+        # subtle (rare, background). Consider PC capabilities
+        # (shugenja, Sacred weapons) vs supernatural resistances.
+        # Not all supernatural encounters need to be hostile;
+        # many spirits are harmless or beneficial.
+        # Encounter balance: consider totality of supernatural
+        # effects (terrain qualities, NPC abilities) when comparing
+        # conflict rank to party group rank.
+        #
+        # Elemental kami personalities for Commune with the Spirits:
+        # Air: sociable, oblique, enjoys puzzles
+        # Earth: ponderous, blunt, strictly factual
+        # Fire: energetic, passionate, quick to lose interest, requires offerings
+        # Water: attuned to change, good on how things differ from past
+
+        RULES {
+            #L5RCR60yZ1aB3cD5eF7gH9i: supernatural_encounters_overt_vs_subtle
+            #L5RCR61jK2lM4nO6pQ8rS0t: supernatural_encounters_consider_pc_capabilities
+            #L5RCR62uV3wX5yZ7aB9cD1e: supernatural_encounters_not_always_hostile
+            #L5RCR63fG4hI6jK8lM0nO2p: elemental_kami_personalities_air_earth_fire_water
+        }
+    }
+
+    # ===========================
+    # SPIRIT REALM ADVENTURE HOOKS
+    # ===========================
+
+    ^"Spirit Realm Adventure Design" DEF {
+        APPLIES TO [^"Mechanic"]
+
+        # Guidance for running adventures in each Spirit Realm.
+        # Tengoku: office politics, questions of virtue, bureaucratic
+        #   administrators who care too much or too little.
+        # Yomi: family drama, demonic espionage, ancestor
+        #   interference, mysteries from the past.
+        # Chikusho-do/Sakkaku: political intrigue among animal
+        #   spirits, fairy-tale adventure, shapeshifting reveals.
+        # Yume-do: romantic comedy, imaginings of what might
+        #   have been, baku encounters, dreamworld shifts.
+        # Meido: detective stories, bureaucratic trouble, encounters
+        #   with Emma-O's administration.
+        # Jigoku/Gaki-do/Toshigoku: survival horror, war narrative,
+        #   offers of power at terrible prices, fallen comrades.
+
+        RULES {
+            #L5RCR64qR5sT7uV9wX1yZ3a: tengoku_hooks_weather_divine_bureaucracy_virtue
+            #L5RCR65bC6dE8fG0hI2jK4l: yomi_hooks_past_mysteries_ancestor_drama
+            #L5RCR66mN7oP9qR1sT3uV5w: chikusho_sakkaku_hooks_animal_politics_fairy_tales
+            #L5RCR67xY8zA0bC2dE4fG6h: yume_do_hooks_dreams_romance_baku_encounters
+            #L5RCR68iJ9kL1mN3oP5qR7s: meido_hooks_detective_stories_bureaucratic_trouble
+            #L5RCR69tU0vW2xY4zA6bC8d: underworld_hooks_survival_horror_war_corruption
+        }
+    }
+}

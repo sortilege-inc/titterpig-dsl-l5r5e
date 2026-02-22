@@ -1,0 +1,329 @@
+EXTENSION "L5R5e_Legacies_of_War" EXTENDS "L5R5e_Core_Character" {
+    NAME "Legend of the Five Rings 5th Edition - Legacies of War: Supplemental Rules"
+    VERSION "0.1"
+    RELEASE_DATE "2025-06-01"
+
+    # Legacies of War: Character Legacies (new advantage type),
+    # Fureheshu family (Badger Clan), blessed treasure (nemuranai),
+    # and random encounter tables for warfare campaigns.
+    # This supplement enhances Blood of the Lioness or any
+    # campaign focusing on warfare in Rokugan.
+
+    # ===========================
+    # CHARACTER LEGACIES
+    # ===========================
+
+    # Legacies are a new kind of advantage, separate from
+    # distinctions and passions. They connect past PCs
+    # (predecessor PCs) to new characters (successor PCs).
+    # A Legacy replaces the Heritage table result from
+    # Question 18 during character creation. Like distinctions,
+    # Legacies can be inverted at the GM's discretion,
+    # applying as if they were an adversity. A Legacy can
+    # exceed the standard limit for advantages at creation.
+
+    ^"Character Legacies System" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # When a player makes a new character during a campaign
+        # using Legacies, they may choose to take on the Legacy
+        # of their last PC (or another character, at the GM's
+        # discretion). If they do, the player does not apply any
+        # results from the Heritage table in Question 18.
+
+        RULES {
+            #L5RLW01aB2cD4eF6gH8iJ0k: legacy_replaces_heritage_table_result
+            #L5RLW02lM3nO5pQ7rS9tU1v: legacy_applied_at_same_time_as_distinctions
+            #L5RLW03wX4yZ6aB8cD0eF2g: legacy_can_exceed_standard_advantage_limit
+            #L5RLW04hI5jK7lM9nO1pQ3r: legacy_can_be_inverted_as_adversity_at_gm_discretion
+        }
+    }
+
+    # ===========================
+    # LEGACY TEMPLATES
+    # ===========================
+
+    ^"Legacies of War Legacy Templates" DEF {
+        APPLIES TO [^"Samurai"]
+
+        ENTRIES {
+            ^"Dreams Unfulfilled" {
+                ^"Type" STRING "Legacy"
+                ^"Ring" STRING "Fire"
+                ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
+                ^"Requirement" STRING "The predecessor PC must have been unable to fulfill their ninjo, and must not be currently pursuing it (if still alive but no longer a PC)."
+                ^"Charge" STRING "Record the predecessor character's ninjo. At the end of each scene in which you took some action that supports or honors the predecessor PC's ninjo, you remove 3 strife. At the GM's discretion, if you knowingly ignored such a chance to uphold the charge, you gain 3 strife and 1 Void point instead."
+                ^"Effects" STRING "You are aware of your predecessor PC's ninjo and anyone else it involved. This may lead to those people treating you favorably (or not) if you invoke that connection. When making a check to relate to someone else's desires (such as a Performance [Fire] to elicit a particular reaction or a Sentiment [Fire] check to understand someone's true ideals beneath a facade), you may reroll up to two dice."
+            }
+
+            ^"Duty Bound" {
+                ^"Type" STRING "Legacy"
+                ^"Ring" STRING "Earth"
+                ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
+                ^"Requirement" STRING "The predecessor PC must have been unable to fulfill their giri, and must not be currently pursuing it (if still alive but no longer a PC)."
+                ^"Charge" STRING "Record the predecessor character's giri. At the end of each scene in which you took some action that is in alignment with that giri, you remove 3 strife. At the GM's discretion, if you knowingly ignored such a chance to uphold the charge, you gain 3 strife and 1 Void point instead."
+                ^"Effects" STRING "You are aware of your predecessor PC's giri and anyone else it involved. This may lead to those people treating you favorably (or not) if you invoke that connection. When making a check to adhere to your duty or encourage another to do so (such as a Command [Earth] to extol subordinates to uphold their responsibilities or a Meditation [Earth] check to force temptations from your mind), you may reroll up to two dice."
+            }
+
+            ^"Heart-Reader" {
+                ^"Type" STRING "Legacy"
+                ^"Ring" STRING "Air"
+                ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
+                ^"Requirement" STRING "The predecessor PC must have had 5 ranks in Sentiment."
+                ^"Charge" STRING "You are driven to uncover hidden truths others seek to shield. At the end of a scene in which you successfully performed a Sentiment check or revealed a hidden truth, you remove 3 strife. At the end of a scene in which you failed a Sentiment check, failed a social objective, or had one of your disadvantages revealed, you gain 3 strife and 1 Void point instead."
+                ^"Effects" STRING "Once per session you may learn a disadvantage of any one character in a scene with you. Whenever you would fail a Sentiment check targeting another character, you cancel one (op) symbol before resolving its effects. When making a check to learn about another person (such as a Games [Air] check to gauge someone's reaction to cheating at Go or a Culture [Air] check to analyze someone's manners), you may reroll up to two dice."
+            }
+
+            ^"Hero's Death" {
+                ^"Type" STRING "Legacy"
+                ^"Ring" STRING "Various"
+                ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
+                ^"Requirement" STRING "The predecessor PC must have received either 10 or more honor or 10 or more glory as a result of the circumstances of their death."
+                ^"Charge" STRING "Choose one tenet of Bushido the predecessor exemplified with their death. The Legacy takes on an element: Fire for Yu (Courage) and Gi (Righteousness); Earth for Chugi (Duty and Loyalty) and Meiyo (Honor); Air for Rei (Courtesy); Water for Jin (Compassion); Void for Makoto (Sincerity). When your character would receive honor or glory for the selected tenet, double the amount gained. If your character would lose honor or glory for failing to embody the tenet, double the amount lost. The first time you lose honor or glory this way in a scene, gain 1 Void point."
+                ^"Effects" STRING "You are aware of the specifics of your predecessor character's death and can recall the story in great detail. Your connection to your predecessor may cause others to view you favorably (or not) when you invoke it. When making a check to behave in a manner consistent with the tenet your predecessor exemplified with their death (such as a Martial Arts [Melee] check to defend the weak or a Performance check to regale an audience with a tale related to your tenet), you may reroll up to two dice."
+            }
+
+            ^"Heroic Life" {
+                ^"Type" STRING "Legacy"
+                ^"Ring" STRING "Water"
+                ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
+                ^"Requirement" STRING "The predecessor PC must have had 75 or more glory."
+                ^"Charge" STRING "Work with your GM to determine what ideals or causes were most important to your predecessor. At the end of a scene in which you were awarded 1 or more glory, you remove 3 strife. At the end of a scene in which you forfeit or stake 1 or more glory, you gain 3 strife and 1 Void point instead. If your glory is ever 29 or lower, you no longer benefit from this advantage and gain an infamy disadvantage."
+                ^"Effects" STRING "People are aware of your predecessor's deeds. When you invoke your commitment to your predecessor's Legacy, people are more likely to treat you with respect but also expect much more of you. At the end of a scene in which you have interacted with one or more characters who know of your commitment, if you were awarded glory, gain 1 additional glory; if you lost glory, lose an additional 2 glory instead. When making a check to make a good impression (such as a Government [Water] check to show proper deference to someone of higher status or a Sentiment [Water] check to read the room in a tense social situation), you may reroll up to two dice."
+                ^"Recovery Note" STRING "If your glory drops below 29, at the GM's discretion you may regain the benefits should your glory rise to 50 or higher. Any infamy disadvantage gained as a result of this Legacy is retained."
+            }
+
+            ^"Idealism" {
+                ^"Type" STRING "Legacy"
+                ^"Ring" STRING "Earth"
+                ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
+                ^"Requirement" STRING "The predecessor PC must have had 75 or more honor (their honor score need not have been public knowledge)."
+                ^"Charge" STRING "At the end of a scene in which you were awarded 1 or more honor, you remove 3 strife. At the end of a scene in which you forfeit or stake 1 or more honor, you gain 3 strife and 1 Void point instead. If your honor is ever 29 or lower, you no longer benefit from this advantage and gain an infamy disadvantage."
+                ^"Effects" STRING "Whenever you interact with another character, you instinctively know whether that character has 60 or more honor (but not the exact amount). When making a check in which you struggle to balance two or more Bushido tenets (such as a Command [Earth] check to deliver commands encompassing Duty and Compassion, or a Martial Arts [Earth] check to attack a foe with Courage and Sincerity when you feel uncertain), you may reroll up to two dice."
+                ^"Recovery Note" STRING "If your honor drops below 29, at the GM's discretion you may regain the benefits should your honor rise to 50 or higher. Any infamy disadvantage gained as a result of this Legacy is retained."
+            }
+
+            ^"Inherited Connections" {
+                ^"Type" STRING "Legacy"
+                ^"Ring" STRING "Water"
+                ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
+                ^"Requirement" STRING "The predecessor PC must have had five or more of the following (in any combination): Ally advantages, Support of [One Group] advantages, and/or Bonds. During character creation, the successor PC must select as one of their advantages either Ally [Name] or Support of [One Group]."
+                ^"Charge" STRING "At the end of a scene, if you fulfilled a social objective for an intrigue, you remove 3 strife. If you have an Ally, Support of [One Group], or Bond associated with one or more NPCs in the scene, you remove 5 strife instead. At the end of a scene in which you failed to complete a social objective, you receive 3 strife and 1 Void point instead. If you have an Ally, Support of [One Group], or Bond associated with one or more NPCs in the scene, you gain 5 strife instead."
+                ^"Effects" STRING "After interacting with a character for one or more scenes, you know with certainty whether they are open to friendship with you or if they are harboring reservations (but not what those reservations are). When making a check to win others' approval (such as a Games [Water] check to make flattering comments about another player's Go strategy or a Martial Arts [Water] check to prove your prowess in a physical competition), you may reroll up to two dice."
+            }
+
+            ^"Notorious Scoundrel" {
+                ^"Type" STRING "Legacy"
+                ^"Ring" STRING "Fire"
+                ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
+                ^"Requirement" STRING "The predecessor PC must have had 20 or lower glory."
+                ^"Charge" STRING "You are charged with making amends for your predecessor's actions. Work with your GM to determine who your character needs to make amends with on behalf of their predecessor, including individuals and/or groups. At the end of a scene in which you have made a favorable impression on one of these people or groups, you remove 3 strife. At the end of a scene in which you have left an unfavorable impression, you gain 3 strife and 1 Void point instead."
+                ^"Effects" STRING "Whenever you interact with another character, you instinctively know whether that character has 25 or fewer glory (but not the exact amount). When making a check to win someone's favor (such as an Aesthetics [Fire] check to create an appropriate gift or a Sentiment [Fire] check to theorize about the best way to introduce yourself to one of the people your predecessor wronged), you may reroll up to two dice."
+            }
+
+            ^"Pragmatist" {
+                ^"Type" STRING "Legacy"
+                ^"Ring" STRING "Air"
+                ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
+                ^"Requirement" STRING "The predecessor PC must have had 20 or lower honor (their honor need not have been public knowledge)."
+                ^"Charge" STRING "You are charged with getting results just as your predecessor was. At the end of a scene in which you staked or forfeited honor, remove 3 strife. At the end of a scene in which you gained honor, gain 3 strife and 1 Void point."
+                ^"Effects" STRING "Whenever you interact with another character, you instinctively know whether that character has 25 or fewer honor (but not the exact amount). When making a check that requires you to act contrary to the tenets of Bushido (such as a Command [Air] check to give false orders from a superior in the best interest of the fight or a Labor [Air] check to pretend to be a member of a lower class to gather information), you may reroll up to two dice."
+            }
+
+            ^"Secret Teachings" {
+                ^"Type" STRING "Legacy"
+                ^"Ring" STRING "Void"
+                ^"Category" LIST OF STRING ["Interpersonal", "Mental", "Physical"]
+                ^"Requirement" STRING "The predecessor PC must have proved themselves as an accomplished warrior, courtier, or mystic by approaching a situation or applying a technique in unorthodox ways. Alternatively, the predecessor PC must have learned an important lesson the hard way and have devoted themselves to preventing others from making the same mistake."
+                ^"Charge" STRING "Work with your GM to come up with a specific set of philosophies that your mentor taught. These should be specific enough to come up in the game but broad enough to allow your GM to weave in choices and narrative moments at least every few sessions. At the end of a scene in which you acted in a way that aligns with your mentor's philosophies, you remove 3 strife. At the end of a scene in which you acted antithetically to your mentor's teachings or knowingly ignored an opportunity to act in line with those teachings, you gain 3 strife and 1 Void point."
+                ^"Effects" STRING "You know certain secrets of your predecessor's craft. Choose one technique your predecessor knew. At any time, you may spend that technique's XP cost to learn it. When making a check to uphold your predecessor's reputation (such as a check to activate their particular technique or a Theology [Void] check to understand some aspect of their philosophy), you may reroll up to two dice."
+            }
+        }
+
+        RULES {
+            #L5RLW05sT6uV8wX0yZ2aB4c: legacy_templates_reroll_up_to_two_dice
+            #L5RLW06dE7fG9hI1jK3lM5n: legacy_charge_strife_removal_or_gain
+            #L5RLW07oP8qR0sT2uV4wX6y: legacy_effects_narrative_and_mechanical
+        }
+    }
+
+    # ===========================
+    # CUSTOM LEGACY CREATION
+    # ===========================
+
+    ^"Custom Legacy Template Guidelines" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # GMs and players can create custom Legacy templates
+        # using the following framework. Legacies are designed
+        # to be thematic, narrative, and a mechanical benefit
+        # that represents the relationship of the predecessor
+        # character to the PC.
+
+        # Step 1: Determine the crux of the predecessor's
+        # character -- how did their life impact the successor?
+        # Choose the ring most commonly used with this ability.
+
+        # Step 2: Determine a requirement for the predecessor
+        # to qualify for this Legacy.
+
+        # Step 3: The charge typically follows this pattern:
+        # "At the end of a scene in which you have done [X],
+        # you remove 3 strife. At the end of a scene in which
+        # you do [Y], you gain 3 strife and 1 Void point instead."
+
+        # Step 4: Effects should include a narrative boon and
+        # a dice reroll effect. The reroll must be broad enough
+        # to be used in a variety of situations but specific
+        # enough not to be constantly applicable.
+
+        RULES {
+            #L5RLW08zA9bC1dE3fG5hI7j: custom_legacy_follows_template_pattern
+            #L5RLW09kL0mN2oP4qR6sT8u: custom_legacy_reroll_should_balance_breadth
+        }
+    }
+
+    # ===========================
+    # FUREHESHU FAMILY (BADGER CLAN)
+    # ===========================
+
+    ^"Fureheshu Family" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # A vassal family to the Ichiro, the Fureheshu family is
+        # small yet produces a significant number of high-ranking
+        # Badger sumai. Often the Badger Sumai Champion is from
+        # this family while the Badger Clan Champion is an Ichiro.
+        # The two families share a healthy rivalry. Early in the
+        # clan's history, Ichiro Fureheshu traveled to Crab lands
+        # to study sumai and earned the name Oni Wrestler. Hida
+        # sumai school members accompanied him home, and his
+        # descendants were granted vassal family status.
+
+        PROPERTIES {
+            ^"Family" STRING "Fureheshu" FIXED
+            ^"Clan" STRING "Badger"
+            ^"Ring Increase" STRING "+1 Earth or +1 Water"
+            ^"Skill Increases" STRING "+1 Labor, +1 Theology"
+            ^"Glory" INTEGER DEFAULT 30
+            ^"Starting Wealth" STRING "4 koku"
+        }
+
+        RULES {
+            #L5RLW10vW1xY3zA5bC7dE9f: fureheshu_vassal_family_to_ichiro
+            #L5RLW11gH2iJ4kL6mN8oP0q: fureheshu_sumai_and_brewing_eminence
+            #L5RLW12rS3tU5vW7xY9zA1b: fureheshu_tradition_training_with_hida
+        }
+    }
+
+    # ===========================
+    # BLESSED TREASURES (NEMURANAI)
+    # ===========================
+
+    ^"Legacies of War Blessed Treasures" DEF {
+        APPLIES TO [^"Samurai"]
+
+        ENTRIES {
+            ^"The War Game" {
+                ^"Category" STRING "Nemuranai"
+                ^"Qualities" LIST OF STRING ["Durable", "Sacred"]
+                ^"Effect" STRING "While carrying or using this item, a character adds a kept (ring) set to an (op) result to their Theology (Earth) checks."
+                ^"Quirk" STRING "If not constantly watched, the pieces in the collection move themselves into what they believe to be the proper tactical positions. Some of the icons may have differing opinions on this and clash on the map until one icon is pushed off the table or onto its side."
+                ^"Sealed Invocation" STRING "Wall of Earth, which the wielder may perform once per session using the Tactics skill instead of Theology."
+            }
+        }
+
+        RULES {
+            #L5RLW13cD4eF6gH8iJ0kL2m: low_war_game_nemuranai_durable_sacred
+        }
+    }
+
+    # ===========================
+    # RANDOM ENCOUNTER TABLES
+    # ===========================
+
+    ^"Random Encounters in Times of War" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # GMs can use these five tables to introduce new elements
+        # into games in wartime settings, either through deliberate
+        # choice or random selection using a ten-sided die. These
+        # tables offer ideas for plot twists while the PCs are
+        # preparing for or in the midst of a mass battle.
+
+        ^"Table 1: Encounters on the Road" TABLE {
+            ROLL "1d10"
+            1 "The PCs encounter a band of goblins (and perhaps an ogre or troll) eager to reach the battlefield for its many corpses."
+            2 "Wounded soldiers are being carried away from the battle and desperately need medical attention."
+            3 "The PCs find a roadside shrine overturned or defiled by marching troops. This can be expanded into a larger spiritual encounter with kami and supernatural beings such as gaki or tengu."
+            4 "A pack of wolves, chased out of the battlefield area and quite hungry, emerges from the darkness."
+            5 "A large group of poorly armed peasants walk toward the PCs. They are deserters from a levy raised to support the local daimyo; they are ready to maintain their secrets with violence."
+            6 "The PCs come across a band of mercenaries who were not paid (or not paid enough) and are leaving the battlefield area. The band might be looking for new members."
+            7 "Refugee peasants huddle along the road, swept out of their farms as the area has become a battle site."
+            8 "Troops positioned ahead are blocking the road to prevent travel into a particular area."
+            9 "The kami are upset by the nearby battle, and wild weather unexpectedly arises. The terrain in this area can be considered to have the Imbalanced terrain quality."
+            10 "The kami have been frightened away by the conflict, and the terrain is devoid of all spirits."
+        }
+
+        ^"Table 2: Encounters on the March" TABLE {
+            ROLL "1d10"
+            1 "Elite enemy forces launch an ambush, possibly during the night."
+            2 "The PCs find that a major bridge they must cross is in ruins, either through neglect or as a deliberate attempt to hamper their movement."
+            3 "The terrain along the road is Defiled or Imbalanced. This may not be connected to the upcoming battle but is still a possible threat to Rokugan."
+            4 "The rations have been poisoned, and freshly so. One or more members of the marching army are enemy saboteurs."
+            5 "The road passes through a region where kansen, corrupted elemental kami, prey on travelers."
+            6 "The road ahead is washed out; moving along it in large numbers could slow the cohort or army's arrival unless a new path is found."
+            7 "The PCs encounter mercenaries marching toward the battlefield to fight on the side of their enemy. These mercenaries are willing to fight for the PCs instead if the pay is better."
+            8 "A loud peasant uprising is discovered as the PCs' force marches through an area. If allowed to grow, the uprising could become as dangerous as the enemy army."
+            9 "The PCs discover that the rations assigned to their cohort or army are less than half what they expected. They must find more food soon."
+            10 "The road does not appear to be leading where it should, possibly due to out-of-date or deliberately falsified maps. The PCs must scout for a new path quickly."
+        }
+
+        ^"Table 3: The Night before the Battle" TABLE {
+            ROLL "1d10"
+            1 "The leader of a mercenary band hired for the battle suddenly wants more money."
+            2 "Several omens appear, indicating that tomorrow is an inauspicious day for battle."
+            3 "Ancestral spirits appear in the command tent, their disappointed visages clear to all."
+            4 "One of the army's cohorts still has not arrived or arrives in such poor condition that its fighting effectiveness is diminished."
+            5 "A gunso reports that a detachment of troops found unguarded barrels of sake and are now quite drunk."
+            6 "The weather is loud and violent, ensuring that no one will sleep well tonight."
+            7 "The army's commander or other senior leader has become ill and may not be able to personally lead their troops."
+            8 "The commander, previously not known for their eloquence, gives a stirring speech to the generals and troops. Morale is higher than ever before."
+            9 "A messenger runs up, saying that the commander has been assassinated."
+            10 "Discord breaks out among rival generals over optimal troop deployment. Each favors the approach that will bring that general the most glory."
+        }
+
+        ^"Table 4: Unexpected Logistics Issues" TABLE {
+            ROLL "1d10"
+            1 "A large portion of the rations reserved for the day after the battle is discovered to be inedible or missing. It will not affect the battle, but the day after could be troublesome."
+            2 "Scouts report that a nearby village the army had planned to use for supplies is empty, along with all foodstuffs it might have contained."
+            3 "The commander or local daimyo has arranged for special rations on the morning of the battle. Everyone is eager to fight knowing the delicacies that await them."
+            4 "While there are plenty of rations for the troops, somehow no one remembered to pack supplies for the army's horses."
+            5 "A nearby village has blacksmiths of exceptional skill, perhaps hidden masters of the art. Even the short time available allows many of the force's weapons to be improved in minor but vital ways."
+            6 "Medical supplies, including bandages, poultice ingredients, and other essential items, are nowhere to be found."
+            7 "Rumors that some of the rations carry the Taint are circulating rapidly. Whether or not the rumors are true, panic is spreading through the troops."
+            8 "The weapons distributed to the ashigaru are found to be of exceptional quality. Morale among them rises sharply, though some samurai are upset."
+            9 "The iron used to shoe the horses is of poor quality, and both steeds and riders are unhappy."
+            10 "The supplies arrived in fine shape, are all exactly as required, and have been distributed in a highly efficient manner due to a new quartermaster. Morale is high, and the army is ready to fight much earlier than any of the generals thought possible."
+        }
+
+        ^"Table 5: Unexpected Battlefield Events" TABLE {
+            ROLL "1d10"
+            1 "Fire roars through a section of the battlefield, caused by an enraged fire kami or the use of substances the Emperor has deemed illegal."
+            2 "A young samurai fresh from their gempuku takes command of a cohort when its leader is slain, displaying exceptional leadership skills but provoking jealousy in older veterans."
+            3 "Thunderstorms and heavy rain batter the region halfway through the battle, making for poor visibility and uncertain footing."
+            4 "A cohort moves into the ruins of a collapsed outpost to gain a defensive position, but finds it already occupied by goblins."
+            5 "Issues communicating orders, perhaps due to personality clashes between senior leaders, prevent a planned flank attack from taking place on time or cause a cohort to attack the wrong flank."
+            6 "A unit of foreign mercenaries suddenly quits the battlefield for reasons no one from Rokugan can comprehend."
+            7 "The kami are displeased with the use of blasting powder, and the substance fizzles into steam when employed."
+            8 "A maho-tsukai (blood magic practitioner) sees the battle as an opportunity to eliminate both sides and calls forth masses of undead to devastate the living. This might push both forces to reconcile and fight as one."
+            9 "Sharp rocks fall from the sky, possibly due to a shugenja's badly performed invocation. Warriors on all sides sustain wounds that outpace those from combat."
+            10 "A unit of ashigaru displays unexpected prowess; their senior member is actually a ronin who left their daimyo rather than carry out dishonorable orders."
+        }
+
+        RULES {
+            #L5RLW14nO5pQ7rS9tU1vW3x: random_encounter_tables_wartime_d10
+            #L5RLW15yZ6aB8cD0eF2gH4i: encounter_tables_enhance_mass_battle_campaigns
+        }
+    }
+}

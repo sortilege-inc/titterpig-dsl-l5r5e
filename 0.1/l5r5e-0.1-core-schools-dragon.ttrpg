@@ -1,0 +1,397 @@
+BASE "L5R5e_Core_Schools_Dragon" {
+    NAME "Legend of the Five Rings 5th Edition - Dragon Clan Schools"
+    VERSION "0.1"
+    RELEASE_DATE "2025-06-01"
+
+    # Core Rulebook: Dragon Clan Schools (pages 66-70)
+    # The Dragon Clan's chief aim is to record and reflect upon the happenings
+    # of the Emerald Empire, while also pursuing individual Enlightenment.
+
+    # ===========================
+    # AGASHA MYSTIC [Shugenja]
+    # ===========================
+
+    ^"Agasha Mystic" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The Agasha Mystics mix practical arts with their invocations, using
+        # alchemical items and metallurgy as foci for their mystical arts. Through
+        # this, they have learned that all of the Elements are linked, and there is
+        # great power to be found in the changing of their states.
+
+        PROPERTIES {
+            ^"School Name" STRING "Agasha Mystic" FIXED
+            ^"Clan" STRING "Dragon"
+            ^"Roles" LIST ["Shugenja"]
+            ^"Ring Increase" STRING "+1 Earth, +1 Water"
+            ^"Starting Skills" STRING "choose 3: +1 Fitness, +1 Martial Arts [Unarmed], +1 Medicine, +1 Meditation, +1 Smithing, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            INVOCATION CHOOSE 1 [^"The Fires from Within", ^"Tetsubō of Earth"]
+            INVOCATION ^"Path to Inner Peace"
+            INVOCATION ^"Jurōjin's Balm"
+            RITUAL ^"Cleansing Rite"
+            RITUAL ^"Commune with the Spirits"
+        }
+
+        SCHOOL_ABILITY "Elemental Transmutation" {
+            "When performing an invocation, you may choose a different ring with which to make the check. While using this school ability, you cannot activate (op) of the original Element of the invocation, but you can activate (op) for the new Element. You can use this school ability a number of times per game session up to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Experiment and Adapt" {
+            "Increase your supernatural resistance against Air, Earth, Fire, and Water invocations by your ranks in Theology. After another character performs an Air, Earth, Fire, or Water invocation targeting you, you may spend 1 Void Point to immediately perform that invocation, even if you have not learned it."
+        }
+
+        STARTING_OUTFIT [
+            "Sanctified robes",
+            "wakizashi (short sword)", "bō (staff)", "knife",
+            "traveling pack", "scroll satchel",
+            "set of glass vials", "journal"
+        ]
+
+        # The Agasha Mystic School categorizes the invocations it teaches by
+        # Alchemical names, reflecting the tradition's emphasis on the
+        # experimental and theoretical side of nature.
+        # (See ^"Invocation Names and Traditions")
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Fitness"
+                SKILL "Meditation"
+                SKILL "Smithing"
+                TECHNIQUE_GROUP "Rank 1 Earth Invocations"
+                ^"Heart of the Water Dragon" [invocation]
+                ^"Divination" [ritual]
+            }
+            RANK 2 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Fitness"
+                SKILL "Medicine"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-2 Water Invocations"
+                ^"Power of the Earth Dragon" [invocation]
+                ^"Touchstone of Courage" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Medicine"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-3 Fire Invocations"
+                ^"Rise, Earth" [invocation]
+                ^"Earth Becomes Sky" [invocation]
+            }
+            RANK 4 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Meditation"
+                SKILL "Smithing"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-4 Earth Invocations"
+                ^"Ever-Changing Waves" [invocation]
+                ^"Rise, Water" [invocation]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Medicine"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-5 Water Invocations"
+                ^"Earthquake" [invocation]
+                ^"Sear the Wound" [shuji]
+            }
+            RANK 6 {
+                ^"Experiment and Adapt"
+            }
+        }
+    }
+
+    # ===========================
+    # KITSUKI INVESTIGATOR [Courtier, Bushi]
+    # ===========================
+
+    ^"Kitsuki Investigator" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The Kitsuki Investigator School is a recent school, founded when Agasha
+        # Kitsuki saved the life of the Mirumoto daimyō by use of evidence. The
+        # Kitsuki Investigators use their methods of observation, experimentation,
+        # logic, and reason to understand the truth.
+
+        PROPERTIES {
+            ^"School Name" STRING "Kitsuki Investigator" FIXED
+            ^"Clan" STRING "Dragon"
+            ^"Roles" LIST ["Courtier", "Bushi"]
+            ^"Ring Increase" STRING "+1 Air, +1 Earth"
+            ^"Starting Skills" STRING "choose 5: +1 Culture, +1 Government, +1 Martial Arts [Melee], +1 Medicine, +1 Sentiment, +1 Skulduggery, +1 Survival"
+            ^"Starting Honor" INTEGER DEFAULT 45
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Striking as Air", ^"Tactical Assessment"]
+            SHUJI ^"Shallow Waters"
+        }
+
+        SCHOOL_ABILITY "Kitsuki's Method" {
+            "When performing a check to investigate with any skill (see The Art of Investigation, on page 170), you may treat your ranks in the skill you are using as being equal to your school rank. If your ranks in the skill are equal to or higher than your school rank, or if you have 5 ranks in the skill, you may add a kept (ring) set to an (op) result instead."
+        }
+
+        MASTERY_ABILITY ^"The Eyes Betray the Heart" {
+            "Once per scene when performing a skill check to investigate, you may spend (op) as follows: (op)+: You may reserve up to one dropped die per (op) spent this way. The next time you perform a check to interact with the person or thing you were investigating (such as a check targeting that person or a check to use that object), you may add any number of these reserved dice as kept dice. Then, remove any unused reserved dice."
+        }
+
+        STARTING_OUTFIT [
+            "Traveling clothes",
+            "wakizashi (short sword)", "knife",
+            "calligraphy set",
+            "bō (staff) or jian (straight-edged sword)",
+            "traveling pack", "journal of observations"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Fitness"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1 Fire Shūji"
+                ^"Slippery Maneuvers" [shuji]
+                ^"Honest Assessment" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Sentiment"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-2 Kata"
+                ^"All Arts are One" [shuji]
+                ^"Feigned Opening" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Meditation"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-3 Earth Shūji"
+                ^"Regal Bearing" [shuji]
+                ^"Battle in the Mind" [kata]
+            }
+            RANK 4 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Sentiment"
+                SKILL "Medicine"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-4 Kata"
+                ^"Sear the Wound" [shuji]
+                ^"Bravado" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Sentiment"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-5 Fire Shūji"
+                ^"Wolf's Proposal" [shuji]
+                ^"Crashing Wave Style" [kata]
+            }
+            RANK 6 {
+                ^"The Eyes Betray the Heart"
+            }
+        }
+    }
+
+    # ===========================
+    # MIRUMOTO TWO-HEAVENS ADEPT [Bushi]
+    # ===========================
+
+    ^"Mirumoto Two-Heavens Adept" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The Mirumoto dōjō's unique two-sword style, niten (or Two-Heavens),
+        # is only one component of their mastery of swords and combat. Its
+        # students follow the Tao of Shinsei and use it to guide them in war and
+        # peace, seeking to apply its practical lessons to all things.
+
+        PROPERTIES {
+            ^"School Name" STRING "Mirumoto Two-Heavens Adept" FIXED
+            ^"Clan" STRING "Dragon"
+            ^"Roles" LIST ["Bushi"]
+            ^"Ring Increase" STRING "+1 Earth, +1 Fire"
+            ^"Starting Skills" STRING "choose 5: +1 Command, +1 Composition, +1 Fitness, +1 Martial Arts [Melee], +1 Meditation, +1 Tactics, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 50
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Striking as Fire", ^"Striking as Water", ^"Striking as Earth"]
+            SHUJI ^"Dazzling Performance"
+        }
+
+        SCHOOL_ABILITY "Way of the Dragon" {
+            "Once per round during a duel or skirmish when you are targeted by an Attack check with a melee weapon, you may use one of your weapons readied in a one-handed grip (or one of your hands, if it is empty) to ward or trap. If you ward, the attacker must reroll dice containing (su) or (ex) up to your school rank. If you trap, reduce the TN of your next Attack check against the attacker this scene by your school rank (to a minimum of 1). You cannot choose this weapon for Attack actions until the end of your next turn."
+        }
+
+        MASTERY_ABILITY ^"Heart of the Dragon" {
+            "Once per round, when performing an Attack action check, you may spend (op) as follows: (op): Perform a Strike action with a readied weapon you have not used for an Attack action this turn."
+        }
+
+        STARTING_OUTFIT [
+            "Traveling clothes", "ceremonial clothes",
+            "ashigaru armor",
+            "daishō (katana and wakizashi) or wakizashi (short sword) and any two weapons of rarity 6 or lower",
+            "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Composition"
+                SKILL "Labor"
+                SKILL "Medicine"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Iaijutsu Cut: Rising Blade" [kata]
+                ^"Stirring the Embers" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Command"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1-2 Kata"
+                ^"Heartpiercing Strike" [kata]
+                ^"Slippery Maneuvers" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Composition"
+                SKILL "Smithing"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-3 Kata"
+                ^"Pillar of Calm" [shuji]
+                ^"Commune with the Spirits" [ritual]
+            }
+            RANK 4 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Command"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1-4 Earth Shūji"
+                ^"Striking as Void" [kata]
+                ^"Crashing Wave Style" [kata]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Composition"
+                SKILL "Medicine"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-5 Kata"
+                ^"Sear the Wound" [shuji]
+                ^"Rouse the Soul" [shuji]
+            }
+            RANK 6 {
+                ^"Heart of the Dragon"
+            }
+        }
+    }
+
+    # ===========================
+    # TOGASHI TATTOOED ORDER [Monk]
+    # ===========================
+
+    ^"Togashi Tattooed Order" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The monks of the Togashi Order have dedicated themselves to
+        # discovering and fulfilling their soul's destiny, believing that to be their
+        # individual path to achieving Enlightenment. They are aided in this by
+        # the prophetic visions of their leader, the Dragon Clan Champion, as
+        # well as the mystic tattoos that bind them to their order.
+
+        PROPERTIES {
+            ^"School Name" STRING "Togashi Tattooed Order" FIXED
+            ^"Clan" STRING "Dragon"
+            ^"Roles" LIST ["Monk"]
+            ^"Ring Increase" STRING "+1 Earth, +1 Void"
+            ^"Starting Skills" STRING "choose 4: +1 Fitness, +1 Martial Arts [Melee], +1 Martial Arts [Unarmed], +1 Meditation, +1 Survival, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Techniques Available" LIST ["Kihō", "Shūji", "Rituals"]
+        }
+
+        STARTING_TECHNIQUES {
+            KIHO CHOOSE 1 [^"Earthen Fist", ^"Earth Needs No Eyes", ^"Flame Fist", ^"Ki Protection", ^"Water Fist"]
+            SHUJI ^"Lord Togashi's Insight"
+        }
+
+        SCHOOL_ABILITY "Blood of the Kami" {
+            "You have one mystical tattoo that empowers your kihō, and gain more as your school rank increases. When you make a check to activate a kihō linked to one of your mystical tattoos, if you succeed, add additional bonus successes equal to your school rank. Select a natural motif for your first tattoo and choose one kihō for which you meet the prerequisites that are linked to the tattoo. If you have not learned it, you learn that kihō (without paying its XP cost). You cannot choose the same kihō multiple times this way. Each time your school rank increases, you gain one additional tattoo this way."
+        }
+
+        MASTERY_ABILITY ^"Blood of the Dragon" {
+            "Once per scene, while you are benefiting from the enhancement effect of a kihō linked to one of your tattoos, when you activate a different kihō, you may spend 1 Void point. If you do, you may maintain both enhancement effects until the end of the scene or until you activate another kihō."
+        }
+
+        STARTING_OUTFIT [
+            "Common clothing", "bō (staff)",
+            "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Fitness"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1 Fire Kihō"
+                ^"Way of the Earthquake" [kiho]
+                ^"Honest Assessment" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Composition"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-2 Water Kihō"
+                ^"Open-Hand Style" [kata]
+                ^"Stirring the Embers" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Labor"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1-3 Air Kihō"
+                ^"Death Touch" [kiho]
+                ^"All Arts are One" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Labor"
+                SKILL "Medicine"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-4 Earth Kihō"
+                ^"Touch the Void Dragon" [kiho]
+                ^"Pillar of Calm" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Meditation"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-5 Void Kihō"
+                TECHNIQUE_GROUP "Rank 1-5 Rituals"
+                ^"Rouse the Soul" [shuji]
+            }
+            RANK 6 {
+                ^"Blood of the Dragon"
+            }
+        }
+    }
+}

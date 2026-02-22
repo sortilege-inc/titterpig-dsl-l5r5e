@@ -1,0 +1,2302 @@
+BASE "L5R5e_Core_Techniques" {
+    NAME "Legend of the Five Rings 5th Edition - Technique types, categories, and core technique definitions"
+    VERSION "0.1"
+    RELEASE_DATE "2025-06-01"
+
+    # Core Rulebook: All technique types and their mechanics.
+    # Techniques are special abilities purchased with XP and unlocked
+    # through school curriculum advancement. Each has a type, rank,
+    # activation method, and associated ring/skill.
+
+    # ===========================
+    # TECHNIQUE FRAMEWORK
+    # ===========================
+
+    ^"Technique" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Techniques are special abilities that represent advanced training.
+        # They enable a character to perform feats more quickly or in a
+        # unique way, or to exploit opportunities others would overlook.
+
+        # --- CATEGORY ---
+        # Each character is granted access to technique categories by their
+        # ^"School". The categories are:
+
+        CATEGORY ENUM ["Kata", "Kihō", "Invocation", "Ritual", "Shūji", "Mahō", "Ninjutsu"]
+        # Additional categories from sourcebooks: Inversion, Mantra
+
+        # --- NAME ---
+        # Each technique has a name, though different schools may describe
+        # similar tactics differently. Some techniques (especially invocations)
+        # have an "Other Names" field. Players are encouraged to use them
+        # to underscore the unique traditions of individual schools.
+
+        # --- PREREQUISITES ---
+        # School ranks, clan affiliations, role/schools, ring values, skill
+        # ranks, other techniques, or other qualifiers required to purchase
+        # a technique with experience.
+        #
+        # Prerequisites are WAIVED if:
+        # - A character is directly granted a technique during character
+        #   creation (or at another time), OR
+        # - The technique appears on the character's curriculum by name or
+        #   as part of a listed group (e.g. "Rank 1-3 Kata").
+        #
+        # Such techniques and groups are marked with = to denote their
+        # special status. If a character does not choose a technique to
+        # which they have special access, or advances past the school rank
+        # that enables them to buy it without purchasing it, they LOSE
+        # their special access and can no longer purchase it at reduced cost.
+
+        # --- XP COST ---
+        # All techniques cost 3 XP to purchase. If a technique costs a
+        # different amount, it is listed in the entry.
+
+        # --- ACTIVATION ---
+        # Each technique specifies when and how it can be used. The
+        # activation generally includes some or all of the following:
+        ACTIVATION_COMPONENTS {
+            ^"Use" {
+                "As an Action: Character must perform an action during a conflict scene. If the action lists one or more types, it possesses each of those types."
+                "As a Downtime Activity: Character must spend a downtime scene to attempt the task."
+                "When Making a Check: Character can activate only during checks using the specified skill, skill group, ring, or combination. Usually requires spending (op)."
+            }
+            ^"Check" "If activation requires an action or downtime scene, it generally requires a separate check with a specified TN. If no ring is specified, any ring may be used (e.g. the one matching current stance in conflict). If a skill group is listed, the character chooses any skill from that group."
+            ^"Targets" "Characters, positions, or objects affected. When a character has a choice of multiple possible targets, they must choose from among the valid targets."
+            ^"Range" "Specified as 'at range [number]', 'at range [number]-[number]', 'in range of your weapon', or similar. Targets beyond the specified range are not affected."
+            ^"Other Requirements" "Circumstantial requirements such as 'using a readied weapon', 'under the full moon', or 'while on ^\"Hallowed\" ground'."
+        }
+
+        # --- EFFECTS ---
+        # Each technique lists effects that occur after activation. Each
+        # paragraph represents a distinct effect.
+        #
+        # - "If you succeed" effects only resolve on successful check.
+        # - "If you fail" effects only resolve on failed check.
+        # - Effects with alternate conditions resolve under stated conditions.
+        # - Effects with no conditions always resolve.
+        #
+        # Persistent Effects: Some effects persist for a set duration
+        # (e.g. "until the beginning of your next turn", "for one round
+        # plus additional rounds equal to your bonus successes", "until
+        # the end of the scene"). A character cannot benefit (or suffer)
+        # from more than one instance of the same persistent effect, even
+        # from multiple sources. If overlapping: player chooses if beneficial,
+        # GM chooses if harmful.
+
+        # --- NEW OPPORTUNITIES ---
+        # Many techniques list one or more uses of (op) specific to the
+        # check. Some are preceded by a ring requirement (e.g. "Air (op)")
+        # meaning the character can only spend (op) this way if they used
+        # that ring for the check.
+
+        PROPERTIES {
+            ^"Name" STRING REQUIRED
+            ^"Category" STRING  # References category ENUM above
+            ^"Rank" INTEGER MIN 1 MAX 5
+            ^"Prerequisites" STRING  # School rank, ring values, clan, etc.
+            ^"XP Cost" INTEGER DEFAULT 3
+            ^"Activation" STRING  # Use, Check, Targets, Range, Other Requirements
+            ^"Description" STRING  # Narrative description (no mechanical effect)
+            ^"Effects" STRING  # Mechanical effects with conditional resolution
+            ^"New Opportunities" STRING  # Technique-specific (op) spends
+        }
+
+        RULES {
+            #L5R300aB2cD4eF6gH8iJ0k: technique_categories_granted_by_school
+            #L5R301lM3nO5pQ7rS9tU1v: prerequisites_waived_for_curriculum
+            #L5R301aM3nO5pQ7rS9tU2w: lose_special_access_if_skipped
+            #L5R302wX4yZ6aB8cD0eF2g: all_techniques_cost_3xp_unless_noted
+            #L5R302aX4yZ6aB8cD0eF3h: persistent_effects_do_not_stack
+        }
+    }
+
+    # ===========================
+    # KATA (kata) — MARTIAL TECHNIQUES
+    # ===========================
+
+    ^"Kata" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Kata are specialized combat techniques that allow martial artists
+        # to vanquish even foes who exceed them in physical strength, speed,
+        # or agility. Some kata are new actions, while others grant new ways
+        # to spend (op).
+        #
+        # Symbol: (kata)
+        # Available to: Schools listing Kata in technique groups
+
+        # Kata have form classifications:
+        FORM_CLASSIFICATIONS {
+            "General" "Available to any character with kata access"
+            "Close Combat" "Melee weapon techniques"
+            "Ranged Combat" "Bow and ranged weapon techniques"
+        }
+
+        # ==================
+        # GENERAL KATA
+        # ==================
+
+        ^"Battle in the Mind" {
+            RANK 3
+            ACTIVATION "When you make an ^\"Initiative\" check for a ^\"Duel\" using your Void Ring, you may spend (op):"
+            OPPORTUNITIES {
+                "Void (op): You name two rings, then your opponent must name one. When your opponent selects their stance during their first turn, they cannot select the ring they named."
+                "Void +(op): Choose a technique category. Learn one of your opponent's known techniques of that category (chosen by opponent) per (op) spent this way."
+            }
+        }
+
+        ^"Breath of Wind Style" {
+            RANK 4
+            ACTIVATION "When you make a Martial Arts [Melee, Ranged, or Unarmed] (Air) check, you may spend (op):"
+            OPPORTUNITIES {
+                "Air +(op): One target must resist with a TN 3 ^\"Fitness\" check (Earth 4, Fire 1) or suffer ^\"Disoriented\" and fatigue equal to their shortfall. Increase the TN to resist by 1 per (op) spent this way."
+            }
+        }
+
+        ^"Crashing Wave Style" {
+            RANK 4
+            ACTIVATION "When you make a Martial Arts [Melee, Ranged, or Unarmed] (Water) check, you may spend (op):"
+            OPPORTUNITIES {
+                "Water +(op): One target must resist with a TN 3 ^\"Fitness\" check (Earth 1, Fire 4) or suffer ^\"Bleeding\" and fatigue equal to their shortfall. Increase the TN to resist by 1 per (op) spent this way."
+            }
+        }
+
+        ^"Crescent Moon Style" {
+            RANK 2
+            ACTIVATION "When you perform Guard action, you may spend (op):"
+            OPPORTUNITIES {
+                "(op): After a character at range 1-2 performs an Attack action targeting you or another character you are guarding, you may perform a Strike action with one readied Martial Arts [Melee or Unarmed] weapon targeting that character (if within weapon's range). Persists until start of your next turn, or until you perform a Strike action this way."
+            }
+        }
+
+        ^"Crimson Leaves Strike" {
+            RANK 3
+            ACTIVATION "As an Attack action using a readied weapon, make a TN 4 Martial Arts (Earth) check targeting one character within weapon's range."
+            EFFECTS {
+                "If you succeed, target suffers physical damage equal to your Earth Ring plus bonus successes. Choose one of target's readied weapons; target must resist with a TN 4 ^\"Fitness\" check (Air 2, Water 5) or lose control of the chosen weapon, which travels 3 range bands in a direction of your choice."
+            }
+            OPPORTUNITIES {
+                "Earth (op): If you disarm your opponent, you may take control of their weapon instead of knocking it away."
+            }
+        }
+
+        ^"Disappearing World Style" {
+            RANK 4
+            ACTIVATION "When you make a Martial Arts [Melee, Ranged, or Unarmed] (Fire) check, you may spend (op):"
+            OPPORTUNITIES {
+                "Fire +(op): One target must resist with a TN 3 ^\"Fitness\" check (Air 4, Water 1) or suffer ^\"Dazed\" and fatigue equal to their shortfall. Increase the TN to resist by 1 per (op) spent this way."
+            }
+        }
+
+        ^"Flowing Water Strike" {
+            RANK 3
+            ACTIVATION "As an Attack and Movement action using a readied weapon, make a TN 3 Martial Arts (Water) check targeting one character at range 0-2 (regardless of weapon's usual range restrictions)."
+            EFFECTS {
+                "If you succeed, the target suffers physical damage equal to your Water Ring and suffers ^\"Bleeding\". Target must resist with a TN 4 ^\"Fitness\" check (Earth 2, Fire 5); if they fail, increase the physical damage by your weapon's base damage."
+            }
+            OPPORTUNITIES {
+                "Water (op): Remove ^\"Dazed\", ^\"Disoriented\", ^\"Immobilized\", or ^\"Prone\" from yourself."
+            }
+        }
+
+        ^"Heartpiercing Strike" {
+            RANK 3
+            ACTIVATION "As an Attack and Movement action using a readied weapon, make a TN 4 Martial Arts (Fire) check targeting one character within weapon's range."
+            EFFECTS {
+                "If you succeed, target suffers a ^\"Critical Strike\" with severity equal to weapon's deadliness plus bonus successes. The TN of the ^\"Fitness\" check to resist is 3 (Air 4, Water 1) instead of the normal TN."
+                "If you fail, you suffer ^\"Disoriented\"."
+            }
+            OPPORTUNITIES {
+                "Fire (op): Before resolving the effect, move up to 1 range band toward your target."
+            }
+        }
+
+        ^"Iron in the Mountains Style" {
+            RANK 4
+            ACTIVATION "When you make a Martial Arts [Melee, Ranged, or Unarmed] (Earth) check, you may spend (op):"
+            OPPORTUNITIES {
+                "Earth +(op): One target must resist with a TN 3 ^\"Fitness\" check (Air 1, Water 4) or suffer ^\"Prone\" and fatigue equal to their shortfall. Increase the TN to resist by 1 per (op) spent this way."
+            }
+        }
+
+        ^"Lord Hida's Grip" {
+            RANK 2
+            PREREQUISITES "Crab Clan"
+            ACTIVATION "As an Attack action, make a ^\"Fitness\" (Void) check targeting one creature of ^\"Silhouette\" 3 or larger at range 0-1. TN equals the target's silhouette (minimum 1)."
+            EFFECTS {
+                "If you succeed, target suffers ^\"Immobilized\"."
+                "If you succeed, you count as granting ^\"Assistance\" to all characters who perform Attack actions against your target. Persists until beginning of your next turn."
+            }
+            OPPORTUNITIES {
+                "Void (op): Target must resist with a ^\"Fitness\" check or suffer physical damage equal to its silhouette (ignoring resistance) and ^\"Prone\". TN of this check equals your school rank."
+            }
+        }
+
+        ^"Lord Shiba's Valor" {
+            RANK 2
+            PREREQUISITES "Phoenix Clan"
+            ACTIVATION "Once per game session, as a Support action using one readied weapon, make a TN 2 Tactics (Void) check targeting any number of friendly characters in range of your weapon."
+            EFFECTS {
+                "If you succeed, other characters cannot select your targets as the targets of their Attack or Scheme actions if they could select you instead. If an action has multiple targets, you must be the first target chosen. Persists for a number of rounds equal to your school rank."
+            }
+            OPPORTUNITIES {
+                "Void (op): If you succeed, increase the TN of Attack and Scheme checks targeting you by 1. Persists until end of your next turn."
+            }
+        }
+
+        ^"Soaring Slice" {
+            RANK 1
+            ACTIVATION "As an Attack action using one readied weapon in a one-handed grip, make a TN 2 Martial Arts check targeting one character at range 2-3."
+            EFFECTS {
+                "You hurl your weapon at the target."
+                "If you succeed, deal physical damage equal to the weapon's base damage plus bonus successes. Weapon lands at range in a direction of your choice from target if they defend, or embeds in them if they suffer a ^\"Critical Strike\"."
+                "If you fail, weapon travels range bands equal to the maximum range of the technique in the direction of the target."
+            }
+            OPPORTUNITIES {
+                "+(op): Treat the maximum range of this technique as 1 higher per (op) spent this way."
+                "(op): Reduce the TN of the next Attack action against the target before end of your next turn by 1."
+            }
+        }
+
+        ^"Soul Sunder" {
+            RANK 5
+            ACTIVATION "As a Support action, make a TN 4 ^\"Meditation\" (Void) check to attune your blade to the spirits of your honored ancestors."
+            EFFECTS {
+                "If you succeed, choose one readied weapon. It gains the ^\"Sacred\" quality, and when you use it to inflict a ^\"Critical Strike\" on an Otherworldly being, treat its deadliness as increased by your bonus successes. Persists until end of your next turn."
+            }
+            OPPORTUNITIES {
+                "Void +(op): This effect persists for one additional round per (op) spent this way."
+                "Void (op)(op): Otherworldly beings cannot perform Attack actions targeting you until start of your next turn."
+                "Void (op)(op)(op): You may immediately perform a Strike action using your readied weapon."
+            }
+        }
+
+        ^"Striking as Air" {
+            RANK 1
+            ACTIVATION "When you make a Martial Arts [Melee, Ranged, or Unarmed] (Air) check, you may spend (op):"
+            OPPORTUNITIES {
+                "Air +(op): Reserve one of your rolled dice, plus one additional die per (op) spent this way. These become dropped dice. When making a check with the same skill before end of your next turn, you may roll one fewer (skill) per reserved (skill) and one fewer (ring) per reserved (ring), then add the reserved dice set to their original results. They count as rolled dice."
+            }
+        }
+
+        ^"Striking as Earth" {
+            RANK 1
+            ACTIVATION "When you make a Martial Arts [Melee, Ranged, or Unarmed] (Earth) check, you may spend (op):"
+            OPPORTUNITIES {
+                "Earth +(op): Treat your physical resistance as 1 higher per (op) spent this way until beginning of your next turn."
+            }
+        }
+
+        ^"Striking as Fire" {
+            RANK 1
+            ACTIVATION "When you make a Martial Arts [Melee, Ranged, or Unarmed] (Fire) Attack action check, you may spend (op):"
+            OPPORTUNITIES {
+                "Fire +(op): The next time your target suffers a ^\"Critical Strike\", increase its severity by 1 per (op) spent this way. Persists until end of your next turn."
+            }
+        }
+
+        ^"Striking as Void" {
+            RANK 5
+            ACTIVATION "When you make a Martial Arts [Melee, Ranged, or Unarmed] (Void) check, you may spend (op):"
+            OPPORTUNITIES {
+                "Void (op): Immediately switch to a different stance of your choice."
+                "Void (op): If you fail, you may perform another action. This must be an action you have not yet performed this turn. You can only activate this opportunity once per round."
+            }
+        }
+
+        ^"Striking as Water" {
+            RANK 1
+            ACTIVATION "When you make a Martial Arts [Melee, Ranged, or Unarmed] (Water) Attack action check, you may spend (op):"
+            OPPORTUNITIES {
+                "Water +(op): Your target treats their physical resistance as 1 lower per (op) spent this way. Persists until end of your next turn."
+            }
+        }
+
+        ^"Tactical Assessment" {
+            RANK 2
+            ACTIVATION "When you make an ^\"Initiative\" check, you may spend (op):"
+            OPPORTUNITIES {
+                "Air (op): Choose an enemy. Learn one of their advantages (their choice) and their physical or supernatural resistance (your choice)."
+                "Earth (op): Choose a character. They do not apply any of their disadvantages to their checks until end of their first turn."
+                "Water (op): Choose a piece of ^\"Terrain\". Until start of your first turn, it counts as having the ^\"Obscuring\" quality for Attack action checks targeting you and your allies."
+                "Fire (op): Choose a character and one of their advantages you know. Until end of their first turn, they apply that advantage to all of their checks."
+            }
+        }
+
+        ^"Warrior's Resolve" {
+            RANK 1
+            ACTIVATION "Once per scene, as a Support action, you may spend 1 ^\"Void Points\" to recover."
+            EFFECTS {
+                "Remove fatigue equal to your ^\"Honor\" rank."
+            }
+        }
+
+        # ==================
+        # CLOSE COMBAT KATA
+        # ==================
+
+        # Performed with Martial Arts [Melee] or Martial Arts [Unarmed] weapons.
+
+        ^"Coiling Serpent Style" {
+            RANK 2
+            ACTIVATION "When you make a Martial Arts [Melee] or Martial Arts [Unarmed] check using a ^\"Snaring\" weapon, you may spend (op):"
+            OPPORTUNITIES {
+                "+(op): Choose one weapon a target has readied; that weapon cannot be used for Attack actions. Persists until end of your next turn."
+                "(op) +(op): One target of your action per (op) spent this way becomes ^\"Immobilized\"."
+            }
+        }
+
+        ^"Iaijutsu Cut: Crossing Blade" {
+            RANK 2
+            ACTIVATION "As an Attack and Movement action using one sheathed ^\"Razor-Edged\" weapon, make a TN 2 Martial Arts [Melee] check targeting one character at range 1-2."
+            EFFECTS {
+                "You draw and ready the sheathed weapon in a one-handed grip."
+                "If you succeed, deal physical damage equal to the weapon's deadliness plus bonus successes."
+            }
+            OPPORTUNITIES {
+                "(op): Ready one other sheathed Razor-Edged weapon."
+            }
+        }
+
+        ^"Iaijutsu Cut: Rising Blade" {
+            RANK 2
+            ACTIVATION "As an Attack action using one sheathed ^\"Razor-Edged\" weapon, make a TN 3 Martial Arts [Melee] check targeting one character at range 0-1."
+            EFFECTS {
+                "You draw and ready the sheathed weapon in a one-handed grip."
+                "If you succeed, deal physical damage equal to the weapon's deadliness. Target cannot defend against this damage if they are ^\"Compromised\"."
+            }
+            OPPORTUNITIES {
+                "(op): Ready one other sheathed Razor-Edged weapon."
+            }
+        }
+
+        ^"Iron Forest Style" {
+            RANK 2
+            ACTIVATION "When you make a Martial Arts [Melee] check using a polearm, you may spend (op):"
+            OPPORTUNITIES {
+                "+(op): The area in range of your weapon counts as ^\"Dangerous\" terrain for one target per (op) spent this way. When an affected character attempts to move closer to you, they must make a TN 4 ^\"Fitness\" check (Air 2, Water 5); if they fail, they cannot advance. Persists until start of your next turn."
+            }
+        }
+
+        ^"Open-Hand Style" {
+            RANK 2
+            ACTIVATION "When you make a Martial Arts [Unarmed] check using a weapon with the ^\"Snaring\" quality, you may spend (op):"
+            OPPORTUNITIES {
+                "(op) +(op): One target per (op) spent this way must switch to a different stance of your choice. Targets of ^\"Silhouette\" 3 or greater may resist with a TN 3 ^\"Fitness\" check and ignore this effect if they succeed."
+            }
+        }
+
+        ^"Rushing Avalanche Style" {
+            RANK 2
+            ACTIVATION "When you make a Martial Arts [Melee] check using a blunt weapon, you may spend (op):"
+            OPPORTUNITIES {
+                "(op): If you fail with a shortfall of two or less, your target suffers physical damage equal to your ranks in ^\"Fitness\"."
+                "(op): If you succeed and your target is ^\"Prone\", increase the damage you deal by your ranks in Fitness."
+            }
+        }
+
+        ^"Spinning Blades Style" {
+            RANK 2
+            ACTIVATION "When you make a Martial Arts [Melee] or Martial Arts [Unarmed] Attack action check, if you have a second readied weapon you did not use for the attack, you may spend (op):"
+            OPPORTUNITIES {
+                "+(op): You must spend (op) equal to your target's Vigilance to activate this technique. You use your second readied weapon against one target, inflicting physical damage equal to its base damage. If that target is ^\"Dazed\", increase this damage by your ranks in the skill you used."
+            }
+        }
+
+        ^"Thunderclap Strike" {
+            RANK 3
+            ACTIVATION "As an Attack action using a readied weapon, make a TN 3 Martial Arts [Melee or Unarmed] (Air) check targeting each character within weapon's range."
+            EFFECTS {
+                "If you succeed, each target suffers damage equal to weapon's base damage and must resist with a TN 3 ^\"Fitness\" check (Earth 4, Fire 1) or move 2 range bands directly away from you."
+            }
+            OPPORTUNITIES {
+                "Air +(op): Increase the TN of checks to resist the effect by 1 per (op) spent this way."
+            }
+        }
+
+        ^"Veiled Menace Style" {
+            RANK 2
+            ACTIVATION "When you make a Martial Arts [Melee] or Martial Arts [Unarmed] Attack action check using a weapon in a one-handed grip, you may spend (op):"
+            OPPORTUNITIES {
+                "+(op): If you succeed, choose one unaware or ^\"Disoriented\" target. That target suffers a ^\"Critical Strike\" with severity equal to weapon's deadliness plus 1 per (op) spent this way beyond the first."
+            }
+        }
+
+        # ==================
+        # RANGED COMBAT KATA
+        # ==================
+
+        # Performed with Martial Arts [Ranged] weapons.
+
+        ^"Hawk's Precision" {
+            RANK 1
+            ACTIVATION "When you make a Martial Arts [Ranged] check, you may spend (op):"
+            OPPORTUNITIES {
+                "+(op): Treat the range of the weapon as 1 higher per (op) spent this way, to a maximum of range 6."
+            }
+        }
+
+        ^"Pelting Hail Style" {
+            RANK 2
+            ACTIVATION "When you make a Martial Arts [Ranged] check, you may spend (op):"
+            OPPORTUNITIES {
+                "+(op): Choose a number of other characters at range 0-2 of your target equal to (op) spent this way. Each chosen character receives strife equal to the base damage of your weapon."
+            }
+        }
+
+        ^"Pin the Fan" {
+            RANK 5
+            ACTIVATION "As an Attack and Movement action using a readied ranged weapon, make a Martial Arts [Ranged] check targeting one character within weapon's range. TN equals the target's vigilance plus the range of the attack."
+            EFFECTS {
+                "If you succeed, target suffers damage equal to two times the weapon's base damage plus bonus successes."
+            }
+            OPPORTUNITIES {
+                "(op): If the target becomes ^\"Incapacitated\" as a result of damage from this action, they suffer a ^\"Critical Strike\" with severity equal to two times the weapon's deadliness plus bonus successes."
+            }
+        }
+
+        RULES {
+            #L5R303hI5jK7lM9nO1pQ3r: kata_form_classifications
+            #L5R304sT6uV8wX0yZ2aB4c: kata_activated_in_combat
+        }
+    }
+
+    # ===========================
+    # KIHŌ (kihō) — MONASTIC TECHNIQUES
+    # ===========================
+
+    ^"Kihō" DEF {
+        ALIAS "Kiho"
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Kihō are philosophical and spiritual techniques for aligning
+        # one's inner energy — ki — to that of the wider cosmos. This
+        # allows monks and other seekers of Enlightenment to act in
+        # harmony with the universe's natural course, tapping into its
+        # limitless potential. Kihō are new actions with two parts.
+        #
+        # Symbol: (kihō)
+        # Available to: Schools listing Kihō in technique groups (monks)
+
+        # Kihō have elemental classifications (Air, Earth, Fire, Water, Void).
+
+        STRUCTURE {
+            ^"Enhancement" "Persistent effect that lasts until the character chooses to end it, successfully activates another kihō, or the scene ends. Usually goes undetected by untrained onlookers."
+            ^"Burst" "Resolves immediately if the user has the requisite number of bonus successes. Generally much more visible (gouts of flame, rumbling earth, gusts of air)."
+        }
+
+        # A character can have only one kihō enhancement at a time and
+        # cannot reactivate a kihō if currently benefiting from its enhancement.
+        # Only characters with school ranks in a school listing kihō can purchase them.
+
+        # ==================
+        # EARTH KIHŌ
+        # ==================
+
+        # Focus on securing one's roots, feeling vibrations, and waiting
+        # for the right moment to strike.
+
+        ^"Cleansing Spirit" {
+            RANK 1
+            ACTIVATION "As a Support action, make a TN 1 Theology (Earth) check. You may choose one other character at range 0-1 as the target for the burst effect."
+            ENHANCEMENT "Reduce the TN of all your checks to resist poison, disease, ^\"Mahō\", the ^\"Defiled\" terrain quality, and the effects of Otherworldly and Tainted beings by your Earth Ring."
+            BURST "2+ bonus successes: Remove one of the following conditions from your target: ^\"Afflicted\", ^\"Bleeding\", ^\"Dazed\", ^\"Disoriented\", ^\"Dying\", Fatigued, or ^\"Intoxicated\"."
+        }
+
+        ^"Earth Needs No Eyes" {
+            RANK 1
+            ACTIVATION "As a Support action, make a TN 1 ^\"Meditation\" (Earth) check."
+            ENHANCEMENT "You can use vibrations through the earth to 'see' a number of range bands in all directions equal to your Earth Ring. Increase your vigilance by your Earth Ring."
+            BURST "3+ bonus successes: Instantly become aware of all living creatures and objects touching the ground within range bands equal to your Earth Ring plus bonus successes."
+        }
+
+        ^"Earthen Fist" {
+            RANK 1
+            ACTIVATION "As an Attack and Support action, make a TN 1 Martial Arts [Unarmed] (Earth) check. You may choose a character at range 0-1 as the target for the burst effect."
+            ENHANCEMENT "Treat base damage of your unarmed ^\"Punch\" and ^\"Kick\" profiles as increased by your Earth Ring. Increase your physical resistance by 1."
+            BURST "2+ bonus successes: Target suffers physical damage equal to your Earth Ring. Target must resist with a TN 4 ^\"Fitness\" check (Air 2, Water 5) or suffer ^\"Prone\"."
+        }
+
+        ^"Grasp the Earth Dragon" {
+            RANK 3
+            ACTIVATION "As a Movement and Support action, make a TN 2 ^\"Meditation\" (Earth) check."
+            ENHANCEMENT "Reduce severity of all ^\"Critical Strike\" from physical sources by your Earth Ring. After a character performs an Attack action against you, you may spend 1 ^\"Void Points\" to cause them to suffer fatigue equal to your ranks in ^\"Fitness\"."
+            BURST "3+ bonus successes: Reduce all physical damage you suffer to 1. After any character deals physical damage to you, they suffer ^\"Prone\". Persists until end of your next turn."
+        }
+
+        ^"Way of the Earthquake" {
+            RANK 2
+            ACTIVATION "As an Attack and Support action, make a TN 2 Martial Arts [Unarmed] (Earth) check. You may choose any number of other characters at range 0-1 as targets for the burst effect."
+            ENHANCEMENT "After you perform an Attack or Support action, or defend against damage, you may choose one other character at range 0-2 who must resist with a TN 4 ^\"Fitness\" check (Air 2, Water 5) or suffer physical damage equal to your Earth Ring and ^\"Prone\"."
+            BURST "2+ bonus successes: Each target suffers physical damage equal to your Earth Ring. Each ^\"Prone\" target suffers physical damage equal to your Earth Ring plus bonus successes and ^\"Immobilized\" instead."
+        }
+
+        # ==================
+        # AIR KIHŌ
+        # ==================
+
+        # Center on hearing the whispers of the world and understanding
+        # their meaning. To align one's ki with air is to detach from
+        # earthly desires, becoming untethered from the world.
+
+        ^"Air Fist" {
+            RANK 1
+            ACTIVATION "As an Attack and Support action, make a TN 1 Martial Arts [Unarmed] (Air) check. You may choose one other character at range 0-1 as the target for the burst effect."
+            ENHANCEMENT "Treat the maximum range of your ^\"Punch\" and ^\"Kick\" unarmed profiles as equal to your Air Ring."
+            BURST "2+ bonus successes: Target suffers physical damage equal to your Air Ring. Target must make a TN 4 ^\"Fitness\" check (Earth 5, Fire 2) or be pushed 1 range band away from you, plus range bands equal to their shortfall."
+        }
+
+        ^"The Great Silence" {
+            RANK 1
+            ACTIVATION "As a Scheme and Support action, make a TN 1 Theology (Air) check."
+            ENHANCEMENT "Increase the TN of Scheme action checks targeting you by one plus your ranks in Command."
+            BURST "2+ bonus successes: Characters at range 0-3 suffer ^\"Silenced\" and cannot hear. Persists until beginning of your next turn."
+        }
+
+        ^"Riding the Clouds" {
+            RANK 2
+            ACTIVATION "As a Movement and Support action, make a TN 2 ^\"Meditation\" (Air) check."
+            ENHANCEMENT "When you move 1+ range bands, you may move that number plus 1, and you may move 1 of those range bands vertically or horizontally. You may ignore effects of ^\"Terrain\" while moving. If you fall, treat the distance as 1 range band."
+            BURST "1+ bonus successes: Immediately move 1 range band, plus one additional per bonus success. May move vertically or horizontally, ignoring terrain."
+        }
+
+        ^"Way of the Willow" {
+            RANK 3
+            ACTIVATION "As a Movement and Support action, make a TN 3 ^\"Meditation\" (Air) check."
+            ENHANCEMENT "When a character performs an Attack action check targeting you, reduce any damage you suffer by 2 for each kept die containing (op)."
+            BURST "2+ bonus successes: Increase the TN of Attack action checks targeting you by your ranks in ^\"Meditation\" until beginning of your next turn."
+        }
+
+        # ==================
+        # FIRE KIHŌ
+        # ==================
+
+        # Function by kindling the energy within, fostering its life-giving
+        # force and channeling it outward. Some monks create flames;
+        # others manipulate heat directly.
+
+        ^"Breaking Blow" {
+            RANK 1
+            ACTIVATION "As an Attack and Support action, make a TN 1 Martial Arts [Unarmed] (Fire) check. You may choose one object at range 0-1 as the target for the burst effect."
+            ENHANCEMENT "When you succeed at a Martial Arts [Unarmed] check against a target, choose one worn armor or readied weapon in target's possession. It gains ^\"Damaged\" unless the target chooses to receive 2 fatigue."
+            BURST "2+ bonus successes: Chosen object gains ^\"Damaged\". At GM's discretion, can shatter tough mundane objects (wooden doors, earthen walls, trees). 4+ bonus successes: Chosen object gains ^\"Destroyed\" instead. Can destroy reinforced mundane objects (metal doors, stone walls)."
+        }
+
+        ^"Channel the Fire Dragon" {
+            RANK 2
+            ACTIVATION "As an Attack and Support action, make a TN 2 ^\"Meditation\" (Fire) check. You may choose to have each other character at range 0-1 become a target for the burst effect."
+            ENHANCEMENT "Automatically succeed on all checks to resist extreme weather with bonus successes equal to your Fire Ring. If you would suffer damage from physical or supernatural fire (invocations, kihō), you may spend 1 ^\"Void Points\" to prevent that damage and remove that much fatigue instead."
+            BURST "2+ bonus successes: Each target must resist with a TN 4 ^\"Fitness\" check (Air 5, Water 2) or suffer physical damage equal to your Fire Ring and ^\"Burning\". Flammable objects ignite, creating ^\"Dangerous\" terrain at GM's discretion."
+        }
+
+        ^"Flame Fist" {
+            RANK 1
+            ACTIVATION "As an Attack and Support action, make a TN 1 Martial Arts [Unarmed] (Fire) check. You may choose a character at range 0-1 as the target for the burst effect."
+            ENHANCEMENT "Treat the deadliness of your unarmed ^\"Punch\" and ^\"Kick\" profiles as increased by your Fire Ring and treat their damage type as supernatural."
+            BURST "2+ bonus successes: Target suffers physical damage equal to your Fire Ring and must make a TN 4 ^\"Fitness\" check (Air 5, Water 2) or suffer ^\"Dazed\"."
+        }
+
+        ^"The Body Is an Anvil" {
+            RANK 1
+            ACTIVATION "As a Movement and Support action, make a TN 3 ^\"Meditation\" (Fire) check. You may choose a character at range 0-2 as the target for the burst effect."
+            ENHANCEMENT "When you defend against damage from an Attack action, the character who attacked you suffers supernatural damage equal to your Fire Ring and ^\"Dazed\"."
+            BURST "2+ bonus successes: Before you defend against damage dealt by the target, reduce the damage by your Fire Ring. If you successfully defend, one weapon the target used gains ^\"Damaged\", and the target suffers ^\"Burning\"."
+        }
+
+        ^"Way of the Falling Star" {
+            RANK 3
+            ACTIVATION "As an Attack and Support action, make a TN 3 Martial Arts [Unarmed] (Fire) check. You may choose one character at range 0-2 as the target for the burst effect."
+            ENHANCEMENT "When you perform an Attack action using a ^\"Punch\" or ^\"Kick\" against a ^\"Dazed\" target, increase the damage you inflict by your Fire Ring."
+            BURST "3+ bonus successes: Target suffers supernatural damage equal to your Fire Ring plus your ranks in ^\"Fitness\". Target must resist with a TN 5 Fitness check (Air 6, Water 3) or suffer ^\"Burning\" and ^\"Dazed\"."
+        }
+
+        # ==================
+        # WATER KIHŌ
+        # ==================
+
+        # Allow practitioners to feel the ebb and flow in all things.
+        # Mastery over one's own ki can be extended to rejuvenate allies
+        # or twist a foe's ki with a gentle strike.
+
+        ^"Freezing the Lifeblood" {
+            RANK 2
+            ACTIVATION "As an Attack and Support action, make a TN 2 Martial Arts [Unarmed] (Water) check. You may choose one character at range 0-1 as the target for the burst effect."
+            ENHANCEMENT "After a character defends against damage you inflict with an Attack action using a ^\"Punch\" or ^\"Kick\", they suffer ^\"Immobilized\" unless they choose to receive 3 fatigue."
+            BURST "2+ bonus successes: Target suffers supernatural damage equal to your Water Ring (ignoring resistance) and ^\"Immobilized\". 4+ bonus successes: Target suffers a ^\"Critical Strike\" with severity equal to your Water Ring plus ranks in Medicine instead."
+        }
+
+        ^"Ki Protection" {
+            RANK 1
+            ACTIVATION "As a Movement and Support action, make a TN 1 ^\"Meditation\" (Water) check. You may choose one character at range 0-1 as the target for the burst effect."
+            ENHANCEMENT "When you perform the Calming Breath action, you may remove 2 fatigue instead of 1. After you perform an action, you may spend 1 ^\"Void Points\" to remove fatigue equal to your ranks in Medicine from one other character at range 0-1."
+            BURST "2+ bonus successes: Target removes fatigue equal to your ranks in Medicine plus your bonus successes. Each target cannot be affected by this again until end of scene."
+        }
+
+        ^"Ride the Water Dragon" {
+            RANK 3
+            ACTIVATION "As a Movement and Support action, make a TN 3 ^\"Meditation\" (Water) check."
+            ENHANCEMENT "When you are targeted by a check for an invocation, ^\"Mahō\", or kihō, increase the TN of the check by your ranks in ^\"Meditation\". At GM's discretion, you may pass through certain supernatural barriers and wards without triggering their effects."
+            BURST "2+ bonus successes: Remove all persistent effects from supernatural sources (invocations, mahō, kihō) from yourself. 4+ bonus successes: Remove all such effects from all characters at range 0-2 instead."
+        }
+
+        ^"Water Fist" {
+            RANK 1
+            ACTIVATION "As an Attack and Support action, make a TN 1 Martial Arts [Unarmed] (Water) check. You may choose one character at range 0-3 who shares a contact surface with you as the target for the burst effect."
+            ENHANCEMENT "Your Attack checks using ^\"Punch\" or ^\"Kick\" ignore an amount of target's physical resistance up to two times your Water Ring. You may spend 1 ^\"Void Points\" to perform an unarmed attack through any solid surface your target is touching, as long as you are both in contact with the same surface at range 0 to your Water Ring."
+            BURST "If you succeed: Target suffers physical damage equal to your Water Ring."
+        }
+
+        ^"Way of the Seafoam" {
+            RANK 1
+            ACTIVATION "As a Movement and Support action, make a TN 1 ^\"Meditation\" (Water) check."
+            ENHANCEMENT "You may walk on water as if it were solid ground."
+            BURST "2+ bonus successes: Remove ^\"Immobilized\" and ^\"Prone\" from yourself. Then switch to any stance and move up to 2 range bands."
+        }
+
+        # ==================
+        # VOID KIHŌ
+        # ==================
+
+        # Involve seeing through the lie of material reality into the
+        # truth beneath. The subtlest movements can create vast ripples,
+        # and the gentlest strikes can become deadly.
+
+        ^"Death Touch" {
+            RANK 4
+            ACTIVATION "As an Attack and Support action, make a TN 3 Martial Arts [Unarmed] (Void) check. You may choose a character at range 0-1 as the target for the burst effect."
+            ENHANCEMENT "When you perform an Attack action using a ^\"Punch\" or ^\"Kick\", the target cannot defend against the damage you deal unless they spend 1 ^\"Void Points\"."
+            BURST "3+ bonus successes: Target suffers ^\"Dazed\" and ^\"Disoriented\" and must resist with a TN 4 ^\"Fitness\" check or suffer ^\"Unconscious\". 4+ bonus successes against a minion NPC: target is simply slain."
+        }
+
+        ^"Still the Elements" {
+            RANK 3
+            ACTIVATION "As an Intrigue and Support action, make a TN 4 ^\"Meditation\" (Void) check. When you perform this action, choose Air, Earth, Fire, or Water."
+            ENHANCEMENT "When you are targeted by a check using the chosen ring, you may choose 1 kept die from the check and set it to a blank face. You may spend 1 ^\"Void Points\" to choose additional kept dice up to your ranks in ^\"Meditation\" and set them to blank faces."
+            BURST "2+ bonus successes: The ^\"Terrain\" at range 0-3 becomes ^\"Imbalanced\" [Chosen Element] until end of scene."
+        }
+
+        ^"Touch the Void Dragon" {
+            RANK 5
+            ACTIVATION "As a Support action, make a TN 4 ^\"Meditation\" (Void) check."
+            ENHANCEMENT "You may spend (op) from Void checks as if it were (op) from a check using any Element. You may spend (op) from Air, Earth, Fire, or Water checks as if it were (op) from a Void check."
+            BURST "2+ bonus successes: Gain 1 ^\"Void Points\". You can only gain 1 Void point from this effect per scene."
+        }
+
+        ^"Way of the Edgeless Sword" {
+            RANK 5
+            ACTIVATION "As an Attack and Support action, make a TN 3 ^\"Meditation\" check. You may choose any number of characters at range 0-1 as targets."
+            ENHANCEMENT "Treat the base damage and deadliness of your unarmed profile and improvised weapons you wield as equal to your ranks in Martial Arts [Unarmed] plus your Void Ring. They count as possessing ^\"Durable\" and ^\"Razor-Edged\"."
+            BURST "2+ bonus successes: Each target suffers a ^\"Critical Strike\" with deadliness equal to your Void Ring plus ranks in Martial Arts [Unarmed]."
+        }
+
+        RULES {
+            #L5R306oP8qR0sT2uV4wX6y: kiho_require_monk_school
+            #L5R307zA9bC1dE3fG5hI7j: kiho_one_enhancement_at_a_time
+            #L5R308kL0mN2oP4qR6sT8u: kiho_enhancement_and_burst_structure
+        }
+    }
+
+    # ===========================
+    # INVOCATIONS (invocation) — ELEMENTAL PRAYERS
+    # ===========================
+
+    ^"Invocation" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Invocations are prayers and offerings to powerful spirits in
+        # exchange for earthly support. They are practiced primarily by
+        # shugenja, who are elite samurai priests from ancient, secretive
+        # lineages with the power to speak directly to the kami.
+        # Invocations are new actions.
+        #
+        # Symbol: (invocation)
+        # Available to: Schools listing Invocations in technique groups (shugenja)
+
+        # Invocations have elemental classifications (Air, Earth, Fire,
+        # Water). Note: there are NO Void invocations.
+        ELEMENTAL_CLASSIFICATIONS ["Air", "Earth", "Fire", "Water"]
+
+        # --- EFFECT KEYWORDS ---
+        # Italicized keywords in invocation effects indicate function:
+        # Augment (change/bolster), Mend (restore), Purify (cast out evil),
+        # Scry (reveal info), Smite (cause harm), Summon (create something).
+
+        # --- PROPER OFFERINGS ---
+        # A shugenja who makes a material offering alongside an invocation
+        # may reroll up to 3 rolled dice showing blank results. The offering
+        # is consumed. Offerings by spirit type:
+        #   Air: Incense, feathers, flowers
+        #   Earth: Salt, soil/stones from sacred places, seeds
+        #   Fire: Kindling, paper, ash, small flammable objects
+        #   Water: Coins, seashells, precious materials, seaweed, sake
+        #   Fortunes: Texts, food, origami, works of art
+        #   Ancestor Spirits: Food, incense, sake or other libations
+
+        # --- CHANNELING ---
+        # Allows delaying completion of an invocation, carrying results
+        # over to the next invocation of the same Element.
+        CHANNELING {
+            ^"Choosing to Channel" "After Step 5: Choose Kept Dice, the character may channel any number of kept dice. Instead of resolving the rest of the check, the character reserves these dice (tracking faces shown). The check ends with no dice results or effects resolved (including success or failure)."
+            ^"Using Channeled Dice" "On the character's next turn, if they perform an invocation of the same Element, during Step 3: Assemble and Roll Dice Pool, roll one fewer (ring) per reserved (ring) and one fewer (skill) per reserved (skill), then add channeled dice set to their original results."
+            ^"Limitations" "May channel any number of times during a conflict. Outside conflict, may channel only once, and it doubles the invocation time."
+            ^"Interruption" "If a character with channeled dice performs any action other than an invocation of the same Element, all channeled dice are lost. If a character becomes ^\"Dazed\", ^\"Silenced\", or ^\"Unconscious\" while channeling, reserved dice are lost."
+        }
+
+        # --- SPIRITUAL BACKLASH ---
+        # When 3+ (st) symbols on kept dice while performing an invocation:
+        # 3 fatigue, cannot use invocations of that element until end of
+        # scene, plus element-specific effect.
+        SPIRITUAL_BACKLASH {
+            "Trigger: 3 or more (st) symbols on kept dice while performing an invocation."
+            "Base: 3 fatigue; cannot use invocations of that element again until end of scene."
+            ^"Air" "GM chooses up to two additional characters in range who become targets (or GM picks a player to choose, for an NPC)."
+            ^"Fire" "Technique targets each character in range. Terrain at range 0-2 may become ^\"Dangerous\" at GM's discretion."
+            ^"Earth" "Terrain at range 0-3 gains ^\"Imbalanced\" (Earth) for days equal to the shugenja's strife."
+            ^"Water" "Terrain at range 0-1 turns to muck and becomes ^\"Entangling\"."
+        }
+
+        # --- IMPORTUNE INVOCATIONS ---
+        # Once per scene, a character who knows 1+ invocations may attempt
+        # an unlearned invocation (even without prerequisites) by making a
+        # valuable offering to the kami (rare or unique item, lost forever).
+        # TN increased by 1 + 1 per school rank the prerequisite exceeds
+        # the character's rank. May channel as usual but perform only once.
+
+        # --- PREPARED INVOCATIONS ---
+        # Downtime activity: bind an invocation into an expendable vessel.
+        # Only one prepared invocation at a time (preparing another fades
+        # the first). Anyone holding it can unleash via listed activation.
+        # Check uses the invocation's ring and TN.
+        #
+        # Wards: Parchment marked by mystic symbols.
+        #   Preparation Skill: ^"Composition"
+        #   Ingredients: Calligraphy set, 1 bu of parchment.
+        #   Place on any surface, write a triggering condition. When
+        #   fulfilled, the invocation activates at its location.
+
+        # --- SPENDING (op) FOR INVOCATIONS ---
+        # General (op) options by element (GM decides applicability):
+        INVOCATION_OPPORTUNITIES {
+            ^"Air" {
+                "Air (op)(op)+: Choose one additional target per (op)(op) spent this way."
+                "+(op): Treat maximum range as 1 higher per (op) spent this way."
+                "(op): Reduce TN of next Movement action check by 1. Persists until end of next turn."
+                "Air +(op): If technique can target others, choose one additional target per (op) spent this way."
+                "Air +(op): If technique targets all in area, exclude 1 character per (op) spent this way."
+            }
+            ^"Earth" {
+                "(op): Increase physical resistance by 1 until beginning of next turn."
+                "+(op): If technique can target others, choose one additional target per (op) spent this way."
+                "+(op): Treat maximum range as 1 higher per (op) spent this way."
+                "(op): Damage inflicts physical instead of supernatural."
+                "(op): Damage has the ^\"Sacred\" quality."
+            }
+            ^"Fire" {
+                "+(op): Treat maximum range as 1 higher per (op) spent this way."
+                "+(op): If technique can target others, choose one additional target per (op) spent this way."
+                "(op): Reduce TN of next Attack action check by 1. Persists until end of next turn."
+                "+(op): Increase TN of checks to resist by 1 per (op) spent this way."
+                "Fire (op)(op)+: One target per (op)(op) must resist TN 3 ^\"Fitness\" (Air 4, Water 1) or suffer ^\"Burning\"."
+            }
+            ^"Water" {
+                "(op): Increase supernatural resistance by 1 until end of next turn."
+                "+(op): If technique can target others, choose one additional target per (op) spent this way."
+                "Water (op)(op)+: Treat max or min range as 1 higher or lower per (op)(op) spent this way."
+                "Water (op): Remove 1 fatigue from target or yourself."
+                "(op): Reduce TN of next Support action check by 1. Persists until end of next turn."
+            }
+        }
+
+        # ==================
+        # AIR INVOCATIONS
+        # ==================
+
+        # Air kami are fickle and capricious beings, but none are nimbler
+        # or more subtle. They bestow lightness of step, nimbleness of
+        # mind, and the ability to enhance or obscure sight.
+
+        ^"Blessed Wind" {
+            RANK 1
+            OTHER_NAMES "Bottled Duststorm (Alchemy), Tamon's Rebuke (Fortunist), Column of the World (Foreign)"
+            ACTIVATION "As a Support action, make a TN 2 Theology (Air) check targeting one position at range 0-3."
+            EFFECTS "If you succeed, you summon a swirling wind at the target position. Any character at range 0-2 of the chosen position counts as being in ^\"Obscuring\" terrain for Attack actions targeting them. Persists for one round, plus additional rounds equal to your bonus successes."
+            OPPORTUNITIES {
+                "Air (op): This effect persists until end of the scene instead."
+            }
+        }
+
+        ^"By the Light of the Lord Moon" {
+            RANK 1
+            OTHER_NAMES "Kitsuki's Eyes (Ancestral), Wind Scatters Shadow (Elemental), Reveal the World of Ghosts (Foreign)"
+            ACTIVATION "As a Scheme action, make a TN 2 Theology (Air) check targeting an area at range 0-2."
+            EFFECTS "If you succeed, you scry for each hidden character and concealed object (secret compartments, trap doors, concealed weapons) in the targeted area, revealing it with a luminous outline only you can perceive. Only reveals mundane concealment."
+            OPPORTUNITIES {
+                "Air +(op): Reveal up to one magically concealed object per (op) spent this way."
+                "Air (op)(op)+: Choose one additional character at range 0-1 per (op)(op) spent this way who can also see the objects."
+            }
+        }
+
+        ^"Call Upon the Wind" {
+            RANK 2
+            OTHER_NAMES "Gentle Wings of the Wren (Alchemy), Doji's Steps (Ancestral), Benten Smiles (Fortunist)"
+            ACTIVATION "As a Movement action, make a TN 4 Theology (Air) check targeting yourself."
+            EFFECTS "If you succeed, you augment your movement with a gust of wind that carries you aloft. You may move vertically freely and ignore the effects of terrain while flying. Persists until end of the scene."
+            OPPORTUNITIES {
+                "Air (op)(op)+: While flying, carry up to one additional willing character at range 0-2 per (op)(op) spent this way."
+            }
+        }
+
+        ^"Cloak of Night" {
+            RANK 1
+            OTHER_NAMES "Smoke of Stolen Light (Alchemy), Shroud of the North Wind (Fortunist), Walk in the Shadow World (Foreign)"
+            ACTIVATION "As a Scheme and Support action, make a Theology (Air) check targeting one object or character at range 0-1. TN equals the target's ^\"Silhouette\"."
+            EFFECTS "If you succeed, you augment the target with an illusion that renders it invisible to the naked eye. The object is still physically present and can be touched, smelled, or sensed with any normal sense other than vision. Persists for one round, plus additional rounds equal to your bonus successes."
+            OPPORTUNITIES {
+                "Air (op)(op)+: Choose one additional target of the same silhouette or smaller per (op)(op) spent this way."
+            }
+        }
+
+        ^"False Realm of the Fox Spirits" {
+            RANK 4
+            OTHER_NAMES "Ikoma Recalls a Tale (Ancestral), Lost in the Isawa Mori (Fortunist), Paint the Spyglass Lens (Foreign)"
+            ACTIVATION "As a Scheme action, make a TN 5 Theology (Air) check targeting one position at range 0-4."
+            EFFECTS "If you succeed, you summon illusory terrain at the target position extending range bands up to your Air Ring. A character unaware of its false nature must resist with a TN 4 ^\"Survival\" check (Earth 5, Fire 2) to realize its falsehood at a distance. Any physical contact reveals the lie (though the illusion stays in place). Persists for rounds equal to your Air Ring plus bonus successes (or that many minutes in narrative or downtime)."
+            OPPORTUNITIES {
+                "Air (op): This effect persists until end of the scene instead."
+                "Air +(op): The illusory terrain has one of the following terrain qualities per (op) spent this way: ^\"Dangerous\", ^\"Entangling\", or ^\"Obscuring\"."
+            }
+        }
+
+        ^"Grasp of the Air Dragon" {
+            RANK 3
+            OTHER_NAMES "Shikajin's Leap (Ancestral), Jikoju's Journey (Fortunist), The Wind's Cradle (Foreign)"
+            ACTIVATION "As an Attack action or a Support action, make a TN 4 Theology (Air) check targeting one character at range 3-5."
+            EFFECTS {
+                "If you succeed, you summon a gale-force wind to move the target range bands equal to your Air Ring plus bonus successes (max 6), ignoring intervening terrain. Set the target down gently (Support) or slam them into the ground (Attack)."
+                "Attack: Target must resist with a TN 4 ^\"Fitness\" check (Earth 5, Fire 2) or suffer the effects of a fall from range 3."
+            }
+            OPPORTUNITIES {
+                "Air +(op): Treat the maximum range as 1 higher per (op) spent this way."
+                "Air (op)(op)+: Increase the height of the fall the target suffers by 1 per (op)(op) spent this way."
+            }
+        }
+
+        ^"Mask of Wind" {
+            RANK 2
+            OTHER_NAMES "Paste of Moving Features (Alchemy), Furuyari's Face (Ancestral), Sadahako's Joke (Fortunist)"
+            ACTIVATION "As a Scheme and Support action, make a TN 3 Theology (Air) check targeting yourself."
+            EFFECTS "If you succeed, you augment yourself with an illusion that makes you look like someone else. An observer must resist with a TN 4 ^\"Sentiment\" check (Earth 5, Fire 2) to notice something amiss from appearance alone; if they succeed, they may spend (op) to recognize you specifically. Persists until end of the scene."
+            OPPORTUNITIES {
+                "Air (op): Alter your voice to sound like someone else. Separate TN 4 Sentiment check (Earth 5, Fire 2) to notice from voice alone; may spend (op) to recognize you."
+                "Air (op)(op)+: This effect persists for one additional scene per (op)(op) spent this way."
+            }
+        }
+
+        ^"Nature's Touch" {
+            RANK 1
+            OTHER_NAMES "Shinjo's Whispers (Ancestral), Run Alongside the Ki-Rin (Fortunist), Voice of the Glen King (Foreign)"
+            ACTIVATION "As a Support action, make a TN 1 Theology (Air) check targeting yourself."
+            EFFECTS "If you succeed, you augment yourself with the ability to speak to animals of the natural world (not Otherworldly or Tainted beings). Animals understand you within their ability but are not compelled to obey. Persists until end of the scene."
+            OPPORTUNITIES {
+                "Air (op): Until end of scene, you can understand animals' speech."
+                "Air (op): The animal acts favorably toward you, fulfilling one request that does not put it in danger without subsequent checks."
+                "Air (op)(op): You can communicate with an Otherworldly being this way, provided it has anything to say to you."
+            }
+        }
+
+        ^"Rise, Air" {
+            RANK 4
+            OTHER_NAMES "Dust of Incarnation (Alchemy), Guardian of Air (Ancestral), Summon the Air Djinn (Foreign)"
+            ACTIVATION "As a Support action, make a TN 6 Theology (Air) check targeting one position at range 3-5."
+            EFFECTS "If you succeed, you summon a Manifest Air Kami to fight for you. It appears at the target position and obeys you for two rounds, plus additional rounds equal to your bonus successes, taking its turn immediately after yours each round. When this effect ends, it departs or, if stirred to ire, begins to follow its own directives (will not attack you unless provoked)."
+            OPPORTUNITIES {
+                "Air (op): The manifest air kami arrives in a cyclone. Each character at range 0-2 of the target position must resist with a TN 4 ^\"Fitness\" check (Earth 5, Fire 2) or suffer supernatural damage equal to your Air Ring and be pushed 2 range bands."
+            }
+        }
+
+        ^"Secrets on the Wind" {
+            RANK 2
+            OTHER_NAMES "Whisper in Bayushi's Ear (Ancestral), Tenjin's Gift (Fortunist), The Fly on the Northern Wall (Foreign)"
+            ACTIVATION "As a Scheme action, make a TN 3 Theology (Air) check targeting one position at range 0."
+            EFFECTS "If you succeed, you scry with whispering winds that eavesdrop on the chosen position. The air kami can overhear anything said within range bands equal to your Air Ring. Persists for twenty-four hours or until you designate a new area. While this effect persists, you may spend an action to hear anything being said at the moment in the designated area."
+            OPPORTUNITIES {
+                "Air (op): You can also smell any scents in that area."
+                "Air (op): If another character discovers your invocation, the effect immediately ends, preventing them from identifying it as your handiwork."
+                "Air (op)(op)+: Persists for twenty-four additional hours per (op)(op) spent this way."
+            }
+        }
+
+        ^"Summon Fog" {
+            RANK 2
+            OTHER_NAMES "Soshi's Escape (Ancestral), Veil of the Dawn (Elemental), Jotei Curls in Rest (Fortunist)"
+            ACTIVATION "As a Support action, make a TN 2 Theology (Air) check targeting one position at range 0-4."
+            EFFECTS "If you succeed, you summon a fog bank extending 1 range band around the target position. This fog bank counts as ^\"Obscuring\" terrain."
+            OPPORTUNITIES {
+                "Air (op): Target a character instead of a position. The fog bank follows that character."
+                "Air +(op): The fog bank encompasses 1 additional range band per (op) spent this way (max range 6)."
+                "Air (op)(op): The fog bank becomes a freezing ice storm, also counting as ^\"Dangerous\" terrain."
+            }
+        }
+
+        ^"Tempest of Air" {
+            RANK 1
+            OTHER_NAMES "Stormy Vial (Alchemy), Howl of Isora (Fortunist), Flap of the Wyvern's Wings (Foreign)"
+            ACTIVATION "As an Attack action, make a TN 3 Theology (Air) check targeting each character at range 2-3."
+            EFFECTS "If you succeed, blasts of wind smite each target. Each target suffers supernatural damage equal to your Air Ring and must resist with a TN 4 ^\"Fitness\" check (Earth 5, Fire 2) or suffer ^\"Disoriented\"."
+            OPPORTUNITIES {
+                "Air +(op): Each target who fails their Fitness check is also pushed 1 range band away from you per (op) spent this way."
+            }
+        }
+
+        ^"Token of Memory" {
+            RANK 1
+            OTHER_NAMES "Riddle of Agasha (Ancestral), Trick of the Air Kami (Elemental), Ebisu's Joke (Fortunist)"
+            ACTIVATION "As a Scheme action, make a TN 2 Theology (Air) check targeting one position at range 0-1."
+            EFFECTS "If you succeed, you summon an illusion of one inanimate object at the target position. The illusory object's ^\"Silhouette\" is up to your bonus successes (beginning at 0). The item appears real but cannot be used. Any character must resist with a TN 4 Artisan, Smithing, or Design check (Earth 5, Fire 2) using a Scholar skill approach to discern its illusory nature. Persists until end of the scene."
+            OPPORTUNITIES {
+                "Air (op): The object can appear to be a creature or person (though it does not move)."
+                "Air +(op): Summon one additional illusory object in range per (op) spent this way."
+                "Air (op)(op): Illusory objects you summon have mass and can be used as if real (still inanimate, do not move on their own). They vanish when the effect ends."
+            }
+        }
+
+        ^"Vapor of Nightmares" {
+            RANK 3
+            OTHER_NAMES "Togashi Speaks Softly (Ancestral), Your Heart's Enemy (Elemental), Shadow of the Karmic Wheel (Fortunist)"
+            ACTIVATION "As an Attack action, make a TN 4 Theology (Air) check targeting one character at range 2-3."
+            EFFECTS "If you succeed, you summon an illusion of your target's greatest fear. Target must resist with a TN 4 ^\"Meditation\" check (Earth 5, Fire 2); if they fail, they suffer strife equal to your Air Ring plus bonus successes, and must immediately unmask if they become ^\"Compromised\" this way. If they unmask in the presence of the phantasm, they focus their attentions on the phantasm (attacking it, fleeing from it, or unleashing harsh words upon it) rather than dealing with you or anyone else. The phantasm persists for rounds equal to your Air Ring."
+            OPPORTUNITIES {
+                "Air (op): If a target fails the Meditation check, they also suffer ^\"Disoriented\"."
+                "Air (op): The phantasm persists until end of the scene instead."
+            }
+        }
+
+        ^"Wrath of Kaze-no-Kami" {
+            RANK 5
+            OTHER_NAMES "Bottled Typhoon (Alchemy), Utaku's Stampede (Ancestral), The Air Dragon's Fury (Elemental)"
+            ACTIVATION "As an Attack action, make a TN 5 Theology (Air) check targeting each character at range 2-4."
+            EFFECTS "If you succeed, you summon a hurricane that buffets all characters in range. At the end of each of your turns, each target in range must resist with a TN 4 ^\"Fitness\" check (Earth 5, Fire 2) or suffer supernatural damage equal to your Air Ring and ^\"Disoriented\". The hurricane persists for rounds equal to your Air Ring and can destroy objects or structures at GM's discretion."
+            OPPORTUNITIES {
+                "Air (op): You may end the hurricane at any time as an action."
+                "Air +(op): Each target who fails the Fitness check is hurled range bands away from you equal to (op) spent this way. Upon landing, each target hurled suffers the effects of falling the number of range bands they moved."
+                "Air (op)(op): While within the hurricane, you can fly, moving vertically and ignoring the effects of terrain."
+            }
+        }
+
+        ^"Yari of Air" {
+            RANK 1
+            OTHER_NAMES "Rod of the Wind Yari (Alchemy), Suijin's Spear (Fortunist), Halberd of the Djinn (Foreign)"
+            ACTIVATION "As a Support action, make a TN 1 Theology (Air) check to summon a spear made of swirling wind into your hand."
+            EFFECTS "If you succeed, you summon and ready a ^\"Yari\" made of wind, visible only by a wispy outline. It has the ^\"Concealable\" quality. When you make an Attack or Support action check using the invisible spear, during Step 5: Choose Kept Dice, add a kept (ring) set to an (ex)(st) result. The spear persists until the end of any turn in which it leaves your grip or until the end of the encounter."
+            OPPORTUNITIES {
+                "Air (op): The weapon you summon can be any kind of melee or ranged weapon instead of a spear."
+                "Air (op): After performing this action, you may immediately perform a Guard action using the weapon you summoned."
+                "Air (op)(op): You may summon a pair of weapons instead of a single weapon."
+            }
+        }
+
+        # ==================
+        # EARTH INVOCATIONS
+        # ==================
+
+        # Earth invocations focus on protection, defense against the
+        # Shadow, and slow but inevitable destruction.
+
+        ^"Armor of Earth" {
+            RANK 1
+            OTHER_NAMES "Hida's Shell (Ancestral), The Hand of Bishamon (Fortunist), Stone Shields (Foreign)"
+            ACTIVATION "As a Support action, make a TN 2 Theology (Earth) check targeting yourself."
+            EFFECTS "You summon and equip a suit of armor that grants physical resistance equal to your Earth Ring plus bonus successes and has the ^\"Cumbersome\" and ^\"Wargear\" qualities. Persists for rounds equal to your Earth Ring, then tumbles to the ground as loose stones."
+            OPPORTUNITIES {
+                "Earth (op): This effect persists until end of the scene instead."
+                "Earth (op): The armor has the ^\"Durable\" quality."
+                "Earth (op)(op): The armor has the ^\"Sacred\" quality."
+            }
+        }
+
+        ^"Bind the Shadow" {
+            RANK 2
+            OTHER_NAMES "Circle of Salt and Ash (Alchemy), Earth Kami's Scorn (Elemental), Judgment of the Ten-Thousand (Fortunist)"
+            ACTIVATION "As an Attack action, make a TN 3 Theology (Earth) check targeting one Otherworldly being at range 0-2."
+            EFFECTS "If you succeed, crackling arcs of jade light smite and purify your target; it must resist with a TN 4 ^\"Fitness\" (Air 2, Water 5) check or suffer ^\"Immobilized\" and ^\"Silenced\". Persists for rounds equal to your Earth Ring."
+            OPPORTUNITIES {
+                "Earth (op): Each target that fails is bound until end of the scene instead."
+                "Earth (op)(op): Each target that fails is bound for one year instead."
+                "Earth (op)(op)+: Increase TN of checks to resist by 1 per (op)(op) spent this way."
+                "Earth (op)(op)(op): Each target that fails is bound for one hundred years instead."
+            }
+        }
+
+        ^"Caress of Earth" {
+            RANK 1
+            OTHER_NAMES "Salve of the Stone Kami (Alchemy), Kaiu's Many Hands (Ancestral), Litany of Rebinding (Foreign)"
+            ACTIVATION "As a Support action, make a TN 3 Theology (Earth) check targeting one item with ^\"Damaged\" or ^\"Destroyed\" at range 0-1."
+            EFFECTS "If you succeed, you mend the target, removing the Damaged or Destroyed quality from it."
+            OPPORTUNITIES {
+                "Earth (op): One target gains the ^\"Durable\" quality until end of the scene."
+            }
+        }
+
+        ^"Courage of Seven Thunders" {
+            RANK 1
+            OTHER_NAMES "Akodo's Unflinching Stand (Ancestral), Unyielding Heart of Stone (Elemental), Walk into the Valley of Shadow (Foreign)"
+            ACTIVATION "As a Support action, make a TN 2 Theology (Earth) check targeting a number of characters up to your Earth Ring at range 0-2."
+            EFFECTS "If you succeed, you augment each target with vigorous resolve; each target increases their composure by your Earth Ring. Persists until end of the scene."
+            OPPORTUNITIES {
+                "Earth (op): Each target also increases their endurance by your Earth Ring while this effect persists."
+                "Earth +(op): Each target removes 1 strife per (op) spent this way."
+                "Earth (op)(op): This technique targets each friendly character in range instead."
+            }
+        }
+
+        ^"Earthquake" {
+            RANK 4
+            OTHER_NAMES "Akodo's Bellow (Ancestral), Swallowed by the Earth Kami (Elemental), Kyufoki's Hammer (Fortunist)"
+            ACTIVATION "As an Attack action, make a TN 5 Theology (Earth) check targeting each other character at range 0-3."
+            EFFECTS "If you succeed, you summon an earthquake. At the end of each of your turns, each target must resist with a TN 5 ^\"Fitness\" check (Air 3, Water 6) or suffer supernatural damage equal to twice your Earth Ring and ^\"Prone\". Persists for rounds equal to your Earth Ring."
+            OPPORTUNITIES {
+                "Earth (op): Persists until end of the scene, or you may dispel it at any time as an action."
+                "Earth +(op): Summon a chasm beneath one character in range; that character and anyone at range 0-1 of them fall range bands equal to (op) spent this way into the earth."
+                "Earth (op)(op)+: Destroy one building or fortification in range per (op)(op) spent this way. Each character inside must resist with a TN 3 ^\"Fitness\" check (Air 1, Water 4) to escape or suffer a ^\"Critical Strike\" with severity 10."
+            }
+        }
+
+        ^"Earth Becomes Sky" {
+            RANK 3
+            OTHER_NAMES "Vial of Explosive Earth (Alchemy), The Fall of Yama-no-Kami (Fortunist), Throwing the Avalanche (Foreign)"
+            ACTIVATION "As an Attack action, make a TN 3 Theology (Earth) check targeting one character at range 1-3."
+            EFFECTS "If you succeed, you summon a boulder to smite your target. The target suffers supernatural damage equal to your Earth Ring plus bonus successes and must resist with a TN 3 ^\"Fitness\" check (Air 1, Water 4) or suffer ^\"Prone\". If your target is already ^\"Prone\", double the damage."
+        }
+
+        ^"Embrace of Kenro-Ji-Jin" {
+            RANK 2
+            OTHER_NAMES "Earth Spider's Salve (Alchemy), Hiruma's Passage (Ancestral), Climbing the Earth Dragon's Back (Elemental)"
+            ACTIVATION "As a Support action, make a TN 2 Theology (Earth) check targeting yourself."
+            EFFECTS "If you succeed, you augment yourself with the ability to stick to earthen surfaces, traversing even vertical surfaces made of earth or stone. Persists for one round, plus additional rounds equal to bonus successes (or one minute in narrative)."
+            OPPORTUNITIES {
+                "Earth (op): This effect persists until end of the scene instead."
+                "Earth (op): You can pass through solid earth as if it was water when you move. Supernatural resistance against Earth invocations, kihō, and mahō equal to your Earth Ring."
+                "Earth (op)(op): Effects also apply to metal. Physical resistance against metal weapons equal to your Earth Ring."
+            }
+        }
+
+        ^"Grasp of Earth" {
+            RANK 1
+            OTHER_NAMES "Crystallizing Potion (Alchemy), Hida's Bindings (Ancestral), Frozen in Bishamon's Gaze (Fortunist)"
+            ACTIVATION "As an Attack action, make a TN 2 Theology (Earth) check targeting one character at range 0-2."
+            EFFECTS "If you succeed, you summon cracks in the earth; each target suffers supernatural damage equal to your Earth Ring and must resist with a TN 4 ^\"Fitness\" check (Air 2, Water 5) or suffer ^\"Prone\"."
+            OPPORTUNITIES {
+                "Earth (op): Each target that fails also suffers ^\"Immobilized\"."
+                "Earth (op): Reduce the damage each target suffers to 0."
+            }
+        }
+
+        ^"Jade Strike" {
+            RANK 1
+            OTHER_NAMES "Tears of the Sun Goddess (Ancestral), Breath of the Jade Dragon (Fortunist), The Earth's Sacred Rebuke (Foreign)"
+            ACTIVATION "As an Attack action, make a TN 2 Theology (Earth) check targeting one character at range 0-3."
+            EFFECTS {
+                "If you succeed and the target is an Otherworldly being, you smite and purify it with searing jade energy. It suffers a ^\"Critical Strike\" with severity equal to your Earth Ring plus bonus successes. The creature may spend (op)(op) from its check to resist to conceal that it has been affected, potentially concealing its Otherworldly nature (though it still suffers the effects)."
+                "If you succeed and the target is not Otherworldly, it suffers no ill effects."
+            }
+            OPPORTUNITIES {
+                "Earth (op): Each Otherworldly target suffers ^\"Silenced\" and cannot use ^\"Mahō\" until end of your next turn."
+            }
+        }
+
+        ^"Jurōjin's Balm" {
+            RANK 1
+            OTHER_NAMES "Lifeblood of the Earth Kami (Elemental), Jiro's Patience (Fortunist), Kiss of the Pond Woman (Foreign)"
+            ACTIVATION "As a Support action, make a TN 1 Theology (Earth) check targeting one character at range 0-1."
+            EFFECTS "If you succeed, you augment your target's fortitude. The target reduces TN of all checks to resist poison and disease by 2 (min 1). The target cannot become intoxicated via alcohol. Persists until end of the scene."
+            OPPORTUNITIES {
+                "Earth (op): Target also reduces TN of checks to resist ^\"Mahō\", ^\"Defiled\" terrain, and effects of Otherworldly beings by 2 (min 1)."
+                "Earth (op)(op): This effect persists for twenty-four hours instead."
+                "Earth (op)(op): You also mend your target, removing current poisons, the ^\"Dying\" condition, and suppressing disease symptoms until end of scene."
+            }
+        }
+
+        ^"Power of the Earth Dragon" {
+            RANK 3
+            OTHER_NAMES "Fortifying Stone Vial (Alchemy), Osano-Wo's Determination (Ancestral), Jurōjin's Verdant Blessing (Fortunist)"
+            ACTIVATION "As a Support action, make a TN 4 Theology (Earth) check targeting one character at range 0-2."
+            EFFECTS "If you succeed, you augment your target's resilience, increasing their endurance by your Earth Ring plus bonus successes. Persists for one round, plus additional rounds equal to bonus successes. Each target cannot be affected by this invocation again until end of scene."
+            OPPORTUNITIES {
+                "Earth (op): This effect persists until end of the scene instead."
+            }
+        }
+
+        ^"Rise, Earth" {
+            RANK 4
+            OTHER_NAMES "Guardian of Earth (Ancestral), Sentinels of Mount Sengen (Fortunist), Clay Warriors (Foreign)"
+            ACTIVATION "As a Support action, make a TN 6 Theology (Earth) check targeting one position that includes dirt, clay, or stone at range 0-3."
+            EFFECTS "If you succeed, you summon a Manifest Earth Kami to fight for you, which bursts forth at the target position. It obeys you for three rounds, plus additional rounds equal to bonus successes, taking its turn immediately after yours. When this effect ends, it departs or follows its own directives (will not attack you unless provoked)."
+            OPPORTUNITIES {
+                "Earth +(op): Increase the earth kami's endurance by 2 per (op) spent this way."
+                "Earth (op): The earth kami's stone fists unarmed attack profile gains the ^\"Sacred\" quality."
+                "Earth (op): The manifest earth kami creates a shockwave. Each character at range 0-2 of the chosen position must resist with a TN 4 ^\"Fitness\" check (Air 2, Water 5) or suffer physical or supernatural damage equal to your Earth Ring and ^\"Prone\"."
+            }
+        }
+
+        ^"Symbol of Earth" {
+            RANK 2
+            OTHER_NAMES "Mark of Crystal and Jade (Alchemy), Consecration of Ningen-do (Fortunist), Seal of the Pure Soil (Foreign)"
+            ACTIVATION "As a Support action, make a TN 3 Theology (Earth) check targeting one position at range 0-1."
+            EFFECTS "If you succeed, you summon a symbol that purifies the area at the target position. Each time an Otherworldly being attempts to move closer to the target, it suffers supernatural damage equal to your Earth Ring and must make a TN 4 ^\"Fitness\" check (Air 2, Water 5) or suffer ^\"Prone\". Persists for one round, plus additional rounds equal to bonus successes."
+            OPPORTUNITIES {
+                "Earth (op): Persists until end of the scene instead."
+                "Earth (op)(op): Persists for twenty-four hours instead."
+            }
+        }
+
+        ^"Tetsubō of Earth" {
+            RANK 1
+            OTHER_NAMES "The Blacksmith's Hammer (Alchemy), Akemi's Pillar (Ancestral), Bishamon's Kanabō (Fortunist)"
+            ACTIVATION "As a Support action, make a TN 1 Theology (Earth) check targeting one position at range 0-1 that includes stone, dirt, or clay."
+            EFFECTS "If you succeed, you summon and ready a ^\"Tetsubō\" made of stone. When you deal damage with an Attack action using this weapon, if a target is ^\"Prone\", that target suffers additional damage equal to your Earth Ring. Persists until the end of any turn in which it leaves your grip or until end of scene."
+            OPPORTUNITIES {
+                "Earth (op): The weapon can be any kind of melee weapon instead. It has the ^\"Durable\" quality."
+                "Earth (op): After performing this action, immediately perform a Guard action using this weapon."
+                "Earth (op)(op): The weapon has the ^\"Sacred\" quality."
+            }
+        }
+
+        ^"Tomb of Jade" {
+            RANK 5
+            OTHER_NAMES "Mercy of the Sun Goddess (Ancestral), Embrace of the Stone Kami (Elemental), Amaterasu's Petrifying Gaze (Fortunist)"
+            ACTIVATION "As an Attack action, make a TN 6 Theology (Earth) check targeting one character at range 0-1."
+            EFFECTS {
+                "If you succeed and the target is a Tainted being, you purify it, slowly transforming it into jade. At the beginning of each of the target's turns, reduce the value of each of its rings by 1. Persists for rounds equal to your Earth Ring plus bonus successes. If any ring is reduced to 0, the target is turned entirely into jade — it can only be freed if the statue is damaged or destroyed. The jade statue causes area at range 0-2 to count as ^\"Hallowed\" (Earth) terrain."
+                "If you succeed and the target is not Tainted, it suffers no ill effects."
+            }
+            OPPORTUNITIES {
+                "Earth (op): This effect persists until end of the scene instead."
+                "Earth (op): At a later point, you may release the target from its jade prison as an action."
+                "Earth +(op): Choose one condition per (op) spent: ^\"Dazed\", ^\"Disoriented\", ^\"Immobilized\", or ^\"Prone\". If the target is Otherworldly, it suffers the chosen conditions."
+            }
+        }
+
+        ^"Wall of Earth" {
+            RANK 1
+            OTHER_NAMES "Crystallizing Powder (Alchemy), Shape the Earth (Elemental), Sengen's Hands (Fortunist)"
+            ACTIVATION "As a Support action, make a TN 2 Theology (Earth) check targeting two positions at range 0-2."
+            EFFECTS "If you succeed, you summon a wall of earth between the two target points that is range 1 in thickness and range 3 in height. Each character standing where the wall erupts must resist with a TN 2 ^\"Fitness\" check (Air 1, Water 3) or suffer physical damage equal to your Earth Ring and ^\"Prone\". The wall endures as long as a mundane construction of the same material."
+            OPPORTUNITIES {
+                "Earth (op): The wall counts as terrain with one quality: ^\"Dangerous\", ^\"Entangling\", or ^\"Obscuring\"."
+                "Earth +(op): Treat maximum range as 1 higher per (op) spent this way."
+                "Earth (op)(op): Summon an Outpost fortification instead of a wall."
+                "Earth (op)(op)(op): Summon a Fortress fortification instead."
+                "Earth (op)(op)(op)(op): Summon a Castle fortification instead."
+            }
+        }
+
+        # ==================
+        # FIRE INVOCATIONS
+        # ==================
+
+        # Fire kami are ferocious and direct, and invocations of fire can
+        # be equally ferocious. These prayers are some of the most
+        # destructive a shugenja can summon.
+
+        ^"Armor of Radiance" {
+            RANK 2
+            OTHER_NAMES "Oil of Awakening Flames (Alchemy), Armor of Osano-Wo (Ancestral), Robes of the Ifrit (Foreign)"
+            ACTIVATION "As a Support action, make a TN 2 Theology (Fire) check targeting one set of armor at range 0-1."
+            EFFECTS "If you succeed, you augment the target armor, enveloping it in blinding radiance and searing heat (that do not affect the wearer). When a character at range 0-1 of the wearer begins their turn, they suffer ^\"Burning\" and ^\"Dazed\". Persists for one round, plus additional rounds equal to bonus successes."
+            OPPORTUNITIES {
+                "Fire (op): The armor gains the ^\"Wargear\" quality."
+                "Fire (op)(op): This effect persists until end of the scene instead."
+            }
+        }
+
+        ^"Biting Steel" {
+            RANK 1
+            OTHER_NAMES "Salve of Unyielding Metal (Alchemy), Awaken the Blade's Flame (Elemental), The Forge of Xing Guo (Fortunist)"
+            ACTIVATION "As a Support action, make a TN 2 Theology (Fire) check targeting one weapon at range 0-1."
+            EFFECTS "If you succeed, you augment the weapon with blazing energy. Increase the weapon's base damage by your Fire Ring. Persists for one round, plus additional rounds equal to bonus successes."
+            OPPORTUNITIES {
+                "Fire (op): After performing this action, if you have the enhanced weapon readied, immediately perform a Strike action with it."
+                "Fire +(op): While the effect persists, increase the weapon's deadliness by 1 per (op) spent this way."
+                "Fire (op)(op): This effect persists until end of the scene instead."
+            }
+        }
+
+        ^"Breath of the Fire Dragon" {
+            RANK 3
+            OTHER_NAMES "Oni's Sake (Alchemy), Togashi's Radiant Breath (Ancestral), Sigh of the Desert Winds (Foreign)"
+            ACTIVATION "As an Attack action, make a TN 4 Theology (Fire) check targeting one character at range 0-3."
+            EFFECTS "If you succeed, you exhale searing flames that smite the target. The target suffers supernatural damage equal to your Fire Ring plus two times your bonus successes and ^\"Burning\". Each character at range 0-1 of the target must make a TN 3 ^\"Fitness\" check (Air 4, Water 1) or suffer supernatural damage equal to your Fire Ring."
+        }
+
+        ^"Extinguish" {
+            RANK 1
+            ACTIVATION "As a Support action, make a TN 3 Theology (Fire) check targeting up to three mundane sources of fire at range 0-3."
+            EFFECTS "If you succeed, you summon the fire kami's energy into yourself. Extinguish each target flame and remove 1 fatigue per target source of fire extinguished."
+            OPPORTUNITIES {
+                "Fire (op)(op): Also end all persistent effects from other Fire invocations and flame-based supernatural effects in the area."
+            }
+        }
+
+        ^"Fukurokujin's Wit" {
+            RANK 1
+            OTHER_NAMES "Wisdom of the Kitsu (Ancestral), Ignite the Mind's Candle (Elemental), Mantra of the Scholar Kings (Foreign)"
+            ACTIVATION "As a Support action, make a TN 1 Theology (Fire) check targeting yourself."
+            EFFECTS "If you succeed, you augment your target's wits and cunning. When making checks, the target adds a kept (ring) set to a (su) result. Persists for one round, plus additional rounds equal to bonus successes."
+            OPPORTUNITIES {
+                "Fire (op): You may target another character at range 0-2 instead of yourself."
+            }
+        }
+
+        ^"Fury of Osano-wo" {
+            RANK 3
+            OTHER_NAMES "Orbs of Heavenly Fire (Alchemy), Hochiu's Final Stand (Ancestral), Reap the Sparking Seeds (Elemental)"
+            ACTIVATION "As an Attack action, make a TN 5 Theology (Fire) check targeting one character at range 0-4. Can only be performed outdoors. If the weather is already stormy, reduce TN by 1."
+            EFFECTS "If you succeed, you call forth lightning to smite your target. The target suffers supernatural damage equal to your Fire Ring plus three times your bonus successes. If a target is ^\"Incapacitated\" by this damage, they suffer a ^\"Critical Strike\" with severity 8."
+            OPPORTUNITIES {
+                "Fire (op): The target and any other characters at range 0-2 must make a TN 3 ^\"Meditation\" check (Air 4, Water 1) or suffer ^\"Dazed\" and strife equal to three times your Fire Ring."
+                "Fire +(op): Increase severity of any critical strikes inflicted as part of this action by 2 per (op) spent this way."
+            }
+        }
+
+        ^"Katana of Fire" {
+            RANK 1
+            OTHER_NAMES "Forging Fire into Steel (Alchemy), Echo of Short (Ancestral), Sword of Osano-Wo (Fortunist)"
+            ACTIVATION "As a Support action, make a TN 1 Theology (Fire) check to summon forth a blade of flame."
+            EFFECTS "If you succeed, you summon and ready a ^\"Katana\" made of fire. It has the ^\"Wargear\" quality. Damage inflicted with this weapon is supernatural rather than physical. Persists until the end of any turn in which it leaves your grip or until end of scene."
+            OPPORTUNITIES {
+                "Fire (op): The weapon can be any kind of melee weapon instead of a katana."
+                "Fire (op): You may immediately perform a Strike action using the weapon."
+                "Fire (op): You may summon and ready a pair of weapons instead."
+                "Fire (op): After you perform an Attack action with the weapon, each target must resist with a TN 3 ^\"Fitness\" check (Air 4, Water 1) or suffer ^\"Burning\"."
+            }
+        }
+
+        ^"Matsu's Battlecry" {
+            RANK 1
+            OTHER_NAMES "Embracing the Flames (Elemental), Haze of Battle (Foreign), Hotei's Curse (Fortunist)"
+            ACTIVATION "As a Scheme action, make a Theology (Fire) check targeting a number of characters up to your Fire Ring at range 0-2. TN equals the highest vigilance among your targets."
+            EFFECTS "If you succeed, you summon an illusion of a hellish scene only the target can perceive. The target receives 1 strife plus additional strife equal to bonus successes, and must resist with a TN 3 ^\"Meditation\" check (Air 4, Water 1) or immediately suffer ^\"Enraged\"."
+        }
+
+        ^"Ravenous Swarms" {
+            RANK 3
+            OTHER_NAMES "Forgotten Fury of Asahina (Ancestral), Dancing Orbs of Flame (Elemental), Inari's Kitsunebi (Fortunist)"
+            ACTIVATION "As a Support action, make a TN 3 Theology (Fire) check targeting one position containing a flammable object at range 0-1. The object is consumed."
+            EFFECTS {
+                "If you succeed, you summon fiery motes equal to your Fire Ring plus the ^\"Silhouette\" of the object consumed. When you succeed at an Attack action, you may spend motes up to your school rank to add one bonus success per mote spent. Persists until end of scene."
+                "After you perform a Fire invocation, you summon one additional fiery mote. Persists until end of scene."
+            }
+            OPPORTUNITIES {
+                "Fire (op): The motes only set nearby objects on fire when you will them to, rather than haphazardly."
+                "Fire (op): When you defend against damage, you may spend motes up to your Fire Ring to reduce damage by 1 per mote spent."
+            }
+        }
+
+        ^"Rise, Flame" {
+            RANK 4
+            OTHER_NAMES "Bulb of Incarnation (Alchemy), Guardian of Fire (Ancestral), Uzume's Handmaiden (Fortunist)"
+            ACTIVATION "As a Support action, make a TN 6 Theology (Fire) check targeting one position containing flammable material at range 0-3."
+            EFFECTS "If you succeed, you summon a Manifest Fire Kami. It consumes the flammable material, appearing in its position. It obeys you for two rounds, plus additional rounds equal to bonus successes, taking its turn immediately after yours. When this effect ends, it departs or follows its own directives (will not attack you unless provoked)."
+            OPPORTUNITIES {
+                "Fire (op): The fire kami bursts forth in searing flame. Each character at range 0-2 must resist with a TN 4 ^\"Fitness\" check (Air 5, Water 2) or suffer ^\"Burning\" and ^\"Dazed\"."
+                "Fire +(op): The fire kami consumes one additional flammable source in range per (op) spent this way. Increase its endurance by the silhouettes of all consumed objects."
+                "Fire (op): When the fire kami's fatigue exceeds its endurance, it detonates. Each character at range 0-3 must resist with a TN 5 ^\"Fitness\" check (Air 6, Water 3) or suffer supernatural damage equal to two times your Fire Ring and ^\"Burning\" and ^\"Dazed\"."
+            }
+        }
+
+        ^"The Cleansing Fire" {
+            RANK 1
+            OTHER_NAMES "Anointment of the Fire Dragon (Alchemy), Merciful Rage of Isawa (Ancestral), The Peace of Osano-Wo (Fortunist)"
+            ACTIVATION "As an Attack action, make a TN 1 Theology (Fire) check targeting each other character at range 0-2."
+            EFFECTS "If you succeed, you smite each target with a roaring burst of fire. Each target suffers ^\"Dazed\" and must resist with a TN 3 ^\"Fitness\" check (Air 4, Water 1) or suffer supernatural damage equal to your Fire Ring plus their shortfall and ^\"Burning\"."
+        }
+
+        ^"The Fires from Within" {
+            RANK 1
+            OTHER_NAMES "The Illuminating Light of Asako (Ancestral), The Riddle of Hotei (Fortunist), Extending the Fire-Heart (Foreign)"
+            ACTIVATION "As an Attack action, make a TN 3 Theology (Fire) check targeting a number of characters up to your Fire Ring at range 1-3."
+            EFFECTS "If you succeed, you smite each target with a stream of fire. Each target suffers supernatural damage equal to your Fire Ring plus bonus successes."
+            OPPORTUNITIES {
+                "Fire +(op): Treat maximum range as 1 higher per (op) spent this way."
+            }
+        }
+
+        ^"The Soul's Blade" {
+            RANK 5
+            OTHER_NAMES "Talon of the Fire Dragon (Alchemy), Heavenly Petal of the Chrysanthemum (Ancestral), Mountain Splitter (Foreign)"
+            ACTIVATION "As a Support action, make a TN 4 Theology (Fire) check to summon forth a blade of pure energy."
+            EFFECTS "If you succeed, you summon and ready a ^\"Katana\" or ^\"Naginata\" made of searing, crackling energy. Attacks made with this weapon inflict supernatural damage and ignore all forms of resistance. Persists until it leaves your grip or until end of scene."
+            OPPORTUNITIES {
+                "Fire (op): The weapon can be any kind of melee weapon instead."
+                "Fire (op): You may immediately perform a Strike action using the weapon."
+                "Fire (op): You may summon and ready a pair of weapons instead."
+                "Fire (op): One character you choose other than yourself may wield the weapon."
+                "Fire (op)(op): After you perform an Attack action with the weapon, each target must resist with a TN 4 ^\"Fitness\" check (Air 5, Water 2) or suffer ^\"Dazed\"."
+            }
+        }
+
+        ^"Wall of Fire" {
+            RANK 2
+            OTHER_NAMES "Igniting Powder of Combusting Ash (Alchemy), Chasing Osano-Wo (Fortunist), Walls of the Fire Palace (Foreign)"
+            ACTIVATION "As an Attack and Support action, make a TN 4 Theology (Fire) check targeting two positions at range 2-4."
+            EFFECTS "If you succeed, you summon a wall of flame between the target points that extends to range 1 in thickness and range 3 in height; this area counts as ^\"Dangerous\" terrain. Persists for one round plus additional rounds equal to bonus successes. Any character standing where the wall erupts suffers ^\"Dazed\" and must resist with a TN 2 ^\"Fitness\" check (Air 3, Water 1) or suffer supernatural damage equal to your Fire Ring and ^\"Burning\"."
+            OPPORTUNITIES {
+                "Fire (op): The wall of fire also counts as ^\"Entangling\" or ^\"Obscuring\" terrain (choose one)."
+            }
+        }
+
+        ^"Wings of the Phoenix" {
+            RANK 4
+            OTHER_NAMES "Isawa's Ascent (Ancestral), Flameform Transmutation (Alchemy), Hachiman's Fiery Steed (Fortunist)"
+            ACTIVATION "As a Support action, make a TN 4 Theology (Fire) check targeting yourself."
+            EFFECTS "If you succeed, you augment yourself with wings of flame. These flames do not harm you. You can move vertically and horizontally freely and ignore terrain while flying. Persists one round, plus additional rounds equal to bonus successes. While persisting, any terrain you fly over at range 0-3 is ignited and becomes ^\"Dangerous\" terrain until the beginning of your next turn; each character within suffers ^\"Dazed\" and must resist with a TN 2 ^\"Fitness\" check (Air 3, Water 1) or suffer supernatural damage equal to your Fire Ring and ^\"Burning\"."
+            OPPORTUNITIES {
+                "Fire +(op): While flying, carry up to one additional willing character at range 0-2 per (op) spent this way."
+                "Fire (op)(op): This effect persists until end of the scene instead."
+            }
+        }
+
+        # ==================
+        # WATER INVOCATIONS
+        # ==================
+
+        # Water invocations grant the shugenja speed and quick reflexes,
+        # as well as the ability to heal injuries and calm the fevered mind.
+
+        ^"Bō of Water" {
+            RANK 1
+            OTHER_NAMES "Kaimetsu-o's Paddle (Ancestral), Ebisu's Walking Stick (Fortunist), Staff of the Sorcerer (Foreign)"
+            ACTIVATION "As a Support action, make a TN 1 Theology (Water) check to summon a staff made of water from a nearby pool, stream, or airborne vapor."
+            EFFECTS "If you succeed, you summon and ready a ^\"Bō\" made of water. It has the ^\"Snaring\" quality. At the end of each round, you may transform this weapon into a different melee weapon. Persists until end of any turn in which it leaves your grip or until end of scene."
+            OPPORTUNITIES {
+                "Water (op): The weapon can be any kind of melee or ranged weapon instead."
+                "Water (op): You may immediately perform a Strike action using the weapon."
+                "Water (op): When performing an Attack action with this weapon, treat its minimum or maximum range as 1 higher or lower."
+            }
+        }
+
+        ^"Dance of Seasons" {
+            RANK 2
+            OTHER_NAMES "Salt of Seasonal Change (Alchemy), Kuriko's Earnest Wish (Ancestral), Spinning Uzume's Wheel (Fortunist)"
+            ACTIVATION "As a Movement and Support action, make a TN 3 Theology (Water) check targeting one position containing water (pool, river, snow/ice, mist) at range 1-3."
+            EFFECTS "If you succeed, you summon the essence of the seasons to freeze, thaw, or evaporate water at range 0-1 of the target position. Ice becomes solid ^\"Dangerous\" terrain. Vapor creates ^\"Obscuring\" terrain. Mud becomes ^\"Entangling\" terrain. Water within living beings is unaffected."
+            OPPORTUNITIES {
+                "Water +(op): Choose one additional target position per (op) spent this way."
+                "Water +(op): Attempt to encase in ice one character in the affected area per (op) spent this way. Each must resist with a TN 3 ^\"Fitness\" check (Earth 1, Fire 4) or suffer ^\"Immobilized\" and ^\"Disoriented\"."
+            }
+        }
+
+        ^"Dominion of Suijin" {
+            RANK 1
+            OTHER_NAMES "Iuchi's Window (Ancestral), All Rivers Meet Again (Elemental), Spies of the Garden Pond (Foreign)"
+            ACTIVATION "As a Movement and Scheme action, make a TN 2 Theology (Water) check targeting one position containing a body of water at range 0-1."
+            EFFECTS "If you succeed, you scry in the ripples. The target body of water displays an image of a second body of water of your choice and its surroundings as if the onlooker were just below the surface. The second body must be at range 0-6 and you must have concrete knowledge of it."
+            OPPORTUNITIES {
+                "Water (op): You can also hear (very muffled) noises through the pool."
+                "Water (op): Only you can see the vision; to others, the pool shows no images."
+                "Water (op): The location can be any distance from you (but must still be familiar)."
+                "Water (op)(op): You may use clouds, fog banks, snow, or sheets of ice as bodies of water for this technique."
+                "Water (op)(op)(op): You and a number of characters up to your Water Ring may pass through a temporary portal to the other location. One way only; you arrive soaked."
+            }
+        }
+
+        ^"Ever-Changing Waves" {
+            RANK 5
+            OTHER_NAMES "Elixir of Transmuting Form (Alchemy), Blessing of Megumi (Fortunist), Myriadic Forms (Foreign)"
+            ACTIVATION "As a Support action, make a TN 4 Theology (Water) check targeting yourself."
+            EFFECTS "If you succeed, you augment your body, transforming it into that of a natural animal of ^\"Silhouette\" 2. While in this form, use its ring values, derived attributes, abilities, and advantages with the physical or social type, but your own skill ranks and advantages with the mental or spiritual type. Persists until you choose to end it or are rendered ^\"Unconscious\". Do not remove fatigue or strife when reverting; if this causes fatigue to exceed endurance (or strife to exceed composure), suffer a ^\"Critical Strike\" with severity 5 (or become ^\"Compromised\")."
+            OPPORTUNITIES {
+                "Water (op): Transform into a different sentient species."
+                "Water (op): Transform into an Otherworldly being, such as a supernatural beast."
+                "Water +(op): Choose a new form of silhouette 1 higher or lower per (op) spent this way (min 0, max 6)."
+            }
+        }
+
+        ^"Hands of the Tides" {
+            RANK 3
+            OTHER_NAMES "Tracing the Lifeblood (Alchemy), Ikoma Tumbles with Akodo (Ancestral), Suijin's Command (Fortunist)"
+            ACTIVATION "As a Movement action, make a TN 5 Theology (Water) check targeting yourself and a number of other characters up to your Water Ring at range 1-4."
+            EFFECTS {
+                "If you succeed, you summon the targets. You may cause them to exchange their positions in space. Each target's original position must be occupied by a target, and each target must occupy a position."
+                "Each target receives 2 strife."
+            }
+            OPPORTUNITIES {
+                "Water +(op): Choose a new stance for one target per (op) spent this way."
+            }
+        }
+
+        ^"Heart of the Water Dragon" {
+            RANK 2
+            OTHER_NAMES "Vapors of Goodwill (Alchemy), Walking Beside Jurōjin (Fortunist), Mark of Resistance (Foreign)"
+            ACTIVATION "As a Support action, make a TN 3 Theology (Water) check targeting one character at range 0-2."
+            EFFECTS "If you succeed, you augment your target with spiritual fluidity. The target gains supernatural resistance equal to your Water Ring and removes 1 fatigue at the end of each round. Persists for one round, plus additional rounds equal to bonus successes. Each target cannot be affected by this invocation again until end of scene."
+            OPPORTUNITIES {
+                "Water (op)(op): When the target succeeds on a check to resist the effect of a kihō, ^\"Mahō\", or invocation, the character who used the technique must also make the check to resist that effect, or suffer the effect themself."
+            }
+        }
+
+        ^"Inari's Blessing" {
+            RANK 1
+            OTHER_NAMES "Miya's Gift (Ancestral), Feast of the Water Kami (Elemental), Oasis in the Desert (Foreign)"
+            ACTIVATION "As a Support action, make a TN 2 Theology (Water) check targeting one position at range 1."
+            EFFECTS "If you succeed, you summon a meal at the target position that can feed a number of people up to your Water Ring plus bonus successes."
+            OPPORTUNITIES {
+                "Water (op): The meal is particularly fortifying. Any character who partakes during downtime removes fatigue equal to your Water Ring."
+                "Water +(op): The meal can feed people equal to your Water Ring plus bonus successes times (op) spent this way instead."
+            }
+        }
+
+        ^"Path to Inner Peace" {
+            RANK 1
+            OTHER_NAMES "Jurōjin's Kiss (Alchemy), Transcendence of Asako (Ancestral), Touch of the Hot Springs (Elemental)"
+            ACTIVATION "As a Support action, make a TN 2 Theology (Water) check targeting yourself or another character at range 0-2."
+            EFFECTS "If you succeed, you mend your target's exhausted muscles. The target removes fatigue equal to your Water Ring plus bonus successes. Each target cannot be affected by this invocation again until end of scene."
+            OPPORTUNITIES {
+                "Water (op): Choose one condition: ^\"Bleeding\", ^\"Dazed\", ^\"Disoriented\", or Lightly Wounded. Remove that condition from each target."
+                "Water (op): Your target also removes strife equal to your bonus successes."
+            }
+        }
+
+        ^"Reflections of P'an Ku" {
+            RANK 1
+            OTHER_NAMES "Agasha's Vast Wisdom (Ancestral), Rumors of the Water Kami (Elemental), Whispers of the Steel (Foreign)"
+            ACTIVATION "As a Scheme action, make a TN 2 Theology (Water) check targeting one item at range 0-1."
+            EFFECTS "If you succeed, you scry to uncover all properties an item possesses, including its name, maker, mundane qualities, magical properties, curses, and sealed techniques (nemuranai)."
+            OPPORTUNITIES {
+                "Water (op): Gain knowledge of the item's origin in broad strokes (where it was forged, the clan of the individual who carried it longest, or similar)."
+                "Water (op): Target a character instead. Identify one invocation, kihō, mahō, or supernatural ability or item they possess, along with its name and general qualities."
+            }
+        }
+
+        ^"Rise, Water" {
+            RANK 4
+            OTHER_NAMES "Wine of Invocation (Alchemy), Guardian of Water (Ancestral), Isora's Attendant (Fortunist)"
+            ACTIVATION "As a Support action, make a TN 6 Theology (Water) check targeting one position containing a large quantity of water at range 0-3."
+            EFFECTS "If you succeed, you summon a Manifest Water Kami to fight for you. It appears from the targeted body of water and obeys you for two rounds, plus additional rounds equal to bonus successes, taking its turn immediately after yours. When this effect ends, it departs or follows its own directives (will not attack you unless provoked)."
+            OPPORTUNITIES {
+                "Water (op): The water kami attempts to swallow anyone inside it; each must resist with a TN 4 ^\"Fitness\" check (Earth 2, Fire 5) or be pulled in and begin suffocating. As an action, a trapped character may make a TN 3 ^\"Fitness\" check (Earth 1, Fire 4) to escape."
+                "Water (op): Upon arrival, the water kami may move range bands up to your Water Ring."
+                "Water +(op): Split the manifest water kami into smaller manifest water kami equal to (op) spent this way. Each has endurance equal to 12 divided by number of (op) spent (rounded up)."
+            }
+        }
+
+        ^"Stride the Waves" {
+            RANK 2
+            OTHER_NAMES "Elixir of Cork Properties (Alchemy), Kaimetsu-o's Road (Ancestral), Walking the Water Garden (Fortunist)"
+            ACTIVATION "As a Support action, make a TN 2 Theology (Water) check targeting one character at range 0-2."
+            EFFECTS "If you succeed, you summon a buoyant current. Even if the target cannot normally swim, they can control where they move in or on water. The target ignores negative effects of terrain while in water and does not suffocate while underwater. Persists until end of scene."
+        }
+
+        ^"Strike the Tsunami" {
+            RANK 3
+            OTHER_NAMES "Bottle of Oceanic Storms (Alchemy), Suitengu's Arrow (Fortunist), Calling the Wave (Foreign)"
+            ACTIVATION "As an Attack action, make a TN 4 Theology (Water) check targeting a number of characters up to your Water Ring at range 0-3. Must have a source of water."
+            EFFECTS "If you succeed, you smite your targets with a spray of water. Each target suffers supernatural damage equal to your Water Ring plus bonus successes. Each target must resist with a TN 3 ^\"Fitness\" check (Earth 1, Fire 4); you may move each target who fails range bands up to their shortfall in any direction."
+            OPPORTUNITIES {
+                "Water (op): Each target who fails the check to resist also suffers ^\"Bleeding\"."
+            }
+        }
+
+        ^"Suijin's Embrace" {
+            RANK 4
+            OTHER_NAMES "The Ocean in a Drop (Alchemy), Following Doji's Steps (Ancestral), Kissing the Water Kami (Elemental)"
+            ACTIVATION "As an Attack action, make a TN 4 Theology (Water) check targeting one character at range 1-3."
+            EFFECTS "If you succeed, you smite your target with lungfuls of seawater. The target suffers supernatural damage equal to your Water Ring plus two times bonus successes. If a target's fatigue exceeds their endurance this way, the target begins to suffocate for rounds equal to your Water Ring plus bonus successes or until you release them as a Support action."
+        }
+
+        ^"Sympathetic Energies" {
+            RANK 2
+            OTHER_NAMES "Compassion of Shinjo (Ancestral), Suijin Is Generous (Fortunist), Desert Pollen (Foreign)"
+            ACTIVATION "As a Support action, make a TN 2 Theology (Water) check to spread one chosen persistent invocation effect across a number of targets equal to your Water Ring at range 0-1."
+            EFFECTS "If you succeed, you augment the spiritual power of one persistent invocation effect already affecting one target. Each other target counts as being affected by it as well. Persists as long as the original effect persists on the original target."
+            OPPORTUNITIES {
+                "Water (op)(op): Choose a condition the target is suffering instead of a persistent invocation effect."
+            }
+        }
+
+        ^"The Rushing Wave" {
+            RANK 1
+            OTHER_NAMES "Utaku's Waterborne Steed (Ancestral), The Clay Kobune (Alchemy), Isora's Spinning Dance (Fortunist)"
+            ACTIVATION "As a Movement action, make a TN 2 Theology (Water) check targeting one character at range 0-1. Must have a large source of water nearby."
+            EFFECTS {
+                "If you succeed during a skirmish, you summon a rushing waterspout that propels the target. The target may immediately move 1 range band, plus additional range bands equal to bonus successes."
+                "If you succeed during a narrative or downtime scene, you summon a gentle current that doubles the target's speed across or through water. Persists until end of scene."
+            }
+        }
+
+        RULES {
+            #L5R310gH2iJ4kL6mN8oP0q: invocations_require_shugenja_school
+            #L5R311rS3tU5vW7xY9zA1b: invocations_use_theology_check
+            #L5R312cD4eF6gH8iJ0kL2m: invocations_no_void_element
+            #L5R313nO5pQ7rS9tU1vW3x: importune_invocations
+            #L5R310aB2cD4eF6gH8iJ1k: proper_offerings_reroll_blanks
+            #L5R310bS3tU5vW7xY9zA2c: channeling_reserved_dice
+            #L5R310cD4eF6gH8iJ0kL3m: spiritual_backlash_3_strife_on_kept
+            #L5R310dO5pQ7rS9tU1vW4x: prepared_invocations_and_wards
+        }
+    }
+
+    # ===========================
+    # RITUALS (ritual) — CEREMONIAL TECHNIQUES
+    # ===========================
+
+    ^"Ritual" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Rituals are religious ceremonies performed to appease the kami
+        # and draw forth their blessings. Unlike invocations, rituals are
+        # not the rarefied secrets of shugenja schools; instead, they are
+        # day-to-day practices performed by many religious functionaries
+        # throughout Rokugan. Most priests, shrine keepers, and court
+        # mystics know and perform rituals regularly. Many monks and
+        # shugenja also know how to perform rituals.
+        #
+        # Symbol: (ritual)
+        # Available to: Schools listing "rituals" among available techniques
+        # Activation: During downtime (and potentially other scenes at GM's discretion)
+
+        # ----- Rituals (alphabetical) -----
+
+        ^"Cleansing Rite" {
+            RANK 1
+            ACTIVATION "As a downtime activity, make a TN 3 Theology (Void) check targeting up to five characters to remove spiritual contaminants from the targets before they spread. Note: this cannot remove a ^\"Shadowlands Taint\" disadvantage once it has taken hold, but it can prevent this spiritual contamination from taking root after a character is exposed."
+            EFFECTS "If you succeed, remove the ^\"Afflicted\" condition from the target."
+            OPPORTUNITIES {
+                "Void (op)(op): If one or more targets is an ^\"Otherworldly\" being, you become aware of it after completing the ritual — but you do not know which target."
+                "Void (op)+: Choose one additional target per (op) spent this way."
+                "Void (op)+: Instead of targeting characters, you may target an area encompassing a number of range bands around you equal to (op) spent this way. Remove the ^\"Defiled\" terrain quality from this area. If it is a deeply unhallowed place that has long been the domain of evil, the ^\"Defiled\" quality returns after one day, plus additional days equal to your bonus successes."
+            }
+        }
+
+        ^"Commune with the Spirits" {
+            RANK 1
+            ACTIVATION "As a downtime activity or Support action, make a TN 1 Theology check using Air, Earth, Fire, Water, or Void to appeal to nearby spirits of that Element (appeal to the departed, such as ancestor spirits, and other non-elemental supernatural presences if using Void) for aid."
+            EFFECTS "If you succeed, choose and receive one of the following boons: (1) Sense the Kami — Detect all spirits and uses of their magic by shugenja within a number of range bands equal to the ring you used plus your bonus successes. (2) Spiritual Knowledge — Learn one fact the spirits know about the area. (3) Elemental Gift — The kami deliver a small amount of the Element in question to you (e.g., rain from water kami, sparks from fire kami, a gust from air kami, a stone from earth kami, or a found ancestor's belonging from Void)."
+            OPPORTUNITIES {
+                "(op): Reduce the TN of your next check to interact with or appeal to kami or supernatural presences of this Element by 1."
+                "(op)+: If you succeed, receive one additional boon per (op) spent this way. Each boon can only be received one time per activation."
+            }
+        }
+
+        ^"Divination" {
+            RANK 1
+            ACTIVATION "As a downtime activity, make a TN 2 Theology (Void) check targeting one character to see glimpses of their future."
+            EFFECTS "If you succeed, choose one of the following omens in the target's near future: (1) Omen of the Azure Dragon — The next time the target performs a check using an Artisan skill this game session, the target adds a kept (ring) set to an (su)(st) result. (2) Omen of the Black Tortoise — Same for a Scholar skill check. (3) Omen of the White Tiger — Same for a Martial skill check. (4) Omen of the Vermilion Bird — Same for a Social skill check. (5) Omen of the Weaver and the Cowherd — Same for a Trade skill check. If you fail, the GM chooses one of the above omens instead. The target cannot receive another divination until the next game session."
+            OPPORTUNITIES {
+                "(op): If you fail, an additional omen appears to you after the first. Choose one of the above omens in addition to the one the GM chose."
+            }
+        }
+
+        ^"Tea Ceremony" {
+            RANK 2
+            ACTIVATION "Once per game session, as a downtime activity using a tea set, make a TN 2 Performance (Void) check targeting yourself and a number of other characters up to your ranks in Culture, who are also participants. Up to one other participant may assist (see ^\"Assistance\")."
+            EFFECTS "Each target removes 3 strife, plus additional strife equal to your bonus successes."
+            OPPORTUNITIES {
+                "(op): Reduce the TN of each target's next check by 1."
+                "(op)+: Each target removes 1 fatigue, plus 1 fatigue per (op) spent this way."
+                "(op)(op): If you succeed, each target gains 1 Void point."
+            }
+        }
+
+        ^"Threshold Barrier" {
+            RANK 1
+            ACTIVATION "As a downtime activity, make a TN 2 Theology check using Air, Earth, Fire, Water, or Void targeting a threshold, gate, or other entryway at range 0-1."
+            EFFECTS "If you succeed, the threshold is barred against a particular entity type based on the ring chosen for one hour, plus additional hours equal to your bonus successes. When an entity of that type attempts to enter, it must resist with a TN 3 Meditation (Void) check or be repelled. Whether it succeeds or fails, you immediately become aware of its attempted entry. Entity types by ring: Air — Ethereal ^\"Otherworldly\" beings such as spirits and ghosts. Earth — Living ^\"Tainted\" beings. Fire — Undead beings with corporeal form. Water — Wild animals. Void — Humans."
+            OPPORTUNITIES {
+                "(op): Instead of protecting a threshold, you may protect the entirety of a sealed area extending a number of range bands around you no greater than your bonus successes."
+                "(op): If any beings of the type you are sealing the threshold against have passed through the threshold within the last twenty-four hours, you become aware of their passage."
+            }
+        }
+
+        RULES {
+            #L5R314yZ6aB8cD0eF2gH4i: rituals_performed_during_downtime_or_other_scenes_at_gm_discretion
+            #L5R315jK7lM9nO1pQ3rS5t: rituals_available_to_schools_listing_rituals
+            #L5R316uV8wX0yZ2aB4cD6e: rituals_cannot_remove_taint_once_taken_hold
+        }
+    }
+
+    # ===========================
+    # SHŪJI (shūji) — SOCIAL TECHNIQUES
+    # ===========================
+
+    ^"Shūji" DEF {
+        ALIAS "Shuji"
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Shūji are social techniques, leveraging that most powerful of
+        # human tools: communication. Shūji can be used in intrigues,
+        # duels, skirmishes, and other types of conflicts as common sense
+        # and the GM's discretion dictate.
+        #
+        # Symbol: (shūji)
+        # Available to: Schools listing "shūji" among available techniques
+        # Elemental classifications: Air, Earth, Fire, Water, Void
+
+        # ----- Air Shūji -----
+        # Air shūji are indirect, probing, and sometimes teasing. This
+        # style of conversation revolves around setting up subtle traps
+        # for others to fall into, then exploiting them. Air shūji hinge
+        # on details rather than the bigger picture, controlling the scope
+        # of conversation to deflect contrary evidence or logical argumentation.
+
+        ^"Artisan's Appraisal" {
+            RANK 2
+            ACTIVATION "When assessing an object or performance with an Artisan skill (Air), Performance (Air), or Games (Air) check, you may spend (op) in the following ways:"
+            OPPORTUNITIES {
+                "Air (op): Choose a ring; learn the value of that ring for the creator or performer and all advantages and disadvantages attached to that ring that are not of the curse type."
+                "Air (op): If the creator or performer is an NPC, learn their demeanor."
+            }
+        }
+
+        ^"Bend with the Storm" {
+            RANK 5
+            ACTIVATION "When you make a Social skill (Air) check targeting another character, you may spend (op) in the following way:"
+            OPPORTUNITIES {
+                "Air (op): Choose an advantage or disadvantage. The target comes to believe that you possess that advantage or disadvantage without your having to expend noticeable effort or state it directly. Further, the target believes that you do not know you have given this advantage or disadvantage away. If you do anything that could call this misconception into question, any character may resist with a TN 5 Sentiment check (Earth 6, Fire 3) to discern that the advantage or disadvantage is not real. This effect persists until the target is faced with incontrovertible evidence or succeeds on the check to resist."
+            }
+        }
+
+        ^"Cadence" {
+            RANK 1
+            ACTIVATION "When you make a Social skill (Air) check, you may spend (op) in the following ways:"
+            OPPORTUNITIES {
+                "Air (op): Convey a secret message that alters the meaning of what you are saying outwardly (or has nothing to do with it at all) to one character observing you who possesses this technique."
+                "Air (op)(op): Convey a secret message that alters the meaning of what you are saying outwardly (or has nothing to do with it at all) to one character observing you who does not possess this technique."
+            }
+        }
+
+        ^"Feigned Opening" {
+            RANK 2
+            ACTIVATION "As a Movement and Scheme action, make a Performance (Air) check targeting one character in the scene who is observing you. The TN is equal to the target's vigilance. This technique can only be used during skirmish and mass battle conflicts."
+            EFFECTS "If you succeed, reduce the TN of the next Attack checks against each target (or their cohort, in a mass battle) by 1 plus your bonus successes. This effect persists until the end of your next turn."
+            OPPORTUNITIES {
+                "Air (op)+: Choose one additional target with vigilance lower than or equal to the original target's per (op) spent this way."
+                "Air (op)+: In a mass battle, increase the TN of Attack checks targeting your cohort by 1, plus 1 per additional (op) spent this way."
+            }
+        }
+
+        ^"Prey on the Weak" {
+            RANK 2
+            ACTIVATION "As a Scheme action, make a TN 1 Courtesy (Air) check targeting a ^\"Compromised\" character."
+            EFFECTS "If you succeed, your target must choose one of the following: (1) Immediately unmask in a manner of their choosing based on the circumstances. (2) Forfeit glory equal to your Air Ring plus your bonus successes to leave the scene."
+            OPPORTUNITIES {
+                "Air (op)+: If the target chooses to unmask, you learn one of their disadvantages of their choice per (op) spent this way."
+                "Air (op)(op): If the target chooses to leave the scene, you notice their destination from the direction of their departure or overhear from the crowd where they will retreat."
+            }
+        }
+
+        ^"Rustling of Leaves" {
+            RANK 1
+            ACTIVATION "When you make a Social skill (Air) check to spread a rumor, you may spend (op) in the following way:"
+            OPPORTUNITIES {
+                "Air (op)+: Increase the TN of any check to trace the rumor back to you by 2 per (op) spent this way."
+            }
+        }
+
+        ^"The Wind Blows Both Ways" {
+            RANK 3
+            ACTIVATION "When you make a Courtesy or Performance (Air) check targeting another character, you may spend (op) in the following ways:"
+            OPPORTUNITIES {
+                "Air (op)+: The next time the target receives a glory award, increase the glory they gain by 1 per (op) spent this way. This effect persists until the end of the scene."
+                "Air (op)+: The next time the target forfeits or stakes glory, increase the glory they must forfeit or stake by 1 per (op) spent this way. This effect persists until the end of the scene."
+            }
+        }
+
+        ^"Whispers of Court" {
+            RANK 1
+            ACTIVATION "As a Scheme action, make a Courtesy (Air) check targeting each character in the scene. The TN of this check is equal to the lowest vigilance among your targets."
+            EFFECTS "If you succeed, you create a rumor that sweeps across the room like a storm. Everyone in the scene hears it, and characters with vigilance lower than your bonus successes even come to give it some credence. If spreading a rumor is your social objective in an intrigue, you score rhetorical points equal to your Air Ring plus your bonus successes."
+            OPPORTUNITIES {
+                "Air (op): Learn one other rumor that is spreading in the current scene."
+            }
+        }
+
+        ^"Wolf's Proposal" {
+            RANK 4
+            ACTIVATION "As a Scheme action, make a Courtesy or Performance (Air) check targeting any number of characters in the scene. The TN of this check is equal to the highest vigilance among your targets."
+            EFFECTS "If you succeed, each target behaves as though your honor is 10 higher or lower than its actual value, plus or minus an additional 10 for each bonus success (to a maximum honor value of 100 or a minimum honor value of 0). If you do anything that could call your perceived honor into question, any target may resist with a TN 4 Sentiment check (Earth 5, Fire 2) to determine your actual honor attribute. This effect persists until the end of the scene."
+            OPPORTUNITIES {
+                "Air (op): Choose a character in the scene. Learn if their honor is higher or lower than yours (the actual value)."
+            }
+        }
+
+        # ----- Earth Shūji -----
+        # Earth shūji focus on building others up through a combination of
+        # support, expectation, and pressure when needed. A character using
+        # this rhetoric speaks at a measured pace, weighing words carefully
+        # and developing an argument from the foundation up.
+
+        ^"Ancestry Unearthed" {
+            RANK 1
+            ACTIVATION "When you make a Scholar skill (Earth) or Social skill (Earth) check targeting a character, you may spend (op) as follows:"
+            OPPORTUNITIES {
+                "Earth (op): You know one sworn oath the character's family took in the past, and whether or not they have broken or bent it."
+                "Earth (op)(op): You know one secret of the character's family that they would prefer be forgotten, and have perhaps even worked to bury."
+                "Earth (op)(op)(op): You know something the character does not even know about their own ancestry."
+            }
+        }
+
+        ^"Civility Foremost" {
+            RANK 2
+            ACTIVATION "As a Scheme action, make a Command or Courtesy (Earth) check targeting one character to claim protection for an individual of your choice by rights of honor. The TN of the check is equal to the target's vigilance."
+            EFFECTS "If you succeed, the target must forfeit honor equal to your Earth Ring plus your bonus successes and suffer that much strife to perform an Attack or Scheme action targeting the chosen individual. This effect persists until the end of the scene, or until the target performs an Attack or Scheme action."
+            OPPORTUNITIES {
+                "Earth (op)+: Choose one additional target with vigilance lower than or equal to your first target's vigilance per (op) spent this way."
+            }
+        }
+
+        ^"Honest Assessment" {
+            RANK 1
+            ACTIVATION "As a Support action, make a TN 2 Courtesy (Earth) check to appraise the weaknesses of a character."
+            EFFECTS "If you succeed, choose one of the target's known disadvantages. The target does not apply that disadvantage to their checks until the end of the scene."
+            OPPORTUNITIES {
+                "Earth (op)+: Choose one additional disadvantage per (op) spent this way."
+                "Earth (op)(op): Reduce the TN of the target's next skill check using the ring the disadvantage is attached to by 2."
+            }
+        }
+
+        ^"Pillar of Calm" {
+            RANK 4
+            ACTIVATION "As a Scheme and Support action, make a Command (Earth) check targeting a number of characters up to your Earth Ring times your school rank. The TN of this check is equal to the highest strife among the targets."
+            EFFECTS "If you succeed while targeting all of the leaders involved in a conflict, you may de-escalate the conflict one level (from a mass battle to a skirmish, a skirmish to a duel, or a duel to an intrigue)."
+            OPPORTUNITIES {
+                "Earth (op)(op)+: You may de-escalate the conflict by one additional level per (op)(op) spent this way."
+            }
+        }
+
+        ^"Stonewall Tactics" {
+            RANK 1
+            ACTIVATION "When making a Social skill (Earth) or Martial skill (Earth) check targeting a character, you may spend (op) in the following way:"
+            OPPORTUNITIES {
+                "Earth (op)+: Increase the TN of any check the target makes that does not target you by 1 per (op) spent this way. This effect persists until the beginning of your next turn."
+            }
+        }
+
+        ^"Touchstone of Courage" {
+            RANK 3
+            ACTIVATION "As a Support action, make a TN 4 Command (Earth) check targeting any number of characters (or your cohort during a mass battle)."
+            EFFECTS "If you succeed during an intrigue, duel, or skirmish conflict, each target increases their composure by your Earth Ring. This effect persists until the end of the scene. If you succeed during a mass battle, increase your army's discipline by your Earth Ring plus your bonus successes. This effect persists until the end of the scene."
+            OPPORTUNITIES {
+                "Earth (op)(op): During an intrigue, duel, or skirmish, each target removes strife equal to your Earth Ring."
+                "Earth (op)(op): During a mass battle, your army removes panic equal to your Earth Ring."
+            }
+        }
+
+        ^"The Immovable Hand of Peace" {
+            RANK 5
+            ACTIVATION "Once per game session as a Scheme action, during a duel or skirmish, make a TN 5 Command (Earth) check targeting every character in the scene."
+            EFFECTS "If you succeed, the scene becomes an intrigue between you and the other principal characters. This effect persists for one round, plus additional rounds equal to your bonus successes. If you have not achieved a peaceful resolution by the time this effect ends, the scene returns to its previous state."
+            OPPORTUNITIES {
+                "Earth (op): You may also perform this action during a mass battle or other form of conflict (other than an intrigue)."
+            }
+        }
+
+        ^"Weight of Duty" {
+            RANK 1
+            ACTIVATION "When you make a Social skill (Earth) check targeting a character, you may spend (op) as follows:"
+            OPPORTUNITIES {
+                "Earth (op): Learn one way the target fears failing as a samurai."
+                "Earth (op)(op): Learn the target's ^\"Giri\"."
+            }
+        }
+
+        # ----- Fire Shūji -----
+        # Fire shūji focus on provocation in the most direct sense, eliciting
+        # a reaction immediately and with fervor. Anger, joy, despair, and the
+        # burning desire for justice are all tools of one who wields Fire shūji.
+        # A speaker can illuminate injustice or set hearts ablaze with pride,
+        # but it can also blind people to the wider situation or consequences.
+
+        ^"Bravado" {
+            RANK 4
+            ACTIVATION "As a Scheme action, make a Games (Fire) or Performance (Fire) check targeting any number of characters in the scene. The TN of this check is equal to the highest vigilance among your targets."
+            EFFECTS "If you succeed, each target behaves as though your glory is 10 higher or lower than its actual value, plus or minus an additional 10 for each bonus success (to a maximum glory value of 100 or a minimum glory value of 0). If you do anything that could call your glory into question, any character may resist with a TN 4 Sentiment check (Air 5, Water 2) to determine your actual glory attribute. This effect persists until the end of the scene."
+            OPPORTUNITIES {
+                "Fire (op): Choose a character in the scene. Learn if their glory is higher or lower than yours (the actual value)."
+            }
+        }
+
+        ^"Dazzling Performance" {
+            RANK 3
+            ACTIVATION "When making an Artisan skill (Fire), Games (Fire), or Performance (Fire) check, you may spend (op) in the following way:"
+            OPPORTUNITIES {
+                "Fire (op)+: The next time you receive a glory award this scene, increase the amount you receive by 1. If there is a character of higher status in the scene, increase it by 1 per (op) spent this way instead."
+            }
+        }
+
+        ^"Fanning the Flames" {
+            RANK 2
+            ACTIVATION "When making a Social skill (Fire) check targeting one or more characters, you may spend (op) in the following way:"
+            OPPORTUNITIES {
+                "Fire (op)+: One target gains the ^\"Dazed\" condition per (op) spent this way."
+                "Fire (op)(op)+: One target gains the ^\"Enraged\" condition per (op)(op) spent this way."
+            }
+        }
+
+        ^"Lightning Raid" {
+            RANK 2
+            ACTIVATION "Once per scene, as an Attack and Movement action, make a TN 3 Command (Fire) check targeting any number of characters in the scene (or one cohort in a mass battle)."
+            EFFECTS "If you succeed during a skirmish, each character increases their initiative by your Fire Ring plus your bonus successes at the beginning of the next round. If you succeed during a mass battle, one enemy leader's cohort suffers panic equal to your Fire Ring plus your bonus successes."
+            OPPORTUNITIES {
+                "Fire (op): During a skirmish, immediately perform a ^\"Strike\" action."
+                "Fire (op): During a mass battle, immediately perform an ^\"Assault\" action against the chosen enemy cohort's leader."
+            }
+        }
+
+        ^"Rallying Cry" {
+            RANK 3
+            ACTIVATION "As a Support action, make a TN 2 Command (Fire) or Performance (Fire) check targeting any number of characters in the scene (or one cohort in a mass battle)."
+            EFFECTS "If you succeed, the targets are energized and excited by your rhetoric. After Step 5: Choose Kept Dice, each target adds a kept (ring) set to an (su)(st) result. This effect persists until the end of your next turn."
+            OPPORTUNITIES {
+                "Fire (op)+: In a skirmish, each enemy in the scene suffers 1 strife per (op) spent this way."
+                "Fire (op)+: In a mass battle, the enemy army suffers 1 panic per (op) spent this way."
+            }
+        }
+
+        ^"Sear the Wound" {
+            RANK 5
+            ACTIVATION "When making a Social skill (Fire) check targeting one or more characters, you may spend (op) in the following way:"
+            OPPORTUNITIES {
+                "Fire (op)+: Choose a known disadvantage of one of your targets per (op) spent this way. That disadvantage applies to all of the target's checks until the end of the scene."
+            }
+        }
+
+        ^"Sensational Distraction" {
+            RANK 1
+            ACTIVATION "When making a Social skill (Fire) check targeting one or more characters, you may spend (op) in the following way:"
+            OPPORTUNITIES {
+                "Fire (op)+: When interacting with other characters, the target treats their vigilance as 1 lower per (op) spent this way; when interacting with you, the target treats their vigilance as 1 higher per (op) spent this way. This effect persists until the end of the scene."
+            }
+        }
+
+        ^"Stirring the Embers" {
+            RANK 1
+            ACTIVATION "When making a Social skill (Fire) check targeting one or more characters, you may spend (op) in the following way:"
+            OPPORTUNITIES {
+                "Fire (op)+: Choose a target and one of their known distinctions per (op) spent this way. Until the end of the scene, when that advantage applies to a check, the target may reroll up to three dice (instead of two)."
+            }
+        }
+
+        ^"Truth Burns through Lies" {
+            RANK 1
+            ACTIVATION "When making a Scholar skill (Fire) check to assess a character's story, you may spend (op) in the following way:"
+            OPPORTUNITIES {
+                "Fire (op): If there is a single statement upon which the character's story hinges, you determine what it is and what you would need to do to verify or disprove it."
+            }
+        }
+
+        # ----- Water Shūji -----
+        # Water shūji play to the heart rather than the mind, calling upon the
+        # listener to let their emotions guide them and be swept along without
+        # question. Camaraderie, shame, guilt, material needs, and base desires
+        # are all the domain of Water shūji. A skilled courtier can draw even
+        # the harshest enemies to the negotiating table by making it the path
+        # of least resistance.
+
+        ^"All in Jest" {
+            RANK 1
+            ACTIVATION "When you make a Commerce (Water), Courtesy (Water), or Performance (Water) check, you may spend (op) in the following way:"
+            OPPORTUNITIES {
+                "Water (op)+: If you forfeited honor as part of the check in order to say something rude or appeal to your target's base desires (greed, lust, laziness, etc.), regain 1 honor per (op) spent this way (see ^\"Forfeiting Social Attributes\")."
+            }
+        }
+
+        ^"Buoyant Arrival" {
+            RANK 5
+            ACTIVATION "As a Scheme action, make a Courtesy (Water) check targeting a number of characters up to your Water Ring. The TN of the check is equal to the vigilance of the character with the highest status among your targets."
+            EFFECTS "If you succeed, you may enter or leave the conversation gracefully. You need not forfeit honor or glory for interrupting, suddenly departing, or preempting someone else, regardless of the respective status of the participants."
+        }
+
+        ^"Ebb and Flow" {
+            RANK 3
+            ACTIVATION "As a Scheme or Support action, make a Courtesy (Water), Command (Water), or Games (Water) check targeting one character. The TN of this check is equal to the target's vigilance."
+            EFFECTS "If you succeed (and chose Scheme action), choose one of the target's advantages that you know; whenever it applies, invert it. This effect persists until the end of the scene. If you succeed (and chose Support action), choose one of the target's disadvantages you know; whenever it applies, invert it. This effect persists until the end of the scene."
+            OPPORTUNITIES {
+                "Water (op): Choose one additional advantage or disadvantage and apply the effect to it."
+                "Water (op)(op)+: Choose one additional target with vigilance lower than or equal to your first target's vigilance per (op)(op) spent this way."
+            }
+        }
+
+        ^"Regal Bearing" {
+            RANK 4
+            ACTIVATION "As a Scheme action, make a Command (Water) or Performance (Water) check targeting any number of characters in the scene. The TN of this check is equal to the highest vigilance among your targets."
+            EFFECTS "If you succeed, each target treats your status as being 10 higher or lower (to a maximum status of 100 or a minimum status of 0), plus or minus an additional 10 per bonus success. If you do anything that could call your status into question, any character may resist with a TN 4 Sentiment check (Earth 2, Fire 5) to determine your actual status attribute. This effect persists until the end of the scene."
+            OPPORTUNITIES {
+                "Water (op): Choose a character in the scene. Learn if their status is higher or lower than yours (the actual value)."
+            }
+        }
+
+        ^"Shallow Waters" {
+            RANK 1
+            ACTIVATION "When you make a Social skill (Water) check targeting a character, you may spend (op) as follows:"
+            OPPORTUNITIES {
+                "Water (op): Learn of one material item or worldly experience the target desires."
+                "Water (op)(op): Learn the target's ^\"Ninjō\"."
+            }
+        }
+
+        ^"Slippery Maneuvers" {
+            RANK 2
+            ACTIVATION "As a Movement and Support action, make a TN 2 Command (Water) check targeting any number of friendly characters in the scene (or your cohort during a mass battle). This technique can only be used during a skirmish or mass battle."
+            EFFECTS "If you succeed during a skirmish, choose a position containing terrain that you can see. Each target may immediately move 1 range band toward it. Attack checks targeting any of your targets inside the terrain treat the terrain as having the ^\"Obscuring\" terrain quality. This effect persists until the end of the scene. If you succeed during a mass battle, choose a piece of terrain you can see. You and your cohort may immediately move to occupy it if it is unoccupied. Attack action checks targeting you and your cohort while you are inside the terrain treat the terrain as having the ^\"Obscuring\" terrain quality. This effect persists until the end of the scene."
+            OPPORTUNITIES {
+                "Water (op): Each target is able to leverage ^\"Obscuring\" terrain to better effect; Attack action checks targeting them have their TN increased by 2 instead of 1. This effect persists until the end of the scene."
+            }
+        }
+
+        ^"Tributaries of Trade" {
+            RANK 2
+            ACTIVATION "Once per scene as a Scheme and Support action, make a TN 1 Commerce (Water) skill check to establish that you acquired a chosen item earlier. From a narrative standpoint, you procured this gift during your last opportunity (or sent an attendant to retrieve it) but are only revealing it now."
+            EFFECTS "If you succeed, you produce an item with a rarity less than or equal to 1 plus your bonus successes. You must still pay the price of the item."
+            OPPORTUNITIES {
+                "Water (op)+: Reduce the price you must pay for the item by one-quarter per (op) spent this way (to a minimum of one-quarter of the original price)."
+            }
+        }
+
+        ^"Well of Desire" {
+            RANK 1
+            ACTIVATION "When you make a Courtesy (Water) check to present a gift to a target, you may spend (op) as follows:"
+            OPPORTUNITIES {
+                "Water (op): To refuse your gift, your target must forfeit glory equal to your Water Ring. Additionally, if the gift is something that the target desires, the target also must suffer strife equal to its rarity to refuse it. If your target accepts the gift, reduce the TN of your next Social skill check targeting them by the rarity of the item (to a minimum of 1)."
+            }
+        }
+
+        # ----- Void Shūji -----
+        # Void shūji revolve around understanding and expressing the inner
+        # mysteries of the universe to help oneself and others move toward
+        # Enlightenment, selfless goals, or otherworldly ends. Some Void
+        # shūji are limited to a specific clan (listed with RESTRICTION).
+
+        ^"All Arts Are One" {
+            RANK 3
+            ACTIVATION "As a Support action, make a TN 4 Martial skill (Void), Games (Void), or Performance (Void) check to rapidly absorb information on a new activity covered by that skill."
+            EFFECTS "If you succeed, you immediately intuit how to wield a new weapon, play a new game, use a new instrument, or perform a new song, dance, or other task. You do not apply any TN increase that might be associated with dealing with something new to you."
+            OPPORTUNITIES {
+                "Void (op): Choose a ring. Reduce the TN of your next check using that ring for the chosen skill by 1. This effect persists until the end of your next turn (or until the end of the scene during a narrative scene)."
+            }
+        }
+
+        ^"A Samurai's Fate" {
+            RANK 4
+            ACTIVATION "As an action, make a TN 5 Command (Void) check targeting any number of characters (or your cohort, during a mass battle)."
+            EFFECTS "If you succeed during a skirmish, each target ignores any critical strikes with severity lower than your Void Ring plus your bonus successes. This effect persists until the end of the scene (at which point the injuries take effect). If you succeed during a mass battle, your army counts as having the Fearless Army ability: at the end of each round, your army removes panic equal to your glory rank. This effect persists until the end of the scene."
+        }
+
+        ^"Courtier's Resolve" {
+            RANK 1
+            ACTIVATION "Once per scene as a Support action, you may spend 1 Void point to recover from strife."
+            EFFECTS "Remove strife equal to your glory rank."
+        }
+
+        ^"Lady Doji's Decree" {
+            RANK 2
+            RESTRICTION "Crane Clan only"
+            ACTIVATION "Once per game session as an action, make a Courtesy (Void) check targeting a number of characters up to your school rank. The TN of this check is equal to the vigilance of the character with the highest status among your targets."
+            EFFECTS "If you succeed, your targets cannot perform Attack actions targeting you. This effect persists for one round, plus additional rounds equal to your bonus successes, or until you perform an Attack action."
+            OPPORTUNITIES {
+                "Void (op)+: Choose one additional target with status lower than your first target per (op) spent this way."
+                "Void (op)(op): Your targets also cannot perform Scheme actions targeting you."
+            }
+        }
+
+        ^"Lady Shinjo's Speed" {
+            RANK 2
+            RESTRICTION "Unicorn Clan only"
+            ACTIVATION "As a downtime activity, if you have a steed available, make a TN 2 Survival (Void) check to reach a destination with extreme swiftness."
+            EFFECTS "If you succeed, you reach the destination in half the time it would normally require. If you so desire, one character may ride along with you."
+            OPPORTUNITIES {
+                "Void (op): You may lead a number of willing characters with mounts of their own up to your school rank."
+            }
+        }
+
+        ^"Lord Akodo's Roar" {
+            RANK 2
+            RESTRICTION "Lion Clan only"
+            ACTIVATION "Once per game session as an action, make a TN 1 Command (Void) check targeting each hostile character within a number of range bands equal to your school rank."
+            EFFECTS "If you succeed, each target suffers the ^\"Dazed\" condition."
+            OPPORTUNITIES {
+                "Void (op)(op)+: After you perform this action, one other friendly character per (op)(op) spent this way at range 0-3 may immediately perform a ^\"Strike\" action targeting a ^\"Dazed\" character."
+            }
+        }
+
+        ^"Lord Bayushi's Whispers" {
+            RANK 2
+            RESTRICTION "Scorpion Clan only"
+            ACTIVATION "Once per game session, during a narrative scene or as a downtime activity, make a TN 2 Skulduggery (Void) check to uncover an informant who can give you information about a subject."
+            EFFECTS "If you succeed, you reveal one informant who can give you information about a topic of your choice. If the informant's profile is required, use an appropriate NPC of the GM's choice."
+            OPPORTUNITIES {
+                "Void (op): If you succeed, choose one skill. The informant has a number of ranks in that skill equal to your school rank and can perform checks with that skill to assist you until the end of the scene."
+            }
+        }
+
+        ^"Lord Togashi's Insight" {
+            RANK 2
+            RESTRICTION "Dragon Clan only"
+            ACTIVATION "Once per game session as an action, make a TN 2 Meditation (Void) check to seek cosmic wisdom regarding a quandary in front of you."
+            EFFECTS "If you succeed, you receive a brief vision or hear the voice of Togashi providing a hint regarding one way you might proceed (which the GM should furnish). This hint should not be the full answer, but it should help you move forward toward a solution or at least formulate a plan of action."
+            OPPORTUNITIES {
+                "Void (op): Reduce the TN of your first check to overcome the problem you are facing by your school rank (to a minimum of 1)."
+            }
+        }
+
+        ^"Rouse the Soul" {
+            RANK 5
+            ACTIVATION "When making a Social skill (Void) or Theology (Void) check targeting one or more characters, you may spend (op) in the following way:"
+            OPPORTUNITIES {
+                "Void (op)+: Remove one of the following conditions from one target per (op) spent this way: ^\"Afflicted\", ^\"Enraged\", ^\"Exhausted\", ^\"Intoxicated\", or ^\"Unconscious\"."
+            }
+        }
+
+        RULES {
+            #L5R317fG9hI1jK3lM5nO7p: shuji_social_techniques_usable_in_intrigues_duels_skirmishes_and_other_conflicts
+            #L5R318qR0sT2uV4wX6yZ8a: shuji_available_to_schools_listing_shuji
+            #L5R319bC1dE3fG5hI7jK9l: shuji_organized_by_elemental_classification
+        }
+    }
+
+    # ===========================
+    # MAHŌ (mahō) — DARK SORCERY
+    # ===========================
+
+    ^"Mahō" DEF {
+        ALIAS "Maho"
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Kansen are evil spirits, twisted kami that spill forth from Jigoku
+        # or were once kami corrupted within Rokugan. Those mortals who dare
+        # to wield the evil sorcery called mahō are known as mahō-tsukai.
+        # Reviled by society and hunted by sworn orders, mahō-tsukai often
+        # act subtly, disguising their corruption beneath a pleasant façade.
+        #
+        # Symbol: (mahō)
+        # Available to: Anyone with access to evil lore (ancient tome, kansen
+        #   mentor, or ^"Shadowlands Taint" disadvantage) and the will to
+        #   seize power at any cost
+
+        # --- Mahō Framework Rules ---
+
+        PROPER_SACRIFICES {
+            # Kansen require sacrifice to fuel mahō — usually blood (own or
+            # another's), but particularly evil acts can also suffice at GM's
+            # discretion.
+            #
+            # Exceptional sacrifice (killing a human victim or crossing a
+            # vital personal line): may reroll up to 3 blank rolled dice
+            # during the check. The offering is consumed.
+        }
+
+        SPIRITUAL_BACKLASH {
+            # When a mahō-tsukai generates 3 or more (st) on kept dice while
+            # performing a mahō technique, the mahō-tsukai suffers a critical
+            # strike with severity equal to their current strife. Then, the GM
+            # assigns the ^"Shadowlands Taint" disadvantage to one of the
+            # mahō-tsukai's rings that does not already have it.
+        }
+
+        CHANNELING_MAHO {
+            # Like invocations, mahō techniques can be channeled (see
+            # ^"Channeling"). However, for each die a character reserves
+            # while channeling a mahō technique, the character receives
+            # 1 fatigue.
+        }
+
+        IMPORTUNE_MAHO {
+            # Once per scene, a ^"Tainted" character may choose one mahō
+            # technique they have not learned (even if they do not meet the
+            # prerequisites) and make a sacrifice to the kansen. To importune
+            # mahō, a character must kill a human victim or cross a previously
+            # inviolable personal line (betray a close friend, abandon a
+            # personal ideal, allow despair to overwhelm them entirely). If
+            # the GM determines the kansen is satisfied, the character may
+            # perform the action associated with that technique. The character
+            # may channel this mahō as usual but can only perform the action
+            # once.
+        }
+
+        # --- Mahō Techniques ---
+
+        ^"Grip of Anguish" {
+            RANK 1
+            ACTIVATION "As an Attack action, make a Theology (Water) check targeting one living being at range 0-2. The TN of the check is equal to the target's vigilance."
+            EFFECTS "If you succeed, you curse your target, causing them to suffer supernatural damage equal to your Water Ring plus the number of your rings with a ^\"Shadowlands Taint\" disadvantage attached."
+            OPPORTUNITIES {
+                "Water (op): One target must resist with a TN 3 Fitness check (Earth 1, Fire 4) or suffer one of the following conditions of your choice: ^\"Dazed\", ^\"Disoriented\", ^\"Silenced\"."
+                "Water (op)+: Treat the maximum range of the technique as 1 higher per (op) spent this way."
+                "Water (op)+: Choose one additional target per (op) spent this way."
+                "Water (op)(op): One target must resist with a TN 3 Fitness check (Earth 1, Fire 4) or suffer one of the following conditions of your choice: ^\"Bleeding\", ^\"Immobilized\", or ^\"Lightly Wounded\"."
+            }
+        }
+
+        ^"Incite Haunting" {
+            RANK 1
+            ACTIVATION "As an Attack and Scheme action, make a Theology check targeting one character at range 0-1. This check uses any ring of your choice, and the TN of the check is equal to the target's vigilance."
+            EFFECTS "If you succeed, you curse your target, causing them to suffer the ^\"Afflicted\" condition. If you fail, the target rebuffs your efforts. If your shortfall is 2 or higher, the target also becomes aware of your attempted malediction."
+            OPPORTUNITIES {
+                "(op)+: Treat the maximum range of the technique as 1 higher per (op) spent this way."
+                "(op)+: Choose one additional target per (op) spent this way."
+            }
+        }
+
+        ^"Mark of Desecration" {
+            RANK 1
+            ACTIVATION "As a Support action, make a TN 2 Theology (Earth) check targeting a number of corpses up to your Earth Ring at range 0-3."
+            EFFECTS "If you succeed, you summon a ^\"Zombie Peasant\" from each target. You also curse an area encompassing 1 range band around each target's position, which gains the ^\"Defiled\" terrain quality."
+            OPPORTUNITIES {
+                "Earth (op)+: Choose one additional target per (op) spent this way."
+                "Earth (op)+: Increase each zombie's endurance by 1 per (op) spent this way."
+                "Earth (op)(op): Once per round, one zombie may use your skill ranks instead of its own for a check."
+                "Earth (op)(op)+: One target who was a warrior in life per (op)(op) spent this way rises as a ^\"Bushi Skeleton\" instead."
+            }
+        }
+
+        ^"Sinful Whispers" {
+            RANK 1
+            ACTIVATION "As an Attack and Scheme action, make a Theology (Air) check targeting one character with the ^\"Afflicted\" condition at range 0-4. The TN of the check is equal to the target's vigilance."
+            EFFECTS "If you succeed, you curse your target, sapping their will; they must answer your questions honestly (and find doing so unremarkable at the time). This effect persists for a number of rounds equal to your Air Ring."
+            OPPORTUNITIES {
+                "Air (op): The target does not remember what you asked, even if prompted to think about the conversation later."
+                "Air (op)(op)(op): You may give the target a single simple order. The target may ignore that order, but receives 2 strife at the end of each scene in which they disregard it. When the target becomes ^\"Compromised\", they must unmask and attempt to fulfill the order until the end of the scene."
+            }
+        }
+
+        ^"Unholy Fervor" {
+            RANK 1
+            ACTIVATION "As a Support action, make a Theology (Fire) check targeting one character at range 0-3. The TN of this check is equal to the target's vigilance."
+            EFFECTS "If you succeed, you curse the target with blinding fury; they suffer the ^\"Enraged\" condition. You also augment the target's corruption; they may treat each of their ^\"Shadowlands Taint\" disadvantages as an advantage that applies to any checks using its ring. This effect persists until the end of the scene."
+            OPPORTUNITIES {
+                "Fire (op): Each target receives strife equal to your Fire Ring and removes that much fatigue."
+                "Fire (op)+: Choose one additional target per (op) spent this way."
+            }
+        }
+
+        RULES {
+            #L5R320mN2oP4qR6sT8uV0w: maho_forbidden_throughout_empire_punishable_by_death
+            #L5R321xY3zA5bC7dE9fG1h: maho_requires_blood_sacrifice_exceptional_sacrifice_rerolls_3_blanks
+            #L5R322iJ4kL6mN8oP0qR2s: maho_spiritual_backlash_critical_strike_plus_taint
+            #L5R323tU5vW7xY9zA1bC3d: maho_channeling_incurs_1_fatigue_per_reserved_die
+            #L5R324eF6gH8iJ0kL2mN4o: maho_importune_once_per_scene_requires_exceptional_sacrifice
+        }
+    }
+
+    # ===========================
+    # NINJUTSU (ninjutsu) — SHINOBI TECHNIQUES
+    # ===========================
+
+    ^"Ninjutsu" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Ninjutsu are secret techniques passed down from shinobi masters
+        # to their students. They are hardly ever committed to paper, and
+        # are written only in the minds of their practitioners. Sneaking
+        # through shadows, poisoning foes, and vanishing without a trace —
+        # to employ these tactics is to stray from the path of Bushidō, but
+        # some are willing to pay this price for their family, clan, and empire.
+        #
+        # Symbol: (ninjutsu)
+        # Available to: Schools listing "ninjutsu" among available techniques
+
+        ^"Skulk" {
+            RANK 1
+            ACTIVATION "When you perform an Initiative or Attack check using Air, you may spend (op) as follows:"
+            OPPORTUNITIES {
+                "(op): If you are in ^\"Obscuring\" terrain, a crowd, or otherwise concealed from sight, one character with vigilance lower than or equal to your ranks in Skulduggery loses sight of you."
+            }
+        }
+
+        ^"Deadly Sting" {
+            RANK 2
+            ACTIVATION "As an Attack action, you may use one dose of a poison and make a TN 3 Martial Arts (Air) check using a readied ^\"Concealable\" weapon targeting one character within the weapon's range."
+            EFFECTS "If you succeed, apply the chosen poison to your weapon (see ^\"Poison\"). Then, the target suffers physical damage equal to the deadliness of your weapon plus your bonus successes."
+            OPPORTUNITIES {
+                "Air (op): Move 1 range band."
+                "Air (op)+: If you succeed, the target suffers a critical strike with severity 2, plus 1 per (op) spent this way."
+            }
+        }
+
+        ^"Noxious Cloud" {
+            RANK 3
+            ACTIVATION "As an Attack action, you may use two doses of any single poison and make a TN 2 Medicine (Air) check targeting each other character at range 0-2."
+            EFFECTS "If you succeed, each target suffers 3 physical damage, ignoring their resistance. This damage counts as being inflicted by a weapon envenomed with the poison you chose (see ^\"Poison\")."
+            OPPORTUNITIES {
+                "Air (op): Move 1 range band."
+                "Air (op)+: Until the end of the scene, the area at range 0-2 becomes ^\"Obscuring\" and ^\"Dangerous\" terrain."
+                "Air (op)(op)+: If you succeed, one target per (op)(op) spent this way suffers a critical strike with severity 2."
+            }
+        }
+
+        ^"Silencing Stroke" {
+            RANK 4
+            ACTIVATION "As an Attack action, make a TN 4 Martial Arts (Air) check using a readied weapon targeting one character within the weapon's range."
+            EFFECTS "If you succeed, the target suffers physical damage equal to your weapon's base damage and suffers the ^\"Silenced\" condition. Other characters beyond range 0-2 of the target do not notice that they have been struck for 1 round, plus additional rounds equal to your bonus successes."
+            OPPORTUNITIES {
+                "Air (op)+: If you succeed, the target suffers a critical strike with severity equal to the deadliness of your weapon plus 1 per (op) spent this way beyond the first."
+            }
+        }
+
+        RULES {
+            #L5R324eF6gH8iJ0kL2mN4o: ninjutsu_available_to_schools_listing_ninjutsu
+            #L5R325pQ7rS9tU1vW3xY5z: ninjutsu_secret_oral_tradition_rarely_written
+            #L5R326aB8cD0eF2gH4iJ6k: ninjutsu_strays_from_bushido
+        }
+    }
+
+    # ===========================
+    # INVERSIONS (inversion) — VOID TECHNIQUES
+    # ===========================
+
+    ^"Inversion" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # NOTE: Inversions are not in the Core Rulebook; they appear in
+        # sourcebooks (Celestial Realms, etc.). Included here as a
+        # category placeholder.
+        #
+        # Rare and dangerous techniques that manipulate the Void itself.
+        # Practiced by ishiken (Void shugenja) and those who commune
+        # directly with the nothingness between elements.
+        #
+        # Symbol: (inversion)
+        # Available to: Schools listing Inversions (primarily Void shugenja)
+
+        EXAMPLES {
+            ^"Void Awakening" RANK 1 "(inversion). Action: Sense supernatural presences and Void disturbances."
+            ^"Sever Ties" RANK 3 "(inversion). Action: Sever a spiritual connection or bond."
+            ^"Unmake" RANK 5 "(inversion). Action: Dissolve an object or effect into the Void."
+        }
+
+        RULES {
+            #L5R327lM9nO1pQ3rS5tU7v: inversions_require_ishiken
+            #L5R328wX0yZ2aB4cD6eF8g: inversions_cause_fatigue_on_strife
+            #L5R329hI1jK3lM5nO7pQ9r: inversions_unpredictable_consequences
+        }
+    }
+
+    # ===========================
+    # MANTRA (mantra) — MEDITATION TECHNIQUES
+    # ===========================
+
+    ^"Mantra" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # NOTE: Mantras are not in the Core Rulebook; they appear in
+        # sourcebooks (Celestial Realms, etc.). Included here as a
+        # category placeholder.
+        #
+        # Contemplative techniques combining meditation and spiritual
+        # focus. Mantras bridge kihō and invocations.
+        #
+        # Symbol: (mantra)
+        # Available to: Sourcebook schools (Celestial Realms, etc.)
+
+        RULES {
+            #L5R330sT2uV4wX6yZ8aB0c: mantras_meditation_focus
+            #L5R331dE3fG5hI7jK9lM1n: mantras_bridge_kiho_invocations
+        }
+    }
+
+    # Note: Technique prerequisites are now described within the
+    # ^"Technique" DEF above (prerequisites, waiver rules, = mark,
+    # losing special access). No separate DEF needed.
+}

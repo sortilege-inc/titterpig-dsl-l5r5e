@@ -1,0 +1,483 @@
+BASE "L5R5e_Core_Distinctions" {
+    NAME "Legend of the Five Rings 5th Edition - Core Distinctions"
+    VERSION "0.1"
+    RELEASE_DATE "2025-06-01"
+
+    # Core Rulebook: Specific Distinctions (pages 101-110)
+
+    ^"Ally [Name]" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You have proven yourself to someone, who is willing to help you (within reason). They are open to sharing what they know about most topics, whether via a face-to-face meeting or written correspondence. They are also willing to arrange introductions for you with people they know."
+            "When performing a check that benefits from your close relationship with the character (such as a Courtesy [Water] check to requisition an item through them or a Sentiment [Water] check to read their emotions), you may reroll up to two dice."
+        }
+    }
+
+    ^"Ambidexterity" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Physical"]
+        }
+
+        EFFECT {
+            "As you have no dominant hand, you can compensate if your right hand is injured or lost."
+            "When making a check for which your equal skill with both hands is a benefit (such as a Martial Arts [Melee] [Air] check to strike an unexpected blow with a weapon in your left hand or a Skulduggery [Air] check to stealthily pick someone's pocket), you may reroll up to two dice."
+        }
+    }
+
+    ^"Benten's Blessing" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Interpersonal", "Spiritual"]
+        }
+
+        EFFECT {
+            "After interacting with a character for one or more scenes, you know with certainty whether they are open to your romantic aspirations or if they are categorically uninterested."
+            "When performing a check for which the favor of the Fortune Benten is a benefit (such as an Aesthetics [Air] check to say something insightful about a piece of art or a Courtesy [Air] check to convince someone of your positive qualities), you may reroll up to two dice."
+        }
+    }
+
+    ^"Bishamon's Blessing" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Physical", "Spiritual"]
+        }
+
+        EFFECT {
+            "You recover from physical exhaustion twice as quickly as others."
+            "When performing a check for which the favor of this Fortune is a benefit (such as a Fitness [Water] check to recover from exhaustion or a Martial Arts [Unarmed] [Water] check to subdue a foe), you may reroll up to two dice."
+        }
+    }
+
+    ^"Blackmail on [Name]" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You have incriminating information on an individual, which you use to force them to help you even when doing so may damage their reputation. They will share what knowledge they have about a given person, item, location, or situation, whether through a face-to-face meeting or through written correspondence. They will also arrange for introductions with exclusive members of society or places of business."
+            "When performing a check to demand favors of the chosen individual (such as a Courtesy [Fire] check to remind them of the consequences of their disobeying you or a Command [Fire] check to order them to risk themself on your behalf), you may reroll up to two dice."
+        }
+    }
+
+    ^"Blessed Lineage" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Interpersonal", "Spiritual"]
+        }
+
+        EFFECT {
+            "Characters with status of 50 or higher understand that they might suffer a loss of prestige if they harm you, and thus do not choose to kill you as their first option, even if you are a political obstacle they would otherwise eliminate without hesitation."
+            "When performing a check for which your esteemed lineage is a benefit (such as a Command [Void] check to challenge someone's perception of a situation or a Government [Void] check to know the likelihood of a political eventuality), you may reroll up to two dice."
+        }
+    }
+
+    ^"Blissful Betrothal" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "Your spouse fulfills certain social duties in your name when you are absent (such as attending events or caring for family members), provides assistance in their areas of expertise, and offers counsel when you face a difficult decision."
+            "When performing a check for which your good relationship with your betrothed or spouse is a benefit (such as a Courtesy [Water] check to persuade someone from their family or clan to assist you), you may reroll up to two dice."
+        }
+    }
+
+    ^"Daikoku's Blessing" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal", "Spiritual"]
+        }
+
+        EFFECT {
+            "After spending one or more scenes in a relevant market, you can always discern whether a given commodity or service's value is going to rise or fall in the next month."
+            "When performing a check for which your strong financial knowledge benefits (such as a Government [Water] check to know where to acquire goods), you may reroll up to two dice."
+        }
+    }
+
+    ^"Dangerous Allure" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Physical", "Interpersonal"]
+        }
+
+        EFFECT {
+            "You always make an impression, and NPCs remember your name and face after interacting with you for one or more scenes (unless you take pains to disguise yourself)."
+            "When performing a check for which your good looks are a benefit (such as a Command [Fire] check to get someone to act in spite of the possible consequences or a Performance [Fire] check to incite emotion in someone), you may reroll up to two dice."
+        }
+    }
+
+    ^"Ebisu's Blessing" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Physical", "Spiritual"]
+        }
+
+        EFFECT {
+            "Laborers recognize you as a kindred spirit, and characters with status 30 or lower are innately trusting of you unless you give them reason not to be."
+            "When performing a check for which the blessing of this Fortune is useful (such as a Commerce [Earth] check to safely transport goods or a Labor [Earth] check to plow a field), you may reroll up to two dice."
+        }
+    }
+
+    ^"Famously Honest" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Fame", "Interpersonal"]
+        }
+
+        EFFECT {
+            "Other people have heard of you for your honesty, and they believe you by default unless given evidence to the contrary."
+            "When performing a check for which you can leverage your reputation for telling the truth (such as a Command [Air] check to convince someone of a statement's veracity, or a Commerce [Air] check to sell an item at an inflated price), you may reroll up to two dice."
+        }
+    }
+
+    ^"Famously Lucky" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Fame", "Interpersonal"]
+        }
+
+        EFFECT {
+            "Other people have heard of you for your good fortune, and they believe it by default unless given evidence to the contrary."
+            "When performing a check for which you need to leverage your reputation for having things turn out your way (such as a Command [Void] check to get your troops to put their faith in you utterly or a Games [Void] check to let fate decide the match), you may reroll up to two dice."
+        }
+    }
+
+    ^"Famously Reliable" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Fame", "Interpersonal"]
+        }
+
+        EFFECT {
+            "Other people have heard of you for your remarkable adherence to your oaths and responsibilities, even over and above most samurai, and they believe it by default unless given evidence to the contrary."
+            "When performing a check for which you need to leverage your reputation for keeping your oaths and bargains (such as a Command [Earth] check to calm a panicked soldier or a Performance [Earth] check to relate a tale that inspires patience), you may reroll up to two dice."
+        }
+    }
+
+    ^"Famously Successful" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Fame", "Interpersonal"]
+        }
+
+        EFFECT {
+            "Other people have heard of you for your ability to get results at any cost, and they believe it by default unless given evidence to the contrary."
+            "When performing a check for which you need to leverage your reputation for efficiency (such as a Courtesy [Fire] check to convince your lord to give you a position or a Tactics [Fire] check to get enemy troops to withdraw in the face of a show of force), you may reroll up to two dice."
+        }
+    }
+
+    ^"Famously Wealthy" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Fame", "Interpersonal"]
+        }
+
+        EFFECT {
+            "Other people have heard of you for your riches or ability to procure wealth, and they believe it by default unless given evidence to the contrary."
+            "When performing a check for which you need to leverage your reputation for access to resources (such as a Commerce [Water] check to buy goods on credit or a Courtesy [Water] check to win over a group of people), you may reroll up to two dice."
+        }
+    }
+
+    ^"Flexibility" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Physical"]
+        }
+
+        EFFECT {
+            "You can fit through spaces too tight for most people, allowing you access to places others cannot reach."
+            "When performing a check for which your physical flexibility is a benefit (such as a Performance [Water] check to perform a dance or a Martial Arts [Unarmed] [Water] check to grapple another person), you may reroll up to two dice."
+        }
+    }
+
+    ^"Fukurokujin's Blessing" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Mental", "Spiritual"]
+        }
+
+        EFFECT {
+            "You always know the nearest location where you can undertake research on a given subject, and can complete research in half the time it would take another character."
+            "When performing a check for which the blessing of this Fortune is a benefit (such as a Medicine [Fire] check to experiment with a cure for a strange new malady or a Survival [Fire] check to speculate on a creature's possible qualities based on its physiology), you may reroll up to two dice."
+        }
+    }
+
+    ^"Indomitable Will" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Mental", "Interpersonal"]
+        }
+
+        EFFECT {
+            "You can always choose to stand your ground, even when faced with untenable odds, supernatural terrors, or sorcerous powers that bend the minds of lesser souls."
+            "When performing a check for which you need to keep your cool when dealing with danger (such as a Command [Earth] check to give orders under pressure or a Meditation [Earth] check to resist the effects of fear), you may reroll up to two dice."
+        }
+    }
+
+    ^"Jurojin's Blessing" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Physical", "Spiritual"]
+        }
+
+        EFFECT {
+            "You do not contract mundane diseases, and you recover from poisons and supernatural maladies in half the time it would take someone else."
+            "When performing a check for which you need to survive and remain vital (such as a Fitness [Void] check to resist spiritual contamination or a Survival [Void] check to get by on bare minimum supplies), you may reroll up to two dice."
+        }
+    }
+
+    ^"Keen Balance" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Mental", "Physical"]
+        }
+
+        EFFECT {
+            "When moving across treacherous terrain (such as rooftops or the rigging of a ship), as long as nobody is hindering you, you do not fall."
+            "When performing a check for which your balance is a benefit (such as a Fitness [Earth] check to resist being knocked down or moved or a Seafaring [Earth] check to withstand getting seasick during a storm), you may reroll up to two dice."
+        }
+    }
+
+    ^"Keen Hearing" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Physical", "Mental"]
+        }
+
+        EFFECT {
+            "You can hear noises that others do not detect, and you can assess your environment by sound alone. Even in darkness, you can accurately pinpoint the location of people and other moving objects in your immediate vicinity."
+            "When performing a check for which you need to hear soft, distant, or subtle noises (such as a Courtesy [Air] check to eavesdrop at a distance where you are not noticed or a Survival [Air] check to listen to an animal's movement before springing a trap), you may reroll up to two dice."
+        }
+    }
+
+    ^"Keen Sight" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Physical", "Mental"]
+        }
+
+        EFFECT {
+            "You can spot details of objects at a much greater distance than others can, and you pick up on small visual details that others might overlook."
+            "When performing a check for which you need to spot details or see things at a distance (such as an Aesthetics [Water] check to spot minor details in an art piece or a Martial Arts [Ranged] [Water] check to hit a faraway target), you may reroll up to two dice."
+        }
+    }
+
+    ^"Keen Smell" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Physical", "Mental"]
+        }
+
+        EFFECT {
+            "You always remember scents you have experienced before, and you can identify by smell things that others would certainly overlook."
+            "When performing a check for which you need to use your sense of smell (such as a Labor [Fire] check to experiment with a new recipe or a Survival [Fire] check to determine if a plant is poisonous based on its smell), you may reroll up to two dice."
+        }
+    }
+
+    ^"Karmic Tie" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Interpersonal", "Spiritual"]
+        }
+
+        EFFECT {
+            "You have a supernatural tie with another character of your choosing, and as if you had a sixth sense, you can tell when the character to whom you are karmically tied is in danger or has died. You always know the general direction they are located in, even if they are separated from you by thousands of li."
+            "When performing a check to act on behalf of the one with whom you share a bond (such as a Composition [Void] check to express your truest feelings in a poem or a Martial Arts [Melee] [Void] check to fight on their behalf), you may reroll up to two dice."
+        }
+    }
+
+    ^"Kisshōten's Blessing" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Physical", "Spiritual"]
+        }
+
+        EFFECT {
+            "Children enjoy being around you and are much more receptive to your demands. Your own children (if you have any) are particularly blessed with health, beauty, happiness, and luck."
+            "When performing a check for which you need to communicate with children (such as a Command [Water] check to order them around or a Performance [Water] check to entertain them), you may reroll up to two dice."
+        }
+    }
+
+    ^"Large Stature" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Physical"]
+        }
+
+        EFFECT {
+            "You can easily reach objects on high shelves, are easy to spot in a crowd, can see over other people, and tend to hit your head on doorways."
+            "When performing a check for which you can take advantage of your size (such as a Fitness [Earth] check to hold up a heavy object or a Labor [Earth] check to build the frame of a house), you may reroll up to two dice."
+        }
+    }
+
+    ^"Paragon of a Bushidō Tenet" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Various"
+            ^"Types" LIST ["Mental", "Virtue"]
+        }
+
+        EFFECT {
+            "Pick One: Compassion (Water), Courage (Fire), Courtesy (Air), Duty and Loyalty (Earth), Honor (Void), Righteousness (Void), Sincerity (Void). A character may have multiple instances of this advantage for different tenets. Each tenet counts as a separate advantage. You believe utterly in the chosen Bushidō tenet, and others instinctively discern that your actions are genuine when you act in accordance with it."
+            "When performing a check for which you need to convince others of, or leverage your faith in, the Bushidō tenet (such as a Performance check to recount a tale that impresses its importance upon others or a Martial Arts [Melee] check to take up arms for this cause), you may reroll up to two dice."
+        }
+    }
+
+    ^"Precise Memory" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You can recall anything you have read or heard within the current game session exactly, and you often dredge up older facts with much greater ease than others."
+            "When performing a check for which you must recall details precisely (such as a Games [Earth] check to recall the opening moves of a classic defensive strategy in shōgi or a Government [Earth] check to remember the specifics of a historical event), you may reroll up to two dice."
+        }
+    }
+
+    ^"Quick Reflexes" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Physical", "Interpersonal"]
+        }
+
+        EFFECT {
+            "At the start of each scene, you can always grab an item within reach or reposition it a few paces within your environment. The GM is the final arbiter of how much you can prepare or how much distance you can achieve before the rest of the scene begins."
+            "When performing a check for which you must act swiftly (such as a Meditation [Fire] check to generate initiative during a duel or a Survival [Fire] check to put together a makeshift weapon), you may reroll up to two dice."
+        }
+    }
+
+    ^"Seasoned" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Mental", "Interpersonal"]
+        }
+
+        EFFECT {
+            "You are older and more worldly than most of your fellows and have learned a few things along the way. While you do not start with additional experience, your experience expenditures might reflect revealing aspects of yourself you have held back to avoid overshadowing your younger companions. You have met members of many cultures and organizations, and you know how to properly behave in almost any city in Rokugan and perhaps even beyond. You also know many other older people, and the number and variety of your acquaintances often surprises your younger companions."
+            "When performing a check for which your hard-earned wisdom is an advantage (such as a Courtesy [Void] check to impart wisdom to an impetuous comrade or a Theology [Void] check to intuit whether a spirit will appreciate your offering), you may reroll up to two dice."
+        }
+    }
+
+    ^"Sixth Sense" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Spiritual"]
+        }
+
+        EFFECT {
+            "You have an instinctive sense of supernatural beings, and you can feel the presence of spirits and similar entities even when they have not chosen to reveal themselves. This feeling is ominous in the presence of beings with evil intentions and neutral when the beings are simply going about their business as usual."
+            "When performing a check for which you need to follow your hunches (such as a Meditation [Void] check to generate initiative during a duel or a Theology [Void] check to detect a snarl in the invisible threads of the universe), you may reroll up to two dice."
+        }
+    }
+
+    ^"Small Stature" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Physical"]
+        }
+
+        EFFECT {
+            "You can fit into small spaces, can hide behind other people, are hard to spot in a crowd, and sometimes need assistance reaching objects on high shelves."
+            "When performing a check for which being small is helpful (such as a Fitness [Air] check to resist a critical strike by evading or a Skulduggery [Air] check to pick someone's pocket), you may reroll up to two dice."
+        }
+    }
+
+    ^"Subtle Observer" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You can understand the cues that people give off while speaking, and you can read people's lips and facial expressions to understand what they are saying, even if you cannot hear them."
+            "When performing a check for which you need to spot or use small details of other people nearby (such as a Courtesy [Air] check to reveal an unpleasant truth pleasantly or a Sentiment [Air] check to detect someone else's weaknesses), you may reroll up to two dice."
+        }
+    }
+
+    ^"Support of [One Group]" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You have proven yourself to a particular group, which is willing to help you when doing so will not damage its reputation. Its members will offer you their hospitality, including meals, a place to rest, and medical attention if they have a healer. They will also grant you access to their other facilities, such as libraries, smithies, or stables."
+            "When performing a check to interact with the members of the chosen group that relies on your rapport (such as a Command [Water] check to issue them orders or a Performance [Water] check to cause an audience of them to desire something), you may reroll up to two dice."
+        }
+    }
+}

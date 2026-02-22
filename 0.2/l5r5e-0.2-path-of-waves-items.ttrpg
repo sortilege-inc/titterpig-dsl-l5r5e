@@ -1,0 +1,444 @@
+EXTENSION "L5R5e_Path_of_Waves_Items" EXTENDS "L5R5e_Core_Systems" {
+    NAME "Legend of the Five Rings 5th Edition - Path of Waves: New Gear, Weapons, and Items"
+    VERSION "0.1"
+    RELEASE_DATE "2025-06-01"
+
+    # Path of Waves (Chapter 3): New weapons (Rokugani peasant,
+    # Ivory Kingdoms, shields, improvised), personal effects,
+    # profession kits, forbidden effects, item patterns,
+    # and the Hand to Mouth economic subsystem.
+
+    # ===========================
+    # NEW WEAPONS
+    # ===========================
+
+    # --- AXES ---
+
+    ^"Kuwa" DEF {
+        APPLIES TO [^"Weapon"]
+        PROPERTIES {
+            ^"Category" STRING "Axes"
+            ^"Skills" STRING "Melee"
+            ^"Range" STRING "1"
+            ^"Damage" INTEGER 4
+            ^"Deadliness" INTEGER 2
+            ^"Grips" STRING "1-hand: no bonus; 2-hand: Damage +2, Deadliness +2, Range 1-2"
+            ^"Qualities" LIST OF STRING ["Cumbersome", "Mundane"]
+            ^"Rarity" INTEGER 3
+            ^"Cost" STRING "4 koku"
+            ^"Description" STRING "A weaponized farming hoe, wielded similarly to a two-handed axe. The wielder uses the sharp end to fling dirt and follows up with a devastating chop."
+        }
+    }
+
+    # --- BLUNT WEAPONS ---
+
+    ^"Gada" DEF {
+        APPLIES TO [^"Weapon"]
+        PROPERTIES {
+            ^"Category" STRING "Blunt Weapons"
+            ^"Skills" STRING "Melee"
+            ^"Range" STRING "1"
+            ^"Damage" INTEGER 6
+            ^"Deadliness" INTEGER 3
+            ^"Grips" STRING "1-hand: no bonus; 2-hand: Deadliness +3"
+            ^"Qualities" LIST OF STRING ["Ceremonial", "Cumbersome", "Wargear"]
+            ^"Rarity" INTEGER 9
+            ^"Cost" STRING "50 koku"
+            ^"Description" STRING "An Ivory Kingdoms heavy mace: long shaft capped with spherical head and pointed spike. Red-coral versions are effective against rakshasa."
+        }
+    }
+
+    # --- SWORDS ---
+
+    ^"Talwar" DEF {
+        APPLIES TO [^"Weapon"]
+        PROPERTIES {
+            ^"Category" STRING "Swords"
+            ^"Skills" STRING "Melee"
+            ^"Range" STRING "1"
+            ^"Damage" INTEGER 4
+            ^"Deadliness" INTEGER 6
+            ^"Grips" STRING "1-hand: no bonus"
+            ^"Qualities" LIST OF STRING ["Cumbersome", "Durable", "Razor-Edged"]
+            ^"Rarity" INTEGER 8
+            ^"Cost" STRING "35 koku"
+            ^"Description" STRING "The Ivory Kingdoms curved saber with cross-guarded hilt and knuckle-bow. Requires specialized one-handed grip training. Greater cutting power at the wider tip."
+        }
+    }
+
+    ^"Urumi" DEF {
+        APPLIES TO [^"Weapon"]
+        PROPERTIES {
+            ^"Category" STRING "Swords"
+            ^"Skills" STRING "Melee"
+            ^"Range" STRING "1-2"
+            ^"Damage" INTEGER 4
+            ^"Deadliness" INTEGER 5
+            ^"Grips" STRING "1-hand: no bonus"
+            ^"Qualities" LIST OF STRING ["Cumbersome", "Razor-Edged", "Snaring"]
+            ^"Rarity" INTEGER 9
+            ^"Cost" STRING "50 koku"
+            ^"Description" STRING "A whip sword consisting of 1-3 flexible steel blades mounted to a talwar handle. Requires mastery of both swordfighting and chain weaponry. Excels at keeping multiple foes at bay."
+        }
+    }
+
+    # --- SPECIALIST WEAPONS ---
+
+    ^"Chain Whip" DEF {
+        APPLIES TO [^"Weapon"]
+        PROPERTIES {
+            ^"Category" STRING "Specialist Weapons"
+            ^"Skills" STRING "Melee"
+            ^"Range" STRING "1-2"
+            ^"Damage" INTEGER 3
+            ^"Deadliness" INTEGER 5
+            ^"Grips" STRING "1-hand: no bonus"
+            ^"Qualities" LIST OF STRING ["Razor-Edged", "Snaring"]
+            ^"Rarity" INTEGER 6
+            ^"Cost" STRING "4 koku"
+            ^"Description" STRING "Stiff metal rods connected by chain loops with wooden grip and sharp metal dart. Used single-handed."
+        }
+    }
+
+    ^"Sling" DEF {
+        APPLIES TO [^"Weapon"]
+        PROPERTIES {
+            ^"Category" STRING "Specialist Weapons"
+            ^"Skills" STRING "Ranged"
+            ^"Range" STRING "2-3"
+            ^"Damage" INTEGER 3
+            ^"Deadliness" INTEGER 3
+            ^"Grips" STRING "1-hand: no bonus"
+            ^"Qualities" LIST OF STRING ["Concealable", "Mundane"]
+            ^"Rarity" INTEGER 2
+            ^"Cost" STRING "1 bu"
+            ^"Description" STRING "A length of braided cord with stone pouch. Range exceeds a bow in skilled hands. Favored by ronin, peasants, and the Sparrow Clan."
+        }
+    }
+
+    # --- SHIELDS ---
+
+    ^"Buckler" DEF {
+        APPLIES TO [^"Weapon"]
+        PROPERTIES {
+            ^"Category" STRING "Shields"
+            ^"Skills" STRING "Melee"
+            ^"Range" STRING "0"
+            ^"Damage" INTEGER 2
+            ^"Deadliness" INTEGER 2
+            ^"Grips" STRING "1-hand: no bonus"
+            ^"Qualities" LIST OF STRING ["Ceremonial", "Wargear"]
+            ^"Rarity" INTEGER 7
+            ^"Cost" STRING "4 koku"
+            ^"Description" STRING "Small round, oval, or rectangular shield about 1.5 feet across. Provides defense against projectiles and can be used as a bludgeon."
+        }
+        RULES {
+            #L5RPW08sR7mJ6mX4eW6lE5rN5jJ: buckler_resistance "While readied, treat physical resistance as 3."
+            #L5RPW08zQ3kP3fY9vE9aT6uV2bE: buckler_defense "As a Movement and Support action with buckler readied, increase TN of next attack targeting you by 1 until end of your next turn."
+        }
+    }
+
+    ^"Qamarist Heavy Shield" DEF {
+        APPLIES TO [^"Weapon"]
+        PROPERTIES {
+            ^"Category" STRING "Shields"
+            ^"Skills" STRING "Melee"
+            ^"Range" STRING "0"
+            ^"Damage" INTEGER 4
+            ^"Deadliness" INTEGER 2
+            ^"Grips" STRING "1-hand: no bonus"
+            ^"Qualities" LIST OF STRING ["Durable", "Cumbersome", "Wargear"]
+            ^"Rarity" INTEGER 9
+            ^"Cost" STRING "50 koku"
+            ^"Description" STRING "Massive shields covering two-thirds of a warrior's body, produced by Qamarist master crafters and alchemists. Wards against both physical and supernatural attacks."
+        }
+        RULES {
+            #L5RPW08yI9gD2xV7jF6aQ2lM4kL: qamarist_shield_resistance "While readied, treat physical resistance as 4 and supernatural resistance as 2."
+            #L5RPW08lE5uZ3hZ3bN3qF4dM4iW: qamarist_shield_defense "As a Movement and Support action with heavy shield readied, increase TN of Attack action checks targeting you by 3 until start of your next turn."
+        }
+    }
+
+    # --- IMPROVISED WEAPONS ---
+
+    ^"Boat Oar" DEF {
+        APPLIES TO [^"Weapon"]
+        PROPERTIES {
+            ^"Category" STRING "Improvised Weapons"
+            ^"Skills" STRING "Melee"
+            ^"Range" STRING "1-2"
+            ^"Damage" INTEGER 3
+            ^"Deadliness" INTEGER 3
+            ^"Grips" STRING "1-hand: no bonus; 2-hand: Damage +1, Deadliness +3"
+            ^"Qualities" LIST OF STRING ["Mundane"]
+            ^"Rarity" INTEGER 5
+            ^"Cost" STRING "3 bu"
+        }
+    }
+
+    ^"Chair" DEF {
+        APPLIES TO [^"Weapon"]
+        PROPERTIES {
+            ^"Category" STRING "Improvised Weapons"
+            ^"Skills" STRING "Melee"
+            ^"Range" STRING "0-1"
+            ^"Damage" INTEGER 3
+            ^"Deadliness" INTEGER 3
+            ^"Grips" STRING "1-hand (bludgeon): no bonus; 2-hand (bludgeon): Damage +2; 1-hand (thrown): no bonus; 2-hand (thrown): Deadliness +1, Range 0-2"
+            ^"Qualities" LIST OF STRING ["Mundane"]
+            ^"Rarity" INTEGER 2
+            ^"Cost" STRING "2 bu"
+        }
+    }
+
+    ^"Fishing Net" DEF {
+        APPLIES TO [^"Weapon"]
+        PROPERTIES {
+            ^"Category" STRING "Improvised Weapons"
+            ^"Skills" STRING "Ranged"
+            ^"Range" STRING "0-3"
+            ^"Damage" INTEGER 3
+            ^"Deadliness" INTEGER 1
+            ^"Grips" STRING "2-hand: no bonus"
+            ^"Qualities" LIST OF STRING ["Durable", "Mundane", "Snaring"]
+            ^"Rarity" INTEGER 5
+            ^"Cost" STRING "5 bu"
+        }
+    }
+
+    ^"Iron Sheath" DEF {
+        APPLIES TO [^"Weapon"]
+        PROPERTIES {
+            ^"Category" STRING "Improvised Weapons"
+            ^"Skills" STRING "Melee"
+            ^"Range" STRING "0-1"
+            ^"Damage" INTEGER 3
+            ^"Deadliness" INTEGER 3
+            ^"Grips" STRING "1-hand: no bonus; 2-hand: Damage +2"
+            ^"Qualities" LIST OF STRING ["Durable"]
+            ^"Rarity" INTEGER 6
+            ^"Cost" STRING "2 koku"
+        }
+    }
+
+    ^"Lute (Biwa)" DEF {
+        APPLIES TO [^"Weapon"]
+        PROPERTIES {
+            ^"Category" STRING "Improvised Weapons"
+            ^"Skills" STRING "Melee"
+            ^"Range" STRING "0-1"
+            ^"Damage" INTEGER 1
+            ^"Deadliness" INTEGER 2
+            ^"Grips" STRING "1-hand: no bonus; 2-hand: Damage +1, Deadliness +1"
+            ^"Qualities" LIST OF STRING ["Mundane"]
+            ^"Rarity" INTEGER 7
+            ^"Cost" STRING "10 koku"
+        }
+    }
+
+    ^"Sake Bottle and Cups" DEF {
+        APPLIES TO [^"Weapon"]
+        PROPERTIES {
+            ^"Category" STRING "Improvised Weapons"
+            ^"Skills" STRING "Melee"
+            ^"Range" STRING "0-1"
+            ^"Damage" INTEGER 2
+            ^"Deadliness" INTEGER 3
+            ^"Grips" STRING "1-hand (bludgeon): no bonus; 1-hand (thrown): Deadliness +2, Range 1-3, Razor-Edged"
+            ^"Qualities" LIST OF STRING ["Mundane"]
+            ^"Rarity" INTEGER 4
+            ^"Cost" STRING "5 bu"
+        }
+    }
+
+    ^"Scroll Case" DEF {
+        APPLIES TO [^"Weapon"]
+        PROPERTIES {
+            ^"Category" STRING "Improvised Weapons"
+            ^"Skills" STRING "Melee"
+            ^"Range" STRING "0-1"
+            ^"Damage" INTEGER 3
+            ^"Deadliness" INTEGER 3
+            ^"Grips" STRING "1-hand: no bonus; 2-hand: Damage +2, Deadliness +1"
+            ^"Qualities" LIST OF STRING ["Durable", "Mundane"]
+            ^"Rarity" INTEGER 5
+            ^"Cost" STRING "1 koku"
+        }
+    }
+
+    ^"Umbrella" DEF {
+        APPLIES TO [^"Weapon"]
+        PROPERTIES {
+            ^"Category" STRING "Improvised Weapons"
+            ^"Skills" STRING "Melee"
+            ^"Range" STRING "0-1"
+            ^"Damage" INTEGER 2
+            ^"Deadliness" INTEGER 2
+            ^"Grips" STRING "1-hand (bludgeon): no bonus; 2-hand (bludgeon): Damage +2; 1-hand (stab): Damage +2, Deadliness +2"
+            ^"Qualities" LIST OF STRING ["Mundane"]
+            ^"Rarity" INTEGER 4
+            ^"Cost" STRING "3 bu"
+        }
+    }
+
+    # ===========================
+    # PERSONAL EFFECTS
+    # ===========================
+
+    ENTRIES {
+        ^"Dice Kit" STRING "Gambling dice set for games like Fortunes and Winds. Cost: 6 zeni. Rarity: 2. Qualities: Concealable, Mundane."
+        ^"Travel Rations" STRING "Preserved foods for travel: husked rice, dried/pickled vegetables, flavoring agents, onigiri, smoked fish, dried beans. Cost: 1-3 bu. Rarity: 1. Qualities: Mundane."
+    }
+
+    # ===========================
+    # PROFESSION KITS
+    # ===========================
+
+    ^"Alchemy Kit" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Category" STRING "Profession Kit"
+            ^"Cost" STRING "10 koku (for components)"
+            # Rarity varies 1-9 by component; 5 represents a typical kit
+            ^"Rarity" INTEGER 5
+            ^"Description" STRING "Only available as a whole item in the Qamarist Caliphate. Contains mundane and rare items (charcoal, gold dust) combined to perform healing rituals. Required for Qamarist ritual techniques."
+        }
+    }
+
+    ^"Cooking Kit" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Category" STRING "Profession Kit"
+            ^"Cost" STRING "2 koku"
+            ^"Rarity" INTEGER 2
+            ^"Qualities" LIST OF STRING ["Mundane"]
+            ^"Description" STRING "Contains knives, sharpening rod, bamboo skewers, grinder and pestle, cooking chopsticks, bowls, strainers, bamboo mat, ladle. May include seasonings and preservatives."
+        }
+    }
+
+    ^"Fishing Kit" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Category" STRING "Profession Kit"
+            ^"Cost" STRING "1 koku"
+            ^"Rarity" INTEGER 3
+            ^"Qualities" LIST OF STRING ["Mundane"]
+            ^"Description" STRING "Contains fishing line, glass floaters, small nets, miso paste, wrapping paper. Some include cormorant bird handling equipment."
+        }
+    }
+
+    ^"Mason's Kit" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Category" STRING "Profession Kit"
+            ^"Cost" STRING "2 koku"
+            ^"Rarity" INTEGER 5
+            ^"Qualities" LIST OF STRING ["Mundane"]
+            ^"Description" STRING "Contains chisels, chalk, hammers, and measuring implements. Some include mortar ingredients and trowels."
+        }
+    }
+
+    ^"Tailor's Kit" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Category" STRING "Profession Kit"
+            ^"Cost" STRING "3 koku"
+            ^"Rarity" INTEGER 5
+            ^"Qualities" LIST OF STRING ["Mundane"]
+            ^"Description" STRING "Contains cloth patches, hemp thread, sewing needles, and dye tablets. Some include cleaning powder, seam ripper, and collapsing bamboo drying rod."
+        }
+    }
+
+    ^"Weaver's Kit" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Category" STRING "Profession Kit"
+            ^"Cost" STRING "1 koku"
+            ^"Rarity" INTEGER 3
+            ^"Qualities" LIST OF STRING ["Mundane"]
+            ^"Description" STRING "Contains weaving hooks, framing reeds, dyes, inks, and bamboo lacquer. Some contain shaving knives or bamboo strip tools."
+        }
+    }
+
+    # ===========================
+    # FORBIDDEN EFFECTS
+    # ===========================
+
+    ^"Chandu (Smoking Opium)" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Category" STRING "Forbidden Effects"
+            ^"Cost" STRING "4 bu per use"
+            ^"Rarity" INTEGER 6
+            ^"Qualities" LIST OF STRING ["Forbidden (outside medical context)"]
+            ^"Description" STRING "Opium prepared for smoking in a special ceramic or jade pipe. Alters perception so pain is bearable. Legal in Rokugan but recreational use frowned upon. Addiction develops with sufficient use."
+        }
+    }
+
+    ^"Poppy Tea" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Category" STRING "Forbidden Effects"
+            ^"Cost" STRING "6 bu per cup"
+            ^"Rarity" INTEGER 7
+            ^"Qualities" LIST OF STRING ["Forbidden (outside medical context)"]
+            ^"Description" STRING "Cheapest form of consumable opium. Herbal infusion of poppy straw and dried pods. Banned by Imperial decree in the tenth century."
+        }
+    }
+
+    ^"Shikomizue" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Category" STRING "Forbidden Effects"
+            ^"Cost" STRING "2 koku"
+            ^"Rarity" INTEGER 7
+            ^"Qualities" LIST OF STRING ["Forbidden", "Subtle"]
+            ^"Description" STRING "A concealed sword mount indistinguishable from a cane, walking stick, or instrument. Custom fits one owned sword, which gains Concealable and Subtle while sheathed. Violates Courtesy, Righteousness, and Honor."
+        }
+    }
+
+    ^"Thievery Kit" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Category" STRING "Forbidden Effects"
+            ^"Cost" STRING "2 koku"
+            ^"Rarity" INTEGER 6
+            ^"Qualities" LIST OF STRING ["Concealable", "Forbidden", "Subtle"]
+            ^"Description" STRING "Contains thin-picks for lifting barricades, grappling hooks, padded sandals, melting wax sticks, and sometimes lockpicks. Disguised as another object. Forbidden by Imperial law."
+        }
+    }
+
+    # ===========================
+    # NEW ITEM PATTERNS
+    # ===========================
+
+    ^"Spirit of the Qamarist Pattern" DEF {
+        APPLIES TO [^"Item Pattern"]
+        PROPERTIES {
+            ^"Applies To" STRING "Armor"
+            ^"Effect" STRING "Armor gains +1 supernatural resistance."
+            ^"XP Cost" INTEGER 5
+            ^"Rarity Modifier" STRING "+4"
+        }
+    }
+
+    ^"Ghostlands Yodhaniya Pattern" DEF {
+        APPLIES TO [^"Item Pattern"]
+        PROPERTIES {
+            ^"Applies To" STRING "Blunt Weapons"
+            ^"Effect" STRING "Weapon gains +1 physical damage, +1 additional damage against Tainted beings. Wielder ignores the Cumbersome quality while in Defiled terrain."
+            ^"XP Cost" INTEGER 6
+            ^"Rarity Modifier" STRING "+4"
+        }
+    }
+
+    ^"Kokejin's Heart of the Wind Pattern" DEF {
+        APPLIES TO [^"Item Pattern"]
+        PROPERTIES {
+            ^"Applies To" STRING "Polearms"
+            ^"Effect" STRING "Weapon gains Razor-Edged and Durable qualities. Damage treated as 2 higher while mounted."
+            ^"XP Cost" INTEGER 8
+            ^"Rarity Modifier" STRING "+5"
+        }
+    }
+
+}

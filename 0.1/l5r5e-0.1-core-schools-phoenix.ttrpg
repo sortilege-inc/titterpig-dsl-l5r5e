@@ -1,0 +1,425 @@
+BASE "L5R5e_Core_Schools_Phoenix" {
+    NAME "Legend of the Five Rings 5th Edition - Phoenix Clan Schools"
+    VERSION "0.1"
+    RELEASE_DATE "2025-06-01"
+
+    # Core Rulebook: Phoenix Clan Schools (pages 74-78)
+    # As caretaker of the Empire's soul, the Phoenix Clan imparts its theological
+    # wisdom throughout all its schools. A reverence for the spirits is instilled
+    # in the students of every dojo, and the wisdom of the Tao of Shinsei is a
+    # fundamental part of every lesson taught. Just as the four elements combine
+    # to form something greater, together the warriors, priests, scholars, and
+    # mystics carry out the Phoenix's mission of ensuring balance and harmony.
+
+    # ===========================
+    # ASAKO LOREMASTER [Courtier]
+    # ===========================
+
+    ^"Asako Loremaster" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The Asako Loremasters study widely, and from that broad and firm base,
+        # they develop their specialties. It is rare for a Loremaster not to have
+        # at least passing knowledge of a subject, no matter how obscure. Acting
+        # as the courtiers of the Phoenix, the Asako Loremasters marshal arguments
+        # based on their expertise in the revered knowledge of the past. One should
+        # look for an Asako first in the library and then in court, usually deep in
+        # discussion. Few care to challenge an Asako Loremaster on the field of
+        # knowledge, but such disputations are often one of the highlights of court.
+
+        PROPERTIES {
+            ^"School Name" STRING "Asako Loremaster" FIXED
+            ^"Clan" STRING "Phoenix"
+            ^"Roles" LIST ["Courtier"]
+            ^"Ring Increase" STRING "+1 Air, +1 Earth"
+            ^"Starting Skills" STRING "choose 5: +1 Culture, +1 Government, +1 Martial Arts [Unarmed], +1 Medicine, +1 Performance, +1 Sentiment, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 45
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Sh\u016Bji"]
+        }
+
+        STARTING_TECHNIQUES {
+            SHUJI ^"Civility Foremost"
+            SHUJI CHOOSE 1 [^"Ancestry Unearthed", ^"Cadence"]
+        }
+
+        SCHOOL_ABILITY "Wisdom of the Ages" {
+            "When performing a Scholar skill check, you may treat your ranks in the skill as being equal to your school rank. If your ranks in that Scholar skill are equal to or higher than your school rank, or if you have 5 ranks in the skill, you may add one kept (ring) set to an (op) result instead."
+        }
+
+        MASTERY_ABILITY ^"Insufferable Genius" {
+            "After you succeed at a check to acquire or remember information, you may spend 1 Void point and choose any number of characters with whom you can communicate. You must describe how the knowledge you acquired helps each character you choose. Each of those characters reduces the TN of their next check by 1 (to a minimum of 1) and suffers 1 strife."
+        }
+
+        STARTING_OUTFIT [
+            "Ceremonial robes", "sanctified robes",
+            "traveling clothes",
+            "wakizashi (short sword)", "knife",
+            "scroll satchel", "calligraphy set", "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Courtesy"
+                SKILL "Games"
+                SKILL "Martial Arts [Unarmed]"
+                TECHNIQUE_GROUP "Rank 1 Earth Sh\u016Bji"
+                ^"Open-Hand Style" [kata]
+                ^"Divination" [ritual]
+            }
+            RANK 2 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Government"
+                SKILL "Medicine"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-2 Air Sh\u016Bji"
+                ^"All Arts are One" [shuji]
+                ^"Tea Ceremony" [ritual]
+            }
+            RANK 3 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Courtesy"
+                SKILL "Performance"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1-3 Fire Sh\u016Bji"
+                ^"Pillar of Calm" [shuji]
+                ^"Ebb and Flow" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Culture"
+                SKILL "Medicine"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-4 Earth Sh\u016Bji"
+                ^"Cleansing Spirit" [kiho]
+                ^"Wolf's Proposal" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Courtesy"
+                SKILL "Performance"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1-5 Water Sh\u016Bji"
+                ^"Still the Elements" [kiho]
+                ^"Bend with the Storm" [shuji]
+            }
+            RANK 6 {
+                ^"Insufferable Genius"
+            }
+        }
+    }
+
+    # ===========================
+    # ISAWA ELEMENTALIST [Shugenja]
+    # ===========================
+
+    ^"Isawa Elementalist" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # No tradition has a more complete mastery of the way of the spirits than
+        # that of the Isawa Elementalist School. Since the time before the Kami fell
+        # to earth, the priests of the Isawa have sought knowledge and understanding
+        # of the kami, the Fortunes, and the very elements themselves. Over the
+        # centuries, they have perfected the rituals and supplications to request
+        # great boons on behalf of the Phoenix Clan and terrible banes for casting
+        # down their enemies. Yet, they know that the spirits require service in
+        # exchange for their blessings, making the Isawa Elementalists hesitant to
+        # call upon the kami except in times of great need. To do so without cause
+        # is to risk upsetting the delicate balance of the natural world -- or bring
+        # the wrath of the spirits upon them.
+
+        PROPERTIES {
+            ^"School Name" STRING "Isawa Elementalist" FIXED
+            ^"Clan" STRING "Phoenix"
+            ^"Roles" LIST ["Shugenja"]
+            ^"Ring Increase" STRING "+1 any two different rings"
+            ^"Starting Skills" STRING "choose 3: +1 Composition, +1 Courtesy, +1 Medicine, +1 Meditation, +1 Performance, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Techniques Available" LIST ["Invocations", "Rituals", "Sh\u016Bji"]
+        }
+
+        STARTING_TECHNIQUES {
+            INVOCATION CHOOSE 3 [^"Extinguish", ^"Grasp of Earth", ^"Path to Inner Peace", ^"Tempest of Air"]
+            RITUAL ^"Commune with the Spirits"
+            RITUAL ^"Divination"
+        }
+
+        SCHOOL_ABILITY "One with the Elements" {
+            "Once per scene when making the check to activate an invocation technique, before rolling dice, you may reduce the TN of the check by your school rank."
+        }
+
+        MASTERY_ABILITY ^"Master of Elements" {
+            "Once per round, after you perform an invocation, you may spend 1 Void point to switch to any other stance and perform another invocation that shares no action types with the first invocation (Attack, Support, etc.)."
+        }
+
+        STARTING_OUTFIT [
+            "Sanctified robes",
+            "wakizashi (short sword)", "knife",
+            "scroll satchel", "traveling pack"
+        ]
+
+        # The Isawa Elementalist School teaches its students invocations by
+        # Elemental names, for they were the first to apply the philosophy of
+        # Shinsei's Five Elements to their interactions with the spirits.
+        # (See ^"Invocation Names and Traditions")
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Composition"
+                SKILL "Command"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1 Fire Invocations"
+                ^"Dance of Seasons" [invocation]
+                ^"Cleansing Rite" [ritual]
+            }
+            RANK 2 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Courtesy"
+                SKILL "Meditation"
+                SKILL "Performance"
+                TECHNIQUE_GROUP "Rank 1-2 Water Invocations"
+                ^"Fury of Osano-wo" [invocation]
+                ^"Fanning the Flames" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Composition"
+                SKILL "Meditation"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-3 Air Invocations"
+                ^"Wings of the Phoenix" [invocation]
+                ^"Strike the Tsunami" [invocation]
+            }
+            RANK 4 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Government"
+                SKILL "Sentiment"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-4 Earth Invocations"
+                ^"Wrath of Kaze-no-Kami" [invocation]
+                ^"Rise, Flame" [invocation]
+            }
+            RANK 5 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Composition"
+                SKILL "Sentiment"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-5 Fire Invocations"
+                ^"Earthquake" [invocation]
+                ^"Rouse the Soul" [shuji]
+            }
+            RANK 6 {
+                ^"Master of Elements"
+            }
+        }
+    }
+
+    # ===========================
+    # SHIBA GUARDIAN [Bushi, Courtier]
+    # ===========================
+
+    ^"Shiba Guardian" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # As Shiba swore to protect Isawa, so the Shiba Guardian School emphasizes
+        # the defense of and cooperation with the Isawa; its members complement
+        # and protect priests, shrine keepers, and shugenja. The Shiba Guardians
+        # are broadly trained, often as much scholars as warriors, and they approach
+        # conflict as a problem to be solved without bloodshed if possible. Those
+        # who underestimate them due to their reluctance to take a life usually only
+        # do so once: the Shiba Guardians are as devoted to the perfection of the
+        # martial arts as any samurai. Their commitment to theological study and
+        # long hours of meditation have taught the Shiba Guardians how to dance
+        # in harmony with elemental kami called forth by the invocations of the
+        # shugenja.
+
+        PROPERTIES {
+            ^"School Name" STRING "Shiba Guardian" FIXED
+            ^"Clan" STRING "Phoenix"
+            ^"Roles" LIST ["Bushi", "Courtier"]
+            ^"Ring Increase" STRING "+1 Earth, +1 Water"
+            ^"Starting Skills" STRING "choose 5: +1 Courtesy, +1 Fitness, +1 Martial Arts [Melee], +1 Meditation, +1 Survival, +1 Tactics, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 45
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Sh\u016Bji"]
+        }
+
+        STARTING_TECHNIQUES {
+            KATA ^"Lord Shiba's Valor"
+            KATA CHOOSE 1 [^"Striking as Earth", ^"Striking as Water"]
+        }
+
+        SCHOOL_ABILITY "Way of the Phoenix" {
+            "Once per scene, when a character at range 0-3 makes a check that contains 1 or more (st) symbols, you may negate all of those (st) symbols. Then, that character removes strife and fatigue equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Stand of Honor" {
+            "At the end of your turn, you may spend 1 Void point to prepare to fend off advancing foes; this effect persists until the start of your next turn. When an enemy enters the range of one of your readied weapons, you may immediately make a Strike action using that weapon and targeting that enemy; if you succeed, the target suffers the Immobilized condition in addition to any other effects."
+        }
+
+        STARTING_OUTFIT [
+            "Ashigaru armor", "traveling clothes",
+            "daish\u014D (katana and wakizashi)",
+            "naginata (polearm) or yari (spear)",
+            "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Courtesy"
+                SKILL "Sentiment"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Civility Foremost" [shuji]
+                ^"Stirring the Embers" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Fitness"
+                SKILL "Meditation"
+                SKILL "Martial Arts [Melee]"
+                TECHNIQUE_GROUP "Rank 1-2 Kata"
+                ^"Rallying Cry" [shuji]
+                ^"Slippery Maneuvers" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Culture"
+                SKILL "Meditation"
+                SKILL "Martial Arts [Melee]"
+                TECHNIQUE_GROUP "Rank 1-3 Water Sh\u016Bji"
+                ^"A Samurai's Fate" [shuji]
+                ^"Touchstone of Courage" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Command"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Tactics"
+                ^"The Immovable Hand of Peace" [shuji]
+                ^"Touch the Void Dragon" [kiho]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Sentiment"
+                SKILL "Survival"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-5 Earth Sh\u016Bji"
+                ^"Way of the Edgeless Sword" [kiho]
+                ^"Rouse the Soul" [shuji]
+            }
+            RANK 6 {
+                ^"Stand of Honor"
+            }
+        }
+    }
+
+    # ===========================
+    # KAITO SHRINE KEEPER [Monk]
+    # ===========================
+
+    ^"Kaito Shrine Keeper" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Kaito Shrine Keepers work alongside priests to protect temples across
+        # Phoenix lands, or keep smaller shrines on their own. The Kaito learn
+        # mystical arts to propitiate the kami -- sometimes even serving as vessels
+        # for them -- and practical ones to maintain the shrines. Shrine Keepers
+        # make use of protective magic -- such as ofuda, paper charms -- and
+        # spiritually enhanced archery to defend shrines against threats both
+        # mystical and mundane.
+
+        PROPERTIES {
+            ^"School Name" STRING "Kaito Shrine Keeper" FIXED
+            ^"Clan" STRING "Phoenix"
+            ^"Roles" LIST ["Monk"]
+            ^"Ring Increase" STRING "+1 Air, +1 Water"
+            ^"Starting Skills" STRING "choose 4: +1 Fitness, +1 Martial Arts [Ranged], +1 Meditation, +1 Performance, +1 Smithing, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 45
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Sh\u016Bji"]
+        }
+
+        STARTING_TECHNIQUES {
+            KATA ^"Hawk's Precision"
+            INVOCATION ^"Tempest of Air"
+            RITUAL CHOOSE 2 [^"Cleansing Rite", ^"Commune with the Spirits", ^"Threshold Barrier"]
+        }
+
+        SCHOOL_ABILITY "Sacred Arrows" {
+            "As an action, you may augment one of your arrows with a prayer to the kami. Make the check to perform one invocation you know, reducing the TN by your school rank, and record the result. The arrow gains the Sacred quality, and remains infused with the invocation until the end of the scene. After you perform an Attack action using the arrow (or fire it at a location, at the GM's discretion), you may resolve the effects of the invocation from the place the arrow landed. You may spend (op)+ to delay resolving the effects of the invocation for 1 round per (op) spent this way, and may spend (op) (op) from a failed check to affect one target of the attack that you missed."
+        }
+
+        MASTERY_ABILITY ^"Demon, Begone!" {
+            "As an action, you may make a TN 3 Meditation (Void) check by plucking the string of a bow you are wielding, targeting each Otherworldly being within a number of range bands equal to your ranks in Meditation. If you succeed, each target suffers strife equal to your ranks in Meditation plus your bonus successes. (op): Each target must resist with a TN 3 Meditation (Void) check or treat its physical and supernatural resistances as 0. This effect persists until the end of the scene."
+        }
+
+        STARTING_OUTFIT [
+            "Sanctified robes",
+            "wakizashi (short sword)",
+            "yumi (bow)", "quiver of arrows",
+            "b\u014D (staff) or knife",
+            "scroll satchel", "traveling pack"
+        ]
+
+        # The Kaito Shrine Keepers make themselves vessels in which kami may
+        # dwell, and so they know their invocations by the Fortunist name of the
+        # spirit they are invoking.
+        # (See ^"Invocation Names and Traditions")
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Fitness"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1 Air Invocations"
+                ^"Bind the Shadow" [invocation]
+                ^"Striking as Air" [kata]
+            }
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Performance"
+                SKILL "Theology"
+                SKILL "Smithing"
+                TECHNIQUE_GROUP "Rank 1-2 Kata"
+                ^"Grasp of the Air Dragon" [invocation]
+                ^"Divination" [ritual]
+            }
+            RANK 3 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Labor"
+                SKILL "Medicine"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-3 Water Invocations"
+                ^"Breath of Wind Style" [kata]
+                ^"Flowing Water Strike" [kata]
+            }
+            RANK 4 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Fitness"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1-4 Kata"
+                ^"Rise, Air" [invocation]
+                ^"Soul Sunder" [kata]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Sentiment"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-5 Fire Invocations"
+                ^"Tomb of Jade" [invocation]
+                ^"Pin the Fan" [kata]
+            }
+            RANK 6 {
+                ^"Demon, Begone!"
+            }
+        }
+    }
+}

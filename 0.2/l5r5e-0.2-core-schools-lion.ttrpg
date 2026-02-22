@@ -1,0 +1,418 @@
+BASE "L5R5e_Core_Schools_Lion" {
+    NAME "Legend of the Five Rings 5th Edition - Lion Clan Schools"
+    VERSION "0.1"
+    RELEASE_DATE "2025-06-01"
+
+    # Core Rulebook: Lion Clan Schools (pages 70-74)
+    # As befits the clan called the Right Hand of the Emperor, the Lion Clan
+    # has committed itself to the study of warfare in all its forms.
+
+    # ===========================
+    # AKODO COMMANDER [Bushi]
+    # ===========================
+
+    ^"Akodo Commander" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The Akodo War College's curriculum is focused on control: of one's
+        # weapons, of the battlefield, over the flow of conflict, and ultimately,
+        # over oneself. Its students study the advice of Akodo's Leadership,
+        # which was written by the Lion Clan Kami himself. In addition to
+        # training as warriors, Akodo Commanders are educated to be
+        # battlefield leaders. They often treat war as a game of Go, to be
+        # decided by exact moves. Akodo Commanders strike precisely and
+        # without hesitation with sword and army alike. Their goal is the
+        # pinnacle of the art of war: to minimize losses while achieving
+        # their objectives.
+
+        PROPERTIES {
+            ^"School Name" STRING "Akodo Commander" FIXED
+            ^"Clan" STRING "Lion"
+            ^"Roles" LIST ["Bushi"]
+            ^"Ring Increase" STRING "+1 Earth, +1 Water"
+            ^"Starting Skills" STRING "choose 5: +1 Command, +1 Fitness, +1 Government, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Meditation, +1 Tactics"
+            ^"Starting Honor" INTEGER DEFAULT 50
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Striking as Earth", ^"Striking as Water"]
+            SHUJI ^"Lord Akodo's Roar"
+        }
+
+        SCHOOL_ABILITY "Way of the Lion" {
+            "When you succeed at an Attack or Support action check, you may remove an amount of strife from yourself up to your school rank. For each strife you remove this way, add that one bonus success to the check and receive 1 fatigue."
+        }
+
+        MASTERY_ABILITY ^"Akodo's Final Lesson" {
+            "Once per game session during a skirmish or mass battle, after you fail a check, you may attempt the check again, treating the TN as 1."
+        }
+
+        STARTING_OUTFIT [
+            "Ashigaru armor", "traveling clothes",
+            "daishō (katana and wakizashi)", "yari (spear)",
+            "any one weapon of rarity 6 or lower", "two knives",
+            "yumi (bow)", "quiver of arrows", "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Government"
+                SKILL "Command"
+                SKILL "Performance"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Iron Forest Style" [kata]
+                ^"Honest Assessment" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Medicine"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-2 Kata"
+                ^"Rallying Cry" [shuji]
+                ^"Lightning Raid" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Government"
+                SKILL "Composition"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-3 Kata"
+                ^"A Samurai's Fate" [shuji]
+                ^"Touchstone of Courage" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Government"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-4 Fire Shūji"
+                ^"Rouse the Soul" [shuji]
+                ^"Disappearing World Style" [kata]
+            }
+            RANK 5 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Meditation"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-5 Earth Shūji"
+                ^"Bend with the Storm" [shuji]
+                ^"Striking as Void" [kata]
+            }
+            RANK 6 {
+                ^"Akodo's Final Lesson"
+            }
+        }
+    }
+
+    # ===========================
+    # IKOMA BARD [Courtier]
+    # ===========================
+
+    ^"Ikoma Bard" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # In the end -- after trials, sacrifices, and death -- all that truly
+        # remains of a samurai is their story. The Ikoma Bard School trains
+        # its students as historians, bards, and tale-spinners; not just to
+        # preserve the stories of old, but to inspire the warriors of the Lion
+        # Clan to equal and exceed the achievements of their ancient ancestors.
+        # Ikoma Bards are no less warlike than the other scions of the Lion
+        # Clan. However, their most important duty lies in supporting each
+        # Lion's drive to seize glory no matter the danger -- and to fight
+        # against any odds with the confidence that no hero will die unsung.
+
+        PROPERTIES {
+            ^"School Name" STRING "Ikoma Bard" FIXED
+            ^"Clan" STRING "Lion"
+            ^"Roles" LIST ["Courtier"]
+            ^"Ring Increase" STRING "+1 Fire, +1 Water"
+            ^"Starting Skills" STRING "choose 5: +1 Composition, +1 Courtesy, +1 Culture, +1 Martial Arts [Ranged], +1 Performance, +1 Sentiment, +1 Tactics"
+            ^"Starting Honor" INTEGER DEFAULT 45
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            KATA ^"Warrior's Resolve"
+            SHUJI ^"Fanning the Flames"
+            SHUJI ^"Tributaries of Trade"
+        }
+
+        SCHOOL_ABILITY "Heart of the Lion" {
+            "Once per scene, after you perform a check using a Social skill that targets one or more characters, you may agitate or console: If you agitate, transfer strife up to twice your school rank from yourself to your targets (divided among them as you choose). If you console, transfer strife up to twice your school rank from your targets (divided among them as you choose) to yourself."
+        }
+
+        MASTERY_ABILITY ^"Lion's Pride" {
+            "Once per game session as a Support action, you may attempt to convince everyone in the scene of the glorious reputation of one character, embellishing the truth as needed, by making a TN 5 Performance (Fire) check targeting one character. The TN of this check is 6 if you target yourself, and 4 if you target another Lion Clan character. If you succeed, reduce the TN of all of the character's Social skill checks by 3 until the end of the scene, and the TN of all of the character's other checks by 1."
+        }
+
+        STARTING_OUTFIT [
+            "Traveling clothes",
+            "wakizashi (short sword)",
+            "yari (spear) or tessen (war fan)",
+            "yumi (bow)", "quiver of arrows",
+            "traveling pack", "any one musical instrument", "journal"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Composition"
+                SKILL "Culture"
+                SKILL "Martial Arts [Melee]"
+                TECHNIQUE_GROUP "Rank 1 Fire Shūji"
+                ^"Slippery Maneuvers" [shuji]
+                ^"Soaring Slice" [kata]
+            }
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Performance"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-2 Water Shūji"
+                ^"Dazzling Performance" [shuji]
+                ^"Spinning Blades Style" [kata]
+            }
+            RANK 3 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Composition"
+                SKILL "Performance"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-3 Earth Shūji"
+                ^"Rallying Cry" [shuji]
+                ^"Regal Bearing" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Government"
+                SKILL "Sentiment"
+                SKILL "Martial Arts [Ranged]"
+                TECHNIQUE_GROUP "Rank 1-4 Air Shūji"
+                ^"Sear the Wound" [shuji]
+                ^"Pillar of Calm" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Command"
+                SKILL "Performance"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1-5 Void Shūji"
+                ^"Bend with the Storm" [shuji]
+                ^"Buoyant Arrival" [shuji]
+            }
+            RANK 6 {
+                ^"Lion's Pride"
+            }
+        }
+    }
+
+    # ===========================
+    # KITSU MEDIUM [Shugenja]
+    # ===========================
+
+    ^"Kitsu Medium" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The smallest of the shugenja schools of the Great Clans, the Kitsu
+        # Medium School maintains an esoteric focus on the ancestors, which
+        # requires unique training and at least a trace of the original Kitsu
+        # bloodline. This mystical connection to their forebears allows them
+        # to perform magic that no others can. The Kitsu Mediums are the
+        # living bridge between the Lion Clan's past and the present, acting
+        # as the voice of the ancestors in the present day. As traditionalists,
+        # they use the ancestral names for prayers to honor those who first
+        # mastered them.
+
+        PROPERTIES {
+            ^"School Name" STRING "Kitsu Medium" FIXED
+            ^"Clan" STRING "Lion"
+            ^"Roles" LIST ["Shugenja"]
+            ^"Ring Increase" STRING "+1 Void, +1 Water"
+            ^"Starting Skills" STRING "choose 3: +1 Courtesy, +1 Government, +1 Meditation, +1 Performance, +1 Survival, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 50
+            ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            INVOCATION CHOOSE 2 [^"The Rushing Wave", ^"Path to Inner Peace", ^"Biting Steel"]
+            RITUAL ^"Commune with the Spirits"
+            RITUAL ^"Cleansing Rite"
+            SHUJI ^"Ancestry Unearthed"
+        }
+
+        SCHOOL_ABILITY "Favor of the Ancestors" {
+            "Once per scene, you may importune one invocation (see Importune Invocations, on page 189) with a school rank prerequisite up to your school rank without making the sacrifices usually required and without the usual TN increase."
+        }
+
+        MASTERY_ABILITY ^"Strength of a Thousand Ancestors" {
+            "Once per game session, as a Support action, you may summon the spirit of an ancestor to possess you until the end of the scene. While possessed, you count as an Otherworldly being and use the profile of the ancestor (a non-specific human NPC profile such as the Venerable Provincial Daimyō on page 315, or, at the GM's discretion, a PC with up to 180 XP that you have created in advance). Your character does not remember any time they spend possessed."
+        }
+
+        STARTING_OUTFIT [
+            "Sanctified robes", "traveling clothes",
+            "wakizashi (short sword)", "knife",
+            "bō (staff)", "scroll satchel", "traveling pack"
+        ]
+
+        # The Kitsu Medium School teaches its students invocations by
+        # Ancestral names, reflecting the boons bestowed upon them by
+        # Rokugan's sacred dead.
+        # (See ^"Invocation Names and Traditions")
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Command"
+                SKILL "Meditation"
+                SKILL "Performance"
+                TECHNIQUE_GROUP "Rank 1 Water Invocations"
+                ^"Courage of Seven Thunders" [invocation]
+                ^"Heart of the Water Dragon" [invocation]
+            }
+            RANK 2 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Government"
+                SKILL "Fitness"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-2 Air Invocations"
+                ^"Hands of the Tides" [invocation]
+                ^"Fanning the Flames" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Government"
+                SKILL "Survival"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-3 Earth Invocations"
+                ^"Rise, Earth" [invocation]
+                ^"Ebb and Flow" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Command"
+                SKILL "Meditation"
+                SKILL "Performance"
+                TECHNIQUE_GROUP "Rank 1-4 Rituals"
+                ^"Wrath of Kaze-no-Kami" [invocation]
+                ^"Bravado" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Government"
+                SKILL "Sentiment"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-5 Fire Invocations"
+                ^"Sear the Wound" [shuji]
+                ^"Buoyant Arrival" [shuji]
+            }
+            RANK 6 {
+                ^"Strength of a Thousand Ancestors"
+            }
+        }
+    }
+
+    # ===========================
+    # MATSU BERSERKER [Bushi]
+    # ===========================
+
+    ^"Matsu Berserker" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The Matsu's soldiers are the front line and main strength of the
+        # Lion armies. Their bravery and zeal for battle are unquestioned.
+        # The Matsu warrior dōjō teaches the primacy of offense and the
+        # necessity of seizing the initiative in all things. Aggression is the
+        # hallmark of the Matsu style; direct action is their watchword.
+        # This bellicose attitude often puts them at odds with the careful
+        # strategies of the Akodo, but the Matsu serve the Lion and the
+        # Empire with unquestioned loyalty.
+
+        PROPERTIES {
+            ^"School Name" STRING "Matsu Berserker" FIXED
+            ^"Clan" STRING "Lion"
+            ^"Roles" LIST ["Bushi"]
+            ^"Ring Increase" STRING "+1 Earth, +1 Fire"
+            ^"Starting Skills" STRING "choose 5: +1 Command, +1 Fitness, +1 Labor, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Martial Arts [Unarmed], +1 Survival"
+            ^"Starting Honor" INTEGER DEFAULT 55
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Rushing Avalanche Style", ^"Spinning Blades Style"]
+            SHUJI ^"Stirring the Embers"
+        }
+
+        SCHOOL_ABILITY "Matsu's Fury" {
+            "After you suffer a critical strike or unmask, you may suffer the Enraged condition to remove an amount of fatigue from yourself equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Rending Jaws of the Lion" {
+            "Once per round, when performing an Attack action check while Enraged, you may spend 1 Void point to alter each kept die containing (su) to a result containing (ex)."
+        }
+
+        STARTING_OUTFIT [
+            "Ashigaru armor", "traveling clothes",
+            "daishō (katana and wakizashi)",
+            "nodachi (greatsword) or tessen (war fan)",
+            "knife", "yumi (bow)", "quiver of arrows",
+            "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Labor"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Lord Akodo's Roar" [shuji]
+                ^"Stonewall Tactics" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Medicine"
+                SKILL "Smithing"
+                TECHNIQUE_GROUP "Rank 1-2 Kata"
+                ^"Heartpiercing Strike" [kata]
+                ^"Fanning the Flames" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Composition"
+                SKILL "Government"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-3 Kata"
+                ^"Disappearing World Style" [kata]
+                ^"Rallying Cry" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Courtesy"
+                SKILL "Culture"
+                TECHNIQUE_GROUP "Rank 1-4 Kata"
+                ^"Striking as Void" [kata]
+                ^"Bravado" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Labor"
+                SKILL "Medicine"
+                SKILL "Smithing"
+                TECHNIQUE_GROUP "Rank 1-5 Kata"
+                ^"Rouse the Soul" [shuji]
+                ^"Sear the Wound" [shuji]
+            }
+            RANK 6 {
+                ^"Rending Jaws of the Lion"
+            }
+        }
+    }
+}
