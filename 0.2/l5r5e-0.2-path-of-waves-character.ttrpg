@@ -20,14 +20,41 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # - Question 1 uses Region instead of Clan
     # - Question 2 uses Upbringing instead of Family
     # - Question 3 uses new school options
-    # - Giri is replaced by Past (Question 10)
-    # - Ninjo remains but may be reframed
-    # - Heritage table is replaced (Question 17)
+    # - Giri is replaced by Past (Question 5)
+    # - Ninjo remains but is reframed around Past (Question 6)
+    # - Question 7 has different flavor (positive deeds vs selfish actions)
+    # - Question 8 has THREE options (Orthodox, Divergent, Ignorant) instead of two
+    # - Question 14 is "Most prized possession" instead of "What do people notice first?"
+    # - Question 17 is "Shared group history" instead of "Parent's opinion"
+    # - Question 18 is "Who raised you? (+1 skill)" instead of heritage table
     # - Status starts lower (ronin 24, peasant 15, gaijin 0)
     # - Glory represents personal reputation, not Bushido adherence
 
+    # ===========================
+    # NEW ENTITY TYPES
+    # ===========================
+
+    ^"Ronin" DEF {
+        EXTENDS ^"Samurai"
+        # Masterless samurai who walk the Path of Waves.
+        # Ronin retain samurai social standing but lack
+        # a lord, clan, or formal family backing.
+    }
+
+    ^"Gaijin" DEF {
+        EXTENDS ^"Entity"
+        # Foreigners from outside Rokugan: Ujik nomads,
+        # Qamarist scholars, Ivory Kingdoms warriors, etc.
+        # Begin with Status 0 in Rokugan. May have a
+        # second status value for their homeland.
+    }
+
+    # ===========================
+    # PATH OF WAVES CHARACTER CREATION
+    # ===========================
+
     ^"Path of Waves Character Creation" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
         # Limits: rings and skills have a maximum rank of 3
         # during character creation. Starting values: 1 rank
@@ -49,7 +76,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Urban Region" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant"]
 
         # Cities are places where trade flourishes, cultures meet,
         # and many different types of people mix and mingle.
@@ -68,7 +95,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Rural Farmland Region" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant"]
 
         # Food is the core of any prosperous civilization.
         # Farmers tame the land and carry the weight of
@@ -88,7 +115,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Sea River or Lake Region" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant"]
 
         # The sea provides and takes away in equal measure.
         # Water has strong ties to trade and travel.
@@ -107,7 +134,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Forest Region" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant"]
 
         # Forests are wildernesses with trees more ancient
         # than Rokugan itself. Those who live among the trees
@@ -127,7 +154,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Mountain Region" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant"]
 
         # In the mountains, the peaks reach to the Heavens.
         # This environment is perfect for monks and those
@@ -147,7 +174,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Haunted Region" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant"]
 
         # Lands affected by the Taint or otherwise desecrated
         # by foul acts. Those who hail from such regions view
@@ -175,7 +202,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # their homeland, determined with GM during creation.
 
     ^"Ujik of the Plains of Wind and Stone" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Gaijin"]
 
         # The Ujik are a nomadic people living on expansive
         # grassy plains north and west of Rokugan. They are
@@ -198,7 +225,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Qamarists in the Cradle of the World" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Gaijin"]
 
         # The Qamarist Caliphate is a powerful nation-state
         # far to the west, thriving in fertile land between two
@@ -220,7 +247,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Yodha of the Ghostlands" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Gaijin"]
 
         # Warriors from the Ivory Kingdoms who wage a
         # never-ending struggle against evil forces in the
@@ -242,7 +269,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Sheelavaan of Bhavyatapura" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Gaijin"]
 
         # The people of the City of Splendor in the central
         # Ivory Kingdoms. Sophisticated, gregarious, eloquent,
@@ -267,7 +294,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Craftsperson Upbringing" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Craftsperson" FIXED
@@ -279,7 +306,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Fallen Noble Upbringing" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
         # A fallen noble may use ring and skill increases
         # based on their chosen clan, or +1 to any ring and
@@ -296,7 +323,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Farmer Upbringing" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Farmer" FIXED
@@ -308,7 +335,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Geisha House Upbringing" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Geisha House" FIXED
@@ -320,7 +347,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Hinin Upbringing" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Hinin" FIXED
@@ -332,7 +359,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Hunter or Fisher Upbringing" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Hunter or Fisher" FIXED
@@ -344,7 +371,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Law Enforcement Upbringing" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Law Enforcement" FIXED
@@ -356,7 +383,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Military Upbringing" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Military" FIXED
@@ -368,7 +395,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Ronin Family Upbringing" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Ronin Family" FIXED
@@ -380,7 +407,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Organized Crime Upbringing" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Organized Crime" FIXED
@@ -392,7 +419,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Street Urchin Upbringing" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Street Urchin" FIXED
@@ -404,7 +431,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Temple Upbringing" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Temple" FIXED
@@ -416,7 +443,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Tradesperson Upbringing" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Tradesperson" FIXED
@@ -428,11 +455,13 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     # ===========================
-    # NEW SCHOOLS
+    # QUESTION 3: SCHOOLS
     # ===========================
 
+    # --- General Schools (open to all PoW characters) ---
+
     ^"Wandering Blade School" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
         # Warriors who have honed their skill with a signature
         # weapon. Their power and skill rival the training of
@@ -517,7 +546,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Student of the Talon School" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
         # Adept at landing critical blows from distance with
         # spears, bows, or other ranged weapons. Precision
@@ -599,7 +628,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Treasure Hunter School" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
         # Roguish smooth talkers adept at dodging dangerous
         # situations. Quick thinking and a discerning eye for
@@ -680,7 +709,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"School of Leaves" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
         # Outcasts who have become precisely what society
         # deems them: those who slink about the shadows,
@@ -760,7 +789,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Voice of the Wilds School" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
         # Shugenja who have received no formal training but
         # have developed a knack for building positive
@@ -845,7 +874,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Artisan of the Roads School" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
         # Adept at scrounging suitable materials in almost any
         # circumstance, using surroundings as inspiration to
@@ -926,7 +955,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Mystic of the Mountain School" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
         # Wandering monks who dole out wisdom and practice
         # unarmed martial arts and storytelling in equal measure.
@@ -1010,12 +1039,10 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
     }
 
-    # ===========================
-    # GAIJIN SCHOOLS
-    # ===========================
+    # --- Gaijin Schools (culture-restricted, require GM permission for non-gaijin) ---
 
     ^"Ujik Diviner School" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Gaijin"]
 
         # Diviners call upon the wisdom of the Lords of Death,
         # honored ancestors ascended to godhood. The first
@@ -1101,7 +1128,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Qamarist Shield Bearer Tradition" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Gaijin"]
 
         # Proud and formidable guards of the Qamarist Caliphate
         # who use advanced alchemical arts and imposing command
@@ -1185,7 +1212,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Qamarist Alchemist Tradition" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Gaijin"]
 
         # Gifted alchemists who research and experiment to
         # unlock secrets of creating elixirs, draughts, and
@@ -1267,7 +1294,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Ivory Kingdoms Sage Tradition" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Gaijin"]
 
         # Individuals so tuned to their inner energy (lojas) that
         # they can infuse others with it. They go on long
@@ -1354,7 +1381,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Ivory Kingdoms Dancing Blades Tradition" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Gaijin"]
 
         # Warriors trained to wield astras (implements of the
         # gods). They look as though they are dancing as they
@@ -1437,20 +1464,55 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     # ===========================
-    # QUESTION 10: THE PAST
+    # QUESTION 4: WHAT GETS YOUR
+    # CHARACTER IN AND OUT OF TROUBLE?
+    # ===========================
+
+    ^"Question 4: Trouble" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # Choose one option that best describes your character's
+        # personality. This determines an additional ring increase.
+
+        PROPERTIES {
+            ^"Question" INTEGER 4 FIXED
+            ^"Question Text" STRING "What gets your character in and out of trouble?" FIXED
+        }
+
+        OPTIONS {
+            "Abrasive, honest, driven" "+1 Fire"
+            "Empathetic, tricky, clever" "+1 Air"
+            "Gregarious, adaptable, charming" "+1 Water"
+            "Patient, stoic, thorough" "+1 Earth"
+            "Contemplative, self-aware, insightful" "+1 Void"
+        }
+
+        RULES {
+            #L5RPW45aB2cD4eF6gH8iJ0k: q4_choose_one_ring_increase
+        }
+    }
+
+    # ===========================
+    # QUESTION 5: WHAT IS YOUR
+    # CHARACTER'S PAST?
     # (REPLACES GIRI)
     # ===========================
 
     ^"The Past System" DEF {
-        APPLIES TO [^"Samurai"]
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
-        # Ronin do not have the same giri attribute as samurai.
-        # Instead, giri is replaced by the character's past.
-        # The past represents the character's history and what
-        # drove them onto the path of waves. It functions
-        # mechanically similar to giri but reflects the character's
-        # relationship with their former life rather than duty
-        # to a lord.
+        # Ronin, peasants, and gaijin do not have the same giri
+        # attribute as samurai. Instead, giri is replaced by the
+        # character's past. The past represents the character's
+        # history and what drove them onto the path of waves.
+        # It functions mechanically similar to giri but reflects
+        # the character's relationship with their former life
+        # rather than duty to a lord.
+        #
+        # Choose or roll on the Sample Pasts table (d100).
+        # The past creates problems and conflicts with ninjo.
+        # If you choose the "Duty" past, you may optionally use
+        # the rules for giri from the core rulebook.
 
         RULES {
             #L5RPW42jK9lM1nO3pQ5rS7t: past_replaces_giri_for_ronin
@@ -1458,22 +1520,447 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
     }
 
+    TABLE "Sample Pasts" {
+        ROLL "d100"
+        "01-06" "Spiritual Troubles: Desecrated a shrine, ignored an oath, or crossed the Fortunes. Face curses, misfortune, and distrust."
+        "07-14" "Bad Family History: Family was falsely or truly accused. Too many people know and judge you."
+        "15-22" "Bad Reputation: Accused of murder, authored inappropriate work, had messy affair, engaged in thievery, or voluntarily left liege."
+        "23-30" "Debts to Pay: Owe a vast sum to a person or family. Must make regular payments or face a bounty."
+        "31-38" "Desertion: Left your post due to cowardice or admirable reasons. Your commander intends to bring you back."
+        "39-46" "Duty: Still adhere to an ideal from clan, monastic vows, government, or family. May optionally use giri rules from core."
+        "47-54" "Fallen Family Legacy: Family once had name, land, and title. You have only the name."
+        "55-62" "Family in Need: Family needs money, medicine, care, attention, or rescue."
+        "63-70" "Forsaken Vows: Expelled from or left a monastery. Cannot return until issues resolved."
+        "71-78" "Long Path of Waves: After gempuku you explored the world. Your family seeks to take you back."
+        "79-86" "Lifelong Enemy: An individual or family competes against you for the same goals."
+        "87-93" "Unearned Heroism: Won a duel or contest by accident or nefarious means. The master seeks you out."
+        "94-100" "Witness: You know too much and the spied-upon party wants you silent permanently."
+    }
+
     # ===========================
-    # NEW ROLE: SAGE
+    # QUESTION 6: WHAT DOES YOUR
+    # CHARACTER LONG FOR?
     # ===========================
 
-    ^"Sage Role" DEF {
-        APPLIES TO [^"Samurai"]
+    ^"Question 6: Ninjo" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
-        # Like shugenja, sages wield special powers, but theirs
-        # are bestowed by other means, usually outside the
-        # bounds of what is considered appropriate in Rokugan.
-        # A sage may wield powers granted by gods that rule
-        # in lands outside the Empire's borders, or they may
-        # use techniques such as kiho in unfamiliar ways.
+        # What does your character long for, and how might their
+        # past impact their ninjo? Same concept as core Q6 but
+        # reframed around past instead of giri. Narrative only --
+        # choose or create a ninjo. The ninjo should conflict with
+        # the character's past.
+
+        PROPERTIES {
+            ^"Question" INTEGER 6 FIXED
+            ^"Question Text" STRING "What does your character long for, and how might their past impact their ninjo?" FIXED
+        }
 
         RULES {
-            #L5RPW44fG1hI3jK5lM7nO9p: sage_role_non_rokugani_powers
+            #L5RPW46lM3nO5pQ7rS9tU1v: q6_ninjo_conflicts_with_past
+        }
+    }
+
+    TABLE "Sample Ninjo" {
+        ROLL "d100"
+        "01-04" "Achieve Mastery: Seek to be the best at swordplay, art, calligraphy, poetry, or other pursuit."
+        "05-08" "Amass Followers: Claim to be a bandit leader, crime lord, or cult head. Need an audience."
+        "09-13" "Assist the Spirits: Focus on spiritual welfare of lost or abused spirits."
+        "14-18" "Atonement: Did a great wrong and must make up for it through actions."
+        "19-23" "Construct a Great Work: Driven to build a masterwork gate, sculpture, painting, text, or shrine."
+        "24-28" "Discover a Family Heritage: Find a lost claim to greatness -- lineage scroll, relic, or art."
+        "29-33" "Enact Justice: Expose a vicious secret, reveal evidence, or get a criminal to confess."
+        "34-38" "Establish a Family: Begin a grand lineage with a partner who shares the goal."
+        "39-43" "Find a Lord to Serve: Regain lost status, improve station, or integrate into a foreign society."
+        "44-48" "Find a Sensei: Study under great masters to become one yourself."
+        "49-53" "Find True Love: Seek rare and precious true love in a world that scoffs at it."
+        "54-58" "Gain Mystical Power: Seek power to change reality through study or blood magic."
+        "59-63" "Kill Monsters: Destroy demons and spirits of corruption."
+        "64-68" "Regain Your Home: Return to or rebuild a destroyed homeland."
+        "69-73" "Personal Security: Acquire land, money, or stipend to ensure your family's future."
+        "74-78" "Recover a Relic: Find a relic with cultural, monetary, or spiritual power."
+        "79-83" "Build a Reputation: Spread your name throughout Rokugan to samurai and heimin alike."
+        "84-88" "Tame a Great Beast: Tame terrifying creatures that harass farmers and hunters."
+        "89-93" "Uncover a Conspiracy: Reveal a plot to overthrow or murder those in power."
+        "94-100" "Wreak Vengeance: A villain has wronged you or someone you care about."
+    }
+
+    # ===========================
+    # QUESTION 7: WHAT IS YOUR
+    # CHARACTER KNOWN FOR?
+    # ===========================
+
+    ^"Question 7: Known For" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # DIFFERS FROM CORE Q7 (clan relationship).
+        # In PoW, Q7 asks what the character is known for in
+        # their community. Choose one path:
+        #
+        # Path A: Known for intentional deeds, skills, or behavior
+        #   that has helped others (even if shunned about it).
+        #   Gain +5 Glory.
+        #
+        # Path B: Known for deeds perceived as wicked, harmful,
+        #   or exceptionally selfish (or at odds with culture/family).
+        #   Gain +1 rank in a skill currently at 0 ranks. The skill
+        #   should represent the choices that upset normal order.
+
+        PROPERTIES {
+            ^"Question" INTEGER 7 FIXED
+            ^"Question Text" STRING "What is your character known for?" FIXED
+        }
+
+        OPTIONS {
+            "Positive deeds, skills, or helpful behavior" "+5 Glory"
+            "Wicked, harmful, or selfish deeds" "+1 rank in one skill at 0 ranks"
+        }
+
+        RULES {
+            #L5RPW47wX4yZ6aB8cD0eF2g: q7_glory_or_skill_choice
+        }
+    }
+
+    # ===========================
+    # QUESTION 8: WHAT DOES YOUR
+    # CHARACTER THINK OF BUSHIDO?
+    # ===========================
+
+    ^"Question 8: Bushido" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # DIFFERS FROM CORE Q8 (two options).
+        # PoW Q8 has THREE options instead of two.
+        # Also choose one tenet as paramount and one as
+        # less significant (same as core).
+        #
+        # Option A: Staunch dedication to Bushido -> +10 Honor
+        # Option B: Values diverge from Bushido -> gain one item
+        #   of rarity 5 or lower
+        # Option C: Know little about Bushido (gaijin option) ->
+        #   +1 rank in one of: Commerce, Labor, Medicine,
+        #   Seafaring, Skulduggery, or Survival
+
+        PROPERTIES {
+            ^"Question" INTEGER 8 FIXED
+            ^"Question Text" STRING "What does your character think of Bushido?" FIXED
+        }
+
+        OPTIONS {
+            "Staunch dedication to Bushido" "+10 Honor"
+            "Values diverge from Bushido" "Gain one item of rarity 5 or lower"
+            "Know little about Bushido" "+1 rank in one skill: Commerce, Labor, Medicine, Seafaring, Skulduggery, or Survival"
+        }
+
+        RULES {
+            #L5RPW48hI5jK7lM9nO1pQ3r: q8_three_way_bushido_choice
+        }
+    }
+
+    # ===========================
+    # QUESTION 9: GREATEST ACCOMPLISHMENT
+    # ===========================
+
+    ^"Question 9: Distinction" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # What is your character's greatest accomplishment so far?
+        # Same structure as core Q9. Gain one Distinction advantage.
+        # May choose from core distinctions or PoW distinctions.
+
+        PROPERTIES {
+            ^"Question" INTEGER 9 FIXED
+            ^"Question Text" STRING "What is your character's greatest accomplishment so far?" FIXED
+            ^"Gain" STRING "One Distinction advantage"
+        }
+
+        RULES {
+            #L5RPW49sT6uV8wX0yZ2aB4c: q9_gain_one_distinction
+        }
+    }
+
+    # ===========================
+    # QUESTION 10: WHAT HOLDS YOUR
+    # CHARACTER BACK?
+    # ===========================
+
+    ^"Question 10: Adversity" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # What holds your character back most in life?
+        # Same structure as core Q10. Gain one Adversity disadvantage.
+        # May choose from core adversities or PoW adversities.
+
+        PROPERTIES {
+            ^"Question" INTEGER 10 FIXED
+            ^"Question Text" STRING "What holds your character back most in life?" FIXED
+            ^"Gain" STRING "One Adversity disadvantage"
+        }
+
+        RULES {
+            #L5RPW50dE7fG9hI1jK3lM5n: q10_gain_one_adversity
+        }
+    }
+
+    # ===========================
+    # QUESTION 11: WHAT MAKES YOUR
+    # CHARACTER FEEL AT PEACE?
+    # ===========================
+
+    ^"Question 11: Passion" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # What activity most makes your character feel at peace?
+        # Same structure as core Q11. Gain one Passion advantage.
+        # May choose from core passions or PoW passions.
+
+        PROPERTIES {
+            ^"Question" INTEGER 11 FIXED
+            ^"Question Text" STRING "What activity most makes your character feel at peace?" FIXED
+            ^"Gain" STRING "One Passion advantage"
+        }
+
+        RULES {
+            #L5RPW51oP8qR0sT2uV4wX6y: q11_gain_one_passion
+        }
+    }
+
+    # ===========================
+    # QUESTION 12: WHAT TROUBLES
+    # YOUR CHARACTER?
+    # ===========================
+
+    ^"Question 12: Anxiety" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # What concern, fear, or foible troubles your character most?
+        # Same structure as core Q12. Gain one Anxiety disadvantage.
+        # May choose from core anxieties or PoW anxieties.
+
+        PROPERTIES {
+            ^"Question" INTEGER 12 FIXED
+            ^"Question Text" STRING "What concern, fear, or foible troubles your character most?" FIXED
+            ^"Gain" STRING "One Anxiety disadvantage"
+        }
+
+        RULES {
+            #L5RPW52zA9bC1dE3fG5hI7j: q12_gain_one_anxiety
+        }
+    }
+
+    # ===========================
+    # QUESTION 13: WHO HAS YOUR
+    # CHARACTER LEARNED MOST FROM?
+    # ===========================
+
+    ^"Question 13: Mentor" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # Who has your character learned the most from during
+        # their life? Same structure as core Q13. Choose one:
+        #
+        # Option A: Gain one advantage related to your mentor.
+        # Option B: Gain one disadvantage related to your mentor,
+        #   AND +1 rank in a skill developed from that relationship.
+
+        PROPERTIES {
+            ^"Question" INTEGER 13 FIXED
+            ^"Question Text" STRING "Who has your character learned the most from during their life?" FIXED
+        }
+
+        OPTIONS {
+            "Positive relationship with mentor" "Gain one advantage"
+            "Complicated relationship with mentor" "Gain one disadvantage AND +1 rank in one skill"
+        }
+
+        RULES {
+            #L5RPW53kL0mN2oP4qR6sT8u: q13_advantage_or_disadvantage_plus_skill
+        }
+    }
+
+    # ===========================
+    # QUESTION 14: MOST PRIZED POSSESSION
+    # ===========================
+
+    ^"Question 14: Prized Possession" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # DIFFERS FROM CORE Q14 ("What do people notice first?").
+        # PoW Q14: When all of your life can fit in a pack on your
+        # back, what is the one item that matters most?
+        #
+        # Choose one item from starting outfit OR a single item of
+        # rarity 5 or lower. If you choose an item from starting
+        # outfit, you may add the Ceremonial or Resplendent quality.
+        # Record what makes the item stand out in Personality,
+        # Habits, Bonds, and Quirks.
+
+        PROPERTIES {
+            ^"Question" INTEGER 14 FIXED
+            ^"Question Text" STRING "What is your character's most prized possession?" FIXED
+            ^"Gain" STRING "One item (from outfit or rarity 5 or lower); may add Ceremonial or Resplendent quality"
+        }
+
+        RULES {
+            #L5RPW54vW1xY3zA5bC7dE9f: q14_prized_possession_item_or_quality
+        }
+    }
+
+    # ===========================
+    # QUESTION 15: STRESS REACTION
+    # ===========================
+
+    ^"Question 15: Stress Reaction" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # How does your character react to stressful situations?
+        # Same as core Q15 -- purely narrative. Describe a noteworthy
+        # physical response during stress. Note it under Personality,
+        # Habits, and Quirks. It may play a part when unmasking.
+
+        PROPERTIES {
+            ^"Question" INTEGER 15 FIXED
+            ^"Question Text" STRING "How does your character react to stressful situations?" FIXED
+            ^"Gain" STRING "Narrative only"
+        }
+
+        RULES {
+            #L5RPW55gH2iJ4kL6mN8oP0q: q15_narrative_stress_response
+        }
+    }
+
+    # ===========================
+    # QUESTION 16: RELATIONSHIPS
+    # ===========================
+
+    ^"Question 16: Relationships" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # DIFFERS FROM CORE Q16 (heritage table roll).
+        # PoW Q16: What are your relationships to your family,
+        # the clans, peasants, and others?
+        #
+        # Choose one item of rarity 7 or lower that was a gift
+        # from a group your character has a positive relationship
+        # with. Record noteworthy history, quarrels, alliances,
+        # or grievances in the Relationships section.
+
+        PROPERTIES {
+            ^"Question" INTEGER 16 FIXED
+            ^"Question Text" STRING "What are your relationships to your family, the clans, peasants, and others?" FIXED
+            ^"Gain" STRING "One item of rarity 7 or lower (gift from allied group)"
+        }
+
+        RULES {
+            #L5RPW56rS3tU5vW7xY9zA1b: q16_relationship_item_rarity_7
+        }
+    }
+
+    # ===========================
+    # QUESTION 17: SHARED GROUP HISTORY
+    # ===========================
+
+    ^"Question 17: Group History" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # COMPLETELY DIFFERENT FROM CORE Q17 ("Parent's opinion").
+        # PoW Q17: What shared history does your character have
+        # with their group? Work with GM and group to establish
+        # a shared bond/experience.
+        #
+        # Choose one prompt (or create with GM approval):
+        # - Which PC/NPC have you gone through the unthinkable with?
+        # - Which character knows a secret you'd rather forget?
+        # - You owe a debt to someone in your group. To whom?
+        # - You have intense feelings for someone in the group.
+        # - You conquered a great beast with two other members.
+        # - You are impressed/jealous of another member's skill.
+        # - You share blood or history with one other member.
+        #
+        # After choosing, work with GM to determine an appropriate bond.
+
+        PROPERTIES {
+            ^"Question" INTEGER 17 FIXED
+            ^"Question Text" STRING "What shared history does your character have with their group?" FIXED
+            ^"Gain" STRING "One bond (narrative, determined with GM and group)"
+        }
+
+        RULES {
+            #L5RPW57cD4eF6gH8iJ0kL2m: q17_shared_group_bond
+        }
+    }
+
+    # ===========================
+    # QUESTION 18: WHO RAISED YOU?
+    # ===========================
+
+    ^"Question 18: Who Raised You" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # COMPLETELY DIFFERENT FROM CORE Q18 (Samurai Heritage Table).
+        # PoW Q18: Who raised your character? Record the relationship
+        # with parents/guardians.
+        #
+        # Gain +1 rank in one skill in which your character currently
+        # has 0 ranks. Determine whether parents/guardians approve
+        # of this extracurricular interest or see it as a regrettable
+        # deviation, and why. Record in Relationships section.
+
+        PROPERTIES {
+            ^"Question" INTEGER 18 FIXED
+            ^"Question Text" STRING "Who raised your character?" FIXED
+            ^"Gain" STRING "+1 rank in one skill currently at 0 ranks"
+        }
+
+        RULES {
+            #L5RPW58nO5pQ7rS9tU1vW3x: q18_skill_from_upbringing
+        }
+    }
+
+    # ===========================
+    # QUESTION 19: PERSONAL NAME
+    # ===========================
+
+    ^"Question 19: Name" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # What is your character's personal name?
+        # Same concept as core Q19. Narrative only.
+        # May reference PoW name tables (pp. 228-232).
+
+        PROPERTIES {
+            ^"Question" INTEGER 19 FIXED
+            ^"Question Text" STRING "What is your character's personal name?" FIXED
+            ^"Gain" STRING "Narrative only"
+        }
+
+        RULES {
+            #L5RPW59yZ6aB8cD0eF2gH4i: q19_choose_name
+        }
+    }
+
+    # ===========================
+    # QUESTION 20: HOW SHOULD YOUR
+    # CHARACTER DIE?
+    # ===========================
+
+    ^"Question 20: Death" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # How should your character die?
+        # Same concept as core Q20. Narrative only.
+        # The death of a ronin or gaijin in a foreign land is
+        # not usually remarkable. Most succumb to the elements,
+        # illness, or malnutrition. But your character is different.
+
+        PROPERTIES {
+            ^"Question" INTEGER 20 FIXED
+            ^"Question Text" STRING "How should your character die?" FIXED
+            ^"Gain" STRING "Narrative only"
+        }
+
+        RULES {
+            #L5RPW60jK7lM9nO1pQ3rS5t: q20_determine_death
         }
     }
 
@@ -1694,51 +2181,22 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     # ===========================
-    # PAST SYSTEM (REPLACES GIRI)
+    # NEW ROLE: SAGE
     # ===========================
 
-    # The Past replaces Giri for ronin characters. Sample pasts
-    # are provided via a d100 table (Table 2-1).
+    ^"Sage Role" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
-    TABLE "Sample Pasts" {
-        ROLL "d100"
-        "01-06" "Spiritual Troubles: Desecrated a shrine, ignored an oath, or crossed the Fortunes. Face curses, misfortune, and distrust."
-        "07-14" "Bad Family History: Family was falsely or truly accused. Too many people know and judge you."
-        "15-22" "Bad Reputation: Accused of murder, authored inappropriate work, had messy affair, engaged in thievery, or voluntarily left liege."
-        "23-30" "Debts to Pay: Owe a vast sum to a person or family. Must make regular payments or face a bounty."
-        "31-38" "Desertion: Left your post due to cowardice or admirable reasons. Your commander intends to bring you back."
-        "39-46" "Duty: Still adhere to an ideal from clan, monastic vows, government, or family. May optionally use giri rules from core."
-        "47-54" "Fallen Family Legacy: Family once had name, land, and title. You have only the name."
-        "55-62" "Family in Need: Family needs money, medicine, care, attention, or rescue."
-        "63-70" "Forsaken Vows: Expelled from or left a monastery. Cannot return until issues resolved."
-        "71-78" "Long Path of Waves: After gempuku you explored the world. Your family seeks to take you back."
-        "79-86" "Lifelong Enemy: An individual or family competes against you for the same goals."
-        "87-93" "Unearned Heroism: Won a duel or contest by accident or nefarious means. The master seeks you out."
-        "94-100" "Witness: You know too much and the spied-upon party wants you silent permanently."
-    }
+        # Like shugenja, sages wield special powers, but theirs
+        # are bestowed by other means, usually outside the
+        # bounds of what is considered appropriate in Rokugan.
+        # A sage may wield powers granted by gods that rule
+        # in lands outside the Empire's borders, or they may
+        # use techniques such as kiho in unfamiliar ways.
 
-    TABLE "Sample Ninjo" {
-        ROLL "d100"
-        "01-04" "Achieve Mastery: Seek to be the best at swordplay, art, calligraphy, poetry, or other pursuit."
-        "05-08" "Amass Followers: Claim to be a bandit leader, crime lord, or cult head. Need an audience."
-        "09-13" "Assist the Spirits: Focus on spiritual welfare of lost or abused spirits."
-        "14-18" "Atonement: Did a great wrong and must make up for it through actions."
-        "19-23" "Construct a Great Work: Driven to build a masterwork gate, sculpture, painting, text, or shrine."
-        "24-28" "Discover a Family Heritage: Find a lost claim to greatness -- lineage scroll, relic, or art."
-        "29-33" "Enact Justice: Expose a vicious secret, reveal evidence, or get a criminal to confess."
-        "34-38" "Establish a Family: Begin a grand lineage with a partner who shares the goal."
-        "39-43" "Find a Lord to Serve: Regain lost status, improve station, or integrate into a foreign society."
-        "44-48" "Find a Sensei: Study under great masters to become one yourself."
-        "49-53" "Find True Love: Seek rare and precious true love in a world that scoffs at it."
-        "54-58" "Gain Mystical Power: Seek power to change reality through study or blood magic."
-        "59-63" "Kill Monsters: Destroy demons and spirits of corruption."
-        "64-68" "Regain Your Home: Return to or rebuild a destroyed homeland."
-        "69-73" "Personal Security: Acquire land, money, or stipend to ensure your family's future."
-        "74-78" "Recover a Relic: Find a relic with cultural, monetary, or spiritual power."
-        "79-83" "Build a Reputation: Spread your name throughout Rokugan to samurai and heimin alike."
-        "84-88" "Tame a Great Beast: Tame terrifying creatures that harass farmers and hunters."
-        "89-93" "Uncover a Conspiracy: Reveal a plot to overthrow or murder those in power."
-        "94-100" "Wreak Vengeance: A villain has wronged you or someone you care about."
+        RULES {
+            #L5RPW44fG1hI3jK5lM7nO9p: sage_role_non_rokugani_powers
+        }
     }
 
     # ===========================
