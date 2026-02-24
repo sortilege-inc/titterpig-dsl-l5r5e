@@ -798,7 +798,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
                 "Sentiment" SKILL
                 "Survival" SKILL
                 "Rank 1-4 Kata (kata)" TECH_GROUP
-                "Rank 1-4 Rituals (ritual)" TECHNIQUE
+                "Rank 1-4 Rituals (ritual)" TECH_GROUP
                 "Guardian of the Secret Gate (invocation)" TECHNIQUE
             }
             ^"Rank 5" {
@@ -1550,7 +1550,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             ^"Technique Type" STRING "Ritual (Moon Cultist)" FIXED
             ^"Rank" INTEGER DEFAULT 5
             ^"Activation" STRING "Downtime activity or Scheme action, TN 2 Theology (Water), target one character at range 0-4"
-            ^"Effect" STRING "Augment target's mind with chaos of Onnotangu; target receives strife equal to Water Ring and must make TN 4 Meditation check or suffer Disoriented, Exhausted, Silenced and reduce TN of next Scholar check by Water Ring"
+            ^"Effect" STRING "Augment target's mind with chaos of Onnotangu; target receives strife equal to Water Ring and must make TN 4 Meditation (Earth 5, Fire 2) check or suffer Disoriented, Exhausted, Silenced and reduce TN of next Scholar check by Water Ring (min 1). If you fail, receive strife equal to Water Ring and become Silenced and Immobilized for 1 + shortfall rounds"
         }
     }
 
@@ -1577,7 +1577,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             ^"Technique Type" STRING "Inversion" FIXED
             ^"Rank" INTEGER DEFAULT 1
             ^"Activation" STRING "Once per session, immediately after an action of great consequence, TN 2 Theology (Void), target that character at range 0-3"
-            ^"Effect" STRING "Scry for another outcome; return to the moment before the action; all effects undone; may choose same or different action"
+            ^"Effect" STRING "Scry for another outcome; return to the moment before the action; all effects undone; only you and target are aware. If you are the target, choose same or different action. If another character is the target, say up to five words before they act"
             ^"Magnitude" STRING "1+: see one consequence before end of scene; 2+: see consequence in next year; 3+: see consequence in decades"
         }
     }
@@ -1589,7 +1589,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             ^"Rank" INTEGER DEFAULT 1
             ^"Activation" STRING "Support action, TN 2 Theology (Void)"
             ^"Effect" STRING "Summon a rift in reality usable as a knife that ignores all resistances; persists until end of scene"
-            ^"Magnitude" STRING "1+: after Attack, rift echoes summoned at range 0 of target for magnitude rounds; when they end, each character at range 0-1 suffers critical strike equal to deadliness times number of echoes"
+            ^"Magnitude" STRING "1+: after Attack, rift echoes summoned at range 0 of target for magnitude rounds; in skirmish when they end, each character (not you) at range 0-1 suffers critical strike equal to deadliness times number of echoes; in other conflicts, targets treat all terrain as Dangerous while echoes persist"
         }
     }
 
@@ -1622,7 +1622,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             ^"Rank" INTEGER DEFAULT 2
             ^"Activation" STRING "Scheme and Support action, TN 3 Theology (Void), target yourself"
             ^"Effect" STRING "Augment and curse self to be out of phase; use Theology instead of Fitness to reduce critical strike severity; if reduced to 0, do not suffer it; persists until start of next turn"
-            ^"Magnitude" STRING "1-2: persists additional rounds; 2+: redirect reduced critical strike to character at range 0-1 with vigilance <= magnitude; 3+: persists until end of scene"
+            ^"Magnitude" STRING "1-2: persists additional rounds; 2+: redirect critical strike (severity before reductions) to character at range 0-1 with vigilance <= magnitude; 3+: persists until end of scene"
         }
     }
 
@@ -1632,7 +1632,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             ^"Technique Type" STRING "Inversion" FIXED
             ^"Rank" INTEGER DEFAULT 2
             ^"Activation" STRING "Scheme and Support action, TN 3 Theology (Void), target one character at range 0-1"
-            ^"Effect" STRING "Augment and curse target; they keep dice up to Void Ring instead of ring used; no strife from kept strife results, but receive 1 fatigue per strife instead; persists until end of target's next turn"
+            ^"Effect" STRING "Augment and curse target; they keep dice up to Void Ring instead of ring used (must keep as many as possible); no strife from kept strife results, but receive 1 fatigue per strife instead; if Incapacitated this way, also gain Exhausted; persists until end of target's next turn"
             ^"Magnitude" STRING "1-2: persists additional rounds; 3+: persists until end of scene"
         }
     }
@@ -1642,7 +1642,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Technique Type" STRING "Inversion" FIXED
             ^"Rank" INTEGER DEFAULT 3
-            ^"Activation" STRING "Once per scene, Scheme action, Theology (Void), TN = target's vigilance + silhouette, target one character or object at range 0-3"
+            ^"Activation" STRING "Once per scene, Scheme action, Theology (Void), TN = target's vigilance + silhouette (silhouette only for objects), target one character or object at range 0-3"
             ^"Effect" STRING "Bind target outside reality; unaffected by everything and affects nothing; returns after 1 round"
             ^"Magnitude" STRING "1-3: removed for additional rounds; 4+: Adversary/PC removed until end of scene; Minion/mundane object ceases to exist permanently"
         }
@@ -1654,7 +1654,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             ^"Technique Type" STRING "Inversion" FIXED
             ^"Rank" INTEGER DEFAULT 3
             ^"Activation" STRING "Once per scene, Scheme and Support action, TN 3 Theology (Void), target position at range 0-2"
-            ^"Effect" STRING "Simultaneously exist at current position and target position; can receive 2 fatigue to choose additional targets or target same target multiple times from multiple positions; persists for rounds equal to Meditation ranks"
+            ^"Effect" STRING "Simultaneously exist at current position and target position (must be reachable by normal movement); can receive 2 fatigue to choose additional targets or target same target multiple times from multiple positions; persists for rounds equal to Meditation ranks; when effect ends, choose one position and cease to occupy all others"
             ^"Magnitude" STRING "1-2: persists additional rounds; 1+: one additional position per magnitude; 3+: persists until end of scene (1 fatigue per position per round)"
         }
     }
@@ -1698,7 +1698,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             ^"Technique Type" STRING "Inversion" FIXED
             ^"Rank" INTEGER DEFAULT 4
             ^"Activation" STRING "Support action, TN 4 Theology (Void), target yourself"
-            ^"Effect" STRING "Receive 3 fatigue, then take an additional turn immediately; others count as unaware of you during this turn"
+            ^"Effect" STRING "Receive 3 fatigue, then take an additional turn immediately; others count as unaware of you and cannot react, but still make checks to resist effects and defend against damage"
             ^"Magnitude" STRING "1+: take additional turns equal to magnitude; each additional turn beyond the first costs 3 more fatigue; if Incapacitated, suffer Dying [3 rounds] and Exhausted"
         }
     }
@@ -1709,7 +1709,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             ^"Technique Type" STRING "Inversion" FIXED
             ^"Rank" INTEGER DEFAULT 5
             ^"Activation" STRING "Support action, TN 4 Theology (Void), target one character or object at range 0-2"
-            ^"Effect" STRING "Bind target to current state and location (note fatigue, strife, conditions, position); when effect ends, target returns to noted state; persists until end of next turn"
+            ^"Effect" STRING "Bind target to current state and location (note fatigue, strife, conditions, persistent effects, critical strikes suffered, position); when effect ends, target returns to noted state even if no longer existing; target remembers everything; persists until end of next turn"
             ^"Magnitude" STRING "1-3: persists additional rounds; 4+: target returns to noted state at end of each of your turns for rest of scene"
         }
     }

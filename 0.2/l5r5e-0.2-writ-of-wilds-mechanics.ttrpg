@@ -3,10 +3,41 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
     VERSION "0.1"
     RELEASE_DATE "2025-06-01"
 
-    # Writ of the Wilds (Chapter 2): New schools (including traditions for
-    # Naga, Nezumi, Tengu, Yobanjin, and Dragonfly), new advantages
-    # (distinctions & passions), new disadvantages (adversities & anxieties),
-    # new samurai heritages, upbringings, woolly pony mount, and items.
+    # Writ of the Wilds (Chapter 2): Dragonfly Minor Clan, new schools
+    # (including traditions for Naga, Nezumi, Tengu, Yobanjin, and
+    # Dragonfly), new advantages (distinctions & passions), new
+    # disadvantages (adversities & anxieties), new samurai heritages,
+    # upbringings, woolly pony mount, and items.
+
+    # ===========================
+    # DRAGONFLY MINOR CLAN
+    # ===========================
+
+    ^"Dragonfly Clan" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The Dragonfly seek knowledge and understanding.
+        # As gatekeepers for the Dragon, they have met and
+        # mingled with a vast array of samurai and peasants,
+        # stoking their desire to gather information and compare
+        # the differing views of the Great Clans and others.
+
+        PROPERTIES {
+            ^"Clan Name" STRING "Dragonfly" FIXED
+            ^"Clan Type" STRING "Minor Clan"
+            ^"Clan Ring Bonus" STRING "+1 Earth"
+            ^"Clan Skill Bonus" STRING "+1 Sentiment"
+            ^"Clan Status" INTEGER DEFAULT 30
+        }
+
+        FAMILIES {
+            ^"Tonbo Family" "+1 Air or Water, +1 Courtesy, +1 Culture, Glory 35, 1 koku, 2 Dragonfly glass ornaments"
+        }
+
+        RULES {
+            #L5RWW00aB1cD3eF5gH7iJ9kL: dragonfly_minor_clan_traits
+        }
+    }
 
     # ===========================
     # NEW SCHOOLS
@@ -148,7 +179,7 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
                 "Games" SKILL
                 "Martial Arts [Unarmed]" SKILL
                 "Rank 1-2 Kiho (kiho)" TECH_GROUP
-                "Grace of Gentle Breeze (kiho)" TECHNIQUE
+                "Grace of the Gentle Breeze (kiho)" TECHNIQUE
                 "Feigned Opening (shuji)" TECHNIQUE
             }
             ^"Rank 3" {
@@ -207,7 +238,7 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" STRING "Choose five: +1 Courtesy, +1 Fitness, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Meditation, +1 Performance, +1 Survival"
             ^"Starting Honor" INTEGER DEFAULT 55
             ^"Available Technique Groups" LIST OF STRING ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata (choose one): = Crescent Moon Style, Striking as Water; Shuji (choose one): Shallow Waters, Stonewall Tactics, Weight of Duty"
+            ^"Starting Techniques" STRING "Kata (choose one): Crescent Moon Style, Striking as Water; Shuji (choose one): Shallow Waters, Stonewall Tactics, Weight of Duty"
             ^"School Ability" STRING "Bend Perception"
             ^"Mastery Ability" STRING "Scaled Hide"
         }
@@ -298,7 +329,7 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" STRING "Choose five: +1 Commerce, +1 Fitness, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Medicine, +1 Skulduggery, +1 Survival"
             ^"Starting Honor" INTEGER DEFAULT 18
             ^"Available Technique Groups" LIST OF STRING ["Kata (kata)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata: = Razor Bite; Ninjutsu: = Skulk"
+            ^"Starting Techniques" STRING "Kata: Razor Bite; Ninjutsu: Skulk"
             ^"School Ability" STRING "Keen Senses"
             ^"Mastery Ability" STRING "Reflexive Strike"
         }
@@ -382,7 +413,7 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" STRING "Choose four: +1 Fitness, +1 Martial Arts [Melee], +1 Medicine, +1 Meditation, +1 Survival, +1 Theology"
             ^"Starting Honor" INTEGER DEFAULT 55
             ^"Available Technique Groups" LIST OF STRING ["Invocations (invocation)", "Kiho (kiho)", "Rituals (ritual)"]
-            ^"Starting Techniques" STRING "Kata: = Flight; Kiho (choose two): Air Fist, Cloak of Night, Yari of Air; Rituals: Chikusho-do's Guile"
+            ^"Starting Techniques" STRING "Kata: Flight; Kiho (choose two): Air Fist, Cloak of Night, Yari of Air; Rituals: Chikusho-do's Guile"
             ^"School Ability" STRING "Mind of Calm"
             ^"Mastery Ability" STRING "A Master of Study"
         }

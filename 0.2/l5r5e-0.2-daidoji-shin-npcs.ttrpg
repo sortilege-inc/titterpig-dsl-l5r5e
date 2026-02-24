@@ -99,19 +99,21 @@ EXTENSION "L5R5e_Daidoji_Shin_NPCs" EXTENDS "L5R5e_Core_Character" {
             ^"Glory" INTEGER 50
             ^"Status" INTEGER 40
             ^"Skills" LIST OF STRING ["Artisan 1", "Martial 5", "Scholar 4", "Social 4", "Trade 2"]
-            ^"Advantages" LIST OF STRING ["Sworn to Bushido (Void) [Social; Mental]", "Indomitable Will (Earth) [Interpersonal; Mental]", "Quick Reflexes (Fire) [Interpersonal; Physical]"]
-            ^"Disadvantages" LIST OF STRING ["Hot-Tempered (Water) [Social; Mental]", "Bluntness (Air) [Interpersonal]", "Impatience (Earth) [Mental]"]
-            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 6, Deadliness 5/7, Ceremonial, Razor-Edged", "Yumi: Range 2-5, Damage 5, Deadliness 3"]
-            ^"Gear" LIST OF STRING ["Lacquered Armor (Physical 4, Ceremonial, Cumbersome, Wargear)", "Wakizashi", "Quiver", "Yari", "Knife", "Plain Robes (Physical 1, Mundane)"]
+            ^"Advantages" LIST OF STRING ["Sworn to Bushido (Void) [Social; Mental]", "Indomitable Will (Earth) [Martial; Interpersonal, Mental]", "Quick Reflexes (Fire) [Interpersonal; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Hot-Tempered (Water) [Social; Mental]", "Bluntness (Air) [Social; Interpersonal]", "Impatience (Earth) [Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged", "Yumi: Range 2-5, Damage 5, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Lacquered Armor (Physical 4, Ceremonial, Cumbersome, Wargear)", "Wakizashi", "Quiver", "Yari", "Knife", "Plain Robes (Physical 1, Mundane)", "A handful of koku and bu"]
         }
 
         ^"Crescent Moon Style" DEF {
             # When performing a guard action, may spend (op):
-            # (op): After another character performs an Attack action
-            # targeting the Bushi or another character the Bushi is
-            # guarding, the Bushi may perform a Strike action targeting
-            # them. Persists until start of Bushi's next turn or until
-            # they perform a Strike action.
+            # (op): After a character at range 1-2 performs an Attack
+            # action targeting the Bushi or another character the Bushi
+            # is guarding, the Bushi may perform a Strike action with
+            # one readied Martial Arts [Melee or Unarmed] weapon
+            # targeting that character (if they are within the Bushi's
+            # weapon's range). Persists until start of Bushi's next turn
+            # or until they perform a Strike action this way.
         }
 
         ^"Sworn Protector" DEF {

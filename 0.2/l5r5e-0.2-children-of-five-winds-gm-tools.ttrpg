@@ -25,16 +25,20 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
                     ^"Description" STRING "Accumulate momentum to establish a binding agreement between mortal and spirit."
                 }
                 ^"Dispel Possession" {
+                    ^"Momentum Required" STRING "Spirit's focus + intrigue conflict rank (plus spirit's vigilance if possessing one of the characters pursuing this objective)"
                     ^"Description" STRING "Drive out a spirit that has possessed a character."
                 }
                 ^"Invoke for Aid" {
+                    ^"Momentum Required" STRING "Spirit's intrigue conflict rank + rank of invocation desired (or +6 for effects more potent than an invocation)"
                     ^"Description" STRING "Request a spirit perform an invocation or other supernatural feat."
                 }
                 ^"Placate" {
+                    ^"Momentum Required" STRING "Spirit's focus + combat conflict rank"
                     ^"Description" STRING "Calm an enraged spirit."
                 }
                 ^"Seal in an Object" {
-                    ^"Description" STRING "Bind a spirit in a physical vessel to create a meishodo talisman."
+                    ^"Momentum Required" STRING "Spirit's focus + double its intrigue conflict rank"
+                    ^"Description" STRING "Bind a spirit in a physical vessel. The object gains the Sacred or Unholy quality. Way of Names practitioners may create a meishodo talisman."
                 }
             }
 
@@ -117,7 +121,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
                 ^"Good Health" { ^"Description" STRING "Resistance to disease and illness." }
                 ^"Inspiration" { ^"Description" STRING "Creative insights and artistic breakthroughs." }
                 ^"Plenty" { ^"Description" STRING "Abundant harvests and resources." }
-                ^"Quiet Stars" { ^"Description" STRING "Peaceful, undisturbed rest." }
+                ^"Quiet Stars" { ^"Description" STRING "External conflicts are naturally directed away from the domain by sudden storms, flooding rivers, or other phenomena." }
                 ^"Safe Harbor" { ^"Description" STRING "A protected refuge within the domain." }
             }
 
@@ -131,7 +135,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
                 ^"Clarity" { ^"Description" STRING "Gain the Centered condition." }
                 ^"Courage" { ^"Description" STRING "Gain the Emboldened condition." }
                 ^"Energetic Recovery" { ^"Description" STRING "Enhanced fatigue recovery." }
-                ^"Permanence" { ^"Description" STRING "Extended duration of beneficial effects." }
+                ^"Permanence" { ^"Description" STRING "When a character makes a check to resist an effect of an Otherworldly being, they can reroll a number of dice up to the spirit's Water Ring." }
                 ^"Purity" { ^"Description" STRING "Resistance to spiritual corruption." }
                 ^"Restoration" { ^"Description" STRING "Accelerated healing." }
                 ^"Skillful Hands" { ^"Description" STRING "Bonus to craft or trade checks." }
@@ -159,6 +163,10 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Intrigue Rank Modifier" STRING "+1"
             ^"Ring Modifier" STRING "+1 Earth"
             ^"Skill Modifier" STRING "+1 Scholar and Trade skills"
+            ^"Advantages (add/replace 0-2)" LIST OF STRING ["Affinity with (any one animal species) (Void) [Social; Interpersonal]", "Animal Bond (Earth) [Social; Interpersonal, Mental]", "Sixth Sense (Void) [Martial; Spiritual]", "Talented Herbalist (Earth) [Social; Mental]"]
+            ^"Disadvantages (add/replace 0-2)" LIST OF STRING ["Disdain for Urban Sprawl (Earth) [Interpersonal; Mental]", "Deals with Spirits (Fire) [Social; Interpersonal]", "Slow to Trust (Earth) [Social; Interpersonal]"]
+            ^"Techniques (add/replace 0-2)" LIST OF STRING ["Invocations", "Kata", "Rituals"]
+            ^"Demeanor (replace 1)" LIST OF STRING ["Detached", "Gruff", "Shrewd"]
         }
 
         RULES {
@@ -169,11 +177,17 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
     ^"Trickster Animal in Disguise Template" DEF {
         APPLIES TO [^"NPC Template"]
         PROPERTIES {
-            ^"Base Profile" STRING "Any animal or spirit profile"
+            ^"Base Profile" STRING "Any human or animal profile"
             ^"Combat Rank Modifier" STRING "+1"
             ^"Intrigue Rank Modifier" STRING "+2"
             ^"Ring Modifier" STRING "+1 Air or +1 Fire"
-            ^"Add Advantages" STRING "1: Dangerous Allure advantage"
+            ^"Skill Modifier" STRING "+1 Scholar, Social, and Trade skills"
+            ^"Composure Modifier" STRING "+2"
+            ^"Advantages (add/replace 0-2)" LIST OF STRING ["Affinity with (same type of animal) (Void) [Social; Interpersonal]", "Dangerous Allure (Fire) [Social; Interpersonal, Physical]", "Shapeshifter's Guile (Air) [Social; Interpersonal]"]
+            ^"Disadvantage (required)" STRING "Choose an animal or Otherworldly being feature, which is the flaw in this NPC's disguise"
+            ^"Other Disadvantages (add/replace 0-2)" LIST OF STRING ["Materialistic (Air) [Social; Mental]", "Mysterious Taboo (Void) [Social; Spiritual]", "Paranoia (Water) [Social; Mental, Physical]"]
+            ^"Techniques (add/replace 1-2)" LIST OF STRING ["Invocations", "Ninjutsu", "Shuji"]
+            ^"Demeanor (replace 1)" LIST OF STRING ["Detached", "Playful (Earth +2, Water -2)", "Shrewd"]
         }
 
         RULES {
@@ -186,10 +200,12 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         PROPERTIES {
             ^"Base Profile" STRING "Any clan samurai profile"
             ^"Combat Rank Modifier" STRING "+2"
-            ^"Intrigue Rank Modifier" STRING "+0"
             ^"Ring Modifier" STRING "+1 Water"
             ^"Skill Modifier" STRING "+1 Martial and Trade skills"
-            ^"Add Advantages" STRING "1: Affinity with Horses advantage"
+            ^"Advantages (add/replace 0-2)" LIST OF STRING ["Affinity with Horses (Void) [Social; Interpersonal]", "Syncretic Philosophy (Water) [Social; Interpersonal, Mental]", "Quick Reflexes (Fire) [Martial; Interpersonal, Physical]", "Worldly (Void) [Social; Interpersonal, Physical]"]
+            ^"Disadvantages (add/replace 0-2)" LIST OF STRING ["Bluntness (Air) [Social; Interpersonal]", "Softhearted (Fire) [Martial, Social; Interpersonal, Mental]", "Unfair Reputation (Air) [Social; Interpersonal]", "Wanderlust (Water) [Social; Mental]"]
+            ^"Techniques (add/replace 0-2)" LIST OF STRING ["Kata", "Rituals", "Shuji"]
+            ^"Demeanor (replace 1)" LIST OF STRING ["Assertive", "Compassionate", "Gruff"]
         }
 
         RULES {
@@ -205,19 +221,31 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         APPLIES TO [^"Table"]
         ENTRIES {
             ^"Ide Traveling Pony" {
-                ^"Description" STRING "Hardy breed with +2 Composure. Built for endurance over long journeys."
+                ^"Description" STRING "Hardy breed with +2 Endurance, +4 Composure, Intrigue +1. Removes Skittish disadvantage, adds Even-Tempered advantage. Built for endurance over long journeys."
             }
             ^"Iuchi Riding Steed" {
-                ^"Description" STRING "Intelligent breed with Smart as a Human ability. Trained by Iuchi shugenja."
+                ^"Description" STRING "Intelligent breed trained by Iuchi shugenja to respond to verbal and hand-gesture commands."
+                ^"Conflict Rank Modifier" STRING "Intrigue +1"
+                ^"Advantages (add 1)" LIST OF STRING ["Smart as a Human (Air) [Social; Mental]"]
+                ^"Disadvantages (remove)" LIST OF STRING ["Skittish"]
+                ^"Demeanor" STRING "Detached"
             }
             ^"Moto Charger" {
-                ^"Description" STRING "Powerful, aggressive breed. Built for devastating cavalry charges."
+                ^"Description" STRING "Hot-tempered breed known for strength, size, and explosive gallop. Carries heavily armored lancers into battle but lacks stamina for prolonged journeys."
+                ^"Conflict Rank Modifier" STRING "Combat +1"
+                ^"Advantages (remove)" LIST OF STRING ["Tireless Runner"]
+                ^"Advantages (add 2)" LIST OF STRING ["Brute Strength (Fire) [Martial; Physical]", "Fearsome Presence (Fire) [Social; Interpersonal]", "Masterful Fighter (Earth) [Martial; Mental]"]
+                ^"Disadvantages (replace 1)" LIST OF STRING ["Quick to Anger (Fire) [Social; Interpersonal]", "Willful (Earth) [Social; Interpersonal]"]
             }
             ^"Shinjo Courser" {
-                ^"Description" STRING "Swift breed, though can be skittish. Prized for speed and agility."
+                ^"Description" STRING "Renowned for speed and stamina but high-spirited and flighty. Ideal for scouts, courtiers, and mounted archers, but ill-suited to traditional battle."
+                ^"Conflict Rank Modifier" STRING "Combat +1"
+                ^"Endurance Modifier" STRING "+2"
+                ^"Advantages (add)" LIST OF STRING ["Fleet of Foot (Water) [Martial; Physical]"]
+                ^"Demeanor" STRING "Cautious [Air +2, Earth -2]"
             }
             ^"Utaku Warhorse" {
-                ^"Description" STRING "Standard balanced breed from the Blessed Herd. Well-rounded combat mount."
+                ^"Description" STRING "Ideal blend of power, speed, and stamina bred by Utaku Horse Lord Disciples. Combat +1, +4 Endurance, +4 Composure. Removes Skittish disadvantage, adds one of: Fearsome Presence, Masterful Fighter, or Veteran's Instincts."
             }
         }
 
@@ -601,7 +629,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Social Skill Check TN Modifiers" STRING "Earth +1, Air -2, Water -2"
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 0"]
             ^"Advantages" LIST OF STRING ["Keen Tracker (Water) [Trade; Physical]", "Fearsome Presence (Fire) [Social; Interpersonal]"]
-            ^"Disadvantages" LIST OF STRING ["Dependent on Humans (Water) [Trade; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Dependent on Humans (Fire) [Trade; Mental]"]
             ^"Favored Weapons" LIST OF STRING ["Bite: Range 0, Damage 5, Deadliness 2, Snaring"]
             ^"Gear" LIST OF STRING ["Battle hide (Physical 1)"]
         }
@@ -836,8 +864,8 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Demeanor" STRING "Gregarious"
             ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
             ^"Skills" LIST OF STRING ["Artisan 1", "Martial 1", "Scholar 0", "Social 2", "Trade 3"]
-            ^"Advantages" LIST OF STRING ["Daikoku's Blessing (Earth) [Social; Interpersonal, Spiritual]"]
-            ^"Disadvantages" LIST OF STRING ["Quarrelsome (Earth) [Social; Interpersonal]"]
+            ^"Advantages" LIST OF STRING ["Daikoku's Blessing (Water) [Social; Interpersonal, Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Quarrelsome (Void) [Social; Interpersonal]"]
             ^"Favored Weapons" LIST OF STRING ["Spear: Range 2, Damage 5, Deadliness 3"]
             ^"Gear" LIST OF STRING ["Traveling clothes (Physical 2, Durable, Mundane, Subtle)", "Abacus", "Handful of bu or equivalent currency", "Camel or horse", "Packs of goods"]
         }
@@ -847,7 +875,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             # may make a Commerce (Water) check to
             # determine whether an item they have is
             # something another character wants. The TN is
-            # equal to the target's party minus 2, along
+            # equal to the item's rarity minus 2, along
             # with other modifiers per GM's discretion.
             #   :opp::opp:: The Ujik trader can increase
             #   the price of this item by one-quarter per
@@ -1650,6 +1678,69 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
 
         RULES {
             #L5RCW40427df39abea19faceab6:moto_syujiko
+        }
+    }
+
+    ^"Shinjo Haruko" DEF {
+        APPLIES TO [^"NPC"]
+
+        # The Unicorn Champion's only biological daughter spends
+        # most of her days on horseback, galloping along the shore
+        # of Water Dragon Lake. After Imperial censure and a falling
+        # out between the Shinjo and Ikoma families, all paths that
+        # once seemed open to her have abruptly shut. She seeks a
+        # new purpose but cannot find it near Far Traveler Castle.
+        # Although one of the most talented horse archers of her
+        # generation, Haruko tends to stir up trouble when bored.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Description" STRING "The Unicorn Champion's only biological daughter. One of the most talented horse archers of her generation, seeking a new purpose after Imperial censure shut all her former paths."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 65
+            ^"Status" INTEGER 39
+            ^"Demeanor" STRING "Impetuous"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 3", "Scholar 2", "Social 3", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Skilled Archer (Air) [Martial; Physical]", "Friends in High Places (Air) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Reckless (Fire) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Shinjo Horsebow: Range 2-4, Damage 4, Deadliness 5, Wargear"]
+            ^"Gear" LIST OF STRING ["Lamellar armor (Physical 4, Wargear)", "Quiver", "20 razor-leaf arrows", "Scimitar", "Wakizashi (short sword)", "Fine clothes", "Traveling clothes", "Some worn-out pillow books"]
+            ^"Companions" LIST OF STRING ["Yue (see Shinjo courser on page 143)"]
+        }
+
+        ^"Horse Girl" DEF {
+            # Any steed Haruko rides or has personally trained
+            # gives the rider an additional bonus success on any
+            # Movement action check they make.
+        }
+
+        ^"Wishes at Dawn" DEF {
+            # In addition to her martial pursuits, Haruko also has
+            # a great love for the theater. Her most recent play,
+            # Wishes at Dawn, debuted at a provincial Winter Court
+            # and was met with significant praise. It depicts two
+            # star-crossed lovers, a Kakita and a Matsu, who must
+            # cross swords on the battlefield despite their secret
+            # love. While popular, neither the Matsu nor the Kakita
+            # family is particularly amused.
+        }
+
+        RULES {
+            #L5RCW42a7b3e1d9f2c8a45e6701:shinjo_haruko
         }
     }
 
