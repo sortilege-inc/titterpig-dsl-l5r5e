@@ -1969,62 +1969,86 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Ardent Leader" DEF {
-        APPLIES TO [^"Advantage"]
+        EXTENDS ^"Distinction"
+
         PROPERTIES {
-            ^"Type" STRING "Distinction"
             ^"Ring" STRING "Fire"
-            ^"Types" LIST OF STRING ["Interpersonal", "Mental"]
-            ^"Effect" STRING "You speak with confidence that most find hard to ignore, and people are more likely to hear what you have to say, even if they are of higher status. When you make a check for which your ardent leadership applies (such as a Tactics [Fire] check to deploy peasants or a Courtesy [Fire] check to excite someone into believing your plan), you may reroll up to two dice."
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You speak with confidence that most find hard to ignore, and people are more likely to hear what you have to say, even if they are of higher status."
+            "When you make a check for which your ardent leadership applies (such as a Tactics [Fire] check to deploy peasants or a Courtesy [Fire] check to excite someone into believing your plan), you may reroll up to two dice."
         }
     }
 
     ^"Dashing Scar" DEF {
-        APPLIES TO [^"Advantage"]
+        EXTENDS ^"Distinction"
+
         PROPERTIES {
-            ^"Type" STRING "Distinction"
             ^"Ring" STRING "Air"
-            ^"Types" LIST OF STRING ["Interpersonal"]
-            ^"Effect" STRING "You have a scar or visible mark that adds to your heroic reputation. People who see it nearly always remember you positively. When performing a check for which your scar could act as an asset (such as a Command [Air] check to speak with authority or a Skulduggery [Air] check to accentuate roguish charm), you may reroll up to two dice."
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You have a scar or visible mark that adds to your heroic reputation. People who see it nearly always remember you positively."
+            "When performing a check for which your scar could act as an asset (such as a Command [Air] check to speak with authority or a Skulduggery [Air] check to accentuate roguish charm), you may reroll up to two dice."
         }
     }
 
     ^"Lucky Hunter" DEF {
-        APPLIES TO [^"Advantage"]
+        EXTENDS ^"Distinction"
+
         PROPERTIES {
-            ^"Type" STRING "Distinction"
             ^"Ring" STRING "Void"
-            ^"Types" LIST OF STRING ["Physical", "Spiritual"]
-            ^"Effect" STRING "You are exceptionally fortunate in hunting or fishing and can always identify the best spots. When performing a check related to hunting, trapping, or fishing (such as a Survival [Void] check to locate hiding quarry or a Seafaring [Void] check to determine best fishing time), you may reroll up to two dice."
+            ^"Types" LIST ["Physical", "Spiritual"]
+        }
+
+        EFFECT {
+            "You are exceptionally fortunate in hunting or fishing and can always identify the best spots."
+            "When performing a check related to hunting, trapping, or fishing (such as a Survival [Void] check to locate hiding quarry or a Seafaring [Void] check to determine best fishing time), you may reroll up to two dice."
         }
     }
 
     ^"Scrappy" DEF {
-        APPLIES TO [^"Advantage"]
+        EXTENDS ^"Distinction"
+
         PROPERTIES {
-            ^"Type" STRING "Distinction"
             ^"Ring" STRING "Fire"
-            ^"Types" LIST OF STRING ["Mental", "Physical"]
-            ^"Effect" STRING "You have experience street fighting and brawling. You know how to stealthily employ dishonorable tactics. When performing a check during combat to use dishonorable tactics (such as a Sentiment [Fire] check to determine how to offend someone or a Martial Arts [Fire] check to unnerve your foe), you may reroll up to two dice."
+            ^"Types" LIST ["Mental", "Physical"]
+        }
+
+        EFFECT {
+            "You have experience street fighting and brawling. You know how to stealthily employ dishonorable tactics."
+            "When performing a check during combat to use dishonorable tactics (such as a Sentiment [Fire] check to determine how to offend someone or a Martial Arts [Fire] check to unnerve your foe), you may reroll up to two dice."
         }
     }
 
     ^"Scrounger" DEF {
-        APPLIES TO [^"Advantage"]
+        EXTENDS ^"Distinction"
+
         PROPERTIES {
-            ^"Type" STRING "Distinction"
             ^"Ring" STRING "Water"
-            ^"Types" LIST OF STRING ["Interpersonal", "Mental"]
-            ^"Effect" STRING "You are always able to find something to fill your belly and sustain you, though sometimes the only option is repulsive. When performing a check for which your resourceful nature applies (such as a Labor [Water] check to find useful items or an Aesthetics [Water] check to find inspiration), you may reroll up to two dice."
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You are always able to find something to fill your belly and sustain you, though sometimes the only option is repulsive."
+            "When performing a check for which your resourceful nature applies (such as a Labor [Water] check to find useful items or an Aesthetics [Water] check to find inspiration), you may reroll up to two dice."
         }
     }
 
     ^"Urbane and Worldly" DEF {
-        APPLIES TO [^"Advantage"]
+        EXTENDS ^"Distinction"
+
         PROPERTIES {
-            ^"Type" STRING "Distinction"
             ^"Ring" STRING "Void"
-            ^"Types" LIST OF STRING ["Interpersonal", "Physical"]
-            ^"Effect" STRING "Your experience traveling abroad has prepared you to expertly emulate and adapt to unfamiliar customs. When observing an unfamiliar cultural practice (such as a Performance [Void] check to emulate local customs or a Commerce [Void] check to feign awareness during negotiation), you may reroll up to two dice."
+            ^"Types" LIST ["Interpersonal", "Physical"]
+        }
+
+        EFFECT {
+            "Your experience traveling abroad has prepared you to expertly emulate and adapt to unfamiliar customs."
+            "When observing an unfamiliar cultural practice (such as a Performance [Void] check to emulate local customs or a Commerce [Void] check to feign awareness during negotiation), you may reroll up to two dice."
         }
     }
 
@@ -2033,32 +2057,44 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Attention" DEF {
-        APPLIES TO [^"Advantage"]
+        EXTENDS ^"Passion"
+
         PROPERTIES {
-            ^"Type" STRING "Passion"
             ^"Ring" STRING "Fire"
-            ^"Types" LIST OF STRING ["Mental"]
-            ^"Effect" STRING "At start of each scene, you can determine the most effective way to gain attention. After performing a check to capture attention (such as a Performance [Fire] check to entice a merchant or a Games [Fire] check to draw a crowd), you remove 3 strife."
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "At the start of each scene, you can determine the most effective way to gain attention."
+            "After performing a check to capture attention (such as a Performance [Fire] check to entice a merchant or a Games [Fire] check to draw a crowd), you remove 3 strife."
         }
     }
 
     ^"Honest Work" DEF {
-        APPLIES TO [^"Advantage"]
+        EXTENDS ^"Passion"
+
         PROPERTIES {
-            ^"Type" STRING "Passion"
             ^"Ring" STRING "Earth"
-            ^"Types" LIST OF STRING ["Mental", "Interpersonal"]
-            ^"Effect" STRING "You can always determine how much work is needed for a physical task, and your work is always markedly better than others. After performing a check requiring physical labor (such as a Labor [Earth] check to till a field or a Smithing [Earth] check to fix a tool), you remove 3 strife."
+            ^"Types" LIST ["Mental", "Interpersonal"]
+        }
+
+        EFFECT {
+            "You can always determine how much work is needed for a physical task, and your work is always markedly better than others."
+            "After performing a check requiring physical labor (such as a Labor [Earth] check to till a field or a Smithing [Earth] check to fix a tool), you remove 3 strife."
         }
     }
 
     ^"Passion for [Foreign Performing Art Form]" DEF {
-        APPLIES TO [^"Advantage"]
+        EXTENDS ^"Passion"
+
         PROPERTIES {
-            ^"Type" STRING "Passion"
             ^"Ring" STRING "Air"
-            ^"Types" LIST OF STRING ["Fame", "Interpersonal"]
-            ^"Effect" STRING "You are skilled in a foreign artistry (puppetry, miming, foreign dance, foreign instrument) and recognize common forms and intricate historical details. After performing a check related to your talent (such as Performance [Air] to impress or Design [Air] to refine craft), you may reroll up to two dice."
+            ^"Types" LIST ["Fame", "Interpersonal"]
+        }
+
+        EFFECT {
+            "You are skilled in a foreign artistry (puppetry, miming, foreign dance, foreign instrument) and recognize common forms and intricate historical details."
+            "After performing a check related to your talent (such as Performance [Air] to impress or Design [Air] to refine craft), you remove 3 strife."
         }
     }
 
@@ -2067,72 +2103,100 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Bullheaded" DEF {
-        APPLIES TO [^"Disadvantage"]
+        EXTENDS ^"Adversity"
+
         PROPERTIES {
-            ^"Type" STRING "Adversity"
             ^"Ring" STRING "Earth"
-            ^"Types" LIST OF STRING ["Mental"]
-            ^"Effect" STRING "When pursuing a goal related to your ninjo, you have difficulty focusing on anything unrelated. When you make a check related to your goal that requires planning, subtlety, or nuance (such as Culture [Earth] to recall proper introductions or Courtesy [Earth] to reason with a stubborn merchant), you must choose and reroll two dice containing success or explosion. If you failed, gain 1 Void point."
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "When pursuing a goal related to your ninjo, you have difficulty focusing on anything unrelated."
+            "When you make a check related to your goal that requires planning, subtlety, or nuance (such as Culture [Earth] to recall proper introductions or Courtesy [Earth] to reason with a stubborn merchant), you must choose and reroll two dice containing success or explosion. If you failed, gain 1 Void point."
         }
     }
 
     ^"Debt to [Person or Organization]" DEF {
-        APPLIES TO [^"Disadvantage"]
+        EXTENDS ^"Adversity"
+
         PROPERTIES {
-            ^"Type" STRING "Adversity"
             ^"Ring" STRING "Water"
-            ^"Types" LIST OF STRING ["Interpersonal"]
-            ^"Effect" STRING "You are in terrible debt. If you fail to make regular payments or fulfill obligations, your debtor will hunt you down. When making a check related to dodging or worsening debt (such as Commerce [Water] to purchase something unnecessary or Courtesy [Water] to get a loan), you must choose and reroll two dice containing success or explosion. If you failed, gain 1 Void point."
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You are in terrible debt. If you fail to make regular payments or fulfill obligations, your debtor will hunt you down."
+            "When making a check related to dodging or worsening debt (such as Commerce [Water] to purchase something unnecessary or Courtesy [Water] to get a loan), you must choose and reroll two dice containing success or explosion. If you failed, gain 1 Void point."
         }
     }
 
     ^"Encompassing Duty" DEF {
-        APPLIES TO [^"Disadvantage"]
+        EXTENDS ^"Adversity"
+
         PROPERTIES {
-            ^"Type" STRING "Adversity"
             ^"Ring" STRING "Earth"
-            ^"Types" LIST OF STRING ["Mental"]
-            ^"Effect" STRING "You have a duty to something (family, friend, cause). You have difficulty relaxing or focusing on unrelated tasks. When making a check related to overcoming hindrance to your duty (such as Meditation [Earth] to stay calm in ambush or Courtesy [Earth] to reason with stubborn shopkeeper), you must choose and reroll two dice containing success or explosion. If you failed, gain 1 Void point."
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You have a duty to something (family, friend, cause). You have difficulty relaxing or focusing on unrelated tasks."
+            "When making a check related to overcoming hindrance to your duty (such as Meditation [Earth] to stay calm in ambush or Courtesy [Earth] to reason with stubborn shopkeeper), you must choose and reroll two dice containing success or explosion. If you failed, gain 1 Void point."
         }
     }
 
     ^"Horrible Scar" DEF {
-        APPLIES TO [^"Disadvantage"]
+        EXTENDS ^"Adversity"
+
         PROPERTIES {
-            ^"Type" STRING "Adversity"
             ^"Ring" STRING "Air"
-            ^"Types" LIST OF STRING ["Interpersonal", "Mental"]
-            ^"Effect" STRING "You have an awful scar that hinders interactions. People stare, treat you unfairly, and judge you. When performing a check to interact socially with a stranger (such as Courtesy [Air] to request information or Sentiment [Air] to calm someone), you must choose and reroll two dice containing success or explosion. If you failed, gain 1 Void point."
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You have an awful scar that hinders interactions. People stare, treat you unfairly, and judge you."
+            "When performing a check to interact socially with a stranger (such as Courtesy [Air] to request information or Sentiment [Air] to calm someone), you must choose and reroll two dice containing success or explosion. If you failed, gain 1 Void point."
         }
     }
 
     ^"Many Mouths" DEF {
-        APPLIES TO [^"Disadvantage"]
+        EXTENDS ^"Adversity"
+
         PROPERTIES {
-            ^"Type" STRING "Adversity"
             ^"Ring" STRING "Earth"
-            ^"Types" LIST OF STRING ["Interpersonal", "Mental"]
-            ^"Effect" STRING "You must provide for many dependents beyond your means. When performing a check related to providing food, money, or care (such as Labor [Earth] to produce food or Sentiment [Earth] to soothe loved ones), you must choose and reroll two dice containing success or explosion. If you failed, gain 1 Void point."
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You must provide for many dependents beyond your means."
+            "When performing a check related to providing food, money, or care (such as Labor [Earth] to produce food or Sentiment [Earth] to soothe loved ones), you must choose and reroll two dice containing success or explosion. If you failed, gain 1 Void point."
         }
     }
 
     ^"Pursued by [Individual or Group]" DEF {
-        APPLIES TO [^"Disadvantage"]
+        EXTENDS ^"Adversity"
+
         PROPERTIES {
-            ^"Type" STRING "Adversity"
             ^"Ring" STRING "Water"
-            ^"Types" LIST OF STRING ["Interpersonal", "Mental"]
-            ^"Effect" STRING "A pursuer wishes to capture or kill you. You have difficulty relaxing in public. When making a check that draws attention in public (such as Commerce [Water] to trade at market or Courtesy [Water] to win favor at court), you must choose and reroll two dice containing success or explosion. If you failed, gain 1 Void point."
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "A pursuer wishes to capture or kill you. You have difficulty relaxing in public."
+            "When making a check that draws attention in public (such as Commerce [Water] to trade at market or Courtesy [Water] to win favor at court), you must choose and reroll two dice containing success or explosion. If you failed, gain 1 Void point."
         }
     }
 
     ^"Stained Lineage" DEF {
-        APPLIES TO [^"Disadvantage"]
+        EXTENDS ^"Adversity"
+
         PROPERTIES {
-            ^"Type" STRING "Adversity"
             ^"Ring" STRING "Void"
-            ^"Types" LIST OF STRING ["Interpersonal", "Mental"]
-            ^"Effect" STRING "Your family has a bad reputation. Most people in your region know and make negative assumptions about you. When making a check to interact with anyone from your home region (such as Commerce [Void] to trade without drawing attention or Courtesy [Void] to warn of danger), you must choose and reroll two dice containing success or explosion. If you failed, gain 1 Void point."
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "Your family has a bad reputation. Most people in your region know and make negative assumptions about you."
+            "When making a check to interact with anyone from your home region (such as Commerce [Void] to trade without drawing attention or Courtesy [Void] to warn of danger), you must choose and reroll two dice containing success or explosion. If you failed, gain 1 Void point."
         }
     }
 
@@ -2141,42 +2205,58 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Coming Storm" DEF {
-        APPLIES TO [^"Disadvantage"]
+        EXTENDS ^"Anxiety"
+
         PROPERTIES {
-            ^"Type" STRING "Anxiety"
             ^"Ring" STRING "Void"
-            ^"Types" LIST OF STRING ["Mental"]
-            ^"Effect" STRING "Your family has endured great recurring hardship. You are constantly vigilant for the same type of calamity. When performing a check involving planning for your or your family's well-being (such as Medicine [Void] to sense ailment or Command [Void] to warn of risk), you receive 3 strife. If first time this scene, gain 1 Void point."
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "Your family has endured great recurring hardship. You are constantly vigilant for the same type of calamity."
+            "When performing a check involving planning for your or your family's well-being (such as Medicine [Void] to sense ailment or Command [Void] to warn of risk), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
         }
     }
 
     ^"Eyes of Many" DEF {
-        APPLIES TO [^"Disadvantage"]
+        EXTENDS ^"Anxiety"
+
         PROPERTIES {
-            ^"Type" STRING "Anxiety"
             ^"Ring" STRING "Air"
-            ^"Types" LIST OF STRING ["Mental"]
-            ^"Effect" STRING "You constantly worry that others are watching and judging you. Unable to relax in crowded places. After performing a check in a crowded place or where two or more strangers actively listen (such as Courtesy [Air] to lie to employer or Fitness [Air] to avoid notice), you suffer 3 strife. If first time this scene, gain 1 Void point."
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You constantly worry that others are watching and judging you. You are unable to relax in crowded places."
+            "After performing a check in a crowded place or where two or more strangers actively listen (such as Courtesy [Air] to lie to employer or Fitness [Air] to avoid notice), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
         }
     }
 
     ^"Failure" DEF {
-        APPLIES TO [^"Disadvantage"]
+        EXTENDS ^"Anxiety"
+
         PROPERTIES {
-            ^"Type" STRING "Anxiety"
             ^"Ring" STRING "Water"
-            ^"Types" LIST OF STRING ["Mental"]
-            ^"Effect" STRING "You constantly worry about failing those to whom you have commitments. After performing a check that shirks obligations or works against a promise (such as Courtesy [Water] to socialize pointlessly or Games [Water] to gamble needlessly), you suffer 3 strife. If first time this scene, gain 1 Void point."
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You constantly worry about failing those to whom you have commitments."
+            "After performing a check that shirks obligations or works against a promise (such as Courtesy [Water] to socialize pointlessly or Games [Water] to gamble needlessly), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
         }
     }
 
     ^"Fear of Stagnation" DEF {
-        APPLIES TO [^"Disadvantage"]
+        EXTENDS ^"Anxiety"
+
         PROPERTIES {
-            ^"Type" STRING "Anxiety"
             ^"Ring" STRING "Earth"
-            ^"Types" LIST OF STRING ["Mental"]
-            ^"Effect" STRING "Staying in one place frustrates you. You fear relational commitments that tie you down. After performing a check to continue a prolonged task (such as Labor [Earth] to work on same project for more than two days or Courtesy [Earth] to arrange yet another night in the same city), you receive 3 strife and gain 1 Void point."
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "Staying in one place frustrates you. You fear relational commitments that tie you down."
+            "After performing a check to continue a prolonged task (such as Labor [Earth] to work on same project for more than two days or Courtesy [Earth] to arrange yet another night in the same city), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
         }
     }
 

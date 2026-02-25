@@ -911,34 +911,45 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
     # NEW ADVANTAGES: DISTINCTIONS
     # ===========================
 
-    ^"Courts of Stone Distinctions" DEF {
-        APPLIES TO [^"Samurai"]
+    ^"Affect of Harmlessness" DEF {
+        EXTENDS ^"Distinction"
 
-        ENTRIES {
-            ^"Affect of Harmlessness" {
-                ^"Type" STRING "Distinction"
-                ^"Ring" STRING "Air"
-                ^"Category" LIST OF STRING ["Interpersonal"]
-                ^"Effect" STRING "When performing a check to ingratiate yourself with a stranger (such as Courtesy [Air] to be pleasant to someone of higher status or Performance [Air] to conceal your true intentions toward a social equal), reroll up to two dice."
-            }
-
-            ^"Famously Neutral" {
-                ^"Type" STRING "Distinction"
-                ^"Ring" STRING "Earth"
-                ^"Category" LIST OF STRING ["Fame", "Interpersonal"]
-                ^"Effect" STRING "When performing a check to convince others of your trustworthiness or provide unbiased advice (such as Command [Earth] to reason with two feuding subordinates or Sentiment [Earth] to determine how to set someone at ease), reroll up to two dice."
-            }
-
-            ^"Well Connected in [City]" {
-                ^"Type" STRING "Distinction"
-                ^"Ring" STRING "Water"
-                ^"Category" LIST OF STRING ["Interpersonal"]
-                ^"Effect" STRING "When performing a check to gather information, find items for sale or loan, or interact with people from the chosen city (such as Commerce [Water] to buy or sell something or Culture [Water] to learn current events generating gossip), reroll up to two dice."
-            }
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Interpersonal"]
         }
 
-        RULES {
-            #L5RCS25dE6fG8hI0jK2lM4n: cos_distinctions_reroll_two_dice
+        EFFECT {
+            "You project an air of harmlessness that puts strangers at ease."
+            "When performing a check to ingratiate yourself with a stranger (such as Courtesy [Air] to be pleasant to someone of higher status or Performance [Air] to conceal your true intentions toward a social equal), you may reroll up to two dice."
+        }
+    }
+
+    ^"Famously Neutral" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Fame", "Interpersonal"]
+        }
+
+        EFFECT {
+            "You are known for your impartiality and fair-mindedness."
+            "When performing a check to convince others of your trustworthiness or provide unbiased advice (such as Command [Earth] to reason with two feuding subordinates or Sentiment [Earth] to determine how to set someone at ease), you may reroll up to two dice."
+        }
+    }
+
+    ^"Well Connected in [City]" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You have an extensive network of contacts in a particular city."
+            "When performing a check to gather information, find items for sale or loan, or interact with people from the chosen city (such as Commerce [Water] to buy or sell something or Culture [Water] to learn current events generating gossip), you may reroll up to two dice."
         }
     }
 
@@ -946,34 +957,45 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
     # NEW ADVANTAGES: PASSIONS
     # ===========================
 
-    ^"Courts of Stone Passions" DEF {
-        APPLIES TO [^"Samurai"]
+    ^"Decorum" DEF {
+        EXTENDS ^"Passion"
 
-        ENTRIES {
-            ^"Decorum" {
-                ^"Type" STRING "Passion"
-                ^"Ring" STRING "Water"
-                ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
-                ^"Effect" STRING "After performing a check to ensure that you or your allies adhere to all the strictures of courtly etiquette (such as Command [Water] to be formally polite to guests or Culture [Water] to ascertain who is adhering to court etiquette), remove 3 strife."
-            }
-
-            ^"Local Flare for [Region]" {
-                ^"Type" STRING "Passion"
-                ^"Ring" STRING "Earth"
-                ^"Category" LIST OF STRING ["Interpersonal"]
-                ^"Effect" STRING "After performing a check to remember information about the specific region you have chosen (such as Culture [Earth] to know current events or Sentiment [Earth] to recall attitudes of local inhabitants), remove 3 strife."
-            }
-
-            ^"Pot Stirrer" {
-                ^"Type" STRING "Passion"
-                ^"Ring" STRING "Fire"
-                ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
-                ^"Effect" STRING "After performing a check to stir up social chaos (such as Courtesy [Fire] to incite anger about a perceived insult or Theology [Fire] to encourage two people to argue about religious beliefs), remove 3 strife."
-            }
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal", "Mental"]
         }
 
-        RULES {
-            #L5RCS26oP7qR9sT1uV3wX5y: cos_passions_remove_three_strife
+        EFFECT {
+            "You are well-versed in the strictures of courtly etiquette."
+            "After performing a check to ensure that you or your allies adhere to all the strictures of courtly etiquette (such as Command [Water] to be formally polite to guests or Culture [Water] to ascertain who is adhering to court etiquette), you remove 3 strife."
+        }
+    }
+
+    ^"Local Flare for [Region]" DEF {
+        EXTENDS ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You have an intimate knowledge of a specific region and its people."
+            "After performing a check to remember information about the specific region you have chosen (such as Culture [Earth] to know current events or Sentiment [Earth] to recall attitudes of local inhabitants), you remove 3 strife."
+        }
+    }
+
+    ^"Pot Stirrer" DEF {
+        EXTENDS ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You enjoy stirring up social chaos and watching the results unfold."
+            "After performing a check to stir up social chaos (such as Courtesy [Fire] to incite anger about a perceived insult or Theology [Fire] to encourage two people to argue about religious beliefs), you remove 3 strife."
         }
     }
 
@@ -981,36 +1003,47 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
     # NEW DISADVANTAGES: ADVERSITIES
     # ===========================
 
-    ^"Courts of Stone Adversities" DEF {
-        APPLIES TO [^"Samurai"]
+    ^"Overconfidence in [Feature]" DEF {
+        EXTENDS ^"Adversity"
 
-        ENTRIES {
-            ^"Overconfidence in [Feature]" {
-                ^"Type" STRING "Adversity"
-                ^"Ring" STRING "Various"
-                ^"Category" LIST OF STRING ["Various"]
-                ^"Pick One" STRING "Charm (Water) [Interpersonal], Creativity (Fire) [Mental], Toughness (Earth) [Physical], Spiritual Sensitivity (Void) [Spiritual], Subtlety (Air) [Interpersonal]"
-                ^"Effect" STRING "When performing a check for which you need to leverage the capacity about which you are overconfident (such as Fitness [Earth] to run several li or Composition [Fire] to draft an exciting poem), reroll two dice containing (su) or (ex). If you failed, gain 1 Void point."
-            }
+        # Pick One: Charm (Water) [Interpersonal], Creativity (Fire) [Mental], Toughness (Earth) [Physical], Spiritual Sensitivity (Void) [Spiritual], Subtlety (Air) [Interpersonal]
 
-            ^"Lackluster" {
-                ^"Type" STRING "Adversity"
-                ^"Ring" STRING "Fire"
-                ^"Category" LIST OF STRING ["Interpersonal"]
-                ^"Effect" STRING "When performing a check to impress others or perform better than those around you (such as Aesthetics [Fire] to create a painting or Performance [Fire] to perform a role that moves the audience), reroll two dice containing (su) or (ex). If you failed, gain 1 Void point."
-            }
-
-            ^"Unsavory Past" {
-                ^"Type" STRING "Adversity"
-                ^"Ring" STRING "Water"
-                ^"Category" LIST OF STRING ["Interpersonal"]
-                ^"Effect" STRING "When performing a check by which your past may come back to haunt you (such as Games [Water] to play with people who know your penchant for cheating or Tactics [Water] to lead troops who know you once fled the battlefield), reroll two dice containing (su) or (ex). If you failed, gain 1 Void point."
-            }
+        PROPERTIES {
+            ^"Ring" STRING "Various"
+            ^"Types" LIST ["Various"]
         }
 
-        RULES {
-            #L5RCS27zA8bC0dE2fG4hI6j: cos_adversities_reroll_successes
-            #L5RCS28kL9mN1oP3qR5sT7u: cos_adversities_void_point_on_failure
+        EFFECT {
+            "You are overconfident in a particular capacity, which blinds you to your limitations."
+            "When performing a check for which you need to leverage the capacity about which you are overconfident (such as Fitness [Earth] to run several li or Composition [Fire] to draft an exciting poem), you must choose and reroll two dice containing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Lackluster" DEF {
+        EXTENDS ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You struggle to stand out or impress others."
+            "When performing a check to impress others or perform better than those around you (such as Aesthetics [Fire] to create a painting or Performance [Fire] to perform a role that moves the audience), you must choose and reroll two dice containing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Unsavory Past" DEF {
+        EXTENDS ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "Your past contains shameful events that may come back to haunt you."
+            "When performing a check by which your past may come back to haunt you (such as Games [Water] to play with people who know your penchant for cheating or Tactics [Water] to lead troops who know you once fled the battlefield), you must choose and reroll two dice containing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
         }
     }
 
@@ -1018,28 +1051,31 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
     # NEW DISADVANTAGES: ANXIETIES
     # ===========================
 
-    ^"Courts of Stone Anxieties" DEF {
-        APPLIES TO [^"Samurai"]
+    ^"Isolation" DEF {
+        EXTENDS ^"Anxiety"
 
-        ENTRIES {
-            ^"Isolation" {
-                ^"Type" STRING "Anxiety"
-                ^"Ring" STRING "Earth"
-                ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
-                ^"Effect" STRING "After performing a check related to interacting with people you care for (such as Command [Earth] to issue orders to family members or Sentiment [Earth] to recall the feelings of your friends concerning a subject), receive 3 strife. If first time this scene, gain 1 Void point."
-            }
-
-            ^"Web of Lies" {
-                ^"Type" STRING "Anxiety"
-                ^"Ring" STRING "Air"
-                ^"Category" LIST OF STRING ["Interpersonal"]
-                ^"Effect" STRING "After performing a check to deceive someone you have deceived before (such as Courtesy [Air] to convince someone you are a clan member when other members have never heard of you or Skulduggery [Air] to convince a previous con victim you didn't steal from them), receive 3 strife. If first time this scene, gain 1 Void point."
-            }
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Interpersonal", "Mental"]
         }
 
-        RULES {
-            #L5RCS29vW0xY2zA4bC6dE8f: cos_anxieties_receive_three_strife
-            #L5RCS30gH1iJ3kL5mN7oP9q: cos_anxieties_void_point_first_per_scene
+        EFFECT {
+            "You feel profoundly isolated from those you care about."
+            "After performing a check related to interacting with people you care for (such as Command [Earth] to issue orders to family members or Sentiment [Earth] to recall the feelings of your friends concerning a subject), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    ^"Web of Lies" DEF {
+        EXTENDS ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You are caught in a web of lies that grows harder to maintain."
+            "After performing a check to deceive someone you have deceived before (such as Courtesy [Air] to convince someone you are a clan member when other members have never heard of you or Skulduggery [Air] to convince a previous con victim you didn't steal from them), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
         }
     }
 

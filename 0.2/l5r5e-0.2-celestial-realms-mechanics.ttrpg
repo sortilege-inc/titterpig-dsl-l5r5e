@@ -828,84 +828,116 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
     # --- Distinctions ---
 
     ^"Famously Kind" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Distinction"
+
         PROPERTIES {
-            ^"Type" STRING "Distinction" FIXED
             ^"Ring" STRING "Water"
-            ^"Category" LIST OF STRING ["Fame", "Interpersonal"]
-            ^"Effect" STRING "Known for exceptional kindness; reroll up to two dice on checks leveraging well-intentioned reputation"
+            ^"Types" LIST ["Fame", "Interpersonal"]
+        }
+
+        EFFECT {
+            "Known for exceptional kindness; others are more likely to accept your help and listen to your counsel."
+            "When performing a check leveraging your well-intentioned reputation, you may reroll up to two dice."
         }
     }
 
     ^"Portentous Birth" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Distinction"
+
         PROPERTIES {
-            ^"Type" STRING "Distinction" FIXED
             ^"Ring" STRING "Fire"
-            ^"Category" LIST OF STRING ["Interpersonal", "Spiritual"]
-            ^"Effect" STRING "Born under blessed circumstances; those who know treat you favorably; reroll up to two dice on checks where fortuitous birth is an asset"
+            ^"Types" LIST ["Interpersonal", "Spiritual"]
+        }
+
+        EFFECT {
+            "Born under blessed circumstances; those who know treat you favorably."
+            "When performing a check where your fortuitous birth is an asset, you may reroll up to two dice."
         }
     }
 
     ^"Talented Herbalist" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Distinction"
+
         PROPERTIES {
-            ^"Type" STRING "Distinction" FIXED
             ^"Ring" STRING "Earth"
-            ^"Category" LIST OF STRING ["Mental"]
-            ^"Effect" STRING "Always identify properties of natural flora; reroll up to two dice on checks where herbalism is useful"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You can always identify properties of natural flora and their uses in medicine and craft."
+            "When performing a check where your herbalism expertise is useful, you may reroll up to two dice."
         }
     }
 
     # --- Passions ---
 
     ^"Bathing" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Passion"
+
         PROPERTIES {
-            ^"Type" STRING "Passion" FIXED
             ^"Ring" STRING "Water"
-            ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
-            ^"Effect" STRING "Familiar with bathhouse nuances and traditions; after performing a check while bathing, remove 3 strife"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "Familiar with bathhouse nuances and traditions."
+            "After performing a check while bathing, you remove 3 strife."
         }
     }
 
     ^"Festivals" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Passion"
+
         PROPERTIES {
-            ^"Type" STRING "Passion" FIXED
             ^"Ring" STRING "Fire"
-            ^"Category" LIST OF STRING ["Mental"]
-            ^"Effect" STRING "Can always find best activities at festivals and never has trouble finding someone in a crowd; after performing a check to interact at a festival, remove 3 strife"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "Can always find the best activities at festivals and never has trouble finding someone in a crowd."
+            "After performing a check to interact at a festival, you remove 3 strife."
         }
     }
 
     ^"Kabuki" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Passion"
+
         PROPERTIES {
-            ^"Type" STRING "Passion" FIXED
             ^"Ring" STRING "Air"
-            ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
-            ^"Effect" STRING "Seasoned viewer/participant in Kabuki with theater connections; after performing a check to engage with Kabuki, remove 3 strife"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "Seasoned viewer and participant in Kabuki with theater connections."
+            "After performing a check to engage with Kabuki, you remove 3 strife."
         }
     }
 
     ^"Kyudo" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Passion"
+
         PROPERTIES {
-            ^"Type" STRING "Passion" FIXED
             ^"Ring" STRING "Void"
-            ^"Category" LIST OF STRING ["Mental", "Physical"]
-            ^"Effect" STRING "Familiar with archery forms and can identify relative skill by how one holds a bow; after performing a check to participate in kyudo, remove 3 strife"
+            ^"Types" LIST ["Mental", "Physical"]
+        }
+
+        EFFECT {
+            "Familiar with archery forms and can identify relative skill by how one holds a bow."
+            "After performing a check to participate in kyudo, you remove 3 strife."
         }
     }
 
     ^"Religious Study" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Passion"
+
         PROPERTIES {
-            ^"Type" STRING "Passion" FIXED
             ^"Ring" STRING "Void"
-            ^"Category" LIST OF STRING ["Mental", "Spiritual"]
-            ^"Effect" STRING "After studying a religious object or observance, discern its purpose and religion; after performing a check to contemplate religion, remove 3 strife"
+            ^"Types" LIST ["Mental", "Spiritual"]
+        }
+
+        EFFECT {
+            "After studying a religious object or observance, you can discern its purpose and religion."
+            "After performing a check to contemplate religion, you remove 3 strife."
         }
     }
 
@@ -916,84 +948,116 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
     # --- Anxieties ---
 
     ^"Conspiracy" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Anxiety"
+
         PROPERTIES {
-            ^"Type" STRING "Anxiety" FIXED
             ^"Ring" STRING "Earth"
-            ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
-            ^"Effect" STRING "Plagued by knowledge of greater plots; after performing a check to interact with an unfamiliar authority figure, receive 3 strife (gain 1 Void point first time per scene)"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "Plagued by knowledge of greater plots; you are constantly suspicious of authority figures."
+            "After performing a check to interact with an unfamiliar authority figure, you receive 3 strife. If this is the first time this scene, gain 1 Void point."
         }
     }
 
     ^"Omen of Bad Luck" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Anxiety"
+
         PROPERTIES {
-            ^"Type" STRING "Anxiety" FIXED
             ^"Ring" STRING "Water"
-            ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
-            ^"Effect" STRING "Omens of bad luck follow you; after performing a check to interact with someone affected by your omens, receive 3 strife (gain 1 Void point first time per scene)"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "Omens of bad luck follow you wherever you go."
+            "After performing a check to interact with someone affected by your omens, you receive 3 strife. If this is the first time this scene, gain 1 Void point."
         }
     }
 
     ^"Uncleanliness" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Anxiety"
+
         PROPERTIES {
-            ^"Type" STRING "Anxiety" FIXED
             ^"Ring" STRING "Air"
-            ^"Category" LIST OF STRING ["Mental"]
-            ^"Effect" STRING "Uncleanliness causes physical and mental distress; after performing a check to interact with something unclean, receive 3 strife (gain 1 Void point first time per scene)"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "Uncleanliness causes you physical and mental distress."
+            "After performing a check to interact with something unclean, you receive 3 strife. If this is the first time this scene, gain 1 Void point."
         }
     }
 
     ^"Vanity" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Anxiety"
+
         PROPERTIES {
-            ^"Type" STRING "Anxiety" FIXED
             ^"Ring" STRING "Void"
-            ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
-            ^"Effect" STRING "Hyperfocused on physical appearance; after performing a check where your appearance is in jeopardy, receive 3 strife (gain 1 Void point first time per scene)"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You are hyperfocused on your physical appearance."
+            "After performing a check where your appearance is in jeopardy, you receive 3 strife. If this is the first time this scene, gain 1 Void point."
         }
     }
 
     # --- Adversities ---
 
     ^"Elemental Deficiency (Air)" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Adversity"
+
         PROPERTIES {
-            ^"Type" STRING "Adversity" FIXED
             ^"Ring" STRING "Air"
-            ^"Category" LIST OF STRING ["Mental", "Physical", "Spiritual"]
-            ^"Effect" STRING "Lack fundamental connection with Air; when performing a check to align with Air or interact with air kami, must reroll two dice containing success or explosive success; gain 1 Void point if failed"
+            ^"Types" LIST ["Mental", "Physical", "Spiritual"]
+        }
+
+        EFFECT {
+            "You lack a fundamental connection with Air."
+            "When performing a check to align with Air or interact with air kami, you must choose and reroll two dice containing success or explosive success. After resolving the check, if you failed, gain 1 Void point."
         }
     }
 
     ^"Elemental Deficiency (Earth)" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Adversity"
+
         PROPERTIES {
-            ^"Type" STRING "Adversity" FIXED
             ^"Ring" STRING "Earth"
-            ^"Category" LIST OF STRING ["Mental", "Physical", "Spiritual"]
-            ^"Effect" STRING "Lack fundamental connection with Earth; when performing a check to align with Earth or interact with earth kami, must reroll two dice containing success or explosive success; gain 1 Void point if failed"
+            ^"Types" LIST ["Mental", "Physical", "Spiritual"]
+        }
+
+        EFFECT {
+            "You lack a fundamental connection with Earth."
+            "When performing a check to align with Earth or interact with earth kami, you must choose and reroll two dice containing success or explosive success. After resolving the check, if you failed, gain 1 Void point."
         }
     }
 
     ^"Elemental Deficiency (Fire)" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Adversity"
+
         PROPERTIES {
-            ^"Type" STRING "Adversity" FIXED
             ^"Ring" STRING "Fire"
-            ^"Category" LIST OF STRING ["Mental", "Physical", "Spiritual"]
-            ^"Effect" STRING "Lack fundamental connection with Fire; when performing a check to align with Fire or interact with fire kami, must reroll two dice containing success or explosive success; gain 1 Void point if failed"
+            ^"Types" LIST ["Mental", "Physical", "Spiritual"]
+        }
+
+        EFFECT {
+            "You lack a fundamental connection with Fire."
+            "When performing a check to align with Fire or interact with fire kami, you must choose and reroll two dice containing success or explosive success. After resolving the check, if you failed, gain 1 Void point."
         }
     }
 
     ^"Elemental Deficiency (Water)" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Adversity"
+
         PROPERTIES {
-            ^"Type" STRING "Adversity" FIXED
             ^"Ring" STRING "Water"
-            ^"Category" LIST OF STRING ["Mental", "Physical", "Spiritual"]
-            ^"Effect" STRING "Lack fundamental connection with Water; when performing a check to align with Water or interact with water kami, must reroll two dice containing success or explosive success; gain 1 Void point if failed"
+            ^"Types" LIST ["Mental", "Physical", "Spiritual"]
+        }
+
+        EFFECT {
+            "You lack a fundamental connection with Water."
+            "When performing a check to align with Water or interact with water kami, you must choose and reroll two dice containing success or explosive success. After resolving the check, if you failed, gain 1 Void point."
         }
     }
 

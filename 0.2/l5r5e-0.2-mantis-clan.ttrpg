@@ -279,77 +279,44 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Blood of Osano-wo" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # Distinction (Fire). Types: Mental, Spiritual.
-        # Available to Mantis characters; others at GM discretion.
+        EXTENDS ^"Distinction"
 
         PROPERTIES {
-            ^"Type" STRING "Distinction" FIXED
             ^"Ring" STRING "Fire"
-            ^"Category" LIST OF STRING ["Mental", "Spiritual"]
+            ^"Types" LIST ["Mental", "Spiritual"]
         }
 
-        # Effects:
-        # - The Fortune of Storms grants you boldness and a desire
-        #   not easily satisfied. You cannot be killed by storms (lightning,
-        #   going overboard in tempest). If you would die this way, you
-        #   wake up later in a place of the GM's choice, miraculously
-        #   safe, with 0 Void points.
-        # - When performing a check for which you need to take a great
-        #   risk (Games [Fire] to wager on a single gambit, Seafaring
-        #   [Fire] to chart a deadly route), may reroll up to two dice.
-
-        RULES {
-            #L5RMC10vW1xY3zA5bC7dE9f: advantage_blood_of_osanowo
+        EFFECT {
+            "The Fortune of Storms grants you boldness and a desire not easily satisfied. You cannot be killed by storms (lightning, going overboard in tempest). If you would die this way, you wake up later in a place of the GM's choice, miraculously safe, with 0 Void points."
+            "When performing a check for which you need to take a great risk (Games [Fire] to wager on a single gambit, Seafaring [Fire] to chart a deadly route), may reroll up to two dice."
         }
     }
 
     ^"Sea Legs" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # Distinction (Water). Types: Physical.
+        EXTENDS ^"Distinction"
 
         PROPERTIES {
-            ^"Type" STRING "Distinction" FIXED
             ^"Ring" STRING "Water"
-            ^"Category" LIST OF STRING ["Physical"]
+            ^"Types" LIST ["Physical"]
         }
 
-        # Effects:
-        # - You never get seasick, and can maintain your balance easily
-        #   on a rocking ship. You always feel slightly disconcerted on
-        #   stable ground, however.
-        # - When performing a check to stay balanced on a shifting
-        #   surface (MA [Ranged] [Water] bow shot during boarding,
-        #   Seafaring [Water] to adjust sails in a storm), may reroll
-        #   up to two dice.
-
-        RULES {
-            #L5RMC11gH2iJ4kL6mN8oP0q: advantage_sea_legs
+        EFFECT {
+            "You never get seasick, and can maintain your balance easily on a rocking ship. You always feel slightly disconcerted on stable ground, however."
+            "When performing a check to stay balanced on a shifting surface (MA [Ranged] [Water] bow shot during boarding, Seafaring [Water] to adjust sails in a storm), may reroll up to two dice."
         }
     }
 
     ^"Knotwork" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # Passion (Air). Types: Mental.
+        EXTENDS ^"Passion"
 
         PROPERTIES {
-            ^"Type" STRING "Passion" FIXED
             ^"Ring" STRING "Air"
-            ^"Category" LIST OF STRING ["Mental"]
+            ^"Types" LIST ["Mental"]
         }
 
-        # Effects:
-        # - You can identify and tie dozens of different knots, and know
-        #   their appropriate uses and meanings.
-        # - After performing a check to interact with a knot (Design [Air]
-        #   decorative knot, Seafaring [Air] to secure rigging), remove
-        #   3 strife.
-
-        RULES {
-            #L5RMC12rS3tU5vW7xY9zA1b: advantage_knotwork
+        EFFECT {
+            "You can identify and tie dozens of different knots, and know their appropriate uses and meanings."
+            "After performing a check to interact with a knot (Design [Air] decorative knot, Seafaring [Air] to secure rigging), remove 3 strife."
         }
     }
 
@@ -358,26 +325,16 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Sailor's Tongue" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # Adversity (Air). Types: Mental, Interpersonal.
+        EXTENDS ^"Adversity"
 
         PROPERTIES {
-            ^"Type" STRING "Adversity" FIXED
             ^"Ring" STRING "Air"
-            ^"Category" LIST OF STRING ["Mental", "Interpersonal"]
+            ^"Types" LIST ["Mental", "Interpersonal"]
         }
 
-        # Effects:
-        # - Your speech is punctuated by a combative tone or idioms
-        #   others find difficult to understand or even vulgar.
-        # - When performing a check to speak politely (Courtesy [Air]
-        #   compliment at court, Culture [Air] to know if something is
-        #   rude), you must choose and reroll two dice containing (su)
-        #   or (ex). After resolving, if you failed, gain 1 Void point.
-
-        RULES {
-            #L5RMC13cD4eF6gH8iJ0kL2m: disadvantage_sailors_tongue
+        EFFECT {
+            "Your speech is punctuated by a combative tone or idioms others find difficult to understand or even vulgar."
+            "When performing a check to speak politely (Courtesy [Air] compliment at court, Culture [Air] to know if something is rude), you must choose and reroll two dice containing (su) or (ex). After resolving, if you failed, gain 1 Void point."
         }
     }
 

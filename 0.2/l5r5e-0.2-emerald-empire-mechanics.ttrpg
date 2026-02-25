@@ -54,6 +54,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         # wilderness survival skills.
 
         PROPERTIES {
+            ^"Clan" STRING "Imperial"
             ^"School" STRING "Miya Cartographer" FIXED
             ^"School Roles" LIST OF STRING ["Artisan", "Courtier"]
             ^"Starting Rings" STRING "+1 Air, +1 Earth"
@@ -139,6 +140,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         # for speed, objectivity, and strict reporting.
 
         PROPERTIES {
+            ^"Clan" STRING "Imperial"
             ^"School" STRING "Miya Herald" FIXED
             ^"School Roles" LIST OF STRING ["Courtier"]
             ^"Starting Rings" STRING "+1 Air, +1 Water"
@@ -222,6 +224,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         # political acumen. The ends justify the means.
 
         PROPERTIES {
+            ^"Clan" STRING "Imperial"
             ^"School" STRING "Otomo Schemer" FIXED
             ^"School Roles" LIST OF STRING ["Courtier"]
             ^"Starting Rings" STRING "+1 Air, +1 Fire"
@@ -309,6 +312,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         # closely with the Palace Guard.
 
         PROPERTIES {
+            ^"Clan" STRING "Imperial"
             ^"School" STRING "Seppun Astrologer" FIXED
             ^"School Roles" LIST OF STRING ["Shugenja", "Artisan"]
             ^"Starting Rings" STRING "+1 Air, +1 Water"
@@ -397,6 +401,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         # sudden attacks, not for formal dueling.
 
         PROPERTIES {
+            ^"Clan" STRING "Imperial"
             ^"School" STRING "Seppun Palace Guard" FIXED
             ^"School Roles" LIST OF STRING ["Bushi"]
             ^"Starting Rings" STRING "+1 Earth, +1 Void"
@@ -843,72 +848,115 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
     # NEW ADVANTAGES: DISTINCTIONS
     # ===========================
 
-    ^"Emerald Empire Distinctions" DEF {
-        APPLIES TO [^"Samurai"]
+    ^"Animal Trainer" DEF {
+        EXTENDS ^"Distinction"
 
-        # New distinctions from Emerald Empire. When applicable,
-        # reroll up to 2 dice.
-
-        ENTRIES {
-            ^"Animal Trainer" {
-                ^"Type" STRING "Distinction"
-                ^"Ring" STRING "Water"
-                ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
-                ^"Effect" STRING "When performing a check for which your animal training expertise is a benefit (such as Medicine [Water] to diagnose a sick animal or Survival [Water] to teach an animal a command), reroll up to two dice."
-            }
-
-            ^"Criminal Connections" {
-                ^"Type" STRING "Distinction"
-                ^"Ring" STRING "Air"
-                ^"Category" LIST OF STRING ["Interpersonal"]
-                ^"Effect" STRING "When performing a check that benefits from your criminal connections (such as Skulduggery [Air] to contact the underworld in an unfamiliar city or Commerce [Air] to sell stolen items), reroll up to two dice."
-            }
-
-            ^"Expert Tracker" {
-                ^"Type" STRING "Distinction"
-                ^"Ring" STRING "Air"
-                ^"Category" LIST OF STRING ["Mental", "Physical"]
-                ^"Effect" STRING "When performing a check for which your tracking expertise applies (such as Fitness [Air] to follow an animal unnoticed or Survival [Air] to follow a trail), reroll up to two dice."
-            }
-
-            ^"Friend of the Brotherhood" {
-                ^"Type" STRING "Distinction"
-                ^"Ring" STRING "Void"
-                ^"Category" LIST OF STRING ["Interpersonal"]
-                ^"Effect" STRING "When performing a check to leverage your reputation for Shinseist piety (such as Courtesy [Void] to establish a connection with a monk or Theology [Void] to glean wisdom from the Tao), reroll up to two dice."
-            }
-
-            ^"Hero of [Village]" {
-                ^"Type" STRING "Distinction"
-                ^"Ring" STRING "Fire"
-                ^"Category" LIST OF STRING ["Fame", "Interpersonal"]
-                ^"Effect" STRING "When performing a check for which your heroic reputation is a benefit (such as Command [Fire] to rally peasants or Performance [Fire] to impress with tales of heroics), reroll up to two dice."
-            }
-
-            ^"Kuge Lineage" {
-                ^"Type" STRING "Distinction"
-                ^"Ring" STRING "Earth"
-                ^"Category" LIST OF STRING ["Interpersonal"]
-                ^"Effect" STRING "When performing a check for which your hereditary authority is a benefit (such as Command [Earth] to silence a buke samurai or Government [Earth] to cite familiarity with Imperial family practices), reroll up to two dice."
-            }
-
-            ^"Spiritual Protector" {
-                ^"Type" STRING "Distinction"
-                ^"Ring" STRING "Void"
-                ^"Category" LIST OF STRING ["Spiritual"]
-                ^"Effect" STRING "When performing a check for which your spiritual protector is a benefit (such as Fitness [Void] to avoid a surprise attack through instinct or Survival [Void] to notice an imminent hazard), reroll up to two dice."
-            }
-
-            ^"Well Connected" {
-                ^"Type" STRING "Distinction"
-                ^"Ring" STRING "Water"
-                ^"Category" LIST OF STRING ["Interpersonal"]
-                ^"Effect" STRING "When performing a check for which your connections are a benefit (such as Courtesy [Water] to impress someone at court or Government [Water] to identify a useful contact), reroll up to two dice."
-            }
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal", "Mental"]
         }
 
-        RULES {
-            #L5REE27zA8bC0dE2fG4hI6j: ee_distinctions_reroll_two_dice
+        EFFECT {
+            "You are an expert at training and caring for animals."
+            "When performing a check for which your animal training expertise is a benefit (such as Medicine [Water] to diagnose a sick animal or Survival [Water] to teach an animal a command), you may reroll up to two dice."
+        }
+    }
+
+    ^"Criminal Connections" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You have contacts in the criminal underworld who owe you favors."
+            "When performing a check that benefits from your criminal connections (such as Skulduggery [Air] to contact the underworld in an unfamiliar city or Commerce [Air] to sell stolen items), you may reroll up to two dice."
+        }
+    }
+
+    ^"Expert Tracker" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Mental", "Physical"]
+        }
+
+        EFFECT {
+            "You are skilled at following trails and tracking prey."
+            "When performing a check for which your tracking expertise applies (such as Fitness [Air] to follow an animal unnoticed or Survival [Air] to follow a trail), you may reroll up to two dice."
+        }
+    }
+
+    ^"Friend of the Brotherhood" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You are known for your Shinseist piety and have friends among the Brotherhood of Shinsei."
+            "When performing a check to leverage your reputation for Shinseist piety (such as Courtesy [Void] to establish a connection with a monk or Theology [Void] to glean wisdom from the Tao), you may reroll up to two dice."
+        }
+    }
+
+    ^"Hero of [Village]" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Fame", "Interpersonal"]
+        }
+
+        EFFECT {
+            "You are celebrated as a hero in a particular village."
+            "When performing a check for which your heroic reputation is a benefit (such as Command [Fire] to rally peasants or Performance [Fire] to impress with tales of heroics), you may reroll up to two dice."
+        }
+    }
+
+    ^"Kuge Lineage" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You descend from a kuge family with hereditary authority."
+            "When performing a check for which your hereditary authority is a benefit (such as Command [Earth] to silence a buke samurai or Government [Earth] to cite familiarity with Imperial family practices), you may reroll up to two dice."
+        }
+    }
+
+    ^"Spiritual Protector" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Spiritual"]
+        }
+
+        EFFECT {
+            "A benevolent spirit watches over you, granting you flashes of intuition."
+            "When performing a check for which your spiritual protector is a benefit (such as Fitness [Void] to avoid a surprise attack through instinct or Survival [Void] to notice an imminent hazard), you may reroll up to two dice."
+        }
+    }
+
+    ^"Well Connected" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You have an extensive network of contacts across Rokugan."
+            "When performing a check for which your connections are a benefit (such as Courtesy [Water] to impress someone at court or Government [Water] to identify a useful contact), you may reroll up to two dice."
         }
     }
 
@@ -916,65 +964,101 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
     # NEW ADVANTAGES: PASSIONS
     # ===========================
 
-    ^"Emerald Empire Passions" DEF {
-        APPLIES TO [^"Samurai"]
+    ^"Bonsai" DEF {
+        EXTENDS ^"Passion"
 
-        # New passions from Emerald Empire. When applicable,
-        # remove 3 strife after resolving the check.
-
-        ENTRIES {
-            ^"Bonsai" {
-                ^"Type" STRING "Passion"
-                ^"Ring" STRING "Air"
-                ^"Category" LIST OF STRING ["Mental"]
-                ^"Effect" STRING "After performing a check to interact with a bonsai piece (such as Aesthetics [Air] to prune a tree or Sentiment [Air] to identify emotional response to a work), remove 3 strife."
-            }
-
-            ^"City [Choose one]" {
-                ^"Type" STRING "Passion"
-                ^"Ring" STRING "Water"
-                ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
-                ^"Effect" STRING "After performing a check to learn or share knowledge of the particular city (such as Courtesy [Water] to befriend a local or Culture [Water] to find an establishment), remove 3 strife."
-            }
-
-            ^"Gourmet" {
-                ^"Type" STRING "Passion"
-                ^"Ring" STRING "Water"
-                ^"Category" LIST OF STRING ["Mental", "Interpersonal"]
-                ^"Effect" STRING "After performing a check involving high-quality food (such as Culture [Water] to locate a place to dine or Labor [Water] to prepare a fine meal), remove 3 strife."
-            }
-
-            ^"Military History" {
-                ^"Type" STRING "Passion"
-                ^"Ring" STRING "Earth"
-                ^"Category" LIST OF STRING ["Mental"]
-                ^"Effect" STRING "After performing a check related to military history (such as Command [Earth] to bolster troops with a historical story or Tactics [Earth] to prepare a defense based on known strategies), remove 3 strife."
-            }
-
-            ^"Navigator" {
-                ^"Type" STRING "Passion"
-                ^"Ring" STRING "Fire"
-                ^"Category" LIST OF STRING ["Mental"]
-                ^"Effect" STRING "After performing a check to navigate (such as Seafaring [Fire] to chart an unknown route or Survival [Fire] to extrapolate location from the stars), remove 3 strife."
-            }
-
-            ^"Researcher" {
-                ^"Type" STRING "Passion"
-                ^"Ring" STRING "Air"
-                ^"Category" LIST OF STRING ["Mental"]
-                ^"Effect" STRING "After performing a check to research a topic (such as Culture [Air] to locate a particular poem or Medicine [Air] to find records of a mysterious illness), remove 3 strife."
-            }
-
-            ^"Rock Gardening" {
-                ^"Type" STRING "Passion"
-                ^"Ring" STRING "Void"
-                ^"Category" LIST OF STRING ["Mental"]
-                ^"Effect" STRING "After performing a check related to rock gardening (such as Aesthetics [Void] to detect hidden meaning in a garden's arrangement or Meditation [Void] to make sense of events while reflecting on a rock garden), remove 3 strife."
-            }
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Mental"]
         }
 
-        RULES {
-            #L5REE28kL9mN1oP3qR5sT7u: ee_passions_remove_three_strife
+        EFFECT {
+            "You find peace and meaning in the art of bonsai."
+            "After performing a check to interact with a bonsai piece (such as Aesthetics [Air] to prune a tree or Sentiment [Air] to identify emotional response to a work), you remove 3 strife."
+        }
+    }
+
+    ^"City [Choose one]" DEF {
+        EXTENDS ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You have a deep love for a particular city and know its secrets."
+            "After performing a check to learn or share knowledge of the particular city (such as Courtesy [Water] to befriend a local or Culture [Water] to find an establishment), you remove 3 strife."
+        }
+    }
+
+    ^"Gourmet" DEF {
+        EXTENDS ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Mental", "Interpersonal"]
+        }
+
+        EFFECT {
+            "You have a refined palate and appreciation for fine cuisine."
+            "After performing a check involving high-quality food (such as Culture [Water] to locate a place to dine or Labor [Water] to prepare a fine meal), you remove 3 strife."
+        }
+    }
+
+    ^"Military History" DEF {
+        EXTENDS ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You are well-versed in the military history of Rokugan."
+            "After performing a check related to military history (such as Command [Earth] to bolster troops with a historical story or Tactics [Earth] to prepare a defense based on known strategies), you remove 3 strife."
+        }
+    }
+
+    ^"Navigator" DEF {
+        EXTENDS ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You are skilled at charting courses and finding your way."
+            "After performing a check to navigate (such as Seafaring [Fire] to chart an unknown route or Survival [Fire] to extrapolate location from the stars), you remove 3 strife."
+        }
+    }
+
+    ^"Researcher" DEF {
+        EXTENDS ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You are a dedicated researcher with a talent for finding information."
+            "After performing a check to research a topic (such as Culture [Air] to locate a particular poem or Medicine [Air] to find records of a mysterious illness), you remove 3 strife."
+        }
+    }
+
+    ^"Rock Gardening" DEF {
+        EXTENDS ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You find contemplative peace in the arrangement of rock gardens."
+            "After performing a check related to rock gardening (such as Aesthetics [Void] to detect hidden meaning in a garden's arrangement or Meditation [Void] to make sense of events while reflecting on a rock garden), you remove 3 strife."
         }
     }
 
@@ -982,60 +1066,87 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
     # NEW DISADVANTAGES: ADVERSITIES
     # ===========================
 
-    ^"Emerald Empire Adversities" DEF {
-        APPLIES TO [^"Samurai"]
+    ^"Adopted Peasant" DEF {
+        EXTENDS ^"Adversity"
 
-        # New adversities from Emerald Empire. When applicable,
-        # must reroll 2 dice showing (su) or (ex). If check fails,
-        # gain 1 Void point.
-
-        ENTRIES {
-            ^"Adopted Peasant" {
-                ^"Type" STRING "Adversity"
-                ^"Ring" STRING "Fire"
-                ^"Category" LIST OF STRING ["Interpersonal"]
-                ^"Effect" STRING "When you make a check to deal authoritatively with a samurai who knows of your peasant birth (such as Command [Fire] to order a subordinate or Courtesy [Fire] to impugn another's honor), reroll two dice showing (su) or (ex). If you failed, regain 1 Void point."
-            }
-
-            ^"Allergy [Choose one]" {
-                ^"Type" STRING "Adversity"
-                ^"Ring" STRING "Air"
-                ^"Category" LIST OF STRING ["Physical"]
-                ^"Effect" STRING "When you make a check that exposes you to the source of your allergy (such as Fitness [Air] to run through a swarm of bees or Courtesy [Air] to sample a dish containing your allergen), reroll two dice showing (su) or (ex). If you failed, regain 1 Void point."
-            }
-
-            ^"Cursed Lineage" {
-                ^"Type" STRING "Adversity"
-                ^"Ring" STRING "Void"
-                ^"Category" LIST OF STRING ["Interpersonal", "Spiritual"]
-                ^"Effect" STRING "When making a check that does or could invoke the curse (such as Culture [Void] to understand your family history or Theology [Void] to seek your ancestors' blessing), reroll two dice showing (su) or (ex). If you failed, regain 1 Void point."
-            }
-
-            ^"Despised in [City]" {
-                ^"Type" STRING "Adversity"
-                ^"Ring" STRING "Water"
-                ^"Category" LIST OF STRING ["Fame", "Interpersonal"]
-                ^"Effect" STRING "When performing a check to gain assistance from a resident of the city that despises you (such as Courtesy [Water] to learn rumors or Commerce [Water] to purchase goods), reroll two dice showing (su) or (ex). If you failed, regain 1 Void point."
-            }
-
-            ^"Hunted by Chikushodo" {
-                ^"Type" STRING "Adversity"
-                ^"Ring" STRING "Earth"
-                ^"Category" LIST OF STRING ["Spiritual"]
-                ^"Effect" STRING "When performing a check to interact with an animal (such as Survival [Earth] to calm a frightened horse or Fitness [Earth] to go unnoticed by a hungry wolf), reroll two dice showing (su) or (ex). If you failed, regain 1 Void point."
-            }
-
-            ^"Skepticism" {
-                ^"Type" STRING "Adversity"
-                ^"Ring" STRING "Void"
-                ^"Category" LIST OF STRING ["Mental", "Spiritual"]
-                ^"Effect" STRING "When you make a check that relies on the existence of the Spirit Realms (such as Medicine [Void] to diagnose a malady of the soul or Theology [Void] to detect a kami's presence), reroll two dice showing (su) or (ex). If you failed, regain 1 Void point."
-            }
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Interpersonal"]
         }
 
-        RULES {
-            #L5REE29vW0xY2zA4bC6dE8f: ee_adversities_reroll_successes
-            #L5REE30gH1iJ3kL5mN7oP9q: ee_adversities_void_point_on_failure
+        EFFECT {
+            "You were born a peasant before being adopted into a samurai family, and some know your origins."
+            "When you make a check to deal authoritatively with a samurai who knows of your peasant birth (such as Command [Fire] to order a subordinate or Courtesy [Fire] to impugn another's honor), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Allergy [Choose one]" DEF {
+        EXTENDS ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Physical"]
+        }
+
+        EFFECT {
+            "You have a severe allergy to a common substance."
+            "When you make a check that exposes you to the source of your allergy (such as Fitness [Air] to run through a swarm of bees or Courtesy [Air] to sample a dish containing your allergen), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Cursed Lineage" DEF {
+        EXTENDS ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Interpersonal", "Spiritual"]
+        }
+
+        EFFECT {
+            "Your family line is cursed, and the curse manifests when you delve into your heritage."
+            "When making a check that does or could invoke the curse (such as Culture [Void] to understand your family history or Theology [Void] to seek your ancestors' blessing), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Despised in [City]" DEF {
+        EXTENDS ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Fame", "Interpersonal"]
+        }
+
+        EFFECT {
+            "You are despised in a particular city, and its residents are hostile toward you."
+            "When performing a check to gain assistance from a resident of the city that despises you (such as Courtesy [Water] to learn rumors or Commerce [Water] to purchase goods), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Hunted by Chikushodo" DEF {
+        EXTENDS ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Spiritual"]
+        }
+
+        EFFECT {
+            "The spirits of Chikushodo have marked you, and animals are hostile toward you."
+            "When performing a check to interact with an animal (such as Survival [Earth] to calm a frightened horse or Fitness [Earth] to go unnoticed by a hungry wolf), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Skepticism" DEF {
+        EXTENDS ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Mental", "Spiritual"]
+        }
+
+        EFFECT {
+            "You doubt the existence of the Spirit Realms, which hinders your spiritual endeavors."
+            "When you make a check that relies on the existence of the Spirit Realms (such as Medicine [Void] to diagnose a malady of the soul or Theology [Void] to detect a kami's presence), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
         }
     }
 
@@ -1043,54 +1154,73 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
     # NEW DISADVANTAGES: ANXIETIES
     # ===========================
 
-    ^"Emerald Empire Anxieties" DEF {
-        APPLIES TO [^"Samurai"]
+    ^"Accustomed to Luxury" DEF {
+        EXTENDS ^"Anxiety"
 
-        # New anxieties from Emerald Empire. When applicable,
-        # receive 3 strife after resolving check. First time per
-        # scene, gain 1 Void point.
-
-        ENTRIES {
-            ^"Accustomed to Luxury" {
-                ^"Type" STRING "Anxiety"
-                ^"Ring" STRING "Earth"
-                ^"Category" LIST OF STRING ["Mental"]
-                ^"Effect" STRING "After performing a check that requires you to remain in unacceptable accommodations (such as Survival [Earth] to set up a campsite or Commerce [Earth] to stay at a rural inn), receive 3 strife. If first time this scene, gain 1 Void point."
-            }
-
-            ^"Claustrophobia" {
-                ^"Type" STRING "Anxiety"
-                ^"Ring" STRING "Water"
-                ^"Category" LIST OF STRING ["Mental"]
-                ^"Effect" STRING "After making a check that requires you to enter an enclosed space (such as Fitness [Water] to crawl through a narrow passage or Survival [Water] to investigate a cave), receive 3 strife. If first time this scene, gain 1 Void point."
-            }
-
-            ^"False Identity" {
-                ^"Type" STRING "Anxiety"
-                ^"Ring" STRING "Air"
-                ^"Category" LIST OF STRING ["Interpersonal"]
-                ^"Effect" STRING "After performing a check to maintain your false identity (such as Courtesy [Air] to lie about your past or Skulduggery [Air] to hide evidence of the truth), receive 3 strife. If first time this scene, gain 1 Void point."
-                ^"Special" STRING "At GM discretion, a character who reaches rank 2 in their actual school may spend 2 XP to learn the basics of their false school's regimen, gaining the capacity to use the false school's ability once per game session as if rank 1. Only one false school may benefit a character this way."
-            }
-
-            ^"Loathing for Peasants" {
-                ^"Type" STRING "Anxiety"
-                ^"Ring" STRING "Water"
-                ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
-                ^"Effect" STRING "After performing a check that requires you to interact with peasants (such as Culture [Water] to observe farmers' customs or Courtesy [Water] to question a village leader), receive 3 strife. If first time this scene, gain 1 Void point."
-            }
-
-            ^"Loneliness" {
-                ^"Type" STRING "Anxiety"
-                ^"Ring" STRING "Void"
-                ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
-                ^"Effect" STRING "After performing a check that requires you to be alone (such as Composition [Void] to write a letter declining an invitation or Meditation [Void] to spend time in dedicated introspection), receive 3 strife. If first time this scene, gain 1 Void point."
-            }
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Mental"]
         }
 
-        RULES {
-            #L5REE31rS2tU4vW6xY8zA0b: ee_anxieties_receive_three_strife
-            #L5REE32cD3eF5gH7iJ9kL1m: ee_anxieties_void_point_first_per_scene
+        EFFECT {
+            "You are accustomed to the finest accommodations and find anything less deeply distressing."
+            "After performing a check that requires you to remain in unacceptable accommodations (such as Survival [Earth] to set up a campsite or Commerce [Earth] to stay at a rural inn), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    ^"Claustrophobia" DEF {
+        EXTENDS ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "Enclosed spaces fill you with dread."
+            "After making a check that requires you to enter an enclosed space (such as Fitness [Water] to crawl through a narrow passage or Survival [Water] to investigate a cave), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    ^"False Identity" DEF {
+        EXTENDS ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You are living under a false identity, and the constant deception weighs on you."
+            "After performing a check to maintain your false identity (such as Courtesy [Air] to lie about your past or Skulduggery [Air] to hide evidence of the truth), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    ^"Loathing for Peasants" DEF {
+        EXTENDS ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You despise peasants and find interacting with them deeply unpleasant."
+            "After performing a check that requires you to interact with peasants (such as Culture [Water] to observe farmers' customs or Courtesy [Water] to question a village leader), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    ^"Loneliness" DEF {
+        EXTENDS ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You dread being alone, and solitude fills you with anxiety."
+            "After performing a check that requires you to be alone (such as Composition [Void] to write a letter declining an invitation or Meditation [Void] to spend time in dedicated introspection), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
         }
     }
 

@@ -968,27 +968,31 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
     # NEW ADVANTAGES: DISTINCTIONS
     # ===========================
 
-    ^"Fields of Victory Distinctions" DEF {
-        APPLIES TO [^"Samurai"]
+    ^"Guiding Ancestor" DEF {
+        EXTENDS ^"Distinction"
 
-        ENTRIES {
-            ^"Guiding Ancestor" {
-                ^"Type" STRING "Distinction"
-                ^"Ring" STRING "Void"
-                ^"Category" LIST OF STRING ["Spiritual"]
-                ^"Effect" STRING "You are watched over by a benevolent ancestor spirit, or sorei, who has high hopes for you and your deeds. The spirit cannot communicate directly but may send cryptic omens in dreams and strange phenomena to help you achieve a great destiny. When you make a check to interpret omens or to intuit a course of action (such as a Theology [Void] check to understand your dreams or a Tactics [Void] check to guess the plans of an unknown enemy general), you may reroll up to two dice."
-            }
-
-            ^"Traditional Adherent" {
-                ^"Type" STRING "Distinction"
-                ^"Ring" STRING "Earth"
-                ^"Category" LIST OF STRING ["Mental"]
-                ^"Effect" STRING "You have a mastery of tradition and routine, and are able to perform ceremonies and social functions exactly as you were taught without variation, even under trying circumstances. When you make a check to maintain the traditions of the past (such as a Performance [Earth] check to recite a poem in a style long-since out of fashion in the courts, or a Composition [Earth] check to examine a historical account for inconsistencies), you may reroll up to two dice."
-            }
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Spiritual"]
         }
 
-        RULES {
-            #L5RFV26pQ7rS9tU1vW3xY5z: fov_distinctions_reroll_two_dice
+        EFFECT {
+            "You are watched over by a benevolent ancestor spirit, or sorei, who has high hopes for you and your deeds. The spirit cannot communicate directly but may send cryptic omens in dreams and strange phenomena to help you achieve a great destiny."
+            "When you make a check to interpret omens or to intuit a course of action (such as a Theology [Void] check to understand your dreams or a Tactics [Void] check to guess the plans of an unknown enemy general), you may reroll up to two dice."
+        }
+    }
+
+    ^"Traditional Adherent" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You have a mastery of tradition and routine, and are able to perform ceremonies and social functions exactly as you were taught without variation, even under trying circumstances."
+            "When you make a check to maintain the traditions of the past (such as a Performance [Earth] check to recite a poem in a style long-since out of fashion in the courts, or a Composition [Earth] check to examine a historical account for inconsistencies), you may reroll up to two dice."
         }
     }
 
@@ -996,27 +1000,31 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
     # NEW ADVANTAGES: PASSIONS
     # ===========================
 
-    ^"Fields of Victory Passions" DEF {
-        APPLIES TO [^"Samurai"]
+    ^"Ancestry" DEF {
+        EXTENDS ^"Passion"
 
-        ENTRIES {
-            ^"Ancestry" {
-                ^"Type" STRING "Passion"
-                ^"Ring" STRING "Earth"
-                ^"Category" LIST OF STRING ["Mental"]
-                ^"Effect" STRING "The recollection of lineages comes easily to you. You know your own family history as far back as it has been recorded, and can swiftly recall the lineages of notable figures in Rokugan's history. After performing a check to recall or determine the family history of another character (such as a Government [Earth] check to remember a past daimyo of a family, or a Command [Earth] check to remind a subordinate of the expectations their ancestors would have of them), you remove 3 strife."
-            }
-
-            ^"Glorious Deeds" {
-                ^"Type" STRING "Passion"
-                ^"Ring" STRING "Fire"
-                ^"Category" LIST OF STRING ["Martial", "Social"]
-                ^"Effect" STRING "You find risking your life to be a simple matter, as long as there is a witness to remember your bravery. No threat or challenge deters you if you might be remembered for it, making even the most daunting tasks easy ones for which to prepare. After performing a check to improve your reputation or gain fame as a great samurai (such as a Performance [Fire] check to impress a court with your new melody, or a Tactics [Fire] check to execute a daring raid on the enemy), you remove 3 strife."
-            }
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Mental"]
         }
 
-        RULES {
-            #L5RFV27aB8cD0eF2gH4iJ6k: fov_passions_remove_three_strife
+        EFFECT {
+            "The recollection of lineages comes easily to you. You know your own family history as far back as it has been recorded, and can swiftly recall the lineages of notable figures in Rokugan's history."
+            "After performing a check to recall or determine the family history of another character (such as a Government [Earth] check to remember a past daimyo of a family, or a Command [Earth] check to remind a subordinate of the expectations their ancestors would have of them), you remove 3 strife."
+        }
+    }
+
+    ^"Glorious Deeds" DEF {
+        EXTENDS ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Martial", "Social"]
+        }
+
+        EFFECT {
+            "You find risking your life to be a simple matter, as long as there is a witness to remember your bravery. No threat or challenge deters you if you might be remembered for it, making even the most daunting tasks easy ones for which to prepare."
+            "After performing a check to improve your reputation or gain fame as a great samurai (such as a Performance [Fire] check to impress a court with your new melody, or a Tactics [Fire] check to execute a daring raid on the enemy), you remove 3 strife."
         }
     }
 
@@ -1024,20 +1032,17 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
     # NEW DISADVANTAGES: ADVERSITIES
     # ===========================
 
-    ^"Fields of Victory Adversities" DEF {
-        APPLIES TO [^"Samurai"]
+    ^"Blood Feud" DEF {
+        EXTENDS ^"Adversity"
 
-        ENTRIES {
-            ^"Blood Feud" {
-                ^"Type" STRING "Adversity"
-                ^"Ring" STRING "Water"
-                ^"Category" LIST OF STRING ["Interpersonal", "Social"]
-                ^"Effect" STRING "Your bloodline is locked in a deadly struggle with another family or group, which makes members of that group hostile when they learn your affiliation. They may bar you from their courts and homes, refuse to meet with you, or even challenge you to duels over slights in which you had no personal involvement. Confer with the GM to select a campaign-appropriate family or group. When performing a check to interact with the chosen group that relies on their goodwill toward members of your family (such as a Courtesy [Water] check to seek hospitality or a Performance [Water] check to impress them with a song attributed to your family name), you must choose and reroll two dice containing (su) or (ex). After resolving the check, if you failed, you gain 1 Void point."
-            }
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal", "Social"]
         }
 
-        RULES {
-            #L5RFV28lM9nO1pQ3rS5tU7v: fov_adversities_reroll_successes_void_on_failure
+        EFFECT {
+            "Your bloodline is locked in a deadly struggle with another family or group, which makes members of that group hostile when they learn your affiliation. They may bar you from their courts and homes, refuse to meet with you, or even challenge you to duels over slights in which you had no personal involvement. Confer with the GM to select a campaign-appropriate family or group."
+            "When performing a check to interact with the chosen group that relies on their goodwill toward members of your family (such as a Courtesy [Water] check to seek hospitality or a Performance [Water] check to impress them with a song attributed to your family name), you must choose and reroll two dice containing (su) or (ex). After resolving the check, if you failed, you gain 1 Void point."
         }
     }
 
@@ -1045,28 +1050,31 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
     # NEW DISADVANTAGES: ANXIETIES
     # ===========================
 
-    ^"Fields of Victory Anxieties" DEF {
-        APPLIES TO [^"Samurai"]
+    ^"Belligerent" DEF {
+        EXTENDS ^"Anxiety"
 
-        ENTRIES {
-            ^"Belligerent" {
-                ^"Type" STRING "Anxiety"
-                ^"Ring" STRING "Earth"
-                ^"Category" LIST OF STRING ["Interpersonal"]
-                ^"Effect" STRING "You find it nearly impossible to keep your cool when provoked, and may even look for an excuse to fight with people you consider deserving of a good thrashing. After performing a check to respond to provocation without resorting to violence or threats (such as a Performance [Earth] check to calmly sing a song that was originally composed to paint your lineage in an unflattering light or a Meditation [Earth] check to stay in formation when you spot a rival across the battlefield), you receive 3 strife. If this is the first time this has occurred this scene, gain 1 Void point."
-            }
-
-            ^"Braggart" {
-                ^"Type" STRING "Anxiety"
-                ^"Ring" STRING "Water"
-                ^"Category" LIST OF STRING ["Interpersonal"]
-                ^"Effect" STRING "You can't resist an opportunity to share your great deeds with others, and you grow distressed when your audience isn't impressed by your accomplishments. After performing a check to share your past deeds with others without emphasizing your own accomplishments or trying to impress your audience with your story (such as a Courtesy [Water] check to allow a superior to take credit for your deeds or a Performance [Water] check when recounting a tale in which you played a part), you receive 3 strife. If this is the first time this has occurred this scene, gain 1 Void point."
-            }
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Interpersonal"]
         }
 
-        RULES {
-            #L5RFV29wX0yZ2aB4cD6eF8g: fov_anxieties_receive_three_strife
-            #L5RFV30hI1jK3lM5nO7pQ9r: fov_anxieties_void_point_first_per_scene
+        EFFECT {
+            "You find it nearly impossible to keep your cool when provoked, and may even look for an excuse to fight with people you consider deserving of a good thrashing."
+            "After performing a check to respond to provocation without resorting to violence or threats (such as a Performance [Earth] check to calmly sing a song that was originally composed to paint your lineage in an unflattering light or a Meditation [Earth] check to stay in formation when you spot a rival across the battlefield), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    ^"Braggart" DEF {
+        EXTENDS ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You can't resist an opportunity to share your great deeds with others, and you grow distressed when your audience isn't impressed by your accomplishments."
+            "After performing a check to share your past deeds with others without emphasizing your own accomplishments or trying to impress your audience with your story (such as a Courtesy [Water] check to allow a superior to take credit for your deeds or a Performance [Water] check when recounting a tale in which you played a part), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
         }
     }
 

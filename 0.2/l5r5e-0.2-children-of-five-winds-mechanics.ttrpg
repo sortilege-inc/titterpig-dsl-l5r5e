@@ -909,32 +909,44 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Affinity with [Animal Type]" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Distinction"
+
         PROPERTIES {
-            ^"Type" STRING "Distinction"
             ^"Ring" STRING "Void"
-            ^"Category" LIST OF STRING ["Fame", "Interpersonal"]
-            ^"Effect" STRING "You assisted an animal; now any animal of that type gives you extra consideration. After performing a check when interacting with this type of animal, you may reroll up to two dice."
+            ^"Types" LIST ["Fame", "Interpersonal"]
+        }
+
+        EFFECT {
+            "You assisted an animal; now any animal of that type gives you extra consideration."
+            "When performing a check to interact with this type of animal, you may reroll up to two dice."
         }
     }
 
     ^"Legal Scholarship" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Distinction"
+
         PROPERTIES {
-            ^"Type" STRING "Distinction"
             ^"Ring" STRING "Air"
-            ^"Category" LIST OF STRING ["Interpersonal", "Social"]
-            ^"Effect" STRING "Your family possesses old legal documents from Rokugani, Qamarist, and other legal traditions. After performing a check when interacting with a legal body or using a legal code, you may reroll up to two dice."
+            ^"Types" LIST ["Interpersonal", "Social"]
+        }
+
+        EFFECT {
+            "Your family possesses old legal documents from Rokugani, Qamarist, and other legal traditions."
+            "When performing a check to interact with a legal body or using a legal code, you may reroll up to two dice."
         }
     }
 
     ^"Syncretic Philosophy" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Distinction"
+
         PROPERTIES {
-            ^"Type" STRING "Distinction"
             ^"Ring" STRING "Water"
-            ^"Category" LIST OF STRING ["Interpersonal", "Mental"]
-            ^"Effect" STRING "Exposed to many cultures and philosophies, you understand the nuances of personal moral stances. After performing a check to appeal to someone's ethics, morality, or philosophy, you may reroll up to two dice."
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "Exposed to many cultures and philosophies, you understand the nuances of personal moral stances."
+            "When performing a check to appeal to someone's ethics, morality, or philosophy, you may reroll up to two dice."
         }
     }
 
@@ -943,32 +955,44 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Horse Racing" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Passion"
+
         PROPERTIES {
-            ^"Type" STRING "Passion"
             ^"Ring" STRING "Air"
-            ^"Category" LIST OF STRING ["Physical"]
-            ^"Effect" STRING "You enjoy the bond of horse and rider in competition. After performing a check to push your horse to its limits, you remove 3 strife."
+            ^"Types" LIST ["Physical"]
+        }
+
+        EFFECT {
+            "You enjoy the bond of horse and rider in competition."
+            "After performing a check to push your horse to its limits, you remove 3 strife."
         }
     }
 
     ^"Hot Pot" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Passion"
+
         PROPERTIES {
-            ^"Type" STRING "Passion"
             ^"Ring" STRING "Earth"
-            ^"Category" LIST OF STRING ["Interpersonal", "Physical"]
-            ^"Effect" STRING "You can prepare hearty communal meals and identify ingredients. After performing a check involving the preparation of a communal meal, you remove 3 strife."
+            ^"Types" LIST ["Interpersonal", "Physical"]
+        }
+
+        EFFECT {
+            "You can prepare hearty communal meals and identify ingredients."
+            "After performing a check involving the preparation of a communal meal, you remove 3 strife."
         }
     }
 
     ^"Stargazing" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Passion"
+
         PROPERTIES {
-            ^"Type" STRING "Passion"
             ^"Ring" STRING "Void"
-            ^"Category" LIST OF STRING ["Mental", "Spiritual"]
-            ^"Effect" STRING "You can navigate by stars and know astrological myths. After performing a check to recall an astronomical fact, you remove 3 strife."
+            ^"Types" LIST ["Mental", "Spiritual"]
+        }
+
+        EFFECT {
+            "You can navigate by stars and know astrological myths."
+            "After performing a check to recall an astronomical fact, you remove 3 strife."
         }
     }
 
@@ -977,32 +1001,44 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Lost Family History" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Adversity"
+
         PROPERTIES {
-            ^"Type" STRING "Adversity"
             ^"Ring" STRING "Earth"
-            ^"Category" LIST OF STRING ["Interpersonal", "Material"]
-            ^"Effect" STRING "Your family lost important historical records. When you make a check to recall or find something related to your lost history, you must choose and reroll two dice containing (su) or (ex). After resolving the check, if you failed, you gain 1 Void point."
+            ^"Types" LIST ["Interpersonal", "Material"]
+        }
+
+        EFFECT {
+            "Your family lost important historical records."
+            "When you make a check to recall or find something related to your lost history, you must choose and reroll two dice containing (su) or (ex). After resolving the check, if you failed, you gain 1 Void point."
         }
     }
 
     ^"Penalty" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Adversity"
+
         PROPERTIES {
-            ^"Type" STRING "Adversity"
             ^"Ring" STRING "Fire"
-            ^"Category" LIST OF STRING ["Infamy", "Social"]
-            ^"Effect" STRING "You or your family must pay recompense for a minor offense over an extended period. When you make a check to avoid fulfilling the penalty's terms, you must choose and reroll two dice containing (su) or (ex). After resolving the check, if you failed, you gain 1 Void point."
+            ^"Types" LIST ["Infamy", "Social"]
+        }
+
+        EFFECT {
+            "You or your family must pay recompense for a minor offense over an extended period."
+            "When you make a check to avoid fulfilling the penalty's terms, you must choose and reroll two dice containing (su) or (ex). After resolving the check, if you failed, you gain 1 Void point."
         }
     }
 
     ^"Schism in Status" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Adversity"
+
         PROPERTIES {
-            ^"Type" STRING "Adversity"
             ^"Ring" STRING "Water"
-            ^"Category" LIST OF STRING ["Infamy", "Interpersonal"]
-            ^"Effect" STRING "A specific social group treats your status as 20 points lower. When you make a check to convince a member of this group to listen to you, you must choose and reroll two dice containing (su) or (ex). After resolving the check, if you failed, you gain 1 Void point."
+            ^"Types" LIST ["Infamy", "Interpersonal"]
+        }
+
+        EFFECT {
+            "A specific social group treats your status as 20 points lower."
+            "When you make a check to convince a member of this group to listen to you, you must choose and reroll two dice containing (su) or (ex). After resolving the check, if you failed, you gain 1 Void point."
         }
     }
 
@@ -1011,32 +1047,44 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Animal Signs" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Anxiety"
+
         PROPERTIES {
-            ^"Type" STRING "Anxiety"
             ^"Ring" STRING "Void"
-            ^"Category" LIST OF STRING ["Mental", "Spiritual"]
-            ^"Effect" STRING "You assign supernatural meaning to animal behavior. After performing a check to interpret the actions of an animal, you receive 3 strife. If first occurrence this scene, you gain 1 Void point."
+            ^"Types" LIST ["Mental", "Spiritual"]
+        }
+
+        EFFECT {
+            "You assign supernatural meaning to animal behavior."
+            "After performing a check to interpret the actions of an animal, you receive 3 strife. If this is the first time this scene, gain 1 Void point."
         }
     }
 
     ^"Disdain for Urban Sprawl" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Anxiety"
+
         PROPERTIES {
-            ^"Type" STRING "Anxiety"
             ^"Ring" STRING "Earth"
-            ^"Category" LIST OF STRING ["Mental"]
-            ^"Effect" STRING "You dislike dense urban areas. After performing a check to overcome some facet of city life, you receive 3 strife. If first occurrence this scene, you gain 1 Void point."
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You dislike dense urban areas."
+            "After performing a check to overcome some facet of city life, you receive 3 strife. If this is the first time this scene, gain 1 Void point."
         }
     }
 
     ^"Tip of the Tongue" DEF {
-        APPLIES TO [^"Samurai"]
+        EXTENDS ^"Anxiety"
+
         PROPERTIES {
-            ^"Type" STRING "Anxiety"
             ^"Ring" STRING "Air"
-            ^"Category" LIST OF STRING ["Mental"]
-            ^"Effect" STRING "You know multiple languages so fluently that your mind mixes words. After performing a check to communicate that requires you to bridge cultural, religious, philosophical, or regional differences, you receive 3 strife. If first occurrence this scene, you gain 1 Void point."
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You know multiple languages so fluently that your mind mixes words."
+            "After performing a check to communicate that requires you to bridge cultural, religious, philosophical, or regional differences, you receive 3 strife. If this is the first time this scene, gain 1 Void point."
         }
     }
 

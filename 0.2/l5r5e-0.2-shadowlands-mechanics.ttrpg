@@ -729,37 +729,45 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
     # NEW ADVANTAGES: DISTINCTIONS
     # ===========================
 
-    ^"Shadowlands Distinctions" DEF {
-        APPLIES TO [^"Samurai"]
+    ^"Dead Eyes" DEF {
+        EXTENDS ^"Distinction"
 
-        # New distinctions from Shadowlands. When applicable,
-        # reroll up to 2 dice.
-
-        ENTRIES {
-            ^"Dead Eyes" {
-                ^"Type" STRING "Distinction"
-                ^"Ring" STRING "Earth"
-                ^"Category" LIST OF STRING ["Mental"]
-                ^"Effect" STRING "When performing a check that relies on avoiding fear or exuberant emotions (such as Meditation [Earth] to avoid running from a monstrous oni or Sentiment [Earth] to avoid being caught up in a raucous crowd), reroll up to two dice."
-            }
-
-            ^"Friend of the Nezumi" {
-                ^"Type" STRING "Distinction"
-                ^"Ring" STRING "Water"
-                ^"Category" LIST OF STRING ["Interpersonal"]
-                ^"Effect" STRING "When performing a check to interact with nezumi or one that relates to your status with them (such as Courtesy [Water] to help locate a secret tunnel near the Wall or Performance [Water] to convince a tribe to follow your lead), reroll up to two dice."
-            }
-
-            ^"Light Sleeper" {
-                ^"Type" STRING "Distinction"
-                ^"Ring" STRING "Water"
-                ^"Category" LIST OF STRING ["Physical"]
-                ^"Effect" STRING "When performing a check that calls on rapidly recovering from sleep (such as Survival [Water] to detect a threatening sound while dozing or Fitness [Water] to react even when someone else is standing watch), reroll up to two dice."
-            }
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Mental"]
         }
 
-        RULES {
-            #L5RSL21lM2nO4pQ6rS8tU0v: sl_distinctions_reroll_two_dice
+        EFFECT {
+            "Your gaze is unnervingly calm, even in the face of horrors."
+            "When performing a check that relies on avoiding fear or exuberant emotions (such as Meditation [Earth] to avoid running from a monstrous oni or Sentiment [Earth] to avoid being caught up in a raucous crowd), you may reroll up to two dice."
+        }
+    }
+
+    ^"Friend of the Nezumi" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You have earned the trust and friendship of the nezumi, the ratfolk who dwell near the Kaiu Wall."
+            "When performing a check to interact with nezumi or one that relates to your status with them (such as Courtesy [Water] to help locate a secret tunnel near the Wall or Performance [Water] to convince a tribe to follow your lead), you may reroll up to two dice."
+        }
+    }
+
+    ^"Light Sleeper" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Physical"]
+        }
+
+        EFFECT {
+            "You wake at the slightest disturbance, always alert even in slumber."
+            "When performing a check that calls on rapidly recovering from sleep (such as Survival [Water] to detect a threatening sound while dozing or Fitness [Water] to react even when someone else is standing watch), you may reroll up to two dice."
         }
     }
 
@@ -767,23 +775,17 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
     # NEW ADVANTAGES: PASSIONS
     # ===========================
 
-    ^"Shadowlands Passions" DEF {
-        APPLIES TO [^"Samurai"]
+    ^"Creatures" DEF {
+        EXTENDS ^"Passion"
 
-        # New passions from Shadowlands. When applicable,
-        # remove 3 strife after resolving the check.
-
-        ENTRIES {
-            ^"Creatures" {
-                ^"Type" STRING "Passion"
-                ^"Ring" STRING "Fire"
-                ^"Category" LIST OF STRING ["Mental"]
-                ^"Effect" STRING "After performing a check to study or hear tales of odd creatures (such as Culture [Fire] to wonder about new creatures or Performance [Fire] to entice someone to offer you a tale of encounters with Shadowlands monsters), remove 3 strife."
-            }
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Mental"]
         }
 
-        RULES {
-            #L5RSL22wX3yZ5aB7cD9eF1g: sl_passions_remove_three_strife
+        EFFECT {
+            "You are fascinated by strange and monstrous creatures."
+            "After performing a check to study or hear tales of odd creatures (such as Culture [Fire] to wonder about new creatures or Performance [Fire] to entice someone to offer you a tale of encounters with Shadowlands monsters), you remove 3 strife."
         }
     }
 
@@ -791,32 +793,31 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
     # NEW DISADVANTAGES: ADVERSITIES
     # ===========================
 
-    ^"Shadowlands Adversities" DEF {
-        APPLIES TO [^"Samurai"]
+    ^"Demon Wound" DEF {
+        EXTENDS ^"Adversity"
 
-        # New adversities from Shadowlands. When applicable,
-        # must reroll 2 dice showing (su) or (ex). If check fails,
-        # gain 1 Void point.
-
-        ENTRIES {
-            ^"Demon Wound" {
-                ^"Type" STRING "Adversity"
-                ^"Ring" STRING "Earth"
-                ^"Category" LIST OF STRING ["Spiritual", "Scar"]
-                ^"Effect" STRING "When you make a check that involves your wound (such as Fitness [Earth] to get a good night's sleep while in the Shadowlands or Meditation [Earth] to refrain from crying out in pain while near an oni), reroll two dice showing (su) or (ex). If you failed, gain 1 Void point."
-            }
-
-            ^"Lost Name" {
-                ^"Type" STRING "Adversity"
-                ^"Ring" STRING "Void"
-                ^"Category" LIST OF STRING ["Spiritual"]
-                ^"Effect" STRING "When you make a check that involves personal convictions (such as Meditation [Void] as part of your quest for Enlightenment or Survival [Void] to create a spiritually harmonious rock garden), reroll two dice showing (su) or (ex). If you failed, gain 1 Void point."
-            }
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Spiritual", "Scar"]
         }
 
-        RULES {
-            #L5RSL23hI4jK6lM8nO0pQ2r: sl_adversities_reroll_successes
-            #L5RSL24sT5uV7wX9yZ1aB3c: sl_adversities_void_point_on_failure
+        EFFECT {
+            "You bear a wound inflicted by a denizen of the Shadowlands that never fully heals."
+            "When you make a check that involves your wound (such as Fitness [Earth] to get a good night's sleep while in the Shadowlands or Meditation [Earth] to refrain from crying out in pain while near an oni), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Lost Name" DEF {
+        EXTENDS ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Spiritual"]
+        }
+
+        EFFECT {
+            "You have lost your true name, whether through dark magic or spiritual crisis."
+            "When you make a check that involves personal convictions (such as Meditation [Void] as part of your quest for Enlightenment or Survival [Void] to create a spiritually harmonious rock garden), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
         }
     }
 
@@ -824,39 +825,45 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
     # NEW DISADVANTAGES: ANXIETIES
     # ===========================
 
-    ^"Shadowlands Anxieties" DEF {
-        APPLIES TO [^"Samurai"]
+    ^"Fallen Ancestor" DEF {
+        EXTENDS ^"Anxiety"
 
-        # New anxieties from Shadowlands. When applicable,
-        # receive 3 strife after resolving check. First time per
-        # scene, gain 1 Void point.
-
-        ENTRIES {
-            ^"Fallen Ancestor" {
-                ^"Type" STRING "Anxiety"
-                ^"Ring" STRING "Void"
-                ^"Category" LIST OF STRING ["Spiritual", "Interpersonal"]
-                ^"Effect" STRING "After performing a check that involves the spirits or your family history (such as Theology [Void] to perform a family ritual or Sentiment [Void] to show mercy to a wounded opponent), receive 3 strife. If first time this scene, gain 1 Void point."
-            }
-
-            ^"Obtuse" {
-                ^"Type" STRING "Anxiety"
-                ^"Ring" STRING "Air"
-                ^"Category" LIST OF STRING ["Mental"]
-                ^"Effect" STRING "After performing a check to analyze or react to the emotions of others (such as Design [Air] to compliment someone's garb or Sentiment [Air] to decode a double meaning in someone else's speech), receive 3 strife. If first time this scene, gain 1 Void point."
-            }
-
-            ^"Reformed Maho-Tsukai" {
-                ^"Type" STRING "Anxiety"
-                ^"Ring" STRING "Water"
-                ^"Category" LIST OF STRING ["Interpersonal"]
-                ^"Effect" STRING "After performing a check that reminds you of your former life (such as Courtesy [Water] to speak pleasantly with a priest or Meditation [Water] to calm yourself when witnessing the aftermath of a blood magic sacrifice), receive 3 strife. If first time this scene, gain 1 Void point."
-            }
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Spiritual", "Interpersonal"]
         }
 
-        RULES {
-            #L5RSL25dE6fG8hI0jK2lM4n: sl_anxieties_receive_three_strife
-            #L5RSL26oP7qR9sT1uV3wX5y: sl_anxieties_void_point_first_per_scene
+        EFFECT {
+            "One of your ancestors fell to darkness, and their shame haunts you."
+            "After performing a check that involves the spirits or your family history (such as Theology [Void] to perform a family ritual or Sentiment [Void] to show mercy to a wounded opponent), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    ^"Obtuse" DEF {
+        EXTENDS ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You struggle to pick up on social cues and the emotions of others."
+            "After performing a check to analyze or react to the emotions of others (such as Design [Air] to compliment someone's garb or Sentiment [Air] to decode a double meaning in someone else's speech), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    ^"Reformed Maho-Tsukai" DEF {
+        EXTENDS ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You once practiced blood magic, and the memories of that dark time still haunt you."
+            "After performing a check that reminds you of your former life (such as Courtesy [Water] to speak pleasantly with a priest or Meditation [Water] to calm yourself when witnessing the aftermath of a blood magic sacrifice), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
         }
     }
 
@@ -864,54 +871,73 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
     # SHADOWLANDS TAINT DISADVANTAGES
     # ===========================
 
-    ^"Shadowlands Taint Disadvantages" DEF {
-        APPLIES TO [^"Samurai"]
+    ^"Shadowlands Taint [Kansen Whispers]" DEF {
+        EXTENDS ^"Adversity"
 
-        # Alternative Shadowlands Taint disadvantages. When a
-        # character receives their second through fifth Taint
-        # disadvantage, the GM may allow these instead of the
-        # standard version for that ring.
-
-        ENTRIES {
-            ^"Shadowlands Taint [Kansen Whispers]" {
-                ^"Type" STRING "Adversity"
-                ^"Ring" STRING "Air"
-                ^"Category" LIST OF STRING ["Curse", "Mental"]
-                ^"Effect" STRING "When you make a check to use subtlety in your communications (such as Courtesy [Air] to convey a double-meaning in court or Composition [Air] to refine your letter declining an important invitation), reroll two dice showing (su) or (ex). If you failed, gain 1 Void point."
-            }
-
-            ^"Shadowlands Taint [Distorted Limbs]" {
-                ^"Type" STRING "Adversity"
-                ^"Ring" STRING "Earth"
-                ^"Category" LIST OF STRING ["Curse", "Physical"]
-                ^"Effect" STRING "When you make a check that calls on your physical prowess (such as Fitness [Earth] to survive a fall or Labor [Earth] to exert yourself in the field), reroll two dice showing (su) or (ex). If you failed, gain 1 Void point."
-            }
-
-            ^"Shadowlands Taint [Unnatural Skin]" {
-                ^"Type" STRING "Adversity"
-                ^"Ring" STRING "Fire"
-                ^"Category" LIST OF STRING ["Curse", "Physical"]
-                ^"Effect" STRING "Your skin is treated as concealed armor. When you make a check requiring rapid movements (such as Fitness [Fire] to vault over a falling log or Martial Arts [Unarmed] [Fire] to strike swiftly), reroll two dice showing (su) or (ex). If you failed, gain 1 Void point."
-            }
-
-            ^"Shadowlands Taint [One with the Darkness]" {
-                ^"Type" STRING "Adversity"
-                ^"Ring" STRING "Void"
-                ^"Category" LIST OF STRING ["Curse", "Physical", "Spiritual"]
-                ^"Effect" STRING "When fully covered by shadows or in an unlit location, you cannot be detected. You can conceal non-physical effects of the Taint from detection. When you make a check to intuit meaning (such as Courtesy [Void] to seek a hidden threat in a message or Survival [Void] to sense what crops will grow best), reroll two dice showing (su) or (ex). If you failed, gain 1 Void point."
-            }
-
-            ^"Shadowlands Taint [Blasphemous Appetites]" {
-                ^"Type" STRING "Adversity"
-                ^"Ring" STRING "Water"
-                ^"Category" LIST OF STRING ["Curse", "Mental", "Spiritual"]
-                ^"Effect" STRING "You have a near uncontrollable hunger for raw meat. Once sated, you remove all strife. When you make a check to notice details about those you care about (such as Sentiment [Water] to detect the emotional state of a friend or Medicine [Water] to determine their physical state), reroll two dice showing (su) or (ex). If you failed, gain 1 Void point."
-            }
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Curse", "Mental"]
         }
 
-        RULES {
-            #L5RSL27zA8bC0dE2fG4hI6j: taint_disadvantages_are_tainted_being
-            #L5RSL28kL9mN1oP3qR5sT7u: taint_disadvantages_alternative_to_core
+        EFFECT {
+            "Kansen whisper dark secrets in your ear, making it difficult to communicate with subtlety."
+            "When you make a check to use subtlety in your communications (such as Courtesy [Air] to convey a double-meaning in court or Composition [Air] to refine your letter declining an important invitation), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Shadowlands Taint [Distorted Limbs]" DEF {
+        EXTENDS ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Curse", "Physical"]
+        }
+
+        EFFECT {
+            "Your limbs have become subtly distorted by the Taint, hindering your physical prowess."
+            "When you make a check that calls on your physical prowess (such as Fitness [Earth] to survive a fall or Labor [Earth] to exert yourself in the field), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Shadowlands Taint [Unnatural Skin]" DEF {
+        EXTENDS ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Curse", "Physical"]
+        }
+
+        EFFECT {
+            "Your skin has become unnaturally tough, treated as concealed armor, but it hinders rapid movement."
+            "When you make a check requiring rapid movements (such as Fitness [Fire] to vault over a falling log or Martial Arts [Unarmed] [Fire] to strike swiftly), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Shadowlands Taint [One with the Darkness]" DEF {
+        EXTENDS ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Curse", "Physical", "Spiritual"]
+        }
+
+        EFFECT {
+            "When fully covered by shadows or in an unlit location, you cannot be detected. You can conceal non-physical effects of the Taint from detection."
+            "When you make a check to intuit meaning (such as Courtesy [Void] to seek a hidden threat in a message or Survival [Void] to sense what crops will grow best), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Shadowlands Taint [Blasphemous Appetites]" DEF {
+        EXTENDS ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Curse", "Mental", "Spiritual"]
+        }
+
+        EFFECT {
+            "You have a near uncontrollable hunger for raw meat. Once sated, you remove all strife."
+            "When you make a check to notice details about those you care about (such as Sentiment [Water] to detect the emotional state of a friend or Medicine [Water] to determine their physical state), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
         }
     }
 

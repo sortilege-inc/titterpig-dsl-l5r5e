@@ -674,73 +674,44 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Knowledgeable Wilderness Guide" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # Types: Interpersonal, Spiritual
-        # Ring: Void
-        # You are very comfortable in a particular wilderness
-        # environment (Mountain, Forest, Plains, or Coastal).
-        # You always know which way is north and can identify
-        # signs of creatures that dwell in those areas.
-        # When performing a check for which your experience as
-        # a wilderness guide in your selected environment is a
-        # benefit (such as Survival [Void] or Sentiment [Void]),
-        # you may reroll up to two dice.
+        EXTENDS ^"Distinction"
 
         PROPERTIES {
-            ^"Type" STRING "Distinction" FIXED
-            ^"Ring" STRING "Void" FIXED
-            ^"Types" LIST OF STRING ["Interpersonal", "Spiritual"]
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Interpersonal", "Spiritual"]
         }
 
-        RULES {
-            #L5RWW18wX9yZ1aB3cD5eF7gH: wilderness_guide_reroll_two_dice
+        EFFECT {
+            "You are very comfortable in a particular wilderness environment (Mountain, Forest, Plains, or Coastal). You always know which way is north and can identify signs of creatures that dwell in those areas."
+            "When performing a check for which your experience as a wilderness guide in your selected environment is a benefit (such as Survival [Void] or Sentiment [Void]), you may reroll up to two dice."
         }
     }
 
     ^"Skilled Midwife" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # Types: Interpersonal
-        # Ring: Fire
-        # Exceptionally skilled in most aspects of pregnancy,
-        # childbirth, common illnesses children are prone to,
-        # and child-rearing. Others are more likely to take your
-        # advice regarding such matters.
-        # When performing a check for which your midwife skills
-        # are a benefit (such as Culture [Fire] or Fitness [Fire]),
-        # you may reroll up to two dice.
+        EXTENDS ^"Distinction"
 
         PROPERTIES {
-            ^"Type" STRING "Distinction" FIXED
-            ^"Ring" STRING "Fire" FIXED
-            ^"Types" LIST OF STRING ["Interpersonal"]
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Interpersonal"]
         }
 
-        RULES {
-            #L5RWW19iJ0kL2mN4oP6qR8sT: skilled_midwife_reroll_two_dice
+        EFFECT {
+            "Exceptionally skilled in most aspects of pregnancy, childbirth, common illnesses children are prone to, and child-rearing. Others are more likely to take your advice regarding such matters."
+            "When performing a check for which your midwife skills are a benefit (such as Culture [Fire] or Fitness [Fire]), you may reroll up to two dice."
         }
     }
 
     ^"Thoughtful Arbiter" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # Types: Interpersonal
-        # Ring: Water
-        # Others are more likely to willingly tell you their
-        # grievances and hear your thoughts regarding disputes.
-        # When performing a check to arbitrate between two or
-        # more parties (such as Government [Water] or Commerce
-        # [Water]), you may reroll up to two dice.
+        EXTENDS ^"Distinction"
 
         PROPERTIES {
-            ^"Type" STRING "Distinction" FIXED
-            ^"Ring" STRING "Water" FIXED
-            ^"Types" LIST OF STRING ["Interpersonal"]
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal"]
         }
 
-        RULES {
-            #L5RWW20uV1wX3yZ5aB7cD9eF: thoughtful_arbiter_reroll_two_dice
+        EFFECT {
+            "Others are more likely to willingly tell you their grievances and hear your thoughts regarding disputes."
+            "When performing a check to arbitrate between two or more parties (such as Government [Water] or Commerce [Water]), you may reroll up to two dice."
         }
     }
 
@@ -749,48 +720,30 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Charity" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # Types: Interpersonal, Mental
-        # Ring: Water
-        # Your charitable nature makes those who have witnessed
-        # or heard of your generosity more likely to accept your
-        # reasonable requests for aid.
-        # After performing a check with which your charitable
-        # history is a benefit (such as Courtesy [Water] or Labor
-        # [Water]), you remove 3 strife.
+        EXTENDS ^"Passion"
 
         PROPERTIES {
-            ^"Type" STRING "Passion" FIXED
-            ^"Ring" STRING "Water" FIXED
-            ^"Types" LIST OF STRING ["Interpersonal", "Mental"]
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal", "Mental"]
         }
 
-        RULES {
-            #L5RWW21gH2iJ4kL6mN8oP0qR: charity_remove_3_strife
+        EFFECT {
+            "Your charitable nature makes those who have witnessed or heard of your generosity more likely to accept your reasonable requests for aid."
+            "After performing a check with which your charitable history is a benefit (such as Courtesy [Water] or Labor [Water]), you remove 3 strife."
         }
     }
 
     ^"Kintsugi" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # Types: Mental, Physical
-        # Ring: Earth
-        # You have a particular fondness and skill for kintsugi,
-        # the art of mending broken pottery with gold or similar.
-        # After performing a check to mend an object with kintsugi
-        # or interact with a piece of kintsugi-repaired pottery
-        # (such as Culture [Earth] or Labor [Earth]), you remove
-        # 3 strife.
+        EXTENDS ^"Passion"
 
         PROPERTIES {
-            ^"Type" STRING "Passion" FIXED
-            ^"Ring" STRING "Earth" FIXED
-            ^"Types" LIST OF STRING ["Mental", "Physical"]
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Mental", "Physical"]
         }
 
-        RULES {
-            #L5RWW22sT3uV5wX7yZ9aB1cD: kintsugi_remove_3_strife
+        EFFECT {
+            "You have a particular fondness and skill for kintsugi, the art of mending broken pottery with gold or similar."
+            "After performing a check to mend an object with kintsugi or interact with a piece of kintsugi-repaired pottery (such as Culture [Earth] or Labor [Earth]), you remove 3 strife."
         }
     }
 
@@ -799,71 +752,44 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Insomniac" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # Types: Mental
-        # Ring: Void
-        # You have difficulty falling and staying asleep. You
-        # recover only half the normal amount after a night's rest.
-        # When you make a check that requires intense focus
-        # (such as Government [Void] or Smithing [Void]), you
-        # must choose and reroll two dice containing (su) or (ex).
-        # After resolving the check, if you failed, gain 1 Void point.
+        EXTENDS ^"Adversity"
 
         PROPERTIES {
-            ^"Type" STRING "Adversity" FIXED
-            ^"Ring" STRING "Void" FIXED
-            ^"Types" LIST OF STRING ["Mental"]
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Mental"]
         }
 
-        RULES {
-            #L5RWW23eF4gH6iJ8kL0mN2oP: insomniac_half_rest_reroll_dice
+        EFFECT {
+            "You have difficulty falling and staying asleep. You recover only half the normal amount after a night's rest."
+            "When you make a check that requires intense focus (such as Government [Void] or Smithing [Void]), you must choose and reroll two dice containing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
         }
     }
 
     ^"Out of Shape" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # Types: Physical
-        # Ring: Earth
-        # You have neglected your physical fitness. You become
-        # noticeably more winded than others during activity.
-        # When you make a check that requires physical exertion
-        # (such as Martial Arts [Melee] [Earth] or Performance
-        # [Earth]), you must choose and reroll two dice containing
-        # (su) or (ex). After resolving, if you failed, gain 1 Void point.
+        EXTENDS ^"Adversity"
 
         PROPERTIES {
-            ^"Type" STRING "Adversity" FIXED
-            ^"Ring" STRING "Earth" FIXED
-            ^"Types" LIST OF STRING ["Physical"]
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Physical"]
         }
 
-        RULES {
-            #L5RWW24qR5sT7uV9wX1yZ3aB: out_of_shape_reroll_dice_physical
+        EFFECT {
+            "You have neglected your physical fitness. You become noticeably more winded than others during activity."
+            "When you make a check that requires physical exertion (such as Martial Arts [Melee] [Earth] or Performance [Earth]), you must choose and reroll two dice containing (su) or (ex). After resolving, if you failed, gain 1 Void point."
         }
     }
 
     ^"Stalked by [Creature]" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # Types: Interpersonal, Mental, Spiritual
-        # Ring: Earth
-        # You believe a creature is stalking you, whether or not
-        # that is true. The creature may be mundane or supernatural.
-        # When you make a check requiring patience in the wilderness
-        # (such as Skulduggery [Earth] or Fitness [Earth]), you must
-        # choose and reroll two dice containing (su) or (ex). After
-        # resolving, if you failed, gain 1 Void point.
+        EXTENDS ^"Adversity"
 
         PROPERTIES {
-            ^"Type" STRING "Adversity" FIXED
-            ^"Ring" STRING "Earth" FIXED
-            ^"Types" LIST OF STRING ["Interpersonal", "Mental", "Spiritual"]
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Interpersonal", "Mental", "Spiritual"]
         }
 
-        RULES {
-            #L5RWW25cD6eF8gH0iJ2kL4mN: stalked_creature_reroll_dice_wilderness
+        EFFECT {
+            "You believe a creature is stalking you, whether or not that is true. The creature may be mundane or supernatural."
+            "When you make a check requiring patience in the wilderness (such as Skulduggery [Earth] or Fitness [Earth]), you must choose and reroll two dice containing (su) or (ex). After resolving, if you failed, gain 1 Void point."
         }
     }
 
@@ -872,72 +798,44 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Fear of [Common Creature]" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # Types: Mental
-        # Ring: Earth
-        # You have an irrational fear of a commonly found creature.
-        # When you perceive such a creature you become unnerved.
-        # After performing a check to make choices while in the
-        # presence of your feared creature (such as Medicine [Earth]
-        # or Courtesy [Earth]), you receive 3 strife. If this is the
-        # first time this scene, gain 1 Void point.
+        EXTENDS ^"Anxiety"
 
         PROPERTIES {
-            ^"Type" STRING "Anxiety" FIXED
-            ^"Ring" STRING "Earth" FIXED
-            ^"Types" LIST OF STRING ["Mental"]
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Mental"]
         }
 
-        RULES {
-            #L5RWW26oP7qR9sT1uV3wX5yZ: fear_common_creature_3_strife
+        EFFECT {
+            "You have an irrational fear of a commonly found creature. When you perceive such a creature you become unnerved."
+            "After performing a check to make choices while in the presence of your feared creature (such as Medicine [Earth] or Courtesy [Earth]), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
         }
     }
 
     ^"Fear of Mediocrity" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # Types: Interpersonal, Mental
-        # Ring: Fire
-        # Your fear of amounting to nothing causes you to seize up
-        # when faced with the need to innovate on the fly.
-        # After performing a check to adapt to an unexpected
-        # situation (such as Survival [Fire] or Culture [Fire]), you
-        # receive 3 strife. If this is the first time this scene,
-        # gain 1 Void point.
+        EXTENDS ^"Anxiety"
 
         PROPERTIES {
-            ^"Type" STRING "Anxiety" FIXED
-            ^"Ring" STRING "Fire" FIXED
-            ^"Types" LIST OF STRING ["Interpersonal", "Mental"]
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Interpersonal", "Mental"]
         }
 
-        RULES {
-            #L5RWW27aB8cD0eF2gH4iJ6kL: fear_mediocrity_3_strife_innovate
+        EFFECT {
+            "Your fear of amounting to nothing causes you to seize up when faced with the need to innovate on the fly."
+            "After performing a check to adapt to an unexpected situation (such as Survival [Fire] or Culture [Fire]), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
         }
     }
 
     ^"Fear of Poison" DEF {
-        APPLIES TO [^"Samurai"]
-
-        # Types: Mental
-        # Ring: Air
-        # You have a fear of being poisoned by others. You would
-        # rather go hungry than accept food or drink from anyone
-        # you do not trust completely.
-        # After performing a check to interact with someone you do
-        # not trust who has offered you food or drink (such as
-        # Sentiment [Air] or Games [Air]), you receive 3 strife.
-        # If this is the first time this scene, gain 1 Void point.
+        EXTENDS ^"Anxiety"
 
         PROPERTIES {
-            ^"Type" STRING "Anxiety" FIXED
-            ^"Ring" STRING "Air" FIXED
-            ^"Types" LIST OF STRING ["Mental"]
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Mental"]
         }
 
-        RULES {
-            #L5RWW28mN9oP1qR3sT5uV7wX: fear_poison_3_strife_untrusted_food
+        EFFECT {
+            "You have a fear of being poisoned by others. You would rather go hungry than accept food or drink from anyone you do not trust completely."
+            "After performing a check to interact with someone you do not trust who has offered you food or drink (such as Sentiment [Air] or Games [Air]), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
         }
     }
 
