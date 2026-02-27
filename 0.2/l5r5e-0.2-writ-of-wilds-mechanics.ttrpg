@@ -947,4 +947,170 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
             #L5RWW29yZ0aB2cD4eF6gH8iJ: dragon_samurai_heritages_table
         }
     }
+
+    # ===========================
+    # REVISED TWENTY QUESTIONS
+    # (partial, Path of Waves only)
+    # Writ of the Wilds provides
+    # revised versions of Q1, Q2,
+    # Q5, Q6, Q7, Q8 for non-samurai
+    # characters living in the wilds.
+    # ===========================
+
+    ^"Question 1: What Region Does Your Character Come From?" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # For a character who doesn't fit into samurai society,
+        # the lands they hail from are as important to their
+        # identity as a clan is to a samurai. The place where a
+        # character has spent many years of their life imparts
+        # particular skills and may impress upon them certain
+        # inclinations regarding how to approach the world.
+        #
+        # Writ of the Wilds offers three regions suited to
+        # characters who live outside the cities and towns
+        # of Rokugan: Rural Farmland, Forest, and Mountain.
+
+        PROPERTIES {
+            ^"Question" INTEGER 1 FIXED
+            ^"Question Text" STRING "What region does your character come from?" FIXED
+        }
+
+        OPTIONS {
+            "Rural Farmland" "+1 Earth, +1 Fitness, Glory 34"
+            "Forest" "+1 Earth, +1 Survival, Glory 30"
+            "Mountain" "+1 Void, +1 Meditation, Glory 33"
+        }
+
+        RULES {
+            #L5RWW30aB1cD3eF5gH7iJ9kL: wow_q1_region_selection
+        }
+    }
+
+    ^"Question 2: What Was Your Character's Upbringing?" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # The following options are appropriate for characters
+        # built outside of the samurai society of Rokugan.
+        # Because most regions include the opportunity for
+        # myriad upbringings, these are not tied to specific
+        # areas. Regardless of which region you choose for your
+        # character, you should pick an upbringing you feel is
+        # appropriate for them.
+
+        PROPERTIES {
+            ^"Question" INTEGER 2 FIXED
+            ^"Question Text" STRING "What was your character's upbringing?" FIXED
+        }
+
+        OPTIONS {
+            "Craftsperson" "+1 Earth or +1 Void, +1 Culture, +1 Design, Status -2 (min 0), 1 koku"
+            "Farmer" "+1 Earth or +1 Water, +1 Labor, +1 Fitness, Status +4, 2 bu"
+            "Hunter or Fisher" "+1 Earth or +1 Water, +1 Labor, +1 Seafaring or +1 Survival, Status +3, 4 bu"
+            "Temple" "+1 Void or +1 Air, +1 Theology, +1 Courtesy, Status +11, One day's rations"
+        }
+
+        RULES {
+            #L5RWW31mN2oP4qR6sT8uV0wX: wow_q2_upbringing_selection
+        }
+    }
+
+    ^"Question 5: What is Your Character's Past and How Does It Affect Them?" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # A past is a story, one that can deeply impact a person.
+        # Because ronin have lost their place in samurai society
+        # their stories tend to be tragic. The pasts presented
+        # here can be used as inspiration to help tell unique,
+        # personal stories that offer fun narrative moments.
+        #
+        # A past should be a force that propels the character
+        # forward, similar to giri. It is usually some sort of
+        # personal obligation, antagonizing entity, or choice
+        # that haunts the character even now.
+
+        PROPERTIES {
+            ^"Question" INTEGER 5 FIXED
+            ^"Question Text" STRING "What is your character's past and how does it affect them?" FIXED
+        }
+
+        RULES {
+            #L5RWW32yZ3aB5cD7eF9gH1iJ: wow_q5_past_selection
+        }
+    }
+
+    ^"Question 6: What Does Your Character Long For, And How Might Their Past Affect Their Ninjō?" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # Outsiders have as many desires as there are stars in
+        # the sky. The path of waves requires incredible
+        # fortitude, and no human can withstand that stress
+        # without wanting something. To create a good personal
+        # desire for a character, this desire needs to have the
+        # potential to conflict with their past.
+
+        PROPERTIES {
+            ^"Question" INTEGER 6 FIXED
+            ^"Question Text" STRING "What does your character long for, and how might their past affect their ninjō?" FIXED
+        }
+
+        RULES {
+            #L5RWW33kL4mN6oP8qR0sT2uV: wow_q6_ninjo_selection
+        }
+    }
+
+    ^"Question 7: What is Your Character Known For?" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # No two people follow the same path as they journey
+        # through life. While two or more ronin and travelers
+        # far from home may band together to increase their
+        # chances of survival, their values, abilities, and
+        # actions may vary wildly, affecting how each is
+        # remembered by the people they meet along the way.
+        #
+        # Choose a talent, event, or other deed that your
+        # character is known for.
+
+        PROPERTIES {
+            ^"Question" INTEGER 7 FIXED
+            ^"Question Text" STRING "What is your character known for?" FIXED
+        }
+
+        OPTIONS {
+            "Positive deeds" "+5 Glory"
+            "Negative or selfish actions" "+1 rank in a skill currently at rank 0"
+        }
+
+        RULES {
+            #L5RWW34wX5yZ7aB9cD1eF3gH: wow_q7_known_for_selection
+        }
+    }
+
+    ^"Question 8: What Does Your Character Think of Bushidō?" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # Everyone who lives or travels within Rokugan must
+        # decide how they feel about the core of its society:
+        # Bushido. Though peasants are not expected to adhere
+        # to Bushido in most contexts, and ronin are in a
+        # strange position of being samurai with none of the
+        # inherent benefits, each should understand what Bushido
+        # is enough to have feelings about it.
+
+        PROPERTIES {
+            ^"Question" INTEGER 8 FIXED
+            ^"Question Text" STRING "What does your character think of Bushidō?" FIXED
+        }
+
+        OPTIONS {
+            "Staunch Orthodoxy" "Paramount and less-significant tenets, +10 Honor"
+            "Values Divergence" "Paramount and less-significant tenets, gain item rarity 5 or lower"
+            "Ignorance of Bushido" "+1 Commerce, Labor, Medicine, Seafaring, Skulduggery, or Survival"
+        }
+
+        RULES {
+            #L5RWW35iJ6kL8mN0oP2qR4sT: wow_q8_bushido_selection
+        }
+    }
 }
