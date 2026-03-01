@@ -1,0 +1,546 @@
+EXTENSION "L5R5e_GM_Screen_Reference" EXTENDS "L5R5e_Core_Character" {
+    NAME "Legend of the Five Rings 5th Edition - GM Screen Quick Reference"
+    VERSION "0.3"
+    RELEASE_DATE "2026-03-01"
+
+    # Quick reference material from the L5R 5e GM Screen,
+    # GM Kit Reference Cards, and GM Kit Screen Reference.
+    # All three products contain essentially identical content:
+    # commonly referenced rules from the Core Rulebook.
+    # Published by Fantasy Flight Games.
+    #
+    # Sources consolidated:
+    # - GM Screen (standalone product)
+    # - ESL5R05EN-DT GM Kit Reference (GM Kit insert cards)
+    # - ESL5R05EN-DT GM Kit Screen Reference (GM Kit screen)
+
+    # ===========================
+    # DICE SYMBOLS
+    # ===========================
+
+    ^"Dice Symbols Reference" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Success (su) - counts toward meeting or exceeding TN
+        # Explosive Success (ex) - counts as success + roll extra die
+        # Opportunity (op) - spendable for special effects
+        # Strife (st) - character receives 1 strife per symbol
+
+        RULES {
+            #L5RGS01aB2cD4eF6gH8iJ0k: ref_dice_symbols
+        }
+    }
+
+    # ===========================
+    # THE FIVE RINGS
+    # ===========================
+
+    ^"Five Rings Reference" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Air: A graceful, cunning, and precise approach; subtle
+        # and nuanced.
+        # Earth: A steady, thorough, and grounded approach; cautious
+        # and reliable.
+        # Fire: A ferocious, direct, and inventive approach; explosive
+        # and intense.
+        # Water: An adaptable, powerful, and perceptive approach;
+        # balanced and reversible.
+        # Void: A centered, unflinching approach; enlightened
+        # and accepting.
+
+        RULES {
+            #L5RGS02lM3nO5pQ7rS9tU1v: ref_five_rings_approaches
+        }
+    }
+
+    # ===========================
+    # MAKING A CHECK
+    # ===========================
+
+    ^"Making a Check Reference" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # 1. GM sets skill, approach, and TN based on player intention.
+        # 2. Player assembles dice pool: Ring dice (ring) + Skill dice (skill).
+        # 3. Player rolls dice and keeps dice equal to Ring used.
+        # 4. Resolve dice and determine outcome:
+        #    (ex): Roll one additional die of same type. Choose to keep/drop.
+        #    (st): Character receives 1 strife per symbol.
+        #    (op): Player may spend 1+ (op) to resolve opportunities.
+        #    (su): If total (su) + (ex) >= TN, check succeeds. Extras = bonus successes.
+
+        RULES {
+            #L5RGS03wX4yZ6aB8cD0eF2g: ref_making_a_check_procedure
+        }
+    }
+
+    # ===========================
+    # TURN STRUCTURE
+    # ===========================
+
+    ^"Turn Structure Reference" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # 1. Resolve "Beginning of Turn" effects
+        # 2. Set Stance (lasts until beginning of next turn)
+        # 3. Perform Action (may also move a short distance)
+        # 4. Resolve "End of Turn" effects
+
+        RULES {
+            #L5RGS04hI5jK7lM9nO1pQ3r: ref_turn_structure
+        }
+    }
+
+    # ===========================
+    # STANCES
+    # ===========================
+
+    ^"Stances Reference" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Earth: Attackers/schemers targeting you cannot spend (op) to
+        # inflict critical strikes or conditions on you.
+        # Water: One additional action per turn that does not require a
+        # check. Cannot share a type with another action this turn.
+        # Fire: On success, count one additional bonus success per (st)
+        # result on your check.
+        # Air: Increase TN of Attack and Scheme checks targeting you
+        # by 1. If school rank 4+, increase by 2 instead.
+        # Void: Do not suffer strife from (st) results.
+
+        RULES {
+            #L5RGS05sT6uV8wX0yZ2aB4c: ref_stances_five_types
+        }
+    }
+
+    # ===========================
+    # INITIATIVE
+    # ===========================
+
+    ^"Initiative Reference" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Conflict type determines check:
+        # - Intrigue: TN 1 Sentiment check
+        # - Duel: TN 1 Meditation check
+        # - Skirmish: TN 1 Tactics check
+        # - Mass Battle: TN 1 Command check
+        #
+        # Any ring may be used. Add 1 + bonus successes to:
+        # - Focus (if ready for the conflict)
+        # - Vigilance (if not ready or surprised)
+        # Character enters stance matching the ring used.
+
+        RULES {
+            #L5RGS06dE7fG9hI1jK3lM5n: ref_initiative_by_conflict_type
+        }
+    }
+
+    # ===========================
+    # VOID POINTS
+    # ===========================
+
+    ^"Void Points Reference" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Spending:
+        # - Seize the Moment: During check, spend 1 Void point to
+        #   roll one additional Ring die and keep one additional die.
+        # - Shattering Parry: When resisting a critical strike, spend
+        #   1 Void point to intercept with a weapon to increase
+        #   survival chance, potentially sacrificing the weapon.
+        #
+        # Gaining:
+        # - After failing a check on which one adversity was resolved.
+        # - Once per scene, after an anxiety causes strife to increase.
+        # - After choosing to be affected by a complication the GM (or
+        #   player) introduced into the scene.
+        # - After the GM conceals the TN of a check from the players.
+
+        RULES {
+            #L5RGS07oP8qR0sT2uV4wX6y: ref_void_points_spending
+            #L5RGS08zA9bC1dE3fG5hI7j: ref_void_points_gaining
+        }
+    }
+
+    # ===========================
+    # ADVANTAGES AND DISADVANTAGES
+    # ===========================
+
+    ^"Advantages and Disadvantages Reference" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Advantages:
+        # - Distinctions: When making applicable check, may reroll
+        #   up to 2 dice.
+        # - Passions: When making applicable check, remove 3 strife.
+        #
+        # Disadvantages:
+        # - Adversities: When making applicable check, must reroll
+        #   up to 2 dice with (su) or (ex). Regain 1 Void point if failed.
+        # - Anxieties: When making applicable check, receive 2 strife.
+        #   Regain 1 Void point if first occurrence in scene.
+
+        RULES {
+            #L5RGS09kL0mN2oP4qR6sT8u: ref_advantages_distinctions_passions
+            #L5RGS10vW1xY3zA5bC7dE9f: ref_disadvantages_adversities_anxieties
+        }
+    }
+
+    # ===========================
+    # RANGE BANDS
+    # ===========================
+
+    ^"Range Bands Reference" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        PROPERTIES {
+            ^"Range 0" STRING "Touch (1-2 feet)"
+            ^"Range 1" STRING "Sword (1-2 yards)"
+            ^"Range 2" STRING "Spear (3-4 yards)"
+            ^"Range 3" STRING "Throw (5-10 yards)"
+            ^"Range 4" STRING "Bow (11-100 yards)"
+            ^"Range 5" STRING "Volley (100+ yards)"
+            ^"Range 6" STRING "Sight (several hundred yards)"
+        }
+
+        RULES {
+            #L5RGS11gH2iJ4kL6mN8oP0q: ref_range_bands
+        }
+    }
+
+    # ===========================
+    # SAMPLE TASKS AND TARGET NUMBERS
+    # ===========================
+
+    ^"Sample TNs Reference" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # TN 0: Simple task (carrying normal weight, remembering name).
+        #        Generally shouldn't require a check.
+        # TN 1: Easy (carrying half weight, finding misplaced item).
+        # TN 2: Average (10-foot ditch jump, recognizing disguise).
+        # TN 3: Difficult (cliff without rope, well-hidden object).
+        # TN 4: Very hard (waterfall dive, recalling exact words years later).
+        # TN 5: Extremely hard (stirring demoralized army to action, one-hand hurl).
+        # TN 6: Extraordinary (crime from subtle clue, felling tree in one blow).
+        # TN 7: Heroic (outwrestling a troll, naming all ancestors in order).
+        # TN 8+: Legendary (shattering stone barehanded, outwitting a Fortune).
+
+        RULES {
+            #L5RGS12rS3tU5vW7xY9zA1b: ref_sample_target_numbers
+        }
+    }
+
+    # ===========================
+    # SILHOUETTES
+    # ===========================
+
+    ^"Silhouettes Reference" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        PROPERTIES {
+            ^"Silhouette 0" STRING "Handheld objects, cats, small dogs"
+            ^"Silhouette 1" STRING "Children, large dogs, goblins"
+            ^"Silhouette 2" STRING "Adult humans, ningyo, tengu"
+            ^"Silhouette 3" STRING "Horses, naga, rakshasa, Trolls"
+            ^"Silhouette 4" STRING "Ogres, elephants"
+            ^"Silhouette 5" STRING "Dragons"
+        }
+
+        RULES {
+            #L5RGS13cD4eF6gH8iJ0kL2m: ref_silhouettes
+        }
+    }
+
+    # ===========================
+    # COMMON CONFLICT ACTIONS
+    # ===========================
+
+    ^"Conflict Actions Reference" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # - Assist
+        # - Calming Breath
+        # - Challenge
+        # - Guard
+        # - Maneuver
+        # - Prepare Item
+        # - Skill Use
+        # - Strike
+        # - Wait
+
+        RULES {
+            #L5RGS14nO5pQ7rS9tU1vW3x: ref_common_conflict_actions
+        }
+    }
+
+    # ===========================
+    # COMMONLY REFERENCED RULES INDEX
+    # ===========================
+
+    ^"Commonly Referenced Rules Index" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Social Attributes: Ninjo (p. 38), Giri (p. 39), Honor (p. 300),
+        # Glory (p. 304), Status (p. 305).
+        # Alternate Check Types: Assistance (p. 26), Competitive (p. 26),
+        # Investigations (p. 170), Resisting (p. 26).
+        # Conflict Types: Intrigues (p. 254), Duels (p. 258),
+        # Skirmishes (p. 262).
+        # Harm and Terrain: Fatigue (p. 269), Falling Damage (p. 269),
+        # Terrain Qualities (p. 267).
+        # Exceeding Composure: Becoming Compromised (p. 30),
+        # Examples of Unmasking (p. 31).
+
+        RULES {
+            #L5RGS15yZ6aB8cD0eF2gH4i: ref_commonly_referenced_rules_index
+        }
+    }
+
+    # ===========================
+    # COMMON CONDITIONS
+    # ===========================
+
+    ^"Condition: Afflicted" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Effects: Vigilance counts as 1. When making a check, GM may
+        # alter one kept (ring) to a face set to (op)(st).
+        # Removed When: A ritual such as Cleansing Rite (p. 212) or
+        # another ability cleanses it.
+
+        RULES {
+            #L5RGS16jK7lM9nO1pQ3rS5t: ref_condition_afflicted
+        }
+    }
+
+    ^"Condition: Bleeding" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Effects: When keeping (st) results on dice, suffer same amount
+        # of physical damage, ignoring resistance. Such damage inflicts
+        # a critical strike with severity equal to current fatigue.
+        # Removed When: Character at range 0-1 makes TN 2 Medicine
+        # (Earth) check as a Support action.
+
+        RULES {
+            #L5RGS17uV8wX0yZ2aB4cD6e: ref_condition_bleeding
+        }
+    }
+
+    ^"Condition: Compromised" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Effects: Cannot keep dice with (st) symbols (minimum 0 kept
+        # dice). Vigilance counts as 1.
+        # Removed When: Strife reduced to <= composure.
+
+        RULES {
+            #L5RGS18fG9hI1jK3lM5nO7p: ref_condition_compromised
+        }
+    }
+
+    ^"Condition: Dazed" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Effects: Increase TN of Attack and Scheme action checks by 2.
+        # Removed When: End of turn, if character did not perform an
+        # Attack or Scheme action.
+
+        RULES {
+            #L5RGS19qR0sT2uV4wX6yZ8a: ref_condition_dazed
+        }
+    }
+
+    ^"Condition: Disoriented" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Effects: Increase TN of Movement and Support action checks by 2.
+        # Removed When: End of turn, if character did not perform a
+        # Movement or Support action.
+
+        RULES {
+            #L5RGS20bC1dE3fG5hI7jK9l: ref_condition_disoriented
+        }
+    }
+
+    ^"Condition: Dying [X Rounds]" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Effects: After X rounds (or narrative time), character perishes
+        # at the end of their next turn (or after completing one task in
+        # a narrative scene).
+        # Removed When: Character at range 0-1 makes TN 4 Medicine
+        # (Air) check as a Support action. If failed, reduce rounds
+        # remaining by shortfall.
+
+        RULES {
+            #L5RGS21mN2oP4qR6sT8uV0w: ref_condition_dying
+        }
+    }
+
+    ^"Condition: Incapacitated" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Effects: Cannot perform actions requiring checks. Cannot defend
+        # against damage. Critical strikes inflict Unconscious condition
+        # in addition to other effects.
+        # Removed When: Fatigue reduced to <= endurance.
+
+        RULES {
+            #L5RGS22xY3zA5bC7dE9fG1h: ref_condition_incapacitated
+        }
+    }
+
+    ^"Condition: Prone" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Effects: Can move a maximum of 1 range band.
+        # Removed When: (If desired) end of turn, if character did not
+        # perform a Movement action.
+
+        RULES {
+            #L5RGS23iJ4kL6mN8oP0qR2s: ref_condition_prone
+        }
+    }
+
+    ^"Condition: Wounded" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Two forms: Lightly Wounded and Severely Wounded.
+        # Removed When: TN 4 Medicine (Water) check as downtime
+        # activity. Success removes Lightly Wounded or reduces Severely
+        # Wounded to Lightly Wounded. Once per wounded ring per week.
+        # Also heals through bed rest (p. 273).
+        #
+        # Lightly Wounded [One Ring]:
+        # - Increase TN of checks with affected ring by 1.
+        # - If suffer Severely Wounded for same ring, remove this.
+        # - If suffer Lightly Wounded again for same ring, remove it
+        #   and suffer Severely Wounded for that ring.
+        #
+        # Severely Wounded [One Ring]:
+        # - Increase TN of checks with affected ring by 3.
+        # - If suffer Lightly/Severely Wounded for same ring again,
+        #   remove that condition and suffer effects of severity 8
+        #   critical strike for that ring as if failed the resist check.
+
+        RULES {
+            #L5RGS24tU5vW7xY9zA1bC3d: ref_condition_wounded_lightly
+            #L5RGS25eF6gH8iJ0kL2mN4o: ref_condition_wounded_severely
+        }
+    }
+
+    # ===========================
+    # COMMON ITEM QUALITIES
+    # ===========================
+
+    ^"Item Quality: Ceremonial" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Reduce TN of checks to convince others of your real or assumed
+        # identity as the known owner (or ally) by 1. At end of any scene
+        # using a Ceremonial item of a higher-status character without
+        # permission, forfeit 3 honor.
+
+        RULES {
+            #L5RGS26pQ7rS9tU1vW3xY5z: ref_quality_ceremonial
+        }
+    }
+
+    ^"Item Quality: Cumbersome" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Cumbersome armor: Increase TN of maneuver checks (Movement
+        # actions, etc.) by 1. Cumbersome weapon: If you moved this turn,
+        # increase TN of Attack action checks by 1.
+
+        RULES {
+            #L5RGS27aB8cD0eF2gH4iJ6k: ref_quality_cumbersome
+        }
+    }
+
+    ^"Item Quality: Damaged" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Weapon/tool: Increase TN of checks to use it by 1.
+        # Armor: Reduce all resistances by 2 (minimum 0).
+        # If Damaged again: becomes Destroyed instead.
+
+        RULES {
+            #L5RGS28lM9nO1pQ3rS5tU7v: ref_quality_damaged
+        }
+    }
+
+    ^"Item Quality: Prepare" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # After use, cannot use again until prepared. As a Support
+        # action while readied, prepares the item for use.
+
+        RULES {
+            #L5RGS29wX0yZ2aB4cD6eF8g: ref_quality_prepare
+        }
+    }
+
+    ^"Item Quality: Razor-Edged" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # On successful Attack dealing damage reduced to 0 before
+        # defense, weapon becomes Damaged. May spend (op)+ to treat
+        # deadliness as 1 higher per (op).
+
+        RULES {
+            #L5RGS30hI1jK3lM5nO7pQ9r: ref_quality_razor_edged
+        }
+    }
+
+    ^"Item Quality: Sacred" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Otherworldly being's Attack/Intrigue targeting wearer:
+        # increase TN by 1. If would gain Afflicted, choose one Sacred
+        # item to become Damaged instead. Sacred weapons ignore all
+        # resistances of Otherworldly and Tainted beings.
+
+        RULES {
+            #L5RGS31sT2uV4wX6yZ8aB0c: ref_quality_sacred
+        }
+    }
+
+    ^"Item Quality: Snaring" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # During Attack action, may spend (op)+: One target with
+        # vigilance <= (op) spent suffers Immobilized condition.
+
+        RULES {
+            #L5RGS32dE3fG5hI7jK9lM1n: ref_quality_snaring
+        }
+    }
+
+    ^"Item Quality: Unholy" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # After suffering critical strike from Unholy weapon: gain
+        # Afflicted. At end of scene using Unholy item: gain Afflicted.
+        # Unholy weapons ignore all resistances of Otherworldly beings.
+
+        RULES {
+            #L5RGS33oP4qR6sT8uV0wX2y: ref_quality_unholy
+        }
+    }
+
+    ^"Item Quality: Wargear" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # When another character suffers 1+ strife due to actions of
+        # someone wearing Wargear, they suffer that amount plus 1.
+
+        RULES {
+            #L5RGS34zA5bC7dE9fG1hI3j: ref_quality_wargear
+        }
+    }
+}

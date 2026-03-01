@@ -1,0 +1,1639 @@
+EXTENSION "L5R5e_Emerald_Empire_NPCs" EXTENDS "L5R5e_Emerald_Empire" {
+    NAME "Legend of the Five Rings 5th Edition - Emerald Empire: NPCs"
+    VERSION "0.3"
+    RELEASE_DATE "2026-03-01"
+
+    # Emerald Empire: NPCs from across the sourcebook,
+    # organized by chapter and location.
+
+    # ===========================
+    # NPCs / ADVERSARIES
+    # ===========================
+
+    # -----------------------------------------------
+    # Chapter 1: Strongholds of Power
+    # -----------------------------------------------
+
+    # --- Toshi Ranbo (Imperial) ---
+
+    ^"Kakita Sukenobu, Steward of Toshi Ranbo" DEF {
+        APPLIES TO [^"NPC"]
+
+        # The current governor of Toshi Ranbo, a Crane
+        # who won the position through political acumen.
+        # Skilled administrator and calligrapher who keeps
+        # the peace in the contested capital city.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 45
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 2", "Scholar 2", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Impeccable Brushwork (Air) [Artisan; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Hopeless Romantic (Earth) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Wakizashi", "Elegant kimono (Physical 1, Ceremonial)", "Lacquered armor (Physical 4, Ceremonial, Wargear)", "Yumi"]
+        }
+
+        ^"Peaceful Heart" DEF {
+            # When Kakita Sukenobu or an ally at range 0-4
+            # fails an Attack check using a weapon, they
+            # remove 2 strife.
+        }
+
+        RULES {
+            #L5REE01aB1cD3eF5gH7iJ9kL: sukenobu_steward
+        }
+    }
+
+    ^"Shosuro Sanae, Go Master" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A Scorpion courtier renowned throughout the Empire
+        # for her mastery of the game of go. Uses games as a
+        # way to read opponents and manipulate them.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 25
+            ^"Glory" INTEGER 65
+            ^"Status" INTEGER 20
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 1", "Scholar 2", "Social 4", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Small Stature (Air) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Disdain for Compassion (Water) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 4, Deadliness 5/7, Ceremonial, Concealable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Extravagant robes (Physical 1, Ceremonial)", "Go set"]
+        }
+
+        ^"Master of Games" DEF {
+            # When Shosuro Sanae exploits an opponent's
+            # disadvantage during a game of any kind, she may
+            # reroll up to four dice (instead of just two).
+        }
+
+        RULES {
+            #L5REE02mN2oP4qR6sT8uV0wX: sanae_go_master
+        }
+    }
+
+    ^"Kakita Shijin, Famed Poet" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A legendary Crane poet whose works are recited
+        # across the Empire. Aging but still brilliant, he
+        # occasionally takes on apprentices worthy of his
+        # time and exacting standards.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 4
+            }
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +1, Water +1, Void -2"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 70
+            ^"Status" INTEGER 25
+            ^"Skills" LIST OF STRING ["Artisan 5", "Martial 0", "Scholar 3", "Social 4", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Famously Successful (Fire) [Artisan; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Incurable Illness: Old Age (Water) [Martial; Physical]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 4, Deadliness 5/7, Ceremonial, Concealable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Extravagant robes (Physical 1, Ceremonial)", "Writing kit"]
+        }
+
+        ^"Worthy Apprentice" DEF {
+            # Once per session as a downtime event, Kakita
+            # Shijin may spend several weeks mentoring a student
+            # who suitably impresses him. A character who commits
+            # themselves to the master's lessons gains 3 glory
+            # and may purchase the All Arts Are One shuji
+            # technique regardless of the normal prerequisites.
+        }
+
+        RULES {
+            #L5REE03yZ3aB5cD7eF9gH1iJ: shijin_poet
+        }
+    }
+
+    ^"Seppun Ishikawa, Captain of the Seppun Honor Guard" DEF {
+        APPLIES TO [^"NPC"]
+
+        # The captain of the Seppun Honor Guard in Toshi
+        # Ranbo, a warrior of unwavering loyalty and compassion.
+        # Protects the Imperial presence in the capital with
+        # dedication that borders on the obsessive.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +1, Water +1, Void -2"
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 70
+            ^"Status" INTEGER 45
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 4", "Scholar 1", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Paragon of Compassion (Water) [Martial; Courtesy]"]
+            ^"Disadvantages" LIST OF STRING ["Painful Honesty (Air) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Lacquered armor (Physical 4, Ceremonial, Wargear)", "Badge of office", "Formal kimono (Physical 1, Ceremonial)", "Yumi", "Wakizashi", "Steed"]
+        }
+
+        ^"Never in Darkness" DEF {
+            # When resisting a Social skill effect that would
+            # distract him from his duty, Seppun Ishikawa rolls
+            # two additional Skill dice.
+        }
+
+        RULES {
+            #L5REE04kL4mN6oP8qR0sT2uV: ishikawa_captain
+        }
+    }
+
+    ^"Koharu, Mantis Mercenary" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A Mantis clan mercenary operating in Toshi Ranbo.
+        # Professional and reliable, she fights for pay and
+        # takes pride in her work. Her kusari-gama skills
+        # are formidable, especially aboard ships.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Ambitious"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 35
+            ^"Glory" INTEGER 30
+            ^"Status" INTEGER 30
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 1", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Famously Professional (Water) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Covetous (Earth) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Kusari-gama: Range 1 (2-3 two-handed), Damage 3, Deadliness 3, Concealable, Snaring, Wargear"]
+            ^"Gear" LIST OF STRING ["Ashigaru armor (Physical 3, Wargear)", "Wakizashi", "Coin string", "Lucky cricket", "Katana"]
+        }
+
+        ^"Sailor's Legs" DEF {
+            # While on the deck of a ship, when performing a
+            # check or targeted by a check, Koharu may suffer
+            # up to 2 strain and choose 2 rolled dice. Those
+            # dice are rerolled.
+        }
+
+        RULES {
+            #L5REE05wX5yZ7aB9cD1eF3gH: koharu_mercenary
+        }
+    }
+
+    # -----------------------------------------------
+    # Chapter 2: Centers of Trade
+    # -----------------------------------------------
+
+    # --- Ryoko Owari Toshi (Scorpion) ---
+
+    ^"Shosuro Hyobu, Corrupt Governor" DEF {
+        APPLIES TO [^"NPC"]
+
+        # The governor of Ryoko Owari Toshi, a masterful
+        # Scorpion politician who controls the city through
+        # webs of lies and manipulation. Her corruption runs
+        # deep, but she is extraordinarily difficult to outmaneuver.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 12
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 18
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 35
+            ^"Glory" INTEGER 70
+            ^"Status" INTEGER 65
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 3", "Scholar 3", "Social 5", "Trade 4"]
+            ^"Advantages" LIST OF STRING ["Impeccable Appearance (Air) [Social; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Keeps Hands Clean (Fire) [Martial; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 3, Deadliness 5/7, Ceremonial, Concealable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Elegant kimono", "Chop of office", "Cloth mask", "Fan"]
+        }
+
+        ^"Web of Lies" DEF {
+            # Once per session, as a Support action, Hyobu may
+            # spend a Void point to reveal one of her many lies
+            # that will change the course of an ongoing intrigue.
+            # At the end of the next round, she exchanges
+            # momentum points with one PC (or a group of PCs)
+            # of her choice.
+        }
+
+        RULES {
+            #L5REE06iJ6kL8mN0oP2qR4sT: hyobu_governor
+        }
+    }
+
+    # --- Khanbulak (Unicorn) ---
+
+    ^"Moto Rurame, Restless Commander" DEF {
+        APPLIES TO [^"NPC"]
+
+        # Commander of the Scarlet Banners, a feared Unicorn
+        # cavalry unit. Restless and eager for battle, Rurame
+        # chafes at peacetime duties. His tactical command of
+        # mounted warriors is devastating on the battlefield.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Assertive"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Endurance" INTEGER 13
+            ^"Composure" INTEGER 9
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 45
+            ^"Glory" INTEGER 64
+            ^"Status" INTEGER 60
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 5", "Scholar 1", "Social 2", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Steppe Warrior (Air) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Impatience (Fire) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Scimitar: Range 1, Damage 4, Deadliness 5, Durable, Razor-Edged", "Shinjo Horsebow: Range 2-4, Damage 4, Deadliness 5, Wargear"]
+            ^"Gear" LIST OF STRING ["Lamellar armor (Physical 4, Wargear)"]
+        }
+
+        ^"Riders of Doom" DEF {
+            # Once per scene, as a Support action, Rurame may
+            # command any Unicorn samurai within earshot to
+            # strike without mercy on the battlefield. Until the
+            # end of the following round, any affected Unicorn
+            # samurai who perform an Attack action while mounted
+            # increase the damage and deadliness of their weapons
+            # by 2. If the affected samurai are Rurame's Scarlet
+            # Banners, they increase the damage and deadliness
+            # of their weapons by 4 instead.
+        }
+
+        RULES {
+            #L5REE07uV7wX9yZ1aB3cD5eF: rurame_commander
+        }
+    }
+
+    # --- Ryoko Owari Toshi (Licensed Quarter) ---
+
+    ^"Chinoko, Deceitful Geisha" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A geisha in Ryoko Owari Toshi who is far more
+        # dangerous than she appears. Behind her entertaining
+        # facade lies a ruthless operative skilled in both
+        # social manipulation and assassination.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 6
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Intimidating"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Air -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 28
+            ^"Glory" INTEGER 25
+            ^"Status" INTEGER 30
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 3", "Scholar 2", "Social 4", "Trade 4"]
+            ^"Advantages" LIST OF STRING ["Dangerous Allure (Fire) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Dark Secret (Void) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Tessen: Range 0-1, Damage 4, Deadliness 3, Ceremonial, Concealable"]
+            ^"Gear" LIST OF STRING ["Silk kimono", "Expensive perfume", "Knife", "Three vials of Night Milk poison"]
+        }
+
+        ^"Discomforting Hints" DEF {
+            # When making a Social skill check, Chinoko may
+            # spend (op) as follows:
+            # Air (op)+: One target within earshot suffers the
+            # Disoriented condition until the end of the following
+            # round, plus one additional round for every (op)
+            # spent this way beyond the first.
+        }
+
+        ^"Unexpected Demise" DEF {
+            # When making an Attack action against a Disoriented
+            # or unaware target, Chinoko may spend (op) as follows:
+            # (op)+: If she succeeds, the target suffers a critical
+            # strike with severity equal to twice the deadliness
+            # of her weapon plus 1 per (op) spent this way beyond
+            # the first.
+        }
+
+        RULES {
+            #L5REE08gH8iJ0kL2mN4oP6qR: chinoko_geisha
+        }
+    }
+
+    # --- Kalani's Landing (Mantis) ---
+
+    ^"Captain Byakko of the Takarabako" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A bold Mantis captain who commands the merchant
+        # vessel Takarabako. Brash and adventurous, he is
+        # always seeking new trade routes and opportunities,
+        # though his inexperience sometimes gets the better
+        # of him.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Bold"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +1, Earth -1"
+            ^"Endurance" INTEGER 13
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 40
+            ^"Glory" INTEGER 52
+            ^"Status" INTEGER 41
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 2", "Trade 4"]
+            ^"Advantages" LIST OF STRING ["Ally (Yoritomo) (Water) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Inexperienced (Earth) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Kama: Range 0-1, Damage 3, Deadliness 3, Concealable"]
+            ^"Gear" LIST OF STRING ["Sailing clothes (Physical 2, Durable, Mundane)"]
+        }
+
+        ^"Brash Adventurer" DEF {
+            # Once per scene after making a check involving
+            # sailing or exploring, Byakko may choose to re-roll
+            # all dice in the check before deciding which to keep.
+            # If he does so, any strife suffered as a result of
+            # the check is doubled.
+        }
+
+        RULES {
+            #L5REE09sT9uV1wX3yZ5aB7cD: byakko_captain
+        }
+    }
+
+    # --- Friendly Traveler Village (Imperial) ---
+
+    ^"Imperial Governor Miya Tetsua" DEF {
+        APPLIES TO [^"NPC"]
+
+        # An Imperial governor overseeing a trading post. A
+        # shrewd administrator from the Miya family who uses
+        # his status and political connections to maintain
+        # order, though his flirtatious nature sometimes
+        # complicates matters.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 45
+            ^"Glory" INTEGER 55
+            ^"Status" INTEGER 60
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 2", "Scholar 4", "Social 4", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Kuge Lineage (Earth) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Irrepressible Flirtation (Fire) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 4, Deadliness 5/7, Ceremonial, Concealable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Court hakama (Physical 1, Ceremonial, Resplendent)", "Personal chop", "Imperial seal"]
+        }
+
+        ^"Emerald Authority" DEF {
+            # Once per scene when making a check, Miya Tetsua
+            # may count his ranks in the skill used as being
+            # equal to his status rank.
+        }
+
+        RULES {
+            #L5REE10eF0gH2iJ4kL6mN8oP: tetsua_governor
+        }
+    }
+
+    # --- Yasuki Trading Post (Crab) ---
+
+    ^"Yasuki Nobuko, Merchant" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A Crab clan merchant who can acquire almost anything
+        # for the right price. Shrewd and experienced, she has
+        # heard every story and seen every trick. Her network
+        # of contacts extends across the Empire.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 6
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Earth -2"
+            ^"Endurance" INTEGER 9
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 64
+            ^"Glory" INTEGER 35
+            ^"Status" INTEGER 45
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 2", "Scholar 2", "Social 3", "Trade 4"]
+            ^"Advantages" LIST OF STRING ["Heard Every Story (Earth) [Social; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Weary of Lies (Air) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Inlaid Kiseru: Range 0, Damage 2, Deadliness 2, Concealable, Mundane, Resplendent"]
+            ^"Gear" LIST OF STRING ["Fine robes (Physical 1)", "Wakizashi", "Drinking cup", "Half-empty sake bottle", "Pouch of koku and bu"]
+        }
+
+        ^"Anything You Need..." DEF {
+            # As a downtime activity at a character's request,
+            # Nobuko can acquire an item or service of rarity 9
+            # or lower without raising suspicions. The character
+            # must pay for the item or service plus a gratuity
+            # equal to half the price. Alternately, a PC may make
+            # a TN 3 Commerce (Air) check to get it in exchange
+            # for a debt: if they succeed, they stake 10 honor
+            # upon their debt to Nobuko, to be determined by her
+            # at a later point, and she gives the item as a "gift."
+        }
+
+        RULES {
+            #L5REE11qR1sT3uV5wX7yZ9aB: nobuko_merchant
+        }
+    }
+
+    # -----------------------------------------------
+    # Chapter 3: Heart of the Empire
+    # -----------------------------------------------
+
+    # --- Roads and Byways (Phoenix) ---
+
+    ^"Asako Taishi, Itinerant Scholar" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A Phoenix scholar driven by the spirit Manjigen,
+        # which uses him as a vessel to feed its ceaseless
+        # hunger for knowledge. Taishi wanders the Empire
+        # seeking lore and supernatural phenomena, heedless
+        # of the consequences his obsession may bring.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Passionate"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 12
+            ^"Vigilance" INTEGER 1
+            ^"Honor" INTEGER 40
+            ^"Glory" INTEGER 20
+            ^"Status" INTEGER 42
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 2", "Scholar 6", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Perfect Memory (Earth) [Scholar; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Possessed by Curiosity (Water) [Scholar; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Bo: Range 1-2, Damage 6, Deadliness 2, Mundane"]
+            ^"Gear" LIST OF STRING ["Fine but neglected robes (Physical 1)", "Wakizashi", "Tent (small)", "Traveling rations", "Pouch with several zeni and an assortment of interesting rocks and insect shells"]
+        }
+
+        ^"Manjigen's Fixation" DEF {
+            # Asako Taishi is driven by the spirit Manjigen,
+            # which uses him as a vessel to feed its ceaseless
+            # hunger for knowledge. Upon first encountering any
+            # PC or Adversary NPC who knows invocations, maho,
+            # kiho, rituals, or possesses a spiritual or curse
+            # type disadvantage, Asako Taishi must make a TN 3
+            # Theology (Void) check. If he succeeds, he becomes
+            # fascinated by their connection to the supernatural,
+            # and seeks to learn more, heedless of the consequences.
+        }
+
+        RULES {
+            #L5REE12cD2eF4gH6iJ8kL0mN: taishi_scholar
+        }
+    }
+
+    # --- Way Station / Outpost (Unicorn) ---
+
+    ^"Utaku Sabuteki, Outpost Commander" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A dependable Unicorn officer who commands a remote
+        # outpost. An expert horseman who can prepare mounts
+        # and riders for any journey. Values reliability and
+        # practicality over glory.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 5
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Dependable"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +1, Water +1, Earth -2"
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 70
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 40
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 2", "Social 2", "Trade 5"]
+            ^"Advantages" LIST OF STRING ["Equine Expert (Water) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Overly Cautious (Fire) [Martial; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Trident: Range 2, Damage 4, Deadliness 4, Snaring, Wargear"]
+            ^"Gear" LIST OF STRING ["Leather-padded robes (Physical 3)", "Katana", "Wakizashi", "Rider's tack", "Bag of feed", "Tent (yurt)", "Pillow book written in an unfamiliar but beautiful flowing script"]
+        }
+
+        ^"Master of the Stables" DEF {
+            # Once per game session as a downtime activity,
+            # Utaku Sabuteki can prepare any number of horses
+            # for a journey, and outfit their riders as well.
+            # Each horse and each rider he prepares increases
+            # their endurance by 2 until the end of the game
+            # session.
+        }
+
+        RULES {
+            #L5REE13oP3qR5sT7uV9wX1yZ: sabuteki_commander
+        }
+    }
+
+    # -----------------------------------------------
+    # Chapter 4: Sacred Spaces
+    # -----------------------------------------------
+
+    # --- Pilgrimage Route (Unicorn) ---
+
+    ^"Utaku Takeko, Wistful Pilgrim" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A Unicorn samurai on a pilgrimage, seeking divine
+        # guidance. Fiercely loyal but emotionally guarded,
+        # Takeko follows omens and signs with a devotion that
+        # inspires those who travel with her.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Air +1, Fire +1, Void -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 2", "Scholar 2", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Fiercely Loyal (Earth) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Suppressed Emotions (Fire) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Plain robes (Physical 1, Mundane)", "Wakizashi", "A handful of bu"]
+        }
+
+        ^"Pilgrim's Devotion" DEF {
+            # While following an omen or other divine sign,
+            # Takeko and her allies in the scene remove 1
+            # fatigue each time they gain 1 or more strife.
+        }
+
+        RULES {
+            #L5REE14aB4cD6eF8gH0iJ2kL: takeko_pilgrim
+        }
+    }
+
+    # --- Pilgrimage Route (Sparrow) ---
+
+    ^"Suzume Hinagiku, Wayward Heart" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A poor Sparrow clan scholar driven by love and
+        # devotion to the Fortune Benten. Despite her
+        # poverty, her passionate words about her beloved
+        # can move even the hardest hearts.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Disheartened"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +1, Earth -1"
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 45
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 25
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 0", "Scholar 3", "Social 0", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Exact Memory (Earth) [Scholar; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Poverty (Water) [Trade; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Burlap kimono (Physical 1, Mundane)", "Traveling pack", "Journal", "Charm of Benten"]
+        }
+
+        ^"Benten's Favor" DEF {
+            # When Suzume Hinagiku speaks of her beloved or
+            # her emotions, she counts as having rank 3 in
+            # social skills. Once per scene, characters who
+            # hear Hinagiku speak from the heart may recover
+            # 3 strife.
+        }
+
+        RULES {
+            #L5REE15mN5oP7qR9sT1uV3wX: hinagiku_wayward
+        }
+    }
+
+    # --- Shrine of the Willow-Healing Kami (Crab) ---
+
+    ^"Kuni Kayo, the Willow Gardener" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A Crab scholar and gardener who tends the Shrine
+        # of the Willow-Healing Kami. Gruff and unsociable,
+        # but possesses deep spiritual knowledge and a bond
+        # with the willow kodama that protects the shrine.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Gruff"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Earth -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 1
+            ^"Honor" INTEGER 40
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 25
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 4", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Analytical Mind (Fire) [Social; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Can't Get a Break (Air) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Bo: Range 1-2, Damage 6, Deadliness 2, Mundane"]
+            ^"Gear" LIST OF STRING ["Kimono (Physical 1, Mundane)", "Pillow book", "Bottle of sake"]
+        }
+
+        ^"Jurojin's Balm" DEF {
+            # As a Support action, Kayo may make a TN 1
+            # Theology (Earth) check targeting one character
+            # at range 0-1. If he succeeds, the target reduces
+            # the TN of all checks to resist the effects of
+            # poison and disease by 2 (to a minimum of 1) and
+            # cannot become intoxicated. This lasts until the
+            # end of the scene.
+        }
+
+        ^"Summon the Willow Kodama" DEF {
+            # Once per scene as a Support action, Kayo may
+            # summon the willow kodama as long as he is within
+            # range 0-5 of the Shrine of the Willow-Healing
+            # Kami. The willow kodama appears to fight Kayo's
+            # enemies and otherwise protect him until the end
+            # of the scene.
+        }
+
+        RULES {
+            #L5REE16yZ6aB8cD0eF2gH4iJ: kayo_gardener
+        }
+    }
+
+    ^"The Willow Kodama" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A tree spirit bound to the Shrine of the
+        # Willow-Healing Kami. Appears as a massive willow
+        # tree that can animate its branches to fight. Deeply
+        # bonded with Kuni Kayo.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 4
+            }
+            ^"Demeanor" STRING "Calm"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Air -2"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 4
+            ^"Glory" INTEGER 4
+            ^"Status" INTEGER 1
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 2", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Strong Roots (Air) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Unrequited Love (Fire) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Whiplike Boughs: Range 0-2, Damage 6, Deadliness 3, Deals physical or supernatural damage"]
+            ^"Gear" LIST OF STRING ["Bark Hide (Physical 4, Sacred)"]
+        }
+
+        ^"Kodama's Blessing" DEF {
+            # Once per scene, as a Support action the willow
+            # kodama may target any number of characters within
+            # range 0-5. Each character targeted removes 4
+            # fatigue, and one condition of the kodama's choice.
+        }
+
+        ^"Living Willow Spirit" DEF {
+            # The willow kodama is an Otherworldly being of
+            # silhouette 2. Additionally, once per scene as an
+            # action of the appropriate types, the willow kodama
+            # may perform any one Earth or Water invocation of
+            # rank 1 or 2. It counts as succeeding with 3 bonus
+            # successes and 2 (op).
+        }
+
+        RULES {
+            #L5REE17kL7mN9oP1qR3sT5uV: willow_kodama
+        }
+    }
+
+    # -----------------------------------------------
+    # Chapter 5: Paths to Enlightenment
+    # -----------------------------------------------
+
+    # --- Temple (Fortunist) ---
+
+    ^"Takeshi, Sohei" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A warrior-monk (sohei) who has lost a leg but
+        # none of his fighting spirit. His hardened physique
+        # and connection to the Fortunes make him a
+        # formidable combatant despite his disability.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Intimidating"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Air -2"
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 45
+            ^"Status" INTEGER 25
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 2", "Social 2", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Hardened Physique (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Lost Leg (Water) [Martial; Physical]"]
+            ^"Favored Weapons" LIST OF STRING ["Ono: Range 1-2, Damage 5, Deadliness 6, 2-Handed, Wargear"]
+            ^"Gear" LIST OF STRING ["Worn robes (Physical 1, Damaged, Mundane)"]
+        }
+
+        ^"Strength of Thunder" DEF {
+            # When making an Attack or Support (Earth) action
+            # check, Takeshi may spend (op) as follows:
+            # Earth (op)+: Heal 1 fatigue for each (op) spent
+            # in this way.
+        }
+
+        RULES {
+            #L5REE18wX8yZ0aB2cD4eF6gH: takeshi_sohei
+        }
+    }
+
+    # --- Monastery (Possessed) ---
+
+    ^"Shu, Possessed Monk" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A monk who has been possessed by an evil spirit,
+        # transforming him into a feral, dangerous creature.
+        # His inhuman resilience makes him extremely difficult
+        # to put down in combat.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Feral"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Endurance" INTEGER 18
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 5
+            ^"Honor" INTEGER 30
+            ^"Glory" INTEGER 30
+            ^"Status" INTEGER 10
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 0", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Sure-Footed (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Hot-Tempered (Fire) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Bestial Claws: Range 0, Damage 4, Deadliness 4, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Ragged robes (Physical 2, Supernatural 2)"]
+        }
+
+        ^"Inhuman Resilience" DEF {
+            # Attacks targeting Shu treat their Deadliness as
+            # 3 lower. In addition, the cost of any (op) effect
+            # to inflict a critical strike on Shu is increased
+            # by one.
+        }
+
+        RULES {
+            #L5REE19iJ9kL1mN3oP5qR7sT: shu_possessed
+        }
+    }
+
+    # --- Monastery (Shinseist) ---
+
+    ^"Jun, Shinseist Monk" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A Shinseist monk with a flippant demeanor that
+        # belies his deep understanding of the Way. His
+        # attunement to Shinsei's teachings makes him
+        # remarkably difficult to overcome in conflict.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Flippant"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Air -2"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 45
+            ^"Status" INTEGER 25
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 3", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Subtle Observer (Air) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Bluntness (Air) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Walking Staff: Range 1-2, Damage 6, Deadliness 2, Mundane"]
+            ^"Gear" LIST OF STRING ["Monk's robes (Physical 1)", "Gold lotus pendant (When performing a Meditation check add one rolled Ring die showing (op) result)"]
+        }
+
+        ^"Attuned to the Way" DEF {
+            # When a character succeeds on an Attack or Scheme
+            # action targeting Jun, reduce their bonus successes
+            # by 3, to a minimum of 0.
+        }
+
+        RULES {
+            #L5REE20uV0wX2yZ4aB6cD8eF: jun_shinseist
+        }
+    }
+
+    # --- Monastery (Initiate) ---
+
+    ^"Chikako, Initiate Monk" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A young monk seeking enlightenment with an intense
+        # devotion that borders on fanaticism. Her connection
+        # to the Void allows her to recover spent spiritual
+        # energy in remarkable ways.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Fire +1, Void -2"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 45
+            ^"Glory" INTEGER 45
+            ^"Status" INTEGER 45
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 3", "Social 2", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Seeker of Enlightenment (Void) [Scholar; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Fanaticism (Fire) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 4, Deadliness 5/7, Ceremonial, Concealable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Simple kimono (Physical 1)", "Knife"]
+        }
+
+        ^"Fateful Blessing" DEF {
+            # When Chikako spends a Void point as part of a
+            # check, she may spend (op) as follows:
+            # Void (op): Gain 1 Void point.
+        }
+
+        RULES {
+            #L5REE21gH1iJ3kL5mN7oP9qR: chikako_initiate
+        }
+    }
+
+    # --- Pilgrimage Road (Kolat) ---
+
+    ^"Aotora Akira, Pilgrim" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A man posing as a pilgrim who is actually a
+        # poisoner and Kolat agent. Shrewd and patient,
+        # he conceals his true nature behind courtly robes
+        # and a dark secret.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 15
+            ^"Glory" INTEGER 35
+            ^"Status" INTEGER 35
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 1", "Social 3", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Patient and Subtle (Air) [Trade; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Dark Secret (Void) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 4, Deadliness 5/7, Ceremonial, Concealable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Courtly robes (Physical 1, Ceremonial, Resplendent)", "Satchel of poisons", "Two knives"]
+        }
+
+        ^"Poisoner" DEF {
+            # For purposes of identifying, preparing, or using
+            # poisons, treat Akira's ranks in Medicine as 4.
+            # When Akira makes an Attack action check using a
+            # poisoned weapon, he may spend (op) as follows:
+            # (op): The weapon remains poisoned. (The effects of
+            # the poison still apply to this attack.)
+        }
+
+        RULES {
+            #L5REE22sT2uV4wX6yZ8aB0cD: akira_pilgrim
+        }
+    }
+
+    # --- Temple (Fortunist) ---
+
+    ^"Dai, Fortunist Monk" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A Fortunist monk and herbalist who uses her
+        # knowledge of medicine and herbs to tend to the
+        # sick and injured. Assertive and strong-willed,
+        # but with a soft heart for those in need.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Assertive"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 15
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 50
+            ^"Glory" INTEGER 45
+            ^"Status" INTEGER 25
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 1", "Scholar 2", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Indomitable Will (Air) [Social; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Softheartedness (Fire) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Bo Staff: Range 1-2, Damage 6, Deadliness 2, Mundane"]
+            ^"Gear" LIST OF STRING ["Robes (Physical 1)"]
+        }
+
+        ^"Herbalist" DEF {
+            # When Dai makes a Medicine check targeting a
+            # character, she may spend (op) as follows:
+            # (op)+: The target removes 1 strife for each (op)
+            # spent this way.
+        }
+
+        RULES {
+            #L5REE23eF3gH5iJ7kL9mN1oP: dai_fortunist
+        }
+    }
+
+    # -----------------------------------------------
+    # Chapter 6: Wilds of Rokugan
+    # -----------------------------------------------
+
+    # --- Wilderness (Crab) ---
+
+    ^"Kuni Haruna, Sinister Witch Hunter" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A Crab witch hunter whose intimidating presence
+        # and merciless pursuit of the Taint's corruption
+        # make her feared even by her allies. Her nightmares
+        # hint at the toll her work has taken on her spirit.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Intimidating"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Air -2"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 40
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 4", "Social 3", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Fearsome Presence (Fire) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Nightmares (Earth) [Scholar; Spiritual]"]
+            ^"Favored Weapons" LIST OF STRING ["Naginata: Range 2, Damage 6, Deadliness 6, Cumbersome, Razor-Edged, Wargear"]
+            ^"Gear" LIST OF STRING ["Warded robes (Physical 2, Supernatural 4, Sacred)", "Wakizashi", "Prayer strips", "Sacred scrolls"]
+        }
+
+        ^"Merciless Hunter" DEF {
+            # When Kuni Haruna makes an Attack action targeting
+            # a character that she has not previously attacked
+            # during this scene, she may spend (op) as follows:
+            # (op)+: Increase the deadliness of the attack by 1
+            # for each (op) spent this way.
+            # (op)+: Increase the damage of the attack by 1 for
+            # each (op) spent this way.
+        }
+
+        RULES {
+            #L5REE24qR4sT6uV8wX0yZ2aB: haruna_witch_hunter
+        }
+    }
+
+    # --- Wilderness (Phoenix) ---
+
+    ^"Asako Takahiro, Insightful Inquisitor" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A Phoenix inquisitor with a keen eye for detail
+        # and an uncanny ability to read people. His shrewd
+        # observations and briefings can prepare allies
+        # against dangers they would otherwise miss.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 5
+            ^"Honor" INTEGER 45
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 40
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 3", "Scholar 4", "Social 4", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Excellent Liar (Air) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Know-It-All (Water) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Jitte: Range 0, Damage 3, Deadliness 2, Concealable, Snaring"]
+            ^"Gear" LIST OF STRING ["Sanctified robes (Physical 1, Supernatural 3, Ceremonial)", "Wakizashi", "Incense", "Sacred scrolls"]
+        }
+
+        ^"Keep One Eye Open" DEF {
+            # Once per game session as a downtime activity,
+            # Asako Takahiro can brief any number of characters
+            # regarding his observations and suspicions about
+            # the nearby area. Each character who heeds his
+            # words increases their Vigilance by 2 until the
+            # end of the game session.
+        }
+
+        RULES {
+            #L5REE25cD5eF7gH9iJ1kL3mN: takahiro_inquisitor
+        }
+    }
+
+    # --- Wilderness (Dragon) ---
+
+    ^"Agasha Susumu, Scholar and Guide" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A Dragon clan scholar and herbalist who serves as
+        # a guide through the wilderness. Cantankerous but
+        # deeply knowledgeable, his herbal remedies can calm
+        # even the most frayed nerves.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Assertive"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Water -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 45
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 4", "Social 1", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Exact Memory (Earth) [Scholar; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Cantankerous (Water) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Kiseru: Range 0, Damage 2, Deadliness 2, Concealable, Mundane"]
+            ^"Gear" LIST OF STRING ["Rugged clothes", "Satchel of herbs"]
+        }
+
+        ^"Calming Remedy" DEF {
+            # Once per game session as a downtime activity,
+            # Susumu may share his personal admixture of
+            # mountain herbs with up to five characters. Those
+            # who partake increase their composure by 2 but
+            # reduce their vigilance by 1 until the end of the
+            # game session.
+        }
+
+        RULES {
+            #L5REE26oP6qR8sT0uV2wX4yZ: susumu_guide
+        }
+    }
+
+    # --- Shinomen Forest (Kitsune) ---
+
+    ^"Ha Iwa, Kitsune Spirit" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A kitsune (fox spirit) who can shift between fox
+        # and human form. Mischievous and curious about
+        # human ways, but also impatient and prone to
+        # showing off. Her true nature is revealed when
+        # she becomes compromised.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 5
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Mischievous"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Air -2"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 9
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 5
+            ^"Glory" INTEGER 25
+            ^"Status" INTEGER 10
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 3", "Social 4", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Dangerous Allure (Fire) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Impatience (Earth) [Scholar; Mental]", "Showoff (Air) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Teeth: Range 0, Damage 3, Deadliness 5, Natural"]
+            ^"Gear" LIST OF STRING []
+        }
+
+        ^"Shapeshifter" DEF {
+            # As a Support action, a kitsune can transform
+            # into human form (or back again). While in their
+            # fox form, they have silhouette 1. While in human
+            # form, they are always curious and eager to learn
+            # more of human ways, but also seek to hide their
+            # true nature. When they become compromised, their
+            # fox feet, ears, or tails reappear.
+        }
+
+        RULES {
+            #L5REE27aB7cD9eF1gH3iJ5kL: haiwa_kitsune
+        }
+    }
+
+    # --- Shinomen Forest (Nezumi) ---
+
+    ^"Iht-zyk, Nezumi Forager" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A nezumi (ratling) of the Tattered Ear tribe who
+        # forages in the Shinomen Forest. Nurturing and wise
+        # in the ways of the forest, but meek around outsiders.
+        # Her knowledge of natural and spiritual dangers is
+        # invaluable to those who earn her trust.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Demeanor" STRING "Nurturing"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Fire -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 5
+            ^"Honor" INTEGER 25
+            ^"Glory" INTEGER 10
+            ^"Status" INTEGER 5
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 0", "Scholar 2", "Social 3", "Trade 4"]
+            ^"Advantages" LIST OF STRING ["Keen Smell (Air) [Trade; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Meekness (Fire) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Claws: Range 0-1, Damage 4, Deadliness 2, Razor-Edged", "Teeth: Range 0, Damage 4, Deadliness 3, Snaring"]
+            ^"Gear" LIST OF STRING ["Practical clothes", "Basket of nuts and berries"]
+        }
+
+        ^"Forest Lessons" DEF {
+            # Once per game session as a downtime activity,
+            # Iht-zyk may impart the wisdom of the Tattered Ear
+            # tribe to any number of characters. Those who choose
+            # to listen and apply the knowledge may forfeit 1
+            # honor to decrease the TN of checks to identify or
+            # avoid natural or spiritual dangers within Shinomen
+            # Forest by 1 until the end of the game session.
+        }
+
+        ^"Nezumi Instincts" DEF {
+            # When Iht-zyk makes a skill check to hide, climb,
+            # or move quietly, she increases her number of bonus
+            # successes by 3 or decreases her shortfall by 3
+            # (to a minimum of 0).
+        }
+
+        RULES {
+            #L5REE28mN8oP0qR2sT4uV6wX: ihtzyk_forager
+        }
+    }
+
+    # --- Shadowlands Border (Crab) ---
+
+    ^"Kaiu Shibito Tsuneko" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A Crab artisan and calligrapher haunted by her
+        # connection to Meido, the Realm of the Dead. She
+        # wanders the Empire making offerings and recording
+        # the stories of spirits. Detached and superstitious,
+        # but her gift grants her unusual insight.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 30
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 35
+            ^"Skills" LIST OF STRING ["Artisan 4", "Martial 1", "Scholar 3", "Social 1", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Secrets (Void) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Superstitious (Void) [Scholar; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Ragged traveling clothes", "Calligraphy set", "Scroll satchel", "Pack of offerings"]
+        }
+
+        ^"Touched by Meido" DEF {
+            # Activation: When making a check pertaining to
+            # spirits, Shibito may receive 3 strife to roll 1
+            # additional ring die and keep 1 additional die as
+            # if she had spent 1 Void point.
+        }
+
+        RULES {
+            #L5REE29yZ9aB1cD3eF5gH7iJ: shibito_tsuneko
+        }
+    }
+
+    # --- Wilderness (Troll) ---
+
+    ^"Kasai, Mournful Troll" DEF {
+        APPLIES TO [^"NPC"]
+
+        # An ancient troll of immense size and surprising
+        # wisdom. Morose and prone to fits of rage, but
+        # possesses knowledge stretching back centuries.
+        # Those who earn his trust can learn powerful
+        # techniques from him.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 8
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 5
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Morose"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
+            ^"Endurance" INTEGER 18
+            ^"Composure" INTEGER 11
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 35
+            ^"Glory" INTEGER 15
+            ^"Status" INTEGER 5
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 3", "Scholar 6", "Social 2", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Brute Strength (Air) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Pessimism (Water) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Massive Cudgel: Range 2, Damage 9, Deadliness 5, Cumbersome", "Rending Grip: Range 1, Damage 4, Deadliness 6"]
+            ^"Gear" LIST OF STRING ["Armor scraps and scaled hide (Physical 2, Supernatural 1)", "Stolen sake and scrolls"]
+        }
+
+        ^"Ancient and Powerful" DEF {
+            # Kasai is an Otherworldly being of silhouette 4.
+        }
+
+        ^"Temper" DEF {
+            # Each time Kasai suffers 1 or more fatigue, he
+            # gains 1 strife. When Kasai's strife exceeds half
+            # of his composure, he gains the Enraged condition.
+        }
+
+        ^"Sustaining Fury" DEF {
+            # Kasai cannot suffer the Incapacitated or
+            # Unconscious condition while he has the Enraged
+            # condition.
+        }
+
+        ^"Primordial Wisdom" DEF {
+            # As a downtime activity, Kasai can share ancient
+            # secrets with characters who have earned his trust.
+            # Characters who heed this wisdom can purchase the
+            # Channel the Fire Dragon kiho technique regardless
+            # of prerequisites.
+        }
+
+        RULES {
+            #L5REE30kL0mN2oP4qR6sT8uV: kasai_troll
+        }
+    }
+
+    # --- Coastal Waters (Pirate) ---
+
+    ^"Uranaishi no Manami, Ambitious Pirate" DEF {
+        APPLIES TO [^"NPC"]
+
+        # An ambitious pirate captain who combines martial
+        # prowess with shrewd cunning. Uses dirty tricks in
+        # combat to disorient opponents. Despite her rough
+        # profession, she has a surprising appreciation for
+        # history, etiquette, and courtly romance.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 45
+            ^"Glory" INTEGER 65
+            ^"Status" INTEGER 30
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 4", "Scholar 2", "Social 3", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Keen Sight (Water) [Trade; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Bluntness (Air) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Concealable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Concealed armor (Physical 2, Concealable)", "Wakizashi", "Sake jug", "Well-thumbed book on history, etiquette, or courtly romance"]
+        }
+
+        ^"Dirty Tricks" DEF {
+            # When performing an Attack action check, Manami
+            # may spend (op) as follows:
+            # (op)+: One character at range 0-2 suffers the
+            # Disoriented condition.
+        }
+
+        RULES {
+            #L5REE31wX1yZ3aB5cD7eF9gH: manami_pirate
+        }
+    }
+}

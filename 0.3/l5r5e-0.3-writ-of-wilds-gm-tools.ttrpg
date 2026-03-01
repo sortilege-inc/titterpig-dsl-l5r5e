@@ -1,0 +1,863 @@
+EXTENSION "L5R5e_Writ_of_Wilds_GM_Tools" EXTENDS "L5R5e_Writ_of_Wilds" {
+    NAME "Legend of the Five Rings 5th Edition - Writ of the Wilds: GM Tools"
+    VERSION "0.3"
+    RELEASE_DATE "2026-03-01"
+
+    # Writ of the Wilds (Chapters 1-3): NPCs/Adversaries, new titles,
+    # new conditions (illnesses), new terrain qualities (imbalanced variants),
+    # adventure seeds, elemental imbalance mechanics, destiny rules.
+
+    # ===========================
+    # NPCs / ADVERSARIES
+    # ===========================
+
+    ^"Togashi Remmu, Sociable Wanderer" DEF {
+        APPLIES TO [^"NPC"]
+
+        # An atypical ise zumi who happily travels the Empire
+        # after a day and night in discussion with Togashi Yokuni.
+        # Senses they will be called upon for some great task.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 4
+            }
+            ^"Demeanor" STRING "Outgoing"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Earth -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 72
+            ^"Status" INTEGER 35
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 3", "Scholar 3", "Social 3", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Higher Purpose (Air) [Scholar; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Conciliatory (Fire) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Bo (staff): Range 1-2, Damage 6, Deadliness 2, Mundane"]
+            ^"Gear" LIST OF STRING ["Traveling Clothes (Physical 2, Durable, Mundane, Subtle)", "Wicker satchel", "Journal of personal poetry"]
+        }
+
+        ^"Blood of the Kami (Remmu)" DEF {
+            # When Remmu successfully uses a kiho, they are
+            # considered to have three bonus successes for the
+            # purposes of resolving the effects of that kiho.
+        }
+
+        ^"Drawing From Within" DEF {
+            # Choose four kiho from those listed beginning on page
+            # 182 of the Core Rulebook, which Remmu can use. Each
+            # is linked to an appropriate tattoo, so they benefit from
+            # Blood of the Kami.
+        }
+
+        RULES {
+            #L5RWW64cD4eF6gH8iJ0kL2mN: remmu_sociable_wanderer
+        }
+    }
+
+    ^"Mirumoto Kichiru, Thwarted Duelist" DEF {
+        APPLIES TO [^"NPC"]
+
+        # Supreme niten duelist who has bested every opponent
+        # except the Kakita. Suspects collusion between Dragon
+        # and Crane to prevent the ultimate duel.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 5
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Calculating"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
+            ^"Endurance" INTEGER 18
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 45
+            ^"Glory" INTEGER 80
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 4", "Scholar 2", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Duelist's Instincts (Void) [Martial; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Arrogance (Water) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged", "Wakizashi: Range 0-1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Lacquered Armor (Physical 4, Ceremonial, Cumbersome, Wargear)", "Fine kimono (Physical 1, Ceremonial, Resplendent)"]
+        }
+
+        ^"Two Heavens Style" DEF {
+            # Once per round, when performing an Attack action,
+            # Kichiru may spend (op) as follows:
+            # (op): Perform a Strike Action with a readied weapon
+            # she has not used for an Attack action this turn.
+        }
+
+        RULES {
+            #L5RWW65oP5qR7sT9uV1wX3yZ: kichiru_thwarted_duelist
+            #L5RWW66aB6cD8eF0gH2iJ4kL: kichiru_adventure_forbidden_duel
+        }
+    }
+
+    ^"Agasha Shinji, Zealous Naturalist" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A naturalist and priest of the elements who is
+        # passionate about studying the natural world. Abrasive
+        # in personality but brilliant in scholarship.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Fervent"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 25
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 35
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 2", "Scholar 4", "Social 3", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Scholar of Nature (Air) [Scholar; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Abrasive Nature (Water) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Yumi (bow): Range 2-5, Damage 5, Deadliness 3", "Cudgel: Range 0-1, Damage 5/6, Deadliness 2"]
+            ^"Gear" LIST OF STRING ["Sanctified Robes (Physical 1, Supernatural 3, Ceremonial)", "Scroll satchel", "Book of pressed leaves"]
+        }
+
+        ^"Adept of Nature" DEF {
+            # Choose 0-6 invocations and 0-3 rituals. If used in
+            # pristine wilderness (more than an hour's walk from
+            # human construction), reduce TN by 1.
+        }
+
+        RULES {
+            #L5RWW67mN7oP9qR1sT3uV5wX: shinji_zealous_naturalist
+            #L5RWW68yZ8aB0cD2eF4gH6iJ: shinji_adventure_peculiar_herbalism
+        }
+    }
+
+    ^"Kitsuki Noriko, Conflicted Magistrate" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A conflicted magistrate torn between duty and
+        # compassion. Known for her keen investigative eye and
+        # methodical approach to justice.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 5
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Methodical"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Fire -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 5
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 62
+            ^"Status" INTEGER 47
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 4", "Social 4", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Student of Law (Water) [Scholar; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Conflicted (Fire) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged", "Wakizashi: Range 0-1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Lacquered Armor (Physical 4, Ceremonial, Cumbersome, Wargear)"]
+        }
+
+        ^"A Keen Eye" DEF {
+            # Always uses Focus as base initiative value.
+        }
+
+        ^"Uncovering the Truth" DEF {
+            # Once per scene when investigating, may spend (op)+:
+            # increase successes by one per (op) spent.
+        }
+
+        RULES {
+            #L5RWW69kL9mN1oP3qR5sT7uV: noriko_conflicted_magistrate
+            #L5RWW70wX0yZ2aB4cD6eF8gH: noriko_adventure_stolen_rice
+        }
+    }
+
+    ^"Agasha Hayato, Stoic Guardian" DEF {
+        APPLIES TO [^"NPC"]
+
+        # Guardian of the Wrath of the Kami Temple. Stoic and
+        # withdrawn, but possesses deep elemental insight and
+        # mastery of fire kiho.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 5
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 5
+            }
+            ^"Demeanor" STRING "Stoic"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Fire -2"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 55
+            ^"Status" INTEGER 32
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 5", "Social 3", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Elemental Insight (Air) [Scholar; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Withdrawn (Water) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Bo (staff): Range 1-2, Damage 6, Deadliness 2, Mundane"]
+            ^"Gear" LIST OF STRING ["Traveling Clothes (Physical 2, Durable, Mundane, Subtle)", "Wicker satchel", "Scroll of prayers"]
+        }
+
+        ^"The Fires Within" DEF {
+            # Choose three Fire kiho which Hayato can use.
+        }
+
+        ^"Commune with Flame" DEF {
+            # When subjected to fire/heat effects, Hayato has
+            # Resistance of Physical 4 and Supernatural 4.
+        }
+
+        RULES {
+            #L5RWW71iJ1kL3mN5oP7qR9sT: hayato_stoic_guardian
+            #L5RWW72uV2wX4yZ6aB8cD0eF: hayato_adventure_consigned_to_flames
+        }
+    }
+
+    ^"Togashi Koma, Militant Adept" DEF {
+        APPLIES TO [^"NPC"]
+
+        # Militant adept of the Furthest Fortress. An imposing
+        # monk whose combat abilities border on the supernatural
+        # due to Blood of the Kami.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Imposing"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Void -2"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 42
+            ^"Status" INTEGER 33
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 4", "Scholar 2", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Martial Excellence (Fire) [Martial; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Uncompromising (Water) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Punch: Range 0, Damage 1, Deadliness 2, Snaring", "Kick: Range 1, Damage 2, Deadliness 1", "Nunchaku: Range 0-1, Damage 4, Deadliness 2, 2-hand: Snaring"]
+            ^"Gear" LIST OF STRING ["Traveling Clothes (Physical 2, Durable, Mundane, Subtle)", "Travel rations", "Memory bracelet made of twine"]
+        }
+
+        ^"Blood of the Kami (Koma)" DEF {
+            # When Koma successfully uses a kiho, they are
+            # considered to have three bonus successes.
+        }
+
+        ^"Harnessing Ki" DEF {
+            # Knows the following kiho: Earthen Fist, Air Fist, Flame
+            # Fist, Water Fist (each linked to an appropriate tattoo).
+        }
+
+        ^"Martial Acumen" DEF {
+            # When making Strike action with nunchaku, may also
+            # attack with Kick or Punch.
+        }
+
+        RULES {
+            #L5RWW73gH3iJ5kL7mN9oP1qR: koma_militant_adept
+            #L5RWW74sT4uV6wX8yZ0aB2cD: koma_adventure_dark_dreams
+        }
+    }
+
+    ^"Kota, Ambitious Agitator" DEF {
+        APPLIES TO [^"NPC"]
+
+        # A shrewd and ambitious monk at the Mountain Song
+        # Temple who sows discord to pursue his own agendas.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 45
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 29
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 2", "Scholar 3", "Social 4", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Well-spoken (Water) [Scholar; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Mercurial (Earth) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Bo (staff): Range 1-2, Damage 6, Deadliness 2, Mundane"]
+            ^"Gear" LIST OF STRING ["Fine robes (Physical 2, Ceremonial, Resplendent)", "Calligraphy set"]
+        }
+
+        ^"Instigator" DEF {
+            # Once per scene as Support action, make TN 2 Sentiment
+            # (Water) check targeting up to 3 characters. If
+            # successful, discern potential sources of conflict; each
+            # target gains 3 strife, and if they Unmask, must direct
+            # Unmasking at another target of Kota's choice.
+        }
+
+        RULES {
+            #L5RWW75eF5gH7iJ9kL1mN3oP: kota_ambitious_agitator
+            #L5RWW76qR6sT8uV0wX2yZ4aB: kota_adventure_allure_of_stone_and_song
+        }
+    }
+
+    ^"Tonbo Sadao, Daimyo of the Dragonfly" DEF {
+        APPLIES TO [^"NPC"]
+
+        # The Dragonfly daimyo, a shrewd and tactful mediator
+        # with an impressive array of social abilities. Carries the
+        # burden of leading the smallest of the Minor Clans.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 5
+                ^"Void" INTEGER 4
+            }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 5
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 70
+            ^"Status" INTEGER 75
+            ^"Skills" LIST OF STRING ["Artisan 5", "Martial 3", "Scholar 4", "Social 4", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Tactful (Void) [Social; Interpersonal, Mental]", "Steadfast (Earth) [Martial, Social; Interpersonal, Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Rigid (Void) [Social; Interpersonal, Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Nodachi: Range 1-2, Damage 5, Deadliness 6, Ceremonial, Razor-Edged", "Wakizashi: Range 0-1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Daimyo's Robes (Physical 2, Supernatural 3)", "List of names", "Small glass turtle"]
+        }
+
+        ^"Wings of Calm" DEF {
+            # Once per scene when making Social check to calm or
+            # deescalate, add 3 kept (ring) set to (op) and 2 kept
+            # (ring) set to (su).
+        }
+
+        ^"Moroko's Blessing" DEF {
+            # As Support action, make TN 3 Courtesy (Water) check
+            # targeting any number of characters. If successful, each
+            # target removes up to 3 fatigue plus bonus successes,
+            # and gains Thoughtful Arbiter distinction until end of scene.
+        }
+
+        RULES {
+            #L5RWW77cD7eF9gH1iJ3kL5mN: sadao_dragonfly_daimyo
+        }
+    }
+
+    ^"Gen'ichiro, Maho Outcast" DEF {
+        APPLIES TO [^"NPC"]
+
+        # Former Dragon Clan samurai named Matsu Toshiro,
+        # sentenced to death for practicing maho but escaped
+        # during a flash flood. Now seeks spiritual healing
+        # as a monk named Gen'ichiro at a mountain monastery.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 5
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 4
+            }
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Fire +1, Air -2"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 25
+            ^"Glory" INTEGER 21
+            ^"Status" INTEGER 23
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 3", "Social 3", "Trade 4"]
+            ^"Advantages" LIST OF STRING ["Observant (Water) [Social, Martial; Interpersonal, Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Maho-Touched (Earth) [Scholar, Social; Interpersonal, Mental]", "Fugitive (Void) [Social; Interpersonal, Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Bo (staff): Range 1-2, Damage 6, Deadliness 2, Mundane"]
+            ^"Gear" LIST OF STRING ["Simple robes (Physical 1, Mundane)", "Religious texts", "Tattoo ink and needles"]
+        }
+
+        ^"Forbidden Outburst" DEF {
+            # When Gen'ichiro's strife exceeds composure, every
+            # character at range 0-2 must make TN 4 Theology
+            # (Earth 3, Void 3) check. Success: receive 2 strife.
+            # Failure: receive 4 strife and 2 supernatural damage,
+            # become cursed (increase TN of Social and Scholar
+            # checks by 2) until end of scene.
+        }
+
+        RULES {
+            #L5RWW78oP8qR0sT2uV4wX6yZ: genichiro_maho_outcast
+            #L5RWW79aB9cD1eF3gH5iJ7kL: genichiro_adventure_true_conversion
+        }
+    }
+
+    # ===========================
+    # NEW TITLES
+    # ===========================
+
+    ^"Awakened Soul" DEF {
+        APPLIES TO [^"Title"]
+
+        # Some people can connect with past lives as an
+        # extension of their own being. The Togashi Tattooed
+        # Order is one organization dedicated to such beings.
+
+        PROPERTIES {
+            ^"Assigned By" STRING "The GM. Only available if narratively appropriate."
+            ^"Status Award" STRING "+0"
+            ^"XP to Completion" INTEGER DEFAULT 44
+            ^"Title Ability" STRING "Wisdom of Countless Lifetimes"
+        }
+
+        ^"Wisdom of Countless Lifetimes" DEF {
+            # When making a skill check, you may spend 1 Void
+            # point to treat your skill rank as 1 higher, to a maximum
+            # of 6. If you fail the check, gain 1 Void point.
+        }
+
+        CURRICULUM {
+            ^"Title Curriculum" {
+                "Social" SKILL_GROUP
+                "Scholar" SKILL_GROUP
+                "Culture" SKILL
+                "Meditation" SKILL
+                "Survival" SKILL
+                "Theology" SKILL
+                "Eternal Mind's Gate (kiho)" TECHNIQUE
+                "Trance of Lives Past (ritual)" TECHNIQUE
+            }
+        }
+
+        RULES {
+            #L5RWW80mN0oP2qR4sT6uV8wX: awakened_soul_past_lives_title
+        }
+    }
+
+    ^"Forester" DEF {
+        APPLIES TO [^"Title"]
+
+        # Sanctioned foresters carefully maintain the natural
+        # order of forests, marking trees that are not home to
+        # spirits and planting two trees for every one cut.
+
+        PROPERTIES {
+            ^"Assigned By" STRING "A daimyo or another sanctioned forester."
+            ^"Status Award" STRING "+5 (to a minimum of 20)"
+            ^"XP to Completion" INTEGER DEFAULT 24
+            ^"Title Ability" STRING "Blessing of the Trees"
+        }
+
+        ^"Blessing of the Trees" DEF {
+            # Once per scene when interacting with positive
+            # intentions towards a kami or other nature spirit,
+            # you may turn one kept die to the (ex) symbol.
+        }
+
+        CURRICULUM {
+            ^"Title Curriculum" {
+                "Social" SKILL_GROUP
+                "Scholar" SKILL_GROUP
+                "Courtesy" SKILL
+                "Sentiment" SKILL
+                "Survival" SKILL
+                "Theology" SKILL
+                "Rank 1-2 Earth and Water Invocations (invocation)" TECH_GROUP
+                "Rank 1-3 Shuji (shuji)" TECH_GROUP
+            }
+        }
+
+        RULES {
+            #L5RWW81yZ1aB3cD5eF7gH9iJ: forester_nature_steward_title
+        }
+    }
+
+    ^"Temple Abbot" DEF {
+        APPLIES TO [^"Title"]
+
+        # Those who preside over a monastery, revered as wise
+        # and deeply committed to their faith and traditions.
+
+        PROPERTIES {
+            ^"Assigned By" STRING "A monastic order or by an abbot who is passing down the responsibility."
+            ^"Status Award" STRING "+10 (to a minimum of 30)"
+            ^"XP to Completion" INTEGER DEFAULT 36
+            ^"Title Ability" STRING "Soothing Cadence"
+        }
+
+        ^"Soothing Cadence" DEF {
+            # When making a skill check to communicate with a
+            # group of three or more people, you may keep up to
+            # one extra die. If your check succeeds, each other
+            # character in the scene removes strife equal to your
+            # bonus successes.
+        }
+
+        CURRICULUM {
+            ^"Title Curriculum" {
+                "Social" SKILL_GROUP
+                "Scholar" SKILL_GROUP
+                "Culture" SKILL
+                "Meditation" SKILL
+                "Theology" SKILL
+                "Cleansing Rite (ritual)" TECHNIQUE
+                "Rejuvenating Breath (kiho)" TECHNIQUE
+                "Touchstone of Courage (shuji)" TECHNIQUE
+            }
+        }
+
+        RULES {
+            #L5RWW82kL2mN4oP6qR8sT0uV: temple_abbot_monastic_leader
+        }
+    }
+
+    ^"Yokai Hunter" DEF {
+        APPLIES TO [^"Title"]
+
+        # Monks who shed the tradition of pacifism and seek out
+        # malevolent or hazardous yokai and other supernatural
+        # entities to eliminate or free them.
+
+        PROPERTIES {
+            ^"Assigned By" STRING "By another Yokai Hunter."
+            ^"Status Award" STRING "+5"
+            ^"XP to Completion" INTEGER DEFAULT 36
+            ^"Title Ability" STRING "Commune with the Changed"
+        }
+
+        ^"Commune with the Changed" DEF {
+            # Once per scene, make TN 3 Sentiment or Survival
+            # (Water 2) check to peer into the soul of a yokai you
+            # can perceive. If you succeed, identify two of:
+            # - The yokai's greatest current need
+            # - One of the yokai's weaknesses
+            # - The yokai's greatest strength
+            # - Whether the yokai is alone or in a group
+            # - Whether the yokai could be parlayed with
+            # Additionally, TN of checks to interact with yokai
+            # socially are reduced by 1 (minimum 1).
+        }
+
+        CURRICULUM {
+            ^"Title Curriculum" {
+                "Scholar" SKILL_GROUP
+                "Martial" SKILL_GROUP
+                "Command" SKILL
+                "Courtesy" SKILL
+                "Survival" SKILL
+                "Blistering Retribution (kiho)" TECHNIQUE
+                "Swallow's Dart Style (kata)" TECHNIQUE
+                "Tiger's Lunge Style (kata)" TECHNIQUE
+            }
+        }
+
+        RULES {
+            #L5RWW83wX3yZ5aB7cD9eF1gH: yokai_hunter_supernatural_tracker
+        }
+    }
+
+    # ===========================
+    # NEW CONDITIONS (ILLNESSES)
+    # ===========================
+
+    ^"Illness: Oozing Sore Disease" DEF {
+        APPLIES TO [^"Condition"]
+
+        # A disease causing fever, intense vomiting, then painful
+        # oozing sores that scab and leave horrible scars.
+        # Children are much more susceptible.
+
+        PROPERTIES {
+            ^"Effects" STRING "Maximum Endurance reduced by half. If character touches another person, that person must make TN 4 Fitness (Earth) check or contract the disease (symptoms appear after 10 days)."
+            ^"Removed When" STRING "Roll d10; disease runs its course after 10 + die result days from symptom onset with rest. Each Martial check adds one day. Once per day, Medicine or Theology (Earth 3, Fire 2) TN 4 check reduces recovery by 1 day (minimum 10 total days)."
+        }
+
+        RULES {
+            #L5RWW84iJ4kL6mN8oP0qR2sT: oozing_sore_disease
+        }
+    }
+
+    ^"Illness: Gut Sickness" DEF {
+        APPLIES TO [^"Condition"]
+
+        # Illness characterized by stomach pain, frequent need
+        # to defecate, blood in feces, dehydration, and tiredness.
+        # Contracted from impure food or drink.
+
+        PROPERTIES {
+            ^"Effects" STRING "When character fails a check during a scene, must make TN 3 Fitness check (Earth 2). If failed, overcome with abdominal pain for rest of scene; TNs of all subsequent Social and Scholar checks increased by 1."
+            ^"Removed When" STRING "Naturally resolves after one week. Once per day Medicine or Theology (Water 2) TN 3 check reduces recovery days by bonus successes (minimum one day)."
+        }
+
+        RULES {
+            #L5RWW85uV5wX7yZ9aB1cD3eF: gut_sickness
+        }
+    }
+
+    ^"Illness: Coughing Illness" DEF {
+        APPLIES TO [^"Condition"]
+
+        # Illness characterized by chest pain and intense fits
+        # of bloody coughing. Contracted through contact with
+        # bodily fluids of infected individuals.
+
+        PROPERTIES {
+            ^"Effects" STRING "Character gains Damaged Heart or Organ adversity for lungs (core rulebook page 119) until healed."
+            ^"Removed When" STRING "Once per day Medicine or Theology (Water 3, Void 3) TN 4 check. If check succeeds three days in a row, character recovers. If check fails three days in a row, loses Damaged Heart or Organ and gains Incurable Illness adversity instead."
+        }
+
+        RULES {
+            #L5RWW86gH6iJ8kL0mN2oP4qR: coughing_illness
+        }
+    }
+
+    ^"Illness: Unsteady Illness" DEF {
+        APPLIES TO [^"Condition"]
+
+        # Illness causing unsteadiness, confusion, speech
+        # difficulties, pain, muscle stiffness, blurry vision,
+        # and inhibited reflexes. Caused by nutritional deficiency.
+
+        PROPERTIES {
+            ^"Effects" STRING "At start of each day, roll d10: 1-2 Social skills, 3-4 Martial skills, 5-6 Scholar skills, 7-8 Artisan skills, 9 Trade skills TN increased by 2 until 6+ hours rest. On 10, character becomes Disoriented at start of each scene until 6+ hours rest."
+            ^"Removed When" STRING "TN 5 Medicine or Theology check. If succeed, realize character needs three days of rest and good varied meals. After three days of rest and good food, illness is removed."
+        }
+
+        RULES {
+            #L5RWW87sT7uV9wX1yZ3aB5cD: unsteady_illness
+        }
+    }
+
+    ^"Illness: Fire Rash" DEF {
+        APPLIES TO [^"Condition"]
+
+        # Illness beginning with fever, coughing, head fullness,
+        # red eyes, then angry red itchy rash covering entire body.
+        # Spreads quickly through physical contact.
+
+        PROPERTIES {
+            ^"Effects" STRING "Contact requires TN 4 Fitness check (Earth 3) or contract illness. Glory temporarily decreased by 10 (minimum 10). Character gains Discomfiting Countenance disadvantage for duration."
+            ^"Removed When" STRING "Naturally removed after 10 days. Recovery expedited with TN 4 Medicine or Theology check; on success, recover in 8 days instead."
+        }
+
+        RULES {
+            #L5RWW88eF8gH0iJ2kL4mN6oP: fire_rash
+        }
+    }
+
+    # ===========================
+    # NEW TERRAIN QUALITIES
+    # ===========================
+
+    ^"Imbalanced (Air) Variant" DEF {
+        APPLIES TO [^"Terrain"]
+
+        # Air is thin and harsh, making physical activity and
+        # speaking at length difficult. Air kami are absent or
+        # unresponsive.
+
+        PROPERTIES {
+            ^"Effects" STRING "When performing a check using Air ring, TN increased by 1. If failed, become dizzy from lack of oxygen: receive 1 fatigue and Silenced condition."
+        }
+
+        RULES {
+            #L5RWW89qR9sT1uV3wX5yZ7aB: imbalanced_air_terrain
+        }
+    }
+
+    ^"Imbalanced (Earth) Variant" DEF {
+        APPLIES TO [^"Terrain"]
+
+        # Ground is barren, lifeless, filled with cracks and
+        # fissures. Earth kami are absent or unresponsive.
+
+        PROPERTIES {
+            ^"Effects" STRING "When performing a check using Earth ring, TN increased by 1. If failed, lose stability and become Prone."
+        }
+
+        RULES {
+            #L5RWW90cD0eF2gH4iJ6kL8mN: imbalanced_earth_terrain
+        }
+    }
+
+    ^"Imbalanced (Fire) Variant" DEF {
+        APPLIES TO [^"Terrain"]
+
+        # Area is unnaturally dark and saturated with wetness.
+        # Fire kami are absent or unresponsive.
+
+        PROPERTIES {
+            ^"Effects" STRING "When performing a check using Fire ring, TN increased by 1. If failed, morale falters: receive 1 strife. Character cannot suffer Burning condition while in this terrain."
+        }
+
+        RULES {
+            #L5RWW91oP1qR3sT5uV7wX9yZ: imbalanced_fire_terrain
+        }
+    }
+
+    ^"Imbalanced (Water) Variant" DEF {
+        APPLIES TO [^"Terrain"]
+
+        # Little water present, any that exists is stagnant and
+        # unable to support life. Water kami are absent or
+        # unresponsive.
+
+        PROPERTIES {
+            ^"Effects" STRING "When performing a check using Water ring, TN increased by 1. If failed, become Disoriented."
+        }
+
+        RULES {
+            #L5RWW92aB2cD4eF6gH8iJ0kL: imbalanced_water_terrain
+        }
+    }
+
+    ^"Imbalanced (Void) Variant" DEF {
+        APPLIES TO [^"Terrain"]
+
+        # Something pulls deep at the core of the spirit. The
+        # Void seems unstable here.
+
+        PROPERTIES {
+            ^"Effects" STRING "When casting an Inversion, must turn one kept blank die to (st) symbol. When performing check using Void ring, TN increased by 1. If failed, lose 1 Void point; if no Void points, receive 1 strife instead. While in this terrain, Void points cannot be spent."
+        }
+
+        RULES {
+            #L5RWW93mN3oP5qR7sT9uV1wX: imbalanced_void_terrain
+        }
+    }
+
+    # ===========================
+    # ELEMENTAL IMBALANCE MECHANICS
+    # ===========================
+
+    ^"Elemental Imbalance Rules" DEF {
+        APPLIES TO [^"Mechanic"]
+
+        # Uncertainty: At start of each scene in an imbalanced
+        # area, all NPCs experience strife based on severity:
+        # Minor: 2 strife, Moderate: 3, Major: 4, Catastrophic: 5.
+        # Scarcity: TN of checks to acquire goods increases:
+        # Minor: +1, Moderate: +2, Major: +3, Catastrophic: unavailable.
+        # Identifying: Accrue momentum points (1 per success,
+        # +1 per 2 bonus successes). 5-10 points to identify root.
+        # Solving: Intrigue with spirits; Calm a Spirit social
+        # objective (difficulty 10, base TN 4 Persuade, TN 2 if
+        # using Theology). If all spirits calmed, imbalance ceases.
+
+        RULES {
+            #L5RWW94yZ4aB6cD8eF0gH2iJ: elemental_imbalance_uncertainty_scarcity
+            #L5RWW95kL5mN7oP9qR1sT3uV: elemental_imbalance_identification
+            #L5RWW96wX6yZ8aB0cD2eF4gH: elemental_imbalance_resolution
+        }
+    }
+
+    # ===========================
+    # DESTINY RULES
+    # ===========================
+
+    ^"Destiny (Alternative to Giri)" DEF {
+        APPLIES TO [^"Mechanic"]
+
+        # For characters who do not fit the typical giri/duty
+        # dynamic: monks who remember past lives, tengu who
+        # live centuries, nezumi who live a fleeting few years.
+        # Destiny represents a character's place in the cosmos.
+        # It is discovered within, not placed by a lord. A destiny
+        # remains whether a character would prefer it or not.
+        # It can be ignored but never abandoned.
+        # Resolving destiny retires the character from play.
+        # Destiny and ninjo should be made to clash.
+
+        RULES {
+            #L5RWW97iJ7kL9mN1oP3qR5sT: destiny_alternative_to_giri
+            #L5RWW98uV8wX0yZ2aB4cD6eF: destiny_resolution_retires_character
+        }
+    }
+
+    # ===========================
+    # SINCERITY BUSHIDO RULES
+    # ===========================
+
+    ^"Bushido Sincerity Guidance" DEF {
+        APPLIES TO [^"Mechanic"]
+
+        # Optional trifling breaches and small sacrifices for
+        # Sincerity tenet. Trifling Breach (forfeit 1 honor):
+        # propagating false rumors, impersonating lower status,
+        # remaining silent while someone makes false statements.
+        # Small Sacrifice (gain 1 honor): getting equal/higher
+        # status to accept constructive criticism, correcting
+        # faulty statement without impugning sincerity, claiming
+        # responsibility for subordinate's failing (forfeit 1+ glory).
+
+        RULES {
+            #L5RWW99gH9iJ1kL3mN5oP7qR: sincerity_trifling_breaches_sacrifices
+        }
+    }
+}

@@ -1,0 +1,2383 @@
+EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
+    NAME "Legend of the Five Rings 5th Edition - Path of Waves: Character Creation"
+    VERSION "0.3"
+    RELEASE_DATE "2026-03-01"
+
+    # Path of Waves (Chapter 2): A revised Game of Twenty Questions
+    # for ronin, peasant, and gaijin characters. Replaces clan/family
+    # with region/upbringing. Replaces giri with "past". Introduces
+    # new schools, advantages, disadvantages, and gaijin cultures.
+    # This extension supplements and partially overrides the core
+    # character creation system to support non-samurai PCs.
+
+    # ===========================
+    # REVISED TWENTY QUESTIONS
+    # ===========================
+
+    # The Path of Waves twenty questions replace the core
+    # rulebook's twenty questions for ronin, peasant, and
+    # gaijin characters. Key differences:
+    # - Question 1 uses Region instead of Clan
+    # - Question 2 uses Upbringing instead of Family
+    # - Question 3 uses new school options
+    # - Giri is replaced by Past (Question 5)
+    # - Ninjo remains but is reframed around Past (Question 6)
+    # - Question 7 has different flavor (positive deeds vs selfish actions)
+    # - Question 8 has THREE options (Orthodox, Divergent, Ignorant) instead of two
+    # - Question 14 is "Most prized possession" instead of "What do people notice first?"
+    # - Question 17 is "Shared group history" instead of "Parent's opinion"
+    # - Question 18 is "Who raised you? (+1 skill)" instead of heritage table
+    # - Status starts lower (ronin 24, peasant 15, gaijin 0)
+    # - Glory represents personal reputation, not Bushido adherence
+
+    # ===========================
+    # NEW ENTITY TYPES
+    # ===========================
+
+    ^"Ronin" DEF {
+        EXTENDS ^"Samurai"
+        # Masterless samurai who walk the Path of Waves.
+        # Ronin retain samurai social standing but lack
+        # a lord, clan, or formal family backing.
+    }
+
+    ^"Gaijin" DEF {
+        EXTENDS ^"Entity"
+        # Foreigners from outside Rokugan: Ujik nomads,
+        # Qamarist scholars, Ivory Kingdoms warriors, etc.
+        # Begin with Status 0 in Rokugan. May have a
+        # second status value for their homeland.
+    }
+
+    # ===========================
+    # PATH OF WAVES CHARACTER CREATION
+    # ===========================
+
+    ^"Path of Waves Character Creation" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # Limits: rings and skills have a maximum rank of 3
+        # during character creation. Starting values: 1 rank
+        # in each ring, 0 ranks in each skill.
+
+        RULES {
+            #L5RPW01aB2cD4eF6gH8iJ0k: pow_rings_max_3_during_creation
+            #L5RPW02lM3nO5pQ7rS9tU1v: pow_skills_max_3_during_creation
+            #L5RPW03wX4yZ6aB8cD0eF2g: pow_ronin_base_status_24
+            #L5RPW04hI5jK7lM9nO1pQ3r: pow_peasant_base_status_15
+            #L5RPW05sT6uV8wX0yZ2aB4c: pow_gaijin_base_status_0
+            #L5RPW06dE7fG9hI1jK3lM5n: pow_giri_replaced_by_past
+            #L5RPW07oP8qR0sT2uV4wX6y: pow_glory_represents_personal_reputation
+        }
+    }
+
+    # ===========================
+    # QUESTION 1: REGIONS
+    # ===========================
+
+    ^"Urban Region" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant"]
+
+        # Cities are places where trade flourishes, cultures meet,
+        # and many different types of people mix and mingle.
+
+        PROPERTIES {
+            ^"Region" STRING "Urban" FIXED
+            ^"Ring Increase" STRING "+1 Air"
+            ^"Skill Increase" STRING "+1 Commerce"
+            ^"Glory" INTEGER DEFAULT 29
+        }
+
+        RULES {
+            #L5RPW08zA9bC1dE3fG5hI7j: urban_political_awareness
+            #L5RPW09kL0mN2oP4qR6sT8u: urban_cosmopolitan_connections
+        }
+    }
+
+    ^"Rural Farmland Region" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant"]
+
+        # Food is the core of any prosperous civilization.
+        # Farmers tame the land and carry the weight of
+        # civilization on their backs.
+
+        PROPERTIES {
+            ^"Region" STRING "Rural Farmland" FIXED
+            ^"Ring Increase" STRING "+1 Earth"
+            ^"Skill Increase" STRING "+1 Fitness"
+            ^"Glory" INTEGER DEFAULT 34
+        }
+
+        RULES {
+            #L5RPW10vW1xY3zA5bC7dE9f: rural_oral_tradition
+            #L5RPW11gH2iJ4kL6mN8oP0q: rural_agricultural_knowledge
+        }
+    }
+
+    ^"Sea River or Lake Region" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant"]
+
+        # The sea provides and takes away in equal measure.
+        # Water has strong ties to trade and travel.
+
+        PROPERTIES {
+            ^"Region" STRING "Sea, River, or Lake" FIXED
+            ^"Ring Increase" STRING "+1 Water"
+            ^"Skill Increase" STRING "+1 Seafaring"
+            ^"Glory" INTEGER DEFAULT 32
+        }
+
+        RULES {
+            #L5RPW12rS3tU5vW7xY9zA1b: sea_trade_route_awareness
+            #L5RPW13cD4eF6gH8iJ0kL2m: sea_water_survival_skills
+        }
+    }
+
+    ^"Forest Region" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant"]
+
+        # Forests are wildernesses with trees more ancient
+        # than Rokugan itself. Those who live among the trees
+        # absorb a bit of that wildness into themselves.
+
+        PROPERTIES {
+            ^"Region" STRING "Forest" FIXED
+            ^"Ring Increase" STRING "+1 Earth"
+            ^"Skill Increase" STRING "+1 Survival"
+            ^"Glory" INTEGER DEFAULT 30
+        }
+
+        RULES {
+            #L5RPW14nO5pQ7rS9tU1vW3x: forest_navigation_instincts
+            #L5RPW15yZ6aB8cD0eF2gH4i: forest_foraging_hunting_knowledge
+        }
+    }
+
+    ^"Mountain Region" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant"]
+
+        # In the mountains, the peaks reach to the Heavens.
+        # This environment is perfect for monks and those
+        # seeking Enlightenment.
+
+        PROPERTIES {
+            ^"Region" STRING "Mountain" FIXED
+            ^"Ring Increase" STRING "+1 Void"
+            ^"Skill Increase" STRING "+1 Meditation"
+            ^"Glory" INTEGER DEFAULT 33
+        }
+
+        RULES {
+            #L5RPW16jK7lM9nO1pQ3rS5t: mountain_trail_pilgrimage_knowledge
+            #L5RPW17uV8wX0yZ2aB4cD6e: mountain_extreme_survival
+        }
+    }
+
+    ^"Haunted Region" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant"]
+
+        # Lands affected by the Taint or otherwise desecrated
+        # by foul acts. Those who hail from such regions view
+        # the world as a much more dangerous place.
+
+        PROPERTIES {
+            ^"Region" STRING "Haunted" FIXED
+            ^"Ring Increase" STRING "+1 Fire"
+            ^"Skill Increase" STRING "+1 Command"
+            ^"Glory" INTEGER DEFAULT 28
+        }
+
+        RULES {
+            #L5RPW18fG9hI1jK3lM5nO7p: haunted_taint_recognition
+            #L5RPW19qR0sT2uV4wX6yZ8a: haunted_pragmatism_against_supernatural
+        }
+    }
+
+    # ===========================
+    # GAIJIN REGIONAL OPTIONS
+    # ===========================
+
+    # Gaijin begin with status 0 in Rokugan. They also
+    # have a second status value reflecting standing in
+    # their homeland, determined with GM during creation.
+
+    ^"Ujik of the Plains of Wind and Stone" DEF {
+        APPLIES TO [^"Gaijin"]
+
+        # The Ujik are a nomadic people living on expansive
+        # grassy plains north and west of Rokugan. They are
+        # supreme horsemen; Ujik begin play with a Unicorn
+        # warhorse.
+
+        PROPERTIES {
+            ^"Region" STRING "Ujik (Plains of Wind and Stone)" FIXED
+            ^"Culture" STRING "Gaijin - Ujik"
+            ^"Ring Increase" STRING "+1 Water"
+            ^"Skill Increase" STRING "+1 Survival"
+            ^"Glory" INTEGER DEFAULT 30
+            ^"Starting Equipment Note" STRING "Ujik begin play with a Unicorn warhorse"
+        }
+
+        RULES {
+            #L5RPW20bC1dE3fG5hI7jK9l: ujik_expert_horsemen
+            #L5RPW21mN2oP4qR6sT8uV0w: ujik_lords_of_death_religion
+        }
+    }
+
+    ^"Qamarists in the Cradle of the World" DEF {
+        APPLIES TO [^"Gaijin"]
+
+        # The Qamarist Caliphate is a powerful nation-state
+        # far to the west, thriving in fertile land between two
+        # great rivers. They practice a monotheistic religion
+        # and possess advanced alchemical knowledge.
+
+        PROPERTIES {
+            ^"Region" STRING "Qamarist (Cradle of the World)" FIXED
+            ^"Culture" STRING "Gaijin - Qamarist"
+            ^"Ring Increase" STRING "+1 Fire"
+            ^"Skill Increase" STRING "+1 Theology"
+            ^"Glory" INTEGER DEFAULT 29
+        }
+
+        RULES {
+            #L5RPW22xY3zA5bC7dE9fG1h: qamarist_monotheistic_caliphate
+            #L5RPW23iJ4kL6mN8oP0qR2s: qamarist_alchemical_knowledge
+        }
+    }
+
+    ^"Yodha of the Ghostlands" DEF {
+        APPLIES TO [^"Gaijin"]
+
+        # Warriors from the Ivory Kingdoms who wage a
+        # never-ending struggle against evil forces in the
+        # Ghostlands (the western Shadowlands). They use
+        # gold and coral against Tainted beings.
+
+        PROPERTIES {
+            ^"Region" STRING "Yodha (Ghostlands)" FIXED
+            ^"Culture" STRING "Gaijin - Ivory Kingdoms"
+            ^"Ring Increase" STRING "+1 Earth"
+            ^"Skill Increase" STRING "+1 Theology"
+            ^"Glory" INTEGER DEFAULT 29
+        }
+
+        RULES {
+            #L5RPW24tU5vW7xY9zA1bC3d: yodha_ghostlands_shadowlands_fighters
+            #L5RPW25eF6gH8iJ0kL2mN4o: yodha_gold_coral_against_taint
+        }
+    }
+
+    ^"Sheelavaan of Bhavyatapura" DEF {
+        APPLIES TO [^"Gaijin"]
+
+        # The people of the City of Splendor in the central
+        # Ivory Kingdoms. Sophisticated, gregarious, eloquent,
+        # and skilled at bargaining through complex economies.
+
+        PROPERTIES {
+            ^"Region" STRING "Sheelavaan (Bhavyatapura)" FIXED
+            ^"Culture" STRING "Gaijin - Ivory Kingdoms"
+            ^"Ring Increase" STRING "+1 Air"
+            ^"Skill Increase" STRING "+1 Courtesy"
+            ^"Glory" INTEGER DEFAULT 28
+        }
+
+        RULES {
+            #L5RPW26pQ7rS9tU1vW3xY5z: sheelavaan_urban_sophistication
+            #L5RPW27aB8cD0eF2gH4iJ6k: sheelavaan_trade_and_languages
+        }
+    }
+
+    # ===========================
+    # QUESTION 2: UPBRINGINGS
+    # ===========================
+
+    ^"Craftsperson Upbringing" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        PROPERTIES {
+            ^"Upbringing" STRING "Craftsperson" FIXED
+            ^"Ring Increase" STRING "+1 Earth or +1 Void"
+            ^"Skill Increases" STRING "+1 Culture, +1 Design"
+            ^"Status Modification" INTEGER -2
+            ^"Starting Wealth" STRING "1 koku"
+        }
+    }
+
+    ^"Fallen Noble Upbringing" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # A fallen noble may use ring and skill increases
+        # based on their chosen clan, or +1 to any ring and
+        # +1 to any two skills. Begins with a wakizashi or
+        # gaijin equivalent.
+
+        PROPERTIES {
+            ^"Upbringing" STRING "Fallen Noble" FIXED
+            ^"Ring Increase" STRING "+1 to any ring, or based on chosen clan"
+            ^"Skill Increases" STRING "+1 to any two skills, or based on chosen clan"
+            ^"Status Modification" INTEGER 10
+            ^"Starting Wealth" STRING "An heirloom worth 3 koku, wakizashi (or gaijin equivalent)"
+        }
+    }
+
+    ^"Farmer Upbringing" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        PROPERTIES {
+            ^"Upbringing" STRING "Farmer" FIXED
+            ^"Ring Increase" STRING "+1 Earth or +1 Water"
+            ^"Skill Increases" STRING "+1 Labor, +1 Fitness"
+            ^"Status Modification" INTEGER 4
+            ^"Starting Wealth" STRING "2 bu"
+        }
+    }
+
+    ^"Geisha House Upbringing" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        PROPERTIES {
+            ^"Upbringing" STRING "Geisha House" FIXED
+            ^"Ring Increase" STRING "+1 Air or +1 Fire"
+            ^"Skill Increases" STRING "+1 Aesthetics, +1 Courtesy"
+            ^"Status Modification" INTEGER -20
+            ^"Starting Wealth" STRING "3 koku"
+        }
+    }
+
+    ^"Hinin Upbringing" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        PROPERTIES {
+            ^"Upbringing" STRING "Hinin" FIXED
+            ^"Ring Increase" STRING "+1 Water or +1 Void"
+            ^"Skill Increases" STRING "+2 Labor, +1 Survival"
+            ^"Status Modification" INTEGER -20
+            ^"Starting Wealth" STRING "5 zeni"
+        }
+    }
+
+    ^"Hunter or Fisher Upbringing" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        PROPERTIES {
+            ^"Upbringing" STRING "Hunter or Fisher" FIXED
+            ^"Ring Increase" STRING "+1 Earth or +1 Water"
+            ^"Skill Increases" STRING "+1 Labor, and +1 Seafaring or +1 Survival"
+            ^"Status Modification" INTEGER 3
+            ^"Starting Wealth" STRING "4 bu"
+        }
+    }
+
+    ^"Law Enforcement Upbringing" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        PROPERTIES {
+            ^"Upbringing" STRING "Law Enforcement" FIXED
+            ^"Ring Increase" STRING "+1 Earth or +1 Air"
+            ^"Skill Increases" STRING "+1 Government, +1 Command"
+            ^"Status Modification" INTEGER 5
+            ^"Starting Wealth" STRING "1 koku"
+        }
+    }
+
+    ^"Military Upbringing" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        PROPERTIES {
+            ^"Upbringing" STRING "Military" FIXED
+            ^"Ring Increase" STRING "+1 Earth or +1 Fire"
+            ^"Skill Increases" STRING "+1 Command, +1 Government"
+            ^"Status Modification" INTEGER 5
+            ^"Starting Wealth" STRING "1 koku"
+        }
+    }
+
+    ^"Ronin Family Upbringing" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        PROPERTIES {
+            ^"Upbringing" STRING "Ronin Family" FIXED
+            ^"Ring Increase" STRING "+1 to any one ring"
+            ^"Skill Increases" STRING "+1 Courtesy, +1 Martial Arts [Melee]"
+            ^"Status Modification" INTEGER 2
+            ^"Starting Wealth" STRING "1 koku"
+        }
+    }
+
+    ^"Organized Crime Upbringing" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        PROPERTIES {
+            ^"Upbringing" STRING "Organized Crime" FIXED
+            ^"Ring Increase" STRING "+1 Air or +1 Water"
+            ^"Skill Increases" STRING "+1 Skulduggery, +1 Games"
+            ^"Status Modification" INTEGER -8
+            ^"Starting Wealth" STRING "3 koku"
+        }
+    }
+
+    ^"Street Urchin Upbringing" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        PROPERTIES {
+            ^"Upbringing" STRING "Street Urchin" FIXED
+            ^"Ring Increase" STRING "+1 Air or +1 Fire"
+            ^"Skill Increases" STRING "+2 Skulduggery"
+            ^"Status Modification" INTEGER -7
+            ^"Starting Wealth" STRING "4 bu"
+        }
+    }
+
+    ^"Temple Upbringing" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        PROPERTIES {
+            ^"Upbringing" STRING "Temple" FIXED
+            ^"Ring Increase" STRING "+1 Void or +1 Air"
+            ^"Skill Increases" STRING "+1 Theology, +1 Courtesy"
+            ^"Status Modification" INTEGER 11
+            ^"Starting Wealth" STRING "One day's rations"
+        }
+    }
+
+    ^"Tradesperson Upbringing" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        PROPERTIES {
+            ^"Upbringing" STRING "Tradesperson" FIXED
+            ^"Ring Increase" STRING "+1 Air or +1 Water"
+            ^"Skill Increases" STRING "+1 Commerce, +1 Aesthetics"
+            ^"Status Modification" INTEGER -6
+            ^"Starting Wealth" STRING "2 koku"
+        }
+    }
+
+    # ===========================
+    # QUESTION 3: SCHOOLS
+    # ===========================
+
+    # --- General Schools (open to all PoW characters) ---
+
+    ^"Wandering Blade School" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # Warriors who have honed their skill with a signature
+        # weapon. Their power and skill rival the training of
+        # even samurai of the Great Clans.
+
+        PROPERTIES {
+            ^"School Name" STRING "Wandering Blade" FIXED
+            ^"Roles" LIST ["Bushi"]
+            ^"Ring Increase" STRING "+1 Earth, +1 any other ring"
+            ^"Starting Skills" STRING "Choose five: Fitness, Martial Arts [Melee], Martial Arts [Ranged], Martial Arts [Unarmed], Meditation, Performance, Smithing"
+            ^"Starting Honor" INTEGER DEFAULT 35
+            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Kata (choose one): Striking as Air, Striking as Earth, Striking as Water, Striking as Fire; Shuji: Wanderer's Resolve"
+            ^"School Ability" STRING "Signature Weapon"
+            ^"Mastery Ability" STRING "Unseen Blade"
+        }
+
+        ^"Signature Weapon" DEF {
+            # Choose a signature weapon category (or unarmed) with
+            # GM approval. When using a weapon from this category
+            # for an Attack action or Performance check, roll one
+            # additional skill die. Additionally, when making such a
+            # check you may suffer fatigue up to your school rank to
+            # alter that many results of your kept dice to (op) results.
+        }
+
+        STARTING_OUTFIT [
+            "traveling clothes",
+            "any one weapon of your signature weapon category of rarity 8 or lower (with GM approval)",
+            "any two items of rarity 4 or lower", "one trinket"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Commerce"
+                SKILL "Medicine"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Bellow of Resolve" [shuji]
+                ^"Tactical Assessment" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Courtesy"
+                SKILL "Smithing"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-2 Kata"
+                ^"Rushing Ox Style" [kata]
+                ^"Wayfarer's Path" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Command"
+                SKILL "Culture"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1-3 Kata"
+                ^"Iron in the Mountains Style" [kata]
+                ^"Tonight, I Am Your Opponent" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Games"
+                SKILL "Performance"
+                SKILL "Seafaring"
+                TECHNIQUE_GROUP "Rank 1-4 Kata"
+                ^"Bravado" [shuji]
+                ^"Void's Embrace Style" [kata]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Courtesy"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-5 Kata"
+                ^"Bond of Heroes" [shuji]
+                ^"Roar of Encouragement" [shuji]
+            }
+            RANK 6 {
+                "Unseen Blade (Mastery Ability): When you perform an Attack action, you may spend (op)+ as follows: Choose a character in range of the weapon you used with vigilance lower than your original target. If you succeed, that character suffers physical damage equal to your weapon's base damage plus your ranks in Fitness."
+            }
+        }
+
+        RULES {
+            #L5RPW28lM9nO1pQ3rS5tU7v: wandering_blade_signature_weapon_extra_die
+            #L5RPW29wX0yZ2aB4cD6eF8g: wandering_blade_fatigue_for_opportunity
+        }
+    }
+
+    ^"Student of the Talon School" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # Adept at landing critical blows from distance with
+        # spears, bows, or other ranged weapons. Precision
+        # reminiscent of a viper's bite.
+
+        PROPERTIES {
+            ^"School Name" STRING "Student of the Talon" FIXED
+            ^"Roles" LIST ["Bushi", "Shinobi"]
+            ^"Ring Increase" STRING "+1 Air, +1 Water"
+            ^"Starting Skills" STRING "Choose five: Fitness, Martial Arts [Melee], Martial Arts [Ranged], Meditation, Sentiment, Skulduggery, Survival"
+            ^"Starting Honor" INTEGER DEFAULT 30
+            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Kata (choose one): Soaring Slice or Hawk's Precision; Ninjutsu: = Skulk"
+            ^"School Ability" STRING "Piercing Insight"
+            ^"Mastery Ability" STRING "Lesson of the Hawk"
+        }
+
+        ^"Piercing Insight" DEF {
+            # Once per round, in a skirmish, when you inflict a
+            # critical strike on a character at range 2-5 or a character
+            # at range 2-5 inflicts a critical strike on you, you may
+            # increase or decrease the severity by your school rank.
+        }
+
+        STARTING_OUTFIT [
+            "traveling clothes", "any one weapon of rarity 6 or lower",
+            "yumi (bow) and a quiver of arrows with three special arrows (one armor-piercing, one flesh-cutter, one humming-bulb) or yari (spear)",
+            "one trinket"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Commerce"
+                SKILL "Courtesy"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Flowering Deceptions" [shuji]
+                ^"Chaotic Scattering" [kata]
+            }
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Medicine"
+                SKILL "Sentiment"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-2 Kata"
+                ^"Heartpiercing Strike" [kata]
+                ^"Swirling Viper Style" [kata]
+            }
+            RANK 3 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-3 Kata"
+                ^"Wasp's Spite Style" [kata]
+                ^"Eyeless Sight Shot" [kata]
+            }
+            RANK 4 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Courtesy"
+                SKILL "Medicine"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-4 Kata"
+                ^"Wolf's Proposal" [shuji]
+                ^"Falling Heavens Shot" [kata]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Medicine"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-5 Kata"
+                ^"Deadly Sting" [ninjutsu]
+                ^"Watch My Back" [shuji]
+            }
+            RANK 6 {
+                "Lesson of the Hawk (Mastery Ability): Once per scene, when performing an Attack action check, you may spend 1 Void Point to have your target treat their physical resistance as 0."
+            }
+        }
+
+        RULES {
+            #L5RPW30hI1jK3lM5nO7pQ9r: talon_critical_strike_severity_control
+        }
+    }
+
+    ^"Treasure Hunter School" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # Roguish smooth talkers adept at dodging dangerous
+        # situations. Quick thinking and a discerning eye for
+        # untold riches from the ancient past and dangerous present.
+
+        PROPERTIES {
+            ^"School Name" STRING "Treasure Hunter" FIXED
+            ^"Roles" LIST ["Courtier", "Bushi"]
+            ^"Ring Increase" STRING "+1 Air, +1 Water"
+            ^"Starting Skills" STRING "Choose five: Commerce, Courtesy, Fitness, Games, Martial Arts [Melee], Sentiment, Skulduggery"
+            ^"Starting Honor" INTEGER DEFAULT 27
+            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Kata: = Tactical Assessment; Shuji (choose one): All in Jest or Rustling of Leaves"
+            ^"School Ability" STRING "Risk and Reward"
+            ^"Mastery Ability" STRING "All Part of the Plan"
+        }
+
+        ^"Risk and Reward" DEF {
+            # You have an uncanny sense for dangerous situations.
+            # Your vigilance and focus are increased by your school
+            # rank, unless you are Compromised.
+        }
+
+        STARTING_OUTFIT [
+            "traveling clothes", "any one weapon of rarity 6 or lower",
+            "katana", "any one item of rarity 3 or lower",
+            "any one item of rarity 5 or lower", "two trinkets"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Commerce"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1 Shuji"
+                ^"Striking as Air" [kata]
+                ^"Chaotic Scattering" [kata]
+            }
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Courtesy"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-2 Air Shuji"
+                ^"Daring Swing" [kata]
+                ^"Reckless Lunge" [kata]
+            }
+            RANK 3 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Commerce"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Seafaring"
+                TECHNIQUE_GROUP "Rank 1-3 Water Shuji"
+                ^"Dazzling Performance" [shuji]
+                ^"Laughing Fox Style" [kata]
+            }
+            RANK 4 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Courtesy"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-4 Kata"
+                ^"Regal Bearing" [shuji]
+                ^"Ruse of Moon's Reflection" [kata]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Courtesy"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-5 Air Shuji"
+                ^"Watch My Back" [shuji]
+                ^"Roar of Encouragement" [shuji]
+            }
+            RANK 6 {
+                "All Part of the Plan (Mastery Ability): Once per scene when you make a check to resist, you may spend 1 Void Point to automatically succeed. If you do, you may immediately perform an action."
+            }
+        }
+
+        RULES {
+            #L5RPW31sT2uV4wX6yZ8aB0c: treasure_hunter_vigilance_focus_increase
+        }
+    }
+
+    ^"School of Leaves" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # Outcasts who have become precisely what society
+        # deems them: those who slink about the shadows,
+        # sowing chaos and striking with blade, bow, or word.
+
+        PROPERTIES {
+            ^"School Name" STRING "School of Leaves" FIXED
+            ^"Roles" LIST ["Shinobi", "Courtier"]
+            ^"Ring Increase" STRING "+1 Fire, +1 Air"
+            ^"Starting Skills" STRING "Choose five: Fitness, Martial Arts [Melee], Martial Arts [Ranged], Performance, Sentiment, Skulduggery, Survival"
+            ^"Starting Honor" INTEGER DEFAULT 26
+            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Shuji (choose one): Honest Assessment or Whispers of Court; Ninjutsu: = Skulk, = Deadly Sting"
+            ^"School Ability" STRING "Tactical Cover"
+            ^"Mastery Ability" STRING "Crack Not a Single Twig"
+        }
+
+        ^"Tactical Cover" DEF {
+            # While you are in Obscuring terrain, you may treat
+            # your physical resistance as increased by your school rank.
+        }
+
+        STARTING_OUTFIT [
+            "traveling clothes", "any one weapon of rarity 6 or lower",
+            "3 shuriken", "katana",
+            "any two items of rarity 4 or lower",
+            "three knives", "one trinket"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Courtesy"
+                SKILL "Performance"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Prey on the Weak" [ninjutsu]
+                ^"Rustling of Leaves" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Courtesy"
+                SKILL "Games"
+                SKILL "Government"
+                TECHNIQUE_GROUP "Rank 1-2 Air Shuji"
+                ^"Staggering Shot" [kata]
+                ^"Crimson Leaves Strike" [kata]
+            }
+            RANK 3 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-3 Kata"
+                ^"Noxious Cloud" [ninjutsu]
+                ^"Wasp's Spite Style" [kata]
+            }
+            RANK 4 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Government"
+                SKILL "Sentiment"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-4 Fire Shuji"
+                ^"Iaijutsu Cut: Reverse Draw" [kata]
+                ^"Ruse of Moon's Reflection" [kata]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Culture"
+                SKILL "Performance"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-5 Kata"
+                ^"Bend with the Storm" [shuji]
+                ^"Silencing Stroke" [ninjutsu]
+            }
+            RANK 6 {
+                "Crack Not a Single Twig (Mastery Ability): At the start of a scene, you may choose any number of mundane terrain effects. You ignore the effects of these terrain qualities. (Other characters do not ignore them when making checks against you.) This effect persists until the end of the scene."
+            }
+        }
+
+        RULES {
+            #L5RPW32dE3fG5hI7jK9lM1n: school_of_leaves_obscuring_terrain_resistance
+        }
+    }
+
+    ^"Voice of the Wilds School" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # Shugenja who have received no formal training but
+        # have developed a knack for building positive
+        # relationships with the kami around them.
+
+        PROPERTIES {
+            ^"School Name" STRING "Voice of the Wilds" FIXED
+            ^"Roles" LIST ["Shugenja", "Courtier"]
+            ^"Ring Increase" STRING "+1 to any two different rings"
+            ^"Starting Skills" STRING "Choose three: Composition, Courtesy, Games, Meditation, Sentiment, Theology"
+            ^"Starting Honor" INTEGER DEFAULT 35
+            ^"Techniques Available" LIST ["Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Invocations (choose one): Commune with Spirits or Divination; Shuji (choose two): Well of Desire, Weight of Duty, Rustling of Leaves, Sensational Distraction"
+            ^"School Ability" STRING "Naturally Attuned"
+            ^"Mastery Ability" STRING "Elemental Charmer"
+        }
+
+        ^"Naturally Attuned" DEF {
+            # As a downtime activity, you may select any number
+            # of invocations with total school rank prerequisites
+            # equal to double your school rank. You can perform
+            # these invocations as if you knew them.
+            # While making a check to activate an invocation, if you
+            # become Compromised, you suffer spiritual backlash.
+        }
+
+        STARTING_OUTFIT [
+            "traveling clothes", "one weapon of rarity 6 or lower",
+            "one choice of kit", "a knife",
+            "one choice of omamori", "one trinket"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Composition"
+                SKILL "Courtesy"
+                SKILL "Medicine"
+                TECHNIQUE_GROUP "Rank 1 Shuji"
+                ^"Nature's Touch" [ritual]
+                ^"Threshold Barrier" [ritual]
+            }
+            RANK 2 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Medicine"
+                SKILL "Meditation"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-2 Shuji"
+                ^"Earth Becomes Sky" [invocation]
+                ^"Tactical Assessment" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Composition"
+                SKILL "Sentiment"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-3 Shuji"
+                ^"Fury of Osano-wo" [invocation]
+                ^"Hands of the Tides" [invocation]
+            }
+            RANK 4 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Sentiment"
+                SKILL "Survival"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-2 Invocations"
+                ^"Mentor's Guidance" [shuji]
+                ^"False Realm of the Fox Spirits" [invocation]
+            }
+            RANK 5 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Courtesy"
+                SKILL "Meditation"
+                SKILL "Performance"
+                TECHNIQUE_GROUP "Rank 1-5 Shuji"
+                TECHNIQUE_GROUP "Rank 1-3 Invocations"
+                ^"Ever-Changing Waves" [invocation]
+            }
+            RANK 6 {
+                "Elemental Charmer (Mastery Ability): You may importune invocations without making an offering."
+            }
+        }
+
+        RULES {
+            #L5RPW33oP2qR4sT6uV8wX0y: voice_of_wilds_naturally_attuned_downtime
+            #L5RPW34zA1bC3dE5fG7hI9j: voice_of_wilds_spiritual_backlash_on_compromised
+        }
+    }
+
+    ^"Artisan of the Roads School" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # Adept at scrounging suitable materials in almost any
+        # circumstance, using surroundings as inspiration to
+        # create inventive art from everyday items.
+
+        PROPERTIES {
+            ^"School Name" STRING "Artisan of the Roads" FIXED
+            ^"Roles" LIST ["Artisan"]
+            ^"Ring Increase" STRING "+1 Fire, +1 to any other ring"
+            ^"Starting Skills" STRING "Choose five: Aesthetics, Courtesy, Commerce, Composition, Culture, Design, Smithing"
+            ^"Starting Honor" INTEGER DEFAULT 30
+            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Shuji (choose one): Shallow Waters or Whispers of Court; Shuji: Fanning the Flames"
+            ^"School Ability" STRING "Resourceful Artistry"
+            ^"Mastery Ability" STRING "Surge of Brilliance"
+        }
+
+        ^"Resourceful Artistry" DEF {
+            # Once per game session when performing a downtime
+            # activity to craft, you may scavenge supplies for your
+            # craft worth an amount of koku equal to your school rank.
+        }
+
+        STARTING_OUTFIT [
+            "traveling clothes", "one weapon of rarity 6 or lower",
+            "one piece of art that is half finished",
+            "a pack of haphazard art supplies",
+            "one item of rarity 4 or lower", "one trinket"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Commerce"
+                SKILL "Courtesy"
+                SKILL "Performance"
+                TECHNIQUE_GROUP "Rank 1 Shuji"
+                ^"Fluent Bargaining" [shuji]
+                ^"Artisan's Appraisal" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Commerce"
+                SKILL "Games"
+                SKILL "Labor"
+                TECHNIQUE_GROUP "Rank 1-2 Air Shuji"
+                ^"Dazzling Performance" [shuji]
+                ^"Improvised Assault" [kata]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Culture"
+                SKILL "Games"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-3 Earth Shuji"
+                ^"Bravado" [shuji]
+                ^"Wheeling Sweep" [kata]
+            }
+            RANK 4 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Courtesy"
+                SKILL "Culture"
+                SKILL "Government"
+                TECHNIQUE_GROUP "Rank 1-4 Kata"
+                ^"Mentor's Guidance" [shuji]
+                ^"Laughing Fox Style" [kata]
+            }
+            RANK 5 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Commerce"
+                SKILL "Labor"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-5 Shuji"
+                ^"Roar of Encouragement" [shuji]
+                ^"Rouse the Soul" [shuji]
+            }
+            RANK 6 {
+                "Surge of Brilliance (Mastery Ability): When you craft an item, you may increase or decrease its rarity by up to your ranks in the skill you used to craft it. Once per game session when you make a check to create, refine, adapt, restore, or attune to an item, the check takes an action rather than a downtime activity."
+            }
+        }
+
+        RULES {
+            #L5RPW35kL2mN4oP6qR8sT0u: artisan_roads_scavenge_supplies
+        }
+    }
+
+    ^"Mystic of the Mountain School" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # Wandering monks who dole out wisdom and practice
+        # unarmed martial arts and storytelling in equal measure.
+
+        PROPERTIES {
+            ^"School Name" STRING "Mystic of the Mountain" FIXED
+            ^"Roles" LIST ["Monk", "Courtier"]
+            ^"Ring Increase" STRING "+1 Void, +1 Air"
+            ^"Starting Skills" STRING "Choose four: Martial Arts [Melee], Martial Arts [Unarmed], Performance, Sentiment, Survival, Theology"
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Kiho (choose one): Ki Protection or The Great Silence; Shuji (choose one): Honest Assessment or Stirring the Embers; Rituals: Cleansing Rite; Shuji: Artisan's Appraisal"
+            ^"School Ability" STRING "Unexpected Wisdom"
+            ^"Mastery Ability" STRING "Stories as Tall as the Mountain"
+        }
+
+        ^"Unexpected Wisdom" DEF {
+            # You may dispense wisdom a number of times per game
+            # session equal to your school rank. On your turn or at any
+            # appropriate time during a narrative scene, you may give a
+            # small bit of wisdom to a character who can hear you and
+            # has not benefitted from this ability this scene. The next
+            # time that character employs that wisdom they may reduce
+            # the TN of that check by 1 and may negate a number of
+            # strife up to your ranks in Sentiment or Theology.
+        }
+
+        STARTING_OUTFIT [
+            "traveling clothes", "one weapon of rarity 6 or lower",
+            "one item of rarity 4 or lower",
+            "a journal containing little bits of knowledge",
+            "one trinket"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Performance"
+                SKILL "Sentiment"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1 Rituals"
+                ^"Way of the Earthquake" [kiho]
+                ^"Air Fist" [kiho]
+            }
+            RANK 2 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Survival"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-2 Kata"
+                ^"Way of the Willow" [kiho]
+                ^"Channel the Fire Dragon" [kiho]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Performance"
+                SKILL "Sentiment"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-3 Shuji"
+                ^"Way of the Falling Star" [kiho]
+                ^"Ride the Water Dragon" [kiho]
+            }
+            RANK 4 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Meditation"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-4 Kata"
+                ^"Touch the Void Dragon" [kiho]
+                ^"Pillar of Calm" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Meditation"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-5 Kata"
+                ^"Way of the Edgeless Sword" [kiho]
+                ^"Bend with the Storm" [shuji]
+            }
+            RANK 6 {
+                "Stories as Tall as the Mountain (Mastery Ability): Once per scene as a Scheme action you may make a TN 4 Performance (Air or Earth) check targeting a number of minion NPCs up to your ranks in Performance. If you succeed, each target decides that their actions really are unwise and leaves the scene, if able."
+            }
+        }
+
+        RULES {
+            #L5RPW36vW3xY5zA7bC9dE1f: mystic_mountain_wisdom_reduces_tn
+        }
+    }
+
+    # --- Gaijin Schools (culture-restricted, require GM permission for non-gaijin) ---
+
+    ^"Ujik Diviner School" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Gaijin"]
+
+        # Diviners call upon the wisdom of the Lords of Death,
+        # honored ancestors ascended to godhood. The first
+        # vision given is their own end.
+
+        PROPERTIES {
+            ^"School Name" STRING "Ujik Diviner" FIXED
+            ^"Roles" LIST ["Sage"]
+            ^"Restricted To" STRING "Ujik culture (or GM exception)"
+            ^"Ring Increase" STRING "+1 Void, +1 Water"
+            ^"Starting Skills" STRING "Choose three: Command, Games, Meditation, Performance, Sentiment, Theology"
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Techniques Available" LIST ["Earth and Water Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Invocations (choose two): Commune with Spirits, Embrace of Kenro-Ji-Jin, Caress of Earth, Jurojin's Balm, Wall of Earth; Invocations (choose two): Dance of Seasons, Heart of the Water Dragon, Dominion of Suijin, Innari's Blessing, Reflections of P'an Ku; Shuji: Ancestry Unearthed"
+            ^"School Ability" STRING "Seer of the Lords of Death"
+            ^"Mastery Ability" STRING "A Gift of Fate"
+        }
+
+        ^"Seer of the Lords of Death" DEF {
+            # You can channel rituals in the same way as invocations.
+            # Once per scene, when you channel you may receive
+            # fatigue up to your school rank. If you do, you may
+            # immediately make another check to perform an invocation
+            # of the same element using the reserved dice from your
+            # channel. For each fatigue received this way, you may add
+            # one kept die set to an (op) result.
+        }
+
+        STARTING_OUTFIT [
+            "sanctified robes", "traveling clothes",
+            "one weapon of rarity 6 or lower",
+            "a bag of scrying tools including mare's milk, bones, and incense",
+            "a Unicorn warhorse", "traveling pack", "one trinket"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Games"
+                SKILL "Meditation"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-2 Water Invocations"
+                ^"Divination" [ritual]
+                ^"Fukurokujin's Wit" [ritual]
+            }
+            RANK 2 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Fitness"
+                SKILL "Meditation"
+                SKILL "Performance"
+                TECHNIQUE_GROUP "Rank 1-3 Earth Invocations"
+                ^"Ebb and Flow" [kata]
+                ^"Mask of Wind" [invocation]
+            }
+            RANK 3 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Composition"
+                SKILL "Medicine"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-3 Shuji"
+                ^"Chaotic Scattering" [kata]
+                ^"Vapor of Nightmares" [invocation]
+            }
+            RANK 4 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Command"
+                SKILL "Games"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1-5 Earth Invocations"
+                ^"Laughing Fox Style" [kata]
+                ^"Mentor's Guidance" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Fitness"
+                SKILL "Meditation"
+                SKILL "Performance"
+                TECHNIQUE_GROUP "Rank 1-5 Water Invocations"
+                ^"Roar of Encouragement" [shuji]
+                ^"Bond of Heroes" [shuji]
+            }
+            RANK 6 {
+                "A Gift of Fate (Mastery Ability): Once per game session on your turn, you may choose one ritual for which you meet the prerequisites (does not need to be purchased). You may immediately perform that ritual as a single action instead of a downtime activity."
+            }
+        }
+
+        RULES {
+            #L5RPW37gH4iJ6kL8mN0oP2q: ujik_diviner_channel_rituals_as_invocations
+        }
+    }
+
+    ^"Qamarist Shield Bearer Tradition" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Gaijin"]
+
+        # Proud and formidable guards of the Qamarist Caliphate
+        # who use advanced alchemical arts and imposing command
+        # of shields, spears, and swords to control the battlefield.
+
+        PROPERTIES {
+            ^"School Name" STRING "Qamarist Shield Bearer Tradition" FIXED
+            ^"Roles" LIST ["Bushi", "Sage"]
+            ^"Restricted To" STRING "Qamarist culture (or GM exception)"
+            ^"Ring Increase" STRING "+1 Earth, +1 Void"
+            ^"Starting Skills" STRING "Choose five: Command, Fitness, Martial Arts [Melee], Martial Arts [Unarmed], Meditation, Tactics, Theology"
+            ^"Starting Honor" INTEGER DEFAULT 50
+            ^"Techniques Available" LIST ["Close Combat and General Kata (kata)", "Rituals (ritual)", "Earth Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Kata: Crescent Moon Style; Shuji: Courtier's Resolve"
+            ^"School Ability" STRING "Akilah's Teachings"
+            ^"Mastery Ability" STRING "Fortitude of the Cradle"
+        }
+
+        ^"Akilah's Teachings" DEF {
+            # Once per round after an Attack action check against
+            # you fails, if you have a shield readied and the attack
+            # is at range 0-1, you may shield bash. If you do, the
+            # target suffers physical damage equal to your ranks in
+            # Fitness plus your school rank.
+        }
+
+        STARTING_OUTFIT [
+            "traveling clothes", "lacquered armor",
+            "yari (spear) or naginata (polearm)",
+            "one weapon of rarity 6 or lower", "scimitar",
+            "Qamarist heavy shield", "alchemical kit",
+            "the Qamarist holy book", "traveling pack", "one trinket"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Government"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-2 Kata"
+                ^"Divination" [ritual]
+                ^"Wanderer's Resolve" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Government"
+                SKILL "Smithing"
+                TECHNIQUE_GROUP "Rank 1-2 Rituals"
+                ^"Goading Taunt" [shuji]
+                ^"Iron Shell Style" [kata]
+            }
+            RANK 3 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Meditation"
+                SKILL "Smithing"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-3 Kata"
+                ^"Deflective Defense" [kata]
+                ^"Iron in the Mountains Style" [kata]
+            }
+            RANK 4 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Smithing"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-4 Kata"
+                ^"Bonebreaker Style" [kata]
+                ^"Mentor's Guidance" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Meditation"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-5 Kata"
+                ^"Fortitude Draught" [ritual]
+                ^"Bond of Heroes" [shuji]
+            }
+            RANK 6 {
+                "Fortitude of the Cradle (Mastery Ability): You may shield bash after you defend against damage, even if the check was successful. After you shield bash, your target must resist with a TN 4 Fitness (Air 3, Water 5) check or suffer the Disoriented and Prone conditions."
+            }
+        }
+
+        RULES {
+            #L5RPW38rS5tU7vW9xY1zA3b: shield_bearer_shield_bash_on_failed_attack
+        }
+    }
+
+    ^"Qamarist Alchemist Tradition" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Gaijin"]
+
+        # Gifted alchemists who research and experiment to
+        # unlock secrets of creating elixirs, draughts, and
+        # concoctions to enhance the human body.
+
+        PROPERTIES {
+            ^"School Name" STRING "Qamarist Alchemist Tradition" FIXED
+            ^"Roles" LIST ["Sage"]
+            ^"Restricted To" STRING "Qamarist culture (or GM exception)"
+            ^"Ring Increase" STRING "+1 Earth, +1 Fire"
+            ^"Starting Skills" STRING "Choose three: Courtesy, Culture, Martial Arts [Ranged], Medicine, Meditation, Theology"
+            ^"Starting Honor" INTEGER DEFAULT 52
+            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Rituals: Balancing Salve, Cleansing Rite; Shuji: Illuminate the Way, Truth Burns Through Lies"
+            ^"School Ability" STRING "Creative Execution"
+            ^"Mastery Ability" STRING "Swift Creation"
+        }
+
+        ^"Creative Execution" DEF {
+            # When making a check to perform a ritual, you may
+            # receive fatigue up to your school rank to add that many
+            # kept (ring) set to (op) results.
+        }
+
+        STARTING_OUTFIT [
+            "traveling clothes", "one weapon of rarity 6 or lower",
+            "an alchemy kit", "a book of formulae",
+            "a book of mathematics", "the Qamarist holy book",
+            "one item of rarity 4 or lower", "one trinket"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Courtesy"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1-2 Rituals"
+                ^"Weight of Duty" [shuji]
+                ^"Wanderer's Resolve" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Command"
+                SKILL "Labor"
+                SKILL "Martial Arts [Ranged]"
+                TECHNIQUE_GROUP "Rank 1-2 Shuji"
+                ^"Fortitude Draught" [ritual]
+                ^"Boar's Wrath Style" [kata]
+            }
+            RANK 3 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Courtesy"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-3 Rituals"
+                ^"Breath of the Wind Style" [kata]
+                ^"Look Out!" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Government"
+                SKILL "Medicine"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-4 Rituals"
+                ^"Restorative Transmutation" [ritual]
+                ^"Pillar of Calm" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Culture"
+                SKILL "Medicine"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-5 Shuji"
+                ^"Mentor's Guidance" [shuji]
+                ^"Void Embrace Style" [kata]
+            }
+            RANK 6 {
+                "Swift Creation (Mastery Ability): Once per scene you may perform a ritual that uses the Medicine skill as an action as if it were a downtime activity."
+            }
+        }
+
+        RULES {
+            #L5RPW39cD6eF8gH0iJ2kL4m: qamarist_alchemist_fatigue_for_opportunity
+        }
+    }
+
+    ^"Ivory Kingdoms Sage Tradition" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Gaijin"]
+
+        # Individuals so tuned to their inner energy (lojas) that
+        # they can infuse others with it. They go on long
+        # pilgrimages seeking truths of the world.
+
+        PROPERTIES {
+            ^"School Name" STRING "Ivory Kingdoms Sage Tradition" FIXED
+            ^"Roles" LIST ["Sage", "Bushi"]
+            ^"Restricted To" STRING "Ivory Kingdoms culture (or GM exception)"
+            ^"Ring Increase" STRING "+1 Void, +1 Earth"
+            ^"Starting Skills" STRING "Choose five: Composition, Command, Courtesy, Martial Arts [Melee], Martial Arts [Unarmed], Meditation, Theology"
+            ^"Starting Honor" INTEGER DEFAULT 50
+            ^"Techniques Available" LIST ["Kata (kata)", "Kiho (kiho)", "Rituals (ritual)"]
+            ^"Starting Techniques" STRING "Kiho (choose two): Cleansing Spirit, Earth Needs No Eyes, Earthen Fist; Rituals: Threshold Barrier"
+            ^"School Ability" STRING "Gift of Inner Power"
+            ^"Mastery Ability" STRING "Divine Protection"
+        }
+
+        ^"Gift of Inner Power" DEF {
+            # After you perform a check to activate one of your kiho,
+            # you can receive fatigue up to your school rank and choose
+            # another character at range 0-1. If you do, that character
+            # gains the enhancement effect of your kiho in your stead
+            # (you may still resolve the burst effect, if able). This effect
+            # persists a number of rounds equal to the amount of fatigue
+            # you received plus your ranks in Meditation. Only one
+            # character can benefit from your kiho at a time.
+        }
+
+        STARTING_OUTFIT [
+            "sanctified robes", "traveling clothes", "a talwar",
+            "one weapon of rarity 6 or lower",
+            "a map showing the route from the Ivory Kingdoms to the Sand Road",
+            "traveling pack", "one item of rarity 4 or lower", "one trinket"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Command"
+                SKILL "Courtesy"
+                SKILL "Fitness"
+                TECHNIQUE_GROUP "Rank 1 Kiho"
+                ^"Landslide Strike" [kata]
+                ^"Bellow of Resolve" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Composition"
+                SKILL "Government"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-2 Kiho"
+                ^"Rider's Haste" [kata]
+                ^"Lord Hida's Grip" [kata]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Courtesy"
+                SKILL "Sentiment"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-3 Kata"
+                ^"Thunderous Hooves Style" [kata]
+                ^"Cleansing of Coral and Gold" [ritual]
+            }
+            RANK 4 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Fitness"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Martial Arts [Unarmed]"
+                TECHNIQUE_GROUP "Rank 1-4 Kiho"
+                ^"Striking as Void" [kata]
+                ^"Mentor's Guidance" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1-5 Kata"
+                ^"Touch the Void Dragon" [kiho]
+                ^"Buoyant Arrival" [kata]
+            }
+            RANK 6 {
+                "Divine Protection (Mastery Ability): You can perform the Threshold Barrier ritual as an action. When a Tainted being enters an area you have warded against it with this ritual, it suffers supernatural damage equal to your ranks in Meditation and the Prone condition."
+            }
+        }
+
+        RULES {
+            #L5RPW40nO7pQ9rS1tU3vW5x: ik_sage_gift_kiho_to_ally
+        }
+    }
+
+    ^"Ivory Kingdoms Dancing Blades Tradition" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Gaijin"]
+
+        # Warriors trained to wield astras (implements of the
+        # gods). They look as though they are dancing as they
+        # fight, taking on multiple enemies at once.
+
+        PROPERTIES {
+            ^"School Name" STRING "Ivory Kingdoms Dancing Blades Tradition" FIXED
+            ^"Roles" LIST ["Bushi"]
+            ^"Restricted To" STRING "Ivory Kingdoms culture (or GM exception)"
+            ^"Ring Increase" STRING "+1 Earth, +1 Fire"
+            ^"Starting Skills" STRING "Choose five: Command, Culture, Martial Arts [Melee], Martial Arts [Ranged], Medicine, Performance, Seafaring"
+            ^"Starting Honor" INTEGER DEFAULT 45
+            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
+            ^"Starting Techniques" STRING "Kata (choose one): Hawk's Precision or Warrior's Resolve; Shuji (choose one): Stirring the Embers or Honest Assessment"
+            ^"School Ability" STRING "Flurry of Steel"
+            ^"Mastery Ability" STRING "Tower of Ivory"
+        }
+
+        ^"Flurry of Steel" DEF {
+            # Once per scene when performing an Attack action, you
+            # may choose a number of additional enemies up to your
+            # school rank in range of your weapon as targets for that
+            # Attack action.
+        }
+
+        STARTING_OUTFIT [
+            "lacquered armor", "traveling clothes",
+            "a urumi", "one weapon of rarity 6 or lower",
+            "a trophy from a slain enemy",
+            "one item of rarity 4 or lower", "one trinket"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Culture"
+                SKILL "Performance"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Eyes Up!" [shuji]
+                ^"Rider's Haste" [kata]
+            }
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Government"
+                SKILL "Seafaring"
+                TECHNIQUE_GROUP "Rank 1-2 Kata"
+                ^"Rushing Ox Style" [kata]
+                ^"Summon Mantra: [One Implement]" [mantra]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Culture"
+                SKILL "Seafaring"
+                TECHNIQUE_GROUP "Rank 1-3 Earth and Fire Shuji"
+                ^"Daring Swing" [kata]
+                ^"Bravado" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Culture"
+                SKILL "Government"
+                SKILL "Performance"
+                TECHNIQUE_GROUP "Rank 1-4 Kata"
+                ^"Swirling Tempest Style" [kata]
+                ^"Roar of Encouragement" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Culture"
+                SKILL "Seafaring"
+                TECHNIQUE_GROUP "Rank 1-5 Kata"
+                ^"Sear the Wound" [kata]
+                ^"The Immovable Hand of Peace" [shuji]
+            }
+            RANK 6 {
+                "Tower of Ivory (Mastery Ability): After you defend against damage, increase your physical resistance by 1. This effect can stack a number of times equal to your ranks in Meditation and persists until the end of the scene."
+            }
+        }
+
+        RULES {
+            #L5RPW41yZ8aB0cD2eF4gH6i: dancing_blades_flurry_multiple_targets
+        }
+    }
+
+    # ===========================
+    # QUESTION 4: WHAT GETS YOUR
+    # CHARACTER IN AND OUT OF TROUBLE?
+    # ===========================
+
+    ^"Question 4: Trouble" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # Choose one option that best describes your character's
+        # personality. This determines an additional ring increase.
+
+        PROPERTIES {
+            ^"Question" INTEGER 4 FIXED
+            ^"Question Text" STRING "What gets your character in and out of trouble?" FIXED
+        }
+
+        OPTIONS {
+            "Abrasive, honest, driven" "+1 Fire"
+            "Empathetic, tricky, clever" "+1 Air"
+            "Gregarious, adaptable, charming" "+1 Water"
+            "Patient, stoic, thorough" "+1 Earth"
+            "Contemplative, self-aware, insightful" "+1 Void"
+        }
+
+        RULES {
+            #L5RPW45aB2cD4eF6gH8iJ0k: q4_choose_one_ring_increase
+        }
+    }
+
+    # ===========================
+    # QUESTION 5: WHAT IS YOUR
+    # CHARACTER'S PAST?
+    # (REPLACES GIRI)
+    # ===========================
+
+    ^"The Past System" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # Ronin, peasants, and gaijin do not have the same giri
+        # attribute as samurai. Instead, giri is replaced by the
+        # character's past. The past represents the character's
+        # history and what drove them onto the path of waves.
+        # It functions mechanically similar to giri but reflects
+        # the character's relationship with their former life
+        # rather than duty to a lord.
+        #
+        # Choose or roll on the Sample Pasts table (d100).
+        # The past creates problems and conflicts with ninjo.
+        # If you choose the "Duty" past, you may optionally use
+        # the rules for giri from the core rulebook.
+
+        RULES {
+            #L5RPW42jK9lM1nO3pQ5rS7t: past_replaces_giri_for_ronin
+            #L5RPW43uV0wX2yZ4aB6cD8e: past_represents_history_on_path_of_waves
+        }
+    }
+
+    TABLE "Sample Pasts" {
+        ROLL "d100"
+        "01-06" "Spiritual Troubles: Desecrated a shrine, ignored an oath, or crossed the Fortunes. Face curses, misfortune, and distrust."
+        "07-14" "Bad Family History: Family was falsely or truly accused. Too many people know and judge you."
+        "15-22" "Bad Reputation: Accused of murder, authored inappropriate work, had messy affair, engaged in thievery, or voluntarily left liege."
+        "23-30" "Debts to Pay: Owe a vast sum to a person or family. Must make regular payments or face a bounty."
+        "31-38" "Desertion: Left your post due to cowardice or admirable reasons. Your commander intends to bring you back."
+        "39-46" "Duty: Still adhere to an ideal from clan, monastic vows, government, or family. May optionally use giri rules from core."
+        "47-54" "Fallen Family Legacy: Family once had name, land, and title. You have only the name."
+        "55-62" "Family in Need: Family needs money, medicine, care, attention, or rescue."
+        "63-70" "Forsaken Vows: Expelled from or left a monastery. Cannot return until issues resolved."
+        "71-78" "Long Path of Waves: After gempuku you explored the world. Your family seeks to take you back."
+        "79-86" "Lifelong Enemy: An individual or family competes against you for the same goals."
+        "87-93" "Unearned Heroism: Won a duel or contest by accident or nefarious means. The master seeks you out."
+        "94-100" "Witness: You know too much and the spied-upon party wants you silent permanently."
+    }
+
+    # ===========================
+    # QUESTION 6: WHAT DOES YOUR
+    # CHARACTER LONG FOR?
+    # ===========================
+
+    ^"Question 6: Ninjo" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # What does your character long for, and how might their
+        # past impact their ninjo? Same concept as core Q6 but
+        # reframed around past instead of giri. Narrative only --
+        # choose or create a ninjo. The ninjo should conflict with
+        # the character's past.
+
+        PROPERTIES {
+            ^"Question" INTEGER 6 FIXED
+            ^"Question Text" STRING "What does your character long for, and how might their past impact their ninjo?" FIXED
+        }
+
+        RULES {
+            #L5RPW46lM3nO5pQ7rS9tU1v: q6_ninjo_conflicts_with_past
+        }
+    }
+
+    TABLE "Sample Ninjo" {
+        ROLL "d100"
+        "01-04" "Achieve Mastery: Seek to be the best at swordplay, art, calligraphy, poetry, or other pursuit."
+        "05-08" "Amass Followers: Claim to be a bandit leader, crime lord, or cult head. Need an audience."
+        "09-13" "Assist the Spirits: Focus on spiritual welfare of lost or abused spirits."
+        "14-18" "Atonement: Did a great wrong and must make up for it through actions."
+        "19-23" "Construct a Great Work: Driven to build a masterwork gate, sculpture, painting, text, or shrine."
+        "24-28" "Discover a Family Heritage: Find a lost claim to greatness -- lineage scroll, relic, or art."
+        "29-33" "Enact Justice: Expose a vicious secret, reveal evidence, or get a criminal to confess."
+        "34-38" "Establish a Family: Begin a grand lineage with a partner who shares the goal."
+        "39-43" "Find a Lord to Serve: Regain lost status, improve station, or integrate into a foreign society."
+        "44-48" "Find a Sensei: Study under great masters to become one yourself."
+        "49-53" "Find True Love: Seek rare and precious true love in a world that scoffs at it."
+        "54-58" "Gain Mystical Power: Seek power to change reality through study or blood magic."
+        "59-63" "Kill Monsters: Destroy demons and spirits of corruption."
+        "64-68" "Regain Your Home: Return to or rebuild a destroyed homeland."
+        "69-73" "Personal Security: Acquire land, money, or stipend to ensure your family's future."
+        "74-78" "Recover a Relic: Find a relic with cultural, monetary, or spiritual power."
+        "79-83" "Build a Reputation: Spread your name throughout Rokugan to samurai and heimin alike."
+        "84-88" "Tame a Great Beast: Tame terrifying creatures that harass farmers and hunters."
+        "89-93" "Uncover a Conspiracy: Reveal a plot to overthrow or murder those in power."
+        "94-100" "Wreak Vengeance: A villain has wronged you or someone you care about."
+    }
+
+    # ===========================
+    # QUESTION 7: WHAT IS YOUR
+    # CHARACTER KNOWN FOR?
+    # ===========================
+
+    ^"Question 7: Known For" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # DIFFERS FROM CORE Q7 (clan relationship).
+        # In PoW, Q7 asks what the character is known for in
+        # their community. Choose one path:
+        #
+        # Path A: Known for intentional deeds, skills, or behavior
+        #   that has helped others (even if shunned about it).
+        #   Gain +5 Glory.
+        #
+        # Path B: Known for deeds perceived as wicked, harmful,
+        #   or exceptionally selfish (or at odds with culture/family).
+        #   Gain +1 rank in a skill currently at 0 ranks. The skill
+        #   should represent the choices that upset normal order.
+
+        PROPERTIES {
+            ^"Question" INTEGER 7 FIXED
+            ^"Question Text" STRING "What is your character known for?" FIXED
+        }
+
+        OPTIONS {
+            "Positive deeds, skills, or helpful behavior" "+5 Glory"
+            "Wicked, harmful, or selfish deeds" "+1 rank in one skill at 0 ranks"
+        }
+
+        RULES {
+            #L5RPW47wX4yZ6aB8cD0eF2g: q7_glory_or_skill_choice
+        }
+    }
+
+    # ===========================
+    # QUESTION 8: WHAT DOES YOUR
+    # CHARACTER THINK OF BUSHIDO?
+    # ===========================
+
+    ^"Question 8: Bushido" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # DIFFERS FROM CORE Q8 (two options).
+        # PoW Q8 has THREE options instead of two.
+        # Also choose one tenet as paramount and one as
+        # less significant (same as core).
+        #
+        # Option A: Staunch dedication to Bushido -> +10 Honor
+        # Option B: Values diverge from Bushido -> gain one item
+        #   of rarity 5 or lower
+        # Option C: Know little about Bushido (gaijin option) ->
+        #   +1 rank in one of: Commerce, Labor, Medicine,
+        #   Seafaring, Skulduggery, or Survival
+
+        PROPERTIES {
+            ^"Question" INTEGER 8 FIXED
+            ^"Question Text" STRING "What does your character think of Bushido?" FIXED
+        }
+
+        OPTIONS {
+            "Staunch dedication to Bushido" "+10 Honor"
+            "Values diverge from Bushido" "Gain one item of rarity 5 or lower"
+            "Know little about Bushido" "+1 rank in one skill: Commerce, Labor, Medicine, Seafaring, Skulduggery, or Survival"
+        }
+
+        RULES {
+            #L5RPW48hI5jK7lM9nO1pQ3r: q8_three_way_bushido_choice
+        }
+    }
+
+    # ===========================
+    # QUESTION 9: GREATEST ACCOMPLISHMENT
+    # ===========================
+
+    ^"Question 9: Distinction" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # What is your character's greatest accomplishment so far?
+        # Same structure as core Q9. Gain one Distinction advantage.
+        # May choose from core distinctions or PoW distinctions.
+
+        PROPERTIES {
+            ^"Question" INTEGER 9 FIXED
+            ^"Question Text" STRING "What is your character's greatest accomplishment so far?" FIXED
+            ^"Gain" STRING "One Distinction advantage"
+        }
+
+        RULES {
+            #L5RPW49sT6uV8wX0yZ2aB4c: q9_gain_one_distinction
+        }
+    }
+
+    # ===========================
+    # QUESTION 10: WHAT HOLDS YOUR
+    # CHARACTER BACK?
+    # ===========================
+
+    ^"Question 10: Adversity" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # What holds your character back most in life?
+        # Same structure as core Q10. Gain one Adversity disadvantage.
+        # May choose from core adversities or PoW adversities.
+
+        PROPERTIES {
+            ^"Question" INTEGER 10 FIXED
+            ^"Question Text" STRING "What holds your character back most in life?" FIXED
+            ^"Gain" STRING "One Adversity disadvantage"
+        }
+
+        RULES {
+            #L5RPW50dE7fG9hI1jK3lM5n: q10_gain_one_adversity
+        }
+    }
+
+    # ===========================
+    # QUESTION 11: WHAT MAKES YOUR
+    # CHARACTER FEEL AT PEACE?
+    # ===========================
+
+    ^"Question 11: Passion" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # What activity most makes your character feel at peace?
+        # Same structure as core Q11. Gain one Passion advantage.
+        # May choose from core passions or PoW passions.
+
+        PROPERTIES {
+            ^"Question" INTEGER 11 FIXED
+            ^"Question Text" STRING "What activity most makes your character feel at peace?" FIXED
+            ^"Gain" STRING "One Passion advantage"
+        }
+
+        RULES {
+            #L5RPW51oP8qR0sT2uV4wX6y: q11_gain_one_passion
+        }
+    }
+
+    # ===========================
+    # QUESTION 12: WHAT TROUBLES
+    # YOUR CHARACTER?
+    # ===========================
+
+    ^"Question 12: Anxiety" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # What concern, fear, or foible troubles your character most?
+        # Same structure as core Q12. Gain one Anxiety disadvantage.
+        # May choose from core anxieties or PoW anxieties.
+
+        PROPERTIES {
+            ^"Question" INTEGER 12 FIXED
+            ^"Question Text" STRING "What concern, fear, or foible troubles your character most?" FIXED
+            ^"Gain" STRING "One Anxiety disadvantage"
+        }
+
+        RULES {
+            #L5RPW52zA9bC1dE3fG5hI7j: q12_gain_one_anxiety
+        }
+    }
+
+    # ===========================
+    # QUESTION 13: WHO HAS YOUR
+    # CHARACTER LEARNED MOST FROM?
+    # ===========================
+
+    ^"Question 13: Mentor" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # Who has your character learned the most from during
+        # their life? Same structure as core Q13. Choose one:
+        #
+        # Option A: Gain one advantage related to your mentor.
+        # Option B: Gain one disadvantage related to your mentor,
+        #   AND +1 rank in a skill developed from that relationship.
+
+        PROPERTIES {
+            ^"Question" INTEGER 13 FIXED
+            ^"Question Text" STRING "Who has your character learned the most from during their life?" FIXED
+        }
+
+        OPTIONS {
+            "Positive relationship with mentor" "Gain one advantage"
+            "Complicated relationship with mentor" "Gain one disadvantage AND +1 rank in one skill"
+        }
+
+        RULES {
+            #L5RPW53kL0mN2oP4qR6sT8u: q13_advantage_or_disadvantage_plus_skill
+        }
+    }
+
+    # ===========================
+    # QUESTION 14: MOST PRIZED POSSESSION
+    # ===========================
+
+    ^"Question 14: Prized Possession" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # DIFFERS FROM CORE Q14 ("What do people notice first?").
+        # PoW Q14: When all of your life can fit in a pack on your
+        # back, what is the one item that matters most?
+        #
+        # Choose one item from starting outfit OR a single item of
+        # rarity 5 or lower. If you choose an item from starting
+        # outfit, you may add the Ceremonial or Resplendent quality.
+        # Record what makes the item stand out in Personality,
+        # Habits, Bonds, and Quirks.
+
+        PROPERTIES {
+            ^"Question" INTEGER 14 FIXED
+            ^"Question Text" STRING "What is your character's most prized possession?" FIXED
+            ^"Gain" STRING "One item (from outfit or rarity 5 or lower); may add Ceremonial or Resplendent quality"
+        }
+
+        RULES {
+            #L5RPW54vW1xY3zA5bC7dE9f: q14_prized_possession_item_or_quality
+        }
+    }
+
+    # ===========================
+    # QUESTION 15: STRESS REACTION
+    # ===========================
+
+    ^"Question 15: Stress Reaction" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # How does your character react to stressful situations?
+        # Same as core Q15 -- purely narrative. Describe a noteworthy
+        # physical response during stress. Note it under Personality,
+        # Habits, and Quirks. It may play a part when unmasking.
+
+        PROPERTIES {
+            ^"Question" INTEGER 15 FIXED
+            ^"Question Text" STRING "How does your character react to stressful situations?" FIXED
+            ^"Gain" STRING "Narrative only"
+        }
+
+        RULES {
+            #L5RPW55gH2iJ4kL6mN8oP0q: q15_narrative_stress_response
+        }
+    }
+
+    # ===========================
+    # QUESTION 16: RELATIONSHIPS
+    # ===========================
+
+    ^"Question 16: Relationships" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # DIFFERS FROM CORE Q16 (heritage table roll).
+        # PoW Q16: What are your relationships to your family,
+        # the clans, peasants, and others?
+        #
+        # Choose one item of rarity 7 or lower that was a gift
+        # from a group your character has a positive relationship
+        # with. Record noteworthy history, quarrels, alliances,
+        # or grievances in the Relationships section.
+
+        PROPERTIES {
+            ^"Question" INTEGER 16 FIXED
+            ^"Question Text" STRING "What are your relationships to your family, the clans, peasants, and others?" FIXED
+            ^"Gain" STRING "One item of rarity 7 or lower (gift from allied group)"
+        }
+
+        RULES {
+            #L5RPW56rS3tU5vW7xY9zA1b: q16_relationship_item_rarity_7
+        }
+    }
+
+    # ===========================
+    # QUESTION 17: SHARED GROUP HISTORY
+    # ===========================
+
+    ^"Question 17: Group History" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # COMPLETELY DIFFERENT FROM CORE Q17 ("Parent's opinion").
+        # PoW Q17: What shared history does your character have
+        # with their group? Work with GM and group to establish
+        # a shared bond/experience.
+        #
+        # Choose one prompt (or create with GM approval):
+        # - Which PC/NPC have you gone through the unthinkable with?
+        # - Which character knows a secret you'd rather forget?
+        # - You owe a debt to someone in your group. To whom?
+        # - You have intense feelings for someone in the group.
+        # - You conquered a great beast with two other members.
+        # - You are impressed/jealous of another member's skill.
+        # - You share blood or history with one other member.
+        #
+        # After choosing, work with GM to determine an appropriate bond.
+
+        PROPERTIES {
+            ^"Question" INTEGER 17 FIXED
+            ^"Question Text" STRING "What shared history does your character have with their group?" FIXED
+            ^"Gain" STRING "One bond (narrative, determined with GM and group)"
+        }
+
+        RULES {
+            #L5RPW57cD4eF6gH8iJ0kL2m: q17_shared_group_bond
+        }
+    }
+
+    # ===========================
+    # QUESTION 18: WHO RAISED YOU?
+    # ===========================
+
+    ^"Question 18: Who Raised You" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # COMPLETELY DIFFERENT FROM CORE Q18 (Samurai Heritage Table).
+        # PoW Q18: Who raised your character? Record the relationship
+        # with parents/guardians.
+        #
+        # Gain +1 rank in one skill in which your character currently
+        # has 0 ranks. Determine whether parents/guardians approve
+        # of this extracurricular interest or see it as a regrettable
+        # deviation, and why. Record in Relationships section.
+
+        PROPERTIES {
+            ^"Question" INTEGER 18 FIXED
+            ^"Question Text" STRING "Who raised your character?" FIXED
+            ^"Gain" STRING "+1 rank in one skill currently at 0 ranks"
+        }
+
+        RULES {
+            #L5RPW58nO5pQ7rS9tU1vW3x: q18_skill_from_upbringing
+        }
+    }
+
+    # ===========================
+    # QUESTION 19: PERSONAL NAME
+    # ===========================
+
+    ^"Question 19: Name" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # What is your character's personal name?
+        # Same concept as core Q19. Narrative only.
+        # May reference PoW name tables (pp. 228-232).
+
+        PROPERTIES {
+            ^"Question" INTEGER 19 FIXED
+            ^"Question Text" STRING "What is your character's personal name?" FIXED
+            ^"Gain" STRING "Narrative only"
+        }
+
+        RULES {
+            #L5RPW59yZ6aB8cD0eF2gH4i: q19_choose_name
+        }
+    }
+
+    # ===========================
+    # QUESTION 20: HOW SHOULD YOUR
+    # CHARACTER DIE?
+    # ===========================
+
+    ^"Question 20: Death" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # How should your character die?
+        # Same concept as core Q20. Narrative only.
+        # The death of a ronin or gaijin in a foreign land is
+        # not usually remarkable. Most succumb to the elements,
+        # illness, or malnutrition. But your character is different.
+
+        PROPERTIES {
+            ^"Question" INTEGER 20 FIXED
+            ^"Question Text" STRING "How should your character die?" FIXED
+            ^"Gain" STRING "Narrative only"
+        }
+
+        RULES {
+            #L5RPW60jK7lM9nO1pQ3rS5t: q20_determine_death
+        }
+    }
+
+    # ===========================
+    # NEW ADVANTAGES (DISTINCTIONS)
+    # ===========================
+
+    ^"Ardent Leader" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You speak with confidence that most find hard to ignore, and people are more likely to hear what you have to say, even if they are of higher status."
+            "When you make a check for which your ardent leadership applies (such as a Tactics [Fire] check to deploy peasants or a Courtesy [Fire] check to excite someone into believing your plan), you may reroll up to two dice."
+        }
+    }
+
+    ^"Dashing Scar" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You have a scar or visible mark that adds to your heroic reputation. People who see it nearly always remember you positively."
+            "When performing a check for which your scar could act as an asset (such as a Command [Air] check to speak with authority or a Skulduggery [Air] check to accentuate roguish charm), you may reroll up to two dice."
+        }
+    }
+
+    ^"Lucky Hunter" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Physical", "Spiritual"]
+        }
+
+        EFFECT {
+            "You are exceptionally fortunate in hunting or fishing and can always identify the best spots."
+            "When performing a check related to hunting, trapping, or fishing (such as a Survival [Void] check to locate hiding quarry or a Seafaring [Void] check to determine best fishing time), you may reroll up to two dice."
+        }
+    }
+
+    ^"Scrappy" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Mental", "Physical"]
+        }
+
+        EFFECT {
+            "You have experience street fighting and brawling. You know how to stealthily employ dishonorable tactics."
+            "When performing a check during combat to use dishonorable tactics (such as a Sentiment [Fire] check to determine how to offend someone or a Martial Arts [Fire] check to unnerve your foe), you may reroll up to two dice."
+        }
+    }
+
+    ^"Scrounger" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You are always able to find something to fill your belly and sustain you, though sometimes the only option is repulsive."
+            "When performing a check for which your resourceful nature applies (such as a Labor [Water] check to find useful items or an Aesthetics [Water] check to find inspiration), you may reroll up to two dice."
+        }
+    }
+
+    ^"Urbane and Worldly" DEF {
+        EXTENDS ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Interpersonal", "Physical"]
+        }
+
+        EFFECT {
+            "Your experience traveling abroad has prepared you to expertly emulate and adapt to unfamiliar customs."
+            "When observing an unfamiliar cultural practice (such as a Performance [Void] check to emulate local customs or a Commerce [Void] check to feign awareness during negotiation), you may reroll up to two dice."
+        }
+    }
+
+    # ===========================
+    # NEW ADVANTAGES (PASSIONS)
+    # ===========================
+
+    ^"Attention" DEF {
+        EXTENDS ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "At the start of each scene, you can determine the most effective way to gain attention."
+            "After performing a check to capture attention (such as a Performance [Fire] check to entice a merchant or a Games [Fire] check to draw a crowd), you remove 3 strife."
+        }
+    }
+
+    ^"Honest Work" DEF {
+        EXTENDS ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Mental", "Interpersonal"]
+        }
+
+        EFFECT {
+            "You can always determine how much work is needed for a physical task, and your work is always markedly better than others."
+            "After performing a check requiring physical labor (such as a Labor [Earth] check to till a field or a Smithing [Earth] check to fix a tool), you remove 3 strife."
+        }
+    }
+
+    ^"Passion for [Foreign Performing Art Form]" DEF {
+        EXTENDS ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Fame", "Interpersonal"]
+        }
+
+        EFFECT {
+            "You are skilled in a foreign artistry (puppetry, miming, foreign dance, foreign instrument) and recognize common forms and intricate historical details."
+            "After performing a check related to your talent (such as Performance [Air] to impress or Design [Air] to refine craft), you remove 3 strife."
+        }
+    }
+
+    # ===========================
+    # NEW DISADVANTAGES (ADVERSITIES)
+    # ===========================
+
+    ^"Bullheaded" DEF {
+        EXTENDS ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "When pursuing a goal related to your ninjo, you have difficulty focusing on anything unrelated."
+            "When you make a check related to your goal that requires planning, subtlety, or nuance (such as Culture [Earth] to recall proper introductions or Courtesy [Earth] to reason with a stubborn merchant), you must choose and reroll two dice containing success or explosion. If you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Debt to [Person or Organization]" DEF {
+        EXTENDS ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You are in terrible debt. If you fail to make regular payments or fulfill obligations, your debtor will hunt you down."
+            "When making a check related to dodging or worsening debt (such as Commerce [Water] to purchase something unnecessary or Courtesy [Water] to get a loan), you must choose and reroll two dice containing success or explosion. If you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Encompassing Duty" DEF {
+        EXTENDS ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You have a duty to something (family, friend, cause). You have difficulty relaxing or focusing on unrelated tasks."
+            "When making a check related to overcoming hindrance to your duty (such as Meditation [Earth] to stay calm in ambush or Courtesy [Earth] to reason with stubborn shopkeeper), you must choose and reroll two dice containing success or explosion. If you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Horrible Scar" DEF {
+        EXTENDS ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You have an awful scar that hinders interactions. People stare, treat you unfairly, and judge you."
+            "When performing a check to interact socially with a stranger (such as Courtesy [Air] to request information or Sentiment [Air] to calm someone), you must choose and reroll two dice containing success or explosion. If you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Many Mouths" DEF {
+        EXTENDS ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You must provide for many dependents beyond your means."
+            "When performing a check related to providing food, money, or care (such as Labor [Earth] to produce food or Sentiment [Earth] to soothe loved ones), you must choose and reroll two dice containing success or explosion. If you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Pursued by [Individual or Group]" DEF {
+        EXTENDS ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "A pursuer wishes to capture or kill you. You have difficulty relaxing in public."
+            "When making a check that draws attention in public (such as Commerce [Water] to trade at market or Courtesy [Water] to win favor at court), you must choose and reroll two dice containing success or explosion. If you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Stained Lineage" DEF {
+        EXTENDS ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "Your family has a bad reputation. Most people in your region know and make negative assumptions about you."
+            "When making a check to interact with anyone from your home region (such as Commerce [Void] to trade without drawing attention or Courtesy [Void] to warn of danger), you must choose and reroll two dice containing success or explosion. If you failed, gain 1 Void point."
+        }
+    }
+
+    # ===========================
+    # NEW DISADVANTAGES (ANXIETIES)
+    # ===========================
+
+    ^"Coming Storm" DEF {
+        EXTENDS ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "Your family has endured great recurring hardship. You are constantly vigilant for the same type of calamity."
+            "When performing a check involving planning for your or your family's well-being (such as Medicine [Void] to sense ailment or Command [Void] to warn of risk), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    ^"Eyes of Many" DEF {
+        EXTENDS ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You constantly worry that others are watching and judging you. You are unable to relax in crowded places."
+            "After performing a check in a crowded place or where two or more strangers actively listen (such as Courtesy [Air] to lie to employer or Fitness [Air] to avoid notice), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    ^"Failure" DEF {
+        EXTENDS ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You constantly worry about failing those to whom you have commitments."
+            "After performing a check that shirks obligations or works against a promise (such as Courtesy [Water] to socialize pointlessly or Games [Water] to gamble needlessly), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    ^"Fear of Stagnation" DEF {
+        EXTENDS ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "Staying in one place frustrates you. You fear relational commitments that tie you down."
+            "After performing a check to continue a prolonged task (such as Labor [Earth] to work on same project for more than two days or Courtesy [Earth] to arrange yet another night in the same city), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    # ===========================
+    # NEW ROLE: SAGE
+    # ===========================
+
+    ^"Sage Role" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        # Like shugenja, sages wield special powers, but theirs
+        # are bestowed by other means, usually outside the
+        # bounds of what is considered appropriate in Rokugan.
+        # A sage may wield powers granted by gods that rule
+        # in lands outside the Empire's borders, or they may
+        # use techniques such as kiho in unfamiliar ways.
+
+        RULES {
+            #L5RPW44fG1hI3jK5lM7nO9p: sage_role_non_rokugani_powers
+        }
+    }
+
+    # ===========================
+    # SCHOOL ROLE EXTENSION
+    # ===========================
+
+    MODIFY ^"School Role" {
+        ENUM EXTEND ["Sage", "Artisan"]
+        # Path of Waves introduces two new school roles for gaijin and ronin traditions
+    }
+}

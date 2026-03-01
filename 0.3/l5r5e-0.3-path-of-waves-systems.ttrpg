@@ -1,0 +1,1945 @@
+EXTENSION "L5R5e_Path_of_Waves_Systems" EXTENDS "L5R5e_Core_Systems" {
+    NAME "Legend of the Five Rings 5th Edition - Path of Waves: Systems, Titles, Bonds, and NPCs"
+    VERSION "0.3"
+    RELEASE_DATE "2026-03-01"
+
+    # Path of Waves (Chapters 6 & 7): New titles with advancement tables,
+    # bonds system (forging, advancing, calling upon, bond types and abilities),
+    # personal code system, social objectives, ronin honor/glory optional rule,
+    # ronin unmasking variants, typical ronin tasks, ronin clan relationships,
+    # NPC templates, NPC stat blocks, and animal/creature profiles.
+
+    # ===========================
+    # OPTIONAL RULE: RONIN HONOR AND GLORY
+    # ===========================
+
+    ^"Ronin Honor and Glory" DEF {
+        APPLIES TO [^"Optional Rule"]
+        PROPERTIES {
+            ^"Type" STRING "Optional Rule"
+            ^"Scope" STRING "Ronin characters"
+        }
+        RULES {
+            #L5RPW60rP8bU4vL4sU0jD8vM8aD: ronin_honor_halved "When a ronin performs an act that causes them to forfeit or gain honor (such as a breach of their code of conduct), the GM may halve the amount of honor forfeited or gained."
+            #L5RPW60yZ2fF2sE8bJ2jO0zD8fD: ronin_glory_doubled "When a ronin forfeits or gains glory, the GM may double that amount. Greater risk yields greater accolades, but failures damage reputation severely."
+            #L5RPW60qO1yB1eT0nO4vU3jV6mX: ronin_honor_glory_rationale "These modifications represent the ronin's reliance on reputation (glory) first and foremost rather than on their already-tarnished honor."
+            #L5RPW60yP1sV6yY4gC2iU4fH4vY: ronin_personal_code_tenets "GMs should consider the paramount and less significant tenets of Bushido in a ronin's personal code and how these affect any decrease or increase in their glory and honor attributes."
+        }
+    }
+
+    # ===========================
+    # PERSONAL CODE SYSTEM
+    # ===========================
+
+    ^"Ronin Personal Code" DEF {
+        APPLIES TO [^"System"]
+        PROPERTIES {
+            ^"Type" STRING "Character Development"
+            ^"Scope" STRING "Ronin, peasant, and gaijin characters"
+        }
+        RULES {
+            #L5RPW60sJ9oB2mU1hH0uV2iD7mN: personal_code_three_factors "When developing a ronin's personal code, consider three factors: their past, their ninjo (desire), and their views on Bushido."
+            #L5RPW60eU5nJ6tJ6xU4yC0tI3zB: personal_code_paramount_tenet "Players pick one paramount tenet and one less significant tenet to help craft their code. Only these two have mechanical implications."
+            #L5RPW60pV5fF5bL1aB5aO8hN6pT: personal_code_ranking "Players may rank the importance of each tenet and include a sentence about how their character regards each one."
+            #L5RPW60nE4mH7qD1xZ9nD1lA3kV: personal_code_evolving "A ronin's personal code can change as the character develops. As this happens, the code may reflect characters becoming more or less altruistic."
+            #L5RPW60oQ3yQ3eH1cL4sS0vD0hX: personal_code_summary_statement "The personal code should include a simple statement summarizing the ronin's deeply held beliefs and the behavior they find virtuous."
+        }
+    }
+
+    # ===========================
+    # RONIN UNMASKING VARIANTS
+    # ===========================
+
+    ^"Ronin Tactical Unmasking" DEF {
+        APPLIES TO [^"System"]
+        PROPERTIES {
+            ^"Type" STRING "Unmasking"
+            ^"Scope" STRING "Ronin characters"
+        }
+        RULES {
+            #L5RPW60yZ8hX0sO2eG7qN2yS5qA: ronin_unmasking_context "Ronin are less impacted by unmasking than lorded samurai since they have no lord whose reputation they represent. However, unmasking still has mechanical and narrative effects."
+            #L5RPW60hG1hE2qR0zU3rV8yE3pO: ronin_unmasking_risk "Unlike samurai, a ronin's opinion may hold little authority. Expressing opinions unless carefully considered can result in imprisonment or execution, even if the risk to personal honor is low."
+        }
+
+        ENTRIES {
+            ^"Gross Offense" DEF {
+                PROPERTIES {
+                    ^"Type" STRING "Unmasking Variant"
+                    ^"Effect" STRING "The character takes great offense from a comment or nearby item. They immediately begin to overtly defend their position or voice displeasure. The TN of their next Social skill check increases by 1."
+                }
+            }
+            ^"Muddled Words" DEF {
+                PROPERTIES {
+                    ^"Type" STRING "Unmasking Variant"
+                    ^"Effect" STRING "The character becomes confused, loses concentration, and has difficulty communicating effectively. In an intrigue, they reduce momentum points gained by 1. In a conflict, they reduce their initiative by 1."
+                }
+            }
+            ^"Secret Revealed" DEF {
+                PROPERTIES {
+                    ^"Type" STRING "Unmasking Variant"
+                    ^"Effect" STRING "The character begins a monologue and accidentally reveals an important detail or secret pertinent to the current scene. The player chooses which secret is revealed; it becomes known to all characters in the scene."
+                }
+            }
+            ^"Silent Tirade" DEF {
+                PROPERTIES {
+                    ^"Type" STRING "Unmasking Variant"
+                    ^"Effect" STRING "The character becomes outwardly dismayed or frustrated, revealing intentions through facial expressions or nonverbal cues. The next action targeting the character using a Social skill reduces its TN by 1."
+                }
+            }
+            ^"Unthinking Boasts" DEF {
+                PROPERTIES {
+                    ^"Type" STRING "Unmasking Variant"
+                    ^"Effect" STRING "The character regales others about past accomplishments to divert attention from failings. This self-indulgent behavior is seen as hubris. The character forfeits glory equal to their highest ring value."
+                }
+            }
+        }
+    }
+
+    # ===========================
+    # NEW SOCIAL OBJECTIVES
+    # ===========================
+
+    ^"Endear" DEF {
+        APPLIES TO [^"Social Objective"]
+        PROPERTIES {
+            ^"Type" STRING "Social Objective"
+            ^"Scope" STRING "All characters (particularly appropriate for ronin)"
+            ^"Completion Requirement" STRING "Accumulate momentum points equal to target's status rank using appropriate Social skill checks. TN based on target's vigilance."
+            ^"Effect" STRING "Reduce the rarity to find an employment opportunity by 2 or a number equal to Commerce skill, whichever is greater."
+            ^"Failure Condition" STRING "If the target retires from the scene before completion, this objective cannot be completed."
+        }
+    }
+
+    ^"Gain an Audience" DEF {
+        APPLIES TO [^"Social Objective"]
+        PROPERTIES {
+            ^"Type" STRING "Social Objective"
+            ^"Scope" STRING "All characters (particularly appropriate for ronin)"
+            ^"Completion Requirement" STRING "Accumulate momentum points equal to target's status rank. Skills used depend on the target's nature: Skulduggery for criminal elements, Government for governing bodies, Theology for religious organizations."
+            ^"Effect" STRING "The character gains an audience with the target, the nature and security of such arrangements determined by the GM."
+            ^"Failure Condition" STRING "If the character fails at three consecutive checks, this objective cannot be completed."
+        }
+    }
+
+    ^"Gather Information" DEF {
+        APPLIES TO [^"Social Objective"]
+        PROPERTIES {
+            ^"Type" STRING "Social Objective"
+            ^"Scope" STRING "All characters (particularly appropriate for ronin)"
+            ^"Completion Requirement" STRING "Accumulate momentum points equal to the status rank of the target most affected by the information sought."
+            ^"Effect" STRING "The character gains the information they seek. Opportunities may add details, confirm reliability, or identify origin of information."
+            ^"Failure Condition" STRING "If the character fails at two consecutive checks, the information fails to manifest, and the character's inquiries become known to the target."
+        }
+    }
+
+    # ===========================
+    # TITLES
+    # ===========================
+
+    ^"In Service to a Lord" DEF {
+        APPLIES TO [^"Title"]
+        PROPERTIES {
+            ^"Type" STRING "Title"
+            ^"Assigned By" STRING "Daimyo, advisors, and other individuals of import who can assign titles on their lord's behalf."
+            ^"Status Award" STRING "+10 (to a maximum of 25)"
+            ^"XP to Completion" INTEGER 24
+        }
+        RULES {
+            #L5RPW61vW2xT7sU2nK0xO5jA3dW: in_service_title_ability "Privileged Position (Title Ability): Once per session, when acting in your lord's interest, you may use their status rank as your own."
+        }
+        CURRICULUM {
+            Rank 1 {
+                SKILL_GROUP "Martial"
+                SKILL_GROUP "Social"
+                SKILL "Culture"
+                SKILL "Government"
+                TECH_GROUP "Rank 1-2 Kata"
+                TECHNIQUE "Wolf's Proposal"
+                TECHNIQUE "Fluent Bargaining"
+            }
+        }
+    }
+
+    ^"Perfect Land Sect Member" DEF {
+        APPLIES TO [^"Title"]
+        PROPERTIES {
+            ^"Type" STRING "Title"
+            ^"Assigned By" STRING "A leader of the Perfect Land Sect."
+            ^"Status Award" STRING "-5 (to a minimum of 15)"
+            ^"XP to Completion" INTEGER 24
+        }
+        RULES {
+            #L5RPW61cZ0zG8yK6rP5iH8mW3dN: perfect_land_title_ability "Trustworthy Cadence (Title Ability): When making a social skill check targeting a character with status 20 or lower, reduce the TN by 1."
+        }
+        CURRICULUM {
+            Rank 1 {
+                SKILL_GROUP "Scholar"
+                SKILL "Courtesy"
+                SKILL "Fitness"
+                SKILL "Labor"
+                TECH_GROUP "Rank 1-2 Water Shuji"
+                TECHNIQUE "Roar of Encouragement"
+                TECHNIQUE "Rallying Cry"
+            }
+        }
+    }
+
+    ^"Ghostlands Warrior" DEF {
+        APPLIES TO [^"Title"]
+        PROPERTIES {
+            ^"Type" STRING "Title"
+            ^"Assigned By" STRING "A member of the Yodhaniya of the Ivory Kingdoms."
+            ^"Status Award" STRING "+0 (+10 in the Ivory Kingdoms, to a maximum of 50)"
+            ^"XP to Completion" INTEGER 36
+        }
+        RULES {
+            #L5RPW61xA4fT2iA6pJ2hC4zF7lX: ghostlands_warrior_title_ability "Eyes of the Yodhaniya (Title Ability): When you make a check to see through supernatural illusion, reduce the TN by 1. If you are in Defiled terrain, reduce the TN by 2 instead."
+        }
+        CURRICULUM {
+            Rank 1 {
+                SKILL_GROUP "Martial"
+                SKILL "Command"
+                SKILL "Medicine"
+                SKILL "Survival"
+                TECHNIQUE "Earth Needs No Eyes"
+                TECHNIQUE "Soaring Slice"
+                TECHNIQUE "Cleansing of Coral and Gold"
+            }
+        }
+    }
+
+    ^"Astradhari" DEF {
+        APPLIES TO [^"Title"]
+        PROPERTIES {
+            ^"Type" STRING "Title"
+            ^"Assigned By" STRING "An Ivory Kingdoms High Sage (such a person may only be chosen by the GM)."
+            ^"Status Award" STRING "+0 (+25 in the Ivory Kingdoms, to a maximum of 65)"
+            ^"XP to Completion" INTEGER 36
+        }
+        RULES {
+            #L5RPW61mR7rQ4tU1fC2cZ8zI8iE: astradhari_title_ability "Sacred Mantras (Title Ability): You can purchase mantra techniques."
+        }
+        CURRICULUM {
+            Rank 1 {
+                SKILL_GROUP "Scholar"
+                SKILL_GROUP "Martial"
+                SKILL "Command"
+                SKILL "Courtesy"
+                TECH_GROUP "Rank 1-3 Rituals"
+                TECHNIQUE "Summoning Mantra: [Implement Name]"
+                TECHNIQUE "Touchstone of Courage"
+            }
+        }
+    }
+
+    # ===========================
+    # BONDS SYSTEM
+    # ===========================
+
+    ^"Bonds System" DEF {
+        APPLIES TO [^"System"]
+        PROPERTIES {
+            ^"Type" STRING "Optional Rules System"
+            ^"Scope" STRING "All characters"
+        }
+        RULES {
+            #L5RPW62qP2dA7gP7dR2dU1xE1dY: bonds_what_they_are "Bonds are close relationships important to the story that are dynamic and can change and grow. They provide mechanical incentives for character-oriented drama."
+            #L5RPW62gA9fO6nP0fM5fD2uI2xF: bonds_forging "A player may request to forge a bond with someone else. The GM decides if it makes sense. The player spends XP to forge or advance the bond."
+            #L5RPW62pB5iT2oS9vJ4uZ7oP6zB: bonds_xp_not_school "Experience spent on bonds does not contribute toward a character's current school rank or to a title."
+            #L5RPW62jD8oP7eC1lR5xD8xC8kQ: bonds_calling_upon "A character can call upon a bond to use its unlocked abilities a number of times per session equal to the bond's rank."
+            #L5RPW62pP4fD4cT1hL1lY0wL5tD: bonds_persist_after_death "Bonds do not vanish if the bonded person leaves or perishes. The lessons and strength gained are permanent. A character can continue to advance a bond with a dead person."
+            #L5RPW62oE8dH5nN2jC0pG9cB4aG: bonds_pc_vs_npc "Bonds between PCs function mechanically but are not generally as useful as bonds between PCs and NPCs. Bonds help get more out of relationships with characters who appear less frequently."
+            #L5RPW62oP3uM1fQ1pV5mB7tW9oX: bonds_multi_character "Bonds generally exist between two characters but can exist between more at GM's discretion (e.g., a fellowship or family sharing a single bond)."
+            #L5RPW62rG4bR5jV1fP8bW1nK9bU: bonds_evolving "If two characters' relationship changes (rivals become comrades, family member becomes nemesis), the GM and player can change the bond type. Ranks remain but type changes."
+            #L5RPW62zO4eF0vU6nL8qZ6cP2nQ: bonds_mutual_pc "If two or more PCs forge or advance a bond, each PC must individually spend the full XP required at the same time."
+        }
+    }
+
+    # --- BOND RANK TABLE ---
+
+    ^"Bond Rank Table" DEF {
+        APPLIES TO [^"Table"]
+        TABLE {
+            COLUMNS ["Bond Rank", "XP Cost", "Ability Unlocked"]
+            ROW ["Rank 1", "3 XP", "Bond Ability (varies by bond type): In addition to narrative benefits, you may call upon your relationship with one bonded character based on the type of bond."]
+            ROW ["Rank 2", "4 XP", "Like you always say...: You count as having one bonded character's assistance on a check in which the bonded character is skilled."]
+            ROW ["Rank 3", "6 XP", "A familiar presence draws near...: If the bonded character is an NPC, you may play that character instead of your own for the next scene (or establishing flashback). Adhere to that character's giri and ninjo. Major decisions require GM approval. If bonded character is a PC, you may immediately play out an establishing flashback between your characters."]
+            ROW ["Rank 4", "8 XP", "You taught me this!: Use one bonded character's ring or skill ranks (or skill group ranks for NPCs) for a check instead of your own."]
+            ROW ["Rank 5", "10 XP", "We are bound by this fate we have made!: Transfer one of your Void points to the bonded character, or gain 1 Void point after they spend a Void point."]
+        }
+    }
+
+    # --- BOND TYPES ---
+
+    ^"Old Flame Bond" DEF {
+        APPLIES TO [^"Bond"]
+        PROPERTIES {
+            ^"Type" STRING "Bond"
+            ^"Bond Type" STRING "Old Flame"
+            ^"Description" STRING "Represents people with a romantic history who find themselves crossing paths frequently, thrown together once again, or entangled in one another's circumstances."
+        }
+        RULES {
+            #L5RPW62sE8sN3nX8rN2mP5cO6bR: old_flame_base "An old flame knows your best and worst qualities (and any advantages/disadvantages you possessed at the time), and you know theirs. They are willing to use these to achieve their own goals as long as it does not significantly harm you. They will do you small favors (hints about opportunities, warnings of danger, directions to contacts) often without being asked."
+            #L5RPW62kM8aN1aG0tE0iP4lF7lE: old_flame_allies_enemies "Your old flame's allies are cautious to hostile depending on how the relationship dissolved. Your old flame's enemies are likely unaware of you but might attempt to use you against your old flame if they learn of your past."
+            #L5RPW62zF4qN3lB1xI3iI5yO1nX: old_flame_rank3 "At bond rank 3 or higher, your old flame takes more significant steps on your behalf (paying off debts, arriving to rescue you, putting your name before someone wealthy or powerful seeking ronin with your skills) — usually without your request."
+            #L5RPW62mO1sO4hU9sD8aA3mL3iI: old_flame_ability "It's Always Like This with You (Bond Ability): At the end of a scene involving your old flame or reminders of them, after removing strife and fatigue, you may call upon your bond to remove additional fatigue equal to your bond rank, then gain that much strife."
+        }
+    }
+
+    ^"Partner Bond" DEF {
+        APPLIES TO [^"Bond"]
+        PROPERTIES {
+            ^"Type" STRING "Bond"
+            ^"Bond Type" STRING "Partner"
+            ^"Description" STRING "Represents individuals who have made long, lasting bonds of unconditional trust — close friends, spouses, lovers, fellow soldiers, or survivors who rely on each other."
+        }
+        RULES {
+            #L5RPW62nA9cA6mU4mQ4sX5fJ9dD: partner_base "A partner trusts you implicitly and will assist with nearly anything given rational explanation. However, they also intervene to stop you from doing things harmful to you."
+            #L5RPW62mY9uB7mX6qH1kS1hM4dN: partner_allies_enemies "Friends and allies of your partner tolerate you and give benefit of the doubt, but generally won't do favors unless the favor benefits your partner directly. Enemies of your partner view you as an enemy."
+            #L5RPW62aC7pR5aD1jL6lK9uM3tS: partner_rank3 "At bond rank 3 or higher, your partner more proactively intervenes on your behalf, may be more assertive about your harmful tendencies, and backs you with full means at their disposal if you insist something is important."
+            #L5RPW62bD1zL8sO4vA5rM7jV4vW: partner_ability "Always Got Your Back (Bond Ability): Once per scene, you may call upon your bond to know exactly what your partner is thinking (or was thinking at a previous time), or have your partner know exactly what you are thinking, without direct communication. Express this idea in five words or fewer, plus additional words equal to your bond rank. When you use this ability, you and your partner may remove strife up to your bond rank, divided between the two as you choose."
+        }
+    }
+
+    ^"Protector and Ward Bond" DEF {
+        APPLIES TO [^"Bond"]
+        PROPERTIES {
+            ^"Type" STRING "Bond"
+            ^"Bond Type" STRING "Protector and Ward"
+            ^"Description" STRING "Represents a character who has taken responsibility for someone dependent on them — a lost heir, someone their lord wanted dead, or someone who simply needed them."
+        }
+        RULES {
+            #L5RPW62iH4mN1bN1jR9tS7dF5oY: protector_ward_base "If protector: your ward is reliant on you and cannot fully fend for themselves but is eager to help. If ward: your protector seeks to act in your best interests and keep you safe."
+            #L5RPW62vY2pH4jE7sB1wF1wO5iE: protector_ward_allies_enemies "Enemies of your ward target you first. Allies of your ward view you positively, may feel great debt, and assist within their means (hiding you, acquiring equipment, giving contacts)."
+            #L5RPW62mC5vC7lL9uZ8zJ4gR7cF: protector_rank3 "At bond rank 3+ (protector): You instinctively sense if your ward is in danger. Your ward (if NPC) acquires 1 rank in 2 skill groups in which you possess 3+ ranks. Ward starts to act on own initiative and may get you out of trouble."
+            #L5RPW62oN5xJ5kF6uG6rJ8cD5rX: ward_rank3 "At bond rank 3+ (ward): Your protector instinctively senses if you are in danger. Your protector (if NPC) acquires 1 rank in 2 skill groups in which you possess 3+ ranks and looks out for your happiness in addition to safety."
+            #L5RPW62bK9xE6vA1lB8hM3yI2iW: protector_ability "Under My Protection (Protector Bond Ability): Once per scene when protecting your ward, their interests, or their memory, you may call upon your bond to treat your endurance as increased by your bond rank until end of scene."
+            #L5RPW62qQ6bL2mD9jS2kU9wL0gD: ward_ability "I've Been Learning (Ward Bond Ability): Once per scene when you or your protector makes a check in which the other has 1+ skill ranks (or skill group ranks if NPC), you may call upon your bond to negate strife results equal to your bond rank."
+        }
+    }
+
+    ^"Rival Bond" DEF {
+        APPLIES TO [^"Bond"]
+        PROPERTIES {
+            ^"Type" STRING "Bond"
+            ^"Bond Type" STRING "Rival"
+            ^"Description" STRING "Represents characters who often come into conflict but do not hate each other and may even feel mutual respect."
+        }
+        RULES {
+            #L5RPW62dV3fQ4vZ7sE8cF5gP9vO: rival_base "A rival seeks to oppose you when opportunity presents itself and is unfavorably disposed toward you. However, their enmity lends gravity to your position, making those outside the conflict more convinced of your importance."
+            #L5RPW62tN3bX4rU7vG1pX2tU5sI: rival_allies_enemies "Allies of your rival treat you with grudging respect and suspicion. Your rival's enemies might seek your aid or offer you aid in opposing your rival."
+            #L5RPW62dP9rT3sD7tY0vZ1kT2eU: rival_rank3 "At bond rank 3+, your rival views themselves as your true foe and looks dimly upon anyone else who acts against you. They can be relied upon to keep others from harming you (so they can defeat you on their own terms someday)."
+            #L5RPW62oV8aA9aM8mP7sP3iQ7tB: rival_ability "I Will Surpass You! (Bond Ability): While making a check, you may call upon your bond. Receive strife equal to your bond rank, then reroll up to that many dice."
+        }
+    }
+
+    ^"Wanderers Fellowship Bond" DEF {
+        APPLIES TO [^"Bond"]
+        PROPERTIES {
+            ^"Type" STRING "Bond"
+            ^"Bond Type" STRING "Wanderers' Fellowship"
+            ^"Description" STRING "Represents warrior bands who work, fight, suffer, and laugh together. These bonds can become as strong as family bonds."
+        }
+        RULES {
+            #L5RPW62qS6dR6uT6kF6xK0jK0zN: fellowship_base "Other fellowship members watch out for your safety, help with modest favors (cuts on jobs, introductions, buying sake), and expect you to reciprocate."
+            #L5RPW62fK0rW3sW7mP8fH5jV1kQ: fellowship_allies "Those who have worked with your fellowship before regard you the same way they do your fellows. Your actions reflect upon members, and if you step out of line they intervene to set you on the right path or remove you."
+            #L5RPW62xM8mX0zG6qE6uW6wQ1mD: fellowship_rank3 "At bond rank 3+, your fellowship's loyalty is extremely deep. Members accept dangerous jobs without question, join battles that do not pay, and perhaps even buy your sake without reminding you three times."
+            #L5RPW62yQ3nV2rP3lF6sJ4jR2bC: fellowship_ability "Sworn to Duty and to Death (Bond Ability): At the start of your turn, if you are Compromised or Incapacitated, you may call upon your bond to remove fatigue and strife equal to your bond rank."
+        }
+    }
+
+    # ===========================
+    # TYPICAL RONIN TASKS TABLE
+    # ===========================
+
+    ^"Typical Ronin Tasks" DEF {
+        APPLIES TO [^"Table"]
+        TABLE {
+            COLUMNS ["Task", "Description", "Skill Group", "Rarity", "Base Wage"]
+
+            # --- LOW RISK ---
+            ROW ["Administration", "Maintaining documents for tax collectors, general administration of an estate, scribing documents, and writing letters.", "Artisan, Scholar, or Trade", "8", "1 bu/day"]
+            ROW ["Attendant", "Acting as a lantern or umbrella bearer or as a servant coordinator.", "Artisan, Scholar, or Trade", "5", "1 bu/week"]
+            ROW ["Ceremony", "Performing a peasant wedding, blessing new ground before construction, or purifying leather being tanned.", "Scholar", "6", "2 bu/day"]
+            ROW ["Combat Training", "Peasant levy training using basic weapons like clubs, spears, and farming tools, along with instruction on preparing moats.", "Martial", "3", "1 bu/week"]
+            ROW ["Crafting", "Crafting goods or tools, overseeing creation of leather, or forging weapons. Wage does not include materials.", "Artisan", "5", "1 bu/day"]
+            ROW ["Hunting", "Gathering food or other resources through hunting of game.", "Trade", "4", "1 bu/week"]
+            ROW ["Sailing", "Acting as a crew member aboard a sailing vessel.", "Trade", "2", "1 bu/week"]
+
+            # --- MEDIUM RISK ---
+            ROW ["Bodyguard (Yojimbo) or Guard", "Serving on a city patrol, as protection for an individual, or for a group such as a caravan.", "Martial", "3", "4 bu/week"]
+            ROW ["Bounty Hunting", "Hunting down a group or individual plaguing a town or village with aim of capturing or eliminating the threat.", "Martial", "4", "4 bu/week"]
+            ROW ["Extortion", "Threatening someone to gain some benefit or payment for an employer.", "Social", "6", "7 bu/week"]
+            ROW ["Firefighting", "Offering service to fight fires breaking out in a city, town, or village.", "Martial", "4", "2 bu/week"]
+            ROW ["Negotiation", "Acting on behalf of a daimyo or lord dealing with another group considered dishonorable.", "Social", "5", "5 bu/week"]
+            ROW ["Thievery", "Stealing from an estate or individual; includes espionage.", "Trade", "6", "3 bu/week"]
+
+            # --- HIGH RISK ---
+            ROW ["Kidnapping", "Taking a target and removing them from regular abode to another locale.", "Martial, Social, or Trade", "7", "5 koku/job"]
+            ROW ["Assassination", "Eliminating an important member of a council, local governor, or bandit leader.", "Martial or Trade", "8", "10 koku/job"]
+            ROW ["Protection", "Protecting a township, village during harvest, or shrine from looters.", "Martial", "6", "1 koku/week"]
+            ROW ["Smuggling", "Taking livestock, goods, or individuals across established borders.", "Scholar or Trade", "7", "2 koku/job"]
+            ROW ["Soldier", "Serving in a lord's army.", "Martial", "5", "1 koku/week"]
+        }
+        RULES {
+            #L5RPW63xB4cR5iR8vK1kL8oA6rR: ronin_task_wage_quality "GMs may consider multiplying payments received by a character's school rank if appropriate for the task, reflecting a ronin's maintenance of quality."
+        }
+    }
+
+    # ===========================
+    # RONIN CLAN RELATIONSHIPS TABLE
+    # ===========================
+
+    ^"Ronin Clan Relationships" DEF {
+        APPLIES TO [^"Table"]
+        TABLE {
+            COLUMNS ["Clan", "Typical Employment Options", "Suggested Pay Modifier"]
+            ROW ["Crab", "Soldiers and armed recovery teams searching for missing scouts beyond the Wall.", "x1"]
+            ROW ["Crane", "Spies, soldiers, scouts, and messengers.", "x1.5"]
+            ROW ["Dragon", "Wilderness guides and caravan escorts headed to small villages through treacherous terrain to collect taxes.", "x1"]
+            ROW ["Lion", "Mercenary soldiers, messengers, teachers of ashigaru.", "x0.5"]
+            ROW ["Phoenix", "Caravan guards, librarians, scribes, and yoriki.", "x1"]
+            ROW ["Scorpion", "Spies, messengers, and couriers.", "x1.5"]
+            ROW ["Unicorn", "Soldiers, messengers, and scouts.", "x1.5"]
+        }
+    }
+
+    # ===========================
+    # NPC TEMPLATES
+    # ===========================
+
+    ^"Desperate NPC Template" DEF {
+        APPLIES TO [^"NPC Template"]
+        PROPERTIES {
+            ^"Base Profile" STRING "Any NPC profile"
+            ^"Description" STRING "Apply this template to someone with nothing left to lose."
+            ^"Combat Rank Modifier" STRING "+1"
+            ^"Ring Modifier" STRING "+1 Fire"
+            ^"Skill Modifier" STRING "+1 Martial and Social skills"
+            ^"Replace Advantages" STRING "0-2: Blackmail on [Name] (Fire) [Interpersonal], Daredevil (Fire) [Mental, Physical], Fights Dirty (Fire) [Mental, Physical], Indomitable Will (Earth) [Interpersonal, Mental]"
+            ^"Replace Disadvantages" STRING "0-2: Disdain for Honor (Void) [Flaw, Mental], Easily Provoked (Earth) [Flaw, Mental], Fear of Death (Earth) [Mental, Physical], Incurable Illness (Earth) [Physical], Paranoia (Water) [Mental, Physical]"
+            ^"Add Techniques" STRING "0-2: Kata, Ninjutsu, Shuji"
+            ^"Replace Demeanor" STRING "1: Assertive, Shrewd"
+        }
+    }
+
+    ^"Doshin NPC Template" DEF {
+        APPLIES TO [^"NPC Template"]
+        PROPERTIES {
+            ^"Base Profile" STRING "Any NPC profile"
+            ^"Description" STRING "Apply this template to someone who assists law enforcement, such as a patrol member or guard."
+            ^"Combat Rank Modifier" STRING "+1"
+            ^"Intrigue Rank Modifier" STRING "+1"
+            ^"Ring Modifier" STRING "+1 Earth"
+            ^"Skill Modifier" STRING "+1 Martial and Scholar skills"
+            ^"Replace Advantages" STRING "0-2: Fearsome Presence (Fire) [Social, Interpersonal], Knowledge of the Law (Air) [Scholar, Mental], Large Stature (Earth) [Physical], Sharp Eyes (Water) [Scholar, Physical]"
+            ^"Replace Disadvantages" STRING "0-2: Delusions of Grandeur (Void) [Mental, Interpersonal], Superiority Complex (Earth) [Flaw, Interpersonal], Whispers of Cruelty (Earth) [Interpersonal, Infamy]"
+            ^"Add Techniques" STRING "0-2: Kata"
+            ^"Replace Demeanor" STRING "1: Ambitious, Assertive"
+        }
+    }
+
+    ^"Galvanizing NPC Template" DEF {
+        APPLIES TO [^"NPC Template"]
+        PROPERTIES {
+            ^"Base Profile" STRING "Any NPC profile"
+            ^"Description" STRING "Apply to someone with great charisma and authority."
+            ^"Intrigue Rank Modifier" STRING "+2"
+            ^"Ring Modifier" STRING "+1 Water"
+            ^"Skill Modifier" STRING "+1 Scholar and Social skills"
+            ^"Replace Advantages" STRING "0-2: Benten's Blessing (Air) [Interpersonal, Spiritual], Indomitable Will (Earth) [Interpersonal, Mental], Inspiring (Water) [Interpersonal], Support of [One Group] (Water) [Interpersonal]"
+            ^"Replace Disadvantages" STRING "0-2: Cognitive Lapses (Void) [Mental, Scar], Impatience (Earth) [Mental], Perfectionism (Water) [Mental, Physical], Softheartedness (Fire) [Interpersonal, Mental]"
+            ^"Add Techniques" STRING "0-2: Kata, Shuji"
+            ^"Replace Demeanor" STRING "1: Assertive"
+        }
+    }
+
+    ^"Sneaky NPC Template" DEF {
+        APPLIES TO [^"NPC Template"]
+        PROPERTIES {
+            ^"Base Profile" STRING "Any NPC profile"
+            ^"Description" STRING "Apply to someone the player characters need to keep an eye on."
+            ^"Intrigue Rank Modifier" STRING "+2"
+            ^"Ring Modifier" STRING "+1 Water"
+            ^"Skill Modifier" STRING "+1 Martial and Social skills"
+            ^"Replace Advantages" STRING "0-2: Blackmail on [Name] (Fire) [Interpersonal], Fights Dirty (Fire) [Mental, Physical], Flexibility (Water) [Physical], Keen Balance (Earth) [Mental, Physical], Subtle Observer (Air) [Interpersonal, Mental]"
+            ^"Replace Disadvantages" STRING "0-2: Disdain for Righteousness (Void) [Flaw, Mental], Ebisu's Curse (Earth) [Physical, Spiritual], Paranoia (Water) [Mental, Physical], Perfectionism (Water) [Mental, Physical]"
+            ^"Add Techniques" STRING "0-2: Ninjutsu, Shuji"
+            ^"Replace Demeanor" STRING "1: Ambitious, Shrewd"
+        }
+    }
+
+    ^"Survivalist NPC Template" DEF {
+        APPLIES TO [^"NPC Template"]
+        PROPERTIES {
+            ^"Base Profile" STRING "Any NPC profile"
+            ^"Description" STRING "Apply to someone used to living in the wilds."
+            ^"Combat Rank Modifier" STRING "+2"
+            ^"Ring Modifier" STRING "+1 Water"
+            ^"Skill Modifier" STRING "+1 Martial and Trade skills"
+            ^"Replace Advantages" STRING "0-2: Indomitable Will (Earth) [Interpersonal, Mental], Quick Reflexes (Fire) [Interpersonal, Physical], Wilderness Survival Knowledge (Water) [Mental]"
+            ^"Replace Disadvantages" STRING "0-2: Bluntness (Air) [Interpersonal], Obtuse (Air) [Interpersonal, Mental], Whispers of Poverty (Water) [Material, Trade]"
+            ^"Add Techniques" STRING "0-2: Kata"
+            ^"Replace Demeanor" STRING "1: Detached, Gruff"
+        }
+    }
+
+    ^"Wandering NPC Template" DEF {
+        APPLIES TO [^"NPC Template"]
+        PROPERTIES {
+            ^"Base Profile" STRING "Any NPC profile"
+            ^"Description" STRING "Apply to someone who has seen the world and still seeks more."
+            ^"Combat Rank Modifier" STRING "+2"
+            ^"Ring Modifier" STRING "+1 Water"
+            ^"Skill Modifier" STRING "+1 Martial and Trade skills"
+            ^"Replace Advantages" STRING "0-2: Seasoned (Void) [Mental, Interpersonal], Secrets (Void) [Mental, Interpersonal], Travel (Water) [Mental, Physical]"
+            ^"Replace Disadvantages" STRING "0-2: Impatience (Earth) [Mental], Whispers of Poverty (Water) [Material, Trade], Restless (Earth) [Mental]"
+            ^"Add Techniques" STRING "0-2: Kata, Kiho"
+            ^"Replace Demeanor" STRING "1: Gruff, Shrewd"
+        }
+    }
+
+    # ===========================
+    # NPC STAT BLOCKS - CITY AND VILLAGE DWELLERS
+    # ===========================
+
+    ^"Annoyed Tax Collector" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Description" STRING "Imperial tax collectors often drafted from yoriki and doshin. Occasionally delegated to an Emerald Magistrate as a veiled demotion. Ronin are often hired as bodyguards."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 43
+            ^"Status" INTEGER 39
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Demeanor" STRING "Assertive"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 2", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Vaguely Threatening: Martial; Interpersonal, Physical", "Imperial Authority: Social; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Unpopular: Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Lacquered armor (Physical 4, Ceremonial, Cumbersome, Wargear)", "wakizashi", "jitte", "knife", "riding pony", "traveling outfit", "as many ronin minions as possible"]
+        }
+        RULES {
+            #L5RPW70tH7rU5xH7eM0nU2eU7qI: tax_collector_aura_of_dread "Aura of Dread: At the start of a scene where an annoyed tax collector is present, or when one arrives for the first time, all other characters with status 65 or less receive 3 strife."
+        }
+    }
+
+    ^"Bandit Lord" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Description" STRING "Few bandits accumulate enough numbers, wealth, and influence to rival local lords, but those who do are destabilizing powers. Sometimes popular bandits are granted lands and family names by Imperial decree."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Honor" INTEGER 10
+            ^"Glory" INTEGER 19
+            ^"Status" INTEGER 7
+            ^"Endurance" INTEGER 13
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 4
+            ^"Demeanor" STRING "Ambitious"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Age and Cunning: Martial, Social; Interpersonal, Physical", "Killer Instinct: Martial; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Fool's Avarice: Social; Mental", "Overconfident: Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged", "Kusari-Gama: Range 0/2-3, Damage 3, Deadliness 3, Concealable, Snaring, Wargear"]
+            ^"Gear" LIST OF STRING ["Lacquered armor (Physical 4, Ceremonial, Cumbersome, Wargear)", "simple clothes", "assortment of knives", "sake jug", "handful of koku"]
+        }
+        RULES {
+            #L5RPW70tX9jO3kD9yP2fY5dC9sQ: bandit_lord_get_them "Get Them...: As an action, a bandit lord may have up to two bandits or experienced bandits immediately move 1 range band and perform a Strike action. They count as having skilled assistance."
+            #L5RPW70hT8nN7bM8rD4yA3qS2vK: bandit_lord_cunning_tactics "Cunning Tactics: When performing an Attack action check, may spend OP: One character at range 0-2 suffers the Disoriented or Dazed condition."
+        }
+    }
+
+    ^"Clever Innkeeper" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Description" STRING "Clever innkeepers freely offer best rooms and finest foods to samurai guests, knowing it will be accepted as proper tribute and paid for by wealthy lords."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Honor" INTEGER 20
+            ^"Glory" INTEGER 23
+            ^"Status" INTEGER 9
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 7
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Demeanor" STRING "Shrewd"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 0", "Scholar 1", "Social 2", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Daikoku's Blessing: Trade; Interpersonal, Spiritual"]
+            ^"Disadvantages" LIST OF STRING ["Fool's Avarice: Social; Mental"]
+            ^"Gear" LIST OF STRING ["Passable clothes", "handful of bu"]
+        }
+        RULES {
+            #L5RPW70tF1rT4dD4zJ8uO0uP9oA: innkeeper_overlooked "Overlooked: When the clever innkeeper makes a check targeting a character with a higher status rank, the innkeeper treats the target's vigilance as 1 lower."
+        }
+    }
+
+    ^"Discerning Merchant" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Description" STRING "Merchants who sell finer wares exclusively to samurai nobility. It is dishonorable to haggle, so discerning merchants maintain trustworthy reputations for significant profit."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Honor" INTEGER 25
+            ^"Glory" INTEGER 29
+            ^"Status" INTEGER 9
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Demeanor" STRING "Shrewd"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 0", "Scholar 1", "Social 2", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Daikoku's Blessing: Social; Interpersonal, Spiritual"]
+            ^"Disadvantages" LIST OF STRING ["Deferential: Social; Interpersonal, Mental"]
+            ^"Gear" LIST OF STRING ["Passable clothes", "abacus", "handful of bu"]
+        }
+        RULES {
+            #L5RPW70eA3zX4gV8aR8lD1rV5kN: merchant_overlooked "Overlooked: When this merchant makes a check targeting a character with higher status rank, treats target's vigilance as 1 lower."
+            #L5RPW70iK0lN8jN8eU1dY0zT7nU: merchant_equal_exchange "An Equal Exchange: Once per scene, as a Scheme action, may offer one character a gift in exchange for a small favor. Target must make a TN 3 Courtesy (Air 5, Fire 1) check to resist. If failed, target receives 3 strife plus their shortfall."
+        }
+    }
+
+    ^"Hired Enforcer" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Brutes and thumb breakers, hired muscle employed to intimidate those who refuse to take their employer's threats seriously."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Honor" INTEGER 16
+            ^"Glory" INTEGER 20
+            ^"Status" INTEGER 9
+            ^"Endurance" INTEGER 7
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Demeanor" STRING "Shrewd"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Imposing: Martial, Social; Interpersonal, Physical"]
+            ^"Disadvantages" LIST OF STRING ["Fool's Avarice: Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Club: Range 0-1, Damage 5/6, Deadliness 2, Mundane"]
+            ^"Gear" LIST OF STRING ["Passable clothes", "handful of bu"]
+        }
+        RULES {
+            #L5RPW70iY5nA7zK6tT3oS9tQ4gU: enforcer_sucker_punch "Sucker Punch: When performing an Attack action check, may spend OP: One target gains the Disoriented condition."
+        }
+    }
+
+    ^"Indiscriminate Cutpurse" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Description" STRING "Thieves live desperate, hand-to-mouth lives, always hoping their next filched coin will pull them out of crushing poverty."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Honor" INTEGER 5
+            ^"Glory" INTEGER 20
+            ^"Status" INTEGER 1
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Demeanor" STRING "Shrewd"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Nimble and Silent: Trade; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Wanted: Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Knife: Range 0, Damage 2, Deadliness 4/6, Concealable, Mundane, Razor-Edged"]
+        }
+        RULES {
+            #L5RPW70cT2fM8nZ0iF0jQ1bZ1tT: cutpurse_quick_fingers "Quick Fingers: When making a check targeting a Disoriented character, treats target's vigilance as 2 lower (minimum 1)."
+        }
+    }
+
+    ^"Novice Ronin" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Ronin who band together in small mercenary groups. Distinguished from bandit gangs by some sense of honor. New members fashion themselves after a mentor."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Honor" INTEGER 33
+            ^"Glory" INTEGER 35
+            ^"Status" INTEGER 21
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Demeanor" STRING "Gruff"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 1", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Martial Instinct: Martial; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Unnecessarily Rude: Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged", "Yumi: Range 2-5, Damage 5, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Worn traveler's clothes (Physical 2, Mundane)", "quiver", "straw cloak", "handful of zeni"]
+        }
+        RULES {
+            #L5RPW70oR1hE1cA0gI0oT9iD1vJ: novice_ronin_striking_as_fire "Striking as Fire: When performing an Attack action (Fire) check, may spend Fire OP+: Increase the severity of any critical strike dealt by 2 per OP spent."
+        }
+    }
+
+    ^"Traveling Tradesperson" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Description" STRING "Merchants who travel throughout the Empire, sometimes considered more worldly than samurai. Often treated as honored guests in villages."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Honor" INTEGER 25
+            ^"Glory" INTEGER 25
+            ^"Status" INTEGER 9
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Demeanor" STRING "Shrewd"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 0", "Scholar 2", "Social 2", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Daikoku's Blessing: Social; Interpersonal, Spiritual", "Worldly Wanderer: Scholar, Trade; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Deferential: Social; Interpersonal, Mental"]
+            ^"Gear" LIST OF STRING ["Traveling clothes", "abacus", "handful of bu"]
+        }
+        RULES {
+            #L5RPW70rJ7cH4mF0gL5aE3jW2aM: tradesperson_fix "I Can Fix That: Can remove the Damaged condition from most non-supernatural items (rarity 6 or lower). GM determines repairability, cost, and time."
+        }
+    }
+
+    ^"Wandering Duelist" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Description" STRING "A ronin whose devotion to mastery of the blade outweighs family obligation. They embrace the wild life of the lordless to hone their sword skills. Easily find work as bodyguards and duelists."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 2
+            }
+            ^"Honor" INTEGER 45
+            ^"Glory" INTEGER 30
+            ^"Status" INTEGER 20
+            ^"Endurance" INTEGER 13
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Demeanor" STRING "Gruff"
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 3", "Scholar 1", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Killer Instinct: Martial; Mental", "Worldly Wanderer: Scholar, Trade; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Careless: Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Worn traveler's clothes (Physical 2, Mundane)", "straw hat", "knife", "handful of zeni"]
+        }
+        RULES {
+            #L5RPW70zW2uQ6bD7jT3vY0iT4gS: duelist_iaijutsu "Iaijutsu Cut: Crossing Blade: As an Attack and Movement action using one sheathed Razor-Edged weapon, make a TN 2 Martial Arts [Melee] check targeting one character at range 1-2. Draw and ready the weapon in one-handed grip. If successful, deal physical damage equal to weapon's deadliness plus bonus successes."
+            #L5RPW70gD2rE9tK4fG2zW6iK7kM: duelist_striking_fire "Striking as Fire: When performing an Attack action (Fire) check, may spend Fire OP+: Increase the severity of any critical strike dealt by 2 per OP spent."
+        }
+    }
+
+    ^"Vigilante Shinobi" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Description" STRING "Shinobi who train to protect peasants from cruel samurai lords. Samurai who wrong helpless peasantry are visited by an avenging shadow; those who subjugate a village vanish without trace."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 2
+            }
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 20
+            ^"Status" INTEGER 8
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Demeanor" STRING "Intimidating"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 1", "Social 0", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Killer Instinct: Martial; Mental", "Deadly Silent: Martial; Mental, Physical"]
+            ^"Disadvantages" LIST OF STRING ["Ruthless: Social; Physical, Spiritual"]
+            ^"Favored Weapons" LIST OF STRING ["Kusari-Gama: Range 0/2-3, Damage 3, Deadliness 3, Concealable, Snaring, Wargear", "Shuriken: Range 0 (1-3), Damage 2, Deadliness 4, Concealable"]
+            ^"Gear" LIST OF STRING ["Worn traveler's clothes (Physical 2, Mundane)", "straw hat", "assorted knives", "caltrops", "vials", "handful of zeni", "infiltration clothes", "climbing equipment", "makeup and disguises"]
+        }
+        RULES {
+            #L5RPW70mB7fC7kF9aF1gU5fN9zU: shinobi_skulk "Skulk: When performing an Initiative or Attack action check using Air, may spend Air OP: If in obscuring terrain, a crowd, or otherwise concealed, one character with vigilance lower than or equal to Skulduggery ranks loses sight of the shinobi."
+            #L5RPW70rA4xM5wR7oG7bQ3pT5tN: shinobi_wasps_spite "Wasp's Spite Style: When performing a Martial Arts [Ranged] check, may spend Air/Void OP OP: If they did not succeed, choose another target at range 0-2 of their target with vigilance lower than or equal to target's. New target suffers physical damage equal to weapon's base damage."
+        }
+    }
+
+    # ===========================
+    # ANIMAL STAT BLOCKS
+    # ===========================
+
+    ^"Blue Shark" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 0
+            ^"Description" STRING "Six to nine feet long, known for berserker fury and attraction to blood. Venerated by some Hiruma family members."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 4
+            }
+            ^"Endurance" INTEGER 15
+            ^"Composure" INTEGER 4
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 3
+            ^"Demeanor" STRING "Opportunistic"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 0", "Social 0", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Swift and Silent: Martial; Physical", "Keen Sense of Smell: Trade; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Hot-Tempered: Martial; Mental", "Weak Spot (Nose): Martial; Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Razor Teeth: Range 0, Damage 7, Deadliness 7, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Thick hide (Physical 2)"]
+        }
+        RULES {
+            #L5RPW71gR9bS1cR4eY8yI8sK3dE: shark_sea_creature "Sea Creature: Aquatic animal. Increase deadliness of bite against a Bleeding target by 4."
+            #L5RPW71qY5rG9gW8rM1mY2pY5vC: shark_blood_water "Blood in the Water: As an Attack and Movement action, may make a TN 2 Fitness (Water) check to slam a target at range 0-1. If successful, target suffers Dazed condition and must resist with TN 3 Fitness (Earth 2, Fire 5) or suffer Bleeding condition."
+        }
+    }
+
+    ^"Camel" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Imported by Unicorn Clan. Withstand extreme temperatures, more stubborn and intelligent than horses. Used for fur, milk, carrying goods, and sometimes mounts."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 2
+            ^"Demeanor" STRING "Stubborn"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Survivalist: Martial; Physical", "Temperature Resistant: Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Skittish: Martial; Mental"]
+            ^"Gear" LIST OF STRING ["Woolly hide (Physical 3)"]
+        }
+        RULES {
+            #L5RPW71uU2oS2kO5cH1sH3mR1kO: camel_lumbering "Lumbering: Can be ridden by a human-sized rider."
+        }
+    }
+
+    ^"Elegant Pit Viper" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Venom rots flesh and sours blood. Must be provoked to attack. Unique breed on Islands of Spice and Silk can grow up to eight feet."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 2
+            ^"Composure" INTEGER 5
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 0
+            ^"Demeanor" STRING "Cautious"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Swift and Silent: Martial; Physical", "Easily Overlooked: Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Short Temper: Martial; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Fangs: Range 0, Damage 1, Deadliness 3, Concealable, Razor-Edged"]
+        }
+        RULES {
+            #L5RPW71pJ8jP3fH2dM9rY7kR0lA: viper_venomous "Venomous Bite: When performing an Attack action check, may spend OP+ to increase TN of any check to resist a critical strike; if target fails, they also suffer Dying (4 rounds) condition."
+        }
+    }
+
+    ^"Elephant" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 8
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Not native to Rokugan. A pair kept by Ide family daimyo, one in Bayushi menagerie. Valuable working and war animal in Ivory Kingdoms, venerated as symbol of intelligence, compassion, and patience."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 5
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 20
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 4
+            ^"Demeanor" STRING "Flighty"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 2", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Enormous Stature: Martial; Physical", "Prehensile Trunk: Trade; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Skittish: Martial; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Tusks: Range 1, Damage 8, Deadliness 8, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Thick hide (Physical 5)"]
+        }
+        RULES {
+            #L5RPW71kG5jA9aY3jC9nO6nI9aQ: elephant_trample "Trample: When an elephant inflicts a critical strike, the TN of the check to resist is 6, and if target fails, they suffer Dazed condition in addition to other effects."
+        }
+    }
+
+    ^"Fox" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Several varieties native to Rokugan: snow fox, red, black, white, and rare silver fox. Considered intelligent and associated with kitsune trickster spirits."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 5
+            ^"Composure" INTEGER 4
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 0
+            ^"Demeanor" STRING "Calculating"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Curious Nature: Social; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Easily Spooked: Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Teeth: Range 0, Damage 1, Deadliness 2, Razor-Edged"]
+        }
+        RULES {
+            #L5RPW71yR6eK7qN7kB7zX7vK0sI: fox_tracker "Excellent Tracker: Reduces TN of all checks to track prey by 2, to minimum 1."
+        }
+    }
+
+    ^"Giant Salamander" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Common in marshes and rivers of southern Rokugan. Nocturnal and aquatic, can grow up to nine feet. Peaceful, only attacks to retaliate, exudes peppery musk when threatened."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 2
+            ^"Demeanor" STRING "Unenthused"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Enormous Stature: Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Virtually Blind: Martial; Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Needle Bite: Range 0, Damage 2, Deadliness 5, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Blubbery hide (Physical 2)"]
+        }
+        RULES {
+            #L5RPW71nG8iK6oT7dI5kP4iJ4eD: salamander_huge "Huge and Slippery: TN of any check to pick up a giant salamander is increased by 2."
+            #L5RPW71lZ9yB1pG2xZ5iI9mK1gE: salamander_musk "Pepper Musk: After defending against damage, each character at range 0-2 suffers Dazed condition and must resist with TN 2 Fitness (Air 4, Fire 1) or suffer Disoriented condition as well."
+        }
+    }
+
+    ^"Giant Hornet Swarm" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 0
+            ^"Description" STRING "Largest hornet species in Rokugan, up to two inches long. Most common in Scorpion and Lion lands. Feared for potent toxic sting. Colloquially called 'sparrow bees,' considered a fried delicacy."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 3
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 1
+            ^"Silhouette" INTEGER 1
+            ^"Demeanor" STRING "Aggressive"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Lightning Reflexes: Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Quick to Anger: Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Stinger: Range 0, Damage 1, Deadliness 7"]
+            ^"Gear" LIST OF STRING ["Hardened Exoskeleton (Physical 1)"]
+        }
+        RULES {
+            #L5RPW71pW3rR2aM7xH5mD3rI4vJ: hornet_nimble "Nimble Flyer: Can fly, move vertically, ignores negative effects of terrain."
+            #L5RPW71jD7bU3eV6qM1sN0mR6cK: hornet_toxic "Toxic Sting: When performing Attack check, may spend OP+: Target suffers Dazed, Disoriented, or Exhausted. OP OP: Target suffers Immobilized."
+        }
+    }
+
+    ^"Saltwater Crocodile" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Common in coastal rivers and swamps. Can grow up to twenty feet and 2,500 pounds. Hunt by floating still and snapping at prey, then 'death roll.' Hunting requires multiple samurai."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 5
+            }
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 3
+            ^"Demeanor" STRING "Opportunistic"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 0", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Enormous Stature: Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Clumsy on Land: Martial; Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Teeth: Range 0, Damage 5, Deadliness 4, Razor-Edged, Snaring"]
+            ^"Gear" LIST OF STRING ["Thick hide (Physical 4)"]
+        }
+        RULES {
+            #L5RPW71eF1mI0cA9mU2bC5wC8cY: croc_aquatic "Giant Aquatic Reptile: Can move through water without requiring checks."
+            #L5RPW71nK3cI0vZ5bC4iT4kR6xB: croc_death_roll "Death Roll: When succeeding on Attack action check, target suffers Prone and Disoriented. If in water, target must make TN 3 Fitness check or begin drowning."
+        }
+    }
+
+    ^"Serow" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "A bovid grazer the size of a large goat with long face, thick fur, backward-facing horns, and cloven hooves. Can scale mountain cliffs. Revered by shinobi groups."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 4
+            ^"Silhouette" INTEGER 2
+            ^"Demeanor" STRING "Flighty"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Excellent Senses: Martial; Mental, Physical", "Lightning Reflexes: Martial; Mental, Physical"]
+            ^"Disadvantages" LIST OF STRING ["Meek: Martial; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Hooves: Range 1, Damage 4, Deadliness 3"]
+        }
+        RULES {
+            #L5RPW71mF7fM7eO2uS7mA6tU0rF: serow_forest_deer "Forest-Deer: Can clamber up rocky cliffs and exceptionally steep surfaces without issue."
+        }
+    }
+
+    ^"Emperor Serow" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "A wily serow that has reached age twenty-five and sprouted branched antlers and a shaggy mane. Attracts other serow into larger herds. Fur is prized for winter wear."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 4
+            }
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 4
+            ^"Silhouette" INTEGER 2
+            ^"Demeanor" STRING "Flighty"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 0", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Excellent Senses: Martial; Mental, Physical", "Lightning Reflexes: Martial; Mental, Physical"]
+            ^"Disadvantages" LIST OF STRING ["Meek: Martial; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Hooves: Range 1-2, Damage 5, Deadliness 4"]
+            ^"Gear" LIST OF STRING ["Shaggy hide (Physical 2)"]
+        }
+        RULES {
+            #L5RPW71nS9dI4uP8tJ8kV2vW3yC: emperor_serow_forest "Forest-Deer: Can clamber up rocky cliffs and exceptionally steep surfaces without issue."
+            #L5RPW71tS0cZ9mP6xB8uU7uF4yZ: emperor_serow_protect "Protect the Herd: As an action, may have up to two serow who have not yet acted this round immediately move 1 range band and perform a Strike action with skilled assistance."
+        }
+    }
+
+    ^"Macaque" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Also known as snow monkeys. Popular samurai lord pets and sacred to Brotherhood monks. Curious tricksters who steal unsecured items."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 4
+            }
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 4
+            ^"Silhouette" INTEGER 0
+            ^"Demeanor" STRING "Mischievous"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 2", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Lightning Reflexes: Martial; Mental, Physical"]
+            ^"Disadvantages" LIST OF STRING ["Curious: Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Bite: Range 0, Damage 1, Deadliness 2"]
+            ^"Gear" LIST OF STRING ["Something the last person the macaque pickpocketed thinks is still in their bag"]
+        }
+        RULES {
+            #L5RPW71rF5nK3nJ5hK6zB0fW4nQ: macaque_tricksters "Natural Tricksters: When making Attack check, may spend OP: Steal unsecured item within reach. OP+: Steal item from target with vigilance lower than or equal to OP spent."
+            #L5RPW71kZ1oX7pP9nJ4tK3yE1dY: macaque_humiliating "Humiliating: When Attack check targeting macaque fails, attacker receives 2 strife. When macaque steals an item, that character receives 3 strife."
+        }
+    }
+
+    # ===========================
+    # SPIRITS AND STRANGE BEINGS
+    # ===========================
+
+    ^"Monstrous Octopus" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Exceptionally large octopus (20-30 feet). Can amble on land briefly. Shy and prefers to flee via ink cloud. Skilled grappler that has drowned many sailors."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 4
+            }
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 4
+            ^"Demeanor" STRING "Cautious"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 0", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Camouflage Skin: Artisan; Physical", "Eight Strong Arms: Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Clumsy: Martial; Mental, Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Tentacle Arms: Range 0-2, Damage 5, Deadliness 3, Snaring"]
+            ^"Gear" LIST OF STRING ["Rubbery hide (Physical 2)"]
+        }
+        RULES {
+            #L5RPW71wP7vV5wP6hT9wS8gT6xJ: octopus_aquatic "Aquatic Giant: Moves through water without requiring checks."
+            #L5RPW71oW8qD1uZ4iG5bR9wB3zR: octopus_disguise "Master of Disguise: When performing a check, may spend OP+: Disguises itself, causing each character with vigilance lower than or equal to OP spent to lose sight of it."
+        }
+    }
+
+    ^"Rhinoceros" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 9
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Very few in Rokugan know what a rhinoceros looks like. Weighing 3,500-4,500 pounds. Sometimes called the unicorns of the Ivory Kingdoms."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 5
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 22
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 4
+            ^"Demeanor" STRING "Intimidating"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 4", "Scholar 0", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Huge Creature: Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Territorial: Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Horn: Range 1, Damage 8, Deadliness 8, Durable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Coarse Hide (Physical 4)"]
+        }
+        RULES {
+            #L5RPW71oN4gU7xY4lR3tT0dX4gO: rhino_charge "Furious Charge: As an Attack action, may target a location within range 3-5. Charges at location; creatures within range 0-1 must make TN 4 Fitness (Fire 6, Air 2) or suffer critical injury of severity 8 and become Incapacitated."
+        }
+    }
+
+    ^"Akkorokamui" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Description" STRING "A massive octopus that consumed a piece of jade, reaching 400+ feet. Can regenerate lost limbs within minutes. Eating its flesh is rumored to temporarily bestow jade properties."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 6
+            }
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 20
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 5
+            ^"Silhouette" INTEGER 5
+            ^"Demeanor" STRING "Fickle"
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 3", "Scholar 1", "Social 2", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Camouflage Skin: Artisan; Physical", "Eight Strong Arms: Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Clumsy: Martial; Mental, Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Tentacle Arms: Range 0-5, Damage 8, Deadliness 6"]
+            ^"Gear" LIST OF STRING ["Supernatural hide (Physical 3, Supernatural 3)"]
+        }
+        RULES {
+            #L5RPW71cS8bX4jF3tD7lA6gU9dW: akkorokamui_aquatic "Aquatic Giant: Moves through water without requiring checks."
+            #L5RPW71xM6vF1rM5jN6pP0qJ5mQ: akkorokamui_regen "Fast Regenerate: Severity of critical strikes reduced by 3 (minimum 1). Burning attacks are not affected."
+        }
+    }
+
+    ^"Rakshasa" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 6
+            ^"Description" STRING "Shapeshifting beings from the Ghostlands that possess illusionary magic. Bipedal, human-sized to over eight feet tall. Most love to capture and eat human flesh."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 4
+            }
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Silhouette" INTEGER 3
+            ^"Demeanor" STRING "Scheming"
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 2", "Scholar 2", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Shifting Form: Social, Martial; Interpersonal, Physical"]
+            ^"Disadvantages" LIST OF STRING ["Hungry for Flesh: Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Deadly Claws (natural form): Range 0-1, Damage 5, Deadliness 4, Razor-Edged, Unholy", "Urumi (whip-sword): Range 1-2, Damage 4, Deadliness 5, Cumbersome, Razor-Edged, Snaring"]
+            ^"Gear" LIST OF STRING ["Unholy Hide (Physical 3, Spiritual 2, Unholy)"]
+        }
+        RULES {
+            #L5RPW71uS5vY7yT1tV9fF6gK3xD: rakshasa_illusion "Illusory Hunter: Can change form to appear as silhouette 2-4 creature. At scene start, characters must make TN 4 Survival/Theology (Air 6, Void 2) to see through illusion. Failure: 2 strife, cannot see through illusion."
+            #L5RPW71zV5jH4zK9kK5sW2mK0qX: rakshasa_desire "Overwhelming Desire: On successful Attack, may spend OP: Target suffers Bleeding. OP OP: If target is Bleeding, rakshasa heals 3 fatigue."
+        }
+    }
+
+    ^"Captivating Rakshasa" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 9
+            ^"Intrigue Conflict Rank" INTEGER 10
+            ^"Description" STRING "Older, wiser rakshasa who have overcome their urge to feed and refined their illusory and magical arts. Capable of good and bad acts but often driven to wickedness by being hunted."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 5
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 5
+            }
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 18
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 5
+            ^"Silhouette" INTEGER 3
+            ^"Demeanor" STRING "Beguiling"
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 3", "Scholar 2", "Social 4", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Shifting Form: Social, Martial; Interpersonal, Physical"]
+            ^"Disadvantages" LIST OF STRING ["Bitter: Social; Interpersonal, Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Deadly Claws (natural form): Range 0-1, Damage 5, Deadliness 4, Razor-Edged, Unholy", "Urumi (whip-sword): Range 1-2, Damage 4, Deadliness 5, Cumbersome, Razor-Edged, Snaring"]
+            ^"Gear" LIST OF STRING ["Unholy Hide (Physical 3, Spiritual 2, Unholy)", "morbid trophies"]
+        }
+        RULES {
+            #L5RPW71jQ0cK5hS8oU6gZ2eK6xZ: cap_rakshasa_illusion "Illusory Hunter: Can change form (silhouette 2-4). At scene start, TN 5 Survival/Theology (Air 7, Void 3) to see through illusion. Failure: 2 strife, cannot see through."
+            #L5RPW71uG0sY9nX7vG6iR0lW8oJ: cap_rakshasa_charm "Captivating Charm: As an Attack action, choose target. Target must resist TN 5 Meditation/Theology (Fire 7, Earth 3). If failed, target must move 1 range band toward another target of rakshasa's choice and Strike them. If no targets in range, original target suffers 4 strife."
+        }
+    }
+
+    ^"Penanggalan" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 8
+            ^"Intrigue Conflict Rank" INTEGER 6
+            ^"Description" STRING "A bizarre creature that can detach its head and viscera from its body. The head flies about stalking victims, strangling with dangling entrails and drinking blood. Must soak viscera in vinegar to reattach."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Silhouette" INTEGER 2
+            ^"Demeanor" STRING "Wary"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 1", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Horrific Form: Social; Interpersonal, Mental, Spiritual"]
+            ^"Disadvantages" LIST OF STRING ["Endless Hunger: Social; Interpersonal, Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Choking Entrails: Range 1, Damage 4, Deadliness 5, Snaring, Unholy"]
+            ^"Gear" LIST OF STRING ["Disconcerting viscera (Physical 3, Supernatural 5, Unholy)"]
+        }
+        RULES {
+            #L5RPW71rH8pZ1gR4yC1pM0rA7wE: penanggalan_flying "Flying Horror: Silhouette 2 creature that can fly, move vertically, ignores negative terrain. When performing Movement, may move up to 2 additional range bands, or make TN 3 Fitness check to move 3 range bands."
+            #L5RPW71wZ8sJ7aY8pF7pE0iM7xP: penanggalan_profane "Profane Nature: Otherworldly, Tainted being. If its body is destroyed by burning while head is absent, it dies at next sunrise."
+            #L5RPW71iA0qS9lD7rY0hI8pG0dW: penanggalan_immobilize "Immobilizing Tendrils: Characters at range 0-2 do not remove Immobilized condition inflicted by the penanggalan at start of turn unless they receive 3 fatigue."
+            #L5RPW71nO2oQ1lJ4yJ5qS1eU4cG: penanggalan_ensnare "Ensnaring Viscera: As an Attack action, each Immobilized character at range 0-2 must resist with TN 5 Fitness (Earth 4, Air 7) or receive fatigue equal to their shortfall."
+        }
+    }
+
+    ^"Possessed Puppets" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Puppets possessed by spirits from Sakkaku (Realm of Mischief). Come in various shapes including firefighters, a toy duck, and a trio of children. Can use minor illusions and move very quickly."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 2
+            ^"Composure" INTEGER 5
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 4
+            ^"Demeanor" STRING "Mischievous"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Unsettlingly Quick: Martial; Physical, Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Easily Distracted: Social; Interpersonal, Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Sharpened Wooden Appendages: Range 0, Damage 1, Deadliness 2"]
+            ^"Gear" LIST OF STRING ["Guise of illusions (Supernatural 3)"]
+        }
+        RULES {
+            #L5RPW71pV3vB7hN5bA8tL5hM8zE: puppet_mischief "Mischief Maker: As a Support action, may target one position at range 0-2. Area at range 0-1 of that position gains Dangerous, Entangling, or Obscuring terrain quality."
+        }
+    }
+
+    # --- ADDITIONAL SPIRITS AND KAMI ---
+
+    ^"Amikiri" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Description" STRING "A scorpion that has reached one hundred years, growing in size with camouflage ability. Hides in ceiling corners, severing mosquito nets and lamp ropes. Deadly when confronted."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 7
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 1
+            ^"Demeanor" STRING "Aggressive"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 1", "Social 0", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Camouflage Carapace: Trade; Physical", "Cling to Walls: Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Compulsive: Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Scorpion Claws: Range 0, Damage 4, Deadliness 3", "Tail Stinger: Range 0-1, Damage 3, Deadliness 6"]
+            ^"Gear" LIST OF STRING ["Chitinous hide (Physical 3)"]
+        }
+        RULES {
+            #L5RPW71bH0vJ6bA6zV3zB3bB9iW: amikiri_scorpion "Giant Scorpion: Otherworldly silhouette 1 creature."
+            #L5RPW71hI2bU9yP6wY4aL4tT3fK: amikiri_toxic "Toxic Sting: Once per scene, on successful Attack, may spend OP: Target suffers critical strike with severity 8."
+        }
+    }
+
+    ^"Basan" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Mountain rooster from Chikushodo (Realm of Animals). Oversized with vibrant plumage that darkens when threatened. Can breathe plumes of blue flame. Nocturnal nuisance to villages."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 0
+            ^"Demeanor" STRING "Flighty"
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 2", "Scholar 0", "Social 0", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Camouflaging Feathers: Artisan; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Easily Frightened: Martial; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Clawed talon: Range 0-1, Damage 3, Deadliness 5, Razor-Edged"]
+        }
+        RULES {
+            #L5RPW71gL9mA5mF7fO5zT8fX6pC: basan_otherworldly "Chikushodo Native: Otherworldly silhouette 0 creature."
+            #L5RPW71lO9pI2mA5yW7cD5aE3qC: basan_breathes_flame "Breathes Flame: On successful Attack, may spend OP: Target suffers Burning condition."
+        }
+    }
+
+    ^"Isonade" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 8
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Monstrous shark with barbed tail and hooked catfish whiskers. Causes stormy winds near surface. Feared throughout Islands of Spice and Silk for capsizing boats."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 5
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 6
+            }
+            ^"Endurance" INTEGER 18
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 5
+            ^"Demeanor" STRING "Aggressive"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 4", "Scholar 0", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Accompanied by Storms: Martial; Physical", "Keen Sense of Smell: Trade; Physical", "Terrible Strength: Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Hot-Tempered: Martial; Mental", "Weak Spot (Nose): Martial; Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Razor Teeth: Range 0, Damage 7, Deadliness 9, Razor-Edged", "Barbed Tail: Range 2, Damage 10, Deadliness 5, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Thick hide (Physical 4)"]
+        }
+        RULES {
+            #L5RPW71cP1rM8uH5yL6hV2tP2uN: isonade_aquatic "Aquatic Monster: Otherworldly silhouette 5. Moves through water without requiring checks."
+            #L5RPW71rA5fI6cW7hI7pP7kE0sT: isonade_blood "Blood Frenzy: When blood enters nearby waters, becomes Enraged. Cannot suffer Unconscious, may perform Attack actions while Incapacitated."
+        }
+    }
+
+    ^"Mischievous Kappa" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Description" STRING "Child-sized turtle from Sakkaku with bowl-shaped head indentation containing water and life energy. Lives in lakes and ponds, sustains with blood, tricks wanderers into drowning."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 1
+            ^"Demeanor" STRING "Shrewd"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 3", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Excellent Swimmer: Martial; Physical", "Lightning Reflexes: Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Deferential: Social; Interpersonal, Mental", "Weak Spot (Water in Head): Martial; Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Razor Claws: Range 0, Damage 4, Deadliness 6, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Turtle shell (Physical 4)"]
+        }
+        RULES {
+            #L5RPW71cO2iN1nW5hN4pO0kC5tG: kappa_aquatic "Aquatic Spirit: Otherworldly silhouette 1. Moves through water without checks."
+            #L5RPW71fZ3jY7kR9yA4dL0gH6rY: kappa_games "Lover of Games: A character may make TN 4 Games check (Air 5, Fire 2) to challenge kappa to riddles. Success: kappa offers small favor. Failure: 3 strife."
+        }
+    }
+
+    ^"Tiny Manifest Air Kami" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Kami"
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Description" STRING "Found in areas of gentle zephyrs. Manifest as small whirlwinds, angered by smoke and pollutants."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 5
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 7
+            ^"Composure" INTEGER 4
+            ^"Focus" INTEGER 2
+            ^"Vigilance" INTEGER 2
+            ^"Demeanor" STRING "Flighty"
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 2", "Scholar 0", "Social 2", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Ethereal Form: Martial, Trade; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Easily Distracted: Scholar, Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Slicing Winds: Range 0-2, Damage 3, Deadliness 7, supernatural damage"]
+            ^"Gear" LIST OF STRING ["Cloak of Air (Physical 3, Supernatural 2)"]
+        }
+        RULES {
+            #L5RPW71wG3bF9iP1eQ3vU8lB2oB: air_kami_flight "Flight: Can move vertically, ignores negative terrain effects."
+            #L5RPW71iF2cX9zH1mG3hY9lX5rQ: air_kami_spirit "Tiny Living Air Spirit: Otherworldly, silhouette 0/1/2 (may change as action). Whenever a character deals damage, that character suffers half as much strife (rounded down)."
+            #L5RPW71vK7gO5tS5rZ9pL8jU0qO: air_kami_gale "Buffeting Gale: On Attack check, may spend OP: Target must resist TN 4 Fitness (Air 6, Fire 2) or suffer Prone. OP+: Move 1 range band per OP."
+        }
+    }
+
+    ^"Tiny Manifest Earth Kami" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Kami"
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Make homes in notable rocks, fertile earth, or riverbanks. Drawn to action when people mistreat nature or disturb old earth."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 5
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 2
+            ^"Vigilance" INTEGER 1
+            ^"Silhouette" INTEGER 1
+            ^"Demeanor" STRING "Obstinate"
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 2", "Scholar 2", "Social 0", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Sturdy Body: Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Honest to a Fault: Social, Trade; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Rising Rock: Range 1-3, Damage 5, Deadliness 5, physical or supernatural damage"]
+            ^"Gear" LIST OF STRING ["Skin of stone (Physical 4, Sacred)"]
+        }
+        RULES {
+            #L5RPW71qQ5kI8jC8rX8uT1aS4xI: earth_kami_burrow "Burrow: As movement action, withdraws into ground. Cannot be targeted or perform actions other than Eruption."
+            #L5RPW71wA4yL6gJ5jN8oM1xQ4fJ: earth_kami_eruption "Eruption: As Attack and Movement while burrowed, bursts from ground at range 0-3. Characters at range 0-1 must resist TN 4 Fitness (Air 2, Water 6) or suffer 3 physical damage and Prone."
+            #L5RPW71gH6sR1pN1aG8qD7yI8pO: earth_kami_spirit "Tiny Living Earth Spirit: Otherworldly silhouette 1. Whenever dealt damage, that character suffers half as much strife (rounded down)."
+            #L5RPW71fH1zQ5tG3nG8bW4jV1aA: earth_kami_pebbles "Hurling Pebbles: On successful Attack, may spend OP+: Characters within range 0-1 of target must make TN 3 Fitness (Air 1, Water 5) or suffer 1 fatigue per OP spent."
+        }
+    }
+
+    ^"Tiny Manifest Fire Kami" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Kami"
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Found in recently burned forests or temple braziers. Embodiment of passion, easily provoked if not properly venerated."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 5
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 9
+            ^"Composure" INTEGER 2
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 1
+            ^"Demeanor" STRING "Intense"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 2", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Primal Terror: Martial, Social; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Endless Hunger: Artisan, Scholar; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Searing Reach: Range 1-2, Damage 4, Deadliness 5, supernatural damage"]
+            ^"Gear" LIST OF STRING ["Blazing body (Physical 2)"]
+        }
+        RULES {
+            #L5RPW71nM2bP6aH6gM5dJ8kX9nA: fire_kami_spirit "Tiny Living Fire Spirit: Otherworldly silhouette 0/1/2 (may change as action). Whenever dealt damage, that character suffers half as much strife (rounded down)."
+            #L5RPW71mC6dM6tF6uT4pS9aA8rV: fire_kami_mantle "Mantle of Smoke and Ash: Area at range 0-1 is treated as Dangerous and Obscuring terrain. Characters who touch kami with flesh must resist TN 5 Meditation or suffer 2 strife."
+            #L5RPW71fG9pX2pG0nD2sG4kF2rI: fire_kami_scorch "Scorching Touch: On successful Attack, may spend OP: Target suffers Burning condition."
+        }
+    }
+
+    ^"Tiny Manifest Water Kami" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Kami"
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Description" STRING "Found in rainy forest puddles, small ponds, and mountain snow drifts. Usually easy-going, satisfied with small gifts of pure spring water and songs. Will pull water from soil if displeased."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 5
+            }
+            ^"Endurance" INTEGER 11
+            ^"Composure" INTEGER 9
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 2
+            ^"Demeanor" STRING "Adaptable"
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 1", "Scholar 2", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Liquid Body: Martial, Trade; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Without Convictions: Artisan, Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Damaging Waves: Range 1-2, Damage 5, Deadliness 3, supernatural damage"]
+            ^"Gear" LIST OF STRING ["Malleable form (Physical 2, Supernatural 2)"]
+        }
+        RULES {
+            #L5RPW71yG4uO8gW4xJ7oG9eB9zN: water_kami_spirit "Tiny Living Water Spirit: Otherworldly silhouette 0/1/2 (may change as action). Whenever dealt damage, that character suffers half as much strife (rounded down)."
+            #L5RPW71lL6qN6gT5wV3dO7fB0hU: water_kami_serpent "Shape of the Water Serpent: As Attack action, moves to target within range 0-2. Target must resist TN 4 Fitness (Water 6, Earth 2). If failed, wraps around head and target begins suffocating. Target may reattempt resistance at end of each turn."
+        }
+    }
+
+    # --- ADDITIONAL SPIRITS ---
+
+    ^"Night Heron" DEF {
+        APPLIES TO [^"NPC"]
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Nocturnal bird with black-and-white plumage and eerie keen. Known for 'blue heron flame' — glows pale blue under full moon with phosphorescent sheen."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 5
+            ^"Composure" INTEGER 5
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Demeanor" STRING "Flighty"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Void -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Graceful Flight (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Easily Frightened (Void) [Martial; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Clawed talons: Range 0, Damage 3, Deadliness 5, Razor-Edged"]
+        }
+
+        ^"Flash-Cast" DEF {
+            # The night heron may spend a Movement action to
+            # hurl itself to a spot within its normal movement
+            # range, casting a splash of blue or golden, glowing
+            # powder over everything within range 0-1 of where
+            # it lands. Those caught within must resist with a
+            # TN 2 Fitness check (Fire 1, Air 3); if they fail,
+            # they become Dazed.
+        }
+
+        RULES {
+            #L5RPW71rW8aG0cM8nR5bA1fA6yH:night_heron
+        }
+    }
+
+    ^"Red-Crowned Heron" DEF {
+        APPLIES TO [^"NPC"]
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Sacred to Doji and Kakita families. Symbol of beauty, cleverness, and longevity. Largest crane species in Rokugan. Needlessly killing one is considered bad luck."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 3
+            ^"Composure" INTEGER 5
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 3
+            ^"Demeanor" STRING "Serene"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Void -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Graceful Flight (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Easily Frightened (Void) [Martial; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Clawed talons: Range 0, Damage 3, Deadliness 5, Razor-Edged"]
+        }
+
+        ^"Startling Aggression" DEF {
+            # Once per scene, the red-crowned heron may rise up
+            # and furiously flap its wings. All characters within
+            # range 0-1 of the heron must make a TN 2 Fitness
+            # check (Fire 1, Void 3) to resist; if they fail, they
+            # suffer 2 strife and become Dazed.
+        }
+
+        RULES {
+            #L5RPW71oK0kK9pS2hK7iZ4xJ0gX:red_crowned_heron
+        }
+    }
+
+    ^"Furiribi" DEF {
+        APPLIES TO [^"NPC"]
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Description" STRING "An 'aimless flame' left behind after traumatic death. Purple orbs that linger where bodies died, luring unwary to deaths. Burns not flesh but soul."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 4
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 0
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Fire +1, Void -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Incorporeal (Earth) [Martial; Physical, Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Sadness (Void) [Social; Mental]"]
+            ^"Gear" LIST OF STRING ["Ghostly energy (Physical 10)"]
+        }
+
+        ^"Ghostly Body" DEF {
+            # The furiribi is an Otherworldly creature of
+            # silhouette 0 that can pass through solid objects.
+        }
+
+        ^"Burns the Soul" DEF {
+            # When a creature touches a furiribi they must make
+            # a TN 4 Fitness check (Earth 5, Fire 5, Void 2) to
+            # resist the furiribi's spiritual flame. If a creature
+            # fails, they take 5 Supernatural damage and become
+            # Exhausted. If the target is already Exhausted, they
+            # become Incapacitated.
+        }
+
+        RULES {
+            #L5RPW71tW3tA6zL8pL7jR4cT4hP:furiribi
+        }
+    }
+
+    ^"Hinotama" DEF {
+        APPLIES TO [^"NPC"]
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Sentient ball-lightning spirits from Sakkaku. Attracted to storms and metallic fixtures, known to explode into electric arcs without warning."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 4
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 0
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Fire +1, Void -1"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 0", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Incorporeal (Earth) [Martial; Physical, Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Easily Angered (Void) [Social; Interpersonal, Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Arcing Lightning: Range 0-4, Damage 4, Deadliness 5"]
+            ^"Gear" LIST OF STRING ["Electric form (Physical 10)"]
+        }
+
+        ^"Lightning Creature" DEF {
+            # The hinotama is an Otherworldly creature of
+            # silhouette 0 that can pass through solid objects.
+        }
+
+        ^"Electric Blast" DEF {
+            # When the hinotama makes an Attack action check
+            # they may spend (op) in the following ways:
+            # (op): The target suffers supernatural damage equal
+            # to the Attack action check's bonus successes.
+            # (op)(op)+: The hinotama may select an additional
+            # target within range 2 of another target for their
+            # attack.
+        }
+
+        RULES {
+            #L5RPW71nR7xV3uN0oF1hZ5gR6mP:hinotama
+        }
+    }
+
+    # ===========================
+    # HAND TO MOUTH SUBSYSTEM
+    # ===========================
+
+    ^"Hand to Mouth System" DEF {
+        APPLIES TO [^"System"]
+        PROPERTIES {
+            ^"Description" STRING "Economic subsystem for ronin characters reflecting the challenges of living without a lord's resources. Covers trade in Rokugan, making money, fluctuating currency values, travel papers, and the slow erosion of status and honor that comes with lordless survival."
+        }
+        RULES {
+            #L5RPW09oZ4mZ0zK7nU0hP3lL5iI: trade_philosophy "Samurai society considers trade beneath samurai station. Lorded samurai use barter, gifts, and favors rather than coin. Ronin must handle coin directly."
+            #L5RPW09yV9gS7dH1eE2fF5kE5iA: ronin_economics "Ronin are subject to financial forces beyond their control. Rokugan has no unified currency. Value of zeni, bu, or koku fluctuates by region and harvest."
+            #L5RPW09bE2nP4mH5gP5fT3oD5rY: weapon_acquisition "Weapons are not sold in shops. They are commissioned by lords. Ronin must convince blacksmiths to forge weapons or acquire them by other means."
+            #L5RPW09qO3bT0sC6tG7gF1bZ7aC: travel_papers "Travel papers required for legal movement. Ronin must humble themselves to obtain them. Without papers, ronin risk being treated as spies or bandits."
+            #L5RPW09hR9gI7cK1sV0xM4wZ7rF: lifestyle_degradation "Ronin maintaining samurai appearance must pay for sword repair, armor maintenance, horse care, and silk cleaning. Many sell off fine things; the pony is usually first, then armor."
+        }
+    }
+
+    # ===========================
+    # CELESTIAL IMPLEMENTS SYSTEM
+    # ===========================
+
+    # The celestial implements system from the Ivory Kingdoms.
+    # Characters must acquire the Astradhari title to learn
+    # Summoning Mantras. A character may learn summoning
+    # mantras equal to their school rank.
+
+    ^"Celestial Implements System" DEF {
+        APPLIES TO [^"System"]
+        PROPERTIES {
+            ^"Name" STRING "Celestial Implements (Astras)"
+            ^"Source" STRING "Ivory Kingdoms tradition"
+            ^"Description" STRING "Celestial implements are divine weapons and objects invoked through sacred mantras. An astradhari (wielder of astras) must learn the Summoning Mantra for each specific implement. Implements have a Blessing Source (deity, element, counter element, restriction), a Form (projectile, melee, armor, utility), and Boons (supernatural qualities)."
+        }
+        RULES {
+            #L5RPW06vH3gV1uZ4uQ6vA6sG3hP: implement_summoning_limit "A character may learn a number of specific summoning mantras equal to their school rank."
+            #L5RPW06pB8nH1fI6iT8wC6gD8iP: implement_staked_honor "When summoning, the character must stake honor equal to two times their honor rank on upholding the implement's restriction."
+            #L5RPW06uE1lU0wN9oB8iF5vP9sR: implement_restriction_break "If the character breaks the restriction, they lose staked honor and the implement is dispelled. Cannot summon that implement again this scene."
+            #L5RPW06bG1cK1gB3aF7pF2xY2qA: implement_qualities "All summoned implements gain Ceremonial, Resplendent, and Sacred qualities (losing Mundane and Subtle)."
+        }
+    }
+
+    # ===========================
+    # SCHOOL-BUILDING GUIDELINES
+    # ===========================
+
+    # The book provides a detailed school-building system in
+    # Chapter 2 (pages 76-84). Key reference tables are encoded here.
+
+    ^"School Building System" DEF {
+        APPLIES TO [^"System"]
+        PROPERTIES {
+            ^"Description" STRING "Step-by-step system for creating custom schools. Steps: 1) Determine role(s), 2) Choose affiliations and summary, 3) Design school ability, 4) Choose ring bonuses, 5) Choose skills, 6) Select technique access and starting techniques, 7) Build curriculum and mastery ability, 8) Starting outfit, 9) Name."
+        }
+        RULES {
+            #L5RPW07wF3jC4fW5yF6uI0aO9cW: school_build_roles "Seven roles available: Artisan, Bushi, Courtier, Monk, Sage, Shinobi, Shugenja. Recommend 1-2 roles (max 3)."
+            #L5RPW07jZ4xF4dQ7cW8oB7vL0pT: school_build_skills_artisan "Artisan: 7 skills available, 5 picks. Common: Aesthetics, Composition, Courtesy, Culture, Design, Martial Arts [Melee], Smithing."
+            #L5RPW07bG2yZ0cQ4oG2yZ5pZ6wD: school_build_skills_bushi "Bushi: 7 skills available, 5 picks. Common: Command, Fitness, Government, Martial Arts [Melee/Ranged/Unarmed], Meditation, Tactics."
+            #L5RPW07gK3lO5pV5eH3xO4bV1pV: school_build_skills_courtier "Courtier: 7 skills available, 5 picks. Common: Composition, Courtesy, Culture, Government, Martial Arts [Ranged], Performance, Sentiment."
+            #L5RPW07gJ0rE6rX0oI7pF7kD8yR: school_build_skills_monk "Monk: 6 skills available, 4 picks. Common: Fitness, Martial Arts [Melee/Unarmed], Meditation, Survival, Theology."
+            #L5RPW07bD9gZ7eG0mG5kZ4yD2cC: school_build_skills_sage "Sage: 6 skills available, 3 picks. Common: Courtesy, Games, Labor, Meditation, Survival, Theology."
+            #L5RPW07mP7tQ3cK2rR5vV5wN2gS: school_build_skills_shinobi "Shinobi: 7 skills available, 5 picks. Common: Courtesy, Culture, Skulduggery, Martial Arts [Melee/Ranged], Medicine, Performance."
+            #L5RPW07wZ1qM0xN8bC1cU3cO6dK: school_build_skills_shugenja "Shugenja: 6 skills available, 3 picks. Common: Composition, Courtesy, Culture, Games, Meditation, Theology."
+            #L5RPW07jL5iU5uA8tJ1dF6gC7fL: school_build_starting_techniques "Starting techniques by role: Artisan 3, Bushi 2, Courtier 2, Monk 3, Sage 4-5, Shinobi 2, Shugenja 4-5 (including Commune with Spirits)."
+            #L5RPW07xV5yE9aO5oC4lI9gU8oV: school_build_first_ring "Suggested first ring: Artisan (Fire/Water), Bushi (Earth), Courtier/Shinobi (Air), Monk/Sage (Void), Shugenja (attuned element)."
+        }
+    }
+}

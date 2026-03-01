@@ -1,0 +1,1103 @@
+EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
+    NAME "Legend of the Five Rings 5th Edition - Fields of Victory: Expanded Mass Battle Rules"
+    VERSION "0.3"
+    RELEASE_DATE "2026-03-01"
+
+    # Fields of Victory (Chapter 3): Expanded mass battle rules including
+    # marshaling armies, supplemental forces (mercenaries, allies),
+    # doctrines, equipment upgrades, army maintenance, hostages,
+    # battle zones, new terrain types, and the March action.
+
+    # ===========================
+    # MARSHALING AN ARMY
+    # ===========================
+
+    ^"Marshaling an Army" DEF {
+        APPLIES TO [^"System"]
+
+        # Readying an army for battle begins long before the troops
+        # arrive on the battlefield. A character must have access to
+        # their holdings and retainers (or community, for commoners)
+        # and must make a TN 3 Command check as a downtime
+        # activity. If the character succeeds, they form an army of
+        # their retainers. The army's maximum strength is set by the
+        # character's status, and the army's discipline is set by bonus
+        # successes and honor. The check also gathers support staff
+        # and supplies needed to keep the army fighting for one month.
+        # Generally, a marshaling check can only be attempted once
+        # per month for a given set of holdings.
+
+        PROPERTIES {
+            ^"Activation" STRING "Downtime activity"
+            ^"Check" STRING "TN 3 Command"
+            ^"Frequency" STRING "Once per month per set of holdings"
+        }
+
+        ^"Table 3-1: Determining Army Strength" DEF {
+
+            # The army's maximum strength is determined by the
+            # marshaling character's status. A character can always
+            # choose to form a smaller army (minimum 5) if desired,
+            # as smaller armies are easier to maintain.
+
+            ENTRIES {
+                ^"Status 100"    { ^"Maximum Strength" INTEGER 150 }
+                ^"Status 90-99"  { ^"Maximum Strength" INTEGER 120 }
+                ^"Status 80-89"  { ^"Maximum Strength" INTEGER 100 }
+                ^"Status 70-79"  { ^"Maximum Strength" INTEGER 80 }
+                ^"Status 60-69"  { ^"Maximum Strength" INTEGER 65 }
+                ^"Status 50-59"  { ^"Maximum Strength" INTEGER 60 }
+                ^"Status 40-49"  { ^"Maximum Strength" INTEGER 55 }
+                ^"Status 30-39"  { ^"Maximum Strength" INTEGER 35 }
+                ^"Status 24-29"  { ^"Maximum Strength" INTEGER 20 }
+                ^"Status 20-24"  { ^"Maximum Strength" INTEGER 15 }
+                ^"Status 0-19"   { ^"Maximum Strength" INTEGER 5 }
+            }
+
+            RULES {
+                #L5RFVMB01aB2cD4eF6gH8i: strength_determined_by_status
+                #L5RFVMB02jK3lM5nO7pQ9r: minimum_army_strength_is_five
+            }
+        }
+
+        ^"Table 3-2: Determining Army Discipline" DEF {
+
+            # The army's discipline is set by the character's bonus
+            # successes on the marshaling check and their honor.
+            # Higher bonus successes also add ranks in Government
+            # and glory rank to the discipline total.
+
+            ENTRIES {
+                ^"4+ Bonus Successes" { ^"Discipline" STRING "60 + ranks in Government + glory rank" }
+                ^"3 Bonus Successes"  { ^"Discipline" STRING "40 + ranks in Government + glory rank" }
+                ^"2 Bonus Successes"  { ^"Discipline" STRING "25 + ranks in Government" }
+                ^"1 Bonus Success"    { ^"Discipline" STRING "15 + ranks in Government" }
+                ^"0 Bonus Successes"  { ^"Discipline" STRING "10 + ranks in Government" }
+            }
+
+            RULES {
+                #L5RFVMB03sT4uV6wX8yZ0a: discipline_from_bonus_successes
+                #L5RFVMB04bC5dE7fG9hI1j: government_and_glory_modify_discipline
+            }
+        }
+
+        ^"Table 3-3: Spending Opportunity while Marshaling" DEF {
+
+            # Characters can spend opportunity from their marshaling
+            # check to enhance their army in various ways.
+
+            ENTRIES {
+                ^"Any (op)+" {
+                    ^"Effect" STRING "Reduce the TN of your first army maintenance check by 1 per (op) spent this way."
+                }
+                ^"Earth (op)" {
+                    ^"Effect" STRING "You are given use of a fortification near your lands for the war effort. This fortification counts as an outpost (reduce attrition suffered by 2, difficulty value 6)."
+                }
+                ^"Earth (op)(op)" {
+                    ^"Effect" STRING "Increase the army's discipline by 5."
+                }
+                ^"Water (op)+" {
+                    ^"Effect" STRING "You raise 100 koku per (op) spent this way. You must forfeit 10 honor to spend this money on anything but equipment upgrades, mercenary forces, or other expenses that benefit the army or the cause."
+                }
+                ^"Water (op)(op)" {
+                    ^"Effect" STRING "The army gains one of the following equipment upgrades: Baggage Train, Battlefield Medical Supplies."
+                }
+                ^"Fire (op)" {
+                    ^"Effect" STRING "For the first mass battle in which the army participates, reduce the TN of each of its leaders' first Assault actions by 1 (to a minimum of 1)."
+                }
+                ^"Fire (op)(op)" {
+                    ^"Effect" STRING "Increase the army's strength by 5."
+                }
+                ^"Air (op)" {
+                    ^"Effect" STRING "The army assembles without attracting the attention of any local powers not currently at war with you."
+                }
+                ^"Air (op)(op)" {
+                    ^"Effect" STRING "One cohort gains one of the following doctrines: Out of Nowhere, Sappers."
+                }
+                ^"Void (op)" {
+                    ^"Effect" STRING "The army assembles at a place of your choosing (that soldiers could plausibly reach) in up to one month in the future rather than assembling immediately at your current location."
+                }
+                ^"Void (op)(op)" {
+                    ^"Effect" STRING "Increase the army's strength and discipline by 3."
+                }
+            }
+
+            RULES {
+                #L5RFVMB05kL6mN8oP0qR2s: opportunity_enhances_marshaled_army
+                #L5RFVMB06tU7vW9xY1zA3b: water_koku_restricted_to_army_use
+            }
+        }
+
+        RULES {
+            #L5RFVMB07cD8eF0gH2iJ4k: marshaling_tn3_command_downtime
+            #L5RFVMB08lM9nO1pQ3rS5t: once_per_month_per_holdings
+            #L5RFVMB09uV0wX2yZ4aB6c: supplies_for_one_month_included
+        }
+    }
+
+    # ===========================
+    # SUPPLEMENTAL FORCES
+    # ===========================
+
+    ^"Supplemental Forces" DEF {
+        APPLIES TO [^"System"]
+
+        # A character can expand their army once it has been
+        # marshaled in a number of ways, including raising
+        # additional forces, hiring mercenaries, and securing allies.
+
+        ^"Raising Additional Forces" DEF {
+
+            # If a character gains access to substantial new resources
+            # or a new source of potential soldiers, the GM might allow
+            # a new marshaling check, treating their status as increased
+            # by an appropriate amount. If the new check would not
+            # create a preferable army, the character can maintain
+            # their prior army.
+
+            PROPERTIES {
+                ^"Activation" STRING "New marshaling check at GM discretion"
+                ^"Status Modifier Examples" STRING "Large storehouse of food: +10; Town's yearly taxes: +20; Ship with luxury goods: +30; Small city's yearly taxes: +40; Large city's reserves: +50"
+            }
+
+            RULES {
+                #L5RFVMB10dE1fG3hI5jK7l: new_resources_allow_new_marshaling
+                #L5RFVMB11mN2oP4qR6sT8u: gm_determines_status_modifier
+            }
+        }
+
+        ^"Table 3-4: Mercenary Forces" DEF {
+
+            # Mercenaries must be paid a fixed amount each month when
+            # the commander makes the check to maintain their army.
+            # If operating independently, use Base Army Stats; if joining
+            # another army, apply Modifiers instead. Listed rules apply
+            # to the entire army if independent, or one cohort if joined.
+
+            ENTRIES {
+                ^"Ashigaru Veterans" {
+                    ^"Base Army Stats" STRING "Strength 20, Discipline 40"
+                    ^"Modifiers" STRING "Strength +10, Discipline +5"
+                    ^"Rule" STRING "Rank Formation (core rulebook p. 280)"
+                    ^"Cost" STRING "200 koku per month"
+                }
+                ^"Foreign Sellswords" {
+                    ^"Base Army Stats" STRING "Strength 25, Discipline 25"
+                    ^"Modifiers" STRING "Strength +15, Discipline -10"
+                    ^"Rule" STRING "Elite Training: Infantry (core rulebook p. 280)"
+                    ^"Cost" STRING "400 koku per month"
+                }
+                ^"Mantis Privateers" {
+                    ^"Base Army Stats" STRING "Strength 30, Discipline 30"
+                    ^"Modifiers" STRING "Strength +20, Discipline -5"
+                    ^"Rule" STRING "Strike as the Storm"
+                    ^"Cost" STRING "475 koku per month"
+                }
+                ^"Ujik Outriders" {
+                    ^"Base Army Stats" STRING "Strength 35, Discipline 30"
+                    ^"Modifiers" STRING "Strength +25, Discipline -5"
+                    ^"Rule" STRING "Thunderous Charge"
+                    ^"Cost" STRING "500 koku per month"
+                }
+                ^"Bandits" {
+                    ^"Base Army Stats" STRING "Strength 20, Discipline 20"
+                    ^"Modifiers" STRING "Strength +10, Discipline -15"
+                    ^"Rule" STRING "Out of Nowhere"
+                    ^"Cost" STRING "100 koku per month"
+                }
+            }
+
+            RULES {
+                #L5RFVMB12vW3xY5zA7bC9d: mercenaries_paid_monthly
+                #L5RFVMB13eF4gH6iJ8kL0m: independent_uses_base_stats
+                #L5RFVMB14nO5pQ7qR9sT1u: joined_applies_modifiers
+            }
+        }
+
+        ^"Table 3-5: Allied Forces" DEF {
+
+            # A character may persuade another lord to commit resources
+            # to their cause, generally requiring an Intrigue or significant
+            # roleplaying scenes. The allied lord offers support based on
+            # their status. If operating independently, use Base Army Stats;
+            # if joining another army, apply Modifiers. Listed rules apply
+            # per cohort or to the entire army as specified.
+
+            ENTRIES {
+                ^"Allied Status 100" {
+                    ^"Base Army Stats" STRING "Strength 150, Discipline 80"
+                    ^"Modifiers" STRING "Strength +135, Discipline +20"
+                    ^"Rules" STRING "Elite Training (one per cohort): Cavalry, Siege Specialists, Infantry, Archers, Mystics; Siege Defenders"
+                }
+                ^"Allied Status 90-99" {
+                    ^"Base Army Stats" STRING "Strength 120, Discipline 75"
+                    ^"Modifiers" STRING "Strength +95, Discipline +15"
+                    ^"Rules" STRING "Elite Training (one per cohort): Cavalry, Siege Specialists, Infantry, Archers, Mystics; Siege Defenders"
+                }
+                ^"Allied Status 80-89" {
+                    ^"Base Army Stats" STRING "Strength 100, Discipline 70"
+                    ^"Modifiers" STRING "Strength +75, Discipline +10"
+                    ^"Rules" STRING "Clan Doctrine; Elite Training (one per cohort): Cavalry, Siege Specialists, Infantry, Archers, Mystics"
+                }
+                ^"Allied Status 70-79" {
+                    ^"Base Army Stats" STRING "Strength 80, Discipline 65"
+                    ^"Modifiers" STRING "Strength +55, Discipline +5"
+                    ^"Rules" STRING "Clan Doctrine; Elite Training (one per cohort): Cavalry, Siege Specialists, Infantry, Archers"
+                }
+                ^"Allied Status 60-69" {
+                    ^"Base Army Stats" STRING "Strength 65, Discipline 60"
+                    ^"Modifiers" STRING "Strength +35, Discipline +0"
+                    ^"Rules" STRING "Clan Doctrine; Elite Training (one per cohort): Cavalry, Infantry, Archers"
+                }
+                ^"Allied Status 50-59" {
+                    ^"Base Army Stats" STRING "Strength 60, Discipline 50"
+                    ^"Modifiers" STRING "Strength +30, Discipline +0"
+                    ^"Rules" STRING "Clan Doctrine; Rank Formation"
+                }
+                ^"Allied Status 40-49" {
+                    ^"Base Army Stats" STRING "Strength 55, Discipline 40"
+                    ^"Modifiers" STRING "Strength +25, Discipline +0"
+                    ^"Rules" STRING "Rank Formation"
+                }
+                ^"Allied Status 30-39" {
+                    ^"Base Army Stats" STRING "Strength 35, Discipline 20"
+                    ^"Modifiers" STRING "Strength +15, Discipline -5"
+                    ^"Rules" STRING "Conscripted"
+                }
+                ^"Allied Status 24-29" {
+                    ^"Base Army Stats" STRING "Strength 20, Discipline 15"
+                    ^"Modifiers" STRING "Strength +10, Discipline -5"
+                    ^"Rules" STRING "Conscripted"
+                }
+                ^"Allied Status 20-24" {
+                    ^"Base Army Stats" STRING "Strength 15, Discipline 15"
+                    ^"Modifiers" STRING "Strength +5, Discipline -5"
+                    ^"Rules" STRING "Conscripted"
+                }
+                ^"Allied Status 0-19" {
+                    ^"Base Army Stats" STRING "None"
+                    ^"Modifiers" STRING "None"
+                    ^"Rules" STRING "None"
+                }
+            }
+
+            RULES {
+                #L5RFVMB15vW4xY6zA8bC0d: allied_forces_require_intrigue
+                #L5RFVMB16eF5gH7iJ9kL1m: allied_status_determines_support
+            }
+        }
+
+        ^"Parting of Ways" DEF {
+
+            # When a force splits from an army, divide casualties and
+            # panic as evenly as possible between the splitting forces.
+            # The larger force receives additional casualties or panic
+            # if it cannot be divided evenly. If any force cannot function
+            # with the casualties or panic it receives, it disperses and
+            # its members split up.
+
+            RULES {
+                #L5RFVMB17nO6pQ8rS0tU2v: split_casualties_and_panic_evenly
+                #L5RFVMB18wX7yZ9aB1cD3e: larger_force_gets_remainder
+                #L5RFVMB19fG8hI0jK2lM4n: force_disperses_if_nonfunctional
+            }
+        }
+
+        RULES {
+            #L5RFVMB20oP9qR1sT3uV5w: supplemental_forces_expand_army
+        }
+    }
+
+    # ===========================
+    # DOCTRINES
+    # ===========================
+
+    ^"Doctrines" DEF {
+        APPLIES TO [^"System"]
+
+        # Doctrines are army and cohort rules that characters can
+        # add to their army through training. As a downtime activity,
+        # a character may make the listed training check to teach
+        # their army a new doctrine for which it meets the narrative
+        # requirements. Doctrines that apply to the entire army can
+        # only be applied once. Doctrines that apply to one cohort
+        # can be applied to multiple cohorts via separate checks.
+
+        ^"Battle-Tested" DEF {
+
+            # Soldiers who have faced the enemy before as a unit
+            # are generally more reliable, as each soldier knows how
+            # their comrades will behave under the stress of battle.
+
+            PROPERTIES {
+                ^"Training Check" STRING "TN 4 Command (Earth)"
+                ^"Narrative Requirements" STRING "The army must have survived one mass battle."
+                ^"Applies To" STRING "Entire army"
+                ^"Effect" STRING "Increase the army's discipline by +5."
+            }
+
+            RULES {
+                #L5RFVMB21xY0zA2bC4dE6f: battle_tested_requires_prior_combat
+                #L5RFVMB22gH1iJ3kL5mN7o: battle_tested_increases_discipline
+            }
+        }
+
+        ^"Clan Doctrines" DEF {
+
+            # Each Great Clan has its own preferred strategies and
+            # tactics. The army must consist primarily of a single
+            # Great Clan's forces. No training check required.
+
+            PROPERTIES {
+                ^"Training Check" STRING "None"
+                ^"Narrative Requirements" STRING "The army must consist primarily of a single Great Clan's forces."
+                ^"Applies To" STRING "Entire army"
+            }
+
+            ENTRIES {
+                ^"Crab" {
+                    ^"Effect" STRING "When this army would receive panic, it receives that amount minus 2 instead (to a minimum of 1)."
+                }
+                ^"Crane" {
+                    ^"Effect" STRING "After a leader makes a successful Challenge action check, if the challenging leader wins the clash, the enemy receives panic equal to that character's glory rank. If the challenger loses, their own army receives panic equal to their glory rank."
+                }
+                ^"Dragon" {
+                    ^"Effect" STRING "When performing the Rally action, if a leader succeeds, add bonus successes equal to that leader's ranks in Meditation."
+                }
+                ^"Lion" {
+                    ^"Effect" STRING "When this army would remove 1 or more casualties or panic, it may remove an amount equal to the status rank of its commander instead."
+                }
+                ^"Phoenix" {
+                    ^"Effect" STRING "After a leader performs an Assault action, if they succeed, the enemy army suffers attrition equal to that leader's ranks in Theology instead of Command."
+                }
+                ^"Scorpion" {
+                    ^"Effect" STRING "Reduce the TN of the first Scheme action check each leader makes each mass battle by 1 (to a minimum of 1). If the army's commander is also a leader, reduce the TN of their first Scheme action check by 2 instead (to a minimum of 1)."
+                }
+                ^"Unicorn" {
+                    ^"Effect" STRING "When performing the Rally action, a leader may make a TN 1 Survival check instead of a Command check."
+                }
+            }
+
+            RULES {
+                #L5RFVMB23pQ2rS4tU6vW8x: clan_doctrine_no_training_check
+                #L5RFVMB24yZ3aB5cD7eF9g: clan_doctrine_requires_single_clan
+            }
+        }
+
+        ^"Fervor" DEF {
+
+            # A belief in one's own righteousness is a terrifyingly
+            # effective motivator, but soldiers who believe the will
+            # of the Heavens guides their cause may also come to
+            # believe they should interpret that will for themselves.
+
+            PROPERTIES {
+                ^"Training Check" STRING "TN 6 Theology (Fire)"
+                ^"Narrative Requirements" STRING "None"
+                ^"Applies To" STRING "Entire army"
+                ^"Effect" STRING "Increase the army's discipline by +10. Increase the TN of monthly checks to maintain the army by 2."
+            }
+
+            RULES {
+                #L5RFVMB25hI4jK6lM8nO0p: fervor_increases_discipline_by_ten
+                #L5RFVMB26qR5sT7uV9wX1y: fervor_increases_maintenance_tn
+            }
+        }
+
+        ^"Out of Nowhere" DEF {
+
+            # Stealth tactics are viewed by some as dishonorable,
+            # but Akodo wrote with great regard for the power of
+            # infiltrators and spies.
+
+            PROPERTIES {
+                ^"Training Check" STRING "TN 4 Skulduggery (Air)"
+                ^"Narrative Requirements" STRING "The army must have access to a forest or other large piece of Obscuring terrain in which to train."
+                ^"Applies To" STRING "One cohort"
+                ^"Effect" STRING "When this cohort's leader performs an Assault action, if the target cohort is in Confining or Obscuring terrain, the leader may spend (op) as follows: (op)+: The enemy army receives panic equal to the leader's ranks in Skulduggery plus (op) spent this way."
+            }
+
+            RULES {
+                #L5RFVMB27zA6bC8dE0fG2h: out_of_nowhere_requires_obscuring_terrain
+                #L5RFVMB28iJ7kL9mN1oP3q: out_of_nowhere_panic_in_terrain
+            }
+        }
+
+        ^"Sappers" DEF {
+
+            # Capturing a fortification through direct attack is bloody
+            # and brutal. A small force using subterfuge to capture
+            # a fortification is a far more appealing option.
+
+            PROPERTIES {
+                ^"Training Check" STRING "TN 3 Labor (Air)"
+                ^"Narrative Requirements" STRING "The army must have access to a fortification in which to train."
+                ^"Applies To" STRING "One cohort"
+                ^"Effect" STRING "When this cohort's leader generates momentum points toward a strategic objective to seize a fortification (such as Capture a Position against a fortification), they generate 2 additional momentum points toward that objective."
+            }
+
+            RULES {
+                #L5RFVMB29rS8tU0vW2xY4z: sappers_require_fortification_training
+                #L5RFVMB30aB9cD1eF3gH5i: sappers_bonus_momentum_vs_fortifications
+            }
+        }
+
+        ^"Siege Defenders" DEF {
+
+            # Defending a fortification against attackers is preferable
+            # to facing them in the open, but specialist troops perform
+            # better than those without experience in defending an
+            # entrenched position.
+
+            PROPERTIES {
+                ^"Training Check" STRING "TN 3 Labor (Earth)"
+                ^"Narrative Requirements" STRING "The army must have access to a fortification in which to train."
+                ^"Applies To" STRING "One cohort"
+                ^"Effect" STRING "While this cohort occupies a fortification, treat its difficulty level as 2 higher."
+            }
+
+            RULES {
+                #L5RFVMB31jK0lM2nO4pQ6r: siege_defenders_require_fortification
+                #L5RFVMB32sT1uV3wX5yZ7a: siege_defenders_plus_two_difficulty
+            }
+        }
+
+        ^"Strike as the Storm" DEF {
+
+            # While most Rokugani warfare is based around land
+            # tactics, attacks by water are not unheard of. Mantis
+            # sailors are rightly respected for unexpected flank
+            # attacks and ambushes from the sea.
+
+            PROPERTIES {
+                ^"Training Check" STRING "TN 4 Seafaring (Water)"
+                ^"Narrative Requirements" STRING "The army must have access to at least one warship, or several smaller vessels, capable of carrying the cohort."
+                ^"Applies To" STRING "One cohort"
+                ^"Effect" STRING "When the leader of this cohort performs the Assault action as part of their initial landing, they may spend (op) as follows: (op): The target cohort's leader suffers the Dazed condition. (op)(op)+: One additional enemy leader per (op)(op) spent this way suffers the Dazed condition. If using battle zones, this can only affect leaders whose cohorts are in the same zone as the target."
+            }
+
+            RULES {
+                #L5RFVMB33bC2dE4fG6hI8j: strike_storm_requires_warship
+                #L5RFVMB34kL3mN5oP7qR9s: strike_storm_daze_on_landing
+            }
+        }
+
+        ^"Thunderous Charge" DEF {
+
+            # Among the Great Clans, only the Unicorn train heavy
+            # cavalry units in significant numbers. Since their return
+            # to Rokugan, the other clans have begun to experiment
+            # with their own cavalry units.
+
+            PROPERTIES {
+                ^"Training Check" STRING "TN 5 Fitness (Fire)"
+                ^"Narrative Requirements" STRING "The army must have access to enough quality steeds (Unicorn warhorses or equivalent) to equip a cohort."
+                ^"Applies To" STRING "One cohort"
+                ^"Effect" STRING "The first time the leader of this cohort performs an Assault action during each mass battle, if the enemy cohort is in Open terrain and the leader succeeds, they inflict additional attrition and panic to the enemy army equal to their ranks in Survival."
+            }
+
+            RULES {
+                #L5RFVMB35tU4vW6xY8zA0b: thunderous_charge_requires_quality_steeds
+                #L5RFVMB36cD5eF7gH9iJ1k: thunderous_charge_bonus_in_open_terrain
+            }
+        }
+
+        RULES {
+            #L5RFVMB37lM6nO8pQ0rS2t: doctrines_added_via_training_check
+            #L5RFVMB38uV7wX9yZ1aB3c: army_doctrines_apply_once_only
+            #L5RFVMB39dE8fG0hI2jK4l: cohort_doctrines_can_repeat
+        }
+    }
+
+    # ===========================
+    # EQUIPMENT UPGRADES
+    # ===========================
+
+    ^"Equipment Upgrades" DEF {
+        APPLIES TO [^"System"]
+
+        # Equipment upgrades can be added to an army by purchasing
+        # or requisitioning them. Each upgrade specifies whether it
+        # applies to one cohort or to the entire army. Cohort-specific
+        # upgrades can be applied to multiple cohorts by acquiring
+        # the upgrade multiple times.
+
+        ^"Baggage Train" DEF {
+
+            # Supply logistics are crucial to keeping an army in
+            # service for long periods. Without a baggage train, an
+            # army cannot operate far from its garrison.
+
+            PROPERTIES {
+                ^"Rarity" INTEGER 6
+                ^"Cost" STRING "2,000 koku"
+                ^"Applies To" STRING "Entire army"
+                ^"Effect" STRING "Reduce the TN of monthly checks to maintain this army by 2 (to a minimum of 1)."
+            }
+
+            RULES {
+                #L5RFVMB40mN9oP1qR3sT5u: baggage_train_reduces_maintenance_tn
+            }
+        }
+
+        ^"Battlefield Medical Supplies" DEF {
+
+            # Giving soldiers the means to staunch minor injuries
+            # can help keep an army in the field, curbing infection
+            # and the spread of disease.
+
+            PROPERTIES {
+                ^"Rarity" INTEGER 3
+                ^"Cost" STRING "50 koku"
+                ^"Applies To" STRING "One cohort"
+                ^"Effect" STRING "When a character leading this cohort removes 1 or more casualties from the army, they remove that amount of casualties plus 1 instead."
+            }
+
+            RULES {
+                #L5RFVMB41vW0xY2zA4bC6d: medical_supplies_plus_one_casualty_removal
+            }
+        }
+
+        ^"Nagae Yari" DEF {
+
+            # Needle-pointed spears arranged in a hedge are an
+            # imposing sight for anyone, even heavy cavalry.
+
+            PROPERTIES {
+                ^"Rarity" INTEGER 6
+                ^"Cost" STRING "1,000 koku"
+                ^"Applies To" STRING "One cohort"
+                ^"Effect" STRING "When an enemy leader performs an Attack action check against this cohort, they treat all terrain as Dangerous terrain."
+            }
+
+            RULES {
+                #L5RFVMB42eF1gH3iJ5kL7m: nagae_yari_dangerous_terrain_for_attackers
+            }
+        }
+
+        ^"Tetsubishi" DEF {
+
+            # Iron caltrops designed to ruin the feet and hooves
+            # of enemy troops and horses, making the prospect of
+            # attacking a unit extremely unpleasant.
+
+            PROPERTIES {
+                ^"Rarity" INTEGER 4
+                ^"Cost" STRING "100 koku"
+                ^"Applies To" STRING "One cohort"
+                ^"Effect" STRING "As a Movement and Support action, the leader of this cohort may deploy tetsubishi. Until the end of the next round, after the leader of a cohort (or army) with the cavalry or heavy cavalry rule performs an Attack action check targeting this cohort, that leader's army receives 3 casualties and 3 panic."
+            }
+
+            RULES {
+                #L5RFVMB43nO2pQ4rS6tU8v: tetsubishi_casualties_and_panic_on_cavalry
+            }
+        }
+
+        ^"Upgraded Armor" DEF {
+
+            # Investing in soldiers' armor is expensive, but keeping
+            # troops alive longer allows them to gain vital experience
+            # on the battlefield, making the army stronger as its
+            # members become more skillful.
+
+            PROPERTIES {
+                ^"Rarity" INTEGER 7
+                ^"Cost" STRING "3,000 koku"
+                ^"Applies To" STRING "Entire army"
+                ^"Effect" STRING "If the army's commander succeeds at the check to maintain the army, they add 2 bonus successes."
+            }
+
+            RULES {
+                #L5RFVMB44wX3yZ5aB7cD9e: upgraded_armor_bonus_successes_on_maintenance
+            }
+        }
+
+        RULES {
+            #L5RFVMB45fG4hI6jK8lM0n: equipment_upgrades_purchased_or_requisitioned
+            #L5RFVMB46oP5qR7sT9uV1w: cohort_upgrades_can_stack_on_multiple
+        }
+    }
+
+    # ===========================
+    # ARMY MAINTENANCE
+    # ===========================
+
+    ^"Army Maintenance" DEF {
+        APPLIES TO [^"System"]
+
+        # Once rallied, an army must be regularly maintained.
+        # At the start of each month, the commander must make
+        # a Command check to keep their army in order, distribute
+        # supplies, and reorganize in the wake of losses. The TN
+        # equals the tens digit of the army's strength (or 10 if
+        # strength exceeds 99). At this time, the commander must
+        # also pay any mercenaries they have hired.
+
+        PROPERTIES {
+            ^"Activation" STRING "Start of each month"
+            ^"Check" STRING "Command"
+            ^"TN Calculation" STRING "Tens digit of army strength (maximum TN 10)"
+        }
+
+        ^"Table 3-6: Army Maintenance Check Results" DEF {
+
+            ENTRIES {
+                ^"Success with 1+ Bonus Successes" {
+                    ^"Effect" STRING "Remove casualties and panic from the army equal to your ranks in Government, plus 2 per bonus success."
+                }
+                ^"Success" {
+                    ^"Effect" STRING "Remove casualties and panic from the army equal to your ranks in Government."
+                }
+                ^"Failure with 1-3 Shortfall" {
+                    ^"Effect" STRING "The army receives panic equal to your shortfall. If the army's panic exceeds its discipline this way, reduce the army's panic to its discipline. However, the army refuses to fight for the next month."
+                }
+                ^"Failure with 4-6 Shortfall" {
+                    ^"Effect" STRING "The army receives panic equal to two times your shortfall. If the army's panic exceeds its discipline, it breaks apart into multiple chunks. These new armies and warbands spread across the countryside, pursuing their own agendas or turning to banditry."
+                }
+                ^"Failure with 7+ Shortfall" {
+                    ^"Effect" STRING "The army revolts and attempts to overthrow its commander and their leaders. Chaos ensues, and the commander must fight for their life, negotiate, or flee to survive."
+                }
+            }
+
+            RULES {
+                #L5RFVMB47xY6zA8bC0dE2f: maintenance_success_removes_casualties_panic
+                #L5RFVMB48gH7iJ9kL1mN3o: maintenance_failure_army_refuses_to_fight
+                #L5RFVMB49pQ8rS0tU2vW4x: catastrophic_failure_army_revolts
+            }
+        }
+
+        ^"Harsh Conditions" DEF {
+
+            # A number of factors can negatively impact the
+            # commander's Army Maintenance check by increasing
+            # the TN.
+
+            ENTRIES {
+                ^"Hostile lands without resupply"   { ^"TN Modifier" STRING "+1" }
+                ^"Winter without garrison shelter"  { ^"TN Modifier" STRING "+2" }
+                ^"Two+ weeks marching last month"   { ^"TN Modifier" STRING "+1" }
+                ^"Short on food"                    { ^"TN Modifier" STRING "+1" }
+                ^"Short on water"                   { ^"TN Modifier" STRING "+3" }
+                ^"Exceptionally hot conditions"     { ^"TN Modifier" STRING "+1" }
+                ^"Plagued by insects and vermin"    { ^"TN Modifier" STRING "+1" }
+                ^"Plagued by disease"               { ^"TN Modifier" STRING "+3" }
+            }
+
+            RULES {
+                #L5RFVMB50yZ9aB1cD3eF5g: harsh_conditions_increase_maintenance_tn
+            }
+        }
+
+        ^"Incentives" DEF {
+
+            # A number of factors can positively impact the
+            # commander's maintenance check by decreasing
+            # the TN (to a minimum of 1).
+
+            ENTRIES {
+                ^"Commander status rank 6+"                         { ^"TN Modifier" STRING "-2" }
+                ^"Promoted jizamurai or ashigaru last month"        { ^"TN Modifier" STRING "-2" }
+                ^"Troops have access to entertainment"              { ^"TN Modifier" STRING "-3" }
+                ^"Victorious in mass battle last month"             { ^"TN Modifier" STRING "-4" }
+                ^"Food is plentiful"                                { ^"TN Modifier" STRING "-3" }
+                ^"Fighting defensively in homeland"                 { ^"TN Modifier" STRING "-6" }
+                ^"Backing of status rank 7+ character"              { ^"TN Modifier" STRING "-3" }
+                ^"Considerable sacrifice of personal wealth"        { ^"TN Modifier" STRING "-1 per 5 status forfeited" }
+            }
+
+            RULES {
+                #L5RFVMB51hI0jK2lM4nO6p: incentives_reduce_maintenance_tn
+                #L5RFVMB52qR1sT3uV5wX7y: minimum_tn_of_one
+            }
+        }
+
+        ^"Dispersing an Army" DEF {
+
+            # After an army has served its purpose, most commanders
+            # seek to dismantle it, letting members return to their
+            # previous lives and reducing strain upon their estates.
+
+            PROPERTIES {
+                ^"Check" STRING "TN 4 Command (Air)"
+                ^"Requirement" STRING "Pay any mercenaries their final dues"
+                ^"Success" STRING "Forces return to their homes or prior occupations without incident."
+                ^"Failure" STRING "The troops go on to cause problems for the local area or the commander."
+            }
+
+            RULES {
+                #L5RFVMB53zA2bC4dE6fG8h: dispersal_tn4_command_air
+                #L5RFVMB54iJ3kL5mN7oP9q: unpaid_mercenaries_cause_problems
+            }
+        }
+
+        RULES {
+            #L5RFVMB55rS4tU6vW8xY0z: monthly_maintenance_check_required
+            #L5RFVMB56aB5cD7eF9gH1i: tn_equals_tens_digit_of_strength
+            #L5RFVMB57jK6lM8nO0pQ2r: unpaid_mercenaries_may_turn_hostile
+        }
+    }
+
+    # ===========================
+    # HOSTAGES
+    # ===========================
+
+    ^"Hostages" DEF {
+        APPLIES TO [^"System"]
+
+        # In the ideals many Rokugani aspire to, a samurai is expected
+        # to fight to the bitter end, but is also expected to offer mercy
+        # to worthy adversaries. When a group is surrounded or the
+        # outcome of a mass battle is clear, the GM should consider
+        # whether NPCs surrender. If some NPCs are disinclined to
+        # surrender, the victorious side may attempt to convince them.
+
+        ^"Accepting Surrender" DEF {
+
+            # A representative of the winning side must make a
+            # TN 3 Courtesy (Air) check to convince a defiant foe
+            # to accept terms and become a hostage. Taking a
+            # character hostage against their will by subduing them
+            # is a minor violation of Courtesy (Rei).
+
+            PROPERTIES {
+                ^"Check" STRING "TN 3 Courtesy (Air)"
+                ^"Success" STRING "The target agrees to terms and becomes your 'guest' (hostage)."
+                ^"Failure" STRING "The target attempts to fight on, resolved by GM narration or a duel."
+                ^"Subduing Hostage" STRING "Minor violation of Courtesy (Rei); forfeit honor as normal."
+            }
+
+            RULES {
+                #L5RFVMB58sT5uV7wX9yZ1a: surrender_courtesy_air_check
+                #L5RFVMB59bC6dE8fG0hI2j: subduing_is_rei_violation
+            }
+        }
+
+        ^"Table 3-7: Ransom Amounts" DEF {
+
+            # After a battle or campaign, it is customary to return
+            # hostages to their families, either in exchange for a
+            # hostage of equal status or for a ransom in koku.
+
+            ENTRIES {
+                ^"Status 100"   { ^"Ransom" STRING "N/A (decorum always demands safe return)" }
+                ^"Status 90-99" { ^"Ransom" STRING "10,000 koku" }
+                ^"Status 80-89" { ^"Ransom" STRING "1,000 koku" }
+                ^"Status 70-79" { ^"Ransom" STRING "500 koku" }
+                ^"Status 60-69" { ^"Ransom" STRING "250 koku" }
+                ^"Status 50-59" { ^"Ransom" STRING "100 koku" }
+                ^"Status 40-49" { ^"Ransom" STRING "50 koku" }
+                ^"Status 30-39" { ^"Ransom" STRING "10 koku" }
+                ^"Status 20-29" { ^"Ransom" STRING "1 koku" }
+                ^"Status 10-19" { ^"Ransom" STRING "5 bu" }
+                ^"Status 0-9"   { ^"Ransom" STRING "2 bu" }
+            }
+
+            RULES {
+                #L5RFVMB60kL7mN9oP1qR3s: ransom_by_status
+                #L5RFVMB61tU8vW0xY2zA4b: gm_modifies_based_on_importance
+            }
+        }
+
+        ^"Hostage Treatment" DEF {
+
+            # A samurai is expected to care for any hostages as they
+            # would any esteemed guest. When a samurai takes a
+            # prisoner on the battlefield, they must stake honor and
+            # glory equal to that individual's status rank. If their
+            # hostage comes to harm, they lose the staked honor
+            # (and glory, if the failure becomes known).
+
+            PROPERTIES {
+                ^"Staking" STRING "Honor and glory equal to the hostage's status rank"
+                ^"Harm to Hostage" STRING "Lose staked honor; lose staked glory if failure becomes known"
+                ^"Mistreatment" STRING "Additional forfeits of honor and glory for anything less than expected decorum"
+                ^"Refusing Return" STRING "Breach of Courtesy (Rei) at GM's discretion"
+            }
+
+            RULES {
+                #L5RFVMB62cD9eF1gH3iJ5k: hostage_care_stake_honor_glory
+                #L5RFVMB63lM0nO2pQ4rS6t: hostage_harm_loses_staked_values
+            }
+        }
+
+        ^"Freeing Hostages" DEF {
+
+            # Returning a hostage without demands or freeing them
+            # is considered a sacrifice in the name of Righteousness (Gi).
+            # The character is generally awarded honor equal to the
+            # hostage's status rank, and glory equal to the hostage's
+            # status rank if done publicly. After freeing someone of
+            # higher status rank this way, they also gain the Ally
+            # advantage for the freed character.
+
+            PROPERTIES {
+                ^"Honor Award" STRING "Equal to hostage's status rank"
+                ^"Glory Award" STRING "Equal to hostage's status rank (if freed publicly)"
+                ^"Bonus" STRING "Gain Ally [Name of Character Freed] advantage if freed character is of higher status rank"
+            }
+
+            RULES {
+                #L5RFVMB64uV1wX3yZ5aB7c: freeing_hostage_gi_sacrifice
+                #L5RFVMB65dE2fG4hI6jK8l: gain_ally_if_higher_status
+            }
+        }
+
+        RULES {
+            #L5RFVMB66mN3oP5qR7sT9u: hostage_system_overview
+            #L5RFVMB67vW4xY6zA8bC0d: pcs_always_choose_whether_to_surrender
+        }
+    }
+
+    # ===========================
+    # BATTLE ZONES
+    # ===========================
+
+    ^"Battle Zones" DEF {
+        APPLIES TO [^"System"]
+
+        # Battle zones are an optional rule that GMs can add to
+        # mass battles to more closely track the position of cohorts,
+        # fortifications, terrain, and commanders within the field.
+        # They provide more tactical decisions for players.
+
+        ^"Mapping the Area" DEF {
+
+            # Before the start of the mass battle, the GM should
+            # map out the area by placing key geographic features
+            # such as fortifications, mountains, hollows, roads,
+            # towns, fields, natural barriers, choke points, and
+            # impassable areas.
+
+            RULES {
+                #L5RFVMB68eF5gH7iJ9kL1m: gm_places_geographic_features
+                #L5RFVMB69nO6pQ8rS0tU2v: features_define_battle_zones
+            }
+        }
+
+        ^"Designating Battle Zones" DEF {
+
+            # After drawing the map, the GM divides it into battle
+            # zones. Each zone is an abstracted area defined by key
+            # geographic features. Generally, each zone should have
+            # one defining feature and potentially other modifying
+            # features. The GM outlines each zone, noting where zones
+            # overlap (adjacent zones). If two zones have overlapping
+            # edges, they are considered adjacent. Cohorts can move
+            # between adjacent zones.
+
+            RULES {
+                #L5RFVMB70wX7yZ9aB1cD3e: each_zone_has_defining_feature
+                #L5RFVMB71fG8hI0jK2lM4n: overlapping_edges_are_adjacent
+                #L5RFVMB72oP9qR1sT3uV5w: gaps_for_impassable_areas
+            }
+        }
+
+        ^"Table 3-8: Assigning Terrain Qualities by Feature" DEF {
+
+            # The GM notes the features within each zone and
+            # any terrain qualities that affect cohorts within those zones.
+
+            ENTRIES {
+                ^"Cliff"    { ^"Terrain Qualities" STRING "Elevated, Dangerous" }
+                ^"Hill"     { ^"Terrain Qualities" STRING "Elevated" }
+                ^"Hollow"   { ^"Terrain Qualities" STRING "Recessed" }
+                ^"Valley"   { ^"Terrain Qualities" STRING "Confining, Recessed" }
+                ^"Road"     { ^"Terrain Qualities" STRING "Open" }
+                ^"Town"     { ^"Terrain Qualities" STRING "Confining, Obscuring" }
+                ^"Field"    { ^"Terrain Qualities" STRING "Open" }
+                ^"River"    { ^"Terrain Qualities" STRING "Entangling, Recessed" }
+                ^"Swamp"    { ^"Terrain Qualities" STRING "Entangling" }
+                ^"Forest"   { ^"Terrain Qualities" STRING "Entangling, Obscuring" }
+                ^"Bridge"   { ^"Terrain Qualities" STRING "Confining" }
+                ^"Tunnel"   { ^"Terrain Qualities" STRING "Confining, Obscuring" }
+                ^"Chasm"    { ^"Terrain Qualities" STRING "Confining, Recessed" }
+            }
+
+            RULES {
+                #L5RFVMB73xY0zA2bC4dE6f: terrain_qualities_assigned_by_feature
+            }
+        }
+
+        ^"Zone Restrictions and Amendments" DEF {
+
+            # When running a mass battle with zones, use the
+            # standard mass battle rules with the following amendments.
+
+            ENTRIES {
+                ^"Targeting Restriction" {
+                    ^"Rule" STRING "Cohort leaders cannot target other cohort leaders who are not in the same zone."
+                }
+                ^"Free Movement" {
+                    ^"Rule" STRING "Once during each cohort leader's turn, before or after they perform an action, that leader may move their cohort to an adjacent zone."
+                }
+                ^"Withdrawal Panic" {
+                    ^"Rule" STRING "After a cohort leaves a zone occupied by an enemy cohort, the withdrawing cohort's army suffers 5 panic."
+                }
+            }
+
+            RULES {
+                #L5RFVMB74gH1iJ3kL5mN7o: same_zone_targeting_required
+                #L5RFVMB75pQ2rS4tU6vW8x: free_move_to_adjacent_zone
+                #L5RFVMB76yZ3aB5cD7eF9g: withdrawal_causes_five_panic
+            }
+        }
+
+        ^"March Action" DEF {
+
+            # A new action available to cohort leaders when using
+            # the battle zones rules, allowing repositioning of cohorts
+            # across the battlefield.
+
+            PROPERTIES {
+                ^"Action Type" STRING "Movement"
+                ^"Check" STRING "TN 3 Command"
+                ^"Base Effect" STRING "Move your cohort to an adjacent zone."
+                ^"Success Effect" STRING "If you made the Command check and succeeded, you may then move your cohort one additional time to an adjacent zone, plus one additional time for every three bonus successes."
+            }
+
+            RULES {
+                #L5RFVMB77hI4jK6lM8nO0p: march_is_movement_action
+                #L5RFVMB78qR5sT7uV9wX1y: march_additional_zones_on_success
+            }
+        }
+
+        ^"Army and Cohort Rules While Using Battle Zones" DEF {
+
+            # Some army and cohort abilities alter how they behave
+            # when using the battle zones rules.
+
+            ENTRIES {
+                ^"Cavalry" {
+                    ^"Effect" STRING "This cohort does not suffer panic when leaving a battle zone with an enemy cohort."
+                }
+                ^"Archers" {
+                    ^"Effect" STRING "While in Elevated terrain, this cohort can perform Assault actions targeting cohorts in an adjacent zone, increasing the TN of the check by 1. However, while performing an Assault action targeting a cohort in an adjacent zone, this cohort cannot fulfill the following strategic objectives: Capture a Position, Cut Off the Head, Seize Victory. It can still contribute momentum points to these objectives, but cannot be the action to complete them."
+                }
+                ^"Mystics" {
+                    ^"Effect" STRING "While in Elevated terrain, this cohort can perform Rally actions targeting cohorts in an adjacent zone, increasing the TN of the check by 1."
+                }
+            }
+
+            RULES {
+                #L5RFVMB79zA6bC8dE0fG2h: cavalry_no_withdrawal_panic
+                #L5RFVMB80iJ7kL9mN1oP3q: archers_cross_zone_from_elevated
+                #L5RFVMB81rS8tU0vW2xY4z: mystics_cross_zone_rally_from_elevated
+            }
+        }
+
+        RULES {
+            #L5RFVMB82aB9cD1eF3gH5i: battle_zones_optional_rule
+            #L5RFVMB83jK0lM2nO4pQ6r: zones_track_cohort_positions
+            #L5RFVMB84sT1uV3wX5yZ7a: concealed_zones_revealed_on_entry
+        }
+    }
+
+    # ===========================
+    # NEW TERRAIN TYPES
+    # ===========================
+
+    ^"New Terrain Types" DEF {
+        APPLIES TO [^"Terrain"]
+
+        # New terrain types especially useful for skirmishes and
+        # mass battles, but also usable in duels at the GM's discretion.
+        # These are mundane terrain types found in most regions.
+
+        ^"Confining" DEF {
+
+            # Terrain cut off from multiple angles, forcing those
+            # passing through into a file. Effectively impassible
+            # if held by a dedicated defender.
+
+            PROPERTIES {
+                ^"Type" STRING "Mundane"
+                ^"Examples" STRING "Narrow alleyways, rope-bridges across chasms, teahouse interiors, narrow passes, tunnels"
+            }
+
+            ENTRIES {
+                ^"Duel or Skirmish Effect" {
+                    ^"Effect" STRING "When a character makes a check to wield a weapon or activate a technique with a maximum range of 2 or higher, increase the TN by 2."
+                }
+                ^"Mass Battle Effect" {
+                    ^"Effect" STRING "When a cohort occupies Confining terrain, other cohorts cannot move into the same area of terrain. If using battle zones, other cohorts can enter the zone but cannot pass through it."
+                }
+            }
+
+            RULES {
+                #L5RFVMB85bC2dE4fG6hI8j: confining_restricts_long_range_weapons
+                #L5RFVMB86kL3mN5oP7qR9s: confining_blocks_cohort_entry
+            }
+        }
+
+        ^"Elevated" DEF {
+
+            # Ground significantly higher than most terrain around it,
+            # with a wide view of the area. Grants line of sight and an
+            # advantage to ballistic attacks based on relative height.
+
+            PROPERTIES {
+                ^"Type" STRING "Mundane"
+                ^"Examples" STRING "Hilltops, castle towers, watchtowers, mountaintops, rooftops"
+            }
+
+            ENTRIES {
+                ^"Effect" {
+                    ^"Effect" STRING "While within Elevated terrain, a character reduces the TN of their Martial Arts [Ranged] checks targeting characters outside of Elevated terrain by 1 (to a minimum of 1). At the GM's discretion, this benefit could extend to other ranged attacks such as invocations. Elevated terrain might require a check to reach depending on height and steepness."
+                }
+            }
+
+            RULES {
+                #L5RFVMB87tU4vW6xY8zA0b: elevated_reduces_ranged_tn
+                #L5RFVMB88cD5eF7gH9iJ1k: elevated_may_require_check_to_reach
+            }
+        }
+
+        ^"Open" DEF {
+
+            # Terrain designed to facilitate movement, helping even
+            # large armies move quickly.
+
+            PROPERTIES {
+                ^"Type" STRING "Mundane"
+                ^"Examples" STRING "Roads, flattened fields, cleared woodland"
+            }
+
+            ENTRIES {
+                ^"Effect" {
+                    ^"Effect" STRING "While within Open terrain, a character reduces the TN of their Movement action checks by 1 (to a minimum of 1)."
+                }
+            }
+
+            RULES {
+                #L5RFVMB89lM6nO8pQ0rS2t: open_reduces_movement_tn
+            }
+        }
+
+        ^"Recessed" DEF {
+
+            # Terrain significantly lower than most terrain around it,
+            # exposed to fire from all directions.
+
+            PROPERTIES {
+                ^"Type" STRING "Mundane"
+                ^"Examples" STRING "Hollows, ravines"
+            }
+
+            ENTRIES {
+                ^"Effect" {
+                    ^"Effect" STRING "While a character is within Recessed terrain, the TN of each Martial Arts [Ranged] check targeting them is reduced by 1 (to a minimum of 1). At the GM's discretion, this benefit could extend to other ranged attacks such as invocations. Recessed terrain might require a check to reach depending on depth and steepness."
+                }
+            }
+
+            RULES {
+                #L5RFVMB90uV7wX9yZ1aB3c: recessed_reduces_tn_to_target_within
+                #L5RFVMB91dE8fG0hI2jK4l: recessed_may_require_check_to_reach
+            }
+        }
+
+        RULES {
+            #L5RFVMB92mN9oP1qR3sT5u: new_terrain_types_mundane
+            #L5RFVMB93vW0xY2zA4bC6d: terrain_usable_in_skirmish_mass_battle_duel
+        }
+    }
+}

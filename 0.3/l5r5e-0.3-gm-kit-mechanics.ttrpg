@@ -1,0 +1,389 @@
+# L5R 5E - GAME MASTER'S KIT: DARK TIDES - MECHANICS
+#
+# Source: Legend of the Five Rings 5th Edition - Game Master's Kit (Dark Tides adventure booklet, Part Two)
+# Publisher: Fantasy Flight Games
+# ISBN: 978-1-63344-338-9
+# Product Code: L5R05
+#
+# Contains: Tortoise Minor Clan, Kasuga Family, Kasuga Smuggler School,
+# and NPC profiles specific to the Dark Tides adventure.
+#
+# Note: The GM Kit Reference and GM Kit Screen Reference are
+# consolidated in l5r5e-0.3-gm-screen-reference.ttrpg, as they
+# contain only core rulebook content.
+
+EXTENSION "L5R5e_GM_Kit_Mechanics" EXTENDS "L5R5e_Core_Character" {
+    NAME "Legend of the Five Rings 5th Edition - Game Master's Kit Mechanics"
+    VERSION "0.3"
+    RELEASE_DATE "2026-03-01"
+
+    # ===========================
+    # TORTOISE MINOR CLAN
+    # ===========================
+
+    ^"Tortoise Minor Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
+        APPLIES TO [^"Samurai"]
+
+        # Founded after the Battle of White Stag in the fifth century,
+        # officially charged with maintaining the walls of Otosan Uchi.
+        # In actuality, tasked with monitoring and covertly trading with
+        # gaijin to prevent another tragedy. Operates more like a
+        # smuggling cartel than a proper clan. Has the direct authority
+        # and protection of the Emperor.
+
+        PROPERTIES {
+            ^"Clan Name" STRING "Tortoise" FIXED
+            ^"Clan Type" STRING "Minor Clan"
+            ^"Clan Ring Bonus" STRING "+1 Air"
+            ^"Clan Skill Bonus" STRING "+1 Commerce"
+            ^"Clan Status" INTEGER DEFAULT 25
+        }
+
+        FAMILIES {
+            ^"Kasuga" "+1 Earth or Water, +1 Skulduggery, +1 Government, Glory 33, 9 koku"
+        }
+
+        RULES {
+            #L5RGMK00aB2cD4eF6gH8iJ0k: tortoise_gaijin_trade
+        }
+    }
+
+    # ===========================
+    # KASUGA SMUGGLER SCHOOL
+    # ===========================
+
+    ^"Kasuga Smuggler" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The Kasuga Smuggler School trains its disciples in the art
+        # of covert trade and diplomatic maneuvering with those outside
+        # the Empire. Kasuga smugglers operate under the Emperor's
+        # direct mandate, trading with gaijin to keep the Empire safe.
+
+        PROPERTIES {
+            ^"School Name" STRING "Kasuga Smuggler" FIXED
+            ^"Clan" STRING "Tortoise"
+            ^"Roles" LIST ["Courtier"]
+            ^"Ring Increase" STRING "+1 Air, +1 Water"
+            ^"Starting Skills" STRING "Choose five: +1 Commerce, +1 Culture, +1 Courtesy, +1 Martial Arts [Melee], +1 Seafaring, +1 Skulduggery"
+            ^"Starting Honor" INTEGER DEFAULT 29
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            KATA ^"Rushing Avalanche Style"
+            SHUJI CHOOSE 1 [^"Honest Assessment", ^"Well of Desire"]
+        }
+
+        SCHOOL_ABILITY "Way of the Tortoise" {
+            "You never need to stake glory to publicly use a Trade skill, so long as you are doing so as part of your duty to your clan."
+            "Once per scene, you may add a number of kept ring dice set to Opportunity results equal to your school rank to a check to interact with one or more gaijin, peasants, merchants, burakumin, or any other character with status of 20 or lower."
+        }
+
+        MASTERY_ABILITY ^"Shell of the Tortoise" {
+            "Once per game session as an action, you may invoke the shell of the Tortoise: the Emperor's remit to operate as you deem necessary. Until the end of the scene, treat your status as 90, and other characters must forfeit honor and glory equal to the difference between your status rank and their status rank to accuse you of wrongdoing related to the acquisition or transport of goods, illicit or otherwise."
+        }
+
+        STARTING_OUTFIT [
+            "Traveling clothes", "wakizashi (short sword)",
+            "any one weapon of rarity 6 or lower",
+            "calligraphy set", "knife", "kiseru",
+            "abacus or gaijin compass", "traveling pack",
+            "pouch of gaijin coins"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Culture"
+                SKILL "Courtesy"
+                SKILL "Martial Arts [Melee]"
+                TECHNIQUE_GROUP "Rank 1 Water Shuji"
+                ^"Coiling Serpent Style" [kata]
+                ^"Courtier's Resolve" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Commerce"
+                SKILL "Seafaring"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-2 Kata"
+                ^"Ebb and Flow" [shuji]
+                ^"Tributaries of Trade" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Fitness"
+                SKILL "Government"
+                SKILL "Martial Arts [Ranged]"
+                TECHNIQUE_GROUP "Rank 1-3 Air Shuji"
+                ^"All Arts Are One" [shuji]
+                ^"Breath of Wind Style" [kata]
+            }
+            RANK 4 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Design"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-4 Kata"
+                ^"Buoyant Arrival" [shuji]
+                ^"Regal Bearing" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Aesthetics"
+                SKILL "Courtesy"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-5 Water Shuji"
+                ^"Bend with the Storm" [shuji]
+                ^"Immovable Hand of Peace" [shuji]
+            }
+            RANK 6 {
+                ^"Shell of the Tortoise"
+            }
+        }
+    }
+
+    # ===========================
+    # DARK TIDES NPC PROFILES
+    # ===========================
+
+    # --- Boss Yaguro (full stat block) ---
+
+    ^"Boss Yaguro, Gang Leader" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Source" STRING "GM Kit: Dark Tides"
+            ^"Type" STRING "Adversary"
+            ^"Conflict Rank (Combat)" INTEGER 3
+            ^"Conflict Rank (Intrigue)" INTEGER 4
+        }
+        STATS {
+            rings.air = 3
+            rings.earth = 2
+            rings.fire = 3
+            rings.water = 3
+            rings.void = 1
+            honor = 22
+            glory = 12
+            status = 9
+            endurance = 19
+            composure = 12
+            focus = 5
+            vigilance = 3
+            skills.artisan = 0
+            skills.martial = 2
+            skills.scholar = 0
+            skills.social = 2
+            skills.trade = 3
+        }
+        PROPERTIES {
+            ^"Demeanor" STRING "Ambitious (Fire +2, Earth -2)"
+            ^"Advantages" STRING "Knows This Town (Earth) [Scholar; Interpersonal]"
+            ^"Disadvantages" STRING "Bad Liar (Water) [Social; Interpersonal]"
+            ^"Favored Weapons" STRING "Staff: Range 1-2, Damage 6, Deadliness 2, 2-handed, Mundane"
+            ^"Gear" STRING "Thick clothing (Physical 2), stained pipe, pouch containing several koku and bu"
+        }
+        RULES {
+            #L5RGMK03aB2cD4eF6gH8iJ0k: desperate_act "Desperate Act: When Yaguro performs an Attack action check, he may spend OP in the following ways: OP+: Suffer 2 strife to increase the damage of the attack by 1 per OP spent this way. OP OP: Suffer 2 strife to increase the deadliness of the attack by 2."
+        }
+    }
+
+    # --- Boss Hana (Experienced Bandit profile modification) ---
+
+    ^"Boss Hana, Gang Leader" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Source" STRING "GM Kit: Dark Tides"
+            ^"Type" STRING "Adversary"
+            ^"Conflict Rank (Combat)" INTEGER 3
+            ^"Conflict Rank (Intrigue)" INTEGER 2
+            ^"Base Profile" STRING "Experienced Bandit (Core Rulebook p. 316)"
+        }
+        PROPERTIES {
+            ^"Demeanor" STRING "Gruff (Air +2, Earth -2)"
+            ^"Gear" STRING "Gaijin dagger (Range 0, Damage 3, Deadliness 5, Concealable, Durable), elegant clothing (Physical 1), pipe, a pouch containing a handful of bu"
+        }
+        RULES {
+            #L5RGMK04aB2cD4eF6gH8iJ0k: cruel_cunning "Cruel Cunning: When performing a Social skill check, Hana may spend OP OP: One target gains the Dazed condition."
+        }
+    }
+
+    # --- Boss Kizo (Experienced Bandit profile modification) ---
+
+    ^"Boss Kizo, Gang Leader" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Source" STRING "GM Kit: Dark Tides"
+            ^"Type" STRING "Adversary"
+            ^"Conflict Rank (Combat)" INTEGER 3
+            ^"Conflict Rank (Intrigue)" INTEGER 2
+            ^"Base Profile" STRING "Experienced Bandit (Core Rulebook p. 316)"
+        }
+        PROPERTIES {
+            ^"Demeanor" STRING "Shrewd (Water +2, Fire -2)"
+            ^"Gear" STRING "Faded clothing (Physical 1), a pouch containing small candies and toys"
+        }
+        RULES {
+            #L5RGMK05aB2cD4eF6gH8iJ0k: amused_at_failure "Amused at Failure: When an opponent suffers strife in a failed Social skill check targeting him, Kizo recovers the same amount of strife."
+        }
+    }
+
+    # --- Azif the Smooth (full stat block) ---
+
+    ^"Azif the Smooth, Gaijin Smuggler" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Source" STRING "GM Kit: Dark Tides"
+            ^"Type" STRING "Adversary"
+            ^"Conflict Rank (Combat)" INTEGER 4
+            ^"Conflict Rank (Intrigue)" INTEGER 3
+        }
+        STATS {
+            rings.air = 2
+            rings.earth = 3
+            rings.fire = 3
+            rings.water = 4
+            rings.void = 1
+            honor = 11
+            glory = 12
+            status = 1
+            endurance = 12
+            composure = 10
+            focus = 7
+            vigilance = 3
+            skills.artisan = 0
+            skills.martial = 3
+            skills.scholar = 0
+            skills.social = 2
+            skills.trade = 3
+        }
+        PROPERTIES {
+            ^"Demeanor" STRING "Assertive (Earth +2, Void -2)"
+            ^"Advantages" STRING "Good Liar (Water) [Social; Interpersonal], Haggling (Void) [Trade; Interpersonal]"
+            ^"Disadvantages" STRING "Arrogance (Fire) [Social; Interpersonal], Gaijin Appearance (Fire) [Physical; Interpersonal]"
+            ^"Favored Weapons" STRING "Rigging daggers: Range 0, Damage 3, Deadliness 4, Concealable, Durable, Mundane; can be thrown (Range 1-3)"
+            ^"Gear" STRING "Gaijin clothing (Physical 2), sake jug (full), pouch stuffed with bu"
+        }
+        RULES {
+            #L5RGMK06aB2cD4eF6gH8iJ0k: get_them "...Get Them!: As an action, Azif may have up to two allies within range 2 immediately move 1 range band. If they have not already acted this round, they may also perform a Strike action with skilled assistance."
+            #L5RGMK07aB2cD4eF6gH8iJ0k: acrobatic_fighter "Acrobatic Fighter: When performing an Attack action check, Azif may spend OP: If at range 0 from target, move two range bands away. OP+: Kick opponent at range 0-1, dealing 3 damage with deadliness 1 plus OP spent, then move two range bands away."
+        }
+    }
+
+    # --- Kasuga Yumiko (Loyal Bushi profile modification) ---
+
+    ^"Kasuga Yumiko, Renegade Samurai" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Source" STRING "GM Kit: Dark Tides"
+            ^"Type" STRING "Adversary"
+            ^"Conflict Rank (Combat)" INTEGER 4
+            ^"Conflict Rank (Intrigue)" INTEGER 2
+            ^"Base Profile" STRING "Loyal Bushi (Core Rulebook p. 312)"
+        }
+        PROPERTIES {
+            ^"Demeanor" STRING "Ambitious (Fire +2, Earth -2)"
+            ^"Advantages" STRING "Battle-Hardened Toughness (Earth) [Martial; Mental, Physical], Tortoise Clan Devotion (Fire) [Social; Mental]"
+            ^"Disadvantages" STRING "Hot-Tempered (Fire) [Social; Interpersonal]"
+        }
+    }
+
+    # --- Ruffian (Desperate Bandit profile modification) ---
+
+    ^"Ruffian" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Source" STRING "GM Kit: Dark Tides"
+            ^"Type" STRING "Adversary"
+            ^"Conflict Rank (Combat)" INTEGER 1
+            ^"Conflict Rank (Intrigue)" INTEGER 1
+            ^"Base Profile" STRING "Desperate Bandit (Core Rulebook p. 315)"
+        }
+        PROPERTIES {
+            ^"Demeanor" STRING "Assertive (Earth +2, Water -2)"
+        }
+    }
+
+    # --- Gaijin Smuggler/Sailor (Desperate Bandit profile modification) ---
+
+    ^"Gaijin Smuggler/Sailor" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Source" STRING "GM Kit: Dark Tides"
+            ^"Type" STRING "Minion"
+            ^"Conflict Rank (Combat)" INTEGER 1
+            ^"Conflict Rank (Intrigue)" INTEGER 1
+            ^"Base Profile" STRING "Desperate Bandit (Core Rulebook p. 315)"
+        }
+        PROPERTIES {
+            ^"Demeanor" STRING "Shrewd (Fire -2, Water +2)"
+            ^"Skills Override" STRING "Martial 3, Trade 2"
+            ^"Advantages" STRING "Salt of the Sea (Fire) [Trade; Physical]"
+            ^"Disadvantages" STRING "Cultural Ignorance (Water) [Social; Mental], Gaijin Appearance (Fire) [Physical; Interpersonal]"
+            ^"Gear" STRING "Rigging daggers (Range 0, Damage 3, Deadliness 4, Concealable, Durable, Mundane; can be thrown Range 1-3), gaijin clothing (Physical 2), coil of rope, sake jug (half empty), pouch containing several gaijin coins and bu"
+        }
+    }
+
+    # --- Tortoise Samurai (profile reference) ---
+
+    ^"Tortoise Samurai" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Source" STRING "GM Kit: Dark Tides"
+            ^"Type" STRING "Adversary"
+            ^"Conflict Rank (Combat)" INTEGER 4
+            ^"Conflict Rank (Intrigue)" INTEGER 2
+            ^"Base Profile" STRING "Skillful Ronin (Core Rulebook p. 316)"
+        }
+    }
+
+    # --- Gaku (profile reference + additional mahō) ---
+
+    ^"Gaku, Maho Apprentice" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Source" STRING "GM Kit: Dark Tides"
+            ^"Type" STRING "Adversary"
+            ^"Conflict Rank (Combat)" INTEGER 4
+            ^"Conflict Rank (Intrigue)" INTEGER 3
+            ^"Base Profile" STRING "Wicked Maho-Tsukai (Core Rulebook p. 318)"
+            ^"Additional Techniques" STRING "Grip of Anguish (maho), Incite Haunting (maho) (Core Rulebook p. 224)"
+        }
+    }
+
+    # --- Governor Kasuga Mugatsu (profile reference) ---
+
+    ^"Kasuga Mugatsu, Governor" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Source" STRING "GM Kit: Dark Tides"
+            ^"Base Profile" STRING "Venerable Provincial Daimyo (Core Rulebook p. 315)"
+            ^"Demeanor" STRING "Gruff"
+        }
+    }
+
+    # --- Magistrate Kasuga Mikoto (profile reference) ---
+
+    ^"Kasuga Mikoto, Magistrate" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Source" STRING "GM Kit: Dark Tides"
+            ^"Base Profile" STRING "Seasoned Courtier (Core Rulebook p. 313)"
+            ^"Demeanor" STRING "Detached"
+        }
+    }
+
+    # --- Kitsu Sokori (stat reference only, used at distance) ---
+
+    ^"Kitsu Sokori, Maho-Tsukai" DEF {
+        APPLIES TO [^"NPC"]
+        PROPERTIES {
+            ^"Source" STRING "GM Kit: Dark Tides"
+            ^"Description" STRING "The true villain behind the kidnappings. Appears only at distance during the adventure's climax. Intended as a recurring nemesis."
+            ^"Maho Checks" STRING "Water Ring 4, Theology skill rank 3. Known techniques: Grip of Anguish, Incite Haunting."
+        }
+    }
+}

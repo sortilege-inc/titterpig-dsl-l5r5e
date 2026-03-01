@@ -1,0 +1,498 @@
+BASE "L5R5e_Core_Schools_Crab" {
+    NAME "Legend of the Five Rings 5th Edition - Crab Clan Schools"
+    VERSION "0.3"
+    RELEASE_DATE "2026-03-01"
+
+    # Core Rulebook: Crab Clan Schools (pages 57-62)
+    # The Crab Clan is stalwart and practical in a way most other clans are not.
+    # Crab samurai cannot afford frivolity or distractions to nearly the same
+    # degree that most others can, for a single gap in the Kaiu Wall can spell
+    # death to hundreds, and a single missed shipment of goods can doom valiant
+    # defenders.
+
+    # ===========================
+    # HIDA DEFENDER [Bushi]
+    # ===========================
+
+    ^"Hida Defender" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Producing the most stalwart protectors of Rokugan against the horrors
+        # that mass beyond the Kaiu Wall, the Hida Defender School teaches its
+        # disciples fortitude, courage, and practicality in equal measure.
+
+        PROPERTIES {
+            ^"School Name" STRING "Hida Defender" FIXED
+            ^"Clan" STRING "Crab"
+            ^"Roles" LIST ["Bushi"]
+            ^"Ring Increase" STRING "+1 Earth, +1 Water"
+            ^"Starting Skills" STRING "choose 5: +1 Fitness, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Martial Arts [Unarmed], +1 Meditation, +1 Survival, +1 Tactics"
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            KATA ^"Lord Hida's Grip"
+            KATA CHOOSE 1 [^"Striking as Earth", ^"Striking as Water"]
+        }
+
+        SCHOOL_ABILITY "Way of the Crab" {
+            "Ignore the Cumbersome quality of armor you wear."
+            "Once per round, before making a check to resist a critical strike, you may reduce the severity of that critical strike by the physical resistance of your armor plus your school rank (to a minimum of 0)."
+        }
+
+        MASTERY_ABILITY ^"The Mountain Does Not Fall" {
+            "At the beginning of your turn, you may spend 1 Void point. If you do, ignore all of your conditions, terrain, and negative persistent effects of techniques and abilities. Do not apply your disadvantages to checks. If you would die, you cling to life for a few moments longer instead (but still die when the effect ends). This effect persists until the end of your next turn."
+        }
+
+        STARTING_OUTFIT [
+            "Lacquered armor", "traveling clothes",
+            "daishō (katana and wakizashi)",
+            "tetsubō or ōtsuchi (war club or hammer)",
+            "club", "knife", "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Medicine"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Rushing Avalanche Style" [kata]
+                ^"Honest Assessment" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Labor"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-2 Kata"
+                ^"Touchstone of Courage" [shuji]
+                ^"Slippery Maneuvers" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Fitness"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1-3 Kata"
+                ^"Iron in the Mountains Style" [kata]
+                ^"Rallying Cry" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Fitness"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1-4 Kata"
+                ^"Striking as Void" [kata]
+                ^"A Samurai's Fate" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Survival"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-5 Kata"
+                ^"Rouse the Soul" [shuji]
+                ^"The Immovable Hand of Peace" [shuji]
+            }
+            RANK 6 {
+                ^"The Mountain Does Not Fall"
+            }
+        }
+    }
+
+    # ===========================
+    # HIRUMA SCOUT [Bushi, Shinobi]
+    # ===========================
+
+    ^"Hiruma Scout" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The Shadowlands never sleep and neither can those who watch them.
+        # Scouting the Shadowlands is a dangerous task and one that requires
+        # intense preparation. Trained to observe and get out, only striking
+        # when the reward exceeds the risk, samurai of the Hiruma School are
+        # about patience and endurance above all.
+
+        PROPERTIES {
+            ^"School Name" STRING "Hiruma Scout" FIXED
+            ^"Clan" STRING "Crab"
+            ^"Roles" LIST ["Bushi", "Shinobi"]
+            ^"Ring Increase" STRING "+1 Air, +1 Water"
+            ^"Starting Skills" STRING "choose 5: +1 Fitness, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Skulduggery, +1 Survival, +1 Tactics, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 35
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Pelting Hail Style", ^"Rushing Avalanche Style"]
+            KATA CHOOSE 1 [^"Striking as Air", ^"Striking as Water"]
+        }
+
+        SCHOOL_ABILITY "Flickering Flame Skirmisher" {
+            "After performing an Attack action, you may change your stance. If you do, increase the TN of Attack checks by creatures of silhouette 3 or larger targeting you by your school rank until the start of your next turn."
+        }
+
+        MASTERY_ABILITY ^"Slayer's Slash" {
+            "Increase the severity of critical strikes you inflict on targets of silhouette 3 or larger by your ranks in Survival."
+        }
+
+        STARTING_OUTFIT [
+            "Traveling clothes", "ashigaru armor",
+            "daishō (katana and wakizashi)",
+            "yari (spear) or yumi (bow) and quiver of arrows",
+            "knife", "traveling pack", "finger of jade"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Medicine"
+                SKILL "Survival"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Threshold Barrier" [ritual]
+                ^"Slippery Maneuvers" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Smithing"
+                TECHNIQUE_GROUP "Rank 1-2 Water Shūji"
+                ^"Skulk" [ninjutsu]
+                ^"Lord Hida's Grip" [kata]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Skulduggery"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-3 Kata"
+                ^"Deadly Sting" [ninjutsu]
+                ^"Touchstone of Courage" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Command"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-4 Air Shūji"
+                ^"Noxious Cloud" [ninjutsu]
+                ^"Crashing Wave Style" [kata]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Smithing"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-5 Kata"
+                ^"Rouse the Soul" [shuji]
+                ^"Silencing Stroke" [ninjutsu]
+            }
+            RANK 6 {
+                ^"Slayer's Slash"
+            }
+        }
+    }
+
+    # ===========================
+    # KAIU ENGINEER [Artisan, Bushi]
+    # ===========================
+
+    ^"Kaiu Engineer" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Since the Crab Clan's founding, the Kaiu's duty has been to arm the
+        # clan's samurai to defeat their enemies, be it with weapons, siege
+        # engines, or insight. As the inventive arm of the Crab, the Kaiu
+        # Engineer supplies all of these things.
+
+        PROPERTIES {
+            ^"School Name" STRING "Kaiu Engineer" FIXED
+            ^"Clan" STRING "Crab"
+            ^"Roles" LIST ["Artisan", "Bushi"]
+            ^"Ring Increase" STRING "+1 Earth, +1 Fire"
+            ^"Starting Skills" STRING "choose 5: +1 Command, +1 Design, +1 Labor, +1 Martial Arts [Ranged], +1 Medicine, +1 Smithing, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            KATA ^"Tactical Assessment"
+            SHUJI ^"Stirring the Embers"
+            SHUJI ^"Stonewall Tactics"
+        }
+
+        SCHOOL_ABILITY "Masterful Builder" {
+            "Once per scene, when making a check to use an item you personally crafted, you may add a number of kept (ring) set to (op) results equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Ingenious Design" {
+            "When you construct an item, you may add or remove one quality from the item. You must describe to the GM how the item possesses (or lacks) the usual quality, and the GM is the final arbiter of whether an addition (or subtraction) is appropriate."
+        }
+
+        STARTING_OUTFIT [
+            "Traveling clothes", "ceremonial clothes",
+            "ashigaru armor",
+            "daishō (katana and wakizashi)",
+            "club", "oyumi (crossbow)", "quiver of bolts",
+            "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Smithing"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1 Earth Shūji"
+                ^"Pelting Hail Style" [kata]
+                ^"Hawk's Precision" [kata]
+            }
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Medicine"
+                SKILL "Smithing"
+                TECHNIQUE_GROUP "Rank 1-2 Kata"
+                ^"Battle in the Mind" [kata]
+                ^"Noxious Cloud" [ninjutsu]
+            }
+            RANK 3 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Government"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Smithing"
+                TECHNIQUE_GROUP "Rank 1-3 Water Shūji"
+                ^"Pillar of Calm" [shuji]
+                ^"Flowing Water Strike" [kata]
+            }
+            RANK 4 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Command"
+                SKILL "Labor"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-4 Fire Shūji"
+                ^"Soul Sunder" [kata]
+                ^"Iron in the Mountains Style" [kata]
+            }
+            RANK 5 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Command"
+                SKILL "Smithing"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-5 Earth Shūji"
+                ^"Sear the Wound" [shuji]
+                ^"Pin the Fan" [kata]
+            }
+            RANK 6 {
+                ^"Ingenious Design"
+            }
+        }
+    }
+
+    # ===========================
+    # KUNI PURIFIER [Shugenja, Bushi]
+    # ===========================
+
+    ^"Kuni Purifier" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The Kuni Purifiers master knowledge and prayers to deny the
+        # Shadowlands forces any foothold inside the Empire. To this end,
+        # they have specialized in invocations to the earth kami to strike
+        # down or banish the evil servants of Fu Leng.
+
+        PROPERTIES {
+            ^"School Name" STRING "Kuni Purifier" FIXED
+            ^"Clan" STRING "Crab"
+            ^"Roles" LIST ["Shugenja", "Bushi"]
+            ^"Ring Increase" STRING "+1 Earth, +1 Fire"
+            ^"Starting Skills" STRING "choose 3: +1 Martial Arts [Melee], +1 Medicine, +1 Sentiment, +1 Skulduggery, +1 Survival, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 35
+            ^"Techniques Available" LIST ["Invocations", "Kata", "Rituals"]
+        }
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Striking as Earth", ^"Striking as Fire"]
+            INVOCATION ^"Armor of Earth"
+            INVOCATION ^"Jade Strike"
+            RITUAL ^"Commune with the Spirits"
+            RITUAL ^"Threshold Barrier"
+        }
+
+        SCHOOL_ABILITY "Gaze into Shadow" {
+            "Once per round, when you make a check targeting or involving a Tainted being, you may choose a number of your kept dice up to your school rank containing (st) symbols. Set each of these dice to a (su) result. You cannot use this ability if you are unsure if a being is Tainted or not."
+        }
+
+        MASTERY_ABILITY ^"Purge the Wicked" {
+            "Once per game session, you may spend 1 Void point to wield an invocation against all the wicked in your sight. Instead of affecting its usual targets, the next invocation technique you perform targets each Tainted being in range."
+        }
+
+        STARTING_OUTFIT [
+            "Sanctified robes",
+            "wakizashi (short sword)", "knife",
+            "makeup kit", "scroll satchel", "traveling pack"
+        ]
+
+        # The Kuni Purifier School teaches its students invocations by
+        # utilitarian names, for its members know the kami will answer their
+        # righteous cause without the need for elaborate embellishments.
+        # (See ^"Invocation Names and Traditions")
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Skulduggery"
+                SKILL "Survival"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1 Earth Invocations"
+                ^"Bind the Shadow" [invocation]
+                ^"Biting Steel" [invocation]
+            }
+            RANK 2 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Command"
+                SKILL "Performance"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-2 Water Invocations"
+                ^"Crimson Leaves Strike" [kata]
+                ^"Symbol of Earth" [invocation]
+            }
+            RANK 3 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Sentiment"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-3 Fire Invocations"
+                ^"Rise, Earth" [invocation]
+                ^"Open Hand Style" [kata]
+            }
+            RANK 4 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Medicine"
+                SKILL "Survival"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-4 Earth Invocations"
+                ^"Tomb of Jade" [invocation]
+                ^"Flowing Water Strike" [kata]
+            }
+            RANK 5 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Government"
+                SKILL "Theology"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-5 Air Invocations"
+                ^"Earthquake" [invocation]
+                ^"Soul Sunder" [kata]
+            }
+            RANK 6 {
+                ^"Purge the Wicked"
+            }
+        }
+    }
+
+    # ===========================
+    # YASUKI MERCHANT [Courtier]
+    # ===========================
+
+    ^"Yasuki Merchant" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Enemies of the Crab say the Yasuki are little more than merchants —
+        # the Yasuki would counter that they are much more. They are masters
+        # of the arts of commerce and the flow of commodities. The Yasuki
+        # always keep their bargains, and they ensure that their partners do
+        # the same.
+
+        PROPERTIES {
+            ^"School Name" STRING "Yasuki Merchant" FIXED
+            ^"Clan" STRING "Crab"
+            ^"Roles" LIST ["Courtier"]
+            ^"Ring Increase" STRING "+1 Air, +1 Earth"
+            ^"Starting Skills" STRING "choose 5: +1 Commerce, +1 Composition, +1 Courtesy, +1 Culture, +1 Design, +1 Government, +1 Martial Arts [Ranged]"
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            SHUJI ^"Artisan's Appraisal"
+            SHUJI CHOOSE 1 [^"Rustling of Leaves", ^"Well of Desire"]
+        }
+
+        SCHOOL_ABILITY "Way of the Carp" {
+            "As a downtime activity, if you have access to a market, you may acquire a number of items up to your school rank of rarity 4 or lower, or a single item of up to rarity 4 plus your school rank. You do not need to make a check or expend money to acquire these items, nor do you need to forfeit or stake honor or glory for the act of acquiring them, even if they are not befitting of your station or Forbidden (though displaying them openly later is a different matter). The GM can still apply rarity adjustments as usual based on the specifics of the market available."
+        }
+
+        MASTERY_ABILITY ^"Treasures of the Carp" {
+            "Once per game session, you may give away one item in your possession to reduce the TN of the next Social skill check you make targeting the recipient by an amount equal to the rarity of the item. For each point by which this would reduce the TN below 1, add a kept (ring) set to an (op) result to your check."
+        }
+
+        STARTING_OUTFIT [
+            "Traveling clothes", "ceremonial clothes",
+            "wakizashi (short sword)", "knife",
+            "yumi (bow)", "quiver of arrows",
+            "calligraphy set", "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Command"
+                SKILL "Design"
+                SKILL "Government"
+                TECHNIQUE_GROUP "Rank 1 Earth Shūji"
+                ^"Tributaries of Trade" [shuji]
+                ^"All in Jest" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Commerce"
+                SKILL "Composition"
+                SKILL "Culture"
+                TECHNIQUE_GROUP "Rank 1-2 Fire Shūji"
+                ^"Ebb and Flow" [shuji]
+                ^"Slippery Maneuvers" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Commerce"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Seafaring"
+                TECHNIQUE_GROUP "Rank 1-3 Air Shūji"
+                ^"Pillar of Calm" [shuji]
+                ^"Lord Hida's Grip" [kata]
+            }
+            RANK 4 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Command"
+                SKILL "Government"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-4 Water Shūji"
+                ^"Buoyant Arrival" [shuji]
+                ^"Bravado" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Commerce"
+                SKILL "Culture"
+                SKILL "Design"
+                TECHNIQUE_GROUP "Rank 1-5 Void Shūji"
+                ^"The Immovable Hand of Peace" [shuji]
+                ^"Lady Doji's Decree" [shuji]
+            }
+            RANK 6 {
+                ^"Treasures of the Carp"
+            }
+        }
+    }
+}

@@ -1,0 +1,270 @@
+EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
+    NAME "Legend of the Five Rings 5th Edition - Errata and FAQ (September 2019)"
+    VERSION "0.3"
+    RELEASE_DATE "2026-03-01"
+
+    # Official errata and FAQ for the L5R 5e Core Rulebook
+    # and Shadowlands supplement, dated September 25, 2019.
+    # Published by Fantasy Flight Games.
+
+    # ===========================
+    # CORE RULEBOOK ERRATA
+    # ===========================
+
+    ^"Core Rulebook Errata (2019)" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Chapter 1
+        # p. 26, Universal Tiebreaker: Second bullet should read
+        # "Adversary NPCs supersede minion NPCs"
+
+        # Chapter 2
+        # p. 65, Kakita Duelist (Rank 1): "Iaijutsu Cut: Crossing Cut"
+        # should read "Iaijutsu Cut: Crossing Blade."
+
+        # p. 65-85, Curriculum Tables: Redundant technique entries
+        # should be replaced:
+        # - p. 65, Kakita Duelist (Rank 1): Replace Striking as Air
+        #   (kata) with Cadence (shuji)
+        # - p. 74, Asako Loremaster (Rank 2): Replace Civility Foremost
+        #   (shuji) with Tea Ceremony (ritual)
+        # - p. 76, Shiba Guardian (Rank 2): Replace Iron Forest Style
+        #   (kata) with Slippery Maneuvers (shuji)
+        # - p. 76, Kaito Shrine Keeper (Rank 2): Replace Pelting Hail
+        #   Style (kata) with Divination (ritual)
+        # - p. 79, Akodo Commander (Rank 1): Replace Warrior's Resolve
+        #   (kata) with Honest Assessment (shuji)
+        # - p. 86, Utaku Battle Maiden (Rank 1): Replace Striking as Air
+        #   (kata) with Courtier's Resolve (shuji)
+
+        # p. 74, Asako Loremaster, School Ability: First sentence should
+        # read "...you may treat your ranks in the skill as being equal
+        # to your school rank."
+
+        # p. 82, Ide Trader, School Ability: Should read "When acquiring,
+        # selling, or gifting an item, you may treat its rarity as reduced
+        # or increased by your school rank."
+
+        # p. 85, Shinjo Outrider, Starting Techniques: Lady Shinjo's
+        # Speed should be listed as a shuji (shuji).
+
+        # Chapter 4
+        # p. 173, Prerequisites: Second paragraph, first sentence should
+        # be replaced with: "Note that all prerequisites are waived if a
+        # character is granted a technique directly during character
+        # creation (or at another time), or if the technique appears by
+        # name on their curriculum. If a technique is part of a listed
+        # group (e.g. '= Rank 1-3 Kata'), the character ignores school
+        # rank prerequisites, but not other prerequisites (clan, etc)."
+        #
+        # Example: Emerald Magistrate title (p. 305) grants Rank 1-2
+        # Kata, waiving rank (2) and technique group (kata) prereqs.
+        # Does NOT grant access to clan-specific techniques like Lord
+        # Hida's Grip (p. 176, Crab only) unless named specifically.
+
+        # p. 179, Iaijutsu Cut: Rising Blade, Activation: Should read
+        # "As an Attack action using one sheathed Razor-Edged weapon,
+        # you may make a Martial Arts [Melee] check targeting one
+        # character at range 0-1. The TN of this check is equal to the
+        # target's vigilance."
+
+        # Chapter 5
+        # p. 230, Improvised Weapons (margin note to add):
+        # An improvised weapon uses the most similar weapon profile
+        # (often a club or a knife), with DMG and DLS reduced by 1,
+        # or more at the GM's discretion. Wielded with Martial Arts
+        # [Unarmed].
+
+        # p. 231, Table 5-1: Weapons, Zanbato entry:
+        # DMG should be 6. DLS should be 7.
+
+        # Chapter 6
+        # p. 241, 257, 263, 273: All instances of "Intrigue action"
+        # should read "Scheme action."
+        # p. 264, Wait (Action), Activation: First clause should read
+        # "As an Attack, Scheme, and Support action"
+
+        # Chapter 7
+        # p. 296, "Varying Difficulty in Text" Example: TN 3 Fitness
+        # Check (Earth 1, Fire 4) -- Fire approach TN should be 4 (not 3).
+
+        # p. 305, Emerald Magistrate: Title ability should be included:
+        # Voice of Authority (Title Ability): Once per game session when
+        # making a Scheme or Support action check using a Social skill,
+        # you may choose additional targets equal to your Glory rank. You
+        # cannot choose any additional target with vigilance higher than
+        # the highest among your initial targets.
+        # Status Award: +15 (to a minimum of 40)
+
+        # Chapter 8
+        # p. 306, Peasant Family, Skill Increase: Should read "+1 to
+        # any two Trade skills of your choice."
+
+        # Chapter 9
+        # p. 324, Manifest Fire Kami: Earth Ring should be 2, Fire Ring
+        # should be 6.
+
+        # Appendix
+        # p. 328, Table 8-1: Opportunities, Conflict and Martial Skill
+        # Examples of (op), Fire, Entry 1: Should read "Choose another
+        # character in the scene; increase the TN of the next check they
+        # make before the start of your next turn if it does not include
+        # you as a target."
+
+        RULES {
+            #L5RER01aB2cD4eF6gH8iJ0k: errata_universal_tiebreaker_adversary_supersedes_minion
+            #L5RER02lM3nO5pQ7rS9tU1v: errata_kakita_duelist_crossing_blade
+            #L5RER03wX4yZ6aB8cD0eF2g: errata_curriculum_redundant_technique_replacements
+            #L5RER04hI5jK7lM9nO1pQ3r: errata_asako_loremaster_school_ability_wording
+            #L5RER05sT6uV8wX0yZ2aB4c: errata_ide_trader_school_ability_rarity
+            #L5RER06dE7fG9hI1jK3lM5n: errata_shinjo_outrider_lady_shinjos_speed_is_shuji
+            #L5RER07oP8qR0sT2uV4wX6y: errata_prerequisites_waiver_rules
+            #L5RER08zA9bC1dE3fG5hI7j: errata_iaijutsu_cut_rising_blade_activation
+            #L5RER09kL0mN2oP4qR6sT8u: errata_improvised_weapons_margin_note
+            #L5RER10vW1xY3zA5bC7dE9f: errata_zanbato_dmg6_dls7
+            #L5RER11gH2iJ4kL6mN8oP0q: errata_intrigue_action_to_scheme_action
+            #L5RER12rS3tU5vW7xY9zA1b: errata_wait_action_activation
+            #L5RER13cD4eF6gH8iJ0kL2m: errata_varying_difficulty_fire_tn4
+            #L5RER14nO5pQ7rS9tU1vW3x: errata_emerald_magistrate_voice_of_authority
+            #L5RER15yZ6aB8cD0eF2gH4i: errata_peasant_family_two_trade_skills
+            #L5RER16jK7lM9nO1pQ3rS5t: errata_manifest_fire_kami_earth2_fire6
+            #L5RER17uV8wX0yZ2aB4cD6e: errata_fire_opportunity_target_exclusion
+        }
+    }
+
+    # ===========================
+    # SHADOWLANDS ERRATA
+    # ===========================
+
+    ^"Shadowlands Errata (2019)" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Chapter 2
+        # p. 93, Moto Avenger School: Starting outfit should include
+        # "Unicorn warhorse (see page 326 of the core rulebook)."
+
+        RULES {
+            #L5RER18fG9hI1jK3lM5nO7p: errata_moto_avenger_starting_warhorse
+        }
+    }
+
+    # ===========================
+    # FAQ: CHARACTER ADVANCEMENT
+    # ===========================
+
+    ^"FAQ: Character Advancement (2019)" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Q: Can a character count multiple purchases from a single
+        # entry on the current school rank of their curriculum toward
+        # their current school rank?
+        # A: Yes. A character can count any number of purchases of ranks
+        # of a skill or skill group or techniques from a listed category
+        # (e.g., Kata Rank 1-2) toward their current school rank.
+
+        # Q: If a character has access to an advancement with the =
+        # symbol that they could not normally purchase at a specific
+        # school rank or via a specific title, can they purchase it after
+        # completing that rank or title?
+        # A: No. The special access to purchase that advancement does
+        # not persist once the rank is completed.
+
+        RULES {
+            #L5RER19qR0sT2uV4wX6yZ8a: faq_multiple_purchases_count_toward_rank
+            #L5RER20bC1dE3fG5hI7jK9l: faq_special_access_does_not_persist
+        }
+    }
+
+    # ===========================
+    # FAQ: SCHOOL ABILITIES
+    # ===========================
+
+    ^"FAQ: School Abilities (2019)" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Q: When does the Asahina Artificer's school ability apply?
+        # A: It applies to invocations using the listed keywords to:
+        # - Summon an illusion (e.g., Token of Memory, Matsu's Battlecry)
+        # - Summon an object (any manifestation of an element that is
+        #   not a being like a Manifest Kami, e.g., Blessed Wind, Katana
+        #   of Fire, Earthquake)
+        # - Augment an object (e.g., Cloak of Night, Armor of Radiance)
+        # - Awaken an object (e.g., the school's Mastery Ability)
+
+        RULES {
+            #L5RER21mN2oP4qR6sT8uV0w: faq_asahina_artificer_ability_applies_to
+        }
+    }
+
+    # ===========================
+    # FAQ: TECHNIQUES
+    # ===========================
+
+    ^"FAQ: Techniques (2019)" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Q: Can Iaijutsu Cut techniques (p.179) be performed with a
+        # weapon that has no one-handed grip (naginata, nodachi)?
+        # A: No. These techniques instruct readying in one-handed grip.
+        # If the weapon has no one-handed grip, it is drawn but not
+        # readied, producing no base damage/deadliness/properties.
+
+        # Q: Can a character pick up and wield a weapon profile that
+        # is part of an NPC's body?
+        # A: No. It only has that profile as part of the NPC's body.
+        # A severed limb or broken tusk = improvised weapon (club/knife).
+
+        # Q: Can Crimson Leaves Strike or Coiling Serpent Style be used
+        # to disarm or restrain unarmed attack profiles?
+        # A: No. Unarmed profiles function like weapons for many things
+        # but are not strictly considered weapons (per p. 237).
+
+        # Q: Can Crimson Leaves Strike and Coiling Serpent Style be used
+        # to disarm or restrain an NPC's weapon profile that is part of
+        # its body?
+        # A: No. These are treated as unarmed profiles. Cannot be
+        # affected by those techniques.
+
+        RULES {
+            #L5RER22xY3zA5bC7dE9fG1h: faq_iaijutsu_cut_requires_one_handed_grip
+            #L5RER23iJ4kL6mN8oP0qR2s: faq_npc_body_weapon_not_pickupable
+            #L5RER24tU5vW7xY9zA1bC3d: faq_crimson_leaves_coiling_serpent_not_vs_unarmed
+            #L5RER25eF6gH8iJ0kL2mN4o: faq_npc_body_weapons_treated_as_unarmed
+        }
+    }
+
+    # ===========================
+    # FAQ: SCHOOL ABILITIES (CONTINUED)
+    # ===========================
+
+    ^"FAQ: Matsu Berserker (2019)" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Q: Can a Matsu Berserker's school ability (p. 73) trigger
+        # even if already suffering the Enraged condition?
+        # A: Yes. May suffer Enraged to trigger ability even while
+        # Enraged (only one instance per Persistent Effects, p. 174).
+
+        RULES {
+            #L5RER26pQ7rS9tU1vW3xY5z: faq_matsu_berserker_enraged_stacking
+        }
+    }
+
+    # ===========================
+    # FAQ: LORE
+    # ===========================
+
+    ^"FAQ: Lore (2019)" DEF {
+        APPLIES TO [^"Game Rules"]
+
+        # Q: Why is Kisshoten noted as one of the Eight Great Fortunes
+        # in the core rulebook, but isn't in Emerald Empire?
+        # A: Kisshoten is widely considered one of the Eight Great
+        # Fortunes, though some in Rokugan disagree. Those dissenters
+        # managed to remove Kisshoten's entry from Emerald Empire.
+
+        RULES {
+            #L5RER27aB8cD0eF2gH4iJ6k: faq_kisshoten_eight_great_fortunes_discrepancy
+        }
+    }
+}

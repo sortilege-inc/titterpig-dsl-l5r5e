@@ -1,0 +1,523 @@
+BASE "L5R5e_Core_Schools_Unicorn" {
+    NAME "Legend of the Five Rings 5th Edition - Unicorn Clan Schools"
+    VERSION "0.3"
+    RELEASE_DATE "2026-03-01"
+
+    # Core Rulebook: Unicorn Clan Schools (pages 82-87)
+    # In a holdover from the Unicorn's days journeying the Burning Sands
+    # and beyond, every Unicorn child learns to ride, pack, and travel to
+    # where they are needed most.
+
+    # ===========================
+    # IDE TRADER [Courtier]
+    # ===========================
+
+    ^"Ide Trader" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The ever-friendly face of the Unicorn is the Ide. Ide Traders always
+        # attempt to solve problems with negotiation first and foremost, as
+        # they know any business dealings between friends and equals forge
+        # bonds as strong as steel. While some of the other clans think of
+        # the Ide as soft, none can point to when they were able to take
+        # advantage of this perceived weakness. The Ide Traders ignore
+        # insults and politely welcome compliments in equal measure. They
+        # have a vast knowledge of cultures, both Rokugani and foreign,
+        # which allows them to tailor their dealings with precision.
+
+        PROPERTIES {
+            ^"School Name" STRING "Ide Trader" FIXED
+            ^"Clan" STRING "Unicorn"
+            ^"Roles" LIST ["Courtier"]
+            ^"Ring Increase" STRING "+1 Air, +1 Water"
+            ^"Starting Skills" STRING "choose 5: +1 Commerce, +1 Courtesy, +1 Games, +1 Labor, +1 Martial Arts [Ranged], +1 Medicine, +1 Survival"
+            ^"Starting Honor" INTEGER DEFAULT 45
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            SHUJI ^"Tributaries of Trade"
+            SHUJI CHOOSE 1 [^"Cadence", ^"Shallow Waters"]
+        }
+
+        SCHOOL_ABILITY "Vendor of Strange Wares" {
+            "Ignore the Forbidden quality when acquiring and handling items."
+            "When acquiring, selling, or gifting an item, you may treat its rarity as reduced or increased by your school rank."
+        }
+
+        MASTERY_ABILITY ^"A Friend in Every City" {
+            "As a downtime activity in any place of human habitation, you may make a TN 4 Commerce (Water) check to find a merchant with whom you (or your relatives) have done business. If you succeed, you find this individual and gain the Ally advantage for them (see page 101), which predisposes them to assist you in various ways."
+        }
+
+        STARTING_OUTFIT [
+            "Traveling clothes",
+            "wakizashi (short sword)", "yumi (bow)", "quiver of arrows",
+            "calligraphy set", "traveling pack",
+            "Unicorn warhorse (see page 326)", "journal"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Courtesy"
+                SKILL "Fitness"
+                SKILL "Martial Arts [Ranged]"
+                TECHNIQUE_GROUP "Rank 1 Air Shūji"
+                ^"Feigned Opening" [shuji]
+                ^"Hawk's Precision" [kata]
+            }
+            RANK 2 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Commerce"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-2 Water Shūji"
+                ^"Ebb and Flow" [shuji]
+                ^"Lady Shinjo's Speed" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Aesthetics"
+                SKILL "Commerce"
+                SKILL "Games"
+                TECHNIQUE_GROUP "Rank 1-3 Earth Shūji"
+                ^"Pillar of Calm" [shuji]
+                ^"All Arts are One" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Aesthetics"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-4 Fire Shūji"
+                ^"Sear the Wound" [shuji]
+                ^"Regal Bearing" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Command"
+                SKILL "Fitness"
+                SKILL "Games"
+                TECHNIQUE_GROUP "Rank 1-5 Void Shūji"
+                ^"Bend with the Storm" [shuji]
+                ^"The Immovable Hand of Peace" [shuji]
+            }
+            RANK 6 {
+                ^"A Friend in Every City"
+            }
+        }
+    }
+
+    # ===========================
+    # IUCHI MEISHŌDŌ MASTER [Shugenja, Artisan]
+    # ===========================
+
+    ^"Iuchi Meishōdō Master" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The Unicorn understanding of magic and the spirits has been greatly
+        # influenced by their years exploring outside the Empire, and the
+        # making of magical talismans remains the focus of their craft,
+        # meishōdō. The Iuchi Meishōdō Masters' magic is unique among
+        # Rokugan's shugenja; using words of power taught to them by
+        # foreign sorcerers, they bind the spirits into talismans, which can
+        # then be gifted to others to use. Their heritage makes the Iuchi
+        # one of most open-minded of the shugenja families.
+
+        PROPERTIES {
+            ^"School Name" STRING "Iuchi Meishōdō Master" FIXED
+            ^"Clan" STRING "Unicorn"
+            ^"Roles" LIST ["Shugenja", "Artisan"]
+            ^"Ring Increase" STRING "+1 Earth, +1 Water"
+            ^"Starting Skills" STRING "choose 3: +1 Aesthetics, +1 Design, +1 Martial Arts [Melee], +1 Meditation, +1 Survival, +1 Theology"
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            INVOCATION CHOOSE 2 [^"Grasp of Earth", ^"Jurōjin's Balm", ^"The Rushing Wave"]
+            RITUAL ^"Commune with the Spirits"
+            SHUJI CHOOSE 1 [^"Ancestry Unearthed", ^"Well of Desire"]
+        }
+
+        SCHOOL_ABILITY "The Way of Names" {
+            "As a downtime activity, you may make a TN 2 Design check using any ring to bind a spirit to an inanimate vessel, creating a meishōdō talisman for one invocation of that Element that you have learned. While you have the talisman in your possession, reduce the TN of checks to activate that invocation by 1. You can give the talisman to another shugenja, allowing them to perform that invocation even if they have not learned it and reducing the TN to activate it by 1, but the talisman ceases to function after a number of uses equal to your school rank."
+            "You can sustain a number of meishōdō talismans up to your school rank. You can only have one meishōdō talisman for any single invocation."
+        }
+
+        MASTERY_ABILITY ^"The Spirits Unbound" {
+            "At the end of your turn, you may spend 1 or more Void points to unleash the powers within an equal number of your meishōdō talismans, destroying these talismans and freeing the entities within. You may immediately perform each of the invocations for which the talismans were created, reducing the TN by 3."
+        }
+
+        STARTING_OUTFIT [
+            "Traveling clothes", "ceremonial clothes",
+            "wakizashi (short sword)",
+            "one weapon of rarity 6 or lower",
+            "calligraphy set", "traveling pack",
+            "Unicorn warhorse (see page 326)"
+        ]
+
+        # The Iuchi Meishōdō Master School teaches its students
+        # invocations using Foreign names, as their practices arose
+        # from sorcerers in the Burning Sands.
+        # (See ^"Invocation Names and Traditions")
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Courtesy"
+                SKILL "Design"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1 Water Invocations"
+                ^"Sympathetic Energies" [invocation]
+                ^"Cleansing Rite" [ritual]
+            }
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Design"
+                SKILL "Theology"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-2 Earth Invocations"
+                ^"Hands of the Tides" [invocation]
+                ^"Artisan's Appraisal" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Performance"
+                SKILL "Survival"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-3 Rituals"
+                ^"Rise, Earth" [invocation]
+                ^"Dazzling Performance" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Medicine"
+                SKILL "Survival"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-4 Air Invocations"
+                ^"Rouse the Soul" [shuji]
+                ^"A Samurai's Fate" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Culture"
+                SKILL "Survival"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-5 Earth Shūji"
+                ^"The Soul's Blade" [invocation]
+                ^"Ever-Changing Waves" [invocation]
+            }
+            RANK 6 {
+                ^"The Spirits Unbound"
+            }
+        }
+    }
+
+    # ===========================
+    # MOTO CONQUEROR [Bushi]
+    # ===========================
+
+    ^"Moto Conqueror" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # While most Unicorn dōjō focus on swift and complex techniques,
+        # the martial style of the Moto Conqueror favors straightforward,
+        # unrelenting force. They fight loudly, use sweeping movements,
+        # and wield weapons many Rokugani do not recognize. As a result,
+        # few samurai know how to react to the Moto style, let alone defend
+        # against it. Other clans consider the Moto to be barbarians, and
+        # the horde uses this to their advantage. If the Empire will not make
+        # an effort to understand the Moto's ways, then how can they stand
+        # against them?
+
+        PROPERTIES {
+            ^"School Name" STRING "Moto Conqueror" FIXED
+            ^"Clan" STRING "Unicorn"
+            ^"Roles" LIST ["Bushi"]
+            ^"Ring Increase" STRING "+1 Fire, +1 Water"
+            ^"Starting Skills" STRING "choose 5: +1 Command, +1 Fitness, +1 Performance, +1 Martial Arts [Melee], +1 Martial Arts [Unarmed], +1 Survival, +1 Tactics"
+            ^"Starting Honor" INTEGER DEFAULT 35
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            SHUJI CHOOSE 1 [^"Lightning Raid", ^"Slippery Maneuvers"]
+            SHUJI ^"All in Jest"
+        }
+
+        SCHOOL_ABILITY "Swirling Desert Wind" {
+            "When performing an Attack action during a skirmish or mass battle, you may spend (op) as follows:"
+            "(op): Choose an enemy other than your target whom you can perceive. Increase the TN of that enemy's Attack checks targeting you by your school rank until the start of your next turn."
+        }
+
+        MASTERY_ABILITY ^"Scouring Sirocco" {
+            "Once per round, after you inflict the Incapacitated condition on a target (or defeat a minion NPC), you may perform a Strike action against a different target."
+        }
+
+        STARTING_OUTFIT [
+            "Traveling clothes", "concealed armor",
+            "daishō (scimitar and wakizashi)",
+            "yumi (bow)", "quiver of arrows",
+            "two knives", "traveling pack",
+            "Unicorn warhorse (see page 326)"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Performance"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Crescent Moon Style" [kata]
+                ^"Stirring the Embers" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Performance"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Martial Arts [Unarmed]"
+                TECHNIQUE_GROUP "Rank 1-2 Fire Shūji"
+                ^"Heartpiercing Strike" [kata]
+                ^"Veiled Menace Style" [kata]
+            }
+            RANK 3 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Fitness"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-3 Kata"
+                ^"Bravado" [shuji]
+                ^"Dazzling Performance" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Command"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-4 Water Shūji"
+                ^"Striking as Void" [kata]
+                ^"Crashing Wave Style" [kata]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Government"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-5 Kata"
+                ^"Sear the Wound" [shuji]
+                ^"Buoyant Arrival" [shuji]
+            }
+            RANK 6 {
+                ^"Scouring Sirocco"
+            }
+        }
+    }
+
+    # ===========================
+    # SHINJO OUTRIDER [Bushi, Courtier]
+    # ===========================
+
+    ^"Shinjo Outrider" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The core of the Unicorn military, the Shinjo Outriders emphasize
+        # speed and flexibility. All Shinjo Outriders learn the art of
+        # reconnaissance and how to get the most out of their horses. No
+        # samurai is more mobile than a mounted Shinjo Outrider. Their
+        # preferred weapon is the Shinjo horsebow, which they use with
+        # great accuracy even while riding at a gallop. Trained to live off
+        # the land, the Shinjo Outriders thoroughly learn the terrain of each
+        # potential battlefield before having to fight over it.
+
+        PROPERTIES {
+            ^"School Name" STRING "Shinjo Outrider" FIXED
+            ^"Clan" STRING "Unicorn"
+            ^"Roles" LIST ["Bushi", "Courtier"]
+            ^"Ring Increase" STRING "+1 Earth, +1 Fire"
+            ^"Starting Skills" STRING "choose 5: +1 Commerce, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Medicine, +1 Skulduggery, +1 Survival, +1 Tactics"
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Striking as Fire", ^"Striking as Water"]
+            KATA ^"Lady Shinjo's Speed"
+        }
+
+        SCHOOL_ABILITY "Born in the Saddle" {
+            "Once per scene, before rolling dice, you may declare that you are directing your horse (who must be present) to aid in a task and describe how its efforts help in those circumstances. Reduce the TN of the check by your school rank."
+        }
+
+        MASTERY_ABILITY ^"I Will Always Return" {
+            "Once per game session, you may call out for your steed. At the beginning of the following round, your horse arrives, regardless of any barriers that might normally have prevented it from reaching your location. If your steed has recently been slain, its spirit will possess the closest horse to you and come to your aid regardless, such is its loyalty to you."
+        }
+
+        STARTING_OUTFIT [
+            "Ashigaru armor", "traveling clothes",
+            "daishō (katana or scimitar, wakizashi)",
+            "yumi (bow)", "quiver of arrows",
+            "knife", "traveling pack",
+            "Unicorn warhorse (see page 326)"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Commerce"
+                SKILL "Courtesy"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1 Earth Shūji"
+                ^"Pelting Hail Style" [kata]
+                ^"Cadence" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Courtesy"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Martial Arts [Ranged]"
+                TECHNIQUE_GROUP "Rank 1-2 Kata"
+                ^"Flowing Water Strike" [kata]
+                ^"Dazzling Performance" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Performance"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-3 Water Shūji"
+                ^"Crashing Wave Style" [kata]
+                ^"Crimson Leaves Strike" [kata]
+            }
+            RANK 4 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Skulduggery"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-4 Kata"
+                ^"Bend with the Storm" [shuji]
+                ^"Bravado" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Government"
+                SKILL "Meditation"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-5 Fire Shūji"
+                ^"Pin the Fan" [kata]
+                ^"Rouse the Soul" [shuji]
+            }
+            RANK 6 {
+                ^"I Will Always Return"
+            }
+        }
+    }
+
+    # ===========================
+    # UTAKU BATTLE MAIDEN [Bushi]
+    # ===========================
+
+    ^"Utaku Battle Maiden" DEF {
+        EXTENDS ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The most traditional and prestigious of the Unicorn Clan's
+        # schools, the Shiotome, or "Battle Maidens," are revered as
+        # legendary cavalry. The dōjō only accepts women who carry the
+        # Utaku name, and even then prospective students must meet
+        # stringent standards of prowess and honor. This is the only
+        # school in the Empire that teaches the secrets required to tame
+        # the powerful Utaku steeds, massive warhorses that refuse all
+        # other riders. In battle, graceful, continuous movements mark
+        # their style, as does their unnerving serenity. Even when
+        # charging into the fray, Battle Maidens often move in utter silence.
+
+        PROPERTIES {
+            ^"School Name" STRING "Utaku Battle Maiden" FIXED
+            ^"Clan" STRING "Unicorn"
+            ^"Roles" LIST ["Bushi"]
+            ^"Ring Increase" STRING "+1 Air, +1 Earth"
+            ^"Starting Skills" STRING "choose 5: +1 Command, +1 Fitness, +1 Government, +1 Martial Arts [Melee], +1 Meditation, +1 Smithing, +1 Survival"
+            ^"Starting Honor" INTEGER DEFAULT 50
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Crescent Moon Style", ^"Iron Forest Style"]
+            KATA ^"Warrior's Resolve"
+        }
+
+        SCHOOL_ABILITY "Heroic Charge" {
+            "When you succeed at an Attack action check, add bonus successes equal to the number of range bands you have moved this round, to a maximum of your school rank."
+            "During a duel or mass battle, if you are mounted on your steed, you always count as having moved a number of range bands equal to your school rank this turn."
+        }
+
+        MASTERY_ABILITY ^"Sensing the Breeze" {
+            "Once per round, after you defend against damage, you may move 1 range band and you may switch to a different stance."
+        }
+
+        STARTING_OUTFIT [
+            "Lacquered armor", "ceremonial clothes",
+            "daishō (katana or scimitar, wakizashi)",
+            "yari (spear)", "yumi (bow)", "quiver of arrows",
+            "knife", "traveling pack",
+            "Utaku steed (see page 327)"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Smithing"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Lady Shinjo's Speed" [shuji]
+                ^"Striking as Air" [kata]
+            }
+            RANK 2 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Fitness"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-2 Earth Shūji"
+                ^"Thunderclap Strike" [kata]
+                ^"Rushing Avalanche Style" [kata]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Medicine"
+                SKILL "Survival"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-3 Kata"
+                ^"Pillar of Calm" [shuji]
+                ^"Touchstone of Courage" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Command"
+                SKILL "Fitness"
+                SKILL "Martial Arts [Melee]"
+                TECHNIQUE_GROUP "Rank 1-4 Air Shūji"
+                ^"Soul Sunder" [kata]
+                ^"Breath of Wind Style" [kata]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Culture"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-5 Kata"
+                ^"Rouse the Soul" [shuji]
+                ^"Bend with the Storm" [shuji]
+            }
+            RANK 6 {
+                ^"Sensing the Breeze"
+            }
+        }
+    }
+}

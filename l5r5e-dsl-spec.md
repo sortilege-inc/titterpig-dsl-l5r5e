@@ -1,8 +1,8 @@
-# Legend of the Five Rings 5th Edition - Titterpig DSL Specification v0.1
+# Legend of the Five Rings 5th Edition - Titterpig DSL Specification v0.3
 
 ## Overview
 
-This document defines the Titterpig DSL specification for Legend of the Five Rings 5th Edition. The DSL focuses on clearly expressing designer intent using natural game terminology and tracking how rules modify and interact with each other across core rules, sourcebooks, errata, and homebrew content.
+This document defines the L5R5e-specific DSL conventions built on top of the [Titterpig DSL Base Specification v0.3](../titterpig-dsl/titterpig-dsl-spec.md). The base spec defines the system-agnostic grammar (DEF, PROPERTIES, EXTENDS, RULES, etc.); this document defines the **L5R5e vocabulary** — the system-defined keywords, property shapes, and structural patterns used across all L5R5e `.ttrpg` files.
 
 **Design Philosophy:** The DSL showcases what game designers had in mind using actual game terminology. It provides clear traceability for modifications, overrides, and extensions. It is not a game engine implementation but rather a specification for rule relationships and interactions.
 
@@ -15,40 +15,40 @@ L5R5e uses a multi-file BASE architecture where the core rulebook is split acros
 ```ttrpg
 BASE "L5R5e_Core_Core" {
     NAME "Legend of the Five Rings 5th Edition - Core mechanics, ACTORs, and fundamental game rules"
-    VERSION "0.1"
-    RELEASE_DATE "2025-06-01"
+    VERSION "0.3"
+    RELEASE_DATE "2026-03-01"
 
     # Dice, checks, conflicts, stances, actions, void points, experience
 }
 
 BASE "L5R5e_Core_Traits" {
     NAME "Legend of the Five Rings 5th Edition - Rings, skills, and derived attributes"
-    VERSION "0.1"
-    RELEASE_DATE "2025-06-01"
+    VERSION "0.3"
+    RELEASE_DATE "2026-03-01"
 
     # Five Rings, derived attributes, social attributes, 20 skills
 }
 
 BASE "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Character creation, clans, schools, advantages, and advancement"
-    VERSION "0.1"
-    RELEASE_DATE "2025-06-01"
+    VERSION "0.3"
+    RELEASE_DATE "2026-03-01"
 
     # Twenty Questions, Great Clans, families, schools, advantages/disadvantages, bushido
 }
 
 BASE "L5R5e_Core_Techniques" {
     NAME "Legend of the Five Rings 5th Edition - Technique types, categories, and core technique definitions"
-    VERSION "0.1"
-    RELEASE_DATE "2025-06-01"
+    VERSION "0.3"
+    RELEASE_DATE "2026-03-01"
 
     # Kata, kiho, invocations, rituals, shuji, maho, ninjutsu, inversions
 }
 
 BASE "L5R5e_Core_Systems" {
     NAME "Legend of the Five Rings 5th Edition - Game systems: combat, conditions, strife, honor, weapons, armor, and NPCs"
-    VERSION "0.1"
-    RELEASE_DATE "2025-06-01"
+    VERSION "0.3"
+    RELEASE_DATE "2026-03-01"
 
     # Strife, conditions, skirmish, duels, intrigue, mass battle, weapons, armor
 }
@@ -61,23 +61,23 @@ Sourcebooks extend a specific base file (typically `L5R5e_Core_Character` for ch
 ```ttrpg
 EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Emerald Empire"
-    VERSION "0.1"
-    RELEASE_DATE "2025-06-01"
+    VERSION "0.3"
+    RELEASE_DATE "2026-03-01"
 
     # New families, schools, advantages, disadvantages, techniques, titles
 }
 
 EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Shadowlands"
-    VERSION "0.1"
-    RELEASE_DATE "2025-06-01"
+    VERSION "0.3"
+    RELEASE_DATE "2026-03-01"
 
     # Falcon Clan, new schools, maho, corruption, oni, titles
 }
 
 EXTENSION "Table_House_Rules" EXTENDS "L5R5e_Core_Character" {
     NAME "Campaign House Rules"
-    VERSION "2025.12.01"
+    VERSION "2026.03.01"
 
     # Custom modifications for a specific table
 }
@@ -601,19 +601,16 @@ Three generic types define the common property shapes for character creation ele
     PROPERTIES {
         ^"School Name" STRING REQUIRED FIXED
         ^"Clan" STRING REQUIRED
-        ^"Roles" LIST OF STRING REQUIRED        # ["Bushi"], ["Courtier", "Shugenja"], etc.
-        ^"Ring Increase" STRING REQUIRED         # "+1 [Ring], +1 [Ring]"
-        ^"Starting Skills" STRING REQUIRED       # "+1 [Skill], +1 [Skill], ..."
+        ^"Roles" LIST REQUIRED                   # ["Bushi"], ["Courtier", "Shugenja"], etc.
+        ^"Ring Increase" STRING REQUIRED          # "+1 [Ring], +1 [Ring]"
+        ^"Starting Skills" STRING REQUIRED        # "choose N: +1 [Skill], +1 [Skill], ..."
         ^"Starting Honor" INTEGER MIN 0 MAX 100 REQUIRED
-        ^"Available Technique Groups" LIST OF STRING REQUIRED
-        ^"Starting Techniques" LIST OF STRING REQUIRED
-        ^"School Ability" STRING REQUIRED
-        ^"Mastery Ability" STRING                # Rank 6 capstone
+        ^"Techniques Available" LIST REQUIRED     # ["Kata", "Rituals", "Shūji"]
     }
 }
 ```
 
-**Note:** `^"Technique"` also serves as a generic type (defined in `core-techniques.ttrpg`) with properties for Name, Type, Rank, Activation, Ring, Skill, TN, Description, Effects, Opportunities, and Prerequisites.
+**Note:** `^"Technique"` also serves as a generic type (defined in `core-techniques.ttrpg`) with properties for Name, Type, Rank, Activation, Ring, Skill, TN, Description, Effects, Opportunities, and Prerequisites. School abilities and mastery abilities are defined as named sub-blocks (`SCHOOL_ABILITY`, `MASTERY_ABILITY`) rather than as STRING properties.
 
 ## Clans and Families
 
@@ -672,81 +669,118 @@ Minor clans defined in extension files follow the same structure with `EXTENDS ^
 
 ### School DEF Pattern
 
-Schools extend the generic `^"School"` type. They are the most complex DEF blocks, containing properties inherited from the generic type, a school ability sub-DEF, a full curriculum, and rules.
+Schools extend the generic `^"School"` type. They are the most complex DEF blocks, containing properties, a school ability block, starting techniques, curriculum, mastery ability, starting outfit, and rules.
 
 ```ttrpg
 ^"Toritaka Phantom Hunter" DEF {
-    EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+    EXTENDS ^"School"
     APPLIES TO [^"Samurai"]
 
     PROPERTIES {
-        ^"School Name" STRING "Toritaka Phantom Hunter School" FIXED
-        ^"Clan" STRING "Falcon" FIXED
-        ^"Roles" LIST OF STRING ["Shugenja"]
+        ^"School Name" STRING "Toritaka Phantom Hunter" FIXED
+        ^"Clan" STRING "Falcon"
+        ^"Roles" LIST ["Shugenja"]
         ^"Ring Increase" STRING "+1 Air, +1 Water"
         ^"Starting Skills" STRING "+1 Martial Arts [Ranged], +1 Medicine, +1 Sentiment, +1 Survival, +1 Theology"
-        ^"Starting Honor" INTEGER 40
-        ^"Available Technique Groups" LIST OF STRING ["Invocations", "Rituals", "Shuji"]
-        ^"Starting Techniques" LIST OF STRING [
-            "3 Invocations",
-            "1 Ritual"
-        ]
+        ^"Starting Honor" INTEGER DEFAULT 40
+        ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
     }
 
-    ^"Haunted Sight" DEF {
-        # School Ability
-        ^"Type" STRING "School Ability"
-        ^"Effect" STRING "Once per scene when encountering a supernatural being, may make TN 2 Theology (Void) check as a free action to learn one fact about the being."
+    STARTING_TECHNIQUES {
+        INVOCATION CHOOSE 3
+        RITUAL CHOOSE 1
     }
+
+    SCHOOL_ABILITY "Haunted Sight" {
+        "Once per scene when encountering a supernatural being, you may make a TN 2 Theology (Void) check as a free action to learn one fact about the being. Reduce the TN of your checks to investigate supernatural phenomena by your school rank."
+    }
+
+    MASTERY_ABILITY ^"Resilient Readiness" {
+        "When you encounter a supernatural being or phenomenon, you may spend 1 Void point to negate its effects for one round."
+    }
+
+    STARTING_OUTFIT [
+        "traveling clothes", "sanctified robes",
+        "daishō (any one sword of rarity 7 or lower and wakizashi)",
+        "scroll satchel", "traveling pack"
+    ]
 
     CURRICULUM {
-        ^"Rank 1" {
-            SKILL_GROUP "Scholar"
-            SKILL "Theology 2"
-            TECH_GROUP "Air Invocations, Water Invocations"
-            TECHNIQUE "Commune with the Spirits"
+        RANK 1 {
+            SKILL_GROUP "Scholar Skills"
+            SKILL "Theology"
+            SKILL "Meditation"
+            TECHNIQUE_GROUP "Rank 1 Air Invocations"
+            TECHNIQUE_GROUP "Rank 1 Water Invocations"
+            ^"Commune with the Spirits" [ritual]
         }
-        ^"Rank 2" {
-            SKILL_GROUP "Martial"
-            SKILL "Medicine 2"
-            TECH_GROUP "Air Invocations, Water Invocations"
-            TECHNIQUE "Threshold Barrier"
+        RANK 2 {
+            SKILL_GROUP "Martial Skills"
+            SKILL "Medicine"
+            SKILL "Theology"
+            TECHNIQUE_GROUP "Rank 1-2 Air Invocations"
+            ^"Threshold Barrier" [ritual]
         }
-        ^"Rank 3" {
-            SKILL_GROUP "Trade"
-            SKILL "Survival 3"
-            TECH_GROUP "Rituals"
-            TECHNIQUE "Essence of Jade"
+        RANK 3 {
+            SKILL_GROUP "Trade Skills"
+            SKILL "Survival"
+            TECHNIQUE_GROUP "Rank 1-3 Rituals"
+            ^"Essence of Jade" [invocation]
         }
-        ^"Rank 4" {
-            SKILL_GROUP "Scholar"
-            SKILL "Theology 4"
-            TECH_GROUP "Air Invocations, Water Invocations"
-            TECHNIQUE "Divination"
+        RANK 4 {
+            SKILL_GROUP "Scholar Skills"
+            SKILL "Theology"
+            TECHNIQUE_GROUP "Rank 1-4 Air Invocations"
+            ^"Divination" [ritual]
         }
-        ^"Rank 5" {
-            SKILL_GROUP "Social"
-            SKILL "Sentiment 4"
-            TECH_GROUP "Invocations"
-            TECHNIQUE "Threshold Barrier"
+        RANK 5 {
+            SKILL_GROUP "Social Skills"
+            SKILL "Sentiment"
+            TECHNIQUE_GROUP "Rank 1-5 Invocations"
+            ^"Threshold Barrier" [ritual]
         }
-        ^"Rank 6" {
-            # Mastery Ability unlocked
+        RANK 6 {
+            ^"Resilient Readiness"
         }
-    }
-
-    RULES {
-        #L5RSLxxYyZzAaBbCcDdEeFf: phantom_hunter_school_rules
     }
 }
 ```
 
-**School DEF structure:**
-1. `EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"` — Inherits from generic School type
-2. `PROPERTIES` — Name, Clan, Roles, Ring Increase, Starting Skills, Starting Honor, Available Technique Groups, Starting Techniques
-3. **School Ability sub-DEF** — Named ability with Type and Effect
-4. `CURRICULUM` — Ranks 1-6, each containing `SKILL_GROUP`, `SKILL`, `TECH_GROUP`, `TECHNIQUE` entries
-5. `RULES` — Hash-identified rules for the school
+### Standardized School DEF Structure
+
+Every school DEF follows this structure in order:
+
+1. `EXTENDS ^"School"` — Inherits from the generic School type
+2. `APPLIES TO [^"Samurai"]` — Scope constraint
+3. `PROPERTIES` — Standard property set (see below)
+4. `STARTING_TECHNIQUES` — Techniques granted at school creation
+5. `SCHOOL_ABILITY "Name" { "text" }` — School ability as a named sub-block
+6. `MASTERY_ABILITY ^"Name" { "text" }` — Rank 6 capstone ability
+7. `STARTING_OUTFIT [...]` — Starting equipment list
+8. `CURRICULUM` — Ranks 1-6, each containing curriculum entries
+
+### Standard School Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `^"School Name"` | `STRING "Name" FIXED` | Display name of the school |
+| `^"Clan"` | `STRING "ClanName"` | Clan affiliation |
+| `^"Roles"` | `LIST ["Role1", "Role2"]` | School roles (Bushi, Courtier, Shugenja, Monk, Shinobi) |
+| `^"Ring Increase"` | `STRING "+1 Ring, +1 Ring"` | Ring bonuses from this school |
+| `^"Starting Skills"` | `STRING "choose N: +1 Skill, ..."` | Starting skill bonuses |
+| `^"Starting Honor"` | `INTEGER DEFAULT N` | Starting honor value |
+| `^"Techniques Available"` | `LIST ["Category1", "Category2"]` | Technique categories this school can access |
+
+### Curriculum Entry Keywords
+
+Curriculum blocks use keyword-first syntax with these L5R5e-specific keywords:
+
+| Keyword | Example | Description |
+|---------|---------|-------------|
+| `SKILL_GROUP` | `SKILL_GROUP "Martial Skills"` | Any skill from a skill group counts toward rank advancement |
+| `SKILL` | `SKILL "Command"` | A specific skill counts toward rank advancement |
+| `TECHNIQUE_GROUP` | `TECHNIQUE_GROUP "Rank 1-3 Kata"` | Any technique from a category/rank range counts |
+| `^"Name" [type]` | `^"Rushing Avalanche Style" [kata]` | A specific named technique (caret ref with type tag) |
 
 ## Advantages and Disadvantages
 
@@ -1150,18 +1184,23 @@ Rules can also use the `WHEN ... THEN` pattern for conditional behavior:
 - Property definitions include designer intent and descriptions
 - Rule relationships are explicitly documented with snake_case labels
 
-### L5R5e-Specific DSL Features
-- **FACES** blocks for custom dice definitions (unique to L5R5e)
-- **STEPS** blocks for procedural sequences (checks, conflicts)
-- **CURRICULUM** blocks for school advancement tables
-- **TENETS** blocks for Bushido definitions
-- **FORMULA** properties for derived attribute calculations
-- **UNMASK_OPTIONS** for composure-break outcomes
-- **DIFFICULTY_SCALE** for target number calibration
-- **FAMILIES** blocks on clan definitions for family listing (entries conform to `^"Family"` shape)
-- **ENTRIES** blocks for grouping catalog-style content in extensions
-- **Generic type inheritance** for Clan, Family, School, and Technique via `EXTENDS`
-- **SYMBOL_DEFINITIONS** and **RESOLUTION_ORDER** for dice symbol interpretation
+### L5R5e System-Defined Keywords
+
+These keywords are L5R5e vocabulary built on the v0.3 base spec grammar. They are NOT reserved by the base spec.
+
+**School sub-blocks:** `SCHOOL_ABILITY`, `MASTERY_ABILITY`, `STARTING_TECHNIQUES`, `STARTING_OUTFIT`, `CURRICULUM`
+
+**Curriculum entries:** `SKILL_GROUP`, `SKILL`, `TECHNIQUE_GROUP`, `RANK`
+
+**Technique entries:** `ACTIVATION`, `ACTIVATION_COMPONENTS`, `OPPORTUNITIES`, `CATEGORY`, `FORM_CLASSIFICATIONS`
+
+**Character creation:** `FAMILIES`, `HERITAGE_TABLE`, `PHASES`, `ENTRIES`
+
+**Dice and checks:** `FACES`, `STEPS`, `SYMBOL_DEFINITIONS`, `RESOLUTION_ORDER`, `DIFFICULTY_SCALE`
+
+**Conflict and conditions:** `GENERAL_OPPORTUNITIES`, `CONFLICT_OPPORTUNITIES`, `INITIATIVE_OPPORTUNITIES`, `SKILL_OPPORTUNITIES`, `DOWNTIME_OPPORTUNITIES`, `INTRIGUE_ACTIONS`, `DUEL_ACTIONS`, `SKIRMISH_ACTIONS`, `MASS_BATTLE_ACTIONS`, `UNMASK_OPTIONS`
+
+**Other:** `FORMULA`, `TENETS`, `STARTING_VALUE`, `MAXIMUM`, `USES`, `RECOVERY`, `ADVANCEMENT_COSTS`, `COST`, `CONDITION_DEFINITIONS`, `WEAPON_QUALITIES`
 
 ### Design Benefits
 - Reads like actual game text rather than programming code
@@ -1173,6 +1212,7 @@ Rules can also use the `WHEN ... THEN` pattern for conditional behavior:
 
 ---
 
-**Version:** 0.1
-**Created:** 2025-06-01
+**Version:** 0.3
+**Base Spec:** Titterpig DSL v0.3
+**Last Updated:** 2026-03-01
 **Status:** Active Development
