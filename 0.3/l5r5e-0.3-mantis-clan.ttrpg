@@ -28,13 +28,33 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
         FAMILIES {
             # The Mantis do not have a family name. Samurai take their
             # names from the kobune ships they sail with.
-            ^"Families of the Fleet" "+1 Fire or Water, +1 Commerce, +1 Survival, Glory 36, 7 koku"
+            ^"Families of the Fleet"
         }
 
         RULES {
             #L5RMC01aB2cD4eF6gH8iJ0k: mantis_clan_minor_clan_traits
         }
     }
+
+
+    # ===========================
+    # MANTIS FAMILIES
+    # ===========================
+
+    #L5RMC40kL0mN2oP4qR6sT8u ^"Families of the Fleet" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Families of the Fleet" FIXED
+            ^"Clan"            STRING "Mantis"
+            ^"Ring Increase"   STRING "+1 Fire or Water"
+            ^"Skill Increases" STRING "+1 Commerce, +1 Survival"
+            ^"Glory"           INTEGER 36
+            ^"Starting Wealth" STRING "7 koku"
+        }
+    }
+
 
     # ===========================
     # SCHOOLS

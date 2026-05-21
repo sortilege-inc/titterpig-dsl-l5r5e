@@ -30,9 +30,9 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         }
 
         FAMILIES {
-            ^"Miya" "+1 Air or Earth, +1 Courtesy, +1 Culture, Glory 44, 8 koku"
-            ^"Otomo" "+1 Air or Water, +1 Culture, +1 Sentiment, Glory 43, 9 koku"
-            ^"Seppun" "+1 Earth or Void, +1 Meditation, +1 Theology, Glory 45, 6 koku"
+            ^"Miya"
+            ^"Otomo"
+            ^"Seppun"
         }
 
         RULES {
@@ -40,6 +40,54 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             #L5REE02kL3mN5oP7qR9sT1u: imperial_families_not_clan_affiliated
         }
     }
+
+
+    # ===========================
+    # IMPERIAL FAMILIES
+    # ===========================
+
+    #L5REE50hI5jK7lM9nO1pQ3r ^"Miya" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Miya" FIXED
+            ^"Clan"            STRING "Imperial"
+            ^"Ring Increase"   STRING "+1 Air or Earth"
+            ^"Skill Increases" STRING "+1 Courtesy, +1 Culture"
+            ^"Glory"           INTEGER 44
+            ^"Starting Wealth" STRING "8 koku"
+        }
+    }
+
+    #L5REE51sT6uV8wX0yZ2aB4c ^"Otomo" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Otomo" FIXED
+            ^"Clan"            STRING "Imperial"
+            ^"Ring Increase"   STRING "+1 Air or Water"
+            ^"Skill Increases" STRING "+1 Culture, +1 Sentiment"
+            ^"Glory"           INTEGER 43
+            ^"Starting Wealth" STRING "9 koku"
+        }
+    }
+
+    #L5REE52dE7fG9hI1jK3lM5n ^"Seppun" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Seppun" FIXED
+            ^"Clan"            STRING "Imperial"
+            ^"Ring Increase"   STRING "+1 Earth or Void"
+            ^"Skill Increases" STRING "+1 Meditation, +1 Theology"
+            ^"Glory"           INTEGER 45
+            ^"Starting Wealth" STRING "6 koku"
+        }
+    }
+
 
     # ===========================
     # NEW SCHOOLS
