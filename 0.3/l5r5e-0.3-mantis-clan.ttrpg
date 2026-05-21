@@ -163,7 +163,7 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
         }
     }
 
-    ^"Storm Fleet Tide Seer School" DEF {
+    ^"Storm Fleet Tide Seer" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -176,15 +176,15 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
 
         PROPERTIES {
             ^"School Name" STRING "Storm Fleet Tide Seer" FIXED
+            ^"Clan" STRING "Mantis"
             ^"Roles" LIST ["Shugenja"]
-            ^"Clan" STRING "Mantis" FIXED
             ^"Ring Increase" DEF {
                 ^"Air" INTEGER 1
                 ^"Water" INTEGER 1
             }
             ^"Starting Skills" DEF { CHOOSE 3 [^"Commerce", ^"Fitness", ^"Games", ^"Labor", ^"Martial Arts [Melee]", ^"Seafaring", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
-            ^"Techniques Available" LIST ["Air and Water Invocations (invocation)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Air and Water Invocations", "Rituals", "Shūji"]
         }
 
         STARTING_TECHNIQUES {
@@ -261,12 +261,6 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
             RANK 6 {
                 ^"Storm Surge"
             }
-        }
-
-        RULES {
-            #L5RMC06dE7fG9hI1jK3lM5n: school_tide_seer_ability
-            #L5RMC07oP8qR0sT2uV4wX6y: school_tide_seer_curriculum
-            #L5RMC08zA9bC1dE3fG5hI7j: school_tide_seer_mastery
         }
     }
 
