@@ -31,8 +31,9 @@ BASE "L5R5e_Core_Schools_Ronin" {
             ^"School Name" STRING "Worldly Rōnin Path" FIXED
             ^"Clan" STRING "Rōnin"
             ^"Roles" LIST ["Bushi", "Courtier"]
+            # F-STR-GAMMA: packed-string variant pending structured design
             ^"Ring Increase" STRING "+1 any two different rings"
-            ^"Starting Skills" STRING "choose 5: +1 Command, +1 Fitness, +1 Labor, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Martial Arts [Unarmed], +1 Skulduggery"
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Fitness", ^"Labor", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Martial Arts [Unarmed]", ^"Skulduggery"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 30
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }

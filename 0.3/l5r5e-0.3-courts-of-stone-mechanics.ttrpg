@@ -28,8 +28,8 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Clan Name" STRING "Deer" FIXED
             ^"Clan Type" STRING "Minor Clan"
-            ^"Clan Ring Bonus" STRING "+1 Air"
-            ^"Clan Skill Bonus" STRING "+1 Sentiment"
+            ^"Clan Ring Bonus" DEF { ^"Air" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Sentiment" INTEGER 1 }
             ^"Clan Status" INTEGER DEFAULT 30
         }
 
@@ -55,10 +55,13 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Shika" FIXED
             ^"Clan"            STRING "Deer"
-            ^"Ring Increase"   STRING "+1 Water or Fire"
-            ^"Skill Increases" STRING "+1 Courtesy, +1 Culture"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Water", ^"Fire"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Courtesy" INTEGER 1
+                ^"Culture" INTEGER 1
+            }
             ^"Glory"           INTEGER 35
-            ^"Starting Wealth" STRING "5 koku"
+            ^"Starting Wealth" INTEGER 5
         }
     }
 
@@ -80,8 +83,11 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Bayushi Deathdealer" FIXED
             ^"Roles" LIST ["Bushi", "Shinobi"]
-            ^"Ring Increase" STRING "+1 Air, +1 Fire"
-            ^"Starting Skills" STRING "Choose five: +1 Command, +1 Courtesy, +1 Fitness, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Tactics, +1 Sentiment, +1 Skulduggery"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Courtesy", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Tactics", ^"Sentiment", ^"Skulduggery"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Kata (choose one): Striking as Air or Striking as Fire; Shuji: Assess Strengths"
@@ -173,8 +179,11 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Daidoji Spymaster" FIXED
             ^"Roles" LIST ["Courtier", "Shinobi"]
-            ^"Ring Increase" STRING "+1 Air, +1 Earth"
-            ^"Starting Skills" STRING "Choose five: +1 Command, +1 Courtesy, +1 Culture, +1 Government, +1 Performance, +1 Sentiment, +1 Skulduggery"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Courtesy", ^"Culture", ^"Government", ^"Performance", ^"Sentiment", ^"Skulduggery"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Shuji: Ancestry Unearthed; Ninjutsu (choose one): Like a Ghost or Skulk; Kata (choose one): Striking as Air or Striking as Earth"
@@ -265,8 +274,11 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Doji Bureaucrat" FIXED
             ^"Roles" LIST ["Courtier"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Water"
-            ^"Starting Skills" STRING "Choose five: +1 Command, +1 Composition, +1 Courtesy, +1 Culture, +1 Games, +1 Government, +1 Meditation"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Composition", ^"Courtesy", ^"Culture", ^"Games", ^"Government", ^"Meditation"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 55
             ^"Techniques Available" LIST ["Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Shuji: Courtier's Resolve, Stonewall Tactics"
@@ -357,8 +369,11 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Ikoma Shadow" FIXED
             ^"Roles" LIST ["Courtier", "Shinobi"]
-            ^"Ring Increase" STRING "+1 Air, +1 Fire"
-            ^"Starting Skills" STRING "Choose five: +1 Courtesy, +1 Culture, +1 Government, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Skulduggery, +1 Survival"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Culture", ^"Government", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Skulduggery", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Shuji: Whispers of Court; Ninjutsu: Skulk; Kata (choose one): Hawk's Precision or Warrior's Resolve"
@@ -454,8 +469,9 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Mercenary Ninja" FIXED
             ^"Roles" LIST ["Shinobi"]
+            # F-STR-GAMMA: packed-string variant pending structured design
             ^"Ring Increase" STRING "+1 Air, +1 any one other ring"
-            ^"Starting Skills" STRING "Choose five: +1 Fitness, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Martial Arts [Unarmed], +1 Medicine, +1 Skulduggery, +1 Survival"
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Martial Arts [Unarmed]", ^"Medicine", ^"Skulduggery", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 20
             ^"Techniques Available" LIST ["Kata (kata)", "Ninjutsu (ninjutsu)", "Rituals (ritual)"]
             ^"Starting Techniques" STRING "Ninjutsu: Skulk; Shuji (choose one): Cadence or Shallow Waters"
@@ -548,8 +564,11 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Shiba Artist" FIXED
             ^"Roles" LIST ["Artisan"]
-            ^"Ring Increase" STRING "+1 Fire, +1 Void"
-            ^"Starting Skills" STRING "Choose five: +1 Aesthetics, +1 Composition, +1 Courtesy, +1 Culture, +1 Design, +1 Performance, +1 Smithing"
+            ^"Ring Increase" DEF {
+                ^"Fire" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Aesthetics", ^"Composition", ^"Courtesy", ^"Culture", ^"Design", ^"Performance", ^"Smithing"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Ritual: Tea Ceremony; Shuji (choose two): Assess Strengths, Courtier's Resolve, or Fun and Games"
@@ -640,8 +659,11 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Shika Matchmaker" FIXED
             ^"Roles" LIST ["Courtier", "Shugenja"]
-            ^"Ring Increase" STRING "+1 Air, +1 Water"
-            ^"Starting Skills" STRING "Choose three: +1 Composition, +1 Courtesy, +1 Culture, +1 Meditation, +1 Sentiment, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Composition", ^"Courtesy", ^"Culture", ^"Meditation", ^"Sentiment", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Air and Water Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Ritual: The Ties that Bind; Invocation: Yari of Air; Invocation (choose two): Blessed Wind, Path to Inner Peace, Sympathetic Energies, or Tempest of Air"
@@ -733,8 +755,11 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Shika Speardancer" FIXED
             ^"Roles" LIST ["Bushi", "Shinobi"]
-            ^"Ring Increase" STRING "+1 Air, +1 Fire"
-            ^"Starting Skills" STRING "Choose five: +1 Martial Arts [Melee], +1 Meditation, +1 Skulduggery, +1 Survival, +1 Fitness, +1 Sentiment, +1 Courtesy"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Martial Arts [Melee]", ^"Meditation", ^"Skulduggery", ^"Survival", ^"Fitness", ^"Sentiment", ^"Courtesy"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Kata: Trip the Leg; Kata (choose one): Striking as Air or Striking as Fire"
@@ -826,8 +851,11 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Togashi Chronicler" FIXED
             ^"Roles" LIST ["Courtier", "Monk"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Water"
-            ^"Starting Skills" STRING "Choose four: +1 Culture, +1 Fitness, +1 Labor, +1 Martial Arts [Unarmed], +1 Meditation, +1 Performance"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 4 [^"Culture", ^"Fitness", ^"Labor", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Performance"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Ritual: Divination; Kiho (choose one): Cleansing Spirit or Ki Protection; Shuji (choose one): Honest Assessment or Truth Burns Through Lies"
@@ -919,8 +947,11 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Yasuki Yojimbo" FIXED
             ^"Roles" LIST ["Bushi"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Water"
-            ^"Starting Skills" STRING "Choose five: +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Tactics, +1 Commerce, +1 Courtesy, +1 Seafaring, +1 Survival"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Tactics", ^"Commerce", ^"Courtesy", ^"Seafaring", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Kata: Crescent Moon Style; Shuji (choose one): Honest Assessment or Well of Desire"

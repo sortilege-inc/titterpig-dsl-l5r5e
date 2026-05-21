@@ -24,8 +24,11 @@ BASE "L5R5e_Core_Schools_Crane" {
             ^"School Name" STRING "Asahina Artificer" FIXED
             ^"Clan" STRING "Crane"
             ^"Roles" LIST ["Shugenja", "Artisan"]
-            ^"Ring Increase" STRING "+1 Air, +1 Fire"
-            ^"Starting Skills" STRING "choose 3: +1 Aesthetics, +1 Courtesy, +1 Culture, +1 Design, +1 Games, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Aesthetics", ^"Courtesy", ^"Culture", ^"Design", ^"Games", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
         }
@@ -124,8 +127,11 @@ BASE "L5R5e_Core_Schools_Crane" {
             ^"School Name" STRING "Daidoji Iron Warrior" FIXED
             ^"Clan" STRING "Crane"
             ^"Roles" LIST ["Bushi"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Water"
-            ^"Starting Skills" STRING "choose 5: +1 Command, +1 Courtesy, +1 Culture, +1 Fitness, +1 Government, +1 Martial Arts [Melee], +1 Tactics"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Courtesy", ^"Culture", ^"Fitness", ^"Government", ^"Martial Arts [Melee]", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 55
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
@@ -220,8 +226,11 @@ BASE "L5R5e_Core_Schools_Crane" {
             ^"School Name" STRING "Doji Diplomat" FIXED
             ^"Clan" STRING "Crane"
             ^"Roles" LIST ["Courtier"]
-            ^"Ring Increase" STRING "+1 Air, +1 Water"
-            ^"Starting Skills" STRING "choose 5: +1 Aesthetics, +1 Composition, +1 Courtesy, +1 Culture, +1 Design, +1 Government, +1 Martial Arts [Ranged]"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Aesthetics", ^"Composition", ^"Courtesy", ^"Culture", ^"Design", ^"Government", ^"Martial Arts [Ranged]"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
@@ -316,8 +325,11 @@ BASE "L5R5e_Core_Schools_Crane" {
             ^"School Name" STRING "Kakita Duelist" FIXED
             ^"Clan" STRING "Crane"
             ^"Roles" LIST ["Bushi", "Artisan"]
-            ^"Ring Increase" STRING "+1 Air, +1 Earth"
-            ^"Starting Skills" STRING "choose 5: +1 Courtesy, +1 Design, +1 Fitness, +1 Martial Arts [Melee], +1 Meditation, +1 Sentiment, +1 Smithing"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Design", ^"Fitness", ^"Martial Arts [Melee]", ^"Meditation", ^"Sentiment", ^"Smithing"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }

@@ -26,8 +26,11 @@ BASE "L5R5e_Core_Schools_Scorpion" {
             ^"School Name" STRING "Bayushi Manipulator" FIXED
             ^"Clan" STRING "Scorpion"
             ^"Roles" LIST ["Courtier"]
-            ^"Ring Increase" STRING "+1 Air, +1 Fire"
-            ^"Starting Skills" STRING "choose 5: +1 Command, +1 Courtesy, +1 Design, +1 Martial Arts [Unarmed], +1 Performance, +1 Sentiment, +1 Skulduggery"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Courtesy", ^"Design", ^"Martial Arts [Unarmed]", ^"Performance", ^"Sentiment", ^"Skulduggery"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
@@ -123,8 +126,11 @@ BASE "L5R5e_Core_Schools_Scorpion" {
             ^"School Name" STRING "Shosuro Infiltrator" FIXED
             ^"Clan" STRING "Scorpion"
             ^"Roles" LIST ["Shinobi", "Courtier"]
-            ^"Ring Increase" STRING "+1 Air, +1 Fire"
-            ^"Starting Skills" STRING "choose 5: +1 Courtesy, +1 Fitness, +1 Games, +1 Martial Arts [Melee], +1 Martial Arts [Unarmed], +1 Performance, +1 Skulduggery"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Fitness", ^"Games", ^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Performance", ^"Skulduggery"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 30
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
@@ -219,8 +225,11 @@ BASE "L5R5e_Core_Schools_Scorpion" {
             ^"School Name" STRING "Soshi Illusionist" FIXED
             ^"Clan" STRING "Scorpion"
             ^"Roles" LIST ["Shugenja", "Courtier", "Shinobi"]
-            ^"Ring Increase" STRING "+1 Air, +1 Water"
-            ^"Starting Skills" STRING "choose 3: +1 Courtesy, +1 Fitness, +1 Games, +1 Performance, +1 Skulduggery, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Fitness", ^"Games", ^"Performance", ^"Skulduggery", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 30
             ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
         }
@@ -322,8 +331,11 @@ BASE "L5R5e_Core_Schools_Scorpion" {
             ^"School Name" STRING "Yogo Wardmaster" FIXED
             ^"Clan" STRING "Scorpion"
             ^"Roles" LIST ["Shugenja"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Water"
-            ^"Starting Skills" STRING "choose 3: +1 Composition, +1 Fitness, +1 Martial Arts [Melee], +1 Martial Arts [Unarmed], +1 Meditation, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Composition", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
         }

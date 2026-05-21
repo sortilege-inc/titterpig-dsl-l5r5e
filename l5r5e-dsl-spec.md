@@ -622,8 +622,8 @@ Three generic types define the common property shapes for character creation ele
 
     PROPERTIES {
         ^"Clan Name" STRING REQUIRED FIXED
-        ^"Clan Ring Bonus" STRING REQUIRED     # "+1 [Ring]"
-        ^"Clan Skill Bonus" STRING REQUIRED    # "+1 [Skill]"
+        ^"Clan Ring Bonus" DEF REQUIRED        # { ^"<Ring>" INTEGER 1 }
+        ^"Clan Skill Bonus" DEF REQUIRED       # { ^"<Skill>" INTEGER 1 }
         ^"Clan Status" INTEGER MIN 0 MAX 100 REQUIRED
     }
 }
@@ -640,10 +640,10 @@ Three generic types define the common property shapes for character creation ele
 
     PROPERTIES {
         ^"Family Name" STRING REQUIRED FIXED
-        ^"Ring Increase" STRING REQUIRED        # "+1 [Ring] or [Ring]"
-        ^"Skill Increases" STRING REQUIRED      # "+1 [Skill], +1 [Skill]"
+        ^"Ring Increase" DEF REQUIRED          # See "Bonus Property Shapes" below
+        ^"Skill Increases" DEF REQUIRED        # See "Bonus Property Shapes" below
         ^"Glory" INTEGER MIN 0 MAX 100 REQUIRED
-        ^"Starting Wealth" STRING REQUIRED      # "N koku"
+        ^"Starting Wealth" INTEGER REQUIRED    # koku; or DEF for non-koku / multi-component (see below)
     }
 }
 ```
@@ -662,13 +662,30 @@ Three generic types define the common property shapes for character creation ele
         ^"School Name" STRING REQUIRED FIXED
         ^"Clan" STRING REQUIRED
         ^"Roles" LIST REQUIRED                   # ["Bushi"], ["Courtier", "Shugenja"], etc.
-        ^"Ring Increase" STRING REQUIRED          # "+1 [Ring], +1 [Ring]"
-        ^"Starting Skills" STRING REQUIRED        # "choose N: +1 [Skill], +1 [Skill], ..."
+        ^"Ring Increase" DEF REQUIRED            # See "Bonus Property Shapes" below
+        ^"Starting Skills" DEF REQUIRED          # CHOOSE N [...] INTEGER 1 form (see below)
         ^"Starting Honor" INTEGER MIN 0 MAX 100 REQUIRED
-        ^"Techniques Available" LIST REQUIRED     # ["Kata", "Rituals", "Shūji"]
+        ^"Techniques Available" LIST REQUIRED    # ["Kata", "Rituals", "Shūji"]
     }
 }
 ```
+
+### Bonus Property Shapes
+
+The `^"Ring Increase"`, `^"Skill Increases"`, `^"Clan Ring Bonus"`, `^"Clan Skill Bonus"`, and `^"Starting Skills"` properties use typed sub-DEF shapes (replacing the v0.2-era packed-string format). Six common shapes:
+
+| Shape | Example | Use |
+|---|---|---|
+| Single bonus | `^"Clan Ring Bonus" DEF { ^"Earth" INTEGER 1 }` | One ring/skill, single +N |
+| Two specific bonuses | `^"Ring Increase" DEF { ^"Earth" INTEGER 1; ^"Water" INTEGER 1 }` (multi-line in practice) | School two-ring bonus, family two-skill bonus |
+| Symmetric "or" choice | `^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Fire"] INTEGER 1 }` | Family-style "pick one of two" |
+| Choose-N from list | `^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Tactics", ...] INTEGER 1 }` | School starting-skills list |
+| Single currency | `^"Starting Wealth" INTEGER 4` (implicit koku) | Standard koku wealth |
+| Non-koku or multi-component | `^"Starting Wealth" DEF { ^"Bu" INTEGER 2 }` or `DEF { ^"Koku" INTEGER 1; ^"Dragonfly glass ornaments" INTEGER 2 }` | Non-koku currency or extras |
+
+**The `CHOOSE N [opts] INTEGER M` construct** parallels the existing `KATA CHOOSE N [opts]` curriculum syntax. Semantics: the character picks `N` of the listed options; each picked option gets `+M`.
+
+**Exotic shapes** (specific + wildcard, contextual "based on chosen clan", pure wildcards, narrative wealth) currently remain as STRING with a `# F-STR-GAMMA: ...` marker comment. See `titterpig-audit/l5r5e/AUDIT-BASELINE.md` F-STR-002/003 for the catalog of remaining exotic cases.
 
 **Note:** `^"Technique"` also serves as a generic type (defined in `core-techniques.ttrpg`) with properties for Name, Type, Rank, Activation, Ring, Skill, TN, Description, Effects, Opportunities, and Prerequisites. School abilities and mastery abilities are defined as named sub-blocks (`SCHOOL_ABILITY`, `MASTERY_ABILITY`) rather than as STRING properties.
 
@@ -826,8 +843,8 @@ Every school DEF follows this structure in order:
 | `^"School Name"` | `STRING "Name" FIXED` | Display name of the school |
 | `^"Clan"` | `STRING "ClanName"` | Clan affiliation |
 | `^"Roles"` | `LIST ["Role1", "Role2"]` | School roles (Bushi, Courtier, Shugenja, Monk, Shinobi) |
-| `^"Ring Increase"` | `STRING "+1 Ring, +1 Ring"` | Ring bonuses from this school |
-| `^"Starting Skills"` | `STRING "choose N: +1 Skill, ..."` | Starting skill bonuses |
+| `^"Ring Increase"` | `DEF { ^"Ring" INTEGER 1; ^"Ring" INTEGER 1 }` | Ring bonuses from this school (see Bonus Property Shapes) |
+| `^"Starting Skills"` | `DEF { CHOOSE N [^"Skill", ...] INTEGER 1 }` | Starting skill choice (see Bonus Property Shapes) |
 | `^"Starting Honor"` | `INTEGER DEFAULT N` | Starting honor value |
 | `^"Techniques Available"` | `LIST ["Category1", "Category2"]` | Technique categories this school can access |
 

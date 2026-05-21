@@ -205,10 +205,13 @@ EXTENSION "L5R5e_Legacies_of_War" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family" STRING "Fureheshu" FIXED
             ^"Clan" STRING "Badger"
-            ^"Ring Increase" STRING "+1 Earth or +1 Water"
-            ^"Skill Increases" STRING "+1 Labor, +1 Theology"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Labor" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
             ^"Glory" INTEGER DEFAULT 30
-            ^"Starting Wealth" STRING "4 koku"
+            ^"Starting Wealth" INTEGER 4
         }
 
         RULES {

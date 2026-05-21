@@ -20,8 +20,8 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Clan Name" STRING "Mantis" FIXED
             ^"Clan Type" STRING "Minor Clan"
-            ^"Clan Ring Bonus" STRING "+1 Water"
-            ^"Clan Skill Bonus" STRING "+1 Seafaring"
+            ^"Clan Ring Bonus" DEF { ^"Water" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Seafaring" INTEGER 1 }
             ^"Clan Status" INTEGER DEFAULT 25
         }
 
@@ -48,10 +48,13 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Families of the Fleet" FIXED
             ^"Clan"            STRING "Mantis"
-            ^"Ring Increase"   STRING "+1 Fire or Water"
-            ^"Skill Increases" STRING "+1 Commerce, +1 Survival"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Fire", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Commerce" INTEGER 1
+                ^"Survival" INTEGER 1
+            }
             ^"Glory"           INTEGER 36
-            ^"Starting Wealth" STRING "7 koku"
+            ^"Starting Wealth" INTEGER 7
         }
     }
 
@@ -72,8 +75,11 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Roles" LIST ["Bushi"]
             ^"Clan" STRING "Mantis" FIXED
-            ^"Ring Increase" STRING "+1 Fire, +1 Water"
-            ^"Starting Skills" STRING "Choose five: +1 Commerce, +1 Fitness, +1 Games, +1 Labor, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Seafaring"
+            ^"Ring Increase" DEF {
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Commerce", ^"Fitness", ^"Games", ^"Labor", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Seafaring"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"School Ability" STRING "Sailor's Fortune"
@@ -173,8 +179,11 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Roles" LIST ["Shugenja"]
             ^"Clan" STRING "Mantis" FIXED
-            ^"Ring Increase" STRING "+1 Air, +1 Water"
-            ^"Starting Skills" STRING "Choose three: +1 Commerce, +1 Fitness, +1 Games, +1 Labor, +1 Martial Arts [Melee], +1 Seafaring, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Commerce", ^"Fitness", ^"Games", ^"Labor", ^"Martial Arts [Melee]", ^"Seafaring", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Air and Water Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"School Ability" STRING "Eye of the Storm"

@@ -140,8 +140,8 @@ BASE "L5R5e_Core_Character" {
 
         PROPERTIES {
             ^"Clan Name" STRING "Crab" FIXED
-            ^"Clan Ring Bonus" STRING "+1 Earth"
-            ^"Clan Skill Bonus" STRING "+1 Fitness"
+            ^"Clan Ring Bonus" DEF { ^"Earth" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Fitness" INTEGER 1 }
             ^"Clan Status" INTEGER DEFAULT 30
         }
 
@@ -171,10 +171,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Hida" FIXED
             ^"Clan"            STRING "Crab"
-            ^"Ring Increase"   STRING "+1 Earth or Fire"
-            ^"Skill Increases" STRING "+1 Command, +1 Tactics"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Fire"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Command" INTEGER 1
+                ^"Tactics" INTEGER 1
+            }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" STRING "4 koku"
+            ^"Starting Wealth" INTEGER 4
         }
     }
 
@@ -185,10 +188,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Hiruma" FIXED
             ^"Clan"            STRING "Crab"
-            ^"Ring Increase"   STRING "+1 Air or Water"
-            ^"Skill Increases" STRING "+1 Skulduggery, +1 Survival"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Skulduggery" INTEGER 1
+                ^"Survival" INTEGER 1
+            }
             ^"Glory"           INTEGER 39
-            ^"Starting Wealth" STRING "3 koku"
+            ^"Starting Wealth" INTEGER 3
         }
     }
 
@@ -199,10 +205,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Kaiu" FIXED
             ^"Clan"            STRING "Crab"
-            ^"Ring Increase"   STRING "+1 Earth or Fire"
-            ^"Skill Increases" STRING "+1 Smithing, +1 Labor"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Fire"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Smithing" INTEGER 1
+                ^"Labor" INTEGER 1
+            }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" STRING "5 koku"
+            ^"Starting Wealth" INTEGER 5
         }
     }
 
@@ -213,10 +222,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Kuni" FIXED
             ^"Clan"            STRING "Crab"
-            ^"Ring Increase"   STRING "+1 Earth or Void"
-            ^"Skill Increases" STRING "+1 Medicine, +1 Theology"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Medicine" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" STRING "4 koku"
+            ^"Starting Wealth" INTEGER 4
         }
     }
 
@@ -227,10 +239,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Yasuki" FIXED
             ^"Clan"            STRING "Crab"
-            ^"Ring Increase"   STRING "+1 Air or Water"
-            ^"Skill Increases" STRING "+1 Commerce, +1 Design"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Commerce" INTEGER 1
+                ^"Design" INTEGER 1
+            }
             ^"Glory"           INTEGER 39
-            ^"Starting Wealth" STRING "10 koku"
+            ^"Starting Wealth" INTEGER 10
         }
     }
 
@@ -245,8 +260,8 @@ BASE "L5R5e_Core_Character" {
 
         PROPERTIES {
             ^"Clan Name" STRING "Crane" FIXED
-            ^"Clan Ring Bonus" STRING "+1 Air"
-            ^"Clan Skill Bonus" STRING "+1 Culture"
+            ^"Clan Ring Bonus" DEF { ^"Air" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Culture" INTEGER 1 }
             ^"Clan Status" INTEGER DEFAULT 35
         }
 
@@ -275,10 +290,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Asahina" FIXED
             ^"Clan"            STRING "Crane"
-            ^"Ring Increase"   STRING "+1 Water or Void"
-            ^"Skill Increases" STRING "+1 Aesthetics, +1 Theology"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Water", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Aesthetics" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" STRING "6 koku"
+            ^"Starting Wealth" INTEGER 6
         }
     }
 
@@ -289,10 +307,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Daidoji" FIXED
             ^"Clan"            STRING "Crane"
-            ^"Ring Increase"   STRING "+1 Earth or Water"
-            ^"Skill Increases" STRING "+1 Fitness, +1 Tactics"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Fitness" INTEGER 1
+                ^"Tactics" INTEGER 1
+            }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" STRING "7 koku"
+            ^"Starting Wealth" INTEGER 7
         }
     }
 
@@ -303,10 +324,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Doji" FIXED
             ^"Clan"            STRING "Crane"
-            ^"Ring Increase"   STRING "+1 Air or Water"
-            ^"Skill Increases" STRING "+1 Courtesy, +1 Design"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Courtesy" INTEGER 1
+                ^"Design" INTEGER 1
+            }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" STRING "8 koku"
+            ^"Starting Wealth" INTEGER 8
         }
     }
 
@@ -317,10 +341,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Kakita" FIXED
             ^"Clan"            STRING "Crane"
-            ^"Ring Increase"   STRING "+1 Air or Fire"
-            ^"Skill Increases" STRING "+1 Aesthetics, +1 Meditation"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Fire"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Aesthetics" INTEGER 1
+                ^"Meditation" INTEGER 1
+            }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" STRING "7 koku"
+            ^"Starting Wealth" INTEGER 7
         }
     }
 
@@ -335,8 +362,8 @@ BASE "L5R5e_Core_Character" {
 
         PROPERTIES {
             ^"Clan Name" STRING "Dragon" FIXED
-            ^"Clan Ring Bonus" STRING "+1 Fire"
-            ^"Clan Skill Bonus" STRING "+1 Meditation"
+            ^"Clan Ring Bonus" DEF { ^"Fire" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Meditation" INTEGER 1 }
             ^"Clan Status" INTEGER DEFAULT 30
         }
 
@@ -365,10 +392,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Agasha" FIXED
             ^"Clan"            STRING "Dragon"
-            ^"Ring Increase"   STRING "+1 Fire or Void"
-            ^"Skill Increases" STRING "+1 Medicine, +1 Smithing"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Fire", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Medicine" INTEGER 1
+                ^"Smithing" INTEGER 1
+            }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" STRING "4 koku"
+            ^"Starting Wealth" INTEGER 4
         }
     }
 
@@ -379,10 +409,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Kitsuki" FIXED
             ^"Clan"            STRING "Dragon"
-            ^"Ring Increase"   STRING "+1 Air or Water"
-            ^"Skill Increases" STRING "+1 Government, +1 Sentiment"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Government" INTEGER 1
+                ^"Sentiment" INTEGER 1
+            }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" STRING "6 koku"
+            ^"Starting Wealth" INTEGER 6
         }
     }
 
@@ -393,10 +426,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Mirumoto" FIXED
             ^"Clan"            STRING "Dragon"
-            ^"Ring Increase"   STRING "+1 Earth or Water"
-            ^"Skill Increases" STRING "+1 Fitness, +1 Tactics"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Fitness" INTEGER 1
+                ^"Tactics" INTEGER 1
+            }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" STRING "5 koku"
+            ^"Starting Wealth" INTEGER 5
         }
     }
 
@@ -407,10 +443,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Togashi" FIXED
             ^"Clan"            STRING "Dragon"
-            ^"Ring Increase"   STRING "+1 Earth or Void"
-            ^"Skill Increases" STRING "+1 Fitness, +1 Theology"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Fitness" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
             ^"Glory"           INTEGER 45
-            ^"Starting Wealth" STRING "3 koku"
+            ^"Starting Wealth" INTEGER 3
         }
     }
 
@@ -425,8 +464,8 @@ BASE "L5R5e_Core_Character" {
 
         PROPERTIES {
             ^"Clan Name" STRING "Lion" FIXED
-            ^"Clan Ring Bonus" STRING "+1 Water"
-            ^"Clan Skill Bonus" STRING "+1 Tactics"
+            ^"Clan Ring Bonus" DEF { ^"Water" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Tactics" INTEGER 1 }
             ^"Clan Status" INTEGER DEFAULT 35
         }
 
@@ -455,10 +494,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Akodo" FIXED
             ^"Clan"            STRING "Lion"
-            ^"Ring Increase"   STRING "+1 Air or Earth"
-            ^"Skill Increases" STRING "+1 Command, +1 Government"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Earth"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Command" INTEGER 1
+                ^"Government" INTEGER 1
+            }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" STRING "5 koku"
+            ^"Starting Wealth" INTEGER 5
         }
     }
 
@@ -469,10 +511,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Ikoma" FIXED
             ^"Clan"            STRING "Lion"
-            ^"Ring Increase"   STRING "+1 Air or Water"
-            ^"Skill Increases" STRING "+1 Composition, +1 Performance"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Composition" INTEGER 1
+                ^"Performance" INTEGER 1
+            }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" STRING "5 koku"
+            ^"Starting Wealth" INTEGER 5
         }
     }
 
@@ -483,10 +528,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Kitsu" FIXED
             ^"Clan"            STRING "Lion"
-            ^"Ring Increase"   STRING "+1 Void or Water"
-            ^"Skill Increases" STRING "+1 Meditation, +1 Theology"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Void", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Meditation" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" STRING "4 koku"
+            ^"Starting Wealth" INTEGER 4
         }
     }
 
@@ -497,10 +545,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Matsu" FIXED
             ^"Clan"            STRING "Lion"
-            ^"Ring Increase"   STRING "+1 Earth or Fire"
-            ^"Skill Increases" STRING "+1 Command, +1 Fitness"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Fire"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Command" INTEGER 1
+                ^"Fitness" INTEGER 1
+            }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" STRING "5 koku"
+            ^"Starting Wealth" INTEGER 5
         }
     }
 
@@ -515,8 +566,8 @@ BASE "L5R5e_Core_Character" {
 
         PROPERTIES {
             ^"Clan Name" STRING "Phoenix" FIXED
-            ^"Clan Ring Bonus" STRING "+1 Void"
-            ^"Clan Skill Bonus" STRING "+1 Theology"
+            ^"Clan Ring Bonus" DEF { ^"Void" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Theology" INTEGER 1 }
             ^"Clan Status" INTEGER DEFAULT 30
         }
 
@@ -545,10 +596,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Asako" FIXED
             ^"Clan"            STRING "Phoenix"
-            ^"Ring Increase"   STRING "+1 Air or Fire"
-            ^"Skill Increases" STRING "+1 Culture, +1 Sentiment"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Fire"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Culture" INTEGER 1
+                ^"Sentiment" INTEGER 1
+            }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" STRING "5 koku"
+            ^"Starting Wealth" INTEGER 5
         }
     }
 
@@ -559,10 +613,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Isawa" FIXED
             ^"Clan"            STRING "Phoenix"
-            ^"Ring Increase"   STRING "+1 Fire or Void"
-            ^"Skill Increases" STRING "+1 Meditation, +1 Theology"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Fire", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Meditation" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" STRING "5 koku"
+            ^"Starting Wealth" INTEGER 5
         }
     }
 
@@ -573,10 +630,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Kaito" FIXED
             ^"Clan"            STRING "Phoenix"
-            ^"Ring Increase"   STRING "+1 Air or Void"
-            ^"Skill Increases" STRING "+1 Fitness, +1 Theology"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Fitness" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" STRING "4 koku"
+            ^"Starting Wealth" INTEGER 4
         }
     }
 
@@ -587,10 +647,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Shiba" FIXED
             ^"Clan"            STRING "Phoenix"
-            ^"Ring Increase"   STRING "+1 Earth or Water"
-            ^"Skill Increases" STRING "+1 Meditation, +1 Tactics"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Meditation" INTEGER 1
+                ^"Tactics" INTEGER 1
+            }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" STRING "5 koku"
+            ^"Starting Wealth" INTEGER 5
         }
     }
 
@@ -605,8 +668,8 @@ BASE "L5R5e_Core_Character" {
 
         PROPERTIES {
             ^"Clan Name" STRING "Scorpion" FIXED
-            ^"Clan Ring Bonus" STRING "+1 Air"
-            ^"Clan Skill Bonus" STRING "+1 Skulduggery"
+            ^"Clan Ring Bonus" DEF { ^"Air" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Skulduggery" INTEGER 1 }
             ^"Clan Status" INTEGER DEFAULT 35
         }
 
@@ -635,10 +698,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Bayushi" FIXED
             ^"Clan"            STRING "Scorpion"
-            ^"Ring Increase"   STRING "+1 Air or Fire"
-            ^"Skill Increases" STRING "+1 Courtesy, +1 Design"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Fire"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Courtesy" INTEGER 1
+                ^"Design" INTEGER 1
+            }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" STRING "8 koku"
+            ^"Starting Wealth" INTEGER 8
         }
     }
 
@@ -649,10 +715,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Shosuro" FIXED
             ^"Clan"            STRING "Scorpion"
-            ^"Ring Increase"   STRING "+1 Air or Water"
-            ^"Skill Increases" STRING "+1 Courtesy, +1 Performance"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Courtesy" INTEGER 1
+                ^"Performance" INTEGER 1
+            }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" STRING "6 koku"
+            ^"Starting Wealth" INTEGER 6
         }
     }
 
@@ -663,10 +732,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Soshi" FIXED
             ^"Clan"            STRING "Scorpion"
-            ^"Ring Increase"   STRING "+1 Air or Void"
-            ^"Skill Increases" STRING "+1 Design, +1 Theology"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Design" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" STRING "6 koku"
+            ^"Starting Wealth" INTEGER 6
         }
     }
 
@@ -677,10 +749,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Yogo" FIXED
             ^"Clan"            STRING "Scorpion"
-            ^"Ring Increase"   STRING "+1 Earth or Void"
-            ^"Skill Increases" STRING "+1 Composition, +1 Theology"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Composition" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
             ^"Glory"           INTEGER 39
-            ^"Starting Wealth" STRING "4 koku"
+            ^"Starting Wealth" INTEGER 4
         }
     }
 
@@ -695,8 +770,8 @@ BASE "L5R5e_Core_Character" {
 
         PROPERTIES {
             ^"Clan Name" STRING "Unicorn" FIXED
-            ^"Clan Ring Bonus" STRING "+1 Water"
-            ^"Clan Skill Bonus" STRING "+1 Survival"
+            ^"Clan Ring Bonus" DEF { ^"Water" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Survival" INTEGER 1 }
             ^"Clan Status" INTEGER DEFAULT 30
         }
 
@@ -726,10 +801,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Ide" FIXED
             ^"Clan"            STRING "Unicorn"
-            ^"Ring Increase"   STRING "+1 Earth or Water"
-            ^"Skill Increases" STRING "+1 Commerce, +1 Courtesy"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Commerce" INTEGER 1
+                ^"Courtesy" INTEGER 1
+            }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" STRING "9 koku"
+            ^"Starting Wealth" INTEGER 9
         }
     }
 
@@ -740,10 +818,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Iuchi" FIXED
             ^"Clan"            STRING "Unicorn"
-            ^"Ring Increase"   STRING "+1 Air or Void"
-            ^"Skill Increases" STRING "+1 Meditation, +1 Theology"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Meditation" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" STRING "5 koku"
+            ^"Starting Wealth" INTEGER 5
         }
     }
 
@@ -754,10 +835,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Moto" FIXED
             ^"Clan"            STRING "Unicorn"
-            ^"Ring Increase"   STRING "+1 Earth or Fire"
-            ^"Skill Increases" STRING "+1 Command, +1 Survival"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Fire"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Command" INTEGER 1
+                ^"Survival" INTEGER 1
+            }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" STRING "6 koku"
+            ^"Starting Wealth" INTEGER 6
         }
     }
 
@@ -768,10 +852,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Shinjo" FIXED
             ^"Clan"            STRING "Unicorn"
-            ^"Ring Increase"   STRING "+1 Fire or Water"
-            ^"Skill Increases" STRING "+1 Sentiment, +1 Survival"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Fire", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Sentiment" INTEGER 1
+                ^"Survival" INTEGER 1
+            }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" STRING "8 koku"
+            ^"Starting Wealth" INTEGER 8
         }
     }
 
@@ -782,10 +869,13 @@ BASE "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Utaku" FIXED
             ^"Clan"            STRING "Unicorn"
-            ^"Ring Increase"   STRING "+1 Earth or Fire"
-            ^"Skill Increases" STRING "+1 Survival, +1 Tactics"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Fire"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Survival" INTEGER 1
+                ^"Tactics" INTEGER 1
+            }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" STRING "6 koku"
+            ^"Starting Wealth" INTEGER 6
         }
     }
 

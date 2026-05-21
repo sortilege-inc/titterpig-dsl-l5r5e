@@ -35,8 +35,8 @@ EXTENSION "L5R5e_GM_Kit_Mechanics" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Clan Name" STRING "Tortoise" FIXED
             ^"Clan Type" STRING "Minor Clan"
-            ^"Clan Ring Bonus" STRING "+1 Air"
-            ^"Clan Skill Bonus" STRING "+1 Commerce"
+            ^"Clan Ring Bonus" DEF { ^"Air" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Commerce" INTEGER 1 }
             ^"Clan Status" INTEGER DEFAULT 25
         }
 
@@ -61,10 +61,13 @@ EXTENSION "L5R5e_GM_Kit_Mechanics" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Kasuga" FIXED
             ^"Clan"            STRING "Tortoise"
-            ^"Ring Increase"   STRING "+1 Earth or Water"
-            ^"Skill Increases" STRING "+1 Skulduggery, +1 Government"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Skulduggery" INTEGER 1
+                ^"Government" INTEGER 1
+            }
             ^"Glory"           INTEGER 33
-            ^"Starting Wealth" STRING "9 koku"
+            ^"Starting Wealth" INTEGER 9
         }
     }
 
@@ -86,8 +89,11 @@ EXTENSION "L5R5e_GM_Kit_Mechanics" EXTENDS "L5R5e_Core_Character" {
             ^"School Name" STRING "Kasuga Smuggler" FIXED
             ^"Clan" STRING "Tortoise"
             ^"Roles" LIST ["Courtier"]
-            ^"Ring Increase" STRING "+1 Air, +1 Water"
-            ^"Starting Skills" STRING "Choose five: +1 Commerce, +1 Culture, +1 Courtesy, +1 Martial Arts [Melee], +1 Seafaring, +1 Skulduggery"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Commerce", ^"Culture", ^"Courtesy", ^"Martial Arts [Melee]", ^"Seafaring", ^"Skulduggery"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 29
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }

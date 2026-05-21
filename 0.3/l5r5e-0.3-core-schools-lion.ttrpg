@@ -30,8 +30,11 @@ BASE "L5R5e_Core_Schools_Lion" {
             ^"School Name" STRING "Akodo Commander" FIXED
             ^"Clan" STRING "Lion"
             ^"Roles" LIST ["Bushi"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Water"
-            ^"Starting Skills" STRING "choose 5: +1 Command, +1 Fitness, +1 Government, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Meditation, +1 Tactics"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Fitness", ^"Government", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Meditation", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
@@ -130,8 +133,11 @@ BASE "L5R5e_Core_Schools_Lion" {
             ^"School Name" STRING "Ikoma Bard" FIXED
             ^"Clan" STRING "Lion"
             ^"Roles" LIST ["Courtier"]
-            ^"Ring Increase" STRING "+1 Fire, +1 Water"
-            ^"Starting Skills" STRING "choose 5: +1 Composition, +1 Courtesy, +1 Culture, +1 Martial Arts [Ranged], +1 Performance, +1 Sentiment, +1 Tactics"
+            ^"Ring Increase" DEF {
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Composition", ^"Courtesy", ^"Culture", ^"Martial Arts [Ranged]", ^"Performance", ^"Sentiment", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
@@ -232,8 +238,11 @@ BASE "L5R5e_Core_Schools_Lion" {
             ^"School Name" STRING "Kitsu Medium" FIXED
             ^"Clan" STRING "Lion"
             ^"Roles" LIST ["Shugenja"]
-            ^"Ring Increase" STRING "+1 Void, +1 Water"
-            ^"Starting Skills" STRING "choose 3: +1 Courtesy, +1 Government, +1 Meditation, +1 Performance, +1 Survival, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Void" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Government", ^"Meditation", ^"Performance", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
         }
@@ -337,8 +346,11 @@ BASE "L5R5e_Core_Schools_Lion" {
             ^"School Name" STRING "Matsu Berserker" FIXED
             ^"Clan" STRING "Lion"
             ^"Roles" LIST ["Bushi"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Fire"
-            ^"Starting Skills" STRING "choose 5: +1 Command, +1 Fitness, +1 Labor, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Martial Arts [Unarmed], +1 Survival"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Fitness", ^"Labor", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Martial Arts [Unarmed]", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 55
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }

@@ -24,8 +24,8 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Clan Name" STRING "Imperial" FIXED
             ^"Clan Type" STRING "Imperial"
-            ^"Clan Ring Bonus" STRING "+1 Air"
-            ^"Clan Skill Bonus" STRING "+1 Government"
+            ^"Clan Ring Bonus" DEF { ^"Air" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Government" INTEGER 1 }
             ^"Clan Status" INTEGER DEFAULT 40
         }
 
@@ -53,10 +53,13 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Miya" FIXED
             ^"Clan"            STRING "Imperial"
-            ^"Ring Increase"   STRING "+1 Air or Earth"
-            ^"Skill Increases" STRING "+1 Courtesy, +1 Culture"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Earth"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Courtesy" INTEGER 1
+                ^"Culture" INTEGER 1
+            }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" STRING "8 koku"
+            ^"Starting Wealth" INTEGER 8
         }
     }
 
@@ -67,10 +70,13 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Otomo" FIXED
             ^"Clan"            STRING "Imperial"
-            ^"Ring Increase"   STRING "+1 Air or Water"
-            ^"Skill Increases" STRING "+1 Culture, +1 Sentiment"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Culture" INTEGER 1
+                ^"Sentiment" INTEGER 1
+            }
             ^"Glory"           INTEGER 43
-            ^"Starting Wealth" STRING "9 koku"
+            ^"Starting Wealth" INTEGER 9
         }
     }
 
@@ -81,10 +87,13 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Seppun" FIXED
             ^"Clan"            STRING "Imperial"
-            ^"Ring Increase"   STRING "+1 Earth or Void"
-            ^"Skill Increases" STRING "+1 Meditation, +1 Theology"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Meditation" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
             ^"Glory"           INTEGER 45
-            ^"Starting Wealth" STRING "6 koku"
+            ^"Starting Wealth" INTEGER 6
         }
     }
 
@@ -106,8 +115,11 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Clan" STRING "Imperial"
             ^"School Name" STRING "Miya Cartographer" FIXED
             ^"Roles" LIST ["Artisan", "Courtier"]
-            ^"Ring Increase" STRING "+1 Air, +1 Earth"
-            ^"Starting Skills" STRING "Choose five: +1 Aesthetics, +1 Composition, +1 Culture, +1 Fitness, +1 Government, +1 Seafaring, +1 Survival"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Aesthetics", ^"Composition", ^"Culture", ^"Fitness", ^"Government", ^"Seafaring", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Kata (choose one): Striking as Earth or Warrior's Resolve; Shuji (choose one): Artisan's Appraisal or Civility Foremost"
@@ -201,8 +213,11 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Clan" STRING "Imperial"
             ^"School Name" STRING "Miya Herald" FIXED
             ^"Roles" LIST ["Courtier"]
-            ^"Ring Increase" STRING "+1 Air, +1 Water"
-            ^"Starting Skills" STRING "Choose five: +1 Command, +1 Composition, +1 Courtesy, +1 Fitness, +1 Seafaring, +1 Sentiment, +1 Survival"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Composition", ^"Courtesy", ^"Fitness", ^"Seafaring", ^"Sentiment", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Shuji (choose one): Cadence or Honest Assessment; Shuji (choose one): Shallow Waters or Weight of Duty"
@@ -295,8 +310,11 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Clan" STRING "Imperial"
             ^"School Name" STRING "Otomo Schemer" FIXED
             ^"Roles" LIST ["Courtier"]
-            ^"Ring Increase" STRING "+1 Air, +1 Fire"
-            ^"Starting Skills" STRING "Choose five: +1 Command, +1 Composition, +1 Courtesy, +1 Culture, +1 Design, +1 Government, +1 Sentiment"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Composition", ^"Courtesy", ^"Culture", ^"Design", ^"Government", ^"Sentiment"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Shuji (choose one): Courtier's Resolve or Stirring the Embers; Shuji: Slippery Maneuvers"
@@ -391,8 +409,11 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Clan" STRING "Imperial"
             ^"School Name" STRING "Seppun Astrologer" FIXED
             ^"Roles" LIST ["Shugenja", "Artisan"]
-            ^"Ring Increase" STRING "+1 Air, +1 Water"
-            ^"Starting Skills" STRING "Choose three: +1 Composition, +1 Government, +1 Medicine, +1 Meditation, +1 Sentiment, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Composition", ^"Government", ^"Medicine", ^"Meditation", ^"Sentiment", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Invocation: Bind the Shadow; Invocations (choose one): Dominion of Suijin or Jade Strike; Rituals: Divination, Commune with the Spirits, Threshold Barrier"
@@ -488,8 +509,11 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Clan" STRING "Imperial"
             ^"School Name" STRING "Seppun Palace Guard" FIXED
             ^"Roles" LIST ["Bushi"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Void"
-            ^"Starting Skills" STRING "Choose five: +1 Fitness, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Martial Arts [Unarmed], +1 Meditation, +1 Sentiment, +1 Tactics"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Sentiment", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Kata (choose one): Iaijutsu Cut: Crossing Blade or Iaijutsu Cut: Rising Blade; Shuji (choose one): Ancestry Unearthed or Honest Assessment"
@@ -578,8 +602,11 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Fortunist Monk Order" FIXED
             ^"Roles" LIST ["Monk"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Water"
-            ^"Starting Skills" STRING "Choose four: +1 Courtesy, +1 Culture, +1 Martial Arts [Unarmed], +1 Meditation, +1 Survival, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 4 [^"Courtesy", ^"Culture", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Kata: Open-Hand Style; Rituals: Cleansing Rite, Threshold Barrier; Shuji (choose one): Shallow Waters or Stirring the Embers"
@@ -684,8 +711,11 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Shinseist Monk Order" FIXED
             ^"Roles" LIST ["Monk"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Void"
-            ^"Starting Skills" STRING "Choose four: +1 Aesthetics, +1 Composition, +1 Fitness, +1 Martial Arts [Unarmed], +1 Meditation, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 4 [^"Aesthetics", ^"Composition", ^"Fitness", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata (kata)", "Kiho (kiho)", "Rituals (ritual)"]
             ^"Starting Techniques" STRING "Kata: Striking as Earth; Kiho (choose two): Cleansing Spirit, Earth Needs No Eyes, or Ki Protection"
@@ -777,8 +807,11 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Kitsune Impersonator" FIXED
             ^"Roles" LIST ["Courtier", "Shugenja"]
-            ^"Ring Increase" STRING "+1 Air, +1 Fire"
-            ^"Starting Skills" STRING "Choose three: +1 Courtesy, +1 Games, +1 Performance, +1 Martial Arts [Unarmed], +1 Survival, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Games", ^"Performance", ^"Martial Arts [Unarmed]", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 30
             ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Invocations: Nature's Touch, Token of Memory; Ritual: Commune with the Spirits"
@@ -873,8 +906,11 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Kolat Saboteur" FIXED
             ^"Roles" LIST ["Shinobi"]
-            ^"Ring Increase" STRING "+1 Air, +1 Water"
-            ^"Starting Skills" STRING "Choose five: +1 Commerce, +1 Fitness, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Medicine, +1 Meditation, +1 Skulduggery"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Commerce", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Medicine", ^"Meditation", ^"Skulduggery"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 20
             ^"Starting Disadvantage" STRING "False Identity"
             ^"Techniques Available" LIST ["Kata (kata)", "Shuji (shuji)"]

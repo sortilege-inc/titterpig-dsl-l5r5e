@@ -25,8 +25,8 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Clan Name" STRING "Centipede" FIXED
             ^"Clan Type" STRING "Minor Clan"
-            ^"Clan Ring Bonus" STRING "+1 Fire"
-            ^"Clan Skill Bonus" STRING "+1 Theology"
+            ^"Clan Ring Bonus" DEF { ^"Fire" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Theology" INTEGER 1 }
             ^"Clan Status" INTEGER DEFAULT 30
         }
 
@@ -52,10 +52,13 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Moshi" FIXED
             ^"Clan"            STRING "Centipede"
-            ^"Ring Increase"   STRING "+1 Air or Fire"
-            ^"Skill Increases" STRING "+1 Fitness, +1 Meditation"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Fire"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Fitness" INTEGER 1
+                ^"Meditation" INTEGER 1
+            }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" STRING "3 koku"
+            ^"Starting Wealth" INTEGER 3
         }
     }
 
@@ -77,8 +80,11 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Agasha Alchemist" FIXED
             ^"Roles" LIST ["Shugenja"]
-            ^"Ring Increase" STRING "+1 Fire, +1 Water"
-            ^"Starting Skills" STRING "Choose three: +1 Martial Arts [Ranged], +1 Medicine, +1 Meditation, +1 Performance, +1 Survival, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Martial Arts [Ranged]", ^"Medicine", ^"Meditation", ^"Performance", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Invocations (choose three): Amaterasu's Gaze, Fukurokujin's Wit, Path to Inner Peace, The Cleansing Fire, The Fires from Within; Shuji (choose two): Shallow Waters, Stirring the Embers, Truth Burns through Lies"
@@ -172,8 +178,11 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Asahina Envoy" FIXED
             ^"Roles" LIST ["Courtier"]
-            ^"Ring Increase" STRING "+1 Air, +1 Void"
-            ^"Starting Skills" STRING "Choose five: +1 Aesthetics, +1 Courtesy, +1 Culture, +1 Meditation, +1 Performance, +1 Sentiment, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Aesthetics", ^"Courtesy", ^"Culture", ^"Meditation", ^"Performance", ^"Sentiment", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Rituals: = Tea Ceremony; Shuji (choose one): Cadence, Shallow Waters, Weight of Duty"
@@ -265,8 +274,9 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Ishiken Initiate" FIXED
             ^"Roles" LIST ["Sage", "Shugenja"]
+            # F-STR-GAMMA: packed-string variant pending structured design
             ^"Ring Increase" STRING "+1 Void, +1 any other ring"
-            ^"Starting Skills" STRING "Choose three: +1 Fitness, +1 Medicine, +1 Meditation, +1 Sentiment, +1 Survival, +1 Theology"
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Fitness", ^"Medicine", ^"Meditation", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Inversions (inversion)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Inversions (choose one): One within the Void, Sight beyond Existence, Whispered Blade, Witness the End; Rituals (choose one): Commune with the Spirits, Divination, Threshold Barrier; Shuji (choose one): All in Jest, Ancestry Unearthed, Cadence, Truth Burns through Lies"
@@ -357,8 +367,11 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Kaito Spirit Seeker" FIXED
             ^"Roles" LIST ["Bushi", "Shugenja"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Water"
-            ^"Starting Skills" STRING "Choose five: +1 Composition, +1 Courtesy, +1 Games, +1 Martial Arts [Ranged], +1 Performance, +1 Sentiment, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Composition", ^"Courtesy", ^"Games", ^"Martial Arts [Ranged]", ^"Performance", ^"Sentiment", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Invocations (invocation)", "Kata (kata)", "Rituals (ritual)"]
             ^"Starting Techniques" STRING "Invocations (choose two): Armor of Earth, Extinguish, Dominion of Suijin, Tempest of Air; Kata (choose two): Striking as Air, Striking as Earth, Striking as Fire, Striking as Water"
@@ -451,8 +464,11 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Kaiu Architect" FIXED
             ^"Roles" LIST ["Artisan", "Courtier"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Void"
-            ^"Starting Skills" STRING "Choose five: +1 Aesthetics, +1 Command, +1 Design, +1 Government, +1 Labor, +1 Martial Arts [Unarmed], +1 Tactics"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Aesthetics", ^"Command", ^"Design", ^"Government", ^"Labor", ^"Martial Arts [Unarmed]", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Rituals: Commune with the Spirits; Shuji (choose one): Courtier's Resolve, Honest Assessment"
@@ -545,8 +561,11 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Kitsu Realm Wanderer" FIXED
             ^"Roles" LIST ["Shugenja", "Bushi"]
-            ^"Ring Increase" STRING "+1 Void, +1 Water"
-            ^"Starting Skills" STRING "Choose three: +1 Fitness, +1 Martial Arts [Melee], +1 Meditation, +1 Sentiment, +1 Survival, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Void" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Fitness", ^"Martial Arts [Melee]", ^"Meditation", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Invocations (choose three): = Biting Steel, = Blessed Wind, = Courage of Seven Thunders, = Nature's Touch, = The Rushing Wave; Kata: Striking as Water; Rituals: Commune with the Spirits, Divination"
@@ -639,8 +658,8 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Moshi Sun Sentinel" FIXED
             ^"Roles" LIST ["Bushi", "Shugenja"]
-            ^"Ring Increase" STRING "+2 Fire"
-            ^"Starting Skills" STRING "Choose three: +1 Courtesy, +1 Fitness, +1 Martial Arts [Melee], +1 Martial Arts [Unarmed], +1 Sentiment, +1 Theology"
+            ^"Ring Increase" DEF { ^"Fire" INTEGER 2 }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Sentiment", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 55
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Invocations: = Armor of Radiance, = Biting Steel, = Extinguish, = Katana of Fire; Rituals: Cleansing Rite, Commune with the Spirits"
@@ -734,8 +753,11 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Shosuro Shadowweaver" FIXED
             ^"Roles" LIST ["Shugenja", "Bushi", "Shinobi"]
-            ^"Ring Increase" STRING "+1 Air, +1 Fire"
-            ^"Starting Skills" STRING "Choose three: +1 Courtesy, +1 Culture, +1 Fitness, +1 Government, +1 Martial Arts [Ranged], +1 Skulduggery"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Culture", ^"Fitness", ^"Government", ^"Martial Arts [Ranged]", ^"Skulduggery"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 30
             ^"Techniques Available" LIST ["Invocations (invocation)", "Kata (kata)", "Rituals (ritual)"]
             ^"Starting Techniques" STRING "Invocations: By the Light of the Lord Moon, Cloak of Night, Fukurokujin's Wit; Rituals: Commune with the Spirits; Shuji: = Prey on the Weak"
@@ -829,8 +851,11 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Utaku Stablemaster" FIXED
             ^"Roles" LIST ["Bushi", "Sage"]
-            ^"Ring Increase" STRING "+1 Air, +1 Water"
-            ^"Starting Skills" STRING "Choose five: +1 Command, +1 Fitness, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Sentiment, +1 Smithing, +1 Survival"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Sentiment", ^"Smithing", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 55
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Water and Air Invocations (invocation)"]
             ^"Starting Techniques" STRING "Invocations: Nature's Touch; Kata: = Crescent Moon Style, Striking as Air, Striking as Water"

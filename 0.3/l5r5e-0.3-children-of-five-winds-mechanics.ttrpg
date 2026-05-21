@@ -26,8 +26,8 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Clan Name" STRING "Fox" FIXED
             ^"Clan Type" STRING "Minor Clan"
-            ^"Clan Ring Bonus" STRING "+1 Earth"
-            ^"Clan Skill Bonus" STRING "+1 Survival"
+            ^"Clan Ring Bonus" DEF { ^"Earth" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Survival" INTEGER 1 }
             ^"Clan Status" INTEGER DEFAULT 30
         }
 
@@ -53,10 +53,13 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Kitsune" FIXED
             ^"Clan"            STRING "Fox"
-            ^"Ring Increase"   STRING "+1 Air or Water"
-            ^"Skill Increases" STRING "+1 Fitness, +1 Theology"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Fitness" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" STRING "2 koku"
+            ^"Starting Wealth" INTEGER 2
         }
     }
 
@@ -77,8 +80,11 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Ganzu Guardian" FIXED
             ^"Roles" LIST ["Bushi"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Water"
-            ^"Starting Skills" STRING "Choose five: +1 Command, +1 Fitness, +1 Labor, +1 Martial Arts [Melee], +1 Medicine, +1 Sentiment, +1 Tactics"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Fitness", ^"Labor", ^"Martial Arts [Melee]", ^"Medicine", ^"Sentiment", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Kata: = Slashing Sandstorm Style; Shuji (choose one): Honest Assessment, Shallow Waters"
@@ -171,8 +177,11 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Ide Emissary" FIXED
             ^"Roles" LIST ["Courtier", "Bushi"]
-            ^"Ring Increase" STRING "+1 Fire, +1 Water"
-            ^"Starting Skills" STRING "Choose five: +1 Courtesy, +1 Culture, +1 Games, +1 Government, +1 Martial Arts [Unarmed], +1 Sentiment, +1 Survival"
+            ^"Ring Increase" DEF {
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Culture", ^"Games", ^"Government", ^"Martial Arts [Unarmed]", ^"Sentiment", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Shuji: = Glorious Entrance; Shuji (choose one): Stirring the Embers, Well of Desire"
@@ -265,8 +274,11 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Iuchi Horse Lord Disciple" FIXED
             ^"Roles" LIST ["Shugenja", "Artisan"]
-            ^"Ring Increase" STRING "+1 Air, +1 Water"
-            ^"Starting Skills" STRING "Choose three: +1 Commerce, +1 Design, +1 Medicine, +1 Sentiment, +1 Survival, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Commerce", ^"Design", ^"Medicine", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Invocations (choose one): Jurojin's Balm, Nature's Touch, Path to Inner Peace; Rituals: Commune with the Spirits, = Protection of the Flock; Shuji (choose one): Call to Ride, Shallow Waters"
@@ -367,8 +379,11 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Kitsune Mediator" FIXED
             ^"Roles" LIST ["Courtier", "Sage"]
-            ^"Ring Increase" STRING "+1 Void, +1 Water"
-            ^"Starting Skills" STRING "Choose five: +1 Command, +1 Courtesy, +1 Martial Arts [Ranged], +1 Medicine, +1 Meditation, +1 Performance, +1 Survival"
+            ^"Ring Increase" DEF {
+                ^"Void" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Courtesy", ^"Martial Arts [Ranged]", ^"Medicine", ^"Meditation", ^"Performance", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Rituals: Commune with the Spirits; Shuji (choose one): = Appreciate the Scenery, Shallow Waters"
@@ -460,8 +475,11 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Kitsune Naturalist" FIXED
             ^"Roles" LIST ["Shugenja"]
-            ^"Ring Increase" STRING "+1 Air, +1 Earth"
-            ^"Starting Skills" STRING "Choose three: +1 Courtesy, +1 Fitness, +1 Meditation, +1 Sentiment, +1 Survival, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Fitness", ^"Meditation", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Invocations: Nature's Touch; Invocations (choose two): Extinguish, Jurojin's Balm, Inari's Blessing; Rituals: Commune with the Spirits, = Spiritual Survey"
@@ -551,8 +569,9 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Sand Road Wayfinder" FIXED
             ^"Roles" LIST ["Bushi", "Shinobi"]
+            # F-STR-GAMMA: packed-string variant pending structured design
             ^"Ring Increase" STRING "+1 Earth, +1 any other ring"
-            ^"Starting Skills" STRING "Choose five: +1 Command, +1 Commerce, +1 Labor, +1 Fitness, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Survival"
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Commerce", ^"Labor", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Kata (choose one): Striking as Air, Striking as Earth, Striking as Fire, Striking as Water; Rituals (choose one): = Traveler's Experience, = Wayfinder's Instincts"
@@ -643,8 +662,11 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Scholar of al-Zawira" FIXED
             ^"Roles" LIST ["Courtier"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Fire"
-            ^"Starting Skills" STRING "Choose five: +1 Courtesy, +1 Culture, +1 Government, +1 Medicine, +1 Sentiment, +1 Survival, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Culture", ^"Government", ^"Medicine", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Rituals: = Shadow of Days; Shuji (choose one): Ancestry Unearthed, Cite the Facts, Stirring the Embers, Truth Burns through Lies"
@@ -734,8 +756,11 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Shinjo Mounted Archer" FIXED
             ^"Roles" LIST ["Bushi", "Artisan"]
-            ^"Ring Increase" STRING "+1 Air, +1 Fire"
-            ^"Starting Skills" STRING "Choose five: +1 Culture, +1 Fitness, +1 Martial Arts [Ranged], +1 Meditation, +1 Performance, +1 Smithing, +1 Tactics"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Culture", ^"Fitness", ^"Martial Arts [Ranged]", ^"Meditation", ^"Performance", ^"Smithing", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Kata: = Pelting Hail Style; Kata (choose one): Hawk's Precision, Striking as Fire"
@@ -829,8 +854,11 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Utaku Silent Shadow Yojimbo" FIXED
             ^"Roles" LIST ["Bushi", "Courtier"]
-            ^"Ring Increase" STRING "+1 Air, +1 Earth"
-            ^"Starting Skills" STRING "Choose five: +1 Courtesy, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Meditation, +1 Sentiment, +1 Survival, +1 Tactics"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Meditation", ^"Sentiment", ^"Survival", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Kata: = Crescent Moon Style; Kata (choose one): Cautious Tread, Warrior's Resolve"
@@ -922,8 +950,11 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Ujik Nomad" FIXED
             ^"Roles" LIST ["Bushi"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Water"
-            ^"Starting Skills" STRING "Choose five: +1 Fitness, +1 Martial Arts [Ranged], +1 Martial Arts [Unarmed], +1 Medicine, +1 Performance, +1 Survival, +1 Tactics"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Ranged]", ^"Martial Arts [Unarmed]", ^"Medicine", ^"Performance", ^"Survival", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Shuji: Call to Ride; Rituals (choose one): = Protection of the Flock, = Wayfinder's Instincts"

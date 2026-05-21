@@ -24,8 +24,11 @@ BASE "L5R5e_Core_Schools_Dragon" {
             ^"School Name" STRING "Agasha Mystic" FIXED
             ^"Clan" STRING "Dragon"
             ^"Roles" LIST ["Shugenja"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Water"
-            ^"Starting Skills" STRING "choose 3: +1 Fitness, +1 Martial Arts [Unarmed], +1 Medicine, +1 Meditation, +1 Smithing, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Fitness", ^"Martial Arts [Unarmed]", ^"Medicine", ^"Meditation", ^"Smithing", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
         }
@@ -127,8 +130,11 @@ BASE "L5R5e_Core_Schools_Dragon" {
             ^"School Name" STRING "Kitsuki Investigator" FIXED
             ^"Clan" STRING "Dragon"
             ^"Roles" LIST ["Courtier", "Bushi"]
-            ^"Ring Increase" STRING "+1 Air, +1 Earth"
-            ^"Starting Skills" STRING "choose 5: +1 Culture, +1 Government, +1 Martial Arts [Melee], +1 Medicine, +1 Sentiment, +1 Skulduggery, +1 Survival"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Culture", ^"Government", ^"Martial Arts [Melee]", ^"Medicine", ^"Sentiment", ^"Skulduggery", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
@@ -223,8 +229,11 @@ BASE "L5R5e_Core_Schools_Dragon" {
             ^"School Name" STRING "Mirumoto Two-Heavens Adept" FIXED
             ^"Clan" STRING "Dragon"
             ^"Roles" LIST ["Bushi"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Fire"
-            ^"Starting Skills" STRING "choose 5: +1 Command, +1 Composition, +1 Fitness, +1 Martial Arts [Melee], +1 Meditation, +1 Tactics, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Composition", ^"Fitness", ^"Martial Arts [Melee]", ^"Meditation", ^"Tactics", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
@@ -319,8 +328,11 @@ BASE "L5R5e_Core_Schools_Dragon" {
             ^"School Name" STRING "Togashi Tattooed Order" FIXED
             ^"Clan" STRING "Dragon"
             ^"Roles" LIST ["Monk"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Void"
-            ^"Starting Skills" STRING "choose 4: +1 Fitness, +1 Martial Arts [Melee], +1 Martial Arts [Unarmed], +1 Meditation, +1 Survival, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 4 [^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kihō", "Shūji", "Rituals"]
         }

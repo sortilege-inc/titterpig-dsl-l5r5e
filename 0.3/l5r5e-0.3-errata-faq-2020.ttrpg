@@ -555,8 +555,11 @@ EXTENSION "L5R5e_Errata_FAQ_2020" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Treasure Hunter (Alternate)" FIXED
             ^"Roles" LIST ["Courtier", "Bushi"]
-            ^"Ring Increase" STRING "+1 Air, +1 Water"
-            ^"Starting Skills" STRING "Choose five: Commerce, Courtesy, Fitness, Games, Martial Arts [Melee], Sentiment, Skulduggery"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Commerce", ^"Courtesy", ^"Fitness", ^"Games", ^"Martial Arts [Melee]", ^"Sentiment", ^"Skulduggery"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 27
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Kata: = Tactical Assessment; Shuji (choose one): All in Jest or Rustling of Leaves"

@@ -26,8 +26,11 @@ BASE "L5R5e_Core_Schools_Crab" {
             ^"School Name" STRING "Hida Defender" FIXED
             ^"Clan" STRING "Crab"
             ^"Roles" LIST ["Bushi"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Water"
-            ^"Starting Skills" STRING "choose 5: +1 Fitness, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Martial Arts [Unarmed], +1 Meditation, +1 Survival, +1 Tactics"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Survival", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
@@ -123,8 +126,11 @@ BASE "L5R5e_Core_Schools_Crab" {
             ^"School Name" STRING "Hiruma Scout" FIXED
             ^"Clan" STRING "Crab"
             ^"Roles" LIST ["Bushi", "Shinobi"]
-            ^"Ring Increase" STRING "+1 Air, +1 Water"
-            ^"Starting Skills" STRING "choose 5: +1 Fitness, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Skulduggery, +1 Survival, +1 Tactics, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Skulduggery", ^"Survival", ^"Tactics", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
@@ -218,8 +224,11 @@ BASE "L5R5e_Core_Schools_Crab" {
             ^"School Name" STRING "Kaiu Engineer" FIXED
             ^"Clan" STRING "Crab"
             ^"Roles" LIST ["Artisan", "Bushi"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Fire"
-            ^"Starting Skills" STRING "choose 5: +1 Command, +1 Design, +1 Labor, +1 Martial Arts [Ranged], +1 Medicine, +1 Smithing, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Design", ^"Labor", ^"Martial Arts [Ranged]", ^"Medicine", ^"Smithing", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
@@ -315,8 +324,11 @@ BASE "L5R5e_Core_Schools_Crab" {
             ^"School Name" STRING "Kuni Purifier" FIXED
             ^"Clan" STRING "Crab"
             ^"Roles" LIST ["Shugenja", "Bushi"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Fire"
-            ^"Starting Skills" STRING "choose 3: +1 Martial Arts [Melee], +1 Medicine, +1 Sentiment, +1 Skulduggery, +1 Survival, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Martial Arts [Melee]", ^"Medicine", ^"Sentiment", ^"Skulduggery", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Invocations", "Kata", "Rituals"]
         }
@@ -418,8 +430,11 @@ BASE "L5R5e_Core_Schools_Crab" {
             ^"School Name" STRING "Yasuki Merchant" FIXED
             ^"Clan" STRING "Crab"
             ^"Roles" LIST ["Courtier"]
-            ^"Ring Increase" STRING "+1 Air, +1 Earth"
-            ^"Starting Skills" STRING "choose 5: +1 Commerce, +1 Composition, +1 Courtesy, +1 Culture, +1 Design, +1 Government, +1 Martial Arts [Ranged]"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Commerce", ^"Composition", ^"Courtesy", ^"Culture", ^"Design", ^"Government", ^"Martial Arts [Ranged]"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }

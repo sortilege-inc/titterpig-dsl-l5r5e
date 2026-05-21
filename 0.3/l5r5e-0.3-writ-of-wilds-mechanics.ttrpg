@@ -26,8 +26,8 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Clan Name" STRING "Dragonfly" FIXED
             ^"Clan Type" STRING "Minor Clan"
-            ^"Clan Ring Bonus" STRING "+1 Earth"
-            ^"Clan Skill Bonus" STRING "+1 Sentiment"
+            ^"Clan Ring Bonus" DEF { ^"Earth" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Sentiment" INTEGER 1 }
             ^"Clan Status" INTEGER DEFAULT 30
         }
 
@@ -52,10 +52,16 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Family Name"     STRING "Tonbo" FIXED
             ^"Clan"            STRING "Dragonfly"
-            ^"Ring Increase"   STRING "+1 Air or Water"
-            ^"Skill Increases" STRING "+1 Courtesy, +1 Culture"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Courtesy" INTEGER 1
+                ^"Culture" INTEGER 1
+            }
             ^"Glory"           INTEGER 35
-            ^"Starting Wealth" STRING "1 koku, 2 Dragonfly glass ornaments"
+            ^"Starting Wealth" DEF {
+                ^"Koku" INTEGER 1
+                ^"Dragonfly glass ornaments" INTEGER 2
+            }
         }
     }
 
@@ -79,8 +85,11 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Dragonfly Grace of the Spirits" FIXED
             ^"Roles" LIST ["Courtier", "Shugenja"]
-            ^"Ring Increase" STRING "+1 Air, +1 Water"
-            ^"Starting Skills" STRING "Choose five: +1 Command, +1 Courtesy, +1 Culture, +1 Games, +1 Government, +1 Martial Arts [Melee], +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Courtesy", ^"Culture", ^"Games", ^"Government", ^"Martial Arts [Melee]", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Invocations: Dominion of Suijin, Reflections of P'an Ku; Rituals (choose three): Cleansing Rite, Commune with the Spirits, Divination, Threshold Barrier"
@@ -175,8 +184,11 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Laughing Mountain Hearthstone Tradition" FIXED
             ^"Roles" LIST ["Courtier", "Monk"]
-            ^"Ring Increase" STRING "+1 Air, +1 Fire"
-            ^"Starting Skills" STRING "Choose five: +1 Composition, +1 Courtesy, +1 Games, +1 Martial Arts [Melee], +1 Martial Arts [Unarmed], +1 Performance, +1 Sentiment"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Composition", ^"Courtesy", ^"Games", ^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Performance", ^"Sentiment"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 28
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Shuji (choose two): Sensational Distraction, Stirring the Embers, Truth Burns Through Lies"
@@ -271,8 +283,11 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Shinomen Naga Seer Tradition" FIXED
             ^"Roles" LIST ["Courtier", "Bushi"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Water"
-            ^"Starting Skills" STRING "Choose five: +1 Courtesy, +1 Fitness, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Meditation, +1 Performance, +1 Survival"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Meditation", ^"Performance", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 55
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Kata (choose one): Crescent Moon Style, Striking as Water; Shuji (choose one): Shallow Waters, Stonewall Tactics, Weight of Duty"
@@ -369,8 +384,11 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Nezumi Tattered Ear Explorer Tradition" FIXED
             ^"Roles" LIST ["Bushi"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Fire"
-            ^"Starting Skills" STRING "Choose five: +1 Commerce, +1 Fitness, +1 Martial Arts [Melee], +1 Martial Arts [Ranged], +1 Medicine, +1 Skulduggery, +1 Survival"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Commerce", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Medicine", ^"Skulduggery", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 18
             ^"Techniques Available" LIST ["Kata (kata)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Kata: Razor Bite; Ninjutsu: Skulk"
@@ -461,8 +479,11 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Tengu Mask of Air Tradition" FIXED
             ^"Roles" LIST ["Monk", "Sage"]
-            ^"Ring Increase" STRING "+1 Air, +1 Void"
-            ^"Starting Skills" STRING "Choose four: +1 Fitness, +1 Martial Arts [Melee], +1 Medicine, +1 Meditation, +1 Survival, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 4 [^"Fitness", ^"Martial Arts [Melee]", ^"Medicine", ^"Meditation", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 55
             ^"Techniques Available" LIST ["Invocations (invocation)", "Kiho (kiho)", "Rituals (ritual)"]
             ^"Starting Techniques" STRING "Kata: Flight; Kiho (choose two): Air Fist, Cloak of Night, Yari of Air; Rituals: Chikusho-do's Guile"
@@ -554,8 +575,11 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Woolen Hooves Trapper Tradition" FIXED
             ^"Roles" LIST ["Artisan", "Bushi"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Fire"
-            ^"Starting Skills" STRING "Choose five: +1 Command, +1 Fitness, +1 Labor, +1 Martial Arts [Ranged], +1 Martial Arts [Melee], +1 Medicine, +1 Survival"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Fitness", ^"Labor", ^"Martial Arts [Ranged]", ^"Martial Arts [Melee]", ^"Medicine", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 28
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
             ^"Starting Techniques" STRING "Kata (choose two): Bear's Swipe Style, Hawk's Precision, Striking as Earth, Striking as Water; Rituals: Guard Against the Elements"
@@ -667,10 +691,13 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         # that make life worth living.
 
         PROPERTIES {
-            ^"Ring Increase" STRING "+1 Earth or +1 Void"
-            ^"Skill Increases" STRING "+1 Culture, +1 Design"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Culture" INTEGER 1
+                ^"Design" INTEGER 1
+            }
             ^"Status Modification" STRING "-2 (minimum 0)"
-            ^"Starting Wealth" STRING "1 koku"
+            ^"Starting Wealth" INTEGER 1
         }
 
         RULES {
@@ -686,10 +713,13 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         # strain on personal health.
 
         PROPERTIES {
-            ^"Ring Increase" STRING "+1 Earth or +1 Water"
-            ^"Skill Increases" STRING "+1 Labor, +1 Fitness"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Labor" INTEGER 1
+                ^"Fitness" INTEGER 1
+            }
             ^"Status Modification" STRING "+4"
-            ^"Starting Wealth" STRING "2 bu"
+            ^"Starting Wealth" DEF { ^"Bu" INTEGER 2 }
         }
 
         RULES {
@@ -705,10 +735,11 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         # plenty.
 
         PROPERTIES {
-            ^"Ring Increase" STRING "+1 Earth or +1 Water"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Water"] INTEGER 1 }
+            # F-STR-GAMMA: packed-string variant pending structured design
             ^"Skill Increases" STRING "+1 Labor, and +1 Seafaring or +1 Survival"
             ^"Status Modification" STRING "+3"
-            ^"Starting Wealth" STRING "4 bu"
+            ^"Starting Wealth" DEF { ^"Bu" INTEGER 4 }
         }
 
         RULES {
@@ -724,9 +755,13 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         # understand their inner self.
 
         PROPERTIES {
-            ^"Ring Increase" STRING "+1 Void or +1 Air"
-            ^"Skill Increases" STRING "+1 Theology, +1 Courtesy"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Void", ^"Air"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Theology" INTEGER 1
+                ^"Courtesy" INTEGER 1
+            }
             ^"Status Modification" STRING "+11"
+            # F-STR-GAMMA: packed-string variant pending structured design
             ^"Starting Wealth" STRING "One day's rations"
         }
 

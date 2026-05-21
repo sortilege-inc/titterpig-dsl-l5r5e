@@ -32,8 +32,11 @@ BASE "L5R5e_Core_Schools_Phoenix" {
             ^"School Name" STRING "Asako Loremaster" FIXED
             ^"Clan" STRING "Phoenix"
             ^"Roles" LIST ["Courtier"]
-            ^"Ring Increase" STRING "+1 Air, +1 Earth"
-            ^"Starting Skills" STRING "choose 5: +1 Culture, +1 Government, +1 Martial Arts [Unarmed], +1 Medicine, +1 Performance, +1 Sentiment, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Culture", ^"Government", ^"Martial Arts [Unarmed]", ^"Medicine", ^"Performance", ^"Sentiment", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Kata", "Rituals", "Sh\u016Bji"]
         }
@@ -134,8 +137,9 @@ BASE "L5R5e_Core_Schools_Phoenix" {
             ^"School Name" STRING "Isawa Elementalist" FIXED
             ^"Clan" STRING "Phoenix"
             ^"Roles" LIST ["Shugenja"]
+            # F-STR-GAMMA: packed-string variant pending structured design
             ^"Ring Increase" STRING "+1 any two different rings"
-            ^"Starting Skills" STRING "choose 3: +1 Composition, +1 Courtesy, +1 Medicine, +1 Meditation, +1 Performance, +1 Theology"
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Composition", ^"Courtesy", ^"Medicine", ^"Meditation", ^"Performance", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Invocations", "Rituals", "Sh\u016Bji"]
         }
@@ -241,8 +245,11 @@ BASE "L5R5e_Core_Schools_Phoenix" {
             ^"School Name" STRING "Shiba Guardian" FIXED
             ^"Clan" STRING "Phoenix"
             ^"Roles" LIST ["Bushi", "Courtier"]
-            ^"Ring Increase" STRING "+1 Earth, +1 Water"
-            ^"Starting Skills" STRING "choose 5: +1 Courtesy, +1 Fitness, +1 Martial Arts [Melee], +1 Meditation, +1 Survival, +1 Tactics, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Fitness", ^"Martial Arts [Melee]", ^"Meditation", ^"Survival", ^"Tactics", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Kata", "Rituals", "Sh\u016Bji"]
         }
@@ -338,8 +345,11 @@ BASE "L5R5e_Core_Schools_Phoenix" {
             ^"School Name" STRING "Kaito Shrine Keeper" FIXED
             ^"Clan" STRING "Phoenix"
             ^"Roles" LIST ["Monk"]
-            ^"Ring Increase" STRING "+1 Air, +1 Water"
-            ^"Starting Skills" STRING "choose 4: +1 Fitness, +1 Martial Arts [Ranged], +1 Meditation, +1 Performance, +1 Smithing, +1 Theology"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 4 [^"Fitness", ^"Martial Arts [Ranged]", ^"Meditation", ^"Performance", ^"Smithing", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Kata", "Rituals", "Sh\u016Bji"]
         }
