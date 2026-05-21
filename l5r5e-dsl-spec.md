@@ -1221,13 +1221,57 @@ ENTRIES ^"Shadowlands Titles" {
 
 ### Hash ID Prefixes
 
-Each file uses a distinct hash prefix to ensure global uniqueness:
+Each source book (or self-contained content file) uses a distinct hash
+prefix so anchor IDs are globally unique. The prefix is `L5R` for core
+files and `L5R` + a 2-4 letter book abbreviation for each extension.
 
-| File | Prefix | Example |
-|------|--------|---------|
-| Core files | `L5R` | `#L5R001aB2cD4eF6gH8iJ0kL` |
-| Emerald Empire | `L5REE` | `#L5REE01aB2cD4eF6gH8iJ0` |
-| Shadowlands | `L5RSL` | `#L5RSL01aB2cD4eF6gH8iJ0` |
+The convention is purely an authoring discipline — the base spec allows
+any `#` followed by ≥16 alphanumeric characters. The convention exists
+so a hash ID at a glance tells the reader which source book it comes
+from, and so new content can be added to a book without colliding with
+content in another book.
+
+Full per-source prefix table:
+
+| Source | Prefix | Files | Anchor example |
+|--------|--------|-------|---------|
+| Core (BASE + traits + character + techniques + systems + chargen + schools) | `L5R` | 20 | `#L5R001aB2cD4eF6gH8iJ0kL ACTOR "Entity" DEF {` |
+| Celestial Realms | `L5RCR` | 2 | `#L5RCR01aB2cD4eF6gH8iJ0` |
+| Children of Five Winds | `L5RCW` | 2 | `#L5RCW01aB2cD4eF6gH8iJ0` |
+| Courts of Stone | `L5RCS` | 2 | `#L5RCS01aB2cD4eF6gH8iJ0` |
+| Daidoji Shin (Aconyte promo NPCs) | `L5RDS` | 1 | `#L5RDS01aB2cD4eF6gH8iJ0k` |
+| Emerald Empire | `L5REE` | 2 | `#L5REE01aB2cD4eF6gH8iJ0` |
+| Errata FAQ 2019 | `L5RER` | 1 | `#L5RER01aB2cD4eF6gH8iJ0k` |
+| Errata FAQ 2020 | `L5REF` | 1 | `#L5REF01aB2cD4eF6gH8iJ0k` |
+| Fields of Victory | `L5RFV` | 2 | `#L5RFV01aB2cD4eF6gH8iJ0k` |
+| FoV Mass Battle (sub-file) | `L5RFVMB` | 1 | `#L5RFVMB01aB2cD4eF6gH8iJ0` |
+| GM Kit (Dark Tides) | `L5RGMK` | 1 | `#L5RGMK01aB2cD4eF6gH8iJ0` |
+| GM Screen Reference | `L5RGS` | 1 | `#L5RGS01aB2cD4eF6gH8iJ0k` |
+| Legacies of War | `L5RLW` | 1 | `#L5RLW01aB2cD4eF6gH8iJ0k` |
+| Mantis Clan | `L5RMC` | 1 | `#L5RMC01aB2cD4eF6gH8iJ0k` |
+| Path of Waves | `L5RPW` | 4 | `#L5RPW06bG1cK1gB3aF7pF2xY2qA` (random-suffix variant) |
+| Shadowlands — mechanics | `L5RSL` | 1 | `#L5RSL01aB2cD4eF6gH8iJ0` |
+| Shadowlands — NPCs | `L5RSH` | 1 | `#L5RSH01aB2cD4eF6gH8iJ0k` |
+| Writ of Wilds | `L5RWW` | 3 | `#L5RWW00aB1cD3eF5gH7iJ9kL` |
+
+**Two suffix conventions exist** for historical reasons:
+
+1. **Rhythmic suffix** (most files): `<prefix><2-or-3-digit-id><alternating-letter/digit pattern>` — e.g., `aB2cD4eF6gH8iJ0kL`. The pattern is generated to be visually distinct and easy to scan; it isn't required to be random.
+2. **Random-looking suffix** (Path of Waves only): longer random alphanumeric — e.g., `bG1cK1gB3aF7pF2xY2qA`. A side effect of how PoW was initially imported.
+
+Both forms exceed the validator's 16-character minimum and are valid.
+There is no need to convert one to the other; existing hashes are
+stable identifiers and should not be rewritten (changing a hash breaks
+every `EXTENDS #hash` reference targeting that DEF across the corpus).
+
+**Shadowlands uses two prefixes** (`L5RSL` for mechanics, `L5RSH` for
+NPCs). This is the only source where mechanics and NPCs were imported
+under separate prefixes. Future Shadowlands additions can pick either
+based on which file they're going into.
+
+**For NEW sources**, choose a fresh 2-4 letter abbreviation that's not
+already in this table, use 2 digits for the ID block (more than enough
+for any single book), and the rhythmic suffix style is preferred.
 
 ### Extension Section Structure
 
