@@ -93,20 +93,22 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Courtesy", ^"Culture", ^"Games", ^"Government", ^"Martial Arts [Melee]", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Invocations: Dominion of Suijin, Reflections of P'an Ku; Rituals (choose three): Cleansing Rite, Commune with the Spirits, Divination, Threshold Barrier"
-            ^"School Ability" STRING "May the Spirits Show the Path"
-            ^"Mastery Ability" STRING "Whispers of the Kami"
         }
 
-        ^"May the Spirits Show the Path" DEF {
-            # Once per scene if you would fail a Social check, you
-            # may immediately make a TN 5 Theology check, with
-            # the TN being reduced by a number equal to your school
-            # rank (to a minimum of 1). If you succeed, you may
-            # change any kept (ring) on that Social check to (su)
-            # results instead.
+
+        STARTING_TECHNIQUES {
+            INVOCATION ^"Dominion of Suijin"
+            INVOCATION ^"Reflections of P'an Ku"
+            RITUAL CHOOSE 3 [^"Cleansing Rite", ^"Commune with the Spirits", ^"Divination", ^"Threshold Barrier"]
         }
 
+        SCHOOL_ABILITY "May the Spirits Show the Path" {
+            "Once per scene if you would fail a Social check, you may immediately make a TN 5 Theology check, with the TN being reduced by a number equal to your school rank (to a minimum of 1). If you succeed, you may change any kept (ring) on that Social check to (su) results instead."
+        }
+
+        MASTERY_ABILITY ^"Whispers of the Kami" {
+            "You may spend 1 Void point to use your school ability an additional time this scene. You may do this multiple times."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "sanctified robes",
             "wakizashi (short sword)", "any one weapon of rarity 6 or lower",
@@ -161,7 +163,7 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
                 ^"Rouse the Soul" [shuji]
             }
             RANK 6 {
-                "Whispers of the Kami (Mastery Ability): You may spend 1 Void point to use your school ability an additional time this scene. You may do this multiple times."
+                ^"Whispers of the Kami"
             }
         }
 
@@ -192,20 +194,20 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Composition", ^"Courtesy", ^"Games", ^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Performance", ^"Sentiment"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 28
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Shuji (choose two): Sensational Distraction, Stirring the Embers, Truth Burns Through Lies"
-            ^"School Ability" STRING "Laughter Makes the Home"
-            ^"Mastery Ability" STRING "Smiling Mountain Tradition"
         }
 
-        ^"Laughter Makes the Home" DEF {
-            # The first time you make a successful Social check against
-            # another character in a scene, you may reduce the TN of
-            # all subsequent Social checks against that character by 1
-            # (to a minimum of 1) for the remainder of the scene. This
-            # effect does not stack with itself, but can be used on
-            # multiple characters.
+
+        STARTING_TECHNIQUES {
+            SHUJI CHOOSE 2 [^"Sensational Distraction", ^"Stirring the Embers", ^"Truth Burns Through Lies"]
         }
 
+        SCHOOL_ABILITY "Laughter Makes the Home" {
+            "The first time you make a successful Social check against another character in a scene, you may reduce the TN of all subsequent Social checks against that character by 1 (to a minimum of 1) for the remainder of the scene. This effect does not stack with itself, but can be used on multiple characters."
+        }
+
+        MASTERY_ABILITY ^"Smiling Mountain Tradition" {
+            "You may train Social skills up to rank 6 (paying 12 XP per skill raised from rank 5 to rank 6 in this way)."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "bo (staff)",
             "one weapon of rarity 6 or lower",
@@ -259,7 +261,7 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
                 ^"Buoyant Arrival" [shuji]
             }
             RANK 6 {
-                "Smiling Mountain Tradition (Mastery Ability): You may train Social skills up to rank 6 (paying 12 XP per skill raised from rank 5 to rank 6 in this way)."
+                ^"Smiling Mountain Tradition"
             }
         }
 
@@ -291,23 +293,21 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Meditation", ^"Performance", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 55
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata (choose one): Crescent Moon Style, Striking as Water; Shuji (choose one): Shallow Waters, Stonewall Tactics, Weight of Duty"
-            ^"School Ability" STRING "Bend Perception"
-            ^"Mastery Ability" STRING "Scaled Hide"
         }
 
-        ^"Bend Perception" DEF {
-            # When you choose this school, determine what illusion
-            # your character has perfected with your GM. You can
-            # seamlessly switch between your true form and this
-            # alternate form within seconds. You can still use your
-            # true form's features such as your tail while in your
-            # alternate form. A character must make a TN 6 Theology
-            # or Survival (Void 5) check to see beyond your illusion.
-            # Additionally, increase the damage dealt by your tail by
-            # your school rank.
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Crescent Moon Style", ^"Striking as Water"]
+            SHUJI CHOOSE 1 [^"Shallow Waters", ^"Stonewall Tactics", ^"Weight of Duty"]
         }
 
+        SCHOOL_ABILITY "Bend Perception" {
+            "When you choose this school, determine what illusion your character has perfected with your GM. You can seamlessly switch between your true form and this alternate form within seconds. You can still use your true form's features such as your tail while in your alternate form. A character must make a TN 6 Theology or Survival (Void 5) check to see beyond your illusion. Additionally, increase the damage dealt by your tail by your school rank."
+        }
+
+        MASTERY_ABILITY ^"Scaled Hide" {
+            "When you defend against damage, you may treat your physical resistance and supernatural resistance as equal to your ranks in Fitness."
+        }
         STARTING_OUTFIT [
             "naga armor (Physical 2, Supernatural 1)", "yumi",
             "quiver", "nagi-nata",
@@ -361,7 +361,7 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
                 ^"Ever-Changing Waves" [invocation]
             }
             RANK 6 {
-                "Scaled Hide (Mastery Ability): When you defend against damage, you may treat your physical resistance and supernatural resistance as equal to your ranks in Fitness."
+                ^"Scaled Hide"
             }
         }
 
@@ -392,17 +392,21 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Commerce", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Medicine", ^"Skulduggery", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 18
             ^"Techniques Available" LIST ["Kata (kata)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata: Razor Bite; Ninjutsu: Skulk"
-            ^"School Ability" STRING "Keen Senses"
-            ^"Mastery Ability" STRING "Reflexive Strike"
         }
 
-        ^"Keen Senses" DEF {
-            # When you make a check to perceive or investigate
-            # your surroundings, decrease the TN of that check by
-            # a number equal to your school rank (to a minimum of 1).
+
+        STARTING_TECHNIQUES {
+            KATA ^"Razor Bite"
+            NINJUTSU ^"Skulk"
         }
 
+        SCHOOL_ABILITY "Keen Senses" {
+            "When you make a check to perceive or investigate your surroundings, decrease the TN of that check by a number equal to your school rank (to a minimum of 1)."
+        }
+
+        MASTERY_ABILITY ^"Reflexive Strike" {
+            "During a skirmish, if an opponent within range 0-1 of you attempts to move away from you, you may spend 1 Void point to immediately make two Strike actions against that opponent. Each action is resolved separately."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "nezumi armor (Physical 2)",
             "two weapons of rarity 6 or lower", "memory stick",
@@ -457,7 +461,7 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
                 ^"Sear the Wound" [shuji]
             }
             RANK 6 {
-                "Reflexive Strike (Mastery Ability): During a skirmish, if an opponent within range 0-1 of you attempts to move away from you, you may spend 1 Void point to immediately make two Strike actions against that opponent. Each action is resolved separately."
+                ^"Reflexive Strike"
             }
         }
 
@@ -487,19 +491,22 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 4 [^"Fitness", ^"Martial Arts [Melee]", ^"Medicine", ^"Meditation", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 55
             ^"Techniques Available" LIST ["Invocations (invocation)", "Kiho (kiho)", "Rituals (ritual)"]
-            ^"Starting Techniques" STRING "Kata: Flight; Kiho (choose two): Air Fist, Cloak of Night, Yari of Air; Rituals: Chikusho-do's Guile"
-            ^"School Ability" STRING "Mind of Calm"
-            ^"Mastery Ability" STRING "A Master of Study"
         }
 
-        ^"Mind of Calm" DEF {
-            # Once per scene you may make a TN 6 Meditation check
-            # to study someone else's technique of a category and
-            # rank you have available to you. This check is reduced by
-            # your school rank, to a minimum of 1. If you succeed,
-            # you can replicate that technique until the end of the scene.
+
+        STARTING_TECHNIQUES {
+            KATA ^"Flight"
+            KIHO CHOOSE 2 [^"Air Fist", ^"Cloak of Night", ^"Yari of Air"]
+            RITUAL ^"Chikusho-do's Guile"
         }
 
+        SCHOOL_ABILITY "Mind of Calm" {
+            "Once per scene you may make a TN 6 Meditation check to study someone else's technique of a category and rank you have available to you. This check is reduced by your school rank, to a minimum of 1. If you succeed, you can replicate that technique until the end of the scene."
+        }
+
+        MASTERY_ABILITY ^"A Master of Study" {
+            "Choose one technique category your school does not already have available to it. That technique type is now available to you."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "bo (staff)",
             "carving knife", "bundle of medicinal herbs",
@@ -553,7 +560,7 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
                 ^"Wrath of Kaze-no-Kami" [invocation]
             }
             RANK 6 {
-                "A Master of Study (Mastery Ability): Choose one technique category your school does not already have available to it. That technique type is now available to you."
+                ^"A Master of Study"
             }
         }
 
@@ -583,17 +590,21 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Fitness", ^"Labor", ^"Martial Arts [Ranged]", ^"Martial Arts [Melee]", ^"Medicine", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 28
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata (choose two): Bear's Swipe Style, Hawk's Precision, Striking as Earth, Striking as Water; Rituals: Guard Against the Elements"
-            ^"School Ability" STRING "Evolution of the Wilds"
-            ^"Mastery Ability" STRING "Born to Survive"
         }
 
-        ^"Evolution of the Wilds" DEF {
-            # When you make a check to employ an unconventional
-            # solution (subject to GM discretion) reduce the TN of
-            # that check by your school rank.
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 2 [^"Bear's Swipe Style", ^"Hawk's Precision", ^"Striking as Earth", ^"Striking as Water"]
+            RITUAL ^"Guard Against the Elements"
         }
 
+        SCHOOL_ABILITY "Evolution of the Wilds" {
+            "When you make a check to employ an unconventional solution (subject to GM discretion) reduce the TN of that check by your school rank."
+        }
+
+        MASTERY_ABILITY ^"Born to Survive" {
+            "Once per scene when you would suffer an amount of damage that would cause you to exceed your endurance threshold, you may instead suffer that amount of strife instead."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "yobanjin armor (Physical 2, subtle)",
             "horsebow", "masakari", "hammer", "knife",
@@ -648,7 +659,7 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
                 ^"Sear the Wound" [shuji]
             }
             RANK 6 {
-                "Born to Survive (Mastery Ability): Once per scene when you would suffer an amount of damage that would cause you to exceed your endurance threshold, you may instead suffer that amount of strife instead."
+                ^"Born to Survive"
             }
         }
 

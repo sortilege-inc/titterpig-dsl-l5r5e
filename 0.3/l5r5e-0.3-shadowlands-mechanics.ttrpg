@@ -87,19 +87,24 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Performance", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Rituals: Cleansing Rite, Commune with the Spirits, Divination; Shuji: Cadence, Truth Burns through Lies"
-            ^"School Ability" STRING "Traces of Passage"
-            ^"Mastery Ability" STRING "Resilient Readiness"
         }
 
-        ^"Traces of Passage" DEF {
-            # Once per scene as a Support action, you may scry
-            # to detect any supernatural abilities used at range 0-3
-            # in the last day (such as invocations, maho, and kiho).
-            # Reduce the TN of your checks to investigate this
-            # phenomenon by your school rank.
+
+        STARTING_TECHNIQUES {
+            RITUAL ^"Cleansing Rite"
+            RITUAL ^"Commune with the Spirits"
+            RITUAL ^"Divination"
+            SHUJI ^"Cadence"
+            SHUJI ^"Truth Burns through Lies"
         }
 
+        SCHOOL_ABILITY "Traces of Passage" {
+            "Once per scene as a Support action, you may scry to detect any supernatural abilities used at range 0-3 in the last day (such as invocations, maho, and kiho). Reduce the TN of your checks to investigate this phenomenon by your school rank."
+        }
+
+        MASTERY_ABILITY ^"Resilient Readiness" {
+            "When you make a check to investigate a supernatural phenomenon, you may spend (op) as follows: (op)+: Increase your resistance against that phenomenon (such as a specific invocation, kiho, maho, or NPC ability) by an amount equal to the (op) you spend this way. This effect persists until the end of the scene."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "sanctified robes",
             "daisho (any one sword of rarity 7 or lower and wakizashi)",
@@ -153,7 +158,7 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
                 ^"Rouse the Soul" [shuji]
             }
             RANK 6 {
-                "Resilient Readiness (Mastery Ability): When you make a check to investigate a supernatural phenomenon, you may spend (op) as follows: (op)+: Increase your resistance against that phenomenon (such as a specific invocation, kiho, maho, or NPC ability) by an amount equal to the (op) you spend this way. This effect persists until the end of the scene."
+                ^"Resilient Readiness"
             }
         }
 
@@ -183,19 +188,22 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Aesthetics", ^"Martial Arts [Melee]", ^"Courtesy", ^"Culture", ^"Sentiment", ^"Smithing", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 55
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata (choose one): Soaring Slice, Striking as Air, Striking as Fire; Shuji: Artisan's Appraisal"
             ^"Patterns" STRING "Kakita Pattern"
-            ^"School Ability" STRING "Sacred Art of Steel"
-            ^"Mastery Ability" STRING "Ashidaka's Method"
         }
 
-        ^"Sacred Art of Steel" DEF {
-            # Once per game session when you make a check to
-            # craft, improve, or maintain a weapon, you may add
-            # a number of kept (ring) set to (op) results equal to
-            # your school rank.
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Soaring Slice", ^"Striking as Air", ^"Striking as Fire"]
+            SHUJI ^"Artisan's Appraisal"
         }
 
+        SCHOOL_ABILITY "Sacred Art of Steel" {
+            "Once per game session when you make a check to craft, improve, or maintain a weapon, you may add a number of kept (ring) set to (op) results equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Ashidaka's Method" {
+            "When you create a new weapon, you may apply two different patterns that you know to it (instead of one)."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "ceremonial clothes",
             "daisho (a personally crafted katana with Kakita pattern and wakizashi)",
@@ -250,7 +258,7 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
                 ^"Striking as Void" [kata]
             }
             RANK 6 {
-                "Ashidaka's Method (Mastery Ability): When you create a new weapon, you may apply two different patterns that you know to it (instead of one)."
+                ^"Ashidaka's Method"
             }
         }
 
@@ -279,18 +287,22 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Medicine", ^"Sentiment", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 44
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata (choose one): Crescent Moon Style, Striking as Earth, Striking as Water; Rituals (choose one): Cleansing Rite, Threshold Barrier; Shuji: Stonewall Tactics"
-            ^"School Ability" STRING "Field Medicine"
-            ^"Mastery Ability" STRING "Healer's Hands"
         }
 
-        ^"Field Medicine" DEF {
-            # When you perform a Medicine check to remove
-            # fatigue or a condition from a friendly character, that
-            # character removes additional fatigue up to your
-            # school rank.
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Crescent Moon Style", ^"Striking as Earth", ^"Striking as Water"]
+            RITUAL CHOOSE 1 [^"Cleansing Rite", ^"Threshold Barrier"]
+            SHUJI ^"Stonewall Tactics"
         }
 
+        SCHOOL_ABILITY "Field Medicine" {
+            "When you perform a Medicine check to remove fatigue or a condition from a friendly character, that character removes additional fatigue up to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Healer's Hands" {
+            "When you make a check to remove a condition from another character, you may receive 2 fatigue to treat the TN as 1."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "ashigaru armor",
             "daisho (katana and wakizashi)",
@@ -344,7 +356,7 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
                 ^"Sear the Wound" [shuji]
             }
             RANK 6 {
-                "Healer's Hands (Mastery Ability): When you make a check to remove a condition from another character, you may receive 2 fatigue to treat the TN as 1."
+                ^"Healer's Hands"
             }
         }
 
@@ -374,20 +386,22 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 4 [^"Command", ^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Performance", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 34
             ^"Techniques Available" LIST ["Kiho (kiho)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kiho (choose one): Cleansing Spirit, Flame Fist; Rituals (choose one): Cleansing Rite, Threshold Barrier; Shuji: Truth Burns through Lies"
-            ^"School Ability" STRING "Suppressing Blows"
-            ^"Mastery Ability" STRING "Sacred Fist"
         }
 
-        ^"Suppressing Blows" DEF {
-            # When you perform an Attack action check using
-            # Martial Arts [Melee] or Martial Arts [Unarmed], you
-            # may spend (op) as follows:
-            # (op)+: One character per (op) spent this way who is in
-            # range of the weapon you used suffers the Silenced
-            # condition. Maximum (op) equal to your school rank.
+
+        STARTING_TECHNIQUES {
+            KIHO CHOOSE 1 [^"Cleansing Spirit", ^"Flame Fist"]
+            RITUAL CHOOSE 1 [^"Cleansing Rite", ^"Threshold Barrier"]
+            SHUJI ^"Truth Burns through Lies"
         }
 
+        SCHOOL_ABILITY "Suppressing Blows" {
+            "When you perform an Attack action check using Martial Arts [Melee] or Martial Arts [Unarmed], you may spend (op) as follows: (op)+: One character per (op) spent this way who is in range of the weapon you used suffers the Silenced condition. Maximum (op) equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Sacred Fist" {
+            "All of your kiho gain the following additional burst effect: If you have 3 or more bonus successes, your unarmed attack profiles gain the Sacred quality until the end of your next turn."
+        }
         STARTING_OUTFIT [
             "sanctified robes", "concealed armor",
             "daisho (kabutowari and wakizashi)",
@@ -441,7 +455,7 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
                 ^"Sear the Wound" [shuji]
             }
             RANK 6 {
-                "Sacred Fist (Mastery Ability): All of your kiho gain the following additional burst effect: If you have 3 or more bonus successes, your unarmed attack profiles gain the Sacred quality until the end of your next turn."
+                ^"Sacred Fist"
             }
         }
 
@@ -470,20 +484,21 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 4 [^"Labor", ^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 48
             ^"Techniques Available" LIST ["Kata (kata)", "Kiho (kiho)", "Rituals (ritual)"]
-            ^"Starting Techniques" STRING "Kata (choose two): Iaijutsu Cut: Rising Blade, Soaring Slice, Striking as Water; Kiho: Water Fist"
-            ^"School Ability" STRING "Sharpened Ki"
-            ^"Mastery Ability" STRING "The Effortless Path"
         }
 
-        ^"Sharpened Ki" DEF {
-            # Your kiho that affect your unarmed attack profiles
-            # also apply to weapons you wield in a one-handed
-            # grip. When you succeed on a check to activate a
-            # kiho that affects your unarmed attack profiles or a
-            # weapon you wield in a one-handed grip, add bonus
-            # successes equal to your school rank.
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 2 [^"Iaijutsu Cut: Rising Blade", ^"Soaring Slice", ^"Striking as Water"]
+            KIHO ^"Water Fist"
         }
 
+        SCHOOL_ABILITY "Sharpened Ki" {
+            "Your kiho that affect your unarmed attack profiles also apply to weapons you wield in a one-handed grip. When you succeed on a check to activate a kiho that affects your unarmed attack profiles or a weapon you wield in a one-handed grip, add bonus successes equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"The Effortless Path" {
+            "When making a check to activate a kiho, you may spend (op) as follows: (op): If you succeed on this check, after you activate the kiho, you may perform a Strike action with a weapon you have readied in a one-handed grip."
+        }
         STARTING_OUTFIT [
             "traveling clothes",
             "daisho (any one sword of rarity 7 or lower and wakizashi)",
@@ -537,7 +552,7 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
                 ^"Way of the Edgeless Sword" [kiho]
             }
             RANK 6 {
-                "The Effortless Path (Mastery Ability): When making a check to activate a kiho, you may spend (op) as follows: (op): If you succeed on this check, after you activate the kiho, you may perform a Strike action with a weapon you have readied in a one-handed grip."
+                ^"The Effortless Path"
             }
         }
 
@@ -567,21 +582,23 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Culture", ^"Martial Arts [Melee]", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 44
             ^"Techniques Available" LIST ["Air and Earth Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Invocations: Grasp of Earth, Tempest of Air; Shuji: Ancestry Unearthed, Honest Assessment"
-            ^"School Ability" STRING "Hands of Earth and Sky"
-            ^"Mastery Ability" STRING "Empathic Transfer"
         }
 
-        ^"Hands of Earth and Sky" DEF {
-            # When you perform an invocation that targets at
-            # least one other character, if you succeed, you may
-            # nourish or drain:
-            # Nourish: receive fatigue up to your school rank.
-            # One target removes fatigue equal to amount received.
-            # Drain: remove fatigue up to your school rank.
-            # One target receives fatigue equal to amount removed.
+
+        STARTING_TECHNIQUES {
+            INVOCATION ^"Grasp of Earth"
+            INVOCATION ^"Tempest of Air"
+            SHUJI ^"Ancestry Unearthed"
+            SHUJI ^"Honest Assessment"
         }
 
+        SCHOOL_ABILITY "Hands of Earth and Sky" {
+            "When you perform an invocation that targets at least one other character, if you succeed, you may nourish or drain: Nourish: receive fatigue up to your school rank. One target removes fatigue equal to amount received. Drain: remove fatigue up to your school rank. One target receives fatigue equal to amount removed."
+        }
+
+        MASTERY_ABILITY ^"Empathic Transfer" {
+            "When you nourish, you may remove one condition the target is suffering by transferring it to yourself. When you drain, you may remove one condition you are suffering by transferring it to one of your targets."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "ashigaru armor",
             "wakizashi", "scroll satchel",
@@ -636,7 +653,7 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
                 ^"Tomb of Jade" [invocation]
             }
             RANK 6 {
-                "Empathic Transfer (Mastery Ability): When you nourish, you may remove one condition the target is suffering by transferring it to yourself. When you drain, you may remove one condition you are suffering by transferring it to one of your targets."
+                ^"Empathic Transfer"
             }
         }
 
@@ -666,19 +683,24 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 3 [^"Culture", ^"Government", ^"Martial Arts [Melee]", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Invocations: By the Light of Lord Moon; Rituals: Cleansing Rite, Commune with the Spirits, Tea Ceremony; Shuji: Courtier's Resolve"
-            ^"School Ability" STRING "Eyes of Yotogi"
-            ^"Mastery Ability" STRING "Yotogi's Piercing Gaze"
         }
 
-        ^"Eyes of Yotogi" DEF {
-            # Otherworldly beings treat your vigilance as being
-            # increased by your school rank. When you make a
-            # check to search for Otherworldly beings, or make an
-            # Initiative check in a conflict against them, if you
-            # succeed, add bonus successes equal to your school rank.
+
+        STARTING_TECHNIQUES {
+            INVOCATION ^"By the Light of Lord Moon"
+            RITUAL ^"Cleansing Rite"
+            RITUAL ^"Commune with the Spirits"
+            RITUAL ^"Tea Ceremony"
+            SHUJI ^"Courtier's Resolve"
         }
 
+        SCHOOL_ABILITY "Eyes of Yotogi" {
+            "Otherworldly beings treat your vigilance as being increased by your school rank. When you make a check to search for Otherworldly beings, or make an Initiative check in a conflict against them, if you succeed, add bonus successes equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Yotogi's Piercing Gaze" {
+            "You can perceive beings that are normally invisible to human sight, such as spirits and characters concealed by supernatural abilities. When you deal damage to an Otherworldly being, you ignore an amount of its resistance up to your ranks in Meditation."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "sanctified robes",
             "daisho (katana and wakizashi)",
@@ -732,7 +754,7 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
                 ^"Wrath of Kaze-no-Kami" [invocation]
             }
             RANK 6 {
-                "Yotogi's Piercing Gaze (Mastery Ability): You can perceive beings that are normally invisible to human sight, such as spirits and characters concealed by supernatural abilities. When you deal damage to an Otherworldly being, you ignore an amount of its resistance up to your ranks in Meditation."
+                ^"Yotogi's Piercing Gaze"
             }
         }
 
@@ -762,19 +784,24 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 3 [^"Aesthetics", ^"Courtesy", ^"Martial Arts [Melee]", ^"Sentiment", ^"Skulduggery", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 38
             ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Invocations: By the Light of the Lord Moon, Embrace of Kenro-Ji-Jin, Yari of Air; Rituals: Craft Shikigami, Threshold Barrier"
-            ^"School Ability" STRING "Warded Shikigami"
-            ^"Mastery Ability" STRING "Kingdom of Paper and Ink"
         }
 
-        ^"Warded Shikigami" DEF {
-            # You can have a number of additional shikigami up
-            # to your school rank. Once per scene, after you
-            # perform an action, you may instruct one of your
-            # shikigami to perform an action, for which it benefits
-            # from your assistance.
+
+        STARTING_TECHNIQUES {
+            INVOCATION ^"By the Light of the Lord Moon"
+            INVOCATION ^"Embrace of Kenro-Ji-Jin"
+            INVOCATION ^"Yari of Air"
+            RITUAL ^"Craft Shikigami"
+            RITUAL ^"Threshold Barrier"
         }
 
+        SCHOOL_ABILITY "Warded Shikigami" {
+            "You can have a number of additional shikigami up to your school rank. Once per scene, after you perform an action, you may instruct one of your shikigami to perform an action, for which it benefits from your assistance."
+        }
+
+        MASTERY_ABILITY ^"Kingdom of Paper and Ink" {
+            "When one of your shikigami performs an action, it may spend (op) as follows: (op)+: Another one of your shikigami at range 0-3 of you may perform an action. Increase the (op) cost of this ability by (op) for each of your shikigami that has acted this turn."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "sanctified robes",
             "concealed armor", "wakizashi",
@@ -828,7 +855,7 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
                 ^"Tomb of Jade" [invocation]
             }
             RANK 6 {
-                "Kingdom of Paper and Ink (Mastery Ability): When one of your shikigami performs an action, it may spend (op) as follows: (op)+: Another one of your shikigami at range 0-3 of you may perform an action. Increase the (op) cost of this ability by (op) for each of your shikigami that has acted this turn."
+                ^"Kingdom of Paper and Ink"
             }
         }
 

@@ -88,20 +88,21 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 3 [^"Martial Arts [Ranged]", ^"Medicine", ^"Meditation", ^"Performance", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Invocations (choose three): Amaterasu's Gaze, Fukurokujin's Wit, Path to Inner Peace, The Cleansing Fire, The Fires from Within; Shuji (choose two): Shallow Waters, Stirring the Embers, Truth Burns through Lies"
-            ^"School Ability" STRING "Flesh of the Elements"
-            ^"Mastery Ability" STRING "Experimental Concoction"
         }
 
-        ^"Flesh of the Elements" DEF {
-            # You can have a number of additional potions with
-            # prepared invocations equal to your school rank. When
-            # you spend a downtime activity creating a potion, you
-            # may make supplemental checks after the first equal to
-            # your school rank, but each must be for a different
-            # invocation.
+
+        STARTING_TECHNIQUES {
+            INVOCATION CHOOSE 3 [^"Amaterasu's Gaze", ^"Fukurokujin's Wit", ^"Path to Inner Peace", ^"The Cleansing Fire", ^"The Fires from Within"]
+            SHUJI CHOOSE 2 [^"Shallow Waters", ^"Stirring the Embers", ^"Truth Burns through Lies"]
         }
 
+        SCHOOL_ABILITY "Flesh of the Elements" {
+            "You can have a number of additional potions with prepared invocations equal to your school rank. When you spend a downtime activity creating a potion, you may make supplemental checks after the first equal to your school rank, but each must be for a different invocation."
+        }
+
+        MASTERY_ABILITY ^"Experimental Concoction" {
+            "Once per game session as a Support action, you may make a TN 4 Medicine (Water) check to combine two of your potions that share at least one invocation effect keyword (mend, purify, smite, etc.) If you succeed, the two potions become a single concoction with both properties; when this concoction is used, resolve the effects of both prepared invocations. A concoction cannot be combined with another potion or concoction."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "one weapon of rarity 7 or lower",
             "blowgun and pouch of darts", "wakizashi (short sword)",
@@ -157,7 +158,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
                 ^"Sear the Wound" [shuji]
             }
             RANK 6 {
-                "Experimental Concoction (Mastery Ability, Action): Once per game session as a Support action, you may make a TN 4 Medicine (Water) check to combine two of your potions that share at least one invocation effect keyword (mend, purify, smite, etc.) If you succeed, the two potions become a single concoction with both properties; when this concoction is used, resolve the effects of both prepared invocations. A concoction cannot be combined with another potion or concoction."
+                ^"Experimental Concoction"
             }
         }
 
@@ -187,18 +188,21 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Aesthetics", ^"Courtesy", ^"Culture", ^"Meditation", ^"Performance", ^"Sentiment", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Rituals: = Tea Ceremony; Shuji (choose one): Cadence, Shallow Waters, Weight of Duty"
-            ^"School Ability" STRING "Soul of Ceremony"
-            ^"Mastery Ability" STRING "Favored Counselor"
         }
 
-        ^"Soul of Ceremony" DEF {
-            # When you make a check to perform a ritual, you may
-            # add kept ring dice set to opportunity results equal to
-            # your school rank. You may spend these opportunity as
-            # if the ritual were also a Social skill check of your choice.
+
+        STARTING_TECHNIQUES {
+            RITUAL ^"Tea Ceremony"
+            SHUJI CHOOSE 1 [^"Cadence", ^"Shallow Waters", ^"Weight of Duty"]
         }
 
+        SCHOOL_ABILITY "Soul of Ceremony" {
+            "When you make a check to perform a ritual, you may add kept ring dice set to opportunity results equal to your school rank. You may spend these opportunity as if the ritual were also a Social skill check of your choice."
+        }
+
+        MASTERY_ABILITY ^"Favored Counselor" {
+            "When making a check to perform a ritual, you may spend opportunity as follows: (op)+: One participant in the ritual with vigilance lower than or equal to opportunity spent this way feels especially indebted to you. You gain the Ally [that character] advantage."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "ceremonial clothes",
             "sanctified robes", "wakizashi (short sword)",
@@ -254,7 +258,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
                 ^"The Immovable Hand of Peace" [shuji]
             }
             RANK 6 {
-                "Favored Counselor (Mastery Ability): When making a check to perform a ritual, you may spend opportunity as follows: (op)+: One participant in the ritual with vigilance lower than or equal to opportunity spent this way feels especially indebted to you. You gain the Ally [that character] advantage."
+                ^"Favored Counselor"
             }
         }
 
@@ -284,19 +288,22 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 3 [^"Fitness", ^"Medicine", ^"Meditation", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Inversions (inversion)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Inversions (choose one): One within the Void, Sight beyond Existence, Whispered Blade, Witness the End; Rituals (choose one): Commune with the Spirits, Divination, Threshold Barrier; Shuji (choose one): All in Jest, Ancestry Unearthed, Cadence, Truth Burns through Lies"
-            ^"School Ability" STRING "Way of the Void"
-            ^"Mastery Ability" STRING "Essence of Emptiness"
         }
 
-        ^"Way of the Void" DEF {
-            # When you make a check using your Void Ring, after
-            # rolling dice, you may receive fatigue up to your school
-            # rank. If you push, choose that many blank dice and alter
-            # each to a non-blank result of your choice. If you pull,
-            # choose that many non-blank dice and alter each to blank.
+
+        STARTING_TECHNIQUES {
+            INVERSION CHOOSE 1 [^"One within the Void", ^"Sight beyond Existence", ^"Whispered Blade", ^"Witness the End"]
+            RITUAL CHOOSE 1 [^"Commune with the Spirits", ^"Divination", ^"Threshold Barrier"]
+            SHUJI CHOOSE 1 [^"All in Jest", ^"Ancestry Unearthed", ^"Cadence", ^"Truth Burns through Lies"]
         }
 
+        SCHOOL_ABILITY "Way of the Void" {
+            "When you make a check using your Void Ring, after rolling dice, you may receive fatigue up to your school rank. If you push, choose that many blank dice and alter each to a non-blank result of your choice. If you pull, choose that many non-blank dice and alter each to blank."
+        }
+
+        MASTERY_ABILITY ^"Essence of Emptiness" {
+            "Once per scene, after a character rolls dice, you may receive 3 fatigue to alter any number of their rolled dice to blank results."
+        }
         STARTING_OUTFIT [
             "sanctified robes", "wakizashi (short sword)",
             "knife or bo (staff)", "scroll satchel",
@@ -350,7 +357,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
                 ^"Rouse the Soul" [shuji]
             }
             RANK 6 {
-                "Essence of Emptiness (Mastery Ability): Once per scene, after a character rolls dice, you may receive 3 fatigue to alter any number of their rolled dice to blank results."
+                ^"Essence of Emptiness"
             }
         }
 
@@ -380,20 +387,21 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Composition", ^"Courtesy", ^"Games", ^"Martial Arts [Ranged]", ^"Performance", ^"Sentiment", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Invocations (invocation)", "Kata (kata)", "Rituals (ritual)"]
-            ^"Starting Techniques" STRING "Invocations (choose two): Armor of Earth, Extinguish, Dominion of Suijin, Tempest of Air; Kata (choose two): Striking as Air, Striking as Earth, Striking as Fire, Striking as Water"
-            ^"School Ability" STRING "The Body Is a Shrine"
-            ^"Mastery Ability" STRING "Temple of the Heart"
         }
 
-        ^"The Body Is a Shrine" DEF {
-            # In the presence of a kami, make a TN 4 Courtesy check
-            # using the kami's element. If you succeed, the kami uses
-            # your body as a vessel: reroll dice up to school rank on
-            # checks using its element, but increase TN by 1 and add
-            # kept ring set to opportunity+strife on opposing element
-            # checks. If you unmask, the kami is released.
+
+        STARTING_TECHNIQUES {
+            INVOCATION CHOOSE 2 [^"Armor of Earth", ^"Extinguish", ^"Dominion of Suijin", ^"Tempest of Air"]
+            KATA CHOOSE 2 [^"Striking as Air", ^"Striking as Earth", ^"Striking as Fire", ^"Striking as Water"]
         }
 
+        SCHOOL_ABILITY "The Body Is a Shrine" {
+            "In the presence of a kami, make a TN 4 Courtesy check using the kami's element. If you succeed, the kami uses your body as a vessel: reroll dice up to school rank on checks using its element, but increase TN by 1 and add kept ring set to opportunity+strife on opposing element checks. If you unmask, the kami is released."
+        }
+
+        MASTERY_ABILITY ^"Temple of the Heart" {
+            "You may keep two kami within you at once instead of one. All effects of The Body Is a Shrine still apply. If two kami share an element, the effects do not stack for that element."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "sanctified robes",
             "yumi (bow)", "quiver of arrows",
@@ -448,7 +456,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
                 ^"Rouse the Soul" [shuji]
             }
             RANK 6 {
-                "Temple of the Heart (Mastery Ability): You may keep two kami within you at once instead of one. All effects of The Body Is a Shrine still apply. If two kami share an element, the effects do not stack for that element."
+                ^"Temple of the Heart"
             }
         }
 
@@ -478,19 +486,21 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Aesthetics", ^"Command", ^"Design", ^"Government", ^"Labor", ^"Martial Arts [Unarmed]", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Rituals: Commune with the Spirits; Shuji (choose one): Courtier's Resolve, Honest Assessment"
-            ^"School Ability" STRING "Every Stone Serves"
-            ^"Mastery Ability" STRING "The Flower Binds the Room"
         }
 
-        ^"Every Stone Serves" DEF {
-            # Reduce the TN of checks for downtime activities that
-            # alter your environment by your school rank (to a minimum
-            # of 1). When you succeed, choose mundane terrain
-            # qualities equal to your school rank and add or remove
-            # those terrain qualities from the area you affect.
+
+        STARTING_TECHNIQUES {
+            RITUAL ^"Commune with the Spirits"
+            SHUJI CHOOSE 1 [^"Courtier's Resolve", ^"Honest Assessment"]
         }
 
+        SCHOOL_ABILITY "Every Stone Serves" {
+            "Reduce the TN of checks for downtime activities that alter your environment by your school rank (to a minimum of 1). When you succeed, choose mundane terrain qualities equal to your school rank and add or remove those terrain qualities from the area you affect."
+        }
+
+        MASTERY_ABILITY ^"The Flower Binds the Room" {
+            "Once per game session, you can use your school ability on any check (action or downtime activity) to alter your environment. When you do, you may also add or remove one supernatural terrain quality from the area you affect."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "ceremonial clothes",
             "wakizashi (short sword)", "hammer or bo (staff)",
@@ -545,7 +555,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
                 ^"Bend with the Storm" [shuji]
             }
             RANK 6 {
-                "The Flower Binds the Room (Mastery Ability): Once per game session, you can use your school ability on any check (action or downtime activity) to alter your environment. When you do, you may also add or remove one supernatural terrain quality from the area you affect."
+                ^"The Flower Binds the Room"
             }
         }
 
@@ -576,19 +586,23 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 3 [^"Fitness", ^"Martial Arts [Melee]", ^"Meditation", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Invocations (choose three): = Biting Steel, = Blessed Wind, = Courage of Seven Thunders, = Nature's Touch, = The Rushing Wave; Kata: Striking as Water; Rituals: Commune with the Spirits, Divination"
-            ^"School Ability" STRING "Celestial Alignment"
-            ^"Mastery Ability" STRING "Walk the Hidden Ways"
         }
 
-        ^"Celestial Alignment" DEF {
-            # As a Support action, make a TN 2 Meditation (Void) check
-            # to draw one of the Spirit Realms closer to your location.
-            # A number of range bands around your position up to your
-            # school rank become a place of power of the realm you
-            # choose. This effect persists until the end of the scene.
+
+        STARTING_TECHNIQUES {
+            INVOCATION CHOOSE 3 [^"Biting Steel", ^"Blessed Wind", ^"Courage of Seven Thunders", ^"Nature's Touch", ^"The Rushing Wave"]
+            KATA ^"Striking as Water"
+            RITUAL ^"Commune with the Spirits"
+            RITUAL ^"Divination"
         }
 
+        SCHOOL_ABILITY "Celestial Alignment" {
+            "As a Support action, make a TN 2 Meditation (Void) check to draw one of the Spirit Realms closer to your location. A number of range bands around your position up to your school rank become a place of power of the realm you choose. This effect persists until the end of the scene."
+        }
+
+        MASTERY_ABILITY ^"Walk the Hidden Ways" {
+            "When you use your school ability in a place already linked to a particular realm, you may move yourself and a number of characters up to your ranks in Meditation into that realm fully, leaving the Mortal Realm. As a Support action, you may make a TN 2 Meditation (Void) check to return yourself and a number of characters up to your ranks in Meditation to the Mortal Realm."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "ceremonial clothes",
             "daisho (katana and wakizashi)",
@@ -643,7 +657,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
                 ^"Rain of Ten Thousand Lotuses" [invocation]
             }
             RANK 6 {
-                "Walk the Hidden Ways (Mastery Ability): When you use your school ability in a place already linked to a particular realm, you may move yourself and a number of characters up to your ranks in Meditation into that realm fully, leaving the Mortal Realm. As a Support action, you may make a TN 2 Meditation (Void) check to return yourself and a number of characters up to your ranks in Meditation to the Mortal Realm."
+                ^"Walk the Hidden Ways"
             }
         }
 
@@ -671,22 +685,25 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Sentiment", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 55
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Invocations: = Armor of Radiance, = Biting Steel, = Extinguish, = Katana of Fire; Rituals: Cleansing Rite, Commune with the Spirits"
-            ^"School Ability" STRING "Blazing Tears of Lady Sun"
-            ^"Mastery Ability" STRING "Rippling Flame"
         }
 
-        ^"Blazing Tears of Lady Sun" DEF {
-            # Damage inflicted by your Fire invocations is treated as
-            # having the Sacred item quality. Items you augment or
-            # summon with Fire invocations have the Sacred quality.
-            # When you affect a non-Tainted human with a Fire
-            # invocation, it does not deal damage or inflict negative
-            # conditions. Instead, the character removes fatigue equal
-            # to your school rank plus the damage you would have
-            # dealt. Each character can only benefit once per scene.
+
+        STARTING_TECHNIQUES {
+            INVOCATION ^"Armor of Radiance"
+            INVOCATION ^"Biting Steel"
+            INVOCATION ^"Extinguish"
+            INVOCATION ^"Katana of Fire"
+            RITUAL ^"Cleansing Rite"
+            RITUAL ^"Commune with the Spirits"
         }
 
+        SCHOOL_ABILITY "Blazing Tears of Lady Sun" {
+            "Damage inflicted by your Fire invocations is treated as having the Sacred item quality. Items you augment or summon with Fire invocations have the Sacred quality. When you affect a non-Tainted human with a Fire invocation, it does not deal damage or inflict negative conditions. Instead, the character removes fatigue equal to your school rank plus the damage you would have dealt. Each character can only benefit once per scene."
+        }
+
+        MASTERY_ABILITY ^"Rippling Flame" {
+            "While performing a Fire invocation, you may spend a Void point to target additional characters equal to your ranks in Theology or to increase the maximum range of the technique by 1 range band."
+        }
         STARTING_OUTFIT [
             "sanctified robes", "daisho (katana and wakizashi)",
             "bo (staff)", "scroll satchel",
@@ -740,7 +757,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
                 ^"Striking as Void" [kata]
             }
             RANK 6 {
-                "Rippling Flame (Mastery Ability): While performing a Fire invocation, you may spend a Void point to target additional characters equal to your ranks in Theology or to increase the maximum range of the technique by 1 range band."
+                ^"Rippling Flame"
             }
         }
 
@@ -770,21 +787,24 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Culture", ^"Fitness", ^"Government", ^"Martial Arts [Ranged]", ^"Skulduggery"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 30
             ^"Techniques Available" LIST ["Invocations (invocation)", "Kata (kata)", "Rituals (ritual)"]
-            ^"Starting Techniques" STRING "Invocations: By the Light of the Lord Moon, Cloak of Night, Fukurokujin's Wit; Rituals: Commune with the Spirits; Shuji: = Prey on the Weak"
-            ^"School Ability" STRING "Sudden Nightfall"
-            ^"Mastery Ability" STRING "Shadow Assassin"
         }
 
-        ^"Sudden Nightfall" DEF {
-            # You do not suffer ill effects of Obscuring terrain from
-            # darkness. When you perform an Attack or Scheme action
-            # against a target in darkness-Obscuring terrain, reduce
-            # the TN by your school rank (minimum 1). As a Support
-            # action, summon supernatural darkness at range 0-2;
-            # area extending Air Ring range bands becomes Obscuring,
-            # persisting a number of rounds equal to school rank.
+
+        STARTING_TECHNIQUES {
+            INVOCATION ^"By the Light of the Lord Moon"
+            INVOCATION ^"Cloak of Night"
+            INVOCATION ^"Fukurokujin's Wit"
+            RITUAL ^"Commune with the Spirits"
+            SHUJI ^"Prey on the Weak"
         }
 
+        SCHOOL_ABILITY "Sudden Nightfall" {
+            "You do not suffer ill effects of Obscuring terrain from darkness. When you perform an Attack or Scheme action against a target in darkness-Obscuring terrain, reduce the TN by your school rank (minimum 1). As a Support action, summon supernatural darkness at range 0-2; area extending Air Ring range bands becomes Obscuring, persisting a number of rounds equal to school rank."
+        }
+
+        MASTERY_ABILITY ^"Shadow Assassin" {
+            "Once per scene as an Attack and Movement action, summon a shadow assassin with no corporeal form that cannot be harmed. At the end of each of your turns, perform a Strike action using a readied weapon targeting any character in Obscuring terrain regardless of range. Damage dealt is supernatural. Persists until end of scene."
+        }
         STARTING_OUTFIT [
             "concealed armor", "sanctified robes",
             "wakizashi (short sword)", "six shuriken (throwing stars)",
@@ -839,7 +859,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
                 ^"Silencing Stroke" [ninjutsu]
             }
             RANK 6 {
-                "Shadow Assassin (Mastery Ability, Action): Once per scene as an Attack and Movement action, summon a shadow assassin with no corporeal form that cannot be harmed. At the end of each of your turns, perform a Strike action using a readied weapon targeting any character in Obscuring terrain regardless of range. Damage dealt is supernatural. Persists until end of scene."
+                ^"Shadow Assassin"
             }
         }
 
@@ -869,22 +889,23 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Sentiment", ^"Smithing", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 55
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Water and Air Invocations (invocation)"]
-            ^"Starting Techniques" STRING "Invocations: Nature's Touch; Kata: = Crescent Moon Style, Striking as Air, Striking as Water"
-            ^"School Ability" STRING "Steed of the Kami"
-            ^"Mastery Ability" STRING "Master of Beasts"
         }
 
-        ^"Steed of the Kami" DEF {
-            # When you make a check to handle, calm, or instruct an
-            # animal, negate strife results up to your school rank.
-            # Once per scene as a Support action, make a TN 2
-            # Survival (Water) or Theology (Water) check. If you
-            # succeed, discover a ridable animal of combat rank 3 or
-            # lower appropriate to the environment. It is friendly and
-            # grants mount benefits, with Water Ring increased by
-            # bonus successes (max 6).
+
+        STARTING_TECHNIQUES {
+            INVOCATION ^"Nature's Touch"
+            KATA ^"Crescent Moon Style"
+            KATA ^"Striking as Air"
+            KATA ^"Striking as Water"
         }
 
+        SCHOOL_ABILITY "Steed of the Kami" {
+            "When you make a check to handle, calm, or instruct an animal, negate strife results up to your school rank. Once per scene as a Support action, make a TN 2 Survival (Water) or Theology (Water) check. If you succeed, discover a ridable animal of combat rank 3 or lower appropriate to the environment. It is friendly and grants mount benefits, with Water Ring increased by bonus successes (max 6)."
+        }
+
+        MASTERY_ABILITY ^"Master of Beasts" {
+            "Once per game as a Support action, summon a number of animals equal to your Water Ring that are combat rank 3 or lower. They are friendly and fulfill your commands until end of scene. If an animal becomes Compromised or incapacitated, it flees."
+        }
         STARTING_OUTFIT [
             "ashigaru armor", "traveling clothes",
             "daisho (katana or scimitar, wakizashi)",
@@ -940,7 +961,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
                 ^"Rain of Ten Thousand Lotuses" [invocation]
             }
             RANK 6 {
-                "Master of Beasts (Mastery Ability, Action): Once per game as a Support action, summon a number of animals equal to your Water Ring that are combat rank 3 or lower. They are friendly and fulfill your commands until end of scene. If an animal becomes Compromised or incapacitated, it flees."
+                ^"Master of Beasts"
             }
         }
 

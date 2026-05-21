@@ -122,19 +122,21 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Aesthetics", ^"Composition", ^"Culture", ^"Fitness", ^"Government", ^"Seafaring", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata (choose one): Striking as Earth or Warrior's Resolve; Shuji (choose one): Artisan's Appraisal or Civility Foremost"
-            ^"School Ability" STRING "Well Traveled"
-            ^"Mastery Ability" STRING "Emerald Explorer"
         }
 
-        ^"Well Traveled" DEF {
-            # You always know which way is north and can always find
-            # a useful navigation landmark. When making a check to
-            # recall or ascertain geographical, political, or societal
-            # information, add kept (ring) set to (op) or (su) results
-            # equal to your school rank.
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Striking as Earth or Warrior's Resolve"]
+            SHUJI CHOOSE 1 [^"Artisan's Appraisal or Civility Foremost"]
         }
 
+        SCHOOL_ABILITY "Well Traveled" {
+            "You always know which way is north and can always find a useful navigation landmark. When making a check to recall or ascertain geographical, political, or societal information, add kept (ring) set to (op) or (su) results equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Emerald Explorer" {
+            "Once per scene as a Support action, make a TN 1 Survival (Earth) check targeting one character. If you succeed, that character and additional characters equal to your bonus successes ignore all negative effects of terrain qualities until end of scene."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "wakizashi (short sword)",
             "yumi (bow) and quiver of arrows", "knife",
@@ -190,7 +192,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
                 ^"Bravado" [shuji]
             }
             RANK 6 {
-                "Emerald Explorer (Mastery Ability, Action): Once per scene as a Support action, make a TN 1 Survival (Earth) check targeting one character. If you succeed, that character and additional characters equal to your bonus successes ignore all negative effects of terrain qualities until end of scene."
+                ^"Emerald Explorer"
             }
         }
 
@@ -220,17 +222,21 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Composition", ^"Courtesy", ^"Fitness", ^"Seafaring", ^"Sentiment", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Shuji (choose one): Cadence or Honest Assessment; Shuji (choose one): Shallow Waters or Weight of Duty"
-            ^"School Ability" STRING "Voice of the Emperor"
-            ^"Mastery Ability" STRING "Blessings of the Emperor"
         }
 
-        ^"Voice of the Emperor" DEF {
-            # Once per round, after a character at range 0-4 succeeds
-            # on an Attack or Scheme action check, you may cause them
-            # to receive strife equal to your school rank.
+
+        STARTING_TECHNIQUES {
+            SHUJI CHOOSE 1 [^"Cadence or Honest Assessment"]
+            SHUJI CHOOSE 1 [^"Shallow Waters or Weight of Duty"]
         }
 
+        SCHOOL_ABILITY "Voice of the Emperor" {
+            "Once per round, after a character at range 0-4 succeeds on an Attack or Scheme action check, you may cause them to receive strife equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Blessings of the Emperor" {
+            "Once per scene as a Scheme action, make a TN 4 Command (Air) check targeting up to your glory rank characters. If you succeed, targets must forfeit honor equal to twice their honor rank and glory equal to twice their glory rank before targeting you with Attack actions, and increase TN of Attack actions targeting you by 2. Persists until end of scene or until you attack an affected character or their allies. (op)+: Effects also apply to targets' attacks against one chosen ally per (op) spent."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "ceremonial clothes",
             "wakizashi (short sword)",
@@ -287,7 +293,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
                 ^"The Immovable Hand of Peace" [shuji]
             }
             RANK 6 {
-                "Blessings of the Emperor (Mastery Ability, Action): Once per scene as a Scheme action, make a TN 4 Command (Air) check targeting up to your glory rank characters. If you succeed, targets must forfeit honor equal to twice their honor rank and glory equal to twice their glory rank before targeting you with Attack actions, and increase TN of Attack actions targeting you by 2. Persists until end of scene or until you attack an affected character or their allies. (op)+: Effects also apply to targets' attacks against one chosen ally per (op) spent."
+                ^"Blessings of the Emperor"
             }
         }
 
@@ -317,21 +323,21 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Composition", ^"Courtesy", ^"Culture", ^"Design", ^"Government", ^"Sentiment"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Shuji (choose one): Courtier's Resolve or Stirring the Embers; Shuji: Slippery Maneuvers"
-            ^"School Ability" STRING "Necessary Actions"
-            ^"Mastery Ability" STRING "Majesty of the Throne"
         }
 
-        ^"Necessary Actions" DEF {
-            # You never forfeit honor or glory to lie or deceive
-            # for the good of the Emperor and Empire (in your opinion).
-            # However, you must forfeit twice as much honor or glory
-            # to lie for your personal gain (in your opinion).
-            # When a character stakes or forfeits honor or glory to
-            # act against your desires, you may force them to increase
-            # that amount by your school rank.
+
+        STARTING_TECHNIQUES {
+            SHUJI CHOOSE 1 [^"Courtier's Resolve or Stirring the Embers"]
+            SHUJI ^"Slippery Maneuvers"
         }
 
+        SCHOOL_ABILITY "Necessary Actions" {
+            "You never forfeit honor or glory to lie or deceive for the good of the Emperor and Empire (in your opinion). However, you must forfeit twice as much honor or glory to lie for your personal gain (in your opinion). When a character stakes or forfeits honor or glory to act against your desires, you may force them to increase that amount by your school rank."
+        }
+
+        MASTERY_ABILITY ^"Majesty of the Throne" {
+            "Once per scene as a Scheme action, make a Command (Water) check targeting any number of characters at range 0-5. TN equals the highest status rank among your targets. If you succeed, all targets suffer the Dazed and Disoriented conditions."
+        }
         STARTING_OUTFIT [
             "ceremonial clothes", "wakizashi (short sword)",
             "any one weapon of rarity 6 or lower",
@@ -386,7 +392,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
                 ^"The Immovable Hand of Peace" [shuji]
             }
             RANK 6 {
-                "Majesty of the Throne (Mastery Ability, Action): Once per scene as a Scheme action, make a Command (Water) check targeting any number of characters at range 0-5. TN equals the highest status rank among your targets. If you succeed, all targets suffer the Dazed and Disoriented conditions."
+                ^"Majesty of the Throne"
             }
         }
 
@@ -416,21 +422,24 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 3 [^"Composition", ^"Government", ^"Medicine", ^"Meditation", ^"Sentiment", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Invocation: Bind the Shadow; Invocations (choose one): Dominion of Suijin or Jade Strike; Rituals: Divination, Commune with the Spirits, Threshold Barrier"
-            ^"School Ability" STRING "Just as Predicted"
-            ^"Mastery Ability" STRING "Foreseen in the Stars"
         }
 
-        ^"Just as Predicted" DEF {
-            # At the beginning of a game session or as a downtime activity,
-            # make a TN 1 Theology check using any ring. If you succeed,
-            # choose a number of kept dice up to your school rank to reserve.
-            # Until end of session or next downtime scene, when any character
-            # makes a skill check using the chosen ring, you may replace one
-            # or more kept dice with the same number of reserved dice of
-            # the same type.
+
+        STARTING_TECHNIQUES {
+            INVOCATION ^"Bind the Shadow"
+            INVOCATION CHOOSE 1 [^"Dominion of Suijin or Jade Strike"]
+            RITUAL ^"Divination"
+            RITUAL ^"Commune with the Spirits"
+            RITUAL ^"Threshold Barrier"
         }
 
+        SCHOOL_ABILITY "Just as Predicted" {
+            "At the beginning of a game session or as a downtime activity, make a TN 1 Theology check using any ring. If you succeed, choose a number of kept dice up to your school rank to reserve. Until end of session or next downtime scene, when any character makes a skill check using the chosen ring, you may replace one or more kept dice with the same number of reserved dice of the same type."
+        }
+
+        MASTERY_ABILITY ^"Foreseen in the Stars" {
+            "Once per game session, spend 1 Void point to reveal you have foreseen an event in the current scene. Retroactively declare one or more preparations you have taken, subject to GM approval. If preparations require a skill check, make it when you use this ability."
+        }
         STARTING_OUTFIT [
             "sanctified robes", "concealed armor",
             "wakizashi (short sword)", "bo (staff) or knife",
@@ -485,7 +494,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
                 ^"The Soul's Blade" [invocation]
             }
             RANK 6 {
-                "Foreseen in the Stars (Mastery Ability): Once per game session, spend 1 Void point to reveal you have foreseen an event in the current scene. Retroactively declare one or more preparations you have taken, subject to GM approval. If preparations require a skill check, make it when you use this ability."
+                ^"Foreseen in the Stars"
             }
         }
 
@@ -516,17 +525,21 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Sentiment", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata (choose one): Iaijutsu Cut: Crossing Blade or Iaijutsu Cut: Rising Blade; Shuji (choose one): Ancestry Unearthed or Honest Assessment"
-            ^"School Ability" STRING "Speed of Heaven"
-            ^"Mastery Ability" STRING "The Clouds Part"
         }
 
-        ^"Speed of Heaven" DEF {
-            # When you succeed on an Initiative check during a
-            # skirmish or duel, add bonus successes equal to your
-            # school rank.
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Iaijutsu Cut: Crossing Blade or Iaijutsu Cut: Rising Blade"]
+            SHUJI CHOOSE 1 [^"Ancestry Unearthed or Honest Assessment"]
         }
 
+        SCHOOL_ABILITY "Speed of Heaven" {
+            "When you succeed on an Initiative check during a skirmish or duel, add bonus successes equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"The Clouds Part" {
+            "Once per round, spend 1 Void point to add bonus successes equal to your honor rank to a successful Attack or Support action check."
+        }
         STARTING_OUTFIT [
             "lacquered armor", "sanctified robes",
             "daisho (katana and wakizashi)", "naginata or bisento",
@@ -580,7 +593,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
                 ^"The Immovable Hand of Peace" [shuji]
             }
             RANK 6 {
-                "The Clouds Part (Mastery Ability): Once per round, spend 1 Void point to add bonus successes equal to your honor rank to a successful Attack or Support action check."
+                ^"The Clouds Part"
             }
         }
 
@@ -609,33 +622,23 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 4 [^"Courtesy", ^"Culture", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata: Open-Hand Style; Rituals: Cleansing Rite, Threshold Barrier; Shuji (choose one): Shallow Waters or Stirring the Embers"
-            ^"School Ability" STRING "Blessing of the Fortunes"
-            ^"Mastery Ability" STRING "Favor of the Fortunes"
         }
 
-        ^"Blessing of the Fortunes" DEF {
-            # You have gained the goodwill of a Fortune who grants you
-            # invocations. When making a check to use an invocation
-            # learned this way, add additional bonus successes equal to
-            # your school rank.
-            # Select a Fortune as the primary object of your veneration
-            # and choose one appropriate invocation for which you meet
-            # the rank prerequisite. You learn that invocation without
-            # paying its XP cost. Each time your school rank increases,
-            # you gain one additional invocation this way.
 
-            FORTUNE_BLESSINGS {
-                "Benten" "Call Upon the Wind, Ever-Changing Waves, Inari's Blessing, Path to Inner Peace, Stride the Waves"
-                "Bishamon" "Armor of Earth, Biting Steel, Courage of Seven Thunders, Power of the Earth Dragon, Tetsubo of Earth"
-                "Daikoku" "Armor of Radiance, Caress of Earth, Grasp of Earth, Ravenous Swarms, Tomb of Jade"
-                "Ebisu" "Bo of Water, Hands of the Tides, Inari's Blessing, Suijin's Embrace, Token of Memory"
-                "Fukurokujin" "By the Light of the Lord Moon, Cloak of Night, Fukurokujin's Wit, Secrets on the Wind, Symbol of Earth"
-                "Hotei" "Dominion of Suijin, Inari's Blessing, Matsu's Battlecry, Path to Inner Peace, Sympathetic Energies"
-                "Jurojin" "Dance of Seasons, Heart of the Water Dragon, Jurojin's Balm, Path to Inner Peace, Power of the Earth Dragon"
-            }
+        STARTING_TECHNIQUES {
+            KATA ^"Open-Hand Style"
+            RITUAL ^"Cleansing Rite"
+            RITUAL ^"Threshold Barrier"
+            SHUJI CHOOSE 1 [^"Shallow Waters or Stirring the Embers"]
         }
 
+        SCHOOL_ABILITY "Blessing of the Fortunes" {
+            "You have gained the goodwill of a Fortune who grants you invocations. When making a check to use an invocation learned this way, add additional bonus successes equal to your school rank. Select a Fortune as the primary object of your veneration and choose one appropriate invocation for which you meet the rank prerequisite. You learn that invocation without paying its XP cost. Each time your school rank increases, you gain one additional invocation this way."
+        }
+
+        MASTERY_ABILITY ^"Favor of the Fortunes" {
+            "Once per scene, you may importune one invocation without making the sacrifices usually required and without the usual TN increase. Use the Meditation skill in place of the skill check normally required (you must still use the ring required for the invocation)."
+        }
         STARTING_OUTFIT [
             "sanctified robes", "ceremonial clothes",
             "bo (staff)", "traveling pack", "scroll satchel"
@@ -688,7 +691,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
                 ^"Soul Sunder" [kata]
             }
             RANK 6 {
-                "Favor of the Fortunes (Mastery Ability): Once per scene, you may importune one invocation without making the sacrifices usually required and without the usual TN increase. Use the Meditation skill in place of the skill check normally required (you must still use the ring required for the invocation)."
+                ^"Favor of the Fortunes"
             }
         }
 
@@ -718,20 +721,21 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 4 [^"Aesthetics", ^"Composition", ^"Fitness", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata (kata)", "Kiho (kiho)", "Rituals (ritual)"]
-            ^"Starting Techniques" STRING "Kata: Striking as Earth; Kiho (choose two): Cleansing Spirit, Earth Needs No Eyes, or Ki Protection"
-            ^"School Ability" STRING "Embrace the Void"
-            ^"Mastery Ability" STRING "One with the Void"
         }
 
-        ^"Embrace the Void" DEF {
-            # When you spend a Void point to Seize the Moment, you
-            # may also treat your ranks in the skill you are using as
-            # being equal to your school rank. If your ranks in the
-            # skill are equal to or higher than your school rank, or if
-            # you have 5 ranks in the skill, you may add one kept (ring)
-            # set to an (op) result instead.
+
+        STARTING_TECHNIQUES {
+            KATA ^"Striking as Earth"
+            KIHO CHOOSE 2 [^"Cleansing Spirit", ^"Earth Needs No Eyes", ^"or Ki Protection"]
         }
 
+        SCHOOL_ABILITY "Embrace the Void" {
+            "When you spend a Void point to Seize the Moment, you may also treat your ranks in the skill you are using as being equal to your school rank. If your ranks in the skill are equal to or higher than your school rank, or if you have 5 ranks in the skill, you may add one kept (ring) set to an (op) result instead."
+        }
+
+        MASTERY_ABILITY ^"One with the Void" {
+            "Once per scene, you may use one kiho technique you do not know. You may use the Meditation skill in place of the skill check normally required (you must still use the ring required for the kiho)."
+        }
         STARTING_OUTFIT [
             "common clothes", "bo (staff) or nunchaku (linked staff)",
             "knife", "traveling pack"
@@ -784,7 +788,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
                 ^"The Immovable Hand of Peace" [shuji]
             }
             RANK 6 {
-                "One with the Void (Mastery Ability): Once per scene, you may use one kiho technique you do not know. You may use the Meditation skill in place of the skill check normally required (you must still use the ring required for the kiho)."
+                ^"One with the Void"
             }
         }
 
@@ -815,27 +819,23 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Games", ^"Performance", ^"Martial Arts [Unarmed]", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 30
             ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Invocations: Nature's Touch, Token of Memory; Ritual: Commune with the Spirits"
             ^"Starting Disadvantage" STRING "False Identity"
-            ^"School Ability" STRING "Fox Spirit"
-            ^"Mastery Ability" STRING "Ninth Tail Ascension"
         }
 
-        ^"Fox Spirit" DEF {
-            # Your true form is that of a large fox with up to eight
-            # tails (full-blooded kitsune) or a human with vulpine
-            # traits (human ancestry). As a Scheme and Support action,
-            # transform between human and true forms, or into another
-            # silhouette 1 or 2 natural creature (GM discretion; cannot
-            # mimic specific individuals). Observers with vigilance
-            # lower than or equal to your school rank plus your ranks
-            # in Performance do not detect flaws. Certain features
-            # persist across all forms. If you become Compromised,
-            # your disguise slips, revealing true tails, ears, feet,
-            # or shadow.
-            # Must forfeit 1 honor to appear as a samurai of higher status.
+
+        STARTING_TECHNIQUES {
+            INVOCATION ^"Nature's Touch"
+            INVOCATION ^"Token of Memory"
+            RITUAL ^"Commune with the Spirits"
         }
 
+        SCHOOL_ABILITY "Fox Spirit" {
+            "Your true form is that of a large fox with up to eight tails (full-blooded kitsune) or a human with vulpine traits (human ancestry). As a Scheme and Support action, transform between human and true forms, or into another silhouette 1 or 2 natural creature (GM discretion; cannot mimic specific individuals). Observers with vigilance lower than or equal to your school rank plus your ranks in Performance do not detect flaws. Certain features persist across all forms. If you become Compromised, your disguise slips, revealing true tails, ears, feet, or shadow. Must forfeit 1 honor to appear as a samurai of higher status."
+        }
+
+        MASTERY_ABILITY ^"Ninth Tail Ascension" {
+            "Your true form now has nine tails. While in true form, supernatural resistance and physical resistance each increase by 2, and when you make a skill check, you may alter the result of one die containing (su) to a result containing (ex). While in true form, Attack action checks gain: (op)(op): After resolving, if target is Incapacitated or Unconscious, you devour or banish their body or soul, instantly killing them."
+        }
         STARTING_OUTFIT ["Take the starting outfit of any one other school as appropriate to your false identity"]
 
         CURRICULUM {
@@ -885,7 +885,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
                 ^"Buoyant Arrival" [shuji]
             }
             RANK 6 {
-                "Ninth Tail Ascension (Mastery Ability): Your true form now has nine tails. While in true form, supernatural resistance and physical resistance each increase by 2, and when you make a skill check, you may alter the result of one die containing (su) to a result containing (ex). While in true form, Attack action checks gain: (op)(op): After resolving, if target is Incapacitated or Unconscious, you devour or banish their body or soul, instantly killing them."
+                ^"Ninth Tail Ascension"
             }
         }
 
@@ -915,21 +915,22 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 20
             ^"Starting Disadvantage" STRING "False Identity"
             ^"Techniques Available" LIST ["Kata (kata)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata: Veiled Menace Style; Ninjutsu: Skulk; Shuji: Cadence"
-            ^"School Ability" STRING "Professional Saboteur"
-            ^"Mastery Ability" STRING "Usher In the New Age"
         }
 
-        ^"Professional Saboteur" DEF {
-            # Once per game session at the beginning of a scene, reveal
-            # that an NPC in that scene is the target of your current
-            # assignment. The GM decides what the assignment entails
-            # (sabotage, framing, killing, or ensuring survival).
-            # Until the end of the session, when you make a skill check
-            # targeting the chosen NPC, you may reroll a number of dice
-            # up to your school rank.
+
+        STARTING_TECHNIQUES {
+            KATA ^"Veiled Menace Style"
+            NINJUTSU ^"Skulk"
+            SHUJI ^"Cadence"
         }
 
+        SCHOOL_ABILITY "Professional Saboteur" {
+            "Once per game session at the beginning of a scene, reveal that an NPC in that scene is the target of your current assignment. The GM decides what the assignment entails (sabotage, framing, killing, or ensuring survival). Until the end of the session, when you make a skill check targeting the chosen NPC, you may reroll a number of dice up to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Usher In the New Age" {
+            "As a downtime activity, overcome or bypass an NPC's guards or security measures. Make a Skulduggery (Air) check targeting the NPC, TN equal to their highest conflict rank. If you succeed and the NPC is a minion or non-essential adversary (GM discretion), you accomplish your goal. If the NPC is important, you confront them alone, likely beginning a conflict scene. (op)(op): Your efforts go completely unnoticed. (op)(op): If you kill the target, death appears accidental or natural."
+        }
         STARTING_OUTFIT [
             "ceremonial clothes", "common clothes", "traveling clothes",
             "daisho (katana and wakizashi)", "knife", "five shuriken",
@@ -983,7 +984,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
                 ^"Buoyant Arrival" [shuji]
             }
             RANK 6 {
-                "Usher In the New Age (Mastery Ability): As a downtime activity, overcome or bypass an NPC's guards or security measures. Make a Skulduggery (Air) check targeting the NPC, TN equal to their highest conflict rank. If you succeed and the NPC is a minion or non-essential adversary (GM discretion), you accomplish your goal. If the NPC is important, you confront them alone, likely beginning a conflict scene. (op)(op): Your efforts go completely unnoticed. (op)(op): If you kill the target, death appears accidental or natural."
+                ^"Usher In the New Age"
             }
         }
 

@@ -98,19 +98,23 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Ranged]", ^"Martial Arts [Melee]", ^"Meditation", ^"Sentiment", ^"Tactics", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Invocations (invocation)", "Kata (kata)", "Rituals (ritual)"]
-            ^"Starting Techniques" STRING "Invocations (choose two): Caress of Earth, Cloak of Night, Wall of Earth, Yari of Air; Kata (choose one): Striking as Air, Striking as Earth; Rituals: Cleansing Rite, Commune with Spirits"
-            ^"School Ability" STRING "Stand as the Mountain"
-            ^"Mastery Ability" STRING "Soul of Deepest Stones"
         }
 
-        ^"Stand as the Mountain" DEF {
-            # After you channel an invocation, increase your physical
-            # and supernatural resistances by an amount equal to
-            # the number of dice you reserved, to a maximum of your
-            # school rank. This effect persists until the start of your
-            # next turn.
+
+        STARTING_TECHNIQUES {
+            INVOCATION CHOOSE 2 [^"Caress of Earth", ^"Cloak of Night", ^"Wall of Earth", ^"Yari of Air"]
+            KATA CHOOSE 1 [^"Striking as Air", ^"Striking as Earth"]
+            RITUAL ^"Cleansing Rite"
+            RITUAL ^"Commune with Spirits"
         }
 
+        SCHOOL_ABILITY "Stand as the Mountain" {
+            "After you channel an invocation, increase your physical and supernatural resistances by an amount equal to the number of dice you reserved, to a maximum of your school rank. This effect persists until the start of your next turn."
+        }
+
+        MASTERY_ABILITY ^"Soul of Deepest Stones" {
+            "When you successfully make a check to augment or mend a target, add a number of bonus successes equal to your ranks in Fitness."
+        }
         STARTING_OUTFIT [
             "sanctified robes", "traveling clothes",
             "daisho (katana and wakizashi)", "scroll satchel",
@@ -164,7 +168,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
                 ^"Striking as Void" [kata]
             }
             RANK 6 {
-                "Soul of Deepest Stones (Mastery Ability): When you successfully make a check to augment or mend a target, add a number of bonus successes equal to your ranks in Fitness."
+                ^"Soul of Deepest Stones"
             }
         }
 
@@ -198,19 +202,21 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Martial Arts [Unarmed]", ^"Medicine", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata (choose one): Striking as Fire, Striking as Water; Kata (choose one): Crescent Moon Style, Pelting Hail Style"
-            ^"School Ability" STRING "Drilled Precision"
-            ^"Mastery Ability" STRING "Strike Without Shadow"
         }
 
-        ^"Drilled Precision" DEF {
-            # When making an Attack or Movement action check,
-            # you may remove an amount of strife from yourself up
-            # to your school rank. For each strife you remove this
-            # way, add one kept (ring) set to (op) to the check and
-            # receive 1 fatigue.
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Striking as Fire", ^"Striking as Water"]
+            KATA CHOOSE 1 [^"Crescent Moon Style", ^"Pelting Hail Style"]
         }
 
+        SCHOOL_ABILITY "Drilled Precision" {
+            "When making an Attack or Movement action check, you may remove an amount of strife from yourself up to your school rank. For each strife you remove this way, add one kept (ring) set to (op) to the check and receive 1 fatigue."
+        }
+
+        MASTERY_ABILITY ^"Strike Without Shadow" {
+            "When you succeed at an Attack or Movement action check, you may spend 1 Void point to add bonus successes equal to your ranks in Fitness."
+        }
         STARTING_OUTFIT [
             "ashigaru armor", "traveling clothes",
             "daisho (katana and wakizashi)",
@@ -267,7 +273,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
                 ^"Striking as Void" [kata]
             }
             RANK 6 {
-                "Strike Without Shadow (Mastery Ability): When you succeed at an Attack or Movement action check, you may spend 1 Void point to add bonus successes equal to your ranks in Fitness."
+                ^"Strike Without Shadow"
             }
         }
 
@@ -301,19 +307,21 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Culture", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Medicine", ^"Sentiment", ^"Skulduggery"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata (choose one): Soaring Slice, Striking as Air; Ninjutsu: Skulk"
-            ^"School Ability" STRING "Explosive Arrival"
-            ^"Mastery Ability" STRING "Spreading Chaos"
         }
 
-        ^"Explosive Arrival" DEF {
-            # After you perform an Attack action against a target who
-            # is Dazed or unaware of your presence, that target
-            # receives strife equal to your school rank. If your target
-            # is an enemy leader's cohort in a mass battle, the enemy
-            # army also receives that much panic.
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Soaring Slice", ^"Striking as Air"]
+            NINJUTSU ^"Skulk"
         }
 
+        SCHOOL_ABILITY "Explosive Arrival" {
+            "After you perform an Attack action against a target who is Dazed or unaware of your presence, that target receives strife equal to your school rank. If your target is an enemy leader's cohort in a mass battle, the enemy army also receives that much panic."
+        }
+
+        MASTERY_ABILITY ^"Spreading Chaos" {
+            "After you use your school ability during a duel or skirmish, your target and each other character friendly to them at range 0-3 suffers the Dazed condition. After you use your school ability in a mass battle, the leader of the cohort you targeted suffers the Dazed condition."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "common clothes",
             "daisho (katana and wakizashi)",
@@ -368,7 +376,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
                 ^"Silencing Stroke" [ninjutsu]
             }
             RANK 6 {
-                "Spreading Chaos (Mastery Ability): After you use your school ability during a duel or skirmish, your target and each other character friendly to them at range 0-3 suffers the Dazed condition. After you use your school ability in a mass battle, the leader of the cohort you targeted suffers the Dazed condition."
+                ^"Spreading Chaos"
             }
         }
 
@@ -402,22 +410,21 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Fitness", ^"Games", ^"Government", ^"Martial Arts [Melee]", ^"Sentiment", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 55
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata: Tactical Assessment; Shuji (choose one): Fortress of Necessity, Stonewall Tactics, Weight of Duty"
-            ^"School Ability" STRING "Thunderous Courage"
-            ^"Mastery Ability" STRING "Unbreakable Resolve"
         }
 
-        ^"Thunderous Courage" DEF {
-            # Once per scene after you perform a Support action,
-            # you may choose any number of characters within a
-            # number of range bands equal to your ranks in Command.
-            # Each chosen character treats their composure as
-            # increased by your school rank. This effect persists
-            # until the end of the scene.
-            # During a mass battle, if you are a leader, your army
-            # treats its discipline as increased by your school rank.
+
+        STARTING_TECHNIQUES {
+            KATA ^"Tactical Assessment"
+            SHUJI CHOOSE 1 [^"Fortress of Necessity", ^"Stonewall Tactics", ^"Weight of Duty"]
         }
 
+        SCHOOL_ABILITY "Thunderous Courage" {
+            "Once per scene after you perform a Support action, you may choose any number of characters within a number of range bands equal to your ranks in Command. Each chosen character treats their composure as increased by your school rank. This effect persists until the end of the scene. During a mass battle, if you are a leader, your army treats its discipline as increased by your school rank."
+        }
+
+        MASTERY_ABILITY ^"Unbreakable Resolve" {
+            "Compromised characters affected by your school ability can keep a number of dice containing (st) up to your ranks in Command."
+        }
         STARTING_OUTFIT [
             "lacquered armor", "traveling clothes",
             "daisho (katana and wakizashi)",
@@ -473,7 +480,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
                 ^"The Immovable Hand of Peace" [shuji]
             }
             RANK 6 {
-                "Unbreakable Resolve (Mastery Ability): Compromised characters affected by your school ability can keep a number of dice containing (st) up to your ranks in Command."
+                ^"Unbreakable Resolve"
             }
         }
 
@@ -508,18 +515,21 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Games", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Performance", ^"Survival", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata: Fierce Badger Style; Shuji (choose one): All in Jest, Honest Assessment"
-            ^"School Ability" STRING "Badger's Hold"
-            ^"Mastery Ability" STRING "Killing Grip"
         }
 
-        ^"Badger's Hold" DEF {
-            # After you succeed at an Attack action check using
-            # the Martial Arts [Unarmed] skill, if the target is
-            # Immobilized or Prone, they also receive fatigue
-            # equal to your school rank.
+
+        STARTING_TECHNIQUES {
+            KATA ^"Fierce Badger Style"
+            SHUJI CHOOSE 1 [^"All in Jest", ^"Honest Assessment"]
         }
 
+        SCHOOL_ABILITY "Badger's Hold" {
+            "After you succeed at an Attack action check using the Martial Arts [Unarmed] skill, if the target is Immobilized or Prone, they also receive fatigue equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Killing Grip" {
+            "When you inflict a critical strike on a target, if the target is Immobilized or Prone, you may receive 3 fatigue to increase the severity of the critical strike by two times your ranks in Fitness."
+        }
         STARTING_OUTFIT [
             "ashigaru armor", "traveling clothes",
             "daisho (katana and wakizashi)", "sumai garb",
@@ -574,7 +584,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
                 ^"Soul Sunder" [kata]
             }
             RANK 6 {
-                "Killing Grip (Mastery Ability): When you inflict a critical strike on a target, if the target is Immobilized or Prone, you may receive 3 fatigue to increase the severity of the critical strike by two times your ranks in Fitness."
+                ^"Killing Grip"
             }
         }
 
@@ -609,19 +619,21 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Commerce", ^"Courtesy", ^"Fitness", ^"Labor", ^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Smithing"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Shuji (choose two): Coursing March Chant, Courtier's Resolve, Honest Assessment, Stirring the Embers"
             ^"Starting Patterns" STRING "Ichiro Pattern"
-            ^"School Ability" STRING "Hide of Iron"
-            ^"Mastery Ability" STRING "Tenacity of the Forge"
         }
 
-        ^"Hide of Iron" DEF {
-            # Once per game session when you make a check to craft,
-            # improve, or maintain a weapon or set of armor, you may
-            # receive an amount of fatigue up to your school rank to
-            # reroll that many dice.
+
+        STARTING_TECHNIQUES {
+            SHUJI CHOOSE 2 [^"Coursing March Chant", ^"Courtier's Resolve", ^"Honest Assessment", ^"Stirring the Embers"]
         }
 
+        SCHOOL_ABILITY "Hide of Iron" {
+            "Once per game session when you make a check to craft, improve, or maintain a weapon or set of armor, you may receive an amount of fatigue up to your school rank to reroll that many dice."
+        }
+
+        MASTERY_ABILITY ^"Tenacity of the Forge" {
+            "When you create a new set of armor, you may apply two different patterns you know to it (instead of one)."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "common clothes",
             "wakizashi (short sword)",
@@ -677,7 +689,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
                 ^"Rouse the Soul" [shuji]
             }
             RANK 6 {
-                "Tenacity of the Forge (Mastery Ability): When you create a new set of armor, you may apply two different patterns you know to it (instead of one)."
+                ^"Tenacity of the Forge"
             }
         }
 
@@ -713,19 +725,21 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Fitness", ^"Government", ^"Martial Arts [Ranged]", ^"Performance", ^"Sentiment", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Shuji: Lady Shinjo's Speed; Shuji (choose one): Courtier's Resolve, Honest Assessment"
-            ^"School Ability" STRING "Sympathetic Bearing"
-            ^"Mastery Ability" STRING "The Herd Flourishes Together"
         }
 
-        ^"Sympathetic Bearing" DEF {
-            # After you make a check for Initiative (or enter the scene,
-            # for a narrative scene), you may choose another character
-            # in the scene. That character removes strife equal to your
-            # school rank, and you reduce the TN of your next Social
-            # skill check targeting that character by 2.
+
+        STARTING_TECHNIQUES {
+            SHUJI ^"Lady Shinjo's Speed"
+            SHUJI CHOOSE 1 [^"Courtier's Resolve", ^"Honest Assessment"]
         }
 
+        SCHOOL_ABILITY "Sympathetic Bearing" {
+            "After you make a check for Initiative (or enter the scene, for a narrative scene), you may choose another character in the scene. That character removes strife equal to your school rank, and you reduce the TN of your next Social skill check targeting that character by 2."
+        }
+
+        MASTERY_ABILITY ^"The Herd Flourishes Together" {
+            "When you make a Social skill check, you may spend (op) as follows: (op)(op): Choose another character's social objective that you know. You may transfer any number of momentum points you have accrued to the completion of their objective. After that character completes their objective, you gain the Support of [That Character's Group] advantage if you do not have it already."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "wakizashi (short sword)",
             "yumi (bow) and quiver of arrows",
@@ -780,7 +794,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
                 ^"Striking as Void" [kata]
             }
             RANK 6 {
-                "The Herd Flourishes Together (Mastery Ability): When you make a Social skill check, you may spend (op) as follows: (op)(op): Choose another character's social objective that you know. You may transfer any number of momentum points you have accrued to the completion of their objective. After that character completes their objective, you gain the Support of [That Character's Group] advantage if you do not have it already."
+                ^"The Herd Flourishes Together"
             }
         }
 
@@ -810,25 +824,22 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Invocations (choose one): Any one rank 1 invocation of your inspired element; Rituals (choose two): Cleansing Rite, Commune with the Spirits, Threshold Barrier; Shuji (choose two): Ancestry Unearthed, Borrowed Courage, Truth Burns through Lies, Shallow Waters"
-            ^"School Ability" STRING "Elemental Inspiration"
-            ^"Mastery Ability" STRING "Attuned Invocation"
         }
 
-        ^"Elemental Inspiration" DEF {
-            # Choose one: Air, Earth, Water, or Fire. This is your
-            # inspired element. When making a check to activate an
-            # invocation of your inspired element, add a number of
-            # rolled (ring) set to (op) results equal to your school rank.
-            # When making a check to activate an invocation of your
-            # inspired element, you trigger spiritual backlash only if
-            # you keep four or more dice containing (st) symbols
-            # (instead of three or more). When making a check to
-            # activate an invocation not of your inspired element,
-            # you trigger spiritual backlash if you keep two or more
-            # dice containing (st) symbols (instead of three or more).
+
+        STARTING_TECHNIQUES {
+            INVOCATION CHOOSE 1 [^"Any one rank 1 invocation of your inspired element"]
+            RITUAL CHOOSE 2 [^"Cleansing Rite", ^"Commune with the Spirits", ^"Threshold Barrier"]
+            SHUJI CHOOSE 2 [^"Ancestry Unearthed", ^"Borrowed Courage", ^"Truth Burns through Lies", ^"Shallow Waters"]
         }
 
+        SCHOOL_ABILITY "Elemental Inspiration" {
+            "Choose one: Air, Earth, Water, or Fire. This is your inspired element. When making a check to activate an invocation of your inspired element, add a number of rolled (ring) set to (op) results equal to your school rank. When making a check to activate an invocation of your inspired element, you trigger spiritual backlash only if you keep four or more dice containing (st) symbols (instead of three or more). When making a check to activate an invocation not of your inspired element, you trigger spiritual backlash if you keep two or more dice containing (st) symbols (instead of three or more)."
+        }
+
+        MASTERY_ABILITY ^"Attuned Invocation" {
+            "Once per scene, when making a check to activate an invocation of your inspired element, you may spend 1 Void point. If you do, you may keep any number of your rolled dice (instead of a number up to your ring value)."
+        }
         STARTING_OUTFIT [
             "sanctified robes", "traveling clothes",
             "wakizashi (short sword)", "scroll satchel",
@@ -882,7 +893,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
                 ^"Striking as Void" [kata]
             }
             RANK 6 {
-                "Attuned Invocation (Mastery Ability): Once per scene, when making a check to activate an invocation of your inspired element, you may spend 1 Void point. If you do, you may keep any number of your rolled dice (instead of a number up to your ring value)."
+                ^"Attuned Invocation"
             }
         }
 
@@ -916,20 +927,22 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Melee]", ^"Medicine", ^"Meditation", ^"Performance", ^"Sentiment", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata: Warrior's Resolve; Shuji (choose two): Coursing March Chant, Righteous Example, Sensational Distraction"
             ^"Starting Advantage" STRING "Animal Bond"
-            ^"School Ability" STRING "One with the Pride"
-            ^"Mastery Ability" STRING "With the Soul of a Lion"
         }
 
-        ^"One with the Pride" DEF {
-            # Increase each of your bonded animals' endurance,
-            # composure, and ranks in Martial skill group by an
-            # amount equal to your school rank (its skill ranks still
-            # cannot exceed 5). If a bonded animal is a minion, it
-            # becomes an adversary instead.
+
+        STARTING_TECHNIQUES {
+            KATA ^"Warrior's Resolve"
+            SHUJI CHOOSE 2 [^"Coursing March Chant", ^"Righteous Example", ^"Sensational Distraction"]
         }
 
+        SCHOOL_ABILITY "One with the Pride" {
+            "Increase each of your bonded animals' endurance, composure, and ranks in Martial skill group by an amount equal to your school rank (its skill ranks still cannot exceed 5). If a bonded animal is a minion, it becomes an adversary instead."
+        }
+
+        MASTERY_ABILITY ^"With the Soul of a Lion" {
+            "After you perform an Attack action, each of your bonded animals may perform an Attack action against the same target, if able. If your attack action did not succeed, reduce the TN of each of your bonded animals' Attack action check by 2."
+        }
         STARTING_OUTFIT [
             "ashigaru armor", "traveling clothes",
             "daisho (katana and wakizashi)",
@@ -985,7 +998,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
                 ^"Wreak Havoc" [ninjutsu]
             }
             RANK 6 {
-                "With the Soul of a Lion (Mastery Ability): After you perform an Attack action, each of your bonded animals may perform an Attack action against the same target, if able. If your attack action did not succeed, reduce the TN of each of your bonded animals' Attack action check by 2."
+                ^"With the Soul of a Lion"
             }
         }
 
@@ -1023,27 +1036,24 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 4 [^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata (kata)", "Kiho (kiho)", "Rituals (ritual)"]
-            ^"Starting Techniques" STRING "Kata (choose one): Iron Forest Style, Veiled Menace Style; Kiho (choose one): Air Fist, The Great Silence; Rituals: Divination, Threshold Barrier"
             ^"Starting Disadvantage" STRING "Dark Secret or another disadvantage suitable to your past betrayal"
-            ^"School Ability" STRING "Oath of Sacrifice"
-            ^"Mastery Ability" STRING "Empty Soul Ki"
         }
 
-        ^"Oath of Sacrifice" DEF {
-            # Once per scene, after you defend against damage or
-            # suffer a critical strike, you may unleash your current
-            # kiho. Immediately end its enhancement effect, then
-            # resolve its burst effect as if you had a number of bonus
-            # successes equal to your school rank plus the amount of
-            # fatigue you received or the severity of the critical strike
-            # you suffered. If the burst effect has one or more targets,
-            # you may choose appropriate targets in range.
-            # If you have used this ability already this scene, you
-            # may spend 1 Void point to use it again this scene (you
-            # can do this any number of times, provided you have
-            # Void points to spend).
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Iron Forest Style", ^"Veiled Menace Style"]
+            KIHO CHOOSE 1 [^"Air Fist", ^"The Great Silence"]
+            RITUAL ^"Divination"
+            RITUAL ^"Threshold Barrier"
         }
 
+        SCHOOL_ABILITY "Oath of Sacrifice" {
+            "Once per scene, after you defend against damage or suffer a critical strike, you may unleash your current kiho. Immediately end its enhancement effect, then resolve its burst effect as if you had a number of bonus successes equal to your school rank plus the amount of fatigue you received or the severity of the critical strike you suffered. If the burst effect has one or more targets, you may choose appropriate targets in range. If you have used this ability already this scene, you may spend 1 Void point to use it again this scene (you can do this any number of times, provided you have Void points to spend)."
+        }
+
+        MASTERY_ABILITY ^"Empty Soul Ki" {
+            "When you defend against damage, if all your Void Points are spent, treat your physical and supernatural resistances as being equal to your Void ring."
+        }
         STARTING_OUTFIT [
             "common clothes", "bo (staff) or yari (spear)",
             "3 shuriken (throwing stars)", "knife",
@@ -1097,7 +1107,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
                 ^"Striking as Void" [kata]
             }
             RANK 6 {
-                "Empty Soul Ki (Mastery Ability): When you defend against damage, if all your Void Points are spent, treat your physical and supernatural resistances as being equal to your Void ring."
+                ^"Empty Soul Ki"
             }
         }
 

@@ -87,21 +87,21 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Fitness", ^"Labor", ^"Martial Arts [Melee]", ^"Medicine", ^"Sentiment", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata: = Slashing Sandstorm Style; Shuji (choose one): Honest Assessment, Shallow Waters"
-            ^"School Ability" STRING "Moment of Certainty"
-            ^"Mastery Ability" STRING "Measured Force"
         }
 
-        ^"Moment of Certainty" DEF {
-            # Once per scene after you defend against damage, you
-            # may roll a number of skill dice equal to the fatigue you
-            # received this way. Choose a number of those dice up to
-            # your school rank and reserve them. Until end of scene,
-            # when you perform an Attack action check, after choosing
-            # kept dice, you may add one reserved die as an additional
-            # kept die.
+
+        STARTING_TECHNIQUES {
+            KATA ^"Slashing Sandstorm Style"
+            SHUJI CHOOSE 1 [^"Honest Assessment", ^"Shallow Waters"]
         }
 
+        SCHOOL_ABILITY "Moment of Certainty" {
+            "Once per scene after you defend against damage, you may roll a number of skill dice equal to the fatigue you received this way. Choose a number of those dice up to your school rank and reserve them. Until end of scene, when you perform an Attack action check, after choosing kept dice, you may add one reserved die as an additional kept die."
+        }
+
+        MASTERY_ABILITY ^"Measured Force" {
+            "When you use your school ability to add kept dice to a check, you may add a number of your reserved dice up to your ranks in Fitness (instead of only one)."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "concealed armor",
             "Ganzu ring ax", "two knives",
@@ -155,7 +155,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 ^"Striking as Void" [kata]
             }
             RANK 6 {
-                "Measured Force (Mastery Ability): When you use your school ability to add kept dice to a check, you may add a number of your reserved dice up to your ranks in Fitness (instead of only one)."
+                ^"Measured Force"
             }
         }
 
@@ -185,19 +185,21 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Culture", ^"Games", ^"Government", ^"Martial Arts [Unarmed]", ^"Sentiment", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Shuji: = Glorious Entrance; Shuji (choose one): Stirring the Embers, Well of Desire"
-            ^"School Ability" STRING "Disarming Demeanor"
-            ^"Mastery Ability" STRING "Student of Many Courts"
         }
 
-        ^"Disarming Demeanor" DEF {
-            # When you perform a Support action check, you may
-            # spend (op) as follows: (op)+: Choose one character in
-            # the scene with vigilance lower than your school ranks
-            # plus (op) spent this way. You treat that character's focus
-            # and vigilance each as 1 lower until end of scene.
+
+        STARTING_TECHNIQUES {
+            SHUJI ^"Glorious Entrance"
+            SHUJI CHOOSE 1 [^"Stirring the Embers", ^"Well of Desire"]
         }
 
+        SCHOOL_ABILITY "Disarming Demeanor" {
+            "When you perform a Support action check, you may spend (op) as follows: (op)+: Choose one character in the scene with vigilance lower than your school ranks plus (op) spent this way. You treat that character's focus and vigilance each as 1 lower until end of scene."
+        }
+
+        MASTERY_ABILITY ^"Student of Many Courts" {
+            "Once per scene as a Support action, you may make a TN 3 Culture (Fire or Water) check targeting any number of other characters in the scene. If you succeed and chose Fire, each character gains the Emboldened condition. If you succeed and chose Water, each character removes 3 strife."
+        }
         STARTING_OUTFIT [
             "ceremonial clothes", "traveling clothes",
             "wakizashi (short sword) or scimitar", "knife",
@@ -252,7 +254,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 ^"Striking as Void" [kata]
             }
             RANK 6 {
-                "Student of Many Courts (Mastery Ability, Action): Once per scene as a Support action, you may make a TN 3 Culture (Fire or Water) check targeting any number of other characters in the scene. If you succeed and chose Fire, each character gains the Emboldened condition. If you succeed and chose Water, each character removes 3 strife."
+                ^"Student of Many Courts"
             }
         }
 
@@ -283,26 +285,23 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 3 [^"Commerce", ^"Design", ^"Medicine", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Invocations (choose one): Jurojin's Balm, Nature's Touch, Path to Inner Peace; Rituals: Commune with the Spirits, = Protection of the Flock; Shuji (choose one): Call to Ride, Shallow Waters"
-            ^"School Ability" STRING "The Horse Lord's Favor"
-            ^"Mastery Ability" STRING "The Noble Heart Shines Through"
         }
 
-        ^"The Horse Lord's Favor" DEF {
-            # When you make a check to craft, improve, or maintain
-            # an item, you may imprint it with the Horse Lord's Favor,
-            # giving it one of your advantages or disadvantages. If the
-            # item is a meishodo talisman, you may give it an advantage
-            # or disadvantage from its sealed spirit. While an item with
-            # your Favor adorns a horse or Loyal Steed creature, the
-            # creature is Otherworldly and possesses the chosen trait.
-            # If a meishodo talisman, the creature may perform any
-            # techniques it contains. Sustain up to school rank items.
-            # Additionally, Medicine checks to remove fatigue or
-            # conditions from equine creatures add bonus successes
-            # equal to school rank.
+
+        STARTING_TECHNIQUES {
+            INVOCATION CHOOSE 1 [^"Jurojin's Balm", ^"Nature's Touch", ^"Path to Inner Peace"]
+            RITUAL ^"Commune with the Spirits"
+            RITUAL ^"Protection of the Flock"
+            SHUJI CHOOSE 1 [^"Call to Ride", ^"Shallow Waters"]
         }
 
+        SCHOOL_ABILITY "The Horse Lord's Favor" {
+            "When you make a check to craft, improve, or maintain an item, you may imprint it with the Horse Lord's Favor, giving it one of your advantages or disadvantages. If the item is a meishodo talisman, you may give it an advantage or disadvantage from its sealed spirit. While an item with your Favor adorns a horse or Loyal Steed creature, the creature is Otherworldly and possesses the chosen trait. If a meishodo talisman, the creature may perform any techniques it contains. Sustain up to school rank items. Additionally, Medicine checks to remove fatigue or conditions from equine creatures add bonus successes equal to school rank."
+        }
+
+        MASTERY_ABILITY ^"The Noble Heart Shines Through" {
+            "Once per scene, spend 1 Void point to target any non-Shadowlands creature of silhouette 3 or greater, giving the target the Loyal Steed ability until end of scene. Make a Courtesy (Water) or Theology (Void) check with TN equal to target's vigilance. If you succeed, the target is favorable and willing to be ridden. Horses of the Blessed Herd (Utaku steeds) are immune."
+        }
         STARTING_OUTFIT [
             "sanctified robes", "traveling clothes",
             "yumi (bow)", "quiver of arrows",
@@ -358,7 +357,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 ^"Rouse the Soul" [shuji]
             }
             RANK 6 {
-                "The Noble Heart Shines Through (Mastery Ability): Once per scene, spend 1 Void point to target any non-Shadowlands creature of silhouette 3 or greater, giving the target the Loyal Steed ability until end of scene. Make a Courtesy (Water) or Theology (Void) check with TN equal to target's vigilance. If you succeed, the target is favorable and willing to be ridden. Horses of the Blessed Herd (Utaku steeds) are immune."
+                ^"The Noble Heart Shines Through"
             }
         }
 
@@ -389,18 +388,21 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Courtesy", ^"Martial Arts [Ranged]", ^"Medicine", ^"Meditation", ^"Performance", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Rituals: Commune with the Spirits; Shuji (choose one): = Appreciate the Scenery, Shallow Waters"
-            ^"School Ability" STRING "Calm Counsel"
-            ^"Mastery Ability" STRING "Cool Heads Prevail"
         }
 
-        ^"Calm Counsel" DEF {
-            # After a friendly character at range 0-4 receives strife,
-            # you may impose the Centered condition on that character.
-            # You can use this ability a number of times per scene up
-            # to your school rank.
+
+        STARTING_TECHNIQUES {
+            RITUAL ^"Commune with the Spirits"
+            SHUJI CHOOSE 1 [^"Appreciate the Scenery", ^"Shallow Waters"]
         }
 
+        SCHOOL_ABILITY "Calm Counsel" {
+            "After a friendly character at range 0-4 receives strife, you may impose the Centered condition on that character. You can use this ability a number of times per scene up to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Cool Heads Prevail" {
+            "Friendly Centered characters at range 0-4 from you treat their composure and endurance as increased by your ranks in Courtesy."
+        }
         STARTING_OUTFIT [
             "sanctified robes", "wakizashi (short sword)",
             "knife", "yumi (bow)", "quiver of arrows",
@@ -456,7 +458,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 ^"Bend with the Storm" [shuji]
             }
             RANK 6 {
-                "Cool Heads Prevail (Mastery Ability): Friendly Centered characters at range 0-4 from you treat their composure and endurance as increased by your ranks in Courtesy."
+                ^"Cool Heads Prevail"
             }
         }
 
@@ -486,18 +488,23 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Fitness", ^"Meditation", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Invocations: Nature's Touch; Invocations (choose two): Extinguish, Jurojin's Balm, Inari's Blessing; Rituals: Commune with the Spirits, = Spiritual Survey"
-            ^"School Ability" STRING "Natural Balance"
-            ^"Mastery Ability" STRING "Procession of Seasons"
         }
 
-        ^"Natural Balance" DEF {
-            # When you succeed on a check to activate an invocation,
-            # if it is the first invocation of that element you have
-            # activated this scene, you may add bonus successes or
-            # kept dice set to (op) equal to your school rank.
+
+        STARTING_TECHNIQUES {
+            INVOCATION ^"Nature's Touch"
+            INVOCATION CHOOSE 2 [^"Extinguish", ^"Jurojin's Balm", ^"Inari's Blessing"]
+            RITUAL ^"Commune with the Spirits"
+            RITUAL ^"Spiritual Survey"
         }
 
+        SCHOOL_ABILITY "Natural Balance" {
+            "When you succeed on a check to activate an invocation, if it is the first invocation of that element you have activated this scene, you may add bonus successes or kept dice set to (op) equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Procession of Seasons" {
+            "After you resolve the effects of an invocation, if you have successfully activated at least one Air, one Earth, one Fire, and one Water invocation during this scene, you may have a number of characters up to your ranks in Survival each remove half their strife and fatigue (rounded up). Once per scene."
+        }
         STARTING_OUTFIT [
             "sanctified robes", "wakizashi (short sword)", "knife",
             "scroll satchel", "traveling pack",
@@ -551,7 +558,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 ^"Rouse the Soul" [shuji]
             }
             RANK 6 {
-                "Procession of Seasons (Mastery Ability): After you resolve the effects of an invocation, if you have successfully activated at least one Air, one Earth, one Fire, and one Water invocation during this scene, you may have a number of characters up to your ranks in Survival each remove half their strife and fatigue (rounded up). Once per scene."
+                ^"Procession of Seasons"
             }
         }
 
@@ -580,19 +587,21 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Commerce", ^"Labor", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata (choose one): Striking as Air, Striking as Earth, Striking as Fire, Striking as Water; Rituals (choose one): = Traveler's Experience, = Wayfinder's Instincts"
-            ^"School Ability" STRING "Dunestrider"
-            ^"Mastery Ability" STRING "Lay of the Land"
         }
 
-        ^"Dunestrider" DEF {
-            # At start of each scene, choose one terrain quality:
-            # Dangerous, Entangling, Imbalanced, or Obscuring.
-            # Each friendly character within a number of range bands
-            # equal to your school rank ignores negative effects of
-            # that terrain quality.
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Striking as Air", ^"Striking as Earth", ^"Striking as Fire", ^"Striking as Water"]
+            RITUAL CHOOSE 1 [^"Traveler's Experience", ^"Wayfinder's Instincts"]
         }
 
+        SCHOOL_ABILITY "Dunestrider" {
+            "At start of each scene, choose one terrain quality: Dangerous, Entangling, Imbalanced, or Obscuring. Each friendly character within a number of range bands equal to your school rank ignores negative effects of that terrain quality."
+        }
+
+        MASTERY_ABILITY ^"Lay of the Land" {
+            "Once per game session as a Support action or during a narrative scene, you may change which terrain quality your school ability affects. While in terrain with the chosen quality, you may add up to two bonus successes to each check you make."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "one weapon of rarity 7 or lower",
             "two knives", "traveling rations (eight days)",
@@ -646,7 +655,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 ^"Rouse the Soul" [shuji]
             }
             RANK 6 {
-                "Lay of the Land (Mastery Ability): Once per game session as a Support action or during a narrative scene, you may change which terrain quality your school ability affects. While in terrain with the chosen quality, you may add up to two bonus successes to each check you make."
+                ^"Lay of the Land"
             }
         }
 
@@ -675,19 +684,21 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Culture", ^"Government", ^"Medicine", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Rituals: = Shadow of Days; Shuji (choose one): Ancestry Unearthed, Cite the Facts, Stirring the Embers, Truth Burns through Lies"
-            ^"School Ability" STRING "Methodical Observation"
-            ^"Mastery Ability" STRING "Logical Conclusion"
         }
 
-        ^"Methodical Observation" DEF {
-            # Once per scene when you make a Scholar skill check,
-            # you may reserve a number of dropped dice up to your
-            # school rank. Until end of scene, when you make a non-
-            # Scholar skill check, after choosing dice, you may add up
-            # to one reserved die as a kept die.
+
+        STARTING_TECHNIQUES {
+            RITUAL ^"Shadow of Days"
+            SHUJI CHOOSE 1 [^"Ancestry Unearthed", ^"Cite the Facts", ^"Stirring the Embers", ^"Truth Burns through Lies"]
         }
 
+        SCHOOL_ABILITY "Methodical Observation" {
+            "Once per scene when you make a Scholar skill check, you may reserve a number of dropped dice up to your school rank. Until end of scene, when you make a non- Scholar skill check, after choosing dice, you may add up to one reserved die as a kept die."
+        }
+
+        MASTERY_ABILITY ^"Logical Conclusion" {
+            "Once per game session when making a non-Scholar skill check, instead of rolling skill dice equal to your ranks in the skill used, you may roll skill dice equal to one of your Scholar skills of your choice."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "ceremonial clothes",
             "one weapon of rarity 6 or lower", "knife",
@@ -741,7 +752,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 ^"Buoyant Arrival" [shuji]
             }
             RANK 6 {
-                "Logical Conclusion (Mastery Ability): Once per game session when making a non-Scholar skill check, instead of rolling skill dice equal to your ranks in the skill used, you may roll skill dice equal to one of your Scholar skills of your choice."
+                ^"Logical Conclusion"
             }
         }
 
@@ -770,20 +781,21 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Culture", ^"Fitness", ^"Martial Arts [Ranged]", ^"Meditation", ^"Performance", ^"Smithing", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata: = Pelting Hail Style; Kata (choose one): Hawk's Precision, Striking as Fire"
-            ^"School Ability" STRING "Unity of Horse and Rider"
-            ^"Mastery Ability" STRING "Spirit of the Sacred Horse"
         }
 
-        ^"Unity of Horse and Rider" DEF {
-            # When you spend Void to seize the moment during a check
-            # using a bow, you may negate (st) symbols up to your school
-            # rank. If you succeed, gain bonus successes equal to the
-            # number of (st) negated. While riding your steed, all Martial
-            # Arts [Ranged] and Performance checks have unskilled
-            # assistance.
+
+        STARTING_TECHNIQUES {
+            KATA ^"Pelting Hail Style"
+            KATA CHOOSE 1 [^"Hawk's Precision", ^"Striking as Fire"]
         }
 
+        SCHOOL_ABILITY "Unity of Horse and Rider" {
+            "When you spend Void to seize the moment during a check using a bow, you may negate (st) symbols up to your school rank. If you succeed, gain bonus successes equal to the number of (st) negated. While riding your steed, all Martial Arts [Ranged] and Performance checks have unskilled assistance."
+        }
+
+        MASTERY_ABILITY ^"Spirit of the Sacred Horse" {
+            "Any steed you ride gains +4 endurance, +2 composure, +1 vigilance, and the Resplendent item quality. When you spend 1 or more Void points during a Martial Arts [Ranged] or Performance check, an item you have equipped gains the Sacred and Hewing item qualities, and you add kept dice set to (op) results equal to your Void ring."
+        }
         STARTING_OUTFIT [
             "lacquered armor", "ceremonial clothes",
             "daisho (katana or scimitar, wakizashi)", "Shinjo horsebow",
@@ -839,7 +851,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 ^"= Silencing Stroke" [ninjutsu]
             }
             RANK 6 {
-                "Spirit of the Sacred Horse (Mastery Ability): Any steed you ride gains +4 endurance, +2 composure, +1 vigilance, and the Resplendent item quality. When you spend 1 or more Void points during a Martial Arts [Ranged] or Performance check, an item you have equipped gains the Sacred and Hewing item qualities, and you add kept dice set to (op) results equal to your Void ring."
+                ^"Spirit of the Sacred Horse"
             }
         }
 
@@ -869,20 +881,21 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Meditation", ^"Sentiment", ^"Survival", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata: = Crescent Moon Style; Kata (choose one): Cautious Tread, Warrior's Resolve"
-            ^"School Ability" STRING "Warden of the Five Winds"
-            ^"Mastery Ability" STRING "Reputation Sentinel"
         }
 
-        ^"Warden of the Five Winds" DEF {
-            # When you make a check to perform the Guard action, you
-            # gain a bonus success if you or your target is mounted on a steed.
-            # When you succeed on a Guard action check, you may
-            # spend (op) as follows: (op)+: Give a target at range 0-3
-            # the Emboldened condition. Maximum (op) spent this way
-            # up to your school rank.
+
+        STARTING_TECHNIQUES {
+            KATA ^"Crescent Moon Style"
+            KATA CHOOSE 1 [^"Cautious Tread", ^"Warrior's Resolve"]
         }
 
+        SCHOOL_ABILITY "Warden of the Five Winds" {
+            "When you make a check to perform the Guard action, you gain a bonus success if you or your target is mounted on a steed. When you succeed on a Guard action check, you may spend (op) as follows: (op)+: Give a target at range 0-3 the Emboldened condition. Maximum (op) spent this way up to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Reputation Sentinel" {
+            "You may use the Guard action during intrigues. When you do, increase the TN of Scheme action checks against the guarded target by 1, plus an additional 1 per two bonus successes."
+        }
         STARTING_OUTFIT [
             "lacquered armor", "traveling clothes",
             "daisho (katana or scimitar, wakizashi)", "yari (spear)",
@@ -937,7 +950,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 ^"The Immovable Hand of Peace" [shuji]
             }
             RANK 6 {
-                "Reputation Sentinel (Mastery Ability): You may use the Guard action during intrigues. When you do, increase the TN of Scheme action checks against the guarded target by 1, plus an additional 1 per two bonus successes."
+                ^"Reputation Sentinel"
             }
         }
 
@@ -965,19 +978,21 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Ranged]", ^"Martial Arts [Unarmed]", ^"Medicine", ^"Performance", ^"Survival", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Shuji: Call to Ride; Rituals (choose one): = Protection of the Flock, = Wayfinder's Instincts"
-            ^"School Ability" STRING "Move as the Wind"
-            ^"Mastery Ability" STRING "Legendary Endurance"
         }
 
-        ^"Move as the Wind" DEF {
-            # When you make a Movement action check or check to
-            # travel at speed in narrative time, if you succeed, you may
-            # suffer up to 2 fatigue to add that many bonus successes.
-            # After you remove fatigue at end of scene, you may remove
-            # additional fatigue up to your school rank.
+
+        STARTING_TECHNIQUES {
+            SHUJI ^"Call to Ride"
+            RITUAL CHOOSE 1 [^"Protection of the Flock", ^"Wayfinder's Instincts"]
         }
 
+        SCHOOL_ABILITY "Move as the Wind" {
+            "When you make a Movement action check or check to travel at speed in narrative time, if you succeed, you may suffer up to 2 fatigue to add that many bonus successes. After you remove fatigue at end of scene, you may remove additional fatigue up to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Legendary Endurance" {
+            "Increase your endurance by your ranks in Survival. While riding a mount, increase the mount's endurance by your ranks in Survival."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "scimitar or yari (spear)",
             "Shinjo horsebow", "quiver of arrows", "knife",
@@ -1032,7 +1047,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 ^"= Silencing Stroke" [ninjutsu]
             }
             RANK 6 {
-                "Legendary Endurance (Mastery Ability): Increase your endurance by your ranks in Survival. While riding a mount, increase the mount's endurance by your ranks in Survival."
+                ^"Legendary Endurance"
             }
         }
 

@@ -529,20 +529,21 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Performance", ^"Smithing"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata (choose one): Striking as Air, Striking as Earth, Striking as Water, Striking as Fire; Shuji: Wanderer's Resolve"
-            ^"School Ability" STRING "Signature Weapon"
-            ^"Mastery Ability" STRING "Unseen Blade"
         }
 
-        ^"Signature Weapon" DEF {
-            # Choose a signature weapon category (or unarmed) with
-            # GM approval. When using a weapon from this category
-            # for an Attack action or Performance check, roll one
-            # additional skill die. Additionally, when making such a
-            # check you may suffer fatigue up to your school rank to
-            # alter that many results of your kept dice to (op) results.
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Striking as Air", ^"Striking as Earth", ^"Striking as Water", ^"Striking as Fire"]
+            SHUJI ^"Wanderer's Resolve"
         }
 
+        SCHOOL_ABILITY "Signature Weapon" {
+            "Choose a signature weapon category (or unarmed) with GM approval. When using a weapon from this category for an Attack action or Performance check, roll one additional skill die. Additionally, when making such a check you may suffer fatigue up to your school rank to alter that many results of your kept dice to (op) results."
+        }
+
+        MASTERY_ABILITY ^"Unseen Blade" {
+            "When you perform an Attack action, you may spend (op)+ as follows: Choose a character in range of the weapon you used with vigilance lower than your original target. If you succeed, that character suffers physical damage equal to your weapon's base damage plus your ranks in Fitness."
+        }
         STARTING_OUTFIT [
             "traveling clothes",
             "any one weapon of your signature weapon category of rarity 8 or lower (with GM approval)",
@@ -596,7 +597,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Roar of Encouragement" [shuji]
             }
             RANK 6 {
-                "Unseen Blade (Mastery Ability): When you perform an Attack action, you may spend (op)+ as follows: Choose a character in range of the weapon you used with vigilance lower than your original target. If you succeed, that character suffers physical damage equal to your weapon's base damage plus your ranks in Fitness."
+                ^"Unseen Blade"
             }
         }
 
@@ -624,18 +625,21 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Meditation", ^"Sentiment", ^"Skulduggery", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 30
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata (choose one): Soaring Slice or Hawk's Precision; Ninjutsu: = Skulk"
-            ^"School Ability" STRING "Piercing Insight"
-            ^"Mastery Ability" STRING "Lesson of the Hawk"
         }
 
-        ^"Piercing Insight" DEF {
-            # Once per round, in a skirmish, when you inflict a
-            # critical strike on a character at range 2-5 or a character
-            # at range 2-5 inflicts a critical strike on you, you may
-            # increase or decrease the severity by your school rank.
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Soaring Slice or Hawk's Precision"]
+            NINJUTSU ^"Skulk"
         }
 
+        SCHOOL_ABILITY "Piercing Insight" {
+            "Once per round, in a skirmish, when you inflict a critical strike on a character at range 2-5 or a character at range 2-5 inflicts a critical strike on you, you may increase or decrease the severity by your school rank."
+        }
+
+        MASTERY_ABILITY ^"Lesson of the Hawk" {
+            "Once per scene, when performing an Attack action check, you may spend 1 Void Point to have your target treat their physical resistance as 0."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "any one weapon of rarity 6 or lower",
             "yumi (bow) and a quiver of arrows with three special arrows (one armor-piercing, one flesh-cutter, one humming-bulb) or yari (spear)",
@@ -689,7 +693,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Watch My Back" [shuji]
             }
             RANK 6 {
-                "Lesson of the Hawk (Mastery Ability): Once per scene, when performing an Attack action check, you may spend 1 Void Point to have your target treat their physical resistance as 0."
+                ^"Lesson of the Hawk"
             }
         }
 
@@ -716,17 +720,21 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Commerce", ^"Courtesy", ^"Fitness", ^"Games", ^"Martial Arts [Melee]", ^"Sentiment", ^"Skulduggery"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 27
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata: = Tactical Assessment; Shuji (choose one): All in Jest or Rustling of Leaves"
-            ^"School Ability" STRING "Risk and Reward"
-            ^"Mastery Ability" STRING "All Part of the Plan"
         }
 
-        ^"Risk and Reward" DEF {
-            # You have an uncanny sense for dangerous situations.
-            # Your vigilance and focus are increased by your school
-            # rank, unless you are Compromised.
+
+        STARTING_TECHNIQUES {
+            KATA ^"Tactical Assessment"
+            SHUJI CHOOSE 1 [^"All in Jest or Rustling of Leaves"]
         }
 
+        SCHOOL_ABILITY "Risk and Reward" {
+            "You have an uncanny sense for dangerous situations. Your vigilance and focus are increased by your school rank, unless you are Compromised."
+        }
+
+        MASTERY_ABILITY ^"All Part of the Plan" {
+            "Once per scene when you make a check to resist, you may spend 1 Void Point to automatically succeed. If you do, you may immediately perform an action."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "any one weapon of rarity 6 or lower",
             "katana", "any one item of rarity 3 or lower",
@@ -780,7 +788,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Roar of Encouragement" [shuji]
             }
             RANK 6 {
-                "All Part of the Plan (Mastery Ability): Once per scene when you make a check to resist, you may spend 1 Void Point to automatically succeed. If you do, you may immediately perform an action."
+                ^"All Part of the Plan"
             }
         }
 
@@ -807,16 +815,22 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Performance", ^"Sentiment", ^"Skulduggery", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 26
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Shuji (choose one): Honest Assessment or Whispers of Court; Ninjutsu: = Skulk, = Deadly Sting"
-            ^"School Ability" STRING "Tactical Cover"
-            ^"Mastery Ability" STRING "Crack Not a Single Twig"
         }
 
-        ^"Tactical Cover" DEF {
-            # While you are in Obscuring terrain, you may treat
-            # your physical resistance as increased by your school rank.
+
+        STARTING_TECHNIQUES {
+            SHUJI CHOOSE 1 [^"Honest Assessment or Whispers of Court"]
+            NINJUTSU ^"Skulk"
+            NINJUTSU ^"Deadly Sting"
         }
 
+        SCHOOL_ABILITY "Tactical Cover" {
+            "While you are in Obscuring terrain, you may treat your physical resistance as increased by your school rank."
+        }
+
+        MASTERY_ABILITY ^"Crack Not a Single Twig" {
+            "At the start of a scene, you may choose any number of mundane terrain effects. You ignore the effects of these terrain qualities. (Other characters do not ignore them when making checks against you.) This effect persists until the end of the scene."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "any one weapon of rarity 6 or lower",
             "3 shuriken", "katana",
@@ -871,7 +885,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Silencing Stroke" [ninjutsu]
             }
             RANK 6 {
-                "Crack Not a Single Twig (Mastery Ability): At the start of a scene, you may choose any number of mundane terrain effects. You ignore the effects of these terrain qualities. (Other characters do not ignore them when making checks against you.) This effect persists until the end of the scene."
+                ^"Crack Not a Single Twig"
             }
         }
 
@@ -895,20 +909,21 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 3 [^"Composition", ^"Courtesy", ^"Games", ^"Meditation", ^"Sentiment", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Invocations (choose one): Commune with Spirits or Divination; Shuji (choose two): Well of Desire, Weight of Duty, Rustling of Leaves, Sensational Distraction"
-            ^"School Ability" STRING "Naturally Attuned"
-            ^"Mastery Ability" STRING "Elemental Charmer"
         }
 
-        ^"Naturally Attuned" DEF {
-            # As a downtime activity, you may select any number
-            # of invocations with total school rank prerequisites
-            # equal to double your school rank. You can perform
-            # these invocations as if you knew them.
-            # While making a check to activate an invocation, if you
-            # become Compromised, you suffer spiritual backlash.
+
+        STARTING_TECHNIQUES {
+            INVOCATION CHOOSE 1 [^"Commune with Spirits or Divination"]
+            SHUJI CHOOSE 2 [^"Well of Desire", ^"Weight of Duty", ^"Rustling of Leaves", ^"Sensational Distraction"]
         }
 
+        SCHOOL_ABILITY "Naturally Attuned" {
+            "As a downtime activity, you may select any number of invocations with total school rank prerequisites equal to double your school rank. You can perform these invocations as if you knew them. While making a check to activate an invocation, if you become Compromised, you suffer spiritual backlash."
+        }
+
+        MASTERY_ABILITY ^"Elemental Charmer" {
+            "You may importune invocations without making an offering."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "one weapon of rarity 6 or lower",
             "one choice of kit", "a knife",
@@ -962,7 +977,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Ever-Changing Waves" [invocation]
             }
             RANK 6 {
-                "Elemental Charmer (Mastery Ability): You may importune invocations without making an offering."
+                ^"Elemental Charmer"
             }
         }
 
@@ -990,17 +1005,21 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Aesthetics", ^"Courtesy", ^"Commerce", ^"Composition", ^"Culture", ^"Design", ^"Smithing"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 30
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Shuji (choose one): Shallow Waters or Whispers of Court; Shuji: Fanning the Flames"
-            ^"School Ability" STRING "Resourceful Artistry"
-            ^"Mastery Ability" STRING "Surge of Brilliance"
         }
 
-        ^"Resourceful Artistry" DEF {
-            # Once per game session when performing a downtime
-            # activity to craft, you may scavenge supplies for your
-            # craft worth an amount of koku equal to your school rank.
+
+        STARTING_TECHNIQUES {
+            SHUJI CHOOSE 1 [^"Shallow Waters or Whispers of Court"]
+            SHUJI ^"Fanning the Flames"
         }
 
+        SCHOOL_ABILITY "Resourceful Artistry" {
+            "Once per game session when performing a downtime activity to craft, you may scavenge supplies for your craft worth an amount of koku equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Surge of Brilliance" {
+            "When you craft an item, you may increase or decrease its rarity by up to your ranks in the skill you used to craft it. Once per game session when you make a check to create, refine, adapt, restore, or attune to an item, the check takes an action rather than a downtime activity."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "one weapon of rarity 6 or lower",
             "one piece of art that is half finished",
@@ -1055,7 +1074,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Rouse the Soul" [shuji]
             }
             RANK 6 {
-                "Surge of Brilliance (Mastery Ability): When you craft an item, you may increase or decrease its rarity by up to your ranks in the skill you used to craft it. Once per game session when you make a check to create, refine, adapt, restore, or attune to an item, the check takes an action rather than a downtime activity."
+                ^"Surge of Brilliance"
             }
         }
 
@@ -1081,22 +1100,23 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 4 [^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Performance", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kiho (choose one): Ki Protection or The Great Silence; Shuji (choose one): Honest Assessment or Stirring the Embers; Rituals: Cleansing Rite; Shuji: Artisan's Appraisal"
-            ^"School Ability" STRING "Unexpected Wisdom"
-            ^"Mastery Ability" STRING "Stories as Tall as the Mountain"
         }
 
-        ^"Unexpected Wisdom" DEF {
-            # You may dispense wisdom a number of times per game
-            # session equal to your school rank. On your turn or at any
-            # appropriate time during a narrative scene, you may give a
-            # small bit of wisdom to a character who can hear you and
-            # has not benefitted from this ability this scene. The next
-            # time that character employs that wisdom they may reduce
-            # the TN of that check by 1 and may negate a number of
-            # strife up to your ranks in Sentiment or Theology.
+
+        STARTING_TECHNIQUES {
+            KIHO CHOOSE 1 [^"Ki Protection or The Great Silence"]
+            SHUJI CHOOSE 1 [^"Honest Assessment or Stirring the Embers"]
+            RITUAL ^"Cleansing Rite"
+            SHUJI ^"Artisan's Appraisal"
         }
 
+        SCHOOL_ABILITY "Unexpected Wisdom" {
+            "You may dispense wisdom a number of times per game session equal to your school rank. On your turn or at any appropriate time during a narrative scene, you may give a small bit of wisdom to a character who can hear you and has not benefitted from this ability this scene. The next time that character employs that wisdom they may reduce the TN of that check by 1 and may negate a number of strife up to your ranks in Sentiment or Theology."
+        }
+
+        MASTERY_ABILITY ^"Stories as Tall as the Mountain" {
+            "Once per scene as a Scheme action you may make a TN 4 Performance (Air or Earth) check targeting a number of minion NPCs up to your ranks in Performance. If you succeed, each target decides that their actions really are unwise and leaves the scene, if able."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "one weapon of rarity 6 or lower",
             "one item of rarity 4 or lower",
@@ -1151,7 +1171,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Bend with the Storm" [shuji]
             }
             RANK 6 {
-                "Stories as Tall as the Mountain (Mastery Ability): Once per scene as a Scheme action you may make a TN 4 Performance (Air or Earth) check targeting a number of minion NPCs up to your ranks in Performance. If you succeed, each target decides that their actions really are unwise and leaves the scene, if able."
+                ^"Stories as Tall as the Mountain"
             }
         }
 
@@ -1181,21 +1201,22 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 3 [^"Command", ^"Games", ^"Meditation", ^"Performance", ^"Sentiment", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Earth and Water Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Invocations (choose two): Commune with Spirits, Embrace of Kenro-Ji-Jin, Caress of Earth, Jurojin's Balm, Wall of Earth; Invocations (choose two): Dance of Seasons, Heart of the Water Dragon, Dominion of Suijin, Innari's Blessing, Reflections of P'an Ku; Shuji: Ancestry Unearthed"
-            ^"School Ability" STRING "Seer of the Lords of Death"
-            ^"Mastery Ability" STRING "A Gift of Fate"
         }
 
-        ^"Seer of the Lords of Death" DEF {
-            # You can channel rituals in the same way as invocations.
-            # Once per scene, when you channel you may receive
-            # fatigue up to your school rank. If you do, you may
-            # immediately make another check to perform an invocation
-            # of the same element using the reserved dice from your
-            # channel. For each fatigue received this way, you may add
-            # one kept die set to an (op) result.
+
+        STARTING_TECHNIQUES {
+            INVOCATION CHOOSE 2 [^"Commune with Spirits", ^"Embrace of Kenro-Ji-Jin", ^"Caress of Earth", ^"Jurojin's Balm", ^"Wall of Earth"]
+            INVOCATION CHOOSE 2 [^"Dance of Seasons", ^"Heart of the Water Dragon", ^"Dominion of Suijin", ^"Innari's Blessing", ^"Reflections of P'an Ku"]
+            SHUJI ^"Ancestry Unearthed"
         }
 
+        SCHOOL_ABILITY "Seer of the Lords of Death" {
+            "You can channel rituals in the same way as invocations. Once per scene, when you channel you may receive fatigue up to your school rank. If you do, you may immediately make another check to perform an invocation of the same element using the reserved dice from your channel. For each fatigue received this way, you may add one kept die set to an (op) result."
+        }
+
+        MASTERY_ABILITY ^"A Gift of Fate" {
+            "Once per game session on your turn, you may choose one ritual for which you meet the prerequisites (does not need to be purchased). You may immediately perform that ritual as a single action instead of a downtime activity."
+        }
         STARTING_OUTFIT [
             "sanctified robes", "traveling clothes",
             "one weapon of rarity 6 or lower",
@@ -1250,7 +1271,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Bond of Heroes" [shuji]
             }
             RANK 6 {
-                "A Gift of Fate (Mastery Ability): Once per game session on your turn, you may choose one ritual for which you meet the prerequisites (does not need to be purchased). You may immediately perform that ritual as a single action instead of a downtime activity."
+                ^"A Gift of Fate"
             }
         }
 
@@ -1278,19 +1299,21 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Tactics", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Close Combat and General Kata (kata)", "Rituals (ritual)", "Earth Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata: Crescent Moon Style; Shuji: Courtier's Resolve"
-            ^"School Ability" STRING "Akilah's Teachings"
-            ^"Mastery Ability" STRING "Fortitude of the Cradle"
         }
 
-        ^"Akilah's Teachings" DEF {
-            # Once per round after an Attack action check against
-            # you fails, if you have a shield readied and the attack
-            # is at range 0-1, you may shield bash. If you do, the
-            # target suffers physical damage equal to your ranks in
-            # Fitness plus your school rank.
+
+        STARTING_TECHNIQUES {
+            KATA ^"Crescent Moon Style"
+            SHUJI ^"Courtier's Resolve"
         }
 
+        SCHOOL_ABILITY "Akilah's Teachings" {
+            "Once per round after an Attack action check against you fails, if you have a shield readied and the attack is at range 0-1, you may shield bash. If you do, the target suffers physical damage equal to your ranks in Fitness plus your school rank."
+        }
+
+        MASTERY_ABILITY ^"Fortitude of the Cradle" {
+            "You may shield bash after you defend against damage, even if the check was successful. After you shield bash, your target must resist with a TN 4 Fitness (Air 3, Water 5) check or suffer the Disoriented and Prone conditions."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "lacquered armor",
             "yari (spear) or naginata (polearm)",
@@ -1346,7 +1369,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Bond of Heroes" [shuji]
             }
             RANK 6 {
-                "Fortitude of the Cradle (Mastery Ability): You may shield bash after you defend against damage, even if the check was successful. After you shield bash, your target must resist with a TN 4 Fitness (Air 3, Water 5) check or suffer the Disoriented and Prone conditions."
+                ^"Fortitude of the Cradle"
             }
         }
 
@@ -1374,17 +1397,23 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Culture", ^"Martial Arts [Ranged]", ^"Medicine", ^"Meditation", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 52
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Rituals: Balancing Salve, Cleansing Rite; Shuji: Illuminate the Way, Truth Burns Through Lies"
-            ^"School Ability" STRING "Creative Execution"
-            ^"Mastery Ability" STRING "Swift Creation"
         }
 
-        ^"Creative Execution" DEF {
-            # When making a check to perform a ritual, you may
-            # receive fatigue up to your school rank to add that many
-            # kept (ring) set to (op) results.
+
+        STARTING_TECHNIQUES {
+            RITUAL ^"Balancing Salve"
+            RITUAL ^"Cleansing Rite"
+            SHUJI ^"Illuminate the Way"
+            SHUJI ^"Truth Burns Through Lies"
         }
 
+        SCHOOL_ABILITY "Creative Execution" {
+            "When making a check to perform a ritual, you may receive fatigue up to your school rank to add that many kept (ring) set to (op) results."
+        }
+
+        MASTERY_ABILITY ^"Swift Creation" {
+            "Once per scene you may perform a ritual that uses the Medicine skill as an action as if it were a downtime activity."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "one weapon of rarity 6 or lower",
             "an alchemy kit", "a book of formulae",
@@ -1439,7 +1468,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Void Embrace Style" [kata]
             }
             RANK 6 {
-                "Swift Creation (Mastery Ability): Once per scene you may perform a ritual that uses the Medicine skill as an action as if it were a downtime activity."
+                ^"Swift Creation"
             }
         }
 
@@ -1467,22 +1496,21 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Composition", ^"Command", ^"Courtesy", ^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata (kata)", "Kiho (kiho)", "Rituals (ritual)"]
-            ^"Starting Techniques" STRING "Kiho (choose two): Cleansing Spirit, Earth Needs No Eyes, Earthen Fist; Rituals: Threshold Barrier"
-            ^"School Ability" STRING "Gift of Inner Power"
-            ^"Mastery Ability" STRING "Divine Protection"
         }
 
-        ^"Gift of Inner Power" DEF {
-            # After you perform a check to activate one of your kiho,
-            # you can receive fatigue up to your school rank and choose
-            # another character at range 0-1. If you do, that character
-            # gains the enhancement effect of your kiho in your stead
-            # (you may still resolve the burst effect, if able). This effect
-            # persists a number of rounds equal to the amount of fatigue
-            # you received plus your ranks in Meditation. Only one
-            # character can benefit from your kiho at a time.
+
+        STARTING_TECHNIQUES {
+            KIHO CHOOSE 2 [^"Cleansing Spirit", ^"Earth Needs No Eyes", ^"Earthen Fist"]
+            RITUAL ^"Threshold Barrier"
         }
 
+        SCHOOL_ABILITY "Gift of Inner Power" {
+            "After you perform a check to activate one of your kiho, you can receive fatigue up to your school rank and choose another character at range 0-1. If you do, that character gains the enhancement effect of your kiho in your stead (you may still resolve the burst effect, if able). This effect persists a number of rounds equal to the amount of fatigue you received plus your ranks in Meditation. Only one character can benefit from your kiho at a time."
+        }
+
+        MASTERY_ABILITY ^"Divine Protection" {
+            "You can perform the Threshold Barrier ritual as an action. When a Tainted being enters an area you have warded against it with this ritual, it suffers supernatural damage equal to your ranks in Meditation and the Prone condition."
+        }
         STARTING_OUTFIT [
             "sanctified robes", "traveling clothes", "a talwar",
             "one weapon of rarity 6 or lower",
@@ -1537,7 +1565,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Buoyant Arrival" [kata]
             }
             RANK 6 {
-                "Divine Protection (Mastery Ability): You can perform the Threshold Barrier ritual as an action. When a Tainted being enters an area you have warded against it with this ritual, it suffers supernatural damage equal to your ranks in Meditation and the Prone condition."
+                ^"Divine Protection"
             }
         }
 
@@ -1565,18 +1593,21 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Culture", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Medicine", ^"Performance", ^"Seafaring"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata (choose one): Hawk's Precision or Warrior's Resolve; Shuji (choose one): Stirring the Embers or Honest Assessment"
-            ^"School Ability" STRING "Flurry of Steel"
-            ^"Mastery Ability" STRING "Tower of Ivory"
         }
 
-        ^"Flurry of Steel" DEF {
-            # Once per scene when performing an Attack action, you
-            # may choose a number of additional enemies up to your
-            # school rank in range of your weapon as targets for that
-            # Attack action.
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Hawk's Precision or Warrior's Resolve"]
+            SHUJI CHOOSE 1 [^"Stirring the Embers or Honest Assessment"]
         }
 
+        SCHOOL_ABILITY "Flurry of Steel" {
+            "Once per scene when performing an Attack action, you may choose a number of additional enemies up to your school rank in range of your weapon as targets for that Attack action."
+        }
+
+        MASTERY_ABILITY ^"Tower of Ivory" {
+            "After you defend against damage, increase your physical resistance by 1. This effect can stack a number of times equal to your ranks in Meditation and persists until the end of the scene."
+        }
         STARTING_OUTFIT [
             "lacquered armor", "traveling clothes",
             "a urumi", "one weapon of rarity 6 or lower",
@@ -1631,7 +1662,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"The Immovable Hand of Peace" [shuji]
             }
             RANK 6 {
-                "Tower of Ivory (Mastery Ability): After you defend against damage, increase your physical resistance by 1. This effect can stack a number of times equal to your ranks in Meditation and persists until the end of the scene."
+                ^"Tower of Ivory"
             }
         }
 

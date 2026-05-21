@@ -91,18 +91,21 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Courtesy", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Tactics", ^"Sentiment", ^"Skulduggery"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata (choose one): Striking as Air or Striking as Fire; Shuji: Assess Strengths"
-            ^"School Ability" STRING "Way of the Scorpion"
-            ^"Mastery Ability" STRING "Strike First, Strike Last"
         }
 
-        ^"Way of the Scorpion" DEF {
-            # When you exploit a target's disadvantage as part of
-            # an Initiative check for a duel or an Attack action, you
-            # do not need to spend a Void point, and you may reroll
-            # additional dice up to your school rank.
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Striking as Air or Striking as Fire"]
+            SHUJI ^"Assess Strengths"
         }
 
+        SCHOOL_ABILITY "Way of the Scorpion" {
+            "When you exploit a target's disadvantage as part of an Initiative check for a duel or an Attack action, you do not need to spend a Void point, and you may reroll additional dice up to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Strike First, Strike Last" {
+            "When you inflict a critical strike during a duel or skirmish, treat the deadliness of your weapon as increased by the difference between your initiative and your target's initiative (subtracting the lower from the higher)."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "ashigaru armor",
             "daisho", "knife",
@@ -157,7 +160,7 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
                 ^"Hidden in Smoke" [shuji]
             }
             RANK 6 {
-                "Strike First, Strike Last (Mastery Ability): When you inflict a critical strike during a duel or skirmish, treat the deadliness of your weapon as increased by the difference between your initiative and your target's initiative (subtracting the lower from the higher)."
+                ^"Strike First, Strike Last"
             }
         }
 
@@ -188,18 +191,22 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Courtesy", ^"Culture", ^"Government", ^"Performance", ^"Sentiment", ^"Skulduggery"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Shuji: Ancestry Unearthed; Ninjutsu (choose one): Like a Ghost or Skulk; Kata (choose one): Striking as Air or Striking as Earth"
-            ^"School Ability" STRING "Incisive Insight"
-            ^"Mastery Ability" STRING "Spy Network"
         }
 
-        ^"Incisive Insight" DEF {
-            # Once per scene, when making a check for a Scheme
-            # action targeting another character, you may receive a
-            # number of strife up to your school rank to reduce the
-            # TN by that amount (to a minimum of 1).
+
+        STARTING_TECHNIQUES {
+            SHUJI ^"Ancestry Unearthed"
+            NINJUTSU CHOOSE 1 [^"Like a Ghost or Skulk"]
+            KATA CHOOSE 1 [^"Striking as Air or Striking as Earth"]
         }
 
+        SCHOOL_ABILITY "Incisive Insight" {
+            "Once per scene, when making a check for a Scheme action targeting another character, you may receive a number of strife up to your school rank to reduce the TN by that amount (to a minimum of 1)."
+        }
+
+        MASTERY_ABILITY ^"Spy Network" {
+            "As a downtime activity in any place of human habitation, you may make a TN 4 Skulduggery check to find an agent of the Daidoji spy network. If you succeed, you find this individual among the inhabitants and gain the Ally advantage for them. If you succeed with 2 or more bonus successes, the individual may occupy a low-to-mid-level position in a household or organization of your choosing."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "ceremonial clothes",
             "wakizashi", "sokutoki",
@@ -253,7 +260,7 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
                 ^"Bend with the Storm" [shuji]
             }
             RANK 6 {
-                "Spy Network (Mastery Ability): As a downtime activity in any place of human habitation, you may make a TN 4 Skulduggery check to find an agent of the Daidoji spy network. If you succeed, you find this individual among the inhabitants and gain the Ally advantage for them. If you succeed with 2 or more bonus successes, the individual may occupy a low-to-mid-level position in a household or organization of your choosing."
+                ^"Spy Network"
             }
         }
 
@@ -284,17 +291,21 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Composition", ^"Courtesy", ^"Culture", ^"Games", ^"Government", ^"Meditation"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 55
             ^"Techniques Available" LIST ["Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Shuji: Courtier's Resolve, Stonewall Tactics"
-            ^"School Ability" STRING "Procedure and Protocol"
-            ^"Mastery Ability" STRING "Post Facto"
         }
 
-        ^"Procedure and Protocol" DEF {
-            # When you cause a character to receive strife as a
-            # result of a check using a social approach, that character
-            # suffers additional strife equal to your school rank.
+
+        STARTING_TECHNIQUES {
+            SHUJI ^"Courtier's Resolve"
+            SHUJI ^"Stonewall Tactics"
         }
 
+        SCHOOL_ABILITY "Procedure and Protocol" {
+            "When you cause a character to receive strife as a result of a check using a social approach, that character suffers additional strife equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Post Facto" {
+            "Once per game session as a Scheme and Support action, you may make a TN 3 Government (Earth) check. If you succeed, you reveal a huge legal loophole or arcane precedent that legally justifies the actions of you and your allies during the scene. Others can refuse to accept your logic, but must forfeit honor equal to your ranks in Government plus your bonus successes to do so."
+        }
         STARTING_OUTFIT [
             "ceremonial clothing", "wakizashi",
             "legal primer", "blank forms",
@@ -349,7 +360,7 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
                 ^"Formal Tea Ceremony" [ritual]
             }
             RANK 6 {
-                "Post Facto (Mastery Ability): Once per game session as a Scheme and Support action, you may make a TN 3 Government (Earth) check. If you succeed, you reveal a huge legal loophole or arcane precedent that legally justifies the actions of you and your allies during the scene. Others can refuse to accept your logic, but must forfeit honor equal to your ranks in Government plus your bonus successes to do so."
+                ^"Post Facto"
             }
         }
 
@@ -380,20 +391,22 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Culture", ^"Government", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Skulduggery", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Shuji: Whispers of Court; Ninjutsu: Skulk; Kata (choose one): Hawk's Precision or Warrior's Resolve"
-            ^"School Ability" STRING "Victory before Honor"
-            ^"Mastery Ability" STRING "Victory Is the Greatest Honor"
         }
 
-        ^"Victory before Honor" DEF {
-            # Once per scene when performing a check, you may
-            # stake an amount of honor no greater than your school
-            # rank to re-roll a number of dice equal to twice the
-            # amount of honor staked. For each re-rolled die result
-            # that does not contain a (su) or (ex), you forfeit one
-            # staked honor.
+
+        STARTING_TECHNIQUES {
+            SHUJI ^"Whispers of Court"
+            NINJUTSU ^"Skulk"
+            KATA CHOOSE 1 [^"Hawk's Precision or Warrior's Resolve"]
         }
 
+        SCHOOL_ABILITY "Victory before Honor" {
+            "Once per scene when performing a check, you may stake an amount of honor no greater than your school rank to re-roll a number of dice equal to twice the amount of honor staked. For each re-rolled die result that does not contain a (su) or (ex), you forfeit one staked honor."
+        }
+
+        MASTERY_ABILITY ^"Victory Is the Greatest Honor" {
+            "Once per session after failing a Martial or Social check, you may stake up to your school rank in honor to try again, adding bonus successes equal to the honor staked. If you fail, you forfeit all honor staked. If you succeed, you instead gain 1 honor and 1 glory."
+        }
         STARTING_OUTFIT [
             "ashigaru armor or ceremonial clothes",
             "daisho or wakizashi and kamayari", "yumi",
@@ -448,7 +461,7 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
                 ^"Pin the Fan" [kata]
             }
             RANK 6 {
-                "Victory Is the Greatest Honor (Mastery Ability): Once per session after failing a Martial or Social check, you may stake up to your school rank in honor to try again, adding bonus successes equal to the honor staked. If you fail, you forfeit all honor staked. If you succeed, you instead gain 1 honor and 1 glory."
+                ^"Victory Is the Greatest Honor"
             }
         }
 
@@ -480,20 +493,21 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Martial Arts [Unarmed]", ^"Medicine", ^"Skulduggery", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 20
             ^"Techniques Available" LIST ["Kata (kata)", "Ninjutsu (ninjutsu)", "Rituals (ritual)"]
-            ^"Starting Techniques" STRING "Ninjutsu: Skulk; Shuji (choose one): Cadence or Shallow Waters"
-            ^"School Ability" STRING "Disciple of Darkness"
-            ^"Mastery Ability" STRING "One with the Shadows"
         }
 
-        ^"Disciple of Darkness" DEF {
-            # When you perform a check to hide, move stealthily,
-            # or deceive others as to your true identity, you may
-            # suffer a number of strife up to your school rank to
-            # choose that many characters targeted by the check.
-            # Treat each chosen character's vigilance as 1 lower
-            # while resolving the check.
+
+        STARTING_TECHNIQUES {
+            NINJUTSU ^"Skulk"
+            SHUJI CHOOSE 1 [^"Cadence or Shallow Waters"]
         }
 
+        SCHOOL_ABILITY "Disciple of Darkness" {
+            "When you perform a check to hide, move stealthily, or deceive others as to your true identity, you may suffer a number of strife up to your school rank to choose that many characters targeted by the check. Treat each chosen character's vigilance as 1 lower while resolving the check."
+        }
+
+        MASTERY_ABILITY ^"One with the Shadows" {
+            "When you perform a Ninjutsu technique, you may add two kept (ring) set to an (op) result to your check. You may do this 3 times per session."
+        }
         STARTING_OUTFIT [
             "kusarifundo or tekken", "kama or ninjato",
             "3 shuriken or blowgun", "stealth clothing",
@@ -548,7 +562,7 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
                 ^"Striking as Void" [kata]
             }
             RANK 6 {
-                "One with the Shadows (Mastery Ability): When you perform a Ninjutsu technique, you may add two kept (ring) set to an (op) result to your check. You may do this 3 times per session."
+                ^"One with the Shadows"
             }
         }
 
@@ -578,18 +592,21 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Aesthetics", ^"Composition", ^"Courtesy", ^"Culture", ^"Design", ^"Performance", ^"Smithing"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Ritual: Tea Ceremony; Shuji (choose two): Assess Strengths, Courtier's Resolve, or Fun and Games"
-            ^"School Ability" STRING "Architect of Tranquility"
-            ^"Mastery Ability" STRING "Sudden Clarity"
         }
 
-        ^"Architect of Tranquility" DEF {
-            # Once per scene after you succeed at an Artisan skill
-            # check, you may choose a number of characters in the
-            # scene equal to your school rank. Each chosen character
-            # removes 3 strife.
+
+        STARTING_TECHNIQUES {
+            RITUAL ^"Tea Ceremony"
+            SHUJI CHOOSE 2 [^"Assess Strengths", ^"Courtier's Resolve", ^"or Fun and Games"]
         }
 
+        SCHOOL_ABILITY "Architect of Tranquility" {
+            "Once per scene after you succeed at an Artisan skill check, you may choose a number of characters in the scene equal to your school rank. Each chosen character removes 3 strife."
+        }
+
+        MASTERY_ABILITY ^"Sudden Clarity" {
+            "When you use your school ability, you may remove one or more of the following conditions from each chosen character: Dazed, Disoriented, Enraged, Exhausted, Intoxicated. Additionally, each chosen character removes 3 fatigue."
+        }
         STARTING_OUTFIT [
             "ceremonial clothes", "common clothes",
             "traveling clothes", "wakizashi",
@@ -643,7 +660,7 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
                 ^"Buoyant Arrival" [shuji]
             }
             RANK 6 {
-                "Sudden Clarity (Mastery Ability): When you use your school ability, you may remove one or more of the following conditions from each chosen character: Dazed, Disoriented, Enraged, Exhausted, Intoxicated. Additionally, each chosen character removes 3 fatigue."
+                ^"Sudden Clarity"
             }
         }
 
@@ -674,18 +691,22 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 3 [^"Composition", ^"Courtesy", ^"Culture", ^"Meditation", ^"Sentiment", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Air and Water Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Ritual: The Ties that Bind; Invocation: Yari of Air; Invocation (choose two): Blessed Wind, Path to Inner Peace, Sympathetic Energies, or Tempest of Air"
-            ^"School Ability" STRING "Gift of Musubi-no-Kami"
-            ^"Mastery Ability" STRING "Curse of Musubi-no-Kami"
         }
 
-        ^"Gift of Musubi-no-Kami" DEF {
-            # You may perform The Ties that Bind ritual as an action,
-            # instead of as a downtime activity. When you make a check
-            # to perform this ritual, you may add kept (ring) set to (op)
-            # results equal to your school rank.
+
+        STARTING_TECHNIQUES {
+            RITUAL ^"The Ties that Bind"
+            INVOCATION ^"Yari of Air"
+            INVOCATION CHOOSE 2 [^"Blessed Wind", ^"Path to Inner Peace", ^"Sympathetic Energies", ^"or Tempest of Air"]
         }
 
+        SCHOOL_ABILITY "Gift of Musubi-no-Kami" {
+            "You may perform The Ties that Bind ritual as an action, instead of as a downtime activity. When you make a check to perform this ritual, you may add kept (ring) set to (op) results equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Curse of Musubi-no-Kami" {
+            "Once per scene, after successfully performing The Ties that Bind ritual, you may spend 1 Void point to catch a glimpse of all major future consequences of the identified relationship. You also learn of one other relationship between your target and another character that will guarantee the predicted consequences will not come to pass."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "ceremonial clothes",
             "wakizashi", "tea set"
@@ -738,7 +759,7 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
                 ^"Formal Tea Ceremony" [ritual]
             }
             RANK 6 {
-                "Curse of Musubi-no-Kami (Mastery Ability): Once per scene, after successfully performing The Ties that Bind ritual, you may spend 1 Void point to catch a glimpse of all major future consequences of the identified relationship. You also learn of one other relationship between your target and another character that will guarantee the predicted consequences will not come to pass."
+                ^"Curse of Musubi-no-Kami"
             }
         }
 
@@ -771,18 +792,21 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Martial Arts [Melee]", ^"Meditation", ^"Skulduggery", ^"Survival", ^"Fitness", ^"Sentiment", ^"Courtesy"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata: Trip the Leg; Kata (choose one): Striking as Air or Striking as Fire"
-            ^"School Ability" STRING "Typhoon in the Bamboo Grove"
-            ^"Mastery Ability" STRING "The Lowest Bow"
         }
 
-        ^"Typhoon in the Bamboo Grove" DEF {
-            # When making a Martial Arts [Melee] or Fitness check,
-            # you may spend (op)(op) to cause a number of characters
-            # no greater than your school rank and within range of
-            # your readied weapon to suffer the Dazed condition.
+
+        STARTING_TECHNIQUES {
+            KATA ^"Trip the Leg"
+            KATA CHOOSE 1 [^"Striking as Air or Striking as Fire"]
         }
 
+        SCHOOL_ABILITY "Typhoon in the Bamboo Grove" {
+            "When making a Martial Arts [Melee] or Fitness check, you may spend (op)(op) to cause a number of characters no greater than your school rank and within range of your readied weapon to suffer the Dazed condition."
+        }
+
+        MASTERY_ABILITY ^"The Lowest Bow" {
+            "When performing an Attack action using Martial Arts [Melee], you may spend (op) as follows: (op)+: Choose one character other than your target at range 2 with vigilance lower than or equal to (op) spent this way. That character suffers a critical strike with severity equal to your weapon's deadliness plus your ranks in Martial Arts [Melee]."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "stealth clothing or ashigaru armor",
             "yari or kamayari", "wakizashi",
@@ -836,7 +860,7 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
                 ^"The Ties that Bind" [ritual]
             }
             RANK 6 {
-                "The Lowest Bow (Mastery Ability): When performing an Attack action using Martial Arts [Melee], you may spend (op) as follows: (op)+: Choose one character other than your target at range 2 with vigilance lower than or equal to (op) spent this way. That character suffers a critical strike with severity equal to your weapon's deadliness plus your ranks in Martial Arts [Melee]."
+                ^"The Lowest Bow"
             }
         }
 
@@ -868,20 +892,22 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 4 [^"Culture", ^"Fitness", ^"Labor", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Performance"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Ritual: Divination; Kiho (choose one): Cleansing Spirit or Ki Protection; Shuji (choose one): Honest Assessment or Truth Burns Through Lies"
-            ^"School Ability" STRING "A Grain of Truth"
-            ^"Mastery Ability" STRING "Echoes of Ancient Days"
         }
 
-        ^"A Grain of Truth" DEF {
-            # Once per scene after you succeed on a Social skill check,
-            # you may choose a kiho with a prerequisite up to your
-            # school rank (whether you know it or not). You gain the
-            # benefits of its Enhancement Effect as if you had
-            # successfully activated it. This effect persists until the
-            # end of the scene.
+
+        STARTING_TECHNIQUES {
+            RITUAL ^"Divination"
+            KIHO CHOOSE 1 [^"Cleansing Spirit or Ki Protection"]
+            SHUJI CHOOSE 1 [^"Honest Assessment or Truth Burns Through Lies"]
         }
 
+        SCHOOL_ABILITY "A Grain of Truth" {
+            "Once per scene after you succeed on a Social skill check, you may choose a kiho with a prerequisite up to your school rank (whether you know it or not). You gain the benefits of its Enhancement Effect as if you had successfully activated it. This effect persists until the end of the scene."
+        }
+
+        MASTERY_ABILITY ^"Echoes of Ancient Days" {
+            "When you use your school ability, you may choose a number of characters up to your ranks in Performance who can hear you. Each chosen character also gains the benefits of the kiho's enhancement effect as long as it persists on you."
+        }
         STARTING_OUTFIT [
             "traveling clothes", "bo",
             "knife", "traveling pack"
@@ -934,7 +960,7 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
                 ^"The Immovable Hand of Peace" [shuji]
             }
             RANK 6 {
-                "Echoes of Ancient Days (Mastery Ability): When you use your school ability, you may choose a number of characters up to your ranks in Performance who can hear you. Each chosen character also gains the benefits of the kiho's enhancement effect as long as it persists on you."
+                ^"Echoes of Ancient Days"
             }
         }
 
@@ -965,19 +991,21 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Tactics", ^"Commerce", ^"Courtesy", ^"Seafaring", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"Starting Techniques" STRING "Kata: Crescent Moon Style; Shuji (choose one): Honest Assessment or Well of Desire"
-            ^"School Ability" STRING "Claws of the Crab"
-            ^"Mastery Ability" STRING "The Standing Death"
         }
 
-        ^"Claws of the Crab" DEF {
-            # When you make a check to perform the Guard action,
-            # you may spend (op) as follows:
-            # (op)+: If you succeed, you may guard one additional
-            # character in range per (op) spent this way. Maximum (op)
-            # equal to your school rank.
+
+        STARTING_TECHNIQUES {
+            KATA ^"Crescent Moon Style"
+            SHUJI CHOOSE 1 [^"Honest Assessment or Well of Desire"]
         }
 
+        SCHOOL_ABILITY "Claws of the Crab" {
+            "When you make a check to perform the Guard action, you may spend (op) as follows: (op)+: If you succeed, you may guard one additional character in range per (op) spent this way. Maximum (op) equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"The Standing Death" {
+            "Once per game session, when you perform the Challenge action, you may choose up to 6 additional characters who can hear you as targets. These targets must have status lower than or equal to your original target's. If you succeed, each target must fight you in a clash one at a time in an order of their choosing (or flee the battle). Each clash lasts one round. After each clash, you regain fatigue equal to your Earth Ring. Until all clashes have concluded (or you have been killed), none of your targets can perform Attack or Scheme actions outside of their individual clashes."
+        }
         STARTING_OUTFIT [
             "crossbow or spear", "daisho",
             "pony or ashigaru armor", "traveling pack",
@@ -1031,7 +1059,7 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
                 ^"Striking as Void" [kata]
             }
             RANK 6 {
-                "The Standing Death (Mastery Ability): Once per game session, when you perform the Challenge action, you may choose up to 6 additional characters who can hear you as targets. These targets must have status lower than or equal to your original target's. If you succeed, each target must fight you in a clash one at a time in an order of their choosing (or flee the battle). Each clash lasts one round. After each clash, you regain fatigue equal to your Earth Ring. Until all clashes have concluded (or you have been killed), none of your targets can perform Attack or Scheme actions outside of their individual clashes."
+                ^"The Standing Death"
             }
         }
 
