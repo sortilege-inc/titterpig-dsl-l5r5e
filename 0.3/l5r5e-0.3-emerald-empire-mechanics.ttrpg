@@ -35,10 +35,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Seppun"
         }
 
-        RULES {
-            #L5REE01aB2cD4eF6gH8iJ0: imperial_families_serve_emperor_directly
-            #L5REE02kL3mN5oP7qR9sT1u: imperial_families_not_clan_affiliated
-        }
     }
 
 
@@ -102,7 +98,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
     # NEW SCHOOLS
     # ===========================
 
-    ^"Miya Cartographer School" DEF {
+    ^"Miya Cartographer" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -121,13 +117,13 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Aesthetics", ^"Composition", ^"Culture", ^"Fitness", ^"Government", ^"Seafaring", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
         STARTING_TECHNIQUES {
-            KATA CHOOSE 1 [^"Striking as Earth or Warrior's Resolve"]
-            SHUJI CHOOSE 1 [^"Artisan's Appraisal or Civility Foremost"]
+            KATA CHOOSE 1 [^"Striking as Earth", ^"Warrior's Resolve"]
+            SHUJI CHOOSE 1 [^"Artisan's Appraisal", ^"Civility Foremost"]
         }
 
         SCHOOL_ABILITY "Well Traveled" {
@@ -196,13 +192,9 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5REE09jK0lM2nO4pQ6rS8t: cartographer_crosses_clan_borders
-            #L5REE10uV1wX3yZ5aB7cD9e: cartographer_navigation_mastery
-        }
     }
 
-    ^"Miya Herald School" DEF {
+    ^"Miya Herald" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -221,13 +213,13 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Composition", ^"Courtesy", ^"Fitness", ^"Seafaring", ^"Sentiment", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
         STARTING_TECHNIQUES {
-            SHUJI CHOOSE 1 [^"Cadence or Honest Assessment"]
-            SHUJI CHOOSE 1 [^"Shallow Waters or Weight of Duty"]
+            SHUJI CHOOSE 1 [^"Cadence", ^"Honest Assessment"]
+            SHUJI CHOOSE 1 [^"Shallow Waters", ^"Weight of Duty"]
         }
 
         SCHOOL_ABILITY "Voice of the Emperor" {
@@ -297,13 +289,9 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5REE11fG2hI4jK6lM8nO0p: herald_speaks_with_imperial_authority
-            #L5REE12qR3sT5uV7wX9yZ1a: herald_objective_observers
-        }
     }
 
-    ^"Otomo Schemer School" DEF {
+    ^"Otomo Schemer" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -322,12 +310,12 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Composition", ^"Courtesy", ^"Culture", ^"Design", ^"Government", ^"Sentiment"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
         STARTING_TECHNIQUES {
-            SHUJI CHOOSE 1 [^"Courtier's Resolve or Stirring the Embers"]
+            SHUJI CHOOSE 1 [^"Courtier's Resolve", ^"Stirring the Embers"]
             SHUJI ^"Slippery Maneuvers"
         }
 
@@ -396,13 +384,9 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5REE13bC4dE6fG8hI0jK2l: schemer_imperial_political_agent
-            #L5REE14mN5oP7qR9sT1uV3w: schemer_ends_justify_means
-        }
     }
 
-    ^"Seppun Astrologer School" DEF {
+    ^"Seppun Astrologer" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -421,13 +405,13 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 3 [^"Composition", ^"Government", ^"Medicine", ^"Meditation", ^"Sentiment", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
-            ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
         }
 
 
         STARTING_TECHNIQUES {
             INVOCATION ^"Bind the Shadow"
-            INVOCATION CHOOSE 1 [^"Dominion of Suijin or Jade Strike"]
+            INVOCATION CHOOSE 1 [^"Dominion of Suijin", ^"Jade Strike"]
             RITUAL ^"Divination"
             RITUAL ^"Commune with the Spirits"
             RITUAL ^"Threshold Barrier"
@@ -498,13 +482,9 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5REE15xY6zA8bC0dE2fG4h: astrologer_spiritual_protector
-            #L5REE16iJ7kL9mN1oP3qR5s: astrologer_divination_specialist
-        }
     }
 
-    ^"Seppun Palace Guard School" DEF {
+    ^"Seppun Palace Guard" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -524,13 +504,13 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Sentiment", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
         STARTING_TECHNIQUES {
-            KATA CHOOSE 1 [^"Iaijutsu Cut: Crossing Blade or Iaijutsu Cut: Rising Blade"]
-            SHUJI CHOOSE 1 [^"Ancestry Unearthed or Honest Assessment"]
+            KATA CHOOSE 1 [^"Iaijutsu Cut: Crossing Blade", ^"Iaijutsu Cut: Rising Blade"]
+            SHUJI CHOOSE 1 [^"Ancestry Unearthed", ^"Honest Assessment"]
         }
 
         SCHOOL_ABILITY "Speed of Heaven" {
@@ -597,10 +577,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5REE17tU8vW0xY2zA4bC6d: palace_guard_emperors_bodyguard
-            #L5REE18eF9gH1iJ3kL5mN7o: palace_guard_defensive_specialists
-        }
     }
 
     ^"Fortunist Monk Order" DEF {
@@ -621,7 +597,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 4 [^"Courtesy", ^"Culture", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
@@ -629,7 +605,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             KATA ^"Open-Hand Style"
             RITUAL ^"Cleansing Rite"
             RITUAL ^"Threshold Barrier"
-            SHUJI CHOOSE 1 [^"Shallow Waters or Stirring the Embers"]
+            SHUJI CHOOSE 1 [^"Shallow Waters", ^"Stirring the Embers"]
         }
 
         SCHOOL_ABILITY "Blessing of the Fortunes" {
@@ -695,10 +671,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5REE19pQ0rS2tU4vW6xY8z: fortunist_fortune_grants_invocations
-            #L5REE20aB1cD3eF5gH7iJ9k: fortunist_bonus_successes_on_fortune_invocations
-        }
     }
 
     ^"Shinseist Monk Order" DEF {
@@ -720,7 +692,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 4 [^"Aesthetics", ^"Composition", ^"Fitness", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
-            ^"Techniques Available" LIST ["Kata (kata)", "Kihō (kiho)", "Rituals (ritual)"]
+            ^"Techniques Available" LIST ["Kata", "Kihō", "Rituals"]
         }
 
 
@@ -792,10 +764,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5REE21lM2nO4pQ6rS8tU0v: shinseist_inward_seeking_enlightenment
-            #L5REE22wX3yZ5aB7cD9eF1g: shinseist_void_mastery
-        }
     }
 
     ^"Kitsune Impersonator Tradition" DEF {
@@ -818,7 +786,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Games", ^"Performance", ^"Martial Arts [Unarmed]", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 30
-            ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
             ^"Starting Disadvantage" STRING "False Identity"
         }
 
@@ -889,10 +857,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5REE23hI4jK6lM8nO0pQ2r: kitsune_shapeshifter_spirit
-            #L5REE24sT5uV7wX9yZ1aB3c: kitsune_not_formal_samurai_school
-        }
     }
 
     ^"Kolat Saboteur Conspiracy" DEF {
@@ -914,7 +878,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Commerce", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Medicine", ^"Meditation", ^"Skulduggery"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 20
             ^"Starting Disadvantage" STRING "False Identity"
-            ^"Techniques Available" LIST ["Kata (kata)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Shūji"]
         }
 
 
@@ -988,10 +952,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5REE25dE6fG8hI0jK2lM4n: kolat_conspiracy_agent
-            #L5REE26oP7qR9sT1uV3wX5y: kolat_age_of_humanity_agenda
-        }
     }
 
     # ===========================
@@ -1402,9 +1362,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5REE33nO4pQ6rS8tU0vW2x: ee_new_techniques_extend_core
-        }
     }
 
     # ===========================
@@ -1574,10 +1531,5 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5REE34yZ5aB7cD9eF1gH3i: titles_represent_narrative_advancement
-            #L5REE35jK6lM8nO0pQ2rS4t: titles_grant_ability_on_completion
-            #L5REE36uV7wX9yZ1aB3cD5e: retainers_limited_by_status_rank
-        }
     }
 }
