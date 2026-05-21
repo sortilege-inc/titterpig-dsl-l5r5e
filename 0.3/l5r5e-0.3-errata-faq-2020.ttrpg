@@ -3,556 +3,926 @@ EXTENSION "L5R5e_Errata_FAQ_2020" EXTENDS "L5R5e_Core_Character" {
     VERSION "0.3"
     RELEASE_DATE "2026-03-01"
 
-    # Official errata, FAQ, and GM guidance for L5R 5e Core Rulebook,
-    # Shadowlands, and Path of Waves supplements.
+    # Official errata, FAQ, and GM guidance for the L5R 5e Core
+    # Rulebook, Shadowlands, and Path of Waves supplements.
     # Dated August 12, 2020. Published by Fantasy Flight Games.
-    # SUPERSEDES "L5R5e_Errata_FAQ_2019"
-    # All 2019 corrections are included and expanded upon in this file.
+    #
+    # This extension supersedes L5R5e_Errata_FAQ_2019: all 2019
+    # corrections are included and expanded upon below.
+    #
+    # Like the 2019 errata, this is a corrections LAYER: each
+    # MODIFY block points to the entity it overrides in
+    # core/sourcebook data; FAQ and GM Guidance entries are
+    # added as new clarification DEFs. Consumers apply this
+    # layer on top of the base content; the underlying files
+    # are NOT edited.
 
-    # ===========================
-    # CORE RULEBOOK ERRATA
-    # ===========================
+    # =================================================================
+    # CORE RULEBOOK ERRATA — 2019 CARRYOVER
+    # =================================================================
+    #
+    # The 2019 errata layer contains the full text of each carryover
+    # correction. The following blocks restate the same corrections
+    # under fresh 2020 hash IDs for traceability.
 
-    ^"Core Rulebook Errata (2020)" DEF {
-        APPLIES TO [^"Game Rules"]
-
-        # All corrections from the 2019 errata are included, plus:
-
-        # Chapter 1
-        # p. 26, Universal Tiebreaker: Second bullet should read
-        # "Adversary NPCs supersede minion NPCs"
-
-        # Chapter 2
-        # p. 65, Kakita Duelist (Rank 1): "Iaijutsu Cut: Crossing Cut"
-        # should read "Iaijutsu Cut: Crossing Blade."
-        # p. 65-85, Curriculum Tables: Redundant technique replacements
-        # (same as 2019 errata, six entries)
-        # p. 74, Asako Loremaster, School Ability: "...you may treat
-        # your ranks in the skill as being equal to your school rank."
-        # p. 82, Ide Trader, School Ability: Rarity reduced/increased
-        # by school rank.
-        # p. 85, Shinjo Outrider: Lady Shinjo's Speed = shūji (shuji).
-
-        # Chapter 4
-        # p. 173, Prerequisites: Waiver rules (same as 2019).
-        # p. 179, Iaijutsu Cut: Rising Blade activation correction.
-        # NEW in 2020: p. 221, Slippery Maneuvers: New Opportunities
-        # header should read "(op)" instead of "(op)+" (opportunity does
-        # not scale with effect). Already corrected in some printings.
-
-        # Chapter 5
-        # p. 230, Improvised Weapons margin note (same as 2019).
-        # p. 231, Table 5-1: Weapons:
-        #   NEW: Dao entry: DLS should be 6.
-        #   NEW: Jian entry: 2-hand grip should grant Razor-Edged
-        #         quality in addition to +1 DLS.
-        #   Zanbato: DMG 6, DLS 7 (same as 2019).
-
-        # Chapters 6-9 and Appendix: Same corrections as 2019.
-
+    MODIFY ^"Universal Tiebreaker" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 1"
+            ^"Source Page"    STRING "p. 26"
+            ^"Errata Note"    STRING "Second bullet should read \"Adversary NPCs supersede minion NPCs.\""
+            ^"Carryover From" STRING "L5R5e Errata 2019"
+        }
         RULES {
-            #L5REF01aB2cD4eF6gH8iJ0k: errata_2020_includes_all_2019_corrections
-            #L5REF02lM3nO5pQ7rS9tU1v: errata_slippery_maneuvers_op_not_op_plus
-            #L5REF03wX4yZ6aB8cD0eF2g: errata_dao_dls_6
-            #L5REF04hI5jK7lM9nO1pQ3r: errata_jian_2hand_adds_razor_edged
+            #L5REF01aB2cD4eF6gH8iJ0k: errata_2020_universal_tiebreaker_carryover
         }
     }
 
-    # ===========================
-    # SHADOWLANDS ERRATA (2020 ADDITIONS)
-    # ===========================
-
-    ^"Shadowlands Errata (2020)" DEF {
-        APPLIES TO [^"Game Rules"]
-
-        # p. 93, Moto Avenger: Starting outfit includes Unicorn warhorse.
-        # (same as 2019)
-
-        # NEW in 2020:
-        # p. 119, Commune with Evil, New Opportunities: First opportunity
-        # final sentence: "it persists until the end of the next scene"
-        # (not "end of the scene"). Third opportunity: "...1 additional
-        # scene per (op) spent this way" (not "...1 additional round").
-
-        # p. 119, Fiend's Retreat, New Opportunities: Second opportunity
-        # header should read "(op)+" instead of "(op)" (scales with effect).
-
-        # p. 120, Spiritual Shackles, Activation: All instances of
-        # "Intrigue action" should read "Scheme action."
-
+    MODIFY ^"Kakita Duelist" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 2"
+            ^"Source Page"    STRING "p. 65"
+            ^"Errata Note"    STRING "Rank 1: \"Iaijutsu Cut: Crossing Cut\" should read \"Iaijutsu Cut: Crossing Blade.\" Curriculum Rank 1 \"Striking as Air\" (kata) should be replaced with \"Cadence\" (shūji)."
+            ^"Carryover From" STRING "L5R5e Errata 2019"
+        }
         RULES {
-            #L5REF05sT6uV8wX0yZ2aB4c: errata_commune_with_evil_duration_next_scene
-            #L5REF06dE7fG9hI1jK3lM5n: errata_commune_with_evil_third_op_per_scene
-            #L5REF07oP8qR0sT2uV4wX6y: errata_fiends_retreat_op_plus_scales
-            #L5REF08zA9bC1dE3fG5hI7j: errata_spiritual_shackles_scheme_action
+            #L5REF02lM3nO5pQ7rS9tU1v: errata_2020_kakita_duelist_carryover
         }
     }
 
-    # ===========================
-    # PATH OF WAVES ERRATA (NEW IN 2020)
-    # ===========================
-
-    ^"Path of Waves Errata (2020)" DEF {
-        APPLIES TO [^"Game Rules"]
-
-        # Chapter 2
-        # p. 52, Voice of the Wilds, Starting Techniques: "Invocations"
-        # category should read "Rituals" instead.
-
-        # p. 56, Qamarist Shield Bearer:
-        # - Techniques Available: Should read "Shūji" not "Earth Shūji"
-        # - Curriculum Rank 2: "Iron Shield Style" -> "Iron Shell Style"
-        # - Starting Outfit: Should include "scimitar"
-
-        # p. 98, Summoning Mantra: Activation should read "...make a
-        # TN 4 Theology check..." Second sentence: "The ring of the
-        # check..." not "The ring and TN of the check..."
-
-        # p. 113, Table 3-1: Weapons: The following should have "Unarmed"
-        # skill instead of "Melee": chair, lute, sake bottle and cups,
-        # scroll case.
-        # Umbrella: Third grip should read "2-hand (stab)" not "1-hand (stab)."
-
-        # p. 130, Reo, the Doshin (Profile): Vigilance should be 2 (not 9).
-
-        # p. 243, Rhinoceros: Furious Charge final sentence: "If they fail,
-        # they suffer a critical strike of severity 8 and the Unconscious
-        # condition."
-
-        # p. 243, Furiribi: Burns the Soul final sentence: "If the target
-        # is already Exhausted, they suffer the Unconscious condition."
-
+    MODIFY ^"Asako Loremaster" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 2"
+            ^"Source Page"    STRING "p. 74"
+            ^"Errata Note"    STRING "Curriculum Rank 2 \"Civility Foremost\" replaced with \"Tea Ceremony\" (ritual). School Ability rewording. (See 2019 errata for full text.)"
+            ^"Carryover From" STRING "L5R5e Errata 2019"
+        }
         RULES {
-            #L5REF09kL0mN2oP4qR6sT8u: errata_voice_of_wilds_rituals_not_invocations
-            #L5REF10vW1xY3zA5bC7dE9f: errata_qamarist_shield_bearer_corrections
-            #L5REF11gH2iJ4kL6mN8oP0q: errata_summoning_mantra_tn4_ring_only
-            #L5REF12rS3tU5vW7xY9zA1b: errata_improvised_weapons_use_unarmed_skill
-            #L5REF13cD4eF6gH8iJ0kL2m: errata_umbrella_2hand_stab
-            #L5REF14nO5pQ7rS9tU1vW3x: errata_reo_vigilance_2
-            #L5REF15yZ6aB8cD0eF2gH4i: errata_rhinoceros_severity_8_unconscious
-            #L5REF16jK7lM9nO1pQ3rS5t: errata_furiribi_exhausted_unconscious
+            #L5REF03wX4yZ6aB8cD0eF2g: errata_2020_asako_loremaster_carryover
         }
     }
 
-    # ===========================
-    # FAQ: CORE RULES (NEW IN 2020)
-    # ===========================
-
-    ^"FAQ: Core Rules (2020)" DEF {
-        APPLIES TO [^"Game Rules"]
-
-        # Q: When two effects (not dice modification) occur at the
-        # same time, how is order of resolution decided?
-        # A: Follow the order for simultaneous dice modification
-        # (see p. 27 of the core rulebook).
-
-        # Q: When a character's advantage is inverted during a check,
-        # do they gain 2 Void points if they then fail (or receive
-        # strife)? Do they gain 0 if the inverted advantage is
-        # canceled by a different advantage?
-        # A: Always gains back 1 Void point after the check, regardless
-        # of success/failure or cancellation by another advantage.
-
-        # Q: How should NPC Void points be handled?
-        # A: Minion NPCs do not have (and cannot spend) Void points.
-        # Adversary NPCs have Void points equal to half their Void
-        # Ring, rounded up.
-
+    MODIFY ^"Shiba Guardian" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 2"
+            ^"Source Page"    STRING "p. 76"
+            ^"Errata Note"    STRING "Curriculum Rank 2 \"Iron Forest Style\" replaced with \"Slippery Maneuvers\" (shūji)."
+            ^"Carryover From" STRING "L5R5e Errata 2019"
+        }
         RULES {
-            #L5REF17uV8wX0yZ2aB4cD6e: faq_simultaneous_effects_resolution_order
-            #L5REF18fG9hI1jK3lM5nO7p: faq_inverted_advantage_always_1_void_point
-            #L5REF19qR0sT2uV4wX6yZ8a: faq_npc_void_points_minion_none_adversary_half
+            #L5REF04hI5jK7lM9nO1pQ3r: errata_2020_shiba_guardian_carryover
         }
     }
 
-    # ===========================
-    # FAQ: CHARACTER ADVANCEMENT (SAME AS 2019)
-    # ===========================
-
-    ^"FAQ: Character Advancement (2020)" DEF {
-        APPLIES TO [^"Game Rules"]
-
-        # Q: Can a character count multiple purchases from a single
-        # entry toward their current school rank?
-        # A: Yes, any number of purchases count.
-
-        # Q: If a character has = symbol access that they could not
-        # normally purchase, can they buy it after completing that rank?
-        # A: No. Special access does not persist.
-
+    MODIFY ^"Kaito Shrine Keeper" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 2"
+            ^"Source Page"    STRING "p. 76"
+            ^"Errata Note"    STRING "Curriculum Rank 2 \"Pelting Hail Style\" replaced with \"Divination\" (ritual)."
+            ^"Carryover From" STRING "L5R5e Errata 2019"
+        }
         RULES {
-            #L5REF20bC1dE3fG5hI7jK9l: faq_multiple_purchases_count_toward_rank
-            #L5REF21mN2oP4qR6sT8uV0w: faq_special_access_does_not_persist
+            #L5REF05sT6uV8wX0yZ2aB4c: errata_2020_kaito_shrine_keeper_carryover
         }
     }
 
-    # ===========================
+    MODIFY ^"Akodo Commander" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 2"
+            ^"Source Page"    STRING "p. 79"
+            ^"Errata Note"    STRING "Curriculum Rank 1 \"Warrior's Resolve\" replaced with \"Honest Assessment\" (shūji)."
+            ^"Carryover From" STRING "L5R5e Errata 2019"
+        }
+        RULES {
+            #L5REF06dE7fG9hI1jK3lM5n: errata_2020_akodo_commander_carryover
+        }
+    }
+
+    MODIFY ^"Ide Trader" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 2"
+            ^"Source Page"    STRING "p. 82"
+            ^"Errata Note"    STRING "School Ability rewording (acquiring, selling, or gifting; rarity reduced or increased by school rank)."
+            ^"Carryover From" STRING "L5R5e Errata 2019"
+        }
+        RULES {
+            #L5REF07oP8qR0sT2uV4wX6y: errata_2020_ide_trader_carryover
+        }
+    }
+
+    MODIFY ^"Shinjo Outrider" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 2"
+            ^"Source Page"    STRING "p. 85"
+            ^"Errata Note"    STRING "Starting Techniques: \"Lady Shinjo's Speed\" should be listed as a shūji."
+            ^"Carryover From" STRING "L5R5e Errata 2019"
+        }
+        RULES {
+            #L5REF08zA9bC1dE3fG5hI7j: errata_2020_shinjo_outrider_carryover
+        }
+    }
+
+    MODIFY ^"Utaku Battle Maiden" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 2"
+            ^"Source Page"    STRING "p. 86"
+            ^"Errata Note"    STRING "Curriculum Rank 1 \"Striking as Air\" replaced with \"Courtier's Resolve\" (shūji)."
+            ^"Carryover From" STRING "L5R5e Errata 2019"
+        }
+        RULES {
+            #L5REF09kL0mN2oP4qR6sT8u: errata_2020_utaku_battle_maiden_carryover
+        }
+    }
+
+    MODIFY ^"Technique Prerequisites" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 4"
+            ^"Source Page"    STRING "p. 173"
+            ^"Errata Note"    STRING "Prerequisites waiver rules; see 2019 errata for full text."
+            ^"Carryover From" STRING "L5R5e Errata 2019"
+        }
+        RULES {
+            #L5REF10vW1xY3zA5bC7dE9f: errata_2020_prerequisites_waiver_carryover
+        }
+    }
+
+    MODIFY ^"Iaijutsu Cut: Rising Blade" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 4"
+            ^"Source Page"    STRING "p. 179"
+            ^"Errata Note"    STRING "Activation rewording; see 2019 errata for full text."
+            ^"Carryover From" STRING "L5R5e Errata 2019"
+        }
+        RULES {
+            #L5REF11gH2iJ4kL6mN8oP0q: errata_2020_iaijutsu_cut_rising_blade_carryover
+        }
+    }
+
+    MODIFY ^"Weapons" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 5"
+            ^"Source Page"    STRING "p. 230"
+            ^"Errata Note"    STRING "Improvised Weapons margin note (see 2019 errata)."
+            ^"Carryover From" STRING "L5R5e Errata 2019"
+        }
+        RULES {
+            #L5REF12rS3tU5vW7xY9zA1b: errata_2020_improvised_weapons_carryover
+        }
+    }
+
+    MODIFY ^"Zanbatō" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 5"
+            ^"Source Page"    STRING "p. 231"
+            ^"Errata Note"    STRING "DMG should be 6, DLS should be 7."
+            ^"Corrected Damage"     INTEGER 6
+            ^"Corrected Deadliness" INTEGER 7
+            ^"Carryover From" STRING "L5R5e Errata 2019"
+        }
+        RULES {
+            #L5REF13cD4eF6gH8iJ0kL2m: errata_2020_zanbato_carryover
+        }
+    }
+
+    MODIFY ^"Scheme Action" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 6"
+            ^"Source Pages"   STRING "p. 241, 257, 263, 273"
+            ^"Errata Note"    STRING "All instances of \"Intrigue action\" should read \"Scheme action.\""
+            ^"Carryover From" STRING "L5R5e Errata 2019"
+        }
+        RULES {
+            #L5REF14nO5pQ7rS9tU1vW3x: errata_2020_intrigue_to_scheme_carryover
+        }
+    }
+
+    MODIFY ^"Wait" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 6"
+            ^"Source Page"    STRING "p. 264"
+            ^"Errata Note"    STRING "Wait (Action), Activation: First clause should read \"As an Attack, Scheme, and Support action.\""
+            ^"Carryover From" STRING "L5R5e Errata 2019"
+        }
+        RULES {
+            #L5REF15yZ6aB8cD0eF2gH4i: errata_2020_wait_action_carryover
+        }
+    }
+
+    MODIFY ^"Varying Difficulty in Text" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 7"
+            ^"Source Page"    STRING "p. 296"
+            ^"Errata Note"    STRING "TN 3 Fitness Check (Earth 1, Fire 4) — Fire approach TN should be 4 (not 3)."
+            ^"Carryover From" STRING "L5R5e Errata 2019"
+        }
+        RULES {
+            #L5REF16jK7lM9nO1pQ3rS5t: errata_2020_varying_difficulty_carryover
+        }
+    }
+
+    MODIFY ^"Emerald Magistrate" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 7"
+            ^"Source Page"    STRING "p. 305"
+            ^"Errata Note"    STRING "Title ability Voice of Authority; Status Award +15 (floor 40). See 2019 errata for full text."
+            ^"Carryover From" STRING "L5R5e Errata 2019"
+        }
+        RULES {
+            #L5REF17uV8wX0yZ2aB4cD6e: errata_2020_emerald_magistrate_carryover
+        }
+    }
+
+    MODIFY ^"Peasant Family" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 8"
+            ^"Source Page"    STRING "p. 306"
+            ^"Errata Note"    STRING "Skill Increase: \"+1 to any two Trade skills of your choice.\""
+            ^"Carryover From" STRING "L5R5e Errata 2019"
+        }
+        RULES {
+            #L5REF18fG9hI1jK3lM5nO7p: errata_2020_peasant_family_carryover
+        }
+    }
+
+    MODIFY ^"Manifest Fire Kami" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 9"
+            ^"Source Page"    STRING "p. 324"
+            ^"Errata Note"    STRING "Earth Ring should be 2, Fire Ring should be 6."
+            ^"Corrected Earth Ring" INTEGER 2
+            ^"Corrected Fire Ring"  INTEGER 6
+            ^"Carryover From" STRING "L5R5e Errata 2019"
+        }
+        RULES {
+            #L5REF19qR0sT2uV4wX6yZ8a: errata_2020_manifest_fire_kami_carryover
+        }
+    }
+
+    MODIFY ^"Opportunities Table" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Appendix"
+            ^"Source Page"    STRING "p. 328"
+            ^"Errata Note"    STRING "Fire (op) Entry 1 rewording. See 2019 errata for full text."
+            ^"Carryover From" STRING "L5R5e Errata 2019"
+        }
+        RULES {
+            #L5REF20bC1dE3fG5hI7jK9l: errata_2020_fire_opportunity_carryover
+        }
+    }
+
+    # =================================================================
+    # CORE RULEBOOK ERRATA — NEW IN 2020
+    # =================================================================
+
+    MODIFY ^"Slippery Maneuvers" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 4"
+            ^"Source Page"    STRING "p. 221"
+            ^"Errata Note"    STRING "New Opportunities header should read \"(op)\" instead of \"(op)+\" — opportunity does not scale with effect. Already corrected in some printings."
+        }
+        RULES {
+            #L5REF21mN2oP4qR6sT8uV0w: errata_slippery_maneuvers_op_not_op_plus
+        }
+    }
+
+    MODIFY ^"Dao" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 5"
+            ^"Source Page"    STRING "p. 231"
+            ^"Errata Note"    STRING "Table 5-1: Weapons, Dao entry: DLS should be 6."
+            ^"Corrected Deadliness" INTEGER 6
+        }
+        RULES {
+            #L5REF22xY3zA5bC7dE9fG1h: errata_dao_dls_6
+        }
+    }
+
+    MODIFY ^"Jian" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Core Rulebook"
+            ^"Source Chapter" STRING "Chapter 5"
+            ^"Source Page"    STRING "p. 231"
+            ^"Errata Note"    STRING "Table 5-1: Weapons, Jian entry: 2-hand grip should grant Razor-Edged quality in addition to +1 DLS."
+            ^"Corrected Two-Hand Grip" STRING "+1 Deadliness, Razor-Edged"
+        }
+        RULES {
+            #L5REF23iJ4kL6mN8oP0qR2s: errata_jian_2hand_adds_razor_edged
+        }
+    }
+
+    # =================================================================
+    # SHADOWLANDS ERRATA — 2019 CARRYOVER
+    # =================================================================
+
+    MODIFY ^"Moto Avenger School" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Shadowlands"
+            ^"Source Chapter" STRING "Chapter 2"
+            ^"Source Page"    STRING "p. 93"
+            ^"Errata Note"    STRING "Starting outfit includes Unicorn warhorse (core p. 326)."
+            ^"Carryover From" STRING "L5R5e Errata 2019"
+        }
+        RULES {
+            #L5REF24tU5vW7xY9zA1bC3d: errata_2020_moto_avenger_carryover
+        }
+    }
+
+    # =================================================================
+    # SHADOWLANDS ERRATA — NEW IN 2020
+    # =================================================================
+
+    MODIFY ^"Commune with Evil" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Shadowlands"
+            ^"Source Page"    STRING "p. 119"
+            ^"Errata Note"    STRING "New Opportunities: First opportunity final sentence should read \"it persists until the end of the next scene\" (not \"end of the scene\"). Third opportunity should read \"...1 additional scene per (op) spent this way\" (not \"...1 additional round\")."
+        }
+        RULES {
+            #L5REF25eF6gH8iJ0kL2mN4o: errata_commune_with_evil_duration_next_scene
+            #L5REF26pQ7rS9tU1vW3xY5z: errata_commune_with_evil_third_op_per_scene
+        }
+    }
+
+    MODIFY ^"Fiend's Retreat" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Shadowlands"
+            ^"Source Page"    STRING "p. 119"
+            ^"Errata Note"    STRING "New Opportunities: Second opportunity header should read \"(op)+\" instead of \"(op)\" — scales with effect."
+        }
+        RULES {
+            #L5REF27aB8cD0eF2gH4iJ6k: errata_fiends_retreat_op_plus_scales
+        }
+    }
+
+    MODIFY ^"Spiritual Shackles" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Shadowlands"
+            ^"Source Page"    STRING "p. 120"
+            ^"Errata Note"    STRING "Activation: All instances of \"Intrigue action\" should read \"Scheme action.\""
+        }
+        RULES {
+            #L5REF28lM9nO1pQ3rS5tU7v: errata_spiritual_shackles_scheme_action
+        }
+    }
+
+    # =================================================================
+    # PATH OF WAVES ERRATA — NEW IN 2020
+    # =================================================================
+
+    MODIFY ^"Voice of the Wilds School" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Path of Waves"
+            ^"Source Chapter" STRING "Chapter 2"
+            ^"Source Page"    STRING "p. 52"
+            ^"Errata Note"    STRING "Starting Techniques: \"Invocations\" category should read \"Rituals\" instead."
+        }
+        RULES {
+            #L5REF29wX0yZ2aB4cD6eF8g: errata_voice_of_wilds_rituals_not_invocations
+        }
+    }
+
+    MODIFY ^"Qamarist Shield Bearer" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Path of Waves"
+            ^"Source Chapter" STRING "Chapter 2"
+            ^"Source Page"    STRING "p. 56"
+            ^"Errata Note"    STRING "Techniques Available should read \"Shūji\" not \"Earth Shūji.\" Curriculum Rank 2: \"Iron Shield Style\" should read \"Iron Shell Style.\" Starting Outfit should include \"scimitar.\""
+        }
+        RULES {
+            #L5REF30hI1jK3lM5nO7pQ9r: errata_qamarist_shield_bearer_corrections
+        }
+    }
+
+    MODIFY ^"Summoning Mantra" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Path of Waves"
+            ^"Source Page"    STRING "p. 98"
+            ^"Errata Note"    STRING "Activation should read \"...make a TN 4 Theology check...\". Second sentence: \"The ring of the check...\" (not \"The ring and TN of the check...\")."
+        }
+        RULES {
+            #L5REF31sT2uV4wX6yZ8aB0c: errata_summoning_mantra_tn4_ring_only
+        }
+    }
+
+    MODIFY ^"Improvised Weapons Profiles (PoW)" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Path of Waves"
+            ^"Source Chapter" STRING "Chapter 3"
+            ^"Source Page"    STRING "p. 113"
+            ^"Errata Note"    STRING "Table 3-1: Weapons: chair, lute, sake bottle and cups, scroll case should have \"Unarmed\" skill instead of \"Melee.\" Umbrella: third grip should read \"2-hand (stab)\" not \"1-hand (stab).\""
+        }
+        RULES {
+            #L5REF32dE3fG5hI7jK9lM1n: errata_improvised_weapons_use_unarmed_skill
+            #L5REF33oP4qR6sT8uV0wX2y: errata_umbrella_2hand_stab
+        }
+    }
+
+    MODIFY ^"Reo, the Doshin" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Path of Waves"
+            ^"Source Page"    STRING "p. 130"
+            ^"Errata Note"    STRING "Profile: Vigilance should be 2 (not 9)."
+            ^"Corrected Vigilance" INTEGER 2
+        }
+        RULES {
+            #L5REF34zA5bC7dE9fG1hI3j: errata_reo_vigilance_2
+        }
+    }
+
+    MODIFY ^"Rhinoceros" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Path of Waves"
+            ^"Source Page"    STRING "p. 243"
+            ^"Errata Note"    STRING "Furious Charge final sentence: \"If they fail, they suffer a critical strike of severity 8 and the Unconscious condition.\""
+        }
+        RULES {
+            #L5REF35kL6mN8oP0qR2sT4u: errata_rhinoceros_severity_8_unconscious
+        }
+    }
+
+    MODIFY ^"Furiribi" {
+        PROPERTIES {
+            ^"Source Book"    STRING "Path of Waves"
+            ^"Source Page"    STRING "p. 243"
+            ^"Errata Note"    STRING "Burns the Soul final sentence: \"If the target is already Exhausted, they suffer the Unconscious condition.\""
+        }
+        RULES {
+            #L5REF36vW7xY9zA1bC3dE5f: errata_furiribi_exhausted_unconscious
+        }
+    }
+
+    # =================================================================
+    # FAQ: CORE RULES — NEW IN 2020
+    # =================================================================
+
+    ^"FAQ: Simultaneous Effects Resolution Order (2020)" DEF {
+        APPLIES TO [^"Game Rules"]
+        PROPERTIES {
+            ^"Source Document" STRING "L5R5e FAQ August 2020"
+            ^"Clarifies"       STRING "Resolution order for simultaneous non-dice-modification effects"
+            ^"Source Page"     STRING "Core p. 27"
+            ^"Question"        STRING "When two effects (not dice modification) occur at the same time, how is order of resolution decided?"
+            ^"Answer"          STRING "Follow the order for simultaneous dice modification (see p. 27 of the core rulebook)."
+        }
+        RULES {
+            #L5REF37gH8iJ0kL2mN4oP6q: faq_simultaneous_effects_resolution_order
+        }
+    }
+
+    ^"FAQ: Inverted Advantage Always 1 Void Point (2020)" DEF {
+        APPLIES TO [^"Game Rules"]
+        PROPERTIES {
+            ^"Source Document" STRING "L5R5e FAQ August 2020"
+            ^"Clarifies"       STRING "Void point return when an advantage is inverted"
+            ^"Question"        STRING "When a character's advantage is inverted during a check, do they gain 2 Void points if they then fail (or receive strife)? Do they gain 0 if the inverted advantage is canceled by a different advantage?"
+            ^"Answer"          STRING "Always gains back 1 Void point after the check, regardless of success/failure or cancellation by another advantage."
+        }
+        RULES {
+            #L5REF38rS9tU1vW3xY5zA7b: faq_inverted_advantage_always_1_void_point
+        }
+    }
+
+    ^"FAQ: NPC Void Points (2020)" DEF {
+        APPLIES TO [^"Game Rules"]
+        PROPERTIES {
+            ^"Source Document" STRING "L5R5e FAQ August 2020"
+            ^"Clarifies"       STRING "How NPCs (minion vs adversary) handle Void points"
+            ^"Question"        STRING "How should NPC Void points be handled?"
+            ^"Answer"          STRING "Minion NPCs do not have (and cannot spend) Void points. Adversary NPCs have Void points equal to half their Void Ring, rounded up."
+        }
+        RULES {
+            #L5REF39cD0eF2gH4iJ6kL8m: faq_npc_void_points_minion_none_adversary_half
+        }
+    }
+
+    # =================================================================
+    # FAQ: CHARACTER ADVANCEMENT (carryover from 2019)
+    # =================================================================
+
+    ^"FAQ: Multiple Purchases Toward Rank (2020)" DEF {
+        APPLIES TO [^"Game Rules"]
+        PROPERTIES {
+            ^"Source Document" STRING "L5R5e FAQ August 2020"
+            ^"Clarifies"       STRING "Counting purchases toward school rank"
+            ^"Question"        STRING "Can a character count multiple purchases from a single entry toward their current school rank?"
+            ^"Answer"          STRING "Yes, any number of purchases count."
+            ^"Carryover From"  STRING "L5R5e FAQ 2019"
+        }
+        RULES {
+            #L5REF40nO1pQ3rS5tU7vW9x: faq_2020_multiple_purchases_count_toward_rank
+        }
+    }
+
+    ^"FAQ: Special Access Does Not Persist (2020)" DEF {
+        APPLIES TO [^"Game Rules"]
+        PROPERTIES {
+            ^"Source Document" STRING "L5R5e FAQ August 2020"
+            ^"Clarifies"       STRING "'=' symbol special-access scope"
+            ^"Question"        STRING "If a character has = symbol access that they could not normally purchase, can they buy it after completing that rank?"
+            ^"Answer"          STRING "No. Special access does not persist."
+            ^"Carryover From"  STRING "L5R5e FAQ 2019"
+        }
+        RULES {
+            #L5REF41yZ2aB4cD6eF8gH0i: faq_2020_special_access_does_not_persist
+        }
+    }
+
+    # =================================================================
     # FAQ: SCHOOL ABILITIES
-    # ===========================
+    # =================================================================
 
-    ^"FAQ: School Abilities (2020)" DEF {
+    ^"FAQ: Asahina Artificer Ability Scope (2020)" DEF {
         APPLIES TO [^"Game Rules"]
-
-        # Asahina Artificer: Applies to invocations that summon
-        # illusions, summon objects, augment objects, or awaken objects.
-
-        # Matsu Berserker: Can trigger ability even while already
-        # suffering Enraged (only one instance per Persistent Effects).
-
+        PROPERTIES {
+            ^"Source Document" STRING "L5R5e FAQ August 2020"
+            ^"Clarifies"       STRING "Asahina Artificer school ability scope"
+            ^"Question"        STRING "When does the Asahina Artificer's school ability apply?"
+            ^"Answer"          STRING "It applies to invocations that summon illusions, summon objects, augment objects, or awaken objects."
+            ^"Carryover From"  STRING "L5R5e FAQ 2019"
+        }
         RULES {
-            #L5REF22xY3zA5bC7dE9fG1h: faq_asahina_artificer_ability_scope
-            #L5REF23iJ4kL6mN8oP0qR2s: faq_matsu_berserker_enraged_trigger
+            #L5REF42jK3lM5nO7pQ9rS1t: faq_2020_asahina_artificer_ability_scope
         }
     }
 
-    # ===========================
-    # FAQ: TECHNIQUES (2020 EXPANDED)
-    # ===========================
-
-    ^"FAQ: Techniques (2020)" DEF {
+    ^"FAQ: Matsu Berserker Enraged Trigger (2020)" DEF {
         APPLIES TO [^"Game Rules"]
-
-        # Same as 2019 (Iaijutsu Cut, NPC body weapons, Crimson Leaves,
-        # Coiling Serpent) plus new:
-
-        # NEW: Q: Iaijutsu Cut with Razor-Edged weapon with no
-        # one-handed grip (naginata, nodachi) or a one-handed grip
-        # without Razor-Edged (jian)?
-        # A: Cannot be used with weapons that cannot be wielded in a
-        # one-handed grip OR lack Razor-Edged for their one-handed grip.
-        # (Expanded from 2019 answer to also cover jian case.)
-
-        # NEW: Q: Multi-target action check (e.g. Thunderclap Strike) on
-        # targets with TN-increasing effects -- what happens?
-        # A: Take the highest TN from among the targets. Air stance
-        # bonus not applied multiple times even if multiple targets
-        # are in Air stance.
-
-        # NEW: Q: When NPC performs Mahō, how many rings count as
-        # having Shadowlands Taint for scaling?
-        # A: Not Tainted = 0 rings. Tainted (not Otherworldly) = 2 rings.
-        # Otherworldly + Tainted = 4 rings. If (combat) threat 10+, may
-        # count as 5 at GM's discretion.
-
-        # NEW: Q: When must a character choose to use Fiend's Retreat,
-        # Laughing Fox Style, and similar redirect effects?
-        # A: After the attacker has chosen kept dice, but before symbols
-        # on kept dice are resolved (after Step 5, before Step 6).
-
+        PROPERTIES {
+            ^"Source Document" STRING "L5R5e FAQ August 2020"
+            ^"Clarifies"       STRING "Matsu Berserker school ability and Enraged condition"
+            ^"Question"        STRING "Can a Matsu Berserker's school ability trigger even while already suffering Enraged?"
+            ^"Answer"          STRING "Yes. Can trigger ability even while already Enraged (only one instance per Persistent Effects)."
+            ^"Carryover From"  STRING "L5R5e FAQ 2019"
+        }
         RULES {
-            #L5REF24tU5vW7xY9zA1bC3d: faq_iaijutsu_cut_razor_edged_one_hand_required
-            #L5REF25eF6gH8iJ0kL2mN4o: faq_multi_target_highest_tn_no_stacking
-            #L5REF26pQ7rS9tU1vW3xY5z: faq_maho_npc_tainted_ring_scaling
-            #L5REF27aB8cD0eF2gH4iJ6k: faq_redirect_timing_after_kept_before_resolve
+            #L5REF43uV4wX6yZ8aB0cD2e: faq_2020_matsu_berserker_enraged_trigger
         }
     }
 
-    # ===========================
-    # FAQ: LORE
-    # ===========================
+    # =================================================================
+    # FAQ: TECHNIQUES — EXPANDED IN 2020
+    # =================================================================
 
-    ^"FAQ: Lore (2020)" DEF {
+    ^"FAQ: Iaijutsu Cut Razor-Edged + One-Hand Required (2020)" DEF {
         APPLIES TO [^"Game Rules"]
-
-        # Kisshoten / Eight Great Fortunes discrepancy (same as 2019).
-
+        PROPERTIES {
+            ^"Source Document" STRING "L5R5e FAQ August 2020"
+            ^"Clarifies"       STRING "Iaijutsu Cut weapon-grip and Razor-Edged requirements (expanded)"
+            ^"Source Page"     STRING "Core p. 179"
+            ^"Question"        STRING "Can Iaijutsu Cut techniques be used with a Razor-Edged weapon that has no one-handed grip (naginata, nodachi), or a one-handed grip that lacks Razor-Edged (jian)?"
+            ^"Answer"          STRING "No to both. Iaijutsu Cut cannot be used with weapons that cannot be wielded in a one-handed grip, OR that lack Razor-Edged in their one-handed grip. (Expanded from 2019 answer to also cover the jian case.)"
+        }
         RULES {
-            #L5REF28lM9nO1pQ3rS5tU7v: faq_kisshoten_discrepancy
+            #L5REF44fG5hI7jK9lM1nO3p: faq_iaijutsu_cut_razor_edged_one_hand_required
         }
     }
 
-    # ===========================
-    # FURTHER GM GUIDANCE: TN MODIFIERS
-    # ===========================
-
-    ^"GM Guidance: TN Modifiers" DEF {
+    ^"FAQ: Multi-Target Highest TN No Stacking (2020)" DEF {
         APPLIES TO [^"Game Rules"]
-
-        # Guidelines on modifying the TN of a check based on
-        # narrative circumstances.
-
-        # TN Penalty Examples:
-        # +1: Fresh snow on rooftop, scarce tools, lacking cultural
-        #     context, radically different climate, biting insects,
-        #     predisposition to distrust from past encounters.
-        # +2: Entirely foreign tool, very rushed (half time or less),
-        #     life-threateningly hot/cold, weak with hunger/thirst,
-        #     significant encumbrance (two silhouette 2+ objects).
-        # +3: Not sharing a language, storm winds on open sea,
-        #     acting against a celestial being's will in their presence.
-
-        # TN Bonus Examples:
-        # -1: Uncommonly good tools, significantly more time (double+),
-        #     gentle downhill slope, primary sources, acting per own
-        #     giri/ninjō after unmasking, predisposition to trust (few
-        #     encounters), appealing to target's giri or ninjō,
-        #     favorable winds.
-        # -2: Entire library on topic, an attendant for long march,
-        #     predisposition to trust (many encounters), deep shadow
-        #     for hiding, appealing to both giri and ninjō.
-        # -3: Cart for moving heavy objects (silhouette 3+), acting
-        #     with blessing of celestial being in their presence.
-
+        PROPERTIES {
+            ^"Source Document" STRING "L5R5e FAQ August 2020"
+            ^"Clarifies"       STRING "Multi-target action checks and TN stacking"
+            ^"Question"        STRING "When a multi-target action check (e.g. Thunderclap Strike) targets multiple characters with TN-increasing effects, what happens?"
+            ^"Answer"          STRING "Take the highest TN from among the targets. Air stance bonus is not applied multiple times even if multiple targets are in Air stance."
+        }
         RULES {
-            #L5REF29wX0yZ2aB4cD6eF8g: gm_guidance_tn_modifier_penalties
-            #L5REF30hI1jK3lM5nO7pQ9r: gm_guidance_tn_modifier_bonuses
+            #L5REF45qR6sT8uV0wX2yZ4a: faq_multi_target_highest_tn_no_stacking
         }
     }
 
-    # ===========================
-    # FURTHER GM GUIDANCE: STAKED SOCIAL ATTRIBUTES
-    # ===========================
-
-    ^"GM Guidance: Staked Social Attributes" DEF {
+    ^"FAQ: Mahō NPC Tainted Ring Scaling (2020)" DEF {
         APPLIES TO [^"Game Rules"]
-
-        # Guidelines on staking honor, glory, and status to convince
-        # others or accomplish social goals without checks.
-
-        # Personal oaths to individuals -> stake honor
-        # Public statements of intent -> stake glory
-        # Guarantees/contracts based on position/finances -> stake status
-        # Combined oaths -> stake all invoked attributes (added benefits)
-
-        # If character fails to uphold oath: lose staked points.
-        # If opportunity to lose stake passes: staked points returned.
-        # Lifetime oaths: GM/player may agree to treat as fulfilled.
-
-        # Honor Stakes:
-        # - Honor's Demand: Convince samurai to uphold Bushido aspect.
-        #   Stake: honor equal to character's focus.
-        #   Lost if: you break reciprocal Bushido restrictions their
-        #   act entails (e.g., violating hospitality or refusing to
-        #   acknowledge mercy shown).
-        # - Trust My Blade: Entrust with task without check.
-        #   Stake: honor equal to target's status rank.
-        #   Lost if: you give up on or definitively fail the task.
-        # - I Will Return It: Borrow item without check.
-        #   Stake: honor equal to item's rarity.
-        #   Lost if: item is lost or cannot be returned.
-        # - To Betray Others Betrays Oneself: Gain trust when you
-        #   could benefit by betrayal. Stake: honor equal to focus.
-        #   Lost if: you betray their trust or act significantly
-        #   against their interests.
-        # - The Wise Listen: Accept expertise without check.
-        #   Stake: honor equal to target's status.
-        #   Lost if: (as Honor's Demand above).
-
-        # Glory Stakes:
-        # - This Oath I Claim: Any of the above done publicly.
-        #   Stake: glory instead of (or in addition to) honor.
-        #   Lost if: failure becomes publicly known.
-
-        # Status Stakes:
-        # - Trust My Conviction: Back ambitions socially/financially.
-        #   Stake: status 1 (single item) to 10 (army backing).
-        #   Lost if: you fail to make a gift of similar value or
-        #   answer backer's future requests for assistance.
-
-        # Combined:
-        # - Hear My Plea: If GM requires checks, stake attribute to
-        #   reduce TN. Attribute equal to target's focus for -1 TN,
-        #   plus 3 additional per extra -1, maximum -3 total.
-
+        PROPERTIES {
+            ^"Source Document" STRING "L5R5e FAQ August 2020"
+            ^"Clarifies"       STRING "Tainted-ring counting for NPC mahō scaling"
+            ^"Question"        STRING "When an NPC performs Mahō, how many rings count as having Shadowlands Taint for scaling?"
+            ^"Answer"          STRING "Not Tainted = 0 rings. Tainted (not Otherworldly) = 2 rings. Otherworldly + Tainted = 4 rings. If (combat) threat 10+, may count as 5 at GM's discretion."
+        }
         RULES {
-            #L5REF31sT2uV4wX6yZ8aB0c: gm_guidance_staked_honor_examples
-            #L5REF32dE3fG5hI7jK9lM1n: gm_guidance_staked_glory_examples
-            #L5REF33oP4qR6sT8uV0wX2y: gm_guidance_staked_status_examples
-            #L5REF34zA5bC7dE9fG1hI3j: gm_guidance_staked_combined_hear_my_plea
+            #L5REF46bC7dE9fG1hI3jK5l: faq_maho_npc_tainted_ring_scaling
         }
     }
 
-    # ===========================
-    # FURTHER GM GUIDANCE: USING OPTIONAL RULES
-    # ===========================
-
-    ^"GM Guidance: Optional Rules Catalog" DEF {
+    ^"FAQ: Redirect Timing After Kept Before Resolve (2020)" DEF {
         APPLIES TO [^"Game Rules"]
-
-        # Complete list of official optional rules in L5R 5e:
-        # - Bonds (Courts of Stone p. 136, Path of Waves p. 187)
-        # - Cross-Ring Opportunities (core rulebook p. 298)
-        # - Grittier Games (core rulebook p. 288)
-        # - Experienced PCs (core rulebook p. 305)
-        # - One-Roll Duels (core rulebook p. 261)
-        # - Range Bands on a Tactical Grid (core rulebook p. 266)
-        # - Risky Checks (this document p. 9)
-        # - Ronin Honor and Glory (Path of Waves p. 181)
-        # - Shoddy Improvised Weapons (this document p. 10)
-        # - Subskills (core rulebook p. 143)
-        # - Trifling Breaches and Small Sacrifices
-        #   (Shadowlands p. 143, Courts of Stone p. 135)
-        # - Unmasking for Effect (Courts of Stone p. 135)
-
+        PROPERTIES {
+            ^"Source Document" STRING "L5R5e FAQ August 2020"
+            ^"Clarifies"       STRING "Timing of redirect effects (Fiend's Retreat, Laughing Fox Style, etc.)"
+            ^"Question"        STRING "When must a character choose to use Fiend's Retreat, Laughing Fox Style, and similar redirect effects?"
+            ^"Answer"          STRING "After the attacker has chosen kept dice, but before symbols on kept dice are resolved (after Step 5, before Step 6)."
+        }
         RULES {
-            #L5REF35kL6mN8oP0qR2sT4u: gm_guidance_optional_rules_catalog
+            #L5REF47mN8oP0qR2sT4uV6w: faq_redirect_timing_after_kept_before_resolve
         }
     }
 
-    # ===========================
+    # =================================================================
+    # FAQ: LORE (carryover from 2019)
+    # =================================================================
+
+    ^"FAQ: Kisshoten Eight Great Fortunes Discrepancy (2020)" DEF {
+        APPLIES TO [^"Game Rules"]
+        PROPERTIES {
+            ^"Source Document" STRING "L5R5e FAQ August 2020"
+            ^"Clarifies"       STRING "Discrepancy between core rulebook and Emerald Empire on Eight Great Fortunes"
+            ^"Question"        STRING "Why is Kisshōten noted as one of the Eight Great Fortunes in the core rulebook, but isn't in Emerald Empire?"
+            ^"Answer"          STRING "Kisshōten is widely considered one of the Eight Great Fortunes, though some in Rokugan disagree. Those dissenters managed to remove Kisshōten's entry from Emerald Empire."
+            ^"Carryover From"  STRING "L5R5e FAQ 2019"
+        }
+        RULES {
+            #L5REF48xY9zA1bC3dE5fG7h: faq_2020_kisshoten_discrepancy
+        }
+    }
+
+    # =================================================================
+    # GM GUIDANCE: TN MODIFIERS
+    # =================================================================
+
+    ^"GM Guidance: TN Modifiers (2020)" DEF {
+        APPLIES TO [^"Game Rules"]
+        PROPERTIES {
+            ^"Source Document" STRING "L5R5e FAQ August 2020"
+            ^"Guidance Type"   STRING "TN modification by narrative circumstance"
+            ^"Description"     STRING "Guidelines on modifying the TN of a check based on narrative circumstances."
+        }
+        TN_PENALTIES {
+            ^"+1" STRING "Fresh snow on rooftop, scarce tools, lacking cultural context, radically different climate, biting insects, predisposition to distrust from past encounters."
+            ^"+2" STRING "Entirely foreign tool, very rushed (half time or less), life-threateningly hot/cold, weak with hunger/thirst, significant encumbrance (two silhouette 2+ objects)."
+            ^"+3" STRING "Not sharing a language, storm winds on open sea, acting against a celestial being's will in their presence."
+        }
+        TN_BONUSES {
+            ^"-1" STRING "Uncommonly good tools, significantly more time (double+), gentle downhill slope, primary sources, acting per own giri/ninjō after unmasking, predisposition to trust (few encounters), appealing to target's giri or ninjō, favorable winds."
+            ^"-2" STRING "Entire library on topic, an attendant for long march, predisposition to trust (many encounters), deep shadow for hiding, appealing to both giri and ninjō."
+            ^"-3" STRING "Cart for moving heavy objects (silhouette 3+), acting with blessing of celestial being in their presence."
+        }
+        RULES {
+            #L5REF49iJ0kL2mN4oP6qR8s: gm_guidance_tn_modifier_penalties
+            #L5REF50tU1vW3xY5zA7bC9d: gm_guidance_tn_modifier_bonuses
+        }
+    }
+
+    # =================================================================
+    # GM GUIDANCE: STAKED SOCIAL ATTRIBUTES
+    # =================================================================
+
+    ^"GM Guidance: Staked Social Attributes (2020)" DEF {
+        APPLIES TO [^"Game Rules"]
+        PROPERTIES {
+            ^"Source Document" STRING "L5R5e FAQ August 2020"
+            ^"Guidance Type"   STRING "Staking honor, glory, status to convince or accomplish without checks"
+            ^"Description"     STRING "Guidelines on staking honor, glory, and status to convince others or accomplish social goals without checks."
+            ^"Personal Oaths"  STRING "Stake honor."
+            ^"Public Statements" STRING "Stake glory."
+            ^"Guarantees"      STRING "Based on position or finances: stake status."
+            ^"Combined Oaths"  STRING "Stake all invoked attributes (with added benefits)."
+            ^"Failure Penalty" STRING "If you fail to uphold the oath, lose staked points. If the opportunity to lose stake passes, staked points are returned. Lifetime oaths: GM/player may agree to treat as fulfilled."
+        }
+        HONOR_STAKES {
+            ^"Honor's Demand" "Convince a samurai to uphold a Bushido aspect. Stake honor equal to your focus. Lost if you break the reciprocal Bushido restrictions their act entails."
+            ^"Trust My Blade" "Entrust a samurai with a task without a check. Stake honor equal to target's status rank. Lost if you give up on or definitively fail the task."
+            ^"I Will Return It" "Borrow an item without a check. Stake honor equal to item's rarity. Lost if the item is lost or cannot be returned."
+            ^"To Betray Others Betrays Oneself" "Gain trust when you could benefit by betrayal. Stake honor equal to focus. Lost if you betray their trust or act significantly against their interests."
+            ^"The Wise Listen" "Accept expertise without a check. Stake honor equal to target's status. Lost as Honor's Demand."
+        }
+        GLORY_STAKES {
+            ^"This Oath I Claim" "Any honor-stake oath done publicly. Stake glory instead of (or in addition to) honor. Lost if failure becomes publicly known."
+        }
+        STATUS_STAKES {
+            ^"Trust My Conviction" "Back ambitions socially or financially. Stake status 1 (single item) to 10 (army backing). Lost if you fail to make a gift of similar value or answer the backer's future requests for assistance."
+        }
+        COMBINED_STAKES {
+            ^"Hear My Plea" "If the GM requires checks, stake an attribute to reduce TN. Attribute equal to target's focus for -1 TN, plus 3 additional per extra -1, maximum -3 total."
+        }
+        RULES {
+            #L5REF51eF2gH4iJ6kL8mN0o: gm_guidance_staked_honor_examples
+            #L5REF52pQ3rS5tU7vW9xY1z: gm_guidance_staked_glory_examples
+            #L5REF53aB4cD6eF8gH0iJ2k: gm_guidance_staked_status_examples
+            #L5REF54lM5nO7pQ9rS1tU3v: gm_guidance_staked_combined_hear_my_plea
+        }
+    }
+
+    # =================================================================
+    # GM GUIDANCE: USING OPTIONAL RULES
+    # =================================================================
+
+    ^"GM Guidance: Optional Rules Catalog (2020)" DEF {
+        APPLIES TO [^"Game Rules"]
+        PROPERTIES {
+            ^"Source Document" STRING "L5R5e FAQ August 2020"
+            ^"Guidance Type"   STRING "Catalog of official optional rules across published books"
+        }
+        CATALOG {
+            ^"Bonds" "Courts of Stone p. 136, Path of Waves p. 187"
+            ^"Cross-Ring Opportunities" "Core rulebook p. 298"
+            ^"Grittier Games" "Core rulebook p. 288"
+            ^"Experienced PCs" "Core rulebook p. 305"
+            ^"One-Roll Duels" "Core rulebook p. 261"
+            ^"Range Bands on a Tactical Grid" "Core rulebook p. 266"
+            ^"Risky Checks" "L5R5e FAQ August 2020 p. 9"
+            ^"Ronin Honor and Glory" "Path of Waves p. 181"
+            ^"Shoddy Improvised Weapons" "L5R5e FAQ August 2020 p. 10"
+            ^"Subskills" "Core rulebook p. 143"
+            ^"Trifling Breaches and Small Sacrifices" "Shadowlands p. 143, Courts of Stone p. 135"
+            ^"Unmasking for Effect" "Courts of Stone p. 135"
+        }
+        RULES {
+            #L5REF55wX6yZ8aB0cD2eF4g: gm_guidance_optional_rules_catalog
+        }
+    }
+
+    # =================================================================
     # OPTIONAL RULE PLAYSETS
-    # ===========================
+    # =================================================================
 
     ^"Optional Rule Playset: Blood and Consequences" DEF {
         APPLIES TO [^"Game Rules"]
-
-        # Focus: Emotionally driven drama with high personal stakes.
-        # Violence extremely deadly but quick to resolve. Characters
-        # die much more easily; transience of life is a core theme.
-        # Optional Rules Used: Bonds, Grittier Games, Experienced PCs
-        # (+20 starting XP), One-Roll Duels, Ronin Honor and Glory,
-        # Trifling Breaches and Small Sacrifices, Unmasking for Effect.
-
+        PROPERTIES {
+            ^"Source Document" STRING "L5R5e FAQ August 2020"
+            ^"Focus"           STRING "Emotionally driven drama with high personal stakes. Violence is extremely deadly but quick to resolve. Characters die much more easily; transience of life is a core theme."
+            ^"Optional Rules Used" LIST [
+                "Bonds",
+                "Grittier Games",
+                "Experienced PCs (+20 starting XP)",
+                "One-Roll Duels",
+                "Ronin Honor and Glory",
+                "Trifling Breaches and Small Sacrifices",
+                "Unmasking for Effect"
+            ]
+        }
         RULES {
-            #L5REF36vW7xY9zA1bC3dE5f: playset_blood_and_consequences
+            #L5REF56hI7jK9lM1nO3pQ5r: playset_blood_and_consequences
         }
     }
 
     ^"Optional Rule Playset: Courtly Fantasy" DEF {
         APPLIES TO [^"Game Rules"]
-
-        # Focus: Day-to-day stories, community, relationships.
-        # Social roleplaying in a single environment.
-        # Useful guidance: Assembling a Court in Seven Steps (Courts of
-        # Stone p. 139), Developing NPC Motivations (Courts of Stone p. 140).
-        # Optional Rules Used: Bonds, Experienced PCs (+15 starting XP
-        # and one starting Bond), Subskills (Artisan, Social, Trade),
-        # Unmasking for Effect.
-
+        PROPERTIES {
+            ^"Source Document" STRING "L5R5e FAQ August 2020"
+            ^"Focus"           STRING "Day-to-day stories, community, relationships. Social roleplaying in a single environment."
+            ^"Useful Guidance" STRING "Assembling a Court in Seven Steps (Courts of Stone p. 139); Developing NPC Motivations (Courts of Stone p. 140)."
+            ^"Optional Rules Used" LIST [
+                "Bonds",
+                "Experienced PCs (+15 starting XP and one starting Bond)",
+                "Subskills (Artisan, Social, Trade)",
+                "Unmasking for Effect"
+            ]
+        }
         RULES {
-            #L5REF37gH8iJ0kL2mN4oP6q: playset_courtly_fantasy
+            #L5REF57sT8uV0wX2yZ4aB6c: playset_courtly_fantasy
         }
     }
 
     ^"Optional Rule Playset: Heroic Action" DEF {
         APPLIES TO [^"Game Rules"]
-
-        # Focus: Daring feats, grand gestures, heroes saving the day.
-        # Empowers creative actions and rewards them.
-        # Optional Rules Used: Bonds, Cross-Ring Opportunities,
-        # Experienced PCs (+20 starting XP), Range Bands on a Tactical
-        # Grid, Risky Checks, Shoddy Improvised Weapons, Unmasking
-        # for Effect.
-
+        PROPERTIES {
+            ^"Source Document" STRING "L5R5e FAQ August 2020"
+            ^"Focus"           STRING "Daring feats, grand gestures, heroes saving the day. Empowers creative actions and rewards them."
+            ^"Optional Rules Used" LIST [
+                "Bonds",
+                "Cross-Ring Opportunities",
+                "Experienced PCs (+20 starting XP)",
+                "Range Bands on a Tactical Grid",
+                "Risky Checks",
+                "Shoddy Improvised Weapons",
+                "Unmasking for Effect"
+            ]
+        }
         RULES {
-            #L5REF38rS9tU1vW3xY5zA7b: playset_heroic_action
+            #L5REF58dE9fG1hI3jK5lM7n: playset_heroic_action
         }
     }
 
     ^"Optional Rule Playset: Intrigue and Mediation" DEF {
         APPLIES TO [^"Game Rules"]
-
-        # Focus: Ambassadors, mediators, peacekeepers. Complex problems
-        # requiring compromise, empathy, creative thinking.
-        # Optional Rules Used: Bonds, Cross-Ring Opportunities,
-        # Experienced PCs (+30 starting XP and Emerald/Clan Magistrate
-        # title or similar), Grittier Games, Risky Checks, Ronin Honor
-        # and Glory, Shoddy Improvised Weapons, Trifling Breaches and
-        # Small Sacrifices, Unmasking for Effect.
-
+        PROPERTIES {
+            ^"Source Document" STRING "L5R5e FAQ August 2020"
+            ^"Focus"           STRING "Ambassadors, mediators, peacekeepers. Complex problems requiring compromise, empathy, creative thinking."
+            ^"Optional Rules Used" LIST [
+                "Bonds",
+                "Cross-Ring Opportunities",
+                "Experienced PCs (+30 starting XP and Emerald/Clan Magistrate title or similar)",
+                "Grittier Games",
+                "Risky Checks",
+                "Ronin Honor and Glory",
+                "Shoddy Improvised Weapons",
+                "Trifling Breaches and Small Sacrifices",
+                "Unmasking for Effect"
+            ]
+        }
         RULES {
-            #L5REF39cD0eF2gH4iJ6kL8m: playset_intrigue_and_mediation
+            #L5REF59oP0qR2sT4uV6wX8y: playset_intrigue_and_mediation
         }
     }
 
     ^"Optional Rule Playset: Politics of Power" DEF {
         APPLIES TO [^"Game Rules"]
-
-        # Focus: Rulers of their domain, exploring what to do with power.
-        # Substantial personal power from the outset.
-        # Optional Rules Used: Bonds, Cross-Ring Opportunities,
-        # Experienced PCs (+50 starting XP and Daimyo or similar title),
-        # One-Roll Duels, Risky Checks, Subskills (Scholar and Social),
-        # Unmasking for Effect.
-
+        PROPERTIES {
+            ^"Source Document" STRING "L5R5e FAQ August 2020"
+            ^"Focus"           STRING "Rulers of their domain, exploring what to do with power. Substantial personal power from the outset."
+            ^"Optional Rules Used" LIST [
+                "Bonds",
+                "Cross-Ring Opportunities",
+                "Experienced PCs (+50 starting XP and Daimyo or similar title)",
+                "One-Roll Duels",
+                "Risky Checks",
+                "Subskills (Scholar and Social)",
+                "Unmasking for Effect"
+            ]
+        }
         RULES {
-            #L5REF40nO1pQ3rS5tU7vW9x: playset_politics_of_power
+            #L5REF60zA1bC3dE5fG7hI9j: playset_politics_of_power
         }
     }
 
     ^"Optional Rule Playset: Tactical Engagement" DEF {
         APPLIES TO [^"Game Rules"]
-
-        # Focus: Combat-focused, team-based tactical exercise.
-        # Wars between clans, Shadowlands ventures, ruin exploration.
-        # Optional Rules Used: Experienced PCs (+30 starting XP),
-        # Range Bands on a Tactical Grid, Shoddy Improvised Weapons.
-
+        PROPERTIES {
+            ^"Source Document" STRING "L5R5e FAQ August 2020"
+            ^"Focus"           STRING "Combat-focused, team-based tactical exercise. Wars between clans, Shadowlands ventures, ruin exploration."
+            ^"Optional Rules Used" LIST [
+                "Experienced PCs (+30 starting XP)",
+                "Range Bands on a Tactical Grid",
+                "Shoddy Improvised Weapons"
+            ]
+        }
         RULES {
-            #L5REF41yZ2aB4cD6eF8gH0i: playset_tactical_engagement
+            #L5REF61kL2mN4oP6qR8sT0u: playset_tactical_engagement
         }
     }
 
-    # ===========================
+    # =================================================================
     # EXTRA OPTIONAL RULES
-    # ===========================
+    # =================================================================
 
     ^"Optional Rule: Risky Checks" DEF {
         APPLIES TO [^"Game Rules"]
-
-        # Circumstances don't make a task easier or harder, but allow
-        # more reward for success or worse consequences for failure.
-        # Risk Level = additional bonus successes (on success) or
-        # additional shortfall (on failure). Default risk level is 0.
-        #
-        # GM announces risk level with the TN before dice roll.
-        # Player may reconsider and propose another path.
-        # On success: add bonus successes equal to risk level.
-        # On failure: add that amount to shortfall.
-        #
-        # Risk Level Examples:
-        # +1: Charging downhill, flirting with higher status, outfoxing
-        #     someone you know personally.
-        # +2: Leaping from rafters onto enemy, speaking openly about
-        #     emotions before higher status, experimental art technique.
-        # +3: Jumping from second story into hay below, obliquely
-        #     referencing higher-status person's failure, eschewing
-        #     conventional wisdom on etiquette/artistry.
-
         PROPERTIES {
-            ^"Rule Type" STRING "Optional Rule" FIXED
-            ^"Recommended For" STRING "Dramatic campaigns with heroic action or large fortune swings"
+            ^"Source Document"     STRING "L5R5e FAQ August 2020"
+            ^"Source Page"         STRING "p. 9"
+            ^"Rule Type"           STRING "Optional Rule" FIXED
+            ^"Recommended For"     STRING "Dramatic campaigns with heroic action or large fortune swings"
+            ^"Description"         STRING "Circumstances don't make a task easier or harder, but allow more reward for success or worse consequences for failure. Risk Level = additional bonus successes (on success) or additional shortfall (on failure). Default risk level is 0."
+            ^"Procedure"           STRING "GM announces risk level with the TN before the dice roll. Player may reconsider and propose another path. On success: add bonus successes equal to risk level. On failure: add that amount to shortfall."
         }
-
+        RISK_LEVELS {
+            ^"+1" STRING "Charging downhill, flirting with higher status, outfoxing someone you know personally."
+            ^"+2" STRING "Leaping from rafters onto enemy, speaking openly about emotions before higher status, experimental art technique."
+            ^"+3" STRING "Jumping from second story into hay below, obliquely referencing higher-status person's failure, eschewing conventional wisdom on etiquette/artistry."
+        }
         RULES {
-            #L5REF42jK3lM5nO7pQ9rS1t: optional_risky_checks_mechanic
-            #L5REF43uV4wX6yZ8aB0cD2e: optional_risky_checks_examples
+            #L5REF62vW3xY5zA7bC9dE1f: optional_risky_checks_mechanic
+            #L5REF63gH4iJ6kL8mN0oP2q: optional_risky_checks_examples
         }
     }
 
     ^"Optional Rule: Shoddy Improvised Weapons" DEF {
         APPLIES TO [^"Game Rules"]
-
-        # Improvised weapons break more easily.
-        # Applies to weapons from core p. 230 and Path of Waves p. 113
-        # profiles, but NOT those from Improvised Assault (Path of Waves
-        # p. 87, already destroyed at end of scene).
-        #
-        # After an Attack action check with an improvised weapon, it
-        # gains the Damaged quality (or Destroyed if already Damaged).
-        # Character may spend (op)+ from the Attack check to prevent
-        # Damaged. The (op) spent must be >= the number of Attack
-        # action checks performed with that weapon this scene.
-
         PROPERTIES {
-            ^"Rule Type" STRING "Optional Rule" FIXED
-            ^"Recommended For" STRING "Campaigns valuing proper weapons and unarmed attacks"
+            ^"Source Document"     STRING "L5R5e FAQ August 2020"
+            ^"Source Page"         STRING "p. 10"
+            ^"Rule Type"           STRING "Optional Rule" FIXED
+            ^"Recommended For"     STRING "Campaigns valuing proper weapons and unarmed attacks"
+            ^"Description"         STRING "Improvised weapons break more easily. Applies to weapons from core p. 230 and Path of Waves p. 113 profiles, but NOT those from Improvised Assault (Path of Waves p. 87, already destroyed at end of scene)."
+            ^"Procedure"           STRING "After an Attack action check with an improvised weapon, it gains the Damaged quality (or Destroyed if already Damaged). Character may spend (op)+ from the Attack check to prevent Damaged. The (op) spent must be >= the number of Attack action checks performed with that weapon this scene."
         }
-
         RULES {
-            #L5REF44fG5hI7jK9lM1nO3p: optional_shoddy_improvised_weapons_mechanic
+            #L5REF64rS5tU7vW9xY1zA3b: optional_shoddy_improvised_weapons_mechanic
         }
     }
 
+    # =================================================================
+    # ALTERNATE SCHOOL: TREASURE HUNTER
+    # =================================================================
+    #
+    # Not strictly errata: this is an alternate school variant that
+    # depends on the Risky Checks optional rule. Modeled as EXTENDS
+    # on the original Treasure Hunter school; SCHOOL_ABILITY override
+    # replaces "Risk and Reward" with "Fortune and Folly". All other
+    # school content inherits unchanged.
+
     ^"Treasure Hunter (Alternate) School" DEF {
         EXTENDS #L5RPW40nO5pQ7rS9tU1vW3x ^"Treasure Hunter School"
-
-        # For campaigns using the Risky Checks optional rule, this
-        # alternate version of the Treasure Hunter school (Path of
-        # Waves p. 50) replaces "Risk and Reward" with "Fortune and
-        # Folly". All other school content — Starting Techniques,
-        # Mastery Ability, Curriculum, Starting Outfit, etc. —
-        # inherits unchanged from the parent.
 
         PROPERTIES {
             ^"School Name" STRING "Treasure Hunter (Alternate)" FIXED
@@ -565,7 +935,7 @@ EXTENSION "L5R5e_Errata_FAQ_2020" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5REF45qR6sT8uV0wX2yZ4a: alternate_treasure_hunter_fortune_and_folly
+            #L5REF65cD6eF8gH0iJ2kL4m: alternate_treasure_hunter_fortune_and_folly
         }
     }
 }
