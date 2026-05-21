@@ -6,8 +6,8 @@
 ARC "L5R5e_LostWriter" {
     NAME "The Lost Writer in the City of the Rich Frog"
     VERSION "0.3"
-    DEPENDS_ON "L5R5e"
-    USES_EXTENSION "L5R5e_Children_Five_Winds"
+    DEPENDS_ON "L5R5e_Core_Core"
+    USES_EXTENSION "L5R5e_Children_of_Five_Winds"
 
     THEMES {
         "Duty versus ethics — must you obey orders that conflict with your conscience?"
