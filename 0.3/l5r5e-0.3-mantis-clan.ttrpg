@@ -73,6 +73,7 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
         # every advantage, and yield only to the rolling sea.
 
         PROPERTIES {
+            ^"School Name" STRING "Storm Fleet Sailor" FIXED
             ^"Roles" LIST ["Bushi"]
             ^"Clan" STRING "Mantis" FIXED
             ^"Ring Increase" DEF {
@@ -82,27 +83,33 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 5 [^"Commerce", ^"Fitness", ^"Games", ^"Labor", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Seafaring"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"School Ability" STRING "Sailor's Fortune"
-            ^"Mastery Ability" STRING "Storm Lord's Gambit"
         }
 
-        ^"Sailor's Fortune" DEF {
-            # Once per round when making a Trade skill check, if you
-            # are not Compromised, you may receive a number of strife
-            # up to your school rank to reroll that many rolled dice.
+        STARTING_TECHNIQUES {
+            KATA ^"Pelting Hail Style"
+            SHUJI CHOOSE 1 [^"All in Jest", ^"Stirring the Embers"]
         }
 
-        ^"Starting Techniques" {
-            # Kata: = Pelting Hail Style
-            # Shuji (choose one): All in Jest, Stirring the Embers
+        SCHOOL_ABILITY "Sailor's Fortune" {
+            "Once per round when making a Trade skill check, if you are not Compromised, you may receive a number of strife up to your school rank to reroll that many rolled dice."
         }
 
-        ^"Starting Outfit" {
-            # Sailor's garb, wakizashi (short sword), knife, any two
-            # weapons of rarity 6 or lower, yumi (bow), quiver of arrows,
-            # traveling pack, rope (twenty feet), gambling set (cards or
-            # dice), fishing rod and line.
+        MASTERY_ABILITY ^"Storm Lord's Gambit" {
+            "You may receive 1 additional strife to use your Sailor's Fortune ability on any check instead of only a Trade skill check."
         }
+
+        STARTING_OUTFIT [
+            "Sailor's garb",
+            "wakizashi (short sword)",
+            "knife",
+            "any two weapons of rarity 6 or lower",
+            "yumi (bow)",
+            "quiver of arrows",
+            "traveling pack",
+            "rope (twenty feet)",
+            "gambling set (cards or dice)",
+            "fishing rod and line"
+        ]
 
         CURRICULUM {
             RANK 1 {
@@ -150,12 +157,9 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
                 ^"Rouse the Soul" [shuji]
                 ^"Sear the Wound" [shuji]
             }
-        }
-
-        ^"Rank 6" {
-            # Storm Lord's Gambit (Mastery Ability): You may receive 1
-            # additional strife to use your Sailor's Fortune ability on
-            # any check instead of only a Trade skill check.
+            RANK 6 {
+                ^"Storm Lord's Gambit"
+            }
         }
 
         RULES {
@@ -177,6 +181,7 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
         # journeys and congregating in the Isles of Silk and Spice.
 
         PROPERTIES {
+            ^"School Name" STRING "Storm Fleet Tide Seer" FIXED
             ^"Roles" LIST ["Shugenja"]
             ^"Clan" STRING "Mantis" FIXED
             ^"Ring Increase" DEF {
@@ -186,30 +191,32 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Skills" DEF { CHOOSE 3 [^"Commerce", ^"Fitness", ^"Games", ^"Labor", ^"Martial Arts [Melee]", ^"Seafaring", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Air and Water Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]
-            ^"School Ability" STRING "Eye of the Storm"
-            ^"Mastery Ability" STRING "Storm Surge"
         }
 
-        ^"Eye of the Storm" DEF {
-            # When an invocation technique you perform would affect
-            # "each character" or "each other character" at a specified
-            # range, you may exclude a number of characters up to your
-            # school rank from all effects of the invocation except for
-            # spiritual backlash (see page 190 of the core rulebook).
+        STARTING_TECHNIQUES {
+            INVOCATION ^"Dominion of Suijin"
+            INVOCATION ^"Tempest of Air"
+            INVOCATION CHOOSE 1 [^"Bo of Water", ^"Path to Inner Peace", ^"Yari of Air"]
+            RITUAL ^"Commune with the Spirits"
+            RITUAL ^"Divination"
         }
 
-        ^"Starting Techniques" {
-            # Invocations: Dominion of Suijin, Tempest of Air
-            # Invocations (choose one): Bo of Water, Path to Inner Peace,
-            #   Yari of Air
-            # Rituals: Commune with the Spirits, Divination
+        SCHOOL_ABILITY "Eye of the Storm" {
+            "When an invocation technique you perform would affect \"each character\" or \"each other character\" at a specified range, you may exclude a number of characters up to your school rank from all effects of the invocation except for spiritual backlash (see page 190 of the core rulebook)."
         }
 
-        ^"Starting Outfit" {
-            # Sailor's garb, wakizashi (short sword), knife, any one
-            # weapon of rarity 6 or lower, traveling pack, divination set
-            # (cards, shells, or dice).
+        MASTERY_ABILITY ^"Storm Surge" {
+            "When you perform an invocation that smites one or more targets, treat each target's supernatural resistance as 1 lower per kept (st) symbol on the check."
         }
+
+        STARTING_OUTFIT [
+            "Sailor's garb",
+            "wakizashi (short sword)",
+            "knife",
+            "any one weapon of rarity 6 or lower",
+            "traveling pack",
+            "divination set (cards, shells, or dice)"
+        ]
 
         CURRICULUM {
             RANK 1 {
@@ -257,13 +264,9 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
                 ^"Ever-Changing Waves" [invocation]
                 ^"Rise, Air" [invocation]
             }
-        }
-
-        ^"Rank 6" {
-            # Storm Surge (Mastery Ability): When you perform an invocation
-            # that smites one or more targets, treat each target's
-            # supernatural resistance as 1 lower per kept (st) symbol
-            # on the check.
+            RANK 6 {
+                ^"Storm Surge"
+            }
         }
 
         RULES {
