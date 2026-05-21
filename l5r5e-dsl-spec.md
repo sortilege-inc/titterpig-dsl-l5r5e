@@ -897,6 +897,59 @@ Every school DEF follows this structure in order:
 7. `STARTING_OUTFIT [...]` — Starting equipment list
 8. `CURRICULUM` — Ranks 1-6, each containing curriculum entries
 
+### School-EXTENDS-School Inheritance
+
+A school DEF may `EXTENDS` another school DEF (not just the generic
+`^"School"`). This is used to create *variant* schools that share
+most of their parent's content but differ in one or more elements —
+for example, an errata-published alternate version of an existing
+school that swaps the School Ability while keeping the Curriculum,
+Starting Techniques, Mastery Ability, etc.
+
+```ttrpg
+^"Treasure Hunter (Alternate) School" DEF {
+    EXTENDS #L5RPW40nO5pQ7rS9tU1vW3x ^"Treasure Hunter School"
+
+    PROPERTIES {
+        ^"School Name" STRING "Treasure Hunter (Alternate)" FIXED
+        ^"Replaces"    STRING "Risk and Reward school ability"
+        ^"Requires"    STRING "Risky Checks optional rule"
+    }
+
+    SCHOOL_ABILITY "Fortune and Folly" {
+        "When you succeed at a risky check..."
+    }
+}
+```
+
+**Inheritance semantics for school-EXTENDS-school:**
+
+- **PROPERTIES inherit by name.** A property in the child's `PROPERTIES`
+  block with the same name as one in the parent's overrides the parent's
+  value. Properties in the parent that the child does not redeclare are
+  inherited unchanged.
+- **`APPLIES TO` inherits.** The child does not need to redeclare it
+  unless the scope differs from the parent's.
+- **Named sub-blocks (`STARTING_TECHNIQUES`, `SCHOOL_ABILITY`,
+  `MASTERY_ABILITY`, `STARTING_OUTFIT`, `CURRICULUM`) inherit as whole
+  units.** If the child declares any of these, the child's block fully
+  replaces the parent's. There is no partial merge — to override one
+  rank of `CURRICULUM`, the child must declare the entire `CURRICULUM`
+  block.
+- **`RULES` inherit by hash ID.** The child can add new RULE entries.
+  Overriding a parent RULE is done by redeclaring it with the same hash
+  ID.
+
+Variant schools should not redeclare PROPERTIES or sub-blocks that
+match the parent — they should rely on inheritance and declare only
+what actually differs. This keeps variants concise and makes drift
+catchable (if the parent changes, the variant's overrides remain
+visible while everything else stays in sync).
+
+The generic `^"School"` does not currently carry a hash ID, but
+schools that may be parents of variants do. Assign a hash ID to a
+school when it is intended to be extensible.
+
 ### Standard School Properties
 
 | Property | Type | Description |
