@@ -137,8 +137,7 @@ BASE "L5R5e_Core_Schools_Phoenix" {
             ^"School Name" STRING "Isawa Elementalist" FIXED
             ^"Clan" STRING "Phoenix"
             ^"Roles" LIST ["Shugenja"]
-            # F-STR-GAMMA: packed-string variant pending structured design
-            ^"Ring Increase" STRING "+1 any two different rings"
+            ^"Ring Increase" DEF { CHOOSE DISTINCT 2 [^"Air", ^"Earth", ^"Fire", ^"Water", ^"Void"] INTEGER 1 }
             ^"Starting Skills" DEF { CHOOSE 3 [^"Composition", ^"Courtesy", ^"Medicine", ^"Meditation", ^"Performance", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Invocations", "Rituals", "Sh\u016Bji"]

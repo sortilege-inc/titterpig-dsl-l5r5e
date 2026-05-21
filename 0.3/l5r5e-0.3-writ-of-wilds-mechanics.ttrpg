@@ -736,8 +736,10 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
 
         PROPERTIES {
             ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Water"] INTEGER 1 }
-            # F-STR-GAMMA: packed-string variant pending structured design
-            ^"Skill Increases" STRING "+1 Labor, and +1 Seafaring or +1 Survival"
+            ^"Skill Increases" DEF {
+                ^"Labor" INTEGER 1
+                CHOOSE 1 [^"Seafaring", ^"Survival"] INTEGER 1
+            }
             ^"Status Modification" STRING "+3"
             ^"Starting Wealth" DEF { ^"Bu" INTEGER 4 }
         }
@@ -761,8 +763,7 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
                 ^"Courtesy" INTEGER 1
             }
             ^"Status Modification" STRING "+11"
-            # F-STR-GAMMA: packed-string variant pending structured design
-            ^"Starting Wealth" STRING "One day's rations"
+            ^"Starting Wealth" DEF { ^"Day's Rations" INTEGER 1 }
         }
 
         RULES {

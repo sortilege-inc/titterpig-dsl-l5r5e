@@ -318,13 +318,28 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
         PROPERTIES {
             ^"Upbringing" STRING "Fallen Noble" FIXED
-            # F-STR-GAMMA: packed-string variant pending structured design
-            ^"Ring Increase" STRING "+1 to any ring, or based on chosen clan"
-            # F-STR-GAMMA: packed-string variant pending structured design
-            ^"Skill Increases" STRING "+1 to any two skills, or based on chosen clan"
+            ^"Ring Increase" DEF {
+                FROM_CLAN ^"<Chosen Clan>"."Clan Ring Bonus" FALLBACK {
+                    CHOOSE 1 [^"Air", ^"Earth", ^"Fire", ^"Water", ^"Void"] INTEGER 1
+                }
+            }
+            ^"Skill Increases" DEF {
+                FROM_CLAN ^"<Chosen Clan>"."Clan Skill Bonus" FALLBACK {
+                    CHOOSE DISTINCT 2 [
+                        ^"Aesthetics", ^"Command", ^"Commerce", ^"Composition",
+                        ^"Courtesy", ^"Culture", ^"Design", ^"Fitness",
+                        ^"Games", ^"Government", ^"Labor", ^"Martial Arts [Melee]",
+                        ^"Martial Arts [Ranged]", ^"Martial Arts [Unarmed]", ^"Medicine", ^"Meditation",
+                        ^"Performance", ^"Seafaring", ^"Sentiment", ^"Skulduggery",
+                        ^"Smithing", ^"Survival", ^"Tactics", ^"Theology"
+                    ] INTEGER 1
+                }
+            }
             ^"Status Modification" INTEGER 10
-            # F-STR-GAMMA: packed-string variant pending structured design
-            ^"Starting Wealth" STRING "An heirloom worth 3 koku, wakizashi (or gaijin equivalent)"
+            ^"Starting Wealth" DEF {
+                ^"Heirloom" DEF { ^"Koku" INTEGER 3 }
+                ^"Wakizashi" INTEGER 1   # or gaijin equivalent
+            }
         }
     }
 
@@ -379,8 +394,10 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"Upbringing" STRING "Hunter or Fisher" FIXED
             ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Water"] INTEGER 1 }
-            # F-STR-GAMMA: packed-string variant pending structured design
-            ^"Skill Increases" STRING "+1 Labor, and +1 Seafaring or +1 Survival"
+            ^"Skill Increases" DEF {
+                ^"Labor" INTEGER 1
+                CHOOSE 1 [^"Seafaring", ^"Survival"] INTEGER 1
+            }
             ^"Status Modification" INTEGER 3
             ^"Starting Wealth" DEF { ^"Bu" INTEGER 4 }
         }
@@ -421,8 +438,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
         PROPERTIES {
             ^"Upbringing" STRING "Ronin Family" FIXED
-            # F-STR-GAMMA: packed-string variant pending structured design
-            ^"Ring Increase" STRING "+1 to any one ring"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Earth", ^"Fire", ^"Water", ^"Void"] INTEGER 1 }
             ^"Skill Increases" DEF {
                 ^"Courtesy" INTEGER 1
                 ^"Martial Arts [Melee]" INTEGER 1
@@ -470,8 +486,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Courtesy" INTEGER 1
             }
             ^"Status Modification" INTEGER 11
-            # F-STR-GAMMA: packed-string variant pending structured design
-            ^"Starting Wealth" STRING "One day's rations"
+            ^"Starting Wealth" DEF { ^"Day's Rations" INTEGER 1 }
         }
     }
 
@@ -507,8 +522,10 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Wandering Blade" FIXED
             ^"Roles" LIST ["Bushi"]
-            # F-STR-GAMMA: packed-string variant pending structured design
-            ^"Ring Increase" STRING "+1 Earth, +1 any other ring"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                CHOOSE 1 [^"Air", ^"Fire", ^"Water", ^"Void"] INTEGER 1
+            }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Performance", ^"Smithing"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
@@ -874,8 +891,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Voice of the Wilds" FIXED
             ^"Roles" LIST ["Shugenja", "Courtier"]
-            # F-STR-GAMMA: packed-string variant pending structured design
-            ^"Ring Increase" STRING "+1 to any two different rings"
+            ^"Ring Increase" DEF { CHOOSE DISTINCT 2 [^"Air", ^"Earth", ^"Fire", ^"Water", ^"Void"] INTEGER 1 }
             ^"Starting Skills" DEF { CHOOSE 3 [^"Composition", ^"Courtesy", ^"Games", ^"Meditation", ^"Sentiment", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Rituals (ritual)", "Shuji (shuji)"]
@@ -967,8 +983,10 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Artisan of the Roads" FIXED
             ^"Roles" LIST ["Artisan"]
-            # F-STR-GAMMA: packed-string variant pending structured design
-            ^"Ring Increase" STRING "+1 Fire, +1 to any other ring"
+            ^"Ring Increase" DEF {
+                ^"Fire" INTEGER 1
+                CHOOSE 1 [^"Air", ^"Earth", ^"Water", ^"Void"] INTEGER 1
+            }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Aesthetics", ^"Courtesy", ^"Commerce", ^"Composition", ^"Culture", ^"Design", ^"Smithing"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 30
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]

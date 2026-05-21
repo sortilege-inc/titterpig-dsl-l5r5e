@@ -798,8 +798,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Isawa Tensai" FIXED
             ^"Roles" LIST ["Shugenja"]
-            # F-STR-GAMMA: packed-string variant pending structured design
-            ^"Ring Increase" STRING "+2 any one ring"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Earth", ^"Fire", ^"Water", ^"Void"] INTEGER 2 }
             ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shuji (shuji)"]

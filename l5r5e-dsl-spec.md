@@ -685,7 +685,68 @@ The `^"Ring Increase"`, `^"Skill Increases"`, `^"Clan Ring Bonus"`, `^"Clan Skil
 
 **The `CHOOSE N [opts] INTEGER M` construct** parallels the existing `KATA CHOOSE N [opts]` curriculum syntax. Semantics: the character picks `N` of the listed options; each picked option gets `+M`.
 
-**Exotic shapes** (specific + wildcard, contextual "based on chosen clan", pure wildcards, narrative wealth) currently remain as STRING with a `# F-STR-GAMMA: ...` marker comment. See `titterpig-audit/l5r5e/AUDIT-BASELINE.md` F-STR-002/003 for the catalog of remaining exotic cases.
+#### `CHOOSE DISTINCT N [...]` — distinctness modifier
+
+When `N > 1` and selections must be different from each other (source rule says "two different rings," "two distinct skills," etc.), the `DISTINCT` keyword appears between `CHOOSE` and the count:
+
+```ttrpg
+^"Ring Increase" DEF {
+    CHOOSE DISTINCT 2 [^"Air", ^"Earth", ^"Fire", ^"Water", ^"Void"] INTEGER 1
+}
+```
+
+Without `DISTINCT`, duplicate selections are allowed. For `N = 1`, `DISTINCT` is meaningless and is omitted by convention.
+
+#### Mixed specific + choice (γ-Q1 / γ-Q4 pattern)
+
+When a property combines a fixed bonus with a player choice, list the specific bonus first as a typed sub-DEF entry, then the CHOOSE block. The CHOOSE OPTIONS list explicitly EXCLUDES the specific bonus (no need for `DISTINCT` — exclusion is enforced by the list itself):
+
+```ttrpg
+# "+1 Earth, +1 any other ring"
+^"Ring Increase" DEF {
+    ^"Earth" INTEGER 1
+    CHOOSE 1 [^"Air", ^"Fire", ^"Water", ^"Void"] INTEGER 1   # any non-Earth
+}
+
+# "+1 Labor, and +1 Seafaring or +1 Survival"
+^"Skill Increases" DEF {
+    ^"Labor" INTEGER 1
+    CHOOSE 1 [^"Seafaring", ^"Survival"] INTEGER 1
+}
+```
+
+#### `FROM_CLAN ... FALLBACK { ... }` — contextual values
+
+For properties whose value depends on a character-creation choice elsewhere (the Path of Waves "if you took a clan, use the clan's bonus instead" rule), use the `FROM_CLAN ... FALLBACK { ... }` construct:
+
+```ttrpg
+^"Ring Increase" DEF {
+    FROM_CLAN ^"<Chosen Clan>"."Clan Ring Bonus" FALLBACK {
+        CHOOSE 1 [^"Air", ^"Earth", ^"Fire", ^"Water", ^"Void"] INTEGER 1
+    }
+}
+```
+
+**Semantics:**
+- At character creation: if `^"Clan"` has been set, the property resolves to the chosen clan's `^"Clan Ring Bonus"` (or `^"Clan Skill Bonus"`, etc.) — a placeholder reference of the form `^"<Chosen Clan>"."<Property>"` is resolved against the actual chosen Clan DEF at instantiation.
+- If `^"Clan"` is unset (e.g., Ronin, Peasant, Gaijin), the `FALLBACK { ... }` body is used instead.
+- The FALLBACK body can contain any normal Ring/Skill Increase structure (specific bonuses, CHOOSE constructs, etc.).
+
+The `FROM_CLAN` construct currently appears only in Path of Waves upbringings.
+
+#### Nested DEF for value-bearing wealth items (γ-Q5)
+
+When a wealth entry carries items that have currency value (e.g., "an heirloom worth 3 koku"), the item is a nested DEF with its value as a sub-property:
+
+```ttrpg
+# "An heirloom worth 3 koku, wakizashi (or gaijin equivalent)"
+^"Starting Wealth" DEF {
+    ^"Heirloom" DEF { ^"Koku" INTEGER 3 }
+    ^"Wakizashi" INTEGER 1   # or gaijin equivalent
+}
+```
+
+Distinguishes "the heirloom has a koku value" from "the character has both an heirloom AND koku as separate items."
 
 **Note:** `^"Technique"` also serves as a generic type (defined in `core-techniques.ttrpg`) with properties for Name, Type, Rank, Activation, Ring, Skill, TN, Description, Effects, Opportunities, and Prerequisites. School abilities and mastery abilities are defined as named sub-blocks (`SCHOOL_ABILITY`, `MASTERY_ABILITY`) rather than as STRING properties.
 

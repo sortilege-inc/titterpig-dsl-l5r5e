@@ -469,8 +469,10 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Mercenary Ninja" FIXED
             ^"Roles" LIST ["Shinobi"]
-            # F-STR-GAMMA: packed-string variant pending structured design
-            ^"Ring Increase" STRING "+1 Air, +1 any one other ring"
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                CHOOSE 1 [^"Earth", ^"Fire", ^"Water", ^"Void"] INTEGER 1
+            }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Martial Arts [Unarmed]", ^"Medicine", ^"Skulduggery", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 20
             ^"Techniques Available" LIST ["Kata (kata)", "Ninjutsu (ninjutsu)", "Rituals (ritual)"]

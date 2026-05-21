@@ -274,8 +274,10 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Ishiken Initiate" FIXED
             ^"Roles" LIST ["Sage", "Shugenja"]
-            # F-STR-GAMMA: packed-string variant pending structured design
-            ^"Ring Increase" STRING "+1 Void, +1 any other ring"
+            ^"Ring Increase" DEF {
+                ^"Void" INTEGER 1
+                CHOOSE 1 [^"Air", ^"Earth", ^"Fire", ^"Water"] INTEGER 1
+            }
             ^"Starting Skills" DEF { CHOOSE 3 [^"Fitness", ^"Medicine", ^"Meditation", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Inversions (inversion)", "Rituals (ritual)", "Shuji (shuji)"]

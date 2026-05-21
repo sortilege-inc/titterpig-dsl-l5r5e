@@ -569,8 +569,10 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         PROPERTIES {
             ^"School Name" STRING "Sand Road Wayfinder" FIXED
             ^"Roles" LIST ["Bushi", "Shinobi"]
-            # F-STR-GAMMA: packed-string variant pending structured design
-            ^"Ring Increase" STRING "+1 Earth, +1 any other ring"
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                CHOOSE 1 [^"Air", ^"Fire", ^"Water", ^"Void"] INTEGER 1
+            }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Commerce", ^"Labor", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shuji (shuji)"]
