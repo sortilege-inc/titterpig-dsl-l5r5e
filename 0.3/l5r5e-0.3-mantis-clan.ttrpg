@@ -63,7 +63,7 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
     # SCHOOLS
     # ===========================
 
-    ^"Storm Fleet Sailor School" DEF {
+    ^"Storm Fleet Sailor" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -74,15 +74,15 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
 
         PROPERTIES {
             ^"School Name" STRING "Storm Fleet Sailor" FIXED
+            ^"Clan" STRING "Mantis"
             ^"Roles" LIST ["Bushi"]
-            ^"Clan" STRING "Mantis" FIXED
             ^"Ring Increase" DEF {
                 ^"Fire" INTEGER 1
                 ^"Water" INTEGER 1
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Commerce", ^"Fitness", ^"Games", ^"Labor", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Seafaring"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 35
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
         STARTING_TECHNIQUES {
@@ -160,12 +160,6 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
             RANK 6 {
                 ^"Storm Lord's Gambit"
             }
-        }
-
-        RULES {
-            #L5RMC03wX4yZ6aB8cD0eF2g: school_storm_fleet_sailor_ability
-            #L5RMC04hI5jK7lM9nO1pQ3r: school_storm_fleet_sailor_curriculum
-            #L5RMC05sT6uV8wX0yZ2aB4c: school_storm_fleet_sailor_mastery
         }
     }
 
