@@ -181,6 +181,66 @@ L5R5e defines a root `Entity` ACTOR from which all other actor types inherit. Th
 }
 ```
 
+### NPC DEF Pattern (Adversaries, Minions, and arc cast members)
+
+Concrete NPC definitions follow this shape:
+
+```ttrpg
+#L5RCS01aB1cD3eF5gH7iJ9kL ^"Ryuhei, Monk" DEF {
+    APPLIES TO [^"NPC"]
+
+    # Optional DEF-body comment block: narrative context, source page reference, etc.
+
+    PROPERTIES {
+        ^"Type"                  STRING "Adversary" FIXED   # OPTIONAL — "Adversary" or "Minion"; omit if unspecified
+        ^"Role"                  STRING "..."               # OPTIONAL — narrative role in this adventure/sourcebook
+        ^"Description"           STRING "..."               # inherited from ^"Entity"; override per-NPC as needed
+        ^"Combat Conflict Rank"  INTEGER N
+        ^"Intrigue Conflict Rank" INTEGER N
+        ^"Rings" DEF {
+            ^"Air" INTEGER N
+            ^"Earth" INTEGER N
+            ^"Fire" INTEGER N
+            ^"Water" INTEGER N
+            ^"Void" INTEGER N
+        }
+        ^"Demeanor"                       STRING "..."
+        ^"Social Skill Check TN Modifiers" STRING "Ring +N, Ring -N"
+        ^"Endurance"  INTEGER N
+        ^"Composure"  INTEGER N
+        ^"Focus"      INTEGER N
+        ^"Vigilance"  INTEGER N
+        ^"Honor"      INTEGER N
+        ^"Glory"      INTEGER N
+        ^"Status"     INTEGER N
+        ^"Skills"           LIST OF STRING ["Artisan N", "Martial N", "Scholar N", "Social N", "Trade N"]
+        ^"Advantages"       LIST OF STRING ["Name (Ring) [Category; Category]"]
+        ^"Disadvantages"    LIST OF STRING ["Name (Ring) [Category; Category]"]
+        ^"Favored Weapons"  LIST OF STRING ["WeaponName: Range N, Damage N, Deadliness N, Quality, ..."]
+        ^"Gear"             LIST OF STRING ["item", "item", ...]
+    }
+
+    # Per-NPC abilities as nested DEFs (sub-DEFs of the NPC)
+    ^"Ability Name" DEF {
+        # mechanical text as comment or inline string
+    }
+
+    RULES {
+        #L5R...: npc_identifier_label
+    }
+}
+```
+
+**Required:** `APPLIES TO [^"NPC"]` and at least the Conflict Ranks + Rings.
+**Optional properties** (omit if the source data does not specify them):
+
+- `^"Type"` — `"Adversary"` or `"Minion"` (both `EXTENDS` the `^"NPC"` actor type in core-base). Leave omitted if the source data does not distinguish.
+- `^"Role"` — narrative function within an adventure or sourcebook. Singular; distinct from the plural `^"Roles"` LIST used by School DEFs.
+- `^"Description"` — narrative description (inherited from `^"Entity"`, overridable).
+- `^"Demeanor"`, `^"Social Skill Check TN Modifiers"`, `^"Advantages"`, `^"Disadvantages"`, `^"Favored Weapons"`, `^"Gear"` — present when the source provides them; omit otherwise.
+
+NPCs live either in dedicated `*-npcs.ttrpg` extension files or inline within an arc's `CAST { }` block. The shape is the same in both contexts.
+
 ### Key ACTOR Design Patterns
 
 - **Hash IDs**: Every ACTOR, DEF block, and RULE has a unique hash identifier (e.g., `#L5R001aB2cD4eF6gH8iJ0kL`). Format: `#` + system prefix (`L5R`) + 3 digits + 12 alphanumeric characters.

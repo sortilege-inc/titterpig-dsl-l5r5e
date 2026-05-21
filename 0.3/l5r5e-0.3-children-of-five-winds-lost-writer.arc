@@ -22,243 +22,234 @@ ARC "L5R5e_LostWriter" {
     CAST {
         # --- Primary NPCs ---
 
-        DEF ^"Shinjo Higuchi" #shinjo_higuchi {
-            TYPE "npc"
-            ROLE "The missing author, possessed by an ifrit"
-            DESCRIPTION "Popular author of stories and poems (pen name Hana-no-Ame), possessed by an ifrit from a meishodo talisman while visiting the City of the Rich Frog."
-            STATS {
-                rings.air = 3
-                rings.earth = 2
-                rings.fire = 5
-                rings.water = 1
-                rings.void = 3
-                endurance = 10
-                composure = 10
-                focus = 5
-                vigilance = 3
-                honor = 60
-                glory = 50
-                status = 39
-                skills.artisan = 1
-                skills.martial = 2
-                skills.scholar = 1
-                skills.social = 1
-                skills.trade = 0
-                combat_conflict_rank = 4
-                intrigue_conflict_rank = 1
+        #L5RCW50aB2cD4eF6gH8iJ0k ^"Shinjo Higuchi" DEF {
+            APPLIES TO [^"NPC"]
+
+            PROPERTIES {
+                ^"Role"        STRING "The missing author, possessed by an ifrit"
+                ^"Description" STRING "Popular author of stories and poems (pen name Hana-no-Ame), possessed by an ifrit from a meishodo talisman while visiting the City of the Rich Frog."
+                ^"Combat Conflict Rank"  INTEGER 4
+                ^"Intrigue Conflict Rank" INTEGER 1
+                ^"Rings" DEF {
+                    ^"Air" INTEGER 3
+                    ^"Earth" INTEGER 2
+                    ^"Fire" INTEGER 5
+                    ^"Water" INTEGER 1
+                    ^"Void" INTEGER 3
+                }
+                ^"Endurance" INTEGER 10
+                ^"Composure" INTEGER 10
+                ^"Focus" INTEGER 5
+                ^"Vigilance" INTEGER 3
+                ^"Honor"  INTEGER 60
+                ^"Glory"  INTEGER 50
+                ^"Status"  INTEGER 39
+                ^"Skills" LIST OF STRING ["Artisan 1", "Martial 2", "Scholar 1", "Social 1", "Trade 0"]
             }
         }
 
-        DEF ^"Miya Tetsua" #miya_tetsua {
-            TYPE "npc"
-            ROLE "Governor of the City of the Rich Frog"
-            DESCRIPTION "Governor of the City of the Rich Frog, friend to many influential citizens. Has been housing Shinjo Higuchi while she writes her newest novel."
-            STATS {
-                rings.air = 4
-                rings.earth = 2
-                rings.fire = 4
-                rings.water = 3
-                rings.void = 2
-                endurance = 12
-                composure = 12
-                focus = 8
-                vigilance = 4
-                honor = 45
-                glory = 55
-                status = 60
-                skills.artisan = 3
-                skills.martial = 2
-                skills.scholar = 4
-                skills.social = 4
-                skills.trade = 1
-                combat_conflict_rank = 2
-                intrigue_conflict_rank = 5
+        #L5RCW51lM3nO5pQ7rS9tU1v ^"Miya Tetsua" DEF {
+            APPLIES TO [^"NPC"]
+
+            PROPERTIES {
+                ^"Role"        STRING "Governor of the City of the Rich Frog"
+                ^"Description" STRING "Governor of the City of the Rich Frog, friend to many influential citizens. Has been housing Shinjo Higuchi while she writes her newest novel."
+                ^"Combat Conflict Rank"  INTEGER 2
+                ^"Intrigue Conflict Rank" INTEGER 5
+                ^"Rings" DEF {
+                    ^"Air" INTEGER 4
+                    ^"Earth" INTEGER 2
+                    ^"Fire" INTEGER 4
+                    ^"Water" INTEGER 3
+                    ^"Void" INTEGER 2
+                }
+                ^"Endurance" INTEGER 12
+                ^"Composure" INTEGER 12
+                ^"Focus" INTEGER 8
+                ^"Vigilance" INTEGER 4
+                ^"Honor"  INTEGER 45
+                ^"Glory"  INTEGER 55
+                ^"Status"  INTEGER 60
+                ^"Skills" LIST OF STRING ["Artisan 3", "Martial 2", "Scholar 4", "Social 4", "Trade 1"]
             }
         }
 
-        DEF ^"Ikoma Kotone" #ikoma_kotone {
-            TYPE "npc"
-            ROLE "Tea master at the Teahouse with No Name"
-            DESCRIPTION "Tea master and owner of the Teahouse with No Name in the Lion district. Diligent and professional, with a weakness for gossip and taboo romance stories."
-            STATS {
-                rings.air = 3
-                rings.earth = 2
-                rings.fire = 2
-                rings.water = 3
-                rings.void = 3
-                endurance = 8
-                composure = 10
-                focus = 5
-                vigilance = 3
-                honor = 60
-                glory = 50
-                status = 39
-                skills.artisan = 2
-                skills.martial = 0
-                skills.scholar = 2
-                skills.social = 3
-                skills.trade = 0
-                combat_conflict_rank = 1
-                intrigue_conflict_rank = 4
+        #L5RCW52wX4yZ6aB8cD0eF2g ^"Ikoma Kotone" DEF {
+            APPLIES TO [^"NPC"]
+
+            PROPERTIES {
+                ^"Role"        STRING "Tea master at the Teahouse with No Name"
+                ^"Description" STRING "Tea master and owner of the Teahouse with No Name in the Lion district. Diligent and professional, with a weakness for gossip and taboo romance stories."
+                ^"Combat Conflict Rank"  INTEGER 1
+                ^"Intrigue Conflict Rank" INTEGER 4
+                ^"Rings" DEF {
+                    ^"Air" INTEGER 3
+                    ^"Earth" INTEGER 2
+                    ^"Fire" INTEGER 2
+                    ^"Water" INTEGER 3
+                    ^"Void" INTEGER 3
+                }
+                ^"Endurance" INTEGER 8
+                ^"Composure" INTEGER 10
+                ^"Focus" INTEGER 5
+                ^"Vigilance" INTEGER 3
+                ^"Honor"  INTEGER 60
+                ^"Glory"  INTEGER 50
+                ^"Status"  INTEGER 39
+                ^"Skills" LIST OF STRING ["Artisan 2", "Martial 0", "Scholar 2", "Social 3", "Trade 0"]
             }
         }
 
-        DEF ^"Tonbo Kuma" #tonbo_kuma {
-            TYPE "npc"
-            ROLE "Dragonfly shrine keeper"
-            DESCRIPTION "A quiet Dragonfly shrine keeper who tends the gardens in the Dragon district. Observed Higuchi's growing obsession with a foreign talisman."
-            STATS {
-                rings.air = 2
-                rings.earth = 3
-                rings.fire = 2
-                rings.water = 3
-                rings.void = 3
-                endurance = 10
-                composure = 12
-                focus = 5
-                vigilance = 3
-                honor = 55
-                glory = 30
-                status = 30
-                skills.artisan = 1
-                skills.martial = 1
-                skills.scholar = 3
-                skills.social = 2
-                skills.trade = 1
-                combat_conflict_rank = 1
-                intrigue_conflict_rank = 2
+        #L5RCW53hI5jK7lM9nO1pQ3r ^"Tonbo Kuma" DEF {
+            APPLIES TO [^"NPC"]
+
+            PROPERTIES {
+                ^"Role"        STRING "Dragonfly shrine keeper"
+                ^"Description" STRING "A quiet Dragonfly shrine keeper who tends the gardens in the Dragon district. Observed Higuchi's growing obsession with a foreign talisman."
+                ^"Combat Conflict Rank"  INTEGER 1
+                ^"Intrigue Conflict Rank" INTEGER 2
+                ^"Rings" DEF {
+                    ^"Air" INTEGER 2
+                    ^"Earth" INTEGER 3
+                    ^"Fire" INTEGER 2
+                    ^"Water" INTEGER 3
+                    ^"Void" INTEGER 3
+                }
+                ^"Endurance" INTEGER 10
+                ^"Composure" INTEGER 12
+                ^"Focus" INTEGER 5
+                ^"Vigilance" INTEGER 3
+                ^"Honor"  INTEGER 55
+                ^"Glory"  INTEGER 30
+                ^"Status"  INTEGER 30
+                ^"Skills" LIST OF STRING ["Artisan 1", "Martial 1", "Scholar 3", "Social 2", "Trade 1"]
             }
         }
 
-        DEF ^"Kaeru Haya" #kaeru_haya {
-            TYPE "npc"
-            ROLE "Ronin peacekeeper of the Unicorn wharf"
-            DESCRIPTION "Old peacekeeper of the Kaeru family of ronin, leading the security group along the wharf in the Unicorn district. Has developed an interest in spiritual artifacts from beyond Rokugan."
-            STATS {
-                rings.air = 2
-                rings.earth = 3
-                rings.fire = 2
-                rings.water = 1
-                rings.void = 1
-                endurance = 10
-                composure = 6
-                focus = 5
-                vigilance = 2
-                honor = 30
-                glory = 40
-                status = 20
-                skills.artisan = 0
-                skills.martial = 2
-                skills.scholar = 1
-                skills.social = 0
-                skills.trade = 1
-                combat_conflict_rank = 2
-                intrigue_conflict_rank = 1
+        #L5RCW54sT6uV8wX0yZ2aB4c ^"Kaeru Haya" DEF {
+            APPLIES TO [^"NPC"]
+
+            PROPERTIES {
+                ^"Role"        STRING "Ronin peacekeeper of the Unicorn wharf"
+                ^"Description" STRING "Old peacekeeper of the Kaeru family of ronin, leading the security group along the wharf in the Unicorn district. Has developed an interest in spiritual artifacts from beyond Rokugan."
+                ^"Combat Conflict Rank"  INTEGER 2
+                ^"Intrigue Conflict Rank" INTEGER 1
+                ^"Rings" DEF {
+                    ^"Air" INTEGER 2
+                    ^"Earth" INTEGER 3
+                    ^"Fire" INTEGER 2
+                    ^"Water" INTEGER 1
+                    ^"Void" INTEGER 1
+                }
+                ^"Endurance" INTEGER 10
+                ^"Composure" INTEGER 6
+                ^"Focus" INTEGER 5
+                ^"Vigilance" INTEGER 2
+                ^"Honor"  INTEGER 30
+                ^"Glory"  INTEGER 40
+                ^"Status"  INTEGER 20
+                ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 1", "Social 0", "Trade 1"]
             }
         }
 
-        DEF ^"Ide Chiharu" #ide_chiharu {
-            TYPE "npc"
-            ROLE "Unicorn antiquarian and artifact dealer"
-            DESCRIPTION "Unicorn antiquarian and seller of artifacts who recently purchased several supposedly mystical items from a Fox Clan merchant, then sold one to Higuchi."
-            STATS {
-                rings.air = 3
-                rings.earth = 1
-                rings.fire = 1
-                rings.water = 3
-                rings.void = 1
-                endurance = 4
-                composure = 8
-                focus = 4
-                vigilance = 3
-                honor = 45
-                glory = 40
-                status = 20
-                skills.artisan = 2
-                skills.martial = 0
-                skills.scholar = 0
-                skills.social = 2
-                skills.trade = 3
-                combat_conflict_rank = 1
-                intrigue_conflict_rank = 3
+        #L5RCW55dE7fG9hI1jK3lM5n ^"Ide Chiharu" DEF {
+            APPLIES TO [^"NPC"]
+
+            PROPERTIES {
+                ^"Role"        STRING "Unicorn antiquarian and artifact dealer"
+                ^"Description" STRING "Unicorn antiquarian and seller of artifacts who recently purchased several supposedly mystical items from a Fox Clan merchant, then sold one to Higuchi."
+                ^"Combat Conflict Rank"  INTEGER 1
+                ^"Intrigue Conflict Rank" INTEGER 3
+                ^"Rings" DEF {
+                    ^"Air" INTEGER 3
+                    ^"Earth" INTEGER 1
+                    ^"Fire" INTEGER 1
+                    ^"Water" INTEGER 3
+                    ^"Void" INTEGER 1
+                }
+                ^"Endurance" INTEGER 4
+                ^"Composure" INTEGER 8
+                ^"Focus" INTEGER 4
+                ^"Vigilance" INTEGER 3
+                ^"Honor"  INTEGER 45
+                ^"Glory"  INTEGER 40
+                ^"Status"  INTEGER 20
+                ^"Skills" LIST OF STRING ["Artisan 2", "Martial 0", "Scholar 0", "Social 2", "Trade 3"]
             }
         }
 
-        DEF ^"Daidoji Shin" #daidoji_shin {
-            TYPE "npc"
-            ROLE "Crane trade envoy and amateur detective"
-            DESCRIPTION "Louche layabout and wastrel turned amateur gentleman detective. Crane Clan's trade envoy in the City of the Rich Frog."
-            STATS {
-                rings.air = 5
-                rings.earth = 2
-                rings.fire = 3
-                rings.water = 5
-                rings.void = 2
-                endurance = 8
-                composure = 16
-                focus = 8
-                vigilance = 5
-                honor = 60
-                glory = 50
-                status = 40
-                skills.artisan = 5
-                skills.martial = 2
-                skills.scholar = 3
-                skills.social = 5
-                skills.trade = 2
-                combat_conflict_rank = 5
-                intrigue_conflict_rank = 11
+        #L5RCW56oP8qR0sT2uV4wX6y ^"Daidoji Shin" DEF {
+            APPLIES TO [^"NPC"]
+
+            PROPERTIES {
+                ^"Role"        STRING "Crane trade envoy and amateur detective"
+                ^"Description" STRING "Louche layabout and wastrel turned amateur gentleman detective. Crane Clan's trade envoy in the City of the Rich Frog."
+                ^"Combat Conflict Rank"  INTEGER 5
+                ^"Intrigue Conflict Rank" INTEGER 11
+                ^"Rings" DEF {
+                    ^"Air" INTEGER 5
+                    ^"Earth" INTEGER 2
+                    ^"Fire" INTEGER 3
+                    ^"Water" INTEGER 5
+                    ^"Void" INTEGER 2
+                }
+                ^"Endurance" INTEGER 8
+                ^"Composure" INTEGER 16
+                ^"Focus" INTEGER 8
+                ^"Vigilance" INTEGER 5
+                ^"Honor"  INTEGER 60
+                ^"Glory"  INTEGER 50
+                ^"Status"  INTEGER 40
+                ^"Skills" LIST OF STRING ["Artisan 5", "Martial 2", "Scholar 3", "Social 5", "Trade 2"]
             }
         }
 
-        DEF ^"Asahina Nao" #asahina_nao {
-            TYPE "npc"
-            ROLE "Crane shugenja with meishodo expertise"
-            DESCRIPTION "Crane shugenja visiting Daidoji Shin in the City of the Rich Frog. An old friend of the governor, called upon to assist with the situation involving Shinjo Higuchi."
-            STATS {
-                rings.air = 2
-                rings.earth = 2
-                rings.fire = 3
-                rings.water = 3
-                rings.void = 3
-                endurance = 8
-                composure = 10
-                focus = 5
-                vigilance = 2
-                honor = 50
-                glory = 40
-                status = 40
-                skills.artisan = 3
-                skills.martial = 0
-                skills.scholar = 3
-                skills.social = 2
-                skills.trade = 0
-                combat_conflict_rank = 2
-                intrigue_conflict_rank = 2
+        #L5RCW57zA9bC1dE3fG5hI7j ^"Asahina Nao" DEF {
+            APPLIES TO [^"NPC"]
+
+            PROPERTIES {
+                ^"Role"        STRING "Crane shugenja with meishodo expertise"
+                ^"Description" STRING "Crane shugenja visiting Daidoji Shin in the City of the Rich Frog. An old friend of the governor, called upon to assist with the situation involving Shinjo Higuchi."
+                ^"Combat Conflict Rank"  INTEGER 2
+                ^"Intrigue Conflict Rank" INTEGER 2
+                ^"Rings" DEF {
+                    ^"Air" INTEGER 2
+                    ^"Earth" INTEGER 2
+                    ^"Fire" INTEGER 3
+                    ^"Water" INTEGER 3
+                    ^"Void" INTEGER 3
+                }
+                ^"Endurance" INTEGER 8
+                ^"Composure" INTEGER 10
+                ^"Focus" INTEGER 5
+                ^"Vigilance" INTEGER 2
+                ^"Honor"  INTEGER 50
+                ^"Glory"  INTEGER 40
+                ^"Status"  INTEGER 40
+                ^"Skills" LIST OF STRING ["Artisan 3", "Martial 0", "Scholar 3", "Social 2", "Trade 0"]
             }
         }
 
-        DEF ^"Adventure Ifrit" #adventure_ifrit {
-            TYPE "npc"
-            ROLE "Fire spirit possessing Higuchi"
-            DESCRIPTION "Fire spirit from the Burning Sands, long dormant within a magical meishodo talisman. Accidentally awoken by Higuchi, it has possessed her in its confusion. This profile represents the ifrit in its natural, unbound form."
-            STATS {
-                rings.air = 2
-                rings.earth = 2
-                rings.fire = 6
-                rings.water = 1
-                rings.void = 1
-                endurance = 12
-                composure = 3
-                focus = 4
-                vigilance = 1
-                skills.artisan = 0
-                skills.martial = 3
-                skills.scholar = 3
-                skills.social = 2
-                skills.trade = 3
-                combat_conflict_rank = 9
-                intrigue_conflict_rank = 2
+        #L5RCW58kL0mN2oP4qR6sT8u ^"Adventure Ifrit" DEF {
+            APPLIES TO [^"NPC"]
+
+            PROPERTIES {
+                ^"Role"        STRING "Fire spirit possessing Higuchi"
+                ^"Description" STRING "Fire spirit from the Burning Sands, long dormant within a magical meishodo talisman. Accidentally awoken by Higuchi, it has possessed her in its confusion. This profile represents the ifrit in its natural, unbound form."
+                ^"Combat Conflict Rank"  INTEGER 9
+                ^"Intrigue Conflict Rank" INTEGER 2
+                ^"Rings" DEF {
+                    ^"Air" INTEGER 2
+                    ^"Earth" INTEGER 2
+                    ^"Fire" INTEGER 6
+                    ^"Water" INTEGER 1
+                    ^"Void" INTEGER 1
+                }
+                ^"Endurance" INTEGER 12
+                ^"Composure" INTEGER 3
+                ^"Focus" INTEGER 4
+                ^"Vigilance" INTEGER 1
+                ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 3", "Social 2", "Trade 3"]
             }
         }
     }

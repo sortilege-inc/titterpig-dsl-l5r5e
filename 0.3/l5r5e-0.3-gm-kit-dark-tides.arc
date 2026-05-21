@@ -34,151 +34,223 @@ ARC "L5R5e_DarkTides" {
         # --- Primary Villains (GM chooses one) ---
         # Stat blocks in l5r5e-0.3-gm-kit-mechanics.ttrpg
 
-        DEF ^"Kasuga Yumiko" #yumiko {
-            TYPE "npc"
-            ROLE "Potential villain: ambitious Tortoise smuggler"
-            DESCRIPTION "Tortoise samurai and one of the two most powerful smugglers in Slow Tide Harbor. Sponsors Boss Kizo. If chosen as villain, she is funneling kidnapped samurai to Kitsu Sokori until the time is ripe to swoop in, destroy the cult, and reap political rewards. Uses Loyal Bushi profile with modifications."
-            REF "l5r5e-0.3-gm-kit-mechanics.ttrpg::Kasuga Yumiko, Renegade Samurai"
+        #L5RGMK30aB2cD4eF6gH8iJ0k ^"Kasuga Yumiko" DEF {
+            APPLIES TO [^"NPC"]
+
+            # See: l5r5e-0.3-gm-kit-mechanics.ttrpg::Kasuga Yumiko, Renegade Samurai
+
+            PROPERTIES {
+                ^"Role"        STRING "Potential villain: ambitious Tortoise smuggler"
+                ^"Description" STRING "Tortoise samurai and one of the two most powerful smugglers in Slow Tide Harbor. Sponsors Boss Kizo. If chosen as villain, she is funneling kidnapped samurai to Kitsu Sokori until the time is ripe to swoop in, destroy the cult, and reap political rewards. Uses Loyal Bushi profile with modifications."
+            }
         }
 
-        DEF ^"Boss Yaguro" #yaguro {
-            TYPE "npc"
-            ROLE "Potential villain: desperate, declining crime lord"
-            DESCRIPTION "Aging gang leader who controls the Green Rest opium den. His territory is shrinking under pressure from Bosses Hana and Kizo. If chosen as villain, he has escalated to selling drug-addicted samurai to Kitsu Sokori via Gaku."
-            REF "l5r5e-0.3-gm-kit-mechanics.ttrpg::Boss Yaguro, Gang Leader"
+        #L5RGMK31lM3nO5pQ7rS9tU1v ^"Boss Yaguro" DEF {
+            APPLIES TO [^"NPC"]
+
+            # See: l5r5e-0.3-gm-kit-mechanics.ttrpg::Boss Yaguro, Gang Leader
+
+            PROPERTIES {
+                ^"Role"        STRING "Potential villain: desperate, declining crime lord"
+                ^"Description" STRING "Aging gang leader who controls the Green Rest opium den. His territory is shrinking under pressure from Bosses Hana and Kizo. If chosen as villain, he has escalated to selling drug-addicted samurai to Kitsu Sokori via Gaku."
+            }
         }
 
-        DEF ^"Azif the Smooth" #azif {
-            TYPE "npc"
-            ROLE "Potential villain: bold gaijin smuggler"
-            DESCRIPTION "Gaijin captain of the Obedient Slave, from al-Bhagvar along the Sand Road. Smuggles goods including Blue Flame drug and gaijin pepper. Allied with Boss Hana. If chosen as villain, he is simply pursuing profit by smuggling people on behalf of Kitsu Sokori."
-            REF "l5r5e-0.3-gm-kit-mechanics.ttrpg::Azif the Smooth, Gaijin Smuggler"
+        #L5RGMK32wX4yZ6aB8cD0eF2g ^"Azif the Smooth" DEF {
+            APPLIES TO [^"NPC"]
+
+            # See: l5r5e-0.3-gm-kit-mechanics.ttrpg::Azif the Smooth, Gaijin Smuggler
+
+            PROPERTIES {
+                ^"Role"        STRING "Potential villain: bold gaijin smuggler"
+                ^"Description" STRING "Gaijin captain of the Obedient Slave, from al-Bhagvar along the Sand Road. Smuggles goods including Blue Flame drug and gaijin pepper. Allied with Boss Hana. If chosen as villain, he is simply pursuing profit by smuggling people on behalf of Kitsu Sokori."
+            }
         }
 
         # --- Kitsu Sokori (true mastermind, recurring nemesis) ---
 
-        DEF ^"Kitsu Sokori" #sokori {
-            TYPE "npc"
-            ROLE "True villain: maho-tsukai mastermind behind the kidnappings"
-            DESCRIPTION "The true villain, conducting blood sacrifices to boost her supernatural power. Appears only at distance during the adventure's climax aboard a converted fishing boat. Intended as a recurring nemesis. Water Ring 4, Theology skill rank 3. Known maho: Grip of Anguish, Incite Haunting."
-            REF "l5r5e-0.3-gm-kit-mechanics.ttrpg::Kitsu Sokori, Maho-Tsukai"
+        #L5RGMK33hI5jK7lM9nO1pQ3r ^"Kitsu Sokori" DEF {
+            APPLIES TO [^"NPC"]
+
+            # See: l5r5e-0.3-gm-kit-mechanics.ttrpg::Kitsu Sokori, Maho-Tsukai
+
+            PROPERTIES {
+                ^"Role"        STRING "True villain: maho-tsukai mastermind behind the kidnappings"
+                ^"Description" STRING "The true villain, conducting blood sacrifices to boost her supernatural power. Appears only at distance during the adventure's climax aboard a converted fishing boat. Intended as a recurring nemesis. Water Ring 4, Theology skill rank 3. Known maho: Grip of Anguish, Incite Haunting."
+            }
         }
 
         # --- Kitsu Sokori's Agent ---
 
-        DEF ^"Gaku" #gaku {
-            TYPE "npc"
-            ROLE "Sokori's agent: formidable ronin maho apprentice"
-            DESCRIPTION "Large, physically memorable ronin with a distinctive neck tattoo. Coordinates kidnappings and is responsible for shipping prisoners to Sokori. Stays at Suitengu's Rest. Uses Wicked Maho-Tsukai profile plus Grip of Anguish and Incite Haunting."
-            REF "l5r5e-0.3-gm-kit-mechanics.ttrpg::Gaku, Maho Apprentice"
+        #L5RGMK34sT6uV8wX0yZ2aB4c ^"Gaku" DEF {
+            APPLIES TO [^"NPC"]
+
+            # See: l5r5e-0.3-gm-kit-mechanics.ttrpg::Gaku, Maho Apprentice
+
+            PROPERTIES {
+                ^"Role"        STRING "Sokori's agent: formidable ronin maho apprentice"
+                ^"Description" STRING "Large, physically memorable ronin with a distinctive neck tattoo. Coordinates kidnappings and is responsible for shipping prisoners to Sokori. Stays at Suitengu's Rest. Uses Wicked Maho-Tsukai profile plus Grip of Anguish and Incite Haunting."
+            }
         }
 
         # --- Crime Lords ---
 
-        DEF ^"Boss Hana" #hana {
-            TYPE "npc"
-            ROLE "Crime lord: controls eastern Wallow and Golden Dream opium den"
-            DESCRIPTION "Lean, middle-aged woman known as 'the Flower.' Former brothel madam turned crime lord. Controls eastern Wallow and the Golden Dream opium den. Allied with Azif, which gives her access to Blue Flame. Expanding aggressively at Boss Yaguro's expense."
-            REF "l5r5e-0.3-gm-kit-mechanics.ttrpg::Boss Hana, Gang Leader"
+        #L5RGMK35dE7fG9hI1jK3lM5n ^"Boss Hana" DEF {
+            APPLIES TO [^"NPC"]
+
+            # See: l5r5e-0.3-gm-kit-mechanics.ttrpg::Boss Hana, Gang Leader
+
+            PROPERTIES {
+                ^"Role"        STRING "Crime lord: controls eastern Wallow and Golden Dream opium den"
+                ^"Description" STRING "Lean, middle-aged woman known as 'the Flower.' Former brothel madam turned crime lord. Controls eastern Wallow and the Golden Dream opium den. Allied with Azif, which gives her access to Blue Flame. Expanding aggressively at Boss Yaguro's expense."
+            }
         }
 
-        DEF ^"Boss Kizo" #kizo {
-            TYPE "npc"
-            ROLE "Crime lord: runs Splendid Visions print shop and protection rackets"
-            DESCRIPTION "Appears harmless, speaks softly, often seen walking with grandchildren. Beneath the facade, a cold and calculating criminal. Runs protection rackets in the Merchant District. Sponsored by Kasuga Yumiko. Also a moneylender to whom Hiroshige owed debts."
-            REF "l5r5e-0.3-gm-kit-mechanics.ttrpg::Boss Kizo, Gang Leader"
+        #L5RGMK36oP8qR0sT2uV4wX6y ^"Boss Kizo" DEF {
+            APPLIES TO [^"NPC"]
+
+            # See: l5r5e-0.3-gm-kit-mechanics.ttrpg::Boss Kizo, Gang Leader
+
+            PROPERTIES {
+                ^"Role"        STRING "Crime lord: runs Splendid Visions print shop and protection rackets"
+                ^"Description" STRING "Appears harmless, speaks softly, often seen walking with grandchildren. Beneath the facade, a cold and calculating criminal. Runs protection rackets in the Merchant District. Sponsored by Kasuga Yumiko. Also a moneylender to whom Hiroshige owed debts."
+            }
         }
 
         # --- Town Officials ---
 
-        DEF ^"Kasuga Mugatsu" #mugatsu {
-            TYPE "npc"
-            ROLE "Governor of Slow Tide Harbor"
-            DESCRIPTION "Lean, bone-thin man in late middle age. Past normal retirement age but has no heirs. Indulges in opium. Prefers not to be troubled by governance; content so long as taxes and bribes come in and there is no fighting in the streets. Uses Venerable Provincial Daimyo profile, Gruff demeanor."
-            REF "l5r5e-0.3-gm-kit-mechanics.ttrpg::Kasuga Mugatsu, Governor"
+        #L5RGMK37zA9bC1dE3fG5hI7j ^"Kasuga Mugatsu" DEF {
+            APPLIES TO [^"NPC"]
+
+            # See: l5r5e-0.3-gm-kit-mechanics.ttrpg::Kasuga Mugatsu, Governor
+
+            PROPERTIES {
+                ^"Role"        STRING "Governor of Slow Tide Harbor"
+                ^"Description" STRING "Lean, bone-thin man in late middle age. Past normal retirement age but has no heirs. Indulges in opium. Prefers not to be troubled by governance; content so long as taxes and bribes come in and there is no fighting in the streets. Uses Venerable Provincial Daimyo profile, Gruff demeanor."
+            }
         }
 
-        DEF ^"Kasuga Mikoto" #mikoto {
-            TYPE "npc"
-            ROLE "Tortoise Clan magistrate for Slow Tide Harbor"
-            DESCRIPTION "Pouch-faced woman in late thirties, widow with two children (Chisa, 12, and Tokko, 10). Appears less intelligent than she is — drooping lip, vague speech — but this is an act. Takes a leave-well-enough-alone attitude. Hostile to Crane PCs. Knows all major criminal players but shares information reluctantly. Uses Seasoned Courtier profile, Detached demeanor."
-            REF "l5r5e-0.3-gm-kit-mechanics.ttrpg::Kasuga Mikoto, Magistrate"
+        #L5RGMK38kL0mN2oP4qR6sT8u ^"Kasuga Mikoto" DEF {
+            APPLIES TO [^"NPC"]
+
+            # See: l5r5e-0.3-gm-kit-mechanics.ttrpg::Kasuga Mikoto, Magistrate
+
+            PROPERTIES {
+                ^"Role"        STRING "Tortoise Clan magistrate for Slow Tide Harbor"
+                ^"Description" STRING "Pouch-faced woman in late thirties, widow with two children (Chisa, 12, and Tokko, 10). Appears less intelligent than she is — drooping lip, vague speech — but this is an act. Takes a leave-well-enough-alone attitude. Hostile to Crane PCs. Knows all major criminal players but shares information reluctantly. Uses Seasoned Courtier profile, Detached demeanor."
+            }
         }
 
         # --- Investigation NPCs (narrative only) ---
 
-        DEF ^"Doji Hiroka" #hiroka {
-            TYPE "npc"
-            ROLE "Crane courtier who briefs the PCs"
-            DESCRIPTION "Charming, elegant Crane woman in her thirties. Hair dyed pure white. Explains the situation using delicate, indirect language. Represents Otomo Saneda, who is too important to meet the PCs himself."
+        #L5RGMK39vW1xY3zA5bC7dE9f ^"Doji Hiroka" DEF {
+            APPLIES TO [^"NPC"]
+
+            PROPERTIES {
+                ^"Role"        STRING "Crane courtier who briefs the PCs"
+                ^"Description" STRING "Charming, elegant Crane woman in her thirties. Hair dyed pure white. Explains the situation using delicate, indirect language. Represents Otomo Saneda, who is too important to meet the PCs himself."
+            }
         }
 
-        DEF ^"Chiyu" #chiyu {
-            TYPE "npc"
-            ROLE "Innkeeper of the Inn of Many Paths"
-            DESCRIPTION "Portly, middle-aged commoner. Normally cheerful and raucous, but withdrawn and careful with strange samurai. Two teenage sons serve as workers and bouncers. Hiroshige stayed at her inn for four months."
+        #L5RGMK40gH2iJ4kL6mN8oP0q ^"Chiyu" DEF {
+            APPLIES TO [^"NPC"]
+
+            PROPERTIES {
+                ^"Role"        STRING "Innkeeper of the Inn of Many Paths"
+                ^"Description" STRING "Portly, middle-aged commoner. Normally cheerful and raucous, but withdrawn and careful with strange samurai. Two teenage sons serve as workers and bouncers. Hiroshige stayed at her inn for four months."
+            }
         }
 
-        DEF ^"Kakita Amano" #amano {
-            TYPE "npc"
-            ROLE "Crane artist and opium addict, Hiroshige's friend"
-            DESCRIPTION "Thin, unhealthy artist living in a flophouse in the Wallow. Sells sumi-e paintings to Kizo's shop. Addicted to Blue Flame opium. Paranoid since friends' disappearances. Publicly accused Boss Kizo of murder, then went into hiding."
+        #L5RGMK41rS3tU5vW7xY9zA1b ^"Kakita Amano" DEF {
+            APPLIES TO [^"NPC"]
+
+            PROPERTIES {
+                ^"Role"        STRING "Crane artist and opium addict, Hiroshige's friend"
+                ^"Description" STRING "Thin, unhealthy artist living in a flophouse in the Wallow. Sells sumi-e paintings to Kizo's shop. Addicted to Blue Flame opium. Paranoid since friends' disappearances. Publicly accused Boss Kizo of murder, then went into hiding."
+            }
         }
 
-        DEF ^"Bayushi Naizu" #naizu {
-            TYPE "npc"
-            ROLE "Scorpion junshin living in exile"
-            DESCRIPTION "A junshin: a 'pure of heart' Scorpion whose moral doubts caused him to be exiled to Slow Tide Harbor. Wry, world-weary, but friendly. Knows the identities of all major players in town. Seeks out new friendships to combat boredom."
+        #L5RGMK42cD4eF6gH8iJ0kL2m ^"Bayushi Naizu" DEF {
+            APPLIES TO [^"NPC"]
+
+            PROPERTIES {
+                ^"Role"        STRING "Scorpion junshin living in exile"
+                ^"Description" STRING "A junshin: a 'pure of heart' Scorpion whose moral doubts caused him to be exiled to Slow Tide Harbor. Wry, world-weary, but friendly. Knows the identities of all major players in town. Seeks out new friendships to combat boredom."
+            }
         }
 
-        DEF ^"Hade" #hade {
-            TYPE "npc"
-            ROLE "Gaudy ronin, witness to a kidnapping"
-            DESCRIPTION "Bedraggled ronin who formerly worked as a bouncer at the Waiting Cat gambling house. Wore a gaudy embroidered eyepatch (cosmetic). Witnessed part of Hiroshige's kidnapping and was hit by Gaku's maho, leaving him consumed with lingering fear. Now sleeping in stables, deep in opium addiction. His stable counts as Defiled terrain."
+        #L5RGMK43nO5pQ7rS9tU1vW3x ^"Hade" DEF {
+            APPLIES TO [^"NPC"]
+
+            PROPERTIES {
+                ^"Role"        STRING "Gaudy ronin, witness to a kidnapping"
+                ^"Description" STRING "Bedraggled ronin who formerly worked as a bouncer at the Waiting Cat gambling house. Wore a gaudy embroidered eyepatch (cosmetic). Witnessed part of Hiroshige's kidnapping and was hit by Gaku's maho, leaving him consumed with lingering fear. Now sleeping in stables, deep in opium addiction. His stable counts as Defiled terrain."
+            }
         }
 
-        DEF ^"Master Aoi" #aoi {
-            TYPE "npc"
-            ROLE "Manager of the Golden Dream opium den"
-            DESCRIPTION "Short, muscular woman in her forties. Hair tied back with a sheathed knife. Not inclined to cooperate but aware she cannot defy Imperial authority too strongly. Makes vague threats about Boss Hana's backing. If Azif is villain, she knows about the kidnapping arrangement."
+        #L5RGMK44yZ6aB8cD0eF2gH4i ^"Master Aoi" DEF {
+            APPLIES TO [^"NPC"]
+
+            PROPERTIES {
+                ^"Role"        STRING "Manager of the Golden Dream opium den"
+                ^"Description" STRING "Short, muscular woman in her forties. Hair tied back with a sheathed knife. Not inclined to cooperate but aware she cannot defy Imperial authority too strongly. Makes vague threats about Boss Hana's backing. If Azif is villain, she knows about the kidnapping arrangement."
+            }
         }
 
-        DEF ^"Master Awa" #awa {
-            TYPE "npc"
-            ROLE "Manager of the Green Rest opium den"
-            DESCRIPTION "Skinny, desperately nervous older man. Grovels and simpers. Desperate for business as the Green Rest loses customers to the Golden Dream. Can identify missing customers and the tattooed ronin (Gaku) who was last seen talking to Yasuki Suzaku."
+        #L5RGMK45jK7lM9nO1pQ3rS5t ^"Master Awa" DEF {
+            APPLIES TO [^"NPC"]
+
+            PROPERTIES {
+                ^"Role"        STRING "Manager of the Green Rest opium den"
+                ^"Description" STRING "Skinny, desperately nervous older man. Grovels and simpers. Desperate for business as the Green Rest loses customers to the Golden Dream. Can identify missing customers and the tattooed ronin (Gaku) who was last seen talking to Yasuki Suzaku."
+            }
         }
 
-        DEF ^"Doro" #doro {
-            TYPE "npc"
-            ROLE "Pawnbroker and moneylender in the Wallow"
-            DESCRIPTION "Studious older commoner with gaijin spectacles. Lends to opium addicts. Two of his debtors (Hiroshige and Kasuga Michiko) have disappeared. When he inquired, a trio of ruffians led by a large tattooed ronin threatened him."
+        #L5RGMK46uV8wX0yZ2aB4cD6e ^"Doro" DEF {
+            APPLIES TO [^"NPC"]
+
+            PROPERTIES {
+                ^"Role"        STRING "Pawnbroker and moneylender in the Wallow"
+                ^"Description" STRING "Studious older commoner with gaijin spectacles. Lends to opium addicts. Two of his debtors (Hiroshige and Kasuga Michiko) have disappeared. When he inquired, a trio of ruffians led by a large tattooed ronin threatened him."
+            }
         }
 
-        DEF ^"Kasuga Nagato" #nagato {
-            TYPE "npc"
-            ROLE "Harbormaster"
-            DESCRIPTION "Portly, unhealthy man in his forties with a perpetual sneer. Present mornings and mid-afternoons (often drunk by the latter). Wholly corrupt. Knows all ships and which carry legitimate cargo, but won't share without bribes or pressure."
+        #L5RGMK47fG9hI1jK3lM5nO7p ^"Kasuga Nagato" DEF {
+            APPLIES TO [^"NPC"]
+
+            PROPERTIES {
+                ^"Role"        STRING "Harbormaster"
+                ^"Description" STRING "Portly, unhealthy man in his forties with a perpetual sneer. Present mornings and mid-afternoons (often drunk by the latter). Wholly corrupt. Knows all ships and which carry legitimate cargo, but won't share without bribes or pressure."
+            }
         }
 
-        DEF ^"Ojo" #ojo {
-            TYPE "npc"
-            ROLE "Chief priest at the Shrine to Jikoju"
-            DESCRIPTION "Long-faced, friendly priest. Socializes with gaijin, hoping to lead them to Enlightenment. Does not tie directly into the adventure but can offer guidance and clues at GM's discretion."
+        #L5RGMK48qR0sT2uV4wX6yZ8a ^"Ojo" DEF {
+            APPLIES TO [^"NPC"]
+
+            PROPERTIES {
+                ^"Role"        STRING "Chief priest at the Shrine to Jikoju"
+                ^"Description" STRING "Long-faced, friendly priest. Socializes with gaijin, hoping to lead them to Enlightenment. Does not tie directly into the adventure but can offer guidance and clues at GM's discretion."
+            }
         }
 
         # --- Victims ---
 
-        DEF ^"Otomo Hiroshige" #hiroshige {
-            TYPE "npc"
-            ROLE "Missing Imperial noble (primary investigation target)"
-            DESCRIPTION "Wastrel offspring of Otomo Saneda, an Imperial noble of wealth and influence. Opium addict who fled to Slow Tide Harbor under the alias 'Doji Hiroshige.' Stayed at the Inn of Many Paths for four months. Kidnapped from an alleyway near the Golden Dream about two weeks ago."
+        #L5RGMK49bC1dE3fG5hI7jK9l ^"Otomo Hiroshige" DEF {
+            APPLIES TO [^"NPC"]
+
+            PROPERTIES {
+                ^"Role"        STRING "Missing Imperial noble (primary investigation target)"
+                ^"Description" STRING "Wastrel offspring of Otomo Saneda, an Imperial noble of wealth and influence. Opium addict who fled to Slow Tide Harbor under the alias 'Doji Hiroshige.' Stayed at the Inn of Many Paths for four months. Kidnapped from an alleyway near the Golden Dream about two weeks ago."
+            }
         }
 
-        DEF ^"Kasuga Toru" #toru {
-            TYPE "npc"
-            ROLE "Missing Tortoise samurai"
-            DESCRIPTION "Short, bad-tempered Tortoise samurai. Wastrel and opium addict notorious for brawling. Thrown out of the Golden Dream five days ago after starting a fight, then left with Gaku for another opium den. Kidnapped from his apartment."
+        #L5RGMK50mN2oP4qR6sT8uV0w ^"Kasuga Toru" DEF {
+            APPLIES TO [^"NPC"]
+
+            PROPERTIES {
+                ^"Role"        STRING "Missing Tortoise samurai"
+                ^"Description" STRING "Short, bad-tempered Tortoise samurai. Wastrel and opium addict notorious for brawling. Thrown out of the Golden Dream five days ago after starting a fight, then left with Gaku for another opium den. Kidnapped from his apartment."
+            }
         }
 
         # Other victims (Kasuga Michiko, Fubato, Yasuki Suzaku) are referenced
