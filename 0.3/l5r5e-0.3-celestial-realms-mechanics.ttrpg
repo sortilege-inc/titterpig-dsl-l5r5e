@@ -67,7 +67,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
     # NEW SCHOOLS
     # ===========================
 
-    ^"Agasha Alchemist School" DEF {
+    ^"Agasha Alchemist" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -87,7 +87,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 3 [^"Martial Arts [Ranged]", ^"Medicine", ^"Meditation", ^"Performance", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
-            ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
         }
 
 
@@ -145,7 +145,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Performance"
                 SKILL "Smithing"
                 TECHNIQUE_GROUP "Rank 1-4 Invocations"
-                ^"Rank 1-4 Ranged Combat Kata" [kata]
+                TECHNIQUE_GROUP "Rank 1-4 Ranged Kata"
                 ^"Rain of Ten Thousand Lotuses" [invocation]
             }
             RANK 5 {
@@ -162,13 +162,9 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RCR05rS6tU8vW0xY2zA4b: alchemist_potion_science
-            #L5RCR06cD7eF9gH1iJ3kL5m: alchemist_additional_potions_equal_school_rank
-        }
     }
 
-    ^"Asahina Envoy School" DEF {
+    ^"Asahina Envoy" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -187,7 +183,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Aesthetics", ^"Courtesy", ^"Culture", ^"Meditation", ^"Performance", ^"Sentiment", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
@@ -206,7 +202,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
         STARTING_OUTFIT [
             "traveling clothes", "ceremonial clothes",
             "sanctified robes", "wakizashi (short sword)",
-            "knife or bo (staff)", "scroll satchel",
+            "knife or bō (staff)", "scroll satchel",
             "calligraphy set", "tea set",
             "traveling pack", "attendant", "Rokugani pony"
         ]
@@ -262,13 +258,9 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RCR07nO8pQ0rS2tU4vW6x: envoy_honest_arbiter_of_harmony
-            #L5RCR08yZ9aB1cD3eF5gH7i: envoy_soul_of_ceremony_ritual_social
-        }
     }
 
-    ^"Ishiken Initiate School" DEF {
+    ^"Ishiken Initiate" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -287,7 +279,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 3 [^"Fitness", ^"Medicine", ^"Meditation", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
-            ^"Techniques Available" LIST ["Inversions (inversion)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Inversions", "Rituals", "Shūji"]
         }
 
 
@@ -306,7 +298,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
         }
         STARTING_OUTFIT [
             "sanctified robes", "wakizashi (short sword)",
-            "knife or bo (staff)", "scroll satchel",
+            "knife or bō (staff)", "scroll satchel",
             "traveling pack"
         ]
 
@@ -317,7 +309,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Meditation"
                 SKILL "Skulduggery"
                 TECHNIQUE_GROUP "Rank 1 Air Invocations"
-                ^"Rank 1 Inversions" [inversion]
+                TECHNIQUE_GROUP "Rank 1 Inversions"
                 ^"Tea Ceremony" [ritual]
             }
             RANK 2 {
@@ -326,7 +318,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Composition"
                 SKILL "Theology"
                 TECHNIQUE_GROUP "Rank 1-2 Fire Invocations"
-                ^"Rank 1-2 Inversions" [inversion]
+                TECHNIQUE_GROUP "Rank 1-2 Inversions"
                 ^"All Arts Are One" [shuji]
             }
             RANK 3 {
@@ -335,7 +327,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Meditation"
                 SKILL "Theology"
                 TECHNIQUE_GROUP "Rank 1-3 Water Invocations"
-                ^"Rank 1-3 Inversions" [inversion]
+                TECHNIQUE_GROUP "Rank 1-3 Inversions"
                 ^"A Samurai's Fate" [shuji]
             }
             RANK 4 {
@@ -344,7 +336,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Meditation"
                 SKILL "Theology"
                 TECHNIQUE_GROUP "Rank 1-4 Earth Invocations"
-                ^"Rank 1-4 Inversions" [inversion]
+                TECHNIQUE_GROUP "Rank 1-4 Inversions"
                 ^"The Immovable Hand of Peace" [shuji]
             }
             RANK 5 {
@@ -361,13 +353,9 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RCR09jK0lM2nO4pQ6rS8t: ishiken_void_wielder_push_pull
-            #L5RCR10uV1wX3yZ5aB7cD9e: ishiken_inversions_use_magnitude
-        }
     }
 
-    ^"Kaito Spirit Seeker School" DEF {
+    ^"Kaito Spirit Seeker" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -386,7 +374,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Composition", ^"Courtesy", ^"Games", ^"Martial Arts [Ranged]", ^"Performance", ^"Sentiment", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
-            ^"Techniques Available" LIST ["Invocations (invocation)", "Kata (kata)", "Rituals (ritual)"]
+            ^"Techniques Available" LIST ["Invocations", "Kata", "Rituals"]
         }
 
 
@@ -460,13 +448,9 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RCR11fG2hI4jK6lM8nO0p: spirit_seeker_body_is_shrine
-            #L5RCR12qR3sT5uV7wX9yZ1a: spirit_seeker_releases_kami_via_unmask
-        }
     }
 
-    ^"Kaiu Architect School" DEF {
+    ^"Kaiu Architect" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -485,7 +469,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Aesthetics", ^"Command", ^"Design", ^"Government", ^"Labor", ^"Martial Arts [Unarmed]", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
@@ -503,7 +487,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
         }
         STARTING_OUTFIT [
             "traveling clothes", "ceremonial clothes",
-            "wakizashi (short sword)", "hammer or bo (staff)",
+            "wakizashi (short sword)", "hammer or bō (staff)",
             "calligraphy set", "drafting paper",
             "fine set of chisels"
         ]
@@ -559,13 +543,9 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RCR13bC4dE6fG8hI0jK2l: architect_environment_manipulation
-            #L5RCR14mN5oP7qR9sT1uV3w: architect_maintains_kaiu_wall
-        }
     }
 
-    ^"Kitsu Realm Wanderer School" DEF {
+    ^"Kitsu Realm Wanderer" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -585,7 +565,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 3 [^"Fitness", ^"Martial Arts [Melee]", ^"Meditation", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
@@ -606,7 +586,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
         STARTING_OUTFIT [
             "traveling clothes", "ceremonial clothes",
             "daishō (katana and wakizashi)",
-            "yari (spear) or bo (staff)", "scroll satchel",
+            "yari (spear) or bō (staff)", "scroll satchel",
             "pouch of incense", "traveling pack"
         ]
 
@@ -661,13 +641,9 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RCR15xY6zA8bC0dE2fG4h: realm_wanderer_creates_places_of_power
-            #L5RCR16iJ7kL9mN1oP3qR5s: realm_wanderer_walks_between_realms
-        }
     }
 
-    ^"Moshi Sun Sentinel School" DEF {
+    ^"Moshi Sun Sentinel" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -684,7 +660,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             ^"Ring Increase" DEF { ^"Fire" INTEGER 2 }
             ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Sentiment", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 55
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
@@ -761,13 +737,9 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RCR17tU8vW0xY2zA4bC6d: sun_sentinel_sacred_fire_damage
-            #L5RCR18eF9gH1iJ3kL5mN7o: sun_sentinel_fire_heals_righteous
-        }
     }
 
-    ^"Shosuro Shadowweaver School" DEF {
+    ^"Shosuro Shadowweaver" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -786,7 +758,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Culture", ^"Fitness", ^"Government", ^"Martial Arts [Ranged]", ^"Skulduggery"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 30
-            ^"Techniques Available" LIST ["Invocations (invocation)", "Kata (kata)", "Rituals (ritual)"]
+            ^"Techniques Available" LIST ["Invocations", "Kata", "Rituals"]
         }
 
 
@@ -863,13 +835,9 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RCR19pQ0rS2tU4vW6xY8z: shadowweaver_immune_to_darkness_obscuring
-            #L5RCR20aB1cD3eF5gH7iJ9k: shadowweaver_summons_supernatural_darkness
-        }
     }
 
-    ^"Utaku Stablemaster School" DEF {
+    ^"Utaku Stablemaster" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -888,7 +856,7 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Sentiment", ^"Smithing", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 55
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Water and Air Invocations (invocation)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Water and Air Invocations"]
         }
 
 
@@ -965,10 +933,6 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RCR21lM2nO4pQ6rS8tU0v: stablemaster_spiritual_bond_with_beasts
-            #L5RCR22wX3yZ5aB7cD9eF1g: stablemaster_discovers_mounts_in_environment
-        }
     }
 
     # ===========================
