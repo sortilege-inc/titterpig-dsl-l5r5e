@@ -27,7 +27,7 @@ ARC "L5R5e_LostWriter" {
 
             PROPERTIES {
                 ^"Role"        STRING "The missing author, possessed by an ifrit"
-                ^"Description" STRING "Popular author of stories and poems (pen name Hana-no-Ame), possessed by an ifrit from a meishodo talisman while visiting the City of the Rich Frog."
+                ^"Description" STRING "Popular author of stories and poems (pen name Hana-no-Ame), possessed by an ifrit from a meishōdō talisman while visiting the City of the Rich Frog."
                 ^"Combat Conflict Rank"  INTEGER 4
                 ^"Intrigue Conflict Rank" INTEGER 1
                 ^"Rings" DEF {
@@ -208,7 +208,7 @@ ARC "L5R5e_LostWriter" {
             APPLIES TO [^"NPC"]
 
             PROPERTIES {
-                ^"Role"        STRING "Crane shugenja with meishodo expertise"
+                ^"Role"        STRING "Crane shugenja with meishōdō expertise"
                 ^"Description" STRING "Crane shugenja visiting Daidoji Shin in the City of the Rich Frog. An old friend of the governor, called upon to assist with the situation involving Shinjo Higuchi."
                 ^"Combat Conflict Rank"  INTEGER 2
                 ^"Intrigue Conflict Rank" INTEGER 2
@@ -235,7 +235,7 @@ ARC "L5R5e_LostWriter" {
 
             PROPERTIES {
                 ^"Role"        STRING "Fire spirit possessing Higuchi"
-                ^"Description" STRING "Fire spirit from the Burning Sands, long dormant within a magical meishodo talisman. Accidentally awoken by Higuchi, it has possessed her in its confusion. This profile represents the ifrit in its natural, unbound form."
+                ^"Description" STRING "Fire spirit from the Burning Sands, long dormant within a magical meishōdō talisman. Accidentally awoken by Higuchi, it has possessed her in its confusion. This profile represents the ifrit in its natural, unbound form."
                 ^"Combat Conflict Rank"  INTEGER 9
                 ^"Intrigue Conflict Rank" INTEGER 2
                 ^"Rings" DEF {
@@ -279,7 +279,7 @@ ARC "L5R5e_LostWriter" {
 
         LOCATION ^"Ide Chiharu's Curiosity Shop" #curiosity_shop {
             DESCRIPTION "A cluttered shop in the Unicorn district filled with artifacts, curios, and items of dubious provenance. Shelves groan under the weight of foreign talismans, carved figurines, and sealed scrolls."
-            TAGS ["unicorn-district", "trade", "meishodo"]
+            TAGS ["unicorn-district", "trade", "meishōdō"]
         }
 
         LOCATION ^"Daidoji Shin's Residence" #shins_residence {
@@ -462,7 +462,7 @@ ARC "L5R5e_LostWriter" {
                 SKILL "scholar"
                 RING "void"
                 TN 3
-                ON_SUCCESS "The PCs recognize the signs Kuma describes as consistent with meishodo — name magic from the Burning Sands. The talisman is the key."
+                ON_SUCCESS "The PCs recognize the signs Kuma describes as consistent with meishōdō — name magic from the Burning Sands. The talisman is the key."
                 ON_FAILURE "The spiritual disturbance is clearly supernatural, but its precise nature remains uncertain"
             }
         }
@@ -472,8 +472,8 @@ ARC "L5R5e_LostWriter" {
                 DESCRIPTION "Higuchi was showing signs of spiritual possession — erratic behavior, speaking in tongues, and an unnatural warmth radiating from her person"
                 DISCOVERED_BY "Tonbo Kuma shares this freely with respectful visitors"
             }
-            CLUE ^"Meishodo Connection" {
-                DESCRIPTION "The possession is connected to meishodo, name magic from the Burning Sands. The foreign talisman Higuchi activated is a meishodo artifact containing a bound spirit."
+            CLUE ^"Meishōdō Connection" {
+                DESCRIPTION "The possession is connected to meishōdō, name magic from the Burning Sands. The foreign talisman Higuchi activated is a meishōdō artifact containing a bound spirit."
                 DISCOVERED_BY "Successful TN 3 Scholar/Void check"
             }
             CLUE ^"Kuma's Warning" {
@@ -489,7 +489,7 @@ ARC "L5R5e_LostWriter" {
                 LEADS_TO [#curiosity_shop_visit, #shins_consultation, #governor_meeting]
             }
             RESOLUTION ^"Partial Understanding" {
-                CONDITION "PCs learn of the distress but not the meishodo connection"
+                CONDITION "PCs learn of the distress but not the meishōdō connection"
                 OUTCOME "Something supernatural is happening to Higuchi, but the PCs need more information"
                 LEADS_TO [#curiosity_shop_visit, #wharf_investigation, #shins_consultation]
             }
@@ -578,7 +578,7 @@ ARC "L5R5e_LostWriter" {
                 SKILL "social"
                 RING "water"
                 TN 3
-                ON_SUCCESS "Chiharu reveals the talisman was a meishodo artifact — a sealed vessel containing a fire spirit called an ifrit"
+                ON_SUCCESS "Chiharu reveals the talisman was a meishōdō artifact — a sealed vessel containing a fire spirit called an ifrit"
                 ON_FAILURE "Chiharu offers only generalities about the talisman being 'unusual'"
             }
             CHECK ^"Detect Chiharu's Guilt" {
@@ -598,8 +598,8 @@ ARC "L5R5e_LostWriter" {
         }
 
         CLUES {
-            CLUE ^"The Meishodo Talisman" {
-                DESCRIPTION "The talisman is a meishodo artifact from the Burning Sands containing an ifrit — a powerful fire spirit. Higuchi accidentally activated it by reading the inscriptions aloud."
+            CLUE ^"The Meishōdō Talisman" {
+                DESCRIPTION "The talisman is a meishōdō artifact from the Burning Sands containing an ifrit — a powerful fire spirit. Higuchi accidentally activated it by reading the inscriptions aloud."
                 DISCOVERED_BY "Successful TN 3 Social/Water check"
             }
             CLUE ^"Chiharu's Negligence" {
@@ -634,11 +634,11 @@ ARC "L5R5e_LostWriter" {
     SCENE ^"Consultation with Daidoji Shin" #shins_consultation {
         TYPE "Roleplay"
         LOCATION #shins_residence
-        DESCRIPTION "An optional but rewarding scene. The PCs visit Daidoji Shin, the Crane trade envoy and amateur detective, at his residence. Shin is accompanied by his bodyguard Hiramori Kasami and the shugenja Asahina Nao. Shin has been independently investigating Higuchi's disappearance out of personal curiosity, and Nao has expertise in meishodo that could prove invaluable."
+        DESCRIPTION "An optional but rewarding scene. The PCs visit Daidoji Shin, the Crane trade envoy and amateur detective, at his residence. Shin is accompanied by his bodyguard Hiramori Kasami and the shugenja Asahina Nao. Shin has been independently investigating Higuchi's disappearance out of personal curiosity, and Nao has expertise in meishōdō that could prove invaluable."
 
         OBJECTIVES {
             REQUIRED "Share findings with Shin and pool investigative resources"
-            OPTIONAL "Enlist Asahina Nao's help with the meishodo talisman"
+            OPTIONAL "Enlist Asahina Nao's help with the meishōdō talisman"
             OPTIONAL "Learn Shin's own theories about the disappearance"
         }
 
@@ -650,12 +650,12 @@ ARC "L5R5e_LostWriter" {
                 ON_SUCCESS "Shin is genuinely impressed by the PCs' progress and shares everything he knows freely"
                 ON_FAILURE "Shin is amused but unimpressed; he shares information but in a leisurely, roundabout fashion"
             }
-            CHECK ^"Consult Nao on Meishodo" {
+            CHECK ^"Consult Nao on Meishōdō" {
                 SKILL "scholar"
                 RING "void"
                 TN 2
                 ON_SUCCESS "Nao confirms the ifrit theory and explains how a sealing ritual might work — or how the spirit might be freed safely"
-                ON_FAILURE "Nao provides general information about meishodo but nothing actionable"
+                ON_FAILURE "Nao provides general information about meishōdō but nothing actionable"
             }
         }
 
@@ -664,7 +664,7 @@ ARC "L5R5e_LostWriter" {
                 DESCRIPTION "Shin has deduced that the Governor is hiding Higuchi in the manor. Tetsua's household staff have been purchasing unusual quantities of ice and requesting shugenja wards against fire."
                 DISCOVERED_BY "Shin shares this if the PCs have gathered at least 3 other clues"
             }
-            CLUE ^"Meishodo Expertise" {
+            CLUE ^"Meishōdō Expertise" {
                 DESCRIPTION "Asahina Nao explains that the ifrit can potentially be freed, re-sealed, or destroyed — each option carries different spiritual and ethical consequences"
                 DISCOVERED_BY "Successful TN 2 Scholar/Void check with Nao"
             }
@@ -862,7 +862,7 @@ ARC "L5R5e_LostWriter" {
             REWARD "Maintained the Governor's trust and cooperation throughout" {
                 XP 1
             }
-            REWARD "Discovered the full truth about the meishodo talisman's origin" {
+            REWARD "Discovered the full truth about the meishōdō talisman's origin" {
                 XP 1
             }
             REWARD "Achieved personal goals related to ninjo or giri" {
