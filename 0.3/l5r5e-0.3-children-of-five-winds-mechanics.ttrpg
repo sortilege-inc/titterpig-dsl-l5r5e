@@ -78,7 +78,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         # to fight with precision and let the foe exhaust themselves.
 
         PROPERTIES {
-            ^"School Name" STRING "Ganzu Guardian" FIXED
+            ^"School Name" STRING "Ganzu Guardian Tradition" FIXED
             ^"Roles" LIST ["Bushi"]
             ^"Ring Increase" DEF {
                 ^"Earth" INTEGER 1
@@ -86,7 +86,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Fitness", ^"Labor", ^"Martial Arts [Melee]", ^"Medicine", ^"Sentiment", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
@@ -115,7 +115,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Survival"
                 SKILL "Theology"
                 TECHNIQUE_GROUP "Rank 1 Water Shūji"
-                ^"= Distracting Flurry Style" [kata]
+                ^"Distracting Flurry Style" [kata]
                 ^"Soaring Slice" [kata]
             }
             RANK 2 {
@@ -124,7 +124,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Martial Arts [Melee]"
                 SKILL "Theology"
                 TECHNIQUE_GROUP "Rank 1-2 Kata"
-                ^"= Scouring Wind Style" [kata]
+                ^"Scouring Wind Style" [kata]
                 ^"Feigned Opening" [shuji]
             }
             RANK 3 {
@@ -133,7 +133,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Martial Arts [Melee]"
                 SKILL "Tactics"
                 TECHNIQUE_GROUP "Rank 1-3 Earth Shūji"
-                ^"= Thunderbolt Style" [kata]
+                ^"Thunderbolt Style" [kata]
                 ^"Center the World" [ritual]
             }
             RANK 4 {
@@ -142,7 +142,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Survival"
                 SKILL "Theology"
                 TECHNIQUE_GROUP "Rank 1-4 Kata"
-                ^"= Rouse the Soul" [shuji]
+                ^"Rouse the Soul" [shuji]
                 ^"Regal Bearing" [shuji]
             }
             RANK 5 {
@@ -159,13 +159,9 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RCW05rS6tU8vW0xY2zA4b: ganzu_guardian_desert_combat
-            #L5RCW06cD7eF9gH1iJ3kL5m: ganzu_guardian_precision_fighting
-        }
     }
 
-    ^"Ide Emissary School" DEF {
+    ^"Ide Emissary" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -184,7 +180,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Culture", ^"Games", ^"Government", ^"Martial Arts [Unarmed]", ^"Sentiment", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
@@ -214,7 +210,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Sentiment"
                 SKILL "Survival"
                 TECHNIQUE_GROUP "Rank 1 Earth Shūji"
-                ^"= Open-Hand Style" [kata]
+                ^"Open-Hand Style" [kata]
                 ^"Cultural Exchange" [ritual]
             }
             RANK 2 {
@@ -223,7 +219,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Government"
                 SKILL "Martial Arts [Unarmed]"
                 TECHNIQUE_GROUP "Rank 1-2 Fire Shūji"
-                ^"= Entice with Offerings" [shuji]
+                ^"Entice with Offerings" [shuji]
                 ^"Solidify Gratitude" [shuji]
             }
             RANK 3 {
@@ -232,7 +228,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Meditation"
                 SKILL "Tactics"
                 TECHNIQUE_GROUP "Rank 1-3 Water Shūji"
-                ^"= Everyone Has a Price" [shuji]
+                ^"Everyone Has a Price" [shuji]
                 ^"Incite Wrath" [shuji]
             }
             RANK 4 {
@@ -241,7 +237,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Design"
                 SKILL "Composition"
                 TECHNIQUE_GROUP "Rank 1-4 Fire Shūji"
-                ^"= Sear the Wound" [shuji]
+                ^"Sear the Wound" [shuji]
                 ^"Crashing Wave Style" [kata]
             }
             RANK 5 {
@@ -258,13 +254,9 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RCW07nO8pQ0rS2tU4vW6x: ide_emissary_cultural_adaptability
-            #L5RCW08yZ9aB1cD3eF5gH7i: ide_emissary_disarming_demeanor
-        }
     }
 
-    ^"Iuchi Horse Lord Disciple School" DEF {
+    ^"Iuchi Horse Lord Disciple" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -284,7 +276,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 3 [^"Commerce", ^"Design", ^"Medicine", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
-            ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
         }
 
 
@@ -306,7 +298,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             "sanctified robes", "traveling clothes",
             "yumi (bow)", "quiver of arrows",
             "wakizashi (short sword)",
-            "two meishodo talismans each containing a Rank 1 invocation",
+            "two meishōdō talismans each containing a Rank 1 invocation",
             "traveling pack", "Iuchi riding steed"
         ]
 
@@ -318,7 +310,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Survival"
                 TECHNIQUE_GROUP "Rank 1 Water Invocations"
                 ^"Divination" [ritual]
-                ^"= Sympathetic Energies" [invocation]
+                ^"Sympathetic Energies" [invocation]
             }
             RANK 2 {
                 SKILL_GROUP "Artisan Skills"
@@ -345,7 +337,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Theology"
                 TECHNIQUE_GROUP "Rank 1-4 Earth Invocations"
                 ^"Regal Bearing" [shuji]
-                ^"= Ride the Water Dragon" [kiho]
+                ^"Ride the Water Dragon" [kiho]
             }
             RANK 5 {
                 SKILL_GROUP "Artisan Skills"
@@ -361,13 +353,9 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RCW09jK0lM2nO4pQ6rS8t: horse_lord_meishodo_equine_mastery
-            #L5RCW10uV1wX3yZ5aB7cD9e: horse_lord_favor_imprint
-        }
     }
 
-    ^"Kitsune Mediator School" DEF {
+    ^"Kitsune Mediator" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -387,7 +375,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Courtesy", ^"Martial Arts [Ranged]", ^"Medicine", ^"Meditation", ^"Performance", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
@@ -418,7 +406,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Survival"
                 SKILL "Theology"
                 TECHNIQUE_GROUP "Rank 1 Water Shūji"
-                ^"= Spiritual Survey" [ritual]
+                ^"Spiritual Survey" [ritual]
                 ^"Threshold Barrier" [ritual]
             }
             RANK 2 {
@@ -427,7 +415,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Fitness"
                 SKILL "Meditation"
                 TECHNIQUE_GROUP "Rank 1-2 Rituals"
-                ^"= Complementary Experience" [shuji]
+                ^"Complementary Experience" [shuji]
                 ^"Solidify Gratitude" [shuji]
             }
             RANK 3 {
@@ -436,7 +424,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Government"
                 SKILL "Sentiment"
                 TECHNIQUE_GROUP "Rank 1-3 Earth Shūji"
-                ^"= Pillar of Calm" [shuji]
+                ^"Pillar of Calm" [shuji]
                 ^"Swaying Grass Evasion" [kata]
             }
             RANK 4 {
@@ -445,7 +433,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Fitness"
                 SKILL "Tactics"
                 TECHNIQUE_GROUP "Rank 1-4 Rituals"
-                ^"= Nature's Touch" [invocation]
+                ^"Nature's Touch" [invocation]
                 ^"A Samurai's Fate" [shuji]
             }
             RANK 5 {
@@ -454,7 +442,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Survival"
                 SKILL "Theology"
                 TECHNIQUE_GROUP "Rank 1-5 Void Shūji"
-                ^"= By the Light of the Lord Moon" [invocation]
+                ^"By the Light of the Lord Moon" [invocation]
                 ^"Bend with the Storm" [shuji]
             }
             RANK 6 {
@@ -462,13 +450,9 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RCW11fG2hI4jK6lM8nO0p: kitsune_mediator_spiritual_mediation
-            #L5RCW12qR3sT5uV7wX9yZ1a: kitsune_mediator_calm_counsel
-        }
     }
 
-    ^"Kitsune Naturalist School" DEF {
+    ^"Kitsune Naturalist" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -487,7 +471,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Fitness", ^"Meditation", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
-            ^"Techniques Available" LIST ["Invocations (invocation)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
         }
 
 
@@ -518,7 +502,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Games"
                 SKILL "Survival"
                 TECHNIQUE_GROUP "Rank 1 Air Invocations"
-                ^"= Wayfinder's Instincts" [ritual]
+                ^"Wayfinder's Instincts" [ritual]
                 ^"Divination" [ritual]
             }
             RANK 2 {
@@ -527,8 +511,8 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Fitness"
                 SKILL "Theology"
                 TECHNIQUE_GROUP "Rank 1-2 Earth Invocations"
-                ^"= Grasp of the Air Dragon" [invocation]
-                ^"= Cunning Omission" [shuji]
+                ^"Grasp of the Air Dragon" [invocation]
+                ^"Cunning Omission" [shuji]
             }
             RANK 3 {
                 SKILL_GROUP "Social Skills"
@@ -536,7 +520,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Sentiment"
                 SKILL "Survival"
                 TECHNIQUE_GROUP "Rank 1-3 Water Invocations"
-                ^"= False Realm of the Fox Spirits" [invocation]
+                ^"False Realm of the Fox Spirits" [invocation]
                 ^"Power of the Earth Dragon" [invocation]
             }
             RANK 4 {
@@ -545,7 +529,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Fitness"
                 SKILL "Survival"
                 TECHNIQUE_GROUP "Rank 1-4 Fire Invocations"
-                ^"= Ever-Changing Waves" [invocation]
+                ^"Ever-Changing Waves" [invocation]
                 ^"Wolf's Proposal" [shuji]
             }
             RANK 5 {
@@ -562,10 +546,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RCW13bC4dE6fG8hI0jK2l: kitsune_naturalist_elemental_balance
-            #L5RCW14mN5oP7qR9sT1uV3w: kitsune_naturalist_natural_balance
-        }
     }
 
     ^"Sand Road Wayfinder Tradition" DEF {
@@ -578,7 +558,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         # bordering the Sand Road.
 
         PROPERTIES {
-            ^"School Name" STRING "Sand Road Wayfinder" FIXED
+            ^"School Name" STRING "Sand Road Wayfinder Tradition" FIXED
             ^"Roles" LIST ["Bushi", "Shinobi"]
             ^"Ring Increase" DEF {
                 ^"Earth" INTEGER 1
@@ -586,7 +566,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Commerce", ^"Labor", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 35
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
@@ -615,7 +595,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Martial Arts [Melee]"
                 SKILL "Martial Arts [Ranged]"
                 TECHNIQUE_GROUP "Rank 1 Kata"
-                ^"= Distracting Flurry Style" [kata]
+                ^"Distracting Flurry Style" [kata]
                 ^"Cultural Exchange" [ritual]
             }
             RANK 2 {
@@ -624,8 +604,8 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Medicine"
                 SKILL "Survival"
                 TECHNIQUE_GROUP "Rank 1-2 Kata"
-                ^"= Center the World" [ritual]
-                ^"= Touchstone of Courage" [shuji]
+                ^"Center the World" [ritual]
+                ^"Touchstone of Courage" [shuji]
             }
             RANK 3 {
                 SKILL_GROUP "Social Skills"
@@ -633,8 +613,8 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Survival"
                 SKILL "Tactics"
                 TECHNIQUE_GROUP "Rank 1-3 Earth Shūji"
-                ^"= Iron in the Mountains Style" [kata]
-                ^"= Skulk" [ninjutsu]
+                ^"Iron in the Mountains Style" [kata]
+                ^"Skulk" [ninjutsu]
             }
             RANK 4 {
                 SKILL_GROUP "Scholar Skills"
@@ -642,7 +622,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Medicine"
                 SKILL "Survival"
                 TECHNIQUE_GROUP "Rank 1-4 Kata"
-                ^"= Noxious Cloud" [ninjutsu]
+                ^"Noxious Cloud" [ninjutsu]
                 ^"Breath of Wind Style" [kata]
             }
             RANK 5 {
@@ -651,7 +631,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Martial Arts [Melee]"
                 SKILL "Martial Arts [Ranged]"
                 TECHNIQUE_GROUP "Rank 1-5 Kata"
-                ^"= Silencing Stroke" [ninjutsu]
+                ^"Silencing Stroke" [ninjutsu]
                 ^"Rouse the Soul" [shuji]
             }
             RANK 6 {
@@ -659,10 +639,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RCW15xY6zA8bC0dE2fG4h: sand_road_wayfinder_terrain_mastery
-            #L5RCW16iJ7kL9mN1oP3qR5s: sand_road_wayfinder_dunestrider
-        }
     }
 
     ^"Scholar of al-Zawira Tradition" DEF {
@@ -675,7 +651,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         # corners of a vast domain.
 
         PROPERTIES {
-            ^"School Name" STRING "Scholar of al-Zawira" FIXED
+            ^"School Name" STRING "Scholar of al-Zawira Tradition" FIXED
             ^"Roles" LIST ["Courtier"]
             ^"Ring Increase" DEF {
                 ^"Earth" INTEGER 1
@@ -683,7 +659,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Culture", ^"Government", ^"Medicine", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
@@ -712,8 +688,8 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Courtesy"
                 SKILL "Fitness"
                 TECHNIQUE_GROUP "Rank 1 Rituals"
-                ^"= Glorious Entrance" [shuji]
-                ^"= Solidify Gratitude" [shuji]
+                ^"Glorious Entrance" [shuji]
+                ^"Solidify Gratitude" [shuji]
             }
             RANK 2 {
                 SKILL_GROUP "Social Skills"
@@ -721,7 +697,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Survival"
                 SKILL "Tactics"
                 TECHNIQUE_GROUP "Rank 1-2 Earth and Fire Shūji"
-                ^"= Shadow of Days" [ritual]
+                ^"Shadow of Days" [ritual]
                 ^"Traveler's Experience" [ritual]
             }
             RANK 3 {
@@ -730,8 +706,8 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Composition"
                 SKILL "Performance"
                 TECHNIQUE_GROUP "Rank 1-3 Rituals"
-                ^"= Everyone Has a Price" [shuji]
-                ^"= Wolf's Proposal" [shuji]
+                ^"Everyone Has a Price" [shuji]
+                ^"Wolf's Proposal" [shuji]
             }
             RANK 4 {
                 SKILL_GROUP "Social Skills"
@@ -739,7 +715,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Medicine"
                 SKILL "Theology"
                 TECHNIQUE_GROUP "Rank 1-4 Air and Water Shūji"
-                ^"= Sear the Wound" [shuji]
+                ^"Sear the Wound" [shuji]
                 ^"Pillar of Calm" [shuji]
             }
             RANK 5 {
@@ -748,7 +724,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Command"
                 SKILL "Composition"
                 TECHNIQUE_GROUP "Rank 1-5 Rituals"
-                ^"Rank 1-5 Void Shūji" [shuji]
+                TECHNIQUE_GROUP "Rank 1-5 Void Shūji"
                 ^"Buoyant Arrival" [shuji]
             }
             RANK 6 {
@@ -756,13 +732,9 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RCW17tU8vW0xY2zA4bC6d: al_zawira_scholar_knowledge_mastery
-            #L5RCW18eF9gH1iJ3kL5mN7o: al_zawira_scholar_methodical_observation
-        }
     }
 
-    ^"Shinjo Mounted Archer School" DEF {
+    ^"Shinjo Mounted Archer" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -780,7 +752,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Culture", ^"Fitness", ^"Martial Arts [Ranged]", ^"Meditation", ^"Performance", ^"Smithing", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
@@ -812,7 +784,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Survival"
                 TECHNIQUE_GROUP "Rank 1 Kata"
                 ^"Call to Ride" [shuji]
-                ^"= Lady Shinjo's Speed" [shuji]
+                ^"Lady Shinjo's Speed" [shuji]
             }
             RANK 2 {
                 SKILL_GROUP "Artisan Skills"
@@ -820,8 +792,8 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Performance"
                 SKILL "Theology"
                 TECHNIQUE_GROUP "Rank 1-2 Rituals"
-                ^"= Horse Whisperer" [shuji]
-                ^"= Sudden Downpour Style" [kata]
+                ^"Horse Whisperer" [shuji]
+                ^"Sudden Downpour Style" [kata]
             }
             RANK 3 {
                 SKILL_GROUP "Martial Skills"
@@ -838,7 +810,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Meditation"
                 SKILL "Survival"
                 TECHNIQUE_GROUP "Rank 1-4 Fire Shūji"
-                ^"= Pin the Fan" [kata]
+                ^"Pin the Fan" [kata]
                 ^"Wolf's Proposal" [shuji]
             }
             RANK 5 {
@@ -848,20 +820,16 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Survival"
                 TECHNIQUE_GROUP "Rank 1-5 Kata"
                 ^"Rouse the Soul" [shuji]
-                ^"= Silencing Stroke" [ninjutsu]
+                ^"Silencing Stroke" [ninjutsu]
             }
             RANK 6 {
                 ^"Spirit of the Sacred Horse"
             }
         }
 
-        RULES {
-            #L5RCW19pQ0rS2tU4vW6xY8z: shinjo_mounted_archer_unity
-            #L5RCW20aB1cD3eF5gH7iJ9k: shinjo_mounted_archer_sacred_horse
-        }
     }
 
-    ^"Utaku Silent Shadow Yojimbo School" DEF {
+    ^"Utaku Silent Shadow Yōjimbō" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Samurai"]
 
@@ -871,7 +839,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         # and Shinjo traditions.
 
         PROPERTIES {
-            ^"School Name" STRING "Utaku Silent Shadow Yojimbo" FIXED
+            ^"School Name" STRING "Utaku Silent Shadow Yōjimbō" FIXED
             ^"Clan" STRING "Unicorn"
             ^"Roles" LIST ["Bushi", "Courtier"]
             ^"Ring Increase" DEF {
@@ -880,7 +848,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Meditation", ^"Sentiment", ^"Survival", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
@@ -938,7 +906,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Tactics"
                 TECHNIQUE_GROUP "Rank 1-4 Close Combat Kata"
                 ^"A Samurai's Fate" [shuji]
-                ^"= Rouse the Soul" [shuji]
+                ^"Rouse the Soul" [shuji]
             }
             RANK 5 {
                 SKILL_GROUP "Martial Skills"
@@ -954,10 +922,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RCW21lM2nO4pQ6rS8tU0v: utaku_silent_shadow_guard_mastery
-            #L5RCW22wX3yZ5aB7cD9eF1g: utaku_silent_shadow_reputation_sentinel
-        }
     }
 
     ^"Ujik Nomad Tradition" DEF {
@@ -969,7 +933,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         # must master a wide array of skills for their way of life.
 
         PROPERTIES {
-            ^"School Name" STRING "Ujik Nomad" FIXED
+            ^"School Name" STRING "Ujik Nomad Tradition" FIXED
             ^"Roles" LIST ["Bushi"]
             ^"Ring Increase" DEF {
                 ^"Earth" INTEGER 1
@@ -977,7 +941,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Ranged]", ^"Martial Arts [Unarmed]", ^"Medicine", ^"Performance", ^"Survival", ^"Tactics"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
@@ -1007,8 +971,8 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Martial Arts [Unarmed]"
                 SKILL "Survival"
                 TECHNIQUE_GROUP "Rank 1 Kata"
-                ^"= Traveler's Experience" [ritual]
-                ^"= Lady Shinjo's Speed" [shuji]
+                ^"Traveler's Experience" [ritual]
+                ^"Lady Shinjo's Speed" [shuji]
             }
             RANK 2 {
                 SKILL_GROUP "Trade Skills"
@@ -1016,7 +980,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Martial Arts [Ranged]"
                 SKILL "Martial Arts [Unarmed]"
                 TECHNIQUE_GROUP "Rank 1-2 Earth Shūji"
-                ^"= Descending Swarm Shot" [kata]
+                ^"Descending Swarm Shot" [kata]
                 ^"Stalking Leopard Style" [kata]
             }
             RANK 3 {
@@ -1025,7 +989,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Performance"
                 SKILL "Survival"
                 TECHNIQUE_GROUP "Rank 1-3 Rituals"
-                ^"= Thunderbolt Style" [kata]
+                ^"Thunderbolt Style" [kata]
                 ^"Sudden Downpour Style" [kata]
             }
             RANK 4 {
@@ -1034,7 +998,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Commerce"
                 SKILL "Survival"
                 TECHNIQUE_GROUP "Rank 1-4 Water Shūji"
-                ^"= Pin the Fan" [kata]
+                ^"Pin the Fan" [kata]
                 ^"Pillar of Calm" [shuji]
             }
             RANK 5 {
@@ -1044,17 +1008,13 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 SKILL "Survival"
                 TECHNIQUE_GROUP "Rank 1-5 Kata"
                 ^"Rouse the Soul" [shuji]
-                ^"= Silencing Stroke" [ninjutsu]
+                ^"Silencing Stroke" [ninjutsu]
             }
             RANK 6 {
                 ^"Legendary Endurance"
             }
         }
 
-        RULES {
-            #L5RCW23hI4jK6lM8nO0pQ2r: ujik_nomad_movement_mastery
-            #L5RCW24sT5uV7wX9yZ1aB3c: ujik_nomad_legendary_endurance
-        }
     }
 
     # ===========================
