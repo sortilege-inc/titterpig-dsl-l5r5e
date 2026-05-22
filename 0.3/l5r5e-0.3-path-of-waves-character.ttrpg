@@ -511,7 +511,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # --- General Schools (open to all PoW characters) ---
 
-    ^"Wandering Blade School" DEF {
+    ^"Wandering Blade" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
@@ -528,7 +528,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Performance", ^"Smithing"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 35
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
@@ -601,13 +601,9 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RPW28lM9nO1pQ3rS5tU7v: wandering_blade_signature_weapon_extra_die
-            #L5RPW29wX0yZ2aB4cD6eF8g: wandering_blade_fatigue_for_opportunity
-        }
     }
 
-    ^"Student of the Talon School" DEF {
+    ^"Student of the Talon" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
@@ -624,7 +620,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Meditation", ^"Sentiment", ^"Skulduggery", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 30
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
@@ -697,12 +693,9 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RPW30hI1jK3lM5nO7pQ9r: talon_critical_strike_severity_control
-        }
     }
 
-    #L5RPW40nO5pQ7rS9tU1vW3x ^"Treasure Hunter School" DEF {
+    #L5RPW40nO5pQ7rS9tU1vW3x ^"Treasure Hunter" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
@@ -719,7 +712,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Commerce", ^"Courtesy", ^"Fitness", ^"Games", ^"Martial Arts [Melee]", ^"Sentiment", ^"Skulduggery"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 27
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
@@ -792,9 +785,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RPW31sT2uV4wX6yZ8aB0c: treasure_hunter_vigilance_focus_increase
-        }
     }
 
     ^"School of Leaves" DEF {
@@ -814,7 +804,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Performance", ^"Sentiment", ^"Skulduggery", ^"Survival"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 26
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
@@ -889,12 +879,9 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RPW32dE3fG5hI7jK9lM1n: school_of_leaves_obscuring_terrain_resistance
-        }
     }
 
-    ^"Voice of the Wilds School" DEF {
+    ^"Voice of the Wilds" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
@@ -908,7 +895,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Ring Increase" DEF { CHOOSE DISTINCT 2 [^"Air", ^"Earth", ^"Fire", ^"Water", ^"Void"] INTEGER 1 }
             ^"Starting Skills" DEF { CHOOSE 3 [^"Composition", ^"Courtesy", ^"Games", ^"Meditation", ^"Sentiment", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 35
-            ^"Techniques Available" LIST ["Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Rituals", "Shūji"]
         }
 
 
@@ -981,13 +968,9 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RPW33oP2qR4sT6uV8wX0y: voice_of_wilds_naturally_attuned_downtime
-            #L5RPW34zA1bC3dE5fG7hI9j: voice_of_wilds_spiritual_backlash_on_compromised
-        }
     }
 
-    ^"Artisan of the Roads School" DEF {
+    ^"Artisan of the Roads" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
@@ -1004,7 +987,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Aesthetics", ^"Courtesy", ^"Commerce", ^"Composition", ^"Culture", ^"Design", ^"Smithing"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 30
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
@@ -1078,12 +1061,9 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RPW35kL2mN4oP6qR8sT0u: artisan_roads_scavenge_supplies
-        }
     }
 
-    ^"Mystic of the Mountain School" DEF {
+    ^"Mystic of the Mountain" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
 
@@ -1099,7 +1079,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 4 [^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Performance", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
@@ -1175,14 +1155,11 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RPW36vW3xY5zA7bC9dE1f: mystic_mountain_wisdom_reduces_tn
-        }
     }
 
     # --- Gaijin Schools (culture-restricted, require GM permission for non-gaijin) ---
 
-    ^"Ujik Diviner School" DEF {
+    ^"Ujik Diviner" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [^"Gaijin"]
 
@@ -1200,7 +1177,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 3 [^"Command", ^"Games", ^"Meditation", ^"Performance", ^"Sentiment", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 40
-            ^"Techniques Available" LIST ["Earth and Water Invocations (invocation)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Earth and Water Invocations", "Rituals", "Shūji"]
         }
 
 
@@ -1275,9 +1252,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RPW37gH4iJ6kL8mN0oP2q: ujik_diviner_channel_rituals_as_invocations
-        }
     }
 
     ^"Qamarist Shield Bearer Tradition" DEF {
@@ -1298,7 +1272,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Tactics", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
-            ^"Techniques Available" LIST ["Close Combat and General Kata (kata)", "Rituals (ritual)", "Earth Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Close Combat and General Kata", "Rituals", "Earth Shūji"]
         }
 
 
@@ -1373,9 +1347,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RPW38rS5tU7vW9xY1zA3b: shield_bearer_shield_bash_on_failed_attack
-        }
     }
 
     ^"Qamarist Alchemist Tradition" DEF {
@@ -1396,7 +1367,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Culture", ^"Martial Arts [Ranged]", ^"Medicine", ^"Meditation", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 52
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
@@ -1472,9 +1443,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RPW39cD6eF8gH0iJ2kL4m: qamarist_alchemist_fatigue_for_opportunity
-        }
     }
 
     ^"Ivory Kingdoms Sage Tradition" DEF {
@@ -1495,7 +1463,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Composition", ^"Command", ^"Courtesy", ^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Theology"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 50
-            ^"Techniques Available" LIST ["Kata (kata)", "Kihō (kiho)", "Rituals (ritual)"]
+            ^"Techniques Available" LIST ["Kata", "Kihō", "Rituals"]
         }
 
 
@@ -1569,9 +1537,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RPW40nO7pQ9rS1tU3vW5x: ik_sage_gift_kiho_to_ally
-        }
     }
 
     ^"Ivory Kingdoms Dancing Blades Tradition" DEF {
@@ -1592,7 +1557,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
             ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Culture", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Medicine", ^"Performance", ^"Seafaring"] INTEGER 1 }
             ^"Starting Honor" INTEGER DEFAULT 45
-            ^"Techniques Available" LIST ["Kata (kata)", "Rituals (ritual)", "Shūji (shuji)"]
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
 
 
@@ -1666,9 +1631,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RPW41yZ8aB0cD2eF4gH6i: dancing_blades_flurry_multiple_targets
-        }
     }
 
     # ===========================
