@@ -1,0 +1,565 @@
+EXTENSION "L5R5e_Courts_of_Stone_NPCs" EXTENDS "L5R5e_Courts_of_Stone" {
+    NAME "Legend of the Five Rings 5th Edition - Courts of Stone: NPCs"
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-03-01"
+
+    # Courts of Stone (Chapter 1): NPCs associated with
+    # castles and courts described in the sourcebook.
+
+    # ===========================
+    # NPCs / ADVERSARIES
+    # ===========================
+
+    # --- Hall of Ancestors (Lion) ---
+
+    ^"Ryuhei, Monk" DEF {
+        EXTENDS ^"NPC"
+
+        # A Fortunist monk who venerates Bishamon, tending the
+        # Hall of Ancestors. Entered monastic life to escape his
+        # past — he murdered his friend and superior officer
+        # Akodo Hisayo in a jealous rage. Hisayo's spirit haunts him.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +1, Earth +1, Void -2"
+            ^"Endurance" INTEGER 15
+            ^"Composure" INTEGER 7
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 15
+            ^"Glory" INTEGER 34
+            ^"Status" INTEGER 27
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 4", "Scholar 3", "Social 2", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Veteran Warrior (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Haunted (Void) [Social; Spiritual]"]
+            ^"Favored Weapons" LIST OF STRING ["Hidden Knife: Range 0, Damage 2, Deadliness 4/6, Concealable, Mundane, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Monastic robes", "Incense", "Prayer beads", "Katana", "Old love letters", "Half-empty sake bottles"]
+        }
+
+        ^"Restless Spirits" DEF {
+            ^"Description" STRING "While making a check, any character at range 0-5 of Ryuhei may spend (op) as follows: (op): Receive 4 strife to gain 1 Void point."
+        }
+
+        RULES {
+            #L5RCS01aB1cD3eF5gH7iJ9kL: ryuhei_monk
+        }
+    }
+
+    # --- Hida Palace (Crab) ---
+
+    ^"Hida Chobo, Storemaster" DEF {
+        EXTENDS ^"NPC"
+
+        # Former Kaiu Wall soldier whose leg was crushed when
+        # an oni shattered his tower. Reassigned to managing
+        # supplies at Kyuden Hida. Willing to swap war stories
+        # with outsiders, and in regular contact with officers
+        # throughout the southern Crab lands.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Gruff"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Earth -2"
+            ^"Endurance" INTEGER 13
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 49
+            ^"Glory" INTEGER 43
+            ^"Status" INTEGER 31
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 3", "Scholar 3", "Social 1", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Famously Reliable (Earth) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Lost Leg (Air) [Martial; Physical]"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Wakizashi", "Kimono", "Calligraphy set", "Lacquered armor (Physical 4, Ceremonial, Cumbersome, Wargear)"]
+        }
+
+        ^"War Stories" DEF {
+            ^"Description" STRING "As a downtime activity, Chobo can share his stories of defending the Wall with any number of characters. A character who chooses to listen to the stories suffers 3 strife and adds one kept (ring) set to an (op) result to their next check that involves the terrain, lore, or denizens of the Shadowlands."
+        }
+
+        RULES {
+            #L5RCS02mN2oP4qR6sT8uV0wX: chobo_storemaster
+        }
+    }
+
+    ^"Hida Door Guard" DEF {
+        EXTENDS ^"NPC"
+
+        # Hardened veterans rotated off the Kaiu Wall for
+        # 'light duty' guarding Kyuden Hida's many gates.
+        # Dangerous warriors, but also gossipy, bored, and
+        # not good at keeping secrets.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Demeanor" STRING "Gruff"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Earth -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 40
+            ^"Glory" INTEGER 38
+            ^"Status" INTEGER 31
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 1", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Large Stature (Earth) [Martial; Physical]", "Dependable (Earth) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Bored (Air) [Social; Interpersonal]", "Bluntness (Air) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Tetsubō: Range 1-2, Damage 7, Deadliness 3, 2-Handed, Cumbersome, Durable, Wargear"]
+            ^"Gear" LIST OF STRING ["Ashigaru armor (Physical 3, Wargear)"]
+        }
+
+        ^"Thin Doors" DEF {
+            ^"Description" STRING "Activation: When a character makes a Scheme action check targeting a Hida Door Guard, the character may spend (op) in the following way: (op): The Hida Door Guard reveals the latest rumor related to the current topic of discussion. (op)(op): The Hida Door Guard unknowingly reveals one item of useful information not related to the current topic."
+        }
+
+        RULES {
+            #L5RCS03yZ3aB5cD7eF9gH1iJ: hida_door_guard
+        }
+    }
+
+    # --- Jukami Mura / Shiro Kandai (Crane) ---
+
+    ^"Asahina Shinako, Magistrate" DEF {
+        EXTENDS ^"NPC"
+
+        # Town magistrate of Jukami Mura, serving lord Asahina
+        # Susumu of Shiro Kandai. Elegant and seemingly beyond
+        # reproach, but thoroughly corrupt — she has struck deals
+        # with smugglers. Susumu ignores rumors of her activities
+        # as long as she protects Crane interests in the port.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 25
+            ^"Glory" INTEGER 57
+            ^"Status" INTEGER 51
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 1", "Scholar 3", "Social 4", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Friends in All Places (Air) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Avaricious (Fire) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 4, Deadliness 5/7, Ceremonial, Concealable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Extravagant robes (Physical 1, Ceremonial)", "Calligraphy set"]
+        }
+
+        ^"Judicial Adjustment" DEF {
+            ^"Description" STRING "When adding a momentum point to an intrigue involving legal issues, Asahina Shinako adds one additional momentum point."
+        }
+
+        RULES {
+            #L5RCS04kL4mN6oP8qR0sT2uV: shinako_magistrate
+        }
+    }
+
+    # --- Shiro Kitsuki (Dragon) ---
+
+    ^"Kitsuki Ma'aya, Castellan" DEF {
+        EXTENDS ^"NPC"
+
+        # Renowned investigator who has solved crimes on behalf
+        # of the Emperor, clans, and religious institutions. Operated
+        # as Dragon agent, Emerald Magistrate, and even ronin.
+        # Retired to Shiro Kitsuki after assassination attempts.
+        # Revels in glory and public recognition. Now teaches
+        # classes on logic and forensic methodology.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Vain"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 50
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 2", "Scholar 4", "Social 3", "Trade 4"]
+            ^"Advantages" LIST OF STRING ["Keen Sight (Water) [Scholar; Mental, Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Vulnerable Students (Air) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Castellan robes (Physical 1, Ceremonial)", "Calligraphy set", "Law scrolls"]
+        }
+
+        ^"Boastful Investigator" DEF {
+            ^"Description" STRING "When Ma'aya assists another character making a Skulduggery or Scholar check concerning a criminal matter, she allows the character to roll two additional (skill) instead of just one. If the character succeeds on the check, after resolving its effects, they receive 4 strife."
+        }
+
+        ^"Skulk (Ma'aya)" DEF {
+            ^"Description" STRING "Activation: When she performs an Initiative or Attack check using Air, Ma'aya may spend (op) as follows: (op): If Ma'aya is in Obscuring terrain, a crowd, or otherwise concealed from sight, one character with vigilance lower than or equal to 4 loses sight of her."
+        }
+
+        RULES {
+            #L5RCS05wX5yZ7aB9cD1eF3gH: maaya_castellan
+        }
+    }
+
+    # --- Seven Fold Palace (Crane) ---
+
+    ^"Kakita Mototada, Gardener" DEF {
+        EXTENDS ^"NPC"
+
+        # Leading master of Rokugan's oldest gardening tradition.
+        # Specializes in recreating celebrated views from other
+        # parts of Rokugan using garden layouts. His work has
+        # granted him the ear of rich and powerful nobles. Uses
+        # his clout to ensure his favorites have an easier time
+        # at the Seven Fold Palace — quiet corruption that would
+        # take a particularly canny mind to expose.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 11
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 50
+            ^"Glory" INTEGER 81
+            ^"Status" INTEGER 62
+            ^"Skills" LIST OF STRING ["Artisan 5", "Martial 0", "Scholar 2", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Famously Successful (Fire) [Social; Fame, Interpersonal]", "Social Connections (Air) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Whispers of Treachery (Air) [Social; Interpersonal, Infamy]", "Weakness for Beauty (Earth) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Gardening Staff: Range 1-2, Damage 4, Deadliness 3, Durable, Mundane"]
+            ^"Gear" LIST OF STRING ["Gardener's robes (Physical 1, Mundane)", "Gardener's tools", "Large umbrella"]
+        }
+
+        ^"Form Over Function" DEF {
+            ^"Description" STRING "Once per session, a character who performs a downtime activity within one of Mototada's gardens may remove all strife. Should they do so, if they later make a Martial Art (any) or Tactics skill check during the session they must reroll one result containing a (su) symbol."
+        }
+
+        RULES {
+            #L5RCS06iJ6kL8mN0oP2qR4sT: mototada_gardener
+        }
+    }
+
+    # --- Kyuden Asako (Phoenix) ---
+
+    ^"Asako Raiku, Castellan" DEF {
+        EXTENDS ^"NPC"
+
+        # Elderly monk who oversees Kyuden Asako and its
+        # massive library. Historical scholarship is his passion.
+        # However, he is the pawn of a shinobi infiltrator who
+        # has uncovered blackmail material on Raiku's immediate
+        # family from their own diaries.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Fire +1, Void -2"
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 9
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 61
+            ^"Glory" INTEGER 58
+            ^"Status" INTEGER 40
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 2", "Scholar 4", "Social 3", "Trade 4"]
+            ^"Advantages" LIST OF STRING ["Fukurokujin's Blessing (Fire) [Scholar; Mental, Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Blackmailed (Air) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Castellan robes (Physical 1, Ceremonial)", "Calligraphy set", "Two random books or scrolls"]
+        }
+
+        ^"Possessive Librarian" DEF {
+            ^"Description" STRING "While in the Kyuden Asako library, when Raiku assists a character on a Scholar skill check, the character may reroll one die showing a blank result. However, if the character fails the check, Raiku receives 3 strife."
+        }
+
+        RULES {
+            #L5RCS07uV7wX9yZ1aB3cD5eF: raiku_castellan
+        }
+    }
+
+    # --- Kyuden Shika (Deer) ---
+
+    ^"Shika Katsuteru, Castellan" DEF {
+        EXTENDS ^"NPC"
+
+        # Manages Kyuden Shika's day-to-day operations,
+        # answering to daimyo Shika Renji. A veteran soldier
+        # and speardancer who bears many battle scars proudly.
+        # Feels most at home outdoors with trusted friends,
+        # hunting in Aokami Forest. May not have been the
+        # strongest speardancer, but was the hardest working.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Serious"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 65
+            ^"Glory" INTEGER 45
+            ^"Status" INTEGER 44
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 2", "Social 1", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Uncommonly Agile (Water) [Martial, Trade; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Withdrawn (Air) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Trusted Prongs (Yari): Range 2, Damage 5, Deadliness 3, 2-Handed, Wargear"]
+            ^"Gear" LIST OF STRING ["Castellan robes (Physical 1, Ceremonial)", "Calligraphy set"]
+        }
+
+        ^"Thoughtful Listener" DEF {
+            ^"Description" STRING "During an intrigue or skirmish, when a character makes a check with Katsuteru's assistance, they may spend (op) as follows: (op)+: Remove 2 strife for each (op) spent this way."
+        }
+
+        RULES {
+            #L5RCS08gH8iJ0kL2mN4oP6qR: katsuteru_castellan
+        }
+    }
+
+    # --- Kyuden Doji (Crane) ---
+
+    ^"Kyuden Doji Courtier" DEF {
+        EXTENDS ^"NPC"
+
+        # The archetypal Kyuden Doji courtier: well dressed,
+        # beautiful, graceful, versed in the classics, trained
+        # in the fine arts, capable of speaking with wit and
+        # insight on any topic.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 9
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Intimidating"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Air -2"
+            ^"Endurance" INTEGER 5
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 65
+            ^"Glory" INTEGER 55
+            ^"Status" INTEGER 45
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 0", "Scholar 4", "Social 4", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Incisive Scrutiny (Air) [Social; Mental, Interpersonal]", "Perfect Recollection (Earth) [Scholar; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Easily Scandalized (Earth) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Sublime robes (Physical 1, Ceremonial, Resplendent)", "Calligraphy set", "Folding fan"]
+        }
+
+        ^"Protocol and Procedure" DEF {
+            ^"Description" STRING "Once per round, when another character succeeds on a check to pursue a social objective, a Kyuden Doji courtier may receive up to 4 strife to reduce the number of bonus successes on that check by that amount, to a minimum of 0 bonus successes (the check still succeeds)."
+        }
+
+        ^"Tactful Recovery" DEF {
+            ^"Description" STRING "Once per Intrigue scene, a Kyuden Doji courtier may change their social objective to another social objective they could complete during the scene. They may transfer up to half of their current momentum points to this new social objective."
+        }
+
+        RULES {
+            #L5RCS09sT9uV1wX3yZ5aB7cD: kyuden_doji_courtier
+        }
+    }
+
+    ^"Kakita Ryoku, Elder Crane" DEF {
+        EXTENDS ^"NPC"
+
+        # Among the most distinguished and dangerous individuals
+        # one is likely to meet in Kyuden Doji. Her novel, Winter,
+        # has instructed entire generations of courtiers. Former
+        # Imperial Advisor to Emperor Hantei XXXVIII. Now returned
+        # to Kyuden Doji to continue weaving webs of intrigue,
+        # gossip, and influence. Her age has only made her more
+        # elegant and dignified.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 9
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 5
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Intimidating"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Air -2"
+            ^"Endurance" INTEGER 4
+            ^"Composure" INTEGER 19
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 6
+            ^"Honor" INTEGER 76
+            ^"Glory" INTEGER 85
+            ^"Status" INTEGER 70
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 0", "Scholar 3", "Social 5", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Famously Successful (Water) [Social; Interpersonal, Fame]", "Love of Storytelling (Water) [Artisan; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Broken Hearted (Fire) [Social; Mental]", "Whispers of Treachery (Fire) [Social; Interpersonal, Infamy]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Ceremonial Clothes (Physical 1, Ceremonial, Resplendent)", "Personal chop", "Pillow book", "Calligraphy set", "Omamori given to her by Emperor Hantei XXXVII"]
+        }
+
+        ^"Ebb and Flow (Shūji)" DEF {
+            ^"Description" STRING "Activation: As a Scheme or Support action, Ryoku may make a Courtesy (Water), Command (Water), or Games (Water) check targeting one character. The TN of this check is equal to the target's vigilance. If Ryoku succeeds (and chose Scheme action), choose one of the target's advantages that she knows; whenever it applies, invert it. This effect persists until the end of the scene. If Ryoku succeeds (and chose Support action), choose one of the target's disadvantages she knows; whenever it applies, invert it. This effect persists until the end of the scene."
+        }
+
+        ^"I Have Met Your Like Before" DEF {
+            ^"Description" STRING "When performing a Scheme action, Ryoku may spend (op) in the following way: (op): Learn the target's ninjō or giri, or one advantage or disadvantage of the GM's choice. (op)(op): Learn the target's current motivation in this scene."
+        }
+
+        ^"Speaking in Silence" DEF {
+            ^"Description" STRING "Once per scene when making a check to persuade or influence someone, Ryoku may add 5 kept (ring) set to an (op)."
+        }
+
+        ^"Everything Tells a Story" DEF {
+            ^"Description" STRING "When performing an Artisan skill check, Ryoku may add 1 kept (ring) set to an (op) result."
+        }
+
+        # While in Kyuden Doji, Lady Ryoku gains the
+        # following additional abilities:
+
+        ^"All Things Find Their Way to Me" DEF {
+            ^"Description" STRING "While in Kyuden Doji: When attempting to start or spread a rumor or story in Kyuden Doji, a character may spend (op) equal to Lady Ryoku's Vigilance; if they do not she knows that the character is the source of the rumor or story."
+        }
+
+        ^"A Minor Consideration" DEF {
+            ^"Description" STRING "While in Kyuden Doji: Once per scene during an intrigue, as a Scheme action, Lady Ryoku may remove 2 momentum points from one side, and add them to another side of the intrigue."
+        }
+
+        RULES {
+            #L5RCS10eF0gH2iJ4kL6mN8oP: ryoku_elder_crane
+        }
+    }
+
+    # --- Deer Clan ---
+
+    ^"Shika Tsuneko, First Spear" DEF {
+        EXTENDS ^"NPC"
+
+        # Often masquerades as a simple Deer Clan messenger,
+        # but holds the title of First Spear — master of the yari
+        # and wartime leader of the speardancers. Since the Deer
+        # avoid war, she mostly serves daimyo Shika Renji on
+        # difficult missions. Affects naive confusion to mask her
+        # considerable competence. Genuinely good-hearted.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Endurance" INTEGER 15
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 35
+            ^"Status" INTEGER 40
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 5", "Scholar 0", "Social 2", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Innocent Appearance (Air) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Softheartedness (Fire) [Martial; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Heirloom Kamayari: Range 2, Damage 4, Deadliness 5, Durable, Snaring"]
+            ^"Gear" LIST OF STRING ["Concealed armor (Physical 2, Concealable)", "Traveling rations", "Amigasa", "Wakizashi"]
+        }
+
+        ^"Slicing Wind Kick" DEF {
+            ^"Description" STRING "Activation: As an Attack and Movement action, using one readied polearm, Tsuneko may make a TN 3 Martial Arts [Unarmed] (Air) check with her unarmed kick profile (Range 1, Damage 2, Deadliness 1) targeting one character at range 1-2. Effects: If Tsuneko succeeds, the target suffers 2 physical damage plus additional damage equal to her bonus successes and the Disoriented condition. Air (op): Tsuneko moves 1 range band. Air (op)(op): One of Tsuneko's targets suffers the Prone condition. Air (op)(op)+: Tsuneko may choose an additional target for each (op)(op) spent in this way."
+        }
+
+        ^"Beware the Smallest Mouse" DEF {
+            ^"Description" STRING "Activation: When Tsuneko makes a Social skill (Water) check targeting one or more characters, she may spend (op) as follows: Water (op)(op)+: While interacting with Tsuneko, the target treats their vigilance as 1 lower per (op)(op) spent this way and decreases the TN of their social checks targeting her by 1. This effect persists until the end of the scene."
+        }
+
+        RULES {
+            #L5RCS11qR1sT3uV5wX7yZ9aB: tsuneko_first_spear
+        }
+    }
+}

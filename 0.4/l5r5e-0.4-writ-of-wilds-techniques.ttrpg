@@ -1,0 +1,541 @@
+EXTENSION "L5R5e_Writ_of_Wilds_Techniques" EXTENDS "L5R5e_Writ_of_Wilds" {
+    NAME "Legend of the Five Rings 5th Edition - Writ of the Wilds: New Techniques"
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-03-01"
+
+    # Writ of the Wilds (Chapter 2): New kihō (Earth, Air, Fire, Water, Void),
+    # new kata (general, close-combat/polearm, nonhuman), new rituals.
+
+    # ===========================
+    # EARTH KIHO
+    # ===========================
+
+    ^"Mercy of the Stone Fortune" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Earth Kihō" FIXED
+            ^"Rank" INTEGER DEFAULT 2
+            ^"Activation" STRING "Support action, TN 1 Meditation (Earth)"
+            ^"Enhancement Effect" STRING "While active, when another friendly character at range 0-1 defends against damage, you may receive fatigue up to your Earth ring to reduce their damage by that amount. When a friendly character at range 0-1 suffers a critical strike, you may spend 1 Void point to suffer it instead."
+            ^"Burst Effect" STRING "2+ bonus successes: Treat Fitness ranks as increased by 2 (max 6) for checks to resist critical strikes and conditions; persists rounds equal to bonus successes."
+        }
+        RULES {
+            #L5RWW30kL1mN3oP5qR7sT9uV: mercy_stone_fortune_absorb_damage
+        }
+    }
+
+    ^"Rejuvenating Breath" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Earth Kihō" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Activation" STRING "Support action, TN 2 Fitness (Earth). Once per session, spend 1 Void point to perform even while Incapacitated or Unconscious."
+            ^"Enhancement Effect" STRING "While active, increase your endurance by your Earth ring."
+            ^"Burst Effect" STRING "3+ bonus successes: Remove Heavily Wounded condition and gain Lightly Wounded for the same ring, or remove Unconscious condition."
+        }
+        RULES {
+            #L5RWW31wX2yZ4aB6cD8eF0gH: rejuvenating_breath_endurance_boost
+        }
+    }
+
+    ^"Shadow of Ancient Peaks" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Earth Kihō" FIXED
+            ^"Rank" INTEGER DEFAULT 4
+            ^"Activation" STRING "Scheme or Support action, TN 3 Tactics (Earth)"
+            ^"Enhancement Effect" STRING "While active, after you succeed at a check to resist an effect or critical strike, the character whose effect you resisted receives strife equal to your bonus successes."
+            ^"Burst Effect" STRING "2+ bonus successes: Next time you suffer a critical strike and reduce it to severity 0 or lower with Fitness check, remove fatigue equal to the severity (before reductions). Persists until end of next turn."
+        }
+        RULES {
+            #L5RWW32iJ3kL5mN7oP9qR1sT: shadow_ancient_peaks_intimidation
+        }
+    }
+
+    # ===========================
+    # AIR KIHO
+    # ===========================
+
+    ^"Cutting Wind Talons" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Air Kihō" FIXED
+            ^"Rank" INTEGER DEFAULT 2
+            ^"Activation" STRING "Scheme and Support action, TN 1 Fitness (Air) to enhance unarmed strikes. Choose one character at range 0-3 as target for Burst effect."
+            ^"Enhancement Effect" STRING "While active, your unarmed attacks have Razor-Sharp quality."
+            ^"Burst Effect" STRING "2+ bonus successes: Reduce TN of next Attack action check against target by your ranks in Skulduggery. Persists until end of scene."
+        }
+        RULES {
+            #L5RWW33uV4wX6yZ8aB0cD2eF: cutting_wind_talons_razorsharp
+        }
+    }
+
+    ^"Grace of the Gentle Breeze" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Air Kihō" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Activation" STRING "Support action, TN 2 Survival (Air). Choose any number of characters at range 0-3 as targets for Burst effect."
+            ^"Enhancement Effect" STRING "While active, characters unaware of your presence treat their vigilance as 2 lower when you make checks to avoid notice, and increase TN of checks to look for you by +2. Animals are not disturbed by your presence."
+            ^"Burst Effect" STRING "1+ bonus successes: Each target with vigilance lower than or equal to bonus successes loses track of you, becoming unaware of your location."
+        }
+        RULES {
+            #L5RWW34gH5iJ7kL9mN1oP3qR: grace_gentle_breeze_stealth
+        }
+    }
+
+    ^"Step of the Storm" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Air Kihō" FIXED
+            ^"Rank" INTEGER DEFAULT 4
+            ^"Activation" STRING "Movement and Support action, TN 3 Fitness (Air). Once per session, spend 1 Void point to perform immediately after being declared target of another character's Attack action."
+            ^"Enhancement Effect" STRING "While active, when targeted by an Attack action check, gain 1 fatigue to negate 1 (op) from attacker's check. At end of your turn, you must move 1 range band."
+            ^"Burst Effect" STRING "2+ bonus successes: Immediately move 2 range bands."
+        }
+        RULES {
+            #L5RWW35sT6uV8wX0yZ2aB4cD: step_of_storm_evasion
+        }
+    }
+
+    # ===========================
+    # FIRE KIHO
+    # ===========================
+
+    ^"Blistering Retribution" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Fire Kihō" FIXED
+            ^"Rank" INTEGER DEFAULT 2
+            ^"Activation" STRING "Support action, TN 1 Meditation (Fire) to empower counterstrikes with ki."
+            ^"Enhancement Effect" STRING "While active, after you defend against damage dealt by a character in the scene, decrease TN of your next Attack or Scheme action check targeting that character by half the fatigue you received from defending (rounded up, minimum TN 1)."
+            ^"Burst Effect" STRING "3+ bonus successes: Next time you defend against damage, each other character at range 0-2 suffers physical damage equal to your ranks in Fitness. Persists until end of scene."
+        }
+        RULES {
+            #L5RWW36eF7gH9iJ1kL3mN5oP: blistering_retribution_counterstrike
+        }
+    }
+
+    ^"Dance of Fire" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Fire Kihō" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Activation" STRING "Movement and Support action, TN 2 Performance (Fire) to empower body with exceptional energy."
+            ^"Enhancement Effect" STRING "While active, if you would fail a check, you must receive 2 fatigue to roll 1 additional (ring) and keep it. If this would not cause you to succeed, repeat until you succeed or become Incapacitated. After becoming Incapacitated by fatigue this way, gain Exhausted condition; if already Exhausted, gain Dying [3 rounds] instead."
+            ^"Burst Effect" STRING "2+ bonus successes: Treat focus as increased by your Fire ring and increase initiative by the same amount. Persists 1 round. When ending, receive 2 fatigue to persist one additional round."
+        }
+        RULES {
+            #L5RWW37qR8sT0uV2wX4yZ6aB: dance_of_fire_push_beyond_limits
+        }
+    }
+
+    ^"Volcanic Fist" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Fire Kihō" FIXED
+            ^"Rank" INTEGER DEFAULT 4
+            ^"Activation" STRING "Support action, TN 3 Fitness (Fire). Once per session, spend 1 Void point to perform immediately after succeeding on an Attack action check, before resolving results."
+            ^"Enhancement Effect" STRING "While active, increase TN of checks to resist critical strikes you inflict by unarmed attacks by your Fire ring plus your ranks in Fitness."
+            ^"Burst Effect" STRING "1+ bonus successes: Unarmed attacks treat damage and deadliness as increased by Fitness ranks plus bonus successes. Persists 1 round. Receive 2 fatigue to persist one additional round."
+        }
+        RULES {
+            #L5RWW38cD9eF1gH3iJ5kL7mN: volcanic_fist_devastating_strikes
+        }
+    }
+
+    # ===========================
+    # WATER KIHO
+    # ===========================
+
+    ^"Fist of Spreading Venom" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Water Kihō" FIXED
+            ^"Rank" INTEGER DEFAULT 2
+            ^"Activation" STRING "Support action, TN 1 Medicine (Water) and expend one charge of a poison to imbue unarmed strikes. You suffer no ill effects from consuming a poison this way. Choose one other character at range 0-1 as target for Burst effect."
+            ^"Enhancement Effect" STRING "While active, your unarmed attacks count as having the consumed poison applied to them."
+            ^"Burst Effect" STRING "3+ bonus successes: Target counts as having ingested one dose of the poison and immediately suffers its effects."
+        }
+        RULES {
+            #L5RWW39oP0qR2sT4uV6wX8yZ: fist_spreading_venom_poison_unarmed
+        }
+    }
+
+    ^"River's Flowing Stride" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Water Kihō" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Activation" STRING "Movement and Support action, TN 2 Fitness (Water) to make body fluid and malleable."
+            ^"Enhancement Effect" STRING "While active, do not suffer damage from terrain qualities while performing Movement actions. When targeted by Attack action check, spend 1 Void point to reduce attacker's bonus successes by your Water ring (minimum 0 bonus successes)."
+            ^"Burst Effect" STRING "1+ bonus successes: Immediately move up to 2 range bands. During this movement, may pass through small gaps that would normally prevent movement so long as it accommodates your head."
+        }
+        RULES {
+            #L5RWW40aB1cD3eF5gH7iJ9kL: rivers_flowing_stride_contortion
+        }
+    }
+
+    ^"Seeping Ki" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Water Kihō" FIXED
+            ^"Rank" INTEGER DEFAULT 4
+            ^"Activation" STRING "Attack and Support action, TN 3 Meditation (Water) to imbue your touch with spreading ki."
+            ^"Enhancement Effect" STRING "While active, after succeeding at an unarmed Attack action check, target receives strife equal to Medicine ranks. If this causes Compromised, target must resist with TN 4 Meditation (Fire 5, Earth 2). If failed, on their next turn they must unmask in one of your chosen ways: move away, Strike an ally, drop a held item, or other effect. You choose which dice the character keeps. Minion NPCs automatically fail the resistance check."
+            ^"Burst Effect" STRING "2+ bonus successes: Next successful unarmed Attack action check inflicts Bleeding condition. Persists until end of next turn."
+        }
+        RULES {
+            #L5RWW41mN2oP4qR6sT8uV0wX: seeping_ki_body_manipulation
+        }
+    }
+
+    # ===========================
+    # VOID KIHO
+    # ===========================
+
+    ^"Aura Awareness" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Void Kihō" FIXED
+            ^"Rank" INTEGER DEFAULT 2
+            ^"Activation" STRING "Support action, TN 2 Meditation (Void)"
+            ^"Enhancement Effect" STRING "While active, perceive beings normally invisible to human sight (spirits, supernaturally concealed characters). After a character or object at range 0-3 activates a supernatural ability, become aware of it and its effects. However, natural senses are diminished: treat Vigilance as 2 lower (minimum 1) for non-supernatural effects, and increase TN of checks to detect non-supernatural characters, objects, and phenomena by 2."
+            ^"Burst Effect" STRING "2+ bonus successes: During next Attack action check targeting an Otherworldly being, treat its resistances as reduced by ranks in Theology. Persists until end of next turn."
+        }
+        RULES {
+            #L5RWW42yZ3aB5cD7eF9gH1iJ: aura_awareness_spirit_sight
+        }
+    }
+
+    ^"Essence of Stillness" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Void Kihō" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Activation" STRING "Support action, TN 3 Fitness (Void)"
+            ^"Enhancement Effect" STRING "While active, ignore the effects of Bleeding, Lightly Wounded, Heavily Wounded, and Unconscious conditions."
+            ^"Burst Effect" STRING "2+ bonus successes: Ignore effects of Dying condition until end of scene. If Dying is removed before end of scene, you do not die even if duration expired."
+        }
+        RULES {
+            #L5RWW43kL4mN6oP8qR0sT2uV: essence_stillness_ignore_wounds
+        }
+    }
+
+    ^"Eternal Mind's Gate" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Void Kihō" FIXED
+            ^"Rank" INTEGER DEFAULT 4
+            ^"Activation" STRING "Support action, TN 3 Meditation (Void)"
+            ^"Enhancement Effect" STRING "While active, identify locations, objects, and individuals related to your past life (but not reincarnations). Become aware of the general nature of your relationship with them, without specific memories."
+            ^"Burst Effect" STRING "3+ bonus successes: Choose two skills in the same group and swap their values. Must explain details about the past life. GM is final arbiter. Persists until end of game session."
+        }
+        RULES {
+            #L5RWW44wX5yZ7aB9cD1eF3gH: eternal_minds_gate_past_lives
+        }
+    }
+
+    # ===========================
+    # GENERAL KATA
+    # ===========================
+
+    ^"Bear's Swipe Style" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Kata" FIXED
+            ^"Subtype" STRING "General" FIXED
+            ^"Rank" INTEGER DEFAULT 1
+            ^"Prerequisites" STRING "Bushi or Monk"
+            ^"Activation" STRING "While you perform an Attack action check, you may spend (op) as follows:"
+            ^"Opportunities" STRING "Earth (op)(op): Choose one condition (Bleeding, Dazed, Disoriented, Prone). If this check inflicts that condition, targets cannot remove it until end of your next turn."
+        }
+        RULES {
+            #L5RWW45iJ6kL8mN0oP2qR4sT: bears_swipe_lock_condition
+        }
+    }
+
+    ^"Serpent's Twist Style" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Kata" FIXED
+            ^"Subtype" STRING "General" FIXED
+            ^"Rank" INTEGER DEFAULT 2
+            ^"Prerequisites" STRING "Bushi or Monk"
+            ^"Activation" STRING "While you make a Fitness check to resist a critical strike caused by another character's Attack action at range 0-2, you may spend (op) as follows:"
+            ^"Opportunities" STRING "Water (op): The attacking character receives fatigue equal to the number of (st) results they kept. If you succeed, add that many bonus successes to your check."
+        }
+        RULES {
+            #L5RWW46uV7wX9yZ1aB3cD5eF: serpents_twist_counter_fatigue
+        }
+    }
+
+    ^"Swallow's Dart Style" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Kata" FIXED
+            ^"Subtype" STRING "General" FIXED
+            ^"Rank" INTEGER DEFAULT 2
+            ^"Prerequisites" STRING "Bushi or Monk"
+            ^"Activation" STRING "While you perform a Movement action check, you may spend (op) as follows:"
+            ^"Opportunities" STRING "Air (op)(op): Next time you defend against damage, reduce damage by focus minus physical resistance of your armor (instead of normal resistance). Persists until start of next turn."
+        }
+        RULES {
+            #L5RWW47gH8iJ0kL2mN4oP6qR: swallows_dart_evasion_focus
+        }
+    }
+
+    ^"Tiger's Lunge Style" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Kata" FIXED
+            ^"Subtype" STRING "General" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Prerequisites" STRING "Bushi or Monk"
+            ^"Activation" STRING "While you perform a Movement action check, you may spend (op) as follows:"
+            ^"Opportunities" STRING "Fire (op)+: Choose a character at range 0-1 with focus lower than or equal to Fitness ranks plus (op) spent. That character must move 1 range band away and suffer Dazed unless they choose to receive strife equal to your Fire ring."
+        }
+        RULES {
+            #L5RWW48sT9uV1wX3yZ5aB7cD: tigers_lunge_intimidating_advance
+        }
+    }
+
+    # ===========================
+    # CLOSE-COMBAT / POLEARM KATA
+    # ===========================
+
+    ^"Flexible Grip" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Kata" FIXED
+            ^"Subtype" STRING "Polearm" FIXED
+            ^"Rank" INTEGER DEFAULT 1
+            ^"Activation" STRING "Movement and Support action, shift grip on a polearm."
+            ^"Effect" STRING "If you have a readied polearm, treat it as a staff with profile: 2-hand Melee; Range 0-1, DMG 4, DLS 2. Treated as both polearm and blunt weapon. End at end of any turn or persists until end of scene."
+        }
+        RULES {
+            #L5RWW49eF0gH2iJ4kL6mN8oP: flexible_grip_polearm_as_staff
+        }
+    }
+
+    ^"Howling Gale Defense" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Kata" FIXED
+            ^"Subtype" STRING "Staff" FIXED
+            ^"Rank" INTEGER DEFAULT 2
+            ^"Activation" STRING "While you make a check to resist a critical strike with a readied staff (such as bo), you may spend (op) as follows:"
+            ^"Opportunities" STRING "(op): If you reduce severity to 0, do not suffer effects. (op)(op): If you would suffer Bleeding, do not; your staff gains Damaged quality instead."
+        }
+        RULES {
+            #L5RWW50qR1sT3uV5wX7yZ9aB: howling_gale_staff_defense
+        }
+    }
+
+    ^"Heron's Grasp Style" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Kata" FIXED
+            ^"Subtype" STRING "Polearm" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Activation" STRING "While you perform an Attack action check using a polearm, you may spend (op) as follows:"
+            ^"Opportunities" STRING "(op)+: Choose one Cumbersome weapon that a target with vigilance lower than or equal to (op) spent is wielding. That character loses persistent benefits and cannot use it for actions. Persists until end of your next turn."
+        }
+        RULES {
+            #L5RWW51cD2eF4gH6iJ8kL0mN: herons_grasp_disarm_cumbersome
+        }
+    }
+
+    ^"Serow's Leap Style" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Kata" FIXED
+            ^"Subtype" STRING "Spear" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Activation" STRING "While you perform an Attack action check using a spear (yari, trident, ji), you may spend (op) as follows:"
+            ^"Opportunities" STRING "(op)+: Spear ignores an amount of target's physical resistance equal to (op) spent, max the distance you moved this round or distance thrown (whichever higher). Treat deadliness as increased by the same amount."
+        }
+        RULES {
+            #L5RWW52oP3qR5sT7uV9wX1yZ: serows_leap_piercing_charge
+        }
+    }
+
+    ^"Tumbling Oak Style" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Kata" FIXED
+            ^"Subtype" STRING "Staff/Blunt" FIXED
+            ^"Rank" INTEGER DEFAULT 4
+            ^"Activation" STRING "While you make an Attack action check using a staff (bo) or blunt weapon, you may spend (op) as follows:"
+            ^"Opportunities" STRING "(op)+: If this check causes targets to make a check to resist a condition, critical strike, or other effect, increase TN of that check by 2 per (op) spent."
+        }
+        RULES {
+            #L5RWW53aB4cD6eF8gH0iJ2kL: tumbling_oak_devastating_blows
+        }
+    }
+
+    # ===========================
+    # NONHUMAN KATA
+    # ===========================
+
+    ^"Flight" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Kata" FIXED
+            ^"Subtype" STRING "Nonhuman" FIXED
+            ^"Rank" INTEGER DEFAULT 1
+            ^"Prerequisites" STRING "Yokai"
+            ^"Form Requirement" STRING "Must be in a form that has wings."
+            ^"Activation" STRING "Movement action, take flight."
+            ^"Effect" STRING "While flying, when you move 1+ range bands, move that many plus 1 instead (horizontally or vertically). For each range band moved upward, receive 1 fatigue. Ignore terrain effects while moving. Do not fall or suffer falling effects. Persists until end of scene or ended as Movement action."
+        }
+        RULES {
+            #L5RWW54mN5oP7qR9sT1uV3wX: flight_yokai_wings
+        }
+    }
+
+    ^"Razor Bite" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Kata" FIXED
+            ^"Subtype" STRING "Nonhuman" FIXED
+            ^"Rank" INTEGER DEFAULT 2
+            ^"Prerequisites" STRING "Naga, Nezumi, or Yokai"
+            ^"Form Requirement" STRING "Must be in a form with large predatory teeth or sharp beak."
+            ^"Activation" STRING "While you perform an Attack action check using bite unarmed profile in true form, you may spend (op) as follows:"
+            ^"Opportunities" STRING "(op)+: Treat deadliness 2 higher per (op) spent. Water (op)(op): Ignore target's physical resistance up to Survival ranks; if you succeed, target suffers Bleeding. Earth (op)(op): If Naga or creature with venomous bite, target suffers Exhausted."
+        }
+        RULES {
+            #L5RWW55yZ6aB8cD0eF2gH4iJ: razor_bite_predatory_attack
+        }
+    }
+
+    ^"Owl's Swoop Style" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Kata" FIXED
+            ^"Subtype" STRING "Nonhuman" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Prerequisites" STRING "Yokai"
+            ^"Form Requirement" STRING "Must be in a form with wings, or persistently hovering above ground."
+            ^"Activation" STRING "While you perform a Martial Arts [Melee] or Unarmed check, if 1+ range bands above target horizontally, you may spend (op) as follows:"
+            ^"Opportunities" STRING "Air (op)+: Choose 1 target per (op) spent; they suffer Disoriented condition."
+        }
+        RULES {
+            #L5RWW56kL7mN9oP1qR3sT5uV: owls_swoop_aerial_attack
+        }
+    }
+
+    ^"Skittering Shift" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Kata" FIXED
+            ^"Subtype" STRING "Nonhuman" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Prerequisites" STRING "Nezumi"
+            ^"Form Requirement" STRING "Must be in a form capable of moving naturally on all fours."
+            ^"Activation" STRING "Once per scene as Movement and Support action, receive 2 fatigue."
+            ^"Effect" STRING "Increase TN of Attack action checks targeting you by 1. After a failed Attack action check targeting you, move 1 range band. After defending against damage, move 1 range band. Persists until end of next turn."
+        }
+        RULES {
+            #L5RWW57wX8yZ0aB2cD4eF6gH: skittering_shift_nezumi_evasion
+        }
+    }
+
+    ^"Tail Sweep" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Kata" FIXED
+            ^"Subtype" STRING "Nonhuman" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Prerequisites" STRING "Naga, Nezumi, or Yokai"
+            ^"Form Requirement" STRING "Must be in a form with a tail."
+            ^"Activation" STRING "Once per scene as Attack and Movement action, make Martial Arts [Unarmed] check targeting one character at range 0-2. TN equals target's vigilance minus 1 (minimum 1)."
+            ^"Effect" STRING "If you succeed, target suffers physical damage equal to Fitness ranks plus bonus successes with deadliness 1."
+            ^"Opportunities" STRING "Earth (op): If you succeed, target suffers Prone; if already Prone, suffers Immobilized instead. Water (op)(op): If you fail, immediately move 1 range band."
+        }
+        RULES {
+            #L5RWW58iJ9kL1mN3oP5qR7sT: tail_sweep_unexpected_strike
+        }
+    }
+
+    # ===========================
+    # RITUALS
+    # ===========================
+
+    ^"Chikusho-do's Guile" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Ritual" FIXED
+            ^"Rank" INTEGER DEFAULT 1
+            ^"Prerequisites" STRING "Yokai"
+            ^"Activation" STRING "Downtime activity, TN 1 Survival (Air) to tap into Chikusho-do and Sakkaku, shrouding yourself in human form."
+            ^"Effect" STRING "Transform into a human form derived from your true form. You are functionally human and cannot use techniques requiring aspects of true form. Observers with vigilance lower than or equal to Performance ranks do not detect flaws. Key features (feather/fur color, scars) persist across forms. If Compromised, disguise slips. As Support action, transform back."
+            ^"Opportunities" STRING "(op): Choose a form of another creature of silhouette 2. (op)(op): Choose a form of a creature of silhouette 1 or 3."
+        }
+        RULES {
+            #L5RWW59uV0wX2yZ4aB6cD8eF: chikusho_guile_yokai_shapeshift
+        }
+    }
+
+    ^"Guard Against the Elements" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Ritual" FIXED
+            ^"Rank" INTEGER DEFAULT 1
+            ^"Prerequisites" STRING "Yobanjin Group"
+            ^"Activation" STRING "Downtime activity, TN 3 Survival check using Air, Earth, Fire, or Water, targeting up to Survival ranks characters at range 0-3."
+            ^"Effect" STRING "Targets are prepared for harsh weather/environment of a type based on ring chosen (Air: pressure/noxious gasses; Earth: altitude/lack of oxygen; Fire: extreme cold; Water: extreme heat). Reduce TN of checks to resist by 1. First time affected by matching terrain quality each scene, ignore its effects. Persists until end of game session."
+            ^"Opportunities" STRING "(op)+: Choose one additional target per (op). (op)(op)(op): If you succeed, choose one additional weather type; targets are also protected against it."
+        }
+        RULES {
+            #L5RWW60gH1iJ3kL5mN7oP9qR: guard_elements_weather_protection
+        }
+    }
+
+    ^"Cunning Snares" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Ritual" FIXED
+            ^"Rank" INTEGER DEFAULT 2
+            ^"Prerequisites" STRING "Shinobi or Yobanjin Group"
+            ^"Activation" STRING "Downtime activity, TN 1 Survival (Air) to create and set traps at range 0-5."
+            ^"Effect" STRING "Set one trap, plus one additional per 2 bonus successes. Each trap triggers when a character moves to range 0. Choose from: Deadfall Trap (TN 5 Fitness [Water 3, Fire 6], physical damage 2x shortfall), Pitfall Trap (TN 4 Fitness [Earth 2, Water 5], 6 physical damage + Dazed + Disoriented), Rope Snare (TN 5 [Fire 3, Earth 6], physical damage equal to shortfall ignoring physical resistance + Immobilized). Trap deadliness is 7."
+            ^"Opportunities" STRING "(op)+: Increase trap resist TN by 1, plus 1 per additional (op)(op). (op): If trap inflicts damage, increase by Skulduggery ranks; if critical strike, increase severity by same. (op): If trap inflicts damage, target also suffers Bleeding. (op)(op): Use poison doses on traps equal to number made."
+        }
+        RULES {
+            #L5RWW61sT2uV4wX6yZ8aB0cD: cunning_snares_trap_making
+        }
+    }
+
+    ^"Hunter's Expertise" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Ritual" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Prerequisites" STRING "Yobanjin Group"
+            ^"Activation" STRING "Downtime activity, TN 5 Survival check using Air, Earth, Fire, Water, or Void, targeting one previously encountered character. Reduce TN by 1 per known advantage or disadvantage of target."
+            ^"Effect" STRING "If target matches ring's creature type (Air: ethereal Otherworldly spirits/ghosts; Earth: living Tainted; Fire: undead corporeal; Water: wild animals; Void: non-Tainted sentient beings), prepare one weapon with increased deadliness 3, plus 1 per 2 bonus successes."
+            ^"Opportunities" STRING "(op): Choose additional weapons to prepare equal to Smithing ranks (minimum 1). (op): If minion NPC, increased deadliness applies to all minions with same profile. (op)(op): Instead of increasing deadliness, weapons ignore points of target's physical resistance equal to Survival ranks."
+        }
+        RULES {
+            #L5RWW62eF3gH5iJ7kL9mN1oP: hunters_expertise_prepare_weapon
+        }
+    }
+
+    ^"Trance of Lives Past" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Ritual" FIXED
+            ^"Rank" INTEGER DEFAULT 4
+            ^"Prerequisites" STRING "Monk"
+            ^"Activation" STRING "Downtime activity, TN 4 Meditation (Void) targeting a place, object, or individual from one of your past lives. Reduce TN by 2 if all three are true: you have items from past life, you are in a place important to it, and you interacted with an individual from it within 24 hours."
+            ^"Effect" STRING "If you succeed, GM reveals a specific memory related to your target. GM may ask you to help determine specifics, then offer modifications."
+            ^"Opportunities" STRING "(op)+: Reduce TN of next check related to target by 1. (op)(op)(op)(op): If you fail, become possessed by past self until end of scene (use NPC profile determined by GM). You control actions but character has no memory of events."
+        }
+        RULES {
+            #L5RWW63qR4sT6uV8wX0yZ2aB: trance_lives_past_memories
+        }
+    }
+}

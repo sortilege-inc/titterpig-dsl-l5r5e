@@ -1,0 +1,2089 @@
+EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
+    NAME "Legend of the Five Rings 5th Edition - Shadowlands: NPCs"
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-03-01"
+
+    # Shadowlands: NPCs, creatures, and monsters from across
+    # the sourcebook, organized by chapter and section.
+
+    # ===========================
+    # NPCs / ADVERSARIES
+    # ===========================
+
+    # -----------------------------------------------
+    # Chapter 1: Shadowlands Creatures
+    # -----------------------------------------------
+
+    ^"Gashadokuro" DEF {
+        EXTENDS ^"NPC"
+
+        # A Gashadokuro is an enormous skeleton composed of the
+        # melded bones of the unburied dead, said to be as much as
+        # fifteen times the height of a human. Early in the Empire's
+        # history, before strict provisions were made to recover,
+        # cremate, and properly dispose of all human remains,
+        # gashadokuro would arise at the sites of battles and rampage
+        # until they were destroyed. They are now very rare, thankfully.
+        # Occasionally, a gashadokuro is found prowling the
+        # Shadowlands, a remnant, perhaps, of the ancient past
+        # conflict. Time does not seem to have lessened such a
+        # creature's prodigious strength, however, and Crab patrols
+        # generally give it a wide berth until they can gather
+        # sufficient forces to attack.
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 14
+            ^"Intrigue Conflict Rank" INTEGER 0
+            ^"Rings" INTEGER 6
+            ^"Demeanor" STRING "Aggressive"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Endurance" INTEGER 42
+            ^"Composure" INTEGER 20
+            ^"Focus" STRING "Infinity"
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 5
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 5", "Scholar 0", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Massive Stature (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Easily Distracted (Fire) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Claws and Teeth: Range 0-2, Damage 7, Deadliness 7, Unholy"]
+            ^"Gear" LIST OF STRING ["Bone plating (Physical 3, Unholy)", "Rotted flesh and clothing"]
+        }
+
+        ^"Massive Bones" DEF {
+            ^"Description" STRING "A gashadokuro is an Otherworldly, Tainted being of silhouette 5. The first time it would be defeated due to suffering damage each scene, it ignores that damage and its bone plating is destroyed instead."
+        }
+
+        RULES {
+            #L5RSH01aB1cD3eF5gH7iJ9kL: gashadokuro
+        }
+    }
+
+    ^"Harionago" DEF {
+        EXTENDS ^"NPC"
+
+        # Harionago appear as beautiful women with long, flowing
+        # hair. Unfortunately, their hair is tipped with poisonous,
+        # barbed thorns that can quickly ensnare and kill a human,
+        # whom they then consume. Nevertheless, they would be
+        # relatively easy to avoid, if not for a cunning ability to
+        # disguise themselves as lost Crab scouts or other travelers.
+        # They then attempt to get close to an intended quarry,
+        # ideally isolating them from any companions before
+        # attacking. Occasionally, these beings infiltrate the Empire,
+        # making them a possible threat even far inside the Kaiu Wall.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 9
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 0
+            ^"Status" INTEGER 5
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 2", "Scholar 0", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Expert in Disguise (Air) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Impatience (Earth) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Barbed Hair: Range 0-2, Damage 3, Deadliness 6, Snaring, Unholy"]
+            ^"Gear" LIST OF STRING ["Variety of robes and other clothes suitable for posing as Rokugani citizens", "Small knife"]
+        }
+
+        ^"Entangling Tresses" DEF {
+            ^"Description" STRING "A harionago is an Otherworldly, Tainted being. When a harionago deals damage to an Immobilized target, it ignores 2 points of the target's physical resistance (to a minimum of 0)."
+        }
+
+        RULES {
+            #L5RSH02mN2oP4qR6sT8uV0wX: harionago
+        }
+    }
+
+    ^"Kyorinrin" DEF {
+        EXTENDS ^"NPC"
+
+        # Illustrative of the Taint's ability to corrupt nearly
+        # anything, a kyorinrin is a being composed of scrolls,
+        # origami, or essentially anything else made of paper. Given
+        # their nature, they may not appear particularly dangerous.
+        # This is deceptive, however, as the power motivating
+        # kyorinrin is a strong one, and they can bind, blind, or
+        # even smother their foes. The paper that composes them can
+        # be torn or burned, but they are tenacious and continue to
+        # attack, usually until they are completely destroyed.
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" INTEGER 4
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Endurance" INTEGER 13
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 10
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 3
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Subtle Appearance (Air) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Fear of Fire (Fire) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Smothering Papers: Range 0-1, Damage 4, Deadliness 4, Snaring, Unholy"]
+            ^"Gear" LIST OF STRING ["Shifting layers of paper (Physical 6, Supernatural 6, Unholy)"]
+        }
+
+        ^"Masses of Paper" DEF {
+            ^"Description" STRING "A kyorinrin is an Otherworldly, Tainted being of silhouette 3. When a kyorinrin defends against fire damage (such as from a Fire invocation, kihō, or a flame), its resistance counts as 0. When a kyorinrin makes a successful Attack action check, it may spend (op)(op) as follows: (op)(op)+: The target begins to suffocate (see page 269 of the core rulebook). After a character suffers strife and fatigue at the start of their turn from suffocating this way, the character may make a TN 3 Fitness check (Fire 2, Earth 5) to break free and breathe normally."
+        }
+
+        RULES {
+            #L5RSH03yZ3aB5cD7eF9gH1iJ: kyorinrin
+        }
+    }
+
+    ^"Penanggalan" DEF {
+        EXTENDS ^"NPC"
+
+        # Penanggalan outwardly appear to be normal humans. Indeed,
+        # during the day, they go about their business in Rokugan as
+        # farmers, artisans, or even samurai. Patrols in the
+        # Shadowlands sometimes encounter them posing as lost
+        # merchants or scouts. At night, however, they reveal their
+        # true nature: their head and internal organs detach from
+        # their body and become capable of flying about. In this
+        # horrific form, they seek out their victims, usually
+        # individuals who are isolated or alone.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 5
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 9
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 8
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 5", "Scholar 2", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Flying Horror (Fire) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Vulnerable While Eating (Earth) [Martial; Physical]"]
+            ^"Favored Weapons" LIST OF STRING ["Tentacle Entrails: Range 0-2, Damage 5, Deadliness 6, Snaring, Unholy"]
+            ^"Gear" LIST OF STRING ["Body shell (Physical 3 while the body is worn)"]
+        }
+
+        ^"Feaster of Blood" DEF {
+            ^"Description" STRING "A penanggalan is an Otherworldly, Tainted being. While bodiless, it is silhouette 0; while wearing a body, it is silhouette 2. When a penanggalan inflicts a critical strike on its target, it removes fatigue from itself equal to the severity (after the check to resist). Optionally, the GM may choose 0-2 mahō that a penanggalan can perform; add 1 to this character's combat rank for each mahō chosen this way."
+        }
+
+        RULES {
+            #L5RSH04kL4mN6oP8qR0sT2uV: penanggalan
+        }
+    }
+
+    ^"Ravenous Shadowlands Ogre" DEF {
+        EXTENDS ^"NPC"
+
+        # Ogres are huge, violent creatures from the Shadowlands that
+        # can also be found north of the Wall. Once intelligent beings,
+        # long ago they were twisted into little more than beasts that
+        # live only to kill and devour anything they can catch.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Demeanor" STRING "Gruff"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Earth -2"
+            ^"Endurance" INTEGER 17
+            ^"Composure" INTEGER 7
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 4
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 5
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 0", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Single-Minded (Earth) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Always Hungry (Earth) [Martial; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Huge Club or Tree Trunk: Range 1-2, Damage 8, Deadliness 2"]
+            ^"Gear" LIST OF STRING ["Numerous hides (Physical 2)"]
+        }
+
+        ^"Rage of the Beast" DEF {
+            ^"Description" STRING "A ravenous Shadowlands ogre is a Tainted being of silhouette 4. When the ogre suffers a critical strike, it becomes Enraged. Whenever it inflicts a critical strike, the target suffers the Prone condition in addition to all other results of the critical strike."
+        }
+
+        RULES {
+            #L5RSH05wX5yZ7aB9cD1eF3gH: ravenous_shadowlands_ogre
+        }
+    }
+
+    ^"Revenant" DEF {
+        EXTENDS ^"NPC"
+
+        # A revenant is a powerful undead servant, a creature that
+        # retains some intelligence and knowledge from its former
+        # life. If the mahō-tsukai who creates it wishes, they can
+        # supply a revenant with an onikage mount and even a group
+        # of animated dead that are ordered to obey the revenant's
+        # command. Such revenants can act as champions for the
+        # mahō-tsukai, but the practitioner should be certain of
+        # the revenant's loyalty before bestowing such power.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Demeanor" STRING "Assertive"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Endurance" INTEGER 14
+            ^"Composure" STRING "Infinity"
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 5
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 5", "Scholar 1", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Undead Gunso (Earth) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Self-Knowledge (Void) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Heavy Masakari: Range 0-1, Damage 4/5, Deadliness 4/6, Mundane"]
+            ^"Gear" LIST OF STRING ["Rusted armor (Physical 2)"]
+        }
+
+        ^"Powerful Servant" DEF {
+            ^"Description" STRING "A revenant is an Otherworldly, Tainted being. It may issue orders to undead creatures if they were created by the same mahō-tsukai. Undead creatures under its orders ignore their disadvantages and count as having the Revenant's assistance on all Scholar, Social, and Trade checks they make. At the GM's discretion, a revenant might be armed with a different weapon or even heavier armor."
+        }
+
+        RULES {
+            #L5RSH06iJ6kL8mN0oP2qR4sT: revenant
+        }
+    }
+
+    ^"Tsumunagi" DEF {
+        EXTENDS ^"NPC"
+
+        # Also known as "blood eels," these foul creatures are found
+        # in ponds and waterways throughout the Shadowlands. They
+        # latch onto their prey with wickedly barbed hooks, bite
+        # exposed flesh with their jagged teeth, and proceed to drain
+        # the unfortunate victim's blood with the aid of saliva that
+        # prevents coagulation.
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 0
+            ^"Rings" INTEGER 3
+            ^"Demeanor" STRING "Aggressive"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Endurance" INTEGER 21
+            ^"Composure" INTEGER 4
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 1
+            ^"Silhouette" INTEGER 1
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Slippery (Fire) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Thirst for Blood (Earth) [Martial; Physical]"]
+            ^"Favored Weapons" LIST OF STRING ["Biting Teeth: Range 0, Damage 4, Deadliness 3, Razor-Edged, Unholy"]
+            ^"Gear" LIST OF STRING ["Slimy skin (Physical 1)"]
+        }
+
+        ^"Twisting Leech" DEF {
+            ^"Description" STRING "A tsumunagi is a Tainted being of silhouette 1. When making an Attack action check, a tsumunagi may spend (op)(op) to attach itself to the target. The target suffers the Bleeding condition, and cannot remove this condition while the tsumunagi is attached. Any character at range 0-1 may make a TN 3 Medicine check (Air 2, Earth 5) to remove the tsumunagi, reducing the TN by 1 if they use a flame to scorch the creature off; if they succeed, it is removed; if they fail, the victim suffers a critical strike with severity 7 plus their shortfall."
+        }
+
+        RULES {
+            #L5RSH07uV7wX9yZ1aB3cD5eF: tsumunagi
+        }
+    }
+
+    ^"Undead Horror" DEF {
+        EXTENDS ^"NPC"
+
+        # Formed from unholy assemblages of multiple corpses, undead
+        # horrors are one of the most terrifying creatures to be found
+        # in the Shadowlands. Even more unsettling, these huge
+        # monstrosities are said to have been seen in Rokugan during
+        # the dark days of Iuchiban's Bloodspeakers -- and perhaps
+        # some linger in defiled wells or forgotten caverns.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 0
+            ^"Rings" INTEGER 3
+            ^"Demeanor" STRING "Hungry"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -1"
+            ^"Endurance" INTEGER 31
+            ^"Composure" INTEGER 18
+            ^"Focus" STRING "Infinity"
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 3
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Undead Flesh (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Mindless (Void) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Rotted Fists and Teeth: Range 0, Damage 6, Deadliness 3, Unholy"]
+            ^"Gear" LIST OF STRING ["Decaying flesh (Physical 3)"]
+        }
+
+        ^"Fused Corpses" DEF {
+            ^"Description" STRING "An undead horror is an Otherworldly, Tainted being of silhouette 3. Unless defeated by damage from a Sacred source, its component corpses separate and arise as three undamaged zombie peasants (see page 321 of the core rulebook)."
+        }
+
+        RULES {
+            #L5RSH08gH8iJ0kL2mN4oP6qR: undead_horror
+        }
+    }
+
+    ^"Wanyudo" DEF {
+        EXTENDS ^"NPC"
+
+        # A wanyudo has the bizarre form of the flaming wheel of an
+        # oxcart, with a screaming human head for its hub. It rolls
+        # with preternatural speed across virtually any terrain,
+        # including water, attempting to wrench the soul from any
+        # mortal being it encounters. Each is said to be the tortured
+        # ghost of someone who was an oppressive tyrant while alive.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Assertive"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 9
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 5
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["All-Terrain Wheel (Fire) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Painful Form (Water) [Social; Physical]"]
+            ^"Favored Weapons" LIST OF STRING ["Crushing Fire: Range 0, Damage 4, Deadliness 4, Unholy"]
+            ^"Gear" LIST OF STRING ["Wooden form (Physical 3, Supernatural 1)"]
+        }
+
+        ^"Fiery Soultaker" DEF {
+            ^"Description" STRING "A wanyudo is an Otherworldly, Tainted being of silhouette 2. When making an Attack action check, the wanyudo may spend (op)(op) to inflict the Burning condition on its target. Characters who perish while at range 0 of a wanyudo have their souls dragged to Jigoku. The ramifications of this terrible outcome are at the GM's discretion, such as that they cannot be reincarnated until they are rescued."
+        }
+
+        RULES {
+            #L5RSH09sT9uV1wX3yZ5aB7cD: wanyudo
+        }
+    }
+
+    # --- Dark Moto and Oni ---
+
+    ^"Fudoshi" DEF {
+        EXTENDS ^"NPC"
+
+        # Many of the older trees near Fallen Chrysanthemum Lake
+        # are entwined with these masses of entangling vines, which
+        # also appear in other Shadowlands locations along with
+        # other foliage or in patches along the ground. They appear
+        # sessile, but when disturbed they suddenly leap out to
+        # ensnare and envelop their prey. The crushing death that
+        # follows is long and torturous.
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 0
+            ^"Rings" INTEGER 3
+            ^"Demeanor" STRING "Aggressive"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
+            ^"Endurance" INTEGER 22
+            ^"Composure" INTEGER 10
+            ^"Focus" STRING "Infinity"
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 3
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 0", "Social 0", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["No Central Body (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Impulse Attacker (Fire) [Martial; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Tangling Vines: Range 0-2, Damage 3, Deadliness 2, Snaring, Unholy"]
+            ^"Gear" LIST OF STRING ["Outer husk (Physical 3)"]
+        }
+
+        ^"Concealed Constrictor" DEF {
+            ^"Description" STRING "A fudoshi is a Tainted being of silhouette 3. Characters count their vigilance as half its normal value for the purposes of noticing a fudoshi or when it uses the Snaring quality of its tangling vines weapon."
+        }
+
+        RULES {
+            #L5RSH10eF0gH2iJ4kL6mN8oP: fudoshi
+        }
+    }
+
+    ^"Dark Moto Bushi" DEF {
+        EXTENDS ^"NPC"
+
+        # The warriors who followed Moto Tsume into the
+        # Shadowlands are now as horrid as their surroundings.
+        # Their forms are as corrupted as their souls, having taken
+        # on aspects of spiked bone or diseased skin, and their
+        # armor can be as misshapen as their flesh. They fight with
+        # disciplined order and powerful kata, some still using their
+        # ancestral Ujik weapons. Worse, having fallen completely
+        # to the Taint despite their honor and courage, the Dark
+        # Moto are terrible reminders that no one is immune to
+        # such a fate.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 8
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Assertive"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 22
+            ^"Glory" INTEGER 8
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 5", "Scholar 1", "Social 3", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Ageless Warrior (Water) [Martial; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Corrupted Visage (Water) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Ujik Lance: Range 1-2, Damage 5, Deadliness 5, Prepare, Wargear (can only be used while mounted)"]
+            ^"Gear" LIST OF STRING ["Corrupted armor (Physical 2, Supernatural 1, Unholy)", "Katana or scimitar", "Horsebow and quiver", "Dark Moto onikage steed"]
+        }
+
+        ^"Ancient Rider" DEF {
+            ^"Description" STRING "A Dark Moto bushi is an Otherworldly, Tainted being. When making an Attack action while on horseback, a Dark Moto bushi may spend (op)(op)+ to move 1 range band per (op)(op) spent this way after resolving the action."
+        }
+
+        RULES {
+            #L5RSH11qR1sT3uV5wX7yZ9aB: dark_moto_bushi
+        }
+    }
+
+    ^"Moto Tsume" DEF {
+        EXTENDS ^"NPC"
+
+        # The pride of Moto Tsume, the leader of the Dark Moto,
+        # led to a disastrous fall. He and his forces were utterly
+        # defeated and corrupted in the Shadowlands, but he
+        # remains his warriors' leader hundreds of years later.
+        # Now a being swelled with terrible power, Tsume ensures
+        # his warriors continually train and develop their martial
+        # skills, for he knows there will soon come a time when
+        # the Dark Moto shall be fully unleashed against the
+        # Emerald Empire.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 12
+            ^"Intrigue Conflict Rank" INTEGER 8
+            ^"Rings" DEF {
+                ^"Air" INTEGER 5
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 5
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Assertive"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Endurance" INTEGER 20
+            ^"Composure" INTEGER 18
+            ^"Focus" INTEGER 9
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 12
+            ^"Glory" INTEGER 18
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 5", "Scholar 3", "Social 3", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Ageless Tactician (Water) [Martial; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Shameful Failure (Water) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Scimitar of the Moto: Range 1, Damage 6, Deadliness 5, Ceremonial, Durable, Razor-Edged, Unholy"]
+            ^"Gear" LIST OF STRING ["Corrupted daimyo armor (Physical 3, Supernatural 2, Unholy)", "Horsebow and quiver", "Wakizashi", "Kyofu (his Dark Moto onikage steed)"]
+        }
+
+        ^"Master of Tactics and Terror" DEF {
+            ^"Description" STRING "Moto Tsume is an Otherworldly, Tainted being who may use any of the abilities of a Dark Moto. When making a Tactics check, Tsume may spend (op)+ to inflict 1 strife on each enemy in the scene (or 1 panic on each enemy army in a mass battle) per (op) spent this way. During their turn, whenever non-Dark Moto characters would normally gain strife while in a scene with Tsume, they gain that much plus 1."
+        }
+
+        RULES {
+            #L5RSH12cD2eF4gH6iJ8kL0mN: moto_tsume
+        }
+    }
+
+    ^"Onikage" DEF {
+        EXTENDS ^"NPC"
+
+        # Just as humans who die in the Shadowlands can attract
+        # kansen and arise as mindless zombies, so can their
+        # steeds. Formed from the remains of lesser horses,
+        # onikage are more bones than flesh, yet they can still
+        # effectively carry riders into battle.
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 0
+            ^"Rings" INTEGER 3
+            ^"Demeanor" STRING "Fierce"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
+            ^"Endurance" INTEGER 32
+            ^"Composure" INTEGER 10
+            ^"Focus" STRING "Infinity"
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 3
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 0", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Tireless (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Hard to Control (Water) [Martial; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Teeth and Hooves: Range 0-1, Damage 4, Deadliness 3, Unholy"]
+            ^"Gear" LIST OF STRING ["Corrupted hide and armor (Physical 2, Supernatural 1, Unholy)", "Riding tack"]
+        }
+
+        ^"Unnatural Steed" DEF {
+            ^"Description" STRING "An onikage is an Otherworldly, Tainted being of silhouette 3. It can be ridden by any human-sized (silhouette 2 or lower) rider, using the Mounts and Riding rules from page 326 of the core rulebook. Unless the rider is Tainted, though, an onikage will attempt to throw the rider and then attack them."
+        }
+
+        RULES {
+            #L5RSH13oP3qR5sT7uV9wX1yZ: onikage
+        }
+    }
+
+    ^"Dark Moto Onikage" DEF {
+        EXTENDS ^"NPC"
+
+        # Dark Moto onikage are elite demonic mounts formed
+        # from the Unicorn steeds of the Moto. Like their riders,
+        # they are corrupted and terrible in appearance, with
+        # reptilian hides and crimson eyes. These steeds use
+        # the profile for onikage, adding the following ability.
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 0
+            ^"Rings" INTEGER 3
+            ^"Demeanor" STRING "Fierce"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
+            ^"Endurance" INTEGER 32
+            ^"Composure" INTEGER 10
+            ^"Focus" STRING "Infinity"
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 3
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 0", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Tireless (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Hard to Control (Water) [Martial; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Teeth and Hooves: Range 0-1, Damage 4, Deadliness 3, Unholy"]
+            ^"Gear" LIST OF STRING ["Corrupted hide and armor (Physical 2, Supernatural 1, Unholy)", "Riding tack"]
+        }
+
+        ^"Unnatural Steed" DEF {
+            ^"Description" STRING "A Dark Moto onikage is an Otherworldly, Tainted being of silhouette 3. It can be ridden by any human-sized (silhouette 2 or lower) rider, using the Mounts and Riding rules from page 326 of the core rulebook."
+        }
+
+        ^"Deadly Steed" DEF {
+            ^"Description" STRING "If the rider is a Dark Moto, when making an Attack action check, the rider may spend (op) to have their mount lash out with its teeth and hooves, inflicting 5 damage with the Unholy quality on a character at range 0-1."
+        }
+
+        RULES {
+            #L5RSH14aB4cD6eF8gH0iJ2kL: dark_moto_onikage
+        }
+    }
+
+    ^"Skull-Cleaving Oni" DEF {
+        EXTENDS ^"NPC"
+
+        # Whereas most oni seek dominion, the skull-cleaving oni
+        # believes in Fu Leng's inherent authority and divinity in a
+        # twisted reflection of Rokugani veneration of the Dark
+        # Kami's siblings. As such, it prefers to proselytize its
+        # faith to others and try to win them over to the service
+        # of Fu Leng. Of course, being an oni, its ideas of
+        # persuasion do not always match Rokugani norms.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 9
+            ^"Intrigue Conflict Rank" INTEGER 7
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 5
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Earth +1, Void -2"
+            ^"Endurance" INTEGER 18
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 4
+            ^"Silhouette" INTEGER 3
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 5
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 6", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Unholy Strength (Fire) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Desperate for Converts (Void) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Obsidian Cleaver: Range 1-2, Damage 7, Deadliness 5/7, Durable, Razor-Edged, Unholy"]
+            ^"Gear" LIST OF STRING ["Demonic hide (Physical 4, Supernatural 4)", "Tattered robes"]
+        }
+
+        ^"Unholy Shrine Guardian" DEF {
+            ^"Description" STRING "The skull-cleaving oni is a Tainted, Otherworldly being of silhouette 3. At night, its appearance changes to that of a placid monk of silhouette 2, and its cleaver to that of a walking stick. The oni may dismiss the illusion at any time, and it always does so before engaging in combat. Characters can make a TN 4 Theology check (Water 3, Earth 5) to see through this false appearance. Once per scene as a Support action, the oni may chant to summon and control 6 fudoshi vines that act at Initiative 1 each round. The vines remain until a character interrupts the oni's chant by inflicting the Dazed, Disoriented, or Silenced condition on the oni (or killing it), returning the foliage to normal."
+        }
+
+        RULES {
+            #L5RSH15mN5oP7qR9sT1uV3wX: skull_cleaving_oni
+        }
+    }
+
+    ^"Obsidian Bone Oni" DEF {
+        EXTENDS ^"NPC"
+
+        # Fragments of one of the most massive horrors of Jigoku,
+        # obsidian bone oni are rarely seen far from the Festering
+        # Pit. Legend has it that not long after the creation of the
+        # Festering Pit, a monster of inestimable size attempted to
+        # force its way through into the Mortal Realm, but the
+        # effort shattered the being, sundering it into lesser
+        # horrors. Even these beasts were too large and horrific to
+        # maintain a presence in Ningen-do, and so cunning
+        # servitors of Fu Leng drove massive spikes of Pit-forged
+        # obsidian into the bodies of these monsters.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 11
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 6
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 5
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Enraged"
+            ^"Social Skill Check TN Modifiers" STRING "Air +1, Fire -2"
+            ^"Endurance" INTEGER 22
+            ^"Composure" INTEGER 18
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 5
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 4
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 4", "Scholar 0", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Pit-Fueled Strength (Fire) [Martial; Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Constant Pain (Earth) [Martial; Physical]"]
+            ^"Favored Weapons" LIST OF STRING ["Obsidian Claws: Range 0-2, Damage 7, Deadliness 6, Razor-Edged, Unholy"]
+            ^"Gear" LIST OF STRING ["Bone layers (Physical 4, Supernatural 5)"]
+        }
+
+        ^"Burning Bones from the Pit" DEF {
+            ^"Description" STRING "An obsidian bone oni is a Tainted, Otherworldly being of silhouette 5. Once per round when a character makes an Attack check against it, the attacker may spend (op)(op) in the following manner: (op)(op): The oni's pain becomes too intense, and infuriates the creature. Increase the TN of its next Attack action check by 1, and increase the deadliness of its claws by 1."
+        }
+
+        RULES {
+            #L5RSH16yZ6aB8cD0eF2gH4iJ: obsidian_bone_oni
+        }
+    }
+
+    # --- Forgotten Tomb and Lost Library ---
+
+    ^"Goblin Accursed Priest" DEF {
+        EXTENDS ^"NPC"
+
+        # Goblins, or bakemono, usually only have power in
+        # numbers. Those singular goblins who achieve great
+        # power for themselves often do so by calling on the
+        # favor of Fu Leng, especially in order to become priests
+        # of their foul Kami. As accursed priests, they command
+        # cowering minions, but they know that one day they
+        # may be betrayed and sacrificed, just as they did to
+        # rise to their position.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" INTEGER 4
+            ^"Demeanor" STRING "Cowardly"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Fire -2"
+            ^"Endurance" INTEGER 22
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 1
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 1", "Scholar 2", "Social 1", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Whispers of Fu Leng (Void) [Scholar; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Cowardice (Earth) [Martial; Social]"]
+            ^"Favored Weapons" LIST OF STRING ["Ritual Dagger: Range 0, Damage 2, Deadliness 4, Concealable, Razor-Edged, Unholy"]
+            ^"Gear" LIST OF STRING ["Defiled priestly robes (Physical 1, Supernatural 2, Unholy)"]
+        }
+
+        ^"Favored of Fu Leng" DEF {
+            ^"Description" STRING "A goblin accursed priest is a Tainted being of silhouette 1 who reduces the TN of Command checks they make targeting goblins by 1. Once per scene, they may call on Fu Leng's favor to change any die result containing (st) to a result containing (ex). The GM can choose 1-3 mahō that the goblin accursed priest can perform. Add 1 to this character's combat rank for each mahō chosen this way."
+        }
+
+        RULES {
+            #L5RSH17kL7mN9oP1qR3sT5uV: goblin_accursed_priest
+        }
+    }
+
+    ^"The Obsidian Flower" DEF {
+        EXTENDS ^"NPC"
+
+        # Called many names across the ages -- the Obsidian
+        # Flower, the High Priest of Fu Leng, the Demon Bride --
+        # this ancient entity was once a human. She stole a
+        # Black Scroll from the Yogo family and journeyed into
+        # the Shadowlands. There, she used the unspeakable
+        # knowledge within the scroll to become a twisted,
+        # demonic conduit. Now, within the Tomb, she waits and
+        # plans, whispering to Fu Leng as she slowly shifts
+        # pieces across the vast board of time.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 10
+            ^"Intrigue Conflict Rank" INTEGER 14
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 6
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 5
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Calculating"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +1, Earth -1"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 20
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 10
+            ^"Glory" INTEGER 1
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 6", "Martial 3", "Scholar 6", "Social 5", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Ancient Cunning (Air) [Scholar; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Long View (Fire) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Claws: Range 0-1, Damage 4, Deadliness 8, Razor-Edged, Unholy"]
+            ^"Gear" LIST OF STRING ["Ethereal clothing (Physical 3, Supernatural 5)"]
+        }
+
+        ^"Through Tainted Glass" DEF {
+            ^"Description" STRING "The Obsidian Flower is an Otherworldly, Tainted being. Each time PCs face the Obsidian Flower, choose two different Shadowlands Powers for her. Once per scene as an Attack and Scheme action, the Obsidian Flower may summon a dark reflection of each PC. This reflection uses the same profile as the character, cannot perform Attack or Scheme actions targeting any character other than the PC it mirrors, and has the same Shadowlands Powers as the Obsidian Flower."
+        }
+
+        RULES {
+            #L5RSH18wX8yZ0aB2cD4eF6gH: the_obsidian_flower
+        }
+    }
+
+    ^"Crab Gaki" DEF {
+        EXTENDS ^"NPC"
+
+        # These ghostly samurai remember only the sense of
+        # duty from their life, the need to follow orders, and the
+        # pride achieved by victory. They hunger for these things
+        # and have been waiting near the Forgotten Tomb for the
+        # opportunity to prove themselves. The last order these
+        # gaki remember was to drive evil into the Tomb, so they
+        # attack all who approach.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Assertive"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Air -2"
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 9
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 2", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Insubstantial Form (Air) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Hot-Tempered (Air) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Ghostly Tetsubō: Range 1-2, Damage 7, Deadliness 3, deals supernatural damage"]
+            ^"Gear" LIST OF STRING ["Spectral armor (Physical and Supernatural 5)"]
+        }
+
+        ^"Undying Duty" DEF {
+            ^"Description" STRING "A Crab scout gaki is an Otherworldly, Tainted being. As a former Crab, it always seeks to defend its chosen location unless a living Crab can convince it otherwise (a TN 4 Command or Courtesy check). For every kept (su) result a Crab scout gaki makes in a check, it also gains 1 strife. Should it unmask, it must spend its next turn attacking the nearest living character."
+        }
+
+        RULES {
+            #L5RSH19iJ9kL1mN3oP5qR7sT: crab_gaki
+        }
+    }
+
+    ^"Fallen Scholar" DEF {
+        EXTENDS ^"NPC"
+
+        # No one knows how many fallen scholars walk amidst
+        # the endless stacks of books, scrolls, and other inscribed
+        # works in the Lost Library. Their appearance is as
+        # unsettling as their environment. Some wear garb not
+        # seen since the First Wall was constructed or speak
+        # languages only gaijin would recognize. The knowledge
+        # the kansen offered drew them down this path.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 6
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Fire +1, Void -2"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 6
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 3", "Social 1", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Expert Liar (Air) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Devotion to Books (Fire) [Scholar; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 3, Deadliness 5/7, Ceremonial, Concealable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Faded robes (Physical 1, Supernatural 3)"]
+        }
+
+        ^"Call of the Kansen" DEF {
+            ^"Description" STRING "A fallen scholar is a Tainted being. While in the Lost Library, they count the TN of all Scholar skill checks they make as 1. The GM may choose 0-3 mahō that a fallen scholar can perform. Add 1 to this character's combat rank for each mahō technique chosen this way."
+        }
+
+        RULES {
+            #L5RSH20uV0wX2yZ4aB6cD8eF: fallen_scholar
+        }
+    }
+
+    # --- Daylight Castle Denizens ---
+
+    ^"The Siren" DEF {
+        EXTENDS ^"NPC"
+
+        # The Siren is an insidious, shapeshifting creature,
+        # thought to be an especially vile kansen and capable of
+        # assuming various forms. These guises can include that
+        # of a dying samurai, a lost scout, or someone else who
+        # appears harmless and in need of aid. Its true nature is
+        # to delay and confuse its targets, to more egregiously
+        # expose them to the corruption of the Shadowlands.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 8
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 4
+            }
+            ^"Demeanor" STRING "Beguiling"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Earth -2"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 3
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 5", "Scholar 0", "Social 2", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Dangerous Allure (Earth) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Never Satisfied (Void) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Raking Claws: Range 0, Damage 4, Deadliness 6, Unholy"]
+            ^"Gear" LIST OF STRING ["Shifting garb (Physical 2, Supernatural 3, Unholy)"]
+        }
+
+        ^"Corrupting Guises" DEF {
+            ^"Description" STRING "The Siren is an Otherworldly, Tainted being. At the end of each round, each other character at range 0-1 gains the Afflicted condition. Once per scene, it may make a TN 1 Sentiment (Air) check to take the form of a friendly, nonthreatening person who would not seem out of place in its current location. Characters may attempt to see through this by making a TN 4 Sentiment check (Void 2) or a TN 5 Meditation check (Void 3)."
+        }
+
+        RULES {
+            #L5RSH21gH1iJ3kL5mN7oP9qR: the_siren
+        }
+    }
+
+    ^"The Watcher" DEF {
+        EXTENDS ^"NPC"
+
+        # The Watcher is usually encountered at a high vantage
+        # point in Daylight Castle. Kuni occult scholars believe it
+        # to be a low form of oni. It resembles a man in a
+        # tattered kimono, but its pale flesh is punctuated by
+        # dozens of eyes that blink in waves that ripple across
+        # its body. Because these many eyes can apparently see,
+        # it is almost impossible to take the Watcher by surprise.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 10
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 5
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 18
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 2
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 4", "Scholar 1", "Social 2", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Always Watchful (Air) [Martial; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Phobia of Fire (Water) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Biting Eyes: Range 0, Damage 5, Deadliness 8, Razor-Edged, Unholy"]
+            ^"Gear" LIST OF STRING ["Tattered robes (Physical 1, Supernatural 2)"]
+        }
+
+        ^"Eternally Vigilant" DEF {
+            ^"Description" STRING "The Watcher is an Otherworldly, Tainted being that always uses its focus value for Initiative checks. When it inflicts a Permanent Injury on a target, that target is always assigned the Lost Eye disadvantage, and the Watcher removes 5 fatigue from itself (as well as growing a new eye on its body)."
+        }
+
+        RULES {
+            #L5RSH22sT2uV4wX6yZ8aB0cD: the_watcher
+        }
+    }
+
+    ^"The Wounded Bushi" DEF {
+        EXTENDS ^"NPC"
+
+        # Assumed to be some type of undead creature or oni,
+        # the Wounded Bushi is usually encountered in the armory
+        # or the dojo. It appears as a large and powerful warrior
+        # in heavy samurai armor so battered and spattered with
+        # blood that its heraldry is obscured. Visible through gaps
+        # in the armor is flesh riddled with festering sores. The
+        # various parts of its body are mismatched, as it is an
+        # amalgam of segments from multiple bodies.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 14
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 5
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Assertive"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Water -2"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 18
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 3
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 5", "Scholar 0", "Social 2", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Unholy Stamina (Earth) [Martial; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Lost Arm (Fire) [Martial; Physical]"]
+            ^"Favored Weapons" LIST OF STRING ["Debased Katana: Range 1, Damage 4, Deadliness 5/7, Durable, Razor-Edged, Unholy"]
+            ^"Gear" LIST OF STRING ["Blood-soaked armor (Physical 4, Supernatural 4, Unholy)"]
+        }
+
+        ^"Desperate for New Vitality" DEF {
+            ^"Description" STRING "The Wounded Bushi is an Otherworldly, Tainted being. When it makes an Attack action check, it may spend (op) to cause the target to enter a Void stance. Whenever it severs a character's limb (such as via a Maiming Blow critical strike), it attaches the limb to its body. This removes 4 fatigue from the Wounded Bushi and possibly the Lost Arm disadvantage as well, depending on the limb."
+        }
+
+        RULES {
+            #L5RSH23eF3gH5iJ7kL9mN1oP: the_wounded_bushi
+        }
+    }
+
+    # -----------------------------------------------
+    # Chapter 1: Nezumi of the Shadowlands
+    # -----------------------------------------------
+
+    ^"Third Whisker Dreamer" DEF {
+        EXTENDS ^"NPC"
+
+        # Perhaps the most unusual and mystic of nezumi, the
+        # Dreamers of the Third Whisker are practitioners of an
+        # ancient and poorly understood form of magic. Some
+        # Rokugani shugenja describe Dreamer abilities as a type
+        # of Void magic. Dreamers can commune with Name, the
+        # collective memory of all nezumi, and use their powers
+        # to protect their tribes. They are sought for wisdom by
+        # all tribes and are highly respected.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 4
+            }
+            ^"Demeanor" STRING "Ambitious"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 2", "Scholar 3", "Social 2", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Mystical Insight (Void) [Scholar; Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Arrogance (Fire) [Martial; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Carved Staff: Range 1, Damage 4, Deadliness 3, Durable, Mundane"]
+            ^"Gear" LIST OF STRING ["Robes woven with nezumi symbols (Physical 1, Supernatural 2)", "Nezumi scrolls and tokens"]
+        }
+
+        ^"Dreamer's Touch" DEF {
+            ^"Description" STRING "A Third Whisker Dreamer can never gain the Afflicted condition or the Shadowlands Taint disadvantage. Once per scene, a Third Whisker Dreamer may make a Theology (Void) check with a TN equal to a target's Void ring at range 0-2 to perceive the target's past. If the check is successful, the Dreamer learns one of the target's advantages, disadvantages, or a significant event from their past."
+        }
+
+        RULES {
+            #L5RSH24qR4sT6uV8wX0yZ2aB: third_whisker_dreamer
+        }
+    }
+
+    ^"Renegade Dreamer" DEF {
+        EXTENDS ^"NPC"
+
+        # A Renegade Dreamer is a Third Whisker Dreamer who
+        # has turned to dark powers. Unlike their uncorrupted kin,
+        # they use their mystical connection to Name for selfish
+        # or destructive purposes. They are feared and hated
+        # by all nezumi tribes, for their actions threaten the
+        # collective memory itself.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 4
+            }
+            ^"Demeanor" STRING "Ambitious"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Silhouette" INTEGER 1
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 2", "Scholar 3", "Social 2", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Mystical Insight (Void) [Scholar; Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Arrogance (Fire) [Martial; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Obsidian Dagger: Range 0, Damage 2, Deadliness 4, Concealable, Razor-Edged, Unholy"]
+            ^"Gear" LIST OF STRING ["Stolen robes (Physical 2, Supernatural 2)", "Several Rokugani and nezumi scrolls"]
+        }
+
+        ^"Stealer of Fates" DEF {
+            ^"Description" STRING "A Renegade Dreamer can never gain the Afflicted condition or the Shadowlands Taint disadvantage. Once per scene, a Renegade Dreamer can make a Theology (Void) check to snip away at the destiny of a target at range 2. The TN of the check is equal to the target's Void Ring. If the check is successful, the target loses 1 Void point and gains the Disoriented condition. If the Renegade Dreamer is killed, the target regains the Void point."
+        }
+
+        ^"Dark Illusions" DEF {
+            ^"Description" STRING "As a Scheme and Support action, a Renegade Dreamer may make a Theology (Air) check to plant a nightmare into the mind of a target at range 0-2. The TN of the check is equal to the target's vigilance. If they succeed, the target is plagued by nightmares: they cannot remove fatigue or strife until they succeed at a TN 3 Meditation check (Fire 2, Earth 5) as a downtime activity."
+        }
+
+        RULES {
+            #L5RSH25cD5eF7gH9iJ1kL3mN: renegade_dreamer
+        }
+    }
+
+    ^"Cracked Bone Warrior" DEF {
+        EXTENDS ^"NPC"
+
+        # An accomplished warrior from a warrior tribe, this
+        # nezumi is not only large enough to look down on the
+        # average bushi, but they are also able to hold their own
+        # in a fight. Such warriors train hard from birth, so that
+        # an adult warrior can perform physical feats impossible
+        # for nezumi of more peaceful tribes. Cracked Bone
+        # warriors typically sport many piercings, wounds, and
+        # scars. They are quick to fight and fearless when they do.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Assertive"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 4", "Scholar 0", "Social 2", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Battle Hardened (Earth) [Martial; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Arrogance (Fire) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged", "Small Yumi: Range 2-3, Damage 4, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Quiver", "Nezumi armor (Physical 2, Supernatural 1, Wargear)"]
+        }
+
+        ^"Tribal Warrior" DEF {
+            ^"Description" STRING "A Cracked Bone warrior can never gain the Afflicted condition or the Shadowlands Taint disadvantage. While making an Attack action check against a target at range 0-1, a Cracked Bone warrior may spend (op)(op) to lash their foe with their tail, inflicting 3 physical damage and causing their target to suffer the Immobilized condition. Additionally, once per scene when an enemy succeeds on an Attack action check targeting another nezumi at range 0-1, a Cracked Bone Warrior may intervene, becoming the target of the action instead."
+        }
+
+        RULES {
+            #L5RSH26oP6qR8sT0uV2wX4yZ: cracked_bone_warrior
+        }
+    }
+
+    ^"Burnt Paws Rememberer" DEF {
+        EXTENDS ^"NPC"
+
+        # While the Burnt Paws are, by and large, extremely
+        # hesitant to engage in violence, their Rememberers tell
+        # tales of the warriors from whom they descend. The
+        # senior Burnt Paws Rememberer wears a patchwork robe
+        # fashioned by the first Rememberer of the tribe. Each new
+        # Rememberer fixes and adds to the garment, and each
+        # piece is painstakingly embroidered with any new
+        # legendary deeds of the tribe. The Burnt Paws consider
+        # this garment sacred, perhaps even supernatural.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Fire +1, Void -2"
+            ^"Silhouette" INTEGER 1
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 0", "Scholar 3", "Social 2", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Ready to Run (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Lost in the Past (Water) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Looted Knife: Range 0, Damage 2, Deadliness 4, Concealable, Mundane"]
+            ^"Gear" LIST OF STRING ["Rememberer's robes (Physical 1, Supernatural 2, Ceremonial)"]
+        }
+
+        ^"Keeper of History" DEF {
+            ^"Description" STRING "A Burnt Paws Rememberer can never gain the Afflicted condition or the Shadowlands Taint disadvantage. Whenever a character in a scene with the Rememberer makes a Scholar skill check involving the Shadowlands, the character may spend (op) to have the Rememberer relate something tangentially useful, such as where additional components for a medicine just applied can be found, or how long ago their tribe managed to defeat an oni similar to the one threatening the group currently."
+        }
+
+        RULES {
+            #L5RSH27aB7cD9eF1gH3iJ5kL: burnt_paws_rememberer
+        }
+    }
+
+    ^"Nezumi Pup" DEF {
+        EXTENDS ^"NPC"
+
+        # Nezumi pups begin life helpless, blind, and hairless.
+        # They develop quickly, emerging after two weeks to join
+        # older pups in training, foraging, and listening to stories.
+        # They are inquisitive and playful but know from scent
+        # markers where they can safely explore. Pups only wander
+        # away in extreme circumstances. Fear usually drives a
+        # pup back to a parent or other adult.
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Demeanor" STRING "Curious"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Void -2"
+            ^"Silhouette" INTEGER 0
+            ^"Endurance" INTEGER 4
+            ^"Composure" INTEGER 4
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 1
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Unnoticed (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Defenseless (Fire) [Martial; Physical]"]
+            ^"Favored Weapons" LIST OF STRING ["Teeth and Claws: Range 0, Damage 1, Deadliness 2"]
+            ^"Gear" LIST OF STRING ["Fur (Physical 1)"]
+        }
+
+        ^"Inquisitive" DEF {
+            ^"Description" STRING "A nezumi pup can never gain the Afflicted condition or the Shadowlands Taint disadvantage. Their curiosity means they might be found almost anywhere in the Shadowlands, such as curled up in a backpack or behind a tent flap. As a downtime activity, a character may observe a nezumi pup's playful antics and remove 3 strife. A character who targets a nezumi pup with an Attack action receives 5 strife."
+        }
+
+        RULES {
+            #L5RSH28mN8oP0qR2sT4uV6wX: nezumi_pup
+        }
+    }
+
+    ^"Outcast Nezumi" DEF {
+        EXTENDS ^"NPC"
+
+        # These nezumi survive by instinct, running on four paws
+        # and eating anything they find, including rotting carcasses.
+        # Their solitary life in the Shadowlands leaves them unable
+        # to communicate even with other nezumi. They consider
+        # any Rokugani either as an enemy or potential food.
+        # Occasionally, they band together to hunt, but once the
+        # prey runs out they inevitably turn on each other.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Demeanor" STRING "Feral"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Silhouette" INTEGER 1
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 1", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Instinctive Behavior (Fire) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Always Hungry (Earth) [Martial; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Claws and Teeth: Range 0, Damage 2, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Fur (Physical 1)", "Several haunches of raw meat"]
+        }
+
+        ^"Ferocious Defender" DEF {
+            ^"Description" STRING "An outcast nezumi can never gain the Afflicted condition or the Shadowlands Taint disadvantage. When it is the target of an Attack action check, it may receive 1 strife to remove (op) from the attacker's check result."
+        }
+
+        RULES {
+            #L5RSH29yZ9aB1cD3eF5gH7iJ: outcast_nezumi
+        }
+    }
+
+    # -----------------------------------------------
+    # Chapter 2: People of the Wall
+    # -----------------------------------------------
+
+    # --- Crab Clan NPCs ---
+
+    ^"Hida Kotoe, Stout Warrior" DEF {
+        EXTENDS ^"NPC"
+
+        # Kotoe has served at the Wall for many years. Long ago,
+        # her fellow Hida nicknamed her "Thirteenth Tower" both
+        # for her steadfast nature and her height. When outfitted
+        # in heavy o-yoroi armor and her huge family tetsubō, she
+        # is indeed a towering figure. She can often be found where
+        # the fighting is the thickest, especially wherever the Wall
+        # has suffered a breach.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Demeanor" STRING "Gruff"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 4", "Scholar 2", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Large Stature (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Slow Moving (Earth) [Martial; Physical]"]
+            ^"Favored Weapons" LIST OF STRING ["Tetsubō: Range 1-2, Damage 7, Deadliness 3, Cumbersome, Durable, Wargear"]
+            ^"Gear" LIST OF STRING ["O-yoroi armor (Physical 6 [3 if suffering Disoriented, Dazed, or Immobilized], Ceremonial, Cumbersome, Wargear)", "Wakizashi"]
+        }
+
+        ^"Defender of the Wall" DEF {
+            ^"Description" STRING "As a Hida, Kotoe ignores the Cumbersome quality of any armor she wears or weapons she uses. When she makes an Attack action check, she may spend (op) in the following way: Earth (op)(op)+: Kotoe pushes the target of the attack 1 range band per (op)(op) spent this way in a direction of her choice. If it collides with an object, it suffers damage as if it had fallen the distance it moved."
+        }
+
+        RULES {
+            #L5RSH30kL0mN2oP4qR6sT8uV: hida_kotoe
+        }
+    }
+
+    ^"Hiruma Izumi, Cautious Scout" DEF {
+        EXTENDS ^"NPC"
+
+        # Izumi's family was one of many whose homes were
+        # taken by monsters, and like all Hiruma, he lives only to
+        # see those homes retaken one day. Until then, Izumi does
+        # his part, venturing into the Shadowlands frequently and
+        # not returning until there is one fewer oni, ogre, or other
+        # vile creature to befoul his ancestral lands. His actions
+        # are careful and precise, and he vigilantly watches his
+        # jade while across the Wall.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Cautious"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Earth -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 38
+            ^"Glory" INTEGER 34
+            ^"Status" INTEGER 34
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 2", "Scholar 1", "Social 2", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Careful Planner (Earth) [Martial; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Live to Kill (Fire) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Yari: Range 2, Damage 5, Deadliness 3, Wargear"]
+            ^"Gear" LIST OF STRING ["Ashigaru armor (Physical 3, Wargear)", "Yumi and quiver", "Knife", "Traveling pack", "Finger of jade"]
+        }
+
+        ^"Careful Observer" DEF {
+            ^"Description" STRING "Izumi counts his vigilance as 6 for purposes of noticing hidden Shadowlands creatures, jade decay, and evidence of Taint in a character (including himself). Decrease the TN of Survival skill checks Izumi makes while in the Shadowlands by 1."
+        }
+
+        RULES {
+            #L5RSH31wX1yZ3aB5cD7eF9gH: hiruma_izumi
+        }
+    }
+
+    ^"Kaiu Suzue, Clever Engineer" DEF {
+        EXTENDS ^"NPC"
+
+        # The Kaiu are renowned for their engineering, and Suzue
+        # hopes to be as famous as her great-grandmother Kaiu
+        # Asami. Suzue is currently assigned to repairing damaged
+        # weaponry, including massive war machines brought down
+        # from the Wall to her workshop. She spends much of her
+        # time designing new weapons, often calling on wild tales
+        # of gaijin armaments for inspiration.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Ambitious"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 43
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 30
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 2", "Scholar 1", "Social 0", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Clever Thinker (Fire) [Artisan; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Bluntness (Air) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Hammer: Range 0-1, Damage 5/7, Deadliness 2, Mundane"]
+            ^"Gear" LIST OF STRING ["Traveling clothes (Physical 2, Durable, Mundane, Subtle)", "Oyumi and quiver", "Assorted tools", "Scrolls of various weapon designs", "Calligraphy set"]
+        }
+
+        ^"Expert Repairs" DEF {
+            ^"Description" STRING "As a downtime activity, Kaiu Suzue may attempt to remove the Damaged or Destroyed quality from a number of items by making a TN 1 Artisan (Earth) skill check. If she succeeds, she repairs 1 item, plus additional 1 item per bonus success. She may spend (op) to add the Durable quality to any item she successfully repairs this way. If she is unable to repair an item, she can usually tell its owner what they will need to do to repair it. The item's owner receives 1 strife, but the TN of the next check a character makes to repair the item is reduced by 1."
+        }
+
+        RULES {
+            #L5RSH32iJ2kL4mN6oP8qR0sT: kaiu_suzue
+        }
+    }
+
+    ^"Kuni Hatsu, Legendary Witch Hunter" DEF {
+        EXTENDS ^"NPC"
+
+        # Hatsu has served as a Witch Hunter for many long years
+        # and has long since lost track of the Tainted individuals
+        # and mahō practitioners he uncovered in his travels across
+        # Rokugan. His years are finally catching up with him, and
+        # he now spends most of his time near the Wall watching
+        # those who return from the Shadowlands for any signs of
+        # Taint or other corruption. When Hatsu detects such
+        # evidence, it is as if decades peel away from his body.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Suspicious"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Earth -2"
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 79
+            ^"Glory" INTEGER 66
+            ^"Status" INTEGER 40
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 4", "Scholar 4", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Sixth Sense (Void) [Scholar; Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Slowing Down (Earth) [Martial; Physical]"]
+            ^"Favored Weapons" LIST OF STRING ["Naginata: Range 2, Damage 6, Deadliness 6, Cumbersome, Razor-Edged, Wargear"]
+            ^"Gear" LIST OF STRING ["Sanctified robes (Physical 1, Supernatural 3)", "Wakizashi", "Makeup kit", "Satchel filled with scrolls and supplies for rituals", "Traveling pack"]
+        }
+
+        ^"Fury of the Witch Hunter" DEF {
+            ^"Description" STRING "The first time a character in the scene performs a mahō technique or other blasphemous act, Kuni Hatsu suffers the Enraged condition and gains 1 Void point."
+        }
+
+        RULES {
+            #L5RSH33uV3wX5yZ7aB9cD1eF: kuni_hatsu
+        }
+    }
+
+    ^"Yasuki Narumi, Observant Merchant" DEF {
+        EXTENDS ^"NPC"
+
+        # Narumi runs a small series of stalls in Friendly Traveler
+        # Village. She has a good reputation in the region for the
+        # quality of wares and the expansive breadth of her
+        # offerings. She records all she hears from everyone each
+        # night, and once a week leaves a pouch filled with her
+        # observations in a special hiding place. She has no idea
+        # who picks it up, but the koku that replaces it certainly
+        # helps her business.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Ambitious"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 20
+            ^"Glory" INTEGER 22
+            ^"Status" INTEGER 28
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 0", "Scholar 2", "Social 3", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Famously Honest (Air) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Dark Secret (Void) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Traveling clothes (Physical 2, Durable, Mundane, Subtle)", "Pouches of coins", "Assorted scrolls and papers", "Basic calligraphy set"]
+        }
+
+        ^"Bargains with a Price" DEF {
+            ^"Description" STRING "When a character purchases or otherwise acquires an item at Narumi's stalls, reduce the rarity of the item by half (rounding up), to a minimum of 1. A character must forfeit glory equal to the rarity reduction to benefit from this service."
+        }
+
+        RULES {
+            #L5RSH34gH4iJ6kL8mN0oP2qR: yasuki_narumi
+        }
+    }
+
+    ^"Hida Etsuji, Watchtower Commander" DEF {
+        EXTENDS ^"NPC"
+
+        # Etsuji has served on the Wall for six years, and for two
+        # of them he has been commander of the Watchtower of
+        # the Iron Hammer (also known as the Second of the First
+        # Watchtower). Etsuji feels he has served long enough as
+        # commander there and is eager to continue his rise in
+        # rank. One spectacular military victory should make that
+        # happen, so he is actively watching for any opportunity
+        # to arrive. Failing that, he may be tempted to arrange
+        # for an opportunity to occur.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 8
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 5
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Ambitious"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
+            ^"Endurance" INTEGER 18
+            ^"Composure" INTEGER 18
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 66
+            ^"Glory" INTEGER 88
+            ^"Status" INTEGER 58
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 5", "Scholar 3", "Social 3", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Famously Lucky (Void) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Delusions of Grandeur (Void) [Mental; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Family Ōtsuchi: Range 1, Damage 8, Deadliness 4, Ceremonial, Cumbersome, Wargear"]
+            ^"Gear" LIST OF STRING ["Lacquered armor (Physical 4, Ceremonial, Cumbersome, Wargear)", "Wakizashi", "Tessen"]
+        }
+
+        ^"Visible Victories" DEF {
+            ^"Description" STRING "As a Hida, Etsuji ignores the Cumbersome quality of his armor and weapons. When Etsuji is part of a group that defeats Otherworldly or Tainted beings, if the group's members would gain glory from the action, they gain that amount plus 3."
+        }
+
+        RULES {
+            #L5RSH35sT5uV7wX9yZ1aB3cD: hida_etsuji
+        }
+    }
+
+    ^"Hida Nanako, Garrison Taisa" DEF {
+        EXTENDS ^"NPC"
+
+        # Like many taisa, Nanako gained her position as
+        # commander through family status, rather than
+        # battlefield proficiency, and she is painfully aware of
+        # that fact. She oversees the prestigious First Garrison
+        # of the Watchtower of the Emerald Dawn. While she is
+        # a powerful fighter and as strong as any Crab, she lacks
+        # experience in leading troops. She has made many
+        # mistakes since taking command, but few have been
+        # serious, and with each one she learns.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Uncertain"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 70
+            ^"Glory" INTEGER 53
+            ^"Status" INTEGER 38
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 3", "Scholar 2", "Social 3", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Quick Reflexes (Fire) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Inexperienced Leader (Earth) [Martial; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Jade-Studded Tetsubō: Range 1-2, Damage 7, Deadliness 3, Cumbersome, Durable, Sacred, Wargear"]
+            ^"Gear" LIST OF STRING ["Plated armor (Physical 5, Cumbersome, Durable, Wargear)", "Wakizashi"]
+        }
+
+        ^"Learning Quickly" DEF {
+            ^"Description" STRING "As a Hida, Nanako ignores the Cumbersome quality of her armor and weapons. After Nanako fails a Tactics check, she gains 1 Void point and decreases the TN of her next Attack action check by 1."
+        }
+
+        RULES {
+            #L5RSH36eF6gH8iJ0kL2mN4oP: hida_nanako
+        }
+    }
+
+    ^"Hida Masuo, Wall Gunso" DEF {
+        EXTENDS ^"NPC"
+
+        # Masuo is a huge man with sun-baked skin and a thick
+        # black mane. He has intensely glaring, dark eyes, and
+        # his barrel chest helps him boom his every word. Even
+        # out of battle, he is bone-shakingly loud. Masuo was
+        # recently promoted to gunso, but all of his victories
+        # have been achieved through brute force rather than
+        # superior tactics. He has been lucky so far, but sooner
+        # or later, his cockiness will catch up with him.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 1
+            }
+            ^"Demeanor" STRING "Assertive"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Water -2"
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 44
+            ^"Glory" INTEGER 61
+            ^"Status" INTEGER 32
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 3", "Scholar 2", "Social 3", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Large Stature (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Momoku (Void) [Martial; Spiritual]"]
+            ^"Favored Weapons" LIST OF STRING ["Tekkan: Range 1-2, Damage 4/6, Deadliness 3, Cumbersome (if 1-handed), Durable, Mundane"]
+            ^"Gear" LIST OF STRING ["Lacquered armor (Physical 4, Ceremonial, Cumbersome, Wargear)", "Kabutowari", "Wakizashi", "Large jug half-filled with sake"]
+        }
+
+        ^"Loud" DEF {
+            ^"Description" STRING "As a Hida, Masuo ignores the Cumbersome quality of his armor and weapons. Masuo gains 1 strife at the end of each of his turns if he had to remain quiet or act in a subtle manner during that turn. After unmasking when there are enemies nearby, he suffers the Enraged condition and immediately moves 1 range band toward his foes."
+        }
+
+        RULES {
+            #L5RSH37qR7sT9uV1wX3yZ5aB: hida_masuo
+        }
+    }
+
+    ^"Hiruma Motoko, Patrol Leader" DEF {
+        EXTENDS ^"NPC"
+
+        # Though advancing in age, Motoko is still perhaps the
+        # finest patrol leader along the Wall. He is legendary
+        # for bringing all his people back from each mission in
+        # the Shadowlands, even if not all have returned alive
+        # or escaped the Taint. His hair may be thinning and
+        # grey, but his aim is still true. He tends to keep to
+        # himself, for Motoko is secretly one of the finest
+        # origami artists in the region.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Gruff"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Earth -2"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 47
+            ^"Glory" INTEGER 62
+            ^"Status" INTEGER 36
+            ^"Skills" LIST OF STRING ["Artisan 4", "Martial 5", "Scholar 2", "Social 2", "Trade 4"]
+            ^"Advantages" LIST OF STRING ["Jurojin's Blessing (Void) [Martial; Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Cynicism (Fire) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Oyumi: Range 2-5, Damage 7, Deadliness 3, Prepare, Wargear"]
+            ^"Gear" LIST OF STRING ["Ashigaru armor (Physical 3, Wargear)", "Katana", "Wakizashi", "Quiver", "Hand-drawn maps", "Traveling pack", "Finger of jade"]
+        }
+
+        ^"Always Finds a Way" DEF {
+            ^"Description" STRING "Once per scene while in the Shadowlands, Motoko can spend 1 Void point to discover a hidden escape route out of a hopeless battle. The way is never easy, however, and every other character who is with him suffers 4 strife and 2 fatigue in the process. Should the situation require it, Motoko and his patrol can be mounted on horseback; in this case, he carries a daikyu (Range 3-5, Damage 6, Deadliness 4, Wargear) instead of his oyumi."
+        }
+
+        RULES {
+            #L5RSH38cD8eF0gH2iJ4kL6mN: hiruma_motoko
+        }
+    }
+
+    # ===================================================================
+    # Chapter 2: People of the Wall / Falcon Clan NPCs
+    # ===================================================================
+
+    ^"Toritaka Hatsue, the Yotogi" DEF {
+        EXTENDS ^"NPC"
+
+        # The lineage of Yotogi remains strong for the clan, and
+        # his successors have made his name synonymous with
+        # clan daimyo. The current Yotogi, Toritaka Hatsue, has
+        # ruled the Falcon for a dozen years. She has successfully
+        # dealt with many hauntings in the Shinomen as well as
+        # performing a dangerous banishment in a nearby Lion
+        # castle. Lately, though, she is spending more and more
+        # time in meditation, and many worry that one day she
+        # will see something too powerful and terrible for her
+        # mind to bear.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 7
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 4
+            }
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Fire +1, Void -1"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 70
+            ^"Status" INTEGER 58
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 3", "Scholar 4", "Social 3", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Sense for the Spirits (Void) [Martial; Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Close to the Edge (Void) [Social; Spiritual]"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Sanctified robes (Physical 1, Supernatural 3, Ceremonial)", "Scrolls", "Supplies for rituals", "Wakizashi"]
+        }
+
+        ^"Penetrating Sight" DEF {
+            ^"Description" STRING "As a descendant of the first Falcon daimyo, Hatsue can discern Otherworldly beings such as gaki and always recognize any such beings that attempt to disguise themselves as human or otherwise mundane. This does not, however, mean she always feels it is in the best interest of the Falcon or the being involved to reveal this to those around her."
+        }
+
+        RULES {
+            #L5RSH39oP9qR1sT3uV5wX7yZ: toritaka_hatsue
+        }
+    }
+
+    ^"Mazoku" DEF {
+        EXTENDS ^"NPC"
+
+        # Just as there are hierarchies and bureaucracies in the
+        # Mortal Realm, so there are ones in the Spirit Realms.
+        # Mazoku serve a vital role as magistrates and guards
+        # within Gaki-do, but the sheer number of spirits there
+        # utterly overwhelms any attempt to properly keep them
+        # contained. Many gaki escape Gaki-do to haunt Rokugan,
+        # especially in areas where the two realms draw near.
+        # Hunting down and returning these troublesome spirits
+        # to Gaki-do is nearly impossible for the mazoku, which
+        # is why they sometimes work with Phantom Hunters.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 9
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 5
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 5
+            }
+            ^"Demeanor" STRING "Assertive"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 9
+            ^"Vigilance" INTEGER 5
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 7
+            ^"Status" INTEGER 65
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 4", "Scholar 5", "Social 4", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Gaki-do Knowledge (Earth) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Desperate for Aid (Fire) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Unearthly Limbs: Range 0-2, Damage 7, Deadliness 4, Sacred, Snaring"]
+            ^"Gear" LIST OF STRING ["Ghostly form (Physical 10, Supernatural 10)", "Numerous scrolls pertaining to Gaki-do law and individual gaki"]
+        }
+
+        ^"Magistrate of Gaki-do" DEF {
+            ^"Description" STRING "A mazoku is an Otherworldly being, though it appears as a normal samurai. It doubles its vigilance when detecting Otherworldly or Tainted beings, mahō use, or kansen activity. When a mazoku unmasks, everyone who can see it suffers 6 strife as its form shifts into inhuman shapes before settling as it composes itself."
+        }
+
+        RULES {
+            #L5RSH40aB0cD2eF4gH6iJ8kL: mazoku
+        }
+    }
+
+    ^"Lady Mazoku" DEF {
+        EXTENDS ^"NPC"
+
+        # This mysterious being appears as an elegant woman
+        # wearing robes of a style not seen for many centuries.
+        # She uses the Mazoku profile with modified skills and
+        # gear. Her identity has never been discovered, but she
+        # has been an essential part of the Falcon ever since
+        # Yotogi's time, even to the current day. The knowledge
+        # she possesses strongly suggests that she is not of the
+        # Mortal Realm.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 9
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 5
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 5
+            }
+            ^"Demeanor" STRING "Assertive"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 20
+            ^"Focus" INTEGER 9
+            ^"Vigilance" INTEGER 5
+            ^"Honor" INTEGER 70
+            ^"Glory" INTEGER 70
+            ^"Status" INTEGER 65
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 4", "Scholar 6", "Social 5", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Gaki-do Knowledge (Earth) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Desperate for Aid (Fire) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Ancient Falcon Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged, Sacred"]
+            ^"Gear" LIST OF STRING ["Ghostly form (Physical 10, Supernatural 10)", "Numerous scrolls pertaining to Gaki-do law and individual gaki"]
+        }
+
+        ^"Magistrate of Gaki-do" DEF {
+            ^"Description" STRING "A mazoku is an Otherworldly being, though it appears as a normal samurai. It doubles its vigilance when detecting Otherworldly or Tainted beings, mahō use, or kansen activity. When a mazoku unmasks, everyone who can see it suffers 6 strife as its form shifts into inhuman shapes before settling as it composes itself."
+        }
+
+        ^"Veteran Gaki Hunter" DEF {
+            ^"Description" STRING "Many centuries operating in Ningen-do means Lady Mazoku has exceptional experience. Once per scene, should a PC sufficiently impress her with devotion to the cause of capturing and containing malign spirits, she may impart to the PC some of her wisdom concerning this subject. The PC lowers the TN of their checks targeting such spirits by 1 for the remainder of the session."
+        }
+
+        RULES {
+            #L5RSH41mN1oP3qR5sT7uV9wX: lady_mazoku
+        }
+    }
+
+    ^"Toritaka Dairoku, Council of Twilight Member" DEF {
+        EXTENDS ^"NPC"
+
+        # Like all Council of Twilight members, Dairoku has
+        # witnessed terrors that would drive lesser samurai over
+        # the edge, and they possess terrible secrets of the Spirit
+        # Realm that few could hold without screaming the
+        # knowledge to the skies. Though of advanced age,
+        # Dairoku still possesses a strong vitality despite the
+        # mind-wrenching event. Their days of direct conflict
+        # with the phantoms and ghosts might be long behind
+        # them now, but they know their current service is more
+        # vital to the Falcon than it would have been otherwise.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 7
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 4
+            }
+            ^"Demeanor" STRING "Serene"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Void -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 55
+            ^"Status" INTEGER 45
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 2", "Scholar 4", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Hidden Realizations (Void) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Terrifying Knowledge (Fire) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Ancient robes (Physical 1, Supernatural 2)"]
+        }
+
+        ^"Thought the Unthinkable" DEF {
+            ^"Description" STRING "Once per scene, Dairoku may make a Performance (Void) skill check targeting a character at range 0-2 to impart only a fraction of their learnings. If the check is successful, that character recovers 1 Void point but reduces their composure value by 2 until they get a night of restful sleep."
+        }
+
+        RULES {
+            #L5RSH42yZ2aB4cD6eF8gH0iJ: toritaka_dairoku
+        }
+    }
+
+    # ===================================================================
+    # Chapter 3: Created Beings
+    # ===================================================================
+
+    ^"Shikigami" DEF {
+        EXTENDS ^"NPC"
+
+        # These small creatures can be created through relatively
+        # simple rituals that tie the newly constructed beings to
+        # their creator. Paper is commonly used, allowing them
+        # to be folded flat and rest inside books, or even flutter
+        # about on butterfly wings. Shikigami follow the
+        # directions of their creator (for the most part) and can
+        # perform simple tasks or remember conversations.
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Demeanor" STRING "Fierce"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
+            ^"Silhouette" INTEGER 0
+            ^"Endurance" INTEGER 4
+            ^"Composure" INTEGER 4
+            ^"Focus" INTEGER 2
+            ^"Vigilance" INTEGER 1
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 1", "Scholar 1", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Tireless (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Rebellious (Water) [Martial; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Cutting Edges: Range 0, Damage 1, Deadliness 2"]
+            ^"Gear" LIST OF STRING ["None"]
+        }
+
+        ^"Imbued with Power" DEF {
+            ^"Description" STRING "The more powerful the invocations invested into a shikigami, the higher its associated ring values become. If a shikigami is invested with one or more invocations of a particular element (Air, Earth, Fire, Water, or Void), it treats that ring value as equal to the highest among the school rank prerequisites of those invocations."
+        }
+
+        ^"Living Invocation" DEF {
+            ^"Description" STRING "Once per scene as an action, a shikigami may perform one invocation invested in it without making a check. It counts as having 2 bonus successes and (op)(op)."
+        }
+
+        ^"Restricted Action" DEF {
+            ^"Description" STRING "During a conflict, if a shikigami and the ritualist who created it are both present, the shikigami does not take its own turn. During the shugenja's turn, it can move up to 1 range band. As a Support action, the ritualist may have the shikigami perform an action with their assistance."
+        }
+
+        RULES {
+            #L5RSH43kL3mN5oP7qR9sT1uV: shikigami
+        }
+    }
+
+    ^"Oni Fragment" DEF {
+        EXTENDS ^"NPC"
+
+        # This profile represents the detached eye, hand, or
+        # tongue of an oni with the Foul Separation power.
+        # Certain elements of this profile are limited to a
+        # fragment of the appropriate type, as noted within
+        # the ability description.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "As Oni"
+            ^"Silhouette" INTEGER 0
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 0
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Terrible Grip (Hand) (Fire) [Social; Interpersonal]", "Keen Sight (Eye) (Air) [Martial; Physical]", "Persuasive Voice (Tongue) (Water) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Dulled Senses (Hand) (Air) [Martial; Physical]", "Weak (Eye) (Fire) [Martial; Physical]", "Sensitive Flesh (Tongue) (Earth) [Martial; Physical]"]
+            ^"Favored Weapons" LIST OF STRING ["Demonic Claw (Hand only): Range 0, Damage 6, Deadliness 4, Unholy"]
+            ^"Gear" LIST OF STRING ["Demonic flesh (Physical 1, Spiritual 1, Unholy)"]
+        }
+
+        ^"Segment of Jigoku" DEF {
+            ^"Description" STRING "An oni fragment is an Otherworldly, Tainted being of silhouette 0. It may use any Shadowlands powers appropriate to its form, so an oni's tongue might speak with a Captivating Voice, while an oni with envenomed claws may have the Shadowlands Venom power apply to its claws' attacks while its hand is separated. If the fragment is an eye, add 1 to its Air Ring; if a hand, add 1 to its Fire Ring; and if a tongue, add 1 to its Water Ring."
+        }
+
+        RULES {
+            #L5RSH44wX4yZ6aB8cD0eF2gH: oni_fragment
+        }
+    }
+
+}

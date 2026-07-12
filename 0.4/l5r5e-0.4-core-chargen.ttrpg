@@ -1,0 +1,832 @@
+BASE "L5R5e_Core_Chargen" {
+    NAME "Legend of the Five Rings 5th Edition - Character Creation Rules"
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-03-01"
+
+    # Core Rulebook: Character creation process (pages 40-98)
+    # The complete Game of Twenty Questions with correct mechanical
+    # effects, Heritage table (Table 2-1), starting value formulas,
+    # and advancement/curriculum rules (Table 2-2).
+    #
+    # Procedural companion to the type definitions in:
+    #   l5r5e-0.3-core-character.ttrpg  (Clan/Family/School types)
+    #   l5r5e-0.3-core-traits.ttrpg     (Ring/Skill definitions)
+    #   l5r5e-0.3-core-schools-*.ttrpg  (Individual school definitions)
+    #   l5r5e-0.3-core-distinctions.ttrpg
+    #   l5r5e-0.3-core-adversities.ttrpg
+    #   l5r5e-0.3-core-passions.ttrpg
+    #   l5r5e-0.3-core-anxieties.ttrpg
+
+    # ===========================
+    # STARTING VALUES
+    # ===========================
+
+    ^"Starting Values" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # All characters begin with the following baseline values
+        # before applying modifications from the Twenty Questions.
+        # During character creation, no ring may exceed 3 and no
+        # skill may exceed 3.
+
+        PROPERTIES {
+            ^"All Rings" INTEGER DEFAULT 1         # Air, Earth, Fire, Water, Void
+            ^"All Skills" INTEGER DEFAULT 0        # All skills start untrained
+            ^"Honor" INTEGER DEFAULT 0             # Set by school (Q3)
+            ^"Glory" INTEGER DEFAULT 0             # Set by family (Q2)
+            ^"Status" INTEGER DEFAULT 0            # Set by clan (Q1)
+            ^"Starting Void Points" FORMULA "Void ring value / 2 (rounded up)"
+        }
+
+        RULES {
+            #L5R300aB2cD4eF6gH8iJ0k: ring_maximum_during_creation_is_three
+            #L5R301lM3nO5pQ7rS9tU1v: skill_maximum_during_creation_is_three
+            #L5R302wX4yZ6aB8cD0eF2g: each_ring_starts_at_one
+            #L5R303hI5jK7lM9nO1pQ3r: each_skill_starts_at_zero
+            #L5R304sT6uV8wX0yZ2aB4c: derived_values_calculated_after_all_questions
+        }
+    }
+
+    # ===========================
+    # THE GAME OF TWENTY QUESTIONS
+    # ===========================
+
+    ^"Game of Twenty Questions" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The character creation process is structured as twenty questions
+        # answered collaboratively between player and GM. Each question
+        # determines specific mechanical and narrative aspects of the
+        # character. Questions are grouped into seven parts and answered
+        # in order.
+        #
+        # This replaces the abbreviated version in
+        # l5r5e-0.3-core-character.ttrpg with the correct and complete
+        # mechanical effects for each question.
+
+        RULES {
+            #L5R310aB2cD4eF6gH8iJ0k: twenty_questions_complete_character
+            #L5R311lM3nO5pQ7rS9tU1v: questions_are_collaborative
+            #L5R312wX4yZ6aB8cD0eF2g: gm_may_adjust_options
+            #L5R313hI5jK7lM9nO1pQ3r: questions_answered_in_order
+        }
+
+        PHASES {
+
+            # ---------------------------
+            # PART I: CORE IDENTITY (Q1-Q3)
+            # ---------------------------
+
+            ^"Part I: Core Identity" DEF {
+
+                ^"Question 1: What Clan Does Your Character Belong To?" DEF {
+                    # Choose one of the seven Great Clans (or a Minor Clan
+                    # with GM approval). The clan determines the character's
+                    # cultural identity and grants starting attributes.
+                    #
+                    # Mechanical effects:
+                    #   - Gain +1 rank to the clan's specified ring
+                    #   - Gain +1 rank to the clan's specified skill
+                    #   - Set starting ^"Status" to the clan's status value
+                    #
+                    # Clan options and values:
+                    #   ^"Crab Clan"     +1 Earth,  +1 Fitness,       Status 30
+                    #   ^"Crane Clan"    +1 Air,    +1 Culture,       Status 35
+                    #   ^"Dragon Clan"   +1 Fire,   +1 Meditation,    Status 30
+                    #   ^"Lion Clan"     +1 Water,  +1 Tactics,       Status 35
+                    #   ^"Phoenix Clan"  +1 Void,   +1 Theology,      Status 30
+                    #   ^"Scorpion Clan" +1 Air,    +1 Skulduggery,   Status 35
+                    #   ^"Unicorn Clan"  +1 Water,  +1 Survival,      Status 30
+
+                    RULES {
+                        #L5R320aB2cD4eF6gH8iJ0k: q1_sets_clan
+                        #L5R321lM3nO5pQ7rS9tU1v: q1_applies_clan_ring_bonus
+                        #L5R322wX4yZ6aB8cD0eF2g: q1_applies_clan_skill_bonus
+                        #L5R323hI5jK7lM9nO1pQ3r: q1_sets_starting_status
+                    }
+                }
+
+                ^"Question 2: What Family Does Your Character Belong To?" DEF {
+                    # Choose a family within your clan (or outside it with
+                    # GM approval). The family determines a ring choice,
+                    # two skill increases, starting glory, and wealth.
+                    #
+                    # Mechanical effects:
+                    #   - Choose one of the family's two ring options: gain +1
+                    #   - Gain +1 rank to each of the family's two skills
+                    #   - Set starting ^"Glory" to the family's glory value
+                    #   - Set starting wealth (koku) to the family's value
+                    #
+                    # See clan definitions in l5r5e-0.3-core-character.ttrpg
+                    # for family listings with ring choices, skills, glory,
+                    # and wealth values.
+
+                    RULES {
+                        #L5R324sT6uV8wX0yZ2aB4c: q2_sets_family
+                        #L5R325dE7fG9hI1jK3lM5n: q2_choose_one_of_two_rings
+                        #L5R326oP8qR0sT2uV4wX6y: q2_applies_two_skill_increases
+                        #L5R327zA9bC1dE3fG5hI7j: q2_sets_starting_glory
+                        #L5R328kL0mN2oP4qR6sT8u: q2_sets_starting_wealth
+                    }
+                }
+
+                ^"Question 3: What Is Your Character's School?" DEF {
+                    # Choose a school, typically from your clan. Choosing a
+                    # school from another clan requires GM approval and
+                    # narrative justification.
+                    #
+                    # Mechanical effects:
+                    #   - Gain ring increases as specified by the school
+                    #     (typically +1 to two rings)
+                    #   - Gain starting skills as specified by the school
+                    #     (typically choose 5 from a list of 7)
+                    #   - Set starting ^"Honor" to the school's honor value
+                    #   - Gain the school's starting techniques
+                    #   - Gain the school's School Ability
+                    #   - Receive the school's starting outfit
+                    #   - Set available technique groups for advancement
+                    #
+                    # See l5r5e-0.3-core-schools-*.ttrpg files for
+                    # individual school definitions.
+
+                    RULES {
+                        #L5R329vW1xY3zA5bC7dE9f: q3_sets_school
+                        #L5R330gH2iJ4kL6mN8oP0q: q3_applies_ring_increases
+                        #L5R331rS3tU5vW7xY9zA1b: q3_applies_starting_skills
+                        #L5R332cD4eF6gH8iJ0kL2m: q3_sets_starting_honor
+                        #L5R333nO5pQ7rS9tU1vW3x: q3_grants_starting_techniques
+                        #L5R334yZ6aB8cD0eF2gH4i: q3_grants_school_ability
+                        #L5R335jK7lM9nO1pQ3rS5t: q3_grants_starting_outfit
+                        #L5R336uV8wX0yZ2aB4cD6e: q3_other_clan_school_requires_gm_approval
+                    }
+                }
+            }
+
+            # ---------------------------
+            # PART II: ROLE AND SCHOOL (Q4)
+            # ---------------------------
+
+            ^"Part II: Role and School" DEF {
+
+                ^"Question 4: How Does Your Character Stand Out Within Their School?" DEF {
+                    # Determine what makes the character unique among their
+                    # peers. This reflects the character's personal approach
+                    # that distinguishes them from a typical graduate of
+                    # their school.
+                    #
+                    # Mechanical effect:
+                    #   - Choose one ring and gain +1 rank to it
+
+                    RULES {
+                        #L5R337fG9hI1jK3lM5nO7p: q4_choose_any_ring_plus_one
+                        #L5R338qR0sT2uV4wX6yZ8a: q4_reflects_unique_approach
+                    }
+                }
+            }
+
+            # ---------------------------
+            # PART III: HONOR AND GLORY (Q5-Q8)
+            # ---------------------------
+
+            ^"Part III: Honor and Glory" DEF {
+
+                ^"Question 5: Who Is Your Character's Lord and What Is Their Duty?" DEF {
+                    # Determine the character's ^"Giri" (sworn duty). This
+                    # is a specific obligation to a lord, clan, or other
+                    # authority. The duty should be concrete and achievable,
+                    # creating meaningful tension with the character's
+                    # personal desires.
+                    #
+                    # Mechanical effect:
+                    #   - Set the character's ^"Giri"
+
+                    RULES {
+                        #L5R339bC1dE3fG5hI7jK9l: q5_sets_giri
+                        #L5R340mN2oP4qR6sT8uV0w: q5_giri_should_be_specific
+                    }
+                }
+
+                ^"Question 6: What Does Your Character Long For?" DEF {
+                    # Determine the character's ^"Ninjō" (personal desire).
+                    # This is a deeply personal longing that exists in
+                    # tension with the character's Giri. It need not be
+                    # selfish, but it must create meaningful dramatic
+                    # conflict with duty.
+                    #
+                    # Mechanical effect:
+                    #   - Set the character's ^"Ninjō"
+
+                    RULES {
+                        #L5R341xY3zA5bC7dE9fG1h: q6_sets_ninjo
+                        #L5R342iJ4kL6mN8oP0qR2s: q6_ninjo_must_conflict_with_giri
+                    }
+                }
+
+                ^"Question 7: What Is Your Character's Relationship With Their Clan?" DEF {
+                    # Determine whether the character embraces or diverges
+                    # from clan expectations. This reflects the balance
+                    # between social standing and personal development.
+                    #
+                    # Choose one:
+                    #   A) Character embraces clan identity:
+                    #      Gain +5 ^"Glory"
+                    #   B) Character has pursued independent interests:
+                    #      Gain +1 rank in any one skill currently at rank 0
+
+                    RULES {
+                        #L5R343tU5vW7xY9zA1bC3d: q7_choose_glory_or_skill
+                        #L5R344eF6gH8iJ0kL2mN4o: q7_option_b_skill_must_be_at_zero
+                    }
+                }
+
+                ^"Question 8: What Does Your Character Think of Bushido?" DEF {
+                    # Determine the character's relationship with the code
+                    # of ^"Bushido". The character chooses one tenet as
+                    # paramount (most important) and one as less significant
+                    # (least important).
+                    #
+                    # Mechanical effects:
+                    #   - Set ^"Bushido" paramount tenet
+                    #   - Set ^"Bushido" less significant tenet
+                    #
+                    # Then choose one:
+                    #   A) Character is deeply devoted to Bushido:
+                    #      Gain +10 ^"Honor"
+                    #   B) Character takes a more nuanced view:
+                    #      Gain +1 rank in one skill from: ^"Command",
+                    #      ^"Commerce", ^"Culture", ^"Games", ^"Medicine",
+                    #      ^"Performance", or ^"Survival"
+
+                    RULES {
+                        #L5R345pQ7rS9tU1vW3xY5z: q8_sets_paramount_tenet
+                        #L5R346aB8cD0eF2gH4iJ6k: q8_sets_less_significant_tenet
+                        #L5R347lM9nO1pQ3rS5tU7v: q8_choose_honor_or_skill
+                    }
+                }
+            }
+
+            # ---------------------------
+            # PART IV: STRENGTHS AND WEAKNESSES (Q9-Q13)
+            # ---------------------------
+
+            ^"Part IV: Strengths and Weaknesses" DEF {
+
+                ^"Question 9: What Is Your Character's Greatest Accomplishment?" DEF {
+                    # Determine a defining positive quality or achievement.
+                    # The player chooses a Distinction that represents the
+                    # character's greatest strength or most notable deed.
+                    #
+                    # Mechanical effect:
+                    #   - Gain one ^"Distinction" (advantage)
+                    #
+                    # See l5r5e-0.3-core-distinctions.ttrpg for options.
+
+                    RULES {
+                        #L5R348wX0yZ2aB4cD6eF8g: q9_grants_one_distinction
+                    }
+                }
+
+                ^"Question 10: What Is Your Character's Greatest Challenge?" DEF {
+                    # Determine the character's most significant hardship
+                    # or limitation. The player chooses an Adversity that
+                    # represents an ongoing burden.
+                    #
+                    # Mechanical effect:
+                    #   - Gain one ^"Adversity" (disadvantage)
+                    #
+                    # See l5r5e-0.3-core-adversities.ttrpg for options.
+
+                    RULES {
+                        #L5R349hI1jK3lM5nO7pQ9r: q10_grants_one_adversity
+                    }
+                }
+
+                ^"Question 11: What Activity Makes Your Character Feel at Peace?" DEF {
+                    # Determine what the character does for solace and
+                    # relaxation, unrelated to their duties. The player
+                    # chooses a Passion that represents this activity.
+                    #
+                    # Mechanical effect:
+                    #   - Gain one ^"Passion" (advantage)
+                    #
+                    # See l5r5e-0.3-core-passions.ttrpg for options.
+
+                    RULES {
+                        #L5R350sT2uV4wX6yZ8aB0c: q11_grants_one_passion
+                    }
+                }
+
+                ^"Question 12: What Concern or Fear Plagues Your Character?" DEF {
+                    # Determine the character's deepest fear, worry, or
+                    # emotional vulnerability. The player chooses an Anxiety
+                    # that represents this weakness.
+                    #
+                    # Mechanical effect:
+                    #   - Gain one ^"Anxiety" (disadvantage)
+                    #
+                    # See l5r5e-0.3-core-anxieties.ttrpg for options.
+
+                    RULES {
+                        #L5R351dE3fG5hI7jK9lM1n: q12_grants_one_anxiety
+                    }
+                }
+
+                ^"Question 13: Who Has Your Character Learned the Most From?" DEF {
+                    # Determine the character's most important mentor and
+                    # the nature of that relationship. The mentor's
+                    # influence grants either additional strengths or
+                    # challenges with compensating skills.
+                    #
+                    # Choose one:
+                    #   A) Gain one additional ^"Advantage"
+                    #      (^"Distinction" or ^"Passion")
+                    #   B) Gain one additional ^"Disadvantage"
+                    #      (^"Adversity" or ^"Anxiety")
+                    #      AND gain +1 rank in any one skill
+
+                    RULES {
+                        #L5R352oP4qR6sT8uV0wX2y: q13_advantage_or_disadvantage_plus_skill
+                    }
+                }
+            }
+
+            # ---------------------------
+            # PART V: PERSONALITY AND BEHAVIOR (Q14-Q16)
+            # ---------------------------
+
+            ^"Part V: Personality and Behavior" DEF {
+
+                ^"Question 14: What Do People Notice First About Your Character?" DEF {
+                    # Determine the character's most striking feature or
+                    # quality that others observe upon first meeting. The
+                    # character gains a small personal item that reflects
+                    # this quality.
+                    #
+                    # Mechanical effects:
+                    #   - Establish the character's ^"Demeanor"
+                    #   - Gain one distinctive personal effect or
+                    #     aesthetic accoutrement
+
+                    RULES {
+                        #L5R353zA5bC7dE9fG1hI3j: q14_sets_demeanor
+                        #L5R354kL6mN8oP0qR2sT4u: q14_grants_aesthetic_item
+                    }
+                }
+
+                ^"Question 15: How Does Your Character React to Stressful Situations?" DEF {
+                    # Determine the character's emotional response to
+                    # pressure. This is a roleplaying guide that informs
+                    # behavior when Compromised or under emotional stress.
+                    # Examples: stoic silence, nervous laughter, cold fury,
+                    # reckless action, withdrawal.
+                    #
+                    # Mechanical effect:
+                    #   - None (narrative and roleplaying guide)
+
+                    RULES {
+                        #L5R355vW7xY9zA1bC3dE5f: q15_narrative_stress_response
+                    }
+                }
+
+                ^"Question 16: What Are Your Character's Preexisting Relationships?" DEF {
+                    # Establish the character's relationships with other
+                    # player characters and key NPCs. Also determine a
+                    # personal item of significance — a gift, memento,
+                    # or tool from a relationship.
+                    #
+                    # Mechanical effects:
+                    #   - Establish relationships with other PCs
+                    #   - Gain one item of rarity 7 or lower
+
+                    RULES {
+                        #L5R356gH8iJ0kL2mN4oP6q: q16_establish_pc_relationships
+                        #L5R357rS9tU1vW3xY5zA7b: q16_grants_item_rarity_seven_or_lower
+                    }
+                }
+            }
+
+            # ---------------------------
+            # PART VI: ANCESTRY AND FAMILY (Q17-Q19)
+            # ---------------------------
+
+            ^"Part VI: Ancestry and Family" DEF {
+
+                ^"Question 17: What Does Your Character's Parent Think of Them?" DEF {
+                    # Determine the character's relationship with their
+                    # parents and what was learned outside formal schooling.
+                    # The character gains a skill representing knowledge
+                    # passed down within the family.
+                    #
+                    # Mechanical effect:
+                    #   - Gain +1 rank in any one skill currently at rank 0
+
+                    RULES {
+                        #L5R358cD0eF2gH4iJ6kL8m: q17_grants_skill_at_rank_zero
+                        #L5R359nO1pQ3rS5tU7vW9x: q17_skill_must_be_at_zero
+                    }
+                }
+
+                ^"Question 18: Who Was Your Character's First Ancestor to Distinguish Themselves?" DEF {
+                    # Determine the character's samurai heritage by rolling
+                    # on the ^"Samurai Heritage Table" (Table 2-1).
+                    #
+                    # Procedure:
+                    #   1. Roll 1d10 twice on the Heritage table
+                    #   2. Choose one of the two results
+                    #   3. Roll 1d10 on the sub-table for that entry
+                    #   4. Apply modifiers and effects
+                    #
+                    # See ^"Samurai Heritage Table" below for full details.
+
+                    RULES {
+                        #L5R360yZ2aB4cD6eF8gH0i: q18_roll_heritage_twice_choose_one
+                        #L5R361jK3lM5nO7pQ9rS1t: q18_then_roll_sub_table
+                    }
+                }
+
+                ^"Question 19: What Is Your Character's Personal Name?" DEF {
+                    # Choose or create a personal name. In Rokugan, names
+                    # carry weight and meaning — often reflecting parents'
+                    # hopes, a notable event at birth, or a quality the
+                    # family wishes the character to embody.
+                    #
+                    # Mechanical effect:
+                    #   - None (narrative only)
+
+                    RULES {
+                        #L5R362uV4wX6yZ8aB0cD2e: q19_narrative_only
+                    }
+                }
+            }
+
+            # ---------------------------
+            # PART VII: DEATH (Q20)
+            # ---------------------------
+
+            ^"Part VII: Death" DEF {
+
+                ^"Question 20: How Should Your Character Die?" DEF {
+                    # Determine the character's ideal death — the death
+                    # they would choose if given the option. In Rokugan,
+                    # how one dies reflects on one's entire life and
+                    # family legacy. This is a deeply personal question
+                    # that reveals the character's deepest values.
+                    #
+                    # Mechanical effect:
+                    #   - None (narrative only)
+
+                    RULES {
+                        #L5R363fG5hI7jK9lM1nO3p: q20_narrative_only
+                    }
+                }
+            }
+        }
+    }
+
+    # ===========================
+    # SAMURAI HERITAGE TABLE (Table 2-1)
+    # ===========================
+
+    ^"Samurai Heritage Table" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Table 2-1: Samurai Heritage (pages 96-97)
+        # Used in Question 18 of the Twenty Questions.
+        #
+        # Procedure:
+        #   1. Roll 1d10 twice on this table
+        #   2. Choose one of the two results
+        #   3. Apply the entry's honor/glory/status modifiers
+        #   4. Roll 1d10 on the chosen entry's sub-table
+        #   5. Apply the sub-table result
+
+        HERITAGE_TABLE {
+
+            1 ^"Famous Deed" DEF {
+                # Your ancestor won a great victory for the clan,
+                # and their name is still celebrated.
+
+                MODIFIERS {
+                    ^"Glory" "+3"
+                }
+
+                # Sub-table (roll 1d10): What heirloom was left behind?
+                SUB_TABLE "1d10" {
+                    "1-2" "A famous weapon: Receive one weapon of rarity 7 or lower"
+                    "3-4" "A set of armor: Receive one set of armor of rarity 7 or lower"
+                    "5-6" "A precious item: Receive one item of rarity 7 or lower"
+                    "7-8" "A loyal steed or animal companion: Receive one animal"
+                    "9-10" "A manor, estate, or tract of land"
+                }
+            }
+
+            2 ^"Glorious Sacrifice" DEF {
+                # Your ancestor perished nobly in service to the clan.
+                # Their sacrifice is honored, but something was lost
+                # with them forever.
+
+                MODIFIERS {
+                    ^"Honor" "+5"
+                    ^"Glory" "+5"
+                }
+
+                # Sub-table (roll 1d10): What was lost with the ancestor?
+                SUB_TABLE "1d10" {
+                    "1-2" "A weapon: One item of your starting outfit is of diminished quality"
+                    "3-4" "Irreplaceable knowledge: Your family lacks knowledge of a subject others take for granted"
+                    "5-6" "A position of power: Your ancestor's death diminished the family's political standing"
+                    "7-8" "Their closest ally: A former ally of your ancestor holds a grudge against your family"
+                    "9-10" "A priceless treasure: A family heirloom of great value was lost"
+                }
+            }
+
+            3 ^"Wondrous Work" DEF {
+                # Your ancestor crafted or created a lasting
+                # masterwork that brought glory to the family.
+
+                MODIFIERS {
+                    ^"Glory" "+5"
+                }
+
+                # Sub-table (roll 1d10): Artisan skill associated with the work
+                SUB_TABLE "1d10" {
+                    "1-3" "Gain +1 ^\"Aesthetics\""
+                    "4-5" "Gain +1 ^\"Composition\""
+                    "6-7" "Gain +1 ^\"Design\""
+                    "8-10" "Gain +1 ^\"Smithing\""
+                }
+            }
+
+            4 ^"Dynasty Builder" DEF {
+                # Your ancestor forged important alliances through
+                # social cunning and negotiation, working behind
+                # the scenes with little public recognition.
+
+                MODIFIERS {
+                    ^"Glory" "-3"
+                }
+
+                # Sub-table (roll 1d10): Social skill passed down
+                SUB_TABLE "1d10" {
+                    "1-2" "Gain +1 ^\"Command\""
+                    "3-4" "Gain +1 ^\"Courtesy\""
+                    "5-6" "Gain +1 ^\"Games\""
+                    "7-8" "Gain +1 ^\"Performance\""
+                    "9-10" "Gain +1 to any Social skill"
+                }
+            }
+
+            5 ^"Discovery" DEF {
+                # Your ancestor made a notable scholarly discovery
+                # or uncovered hidden knowledge.
+
+                MODIFIERS {
+                    ^"Glory" "+3"
+                }
+
+                # Sub-table (roll 1d10): Scholar skill associated with the discovery
+                SUB_TABLE "1d10" {
+                    "1-3" "Gain +1 ^\"Culture\""
+                    "4-5" "Gain +1 ^\"Government\""
+                    "6-7" "Gain +1 ^\"Medicine\""
+                    "8-9" "Gain +1 ^\"Sentiment\""
+                    "10" "Gain +1 ^\"Theology\""
+                }
+            }
+
+            6 ^"Ruthless Victor" DEF {
+                # Your ancestor won a battle or conflict through
+                # ruthless or dishonorable means, achieving victory
+                # at the cost of personal honor.
+
+                MODIFIERS {
+                    ^"Honor" "-5"
+                }
+
+                # Sub-table (roll 1d10): Martial skill honed by the ancestor
+                SUB_TABLE "1d10" {
+                    "1-2" "Gain +1 ^\"Fitness\""
+                    "3-4" "Gain +1 ^\"Martial Arts [Melee]\""
+                    "5-6" "Gain +1 ^\"Martial Arts [Ranged]\""
+                    "7-8" "Gain +1 ^\"Meditation\""
+                    "9-10" "Gain +1 ^\"Tactics\""
+                }
+            }
+
+            7 ^"Elevated for Service" DEF {
+                # Your ancestor was elevated from a lower social
+                # station for exceptional service. This origin brings
+                # practical skills but lingering social stigma.
+
+                MODIFIERS {
+                    ^"Glory" "-3"
+                    ^"Honor" "+3"
+                }
+
+                # Sub-table (roll 1d10): Trade skill reflecting humble origins
+                SUB_TABLE "1d10" {
+                    "1-2" "Gain +1 ^\"Commerce\""
+                    "3-4" "Gain +1 ^\"Labor\""
+                    "5-6" "Gain +1 ^\"Seafaring\""
+                    "7-8" "Gain +1 ^\"Skulduggery\""
+                    "9-10" "Gain +1 ^\"Survival\""
+                }
+            }
+
+            8 ^"Stolen Knowledge" DEF {
+                # Your ancestor acquired secret techniques or
+                # knowledge through espionage, theft, or betrayal
+                # of trust — and passed them down to your family.
+
+                MODIFIERS {
+                    ^"Honor" "-5"
+                }
+
+                # Sub-table (roll 1d10): Stolen technique category
+                # The character may learn techniques from this additional
+                # category as though it were in their available groups.
+                SUB_TABLE "1d10" {
+                    "1-3" "Gain access to Kata"
+                    "4-5" "Gain access to Shūji"
+                    "6-7" "Gain access to Rituals"
+                    "8-9" "Gain access to Invocations"
+                    "10" "Gain access to Ninjutsu or Mahō (GM approval required)"
+                }
+            }
+
+            9 ^"Imperial Heritage" DEF {
+                # Your ancestor was of Imperial blood — a member of
+                # the Imperial families or closely connected to the
+                # Emperor's line. This carries immense prestige.
+
+                MODIFIERS {
+                    ^"Status" "+10"
+                }
+
+                # No sub-table; instead gain a specific distinction.
+                EFFECT {
+                    "Gain the ^\"Blessed Lineage\" distinction"
+                }
+            }
+
+            10 ^"Unusual Name Origin" DEF {
+                # Your ancestor gained the family name under unusual
+                # circumstances — adoption from outside the clan,
+                # foreign origins, or a mysterious past that lingers
+                # in the family's reputation.
+
+                MODIFIERS {
+                    ^"Glory" "-3"
+                }
+
+                # Sub-table (roll 1d10): Nature of unusual origin
+                SUB_TABLE "1d10" {
+                    "1-5" "Choose two of your rings and swap their values"
+                    "6-10" "Gain one item of rarity 6 or lower not typically associated with your clan"
+                }
+            }
+        }
+
+        RULES {
+            #L5R370aB2cD4eF6gH8iJ0k: heritage_roll_1d10_twice_on_main_table
+            #L5R371lM3nO5pQ7rS9tU1v: heritage_choose_one_of_two_results
+            #L5R372wX4yZ6aB8cD0eF2g: heritage_roll_1d10_on_sub_table
+            #L5R373hI5jK7lM9nO1pQ3r: heritage_modifiers_adjust_social_attributes
+            #L5R374sT6uV8wX0yZ2aB4c: heritage_skill_gains_respect_creation_maximum
+        }
+    }
+
+    # ===========================
+    # ADVANCEMENT SYSTEM (Table 2-2)
+    # ===========================
+
+    ^"Advancement" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Table 2-2: Advancement (page 98)
+        # After character creation, characters spend experience points
+        # (XP) earned during play to improve rings, skills, and learn
+        # techniques. XP is typically spent during downtime scenes.
+
+        ADVANCEMENT_COSTS {
+
+            ^"Skill Rank Increase" COST "new rank × 2 XP" {
+                # Increase one skill by 1 rank.
+                # Maximum skill rank: 5
+                "Rank 0 → 1" "2 XP"
+                "Rank 1 → 2" "4 XP"
+                "Rank 2 → 3" "6 XP"
+                "Rank 3 → 4" "8 XP"
+                "Rank 4 → 5" "10 XP"
+            }
+
+            ^"Ring Increase" COST "new value × 3 XP" {
+                # Increase one ring by 1 rank.
+                # Maximum ring value: lowest ring + Void ring (capped at 5)
+                "Ring 1 → 2" "6 XP"
+                "Ring 2 → 3" "9 XP"
+                "Ring 3 → 4" "12 XP"
+                "Ring 4 → 5" "15 XP"
+            }
+
+            ^"Technique" COST "3 XP" {
+                # Learn one new technique.
+                # Must meet ALL of the following requirements:
+                #   - Technique rank <= character's school rank
+                #   - Technique category must be in the character's
+                #     available technique groups OR the technique must
+                #     be listed in the character's school curriculum
+                #     at or below the character's current rank
+            }
+        }
+
+        RULES {
+            #L5R380aB2cD4eF6gH8iJ0k: ring_max_equals_lowest_ring_plus_void
+            #L5R381lM3nO5pQ7rS9tU1v: ring_max_capped_at_five
+            #L5R382wX4yZ6aB8cD0eF2g: skill_max_is_five
+            #L5R383hI5jK7lM9nO1pQ3r: technique_must_be_available_category_or_curriculum
+            #L5R384sT6uV8wX0yZ2aB4c: technique_rank_limited_by_school_rank
+            #L5R385dE7fG9hI1jK3lM5n: advancement_typically_during_downtime
+        }
+    }
+
+    # ===========================
+    # CURRICULUM PROGRESSION
+    # ===========================
+
+    ^"Curriculum Progression" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Characters advance through school ranks by spending XP on
+        # skills, rings, and techniques listed in their school's
+        # curriculum. Curriculum XP accumulation determines when a
+        # character advances to the next school rank.
+        #
+        # Each school's curriculum (defined in the school files) lists
+        # specific skills, skill groups, rings, and techniques at
+        # each rank. Purchasing matching entries contributes to
+        # curriculum completion.
+
+        ^"Curriculum XP Contribution" DEF {
+            # When a character spends XP, the amount that counts toward
+            # curriculum completion depends on whether the purchase
+            # matches a curriculum entry at the character's current rank.
+            #
+            # IN-CURRICULUM:
+            #   The full XP cost counts toward curriculum completion.
+            #   A purchase is in-curriculum if it matches any skill,
+            #   skill group, ring, technique, or technique group
+            #   entry in the current rank's curriculum.
+            #
+            # OUT-OF-CURRICULUM:
+            #   Half the XP cost (rounded up) counts toward
+            #   curriculum completion.
+
+            RULES {
+                #L5R386oP8qR0sT2uV4wX6y: in_curriculum_full_xp_contribution
+                #L5R387zA9bC1dE3fG5hI7j: out_of_curriculum_half_xp_rounded_up
+            }
+        }
+
+        ^"Rank Advancement Thresholds" DEF {
+            # Curriculum XP that must be accumulated at the current
+            # rank to advance to the next school rank. This total
+            # resets to zero upon advancing.
+
+            THRESHOLDS {
+                "Rank 1 → Rank 2" "20 curriculum XP"
+                "Rank 2 → Rank 3" "24 curriculum XP"
+                "Rank 3 → Rank 4" "32 curriculum XP"
+                "Rank 4 → Rank 5" "44 curriculum XP"
+                "Rank 5 → Rank 6" "60 curriculum XP"
+            }
+
+            RULES {
+                #L5R388kL0mN2oP4qR6sT8u: curriculum_xp_resets_each_rank
+                #L5R389vW1xY3zA5bC7dE9f: threshold_must_be_met_to_advance
+            }
+        }
+
+        ^"Rank 6 Mastery" DEF {
+            # Upon accumulating 60 curriculum XP at Rank 5, the
+            # character advances to Rank 6 and unlocks their school's
+            # ^"Mastery Ability". This represents the pinnacle of the
+            # school's teachings and the character's complete mastery
+            # of their tradition.
+            #
+            # See individual school definitions for Mastery Abilities.
+
+            RULES {
+                #L5R390gH2iJ4kL6mN8oP0q: mastery_ability_unlocked_at_rank_six
+                #L5R391rS3tU5vW7xY9zA1b: rank_six_is_final_school_rank
+            }
+        }
+
+        RULES {
+            #L5R392cD4eF6gH8iJ0kL2m: curriculum_entries_define_in_curriculum_purchases
+            #L5R393nO5pQ7rS9tU1vW3x: individual_school_files_define_curriculum
+            #L5R394yZ6aB8cD0eF2gH4i: advancement_occurs_during_downtime
+        }
+    }
+}

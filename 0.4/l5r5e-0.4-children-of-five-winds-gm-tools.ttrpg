@@ -1,0 +1,1953 @@
+EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Winds" {
+    NAME "Legend of the Five Rings 5th Edition - Children of the Five Winds: GM Tools"
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-03-01"
+
+    # Children of the Five Winds (Chapter 3): Otherworldly encounters system,
+    # spirit pacts, NPC templates, horse templates, named NPCs, animals,
+    # peoples of the Sand Road, spirits and strange beings, adventure NPCs.
+
+    # ===========================
+    # OTHERWORLDLY ENCOUNTERS SYSTEM
+    # ===========================
+
+    ^"Otherworldly Encounters" DEF {
+        APPLIES TO [^"System"]
+        # A social encounter system for interactions with spirits,
+        # yokai, djinn, and other supernatural beings. Uses
+        # atmospheric environmental descriptions and specialized
+        # social objectives for both mortal and spirit participants.
+
+        ^"Mortal Social Objectives" DEF {
+            ENTRIES {
+                ^"Create a Pact" {
+                    ^"Momentum Required" STRING "Spirit's focus + higher of (intrigue rank or combat rank) + 2"
+                    ^"Description" STRING "Accumulate momentum to establish a binding agreement between mortal and spirit."
+                }
+                ^"Dispel Possession" {
+                    ^"Momentum Required" STRING "Spirit's focus + intrigue conflict rank (plus spirit's vigilance if possessing one of the characters pursuing this objective)"
+                    ^"Description" STRING "Drive out a spirit that has possessed a character."
+                }
+                ^"Invoke for Aid" {
+                    ^"Momentum Required" STRING "Spirit's intrigue conflict rank + rank of invocation desired (or +6 for effects more potent than an invocation)"
+                    ^"Description" STRING "Request a spirit perform an invocation or other supernatural feat."
+                }
+                ^"Placate" {
+                    ^"Momentum Required" STRING "Spirit's focus + combat conflict rank"
+                    ^"Description" STRING "Calm an enraged spirit."
+                }
+                ^"Seal in an Object" {
+                    ^"Momentum Required" STRING "Spirit's focus + double its intrigue conflict rank"
+                    ^"Description" STRING "Bind a spirit in a physical vessel. The object gains the Sacred or Unholy quality. Way of Names practitioners may create a meishōdō talisman."
+                }
+            }
+
+            RULES {
+                #L5RCW0287e22c4061dfe3a362ca:mortal_social_objectives
+            }
+        }
+
+        ^"Spirit Social Objectives" DEF {
+            ENTRIES {
+                ^"Curse" {
+                    ^"Momentum Required" STRING "Target's focus + Theology ranks"
+                    ^"Description" STRING "Lay a curse on a character."
+                }
+                ^"Inspire Awe" {
+                    ^"Momentum Required" STRING "Target's vigilance + Meditation ranks"
+                    ^"Description" STRING "Terrify mortals with supernatural dread."
+                }
+                ^"Possession" {
+                    ^"Momentum Required" STRING "2 x (target's focus + Command ranks)"
+                    ^"Description" STRING "Take over a character's body."
+                }
+                ^"Request an Offering" {
+                    ^"Minimum Momentum" INTEGER 1
+                    ^"Description" STRING "Spirits request tribute from mortals."
+                }
+            }
+
+            RULES {
+                #L5RCW03c0397773f0cb957ced31:spirit_social_objectives
+            }
+        }
+
+        ^"New Encounter Actions" DEF {
+            ENTRIES {
+                ^"Compel" {
+                    ^"Description" STRING "Use a spirit's true name to force cooperation. Requires Way of Names training."
+                }
+                ^"Entice" {
+                    ^"Description" STRING "Win a spirit's favor with offerings. Provides momentum and bonus information opportunities."
+                }
+            }
+
+            RULES {
+                #L5RCW042aee1def69565a437b05:new_encounter_actions
+            }
+        }
+
+        RULES {
+            #L5RCW015eae964d4f09cf64a17b:otherworldly_encounters
+        }
+    }
+
+    # ===========================
+    # SPIRIT PACTS SYSTEM
+    # ===========================
+
+    ^"Spirit Pacts" DEF {
+        APPLIES TO [^"System"]
+        # Three components: Terms (set by spirit), Boons (chosen
+        # by mortal), and Domain (area where pact applies).
+
+        ^"Pact Terms (Spirit-Set)" DEF {
+            ENTRIES {
+                ^"Mutual Defense" { ^"Description" STRING "Both parties agree to defend each other." }
+                ^"Periodic Offerings" { ^"Description" STRING "Mortal provides regular tribute to the spirit." }
+                ^"Taboos" { ^"Description" STRING "Mortal agrees to observe certain prohibitions." }
+                ^"Various Tasks" { ^"Description" STRING "Spirit assigns tasks to the mortal from time to time." }
+            }
+
+            RULES {
+                #L5RCW060e85691f2c6fd30fee58:pact_terms_spiritset
+            }
+        }
+
+        ^"Pact Boons - Narrative" DEF {
+            ENTRIES {
+                ^"Fortunate Finding" { ^"Description" STRING "Mortal finds useful items or resources at opportune times." }
+                ^"Gentle Rains" { ^"Description" STRING "Favorable weather in the pact domain." }
+                ^"Good Health" { ^"Description" STRING "Resistance to disease and illness." }
+                ^"Inspiration" { ^"Description" STRING "Creative insights and artistic breakthroughs." }
+                ^"Plenty" { ^"Description" STRING "Abundant harvests and resources." }
+                ^"Quiet Stars" { ^"Description" STRING "External conflicts are naturally directed away from the domain by sudden storms, flooding rivers, or other phenomena." }
+                ^"Safe Harbor" { ^"Description" STRING "A protected refuge within the domain." }
+            }
+
+            RULES {
+                #L5RCW07369b7b46026a20fd20b6:pact_boons_narrative
+            }
+        }
+
+        ^"Pact Boons - Mechanical" DEF {
+            ENTRIES {
+                ^"Clarity" { ^"Description" STRING "Gain the Centered condition." }
+                ^"Courage" { ^"Description" STRING "Gain the Emboldened condition." }
+                ^"Energetic Recovery" { ^"Description" STRING "Enhanced fatigue recovery." }
+                ^"Permanence" { ^"Description" STRING "When a character makes a check to resist an effect of an Otherworldly being, they can reroll a number of dice up to the spirit's Water Ring." }
+                ^"Purity" { ^"Description" STRING "Resistance to spiritual corruption." }
+                ^"Restoration" { ^"Description" STRING "Accelerated healing." }
+                ^"Skillful Hands" { ^"Description" STRING "Bonus to craft or trade checks." }
+            }
+
+            RULES {
+                #L5RCW08307da0cbb1fd65ef5047:pact_boons_mechanical
+            }
+        }
+
+        RULES {
+            #L5RCW05e44c18a12ccdd952e3f9:spirit_pacts
+        }
+    }
+
+    # ===========================
+    # NPC TEMPLATES
+    # ===========================
+
+    ^"Fox Clan Samurai Template" DEF {
+        APPLIES TO [^"NPC Template"]
+        PROPERTIES {
+            ^"Base Profile" STRING "Any clan samurai profile"
+            ^"Combat Rank Modifier" STRING "+1"
+            ^"Intrigue Rank Modifier" STRING "+1"
+            ^"Ring Modifier" STRING "+1 Earth"
+            ^"Skill Modifier" STRING "+1 Scholar and Trade skills"
+            ^"Advantages (add/replace 0-2)" LIST OF STRING ["Affinity with (any one animal species) (Void) [Social; Interpersonal]", "Animal Bond (Earth) [Social; Interpersonal, Mental]", "Sixth Sense (Void) [Martial; Spiritual]", "Talented Herbalist (Earth) [Social; Mental]"]
+            ^"Disadvantages (add/replace 0-2)" LIST OF STRING ["Disdain for Urban Sprawl (Earth) [Interpersonal; Mental]", "Deals with Spirits (Fire) [Social; Interpersonal]", "Slow to Trust (Earth) [Social; Interpersonal]"]
+            ^"Techniques (add/replace 0-2)" LIST OF STRING ["Invocations", "Kata", "Rituals"]
+            ^"Demeanor (replace 1)" LIST OF STRING ["Detached", "Gruff", "Shrewd"]
+        }
+
+        RULES {
+            #L5RCW091d399cf7b3763bec66fa:fox_clan_samurai_template
+        }
+    }
+
+    ^"Trickster Animal in Disguise Template" DEF {
+        APPLIES TO [^"NPC Template"]
+        PROPERTIES {
+            ^"Base Profile" STRING "Any human or animal profile"
+            ^"Combat Rank Modifier" STRING "+1"
+            ^"Intrigue Rank Modifier" STRING "+2"
+            ^"Ring Modifier" STRING "+1 Air or +1 Fire"
+            ^"Skill Modifier" STRING "+1 Scholar, Social, and Trade skills"
+            ^"Composure Modifier" STRING "+2"
+            ^"Advantages (add/replace 0-2)" LIST OF STRING ["Affinity with (same type of animal) (Void) [Social; Interpersonal]", "Dangerous Allure (Fire) [Social; Interpersonal, Physical]", "Shapeshifter's Guile (Air) [Social; Interpersonal]"]
+            ^"Disadvantage (required)" STRING "Choose an animal or Otherworldly being feature, which is the flaw in this NPC's disguise"
+            ^"Other Disadvantages (add/replace 0-2)" LIST OF STRING ["Materialistic (Air) [Social; Mental]", "Mysterious Taboo (Void) [Social; Spiritual]", "Paranoia (Water) [Social; Mental, Physical]"]
+            ^"Techniques (add/replace 1-2)" LIST OF STRING ["Invocations", "Ninjutsu", "Shūji"]
+            ^"Demeanor (replace 1)" LIST OF STRING ["Detached", "Playful (Earth +2, Water -2)", "Shrewd"]
+        }
+
+        RULES {
+            #L5RCW109ffd9d0e867b0ab31c77:trickster_animal_in_disguise_template
+        }
+    }
+
+    ^"Unicorn Clan Samurai Template" DEF {
+        APPLIES TO [^"NPC Template"]
+        PROPERTIES {
+            ^"Base Profile" STRING "Any clan samurai profile"
+            ^"Combat Rank Modifier" STRING "+2"
+            ^"Ring Modifier" STRING "+1 Water"
+            ^"Skill Modifier" STRING "+1 Martial and Trade skills"
+            ^"Advantages (add/replace 0-2)" LIST OF STRING ["Affinity with Horses (Void) [Social; Interpersonal]", "Syncretic Philosophy (Water) [Social; Interpersonal, Mental]", "Quick Reflexes (Fire) [Martial; Interpersonal, Physical]", "Worldly (Void) [Social; Interpersonal, Physical]"]
+            ^"Disadvantages (add/replace 0-2)" LIST OF STRING ["Bluntness (Air) [Social; Interpersonal]", "Softhearted (Fire) [Martial, Social; Interpersonal, Mental]", "Unfair Reputation (Air) [Social; Interpersonal]", "Wanderlust (Water) [Social; Mental]"]
+            ^"Techniques (add/replace 0-2)" LIST OF STRING ["Kata", "Rituals", "Shūji"]
+            ^"Demeanor (replace 1)" LIST OF STRING ["Assertive", "Compassionate", "Gruff"]
+        }
+
+        RULES {
+            #L5RCW1124063fc9cb6bfcf01244:unicorn_clan_samurai_template
+        }
+    }
+
+    # ===========================
+    # UNICORN HORSE BREEDS
+    # ===========================
+
+    ^"Unicorn Horse Breeds" DEF {
+        APPLIES TO [^"Table"]
+        ENTRIES {
+            ^"Ide Traveling Pony" {
+                ^"Description" STRING "Hardy breed with +2 Endurance, +4 Composure, Intrigue +1. Removes Skittish disadvantage, adds Even-Tempered advantage. Built for endurance over long journeys."
+            }
+            ^"Iuchi Riding Steed" {
+                ^"Description" STRING "Intelligent breed trained by Iuchi shugenja to respond to verbal and hand-gesture commands."
+                ^"Conflict Rank Modifier" STRING "Intrigue +1"
+                ^"Advantages (add 1)" LIST OF STRING ["Smart as a Human (Air) [Social; Mental]"]
+                ^"Disadvantages (remove)" LIST OF STRING ["Skittish"]
+                ^"Demeanor" STRING "Detached"
+            }
+            ^"Moto Charger" {
+                ^"Description" STRING "Hot-tempered breed known for strength, size, and explosive gallop. Carries heavily armored lancers into battle but lacks stamina for prolonged journeys."
+                ^"Conflict Rank Modifier" STRING "Combat +1"
+                ^"Advantages (remove)" LIST OF STRING ["Tireless Runner"]
+                ^"Advantages (add 2)" LIST OF STRING ["Brute Strength (Fire) [Martial; Physical]", "Fearsome Presence (Fire) [Social; Interpersonal]", "Masterful Fighter (Earth) [Martial; Mental]"]
+                ^"Disadvantages (replace 1)" LIST OF STRING ["Quick to Anger (Fire) [Social; Interpersonal]", "Willful (Earth) [Social; Interpersonal]"]
+            }
+            ^"Shinjo Courser" {
+                ^"Description" STRING "Renowned for speed and stamina but high-spirited and flighty. Ideal for scouts, courtiers, and mounted archers, but ill-suited to traditional battle."
+                ^"Conflict Rank Modifier" STRING "Combat +1"
+                ^"Endurance Modifier" STRING "+2"
+                ^"Advantages (add)" LIST OF STRING ["Fleet of Foot (Water) [Martial; Physical]"]
+                ^"Demeanor" STRING "Cautious [Air +2, Earth -2]"
+            }
+            ^"Utaku Warhorse" {
+                ^"Description" STRING "Ideal blend of power, speed, and stamina bred by Utaku Horse Lord Disciples. Combat +1, +4 Endurance, +4 Composure. Removes Skittish disadvantage, adds one of: Fearsome Presence, Masterful Fighter, or Veteran's Instincts."
+            }
+        }
+
+        RULES {
+            #L5RCW1282394e2b9dd1cba69603:unicorn_horse_breeds
+        }
+    }
+
+    # ===========================
+    # ANIMAL NPCs
+    # ===========================
+
+    ^"Aurochs" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 8
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Massive wild cattle with equally massive horns. They travel in herds of roughly thirty."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 5
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 4
+            ^"Demeanor" STRING "Laconic"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 0", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Enormous Stature (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Bad Temper (Fire) [Martial; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Horns: Range 1, Damage 8, Deadliness 6, Durable"]
+            ^"Gear" LIST OF STRING ["Thick hide (Physical 5)"]
+        }
+
+        ^"Trample" DEF {
+            ^"Description" STRING "The aurochs is a silhouette 4 creature. When an aurochs inflicts a critical strike, the TN of the check to resist is 6, and if the target fails their check to resist, the target suffers the Dazed condition in addition to the other effects."
+        }
+
+        RULES {
+            #L5RCW13409f4f4bb1aa3fe9ff72:aurochs
+        }
+    }
+
+    ^"Badger" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Solitary burrowing creature, prized in some communities and considered bad luck in others. Ferociously defends itself and its young when threatened."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 1
+            ^"Demeanor" STRING "Stubborn"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Earth -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Fast Burrowing (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Nocturnal (Earth) [Trade; Physical]", "Hot-Tempered (Fire) [Martial; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Claws: Range 0-1, Damage 4, Deadliness 3, Razor-Edged"]
+        }
+
+        ^"Berserker Fury" DEF {
+            ^"Description" STRING "The badger is a silhouette 1 burrowing creature. After it is cornered, or after suffering a critical strike, the badger suffers the Enraged condition. While Enraged, a badger cannot suffer the Unconscious condition and may perform Attack actions even while incapacitated."
+        }
+
+        RULES {
+            #L5RCW14ee6a8fba3f0d43df0607:badger
+        }
+    }
+
+    ^"Giant Bat" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Docile creatures with wingspans nearing five feet and foxlike features. Considered good luck in Rokugani culture. Orchard farmers regard them with unmitigated pleasure."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 1
+            ^"Demeanor" STRING "Gregarious"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Keen Senses (Water) [Martial; Mental, Physical]", "Pack Tactics (Water) [Martial, Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Nocturnal (Earth) [Trade; Physical]"]
+            ^"Favored Weapons" LIST OF STRING ["Bite: Range 0, Damage 2, Deadliness 1, Razor-Edged"]
+        }
+
+        ^"Nimble Flyer" DEF {
+            ^"Description" STRING "The giant bat is a silhouette 1 creature that can fly. It can move vertically and ignores the negative effects of terrain."
+        }
+
+        RULES {
+            #L5RCW15f664ffccb73cec7a26c9:giant_bat
+        }
+    }
+
+    ^"Golden Eagle" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Largest birds of prey in Rokugan, with strength greater than their size suggests. Used in pairs by falconers to hunt deer, foxes, and other game."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 1
+            ^"Demeanor" STRING "Proud"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Air -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Fleet of Foot (Water) [Martial; Physical]", "Sharp Eyesight (Water) [Martial, Trade; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Hollow Bones (Earth) [Martial; Physical]", "Quick to Anger (Fire) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Beak and Talons: Range 0, Damage 2, Deadliness 6"]
+        }
+
+        ^"Nimble Flyer" DEF {
+            ^"Description" STRING "The golden eagle is a silhouette 1 creature that can fly. It can move vertically and ignores the negative effects of terrain."
+        }
+
+        RULES {
+            #L5RCW16ecf5bf4714d9e2dbd277:golden_eagle
+        }
+    }
+
+    ^"Riding Deer" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Extremely rare domesticated deer bred as stealthy woodland mounts by the Fox and Deer Clans."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 4
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 3
+            ^"Demeanor" STRING "Flighty"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Earth -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 0", "Scholar 0", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Forest Runner (Earth) [Martial; Physical]", "Lightning Reflexes (Fire) [Martial; Mental, Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Skittish (Fire) [Martial; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Hooves: Range 1, Damage 3, Deadliness 3", "Antlers: Range 1-2, Damage 2, Deadliness 5"]
+            ^"Gear" LIST OF STRING ["Saddle, saddlebags, feed bag, grooming kit"]
+        }
+
+        ^"Forest Bounder" DEF {
+            ^"Description" STRING "The riding deer is a silhouette 3 deer and can be ridden by a human-sized (silhouette 2 or lower) rider. It ignores penalties from dense forested terrain, even when carrying a rider."
+        }
+
+        RULES {
+            #L5RCW17cc7ce614d0b353ea3792:riding_deer
+        }
+    }
+
+    ^"Riding Bear" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Aggressive brown bears of the Shinomen Forest, occasionally called upon as ursine mounts by especially woodsy shugenja."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 3
+            ^"Demeanor" STRING "Intimidating"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Enormous Stature (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Opportunist (Fire) [Martial; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Claws and Fangs: Range 1-2, Damage 8, Deadliness 6"]
+            ^"Gear" LIST OF STRING ["Thick hide (Physical 4)"]
+        }
+
+        ^"Ursine Mount" DEF {
+            ^"Description" STRING "The riding bear is a silhouette 3 creature and can be ridden by a human-sized (silhouette 2 or lower) rider."
+        }
+
+        ^"Crushing Swipe" DEF {
+            ^"Description" STRING "When a riding bear inflicts a critical strike, the TN of the check to resist is 4, and if the target fails the check to resist, the target suffers the Dazed condition in addition to the other effects."
+        }
+
+        RULES {
+            #L5RCW18cd2e0e5b1ecd24f9734d:riding_bear
+        }
+    }
+
+    ^"Tiger" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Solitary predator with distinctive striped fur. Associated with nobility, pride, and fierceness by the Ujik, Nehiri, and Suhili."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Silhouette" INTEGER 3
+            ^"Demeanor" STRING "Aggressive"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 0", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Swift and Agile (Fire) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Pride (Air) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Teeth and Claws: Range 1, Damage 5, Deadliness 9, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Thick fur (Physical 2)"]
+        }
+
+        ^"Cunning Pounce" DEF {
+            ^"Description" STRING "A tiger is a silhouette 3 creature with incredible strength but also cunning tactics. When a tiger makes a successful Attack action check against a target, that target must make a TN 4 Tactics check (Air 3, Earth 5) or gain the Disoriented condition."
+        }
+
+        ^"Savage Mauling" DEF {
+            ^"Description" STRING "Disoriented targets cannot make checks to resist damage dealt by a tiger."
+        }
+
+        RULES {
+            #L5RCW19a57dcda78795fa016e86:tiger
+        }
+    }
+
+    ^"Ujik War Pony" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Short and stocky pony breeds of the Ujik tribes. Hardy, strong, and resistant to illness, prized by the Utaku and Moto for crossbreeding."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 3
+            ^"Demeanor" STRING "Loyal"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Air -2, Water -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Brute Strength (Fire) [Martial; Physical]", "Tireless Runner (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Skittish (Fire) [Martial; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Hooves: Range 1-2, Damage 6, Deadliness 5"]
+            ^"Gear" LIST OF STRING ["Hide (Physical 2)", "Saddle, saddlebags, feed bag, grooming kit"]
+        }
+
+        ^"Loyal Steed" DEF {
+            ^"Description" STRING "The Ujik war pony is a silhouette 3 creature. It can be ridden by a human-sized (silhouette 2 or lower) rider."
+        }
+
+        RULES {
+            #L5RCW20a2e584915196da9beb64:ujik_war_pony
+        }
+    }
+
+    ^"Unicorn War Dog" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Massive war dogs of wolf or jackal ancestry, bred for battle, sentry duty, and tracking."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 5
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 4
+            ^"Demeanor" STRING "Loyal"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Air -2, Water -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Keen Tracker (Water) [Trade; Physical]", "Fearsome Presence (Fire) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Dependent on Humans (Fire) [Trade; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Bite: Range 0, Damage 5, Deadliness 2, Snaring"]
+            ^"Gear" LIST OF STRING ["Battle hide (Physical 1)"]
+        }
+
+        ^"Working Companion" DEF {
+            ^"Description" STRING "Choose one Martial or Trade skill. When the Unicorn war dog provides assistance on a check made with this skill, it counts as providing skilled assistance (see page 26 in the core rulebook)."
+        }
+
+        RULES {
+            #L5RCW214b672ff06d9d78646535:unicorn_war_dog
+        }
+    }
+
+    ^"Wild Desert Horse" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Untamed feral horses roaming the steppes and deserts beyond Rokugan. Shorter and stockier than domesticated breeds, with strong fight-or-flight instincts."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 4
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 3
+            ^"Demeanor" STRING "Cautious"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Earth -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Pack Tactics (Water) [Martial, Social; Interpersonal]", "Tireless Runner (Water) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Skittish (Water) [Martial; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Hooves: Range 1-2, Damage 6, Deadliness 5", "Bucking Kick: Range 1, Damage 8, Deadliness 6"]
+            ^"Gear" LIST OF STRING ["Hide (Physical 2)"]
+        }
+
+        ^"Thundering Escape" DEF {
+            ^"Description" STRING "A wild horse is a silhouette 3 creature with a strong flight response. When performing an Attack action check, it may spend :opp: in the following way: :opp:: Immediately attempt a Movement action after the attack resolves."
+        }
+
+        ^"Crushing Blow" DEF {
+            ^"Description" STRING "When the wild desert horse inflicts a critical strike, if the target fails the check to resist, the target suffers the Dazed condition in addition to the other effects."
+        }
+
+        RULES {
+            #L5RCW22b24d92e7184532bf2926:wild_desert_horse
+        }
+    }
+
+    # ===========================
+    # PEOPLES OF THE SAND ROAD NPCs
+    # ===========================
+
+    ^"Qamarist Philosopher" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Description" STRING "Scholar of Qamarist natural philosophy, dedicated to rigorous study of ethics, principles, and the natural world."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 50
+            ^"Glory" INTEGER 30
+            ^"Status" INTEGER 45
+            ^"Demeanor" STRING "Aloof"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 0", "Scholar 3", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Flexible Mind (Air) [Scholar; Mental, Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Obsessive (Air) [Social; Interpersonal, Mental]"]
+            ^"Gear" LIST OF STRING ["Passable clothes", "Abacus", "Sextant or astrolabe", "Calligraphy set", "Laboratory or small personal library"]
+        }
+
+        ^"Natural Philosophy" DEF {
+            ^"Description" STRING "The Qamarist philosopher may make a Culture (Air) check, targeting one character in the scene. The TN is equal to the target's Air Ring. If the philosopher succeeds, they make a scientific or academic observation that lets them learn one fact about the target. :opp::opp:: The Qamarist philosopher learns one of the target's advantages or disadvantages of the target's choice."
+        }
+
+        RULES {
+            #L5RCW2366057377012be04fef34:qamarist_philosopher
+        }
+    }
+
+    ^"Qamarist Pilgrim" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Description" STRING "Traveler on a spiritual pilgrimage to holy sites, seeking enlightenment and visiting family."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 7
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 2
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 35
+            ^"Glory" INTEGER 20
+            ^"Status" INTEGER 15
+            ^"Demeanor" STRING "Meditative"
+            ^"Social Skill Check TN Modifiers" STRING "Void +2, Fire -2"
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 0", "Scholar 1", "Social 2", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Partial Enlightenment (Void) [Scholar; Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Deferential (Void) [Social; Interpersonal, Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Improvised Weapon: Range 1, Damage 2, Deadliness 3/4"]
+            ^"Gear" LIST OF STRING ["Traveling clothes (Physical 2, Durable, Mundane, Subtle)", "Offerings", "Camel or horse", "Gifts for family and friends"]
+        }
+
+        ^"Introspection" DEF {
+            ^"Description" STRING "When a Qamarist pilgrim makes a check targeting a character with a higher glory rank, the pilgrim treats the target's vigilance as 1 lower."
+        }
+
+        RULES {
+            #L5RCW2463ebd150173bb75ba23a:qamarist_pilgrim
+        }
+    }
+
+    ^"Ujik Guide" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Description" STRING "Expert navigator of the Sand Road with unmatched knowledge of the paths between Rokugan and the Caliphate."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 25
+            ^"Glory" INTEGER 29
+            ^"Status" INTEGER 9
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Void -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 2", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Perfect Sense of Direction (Earth) [Trade; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Too Talkative (Earth) [Social; Infamy]"]
+            ^"Favored Weapons" LIST OF STRING ["Hunting Bow: Range 2-4, Damage 4, Deadliness 5", "Spear: Range 2, Damage 5, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Traveling clothes (Physical 2, Durable, Mundane, Subtle)", "Quiver", "Horse or camel", "Recently hunted small game", "Collection of pelts"]
+        }
+
+        ^"Improvised Tools" DEF {
+            ^"Description" STRING "When making a Trade skill (Fire) check, the Ujik guide may spend :opp: in the following way: :opp:: The Ujik guide can scavenge enough materials for the equivalent of a single-use kit (such as a bowyer's kit, divination kit, or medicine kit)."
+        }
+
+        RULES {
+            #L5RCW251f9570cfad2f3fcad529:ujik_guide
+        }
+    }
+
+    ^"Ujik Trader" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Description" STRING "Bustling trader leveraging knowledge of Rokugani and Qamarist cultures to facilitate trade along the Sand Road."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 20
+            ^"Glory" INTEGER 29
+            ^"Status" INTEGER 9
+            ^"Demeanor" STRING "Gregarious"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 1", "Scholar 0", "Social 2", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Daikoku's Blessing (Water) [Social; Interpersonal, Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Quarrelsome (Void) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Spear: Range 2, Damage 5, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Traveling clothes (Physical 2, Durable, Mundane, Subtle)", "Abacus", "Handful of bu or equivalent currency", "Camel or horse", "Packs of goods"]
+        }
+
+        ^"The Right Prize, The Right Price" DEF {
+            ^"Description" STRING "Once per scene as an action, the Ujik trader may make a Commerce (Water) check to determine whether an item they have is something another character wants. The TN is equal to the item's rarity minus 2, along with other modifiers per GM's discretion. :opp::opp:: The Ujik trader can increase the price of this item by one-quarter per :opp::opp: spent this way, and the item is not available anywhere else at this time."
+        }
+
+        RULES {
+            #L5RCW264070ed594c80a3817234:ujik_trader
+        }
+    }
+
+    # ===========================
+    # SPIRITS AND STRANGE BEINGS NPCs
+    # ===========================
+
+    ^"Chained Djinni" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Description" STRING "Primordial elemental being bound by ancient Rempet sorcery, enslaved to lamps, rings, or other objects."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 3
+            ^"Demeanor" STRING "Gruff"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 3", "Scholar 3", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Ancient Wisdom (Earth) [Scholar; Mental]", "Body of Smokeless Fire (Fire) [Martial; Physical, Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Bound to Object (Earth) [Social; Physical, Spiritual]", "Forced into Servitude (Air) [Interpersonal; Mental, Physical, Spiritual]"]
+            ^"Favored Weapons" LIST OF STRING ["Blazing Touch: Range 1-3, Damage 6, Deadliness 6, deals supernatural damage"]
+            ^"Gear" LIST OF STRING ["Cloaked in Fire (Physical 3, Supernatural 1)"]
+        }
+
+        ^"Elemental Being" DEF {
+            ^"Description" STRING "A chained djinni is an Otherworldly being. They can move vertically, and they ignore the negative effects of physical terrain. As a Support action, they may alter their silhouette to a number between 0 and X, where X is the rank of the ring corresponding to their current stance."
+        }
+
+        ^"Invisibility" DEF {
+            ^"Description" STRING "As a Support action, a djinni may become invisible and impossible to see, or become visible as a body of rolling flames."
+        }
+
+        ^"Incredible Power" DEF {
+            ^"Description" STRING "The djinni's enemies treat the area at range 0-1 of the djinni as Dangerous terrain. The area around the djinni at range 0-3 is Imbalanced (Water and Air), as the kami are fearful of djinn. Additionally, the djinni may attempt any Air or Fire invocation they want. The being to whom the djinni is bound is immune to this ability's effects."
+        }
+
+        RULES {
+            #L5RCW274bb0c5312b9f14323fff:chained_djinni
+        }
+    }
+
+    ^"Empowered Ifrit" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Description" STRING "Physical djinni with an imposing body and animalistic features, proud of great elemental powers."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 6
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 10
+            ^"Vigilance" INTEGER 5
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Void -2"
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 4", "Scholar 4", "Social 3", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Giant's Strength (Earth) [Martial; Physical, Spiritual]", "Impossible Feats (Void) [Martial; Physical, Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Flattery Gets You Everywhere (Air) [Social; Interpersonal, Mental]", "Short Fuse (Fire) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Blazing Touch: Range 1-3, Damage 6, Deadliness 6, deals supernatural damage"]
+        }
+
+        ^"Elemental Powers" DEF {
+            ^"Description" STRING "An ifrit is an Otherworldly being of silhouette 3. They can move vertically, and they ignore the negative effects of physical terrain. Additionally, they have a natural physical resistance value equal to the ring of their current stance."
+        }
+
+        ^"Invisibility" DEF {
+            ^"Description" STRING "As a Support action, an ifrit may become invisible and impossible to see, or they can become visible as a humanoid being with animal features."
+        }
+
+        RULES {
+            #L5RCW282ec284346a43f2409176:empowered_ifrit
+        }
+    }
+
+    ^"Fox Prince" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Description" STRING "Noble kitsune spirit with three or more tails, entitled to rank within the courts of Senkyo. Can be benevolent guardian, trickster, or spirit of vengeance."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 5
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 9
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 25
+            ^"Glory" INTEGER 35
+            ^"Status" INTEGER 35
+            ^"Demeanor" STRING "Mischievous"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Earth -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 3", "Social 3", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Dangerous Allure (Fire) [Social; Interpersonal, Physical]", "Royalty of Senkyo (Void) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Short Temper (Fire) [Martial, Social; Mental]", "Vain (Void) [Social; Interpersonal, Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Claws and Fangs: Range 0-1, Damage 3, Deadliness 4, Razor-Edged", "Kitsune-bi: Range 2-4, Damage 5, Deadliness 3, deals supernatural damage"]
+        }
+
+        ^"Nice Try" DEF {
+            ^"Description" STRING "Once per scene, after the fox prince has been a target of a successful Attack action, they may choose for the attack to hit an illusion of themself instead. The illusion disappears, the fox prince takes no damage, and they appear within range 2 of their illusory double's former location."
+        }
+
+        ^"Shapeshifter" DEF {
+            ^"Description" STRING "As a Support action, the fox prince can transform into human form (or back again). While in human form, they still cast a fox's shadow. When they become Compromised, their fox tails, ears, and paws appear. While in fox form, they are silhouette 1 and have at least three tails."
+        }
+
+        RULES {
+            #L5RCW290957a9995b7668c658db:fox_prince
+        }
+    }
+
+    ^"Golden Bird Lord" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 8
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Description" STRING "Golden-winged king of the birds, associated with courage, honesty, and community. Guardian of the Ujik mountains and opponent of all serpents."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 6
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 4
+            ^"Silhouette" INTEGER 4
+            ^"Demeanor" STRING "Stoic"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Fire -2"
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 3", "Scholar 2", "Social 2", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Cunning Tactician (Air) [Martial; Fame, Mental, Physical]", "Indomitable Will (Earth) [Martial, Social; Interpersonal, Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Sworn Enemy of Serpents (Void) [Social; Fame, Interpersonal, Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Beak and Talons: Range 1-2, Damage 8, Deadliness 6, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Golden feathers (Physical 3, Sacred, Supernatural 4)"]
+        }
+
+        ^"Mystical Guardian" DEF {
+            ^"Description" STRING "A Golden Bird Lord is an Otherworldly being of silhouette 4 who can fly. They can move vertically, and they ignore the negative effects of terrain. Additionally, once per scene, they may perform any invocation other than Fire, Air, and Wrath of Kaze-no-Kami. The invocation counts as succeeding with three bonus successes and :opp::opp:."
+        }
+
+        ^"Swoop" DEF {
+            ^"Description" STRING "When performing an Attack action check, a Golden Bird Lord may spend :opp: as follows: :opp:: Move 1 range band away from the target (or :opp: spent this way). If the target is human-sized (silhouette 2) or smaller, the Golden Bird Lord may carry it to its destination instead."
+        }
+
+        RULES {
+            #L5RCW300a5557ff6a9006cd2cd3:golden_bird_lord
+        }
+    }
+
+    ^"Imposing Marid" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 9
+            ^"Intrigue Conflict Rank" INTEGER 7
+            ^"Description" STRING "Greatest of the djinn, once worshipped as gods. Humanoid giants formed from the elements, capable of granting wishes."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 6
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 10
+            ^"Vigilance" INTEGER 5
+            ^"Silhouette" INTEGER 4
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Air +1, Void +1, Water -2"
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 4", "Scholar 4", "Social 3", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Giant's Strength (Earth) [Martial; Physical, Spiritual]", "Impossible Feats (Air) [Martial; Physical, Spiritual]", "Massive Stature (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Prideful and Vengeful (Earth) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Massive Fists: Range 0-2, Damage 7, Deadliness 5"]
+        }
+
+        ^"Elemental Powers" DEF {
+            ^"Description" STRING "A marid is an Otherworldly being of silhouette 4. They can move vertically, and they ignore the negative effects of physical terrain. Additionally, they have a natural physical resistance value equal to the ring of their current stance."
+        }
+
+        ^"Incredible Power" DEF {
+            ^"Description" STRING "The marid's enemies treat the area within range 0-1 of the marid as Dangerous terrain. The area around the marid at range 0-3 is Imbalanced (Air and Water), the kami are fearful of djinn. Additionally, the marid may attempt any invocation they want. If the marid is bound to another being, that being is immune to this ability's effects."
+        }
+
+        ^"Invisibility" DEF {
+            ^"Description" STRING "As a Support action, a marid may become invisible and impossible to see, or they may become visible as a giant humanoid made from the element of their current stance."
+        }
+
+        RULES {
+            #L5RCW31aa524f1512e8e9abb198:imposing_marid
+        }
+    }
+
+    ^"Jorogumo" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Description" STRING "Shapeshifting spider spirit capable of weaving complex sensory illusions. Ancestral enemy of kitsune, known for vengefulness and patience."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 3
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Void -2"
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 2", "Scholar 3", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Dangerous Allure (Fire) [Social; Interpersonal, Physical]", "Incredible Patience (Air) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Physically Weak (Fire) [Martial; Physical]"]
+            ^"Favored Weapons" LIST OF STRING ["Fangs: Range 0-1, Damage 2, Deadliness 7", "Poison Webs: Range 2-3, Damage 3, Deadliness 5, Concealable, deals supernatural damage"]
+        }
+
+        ^"Shapeshifter" DEF {
+            ^"Description" STRING "As a Support action, a jorogumo can transform into human or spider form. While in spider form, they are silhouette 0. When they become Compromised in their human form, their long spider legs appear, or their spider fangs protrude from their mouth."
+        }
+
+        ^"Illusionary Webs" DEF {
+            ^"Description" STRING "As a downtime activity, the jorogumo may weave an illusion out of webs. They may create any scenery they choose, including objects, within range 4 of themself. These illusions are visually and tangibly convincing, even when consumed as food or used as weaponry. They are, however, ultimately fake. Targets may suspect something is not what it seems even if they still believe what their senses tell them. The illusion lasts until it is willingly dropped, or until the jorogumo becomes Compromised. When dropped, the illusions become Entangling and Obscuring terrain. Additionally, the jorogumo knows the invocations False Realm of the Fox Spirits and Vapor of Nightmares."
+        }
+
+        RULES {
+            #L5RCW322577817dd75a74e2f5cc:jorogumo
+        }
+    }
+
+    ^"Luusyn Khan" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 8
+            ^"Intrigue Conflict Rank" INTEGER 6
+            ^"Description" STRING "Giant water spirit known as the king of serpents and dragon king, protector of freshwater purity. Resembles an enormous horned serpent with brilliant silver-blue scales."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 5
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 6
+                ^"Void" INTEGER 4
+            }
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Silhouette" INTEGER 5
+            ^"Demeanor" STRING "Aloof"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 3", "Scholar 2", "Social 3", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Ethereal Form (Air) [Martial, Trade; Physical]", "Terrifying Presence (Void) [Social, Trade; Fame, Mental, Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Proud (Air) [Social; Infamy, Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Lightning Strikes: Range 1-4, Damage 7, Deadliness 6, Sacred, deals physical or supernatural damage"]
+            ^"Gear" LIST OF STRING ["Shrouded by storm clouds (Physical 4, Supernatural 5, Sacred)"]
+        }
+
+        ^"Electric Aura" DEF {
+            ^"Description" STRING "After performing a successful Attack action check, the luusyn khan may spend :opp: as follows: :opp:: Characters within range 1 of the luusyn khan must make a TN 4 Fitness check (Earth 5, Void 5). If they fail, they gain the Disoriented condition."
+        }
+
+        ^"Spirit of Storm and Stream" DEF {
+            ^"Description" STRING "A luusyn khan is an Otherworldly being of silhouette 5 that can fly. They can move vertically, and they ignore the negative effects of terrain. Additionally, once per scene, they may perform any Air or Water invocation other than Rise, Air; Even Changing Waves; and Rise, Water. The invocation counts as succeeding with three bonus successes and :opp::opp:."
+        }
+
+        RULES {
+            #L5RCW337bc2b1a53e9c7547345e:luusyn_khan
+        }
+    }
+
+    ^"Manticore" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Description" STRING "Ageless shapeshifting being from Caliphate folklore. Sustains itself on human flesh while delighting in riddles and wordplay."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Demeanor" STRING "Ambitious"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Void -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 3", "Social 0", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Expert Manipulator (Air) [Social; Interpersonal]", "Silent Stalker (Air) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Must Honor All Agreements (Earth) [Martial; Physical]", "Obsessed with Riddles (Air) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Claws and Fangs: Range 1, Damage 5, Deadliness 7, Razor-Edged", "Scorpion Sting: Range 0-3, Damage 2, Deadliness 9, Concealable"]
+        }
+
+        ^"Monstrous Shapeshifter" DEF {
+            ^"Description" STRING "The manticore is an Otherworldly being. As a Support action, they can transform into the form of a human, a giant hunting cat, or a monstrous bird of prey. While in cat form, they have silhouette 3. While in bird form, they have silhouette 2 and can fly. They can use their scorpion tail in any form. When they become Compromised, the manticore is forced into either cat or bird form."
+        }
+
+        ^"Terrible Sorceries" DEF {
+            ^"Description" STRING "Choose up to three mahō and up to three rituals that the manticore can perform. Add 1 to the manticore's combat conflict rank for each mahō chosen beyond the first."
+        }
+
+        RULES {
+            #L5RCW34bcfdab33c48da0497444:manticore
+        }
+    }
+
+    ^"Snow Lion" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 7
+            ^"Description" STRING "Mountain spirit with white fur and turquoise mane, leaping from peak to peak. Associated with strength, joy, and playfulness by the Ujik."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 6
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 5
+            }
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 2
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 3
+            ^"Demeanor" STRING "Joyful"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 2", "Scholar 3", "Social 3", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Playfulness (Air) [Social; Fame, Mental, Spiritual]", "Trickster (Air) [Martial, Social, Trade; Interpersonal, Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Easily Distracted (Air) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Powerful Jaws: Range 0-1, Damage 7, Deadliness 4, Sacred"]
+            ^"Gear" LIST OF STRING ["Thick hide (Physical 3, Supernatural 2, Sacred)"]
+        }
+
+        ^"Mystical Being" DEF {
+            ^"Description" STRING "A snow lion is an Otherworldly being of silhouette 3. While they cannot fly vertically, they still ignore the negative effects of terrain. Additionally, once per scene, they may perform a kihō (holy). The kihō counts as succeeding with three bonus successes and :opp::opp:."
+        }
+
+        ^"Roar of Emptiness" DEF {
+            ^"Description" STRING "Once per scene, a snow lion may roar. Everyone within range 5 of the snow lion must succeed on a TN 4 Meditation check (Fire 5, Void 3) or gain the Disoriented condition and suffer 3 strife. If they succeed, they remove 3 strife instead."
+        }
+
+        RULES {
+            #L5RCW35287dc49c001637835611:snow_lion
+        }
+    }
+
+    ^"Wind Horse" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Massive Otherworldly horse equated with the Ujik soul. Its appearance portends good luck in the form of peace, wealth, and harmony."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 6
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 4
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 4
+            ^"Demeanor" STRING "Temperamental"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Air -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Faster Than Any Mortal Horse (Fire) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Untamable (Fire) [Martial, Social; Mental, Spiritual]", "Quick to Anger (Fire) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Hooves: Range 1-2, Damage 4, Deadliness 5, Sacred"]
+            ^"Gear" LIST OF STRING ["Shrouded by Mist (Physical 3, Supernatural 4, Sacred)"]
+        }
+
+        ^"Soul of Wind and Light" DEF {
+            ^"Description" STRING "A wind horse is an Otherworldly being of silhouette 4 and can pass through solid objects along with any riders. Additionally, once per scene, they may perform a Fire kihō. The kihō counts as succeeding with three bonus successes and :opp::opp:."
+        }
+
+        ^"Spirit of Freedom" DEF {
+            ^"Description" STRING "The wind horse can't suffer from the Disoriented or Immobilized condition."
+        }
+
+        RULES {
+            #L5RCW36fcceb3f6b695383c4a71:wind_horse
+        }
+    }
+
+    # ===========================
+    # NAMED NPCs (CHAPTER 1)
+    # ===========================
+
+    ^"Utaku Asagao" DEF {
+        EXTENDS ^"NPC"
+
+        # Once known by a different name, the shrine keeper Asagao
+        # discovered who she truly was when a horse of the Blessed
+        # Herd allowed her onto its back during an emergency. Now
+        # devoted to Utaku's Shrine, she offers wisdom for anyone
+        # who feels lost on their path through life.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Description" STRING "Shrine keeper of Utaku Seido with mysterious connection to the Blessed Herd."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 66
+            ^"Glory" INTEGER 35
+            ^"Status" INTEGER 25
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Fire +1, Void -2"
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 3", "Scholar 2", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Affinity with Horses (Void) [Social; Interpersonal]", "Local Folklorist (Earth) [Scholar; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Overprotective (Fire) [Martial; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Broom (improvised weapon): Treat as bo (staff)"]
+            ^"Gear" LIST OF STRING ["Shrine keeper robes (Physical 1, Supernatural 3, Ceremonial)", "Offerings"]
+            ^"Companions" LIST OF STRING ["Taiyo (see Utaku warhorse on page 143)"]
+        }
+
+        ^"Path to Inner Peace" DEF {
+            ^"Description" STRING "Invocation. As a Support action, may make a TN 2 Theology (Water) check targeting a character at range 0-2. If Asagao succeeds, the target removes 3 fatigue, plus 1 per bonus success. A target can be affected by Path to Inner Peace only once per scene."
+        }
+
+        RULES {
+            #L5RCW37485a96fa3412dc06722c:utaku_asagao
+        }
+    }
+
+    ^"Iuchi Itsuki" DEF {
+        EXTENDS ^"NPC"
+
+        # One of a handful of Meishōdō Masters entrusted with
+        # maintaining the wards and statues that contain the
+        # Dreamer's Forest. Tempted by a fox spirit claiming
+        # innocence, trapped in one of his talismans.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Description" STRING "Meishōdō Master maintaining Dreamer's Forest wards. Tempted by a fox spirit claiming innocence."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 40
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 30
+            ^"Demeanor" STRING "Ambitious"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 1", "Scholar 2", "Social 4", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Syncretic Philosophy (Water) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Vain (Void) [Social; Interpersonal, Mental]", "Haunted (Void) [Social; Interpersonal, Spiritual]"]
+            ^"Favored Weapons" LIST OF STRING ["Kiseru (smoking pipe): Range 0, Damage 2, Deadliness 2, Concealable, Mundane"]
+            ^"Gear" LIST OF STRING ["1 to 4 meishōdō talismans (see Abilities)", "Sanctified robes (Physical 1, Supernatural 3, Ceremonial)", "Divination kit", "Medicine kit", "Up to three omamori"]
+            ^"Companions" LIST OF STRING ["Natsu (see Iuchi riding steed on page 141)"]
+        }
+
+        ^"Deft Negotiator" DEF {
+            ^"Description" STRING "During an intrigue or other noncombat scene, when making a Scheme action check, Itsuki may add a kept (ring) set to an (op) result to the check. During otherworldly encounters (see page 125), Itsuki gains this bonus on all actions."
+        }
+
+        ^"Meishōdō Artist" DEF {
+            ^"Description" STRING "Choose up to four invocations of rank 1-3 and one invocation of rank 4-5. Itsuki has meishōdō talismans with the chosen invocations bound to them and can activate those invocations using the talismans as described in Iuchi Meishōdō Master School in the core rulebook, page 83. You may also choose up to three rituals that Itsuki can perform."
+        }
+
+        RULES {
+            #L5RCW38a20223c882a9ec1dd1a3:iuchi_itsuki
+        }
+    }
+
+    ^"Ide Yuto" DEF {
+        EXTENDS ^"NPC"
+
+        # Wayward slacker son of high-ranking diplomats, Yuto
+        # vanished while staying at Far Traveler Castle. He claims
+        # he dove into Water Dragon Lake and surfaced in the
+        # territory of the Centipede Clan. He has craved adventure
+        # ever since.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Description" STRING "Adventurous diplomat's son who claims an impossible underwater journey. Craves excitement."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 40
+            ^"Glory" INTEGER 44
+            ^"Status" INTEGER 37
+            ^"Demeanor" STRING "Ambitious"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 0", "Scholar 3", "Social 3", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Tall Tales (Air) [Scholar; Interpersonal]", "Unfettered (Earth) [Social, Trade; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Impetuous Risk-Taker (Fire) [Martial; Mental]"]
+            ^"Gear" LIST OF STRING ["Traveling clothes (Physical 2, Durable, Mundane, Subtle)", "Traveling supplies", "Various trinkets", "String of koku"]
+            ^"Companions" LIST OF STRING ["Riding pony Kushami (see Horse [Rokugani Pony] in the core rulebook, page 326)"]
+        }
+
+        ^"Quick Assessment" DEF {
+            ^"Description" STRING "As a Support action, Yuto may target an NPC within range 0-3 who is currently engaged in conversation or combat. He discerns the target's demeanor, vigilance, and composure (and may reveal them to his allies)."
+        }
+
+        ^"Unassuming" DEF {
+            ^"Description" STRING "When Yuto makes a check targeting a character with a higher status rank, he treats the target's vigilance as 1 lower."
+        }
+
+        RULES {
+            #L5RCW39c06165867ce923b2ca60:ide_yuto
+        }
+    }
+
+    ^"Moto Syujiko" DEF {
+        EXTENDS ^"NPC"
+
+        # Adorned in fur-lined robes and jingling with trinkets
+        # from atop one of her riding camels, Moto Syujiko is a
+        # traveling samurai, storyteller, and diviner of the Ujik
+        # tradition. She reads fortunes and channels the Lords
+        # of Death through knuckle bone divination.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Traveling samurai, storyteller, and Ujik diviner. Reads fortunes through knuckle bone divination and channels the Lords of Death."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 40
+            ^"Glory" INTEGER 38
+            ^"Status" INTEGER 30
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Fire +1, Void -2"
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 2", "Scholar 3", "Social 0", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Well-Read (Fire) [Scholar; Mental]", "Lords of Death Blessing (Void) [Scholar, Social; Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Thick-Headed (Air) [Scholar, Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Scimitar: Range 1, Damage 4, Deadliness 5, Durable, Razor-Edged", "Horsebow: Range 2-4, Damage 4, Deadliness 5, Wargear"]
+            ^"Gear" LIST OF STRING ["Wakizashi (short sword)", "Traveling supplies", "Divination kit", "Various trinkets", "String of koku"]
+            ^"Companions" LIST OF STRING ["Two camels (see Camel in Path of Waves, page 235)"]
+        }
+
+        ^"Death Lord Divination" DEF {
+            ^"Description" STRING "As a downtime activity, Syujiko can tell someone's fortune. After she offers a vague prediction to a character, choose one skill type (Artisan, Martial, Scholar, Social, or Trade). During the same session, the next time that character makes a skill check using the chosen type, they may replace one kept die with a single die showing a (su) result."
+        }
+
+        ^"Death Lord Curse" DEF {
+            ^"Description" STRING "As a Support action, choose a target at range 0-2 and name a specific action type (such as Attack, Support, Movement, Intrigue, or similar). Until Syujiko's next turn, the next time the target attempts an action of the chosen type, they immediately receive 3 strife."
+        }
+
+        RULES {
+            #L5RCW40427df39abea19faceab6:moto_syujiko
+        }
+    }
+
+    ^"Shinjo Haruko" DEF {
+        EXTENDS ^"NPC"
+
+        # The Unicorn Champion's only biological daughter spends
+        # most of her days on horseback, galloping along the shore
+        # of Water Dragon Lake. After Imperial censure and a falling
+        # out between the Shinjo and Ikoma families, all paths that
+        # once seemed open to her have abruptly shut. She seeks a
+        # new purpose but cannot find it near Far Traveler Castle.
+        # Although one of the most talented horse archers of her
+        # generation, Haruko tends to stir up trouble when bored.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Description" STRING "The Unicorn Champion's only biological daughter. One of the most talented horse archers of her generation, seeking a new purpose after Imperial censure shut all her former paths."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 65
+            ^"Status" INTEGER 39
+            ^"Demeanor" STRING "Impetuous"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 3", "Scholar 2", "Social 3", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Skilled Archer (Air) [Martial; Physical]", "Friends in High Places (Air) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Reckless (Fire) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Shinjo Horsebow: Range 2-4, Damage 4, Deadliness 5, Wargear"]
+            ^"Gear" LIST OF STRING ["Lamellar armor (Physical 4, Wargear)", "Quiver", "20 razor-leaf arrows", "Scimitar", "Wakizashi (short sword)", "Fine clothes", "Traveling clothes", "Some worn-out pillow books"]
+            ^"Companions" LIST OF STRING ["Yue (see Shinjo courser on page 143)"]
+        }
+
+        ^"Horse Girl" DEF {
+            ^"Description" STRING "Any steed Haruko rides or has personally trained gives the rider an additional bonus success on any Movement action check they make."
+        }
+
+        ^"Wishes at Dawn" DEF {
+            ^"Description" STRING "In addition to her martial pursuits, Haruko also has a great love for the theater. Her most recent play, Wishes at Dawn, debuted at a provincial Winter Court and was met with significant praise. It depicts two star-crossed lovers, a Kakita and a Matsu, who must cross swords on the battlefield despite their secret love. While popular, neither the Matsu nor the Kakita family is particularly amused."
+        }
+
+        RULES {
+            #L5RCW42a7b3e1d9f2c8a45e6701:shinjo_haruko
+        }
+    }
+
+    ^"Kitsune Ryosei" DEF {
+        EXTENDS ^"NPC"
+
+        # Young and untested, Kitsune Ryosei only recently began
+        # shadowing her father in preparation to take over as the
+        # Fox Clan Champion. After making several Sakkaku pacts,
+        # she underwent a sudden personality change. Some wonder
+        # if she has been replaced by a trickster spirit. This profile
+        # is for the real Ryosei; for the impersonator, apply the
+        # Trickster Animal in Disguise template (page 140).
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Description" STRING "Young Fox Clan Champion. Recently made several Sakkaku pacts and underwent a sudden personality change. May have been replaced by a trickster spirit."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 45
+            ^"Status" INTEGER 64
+            ^"Demeanor" STRING "Assertive"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 3", "Scholar 4", "Social 2", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Blood of the Fox (Void) [Martial; Physical, Spiritual]", "Trickster Guardians (Air) [Martial, Social; Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Small Stature (Air) [Martial; Physical]", "Untested (Fire) [Martial, Social; Mental]", "Wandering Heart (Water) [Scholar; Mental]", "Short Attention Span (Water) [Scholar; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Trident: Range 2, Damage 4, Deadliness 4, Snaring, Wargear"]
+            ^"Gear" LIST OF STRING ["Sanctified robes (Physical 1, Supernatural 3, Ceremonial)", "Wakizashi (short sword)", "Spiritual offerings", "Personal chop"]
+        }
+
+        ^"On Friendly Terms" DEF {
+            ^"Description" STRING "Ryosei can talk to animals and understands their speech."
+        }
+
+        ^"Instinctive Pathfinding" DEF {
+            ^"Description" STRING "While in dense or forested surroundings, Ryosei ignores the effects of Entangling and Obscuring terrain. Once per scene as a Support action, she may extend this ability to up to two targets at range 0-1. The effects of this ability last for as long as affected targets remain in these surroundings."
+        }
+
+        ^"Trickster Magic" DEF {
+            ^"Description" STRING "When Ryosei performs an action to activate an invocation, she may spend (op) in the following way: (op): A target at range 0-1 suffers the Disoriented condition. Additionally, she knows the following invocations: Path of Beasts (Celestial Realms, page 109), Messenger of Chikusho-do (Celestial Realms, page 106), Nature's Touch (core rulebook, page 194), and Inari's Blessing (core rulebook, page 209)."
+        }
+
+        RULES {
+            #L5RCW41da14a8a049a5855f53fd:kitsune_ryosei
+        }
+    }
+
+    # ===========================
+    # ADVENTURE NPCs (CHAPTER 4)
+    # ===========================
+
+    ^"Shinjo Higuchi (Possessed)" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Popular author of stories and poems (pen name Hana-no-Ame), possessed by an ifrit from a meishōdō talisman while visiting the City of the Rich Frog."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 5
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 39
+            ^"Demeanor" STRING "Curious"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +1, Void +1, Air -2"
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 2", "Scholar 1", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Eye for Detail (Air) [Artisan; Interpersonal, Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Possessed by Curiosity (Water) [Scholar; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Punch: Range 0, Damage 1, Deadliness 2, Snaring", "Kick: Range 1, Damage 2, Deadliness 1"]
+            ^"Gear" LIST OF STRING ["Common clothes (Physical 1, Mundane)", "Calligraphy set", "Research notes"]
+        }
+
+        ^"Truth Burns through Lies" DEF {
+            ^"Description" STRING "When making a Scholar skill (Fire) check to assess a character's story, Higuchi may spend :opp: as follows: Fire :opp:: If there is a single statement upon which the character's story hinges, she determines what it is and what she would need to do to verify or disprove it."
+        }
+
+        ^"Flame Fist" DEF {
+            ^"Description" STRING "Activation: As an Attack and Support action, Higuchi may make a TN 1 Martial Arts [Unarmed] (Fire) check to empower her unarmed blows. When she performs this action, she may choose a character at range 0-1 as the target for the burst effect. Enhancement Effect: While this kihō is active, treat the deadliness of Higuchi's unarmed punch and kick profiles as increased by 5 and treat her damage type as supernatural. Burst Effect: If Higuchi has two or more bonus successes, her target suffers 5 physical damage and must succeed on a TN 4 Fitness check (Air 5, Water 2) or suffer the Dazed condition."
+        }
+
+        ^"Searing Caress" DEF {
+            ^"Description" STRING "When performing an Attack action check, Higuchi may spend :opp: as follows: :opp:+: The target and up to one other character per :opp: spent this way at range 0-1 of the target suffer the Burning condition."
+        }
+
+        RULES {
+            #L5RCW42e6d3e5604f0489dc683d:shinjo_higuchi_possessed
+        }
+    }
+
+    ^"Ikoma Kotone" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Description" STRING "Tea master and owner of the Teahouse with No Name in the City of the Rich Frog's Lion district. Diligent and professional, with a weakness for gossip and taboo romance stories."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 39
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 0", "Scholar 2", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Professional Poise (Air) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Utter Gossip (Fire) [Social; Interpersonal]"]
+        }
+
+        ^"Master of Ceremonies" DEF {
+            ^"Description" STRING "As tea master, Kotone has the right to speak the first word. During intrigue conflict scenes, characters who act before Kotone in initiative must forfeit 3 honor before starting their turn. They may choose instead to delay their turn to the end of the current initiative order."
+        }
+
+        ^"Stir the Leaves" DEF {
+            ^"Description" STRING "As a Scheme action, Kotone may require any number of characters in the scene to make a TN 3 Courtesy (Air) or Performance (Air) check. Each character who fails increases the TN of their next check targeting Kotone by 1."
+        }
+
+        RULES {
+            #L5RCW43e32b12d7a59cc5235b66:ikoma_kotone
+        }
+    }
+
+    ^"Kaeru Haya" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Old peacekeeper of the Kaeru family of ronin, leading the security group along the wharf in the City of the Rich Frog's Unicorn district. Has developed an interest in spiritual artifacts from beyond Rokugan."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 30
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 20
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Fire +1, Void -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 1", "Social 0", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Steadfast Oaths (Earth) [Social; Interpersonal]", "Killer Instinct (Fire) [Martial; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Implacable Boredom (Air) [Social; Interpersonal, Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged", "Yumi: Range 2-5, Damage 5, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Wakizashi", "Peacekeeper armor (Physical 2)", "Knife", "Mempo half mask", "Dice and cup"]
+        }
+
+        ^"Striking as Earth" DEF {
+            ^"Description" STRING "When Haya makes a Martial Arts [Melee, Ranged, or Unarmed] (Earth) check, she may spend :opp: as follows: Earth :opp:: Treat your physical resistance as 1 higher per :opp: spent this way until the beginning of your next turn."
+        }
+
+        ^"Way of the Frog" DEF {
+            ^"Description" STRING "Once per round, after an Attack action check targeting Haya succeeds, she may move 1 range band."
+        }
+
+        RULES {
+            #L5RCW441b40ccc0082b1c27569d:kaeru_haya
+        }
+    }
+
+    ^"Kaeru Peacekeeper" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Peacekeepers of the Kaeru family of ronin, patrolling the Unicorn wharf in the City of the Rich Frog, on the lookout for illegal smuggling."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 20
+            ^"Glory" INTEGER 20
+            ^"Status" INTEGER 20
+            ^"Demeanor" STRING "Gruff"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Air -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Seasoned Warrior (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Quick to Anger (Fire) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged", "Bo: Range 1-2, Damage 6, Deadliness 2, Mundane"]
+            ^"Gear" LIST OF STRING ["Peacekeeper armor (Physical 2)", "Knife", "Dice and cup"]
+        }
+
+        ^"Subdual" DEF {
+            ^"Description" STRING "When making an Attack action (Earth) check, the peacekeeper may spend :opp: as follows: Earth :opp:: The target suffers the Dazed condition."
+        }
+
+        RULES {
+            #L5RCW44a2bc9f5e731d08c43e12:kaeru_peacekeeper
+        }
+    }
+
+    ^"Ide Chiharu" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Description" STRING "Unicorn antiquarian and seller of artifacts who recently purchased several supposedly mystical items from a Fox Clan merchant, then sold one to Higuchi."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 4
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 45
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 20
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 0", "Scholar 0", "Social 2", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Honeyed Words (Water) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Fear of Conflict (Fire) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Knife: Range 0, Damage 2, Deadliness 4/6, Concealable, Mundane, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Common clothes (Physical 1, Mundane)", "Calligraphy set", "Omamori (Boon of Bishamon)", "A pouch of koku and bu"]
+        }
+
+        ^"Shallow Waters" DEF {
+            ^"Description" STRING "When Chiharu makes a Social skill (Water) check targeting a character, they may spend :opp: as follows: Water :opp:: Learn of one material item or worldly experience the target desires. Water :opp::opp:: Learn the target's ninjō."
+        }
+
+        RULES {
+            #L5RCW45246ecf9a3f34f8c6f7af:ide_chiharu
+        }
+    }
+
+    ^"Asahina Nao" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Description" STRING "Crane shugenja visiting Daidoji Shin in the City of the Rich Frog. An old friend of the governor Miya Tetsua, called upon to assist with the situation involving Shinjo Higuchi."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 50
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 40
+            ^"Demeanor" STRING "Dependable"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +1, Water +1, Earth -2"
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 0", "Scholar 3", "Social 2", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Meishōdō Master (Void) [Scholar; Interpersonal, Mental]", "Shrewd (Air) [Social; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Fondness for Gambling (Earth) [Social; Interpersonal, Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Sanctified robes (Physical 1, Supernatural 3, Ceremonial)", "Scroll satchel", "Personal chop"]
+        }
+
+        ^"The Fires from Within" DEF {
+            ^"Description" STRING "Invocation. As an Attack action, Nao may make a TN 3 Theology (Fire) check targeting a number of characters up to her Fire Ring at range 1-3. If she succeeds, each target suffers 3 supernatural damage, plus 1 per bonus success. :opp:+: Choose 1 additional target per :opp: spent this way."
+        }
+
+        ^"Path to Inner Peace" DEF {
+            ^"Description" STRING "Invocation. As a Support action, Nao may make a TN 2 Theology (Water) check targeting herself or another character at range 0-2. If she succeeds, the target removes 3 fatigue, plus 1 per bonus success. A target can only be affected by this invocation once per scene. Water :opp:: Choose one of the following conditions: Bleeding, Dazed, Disoriented, or Lightly Wounded. Remove that condition from each target. Water :opp:: Your target also removes strife equal to your bonus successes."
+        }
+
+        ^"Practiced Ritualist" DEF {
+            ^"Description" STRING "Nao may perform the Cleansing Rite (core rulebook, page 212) and Commune with the Spirits (core rulebook, page 212) rituals."
+        }
+
+        RULES {
+            #L5RCW46db7ead6ab657b12a9950:asahina_nao
+        }
+    }
+
+    ^"Adventure Ifrit" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 9
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Description" STRING "Fire spirit from the Burning Sands, long dormant within a magical talisman. Accidentally awoken by Higuchi, it has possessed her in its confusion. This profile represents the ifrit in its natural, unbound form."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 6
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 3
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 1
+            ^"Demeanor" STRING "Intense"
+            ^"Social Skill Check TN Modifiers" STRING "Air +3, Water -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 3", "Social 2", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Primal Terror (Fire) [Martial, Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Endless Hunger (Water) [Artisan, Scholar; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Blazing Touch: Range 1-3, Damage 6, Deadliness 6, Razor-Edged, deals supernatural damage"]
+            ^"Gear" LIST OF STRING ["Corona of flames (Physical 3)"]
+        }
+
+        ^"Living Fire Spirit" DEF {
+            ^"Description" STRING "The ifrit is an Otherworldly being. Once per scene as an action of the appropriate types, the ifrit may perform any one Fire invocation (other than Rise, Fire). It counts as succeeding with 3 bonus successes and 2 :opp:."
+        }
+
+        ^"Mantle of Smoke and Ash" DEF {
+            ^"Description" STRING "Other characters treat the area at range 0-1 of the ifrit as Dangerous and Obscuring terrain."
+        }
+
+        ^"Searing Caress" DEF {
+            ^"Description" STRING "When performing an Attack action check, the ifrit may spend :opp: as follows: :opp:+: The target and up to one other character per :opp: spent this way at range 0-1 of the target suffer the Burning condition."
+        }
+
+        RULES {
+            #L5RCW4717808c8d1e36833b8268:adventure_ifrit
+        }
+    }
+
+    ^"Miya Tetsua" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Description" STRING "Governor of the City of the Rich Frog, friend to many influential citizens. Has been housing Shinjo Higuchi while she writes her newest novel."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 45
+            ^"Glory" INTEGER 55
+            ^"Status" INTEGER 60
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 2", "Scholar 4", "Social 4", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Kuge Lineage (Earth) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Irrepressible Flirtation (Fire) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Court hakama (Physical 1, Ceremonial, Resplendent)", "Personal chop", "Imperial seal"]
+        }
+
+        ^"Emerald Authority" DEF {
+            ^"Description" STRING "Once per scene when making a check, Miya Tetsua may count his ranks in the skill used as being equal to his status rank."
+        }
+
+        RULES {
+            #L5RCW48b13ea951ec022ac1c36c:miya_tetsua
+        }
+    }
+
+    ^"Daidoji Shin" DEF {
+        EXTENDS ^"NPC"
+        # Full stat block in l5r5e-0.3-daidoji-shin-npcs.ttrpg
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 11
+            ^"Description" STRING "Louche layabout and wastrel turned amateur gentleman detective. Crane Clan's trade envoy in the City of the Rich Frog."
+        }
+
+        RULES {
+            #L5RCW497d916e5e929b9bcd81af:daidoji_shin
+        }
+    }
+
+    ^"Hiramori Kasami" DEF {
+        EXTENDS ^"NPC"
+        # Full stat block in l5r5e-0.3-daidoji-shin-npcs.ttrpg
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 9
+            ^"Intrigue Conflict Rank" INTEGER 7
+            ^"Description" STRING "Daidoji Shin's long-suffering friend and bodyguard, ever loyal and determined to keep him out of harm's way."
+        }
+
+        RULES {
+            #L5RCW50f2a3be8cea0388a4bf24:hiramori_kasami
+        }
+    }
+}

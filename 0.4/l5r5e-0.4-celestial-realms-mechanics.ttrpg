@@ -1,0 +1,1993 @@
+EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
+    NAME "Legend of the Five Rings 5th Edition - Celestial Realms: New Player Options"
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-03-01"
+
+    # Celestial Realms (Chapter 2): Centipede Minor Clan, Moshi family,
+    # new schools, advantages, disadvantages, heritages, weapons, arrows,
+    # spiritual artifacts, omamori, ancestral swords, item pattern,
+    # invocations, rituals, inversions (new technique type), titles.
+
+    # ===========================
+    # CENTIPEDE MINOR CLAN
+    # ===========================
+
+    ^"Centipede Minor Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
+        APPLIES TO [^"Samurai"]
+
+        # Founded by Isawa Moshi, one of the Eleven Daughters
+        # of the Centipede, the Centipede Clan is devoted to the
+        # worship and protection of Amaterasu, the Sun Goddess.
+        # They maintain the greatest shrine to Lady Sun and greet
+        # her each morning with song so she may awaken and rise.
+
+        PROPERTIES {
+            ^"Clan Name" STRING "Centipede" FIXED
+            ^"Clan Type" STRING "Minor Clan"
+            ^"Clan Ring Bonus" DEF { ^"Fire" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Theology" INTEGER 1 }
+            ^"Clan Status" INTEGER DEFAULT 30
+        }
+
+        FAMILIES {
+            ^"Moshi"
+        }
+
+        RULES {
+            #L5RCR01aB2cD4eF6gH8iJ0: centipede_devoted_to_amaterasu
+            #L5RCR02kL3mN5oP7qR9sT1u: centipede_maintain_shrine_to_lady_sun
+        }
+    }
+
+
+    # ===========================
+    # CENTIPEDE FAMILIES
+    # ===========================
+
+    #L5RCR50aB2cD4eF6gH8iJ0k ^"Moshi" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Moshi" FIXED
+            ^"Clan"            STRING "Centipede"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Fire"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Fitness" INTEGER 1
+                ^"Meditation" INTEGER 1
+            }
+            ^"Glory"           INTEGER 40
+            ^"Starting Wealth" INTEGER 3
+        }
+    }
+
+
+    # ===========================
+    # NEW SCHOOLS
+    # ===========================
+
+    ^"Agasha Alchemist" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Agasha-led researchers who condense and blend prayers
+        # and effects of elemental kami invocations. They believe
+        # calling upon spirits is as much science as art, and with
+        # careful preparation they can coax kami into weaving
+        # powers together to create expanded effects via potions.
+
+        PROPERTIES {
+            ^"School Name" STRING "Agasha Alchemist" FIXED
+            ^"Clan" STRING "Dragon"
+            ^"Roles" LIST ["Shugenja"]
+            ^"Ring Increase" DEF {
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Martial Arts [Ranged]", ^"Medicine", ^"Meditation", ^"Performance", ^"Survival", ^"Theology"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            INVOCATION CHOOSE 3 [^"Amaterasu's Gaze", ^"Fukurokujin's Wit", ^"Path to Inner Peace", ^"The Cleansing Fire", ^"The Fires from Within"]
+            SHUJI CHOOSE 2 [^"Shallow Waters", ^"Stirring the Embers", ^"Truth Burns through Lies"]
+        }
+
+        SCHOOL_ABILITY "Flesh of the Elements" {
+            "You can have a number of additional potions with prepared invocations equal to your school rank. When you spend a downtime activity creating a potion, you may make supplemental checks after the first equal to your school rank, but each must be for a different invocation."
+        }
+
+        MASTERY_ABILITY ^"Experimental Concoction" {
+            "Once per game session as a Support action, you may make a TN 4 Medicine (Water) check to combine two of your potions that share at least one invocation effect keyword (mend, purify, smite, etc.) If you succeed, the two potions become a single concoction with both properties; when this concoction is used, resolve the effects of both prepared invocations. A concoction cannot be combined with another potion or concoction."
+        }
+        STARTING_OUTFIT [
+            "traveling clothes", "one weapon of rarity 7 or lower",
+            "blowgun and pouch of darts", "wakizashi (short sword)",
+            "medicine kit", "one omamori (your choice)",
+            "a pouch of 5 blessed glass vials",
+            "small satchel of ingredients worth 10 bu"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Performance"
+                SKILL "Smithing"
+                TECHNIQUE_GROUP "Rank 1 Fire & Water Invocations"
+                ^"Hawk's Precision" [kata]
+                ^"Fires of Purity" [invocation]
+            }
+            RANK 2 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Performance"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-2 Earth & Air Invocations"
+                ^"Dazzling Performance" [shuji]
+                ^"Pelting Hail Style" [kata]
+            }
+            RANK 3 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Commerce"
+                SKILL "Medicine"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-3 Shūji"
+                ^"Bravado" [shuji]
+                ^"Path of Beasts" [invocation]
+            }
+            RANK 4 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Performance"
+                SKILL "Smithing"
+                TECHNIQUE_GROUP "Rank 1-4 Invocations"
+                TECHNIQUE_GROUP "Rank 1-4 Ranged Kata"
+                ^"Rain of Ten Thousand Lotuses" [invocation]
+            }
+            RANK 5 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Commerce"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-5 Invocations"
+                ^"Heart of the Lady Sun" [invocation]
+                ^"Sear the Wound" [shuji]
+            }
+            RANK 6 {
+                ^"Experimental Concoction"
+            }
+        }
+
+    }
+
+    ^"Asahina Envoy" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Honest arbiters of harmony, the Asahina train a select
+        # few as specialized priests. These envoys travel to other
+        # clans to offer aid and foster positive relations. They
+        # officiate weddings, conduct funerals, and bless newborns.
+
+        PROPERTIES {
+            ^"School Name" STRING "Asahina Envoy" FIXED
+            ^"Clan" STRING "Crane"
+            ^"Roles" LIST ["Courtier"]
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Aesthetics", ^"Courtesy", ^"Culture", ^"Meditation", ^"Performance", ^"Sentiment", ^"Theology"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 50
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            RITUAL ^"Tea Ceremony"
+            SHUJI CHOOSE 1 [^"Cadence", ^"Shallow Waters", ^"Weight of Duty"]
+        }
+
+        SCHOOL_ABILITY "Soul of Ceremony" {
+            "When you make a check to perform a ritual, you may add kept ring dice set to opportunity results equal to your school rank. You may spend these opportunity as if the ritual were also a Social skill check of your choice."
+        }
+
+        MASTERY_ABILITY ^"Favored Counselor" {
+            "When making a check to perform a ritual, you may spend opportunity as follows: (op)+: One participant in the ritual with vigilance lower than or equal to opportunity spent this way feels especially indebted to you. You gain the Ally [that character] advantage."
+        }
+        STARTING_OUTFIT [
+            "traveling clothes", "ceremonial clothes",
+            "sanctified robes", "wakizashi (short sword)",
+            "knife or bō (staff)", "scroll satchel",
+            "calligraphy set", "tea set",
+            "traveling pack", "attendant", "Rokugani pony"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Aesthetics"
+                SKILL "Culture"
+                SKILL "Government"
+                TECHNIQUE_GROUP "Rank 1 Air Shūji"
+                ^"Lady Doji's Decree" [shuji]
+                ^"Divination" [ritual]
+            }
+            RANK 2 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Command"
+                SKILL "Design"
+                SKILL "Performance"
+                TECHNIQUE_GROUP "Rank 1-2 Fire Shūji"
+                ^"Dazzling Performance" [shuji]
+                ^"Blessing of the Dance" [ritual]
+            }
+            RANK 3 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Commerce"
+                SKILL "Culture"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-3 Air Shūji"
+                ^"Blessed Union" [ritual]
+                ^"Prayer of Protection" [ritual]
+            }
+            RANK 4 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Courtesy"
+                SKILL "Performance"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-4 Water Shūji"
+                TECHNIQUE_GROUP "Rank 1-5 Rituals"
+                ^"Buoyant Arrival" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Aesthetics"
+                SKILL "Culture"
+                SKILL "Design"
+                TECHNIQUE_GROUP "Rank 1-5 Void Shūji"
+                ^"Bend with the Storm" [shuji]
+                ^"The Immovable Hand of Peace" [shuji]
+            }
+            RANK 6 {
+                ^"Favored Counselor"
+            }
+        }
+
+    }
+
+    ^"Ishiken Initiate" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Vanishingly rare individuals who can call upon the Void.
+        # Trained at the Starry Heaven Sanctuary by the Phoenix Clan.
+        # They use inversions, a new technique type that manipulates
+        # blank die results via magnitude effects, at cost of cosmic strain.
+
+        PROPERTIES {
+            ^"School Name" STRING "Ishiken Initiate" FIXED
+            ^"Clan" STRING "Phoenix"
+            ^"Roles" LIST ["Sage", "Shugenja"]
+            ^"Ring Increase" DEF {
+                ^"Void" INTEGER 1
+                CHOOSE 1 [^"Air", ^"Earth", ^"Fire", ^"Water"] INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Fitness", ^"Medicine", ^"Meditation", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Techniques Available" LIST ["Inversions", "Rituals", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            INVERSION CHOOSE 1 [^"One within the Void", ^"Sight beyond Existence", ^"Whispered Blade", ^"Witness the End"]
+            RITUAL CHOOSE 1 [^"Commune with the Spirits", ^"Divination", ^"Threshold Barrier"]
+            SHUJI CHOOSE 1 [^"All in Jest", ^"Ancestry Unearthed", ^"Cadence", ^"Truth Burns through Lies"]
+        }
+
+        SCHOOL_ABILITY "Way of the Void" {
+            "When you make a check using your Void Ring, after rolling dice, you may receive fatigue up to your school rank. If you push, choose that many blank dice and alter each to a non-blank result of your choice. If you pull, choose that many non-blank dice and alter each to blank."
+        }
+
+        MASTERY_ABILITY ^"Essence of Emptiness" {
+            "Once per scene, after a character rolls dice, you may receive 3 fatigue to alter any number of their rolled dice to blank results."
+        }
+        STARTING_OUTFIT [
+            "sanctified robes", "wakizashi (short sword)",
+            "knife or bō (staff)", "scroll satchel",
+            "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Fitness"
+                SKILL "Meditation"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1 Air Invocations"
+                TECHNIQUE_GROUP "Rank 1 Inversions"
+                ^"Tea Ceremony" [ritual]
+            }
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Composition"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-2 Fire Invocations"
+                TECHNIQUE_GROUP "Rank 1-2 Inversions"
+                ^"All Arts Are One" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Government"
+                SKILL "Meditation"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-3 Water Invocations"
+                TECHNIQUE_GROUP "Rank 1-3 Inversions"
+                ^"A Samurai's Fate" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Courtesy"
+                SKILL "Meditation"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-4 Earth Invocations"
+                TECHNIQUE_GROUP "Rank 1-4 Inversions"
+                ^"The Immovable Hand of Peace" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Fitness"
+                SKILL "Meditation"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-5 Invocations"
+                TECHNIQUE_GROUP "Rank 1-5 Inversions"
+                ^"Rouse the Soul" [shuji]
+            }
+            RANK 6 {
+                ^"Essence of Emptiness"
+            }
+        }
+
+    }
+
+    ^"Kaito Spirit Seeker" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Spiritual diplomats of the Phoenix Clan's Kaito family.
+        # They relocate kami from places of abundance to places
+        # in need, acting as safe vessels by inviting kami to dwell
+        # within their bodies until they can be released.
+
+        PROPERTIES {
+            ^"School Name" STRING "Kaito Spirit Seeker" FIXED
+            ^"Clan" STRING "Phoenix"
+            ^"Roles" LIST ["Bushi", "Shugenja"]
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Composition", ^"Courtesy", ^"Games", ^"Martial Arts [Ranged]", ^"Performance", ^"Sentiment", ^"Theology"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 45
+            ^"Techniques Available" LIST ["Invocations", "Kata", "Rituals"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            INVOCATION CHOOSE 2 [^"Armor of Earth", ^"Extinguish", ^"Dominion of Suijin", ^"Tempest of Air"]
+            KATA CHOOSE 2 [^"Striking as Air", ^"Striking as Earth", ^"Striking as Fire", ^"Striking as Water"]
+        }
+
+        SCHOOL_ABILITY "The Body Is a Shrine" {
+            "In the presence of a kami, make a TN 4 Courtesy check using the kami's element. If you succeed, the kami uses your body as a vessel: reroll dice up to school rank on checks using its element, but increase TN by 1 and add kept ring set to opportunity+strife on opposing element checks. If you unmask, the kami is released."
+        }
+
+        MASTERY_ABILITY ^"Temple of the Heart" {
+            "You may keep two kami within you at once instead of one. All effects of The Body Is a Shrine still apply. If two kami share an element, the effects do not stack for that element."
+        }
+        STARTING_OUTFIT [
+            "traveling clothes", "sanctified robes",
+            "yumi (bow)", "quiver of arrows",
+            "wakizashi (short sword)", "knife",
+            "bowyer's kit or divination kit"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Composition"
+                SKILL "Medicine"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Commune with the Spirits" [ritual]
+                ^"Civility Foremost" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Courtesy"
+                SKILL "Games"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-2 Invocations"
+                ^"Crimson Leaves Strike" [kata]
+                ^"Artisan's Appraisal" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Courtesy"
+                SKILL "Performance"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-3 Kata"
+                TECHNIQUE_GROUP "Rank 1-3 Invocations"
+                ^"Bond of the Realms" [invocation]
+            }
+            RANK 4 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Meditation"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-4 Kata"
+                ^"Guardian of the Secret Gate" [invocation]
+                ^"Buoyant Arrival" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Courtesy"
+                SKILL "Sentiment"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-5 Kata"
+                TECHNIQUE_GROUP "Rank 1-5 Invocations"
+                ^"Rouse the Soul" [shuji]
+            }
+            RANK 6 {
+                ^"Temple of the Heart"
+            }
+        }
+
+    }
+
+    ^"Kaiu Architect" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Trained to manipulate their environment to various purposes.
+        # Masters can design fortress corridors that confound attackers
+        # and maneuver the spiritual properties of a space via fu sui,
+        # repelling unholy entities. They also maintain the Kaiu Wall.
+
+        PROPERTIES {
+            ^"School Name" STRING "Kaiu Architect" FIXED
+            ^"Clan" STRING "Crab"
+            ^"Roles" LIST ["Artisan", "Courtier"]
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Aesthetics", ^"Command", ^"Design", ^"Government", ^"Labor", ^"Martial Arts [Unarmed]", ^"Tactics"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 45
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            RITUAL ^"Commune with the Spirits"
+            SHUJI CHOOSE 1 [^"Courtier's Resolve", ^"Honest Assessment"]
+        }
+
+        SCHOOL_ABILITY "Every Stone Serves" {
+            "Reduce the TN of checks for downtime activities that alter your environment by your school rank (to a minimum of 1). When you succeed, choose mundane terrain qualities equal to your school rank and add or remove those terrain qualities from the area you affect."
+        }
+
+        MASTERY_ABILITY ^"The Flower Binds the Room" {
+            "Once per game session, you can use your school ability on any check (action or downtime activity) to alter your environment. When you do, you may also add or remove one supernatural terrain quality from the area you affect."
+        }
+        STARTING_OUTFIT [
+            "traveling clothes", "ceremonial clothes",
+            "wakizashi (short sword)", "hammer or bō (staff)",
+            "calligraphy set", "drafting paper",
+            "fine set of chisels"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Aesthetics"
+                SKILL "Commerce"
+                SKILL "Labor"
+                TECHNIQUE_GROUP "Rank 1 Earth Shūji"
+                ^"Rite of the Wheel" [ritual]
+                ^"Threshold Barrier" [ritual]
+            }
+            RANK 2 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Fitness"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-2 Water Shūji"
+                ^"Ebb and Flow" [shuji]
+                ^"Open-Hand Style" [kata]
+            }
+            RANK 3 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Aesthetics"
+                SKILL "Fitness"
+                SKILL "Martial Arts [Unarmed]"
+                TECHNIQUE_GROUP "Rank 1-3 Earth Shūji"
+                ^"Pillar of Calm" [shuji]
+                ^"Lord Hida's Grip" [kata]
+            }
+            RANK 4 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Aesthetics"
+                SKILL "Labor"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1-4 Fire Shūji"
+                ^"Sear the Wound" [shuji]
+                ^"Rouse the Soul" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Aesthetics"
+                SKILL "Survival"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-5 Void Shūji"
+                ^"Soul Sunder" [kata]
+                ^"Bend with the Storm" [shuji]
+            }
+            RANK 6 {
+                ^"The Flower Binds the Room"
+            }
+        }
+
+    }
+
+    ^"Kitsu Realm Wanderer" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Kitsu family members with innate ability to call upon ties
+        # that bind the realms and bid them move closer, creating
+        # places of power that overlap with the Mortal Realm. They
+        # seek wisdom and secrets of the realms, though doing so
+        # may attract the ravenous baku.
+
+        PROPERTIES {
+            ^"School Name" STRING "Kitsu Realm Wanderer" FIXED
+            ^"Clan" STRING "Lion"
+            ^"Roles" LIST ["Shugenja", "Bushi"]
+            ^"Ring Increase" DEF {
+                ^"Void" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Fitness", ^"Martial Arts [Melee]", ^"Meditation", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 50
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            INVOCATION CHOOSE 3 [^"Biting Steel", ^"Blessed Wind", ^"Courage of Seven Thunders", ^"Nature's Touch", ^"The Rushing Wave"]
+            KATA ^"Striking as Water"
+            RITUAL ^"Commune with the Spirits"
+            RITUAL ^"Divination"
+        }
+
+        SCHOOL_ABILITY "Celestial Alignment" {
+            "As a Support action, make a TN 2 Meditation (Void) check to draw one of the Spirit Realms closer to your location. A number of range bands around your position up to your school rank become a place of power of the realm you choose. This effect persists until the end of the scene."
+        }
+
+        MASTERY_ABILITY ^"Walk the Hidden Ways" {
+            "When you use your school ability in a place already linked to a particular realm, you may move yourself and a number of characters up to your ranks in Meditation into that realm fully, leaving the Mortal Realm. As a Support action, you may make a TN 2 Meditation (Void) check to return yourself and a number of characters up to your ranks in Meditation to the Mortal Realm."
+        }
+        STARTING_OUTFIT [
+            "traveling clothes", "ceremonial clothes",
+            "daishō (katana and wakizashi)",
+            "yari (spear) or bō (staff)", "scroll satchel",
+            "pouch of incense", "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Sentiment"
+                SKILL "Survival"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1 Water Invocations"
+                ^"Rite of the Wheel" [ritual]
+                ^"Warrior's Resolve" [kata]
+            }
+            RANK 2 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Meditation"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-2 Earth Invocations"
+                ^"Messenger of Chikusho-do" [invocation]
+                ^"Iron Forest Style" [kata]
+            }
+            RANK 3 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Composition"
+                SKILL "Meditation"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-3 Fire Invocations"
+                ^"Bond of the Realms" [invocation]
+                ^"Thunderclap Strike" [kata]
+            }
+            RANK 4 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Commerce"
+                SKILL "Meditation"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-4 Air Invocations"
+                ^"Crashing Wave Style" [kata]
+                ^"Prayer of Protection" [ritual]
+            }
+            RANK 5 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Meditation"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-5 Water Invocations"
+                ^"Soul Sunder" [kata]
+                ^"Rain of Ten Thousand Lotuses" [invocation]
+            }
+            RANK 6 {
+                ^"Walk the Hidden Ways"
+            }
+        }
+
+    }
+
+    ^"Moshi Sun Sentinel" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The foremost duty of the Moshi Sun Sentinels is to maintain
+        # and protect Amaterasu's shrine. Lady Sun directly answers
+        # their prayers, empowering their songs with radiant light.
+        # Their flames will not burn the righteous, searing only
+        # enemies of humanity.
+
+        PROPERTIES {
+            ^"School Name" STRING "Moshi Sun Sentinel" FIXED
+            ^"Clan" STRING "Centipede"
+            ^"Roles" LIST ["Bushi", "Shugenja"]
+            ^"Ring Increase" DEF { ^"Fire" INTEGER 2 }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Sentiment", ^"Theology"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 55
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            INVOCATION ^"Armor of Radiance"
+            INVOCATION ^"Biting Steel"
+            INVOCATION ^"Extinguish"
+            INVOCATION ^"Katana of Fire"
+            RITUAL ^"Cleansing Rite"
+            RITUAL ^"Commune with the Spirits"
+        }
+
+        SCHOOL_ABILITY "Blazing Tears of Lady Sun" {
+            "Damage inflicted by your Fire invocations is treated as having the Sacred item quality. Items you augment or summon with Fire invocations have the Sacred quality. When you affect a non-Tainted human with a Fire invocation, it does not deal damage or inflict negative conditions. Instead, the character removes fatigue equal to your school rank plus the damage you would have dealt. Each character can only benefit once per scene."
+        }
+
+        MASTERY_ABILITY ^"Rippling Flame" {
+            "While performing a Fire invocation, you may spend a Void point to target additional characters equal to your ranks in Theology or to increase the maximum range of the technique by 1 range band."
+        }
+        STARTING_OUTFIT [
+            "sanctified robes", "daishō (katana and wakizashi)",
+            "bō (staff)", "scroll satchel",
+            "traveling pack", "religious texts"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Courtesy"
+                SKILL "Sentiment"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1 Fire Invocations"
+                ^"Striking as Fire" [kata]
+                ^"Fires of Purity" [invocation]
+            }
+            RANK 2 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Fitness"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-2 Fire Invocations"
+                ^"Crescent Moon Style" [kata]
+                ^"Iron Forest Style" [kata]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Government"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-3 Fire Invocations"
+                ^"Thunderclap Strike" [kata]
+                ^"Crimson Leaves Strike" [kata]
+            }
+            RANK 4 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Aesthetics"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Performance"
+                TECHNIQUE_GROUP "Rank 1-4 Fire Invocations"
+                ^"Battle in the Mind" [kata]
+                ^"Heart of the Lady Sun" [invocation]
+            }
+            RANK 5 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Aesthetics"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-5 Fire Invocations"
+                ^"Iron in the Mountains Style" [kata]
+                ^"Striking as Void" [kata]
+            }
+            RANK 6 {
+                ^"Rippling Flame"
+            }
+        }
+
+    }
+
+    ^"Shosuro Shadowweaver" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Trained not only to operate from darkness but to craft it.
+        # A sibling school of the Soshi Illusionist School. Students
+        # become masters of creating confusion, distractions, or
+        # the cover their allies need to finish a job.
+
+        PROPERTIES {
+            ^"School Name" STRING "Shosuro Shadowweaver" FIXED
+            ^"Clan" STRING "Scorpion"
+            ^"Roles" LIST ["Shugenja", "Bushi", "Shinobi"]
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Culture", ^"Fitness", ^"Government", ^"Martial Arts [Ranged]", ^"Skulduggery"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 30
+            ^"Techniques Available" LIST ["Invocations", "Kata", "Rituals"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            INVOCATION ^"By the Light of the Lord Moon"
+            INVOCATION ^"Cloak of Night"
+            INVOCATION ^"Fukurokujin's Wit"
+            RITUAL ^"Commune with the Spirits"
+            SHUJI ^"Prey on the Weak"
+        }
+
+        SCHOOL_ABILITY "Sudden Nightfall" {
+            "You do not suffer ill effects of Obscuring terrain from darkness. When you perform an Attack or Scheme action against a target in darkness-Obscuring terrain, reduce the TN by your school rank (minimum 1). As a Support action, summon supernatural darkness at range 0-2; area extending Air Ring range bands becomes Obscuring, persisting a number of rounds equal to school rank."
+        }
+
+        MASTERY_ABILITY ^"Shadow Assassin" {
+            "Once per scene as an Attack and Movement action, summon a shadow assassin with no corporeal form that cannot be harmed. At the end of each of your turns, perform a Strike action using a readied weapon targeting any character in Obscuring terrain regardless of range. Damage dealt is supernatural. Persists until end of scene."
+        }
+        STARTING_OUTFIT [
+            "concealed armor", "sanctified robes",
+            "wakizashi (short sword)", "six shuriken (throwing stars)",
+            "three vials of poison",
+            "any one item of rarity 4 or lower"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Fitness"
+                SKILL "Government"
+                SKILL "Martial Arts [Ranged]"
+                TECHNIQUE_GROUP "Rank 1 Shūji"
+                ^"Skulk" [ninjutsu]
+                ^"Deadly Sting" [ninjutsu]
+            }
+            RANK 2 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Courtesy"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-2 Invocations"
+                ^"Fluid Shadows" [invocation]
+                ^"Lord Bayushi's Whispers" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Government"
+                SKILL "Sentiment"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-3 Shūji"
+                ^"Dream Painter" [invocation]
+                ^"Noxious Cloud" [ninjutsu]
+            }
+            RANK 4 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Culture"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-4 Invocations"
+                ^"Wolf's Proposal" [shuji]
+                ^"Pin the Fan" [kata]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Culture"
+                SKILL "Medicine"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-5 Shūji"
+                ^"The Fading Dream" [invocation]
+                ^"Silencing Stroke" [ninjutsu]
+            }
+            RANK 6 {
+                ^"Shadow Assassin"
+            }
+        }
+
+    }
+
+    ^"Utaku Stablemaster" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Extremely adept masters who pair students with steeds.
+        # Known for dangerous prowess with a whip, used to protect
+        # horses against threats while mounted. They have a genuine,
+        # spiritual connection to the beasts.
+
+        PROPERTIES {
+            ^"School Name" STRING "Utaku Stablemaster" FIXED
+            ^"Clan" STRING "Unicorn"
+            ^"Roles" LIST ["Bushi", "Sage"]
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Sentiment", ^"Smithing", ^"Survival"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 55
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Water and Air Invocations"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            INVOCATION ^"Nature's Touch"
+            KATA ^"Crescent Moon Style"
+            KATA ^"Striking as Air"
+            KATA ^"Striking as Water"
+        }
+
+        SCHOOL_ABILITY "Steed of the Kami" {
+            "When you make a check to handle, calm, or instruct an animal, negate strife results up to your school rank. Once per scene as a Support action, make a TN 2 Survival (Water) or Theology (Water) check. If you succeed, discover a ridable animal of combat rank 3 or lower appropriate to the environment. It is friendly and grants mount benefits, with Water Ring increased by bonus successes (max 6)."
+        }
+
+        MASTERY_ABILITY ^"Master of Beasts" {
+            "Once per game as a Support action, summon a number of animals equal to your Water Ring that are combat rank 3 or lower. They are friendly and fulfill your commands until end of scene. If an animal becomes Compromised or incapacitated, it flees."
+        }
+        STARTING_OUTFIT [
+            "ashigaru armor", "traveling clothes",
+            "daishō (katana or scimitar, wakizashi)",
+            "yumi (bow)", "quiver of arrows",
+            "knife", "whip", "traveling pack",
+            "bag of horse treats"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Sentiment"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Call Upon the Wind" [invocation]
+                ^"Blessing of Fertile Fields" [ritual]
+            }
+            RANK 2 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Fitness"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-2 Kata"
+                TECHNIQUE_GROUP "Rank 1-2 Rituals"
+                ^"Emboldened Steed" [invocation]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Medicine"
+                SKILL "Smithing"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-3 Kata"
+                ^"Messenger of Chikusho-do" [invocation]
+                ^"Path of Beasts" [invocation]
+            }
+            RANK 4 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Commerce"
+                SKILL "Sentiment"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-4 Kata"
+                TECHNIQUE_GROUP "Rank 1-4 Rituals"
+                ^"Guardian of the Secret Gate" [invocation]
+            }
+            RANK 5 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Medicine"
+                TECHNIQUE_GROUP "Rank 1-5 Kata"
+                TECHNIQUE_GROUP "Rank 1-5 Rituals"
+                ^"Rain of Ten Thousand Lotuses" [invocation]
+            }
+            RANK 6 {
+                ^"Master of Beasts"
+            }
+        }
+
+    }
+
+    # ===========================
+    # NEW ADVANTAGES
+    # ===========================
+
+    # --- Distinctions ---
+
+    ^"Famously Kind" DEF {
+        EXTENDS #L5R266oP8qR0sT2uV4wX6y ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Fame", "Interpersonal"]
+        }
+
+        EFFECT {
+            "Known for exceptional kindness; others are more likely to accept your help and listen to your counsel."
+            "When performing a check leveraging your well-intentioned reputation, you may reroll up to two dice."
+        }
+    }
+
+    ^"Portentous Birth" DEF {
+        EXTENDS #L5R266oP8qR0sT2uV4wX6y ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Interpersonal", "Spiritual"]
+        }
+
+        EFFECT {
+            "Born under blessed circumstances; those who know treat you favorably."
+            "When performing a check where your fortuitous birth is an asset, you may reroll up to two dice."
+        }
+    }
+
+    ^"Talented Herbalist" DEF {
+        EXTENDS #L5R266oP8qR0sT2uV4wX6y ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You can always identify properties of natural flora and their uses in medicine and craft."
+            "When performing a check where your herbalism expertise is useful, you may reroll up to two dice."
+        }
+    }
+
+    # --- Passions ---
+
+    ^"Bathing" DEF {
+        EXTENDS #L5R267zA9bC1dE3fG5hI7j ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "Familiar with bathhouse nuances and traditions."
+            "After performing a check while bathing, you remove 3 strife."
+        }
+    }
+
+    ^"Festivals" DEF {
+        EXTENDS #L5R267zA9bC1dE3fG5hI7j ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "Can always find the best activities at festivals and never has trouble finding someone in a crowd."
+            "After performing a check to interact at a festival, you remove 3 strife."
+        }
+    }
+
+    ^"Kabuki" DEF {
+        EXTENDS #L5R267zA9bC1dE3fG5hI7j ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "Seasoned viewer and participant in Kabuki with theater connections."
+            "After performing a check to engage with Kabuki, you remove 3 strife."
+        }
+    }
+
+    ^"Kyudo" DEF {
+        EXTENDS #L5R267zA9bC1dE3fG5hI7j ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Mental", "Physical"]
+        }
+
+        EFFECT {
+            "Familiar with archery forms and can identify relative skill by how one holds a bow."
+            "After performing a check to participate in kyudo, you remove 3 strife."
+        }
+    }
+
+    ^"Religious Study" DEF {
+        EXTENDS #L5R267zA9bC1dE3fG5hI7j ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Mental", "Spiritual"]
+        }
+
+        EFFECT {
+            "After studying a religious object or observance, you can discern its purpose and religion."
+            "After performing a check to contemplate religion, you remove 3 strife."
+        }
+    }
+
+    # ===========================
+    # NEW DISADVANTAGES
+    # ===========================
+
+    # --- Anxieties ---
+
+    ^"Conspiracy" DEF {
+        EXTENDS #L5R269vW1xY3zA5bC7dE9f ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "Plagued by knowledge of greater plots; you are constantly suspicious of authority figures."
+            "After performing a check to interact with an unfamiliar authority figure, you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    ^"Omen of Bad Luck" DEF {
+        EXTENDS #L5R269vW1xY3zA5bC7dE9f ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "Omens of bad luck follow you wherever you go."
+            "After performing a check to interact with someone affected by your omens, you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    ^"Uncleanliness" DEF {
+        EXTENDS #L5R269vW1xY3zA5bC7dE9f ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "Uncleanliness causes you physical and mental distress."
+            "After performing a check to interact with something unclean, you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    ^"Vanity" DEF {
+        EXTENDS #L5R269vW1xY3zA5bC7dE9f ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You are hyperfocused on your physical appearance."
+            "After performing a check where your appearance is in jeopardy, you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    # --- Adversities ---
+
+    ^"Elemental Deficiency (Air)" DEF {
+        EXTENDS #L5R268kL0mN2oP4qR6sT8u ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Mental", "Physical", "Spiritual"]
+        }
+
+        EFFECT {
+            "You lack a fundamental connection with Air."
+            "When performing a check to align with Air or interact with air kami, you must choose and reroll two dice containing success or explosive success. After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Elemental Deficiency (Earth)" DEF {
+        EXTENDS #L5R268kL0mN2oP4qR6sT8u ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Mental", "Physical", "Spiritual"]
+        }
+
+        EFFECT {
+            "You lack a fundamental connection with Earth."
+            "When performing a check to align with Earth or interact with earth kami, you must choose and reroll two dice containing success or explosive success. After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Elemental Deficiency (Fire)" DEF {
+        EXTENDS #L5R268kL0mN2oP4qR6sT8u ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Mental", "Physical", "Spiritual"]
+        }
+
+        EFFECT {
+            "You lack a fundamental connection with Fire."
+            "When performing a check to align with Fire or interact with fire kami, you must choose and reroll two dice containing success or explosive success. After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Elemental Deficiency (Water)" DEF {
+        EXTENDS #L5R268kL0mN2oP4qR6sT8u ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Mental", "Physical", "Spiritual"]
+        }
+
+        EFFECT {
+            "You lack a fundamental connection with Water."
+            "When performing a check to align with Water or interact with water kami, you must choose and reroll two dice containing success or explosive success. After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    # ===========================
+    # NEW HERITAGES
+    # ===========================
+
+    ^"New Samurai Heritages (Celestial Realms)" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Table 2-1: New Samurai Heritages for characters
+        # connected to the Phoenix or the spiritual world.
+
+        PROPERTIES {
+            ^"Heritage Table" STRING "d10 roll" FIXED
+        }
+
+        RULES {
+            #L5RCR23hI4jK6lM8nO0pQ2r: heritage_1_associated_with_natural_disaster_decrease_honor_3_gain_whispers_of_failure
+            #L5RCR24sT5uV7wX9yZ1aB3c: heritage_2_great_treatise_increase_status_3_gain_skill
+            #L5RCR25dE6fG8hI0jK2lM4n: heritage_3_4_guardian_of_forbidden_knowledge_decrease_status_5_gain_skill
+            #L5RCR26oP7qR9sT1uV3wX5y: heritage_5_6_mark_of_the_elements_increase_status_5_swap_ring
+            #L5RCR27zA8bC0dE2fG4hI6j: heritage_7_8_sacrifice_increase_glory_5_gain_heirloom
+            #L5RCR28kL9mN1oP3qR5sT7u: heritage_9_spirit_of_the_phoenix_increase_glory_3_gain_advantage
+            #L5RCR29vW0xY2zA4bC6dE8f: heritage_10_touched_by_the_fortunes_decrease_glory_5_gain_sixth_sense
+        }
+    }
+
+    # ===========================
+    # NEW GEAR AND ITEMS
+    # ===========================
+
+    # --- Spiritual Artifacts ---
+
+    ^"Horagai of Sacred Rains" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Spiritual Artifact" FIXED
+            ^"Cost" STRING "Priceless"
+            ^"Rarity" INTEGER DEFAULT 10
+            ^"Qualities" STRING "Resplendent, Sacred"
+            ^"Effect" STRING "Reduce TN of Water invocations by 1 (min 1). Once per session as Movement+Support action, TN 5 Theology (Water) check at range 0-6 to summon pure water from the heavens creating Ensnaring terrain; can continue blowing for 2 fatigue per round to flood area"
+        }
+    }
+
+    ^"Daikoku's Mallet" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Spiritual Artifact" FIXED
+            ^"Cost" STRING "Priceless"
+            ^"Rarity" INTEGER DEFAULT 10
+            ^"Qualities" STRING "Durable, Sacred, Subtle"
+            ^"Effect" STRING "Reduce TN of Earth invocations by 1 (min 1). Once per session as Movement+Support action, TN 5 Smithing (Earth) check at range 0-6 to summon an item or structure of silhouette 0-5; object remains until a bell is tolled at range 0-5, then vanishes"
+        }
+    }
+
+    ^"Candles of the Moth" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Spiritual Artifact" FIXED
+            ^"Cost" STRING "10 koku"
+            ^"Rarity" INTEGER DEFAULT 9
+            ^"Qualities" STRING "Ceremonial, Sacred, Subtle"
+            ^"Effect" STRING "Once per scene as Support action, TN 3 Theology (Air) check to light; range 0-4 becomes place of power connected to Yume-do until end of scene; candle cannot be snuffed out even by supernatural means"
+        }
+    }
+
+    ^"Golden Obi of the Sun Goddess" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Spiritual Artifact" FIXED
+            ^"Cost" STRING "Priceless"
+            ^"Rarity" INTEGER DEFAULT 10
+            ^"Qualities" STRING "Ceremonial, Resplendent, Sacred"
+            ^"Armor" STRING "Physical 3, Supernatural 6; immune to fire damage"
+            ^"Sealed Invocations" STRING "Amaterasu's Gaze, Armor of Radiance, Fires of Purity, Heart of the Lady Sun; once per scene activate one at TN 1 lower (min 1)"
+        }
+    }
+
+    # --- Omamori ---
+
+    ^"Boon of Hotei" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Omamori" FIXED
+            ^"Cost" STRING "5 bu"
+            ^"Rarity" INTEGER DEFAULT 2
+            ^"Effect" STRING "Once per game, spend 1 Void point to remove strife equal to your focus value"
+        }
+    }
+
+    ^"Boon of Jurojin" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Omamori" FIXED
+            ^"Cost" STRING "5 bu"
+            ^"Rarity" INTEGER DEFAULT 2
+            ^"Effect" STRING "Once per session, when you suffer the Enraged, Intoxicated, or Exhausted condition, spend 1 Void point to remove the condition before it affects you"
+        }
+    }
+
+    ^"Boon of Kisshoten" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Omamori" FIXED
+            ^"Cost" STRING "5 bu"
+            ^"Rarity" INTEGER DEFAULT 2
+            ^"Effect" STRING "Once per session, spend 1 Void point to count as having Dangerous Allure or Kisshoten's Blessing (your choice) until end of scene"
+        }
+    }
+
+    ^"Robes of Judgment" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Armor" FIXED
+            ^"Cost" STRING "10 koku"
+            ^"Rarity" INTEGER DEFAULT 9
+            ^"Qualities" STRING "Ceremonial, Cumbersome, Wargear"
+            ^"Armor" STRING "Physical 1, Supernatural 4"
+            ^"Description" STRING "Signature garb of the shugenja of Emma-O; white sanctified robes with sode shoulder guards and unlucky symbols"
+        }
+    }
+
+    # --- New Arrows ---
+
+    ^"Fire-Blossom Arrow" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Arrow" FIXED
+            ^"Cost" STRING "5 bu"
+            ^"Rarity" INTEGER DEFAULT 6
+            ^"Effect" STRING "Damage -1. After being fired, radiates bright light at range 0-4 until end of scene"
+        }
+    }
+
+    ^"Hamaya Arrow" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Arrow" FIXED
+            ^"Cost" STRING "1 koku"
+            ^"Rarity" INTEGER DEFAULT 8
+            ^"Effect" STRING "Damage +3 and Deadliness +3 when used against an Otherworldly being"
+        }
+    }
+
+    ^"Soul-Star Arrow" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Arrow" FIXED
+            ^"Cost" STRING "2 koku"
+            ^"Rarity" INTEGER DEFAULT 8
+            ^"Effect" STRING "Damage +1. Additional benefit based on element: Air (Obscuring terrain range 0-3 until next turn), Earth (Otherworldly TN 3 Fitness check or 4 strife + Immobilized + Silenced), Fire (Dangerous terrain range 0-3; Otherworldly crit = Burning), Water (Entangling terrain range 0-3 until end of scene)"
+        }
+    }
+
+    # --- New Weapons ---
+
+    ^"Moshi Sun Ax" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Weapon (Melee)" FIXED
+            ^"Skill" STRING "Martial Arts [Melee]"
+            ^"Range" STRING "1-2"
+            ^"Damage" INTEGER DEFAULT 3
+            ^"Deadliness" INTEGER DEFAULT 5
+            ^"Grips" STRING "1-hand: -; 2-hand: Damage +3"
+            ^"Qualities" STRING "Ceremonial, Cumbersome, Resplendent"
+            ^"Rarity" INTEGER DEFAULT 8
+            ^"Cost" STRING "20 koku"
+            ^"Weapon Types" STRING "Polearm, Ax"
+        }
+    }
+
+    ^"Shakujo" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Weapon (Melee)" FIXED
+            ^"Skill" STRING "Martial Arts [Melee]"
+            ^"Range" STRING "1"
+            ^"Damage" INTEGER DEFAULT 4
+            ^"Deadliness" INTEGER DEFAULT 1
+            ^"Grips" STRING "1-hand: -; 2-hand: Damage +1"
+            ^"Qualities" STRING "Ceremonial"
+            ^"Rarity" INTEGER DEFAULT 4
+            ^"Cost" STRING "5 bu"
+            ^"Weapon Types" STRING "Polearm"
+            ^"Note" STRING "If made with gold, cost increases to 10 koku and gains Resplendent quality"
+        }
+    }
+
+    ^"Tachi" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Weapon (Melee)" FIXED
+            ^"Skill" STRING "Martial Arts [Melee]"
+            ^"Range" STRING "1"
+            ^"Damage" INTEGER DEFAULT 5
+            ^"Deadliness" INTEGER DEFAULT 5
+            ^"Grips" STRING "1-hand: -; 2-hand: Deadliness +1"
+            ^"Qualities" STRING "Ceremonial, Cumbersome, Razor-Edged"
+            ^"Rarity" INTEGER DEFAULT 8
+            ^"Cost" STRING "25 koku"
+            ^"Weapon Types" STRING "Sword"
+        }
+    }
+
+    ^"Uchigatana" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Weapon (Melee)" FIXED
+            ^"Skill" STRING "Martial Arts [Melee]"
+            ^"Range" STRING "1"
+            ^"Damage" INTEGER DEFAULT 3
+            ^"Deadliness" INTEGER DEFAULT 6
+            ^"Grips" STRING "1-hand: -"
+            ^"Qualities" STRING "Razor-Edged, Wargear"
+            ^"Rarity" INTEGER DEFAULT 8
+            ^"Cost" STRING "16 koku"
+            ^"Weapon Types" STRING "Sword"
+        }
+    }
+
+    ^"Whip" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Weapon (Melee)" FIXED
+            ^"Skill" STRING "Martial Arts [Melee]"
+            ^"Range" STRING "2"
+            ^"Damage" INTEGER DEFAULT 3
+            ^"Deadliness" INTEGER DEFAULT 2
+            ^"Grips" STRING "1-hand: -"
+            ^"Qualities" STRING "Ensnaring, Mundane"
+            ^"Rarity" INTEGER DEFAULT 2
+            ^"Cost" STRING "4 bu"
+            ^"Weapon Types" STRING "Specialist"
+        }
+    }
+
+    # --- Ancestral Swords ---
+
+    ^"Chikara (Ancestral Sword of the Crab)" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Ancestral Sword (Nemuranai)" FIXED
+            ^"Clan" STRING "Crab"
+            ^"Weapon Type" STRING "Chokuto (straight sword)"
+            ^"Profile" STRING "Range 0-1, Damage 4, Deadliness 7, Ceremonial, Razor-Edged, Sacred"
+            ^"Quirk" STRING "Never rusts, never dulls, cannot be taken apart or reforged; cleansed by ladling water; jade sand folded into metal"
+            ^"Special" STRING "Vigilant Blade: Cannot become Damaged or Destroyed; wielder immune to Afflicted condition"
+            ^"Sealed Inversion" STRING "Essence Eternal; activated with Fitness (Void) instead of Theology (Void); can target only the wielder"
+        }
+    }
+
+    ^"Shukujo (Ancestral Sword of the Crane)" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Ancestral Sword (Nemuranai)" FIXED
+            ^"Clan" STRING "Crane"
+            ^"Weapon Type" STRING "Uchigatana"
+            ^"Profile" STRING "Range 1, Damage 5, Deadliness 5, Ceremonial, Durable, Sacred"
+            ^"Quirk" STRING "Sings a brilliant note when drawn by one who traces bloodline to Doji"
+            ^"Sealed Inversion" STRING "Witness the End; activated with Meditation (Void); can only be activated at end of staredown in a duel or clash; TN always 1"
+        }
+    }
+
+    ^"Blade with No Name (Ancestral Sword of the Dragon)" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Ancestral Sword (Nemuranai)" FIXED
+            ^"Clan" STRING "Dragon"
+            ^"Weapon Type" STRING "Any sword (philosophical concept)"
+            ^"Quirk" STRING "Koan come to mind unbidden, especially when about to fall asleep"
+            ^"Sealed Inversion" STRING "The Lotus Blooms; usable once per game session; activated with Meditation (Void) instead of Theology (Void)"
+            ^"Note" STRING "Not a literal blade but a philosophic concept; any sword its master grips becomes the Blade with No Name"
+        }
+    }
+
+    ^"Shori (Ancestral Sword of the Lion)" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Ancestral Sword (Nemuranai)" FIXED
+            ^"Clan" STRING "Lion"
+            ^"Weapon Type" STRING "Tachi"
+            ^"Profile" STRING "Range 1, Damage 6, Deadliness 6/7, Ceremonial, Durable, Sacred"
+            ^"Quirk" STRING "If wielder commits a dishonorable act, the blade fills their head with the roars of ten thousand Lions"
+            ^"Special" STRING "Mandate of the Chrysanthemum: While in possession at the Emperor's sanction, wielder does not forfeit glory for major or massive glory breaches"
+            ^"Sealed Inversion" STRING "Three Heartbeats; activated with Command (Void) instead of Theology (Void)"
+        }
+    }
+
+    ^"Ofushikai (Ancestral Sword of the Phoenix)" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Ancestral Sword (Nemuranai)" FIXED
+            ^"Clan" STRING "Phoenix"
+            ^"Weapon Type" STRING "Ancient Tachi"
+            ^"Profile" STRING "Range 1, Damage 5, Deadliness 4, Ceremonial, Durable, Sacred"
+            ^"Quirk" STRING "Home to generations of Phoenix Champions; only chosen Shiba can draw it; can be called into hand from any distance"
+            ^"Special" STRING "Tsamaru's Love: Wielder can breathe and speak underwater"
+            ^"Sealed Inversion" STRING "One within the Void; activated with Theology (Void) instead of Sentiment (Void); can target only past wielders inhabiting the blade"
+        }
+    }
+
+    ^"Itsuwari (Ancestral Sword of the Scorpion)" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Ancestral Sword (Nemuranai)" FIXED
+            ^"Clan" STRING "Scorpion"
+            ^"Weapon Type" STRING "Short Jian"
+            ^"Profile" STRING "Range 0-1, Damage 4, Deadliness 7/8, Ceremonial, Concealable, Durable, Sacred"
+            ^"Quirk" STRING "Shadow ink shifts to show Scorpion Champion's current location"
+            ^"Special" STRING "The Shadow's Judge: After successful Attack targeting the Scorpion Champion, they suffer severity 16 critical strike and automatically fail to resist"
+            ^"Sealed Inversion" STRING "Ethereal Flicker; activated with Skulduggery (Void) instead of Theology (Void)"
+            ^"Note" STRING "Purpose is to kill the Scorpion Champion should they betray the Empire; the one worn by the champion is a fake"
+        }
+    }
+
+    ^"Hayai (Ancestral Sword of the Unicorn)" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Ancestral Sword (Nemuranai)" FIXED
+            ^"Clan" STRING "Unicorn"
+            ^"Weapon Type" STRING "Scimitar"
+            ^"Profile" STRING "Range 1, Damage 5, Deadliness 7, Ceremonial, Durable, Razor-Edged, Sacred"
+            ^"Quirk" STRING "When held sheathed, an otherworldly voice sings in the wielder's mind"
+            ^"Sealed Inversion" STRING "Shattering Caress; activated with Sentiment (Void) instead of Martial Arts [Melee or Unarmed] (Void)"
+        }
+    }
+
+    ^"Kiro (Lost Ancestral Sword of the Ki-Rin)" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Ancestral Sword (Nemuranai)" FIXED
+            ^"Clan" STRING "Unicorn (Ki-Rin)"
+            ^"Weapon Type" STRING "Dao"
+            ^"Additional Properties" STRING "Damage +1, Deadliness +1, Ceremonial, Durable, Unholy"
+            ^"Sealed Mahō" STRING "Sinful Whispers; activated with Survival instead of Theology"
+            ^"Note" STRING "Shinjo's personal blade, given to the Ujik khan; lost in the Shadowlands by Moto Tsume"
+        }
+    }
+
+    ^"Kunshu (Ancestral Sword of the Hantei)" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Ancestral Sword (Nemuranai)" FIXED
+            ^"Clan" STRING "Imperial (Hantei)"
+            ^"Weapon Type" STRING "Tsurugi (Jian)"
+            ^"Profile" STRING "Range 0-1, Damage 6, Deadliness 5/6, Ceremonial, Resplendent, Sacred"
+            ^"Quirk" STRING "When touched by two or more people, it glows if either wishes the other ill will"
+            ^"Sealed Inversion" STRING "Slip the Cycle; activated with Martial Arts [Melee] (Void) instead of Theology (Void)"
+            ^"Note" STRING "If it ever drew Imperial blood, it would lose Sacred and gain Unholy, becoming cursed"
+        }
+    }
+
+    # --- Item Pattern ---
+
+    ^"Agasha Pattern" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Item Pattern" FIXED
+            ^"XP Cost" INTEGER DEFAULT 6
+            ^"Rarity Modifier" STRING "+4"
+            ^"Effect" STRING "After a successful Attack action using a bladed weapon produced in this pattern, the target suffers 1 supernatural damage"
+        }
+    }
+
+    # ===========================
+    # NEW TECHNIQUES
+    # ===========================
+
+    # --- Air Invocations ---
+
+    ^"Dream Painter" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Air Invocation" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Activation" STRING "Scheme action, TN 3 Theology (Air), target one Unconscious NPC at range 0-3"
+            ^"Effect" STRING "Scry into target's subconscious; discover one piece of relevant information (ninjō, giri, biggest fear, opinion, pressing issue). If you fail, target wakes aware of meddling"
+        }
+    }
+
+    ^"Messenger of Chikusho-do" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Air Invocation" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Activation" STRING "Support action, TN 2 Theology (Air), target one character you know by name"
+            ^"Effect" STRING "Summon a small animal from Chikusho-do to deliver a message of 20 words or fewer; arrives within 8 hours regardless of distance"
+        }
+    }
+
+    ^"The Fading Dream" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Air Invocation" FIXED
+            ^"Rank" INTEGER DEFAULT 5
+            ^"Activation" STRING "Once per scene, Scheme action, TN 2 Theology (Air), target yourself"
+            ^"Effect" STRING "Cloak of dreams; NPCs with vigilance lower than 1 + bonus successes forget interactions with you at end of scene; ends if you attempt violence"
+        }
+    }
+
+    # --- Earth Invocations ---
+
+    ^"Bond of the Realms" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Earth Invocation" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Activation" STRING "Attack and Scheme action, TN 2 Theology (Earth), target one character from another realm and name their realm of origin"
+            ^"Effect" STRING "If correct realm named, smite target; reduce endurance and composure by 3 (min 1) for 1 + bonus success rounds. If failed, suffer 3 strife, learn target's realm, cannot reuse until end of scene"
+        }
+    }
+
+    ^"Emboldened Steed" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Earth Invocation" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Activation" STRING "Support action, TN 3 Theology (Earth), target any number of mounts at range 0-4"
+            ^"Effect" STRING "Augment and mend targets; remove Exhausted condition and strife equal to bonus successes"
+        }
+    }
+
+    ^"Guardian of the Secret Gate" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Earth Invocation" FIXED
+            ^"Rank" INTEGER DEFAULT 5
+            ^"Activation" STRING "Support action, TN 5 Theology (Earth), target unoccupied position at range 0-3; stake honor equal to honor rank"
+            ^"Effect" STRING "Summon ancestral spirit from Yomi; generally helpful but refuses dishonorable acts; uses NPC profile with combat and intrigue ranks up to your honor rank; persists until end of scene; attacks deal supernatural damage"
+        }
+    }
+
+    # --- Fire Invocations ---
+
+    ^"Amaterasu's Gaze" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Fire Invocation" FIXED
+            ^"Rank" INTEGER DEFAULT 1
+            ^"Activation" STRING "Support action, TN 1 Theology (Fire), target one character or item silhouette 2 or lower at range 0-3"
+            ^"Effect" STRING "Summon pleasant sunlight that follows target, providing light at range 0-2 for 1 + bonus success rounds"
+        }
+    }
+
+    ^"Fires of Purity" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Fire Invocation" FIXED
+            ^"Rank" INTEGER DEFAULT 2
+            ^"Activation" STRING "Support action, TN 2 Theology (Fire), target one character at range 0-3"
+            ^"Effect" STRING "Augment target with sacred fire; Fire Ring range bands around target become Dangerous terrain for others; persists 1 + bonus success rounds"
+        }
+    }
+
+    ^"Heart of the Lady Sun" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Fire Invocation" FIXED
+            ^"Rank" INTEGER DEFAULT 5
+            ^"Activation" STRING "Attack and Support action, TN 5 Theology (Fire), target position at range 0-3"
+            ^"Effect" STRING "Summon orb of flame shedding brilliant light equal to Fire Ring range bands; smites Tainted beings for 3 fatigue per round and mends non-Tainted for 1 fatigue and 1 strife; persists 1 + bonus success rounds"
+        }
+    }
+
+    # --- Water Invocations ---
+
+    ^"Fluid Shadows" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Water Invocation" FIXED
+            ^"Rank" INTEGER DEFAULT 2
+            ^"Activation" STRING "Movement and Scheme action, TN 2 Theology (Water), target shadowy position at range 1-3"
+            ^"Effect" STRING "Summon yourself instantly to target position"
+        }
+    }
+
+    ^"Path of Beasts" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Water Invocation" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Activation" STRING "Support action, TN 2 Theology (Water), target yourself"
+            ^"Effect" STRING "Augment self with one animal aspect: Eyes of the Falcon, Nose of the Fox, Ears of the Bat, Might of the Bear (silhouette 3), or Elegance of the Moth (silhouette 1); reroll up to 3 dice on relevant checks; persists 1 + bonus success rounds"
+        }
+    }
+
+    ^"Rain of Ten Thousand Lotuses" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Water Invocation" FIXED
+            ^"Rank" INTEGER DEFAULT 5
+            ^"Activation" STRING "Once per session, Support action, TN 2 Theology (Water), target position at range 0-4"
+            ^"Effect" STRING "Mend everyone at range 0-2 of target; each removes strife and fatigue equal to 1 + bonus successes"
+        }
+    }
+
+    # --- Rituals ---
+
+    ^"Blessed Union" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Ritual" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Activation" STRING "Downtime activity, TN 1 Theology (Air), target people entering a union"
+            ^"Effect" STRING "Determine whether each target has good intentions for the union; may formalize the union legally"
+        }
+    }
+
+    ^"Blessing of Fertile Fields" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Ritual" FIXED
+            ^"Rank" INTEGER DEFAULT 2
+            ^"Activation" STRING "Downtime activity, TN 2 Theology (Earth) or Survival (Earth), target settlement fields"
+            ^"Effect" STRING "All fields protected from pests and excessive flooding and heat until next harvest"
+        }
+    }
+
+    ^"Blessing of the Dance" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Ritual" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Activation" STRING "Downtime activity, TN 2 Performance (Water), target everyone in scene"
+            ^"Effect" STRING "Each target removes 3 strife and 3 fatigue"
+        }
+    }
+
+    ^"Prayer of Protection" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Ritual" FIXED
+            ^"Rank" INTEGER DEFAULT 4
+            ^"Activation" STRING "Downtime activity, TN 3 Theology (Fire), target one infant not previously targeted"
+            ^"Effect" STRING "Bless child until age four; decrease TN of checks to resist harmful effects by 4 (min 1)"
+        }
+    }
+
+    ^"Rite of the Wheel" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Ritual" FIXED
+            ^"Rank" INTEGER DEFAULT 2
+            ^"Activation" STRING "Downtime activity, TN 1 Theology (Void), target one corpse"
+            ^"Effect" STRING "Corpse gains Sacred item quality; Tainted beings interacting with it receive 5 strife"
+        }
+    }
+
+    ^"Whispers to the Moon" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Ritual (Moon Cultist)" FIXED
+            ^"Rank" INTEGER DEFAULT 5
+            ^"Activation" STRING "Downtime activity or Scheme action, TN 2 Theology (Water), target one character at range 0-4"
+            ^"Effect" STRING "Augment target's mind with chaos of Onnotangu; target receives strife equal to Water Ring and must make TN 4 Meditation (Earth 5, Fire 2) check or suffer Disoriented, Exhausted, Silenced and reduce TN of next Scholar check by Water Ring (min 1). If you fail, receive strife equal to Water Ring and become Silenced and Immobilized for 1 + shortfall rounds"
+        }
+    }
+
+    # --- Inversions ---
+    # Inversions are a new technique type unique to Void wielders.
+    # They use blank die results (magnitude) to trigger additional
+    # effects. Cosmic strain: 1 fatigue per kept strife result.
+    # Default XP cost: 6 XP instead of usual 3 XP.
+
+    ^"One within the Void" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Inversion" FIXED
+            ^"Rank" INTEGER DEFAULT 1
+            ^"Activation" STRING "Support action, TN 2 Sentiment (Void), target yourself and one other character at range 0-3"
+            ^"Effect" STRING "Augment targets with wordless communication; any target may receive 2 fatigue to assist another regardless of distance; persists until end of scene"
+            ^"Magnitude" STRING "1+: strife can be redirected to another target; 3+: choose ring or skill, any target may use another target's rank"
+        }
+    }
+
+    ^"Sight beyond Existence" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Inversion" FIXED
+            ^"Rank" INTEGER DEFAULT 1
+            ^"Activation" STRING "Once per session, immediately after an action of great consequence, TN 2 Theology (Void), target that character at range 0-3"
+            ^"Effect" STRING "Scry for another outcome; return to the moment before the action; all effects undone; only you and target are aware. If you are the target, choose same or different action. If another character is the target, say up to five words before they act"
+            ^"Magnitude" STRING "1+: see one consequence before end of scene; 2+: see consequence in next year; 3+: see consequence in decades"
+        }
+    }
+
+    ^"Whispered Blade" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Inversion" FIXED
+            ^"Rank" INTEGER DEFAULT 1
+            ^"Activation" STRING "Support action, TN 2 Theology (Void)"
+            ^"Effect" STRING "Summon a rift in reality usable as a knife that ignores all resistances; persists until end of scene"
+            ^"Magnitude" STRING "1+: after Attack, rift echoes summoned at range 0 of target for magnitude rounds; in skirmish when they end, each character (not you) at range 0-1 suffers critical strike equal to deadliness times number of echoes; in other conflicts, targets treat all terrain as Dangerous while echoes persist"
+        }
+    }
+
+    ^"Witness the End" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Inversion" FIXED
+            ^"Rank" INTEGER DEFAULT 1
+            ^"Activation" STRING "Scheme and Support action, Theology (Void), TN = target's vigilance (or 2 for objects), target one character or object at range 0-1"
+            ^"Effect" STRING "Scry for the ways target can be undone; TN of next check to damage/sabotage/attack it becomes 1 (cannot be increased); persists until end of next turn"
+            ^"Magnitude" STRING "1-3: persists additional rounds equal to magnitude; 2+: can also target metaphysical objects; 4+: persists until end of scene"
+        }
+    }
+
+    ^"Distance Distorted" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Inversion" FIXED
+            ^"Rank" INTEGER DEFAULT 2
+            ^"Activation" STRING "Scheme and Support action, TN 3 Theology (Void), target two objects/characters at range 0-3"
+            ^"Effect" STRING "Augment and curse targets; choose range 0, 1, 2, or 3; targets always treat each other as that distance; each character target receives 2 fatigue; persists until end of next turn"
+            ^"Magnitude" STRING "1-2: persists additional rounds; 3+: persists until end of scene"
+        }
+    }
+
+    ^"Ethereal Flicker" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Inversion" FIXED
+            ^"Rank" INTEGER DEFAULT 2
+            ^"Activation" STRING "Scheme and Support action, TN 3 Theology (Void), target yourself"
+            ^"Effect" STRING "Augment and curse self to be out of phase; use Theology instead of Fitness to reduce critical strike severity; if reduced to 0, do not suffer it; persists until start of next turn"
+            ^"Magnitude" STRING "1-2: persists additional rounds; 2+: redirect critical strike (severity before reductions) to character at range 0-1 with vigilance <= magnitude; 3+: persists until end of scene"
+        }
+    }
+
+    ^"The Lotus Blooms" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Inversion" FIXED
+            ^"Rank" INTEGER DEFAULT 2
+            ^"Activation" STRING "Scheme and Support action, TN 3 Theology (Void), target one character at range 0-1"
+            ^"Effect" STRING "Augment and curse target; they keep dice up to Void Ring instead of ring used (must keep as many as possible); no strife from kept strife results, but receive 1 fatigue per strife instead; if Incapacitated this way, also gain Exhausted; persists until end of target's next turn"
+            ^"Magnitude" STRING "1-2: persists additional rounds; 3+: persists until end of scene"
+        }
+    }
+
+    ^"Hurl from the Stream" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Inversion" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Activation" STRING "Once per scene, Scheme action, Theology (Void), TN = target's vigilance + silhouette (silhouette only for objects), target one character or object at range 0-3"
+            ^"Effect" STRING "Bind target outside reality; unaffected by everything and affects nothing; returns after 1 round"
+            ^"Magnitude" STRING "1-3: removed for additional rounds; 4+: Adversary/PC removed until end of scene; Minion/mundane object ceases to exist permanently"
+        }
+    }
+
+    ^"Moon on the Shifting Sea" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Inversion" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Activation" STRING "Once per scene, Scheme and Support action, TN 3 Theology (Void), target position at range 0-2"
+            ^"Effect" STRING "Simultaneously exist at current position and target position (must be reachable by normal movement); can receive 2 fatigue to choose additional targets or target same target multiple times from multiple positions; persists for rounds equal to Meditation ranks; when effect ends, choose one position and cease to occupy all others"
+            ^"Magnitude" STRING "1-2: persists additional rounds; 1+: one additional position per magnitude; 3+: persists until end of scene (1 fatigue per position per round)"
+        }
+    }
+
+    ^"Shroud in Solitude" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Inversion" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Activation" STRING "Support action, TN 3 Theology (Void), target one character at range 0"
+            ^"Effect" STRING "Augment and curse target; use Void Ring to reduce damage instead of normal resistance; fatigue becomes strife instead; persists until end of next turn"
+            ^"Magnitude" STRING "1-2: persists additional rounds; 3+: persists until end of scene; if target becomes Compromised, must resist with TN 5 Meditation (Void 3) or body is pulled into Void permanently"
+        }
+    }
+
+    ^"Reality Stitch" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Inversion" FIXED
+            ^"Rank" INTEGER DEFAULT 4
+            ^"Activation" STRING "Scheme action, Theology (Void), TN = highest vigilance among targets, target up to Meditation ranks characters at range 0-2"
+            ^"Effect" STRING "Curse targets; whenever one receives strife or fatigue, all targets receive same amount; persists until end of scene"
+            ^"Magnitude" STRING "1+: conditions shared; 2+: critical strikes shared; 3+: persistent effects shared and removed together"
+        }
+    }
+
+    ^"Shattering Caress" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Inversion" FIXED
+            ^"Rank" INTEGER DEFAULT 4
+            ^"Activation" STRING "Attack action with readied melee weapon, TN 3 Martial Arts [Melee or Unarmed] (Void), target one character or mundane object in range"
+            ^"Effect" STRING "Mundane object gains Destroyed quality. Character takes supernatural damage equal to weapon's base damage; if Incapacitated, suffer Dying [3 rounds]"
+            ^"Magnitude" STRING "1-2: reduce Dying duration by magnitude; 3+: target killed outright instead of Dying"
+        }
+    }
+
+    ^"Three Heartbeats" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Inversion" FIXED
+            ^"Rank" INTEGER DEFAULT 4
+            ^"Activation" STRING "Support action, TN 4 Theology (Void), target yourself"
+            ^"Effect" STRING "Receive 3 fatigue, then take an additional turn immediately; others count as unaware of you and cannot react, but still make checks to resist effects and defend against damage"
+            ^"Magnitude" STRING "1+: take additional turns equal to magnitude; each additional turn beyond the first costs 3 more fatigue; if Incapacitated, suffer Dying [3 rounds] and Exhausted"
+        }
+    }
+
+    ^"Essence Eternal" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Inversion" FIXED
+            ^"Rank" INTEGER DEFAULT 5
+            ^"Activation" STRING "Support action, TN 4 Theology (Void), target one character or object at range 0-2"
+            ^"Effect" STRING "Bind target to current state and location (note fatigue, strife, conditions, persistent effects, critical strikes suffered, position); when effect ends, target returns to noted state even if no longer existing; target remembers everything; persists until end of next turn"
+            ^"Magnitude" STRING "1-3: persists additional rounds; 4+: target returns to noted state at end of each of your turns for rest of scene"
+        }
+    }
+
+    ^"Slip the Cycle" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Inversion" FIXED
+            ^"Rank" INTEGER DEFAULT 5
+            ^"Activation" STRING "Once per session, Movement and Support action, TN 3 Theology (Void); can be made even if restrained, Incapacitated, Unconscious, dead, or nonexistent"
+            ^"Effect" STRING "Purify self; remove all conditions and persistent effects; fatigue and strife become 0; move to position at range 0-2 ignoring obstacles; if dead or nonexistent, return for 1 round"
+            ^"Magnitude" STRING "1: return until end of scene; 2-3: return until end of session; 4+: return permanently (permanently increase TN by 1)"
+        }
+    }
+
+    ^"Unweave" DEF {
+        APPLIES TO [^"Technique"]
+        PROPERTIES {
+            ^"Technique Type" STRING "Inversion" FIXED
+            ^"Rank" INTEGER DEFAULT 5
+            ^"Activation" STRING "Attack and Scheme action, TN 4 Theology (Void), target one character or object silhouette 0-3 at range 0-2"
+            ^"Effect" STRING "Mundane object or Minion NPC ceases to exist (receive fatigue = silhouette + conflict rank). Mystical object gains Damaged/Destroyed. Adversary/PC suffers supernatural damage equal to Theology ranks ignoring all resistances"
+            ^"Magnitude" STRING "1+: additional damage equal to magnitude; 2+: terrain within magnitude range bands loses all qualities; 2+: if target gets critical/Destroyed, ceases to exist; 3+: all characters with vigilance <= magnitude become targets"
+        }
+    }
+
+    # ===========================
+    # INVERSION MECHANICS
+    # ===========================
+
+    ^"Inversion System Rules" DEF {
+        APPLIES TO [^"Mechanic"]
+
+        # Magnitude: Equal to the number of kept blank results.
+        # Resolved during Step 6 of a check, after resolving
+        # success symbols. Effects trigger at exact value or
+        # within listed range. Not optional; multiple apply.
+        #
+        # Cosmic Strain: Character receives 1 fatigue per kept
+        # strife result. Support actions targeting others also
+        # inflict 1 fatigue per kept strife on the target.
+        # Magnitude 3+: if 1+ strife kept, area around wielder
+        # extending kept-strife range bands becomes Dangerous
+        # and Imbalanced (Void) terrain permanently with
+        # inexplicable phenomena.
+        #
+        # Channeling: Same as invocations (core rulebook p189).
+        # XP Cost: 6 XP per inversion (instead of usual 3 XP).
+        # New Keywords: Curse (lasting negative effect),
+        # Bind (ties characters/things/places together).
+
+        RULES {
+            #L5RCR30gH1iJ3kL5mN7oP9q: inversions_magnitude_equals_kept_blank_results
+            #L5RCR31rS2tU4vW6xY8zA0b: inversions_cosmic_strain_fatigue_per_kept_strife
+            #L5RCR32cD3eF5gH7iJ9kL1m: inversions_magnitude_3_plus_dangerous_imbalanced_void_terrain
+            #L5RCR33nO4pQ6rS8tU0vW2x: inversions_xp_cost_6_instead_of_3
+        }
+    }
+
+    # ===========================
+    # POTION RULES
+    # ===========================
+
+    ^"Potion (Prepared Invocations)" DEF {
+        APPLIES TO [^"Mechanic"]
+
+        # Potions are a form of prepared invocation with
+        # modifications: Preparation Skill: Medicine.
+        # Ingredients: blessed glass container + supplies worth
+        # bu equal to invocation's rank.
+        # Activation: drink as action (affects imbiber) or throw
+        # at target as action with Martial Arts [Ranged] check
+        # TN = number of range bands (min 1).
+
+        RULES {
+            #L5RCR34yZ5aB7cD9eF1gH3i: potions_preparation_skill_medicine
+            #L5RCR35jK6lM8nO0pQ2rS4t: potions_can_be_drunk_or_thrown
+        }
+    }
+
+    # ===========================
+    # ATTUNING TO ANCESTRAL BLADES
+    # ===========================
+
+    ^"Ancestral Blade Attunement" DEF {
+        APPLIES TO [^"Mechanic"]
+
+        # First time readying an ancestral blade, make a TN 3
+        # Meditation (Void) check using Artisan approach (Attune).
+        # Success: aligned, can use sealed inversions and properties.
+        # Failure: not aligned, increase TN of all checks with weapon
+        # by 2, cannot use sealed inversions or properties.
+        # May retry as a downtime activity using Meditation or
+        # another skill at GM discretion. Deeds contrary to the
+        # blade's character may cause loss of alignment.
+
+        RULES {
+            #L5RCR36uV7wX9yZ1aB3cD5e: ancestral_blade_tn3_meditation_void_to_attune
+            #L5RCR37fG8hI0jK2lM4nO6p: ancestral_blade_failure_increases_tn_by_2
+        }
+    }
+}
