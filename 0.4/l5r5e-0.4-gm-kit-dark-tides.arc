@@ -265,7 +265,7 @@ ARC "L5R5e_DarkTides" {
     # LOCATIONS
     # =============
 
-    LOCATION ^"Slow Tide Harbor" #slow_tide {
+    LOCATION ^"Slow Tide Harbor" #slow_tide_a893670aab1e {
         DESCRIPTION "Taimana Choryu, a thriving but obscure port town northwest of Otosan Uchi. About 3,000 residents. Built on a peninsula in a swampy lagoon off the Bay of the Golden Sun. No walls or fortifications. The Tortoise Clan's major holding and primary smuggling nexus. Gaijin goods freely available, opium widely tolerated, samurai often indistinguishable from peasants."
         TAGS ["urban", "port", "smuggling", "tortoise-clan", "lawless"]
 
@@ -278,7 +278,7 @@ ARC "L5R5e_DarkTides" {
             DESCRIPTION "Network of tangled streets lined with shops, businesses, and warehouses. Ironically named — more accurately a 'smugglers' district.' Always crowded day and night. Contains the open-air market, Boss Kizo's Splendid Visions print shop, and the Inn of Many Paths."
             TAGS ["trade", "crowded", "investigation"]
 
-            LOCATION ^"Inn of Many Paths" #inn_many_paths {
+            LOCATION ^"Inn of Many Paths" #inn_many_paths_251ae361bb97 {
                 DESCRIPTION "Two-story inn on the east side of the open-air market. Run by Chiyu. The most 'respectable' inn in town. Caters equally to samurai and peasants. Where Otomo Hiroshige stayed and where the PCs likely begin investigating."
                 TAGS ["lodging", "investigation-start"]
             }
@@ -288,48 +288,48 @@ ARC "L5R5e_DarkTides" {
                 TAGS ["trade", "crime-front"]
             }
 
-            LOCATION ^"Open-Air Market" #market {
+            LOCATION ^"Open-Air Market" #market_5c9f73af7333 {
                 DESCRIPTION "Mix of wooden stalls and silk-shaded tables. Gaijin items sold openly: jewelry, exotic weapons, spices, cosmetics. Opium not sold openly but herb vendors covertly direct customers."
                 TAGS ["trade", "gaijin-goods"]
             }
         }
 
-        LOCATION ^"Dockside" #dockside {
+        LOCATION ^"Dockside" #dockside_439cece03db8 {
             DESCRIPTION "Almost a li of coastline along the lagoon's northern shore. Dozens of piers, 10-15 ships at any time including at least one foreign vessel. Warehouses, cheap inns, sake houses, gambling dens, brothels, and opium parlors."
             TAGS ["port", "dangerous", "climactic-battle"]
 
-            LOCATION ^"Suitengu's Rest" #suitengus_rest {
+            LOCATION ^"Suitengu's Rest" #suitengus_rest_745275e761b2 {
                 DESCRIPTION "Less disreputable inn on the southern docks. Half the guests are samurai (mostly Tortoise and Mantis sailors). Azif keeps rooms here for meetings. Gaku also stays here."
                 TAGS ["lodging", "investigation"]
             }
 
-            LOCATION ^"Waiting Cat Gambling House" #waiting_cat {
+            LOCATION ^"Waiting Cat Gambling House" #waiting_cat_0947cbff343f {
                 DESCRIPTION "Gambling den where Hade formerly worked as bouncer. Crowded tables, dice games, customers of all stations."
                 TAGS ["gambling", "investigation"]
             }
         }
 
-        LOCATION ^"The Wallow" #wallow {
+        LOCATION ^"The Wallow" #wallow_1a86762ddc65 {
             DESCRIPTION "The seediest part of town. Two long parallel streets — the Street of False Hopes and the Street of Lowering Clouds — connected by crooked alleyways. Opium dens, gaudy brothels, predatory moneylenders, flophouses. Where samurai have been disappearing. Named ironically from a long-ago Crane Magistrate's insult."
             TAGS ["dangerous", "criminal", "investigation"]
 
-            LOCATION ^"Golden Dream Opium Den" #golden_dream {
+            LOCATION ^"Golden Dream Opium Den" #golden_dream_afe93239e116 {
                 DESCRIPTION "Boss Hana's highly successful opium den on the eastern Wallow. Offers Blue Flame-enhanced opium courtesy of Azif. Currently the most popular den in town. Managed by Master Aoi with her bodyguard Mugu."
                 TAGS ["opium", "crime", "investigation"]
             }
 
-            LOCATION ^"Green Rest Opium Den" #green_rest {
+            LOCATION ^"Green Rest Opium Den" #green_rest_90be22eb282e {
                 DESCRIPTION "Boss Yaguro's opium den on the western Wallow. Formerly the most popular, now losing customers to the Golden Dream. Visibly less crowded. Managed by Master Awa. Yaguro watches each visitor from his back office."
                 TAGS ["opium", "crime", "investigation"]
             }
         }
 
-        LOCATION ^"Shrine to Jikoju" #shrine_jikoju {
+        LOCATION ^"Shrine to Jikoju" #shrine_jikoju_6420de37efa4 {
             DESCRIPTION "Pagoda-roofed shrine to the Fortune of the East Wind, large enough to almost be a temple. Three monks, led by the priest Ojo. Does not tie directly into the adventure but available for spiritual PCs."
             TAGS ["spiritual", "optional"]
         }
 
-        LOCATION ^"Outskirts" #outskirts {
+        LOCATION ^"Outskirts" #outskirts_1bc80ab6c5fe {
             DESCRIPTION "Residential areas, artisan shops, farmlands. Rice fields are sparse — the town depends on trade for food. The burakumin village is on the northern fringe."
             TAGS ["rural", "outskirts"]
 
@@ -338,7 +338,7 @@ ARC "L5R5e_DarkTides" {
                 TAGS ["investigation", "social-challenge"]
             }
 
-            LOCATION ^"The Warehouse" #warehouse {
+            LOCATION ^"The Warehouse" #warehouse_4a35c0647dfb {
                 DESCRIPTION "Tall, broad rectangular wooden building with cheap tile roof on the far northern Merchant District fringe. Large sliding main door, smaller side and back doors, all barred from inside. Contains crates of illicit goods and a prisoner holding area with iron manacles. The identity of the goods reveals which villain controls it."
                 TAGS ["combat", "investigation", "act-two"]
             }
@@ -354,7 +354,7 @@ ARC "L5R5e_DarkTides" {
             DESCRIPTION "PCs are briefed on the disappearance of Otomo Hiroshige and travel to Slow Tide Harbor"
             PACING "1 scene, establishing the mission"
 
-            SCENE_REF #briefing
+            SCENE_REF #briefing_c8e5d027b5b0
         }
 
         PHASE ^"Act One: Investigation" {
@@ -371,21 +371,21 @@ ARC "L5R5e_DarkTides" {
             DESCRIPTION "PCs raid the warehouse where prisoners were held, fight guards, chase fleeing ruffians, and interrogate prisoners. Reveals the identity of the villain and the ship transporting prisoners."
             PACING "1-2 scenes, shift from investigation to action"
 
-            SCENE_REF #warehouse_raid
+            SCENE_REF #warehouse_raid_38d7685102b1
         }
 
         PHASE ^"Act Three: Battle at the Docks" {
             DESCRIPTION "Climactic nighttime battle at the docks. PCs must stop the ship carrying kidnapped samurai from sailing. Kitsu Sokori appears at distance as a dramatic reveal."
             PACING "1 scene, climactic combat and resolution"
 
-            SCENE_REF #dock_battle
+            SCENE_REF #dock_battle_ad99169c073b
         }
 
         PHASE ^"Conclusion" {
             DESCRIPTION "Aftermath, epilogue, and rewards"
             PACING "1 scene, denouement"
 
-            SCENE_REF #conclusion
+            SCENE_REF #conclusion_6a38a38f03e4
         }
     }
 
@@ -395,9 +395,9 @@ ARC "L5R5e_DarkTides" {
 
     # --- Introduction ---
 
-    SCENE ^"Briefing from Doji Hiroka" #briefing {
+    SCENE ^"Briefing from Doji Hiroka" #briefing_c8e5d027b5b0 {
         TYPE "Roleplay"
-        LOCATION #slow_tide
+        LOCATION #slow_tide_a893670aab1e
         DESCRIPTION "PCs are briefed by Doji Hiroka, an elegant Crane courtier representing Otomo Saneda. She explains the disappearance of his wastrel son Otomo Hiroshige using delicate, indirect language. Hiroshige fled to Slow Tide Harbor under the alias 'Doji Hiroshige,' stayed at the Inn of Many Paths, and vanished over two weeks ago. The Tortoise Clan has the Emperor's protection, complicating matters. PCs are assumed to include at least one Emerald Magistrate."
 
         OBJECTIVES {
@@ -518,7 +518,7 @@ ARC "L5R5e_DarkTides" {
 
     SCENE ^"Investigation at the Inn of Many Paths" #inn_investigation {
         TYPE "Intrigue"
-        LOCATION #inn_many_paths
+        LOCATION #inn_many_paths_251ae361bb97
         DESCRIPTION "PCs question Chiyu, the innkeeper, about Hiroshige. She is withdrawn with strange samurai but becomes chatty if they are friendly. She can confirm Hiroshige stayed four months, was frequently behind on rent, and disappeared over two weeks ago. Can identify his friends and associates."
 
         OBJECTIVES {
@@ -576,7 +576,7 @@ ARC "L5R5e_DarkTides" {
 
     SCENE ^"Other Investigations" #other_investigations {
         TYPE "Intrigue"
-        LOCATION #slow_tide
+        LOCATION #slow_tide_a893670aab1e
         DESCRIPTION "A sandbox of investigation threads the PCs can follow in any order. Each thread provides clues pointing toward the warehouse and the villain's identity. Key threads: Kakita Amano (frightened artist), Bayushi Naizu (worldly Scorpion), Hade (traumatized witness), Boss Kizo (charming crime lord), Doro (nervous moneylender), Golden Dream opium den (Master Aoi), Green Rest opium den (Master Awa and Boss Yaguro), Boss Hana, Azif, Kasuga Yumiko, the harbormaster, Hiroshige's kidnapping site, Yasuki Suzaku's murder scene, and the burakumin village."
 
         OBJECTIVES {
@@ -701,21 +701,21 @@ ARC "L5R5e_DarkTides" {
             RESOLUTION ^"Ready for Act Two" {
                 CONDITION "PCs have enough clues pointing to the outskirts warehouse"
                 OUTCOME "PCs decide to investigate the warehouse, triggering Act Two."
-                LEADS_TO [#warehouse_raid]
+                LEADS_TO [#warehouse_raid_38d7685102b1]
             }
             RESOLUTION ^"Stuck" {
                 CONDITION "PCs cannot find their way to the warehouse"
                 OUTCOME "GM can have PCs spot Gaku speaking with a ruffian, then follow the ruffian to the warehouse."
-                LEADS_TO [#warehouse_raid]
+                LEADS_TO [#warehouse_raid_38d7685102b1]
             }
         }
     }
 
     # --- Act Two: Raids and Chases ---
 
-    SCENE ^"Warehouse Raid" #warehouse_raid {
+    SCENE ^"Warehouse Raid" #warehouse_raid_38d7685102b1 {
         TYPE "Combat"
-        LOCATION #warehouse
+        LOCATION #warehouse_4a35c0647dfb
         DESCRIPTION "PCs approach the isolated warehouse. Three barred doors (main, side, back). Inside: crates of illicit goods lining walls, ruffian guards in the open space by the main entrance, and a prisoner holding area in back with iron manacles, evidence of captivity. The crates contain goods identifying the villain (Azif: gaijin items and Blue Flame; Yaguro: high-quality opium; Yumiko: gaijin items from across the Sea of Amaterasu). Prisoners have been moved — shipped out last night. After the fight, a chase through narrow alleys and crowded streets."
 
         OBJECTIVES {
@@ -728,7 +728,7 @@ ARC "L5R5e_DarkTides" {
         CONFLICT {
             TYPE "combat"
             STAKES "Whether the PCs can secure the warehouse and capture prisoners for interrogation"
-            OPPONENTS [#yaguro, #azif, #yumiko]
+            OPPONENTS [#yaguro_b9b70348c102, #azif_9fc007a20ec3, #yumiko_81f780d897df]
             # Ruffians: encounter rank equal to half or two-thirds of group rank
         }
 
@@ -815,21 +815,21 @@ ARC "L5R5e_DarkTides" {
             RESOLUTION ^"Clues to Act Three" {
                 CONDITION "PCs learn the ship name and/or villain's identity"
                 OUTCOME "PCs rush to the docks to stop the ship from sailing"
-                LEADS_TO [#dock_battle]
+                LEADS_TO [#dock_battle_ad99169c073b]
             }
             RESOLUTION ^"Stuck Again" {
                 CONDITION "PCs didn't take prisoners and can't identify the ship"
                 OUTCOME "GM can have additional ruffians arrive to relieve the guards, giving PCs another chance to take prisoners or follow them to the docks"
-                LEADS_TO [#dock_battle]
+                LEADS_TO [#dock_battle_ad99169c073b]
             }
         }
     }
 
     # --- Act Three: Battle at the Docks ---
 
-    SCENE ^"Battle at the Docks" #dock_battle {
+    SCENE ^"Battle at the Docks" #dock_battle_ad99169c073b {
         TYPE "Combat"
-        LOCATION #dockside
+        LOCATION #dockside_439cece03db8
         DESCRIPTION "Climactic nighttime battle. The villain's ship is about to cast off with the prisoners in the cargo hold. Gaku is aboard. The villain is either at the docks (Yumiko with Tortoise samurai, Yaguro with all his remaining ruffians) or aboard the ship (Azif with gaijin crew). PCs must board the ship, defeat Gaku (who fights to the death and may use maho or set the ship on fire), free the chained prisoners, and possibly survive a burning ship. The encounter rank should equal or slightly exceed the PCs' group rank."
 
         OBJECTIVES {
@@ -843,7 +843,7 @@ ARC "L5R5e_DarkTides" {
         CONFLICT {
             TYPE "combat"
             STAKES "The lives of four kidnapped samurai and the villain's capture"
-            OPPONENTS [#gaku, #yumiko, #yaguro, #azif]
+            OPPONENTS [#gaku_f6b1b6e5d2c8, #yumiko_81f780d897df, #yaguro_b9b70348c102, #azif_9fc007a20ec3]
             # Encounter rank should equal or slightly exceed PCs' group rank
         }
 
@@ -908,16 +908,16 @@ ARC "L5R5e_DarkTides" {
             RESOLUTION ^"Sokori Appears" {
                 CONDITION "PCs defeat the last enemies"
                 OUTCOME "At dawn, PCs spot Kitsu Sokori on a distant fishing boat in the lagoon. A robed figure staring back at them. A cold chill of malevolent attention. She escapes to become a recurring nemesis. GM should ensure she survives."
-                LEADS_TO [#conclusion]
+                LEADS_TO [#conclusion_6a38a38f03e4]
             }
         }
     }
 
     # --- Conclusion ---
 
-    SCENE ^"Conclusion and Epilogue" #conclusion {
+    SCENE ^"Conclusion and Epilogue" #conclusion_6a38a38f03e4 {
         TYPE "Montage"
-        LOCATION #slow_tide
+        LOCATION #slow_tide_a893670aab1e
         DESCRIPTION "The aftermath. Interrogations reveal the kidnapped samurai were intended for Kitsu Sokori's blood sacrifices. The adventure's outcome affects the Tortoise Clan, Slow Tide Harbor's power structure, and establishes Sokori as a recurring nemesis."
 
         MONTAGE {

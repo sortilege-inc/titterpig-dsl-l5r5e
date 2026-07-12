@@ -259,41 +259,41 @@ ARC "L5R5e_LostWriter" {
     # LOCATIONS
     # =============
 
-    LOCATION ^"City of the Rich Frog" #rich_frog {
+    LOCATION ^"City of the Rich Frog" #rich_frog_5a7470c08c15 {
         DESCRIPTION "An Imperial holding situated at a river junction, strategically important to the Dragon, Lion, and Unicorn clans as well as the Dragonfly Minor Clan. The city is divided into three clan districts, with neutral ronin from the Kaeru family serving as peacekeepers."
         TAGS ["urban", "trade-hub", "contested", "imperial-holding"]
 
-        LOCATION ^"Teahouse with No Name" #teahouse {
+        LOCATION ^"Teahouse with No Name" #teahouse_de442dc16e12 {
             DESCRIPTION "An elegant teahouse in the Lion district, owned by Ikoma Kotone. The interior is refined and spare, with hanging scrolls of calligraphy and a garden view. Tea ceremonies here follow strict protocol."
             TAGS ["lion-district", "social", "formal"]
         }
 
-        LOCATION ^"Shrine Gardens" #shrine_gardens {
+        LOCATION ^"Shrine Gardens" #shrine_gardens_78e5e14cd094 {
             DESCRIPTION "A tranquil garden complex tended by the Dragonfly shrine keeper Tonbo Kuma. Stone paths wind between ancient trees and moss-covered lanterns. Higuchi visited here frequently before her disappearance."
             TAGS ["dragon-district", "spiritual", "peaceful"]
         }
 
-        LOCATION ^"Unicorn Wharf" #unicorn_wharf {
+        LOCATION ^"Unicorn Wharf" #unicorn_wharf_211102ec18fb {
             DESCRIPTION "The bustling riverside docks of the Unicorn district, patrolled by Kaeru peacekeepers. Crates of foreign goods are stacked alongside fishing boats. Smuggling is an open secret."
             TAGS ["unicorn-district", "trade", "dangerous"]
         }
 
-        LOCATION ^"Ide Chiharu's Curiosity Shop" #curiosity_shop {
+        LOCATION ^"Ide Chiharu's Curiosity Shop" #curiosity_shop_0db706f82ac7 {
             DESCRIPTION "A cluttered shop in the Unicorn district filled with artifacts, curios, and items of dubious provenance. Shelves groan under the weight of foreign talismans, carved figurines, and sealed scrolls."
             TAGS ["unicorn-district", "trade", "meishōdō"]
         }
 
-        LOCATION ^"Daidoji Shin's Residence" #shins_residence {
+        LOCATION ^"Daidoji Shin's Residence" #shins_residence_466a1cdd0ec9 {
             DESCRIPTION "An extravagant residence in the Unicorn district, appointed with Crane elegance but lived in with cheerful disorder. Daidoji Shin holds court here among tea sets, gambling debts, and visiting friends."
             TAGS ["unicorn-district", "social", "crane"]
         }
 
-        LOCATION ^"Governor's Manor" #governors_manor {
+        LOCATION ^"Governor's Manor" #governors_manor_6ca10e6cf749 {
             DESCRIPTION "The official residence of Governor Miya Tetsua, situated on a small island connected to the city by a stone bridge. The manor gardens are beautiful and meticulously maintained — and conceal Higuchi's current location."
             TAGS ["island", "imperial", "formal", "gardens"]
         }
 
-        LOCATION ^"Manor Gardens" #manor_gardens {
+        LOCATION ^"Manor Gardens" #manor_gardens_bea638c27ae6 {
             DESCRIPTION "The sprawling formal gardens behind the Governor's Manor. Cherry trees, koi ponds, and stone walkways create a serene atmosphere — but fire damage and scorch marks betray the ifrit's presence."
             TAGS ["island", "outdoor", "dangerous", "supernatural"]
         }
@@ -308,15 +308,15 @@ ARC "L5R5e_LostWriter" {
             DESCRIPTION "The PCs arrive in the City of the Rich Frog and learn of the missing author"
             PACING "1 scene, establishing the situation and stakes"
 
-            SCENE_REF #arrival
+            SCENE_REF #arrival_7933e585a909
         }
 
         PHASE ^"Investigation" {
             DESCRIPTION "The PCs gather clues from NPCs and locations across the city's three districts"
             PACING "3-6 scenes depending on PC choices, player-driven exploration"
 
-            SCENE_REF #tea_ceremony
-            SCENE_REF #shrine_visit
+            SCENE_REF #tea_ceremony_b774e4c0f0de
+            SCENE_REF #shrine_visit_5bcf354ce4a7
             SCENE_REF #wharf_investigation
             SCENE_REF #curiosity_shop_visit
             SCENE_REF #shins_consultation
@@ -327,14 +327,14 @@ ARC "L5R5e_LostWriter" {
             DESCRIPTION "The PCs face the possessed Higuchi and the ifrit in the manor gardens"
             PACING "1 scene, climactic combat and moral decision"
 
-            SCENE_REF #confrontation
+            SCENE_REF #confrontation_fb324e23a5aa
         }
 
         PHASE ^"Resolution" {
             DESCRIPTION "Aftermath of the confrontation, consequences and rewards"
             PACING "1 scene, denouement"
 
-            SCENE_REF #aftermath
+            SCENE_REF #aftermath_6ff3fca6b17e
         }
     }
 
@@ -344,9 +344,9 @@ ARC "L5R5e_LostWriter" {
 
     # --- Phase 1: Background ---
 
-    SCENE ^"Arrival in the City of the Rich Frog" #arrival {
+    SCENE ^"Arrival in the City of the Rich Frog" #arrival_7933e585a909 {
         TYPE "Roleplay"
-        LOCATION #rich_frog
+        LOCATION #rich_frog_5a7470c08c15
         DESCRIPTION "The PCs arrive in the city and learn that the famous author Hana-no-Ame (real name Shinjo Higuchi) has gone missing. Governor Miya Tetsua or another patron conveys the situation: Higuchi was visiting the city to write her newest novel and has not been seen for several days. The PCs are asked to investigate discreetly."
 
         OBJECTIVES {
@@ -374,16 +374,16 @@ ARC "L5R5e_LostWriter" {
             RESOLUTION ^"Investigation Begins" {
                 CONDITION "PCs accept the task and choose where to begin"
                 OUTCOME "The city is open to explore. PCs may visit locations in any order."
-                LEADS_TO [#tea_ceremony, #shrine_visit, #wharf_investigation, #curiosity_shop_visit, #shins_consultation]
+                LEADS_TO [#tea_ceremony_b774e4c0f0de, #shrine_visit_5bcf354ce4a7, #wharf_investigation, #curiosity_shop_visit, #shins_consultation]
             }
         }
     }
 
     # --- Phase 2: Investigation ---
 
-    SCENE ^"Tea Ceremony at the Teahouse with No Name" #tea_ceremony {
+    SCENE ^"Tea Ceremony at the Teahouse with No Name" #tea_ceremony_b774e4c0f0de {
         TYPE "Intrigue"
-        LOCATION #teahouse
+        LOCATION #teahouse_de442dc16e12
         DESCRIPTION "The PCs attend a tea ceremony hosted by Ikoma Kotone, the Lion tea master. Kotone is a diligent professional but has a weakness for gossip and taboo romance stories. She knew Higuchi personally and can share information — but the formal setting of the tea ceremony means PCs must navigate strict social protocol to extract what she knows."
 
         OBJECTIVES {
@@ -431,19 +431,19 @@ ARC "L5R5e_LostWriter" {
             RESOLUTION ^"Productive Visit" {
                 CONDITION "PCs obtain at least one clue"
                 OUTCOME "Kotone wishes them well and offers her teahouse as a safe meeting place if needed"
-                LEADS_TO [#shrine_visit, #curiosity_shop_visit, #wharf_investigation]
+                LEADS_TO [#shrine_visit_5bcf354ce4a7, #curiosity_shop_visit, #wharf_investigation]
             }
             RESOLUTION ^"Unproductive Visit" {
                 CONDITION "PCs fail to extract useful information"
                 OUTCOME "A pleasant but uninformative tea ceremony. The investigation must continue elsewhere."
-                LEADS_TO [#shrine_visit, #curiosity_shop_visit, #wharf_investigation]
+                LEADS_TO [#shrine_visit_5bcf354ce4a7, #curiosity_shop_visit, #wharf_investigation]
             }
         }
     }
 
-    SCENE ^"The Shrine Gardens" #shrine_visit {
+    SCENE ^"The Shrine Gardens" #shrine_visit_5bcf354ce4a7 {
         TYPE "Roleplay"
-        LOCATION #shrine_gardens
+        LOCATION #shrine_gardens_78e5e14cd094
         DESCRIPTION "The PCs visit the tranquil Shrine Gardens in the Dragon district, where Dragonfly shrine keeper Tonbo Kuma tends the grounds. Kuma observed Higuchi visiting the gardens frequently in the weeks before her disappearance, and noticed her growing spiritual distress. Kuma is forthcoming but speaks in the elliptical manner of the Dragonfly, requiring patience to parse."
 
         OBJECTIVES {
@@ -499,7 +499,7 @@ ARC "L5R5e_LostWriter" {
 
     SCENE ^"Unicorn Wharf Investigation" #wharf_investigation {
         TYPE "Combat"
-        LOCATION #unicorn_wharf
+        LOCATION #unicorn_wharf_211102ec18fb
         DESCRIPTION "The PCs investigate the Unicorn wharf, where Higuchi was reportedly seen before her disappearance. The Kaeru peacekeepers, led by Kaeru Haya, patrol the docks and are suspicious of outsiders asking questions — especially about smuggled goods or foreign artifacts. The investigation may escalate into a skirmish if the PCs push too hard."
 
         OBJECTIVES {
@@ -535,7 +535,7 @@ ARC "L5R5e_LostWriter" {
         CONFLICT {
             TYPE "combat"
             STAKES "Whether the PCs can investigate freely or must fight their way out"
-            OPPONENTS [#kaeru_haya]
+            OPPONENTS [#kaeru_haya_60be37c72620]
         }
 
         CLUES {
@@ -565,7 +565,7 @@ ARC "L5R5e_LostWriter" {
 
     SCENE ^"The Curiosity Shop" #curiosity_shop_visit {
         TYPE "Intrigue"
-        LOCATION #curiosity_shop
+        LOCATION #curiosity_shop_0db706f82ac7
         DESCRIPTION "The PCs visit Ide Chiharu's curiosity shop to learn about the talisman she sold to Higuchi. Chiharu is a shrewd dealer who will not part with information freely — she expects compensation, favors, or leverage. She knows the talisman was dangerous but did not warn Higuchi, and fears the consequences if this becomes known."
 
         OBJECTIVES {
@@ -634,7 +634,7 @@ ARC "L5R5e_LostWriter" {
 
     SCENE ^"Consultation with Daidoji Shin" #shins_consultation {
         TYPE "Roleplay"
-        LOCATION #shins_residence
+        LOCATION #shins_residence_466a1cdd0ec9
         DESCRIPTION "An optional but rewarding scene. The PCs visit Daidoji Shin, the Crane trade envoy and amateur detective, at his residence. Shin is accompanied by his bodyguard Hiramori Kasami and the shugenja Asahina Nao. Shin has been independently investigating Higuchi's disappearance out of personal curiosity, and Nao has expertise in meishōdō that could prove invaluable."
 
         OBJECTIVES {
@@ -687,7 +687,7 @@ ARC "L5R5e_LostWriter" {
 
     SCENE ^"Audience with the Governor" #governor_meeting {
         TYPE "Intrigue"
-        LOCATION #governors_manor
+        LOCATION #governors_manor_6ca10e6cf749
         DESCRIPTION "The PCs confront Governor Miya Tetsua at his manor. Tetsua has been sheltering the possessed Higuchi, trying to manage the situation quietly to avoid a scandal. He is reluctant to admit the truth but can be persuaded, pressured, or confronted with evidence. Once the truth is out, Tetsua asks the PCs to resolve the situation — setting up the final confrontation."
 
         PREREQUISITES {
@@ -739,21 +739,21 @@ ARC "L5R5e_LostWriter" {
             RESOLUTION ^"Governor Cooperates" {
                 CONDITION "PCs successfully persuade Tetsua"
                 OUTCOME "Tetsua grants full access to the gardens and offers whatever support he can provide"
-                LEADS_TO [#confrontation]
+                LEADS_TO [#confrontation_fb324e23a5aa]
             }
             RESOLUTION ^"Forced Entry" {
                 CONDITION "PCs bypass Tetsua or enter the gardens without permission"
                 OUTCOME "The PCs reach Higuchi but have made an enemy of the Governor. Complications will follow."
-                LEADS_TO [#confrontation]
+                LEADS_TO [#confrontation_fb324e23a5aa]
             }
         }
     }
 
     # --- Phase 3: Confrontation ---
 
-    SCENE ^"The Possessed Author" #confrontation {
+    SCENE ^"The Possessed Author" #confrontation_fb324e23a5aa {
         TYPE "Combat"
-        LOCATION #manor_gardens
+        LOCATION #manor_gardens_bea638c27ae6
         DESCRIPTION "The climactic encounter. In the manor gardens, the PCs find Shinjo Higuchi within a failing circle of prayer wards. The ifrit's fire burns within her — scorch marks scar the garden, the air shimmers with heat, and Higuchi speaks in two voices. The PCs must decide how to resolve the situation: free the ifrit, seal it back into the talisman, or destroy it. Each choice carries moral weight and mechanical consequences."
 
         PREREQUISITES {
@@ -769,7 +769,7 @@ ARC "L5R5e_LostWriter" {
         CONFLICT {
             TYPE "combat"
             STAKES "Higuchi's life, the ifrit's fate, and the safety of the City of the Rich Frog"
-            OPPONENTS [#shinjo_higuchi, #adventure_ifrit]
+            OPPONENTS [#shinjo_higuchi_df4e0cc491ff, #adventure_ifrit_d9edc116c2e9]
         }
 
         CHECKS {
@@ -819,9 +819,9 @@ ARC "L5R5e_LostWriter" {
 
     # --- Phase 4: Resolution ---
 
-    SCENE ^"Aftermath" #aftermath {
+    SCENE ^"Aftermath" #aftermath_6ff3fca6b17e {
         TYPE "Montage"
-        LOCATION #governors_manor
+        LOCATION #governors_manor_6ca10e6cf749
         DESCRIPTION "The aftermath of the confrontation. The PCs deal with the consequences of their choices, receive recognition or censure, and reflect on the ethical weight of their decision. The city returns to its uneasy equilibrium."
 
         MONTAGE {
