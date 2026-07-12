@@ -1,0 +1,1165 @@
+BASE "L5R5e_Core_Character" {
+    NAME "Legend of the Five Rings 5th Edition - Character creation, clans, schools, advantages, and advancement"
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-03-01"
+
+    # Core Rulebook: Character creation (Twenty Questions), clans, families,
+    # schools, advantages/disadvantages, and advancement system
+
+    # ===========================
+    # CHARACTER CREATION: TWENTY QUESTIONS
+    # ===========================
+
+    ^"Twenty Questions" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The character creation process is structured as twenty questions
+        # answered collaboratively between player and GM. The process
+        # determines clan, family, school, rings, skills, advantages,
+        # disadvantages, ninjō, giri, and starting equipment.
+
+        PHASES {
+            ^"Part I: Core Identity (Clan, Family, School)" DEF {
+                1 "What clan does your character belong to? (Sets starting ring, skill, status, glory)"
+                2 "What family does your character belong to? (Sets +1 ring, +1 skill, glory modifier)"
+                3 "What is your character's school, and what roles does that school fall into? (+1 ring, technique groups, starting techniques, school ability)"
+                4 "How does your character stand out within their school? (Choose a unique advantage or disadvantage)"
+            }
+            ^"Part II: Personality and Behavior" DEF {
+                5 "Who is your character's lord? And what is their duty to that lord? (Sets giri)"
+                6 "What does your character long for? And how might this be achieved? (Sets ninjō)"
+                7 "What is your character's relationship with their clan? (Determines advantages)"
+                8 "What does your character think of Bushido? (Sets starting honor)"
+                9 "What is your character's greatest accomplishment so far? (Determines skill)"
+                10 "What holds your character back most in life? (Determines anxiety or adversity)"
+                11 "What activity makes your character feel at peace? (Determines skill)"
+                12 "What concern, stake, or obligation makes your character feel stressed? (Determines disadvantage)"
+                13 "Who has your character learned the most from during their life? (Determines advantage and ring or skill)"
+            }
+            ^"Part III: Final Details" DEF {
+                14 "What do people notice first upon meeting your character? (Advantage or disadvantage)"
+                15 "How does your character react to stressful situations? (Determines anxiety)"
+                16 "What are your character's preexisting relationships with other characters?"
+                17 "How does your character feel about their position in the Celestial Order?"
+                18 "What does your character's name mean? (Choose or create name)"
+                19 "How should the other players or GM expect your character to act?"
+                20 "What is your character's personal truth? (Final narrative detail)"
+            }
+        }
+
+        RULES {
+            #L5R200aB2cD4eF6gH8iJ0k: twenty_questions_complete_character
+            #L5R201lM3nO5pQ7rS9tU1v: questions_are_collaborative
+        }
+    }
+
+    # ===========================
+    # GENERIC TYPES
+    # ===========================
+
+    #L5R250aB2cD4eF6gH8iJ0k ^"Clan" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Generic clan type. All clan definitions EXTENDS this type.
+        # A clan grants one ring increase, one skill increase, and
+        # a starting status value. Each clan contains a FAMILIES block.
+
+        PROPERTIES {
+            ^"Clan Name" STRING REQUIRED FIXED
+            ^"Clan Ring Bonus" STRING REQUIRED     # "+1 [Ring]"
+            ^"Clan Skill Bonus" STRING REQUIRED    # "+1 [Skill]"
+            ^"Clan Status" INTEGER MIN 0 MAX 100 REQUIRED
+        }
+
+        RULES {
+            #L5R202wX4yZ6aB8cD0eF2g: clan_determines_starting_ring
+            #L5R203hI5jK7lM9nO1pQ3r: clan_determines_starting_skill
+            #L5R204sT6uV8wX0yZ2aB4c: clan_determines_starting_status
+        }
+    }
+
+    #L5R251lM3nO5pQ7rS9tU1v ^"Family" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Generic family type. Family definitions EXTENDS this type.
+        # A family grants a choice between two rings, two skill
+        # increases, starting glory, and starting wealth.
+
+        PROPERTIES {
+            ^"Family Name" STRING REQUIRED FIXED
+            ^"Ring Increase" STRING REQUIRED        # "+1 [Ring] or [Ring]"
+            ^"Skill Increases" STRING REQUIRED      # "+1 [Skill], +1 [Skill]"
+            ^"Glory" INTEGER MIN 0 MAX 100 REQUIRED
+            ^"Starting Wealth" STRING REQUIRED      # "N koku"
+        }
+
+        RULES {
+            #L5R253aB2cD4eF6gH8iJ0k: family_determines_ring_choice
+            #L5R254lM3nO5pQ7rS9tU1v: family_determines_skill_increases
+            #L5R255wX4yZ6aB8cD0eF2g: family_determines_starting_glory
+            #L5R256hI5jK7lM9nO1pQ3r: family_determines_starting_wealth
+        }
+    }
+
+    #L5R252wX4yZ6aB8cD0eF2g ^"School" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Generic school type. School definitions EXTENDS this type.
+        # A school defines the character's role, ring and skill
+        # bonuses, starting honor, technique access, school ability,
+        # curriculum, and mastery ability.
+
+        PROPERTIES {
+            ^"School Name" STRING REQUIRED FIXED
+            ^"Clan" STRING REQUIRED
+            ^"Roles" LIST REQUIRED                   # ["Bushi"], ["Courtier", "Shugenja"], etc.
+            ^"Ring Increase" STRING REQUIRED          # "+1 [Ring], +1 [Ring]"
+            ^"Starting Skills" STRING REQUIRED        # "choose N: +1 [Skill], +1 [Skill], ..."
+            ^"Starting Honor" INTEGER MIN 0 MAX 100 REQUIRED
+            ^"Techniques Available" LIST REQUIRED     # ["Kata", "Rituals", "Shūji"]
+        }
+
+        RULES {
+            #L5R219bC1dE3fG5hI7jK9l: school_determines_technique_access
+            #L5R220mN2oP4qR6sT8uV0w: school_rank_advancement
+            #L5R221xY3zA5bC7dE9fG1h: mastery_ability_at_rank_six
+        }
+    }
+
+    # ===========================
+    # GREAT CLANS
+    # ===========================
+
+    ^"Crab Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
+        APPLIES TO [^"Samurai"]
+
+        # The Defenders of the Wall. The Crab protect the Empire from
+        # the horrors of the Shadowlands. They value strength, duty,
+        # and practical skill above courtly refinement.
+
+        PROPERTIES {
+            ^"Clan Name" STRING "Crab" FIXED
+            ^"Clan Ring Bonus" DEF { ^"Earth" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Fitness" INTEGER 1 }
+            ^"Clan Status" INTEGER DEFAULT 30
+        }
+
+        FAMILIES {
+            ^"Hida"
+            ^"Hiruma"
+            ^"Kaiu"
+            ^"Kuni"
+            ^"Yasuki"
+        }
+
+        RULES {
+            #L5R205dE7fG9hI1jK3lM5n: crab_wall_defenders
+            #L5R206oP8qR0sT2uV4wX6y: crab_practical_warriors
+        }
+    }
+
+
+    # ===========================
+    # CRAB FAMILIES
+    # ===========================
+
+    #L5R270aB2cD4eF6gH8iJ0k ^"Hida" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Hida" FIXED
+            ^"Clan"            STRING "Crab"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Fire"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Command" INTEGER 1
+                ^"Tactics" INTEGER 1
+            }
+            ^"Glory"           INTEGER 44
+            ^"Starting Wealth" INTEGER 4
+        }
+    }
+
+    #L5R271lM3nO5pQ7rS9tU1v ^"Hiruma" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Hiruma" FIXED
+            ^"Clan"            STRING "Crab"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Skulduggery" INTEGER 1
+                ^"Survival" INTEGER 1
+            }
+            ^"Glory"           INTEGER 39
+            ^"Starting Wealth" INTEGER 3
+        }
+    }
+
+    #L5R272wX4yZ6aB8cD0eF2g ^"Kaiu" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Kaiu" FIXED
+            ^"Clan"            STRING "Crab"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Fire"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Smithing" INTEGER 1
+                ^"Labor" INTEGER 1
+            }
+            ^"Glory"           INTEGER 40
+            ^"Starting Wealth" INTEGER 5
+        }
+    }
+
+    #L5R273hI5jK7lM9nO1pQ3r ^"Kuni" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Kuni" FIXED
+            ^"Clan"            STRING "Crab"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Medicine" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
+            ^"Glory"           INTEGER 40
+            ^"Starting Wealth" INTEGER 4
+        }
+    }
+
+    #L5R274sT6uV8wX0yZ2aB4c ^"Yasuki" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Yasuki" FIXED
+            ^"Clan"            STRING "Crab"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Commerce" INTEGER 1
+                ^"Design" INTEGER 1
+            }
+            ^"Glory"           INTEGER 39
+            ^"Starting Wealth" INTEGER 10
+        }
+    }
+
+
+    ^"Crane Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
+        APPLIES TO [^"Samurai"]
+
+        # The Left Hand of the Emperor. The Crane are the undisputed
+        # masters of politics and culture, setting the standard for
+        # art, fashion, and courtly behavior.
+
+        PROPERTIES {
+            ^"Clan Name" STRING "Crane" FIXED
+            ^"Clan Ring Bonus" DEF { ^"Air" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Culture" INTEGER 1 }
+            ^"Clan Status" INTEGER DEFAULT 35
+        }
+
+        FAMILIES {
+            ^"Asahina"
+            ^"Daidoji"
+            ^"Doji"
+            ^"Kakita"
+        }
+
+        RULES {
+            #L5R207zA9bC1dE3fG5hI7j: crane_political_masters
+            #L5R208kL0mN2oP4qR6sT8u: crane_cultural_arbiters
+        }
+    }
+
+
+    # ===========================
+    # CRANE FAMILIES
+    # ===========================
+
+    #L5R275dE7fG9hI1jK3lM5n ^"Asahina" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Asahina" FIXED
+            ^"Clan"            STRING "Crane"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Water", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Aesthetics" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
+            ^"Glory"           INTEGER 40
+            ^"Starting Wealth" INTEGER 6
+        }
+    }
+
+    #L5R276oP8qR0sT2uV4wX6y ^"Daidoji" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Daidoji" FIXED
+            ^"Clan"            STRING "Crane"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Fitness" INTEGER 1
+                ^"Tactics" INTEGER 1
+            }
+            ^"Glory"           INTEGER 40
+            ^"Starting Wealth" INTEGER 7
+        }
+    }
+
+    #L5R277zA9bC1dE3fG5hI7j ^"Doji" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Doji" FIXED
+            ^"Clan"            STRING "Crane"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Courtesy" INTEGER 1
+                ^"Design" INTEGER 1
+            }
+            ^"Glory"           INTEGER 44
+            ^"Starting Wealth" INTEGER 8
+        }
+    }
+
+    #L5R278kL0mN2oP4qR6sT8u ^"Kakita" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Kakita" FIXED
+            ^"Clan"            STRING "Crane"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Fire"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Aesthetics" INTEGER 1
+                ^"Meditation" INTEGER 1
+            }
+            ^"Glory"           INTEGER 44
+            ^"Starting Wealth" INTEGER 7
+        }
+    }
+
+
+    ^"Dragon Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
+        APPLIES TO [^"Samurai"]
+
+        # The seekers of Enlightenment. Isolated in their mountain
+        # strongholds, the Dragon pursue individual paths of
+        # wisdom and spiritual growth.
+
+        PROPERTIES {
+            ^"Clan Name" STRING "Dragon" FIXED
+            ^"Clan Ring Bonus" DEF { ^"Fire" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Meditation" INTEGER 1 }
+            ^"Clan Status" INTEGER DEFAULT 30
+        }
+
+        FAMILIES {
+            ^"Agasha"
+            ^"Kitsuki"
+            ^"Mirumoto"
+            ^"Togashi"
+        }
+
+        RULES {
+            #L5R209vW1xY3zA5bC7dE9f: dragon_enlightenment_seekers
+            #L5R210gH2iJ4kL6mN8oP0q: dragon_mountain_isolation
+        }
+    }
+
+
+    # ===========================
+    # DRAGON FAMILIES
+    # ===========================
+
+    #L5R279vW1xY3zA5bC7dE9f ^"Agasha" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Agasha" FIXED
+            ^"Clan"            STRING "Dragon"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Fire", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Medicine" INTEGER 1
+                ^"Smithing" INTEGER 1
+            }
+            ^"Glory"           INTEGER 40
+            ^"Starting Wealth" INTEGER 4
+        }
+    }
+
+    #L5R280gH2iJ4kL6mN8oP0q ^"Kitsuki" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Kitsuki" FIXED
+            ^"Clan"            STRING "Dragon"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Government" INTEGER 1
+                ^"Sentiment" INTEGER 1
+            }
+            ^"Glory"           INTEGER 44
+            ^"Starting Wealth" INTEGER 6
+        }
+    }
+
+    #L5R281rS3tU5vW7xY9zA1b ^"Mirumoto" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Mirumoto" FIXED
+            ^"Clan"            STRING "Dragon"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Fitness" INTEGER 1
+                ^"Tactics" INTEGER 1
+            }
+            ^"Glory"           INTEGER 44
+            ^"Starting Wealth" INTEGER 5
+        }
+    }
+
+    #L5R282cD4eF6gH8iJ0kL2m ^"Togashi" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Togashi" FIXED
+            ^"Clan"            STRING "Dragon"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Fitness" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
+            ^"Glory"           INTEGER 45
+            ^"Starting Wealth" INTEGER 3
+        }
+    }
+
+
+    ^"Lion Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
+        APPLIES TO [^"Samurai"]
+
+        # The Right Hand of the Emperor. The Lion are the greatest
+        # military force in the Empire, embodying martial honor
+        # and unwavering loyalty to the Emperor.
+
+        PROPERTIES {
+            ^"Clan Name" STRING "Lion" FIXED
+            ^"Clan Ring Bonus" DEF { ^"Water" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Tactics" INTEGER 1 }
+            ^"Clan Status" INTEGER DEFAULT 35
+        }
+
+        FAMILIES {
+            ^"Akodo"
+            ^"Ikoma"
+            ^"Kitsu"
+            ^"Matsu"
+        }
+
+        RULES {
+            #L5R211rS3tU5vW7xY9zA1b: lion_military_supremacy
+            #L5R212cD4eF6gH8iJ0kL2m: lion_ancestral_honor
+        }
+    }
+
+
+    # ===========================
+    # LION FAMILIES
+    # ===========================
+
+    #L5R283nO5pQ7rS9tU1vW3x ^"Akodo" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Akodo" FIXED
+            ^"Clan"            STRING "Lion"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Earth"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Command" INTEGER 1
+                ^"Government" INTEGER 1
+            }
+            ^"Glory"           INTEGER 44
+            ^"Starting Wealth" INTEGER 5
+        }
+    }
+
+    #L5R284yZ6aB8cD0eF2gH4i ^"Ikoma" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Ikoma" FIXED
+            ^"Clan"            STRING "Lion"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Composition" INTEGER 1
+                ^"Performance" INTEGER 1
+            }
+            ^"Glory"           INTEGER 40
+            ^"Starting Wealth" INTEGER 5
+        }
+    }
+
+    #L5R285jK7lM9nO1pQ3rS5t ^"Kitsu" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Kitsu" FIXED
+            ^"Clan"            STRING "Lion"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Void", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Meditation" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
+            ^"Glory"           INTEGER 40
+            ^"Starting Wealth" INTEGER 4
+        }
+    }
+
+    #L5R286uV8wX0yZ2aB4cD6e ^"Matsu" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Matsu" FIXED
+            ^"Clan"            STRING "Lion"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Fire"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Command" INTEGER 1
+                ^"Fitness" INTEGER 1
+            }
+            ^"Glory"           INTEGER 44
+            ^"Starting Wealth" INTEGER 5
+        }
+    }
+
+
+    ^"Phoenix Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
+        APPLIES TO [^"Samurai"]
+
+        # The Keepers of the Tao. The Phoenix are the most spiritually
+        # attuned of the Great Clans, with the most powerful shugenja
+        # and a deep commitment to peace and balance.
+
+        PROPERTIES {
+            ^"Clan Name" STRING "Phoenix" FIXED
+            ^"Clan Ring Bonus" DEF { ^"Void" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Theology" INTEGER 1 }
+            ^"Clan Status" INTEGER DEFAULT 30
+        }
+
+        FAMILIES {
+            ^"Asako"
+            ^"Isawa"
+            ^"Kaito"
+            ^"Shiba"
+        }
+
+        RULES {
+            #L5R213nO5pQ7rS9tU1vW3x: phoenix_spiritual_power
+            #L5R214yZ6aB8cD0eF2gH4i: phoenix_pacifist_ideals
+        }
+    }
+
+
+    # ===========================
+    # PHOENIX FAMILIES
+    # ===========================
+
+    #L5R287fG9hI1jK3lM5nO7p ^"Asako" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Asako" FIXED
+            ^"Clan"            STRING "Phoenix"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Fire"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Culture" INTEGER 1
+                ^"Sentiment" INTEGER 1
+            }
+            ^"Glory"           INTEGER 40
+            ^"Starting Wealth" INTEGER 5
+        }
+    }
+
+    #L5R288qR0sT2uV4wX6yZ8a ^"Isawa" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Isawa" FIXED
+            ^"Clan"            STRING "Phoenix"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Fire", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Meditation" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
+            ^"Glory"           INTEGER 44
+            ^"Starting Wealth" INTEGER 5
+        }
+    }
+
+    #L5R289bC1dE3fG5hI7jK9l ^"Kaito" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Kaito" FIXED
+            ^"Clan"            STRING "Phoenix"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Fitness" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
+            ^"Glory"           INTEGER 40
+            ^"Starting Wealth" INTEGER 4
+        }
+    }
+
+    #L5R290mN2oP4qR6sT8uV0w ^"Shiba" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Shiba" FIXED
+            ^"Clan"            STRING "Phoenix"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Meditation" INTEGER 1
+                ^"Tactics" INTEGER 1
+            }
+            ^"Glory"           INTEGER 40
+            ^"Starting Wealth" INTEGER 5
+        }
+    }
+
+
+    ^"Scorpion Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
+        APPLIES TO [^"Samurai"]
+
+        # The Underhand of the Emperor. The Scorpion serve the Empire
+        # through espionage, manipulation, and sacrificing their own
+        # honor so others need not.
+
+        PROPERTIES {
+            ^"Clan Name" STRING "Scorpion" FIXED
+            ^"Clan Ring Bonus" DEF { ^"Air" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Skulduggery" INTEGER 1 }
+            ^"Clan Status" INTEGER DEFAULT 35
+        }
+
+        FAMILIES {
+            ^"Bayushi"
+            ^"Shosuro"
+            ^"Soshi"
+            ^"Yogo"
+        }
+
+        RULES {
+            #L5R215jK7lM9nO1pQ3rS5t: scorpion_underhand_of_emperor
+            #L5R216uV8wX0yZ2aB4cD6e: scorpion_mask_tradition
+        }
+    }
+
+
+    # ===========================
+    # SCORPION FAMILIES
+    # ===========================
+
+    #L5R291xY3zA5bC7dE9fG1h ^"Bayushi" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Bayushi" FIXED
+            ^"Clan"            STRING "Scorpion"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Fire"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Courtesy" INTEGER 1
+                ^"Design" INTEGER 1
+            }
+            ^"Glory"           INTEGER 44
+            ^"Starting Wealth" INTEGER 8
+        }
+    }
+
+    #L5R292iJ4kL6mN8oP0qR2s ^"Shosuro" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Shosuro" FIXED
+            ^"Clan"            STRING "Scorpion"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Courtesy" INTEGER 1
+                ^"Performance" INTEGER 1
+            }
+            ^"Glory"           INTEGER 40
+            ^"Starting Wealth" INTEGER 6
+        }
+    }
+
+    #L5R293tU5vW7xY9zA1bC3d ^"Soshi" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Soshi" FIXED
+            ^"Clan"            STRING "Scorpion"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Design" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
+            ^"Glory"           INTEGER 40
+            ^"Starting Wealth" INTEGER 6
+        }
+    }
+
+    #L5R294eF6gH8iJ0kL2mN4o ^"Yogo" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Yogo" FIXED
+            ^"Clan"            STRING "Scorpion"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Composition" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
+            ^"Glory"           INTEGER 39
+            ^"Starting Wealth" INTEGER 4
+        }
+    }
+
+
+    ^"Unicorn Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
+        APPLIES TO [^"Samurai"]
+
+        # The Explorers. The Unicorn spent centuries traveling outside
+        # the Empire, returning with foreign customs, cavalry tactics,
+        # and a broader worldview that sets them apart.
+
+        PROPERTIES {
+            ^"Clan Name" STRING "Unicorn" FIXED
+            ^"Clan Ring Bonus" DEF { ^"Water" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Survival" INTEGER 1 }
+            ^"Clan Status" INTEGER DEFAULT 30
+        }
+
+        FAMILIES {
+            ^"Ide"
+            ^"Iuchi"
+            ^"Moto"
+            ^"Shinjo"
+            ^"Utaku"
+        }
+
+        RULES {
+            #L5R217fG9hI1jK3lM5nO7p: unicorn_foreign_customs
+            #L5R218qR0sT2uV4wX6yZ8a: unicorn_cavalry_traditions
+        }
+    }
+
+
+    # ===========================
+    # UNICORN FAMILIES
+    # ===========================
+
+    #L5R295pQ7rS9tU1vW3xY5z ^"Ide" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Ide" FIXED
+            ^"Clan"            STRING "Unicorn"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Commerce" INTEGER 1
+                ^"Courtesy" INTEGER 1
+            }
+            ^"Glory"           INTEGER 40
+            ^"Starting Wealth" INTEGER 9
+        }
+    }
+
+    #L5R296aB8cD0eF2gH4iJ6k ^"Iuchi" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Iuchi" FIXED
+            ^"Clan"            STRING "Unicorn"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Meditation" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
+            ^"Glory"           INTEGER 40
+            ^"Starting Wealth" INTEGER 5
+        }
+    }
+
+    #L5R297lM9nO1pQ3rS5tU7v ^"Moto" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Moto" FIXED
+            ^"Clan"            STRING "Unicorn"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Fire"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Command" INTEGER 1
+                ^"Survival" INTEGER 1
+            }
+            ^"Glory"           INTEGER 40
+            ^"Starting Wealth" INTEGER 6
+        }
+    }
+
+    #L5R298wX0yZ2aB4cD6eF8g ^"Shinjo" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Shinjo" FIXED
+            ^"Clan"            STRING "Unicorn"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Fire", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Sentiment" INTEGER 1
+                ^"Survival" INTEGER 1
+            }
+            ^"Glory"           INTEGER 44
+            ^"Starting Wealth" INTEGER 8
+        }
+    }
+
+    #L5R299hI1jK3lM5nO7pQ9r ^"Utaku" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Utaku" FIXED
+            ^"Clan"            STRING "Unicorn"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Fire"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Survival" INTEGER 1
+                ^"Tactics" INTEGER 1
+            }
+            ^"Glory"           INTEGER 44
+            ^"Starting Wealth" INTEGER 6
+        }
+    }
+
+
+    # ===========================
+    # SCHOOL ROLES
+    # ===========================
+
+    #L5R260aB2cD4eF6gH8iJ0k ^"School Role" DEF {
+        APPLIES TO [^"Samurai"]
+
+        ENUM ["Bushi", "Courtier", "Shugenja", "Monk", "Shinobi"]
+
+        # The five primary school roles. A school may have one or
+        # more roles. Individual schools EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School" (defined
+        # in the Generic Types section above).
+        #
+        # Bushi: Warriors trained in martial arts and battlefield tactics
+        # Courtier: Politicians trained in social skills and court intrigue
+        # Shugenja: Priests who commune with the elemental kami
+        # Monk: Ascetics who pursue enlightenment through discipline
+        # Shinobi: Spies and assassins (typically Scorpion)
+    }
+
+    #L5R261lM3nO5pQ7rS9tU1v ^"School Rank" DEF {
+        APPLIES TO [^"Samurai"]
+
+        INTEGER MIN 1 MAX 6
+
+        # Characters advance through school ranks by completing their
+        # curriculum. Each rank unlocks new techniques, skills, and rings.
+        # Rank 6 grants the school's Mastery Ability.
+        #
+        # Advancement requires completing enough curriculum entries
+        # at each rank before advancing to the next.
+
+        RULES {
+            #L5R222iJ4kL6mN8oP0qR2s: curriculum_completion_required
+            #L5R223tU5vW7xY9zA1bC3d: rank_unlocks_technique_access
+            #L5R224eF6gH8iJ0kL2mN4o: rank_six_mastery_ability
+        }
+    }
+
+    # ===========================
+    # METATYPE ANCHORS
+    # ===========================
+
+    #L5R262wX4yZ6aB8cD0eF2g ^"Bond" DEF {
+        # Metatype anchor for character bond definitions
+    }
+
+    # ===========================
+    # ADVANTAGES AND DISADVANTAGES
+    # ===========================
+
+    #L5R263hI5jK7lM9nO1pQ3r ^"Advantage" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Positive traits that benefit a character. Two types:
+        # Distinctions and Passions.
+
+        TYPES {
+            ^"Distinction" "Innate or trained positive qualities. When applicable, reroll up to 2 dice."
+            ^"Passion" "Emotional drives that energize. When applicable, remove 3 strife after resolving check."
+        }
+
+        PROPERTIES {
+            ^"Type" ENUM ["Distinction", "Passion"]
+            ^"Category" LIST OF STRING  # e.g., ["Physical", "Mental"]
+            ^"Ring" STRING      # Associated ring
+            ^"Description" STRING
+        }
+
+        RULES {
+            #L5R225pQ7rS9tU1vW3xY5z: distinction_reroll_two_dice
+            #L5R226aB8cD0eF2gH4iJ6k: passion_remove_three_strife
+            #L5R227lM9nO1pQ3rS5tU7v: gm_and_player_agree_on_applicability
+            #L5R228wX0yZ2aB4cD6eF8g: each_applies_once_per_check
+        }
+    }
+
+    #L5R264sT6uV8wX0yZ2aB4c ^"Disadvantage" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Negative traits that challenge a character. Two types:
+        # Adversities and Anxieties.
+
+        TYPES {
+            ^"Adversity" "Physical, mental, or social burdens. When applicable, must reroll 2 dice showing (su) or (ex). If check fails, gain 1 Void point."
+            ^"Anxiety" "Emotional triggers that cause distress. When applicable, receive 3 strife after resolving check. First time per scene, gain 1 Void point."
+        }
+
+        PROPERTIES {
+            ^"Type" ENUM ["Adversity", "Anxiety"]
+            ^"Category" LIST OF STRING
+            ^"Ring" STRING
+            ^"Description" STRING
+        }
+
+        RULES {
+            #L5R229hI1jK3lM5nO7pQ9r: adversity_reroll_successes
+            #L5R230sT2uV4wX6yZ8aB0c: adversity_void_point_on_failure
+            #L5R231dE3fG5hI7jK9lM1n: anxiety_receive_three_strife
+            #L5R232oP4qR6sT8uV0wX2y: anxiety_void_point_first_per_scene
+            #L5R233zA5bC7dE9fG1hI3j: advantages_cancel_disadvantages
+        }
+    }
+
+    #L5R265dE7fG9hI1jK3lM5n ^"Advantage Interaction" DEF {
+
+        # Advantages and disadvantages interact during checks.
+        # Applied distinctions cancel applied adversities (and vice versa).
+        # Applied passions cancel applied anxieties (and vice versa).
+        # Canceled advantages/disadvantages have no effect.
+
+        INTERACTIONS {
+            "Inverting Your Advantage: Convert own advantage to disadvantage if creates logical vulnerability. Gain 1 Void point."
+            "Seizing a Target's Advantage: Spend 1 Void point to use target's advantage against them."
+            "Leveraging Your Disadvantage: Spend 1 Void point to use own disadvantage as advantage."
+            "Exploiting a Target's Disadvantage: Spend 1 Void point to use target's disadvantage against them."
+        }
+
+        RULES {
+            #L5R234kL6mN8oP0qR2sT4u: distinction_cancels_adversity
+            #L5R235vW7xY9zA1bC3dE5f: passion_cancels_anxiety
+            #L5R236gH8iJ0kL2mN4oP6q: void_point_interaction_cost
+        }
+    }
+
+    # ===========================
+    # ADVANTAGE AND DISADVANTAGE SUBTYPES
+    # ===========================
+
+    #L5R266oP8qR0sT2uV4wX6y ^"Distinction" DEF {
+        EXTENDS #L5R263hI5jK7lM9nO1pQ3r ^"Advantage"
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # A character's natural aptitudes of body, mind, or character.
+        # Each distinction has a unique narrative effect and the standardized
+        # mechanical effect: reroll up to two dice when applicable.
+        # Distinctions cancel adversities when both apply to the same check.
+
+        PROPERTIES {
+            ^"Ring" STRING REQUIRED          # Associated ring
+            ^"Types" LIST OF STRING REQUIRED # e.g., ["Physical", "Mental"]
+        }
+    }
+
+    #L5R267zA9bC1dE3fG5hI7j ^"Passion" DEF {
+        EXTENDS #L5R263hI5jK7lM9nO1pQ3r ^"Advantage"
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Interests unrelated to a character's purpose in life — the little
+        # things that bring them solace. Each passion has a unique narrative
+        # effect and the standardized mechanical effect: remove 3 strife
+        # after performing an applicable check.
+        # Passions cancel anxieties when both apply to the same check.
+        # A character can have up to three passions.
+        # A new passion can be developed by spending 3 XP (GM discretion).
+
+        PROPERTIES {
+            ^"Ring" STRING REQUIRED
+            ^"Types" LIST OF STRING REQUIRED
+        }
+    }
+
+    #L5R268kL0mN2oP4qR6sT8u ^"Adversity" DEF {
+        EXTENDS #L5R264sT6uV8wX0yZ2aB4c ^"Disadvantage"
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Factors that make performing the duties of a samurai more difficult.
+        # Each adversity has a unique narrative effect and the standardized
+        # mechanical effect: must reroll two dice containing success or
+        # explosive success symbols. If the check fails, gain 1 Void point.
+        # Adversities cancel distinctions when both apply to the same check.
+        # A character can have any number of adversities.
+
+        PROPERTIES {
+            ^"Ring" STRING REQUIRED
+            ^"Types" LIST OF STRING REQUIRED
+        }
+    }
+
+    #L5R269vW1xY3zA5bC7dE9f ^"Anxiety" DEF {
+        EXTENDS #L5R264sT6uV8wX0yZ2aB4c ^"Disadvantage"
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Notable emotional vulnerabilities — fears, hatreds, or things the
+        # character would prefer not to deal with. Each anxiety has a unique
+        # narrative effect and the standardized mechanical effect: receive 3
+        # strife after performing an applicable check. The first time per
+        # scene this occurs, gain 1 Void point.
+        # Anxieties cancel passions when both apply to the same check.
+        # A character can have up to three anxieties.
+
+        PROPERTIES {
+            ^"Ring" STRING REQUIRED
+            ^"Types" LIST OF STRING REQUIRED
+        }
+    }
+
+    # ===========================
+    # NINJO AND GIRI
+    # ===========================
+
+    ^"Ninjō" DEF {
+        ALIAS "Ninjo"
+        APPLIES TO [^"Samurai"]
+
+        STRING
+
+        # Personal desire — the character's deepest longing or
+        # personal question. The tension between ninjō and giri
+        # is the core dramatic engine of L5R.
+        #
+        # Acting against ninjō: Receive 3 strife
+        # Pursuing ninjō: May remove all strife after downtime
+
+        RULES {
+            #L5R237rS9tU1vW3xY5zA7b: opposing_ninjo_causes_strife
+            #L5R238cD0eF2gH4iJ6kL8m: pursuing_ninjo_removes_strife
+            #L5R239nO1pQ3rS5tU7vW9x: ninjo_can_evolve
+        }
+    }
+
+    ^"Giri" DEF {
+        APPLIES TO [^"Samurai"]
+
+        STRING
+
+        # Sworn duty — the character's primary obligation to their
+        # lord, clan, or the Empire. Typically a concrete, achievable
+        # goal or ongoing responsibility.
+        #
+        # Success: Receive 10+ glory from lord
+        # Failure/Abandonment: Forfeit 10+ glory, receive new giri
+
+        RULES {
+            #L5R240yZ2aB4cD6eF8gH0i: giri_success_glory_reward
+            #L5R241jK3lM5nO7pQ9rS1t: giri_failure_glory_loss
+            #L5R242uV4wX6yZ8aB0cD2e: giri_can_change
+        }
+    }
+
+    ^"Complication" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Brief narrative moments arising from the tension between
+        # ninjō and giri. Only one per character per session.
+        # Character may stoically accept (no effect) or be moved
+        # by it (3 strife + 1 Void point).
+
+        RULES {
+            #L5R243fG5hI7jK9lM1nO3p: one_per_character_per_session
+            #L5R244qR6sT8uV0wX2yZ4a: accept_stoically_no_effect
+            #L5R245bC7dE9fG1hI3jK5l: moved_by_it_strife_and_void
+        }
+    }
+
+    # ===========================
+    # BUSHIDO
+    # ===========================
+
+    ^"Bushido" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # The Way of the Warrior — the code of conduct that governs
+        # samurai life. Seven tenets, each associated with a clan
+        # that most embodies it. Adherence affects honor.
+
+        TENETS {
+            ^"Righteousness (Gi)" "Justice and moral correctness. Championed by the Crab."
+            ^"Courage (Yu)" "Bravery and willingness to act. Championed by the Crane."
+            ^"Compassion (Jin)" "Empathy and mercy toward others. Championed by the Phoenix."
+            ^"Respect (Rei)" "Courtesy and proper behavior. Championed by the Crane."
+            ^"Honesty (Makoto)" "Sincerity and truthfulness. Championed by the Dragon."
+            ^"Honor (Meyo)" "Personal integrity and reputation. Championed by the Lion."
+            ^"Duty (Chugo)" "Loyalty and service to one's lord. Championed by the Scorpion (in their own way)."
+        }
+
+        RULES {
+            #L5R246mN8oP0qR2sT4uV6w: bushido_affects_honor
+            #L5R247xY9zA1bC3dE5fG7h: clan_bushido_emphasis
+        }
+    }
+}

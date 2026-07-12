@@ -1,0 +1,2145 @@
+EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
+    NAME "Legend of the Five Rings 5th Edition - Courts of Stone: New Player Options"
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-03-01"
+
+    # Courts of Stone (Chapters 2 and 3): Deer Minor Clan, Shika family,
+    # new schools, advantages, disadvantages, heritages, weapons, armor,
+    # courtier/shinobi items, techniques (kata, ninjutsu, rituals, shūji),
+    # titles, bonds system, and opportunity tables for intrigue games.
+
+    # ===========================
+    # DEER MINOR CLAN
+    # ===========================
+
+    ^"Deer Minor Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
+        APPLIES TO [^"Samurai"]
+
+        # The Deer seek societal balance. When the Great Clans
+        # are equal in power, they strive to outdo each other but
+        # do not dare go to war. When the Deer observe that one
+        # clan is strong and another weak, they strive to make them
+        # equal. They are manipulators working for balance within
+        # the Empire. Shika Matchmakers mingle with high society
+        # to collect information and guide the courts, while
+        # Speardancers carry out secret missions in the shadows.
+
+        PROPERTIES {
+            ^"Clan Name" STRING "Deer" FIXED
+            ^"Clan Type" STRING "Minor Clan"
+            ^"Clan Ring Bonus" DEF { ^"Air" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Sentiment" INTEGER 1 }
+            ^"Clan Status" INTEGER DEFAULT 30
+        }
+
+        FAMILIES {
+            ^"Shika"
+        }
+
+    }
+
+
+    # ===========================
+    # DEER FAMILIES
+    # ===========================
+
+    #L5RCS50wX4yZ6aB8cD0eF2g ^"Shika" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Shika" FIXED
+            ^"Clan"            STRING "Deer"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Water", ^"Fire"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Courtesy" INTEGER 1
+                ^"Culture" INTEGER 1
+            }
+            ^"Glory"           INTEGER 35
+            ^"Starting Wealth" INTEGER 5
+        }
+    }
+
+
+    # ===========================
+    # NEW SCHOOLS
+    # ===========================
+
+    ^"Bayushi Deathdealer" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The school of warriors Bayushi founded trains under
+        # the principle that it is always better to be underestimated.
+        # Its curriculum includes the bow, the sword, and subtler
+        # weapons still. Students are always reminded that iaijutsu
+        # is merely a tool of power like any other.
+
+        PROPERTIES {
+            ^"School Name" STRING "Bayushi Deathdealer" FIXED
+            ^"Clan" STRING "Scorpion"
+            ^"Roles" LIST ["Bushi", "Shinobi"]
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Courtesy", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Tactics", ^"Sentiment", ^"Skulduggery"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Striking as Air", ^"Striking as Fire"]
+            SHUJI ^"Assess Strengths"
+        }
+
+        SCHOOL_ABILITY "Way of the Scorpion" {
+            "When you exploit a target's disadvantage as part of an Initiative check for a duel or an Attack action, you do not need to spend a Void point, and you may reroll additional dice up to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Strike First, Strike Last" {
+            "When you inflict a critical strike during a duel or skirmish, treat the deadliness of your weapon as increased by the difference between your initiative and your target's initiative (subtracting the lower from the higher)."
+        }
+        STARTING_OUTFIT [
+            "traveling clothes", "ashigaru armor",
+            "daishō", "knife",
+            "shinobigatana or folding half bow",
+            "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Courtesy"
+                SKILL "Games"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1 General Kata"
+                ^"Deceitful Strike" [ninjutsu]
+                ^"Spiteful Loss" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Meditation"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-2 Air Shūji"
+                ^"Deadly Sting" [ninjutsu]
+                ^"Iaijutsu Cut: Rising Blade" [kata]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Courtesy"
+                SKILL "Smithing"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-3 Close Combat Kata"
+                ^"Cunning Distraction" [ninjutsu]
+                ^"All Shall Fear Me" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Command"
+                SKILL "Games"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-4 Ranged Kata"
+                ^"A Samurai's Fate" [shuji]
+                ^"Rallying Cry" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-5 Kata"
+                ^"Stillness of Death" [ninjutsu]
+                ^"Hidden in Smoke" [shuji]
+            }
+            RANK 6 {
+                ^"Strike First, Strike Last"
+            }
+        }
+
+    }
+
+    ^"Daidoji Spymaster" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Seen as nothing more than simple bureaucrats, clerks,
+        # or scribes, the Daidoji Spymasters operate as intelligence-
+        # gathering agents who report directly to the Daidoji daimyo.
+        # They monitor other clan representatives, infiltrate organizations,
+        # kidnap potential threats, and steal private documents.
+
+        PROPERTIES {
+            ^"School Name" STRING "Daidoji Spymaster" FIXED
+            ^"Clan" STRING "Crane"
+            ^"Roles" LIST ["Courtier", "Shinobi"]
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Courtesy", ^"Culture", ^"Government", ^"Performance", ^"Sentiment", ^"Skulduggery"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 35
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            SHUJI ^"Ancestry Unearthed"
+            NINJUTSU CHOOSE 1 [^"Like a Ghost", ^"Skulk"]
+            KATA CHOOSE 1 [^"Striking as Air", ^"Striking as Earth"]
+        }
+
+        SCHOOL_ABILITY "Incisive Insight" {
+            "Once per scene, when making a check for a Scheme action targeting another character, you may receive a number of strife up to your school rank to reduce the TN by that amount (to a minimum of 1)."
+        }
+
+        MASTERY_ABILITY ^"Spy Network" {
+            "As a downtime activity in any place of human habitation, you may make a TN 4 Skulduggery check to find an agent of the Daidoji spy network. If you succeed, you find this individual among the inhabitants and gain the Ally advantage for them. If you succeed with 2 or more bonus successes, the individual may occupy a low-to-mid-level position in a household or organization of your choosing."
+        }
+        STARTING_OUTFIT [
+            "traveling clothes", "ceremonial clothes",
+            "wakizashi", "sokutoki",
+            "disguise kit", "opening and closing kit"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Command"
+                SKILL "Culture"
+                SKILL "Government"
+                TECHNIQUE_GROUP "Rank 1 Air Shūji"
+                ^"Lady Doji's Decree" [shuji]
+                ^"Weight of Duty" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Courtesy"
+                SKILL "Games"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-2 Earth Shūji"
+                ^"What's Yours Is Mine" [ninjutsu]
+                ^"Treaty Signing" [ritual]
+            }
+            RANK 3 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Culture"
+                SKILL "Sentiment"
+                SKILL "Martial Arts [Unarmed]"
+                TECHNIQUE_GROUP "Rank 1-3 Air Shūji"
+                ^"Hidden in Smoke" [shuji]
+                ^"Open-Hand Style" [kata]
+            }
+            RANK 4 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Command"
+                SKILL "Government"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-4 Water Shūji"
+                ^"Cunning Distraction" [ninjutsu]
+                ^"Wolf's Proposal" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Command"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-5 Earth Shūji"
+                ^"Noxious Cloud" [ninjutsu]
+                ^"Bend with the Storm" [shuji]
+            }
+            RANK 6 {
+                ^"Spy Network"
+            }
+        }
+
+    }
+
+    ^"Doji Bureaucrat" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Formidable negotiators and researchers capable of
+        # understanding complex systems of commerce, bureaucracy,
+        # and esoteric laws. Their familiarity with Rokugani law allows
+        # them to navigate the Imperial Court while turning the
+        # intricacies of the law against their rivals.
+
+        PROPERTIES {
+            ^"School Name" STRING "Doji Bureaucrat" FIXED
+            ^"Clan" STRING "Crane"
+            ^"Roles" LIST ["Courtier"]
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Composition", ^"Courtesy", ^"Culture", ^"Games", ^"Government", ^"Meditation"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 55
+            ^"Techniques Available" LIST ["Rituals", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            SHUJI ^"Courtier's Resolve"
+            SHUJI ^"Stonewall Tactics"
+        }
+
+        SCHOOL_ABILITY "Procedure and Protocol" {
+            "When you cause a character to receive strife as a result of a check using a social approach, that character suffers additional strife equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Post Facto" {
+            "Once per game session as a Scheme and Support action, you may make a TN 3 Government (Earth) check. If you succeed, you reveal a huge legal loophole or arcane precedent that legally justifies the actions of you and your allies during the scene. Others can refuse to accept your logic, but must forfeit honor equal to your ranks in Government plus your bonus successes to do so."
+        }
+        STARTING_OUTFIT [
+            "ceremonial clothing", "wakizashi",
+            "legal primer", "blank forms",
+            "calligraphy kit",
+            "scroll designating the bearer as an individual of decidedly moderate authority"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Commerce"
+                SKILL "Composition"
+                SKILL "Courtesy"
+                TECHNIQUE_GROUP "Rank 1 Earth Shūji"
+                ^"Treaty Signing" [ritual]
+                ^"Beware the Smallest Mouse" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Courtesy"
+                SKILL "Games"
+                SKILL "Government"
+                TECHNIQUE_GROUP "Rank 1-2 Water Shūji"
+                ^"The Wind Blows Both Ways" [shuji]
+                ^"Unyielding Terms" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Commerce"
+                SKILL "Culture"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-3 Air Shūji"
+                ^"Hidden in Smoke" [shuji]
+                ^"All Shall Fear Me" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Command"
+                SKILL "Meditation"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-4 Rituals"
+                ^"The Immovable Hand of Peace" [shuji]
+                ^"Rallying Cry" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Command"
+                SKILL "Performance"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-5 Void Shūji"
+                ^"Bend with the Storm" [shuji]
+                ^"Formal Tea Ceremony" [ritual]
+            }
+            RANK 6 {
+                ^"Post Facto"
+            }
+        }
+
+    }
+
+    ^"Ikoma Shadow" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The Lion Clan's Ikoma family trains a small number of
+        # students in stealth, political subterfuge, and even battlefield
+        # sabotage. These Ikoma Shadows infiltrate enemy camps in
+        # wartime and enemy castles in peacetime, stealing or altering
+        # messages and inflaming tensions between other clans.
+
+        PROPERTIES {
+            ^"School Name" STRING "Ikoma Shadow" FIXED
+            ^"Clan" STRING "Lion"
+            ^"Roles" LIST ["Courtier", "Shinobi"]
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Culture", ^"Government", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Skulduggery", ^"Survival"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            SHUJI ^"Whispers of Court"
+            NINJUTSU ^"Skulk"
+            KATA CHOOSE 1 [^"Hawk's Precision", ^"Warrior's Resolve"]
+        }
+
+        SCHOOL_ABILITY "Victory before Honor" {
+            "Once per scene when performing a check, you may stake an amount of honor no greater than your school rank to re-roll a number of dice equal to twice the amount of honor staked. For each re-rolled die result that does not contain a (su) or (ex), you forfeit one staked honor."
+        }
+
+        MASTERY_ABILITY ^"Victory Is the Greatest Honor" {
+            "Once per session after failing a Martial or Social check, you may stake up to your school rank in honor to try again, adding bonus successes equal to the honor staked. If you fail, you forfeit all honor staked. If you succeed, you instead gain 1 honor and 1 glory."
+        }
+        STARTING_OUTFIT [
+            "ashigaru armor or ceremonial clothes",
+            "daishō or wakizashi and kamayari", "yumi",
+            "any one musical instrument or book of poetry",
+            "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Performance"
+                SKILL "Skulduggery"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1 General Kata"
+                ^"What's Yours Is Mine" [ninjutsu]
+                ^"Rustling of Leaves" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Sentiment"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-2 Fire Shūji"
+                ^"Crackling Laughter" [shuji]
+                ^"The Wind Blows Both Ways" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Commerce"
+                SKILL "Labor"
+                SKILL "Seafaring"
+                TECHNIQUE_GROUP "Rank 1-3 Water Shūji"
+                ^"Artful Alibi" [ninjutsu]
+                ^"All Arts Are One" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Skulduggery"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-4 Kata"
+                ^"Deceitful Strike" [ninjutsu]
+                ^"Bravado" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-5 Air Shūji"
+                ^"Silent Elimination" [ninjutsu]
+                ^"Pin the Fan" [kata]
+            }
+            RANK 6 {
+                ^"Victory Is the Greatest Honor"
+            }
+        }
+
+    }
+
+    ^"Mercenary Ninja Training" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Without family, honor, or remorse, Mercenary Ninja
+        # move without a trace to ply their lethal trade. Consisting
+        # of highly skilled commoners and former Great Clan shinobi,
+        # they exist as disposable and deniable assets. Daimyo and
+        # nobles purchase their loyalty to kill and steal with
+        # ruthless efficiency. No formal schools exist for such
+        # lawless individuals.
+
+        PROPERTIES {
+            ^"School Name" STRING "Mercenary Ninja Training" FIXED
+            ^"Roles" LIST ["Shinobi"]
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                CHOOSE 1 [^"Earth", ^"Fire", ^"Water", ^"Void"] INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Martial Arts [Unarmed]", ^"Medicine", ^"Skulduggery", ^"Survival"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 20
+            ^"Techniques Available" LIST ["Kata", "Ninjutsu", "Rituals"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            NINJUTSU ^"Skulk"
+            SHUJI CHOOSE 1 [^"Cadence", ^"Shallow Waters"]
+        }
+
+        SCHOOL_ABILITY "Disciple of Darkness" {
+            "When you perform a check to hide, move stealthily, or deceive others as to your true identity, you may suffer a number of strife up to your school rank to choose that many characters targeted by the check. Treat each chosen character's vigilance as 1 lower while resolving the check."
+        }
+
+        MASTERY_ABILITY ^"One with the Shadows" {
+            "When you perform a Ninjutsu technique, you may add two kept (ring) set to an (op) result to your check. You may do this 3 times per session."
+        }
+        STARTING_OUTFIT [
+            "kusarifundo or tekken", "kama or ninjato",
+            "3 shuriken or blowgun", "stealth clothing",
+            "peasant clothes", "50 feet of rope",
+            "tenugui"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Performance"
+                SKILL "Skulduggery"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1 General Kata"
+                ^"Beware the Smallest Mouse" [shuji]
+                ^"Like a Ghost" [ninjutsu]
+            }
+            RANK 2 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Fitness"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Martial Arts [Unarmed]"
+                TECHNIQUE_GROUP "Rank 1-2 Ninjutsu"
+                ^"Silent Elimination" [ninjutsu]
+                ^"Veiled Menace Style" [kata]
+            }
+            RANK 3 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Medicine"
+                SKILL "Smithing"
+                TECHNIQUE_GROUP "Rank 1-3 Ranged Kata"
+                ^"Feigned Opening" [shuji]
+                ^"Slicing Wind Kick" [ninjutsu]
+            }
+            RANK 4 {
+                SKILL_GROUP "Martial Skills"
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Seafaring"
+                SKILL "Skulduggery"
+                ^"Hidden in Smoke" [shuji]
+                ^"Breath of Wind Style" [kata]
+                ^"Silencing Stroke" [ninjutsu]
+            }
+            RANK 5 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Meditation"
+                SKILL "Tactics"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-5 Ninjutsu"
+                ^"Foreseen Need" [shuji]
+                ^"Striking as Void" [kata]
+            }
+            RANK 6 {
+                ^"One with the Shadows"
+            }
+        }
+
+    }
+
+    ^"Shiba Artist" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Renowned throughout Rokugan for their deeply spiritual
+        # works of art, the Phoenix Clan's Shiba Artists are highly
+        # sought after for festivals and special events. They always
+        # make the act of creation a part of the work itself.
+
+        PROPERTIES {
+            ^"School Name" STRING "Shiba Artist" FIXED
+            ^"Clan" STRING "Phoenix"
+            ^"Roles" LIST ["Artisan"]
+            ^"Ring Increase" DEF {
+                ^"Fire" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Aesthetics", ^"Composition", ^"Courtesy", ^"Culture", ^"Design", ^"Performance", ^"Smithing"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 50
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            RITUAL ^"Tea Ceremony"
+            SHUJI CHOOSE 2 [^"Assess Strengths", ^"Courtier's Resolve", ^"Fun and Games"]
+        }
+
+        SCHOOL_ABILITY "Architect of Tranquility" {
+            "Once per scene after you succeed at an Artisan skill check, you may choose a number of characters in the scene equal to your school rank. Each chosen character removes 3 strife."
+        }
+
+        MASTERY_ABILITY ^"Sudden Clarity" {
+            "When you use your school ability, you may remove one or more of the following conditions from each chosen character: Dazed, Disoriented, Enraged, Exhausted, Intoxicated. Additionally, each chosen character removes 3 fatigue."
+        }
+        STARTING_OUTFIT [
+            "ceremonial clothes", "common clothes",
+            "traveling clothes", "wakizashi",
+            "traveling pack", "calligraphy set"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Courtesy"
+                SKILL "Culture"
+                SKILL "Performance"
+                TECHNIQUE_GROUP "Rank 1 Fire Shūji"
+                ^"Offend the Sensibilities" [shuji]
+                ^"Fun and Games" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Aesthetics"
+                SKILL "Government"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1-2 Air Shūji"
+                ^"The Wind Blows Both Ways" [shuji]
+                ^"Civility Foremost" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Command"
+                SKILL "Government"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1-3 Water Shūji"
+                ^"Formal Tea Ceremony" [ritual]
+                ^"All Arts Are One" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Performance"
+                SKILL "Composition"
+                SKILL "Smithing"
+                TECHNIQUE_GROUP "Rank 1-4 Void Shūji"
+                ^"Rouse the Soul" [shuji]
+                ^"Hidden in Smoke" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Culture"
+                SKILL "Courtesy"
+                SKILL "Performance"
+                TECHNIQUE_GROUP "Rank 1-5 Rituals"
+                ^"Bend with the Storm" [shuji]
+                ^"Buoyant Arrival" [shuji]
+            }
+            RANK 6 {
+                ^"Sudden Clarity"
+            }
+        }
+
+    }
+
+    ^"Shika Matchmaker" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Shika Matchmakers are shugenja guided by Musubi, the
+        # secretive Fortune who binds together the fates of people.
+        # Their greatest power is their ability to see the bonds people
+        # form. A practitioner of Musubu can sense the future results
+        # of fortuitous or inopportune matches.
+
+        PROPERTIES {
+            ^"School Name" STRING "Shika Matchmaker" FIXED
+            ^"Clan" STRING "Deer"
+            ^"Roles" LIST ["Courtier", "Shugenja"]
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Composition", ^"Courtesy", ^"Culture", ^"Meditation", ^"Sentiment", ^"Theology"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 50
+            ^"Techniques Available" LIST ["Air and Water Invocations", "Rituals", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            RITUAL ^"The Ties that Bind"
+            INVOCATION ^"Yari of Air"
+            INVOCATION CHOOSE 2 [^"Blessed Wind", ^"Path to Inner Peace", ^"Sympathetic Energies", ^"Tempest of Air"]
+        }
+
+        SCHOOL_ABILITY "Gift of Musubi-no-Kami" {
+            "You may perform The Ties that Bind ritual as an action, instead of as a downtime activity. When you make a check to perform this ritual, you may add kept (ring) set to (op) results equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Curse of Musubi-no-Kami" {
+            "Once per scene, after successfully performing The Ties that Bind ritual, you may spend 1 Void point to catch a glimpse of all major future consequences of the identified relationship. You also learn of one other relationship between your target and another character that will guarantee the predicted consequences will not come to pass."
+        }
+        STARTING_OUTFIT [
+            "traveling clothes", "ceremonial clothes",
+            "wakizashi", "tea set"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Courtesy"
+                SKILL "Games"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1 Air Invocations"
+                ^"Ancestry Unearthed" [shuji]
+                ^"Fun and Games" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Medicine"
+                SKILL "Sentiment"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-2 Water Shūji"
+                ^"Strike the Tsunami" [invocation]
+                ^"Civility Foremost" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Commerce"
+                SKILL "Culture"
+                SKILL "Government"
+                TECHNIQUE_GROUP "Rank 1-3 Water Invocations"
+                ^"Rise, Air" [invocation]
+                ^"The Wind Blows Both Ways" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Meditation"
+                SKILL "Sentiment"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-4 Air Invocations"
+                ^"Wrath of Kaze-no-Kami" [invocation]
+                ^"Treaty Signing" [ritual]
+            }
+            RANK 5 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Command"
+                SKILL "Composition"
+                SKILL "Performance"
+                TECHNIQUE_GROUP "Rank 1-5 Air Shūji"
+                ^"Buoyant Arrival" [shuji]
+                ^"Formal Tea Ceremony" [ritual]
+            }
+            RANK 6 {
+                ^"Curse of Musubi-no-Kami"
+            }
+        }
+
+    }
+
+    ^"Shika Speardancer" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Shika Speardancers are yojimbo and shinobi, but to the
+        # outside world, they are simply seen as messengers known
+        # for their swiftness and neutrality. Their cover as couriers
+        # frees them to work as bodyguards or assassins without
+        # drawing attention. They practice a unique set of kata that
+        # combine dizzying spins, lightning-speed twirls, and deadly
+        # accuracy with their yari.
+
+        PROPERTIES {
+            ^"School Name" STRING "Shika Speardancer" FIXED
+            ^"Clan" STRING "Deer"
+            ^"Roles" LIST ["Bushi", "Shinobi"]
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Martial Arts [Melee]", ^"Meditation", ^"Skulduggery", ^"Survival", ^"Fitness", ^"Sentiment", ^"Courtesy"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 35
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            KATA ^"Trip the Leg"
+            KATA CHOOSE 1 [^"Striking as Air", ^"Striking as Fire"]
+        }
+
+        SCHOOL_ABILITY "Typhoon in the Bamboo Grove" {
+            "When making a Martial Arts [Melee] or Fitness check, you may spend (op)(op) to cause a number of characters no greater than your school rank and within range of your readied weapon to suffer the Dazed condition."
+        }
+
+        MASTERY_ABILITY ^"The Lowest Bow" {
+            "When performing an Attack action using Martial Arts [Melee], you may spend (op) as follows: (op)+: Choose one character other than your target at range 2 with vigilance lower than or equal to (op) spent this way. That character suffers a critical strike with severity equal to your weapon's deadliness plus your ranks in Martial Arts [Melee]."
+        }
+        STARTING_OUTFIT [
+            "traveling clothes", "stealth clothing or ashigaru armor",
+            "yari or kamayari", "wakizashi",
+            "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Games"
+                SKILL "Skulduggery"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1 Air Shūji"
+                ^"Like a Ghost" [ninjutsu]
+                ^"Soaring Slice" [kata]
+            }
+            RANK 2 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Courtesy"
+                SKILL "Culture"
+                SKILL "Martial Arts [Melee]"
+                TECHNIQUE_GROUP "Rank 1-2 Close Combat Kata"
+                ^"To Float or Sink" [ninjutsu]
+                ^"Crescent Moon Style" [kata]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Smithing"
+                SKILL "Games"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-3 General Kata"
+                ^"Slicing Wind Kick" [ninjutsu]
+                ^"Pole-Vault" [kata]
+            }
+            RANK 4 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Command"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-4 Fire Shūji"
+                ^"Rouse the Soul" [shuji]
+                ^"Disappearing World Style" [kata]
+            }
+            RANK 5 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Government"
+                SKILL "Sentiment"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-5 General Kata"
+                ^"Silent Elimination" [ninjutsu]
+                ^"The Ties that Bind" [ritual]
+            }
+            RANK 6 {
+                ^"The Lowest Bow"
+            }
+        }
+
+    }
+
+    ^"Togashi Chronicler" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # By learning and meditating upon the stories of the past,
+        # the Dragon Clan's Togashi Chroniclers see into the future.
+        # They collect stories, folktales, and lore to capture truth,
+        # searching for patterns to illuminate the conflicts of
+        # humanity. They use insight into human nature to foresee
+        # that which is yet to come.
+
+        PROPERTIES {
+            ^"School Name" STRING "Togashi Chronicler" FIXED
+            ^"Clan" STRING "Dragon"
+            ^"Roles" LIST ["Courtier", "Monk"]
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 4 [^"Culture", ^"Fitness", ^"Labor", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Performance"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            RITUAL ^"Divination"
+            KIHO CHOOSE 1 [^"Cleansing Spirit", ^"Ki Protection"]
+            SHUJI CHOOSE 1 [^"Honest Assessment", ^"Truth Burns through Lies"]
+        }
+
+        SCHOOL_ABILITY "A Grain of Truth" {
+            "Once per scene after you succeed on a Social skill check, you may choose a kihō with a prerequisite up to your school rank (whether you know it or not). You gain the benefits of its Enhancement Effect as if you had successfully activated it. This effect persists until the end of the scene."
+        }
+
+        MASTERY_ABILITY ^"Echoes of Ancient Days" {
+            "When you use your school ability, you may choose a number of characters up to your ranks in Performance who can hear you. Each chosen character also gains the benefits of the kihō's enhancement effect as long as it persists on you."
+        }
+        STARTING_OUTFIT [
+            "traveling clothes", "bō (staff)",
+            "knife", "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Fitness"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Performance"
+                TECHNIQUE_GROUP "Rank 1 Earth Shūji"
+                ^"Lord Togashi's Insight" [shuji]
+                ^"Beware the Smallest Mouse" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Medicine"
+                SKILL "Meditation"
+                SKILL "Performance"
+                TECHNIQUE_GROUP "Rank 1-2 Water Shūji"
+                ^"All Arts Are One" [shuji]
+                ^"Open-Hand Style" [kata]
+            }
+            RANK 3 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Culture"
+                SKILL "Commerce"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1-3 Air Shūji"
+                ^"The Great Silence" [kiho]
+                ^"The Ties that Bind" [ritual]
+            }
+            RANK 4 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Culture"
+                SKILL "Medicine"
+                SKILL "Performance"
+                TECHNIQUE_GROUP "Rank 1-4 Fire Shūji"
+                ^"Breaking Blow" [kiho]
+                ^"Foreseen Need" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Fitness"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Performance"
+                TECHNIQUE_GROUP "Rank 1-4 Void Shūji"
+                ^"Death Touch" [kiho]
+                ^"The Immovable Hand of Peace" [shuji]
+            }
+            RANK 6 {
+                ^"Echoes of Ancient Days"
+            }
+        }
+
+    }
+
+    ^"Yasuki Yōjimbō" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Skillful and cunning warriors who protect people traveling
+        # to, from, or within the Crab lands and escort caravans
+        # bringing vital supplies to the front lines. They employ keen
+        # awareness and strong knowledge of terrain to combat
+        # threats and prioritize the safety of those under their watch.
+
+        PROPERTIES {
+            ^"School Name" STRING "Yasuki Yōjimbō" FIXED
+            ^"Clan" STRING "Crab"
+            ^"Roles" LIST ["Bushi"]
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Tactics", ^"Commerce", ^"Courtesy", ^"Seafaring", ^"Survival"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 50
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            KATA ^"Crescent Moon Style"
+            SHUJI CHOOSE 1 [^"Honest Assessment", ^"Well of Desire"]
+        }
+
+        SCHOOL_ABILITY "Claws of the Crab" {
+            "When you make a check to perform the Guard action, you may spend (op) as follows: (op)+: If you succeed, you may guard one additional character in range per (op) spent this way. Maximum (op) equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"The Standing Death" {
+            "Once per game session, when you perform the Challenge action, you may choose up to 6 additional characters who can hear you as targets. These targets must have status lower than or equal to your original target's. If you succeed, each target must fight you in a clash one at a time in an order of their choosing (or flee the battle). Each clash lasts one round. After each clash, you regain fatigue equal to your Earth Ring. Until all clashes have concluded (or you have been killed), none of your targets can perform Attack or Scheme actions outside of their individual clashes."
+        }
+        STARTING_OUTFIT [
+            "crossbow or spear", "daishō",
+            "pony or ashigaru armor", "traveling pack",
+            "map of Crab Lands", "knife"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Commerce"
+                SKILL "Government"
+                SKILL "Seafaring"
+                TECHNIQUE_GROUP "Rank 1 Earth Shūji"
+                ^"Iron Forest Style" [kata]
+                ^"Trip the Leg" [kata]
+            }
+            RANK 2 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Courtesy"
+                SKILL "Culture"
+                SKILL "Government"
+                TECHNIQUE_GROUP "Rank 1-2 Water Shūji"
+                ^"Touchstone of Courage" [shuji]
+                ^"Unyielding Terms" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Courtesy"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-3 Ranged Kata"
+                ^"Pillar of Calm" [shuji]
+                ^"All Shall Fear Me" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Medicine"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-4 General Kata"
+                ^"Soul Sunder" [kata]
+                ^"A Samurai's Fate" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Commerce"
+                SKILL "Seafaring"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-5 Air Shūji"
+                ^"Rouse the Soul" [shuji]
+                ^"Striking as Void" [kata]
+            }
+            RANK 6 {
+                ^"The Standing Death"
+            }
+        }
+
+    }
+
+    # ===========================
+    # NEW ADVANTAGES: DISTINCTIONS
+    # ===========================
+
+    ^"Affect of Harmlessness" DEF {
+        EXTENDS #L5R266oP8qR0sT2uV4wX6y ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You project an air of harmlessness that puts strangers at ease."
+            "When performing a check to ingratiate yourself with a stranger (such as Courtesy [Air] to be pleasant to someone of higher status or Performance [Air] to conceal your true intentions toward a social equal), you may reroll up to two dice."
+        }
+    }
+
+    ^"Famously Neutral" DEF {
+        EXTENDS #L5R266oP8qR0sT2uV4wX6y ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Fame", "Interpersonal"]
+        }
+
+        EFFECT {
+            "You are known for your impartiality and fair-mindedness."
+            "When performing a check to convince others of your trustworthiness or provide unbiased advice (such as Command [Earth] to reason with two feuding subordinates or Sentiment [Earth] to determine how to set someone at ease), you may reroll up to two dice."
+        }
+    }
+
+    ^"Well Connected in [City]" DEF {
+        EXTENDS #L5R266oP8qR0sT2uV4wX6y ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You have an extensive network of contacts in a particular city."
+            "When performing a check to gather information, find items for sale or loan, or interact with people from the chosen city (such as Commerce [Water] to buy or sell something or Culture [Water] to learn current events generating gossip), you may reroll up to two dice."
+        }
+    }
+
+    # ===========================
+    # NEW ADVANTAGES: PASSIONS
+    # ===========================
+
+    ^"Decorum" DEF {
+        EXTENDS #L5R267zA9bC1dE3fG5hI7j ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You are well-versed in the strictures of courtly etiquette."
+            "After performing a check to ensure that you or your allies adhere to all the strictures of courtly etiquette (such as Command [Water] to be formally polite to guests or Culture [Water] to ascertain who is adhering to court etiquette), you remove 3 strife."
+        }
+    }
+
+    ^"Local Flare for [Region]" DEF {
+        EXTENDS #L5R267zA9bC1dE3fG5hI7j ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You have an intimate knowledge of a specific region and its people."
+            "After performing a check to remember information about the specific region you have chosen (such as Culture [Earth] to know current events or Sentiment [Earth] to recall attitudes of local inhabitants), you remove 3 strife."
+        }
+    }
+
+    ^"Pot Stirrer" DEF {
+        EXTENDS #L5R267zA9bC1dE3fG5hI7j ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You enjoy stirring up social chaos and watching the results unfold."
+            "After performing a check to stir up social chaos (such as Courtesy [Fire] to incite anger about a perceived insult or Theology [Fire] to encourage two people to argue about religious beliefs), you remove 3 strife."
+        }
+    }
+
+    # ===========================
+    # NEW DISADVANTAGES: ADVERSITIES
+    # ===========================
+
+    ^"Overconfidence in [Feature]" DEF {
+        EXTENDS #L5R268kL0mN2oP4qR6sT8u ^"Adversity"
+
+        # Pick One: Charm (Water) [Interpersonal], Creativity (Fire) [Mental], Toughness (Earth) [Physical], Spiritual Sensitivity (Void) [Spiritual], Subtlety (Air) [Interpersonal]
+
+        PROPERTIES {
+            ^"Ring" STRING "Various"
+            ^"Types" LIST ["Various"]
+        }
+
+        EFFECT {
+            "You are overconfident in a particular capacity, which blinds you to your limitations."
+            "When performing a check for which you need to leverage the capacity about which you are overconfident (such as Fitness [Earth] to run several li or Composition [Fire] to draft an exciting poem), you must choose and reroll two dice containing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Lackluster" DEF {
+        EXTENDS #L5R268kL0mN2oP4qR6sT8u ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You struggle to stand out or impress others."
+            "When performing a check to impress others or perform better than those around you (such as Aesthetics [Fire] to create a painting or Performance [Fire] to perform a role that moves the audience), you must choose and reroll two dice containing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Unsavory Past" DEF {
+        EXTENDS #L5R268kL0mN2oP4qR6sT8u ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "Your past contains shameful events that may come back to haunt you."
+            "When performing a check by which your past may come back to haunt you (such as Games [Water] to play with people who know your penchant for cheating or Tactics [Water] to lead troops who know you once fled the battlefield), you must choose and reroll two dice containing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    # ===========================
+    # NEW DISADVANTAGES: ANXIETIES
+    # ===========================
+
+    ^"Isolation" DEF {
+        EXTENDS #L5R269vW1xY3zA5bC7dE9f ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You feel profoundly isolated from those you care about."
+            "After performing a check related to interacting with people you care for (such as Command [Earth] to issue orders to family members or Sentiment [Earth] to recall the feelings of your friends concerning a subject), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    ^"Web of Lies" DEF {
+        EXTENDS #L5R269vW1xY3zA5bC7dE9f ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You are caught in a web of lies that grows harder to maintain."
+            "After performing a check to deceive someone you have deceived before (such as Courtesy [Air] to convince someone you are a clan member when other members have never heard of you or Skulduggery [Air] to convince a previous con victim you didn't steal from them), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    # ===========================
+    # NEW TECHNIQUES
+    # ===========================
+
+    ^"Courts of Stone Techniques" DEF {
+        APPLIES TO [^"Samurai"]
+
+        ENTRIES {
+            # --- CLOSE COMBAT KATA ---
+
+            ^"Trip the Leg" {
+                ^"Type" STRING "Kata"
+                ^"Subtype" STRING "Close Combat Kata"
+                ^"Rank" INTEGER 1
+                ^"Activation" STRING "As an Attack action using one readied polearm"
+                ^"Check" STRING "TN 2 Martial Arts [Melee] targeting one character at range 1-2"
+                ^"Effect" STRING "If you succeed, your target suffers the Prone condition."
+                ^"Opportunities" STRING "(op): If you succeed, the target receives 2 fatigue and 2 strife. (op)+: If target's vigilance is lower than or equal to (op) spent this way, they suffer the Disoriented condition."
+            }
+
+            ^"Pole-Vault" {
+                ^"Type" STRING "Kata"
+                ^"Subtype" STRING "Close Combat Kata"
+                ^"Rank" INTEGER 3
+                ^"Activation" STRING "As an Attack and Movement action using one readied polearm"
+                ^"Check" STRING "TN 3 Martial Arts [Melee] (Air or Water) targeting one character at range 3-4"
+                ^"Effect" STRING "You move to range 2 of your target, ignoring the effects of any terrain you pass over. If you succeed, deal physical damage equal to the weapon's base damage plus bonus successes. If you fail with shortfall of 2 or more, suffer Prone condition, 2 fatigue and 2 strife."
+            }
+
+            # --- NINJUTSU ---
+
+            ^"Artful Alibi" {
+                ^"Type" STRING "Ninjutsu"
+                ^"Rank" INTEGER 3
+                ^"Activation" STRING "When you make a Skulduggery check to surveil or engage in clandestine activities during downtime"
+                ^"Opportunities" STRING "Air or Water (op)+: If you succeed, you also count as having made a successful downtime Composition or Design check to refine (Air) or adapt (Water) an item, with one bonus success per (op) spent this way."
+            }
+
+            ^"Cunning Distraction" {
+                ^"Type" STRING "Ninjutsu"
+                ^"Rank" INTEGER 2
+                ^"Activation" STRING "As a Scheme action during a duel or clash"
+                ^"Check" STRING "TN 2 Skulduggery check targeting one character engaged in the duel or clash"
+                ^"Effect" STRING "Performing this action is cheating. Any character with vigilance of 2 or higher spots the cheating. If you succeed, during the next round both characters engaged swap their initiative order."
+                ^"Opportunities" STRING "(op)+: The vigilance required to spot the cheating is increased by 1 per (op) spent this way."
+            }
+
+            ^"Deceitful Strike" {
+                ^"Type" STRING "Ninjutsu"
+                ^"Rank" INTEGER 1
+                ^"Activation" STRING "When you make a Martial Arts check during a duel or clash"
+                ^"Opportunities" STRING "(op)+: Each observer with vigilance equal to or less than one plus (op) spent this way believes your attack was not meant to be lethal."
+            }
+
+            ^"Like a Ghost" {
+                ^"Type" STRING "Ninjutsu"
+                ^"Rank" INTEGER 2
+                ^"Activation" STRING "As a Movement and Scheme action"
+                ^"Check" STRING "TN 2 Fitness (Air or Water)"
+                ^"Effect" STRING "If you succeed, you may move one range band, plus one additional range band per two bonus successes. This movement ignores terrain effects. You may move up or down vertical surfaces or across jumpable gaps."
+                ^"Opportunities" STRING "(op)(op): Your footfalls are completely silent."
+            }
+
+            ^"Slicing Wind Kick" {
+                ^"Type" STRING "Ninjutsu"
+                ^"Rank" INTEGER 3
+                ^"Activation" STRING "As an Attack and Movement action using one readied polearm"
+                ^"Check" STRING "TN 3 Martial Arts [Unarmed] (Air) with unarmed kick profile targeting one character at range 1-2"
+                ^"Effect" STRING "If you succeed, the target suffers physical damage equal to unarmed kick base damage plus bonus successes and the Disoriented condition."
+                ^"Opportunities" STRING "Air (op): Move 1 range band. Air (op)(op): One target suffers Prone condition. Air (op)(op)+: Choose one additional target per (op)(op) spent this way."
+            }
+
+            ^"Silent Elimination" {
+                ^"Type" STRING "Ninjutsu"
+                ^"Rank" INTEGER 3
+                ^"Activation" STRING "As an Attack and Movement action using one readied melee or unarmed weapon with Snaring quality"
+                ^"Check" STRING "TN 3 Martial Arts [Melee or Unarmed] targeting one living character of silhouette 0-2 in range. TN reduced by 2 (minimum 1) if performed against same target as previous round."
+                ^"Effect" STRING "If you succeed, target suffers Immobilized and Silenced conditions, pulled to range 0. Target limited to Martial Arts [Unarmed] checks targeting you with TN increased by 1."
+                ^"Opportunities" STRING "(op): If succeed and target is minion, they suffer Unconscious condition. (op)+: Target suffers 2 fatigue and 2 strife per (op). (op)(op): You and target move one range band."
+            }
+
+            ^"Stillness of Death" {
+                ^"Type" STRING "Ninjutsu"
+                ^"Rank" INTEGER 5
+                ^"Activation" STRING "When you perform a check to use a Ninjutsu technique"
+                ^"Opportunities" STRING "(op)+: Increase TN of the next check a character makes to resist a critical strike you inflict by 1 per (op) spent this way. Persists until end of your next turn."
+            }
+
+            ^"To Float or Sink" {
+                ^"Type" STRING "Ninjutsu"
+                ^"Rank" INTEGER 2
+                ^"Activation" STRING "When you make a Martial skill (Water or Earth) check"
+                ^"Opportunities" STRING "Water or Earth (op)+: Remove one existing Disoriented or Prone condition from yourself. Water or Earth (op): Do not suffer the Disoriented and Prone conditions if the check would cause you to suffer them."
+            }
+
+            ^"What's Yours Is Mine" {
+                ^"Type" STRING "Ninjutsu"
+                ^"Rank" INTEGER 2
+                ^"Activation" STRING "As an Attack and Movement action using one readied weapon without Cumbersome"
+                ^"Check" STRING "TN 3 Martial Arts [Melee] (Fire) targeting one character at range 0-1"
+                ^"Effect" STRING "If you succeed, target suffers physical damage equal to weapon's base damage. If you succeed and target is Dazed, you may steal one item from their person (GM approval). Stealing a readied weapon requires target to resist with TN 3 Fitness check."
+                ^"Opportunities" STRING "Fire (op): Target suffers Dazed condition. Fire (op)+: Move 1 range band plus one additional per (op)(op) beyond first. Fire (op)(op)+: Steal one additional item per (op)(op) spent this way."
+            }
+
+            # --- RITUALS ---
+
+            ^"Formal Tea Ceremony" {
+                ^"Type" STRING "Ritual"
+                ^"Rank" INTEGER 5
+                ^"Activation" STRING "Once per game session, as a downtime activity using a ceremonial tea set"
+                ^"Check" STRING "TN 5 Performance (Void) targeting yourself and up to your ranks in Culture other participants"
+                ^"Effect" STRING "Each participant removes 6 strife plus additional strife equal to bonus successes. If you succeed, each participant gains 1 Void point."
+                ^"Opportunities" STRING "(op)(op): If you succeed, reduce TN of each participant's next check by 2. (op)+: Each participant removes 2 fatigue plus 1 per (op) spent. (op)(op): If you succeed, gain 1 glory per participant of higher status than yourself."
+            }
+
+            ^"Treaty Signing" {
+                ^"Type" STRING "Ritual"
+                ^"Rank" INTEGER 2
+                ^"Activation" STRING "Once per game session as a downtime activity"
+                ^"Check" STRING "TN 2 Composition (Fire) to write agreement, then TN 3 Government (Air) targeting participants"
+                ^"Effect" STRING "If you succeed, agreement has no loopholes. Each participant stakes 10 honor on upholding the agreement. Anyone who later breaks it loses staked honor unless another participant broke it first."
+                ^"Opportunities" STRING "(op)+: All participants stake 1 additional honor plus 1 per (op) spent. (op)(op)(op): If you succeed, you need only stake half the honor other participants stake."
+            }
+
+            ^"The Ties that Bind" {
+                ^"Type" STRING "Ritual"
+                ^"Rank" INTEGER 4
+                ^"Activation" STRING "As a downtime activity"
+                ^"Check" STRING "TN 3 Sentiment (Void) targeting one character"
+                ^"Effect" STRING "If you succeed, learn of a character who would be a particularly fortuitous match for your target. Provides valuable clues about this person. If using Bond rules, target and identified character may decrease cost of forming a Bond to 1 XP."
+                ^"Opportunities" STRING "Void (op)(op)+: Learn one likely future consequence of a relationship per (op)(op) spent. Void (op)(op)(op)(op): Learn of another character who would be an inauspicious match and one likely future consequence."
+            }
+
+            # --- AIR SHUJI ---
+
+            ^"Assess Strengths" {
+                ^"Type" STRING "Shūji"
+                ^"Subtype" STRING "Air Shūji"
+                ^"Rank" INTEGER 1
+                ^"Activation" STRING "As a Scheme action"
+                ^"Check" STRING "Games (Air) check targeting one opponent in a game. TN equals target's vigilance."
+                ^"Effect" STRING "If you succeed, learn target's ranks in Games, Tactics, or any one Martial Arts skill. Choose one additional skill per bonus success."
+                ^"Opportunities" STRING "Air (op)(op): Learn all target's Mental advantages and disadvantages."
+            }
+
+            ^"Hidden in Smoke" {
+                ^"Type" STRING "Shūji"
+                ^"Subtype" STRING "Air Shūji"
+                ^"Rank" INTEGER 4
+                ^"Activation" STRING "Once per scene as a Scheme action"
+                ^"Check" STRING "Social (Air) check targeting one character. TN equals target's vigilance."
+                ^"Effect" STRING "If you succeed, hide your true goal or objective. Any ability that would reveal your true intentions reveals a false, narratively appropriate goal instead. Persists until end of scene. During intrigue, gain 1 momentum point."
+                ^"Opportunities" STRING "Air (op)(op)+: Choose one additional target per (op)(op) spent. Air (op)(op)+: Gain 1 additional momentum point per (op)(op) spent."
+            }
+
+            # --- EARTH SHUJI ---
+
+            ^"Unyielding Terms" {
+                ^"Type" STRING "Shūji"
+                ^"Subtype" STRING "Earth Shūji"
+                ^"Rank" INTEGER 2
+                ^"Activation" STRING "Once per scene as a Scheme action when determining duel method and stakes"
+                ^"Check" STRING "TN 4 Culture (Earth)"
+                ^"Effect" STRING "You select either the method of battle, or the stakes for victory."
+            }
+
+            # --- FIRE SHUJI ---
+
+            ^"All Shall Fear Me" {
+                ^"Type" STRING "Shūji"
+                ^"Subtype" STRING "Fire Shūji"
+                ^"Rank" INTEGER 3
+                ^"Activation" STRING "As a Scheme action"
+                ^"Check" STRING "TN 4 Command or Performance (Fire) targeting any number of characters in the scene"
+                ^"Effect" STRING "If you succeed, each target receives 2 strife when they choose you as target for a Social skill check. Persists until end of scene. If you fail, receive 4 strife."
+                ^"Opportunities" STRING "Fire (op)(op)+: If you succeed, all targets suffer 1 additional strife per (op)(op) spent whenever they target you."
+            }
+
+            ^"Crackling Laughter" {
+                ^"Type" STRING "Shūji"
+                ^"Subtype" STRING "Fire Shūji"
+                ^"Rank" INTEGER 3
+                ^"Activation" STRING "Once per game session as a Scheme action"
+                ^"Check" STRING "TN 3 Performance (Fire) targeting up to your Fire Ring characters"
+                ^"Effect" STRING "If you succeed, each target receives 2 strife and must make TN 5 Meditation (Air 6, Water 3) check or receive additional strife equal to shortfall. If you fail, receive 3 strife."
+                ^"Opportunities" STRING "Fire (op)(op): For each character who suffers Compromised condition, gain 1 glory."
+            }
+
+            ^"Offend the Sensibilities" {
+                ^"Type" STRING "Shūji"
+                ^"Subtype" STRING "Fire Shūji"
+                ^"Rank" INTEGER 2
+                ^"Activation" STRING "When you make an Artisan (Fire) check to craft an item"
+                ^"Opportunities" STRING "Fire (op)(op): Choose one individual known to you. When they first see the item, they receive 2 strife. If this causes Compromised condition, target also suffers Dazed, Enraged, or Silenced (your choice). Anyone else seeing the item knows it could be very offensive."
+            }
+
+            ^"Spiteful Loss" {
+                ^"Type" STRING "Shūji"
+                ^"Subtype" STRING "Fire Shūji"
+                ^"Rank" INTEGER 1
+                ^"Activation" STRING "When you make a Games (Fire) check while playing a game"
+                ^"Opportunities" STRING "Fire (op): If you fail, forfeit 1 glory. Then each participant receives strife equal to 1 plus the shortfall."
+            }
+
+            # --- WATER SHUJI ---
+
+            ^"Beware the Smallest Mouse" {
+                ^"Type" STRING "Shūji"
+                ^"Subtype" STRING "Water Shūji"
+                ^"Rank" INTEGER 1
+                ^"Activation" STRING "When you make a Social skill (Water) check targeting one or more characters"
+                ^"Opportunities" STRING "Water (op)(op)+: While interacting with you, the target treats their vigilance as 1 lower per (op)(op) spent and decreases TN of social checks targeting you by 1. Persists until end of scene."
+            }
+
+            ^"Fun and Games" {
+                ^"Type" STRING "Shūji"
+                ^"Subtype" STRING "Water Shūji"
+                ^"Rank" INTEGER 1
+                ^"Activation" STRING "When you make a Games (Water) check"
+                ^"Opportunities" STRING "Water (op)+: Choose one participant or observer, remove 1 strife per (op) spent. Water (op)(op)(op): Remove 1 strife from each participant and observer instead."
+            }
+
+            # --- VOID SHUJI ---
+
+            ^"Foreseen Need" {
+                ^"Type" STRING "Shūji"
+                ^"Subtype" STRING "Void Shūji"
+                ^"Rank" INTEGER 4
+                ^"Activation" STRING "As a Support action"
+                ^"Check" STRING "TN 1 Artisan (Void)"
+                ^"Effect" STRING "If you succeed, recall that you foresaw the need for an item with rarity equal to 1 plus bonus successes. Spend one Void point to instantly reveal an item you could have crafted (must be reasonable)."
+                ^"Opportunities" STRING "Void (op): Double the rarity of the target item, but the item must be perishable or of sentimental value only."
+            }
+        }
+
+    }
+
+    # ===========================
+    # SHINOBI WEAPONS
+    # ===========================
+
+    ^"Courts of Stone Weapons" DEF {
+        APPLIES TO [^"Samurai"]
+
+        ENTRIES {
+            ^"Ninjato" {
+                ^"Category" STRING "Sword"
+                ^"Skill" STRING "Martial Arts [Melee]"
+                ^"Range" STRING "0-1"
+                ^"Damage" INTEGER 4
+                ^"Deadliness" INTEGER 4
+                ^"Grips" STRING "1-hand: -; 2-hand: Deadliness +1"
+                ^"Qualities" LIST OF STRING ["Concealable", "Forbidden", "Razor-Edged"]
+                ^"Rarity" INTEGER 7
+                ^"Cost" STRING "12 koku"
+            }
+
+            ^"Shinobigatana" {
+                ^"Category" STRING "Sword"
+                ^"Skill" STRING "Martial Arts [Melee]"
+                ^"Range" STRING "0-1"
+                ^"Damage" INTEGER 4
+                ^"Deadliness" INTEGER 5
+                ^"Grips" STRING "1-hand: -; 2-hand: Deadliness +1"
+                ^"Qualities" LIST OF STRING ["Ceremonial", "Concealable", "Razor-Edged"]
+                ^"Rarity" INTEGER 8
+                ^"Cost" STRING "22 koku"
+                ^"Special" STRING "Appears to be a katana until examined; TN 4 Smithing check (Air 2, Water 5) to identify. If discovered, loses Ceremonial and gains Forbidden."
+            }
+
+            ^"Folding Half-Bow" {
+                ^"Category" STRING "Bow"
+                ^"Skill" STRING "Martial Arts [Ranged]"
+                ^"Range" STRING "2-3"
+                ^"Damage" INTEGER 4
+                ^"Deadliness" INTEGER 3
+                ^"Grips" STRING "2-hand: -"
+                ^"Rarity" INTEGER 5
+                ^"Cost" STRING "3 koku"
+                ^"Special" STRING "While folded, has Concealable quality and cannot be fired. As a Support action, prepare for use."
+            }
+
+            ^"Kamayari" {
+                ^"Category" STRING "Specialist"
+                ^"Skill" STRING "Martial Arts [Melee]"
+                ^"Range" STRING "2"
+                ^"Damage" INTEGER 4
+                ^"Deadliness" INTEGER 3
+                ^"Grips" STRING "2-hand: -"
+                ^"Qualities" LIST OF STRING ["Durable", "Snaring"]
+                ^"Rarity" INTEGER 7
+                ^"Cost" STRING "8 koku"
+            }
+
+            ^"Kusarifundo" {
+                ^"Category" STRING "Specialist"
+                ^"Skill" STRING "Martial Arts [Melee]"
+                ^"Range" STRING "1"
+                ^"Damage" INTEGER 2
+                ^"Deadliness" INTEGER 2
+                ^"Grips" STRING "1-hand: -; 2-hand: Snaring"
+                ^"Qualities" LIST OF STRING ["Concealable"]
+                ^"Rarity" INTEGER 5
+                ^"Cost" STRING "4 bu"
+            }
+
+            ^"Kyoketsu Shoge" {
+                ^"Category" STRING "Specialist"
+                ^"Skill" STRING "Martial Arts [Ranged]"
+                ^"Range" STRING "1-2"
+                ^"Damage" INTEGER 2
+                ^"Deadliness" INTEGER 3
+                ^"Grips" STRING "2-hand: -"
+                ^"Qualities" LIST OF STRING ["Concealable", "Forbidden", "Snaring"]
+                ^"Rarity" INTEGER 6
+                ^"Cost" STRING "3 bu"
+            }
+
+            ^"Shakuhachi" {
+                ^"Category" STRING "Specialist"
+                ^"Skill" STRING "Martial Arts [Melee]"
+                ^"Range" STRING "0"
+                ^"Damage" INTEGER 3
+                ^"Deadliness" INTEGER 2
+                ^"Grips" STRING "1-hand: -; 2-hand: Damage +1"
+                ^"Qualities" LIST OF STRING ["Durable", "Mundane", "Subtle"]
+                ^"Rarity" INTEGER 4
+                ^"Cost" STRING "3 bu"
+            }
+
+            ^"Tekagi" {
+                ^"Category" STRING "Specialist"
+                ^"Skill" STRING "Martial Arts [Unarmed]"
+                ^"Range" STRING "0"
+                ^"Damage" INTEGER 1
+                ^"Deadliness" INTEGER 3
+                ^"Grips" STRING "1-hand: -"
+                ^"Qualities" LIST OF STRING ["Durable", "Forbidden"]
+                ^"Rarity" INTEGER 6
+                ^"Cost" STRING "4 bu"
+                ^"Special" STRING "(op)+: If target's vigilance is lower than or equal to (op) spent, choose one Razor-Edged weapon the target has readied: it becomes Damaged."
+            }
+
+            ^"Tekken" {
+                ^"Category" STRING "Specialist"
+                ^"Skill" STRING "Martial Arts [Unarmed]"
+                ^"Range" STRING "0"
+                ^"Damage" INTEGER 2
+                ^"Deadliness" INTEGER 3
+                ^"Grips" STRING "1-hand: -"
+                ^"Qualities" LIST OF STRING ["Concealable", "Durable"]
+                ^"Rarity" INTEGER 4
+                ^"Cost" STRING "3 bu"
+            }
+
+
+        }
+
+    }
+
+    # ===========================
+    # SHINOBI ARMOR
+    # ===========================
+
+    ^"Courts of Stone Armor" DEF {
+        APPLIES TO [^"Samurai"]
+
+        ENTRIES {
+            ^"Firefighter's Coat" {
+                ^"Physical Resistance" INTEGER 2
+                ^"Qualities" LIST OF STRING ["Cumbersome"]
+                ^"Rarity" INTEGER 4
+                ^"Cost" STRING "6 bu"
+                ^"Special" STRING "Ignores effects of Dangerous terrain created by fire. Treats resistance against flames (physical and supernatural) as 4."
+            }
+
+            ^"Stealth Clothing" {
+                ^"Physical Resistance" INTEGER 2
+                ^"Qualities" LIST OF STRING ["Forbidden", "Subtle"]
+                ^"Rarity" INTEGER 7
+                ^"Cost" STRING "4 bu"
+                ^"Special" STRING "Reversible (dark/bright sides). While in Obscuring terrain with appropriate side shown, increase TN of Attack checks targeting you by additional 1 (total +2)."
+            }
+        }
+
+    }
+
+    # ===========================
+    # TITLES
+    # ===========================
+
+    ^"Courts of Stone Titles" DEF {
+        APPLIES TO [^"Samurai"]
+
+        ENTRIES {
+            ^"Castellan" {
+                ^"Assigned By" STRING "A daimyo after putting the character in charge of a castle's day-to-day management"
+                ^"Status Award" STRING "+5 (to a maximum of 30)"
+                ^"Glory Award" STRING "+10 (to a maximum of 60)"
+                ^"XP to Completion" INTEGER 20
+                ^"Title Ability" STRING "Every Stone Has its Place"
+                ^"Title Ability Effect" STRING "When undertaking a downtime activity to prepare your castle for an important event (a wedding, battle, or Winter Court), you may change all rolled blank results to (op) results."
+                ^"Advancement" LIST OF STRING [
+                    "Social Skills (Skill Group)",
+                    "Culture (Skill)",
+                    "Design (Skill)",
+                    "Government (Skill)",
+                    "Rallying Cry (shuji)",
+                    "Slippery Maneuvers (shuji)",
+                    "Touchstone of Courage (shuji)"
+                ]
+            }
+
+            ^"Covert Agent" {
+                ^"Assigned By" STRING "Any individual who gives the character a task requiring them to act against their sworn lord's interests"
+                ^"Honor Award" STRING "-10 (to a minimum of 25)"
+                ^"XP to Completion" INTEGER 20
+                ^"Immediate Effects" STRING "Gain the Dark Secret disadvantage"
+                ^"Title Ability" STRING "Practiced Prevaricator"
+                ^"Title Ability Effect" STRING "When you make a check to deceive or hide from someone, you may negate up to 2 (st) symbols."
+                ^"Advancement" LIST OF STRING [
+                    "Social Skills (Skill Group)",
+                    "Meditation (Skill)",
+                    "Artful Alibi (ninjutsu)",
+                    "Cadence (shuji)",
+                    "Cunning Distraction (ninjutsu)",
+                    "To Float or Sink (ninjutsu)",
+                    "What's Yours Is Mine (ninjutsu)"
+                ]
+            }
+
+            ^"Dreaded Enforcer" {
+                ^"Assigned By" STRING "A lord after assigning the character to assassinate or remove someone of Status 60 or higher, and the character succeeds"
+                ^"Honor Award" STRING "-10 (to a minimum of 5)"
+                ^"Glory Award" STRING "-20 (to a minimum of 15)"
+                ^"XP to Completion" INTEGER 40
+                ^"Immediate Effects" STRING "Gain the Whispers of Cruelty disadvantage"
+                ^"Title Ability" STRING "Merciless Eyes"
+                ^"Title Ability Effect" STRING "When making a check to plan an assassination or attack with lethal intent, you may negate up to 2 (st) symbols."
+                ^"Advancement" LIST OF STRING [
+                    "Martial Skills (Skill Group)",
+                    "Medicine (Skill)",
+                    "Skulduggery (Skill)",
+                    "Deceitful Strike (ninjutsu)",
+                    "Like a Ghost (ninjutsu)",
+                    "Silent Elimination (ninjutsu)",
+                    "The Stillness of Death (ninjutsu)"
+                ]
+            }
+
+            ^"Esteemed Negotiator" {
+                ^"Assigned By" STRING "A daimyo or individual of status 50 or higher who requests the character as a mediator"
+                ^"Glory Award" STRING "+10 (to a minimum of 65)"
+                ^"XP to Completion" INTEGER 34
+                ^"Title Ability" STRING "Calming Words"
+                ^"Title Ability Effect" STRING "Once per scene, as a Scheme and Support action, you may reduce the strife of all characters in the scene by your ranks in Sentiment."
+                ^"Advancement" LIST OF STRING [
+                    "Social Skills (Skill Group)",
+                    "Culture (Skill)",
+                    "Government (Skill)",
+                    "Sentiment (Skill)",
+                    "Rank 1-3 Earth Shūji (shuji) (Tech Group)",
+                    "The Ties that Bind (ritual)",
+                    "Treaty Signing (ritual)"
+                ]
+            }
+
+            ^"Kenshinzen" {
+                ^"Assigned By" STRING "Two existing kenshinzen, after witnessing the character defeating a kenshinzen in a duel. Character must have honor 65 or higher."
+                ^"Glory Award" STRING "+20 (to a maximum of 75)"
+                ^"XP to Completion" INTEGER 24
+                ^"Title Ability" STRING "A Single Moment"
+                ^"Title Ability Effect" STRING "When you perform an Attack action that uses a sheathed Razor-Edged weapon, you may spend (op): Void (op)(op): Your target cannot defend against the damage unless they spend a Void point. Any (op): After resolving, you may sheathe the weapon you used."
+                ^"Advancement" LIST OF STRING [
+                    "Martial Skills (Skill Group)",
+                    "Social Skills (Skill Group)",
+                    "Culture (Skill)",
+                    "Sentiment (Skill)",
+                    "Rank 1-5 Close Combat Kata (kata) (Tech Group)",
+                    "Rank 1-5 Void Shūji (shuji) (Tech Group)",
+                    "Tea Ceremony (ritual)"
+                ]
+            }
+
+            ^"Kyuden Asako Shieldbearer" {
+                ^"Assigned By" STRING "The commander of the Kyuden Asako Shieldbearers when the character joins their ranks"
+                ^"Glory Award" STRING "+5 (to a maximum of 55)"
+                ^"XP to Completion" INTEGER 40
+                ^"Title Ability" STRING "Time-Tested Defense"
+                ^"Title Ability Effect" STRING "After an Attack action check targeting you fails, the attacker suffers strife equal to their shortfall."
+                ^"Advancement" LIST OF STRING [
+                    "Scholar Skills (Skill Group)",
+                    "Martial Arts [Melee] (Skill)",
+                    "Martial Arts [Ranged] (Skill)",
+                    "Meditation (Skill)",
+                    "Tactics (Skill)",
+                    "Rank 1-3 Kata (kata) (Tech Group)",
+                    "Cleansing Rite (ritual)"
+                ]
+                ^"Special Equipment" STRING "Small Bronze Shield: Range 0, Damage 2, Deadliness 2, Cumbersome, Durable, Wargear. When readied, treat physical resistance as 5. As Movement and Support action, increase TN of Attack checks targeting you by 1 until start of next turn."
+            }
+
+            ^"Master Artisan" {
+                ^"Assigned By" STRING "Someone of status 75 or higher after the character performs a great artistic feat"
+                ^"Glory Award" STRING "+30 (to a maximum of 80)"
+                ^"XP to Completion" INTEGER 60
+                ^"Title Ability" STRING "Inspired Creations"
+                ^"Title Ability Effect" STRING "When crafting an item, you may spend (op)(op)(op): The item is a singular masterwork. You must name it. Once per game session when making a check using the item, a character may add 1 (ring) set to any result of their choice."
+                ^"Advancement" LIST OF STRING [
+                    "Artisan Skills (Skill Group)",
+                    "Courtesy (Skill)",
+                    "Culture (Skill)",
+                    "Medicine (Skill)",
+                    "Meditation (Skill)",
+                    "All Arts Are One (shuji)",
+                    "Formal Tea Ceremony (ritual)"
+                ]
+            }
+
+            ^"Winter Court Champion" {
+                ^"Assigned By" STRING "The Emperor or one of their chosen agents after the character wins a major contest at Winter Court"
+                ^"Glory Award" STRING "+20 (to a maximum of 75)"
+                ^"XP to Completion" INTEGER 16
+                ^"Title Ability" STRING "Accustomed to Attention"
+                ^"Title Ability Effect" STRING "When making a check to boast or get people's attention, you may negate up to 2 (st) symbols."
+                ^"Advancement" LIST OF STRING [
+                    "Artisan Skills (Skill Group)",
+                    "Social Skills (Skill Group)",
+                    "Artisan's Appraisal (shuji)",
+                    "Formal Tea Ceremony (ritual)",
+                    "Fun and Games (shuji)",
+                    "Offend the Sensibilities (shuji)",
+                    "Spiteful Loss (shuji)"
+                ]
+            }
+
+            ^"Seven Fold Palace Acolyte" {
+                ^"Assigned By" STRING "One of the masters of the Seven Fold Palace after the character begins studying there"
+                ^"Glory Award" STRING "+5 (to a maximum of 35)"
+                ^"XP to Completion" INTEGER 36
+                ^"Title Ability" STRING "First, Forge Yourself"
+                ^"Title Ability Effect" STRING "When you make a check to craft an item, you may suffer a number of fatigue up to your ranks in Fitness. If you do, change that many results containing (su) to (op) results."
+                ^"Advancement" LIST OF STRING [
+                    "Trade Skills (Skill Group)",
+                    "Aesthetics (Skill)",
+                    "Design (Skill)",
+                    "Fitness (Skill)",
+                    "Meditation (Skill)",
+                    "Smithing (Skill)",
+                    "Artisan's Appraisal (shuji)"
+                ]
+            }
+        }
+
+    }
+
+    # ===========================
+    # BONDS SYSTEM
+    # ===========================
+
+    ^"Bonds" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Bonds are a new way to spend experience points,
+        # reflecting the deepening of connection between two
+        # people. Experience spent on bonds does not contribute
+        # toward school curriculum rank or a title.
+
+        ^"Bond Ranks" DEF {
+            ^"Rank 1" {
+                ^"XP Cost" INTEGER 3
+                ^"Ability" STRING "Bond Ability (varies by bond type) plus narrative benefits"
+            }
+            ^"Rank 2" {
+                ^"XP Cost" INTEGER 4
+                ^"Ability" STRING "Like you always say...: Count as having bonded character's assistance on a check in which they are skilled."
+            }
+            ^"Rank 3" {
+                ^"XP Cost" INTEGER 6
+                ^"Ability" STRING "A familiar presence draws near...: If NPC, you may play them for the next scene. If PC, play out an establishing flashback."
+            }
+            ^"Rank 4" {
+                ^"XP Cost" INTEGER 8
+                ^"Ability" STRING "You taught me this!: Use one bonded character's ring or skill ranks for a check instead of your own."
+            }
+            ^"Rank 5" {
+                ^"XP Cost" INTEGER 10
+                ^"Ability" STRING "We are bound by this fate we have made!: Transfer one Void point to bonded character or gain 1 Void point after they spend one."
+            }
+        }
+
+        ^"Bond Types" DEF {
+            ^"Family Bond" {
+                ^"Bond Ability" STRING "Strong Roots Grow Deep: Once per scene, call upon bond to treat composure as increased by bond rank until end of scene."
+            }
+            ^"Comrade Bond" {
+                ^"Bond Ability" STRING "Just Like Old Times: When performing a check using a skill the bonded character has ranks in, call upon bond to negate a number of (st) results up to bond rank."
+            }
+            ^"Lover Bond" {
+                ^"Bond Ability" STRING "With You, the Storm Subsides: At end of scene involving lover or reminders of them, call upon bond to remove additional strife equal to bond rank."
+            }
+            ^"Rival Bond" {
+                ^"Bond Ability" STRING "I Will Surpass You!: While making a check, call upon bond. Receive strife equal to bond rank; reroll up to that many dice."
+            }
+            ^"Nemesis Bond" {
+                ^"Bond Ability" STRING "They Were Responsible!: Call upon bond to determine if nemesis was involved in a situation. GM provides clear answer. If confirmed, reduce TN of next check to address the problem by bond rank."
+            }
+        }
+
+    }
+
+    # ===========================
+    # NEW SAMURAI HERITAGES
+    # ===========================
+
+    ^"Courts of Stone Heritages" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # New heritages for samurai with ancestral connections
+        # to the Crane Clan or the mysterious underworld of the
+        # shinobi. Used instead of the core rulebook heritage table.
+
+        ENTRIES {
+            ^"Dishonorable Cheat (Roll 1)" {
+                ^"Description" STRING "One of your kin was caught cheating in a high-profile duel. Instead of committing seppuku, they ran away as a ronin."
+                ^"Modifier" STRING "Decrease glory by 5"
+                ^"Effect" STRING "Roll d10 for skill to bring kin to justice: 1-3 Martial Arts [Choose One], 4-6 Survival, 7-10 Government"
+            }
+
+            ^"Triumph over the Lion (Roll 2-3)" {
+                ^"Description" STRING "An ancestor held a decisive victory over the Lion - a duel, a game of Go, a battle."
+                ^"Modifier" STRING "Increase honor by 5"
+                ^"Effect" STRING "Roll d10 for family heirloom: 1-3 weapon, 4-6 game set, 7-8 relevant item, 9 horse/animal, 10 deed to small land on Lion border. You choose one quality, GM chooses one quality."
+            }
+
+            ^"Unforgivable Performance (Roll 4-5)" {
+                ^"Description" STRING "A kin gave a truly horrible performance before the Imperial line, causing the Emperor to leave the theatre."
+                ^"Modifier" STRING "Decrease status by 3"
+                ^"Effect" STRING "Gain Benten's Curse (Air) disadvantage. Roll d10 for redemption skill: 1-3 Performance, 4-6 Culture, 7-9 Command, 10 Courtesy"
+            }
+
+            ^"Triumph During Gempuku (Roll 6-7)" {
+                ^"Description" STRING "One of your parents was a Topaz Champion and brought honor to your clan and family."
+                ^"Modifier" STRING "Increase honor and glory by 3"
+                ^"Effect" STRING "Gain Support of the Kakita Dueling Academy distinction"
+            }
+
+            ^"A Little Too Close to Heaven (Roll 8-9)" {
+                ^"Description" STRING "One of your ancestors is rumored to have had an illegitimate child with an Emperor."
+                ^"Modifier" STRING "Increase status by 5, decrease honor by 5"
+                ^"Effect" STRING "Roll d10 for skill to discover truth: 1-2 Government, 3-4 Commerce, 5-6 Sentiment, 7-8 Meditation, 9-10 Theology"
+            }
+
+            ^"Elegant Craftsman (Roll 10)" {
+                ^"Description" STRING "Your ancestor was a truly gifted artisan who produced a renowned masterwork."
+                ^"Modifier" STRING "Increase glory by 5"
+                ^"Effect" STRING "Gain Isolation anxiety. Choose one ring; reduce it by 1 to increase Fire or Air by 1 (cannot raise above 3)."
+            }
+        }
+
+    }
+
+    # ===========================
+    # COURTIER & SHINOBI ITEMS
+    # ===========================
+
+    ^"Courts of Stone Items" DEF {
+        APPLIES TO [^"Samurai"]
+
+        ENTRIES {
+            # --- COURTIER ITEMS ---
+
+            ^"Ceremonial Tea Set" {
+                ^"Category" STRING "Courtier Item"
+                ^"Cost" STRING "7 koku"
+                ^"Rarity" INTEGER 8
+                ^"Qualities" LIST OF STRING ["Ceremonial", "Resplendent"]
+                ^"Effect" STRING "When performing Tea Ceremony or Formal Tea Ceremony ritual, add one kept (ring) die set to an (op) result."
+            }
+
+            ^"Folding Fan" {
+                ^"Category" STRING "Courtier Item"
+                ^"Cost" STRING "1 koku"
+                ^"Rarity" INTEGER 3
+                ^"Qualities" LIST OF STRING ["Resplendent"]
+            }
+
+            ^"Makeup Kit" {
+                ^"Category" STRING "Courtier Item"
+                ^"Cost" STRING "1-3 bu"
+                ^"Rarity" INTEGER 2
+            }
+
+            ^"Mari (Ball)" {
+                ^"Category" STRING "Courtier Item"
+                ^"Cost" STRING "5 zeni"
+                ^"Rarity" INTEGER 3
+            }
+
+            ^"Mono Imi Fuda (Taboo Plaque)" {
+                ^"Category" STRING "Courtier Item"
+                ^"Cost" STRING "8 bu"
+                ^"Rarity" INTEGER 6
+                ^"Qualities" LIST OF STRING ["Sacred"]
+                ^"Special" STRING "Warns off people and blocks spread of impure energies. TN 3 Theology (Air) check to assess whether a particular plaque possesses the Sacred quality."
+            }
+
+            ^"Norimono (Palanquin)" {
+                ^"Category" STRING "Courtier Item"
+                ^"Cost" STRING "12 koku"
+                ^"Rarity" INTEGER 7
+                ^"Qualities" LIST OF STRING ["Resplendent"]
+            }
+
+            ^"Performers' Boat" {
+                ^"Category" STRING "Courtier Item"
+                ^"Cost" STRING "20 koku"
+                ^"Rarity" INTEGER 6
+            }
+
+            # --- SHINOBI ITEMS ---
+
+            ^"Amigasa" {
+                ^"Category" STRING "Shinobi Item"
+                ^"Cost" STRING "4 zeni"
+                ^"Rarity" INTEGER 2
+            }
+
+            ^"Bamboo Cane" {
+                ^"Category" STRING "Shinobi Item"
+                ^"Cost" STRING "6 bu"
+                ^"Rarity" INTEGER 6
+                ^"Qualities" LIST OF STRING ["Concealable", "Mundane"]
+                ^"Special" STRING "Can be wielded as a bokken. Interior doubles as blowgun or conceals objects."
+            }
+
+            ^"Demon Mask" {
+                ^"Category" STRING "Shinobi Item"
+                ^"Cost" STRING "1 koku"
+                ^"Rarity" INTEGER 5
+                ^"Qualities" LIST OF STRING ["Forbidden"]
+                ^"Special" STRING "Grants unarmed profile: Horned head butt (Martial Arts [Unarmed], Range 0, Damage 3, Deadliness 2)."
+            }
+
+            ^"Disguise Kit" {
+                ^"Category" STRING "Shinobi Item"
+                ^"Cost" STRING "9 bu"
+                ^"Rarity" INTEGER 6
+            }
+
+            ^"Herbal Medicines" {
+                ^"Category" STRING "Shinobi Item"
+                ^"Cost" STRING "1 bu per dose"
+                ^"Rarity" INTEGER 5
+                ^"Effect" STRING "At end of scene, character with Exhausted condition may use one dose to remove strife and fatigue as if not Exhausted. Cannot benefit again until Exhausted removed."
+            }
+
+            ^"Invisible Ink" {
+                ^"Category" STRING "Shinobi Item"
+                ^"Cost" STRING "6 bu per inkwell"
+                ^"Rarity" INTEGER 8
+            }
+
+            ^"Makibishi (Caltrops)" {
+                ^"Category" STRING "Shinobi Item"
+                ^"Cost" STRING "1 bu per handful"
+                ^"Rarity" INTEGER 4
+                ^"Effect" STRING "As Attack and Support action, scatter targeting ground at range 0-2. Terrain at range 0-1 from impact gains Dangerous quality."
+            }
+
+            ^"Metsubushi (Blinding Powder)" {
+                ^"Category" STRING "Shinobi Item"
+                ^"Cost" STRING "6 zeni per dose"
+                ^"Rarity" INTEGER 5
+                ^"Effect" STRING "As Attack and Support action, throw targeting ground at range 0-3. Terrain at range 0-2 from impact gains Obscuring quality."
+            }
+
+            ^"Mizugumo (Water Spider)" {
+                ^"Category" STRING "Shinobi Item"
+                ^"Cost" STRING "3 bu"
+                ^"Rarity" INTEGER 6
+                ^"Effect" STRING "Reduce TN of checks to swim by 2. May wield weapons while swimming at GM discretion."
+            }
+
+            ^"Modified Scabbard" {
+                ^"Category" STRING "Shinobi Item"
+                ^"Cost" STRING "2 koku"
+                ^"Rarity" INTEGER 6
+                ^"Qualities" LIST OF STRING ["Mundane"]
+                ^"Special" STRING "Up to one small item (metsubushi dose, small blade, or handful of makibishi) can be hidden within. While hidden, item has Concealable quality."
+            }
+
+            ^"Opening and Closing Tools" {
+                ^"Category" STRING "Shinobi Item"
+                ^"Cost" STRING "5 bu"
+                ^"Rarity" INTEGER 3
+            }
+
+            ^"Portable Boat" {
+                ^"Category" STRING "Shinobi Item"
+                ^"Cost" STRING "3 koku"
+                ^"Rarity" INTEGER 2
+            }
+
+            ^"Rope Ladder" {
+                ^"Category" STRING "Shinobi Item"
+                ^"Cost" STRING "2 bu"
+                ^"Rarity" INTEGER 3
+                ^"Special" STRING "May be used as thrown weapon: Martial Arts [Ranged], Range 1-2, Damage 0, Deadliness 0, Snaring."
+            }
+
+            ^"Sekihitsu (Pencil)" {
+                ^"Category" STRING "Shinobi Item"
+                ^"Cost" STRING "3 zeni"
+                ^"Rarity" INTEGER 1
+                ^"Special" STRING "Weapon profile: Martial Arts [Unarmed], Range 0, Damage 0, Deadliness 4, Concealable, Mundane"
+            }
+
+            ^"Sokutoki (Incense Box)" {
+                ^"Category" STRING "Shinobi Item"
+                ^"Cost" STRING "2 bu"
+                ^"Rarity" INTEGER 4
+                ^"Qualities" LIST OF STRING ["Concealable", "Prepare", "Subtle"]
+                ^"Special" STRING "Can be loaded with blinding powder for close-range discharge into target's eyes."
+            }
+
+            ^"Tenugui" {
+                ^"Category" STRING "Shinobi Item"
+                ^"Cost" STRING "3 zeni"
+                ^"Rarity" INTEGER 2
+            }
+
+            ^"Uchitake (Lighter)" {
+                ^"Category" STRING "Shinobi Item"
+                ^"Cost" STRING "12 zeni"
+                ^"Rarity" INTEGER 3
+                ^"Qualities" LIST OF STRING ["Forbidden"]
+                ^"Effect" STRING "As Attack action, start fire at range 0-2. If flames catch, terrain gains Dangerous and Obscuring qualities. If targeting a person, they must resist with TN 2 Fitness check (Water 1, Air 4) or suffer Burning condition."
+            }
+        }
+
+    }
+
+    # ===========================
+    # OPTIONAL RULES: TRIFLING BREACHES & SMALL SACRIFICES
+    # ===========================
+
+    ^"Courtesy Honor Rules" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Optional additions to the core honor and glory forfeits/awards table.
+
+        ^"Trifling Breaches" DEF {
+            # When a character wishes to commit a breach of Courtesy
+            # judged less serious than a minor breach, they must first
+            # forfeit 1 honor. Examples include:
+            # - Cursing in the presence of someone of higher status
+            # - Publicly discussing finances or mercantile pursuits
+            # - Forgetting specifics of a minor societal ritual before someone of higher status
+        }
+
+        ^"Small Sacrifices" DEF {
+            # When a character makes a sacrifice in the name of
+            # Courtesy judged less significant than a minor sacrifice,
+            # they are awarded 1 honor. Examples include:
+            # - Paying an honest compliment to an enemy during battle
+            # - Letting a serious insult to your person pass
+        }
+
+    }
+
+    # ===========================
+    # OPPORTUNITY TABLES FOR INTRIGUE GAMES
+    # ===========================
+
+    ^"Intrigue Opportunity Tables" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Optional opportunity expenditures for Winter Court games
+        # and other intrigue-oriented games. Can be used in any game
+        # for intrigue scenes such as arguments, romance, and
+        # investigative challenges.
+
+        ^"Spending Opportunity in Negotiations" DEF {
+            ENTRIES {
+                ^"Air (op)(op)+" {
+                    ^"Effect" STRING "Your verbal trap ensnares someone: they must offer you a minor concession unrelated to your current social objective unless they give up 1 momentum point per (op)(op) spent this way."
+                }
+                ^"Earth (op)(op)(op)" {
+                    ^"Effect" STRING "Your uncompromising dedication stalls the conversation. Choose a character in the scene: that character cannot gain momentum points toward any social objective until the end of your next turn."
+                }
+                ^"Fire (op)(op)" {
+                    ^"Effect" STRING "You set someone on the defense with fast-paced questions. Choose a demand or statement another character has made. Their player (or GM for NPCs) must tell you any hidden motivations behind that demand or statement."
+                }
+                ^"Water (op)(op)" {
+                    ^"Effect" STRING "You break the tension with a well-timed joke. Ask one personal question of a character with a different social objective (unrelated to negotiations). If they answer honestly, they gain 1 momentum point and may ask you a personal question; if they do, you gain 1 momentum point."
+                }
+                ^"Void (op)(op)(op)" {
+                    ^"Effect" STRING "You shake someone's conviction with deep insight. Until the end of your next turn, any momentum points they score are added to your current social objective instead of their own."
+                }
+            }
+        }
+
+        ^"Spending Opportunity in Romance" DEF {
+            ENTRIES {
+                ^"Air (op)(op)" {
+                    ^"Effect" STRING "The conversation turns to mutual acquaintances. Name a character you and your intended both know. They must tell you what they think of that character, revealing one of that person's advantages or disadvantages."
+                }
+                ^"Earth (op)(op)" {
+                    ^"Effect" STRING "An offhand comment reveals common ground: an odd hobby, a favorite actor, or a core belief. Make three suggestions to your intended's player; they must tell you which one it is. You and your intended may each remove 2 strife."
+                }
+                ^"Fire (op)(op)" {
+                    ^"Effect" STRING "A detail of your appearance catches your intended's interest. Their player must tell you which physical attribute they find most captivating. You and your intended each receive 1 strife and reduce the TN of your next Social skill check by 1."
+                }
+                ^"Water (op)(op)" {
+                    ^"Effect" STRING "Your interaction is pleasant enough that your intended suggests another meeting within the next day or two. They offer you several options for the next time you spend personal time together; choose whichever you like best."
+                }
+                ^"Void (op)(op)(op)" {
+                    ^"Effect" STRING "Due to circumstances beyond your control, you and your intended find yourselves unexpectedly aware of one another. Your intended decides what kind of contact it was and how they react, though they will not blame you for anything untoward."
+                }
+            }
+        }
+
+        ^"Spending Opportunity in Espionage" DEF {
+            ENTRIES {
+                ^"Air (op)+" {
+                    ^"Effect" STRING "Your subtlety lets you step out of sight. Designate a number of Minion NPCs equal to (op) spent this way or a single Adversary NPC with vigilance lower than or equal to (op) spent. Those characters lose sight of you."
+                }
+                ^"Earth (op)+" {
+                    ^"Effect" STRING "You locate an excellent hiding place, either where no one questions your cover identity or a concealed location no one checks. While hiding there, reduce the TN of checks to avoid notice by (op) spent this way."
+                }
+                ^"Fire (op)(op)(op)" {
+                    ^"Effect" STRING "A stray motion catches someone's attention, but unexpectedly they are sympathetic or helpful when they notice you. Who are they, and how do they offer to help?"
+                }
+                ^"Water (op)" {
+                    ^"Effect" STRING "You observe a clue indicating information about your target might be found elsewhere. The GM reveals another viable avenue for espionage on the same subject, unrelated to your current operation."
+                }
+                ^"Void (op)" {
+                    ^"Effect" STRING "Your understanding of stealth clues you in on the possibility that you are not the first spy to pass this way. The GM reveals whether another spy has traversed your location and, if so, what trace they left behind."
+                }
+            }
+        }
+
+    }
+}

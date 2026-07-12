@@ -1,0 +1,1536 @@
+EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
+    NAME "Legend of the Five Rings 5th Edition - Emerald Empire: New Player Options"
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-03-01"
+
+    # Emerald Empire (Chapter 7): Imperial families, new schools,
+    # advantages, disadvantages, techniques, and titles.
+    # This extension adds options from the Emerald Empire sourcebook
+    # to the core character creation and advancement systems.
+
+    # ===========================
+    # IMPERIAL FAMILIES
+    # ===========================
+
+    ^"Imperial Families" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
+        APPLIES TO [^"Samurai"]
+
+        # The Imperial families serve the Emperor directly.
+        # They function as a clan for mechanical purposes but
+        # are not part of any Great Clan. They hold special
+        # authority and responsibilities within the Celestial Order.
+
+        PROPERTIES {
+            ^"Clan Name" STRING "Imperial" FIXED
+            ^"Clan Type" STRING "Imperial"
+            ^"Clan Ring Bonus" DEF { ^"Air" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Government" INTEGER 1 }
+            ^"Clan Status" INTEGER DEFAULT 40
+        }
+
+        FAMILIES {
+            ^"Miya"
+            ^"Otomo"
+            ^"Seppun"
+        }
+
+    }
+
+
+    # ===========================
+    # IMPERIAL FAMILIES
+    # ===========================
+
+    #L5REE50hI5jK7lM9nO1pQ3r ^"Miya" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Miya" FIXED
+            ^"Clan"            STRING "Imperial"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Earth"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Courtesy" INTEGER 1
+                ^"Culture" INTEGER 1
+            }
+            ^"Glory"           INTEGER 44
+            ^"Starting Wealth" INTEGER 8
+        }
+    }
+
+    #L5REE51sT6uV8wX0yZ2aB4c ^"Otomo" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Otomo" FIXED
+            ^"Clan"            STRING "Imperial"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Culture" INTEGER 1
+                ^"Sentiment" INTEGER 1
+            }
+            ^"Glory"           INTEGER 43
+            ^"Starting Wealth" INTEGER 9
+        }
+    }
+
+    #L5REE52dE7fG9hI1jK3lM5n ^"Seppun" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Seppun" FIXED
+            ^"Clan"            STRING "Imperial"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Meditation" INTEGER 1
+                ^"Theology" INTEGER 1
+            }
+            ^"Glory"           INTEGER 45
+            ^"Starting Wealth" INTEGER 6
+        }
+    }
+
+
+    # ===========================
+    # NEW SCHOOLS
+    # ===========================
+
+    ^"Miya Cartographer" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Imperial cartographers who travel throughout the Empire
+        # mapping territories. They have standing authority to cross
+        # clan boundaries freely. Trained in both academic and
+        # wilderness survival skills.
+
+        PROPERTIES {
+            ^"Clan" STRING "Imperial"
+            ^"School Name" STRING "Miya Cartographer" FIXED
+            ^"Roles" LIST ["Artisan", "Courtier"]
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Aesthetics", ^"Composition", ^"Culture", ^"Fitness", ^"Government", ^"Seafaring", ^"Survival"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 50
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Striking as Earth", ^"Warrior's Resolve"]
+            SHUJI CHOOSE 1 [^"Artisan's Appraisal", ^"Civility Foremost"]
+        }
+
+        SCHOOL_ABILITY "Well Traveled" {
+            "You always know which way is north and can always find a useful navigation landmark. When making a check to recall or ascertain geographical, political, or societal information, add kept (ring) set to (op) or (su) results equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Emerald Explorer" {
+            "Once per scene as a Support action, make a TN 1 Survival (Earth) check targeting one character. If you succeed, that character and additional characters equal to your bonus successes ignore all negative effects of terrain qualities until end of scene."
+        }
+        STARTING_OUTFIT [
+            "traveling clothes", "wakizashi (short sword)",
+            "yumi (bow) and quiver of arrows", "knife",
+            "calligraphy set", "traveling pack", "personal chop",
+            "an assortment of maps in scroll cases",
+            "an attendant or Rokugani pony"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Culture"
+                SKILL "Fitness"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1 Earth Shūji"
+                ^"Slippery Maneuvers" [shuji]
+                ^"Threshold Barrier" [ritual]
+            }
+            RANK 2 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Games"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-2 Kata"
+                ^"The Wind Blows Both Ways" [shuji]
+                ^"Feigned Opening" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Courtesy"
+                SKILL "Culture"
+                SKILL "Martial Arts [Ranged]"
+                TECHNIQUE_GROUP "Rank 1-3 Air Shūji"
+                ^"Crimson Leaves Strike" [kata]
+                ^"All Arts Are One" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Courtesy"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1-4 Kata"
+                ^"Bend with the Storm" [shuji]
+                ^"Regal Bearing" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Command"
+                SKILL "Culture"
+                SKILL "Seafaring"
+                TECHNIQUE_GROUP "Rank 1-5 Earth Shūji"
+                ^"Awe of Heaven" [shuji]
+                ^"Bravado" [shuji]
+            }
+            RANK 6 {
+                ^"Emerald Explorer"
+            }
+        }
+
+    }
+
+    ^"Miya Herald" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Imperial messengers who deliver edicts and messages
+        # throughout the Empire. They speak with the Emperor's
+        # authority and travel freely across all boundaries. Known
+        # for speed, objectivity, and strict reporting.
+
+        PROPERTIES {
+            ^"Clan" STRING "Imperial"
+            ^"School Name" STRING "Miya Herald" FIXED
+            ^"Roles" LIST ["Courtier"]
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Composition", ^"Courtesy", ^"Fitness", ^"Seafaring", ^"Sentiment", ^"Survival"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 50
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            SHUJI CHOOSE 1 [^"Cadence", ^"Honest Assessment"]
+            SHUJI CHOOSE 1 [^"Shallow Waters", ^"Weight of Duty"]
+        }
+
+        SCHOOL_ABILITY "Voice of the Emperor" {
+            "Once per round, after a character at range 0-4 succeeds on an Attack or Scheme action check, you may cause them to receive strife equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Blessings of the Emperor" {
+            "Once per scene as a Scheme action, make a TN 4 Command (Air) check targeting up to your glory rank characters. If you succeed, targets must forfeit honor equal to twice their honor rank and glory equal to twice their glory rank before targeting you with Attack actions, and increase TN of Attack actions targeting you by 2. Persists until end of scene or until you attack an affected character or their allies. (op)+: Effects also apply to targets' attacks against one chosen ally per (op) spent."
+        }
+        STARTING_OUTFIT [
+            "traveling clothes", "ceremonial clothes",
+            "wakizashi (short sword)",
+            "yumi (bow) and quiver of arrows or tessen (war fan)",
+            "calligraphy set", "traveling pack",
+            "satchel of Imperial proclamations",
+            "personal chop", "an attendant or Rokugani pony"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Culture"
+                SKILL "Fitness"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1 Water Shūji"
+                ^"Feigned Opening" [shuji]
+                ^"Courtier's Resolve" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Courtesy"
+                SKILL "Culture"
+                SKILL "Martial Arts [Melee]"
+                TECHNIQUE_GROUP "Rank 1-2 Air Shūji"
+                ^"Ebb and Flow" [shuji]
+                ^"Tributaries of Trade" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Command"
+                SKILL "Courtesy"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-3 Earth Shūji"
+                ^"Awe of Heaven" [shuji]
+                ^"The Wind Blows Both Ways" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Command"
+                SKILL "Fitness"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-4 Water Shūji"
+                ^"Buoyant Arrival" [shuji]
+                ^"Pillar of Calm" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Culture"
+                SKILL "Sentiment"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-5 Void Shūji"
+                ^"Sear the Wound" [shuji]
+                ^"The Immovable Hand of Peace" [shuji]
+            }
+            RANK 6 {
+                ^"Blessings of the Emperor"
+            }
+        }
+
+    }
+
+    ^"Otomo Schemer" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Consummate politicians who advance Imperial agendas
+        # across the courts of the Empire. They earn favors,
+        # cultivate allies, and destroy enemies with ruthless
+        # political acumen. The ends justify the means.
+
+        PROPERTIES {
+            ^"Clan" STRING "Imperial"
+            ^"School Name" STRING "Otomo Schemer" FIXED
+            ^"Roles" LIST ["Courtier"]
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Composition", ^"Courtesy", ^"Culture", ^"Design", ^"Government", ^"Sentiment"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 45
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            SHUJI CHOOSE 1 [^"Courtier's Resolve", ^"Stirring the Embers"]
+            SHUJI ^"Slippery Maneuvers"
+        }
+
+        SCHOOL_ABILITY "Necessary Actions" {
+            "You never forfeit honor or glory to lie or deceive for the good of the Emperor and Empire (in your opinion). However, you must forfeit twice as much honor or glory to lie for your personal gain (in your opinion). When a character stakes or forfeits honor or glory to act against your desires, you may force them to increase that amount by your school rank."
+        }
+
+        MASTERY_ABILITY ^"Majesty of the Throne" {
+            "Once per scene as a Scheme action, make a Command (Water) check targeting any number of characters at range 0-5. TN equals the highest status rank among your targets. If you succeed, all targets suffer the Dazed and Disoriented conditions."
+        }
+        STARTING_OUTFIT [
+            "ceremonial clothes", "wakizashi (short sword)",
+            "any one weapon of rarity 6 or lower",
+            "calligraphy set", "traveling pack",
+            "a trustworthy attendant"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Composition"
+                SKILL "Culture"
+                SKILL "Government"
+                TECHNIQUE_GROUP "Rank 1 Air Shūji"
+                ^"Civility Foremost" [shuji]
+                ^"Tea Ceremony" [ritual]
+            }
+            RANK 2 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Command"
+                SKILL "Courtesy"
+                SKILL "Martial Arts [Melee]"
+                TECHNIQUE_GROUP "Rank 1-2 Water Shūji"
+                ^"Awe of Heaven" [shuji]
+                ^"Prey on the Weak" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Commerce"
+                SKILL "Courtesy"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-3 Fire Shūji"
+                ^"Regal Bearing" [shuji]
+                ^"The Wind Blows Both Ways" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Aesthetics"
+                SKILL "Command"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-4 Fire Shūji"
+                ^"Buoyant Arrival" [shuji]
+                ^"Wolf's Proposal" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Composition"
+                SKILL "Culture"
+                SKILL "Design"
+                TECHNIQUE_GROUP "Rank 1-5 Air Shūji"
+                ^"Sear the Wound" [shuji]
+                ^"The Immovable Hand of Peace" [shuji]
+            }
+            RANK 6 {
+                ^"Majesty of the Throne"
+            }
+        }
+
+    }
+
+    ^"Seppun Astrologer" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The spiritual protectors of the Emperor, specializing in
+        # astrology, divination, fortune-telling, and ward creation.
+        # They anticipate and preempt supernatural threats, working
+        # closely with the Palace Guard.
+
+        PROPERTIES {
+            ^"Clan" STRING "Imperial"
+            ^"School Name" STRING "Seppun Astrologer" FIXED
+            ^"Roles" LIST ["Shugenja", "Artisan"]
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Composition", ^"Government", ^"Medicine", ^"Meditation", ^"Sentiment", ^"Theology"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            INVOCATION ^"Bind the Shadow"
+            INVOCATION CHOOSE 1 [^"Dominion of Suijin", ^"Jade Strike"]
+            RITUAL ^"Divination"
+            RITUAL ^"Commune with the Spirits"
+            RITUAL ^"Threshold Barrier"
+        }
+
+        SCHOOL_ABILITY "Just as Predicted" {
+            "At the beginning of a game session or as a downtime activity, make a TN 1 Theology check using any ring. If you succeed, choose a number of kept dice up to your school rank to reserve. Until end of session or next downtime scene, when any character makes a skill check using the chosen ring, you may replace one or more kept dice with the same number of reserved dice of the same type."
+        }
+
+        MASTERY_ABILITY ^"Foreseen in the Stars" {
+            "Once per game session, spend 1 Void point to reveal you have foreseen an event in the current scene. Retroactively declare one or more preparations you have taken, subject to GM approval. If preparations require a skill check, make it when you use this ability."
+        }
+        STARTING_OUTFIT [
+            "sanctified robes", "concealed armor",
+            "wakizashi (short sword)", "bō (staff) or knife",
+            "calligraphy set", "traveling pack",
+            "scroll satchel", "divination kit"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Composition"
+                SKILL "Skulduggery"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1 Water Invocations"
+                ^"Heart of the Water Dragon" [invocation]
+                ^"Ancestry Unearthed" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Command"
+                SKILL "Composition"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1-2 Air Invocations"
+                ^"Ebb and Flow" [shuji]
+                ^"Symbol of Earth" [invocation]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Sentiment"
+                SKILL "Smithing"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-3 Earth Invocations"
+                ^"False Realm of the Fox Spirits" [invocation]
+                ^"Vapor of Nightmares" [invocation]
+            }
+            RANK 4 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Sentiment"
+                SKILL "Survival"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-4 Air Invocations"
+                ^"Tomb of Jade" [invocation]
+                ^"A Samurai's Fate" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Composition"
+                SKILL "Skulduggery"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-5 Water Invocations"
+                ^"Sear the Wound" [shuji]
+                ^"The Soul's Blade" [invocation]
+            }
+            RANK 6 {
+                ^"Foreseen in the Stars"
+            }
+        }
+
+    }
+
+    ^"Seppun Palace Guard" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The Emperor's personal bodyguards, among the most
+        # accomplished warriors in the Empire. Trained for defense,
+        # they react instantly to threats with supreme patience and
+        # awareness. Their iaijutsu skill serves only to counter
+        # sudden attacks, not for formal dueling.
+
+        PROPERTIES {
+            ^"Clan" STRING "Imperial"
+            ^"School Name" STRING "Seppun Palace Guard" FIXED
+            ^"Roles" LIST ["Bushi"]
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Sentiment", ^"Tactics"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 50
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            KATA CHOOSE 1 [^"Iaijutsu Cut: Crossing Blade", ^"Iaijutsu Cut: Rising Blade"]
+            SHUJI CHOOSE 1 [^"Ancestry Unearthed", ^"Honest Assessment"]
+        }
+
+        SCHOOL_ABILITY "Speed of Heaven" {
+            "When you succeed on an Initiative check during a skirmish or duel, add bonus successes equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"The Clouds Part" {
+            "Once per round, spend 1 Void point to add bonus successes equal to your honor rank to a successful Attack or Support action check."
+        }
+        STARTING_OUTFIT [
+            "lacquered armor", "sanctified robes",
+            "daishō (katana and wakizashi)", "naginata or bisento",
+            "knife", "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Government"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Crescent Moon Style" [kata]
+                ^"Weight of Duty" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Courtesy"
+                SKILL "Culture"
+                SKILL "Games"
+                TECHNIQUE_GROUP "Rank 1-2 Kata"
+                ^"Crimson Leaves Strike" [kata]
+                ^"Touchstone of Courage" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Command"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-3 Kata"
+                ^"Iron in the Mountains Style" [kata]
+                ^"Threshold Barrier" [ritual]
+            }
+            RANK 4 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Government"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-4 Kata"
+                ^"Soul Sunder" [kata]
+                ^"A Samurai's Fate" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Sentiment"
+                SKILL "Skulduggery"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-5 Kata"
+                ^"Rouse the Soul" [shuji]
+                ^"The Immovable Hand of Peace" [shuji]
+            }
+            RANK 6 {
+                ^"The Clouds Part"
+            }
+        }
+
+    }
+
+    ^"Fortunist Monk Order" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Monks who revere the Fortunes, seeking to understand the
+        # surrounding world through service to divine spirits. They
+        # cannot commune with kami like shugenja, but earn the favor
+        # of a Fortune who grants them invocations with bonus successes.
+
+        PROPERTIES {
+            ^"School Name" STRING "Fortunist Monk Order" FIXED
+            ^"Roles" LIST ["Monk"]
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 4 [^"Courtesy", ^"Culture", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Survival", ^"Theology"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            KATA ^"Open-Hand Style"
+            RITUAL ^"Cleansing Rite"
+            RITUAL ^"Threshold Barrier"
+            SHUJI CHOOSE 1 [^"Shallow Waters", ^"Stirring the Embers"]
+        }
+
+        SCHOOL_ABILITY "Blessing of the Fortunes" {
+            "You have gained the goodwill of a Fortune who grants you invocations. When making a check to use an invocation learned this way, add additional bonus successes equal to your school rank. Select a Fortune as the primary object of your veneration and choose one appropriate invocation for which you meet the rank prerequisite. You learn that invocation without paying its XP cost. Each time your school rank increases, you gain one additional invocation this way."
+        }
+
+        MASTERY_ABILITY ^"Favor of the Fortunes" {
+            "Once per scene, you may importune one invocation without making the sacrifices usually required and without the usual TN increase. Use the Meditation skill in place of the skill check normally required (you must still use the ring required for the invocation)."
+        }
+        STARTING_OUTFIT [
+            "sanctified robes", "ceremonial clothes",
+            "bō (staff)", "traveling pack", "scroll satchel"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Courtesy"
+                SKILL "Labor"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1 Earth Shūji"
+                ^"Crescent Moon Style" [kata]
+                ^"Commune with the Spirits" [ritual]
+            }
+            RANK 2 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Aesthetics"
+                SKILL "Meditation"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-2 Water Shūji"
+                ^"All Arts Are One" [shuji]
+                ^"Rushing Avalanche Style" [kata]
+            }
+            RANK 3 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Meditation"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-3 Kata"
+                ^"Regal Bearing" [shuji]
+                ^"Ebb and Flow" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Culture"
+                SKILL "Fitness"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-4 Air Shūji"
+                ^"Buoyant Arrival" [shuji]
+                ^"Pillar of Calm" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Composition"
+                SKILL "Meditation"
+                SKILL "Performance"
+                TECHNIQUE_GROUP "Rank 1-5 Earth Shūji"
+                ^"Rouse the Soul" [shuji]
+                ^"Soul Sunder" [kata]
+            }
+            RANK 6 {
+                ^"Favor of the Fortunes"
+            }
+        }
+
+    }
+
+    ^"Shinseist Monk Order" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Devotees of Shinsei's inward-looking philosophy, seeking
+        # Enlightenment by understanding that all divisions between
+        # elements are illusory. They overcome these illusory
+        # limitations to create seemingly supernatural effects
+        # through kihō techniques.
+
+        PROPERTIES {
+            ^"School Name" STRING "Shinseist Monk Order" FIXED
+            ^"Roles" LIST ["Monk"]
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 4 [^"Aesthetics", ^"Composition", ^"Fitness", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Theology"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Techniques Available" LIST ["Kata", "Kihō", "Rituals"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            KATA ^"Striking as Earth"
+            KIHO CHOOSE 2 [^"Cleansing Spirit", ^"Earth Needs No Eyes", ^"Ki Protection"]
+        }
+
+        SCHOOL_ABILITY "Embrace the Void" {
+            "When you spend a Void point to Seize the Moment, you may also treat your ranks in the skill you are using as being equal to your school rank. If your ranks in the skill are equal to or higher than your school rank, or if you have 5 ranks in the skill, you may add one kept (ring) set to an (op) result instead."
+        }
+
+        MASTERY_ABILITY ^"One with the Void" {
+            "Once per scene, you may use one kihō technique you do not know. You may use the Meditation skill in place of the skill check normally required (you must still use the ring required for the kihō)."
+        }
+        STARTING_OUTFIT [
+            "common clothes", "bō (staff) or nunchaku (linked staff)",
+            "knife", "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Composition"
+                SKILL "Survival"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Riding the Clouds" [kiho]
+                ^"Earthen Fist" [kiho]
+            }
+            RANK 2 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Aesthetics"
+                SKILL "Courtesy"
+                SKILL "Meditation"
+                TECHNIQUE_GROUP "Rank 1-2 Earth Kihō"
+                TECHNIQUE_GROUP "Rank 1-2 Rituals"
+                ^"All Arts Are One" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Games"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-3 Kata"
+                ^"Grasp the Earth Dragon" [kiho]
+                ^"Way of the Willow" [kiho]
+            }
+            RANK 4 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Courtesy"
+                SKILL "Survival"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-4 Water Kihō"
+                ^"Pillar of Calm" [shuji]
+                ^"Way of the Falling Star" [kiho]
+            }
+            RANK 5 {
+                SKILL_GROUP "[Choose one skill group] Skills"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Meditation"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-5 Void Kihō"
+                ^"Rouse the Soul" [shuji]
+                ^"The Immovable Hand of Peace" [shuji]
+            }
+            RANK 6 {
+                ^"One with the Void"
+            }
+        }
+
+    }
+
+    ^"Kitsune Impersonator Tradition" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Fox spirits from Chikushudo who have chosen to live as
+        # humans in the mortal world. They may be full-blooded
+        # kitsune or descendants of a kitsune-human union. They
+        # can shapeshift between forms and possess innate magical
+        # abilities. Not a formal samurai school.
+
+        PROPERTIES {
+            ^"School Name" STRING "Kitsune Impersonator" FIXED
+            ^"Clan" STRING "Fox"
+            ^"Roles" LIST ["Courtier", "Shugenja"]
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Games", ^"Performance", ^"Martial Arts [Unarmed]", ^"Survival", ^"Theology"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 30
+            ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
+            ^"Starting Disadvantage" STRING "False Identity"
+        }
+
+
+        STARTING_TECHNIQUES {
+            INVOCATION ^"Nature's Touch"
+            INVOCATION ^"Token of Memory"
+            RITUAL ^"Commune with the Spirits"
+        }
+
+        SCHOOL_ABILITY "Fox Spirit" {
+            "Your true form is that of a large fox with up to eight tails (full-blooded kitsune) or a human with vulpine traits (human ancestry). As a Scheme and Support action, transform between human and true forms, or into another silhouette 1 or 2 natural creature (GM discretion; cannot mimic specific individuals). Observers with vigilance lower than or equal to your school rank plus your ranks in Performance do not detect flaws. Certain features persist across all forms. If you become Compromised, your disguise slips, revealing true tails, ears, feet, or shadow. Must forfeit 1 honor to appear as a samurai of higher status."
+        }
+
+        MASTERY_ABILITY ^"Ninth Tail Ascension" {
+            "Your true form now has nine tails. While in true form, supernatural resistance and physical resistance each increase by 2, and when you make a skill check, you may alter the result of one die containing (su) to a result containing (ex). While in true form, Attack action checks gain: (op)(op): After resolving, if target is Incapacitated or Unconscious, you devour or banish their body or soul, instantly killing them."
+        }
+        STARTING_OUTFIT ["Take the starting outfit of any one other school as appropriate to your false identity"]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Performance"
+                SKILL "Survival"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1 Air Invocations"
+                ^"Fanning the Flames" [shuji]
+                ^"All in Jest" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Skulduggery"
+                SKILL "Survival"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-2 Air Shūji"
+                ^"Dazzling Performance" [shuji]
+                ^"False Realm of the Fox Spirits" [invocation]
+            }
+            RANK 3 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Culture"
+                SKILL "Meditation"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-3 Air Invocations"
+                ^"Crashing Wave Style" [kata]
+                ^"Regal Bearing" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Meditation"
+                SKILL "Sentiment"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-4 Air Shūji"
+                ^"Disappearing World Style" [kata]
+                ^"Bravado" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Meditation"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-5 Air Invocations"
+                ^"Soul Sunder" [kata]
+                ^"Buoyant Arrival" [shuji]
+            }
+            RANK 6 {
+                ^"Ninth Tail Ascension"
+            }
+        }
+
+    }
+
+    ^"Kolat Saboteur Conspiracy" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Secret agents of the Kolat conspiracy devoted to ending
+        # Rokugani reverence for the Celestial Heavens and establishing
+        # humanity as its own ruler. They operate as assassins for hire,
+        # with earnings funding the conspiracy. Not a formal school.
+
+        PROPERTIES {
+            ^"School Name" STRING "Kolat Saboteur" FIXED
+            ^"Roles" LIST ["Shinobi"]
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Commerce", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Medicine", ^"Meditation", ^"Skulduggery"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 20
+            ^"Starting Disadvantage" STRING "False Identity"
+            ^"Techniques Available" LIST ["Kata", "Shūji"]
+        }
+
+
+        STARTING_TECHNIQUES {
+            KATA ^"Veiled Menace Style"
+            NINJUTSU ^"Skulk"
+            SHUJI ^"Cadence"
+        }
+
+        SCHOOL_ABILITY "Professional Saboteur" {
+            "Once per game session at the beginning of a scene, reveal that an NPC in that scene is the target of your current assignment. The GM decides what the assignment entails (sabotage, framing, killing, or ensuring survival). Until the end of the session, when you make a skill check targeting the chosen NPC, you may reroll a number of dice up to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Usher In the New Age" {
+            "As a downtime activity, overcome or bypass an NPC's guards or security measures. Make a Skulduggery (Air) check targeting the NPC, TN equal to their highest conflict rank. If you succeed and the NPC is a minion or non-essential adversary (GM discretion), you accomplish your goal. If the NPC is important, you confront them alone, likely beginning a conflict scene. (op)(op): Your efforts go completely unnoticed. (op)(op): If you kill the target, death appears accidental or natural."
+        }
+        STARTING_OUTFIT [
+            "ceremonial clothes", "common clothes", "traveling clothes",
+            "daishō (katana and wakizashi)", "knife", "five shuriken",
+            "one vial of poison", "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Courtesy"
+                SKILL "Performance"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Deadly Sting" [ninjutsu]
+                ^"Shallow Waters" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Commerce"
+                SKILL "Medicine"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-2 Kata"
+                ^"Noxious Cloud" [ninjutsu]
+                ^"Tributaries of Trade" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Composition"
+                SKILL "Smithing"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-3 Kata"
+                ^"Ebb and Flow" [shuji]
+                ^"Spin the Web" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Commerce"
+                SKILL "Skulduggery"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-4 Kata"
+                ^"Silencing Stroke" [ninjutsu]
+                ^"Wolf's Proposal" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Commerce"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-5 Kata"
+                TECHNIQUE_GROUP "Rank 1-5 Ninjutsu"
+                ^"Buoyant Arrival" [shuji]
+            }
+            RANK 6 {
+                ^"Usher In the New Age"
+            }
+        }
+
+    }
+
+    # ===========================
+    # NEW ADVANTAGES: DISTINCTIONS
+    # ===========================
+
+    ^"Animal Trainer" DEF {
+        EXTENDS #L5R266oP8qR0sT2uV4wX6y ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You are an expert at training and caring for animals."
+            "When performing a check for which your animal training expertise is a benefit (such as Medicine [Water] to diagnose a sick animal or Survival [Water] to teach an animal a command), you may reroll up to two dice."
+        }
+    }
+
+    ^"Criminal Connections" DEF {
+        EXTENDS #L5R266oP8qR0sT2uV4wX6y ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You have contacts in the criminal underworld who owe you favors."
+            "When performing a check that benefits from your criminal connections (such as Skulduggery [Air] to contact the underworld in an unfamiliar city or Commerce [Air] to sell stolen items), you may reroll up to two dice."
+        }
+    }
+
+    ^"Expert Tracker" DEF {
+        EXTENDS #L5R266oP8qR0sT2uV4wX6y ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Mental", "Physical"]
+        }
+
+        EFFECT {
+            "You are skilled at following trails and tracking prey."
+            "When performing a check for which your tracking expertise applies (such as Fitness [Air] to follow an animal unnoticed or Survival [Air] to follow a trail), you may reroll up to two dice."
+        }
+    }
+
+    ^"Friend of the Brotherhood" DEF {
+        EXTENDS #L5R266oP8qR0sT2uV4wX6y ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You are known for your Shinseist piety and have friends among the Brotherhood of Shinsei."
+            "When performing a check to leverage your reputation for Shinseist piety (such as Courtesy [Void] to establish a connection with a monk or Theology [Void] to glean wisdom from the Tao), you may reroll up to two dice."
+        }
+    }
+
+    ^"Hero of [Village]" DEF {
+        EXTENDS #L5R266oP8qR0sT2uV4wX6y ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Fame", "Interpersonal"]
+        }
+
+        EFFECT {
+            "You are celebrated as a hero in a particular village."
+            "When performing a check for which your heroic reputation is a benefit (such as Command [Fire] to rally peasants or Performance [Fire] to impress with tales of heroics), you may reroll up to two dice."
+        }
+    }
+
+    ^"Kuge Lineage" DEF {
+        EXTENDS #L5R266oP8qR0sT2uV4wX6y ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You descend from a kuge family with hereditary authority."
+            "When performing a check for which your hereditary authority is a benefit (such as Command [Earth] to silence a buke samurai or Government [Earth] to cite familiarity with Imperial family practices), you may reroll up to two dice."
+        }
+    }
+
+    ^"Spiritual Protector" DEF {
+        EXTENDS #L5R266oP8qR0sT2uV4wX6y ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Spiritual"]
+        }
+
+        EFFECT {
+            "A benevolent spirit watches over you, granting you flashes of intuition."
+            "When performing a check for which your spiritual protector is a benefit (such as Fitness [Void] to avoid a surprise attack through instinct or Survival [Void] to notice an imminent hazard), you may reroll up to two dice."
+        }
+    }
+
+    ^"Well Connected" DEF {
+        EXTENDS #L5R266oP8qR0sT2uV4wX6y ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You have an extensive network of contacts across Rokugan."
+            "When performing a check for which your connections are a benefit (such as Courtesy [Water] to impress someone at court or Government [Water] to identify a useful contact), you may reroll up to two dice."
+        }
+    }
+
+    # ===========================
+    # NEW ADVANTAGES: PASSIONS
+    # ===========================
+
+    ^"Bonsai" DEF {
+        EXTENDS #L5R267zA9bC1dE3fG5hI7j ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You find peace and meaning in the art of bonsai."
+            "After performing a check to interact with a bonsai piece (such as Aesthetics [Air] to prune a tree or Sentiment [Air] to identify emotional response to a work), you remove 3 strife."
+        }
+    }
+
+    ^"City [Choose one]" DEF {
+        EXTENDS #L5R267zA9bC1dE3fG5hI7j ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You have a deep love for a particular city and know its secrets."
+            "After performing a check to learn or share knowledge of the particular city (such as Courtesy [Water] to befriend a local or Culture [Water] to find an establishment), you remove 3 strife."
+        }
+    }
+
+    ^"Gourmet" DEF {
+        EXTENDS #L5R267zA9bC1dE3fG5hI7j ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Mental", "Interpersonal"]
+        }
+
+        EFFECT {
+            "You have a refined palate and appreciation for fine cuisine."
+            "After performing a check involving high-quality food (such as Culture [Water] to locate a place to dine or Labor [Water] to prepare a fine meal), you remove 3 strife."
+        }
+    }
+
+    ^"Military History" DEF {
+        EXTENDS #L5R267zA9bC1dE3fG5hI7j ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You are well-versed in the military history of Rokugan."
+            "After performing a check related to military history (such as Command [Earth] to bolster troops with a historical story or Tactics [Earth] to prepare a defense based on known strategies), you remove 3 strife."
+        }
+    }
+
+    ^"Navigator" DEF {
+        EXTENDS #L5R267zA9bC1dE3fG5hI7j ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You are skilled at charting courses and finding your way."
+            "After performing a check to navigate (such as Seafaring [Fire] to chart an unknown route or Survival [Fire] to extrapolate location from the stars), you remove 3 strife."
+        }
+    }
+
+    ^"Researcher" DEF {
+        EXTENDS #L5R267zA9bC1dE3fG5hI7j ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You are a dedicated researcher with a talent for finding information."
+            "After performing a check to research a topic (such as Culture [Air] to locate a particular poem or Medicine [Air] to find records of a mysterious illness), you remove 3 strife."
+        }
+    }
+
+    ^"Rock Gardening" DEF {
+        EXTENDS #L5R267zA9bC1dE3fG5hI7j ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You find contemplative peace in the arrangement of rock gardens."
+            "After performing a check related to rock gardening (such as Aesthetics [Void] to detect hidden meaning in a garden's arrangement or Meditation [Void] to make sense of events while reflecting on a rock garden), you remove 3 strife."
+        }
+    }
+
+    # ===========================
+    # NEW DISADVANTAGES: ADVERSITIES
+    # ===========================
+
+    ^"Adopted Peasant" DEF {
+        EXTENDS #L5R268kL0mN2oP4qR6sT8u ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You were born a peasant before being adopted into a samurai family, and some know your origins."
+            "When you make a check to deal authoritatively with a samurai who knows of your peasant birth (such as Command [Fire] to order a subordinate or Courtesy [Fire] to impugn another's honor), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Allergy [Choose one]" DEF {
+        EXTENDS #L5R268kL0mN2oP4qR6sT8u ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Physical"]
+        }
+
+        EFFECT {
+            "You have a severe allergy to a common substance."
+            "When you make a check that exposes you to the source of your allergy (such as Fitness [Air] to run through a swarm of bees or Courtesy [Air] to sample a dish containing your allergen), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Cursed Lineage" DEF {
+        EXTENDS #L5R268kL0mN2oP4qR6sT8u ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Interpersonal", "Spiritual"]
+        }
+
+        EFFECT {
+            "Your family line is cursed, and the curse manifests when you delve into your heritage."
+            "When making a check that does or could invoke the curse (such as Culture [Void] to understand your family history or Theology [Void] to seek your ancestors' blessing), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Despised in [City]" DEF {
+        EXTENDS #L5R268kL0mN2oP4qR6sT8u ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Fame", "Interpersonal"]
+        }
+
+        EFFECT {
+            "You are despised in a particular city, and its residents are hostile toward you."
+            "When performing a check to gain assistance from a resident of the city that despises you (such as Courtesy [Water] to learn rumors or Commerce [Water] to purchase goods), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Hunted by Chikushodo" DEF {
+        EXTENDS #L5R268kL0mN2oP4qR6sT8u ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Spiritual"]
+        }
+
+        EFFECT {
+            "The spirits of Chikushodo have marked you, and animals are hostile toward you."
+            "When performing a check to interact with an animal (such as Survival [Earth] to calm a frightened horse or Fitness [Earth] to go unnoticed by a hungry wolf), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    ^"Skepticism" DEF {
+        EXTENDS #L5R268kL0mN2oP4qR6sT8u ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Mental", "Spiritual"]
+        }
+
+        EFFECT {
+            "You doubt the existence of the Spirit Realms, which hinders your spiritual endeavors."
+            "When you make a check that relies on the existence of the Spirit Realms (such as Medicine [Void] to diagnose a malady of the soul or Theology [Void] to detect a kami's presence), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+    }
+
+    # ===========================
+    # NEW DISADVANTAGES: ANXIETIES
+    # ===========================
+
+    ^"Accustomed to Luxury" DEF {
+        EXTENDS #L5R269vW1xY3zA5bC7dE9f ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Earth"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You are accustomed to the finest accommodations and find anything less deeply distressing."
+            "After performing a check that requires you to remain in unacceptable accommodations (such as Survival [Earth] to set up a campsite or Commerce [Earth] to stay at a rural inn), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    ^"Claustrophobia" DEF {
+        EXTENDS #L5R269vW1xY3zA5bC7dE9f ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "Enclosed spaces fill you with dread."
+            "After making a check that requires you to enter an enclosed space (such as Fitness [Water] to crawl through a narrow passage or Survival [Water] to investigate a cave), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    ^"False Identity" DEF {
+        EXTENDS #L5R269vW1xY3zA5bC7dE9f ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Interpersonal"]
+        }
+
+        EFFECT {
+            "You are living under a false identity, and the constant deception weighs on you."
+            "After performing a check to maintain your false identity (such as Courtesy [Air] to lie about your past or Skulduggery [Air] to hide evidence of the truth), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    ^"Loathing for Peasants" DEF {
+        EXTENDS #L5R269vW1xY3zA5bC7dE9f ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You despise peasants and find interacting with them deeply unpleasant."
+            "After performing a check that requires you to interact with peasants (such as Culture [Water] to observe farmers' customs or Courtesy [Water] to question a village leader), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    ^"Loneliness" DEF {
+        EXTENDS #L5R269vW1xY3zA5bC7dE9f ^"Anxiety"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+
+        EFFECT {
+            "You dread being alone, and solitude fills you with anxiety."
+            "After performing a check that requires you to be alone (such as Composition [Void] to write a letter declining an invitation or Meditation [Void] to spend time in dedicated introspection), you receive 3 strife. If this is the first time this scene, gain 1 Void point."
+        }
+    }
+
+    # ===========================
+    # NEW TECHNIQUES
+    # ===========================
+
+    ^"Emerald Empire Techniques" DEF {
+        APPLIES TO [^"Samurai"]
+
+        ENTRIES {
+            ^"Spin the Web" {
+                ^"Type" STRING "Shūji"
+                ^"Subtype" STRING "Air Shūji (Kolat)"
+                ^"Rank" INTEGER 3
+                ^"Activation" STRING "Once per game session, during a narrative scene or as a downtime activity"
+                ^"Check" STRING "TN 2 Skulduggery (Air)"
+                ^"Effect" STRING "If you succeed, recruit a minor or previously unknown NPC (GM discretion) as a Kolat asset. Record them under your Relationships. Once per game session you may call on one asset you can reasonably contact. The NPC aids you during a single scene or conducts a single downtime activity."
+                ^"Opportunities" STRING "Air (op): If you succeed, choose one skill. The NPC has ranks in that skill equal to your school rank and can perform checks with that skill to assist you."
+            }
+
+            ^"Awe of Heaven" {
+                ^"Type" STRING "Shūji"
+                ^"Subtype" STRING "Void Shūji (Imperial)"
+                ^"Rank" INTEGER 4
+                ^"Activation" STRING "Once per scene, as an Attack and Scheme action"
+                ^"Check" STRING "Command (Void) check targeting any number of characters in the scene. TN equals the highest status rank among targets."
+                ^"Effect" STRING "If you succeed, each target suffers the Silenced condition."
+            }
+        }
+
+    }
+
+    # ===========================
+    # TITLES
+    # ===========================
+
+    ^"Emerald Empire Titles" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Titles represent important narrative events and new duties.
+        # Characters study skills and techniques outside their school
+        # via the title's advancement table. Completing a title grants
+        # the title ability.
+
+        ENTRIES {
+            ^"Advisor" {
+                ^"Assigned By" STRING "Daimyo, Emerald Magistrates, military leaders, high-ranking courtiers"
+                ^"Status Award" STRING "+10 (minimum 40)"
+                ^"XP to Completion" INTEGER 36
+                ^"Title Ability" STRING "Skilled Attendant"
+                ^"Title Ability Effect" STRING "When you provide assistance on a Scholar skill check, the character you are assisting may roll (skill) equal to your ranks in that skill instead of their own."
+                ^"Advancement" LIST OF STRING [
+                    "Scholar Skills (Skill Group)",
+                    "Commerce (Skill)",
+                    "Courtesy (Skill)",
+                    "Design (Skill)",
+                    "Fanning the Flames (shuji)",
+                    "Feigned Opening (shuji)",
+                    "Stonewall Tactics (shuji)"
+                ]
+            }
+
+            ^"Clan Magistrate" {
+                ^"Assigned By" STRING "Clan champions, daimyo, and other clan leaders"
+                ^"Status Award" STRING "+10 (minimum 45)"
+                ^"XP to Completion" INTEGER 30
+                ^"Title Ability" STRING "Justice of the Champion"
+                ^"Title Ability Effect" STRING "When you make a Command or Courtesy check targeting a member of your clan, you may spend (op)+: The target receives or removes (your choice) strife equal to (op) spent this way."
+                ^"Advancement" LIST OF STRING [
+                    "Scholar Skills (Skill Group)",
+                    "Social Skills (Skill Group)",
+                    "Fitness (Skill)",
+                    "Martial Arts [Melee] (Skill)",
+                    "Coiling Serpent Style (kata)",
+                    "Prey on the Weak (shuji)",
+                    "Truth Burns through Lies (shuji)"
+                ]
+            }
+
+            ^"Daimyo" {
+                ^"Assigned By" STRING "Clan champions, the Emperor, and other high-ranking officials"
+                ^"Status Award" STRING "+20 (minimum 55)"
+                ^"XP to Completion" INTEGER 36
+                ^"Title Ability" STRING "Voice of Authority"
+                ^"Title Ability Effect" STRING "Reduce the TN of Command checks you make targeting your vassals by 1."
+                ^"Advancement" LIST OF STRING [
+                    "Social Skills (Skill Group)",
+                    "Culture (Skill)",
+                    "Government (Skill)",
+                    "Tactics (Skill)",
+                    "Courtier's Resolve (shuji)",
+                    "Shallow Waters (shuji)",
+                    "Stirring the Embers (shuji)"
+                ]
+            }
+
+            ^"Gunso" {
+                ^"Assigned By" STRING "A daimyo or superior officer within the military rank structure"
+                ^"Status Award" STRING "+5 (minimum 20)"
+                ^"XP to Completion" INTEGER 24
+                ^"Title Ability" STRING "Lead from the Front"
+                ^"Title Ability Effect" STRING "When you defeat an opponent in a clash, your cohort removes panic equal to the opponent's glory rank. Once per round when you succeed at an Attack action check during a mass battle, your cohort removes panic equal to half of the attrition you inflict."
+                ^"Advancement" LIST OF STRING [
+                    "Martial Skills (Skill Group)",
+                    "Command (Skill)",
+                    "Government (Skill)",
+                    "Rank 1-4 Kata (kata) (Tech Group)",
+                    "Rallying Cry (shuji)",
+                    "Stirring the Embers (shuji)",
+                    "Touchstone of Courage (shuji)"
+                ]
+            }
+
+            ^"Monastic Acolyte" {
+                ^"Assigned By" STRING "Most monasteries accept anyone who takes the required vows and shaves their head"
+                ^"Status Award" STRING "Status becomes 25"
+                ^"XP to Completion" INTEGER 24
+                ^"Title Ability" STRING "Enlightened"
+                ^"Title Ability Effect" STRING "When you are selected as a target of an action requiring a skill check, you may spend a Void point to increase or decrease the TN of the check by an amount up to your ranks in Meditation (minimum 1)."
+                ^"Advancement" LIST OF STRING [
+                    "Martial Skills (Skill Group)",
+                    "Scholar Skills (Skill Group)",
+                    "Aesthetics (Skill)",
+                    "Composition (Skill)",
+                    "Cleansing Spirit (kiho)",
+                    "Ki Protection (kiho)",
+                    "Still the Elements (kiho)"
+                ]
+            }
+
+            ^"Priest" {
+                ^"Assigned By" STRING "Most priests train from a young age; some are assigned by a head priest at a shrine or temple"
+                ^"Status Award" STRING "+10 (minimum 40)"
+                ^"XP to Completion" INTEGER 24
+                ^"Title Ability" STRING "Servant of the Kami"
+                ^"Title Ability Effect" STRING "You may importune invocations even if you do not know any invocations. When you importune, do not increase the TN by 1 (although you still increase TN if the invocation rank is higher than your school rank)."
+                ^"Advancement" LIST OF STRING [
+                    "Social Skills (Skill Group)",
+                    "Composition (Skill)",
+                    "Culture (Skill)",
+                    "Theology (Skill)",
+                    "Rank 1-5 Rituals (ritual) (Tech Group)",
+                    "Civility Foremost (shuji)",
+                    "Rouse the Soul (shuji)"
+                ]
+            }
+
+            ^"Spy" {
+                ^"Assigned By" STRING "Daimyo, clan champions, magistrates, and clandestine organizations (never announced publicly)"
+                ^"Status Award" STRING "-5"
+                ^"XP to Completion" INTEGER 24
+                ^"Title Ability" STRING "Ears Everywhere"
+                ^"Title Ability Effect" STRING "Once per game session as a Scheme and Support action or downtime activity targeting a location or social group, make a TN 4 Sentiment (Air) check. If you succeed, discover the latest relevant happenings and which current rumors are false. If discerning someone's qualities is your social objective in an intrigue, score momentum points equal to your Air Ring plus bonus successes. (op): Plant a rumor that spreads among the targeted group."
+                ^"Advancement" LIST OF STRING [
+                    "Social Skills (Skill Group)",
+                    "Government (Skill)",
+                    "Sentiment (Skill)",
+                    "Skulduggery (Skill)",
+                    "Rank 1-5 Air Shūji (shuji) (Tech Group)",
+                    "Shallow Waters (shuji)",
+                    "Skulk (ninjutsu)"
+                ]
+            }
+
+            ^"Yojimbo" {
+                ^"Assigned By" STRING "Daimyo, Emerald Magistrates, military leaders, high-ranking courtiers"
+                ^"Status Award" STRING "+10 (minimum 40)"
+                ^"XP to Completion" INTEGER 36
+                ^"Title Ability" STRING "No Sacrifice Too Great"
+                ^"Title Ability Effect" STRING "One character is assigned as your charge; they can order you to treat someone else as your charge until they lift this order. If your charge is at range 0-2, you may spend 1 Void point to replace your charge as the target of an Attack action. If you suffer a critical strike as a result, gain 1 Void point."
+                ^"Advancement" LIST OF STRING [
+                    "Martial Skills (Skill Group)",
+                    "Government (Skill)",
+                    "Medicine (Skill)",
+                    "Sentiment (Skill)",
+                    "Iaijutsu Cut: Crossing Blade (kata)",
+                    "Iaijutsu Cut: Rising Blade (kata)",
+                    "Warrior's Resolve (kata)"
+                ]
+            }
+
+            ^"Yoriki" {
+                ^"Assigned By" STRING "Magistrates of all kinds directly appoint their own yoriki"
+                ^"Status Award" STRING "+5 (minimum 35)"
+                ^"XP to Completion" INTEGER 24
+                ^"Title Ability" STRING "Take Them Alive"
+                ^"Title Ability Effect" STRING "When you make an Attack action using a weapon with the Snaring quality, you may alter any number of kept dice containing (su) or (ex) to results set to (op)."
+                ^"Advancement" LIST OF STRING [
+                    "Social Skills (Skill Group)",
+                    "Government (Skill)",
+                    "Martial Arts [Melee] (Skill)",
+                    "Skulduggery (Skill)",
+                    "Rank 1-3 Kata (kata) (Tech Group)",
+                    "Fanning the Flames (shuji)",
+                    "Shallow Waters (shuji)"
+                ]
+            }
+        }
+
+    }
+}

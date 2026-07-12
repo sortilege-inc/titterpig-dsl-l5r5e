@@ -1,0 +1,535 @@
+EXTENSION "L5R5e_Fields_of_Victory_NPCs" EXTENDS "L5R5e_Fields_of_Victory" {
+    NAME "Legend of the Five Rings 5th Edition - Fields of Victory: NPCs"
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-03-01"
+
+    # Fields of Victory: Named NPCs from across the sourcebook,
+    # organized by chapter and section.
+
+    # ===========================
+    # NPCs / ADVERSARIES
+    # ===========================
+
+    # -----------------------------------------------
+    # Chapter 1: Glorious Histories
+    # -----------------------------------------------
+
+    # --- The Imperial Legions ---
+
+    ^"Sakae, Dedicated Ashigaru" DEF {
+        EXTENDS ^"NPC"
+
+        # The child of a humble farmer, Sakae was conscripted
+        # into a Great Clan army at an early age. Despite their
+        # inexperience, they showed unexpected skill on the
+        # battlefield and rose to the rank of kachigashira
+        # (infantry leader). When Sakae learned that their
+        # younger brother Ryota had been captured, they chose
+        # to continue fighting for the clan to raise their family's
+        # standing rather than return home.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Assertive"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 30
+            ^"Glory" INTEGER 32
+            ^"Status" INTEGER 21
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 3", "Scholar 0", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Indomitable Will (Earth) [Social; Mental, Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Intolerance (Air) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged", "Yari: Range 2, Damage 5, Deadliness 3, Wargear", "Yumi: Range 2-5, Damage 5, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Ashigaru armor (Physical 3, Wargear)", "Traveling rations", "Tent (medium)", "A small doll stuffed with rye in the likeness of Sakae's brother"]
+        }
+
+        ^"Ashigaru Veteran" DEF {
+            ^"Description" STRING "As a Support action during a mass battle, Sakae may make a TN 1 Tactics (Earth) check targeting up to two cohorts with the Rank Formation ability. If Sakae succeeds, each of those cohorts' leaders adds 1 kept (ring) set to (op) to the next check they make."
+        }
+
+        RULES {
+            #L5RFV01aB1cD3eF5gH7iJ9kL: sakae_ashigaru
+        }
+    }
+
+    ^"Seppun Genshin, Captain" DEF {
+        EXTENDS ^"NPC"
+
+        # A captain in the Seventh Imperial Legion, Genshin has
+        # made a name for himself executing orders with incredible
+        # efficiency. His direct, no-nonsense demeanor has
+        # propelled him through the ranks. He directed
+        # reconstruction efforts after the tsunami of 1120 and
+        # is now seeking the next success that will ensure his
+        # ascendancy to Commander of the Seventh Legion.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 6
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Gruff"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Earth -2"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 61
+            ^"Status" INTEGER 51
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 5", "Scholar 2", "Social 3", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Seasoned (Void) [Social; Mental, Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Bluntness (Air) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged", "Wakizashi: Range 0-1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Lacquered armor (Physical 4, Ceremonial, Cumbersome, Wargear)", "Smoking pipe"]
+        }
+
+        ^"Authoritative Negotiation" DEF {
+            ^"Description" STRING "When making a Social skill check to pursue Imperial interests or the Emperor's agenda, Seppun Genshin may receive up to 3 strife in order to reroll that many (ring) showing blank results."
+        }
+
+        RULES {
+            #L5RFV02mN2oP4qR6sT8uV0wX: seppun_genshin
+        }
+    }
+
+    # --- Sanctioned Conflicts ---
+
+    ^"Ikoma Hiroshika, Advocate at Court" DEF {
+        EXTENDS ^"NPC"
+
+        # A familiar face in the Imperial Court in Otosan Uchi,
+        # Hiroshika appears frequently before the Throne to argue
+        # the finer points of what qualifies as war within the
+        # Empire. Few Rokugani know the body of edicts,
+        # petitions, and precedents on sanctioned interclan war
+        # as well as she. Her reasoned yet passionate arguments
+        # have been successful far more often than not.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Reserved"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Water -2"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 70
+            ^"Glory" INTEGER 65
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 1", "Scholar 4", "Social 3", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Legal Expert (Air) [Social; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Frailty (Earth) [Martial; Physical]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 4, Deadliness 5/7, Ceremonial, Concealable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Courtly finery (Physical 1, Ceremonial)", "Legal scrolls and texts", "Go set"]
+        }
+
+        ^"Powerful Arguments" DEF {
+            ^"Description" STRING "When making a Courtesy check, if Hiroshika does not keep any dice with results containing (st) symbols, she may spend (op) in the following manner: (op)+: The target of the check receives strife equal to (op) spent this way."
+        }
+
+        RULES {
+            #L5RFV03yZ3aB5cD7eF9gH1iJ: ikoma_hiroshika
+        }
+    }
+
+    # --- High Histories of the Ikoma ---
+
+    ^"Ikoma Nakidori" DEF {
+        EXTENDS ^"NPC"
+
+        # Longing for adventure, Nakidori considers herself a
+        # songbird locked away in the gilded cage of the High
+        # Histories. Trained as a battle crier, she earned early
+        # commendations on the battlefield, but an overzealous
+        # charge and a grievous leg injury ended her career
+        # afield and forced her to an assignment in the Ikoma
+        # Libraries. She yearns to once again stand beside
+        # warriors and light their souls aflame.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Passionate"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 50
+            ^"Glory" INTEGER 44
+            ^"Status" INTEGER 35
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 1", "Scholar 3", "Social 2", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Inspiring Presence (Fire) [Martial; Interpersonal]", "Historian (Earth) [Scholar; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["War Injury (Earth) [Martial; Physical]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 4, Deadliness 5/7, Ceremonial, Concealable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Scholar's robes (Physical 1)", "Shamisen", "Calligraphy set", "Scroll satchel"]
+        }
+
+        ^"Lion Expertise" DEF {
+            ^"Description" STRING "When Ikoma Nakidori assists another character making a Scholar check involving military or Lion Clan history, the character may roll two additional (ring) instead of just one."
+        }
+
+        RULES {
+            #L5RFV04kL4mN6oP8qR0sT2uV: ikoma_nakidori
+        }
+    }
+
+    # --- Akodo War College ---
+
+    ^"Matsu Doju" DEF {
+        EXTENDS ^"NPC"
+
+        # A graduate of the Akodo War College who combines the
+        # fury of his Matsu mother and the braggadocio of his
+        # Ikoma father. His ostentatious nature makes him no
+        # friends in court, but among his soldiers he is known as
+        # a demanding but generous leader. Friend and foe alike
+        # know him for his deafening war cries on the battlefield.
+        # Ikoma Tsanuri said of him, "There is no Lion who roars
+        # louder."
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Aggressive"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 75
+            ^"Status" INTEGER 45
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 3", "Social 2", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Inspiring Presence (Fire) [Martial; Interpersonal]", "Rounded Education (Earth) [Scholar; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Flamboyant (Air) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Graduate's Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Durable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Personalized armor (Physical 3, Resplendent, Wargear)", "Wakizashi"]
+        }
+
+        ^"Roar of the Lion" DEF {
+            ^"Description" STRING "As a Scheme and Support action during a skirmish, Doju may receive up to 3 strife to force the same number of enemy characters at range 0-3 to make a TN 2 Meditation check (Earth 1, Air 3). Each character who fails suffers the Dazed condition."
+        }
+
+        RULES {
+            #L5RFV05wX5yZ7aB9cD1eF3gH: matsu_doju
+        }
+    }
+
+    # --- Castle of the Swift Sword / Akodo ---
+
+    ^"Akodo Shosuke" DEF {
+        EXTENDS ^"NPC"
+
+        # The second-born scion of the Itagawa vassal family,
+        # whose purpose as a "forge family" is to supply the
+        # clan with weapons and armor. Shosuke isn't content
+        # with merely forging weapons — he is determined to
+        # become an expert in wielding them as well, dreaming
+        # of the honorary title of kensei (sword-saint). He serves
+        # as quartermaster at the Castle of the Swift Sword.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Determined"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 30
+            ^"Status" INTEGER 37
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 3", "Scholar 2", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Unflappable (Water) [Social; Mental]", "Patient (Earth) [Social; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Unassuming (Water) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Self-Forged Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged, Resplendent"]
+            ^"Gear" LIST OF STRING ["Lacquered armor (Physical 4, Ceremonial, Cumbersome, Wargear)", "Wakizashi", "Offerings for the ancestor spirits", "Knife", "Small hammer", "Plain robes", "Forging equipment"]
+        }
+
+        ^"Detailed Precision" DEF {
+            ^"Description" STRING "When making an Attack or Movement action check, Akodo Shosuke may remove 2 strife. For each strife he removes this way, he adds one kept (ring) set to (op) to the check and receives 1 fatigue."
+        }
+
+        ^"Quick Fix" DEF {
+            ^"Description" STRING "As a Support action, Shosuke may receive 3 fatigue and 3 strife to remove the Damaged item quality from one weapon or set of armor at range 0-1."
+        }
+
+        RULES {
+            #L5RFV06iJ6kL8mN0oP2qR4sT: akodo_shosuke
+        }
+    }
+
+    # --- Matsu ---
+
+    ^"Matsu Naoko" DEF {
+        EXTENDS ^"NPC"
+
+        # A proud student of the Matsu Beastmaster tradition,
+        # Naoko and her lioness companion Tami use their bond
+        # in their work as cartographers and scouts for the Lion
+        # Clan. Her parents noticed her unusual rapport with
+        # felines at a young age, and at fourteen she received a
+        # newly weaned lion cub, a rare honor for an
+        # inexperienced student.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Assertive"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 9
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 3", "Scholar 3", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Trained Survivalist (Earth) [Martial; Physical, Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Hot-Tempered (Water) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Magari-Yari: Range 1-2, Damage 6, Deadliness 4, Cumbersome, Razor-Edged, Wargear"]
+            ^"Gear" LIST OF STRING ["Common clothes (Physical 1, Mundane)", "Daishō (katana and wakizashi)", "Knife", "Tattered kemari ball (Tami's favorite toy)"]
+        }
+
+        ^"Whirling Claws and Spear" DEF {
+            ^"Description" STRING "When performing an Attack action against a target at range 0 of one of Naoko's allies (such as Tami), Matsu Naoko may spend (op) in the following way: (op): The target suffers the Disoriented condition."
+        }
+
+        ^"Feline Empathy" DEF {
+            ^"Description" STRING "Naoko can understand the motives of cats great and small and can communicate with them in a rudimentary way."
+        }
+
+        ^"Beastmaster" DEF {
+            ^"Description" STRING "Tami the lioness is never far away from Naoko and uses the Hunting Cat profile on page 327 of the core rulebook."
+        }
+
+        RULES {
+            #L5RFV07uV7wX9yZ1aB3cD5eF: matsu_naoko
+        }
+    }
+
+    # --- Ikoma ---
+
+    ^"Ikoma Shiniko" DEF {
+        EXTENDS ^"NPC"
+
+        # Not born a member of the samurai caste but adopted
+        # by an Ikoma samurai, Shiniko is a member of the Ikoma
+        # Shadow School (see Courts of Stone page 92). She
+        # compromises her honor daily, adopting guises and
+        # wrapping herself in lies for the good of the clan. She
+        # has been well compensated but has slowly realized she
+        # will never be free of this duty.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Demeanor" STRING "Duplicitous"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 25
+            ^"Glory" INTEGER 20
+            ^"Status" INTEGER 30
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 0", "Scholar 2", "Social 3", "Trade 4"]
+            ^"Advantages" LIST OF STRING ["Inexhaustible Politeness (Air) [Social; Interpersonal]", "Calming Presence (Earth) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Skittish (Fire) [Martial; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Iron-Soled Sandal (improvised weapon): Range 1, Damage 2, Deadliness 3/4"]
+            ^"Gear" LIST OF STRING ["Splendid geisha outfit or other suitable disguise (Physical 1, Ceremonial, Resplendent)", "Kiseru", "Writing kit", "Tea set"]
+        }
+
+        ^"Slippery" DEF {
+            ^"Description" STRING "Once per scene as a Movement and Scheme action, Shiniko may receive up to 3 fatigue. Increase the TN of checks targeting her by 1 for each fatigue received this way until the start of her next turn."
+        }
+
+        ^"Flexible Persona" DEF {
+            ^"Description" STRING "At the start of each scene, choose up to two shūji of the same element of rank 3 or lower. Until the end of the scene, Shiniko can perform those shūji."
+        }
+
+        RULES {
+            #L5RFV08gH8iJ0kL2mN4oP6qR: ikoma_shiniko
+        }
+    }
+
+    # --- Kitsu ---
+
+    ^"Kitsu Ginchiyo, Medium-in-Training" DEF {
+        EXTENDS ^"NPC"
+
+        # Not yet having reached gempuku, Ginchiyo is
+        # nonetheless one of the most powerful Kitsu Mediums
+        # (sodan-senzo) in generations. Ginchiyo wants only to
+        # be a painter and storyteller, but the family believes the
+        # child's wishes are secondary to preserving their dying
+        # traditions. Some of the spirits Ginchiyo has been
+        # communing with aren't honored ancestors, but
+        # vengeful ghosts.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 4
+            }
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Fire -1, Void -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 48
+            ^"Status" INTEGER 34
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 0", "Scholar 2", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Mystical Intuition (Void) [Scholar; Mental]", "Holy Personage (Void) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Just a Child (Earth) [Martial; Physical]", "Haunted (Void) [Social; Spiritual]"]
+            ^"Gear" LIST OF STRING ["Sanctified robes (Physical 1, Supernatural 3, Ceremonial)", "Assorted offerings to the ancestors"]
+        }
+
+        ^"Disciple of Secret Lore" DEF {
+            ^"Description" STRING "Choose four invocations (see page 189 of the core rulebook) and up to three rituals (see page 212 of the core rulebook). Ginchiyo can perform these invocations and rituals."
+        }
+
+        ^"Possession" DEF {
+            ^"Description" STRING "Once per game session, Ginchiyo can become possessed by an ancestor spirit. Apply any one appropriate NPC template to Ginchiyo's profile and adjust her conflict ranks by +1. This effect persists until the end of the scene."
+        }
+
+        RULES {
+            #L5RFV09sT9uV1wX3yZ5aB7cD: kitsu_ginchiyo
+        }
+    }
+
+    # -----------------------------------------------
+    # Chapter 2: Defenders of the Empire
+    # -----------------------------------------------
+
+    # --- The Badger Clan ---
+
+    ^"Ichiro Hinata, Sapper" DEF {
+        EXTENDS ^"NPC"
+
+        # Hinata's duties involve checking traps and fixing or
+        # replacing them, making him something of an engineer
+        # as well as a warrior. He also undertakes patrol duty,
+        # as most Badger are expected to do. His mood can
+        # change remarkably quickly, so he is gruff and
+        # defensive one minute, and heartily welcoming the next.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Gruff"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Earth -2"
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 7
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 3", "Scholar 1", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Engineer's Hands (Air) [Trade; Mental, Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Uncouth (Air) [Social; Interpersonal, Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Ichiro sapper axe: Range 1, Damage 3, Deadliness 5, Durable"]
+            ^"Gear" LIST OF STRING ["Badger armor (Physical 2)", "Basic sapper tools (Mundane)", "Small drum"]
+        }
+
+        ^"Badger Sapper" DEF {
+            ^"Description" STRING "Hinata can spot Badger-made traps, and automatically points them out to any character with whom he is traveling. As a Movement and Support action, Hinata can disarm or reset one trap (without making a check)."
+        }
+
+        ^"Sour Moods" DEF {
+            ^"Description" STRING "Hinata's demeanor is usually Good-Natured. However, after Hinata becomes Compromised or unmasks, his demeanor becomes Gruff until the end of the scene. If he has had a particularly bad day, he may also start a scene Gruff to signify this fact."
+        }
+
+        RULES {
+            #L5RFV10eF0gH2iJ4kL6mN8oP: ichiro_hinata
+        }
+    }
+}

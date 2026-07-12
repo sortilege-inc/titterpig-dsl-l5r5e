@@ -1,0 +1,821 @@
+EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
+    NAME "Legend of the Five Rings 5th Edition - The Mantis Clan: Rules for Playing Characters from the Islands of Spice and Silk"
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-03-01"
+
+    # The Mantis Clan expansion: new minor clan, two schools,
+    # one new technique, advantages, disadvantages, weapons,
+    # armor, equipment, and aquatic NPCs.
+    # Published by Fantasy Flight Games.
+    # Designed by Max Brooke.
+
+    # ===========================
+    # MANTIS CLAN
+    # ===========================
+
+    ^"Mantis Clan" DEF {
+        EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Clan Name" STRING "Mantis" FIXED
+            ^"Clan Type" STRING "Minor Clan"
+            ^"Clan Ring Bonus" DEF { ^"Water" INTEGER 1 }
+            ^"Clan Skill Bonus" DEF { ^"Seafaring" INTEGER 1 }
+            ^"Clan Status" INTEGER DEFAULT 25
+        }
+
+        FAMILIES {
+            # The Mantis do not have a family name. Samurai take their
+            # names from the kobune ships they sail with.
+            ^"Families of the Fleet"
+        }
+
+        RULES {
+            #L5RMC01aB2cD4eF6gH8iJ0k: mantis_clan_minor_clan_traits
+        }
+    }
+
+
+    # ===========================
+    # MANTIS FAMILIES
+    # ===========================
+
+    #L5RMC40kL0mN2oP4qR6sT8u ^"Families of the Fleet" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Families of the Fleet" FIXED
+            ^"Clan"            STRING "Mantis"
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Fire", ^"Water"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                ^"Commerce" INTEGER 1
+                ^"Survival" INTEGER 1
+            }
+            ^"Glory"           INTEGER 36
+            ^"Starting Wealth" INTEGER 7
+        }
+    }
+
+
+    # ===========================
+    # SCHOOLS
+    # ===========================
+
+    ^"Storm Fleet Sailor" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Life on the seas has made the Mantis practical. Their
+        # sailors know most true fights do not take place in a dojo.
+        # Opportunists to the core, they eschew no weapon, push
+        # every advantage, and yield only to the rolling sea.
+
+        PROPERTIES {
+            ^"School Name" STRING "Storm Fleet Sailor" FIXED
+            ^"Clan" STRING "Mantis"
+            ^"Roles" LIST ["Bushi"]
+            ^"Ring Increase" DEF {
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Commerce", ^"Fitness", ^"Games", ^"Labor", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Seafaring"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 35
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            KATA ^"Pelting Hail Style"
+            SHUJI CHOOSE 1 [^"All in Jest", ^"Stirring the Embers"]
+        }
+
+        SCHOOL_ABILITY "Sailor's Fortune" {
+            "Once per round when making a Trade skill check, if you are not Compromised, you may receive a number of strife up to your school rank to reroll that many rolled dice."
+        }
+
+        MASTERY_ABILITY ^"Storm Lord's Gambit" {
+            "You may receive 1 additional strife to use your Sailor's Fortune ability on any check instead of only a Trade skill check."
+        }
+
+        STARTING_OUTFIT [
+            "Sailor's garb",
+            "wakizashi (short sword)",
+            "knife",
+            "any two weapons of rarity 6 or lower",
+            "yumi (bow)",
+            "quiver of arrows",
+            "traveling pack",
+            "rope (twenty feet)",
+            "gambling set (cards or dice)",
+            "fishing rod and line"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Fitness"
+                SKILL "Games"
+                SKILL "Martial Arts [Ranged]"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Skulk" [ninjutsu]
+                ^"Shallow Waters" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Commerce"
+                SKILL "Seafaring"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-2 Fire Shūji"
+                ^"Flowing Water Strike" [kata]
+                ^"Osano-wo's Boast" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Seafaring"
+                TECHNIQUE_GROUP "Rank 1-3 Water Shūji"
+                ^"Bravado" [shuji]
+                ^"Heartpiercing Strike" [kata]
+            }
+            RANK 4 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Command"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-4 Kata"
+                ^"Buoyant Arrival" [shuji]
+                ^"Crashing Wave Style" [kata]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Commerce"
+                SKILL "Seafaring"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-5 Kata"
+                ^"Rouse the Soul" [shuji]
+                ^"Sear the Wound" [shuji]
+            }
+            RANK 6 {
+                ^"Storm Lord's Gambit"
+            }
+        }
+    }
+
+    ^"Storm Fleet Tide Seer" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The tenkinja are priests of the tide, trained in reading
+        # the sea and appeasing the kami of wave and storm. Without
+        # their blessing, even seasoned Mantis sailors are uneasy to
+        # take to the open ocean. They have no formal center of
+        # learning, instead training individual apprentices during
+        # journeys and congregating in the Isles of Silk and Spice.
+
+        PROPERTIES {
+            ^"School Name" STRING "Storm Fleet Tide Seer" FIXED
+            ^"Clan" STRING "Mantis"
+            ^"Roles" LIST ["Shugenja"]
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Commerce", ^"Fitness", ^"Games", ^"Labor", ^"Martial Arts [Melee]", ^"Seafaring", ^"Theology"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Techniques Available" LIST ["Air and Water Invocations", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            INVOCATION ^"Dominion of Suijin"
+            INVOCATION ^"Tempest of Air"
+            INVOCATION CHOOSE 1 [^"Bō of Water", ^"Path to Inner Peace", ^"Yari of Air"]
+            RITUAL ^"Commune with the Spirits"
+            RITUAL ^"Divination"
+        }
+
+        SCHOOL_ABILITY "Eye of the Storm" {
+            "When an invocation technique you perform would affect \"each character\" or \"each other character\" at a specified range, you may exclude a number of characters up to your school rank from all effects of the invocation except for spiritual backlash (see page 190 of the core rulebook)."
+        }
+
+        MASTERY_ABILITY ^"Storm Surge" {
+            "When you perform an invocation that smites one or more targets, treat each target's supernatural resistance as 1 lower per kept (st) symbol on the check."
+        }
+
+        STARTING_OUTFIT [
+            "Sailor's garb",
+            "wakizashi (short sword)",
+            "knife",
+            "any one weapon of rarity 6 or lower",
+            "traveling pack",
+            "divination set (cards, shells, or dice)"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Fitness"
+                SKILL "Labor"
+                SKILL "Seafaring"
+                TECHNIQUE_GROUP "Rank 1 Water Shūji"
+                ^"Summon Fog" [invocation]
+                ^"Reflections of P'an Ku" [invocation]
+            }
+            RANK 2 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Fitness"
+                SKILL "Tactics"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-2 Air Invocations"
+                ^"Hand of the Tides" [invocation]
+                ^"Call upon the Wind" [invocation]
+            }
+            RANK 3 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Performance"
+                SKILL "Seafaring"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-3 Rituals"
+                ^"Fury of Osano-wo" [invocation]
+                ^"Osano-wo's Boast" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Command"
+                SKILL "Games"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-4 Water Invocations"
+                ^"Wrath of Kaze-no-Kami" [invocation]
+                ^"Rise, Water" [invocation]
+            }
+            RANK 5 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Courtesy"
+                SKILL "Seafaring"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1-5 Void Shūji"
+                ^"Ever-Changing Waves" [invocation]
+                ^"Rise, Air" [invocation]
+            }
+            RANK 6 {
+                ^"Storm Surge"
+            }
+        }
+    }
+
+    # ===========================
+    # NEW TECHNIQUES
+    # ===========================
+
+    ^"Osano-wo's Boast" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # Mantis Clan, Rank 3 Shūji
+        # Like their fabled founder, Mantis often boast of their
+        # future glory to strengthen resolve and drive comrades.
+
+        PROPERTIES {
+            ^"Technique Type" STRING "Shūji" FIXED
+            ^"Technique Subtype" STRING "Mantis" FIXED
+            ^"Rank" INTEGER DEFAULT 3
+            ^"Activation" STRING "Once per game session as a Support action, make a TN 2 Command or Performance (Fire) check to boast of a deed you will attempt."
+        }
+
+        # Effects: If you succeed, increase your composure and
+        # endurance by 3. Persists until end of scene or until you
+        # complete the deed. At end of scene, if deed not completed,
+        # suffer 3 fatigue and 3 strife.
+        #
+        # If you succeed or fail, after you perform this action, any
+        # other character in the scene who knows this technique may
+        # immediately perform this action (if they have not done so).
+
+        RULES {
+            #L5RMC09kL0mN2oP4qR6sT8u: technique_osanowos_boast
+        }
+    }
+
+    # ===========================
+    # ADVANTAGES
+    # ===========================
+
+    ^"Blood of Osano-wo" DEF {
+        EXTENDS #L5R266oP8qR0sT2uV4wX6y ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Fire"
+            ^"Types" LIST ["Mental", "Spiritual"]
+        }
+
+        EFFECT {
+            "The Fortune of Storms grants you boldness and a desire not easily satisfied. You cannot be killed by storms (lightning, going overboard in tempest). If you would die this way, you wake up later in a place of the GM's choice, miraculously safe, with 0 Void points."
+            "When performing a check for which you need to take a great risk (Games [Fire] to wager on a single gambit, Seafaring [Fire] to chart a deadly route), may reroll up to two dice."
+        }
+    }
+
+    ^"Sea Legs" DEF {
+        EXTENDS #L5R266oP8qR0sT2uV4wX6y ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Water"
+            ^"Types" LIST ["Physical"]
+        }
+
+        EFFECT {
+            "You never get seasick, and can maintain your balance easily on a rocking ship. You always feel slightly disconcerted on stable ground, however."
+            "When performing a check to stay balanced on a shifting surface (MA [Ranged] [Water] bow shot during boarding, Seafaring [Water] to adjust sails in a storm), may reroll up to two dice."
+        }
+    }
+
+    ^"Knotwork" DEF {
+        EXTENDS #L5R267zA9bC1dE3fG5hI7j ^"Passion"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Mental"]
+        }
+
+        EFFECT {
+            "You can identify and tie dozens of different knots, and know their appropriate uses and meanings."
+            "After performing a check to interact with a knot (Design [Air] decorative knot, Seafaring [Air] to secure rigging), remove 3 strife."
+        }
+    }
+
+    # ===========================
+    # DISADVANTAGES
+    # ===========================
+
+    ^"Sailor's Tongue" DEF {
+        EXTENDS #L5R268kL0mN2oP4qR6sT8u ^"Adversity"
+
+        PROPERTIES {
+            ^"Ring" STRING "Air"
+            ^"Types" LIST ["Mental", "Interpersonal"]
+        }
+
+        EFFECT {
+            "Your speech is punctuated by a combative tone or idioms others find difficult to understand or even vulgar."
+            "When performing a check to speak politely (Courtesy [Air] compliment at court, Culture [Air] to know if something is rude), you must choose and reroll two dice containing (su) or (ex). After resolving, if you failed, gain 1 Void point."
+        }
+    }
+
+    # ===========================
+    # WEAPONS
+    # ===========================
+
+    ^"Butterfly Sword" DEF {
+        APPLIES TO [^"Equipment"]
+
+        PROPERTIES {
+            ^"Category" STRING "Swords" FIXED
+            ^"Skill" STRING "Martial Arts [Melee]"
+            ^"Range" STRING "0-1"
+            ^"Damage" INTEGER DEFAULT 3
+            ^"Deadliness" INTEGER DEFAULT 5
+            ^"Grips" STRING "1-hand: -"
+            ^"Qualities" STRING "Concealable, Snaring"
+            ^"Rarity" INTEGER DEFAULT 6
+            ^"Cost" STRING "10 koku"
+        }
+
+        RULES {
+            #L5RMC14nO5pQ7rS9tU1vW3x: weapon_butterfly_sword
+        }
+    }
+
+    ^"Sai" DEF {
+        APPLIES TO [^"Equipment"]
+
+        PROPERTIES {
+            ^"Category" STRING "Hand Weapons" FIXED
+            ^"Skill" STRING "Martial Arts [Melee]"
+            ^"Range" STRING "0"
+            ^"Damage" INTEGER DEFAULT 2
+            ^"Deadliness" INTEGER DEFAULT 2
+            ^"Grips" STRING "1-hand: -"
+            ^"Qualities" STRING "Concealable, Snaring"
+            ^"Rarity" INTEGER DEFAULT 6
+            ^"Cost" STRING "2 koku"
+        }
+
+        # Special: While you have a pair of sai readied, reduce the
+        # (op) you must spend to activate their Snaring quality by 1.
+
+        RULES {
+            #L5RMC15yZ6aB8cD0eF2gH4i: weapon_sai
+        }
+    }
+
+    ^"Tonfa" DEF {
+        APPLIES TO [^"Equipment"]
+
+        PROPERTIES {
+            ^"Category" STRING "Hand Weapons" FIXED
+            ^"Skill" STRING "Martial Arts [Melee]"
+            ^"Range" STRING "0-1"
+            ^"Damage" INTEGER DEFAULT 3
+            ^"Deadliness" INTEGER DEFAULT 3
+            ^"Grips" STRING "1-hand: -"
+            ^"Qualities" STRING "Concealable, Durable"
+            ^"Rarity" INTEGER DEFAULT 5
+            ^"Cost" STRING "4 koku"
+        }
+
+        # Special: As a Movement and Support action, if you have a
+        # tonfa readied, you may increase the TN of the next Attack
+        # action check targeting you by 1 and decrease the TN of your
+        # next Attack action check using a tonfa by 1. Persists until
+        # end of your next turn.
+
+        RULES {
+            #L5RMC16jK7lM9nO1pQ3rS5t: weapon_tonfa
+        }
+    }
+
+    ^"Eku" DEF {
+        APPLIES TO [^"Equipment"]
+
+        PROPERTIES {
+            ^"Category" STRING "Polearms" FIXED
+            ^"Skill" STRING "Martial Arts [Melee]"
+            ^"Range" STRING "2"
+            ^"Damage" INTEGER DEFAULT 6
+            ^"Deadliness" INTEGER DEFAULT 4
+            ^"Grips" STRING "2-hand: -"
+            ^"Qualities" STRING "Cumbersome, Durable, Mundane"
+            ^"Rarity" INTEGER DEFAULT 5
+            ^"Cost" STRING "3 koku"
+        }
+
+        RULES {
+            #L5RMC17uV8wX0yZ2aB4cD6e: weapon_eku
+        }
+    }
+
+    ^"Tinbe" DEF {
+        APPLIES TO [^"Equipment"]
+
+        PROPERTIES {
+            ^"Category" STRING "Polearms" FIXED
+            ^"Skill" STRING "Martial Arts [Melee]"
+            ^"Range" STRING "0-1"
+            ^"Damage" INTEGER DEFAULT 3
+            ^"Deadliness" INTEGER DEFAULT 5
+            ^"Grips" STRING "1-hand: -"
+            ^"Qualities" STRING "-"
+            ^"Rarity" INTEGER DEFAULT 6
+            ^"Cost" STRING "15 koku"
+        }
+
+        RULES {
+            #L5RMC18fG9hI1jK3lM5nO7p: weapon_tinbe
+        }
+    }
+
+    ^"Rochin" DEF {
+        APPLIES TO [^"Equipment"]
+
+        PROPERTIES {
+            ^"Category" STRING "Shields" FIXED
+            ^"Skill" STRING "Martial Arts [Melee]"
+            ^"Range" STRING "0"
+            ^"Damage" INTEGER DEFAULT 2
+            ^"Deadliness" INTEGER DEFAULT 2
+            ^"Grips" STRING "1-hand: -"
+            ^"Qualities" STRING "Durable"
+            ^"Rarity" INTEGER DEFAULT 6
+            ^"Cost" STRING "25 koku"
+        }
+
+        # Special: A character can only wield one shield at a time.
+        # As a Movement and Support action, if you have a rochin
+        # readied, you may increase the TN of the next Attack action
+        # check targeting you by 1 and decrease the TN of your next
+        # Attack action check using a tinbe by 1. Persists until end
+        # of your next turn.
+
+        RULES {
+            #L5RMC19qR0sT2uV4wX6yZ8a: weapon_rochin_shield
+        }
+    }
+
+    # ===========================
+    # ARMOR
+    # ===========================
+
+    ^"Sailor's Garb" DEF {
+        APPLIES TO [^"Equipment"]
+
+        PROPERTIES {
+            ^"Category" STRING "Armor" FIXED
+            ^"Resistance Values" STRING "Physical 1"
+            ^"Qualities" STRING "Durable, Mundane"
+            ^"Rarity" INTEGER DEFAULT 2
+            ^"Cost" STRING "1 bu"
+        }
+
+        # Special: Reduce the TN of checks to repair or maintain
+        # sailor's garb by 1.
+
+        RULES {
+            #L5RMC20bC1dE3fG5hI7jK9l: armor_sailors_garb
+        }
+    }
+
+    ^"Shark Leather Armor" DEF {
+        APPLIES TO [^"Equipment"]
+
+        PROPERTIES {
+            ^"Category" STRING "Armor" FIXED
+            ^"Resistance Values" STRING "Physical 2"
+            ^"Qualities" STRING "Resplendent"
+            ^"Rarity" INTEGER DEFAULT 7
+            ^"Cost" STRING "12 koku"
+        }
+
+        # Special: When you succeed at a check to resist a critical
+        # strike while wearing this armor, add two bonus successes.
+
+        RULES {
+            #L5RMC21mN2oP4qR6sT8uV0w: armor_shark_leather
+        }
+    }
+
+    # ===========================
+    # EQUIPMENT
+    # ===========================
+
+    ^"Astrolabe" DEF {
+        APPLIES TO [^"Equipment"]
+
+        PROPERTIES {
+            ^"Category" STRING "Equipment" FIXED
+            ^"Rarity" INTEGER DEFAULT 10
+            ^"Cost" STRING "30 koku"
+        }
+
+        RULES {
+            #L5RMC22xY3zA5bC7dE9fG1h: equipment_astrolabe
+        }
+    }
+
+    ^"Fishing Rod and Line" DEF {
+        APPLIES TO [^"Equipment"]
+
+        PROPERTIES {
+            ^"Category" STRING "Equipment" FIXED
+            ^"Rarity" INTEGER DEFAULT 1
+            ^"Cost" STRING "1 bu"
+        }
+
+        RULES {
+            #L5RMC23iJ4kL6mN8oP0qR2s: equipment_fishing_rod
+        }
+    }
+
+    ^"Taraibune" DEF {
+        APPLIES TO [^"Equipment"]
+
+        PROPERTIES {
+            ^"Category" STRING "Equipment" FIXED
+            ^"Rarity" INTEGER DEFAULT 4
+            ^"Cost" STRING "1 koku"
+        }
+
+        RULES {
+            #L5RMC24tU5vW7xY9zA1bC3d: equipment_taraibune
+        }
+    }
+
+    # ===========================
+    # AQUATIC NPCs
+    # ===========================
+
+    ^"Eel" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 0
+            ^"Description" STRING "Small aquatic predator that hunts in swarms."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 3
+            ^"Composure" INTEGER 4
+            ^"Focus" INTEGER 2
+            ^"Vigilance" INTEGER 1
+            ^"Silhouette" INTEGER 1
+            ^"Demeanor" STRING "Skittish"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
+            ^"Skills" LIST OF STRING []
+            ^"Advantages" LIST OF STRING ["Slippery (Void) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Easily Baited (Earth) [Interpersonal; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Razor Teeth: Range 0, Damage 2, Deadliness 4"]
+        }
+
+        ^"Swarming Hunter" DEF {
+            # Aquatic animal (silhouette 1). When making an Attack action
+            # check with assistance, may spend (op):
+            # (op)+: One character other than the target at range 0-2
+            # suffers 2 physical damage. Activatable per round equal to
+            # the number of eels assisting.
+        }
+
+        RULES {
+            #L5RMC25eF6gH8iJ0kL2mN4o: npc_eel
+        }
+    }
+
+    ^"Octopus" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Cunning aquatic predator capable of remarkable camouflage."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 3
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 1
+            ^"Demeanor" STRING "Curious"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Void -2"
+            ^"Skills" LIST OF STRING ["Martial 1"]
+            ^"Advantages" LIST OF STRING ["Flexibility of Form (Void) [Martial, Trade; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Easily Startled (Earth) [Martial; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Sharp Beak: Range 0, Damage 1, Deadliness 4, Razor-edged", "Arms: Range 0, Damage 3, Deadliness 2, Snaring"]
+        }
+
+        ^"Master of Disguise" DEF {
+            # Aquatic animal (silhouette 1). When performing a check,
+            # may spend (op):
+            # (op)+: Disguises itself in environment, causing each
+            # character with vigilance <= (op) spent to lose sight of it.
+        }
+
+        RULES {
+            #L5RMC26pQ7rS9tU1vW3xY5z: npc_octopus
+        }
+    }
+
+    ^"Shark" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animal"
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 0
+            ^"Description" STRING "Apex aquatic predator driven by blood and instinct."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 4
+            }
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 9
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 3
+            ^"Demeanor" STRING "Intimidating"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Skills" LIST OF STRING ["Martial 3"]
+            ^"Advantages" LIST OF STRING ["Blood Tracker (Water) [Trade; Mental]", "Sinuous Power (Void) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Feeding Frenzy (Earth) [Trade; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Bite: Range 0, Damage 6, Deadliness 6, Razor-edged"]
+        }
+
+        ^"Apex Hunter of the Seas" DEF {
+            # Aquatic animal (silhouette 3). Increase the deadliness
+            # of its bite against a Bleeding target by 4.
+        }
+
+        ^"Blood in the Water" DEF {
+            # As an Attack and Movement action, make TN 2 Fitness
+            # (Water) check to slam a target at range 0-1. If succeeds,
+            # target suffers Dazed condition and must resist with a TN 3
+            # Fitness check (Earth 2, Fire 5) or suffer Bleeding condition.
+        }
+
+        RULES {
+            #L5RMC27aB8cD0eF2gH4iJ6k: npc_shark
+        }
+    }
+
+    ^"Ningyo" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirit"
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Description" STRING "Aquatic humanoid dwelling in coastal waters, curious but distrustful of humans."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 7
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 2
+            ^"Honor" INTEGER 40
+            ^"Glory" INTEGER 12
+            ^"Status" INTEGER 6
+            ^"Demeanor" STRING "Curious"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Void -2"
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 1", "Scholar 2", "Social 3", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Natural Swimmer (Void) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Distrustful of Humans (Void) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Coral-tipped Spear: Range 1, Damage 5, Deadliness 4, Ceremonial, Durable"]
+            ^"Gear" LIST OF STRING ["Shark leather armor (Physical 2)", "Valuable shells", "Etched bones"]
+        }
+
+        ^"Aquatic Humanoid" DEF {
+            # A ningyo is an aquatic being of silhouette 2.
+        }
+
+        ^"Drag Under" DEF {
+            # When making an attack action check, may spend (op):
+            # Water (op)+: Attempt to drag one target with vigilance <=
+            # (op) spent beneath the waves. If succeeds, target must
+            # resist with TN 3 Fitness check (Earth 1, Fire 4) or be
+            # pulled 1 range band under water and begin to suffocate
+            # (see p. 269 of the core rulebook).
+        }
+
+        RULES {
+            #L5RMC28lM9nO1pQ3rS5tU7v: npc_ningyo
+        }
+    }
+
+    ^"Sea Troll" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Otherworldly"
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Description" STRING "Ancient aquatic Otherworldly being driven by insatiable hunger."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 5
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 4
+            }
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 9
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 4
+            ^"Honor" INTEGER 25
+            ^"Glory" INTEGER 10
+            ^"Status" INTEGER 5
+            ^"Demeanor" STRING "Covetous"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Water -2"
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 3", "Scholar 3", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Surprisingly Stealthy (Water) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Insatiable Appetite (Void) [Social; Physical]"]
+            ^"Favored Weapons" LIST OF STRING ["Rending Grip: Range 1, Damage 4, Deadliness 6"]
+            ^"Gear" LIST OF STRING ["Rough hide (Physical 2, Supernatural 2)", "Collection of detritus"]
+        }
+
+        ^"Ancient and Powerful" DEF {
+            # A sea troll is an aquatic Otherworldly being of silhouette 4.
+        }
+
+        ^"Mystical Diffusion" DEF {
+            # While fully submerged in water, supernatural resistance is 8.
+        }
+
+        RULES {
+            #L5RMC29wX0yZ2aB4cD6eF8g: npc_sea_troll
+        }
+    }
+}

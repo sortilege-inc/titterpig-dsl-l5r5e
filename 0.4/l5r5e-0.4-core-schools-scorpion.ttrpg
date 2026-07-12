@@ -1,0 +1,423 @@
+BASE "L5R5e_Core_Schools_Scorpion" {
+    NAME "Legend of the Five Rings 5th Edition - Scorpion Clan Schools"
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-03-01"
+
+    # Core Rulebook: Scorpion Clan Schools (pages 78-82)
+    # The Scorpion are loyal and pragmatic above all, and so their schools
+    # teach absolute loyalty to the clan as much as they teach the means by
+    # which the clan achieves its ends.
+
+    # ===========================
+    # BAYUSHI MANIPULATOR [Courtier]
+    # ===========================
+
+    ^"Bayushi Manipulator" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Through the adept use of deception, temptation, and espionage,
+        # Bayushi-trained courtiers are the masters of finding and exploiting
+        # the weaknesses of others. No method is too dishonorable as long as
+        # it is effective and untraceable. The Bayushi Manipulators are the
+        # shadow to the Doji Diplomats' light, and they are justly feared by all.
+
+        PROPERTIES {
+            ^"School Name" STRING "Bayushi Manipulator" FIXED
+            ^"Clan" STRING "Scorpion"
+            ^"Roles" LIST ["Courtier"]
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Courtesy", ^"Design", ^"Martial Arts [Unarmed]", ^"Performance", ^"Sentiment", ^"Skulduggery"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 35
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            SHUJI ^"Lord Bayushi's Whispers"
+            SHUJI CHOOSE 1 [^"Cadence", ^"Rustling of Leaves"]
+        }
+
+        SCHOOL_ABILITY "Weakness Is My Strength" {
+            "When you exploit a target's disadvantage (see Turning Advantages and Disadvantages, page 100) as part of a Scheme action, you do not need to spend a Void point, and you may reroll additional dice up to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Little Truths" {
+            "When you perform a check targeting another character to which one of your advantages or disadvantages applies, you may choose another advantage or disadvantage that shares a type with it (see Advantages and Disadvantages, on page 99). Unless they have clear evidence to the contrary, the target comes to believe that you have the advantage or disadvantage you chose instead of the one you actually have. If the target attempts to seize or exploit this false advantage or disadvantage (see page 101), their check automatically counts as failing with a shortfall of 3. They suffer 3 strife and the Disoriented condition."
+        }
+
+        STARTING_OUTFIT [
+            "Ceremonial clothes", "common clothes",
+            "traveling clothes",
+            "wakizashi (short sword)",
+            "any one weapon of rarity 6 or lower",
+            "calligraphy set", "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Sentiment"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1 Air Shūji"
+                ^"Fanning the Flames" [shuji]
+                ^"The Weight of Duty" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Courtesy"
+                SKILL "Skulduggery"
+                SKILL "Martial Arts [Melee]"
+                TECHNIQUE_GROUP "Rank 1-2 Fire Shūji"
+                ^"Dazzling Performance" [shuji]
+                ^"Veiled Menace Style" [kata]
+            }
+            RANK 3 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Courtesy"
+                SKILL "Culture"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-3 Water Shūji"
+                ^"Wolf's Proposal" [shuji]
+                ^"Skulk" [ninjutsu]
+            }
+            RANK 4 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Aesthetics"
+                SKILL "Sentiment"
+                SKILL "Medicine"
+                TECHNIQUE_GROUP "Rank 1-4 Earth Shūji"
+                ^"Buoyant Arrival" [shuji]
+                ^"Deadly Sting" [ninjutsu]
+            }
+            RANK 5 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Courtesy"
+                SKILL "Performance"
+                SKILL "Martial Arts [Ranged]"
+                TECHNIQUE_GROUP "Rank 1-5 Void Shūji"
+                ^"Bend with the Storm" [shuji]
+                ^"Sear the Wound" [shuji]
+            }
+            RANK 6 {
+                ^"Little Truths"
+            }
+        }
+    }
+
+    # ===========================
+    # SHOSURO INFILTRATOR [Shinobi, Courtier]
+    # ===========================
+
+    ^"Shosuro Infiltrator" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The Shosuro Infiltrators have perfected the art of deception. With
+        # their well-honed abilities in acrobatics, disguise, and stealth, these
+        # Scorpion agents encounter very few places to which they cannot
+        # gain access. As agents of surprise and disruption, they do not stand
+        # and fight, but instead sow chaos and vanish.
+
+        PROPERTIES {
+            ^"School Name" STRING "Shosuro Infiltrator" FIXED
+            ^"Clan" STRING "Scorpion"
+            ^"Roles" LIST ["Shinobi", "Courtier"]
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Fire" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Fitness", ^"Games", ^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Performance", ^"Skulduggery"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 30
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            NINJUTSU ^"Deadly Sting"
+            SHUJI CHOOSE 1 [^"Whispers of Court", ^"Sensational Distraction"]
+        }
+
+        SCHOOL_ABILITY "The Path of Shadows" {
+            "While performing an Attack action against a target who is Compromised, Incapacitated, Unconscious, or unaware of your presence, treat the damage and deadliness of your weapon as being increased by your school rank."
+        }
+
+        MASTERY_ABILITY ^"The Final Silence" {
+            "As an Attack and Movement action, you may make a TN 4 Martial Arts [Unarmed] (Air) check targeting any number of minion NPCs at range 0-4. If you succeed during a narrative scene, you silently kill all targets over the course of a few minutes. If you succeed during a conflict scene, at the end of each of your turns, you may silently kill one of these targets at range 0-2 (in addition to your other actions)."
+        }
+
+        STARTING_OUTFIT [
+            "Ceremonial clothes", "common clothes",
+            "traveling clothes",
+            "daishō (katana and wakizashi)", "knife",
+            "yumi (bow)", "quiver of arrows", "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Courtesy"
+                SKILL "Performance"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Veiled Menace Style" [kata]
+                ^"Skulk" [ninjutsu]
+            }
+            RANK 2 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Fitness"
+                SKILL "Performance"
+                SKILL "Martial Arts [Unarmed]"
+                TECHNIQUE_GROUP "Rank 1-2 Air Shūji"
+                ^"Lord Bayushi's Whispers" [shuji]
+                ^"Noxious Cloud" [ninjutsu]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Sentiment"
+                SKILL "Performance"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-3 Kata"
+                ^"Bravado" [shuji]
+                ^"Dazzling Performance" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Sentiment"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-4 Air Shūji"
+                ^"Silencing Stroke" [ninjutsu]
+                ^"A Samurai's Fate" [shuji]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Courtesy"
+                SKILL "Performance"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-5 Kata"
+                ^"Buoyant Arrival" [shuji]
+                ^"Sear the Wound" [shuji]
+            }
+            RANK 6 {
+                ^"The Final Silence"
+            }
+        }
+    }
+
+    # ===========================
+    # SOSHI ILLUSIONIST [Shugenja, Courtier, Shinobi]
+    # ===========================
+
+    ^"Soshi Illusionist" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # The Soshi Illusionist School is the school of whispers and shadows.
+        # "Subtlety" is the illusionists' watchword as they go about their tasks.
+        # Even their religious rituals and duties tend to be understated, though
+        # they are no less faithfully executed. The Soshi Illusionists are among
+        # the most practical shugenja in the Empire.
+
+        PROPERTIES {
+            ^"School Name" STRING "Soshi Illusionist" FIXED
+            ^"Clan" STRING "Scorpion"
+            ^"Roles" LIST ["Shugenja", "Courtier", "Shinobi"]
+            ^"Ring Increase" DEF {
+                ^"Air" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Fitness", ^"Games", ^"Performance", ^"Skulduggery", ^"Theology"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 30
+            ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            INVOCATION CHOOSE 3 [^"Bō of Water", ^"Cloak of Night", ^"Nature's Touch", ^"Token of Memory"]
+            RITUAL ^"Commune with the Spirits"
+            SHUJI ^"All in Jest"
+        }
+
+        SCHOOL_ABILITY "The Kami's Whisper" {
+            "While you are performing an invocation technique or channeling, characters with a vigilance lower than or equal to your school rank plus one cannot detect any physical sign that you are in the act of invoking the spirits. They can still observe effects of the invocation, however. Increase the TN of Theology checks to detect or study your supernatural activities by your school rank."
+        }
+
+        MASTERY_ABILITY ^"World of Shadows" {
+            "You may spend 1 Void point to attempt to establish that something in the scene has been an illusion all along. This could be an object, image of a person, or other illusory phenomenon you could summon with an invocation. You must make the check to summon this illusion using an invocation, with adjustments to the TN for plausibility determined by the GM. If you succeed, you reveal that the thing you chose is in fact an illusion you wove, and has been for at least a few moments. If you fail, your character clearly did not think to set up an illusion—the object is as it appears. As with all matters, the GM has final say over acceptable uses of this ability."
+        }
+
+        STARTING_OUTFIT [
+            "Sanctified robes", "inconspicuous garb",
+            "wakizashi (short sword)", "knife",
+            "scroll satchel", "traveling pack"
+        ]
+
+        # The Soshi Illusionist School teaches its students invocations
+        # using Fortunist names, as their practices arose from the
+        # traditional worship of the Fortunes—under the guidance of
+        # the mysterious Soshi founder.
+        # (See ^"Invocation Names and Traditions")
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Trade Skills"
+                SKILL "Courtesy"
+                SKILL "Fitness"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1 Air Invocations"
+                ^"Mask of Wind" [invocation]
+                ^"Skulk" [ninjutsu]
+            }
+            RANK 2 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Medicine"
+                SKILL "Sentiment"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-2 Water Invocations"
+                ^"Vapor of Nightmares" [invocation]
+                ^"Lord Bayushi's Whispers" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Games"
+                SKILL "Courtesy"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-3 Air Invocations"
+                ^"False Realm of the Fox Spirits" [invocation]
+                ^"Noxious Cloud" [ninjutsu]
+            }
+            RANK 4 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Performance"
+                SKILL "Sentiment"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-4 Earth Invocations"
+                ^"Deadly Sting" [ninjutsu]
+                ^"Rise, Air" [invocation]
+            }
+            RANK 5 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Courtesy"
+                SKILL "Fitness"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-5 Air Invocations"
+                ^"Buoyant Arrival" [shuji]
+                ^"Silencing Stroke" [ninjutsu]
+            }
+            RANK 6 {
+                ^"World of Shadows"
+            }
+        }
+    }
+
+    # ===========================
+    # YOGO WARDMASTER [Shugenja]
+    # ===========================
+
+    ^"Yogo Wardmaster" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Founded by Asako Yogo when he joined the Scorpion clan, the
+        # Yogo Wardmaster dōjō is the Empire's foremost school of
+        # gyosetsudō, the art of supernatural warding through mystical
+        # calligraphy. By inscribing sigils of power onto slips of paper
+        # imbued with their ki, masters of this school can erect invisible
+        # barriers, bind spirits, and foil incantations.
+
+        PROPERTIES {
+            ^"School Name" STRING "Yogo Wardmaster" FIXED
+            ^"Clan" STRING "Scorpion"
+            ^"Roles" LIST ["Shugenja"]
+            ^"Ring Increase" DEF {
+                ^"Earth" INTEGER 1
+                ^"Water" INTEGER 1
+            }
+            ^"Starting Skills" DEF { CHOOSE 3 [^"Composition", ^"Fitness", ^"Martial Arts [Melee]", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Theology"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 40
+            ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            INVOCATION CHOOSE 2 [^"Jade Strike", ^"Grasp of Earth", ^"The Rushing Wave"]
+            SHUJI ^"Shallow Waters"
+            RITUAL ^"Commune with the Spirits"
+            RITUAL ^"Threshold Barrier"
+        }
+
+        SCHOOL_ABILITY "Mystical Script" {
+            "You can have a number of additional wards with prepared invocations (see page 190) up to your school rank. Decoding or using one of your wards requires any other character to make a Theology (Void) check with TN equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Bound in Ink" {
+            "Once per scene, when you are targeted by an invocation or mahō technique, you may resist with a TN 4 Composition check. If you succeed, you absorb the invocation or mahō, nullifying all of its effects and creating a ward containing it (see page 190)."
+        }
+
+        STARTING_OUTFIT [
+            "Sanctified robes", "concealed armor",
+            "wakizashi (short sword)",
+            "bō (staff) or knife",
+            "three shuriken (throwing stars)",
+            "calligraphy set", "scroll satchel", "traveling pack"
+        ]
+
+        # Founded by Yogo, a shugenja formerly of the Phoenix Clan,
+        # the Yogo Wardmasters continue to use the Elemental names
+        # for invocations.
+        # (See ^"Invocation Names and Traditions")
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Composition"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1 Earth Invocations"
+                ^"Civility Foremost" [shuji]
+                ^"Path to Inner Peace" [invocation]
+            }
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Composition"
+                SKILL "Skulduggery"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-2 Water Invocations"
+                ^"Ebb and Flow" [shuji]
+                ^"Embrace of Kenro-Ji-Jin" [invocation]
+            }
+            RANK 3 {
+                SKILL_GROUP "Artisan Skills"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Performance"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-3 Fire Invocations"
+                ^"Open-Hand Style" [kata]
+                ^"Earth Becomes Sky" [invocation]
+            }
+            RANK 4 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Composition"
+                SKILL "Martial Arts [Unarmed]"
+                SKILL "Skulduggery"
+                TECHNIQUE_GROUP "Rank 1-4 Air Invocations"
+                ^"Skulk" [ninjutsu]
+                ^"Rise, Water" [invocation]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Composition"
+                SKILL "Performance"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-5 Earth Shūji"
+                ^"Deadly Sting" [ninjutsu]
+                ^"Tomb of Jade" [invocation]
+            }
+            RANK 6 {
+                ^"Bound in Ink"
+            }
+        }
+    }
+}
