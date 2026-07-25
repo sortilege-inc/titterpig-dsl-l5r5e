@@ -26,6 +26,27 @@ Derived attributes in printed stat blocks are **hand-authored, not formula-deriv
 "correct" Endurance/Composure/Focus/Vigilance to `(Earth+Fire)×2` etc., and do not use those
 formulas to infer ring assignments. Base content stays as printed; errata live in the overlay files.
 
+## Recommended: sweep `core-npcs.ttrpg` rings against the printed grids
+
+`0.4/l5r5e-0.4-core-npcs.ttrpg` (the 27 Chapter 8 stat blocks + the four core Manifest Kami) was
+written **before the two-layout rule above was established**, under a brief that stated the creature
+order `Earth, Void, Air, Fire, Water` as if it were universal. The agent that wrote it identified the
+human/creature split independently and applied both orders — so the file is believed correct, and six
+entries were spot-checked afterwards and agree with the semantic signatures in the section above
+(Seasoned Courtier peaks at Air 4, Humble Peasant sits at Void 1, Ki-Rin at Void 5, while the kami and
+Bushi Skeleton decode as creature blocks).
+
+But it was **never verified entry-by-entry against the printed grids**, and the error class it could
+have inherited is the same one that hit 126 of 193 entries elsewhere. Recommended, not urgent:
+
+- Re-derive all 31 ring sets from the source grids (core rulebook pp. 311–330) and diff against the file.
+- Classify each block by the `Honor/Glory/Status` test, not by whether it feels like a creature —
+  Ki-Rin is a spirit but prints a **human** block.
+- Do not use the derivation formulas to check the result (see the note above; these blocks are
+  hand-authored, and only 3 of 31 satisfy `Endurance = (Earth+Fire)×2` at all).
+
+Deferred by owner decision, 2026-07-25.
+
 ## Derived attributes transcribed off-by-one
 
 Four NPCs read the ring graphic's digits as derived attributes, shifting the whole row. Values
