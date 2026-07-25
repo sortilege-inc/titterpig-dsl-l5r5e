@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Path_of_Waves_Systems" EXTENDS "L5R5e_Core_Systems" {
     NAME "Legend of the Five Rings 5th Edition - Path of Waves: Systems, Titles, Bonds, and NPCs"
-    VERSION "0.4"
+    VERSION "0.4.1"
     SPEC_VERSION "0.4"
     RELEASE_DATE "2026-03-01"
 
@@ -831,6 +831,49 @@ EXTENSION "L5R5e_Path_of_Waves_Systems" EXTENDS "L5R5e_Core_Systems" {
         RULES {
             #L5RPW70mB7fC7kF9aF1gU5fN9zU: shinobi_skulk "Skulk: When performing an Initiative or Attack action check using Air, may spend Air OP: If in obscuring terrain, a crowd, or otherwise concealed, one character with vigilance lower than or equal to Skulduggery ranks loses sight of the shinobi."
             #L5RPW70rA4xM5wR7oG7bQ3pT5tN: shinobi_wasps_spite "Wasp's Spite Style: When performing a Martial Arts [Ranged] check, may spend Air/Void OP OP: If they did not succeed, choose another target at range 0-2 of their target with vigilance lower than or equal to target's. New target suffers physical damage equal to weapon's base damage."
+        }
+    }
+
+    # ===========================
+    # NPC STAT BLOCKS - NAMED VILLAGERS
+    # ===========================
+
+    #rHVPxwdfE4UIhk0gbtF2uS ^"Reo, the Doshin" DEF {
+        EXTENDS ^"NPC"
+
+        # Path of Waves p. 130 (sample village, Optional Encounter:
+        # Stolen Rice). Printed vigilance is 9; see the 2020 errata
+        # overlay, which corrects it to 2.
+
+        PROPERTIES {
+            ^"Name" STRING "Reo, the Dōshin"
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Description" STRING "Reo is a young woman, and until her appointment was as close as a sister to Ichiro. However, when Setsuo recommended her to the magistrate and she received her post, she was honored, and vowed to take the role seriously—sometimes too much so. She guards the kura carefully, and when she is working alongside other villagers at any task, she considers it her role to correct or chide them as necessary. This habit has not won her any friends, and it has soured her relationship with Ichiro to the point of turning these once-close friends into enemies. Reo is lean and muscular but clumsy. As she has nothing to mark her rank, she ensures that everyone remembers her position by mentioning it often. She wears a club at her side and rests her hand on it as though it were a sword. She seems to take pleasure from criticizing Ichiro in particular. She likes Kaiya more than she'll admit, but she is afraid of her father, Hitoro. When the priest is not around, Reo is Michi's next favorite victim for teasing, and the monk reminds Reo often of her youth and inexperience. However, Reo tries her best to do a good job and genuinely cares for the fate of the village more than her own."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Honor" INTEGER 65
+            ^"Glory" INTEGER 45
+            ^"Status" INTEGER 17
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 5
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 9
+            ^"Demeanor" STRING "Ambitious"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 0", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Salt of the Earth: Social; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Clumsiness: Martial; Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Club: Range 0–1, Damage 5/6, Deadliness 2, Mundane"]
+            ^"Gear" LIST OF STRING ["Common clothes (Physical 1)"]
+        }
+        RULES {
+            #ZDmox5vA02ceAjFcrjEnae: reo_burst_of_courage "Burst of Courage: When Reo performs an Attack action, she may choose one additional target within range of her weapon."
         }
     }
 

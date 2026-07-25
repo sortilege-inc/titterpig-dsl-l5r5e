@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Errata and FAQ (September 2019)"
-    VERSION "0.4"
+    VERSION "0.4.1"
     SPEC_VERSION "0.4"
     RELEASE_DATE "2026-03-01"
 
@@ -135,7 +135,7 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
 
     # ---- Chapter 4: Techniques ----
 
-    MODIFY ^"Technique Prerequisites" {
+    MODIFY ^"Technique" {
         PROPERTIES {
             ^"Source Book"    STRING "Core Rulebook"
             ^"Source Chapter" STRING "Chapter 4"
@@ -161,12 +161,17 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
 
     # ---- Chapter 5: Equipment ----
 
-    MODIFY ^"Weapons" {
+    # p. 230 adds a margin note that the core book does not have, so this is an
+    # ADD of new content (S13), not a MODIFY of a section. Description is the
+    # margin note verbatim.
+    ADD #b1P4dsDwvusQq8XKsbVaGJ ^"Improvised Weapons" DEF {
+        APPLIES TO [^"Game Rules"]
         PROPERTIES {
             ^"Source Book"    STRING "Core Rulebook"
             ^"Source Chapter" STRING "Chapter 5"
             ^"Source Page"    STRING "p. 230"
-            ^"Errata Note"    STRING "Add the following margin note: An improvised weapon uses the most similar weapon profile (often a club or a knife), with DMG and DLS reduced by 1, or more at the GM's discretion. Wielded with Martial Arts [Unarmed]."
+            ^"Rule Type"      STRING "Margin Note" FIXED
+            ^"Description"    STRING "An improvised weapon uses the most similar weapon profile (often a club or a knife), with DMG and DLS reduced by 1, or more at the GM's discretion. They are wielded with Martial Arts [Unarmed]."
         }
         RULES {
             #L5RER14kL0mN2oP4qR6sT8u: errata_improvised_weapons_margin_note
@@ -215,7 +220,7 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
 
     # ---- Chapter 7: Adventuring ----
 
-    MODIFY ^"Varying Difficulty in Text" {
+    MODIFY ^"Target Number" {
         PROPERTIES {
             ^"Source Book"    STRING "Core Rulebook"
             ^"Source Chapter" STRING "Chapter 7"
@@ -274,7 +279,7 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
 
     # ---- Appendix ----
 
-    MODIFY ^"Opportunities Table" {
+    MODIFY ^"Opportunity" {
         PROPERTIES {
             ^"Source Book"    STRING "Core Rulebook"
             ^"Source Chapter" STRING "Appendix"

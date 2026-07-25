@@ -1,0 +1,1264 @@
+BASE "L5R5e_Core_NPCs" {
+    NAME "Legend of the Five Rings 5th Edition - Core Rulebook Chapter 8 non-player character stat blocks"
+    VERSION "0.4.1"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-03-01"
+
+    # Core Rulebook, Chapter 8: Non-Player Characters (pp. 312-327).
+    # Sample NPC profiles: subjects of Rokugan, outlaws and ronin,
+    # cultists, Shadowlands horrors, spirits and strange beings,
+    # and animals.
+    #
+    # Profile conventions used throughout this file:
+    #   ^"Type"     - "Adversary" or "Minion", as printed on the profile.
+    #   ^"Category" - the source section heading the profile appears under.
+    #   ^"Gear"     - the profile's "Gear (equipped)" line.
+    #   ^"Gear (Other)" - the profile's "Gear (other)" line, where present.
+    #   ^"Silhouette"   - recorded when an ability states a definite value.
+    #   Abilities are carried as RULES entries with their verbatim text.
+
+    # ===========================
+    # NPC STAT BLOCKS - SUBJECTS OF ROKUGAN
+    # ===========================
+
+    #L5RNSYqNiaIsD00qkid7td ^"Loyal Bushi" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Subjects of Rokugan"
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Source Page" INTEGER 312
+            ^"Description" STRING "Bushi are warriors: armed samurai who are professional soldiers in service to their clan. PCs might encounter bushi individually, or they might meet an organized body, which could be anything from a squad (or guntai) of up to a dozen bushi commanded by a sergeant (or gunsō) to an entire army on the march."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 9
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 39
+            ^"Demeanor" STRING "Assertive"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 3", "Scholar 2", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Tested in War: (earth) Martial; Mental, Physical", "Sworn to Bushidō: (void) Social; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Hot-Tempered: (water) Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged", "Yumi (Bow): Range 2–5, Damage 5, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Lacquered armor (Physical 4, Ceremonial, Cumbersome, Wargear)", "wakizashi", "quiver", "yari (spear)", "knife"]
+            ^"Gear (Other)" LIST OF STRING ["Plain robes (Physical 1, Mundane)", "a handful of koku and bu"]
+        }
+        RULES {
+            #L5RNsIzKnVDtbRbzlBFGx4: loyal_bushi_crescent_moon_style "Crescent Moon Style: When performing a Guard action (see page 264), the bushi may spend (op) in the following way: (op): After another character performs an Attack action targeting the bushi or another character the bushi is guarding, the bushi may perform a Strike action targeting them. This effect persists until the start of the bushi’s next turn or until they perform a Strike action."
+            #L5RNDS2NIkWR6VfWU9eD2Z: loyal_bushi_sworn_protector "Sworn Protector: Once per scene, when an Attack action check targeting another character at range 0–1 succeeds, a bushi may intervene, becoming the target of the action instead."
+        }
+    }
+
+    #L5RNRJmKEoye9VrL2Q0OOq ^"Humble Peasant" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Subjects of Rokugan"
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Source Page" INTEGER 313
+            ^"Description" STRING "Most of Rokugan’s inhabitants are peasants. These hardworking people live their lives largely beneath the notice of samurai (except when it comes time to collect taxes from them), and yet without their toil, society would not exist. Heimin and hinin can both be reflected with this profile, though hinin have a status of 0."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 4
+            ^"Composure" INTEGER 4
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 20
+            ^"Glory" INTEGER 25
+            ^"Status" INTEGER 15
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 0", "Scholar 0", "Social 1", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Salt of the Earth: (earth) Trade; Interpersonal, Physical"]
+            ^"Disadvantages" LIST OF STRING ["Deferential: (water) Social; Interpersonal, Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Improvised Weapon: Range 1, Damage 2, Deadliness 3/4"]
+            ^"Gear" LIST OF STRING ["Rags", "cloth headband", "shoddy farm equipment", "a meager handful of zeni"]
+        }
+        RULES {
+            #L5RNlSUdmgzgKHVHxTqfKu: humble_peasant_overlooked "Overlooked: When a peasant makes a check targeting a character with a higher status rank, they treat that character's vigilance as 1 lower."
+        }
+    }
+
+    #L5RNBu3W8aU055B7iraBQO ^"Seasoned Courtier" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Subjects of Rokugan"
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Source Page" INTEGER 313
+            ^"Description" STRING "Courtiers are also samurai, but they serve with words rather than with blades. Most are politicians and diplomats. Unlike bushi, courtiers are normally encountered as individuals or, perhaps, in small groups. They are usually engaged in their clan’s business, unless they are taking a break from their travels in an inn or sake house. As is expected of samurai, courtiers carry a wakizashi, but rarely any other weapons. Instead, they rely on their yōjimbō for protection."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 39
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 0", "Scholar 2", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Inexhaustible Politeness: (air) Social; Interpersonal", "Wealth and Resources: (water) Trade; Material"]
+            ^"Disadvantages" LIST OF STRING ["Sheltered from War: (fire) Martial; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Extravagant robes (Physical 1, Ceremonial)", "calligraphy set"]
+            ^"Gear (Other)" LIST OF STRING ["Tea set", "Rokugani pony"]
+        }
+        RULES {
+            #L5RNBBBkaqskhH9RIDJaIC: seasoned_courtier_whispering_winds "Whispering Winds: Once per session as an action, the courtier may make a Courtesy (Air) check targeting one character in the scene. The TN is equal to 6 minus the target’s glory rank (to a minimum of 1). If they succeed, the courtier learns a rumor about the target. (op)(op): The courtier learns one of the target’s advantages or disadvantages of the target’s choice."
+            #L5RNPiKKXw8Ulobk0XdHzn: seasoned_courtier_fanning_the_flames "Fanning the Flames: When making a Social skill (Fire) check, the courtier may spend (op) in the following way: Fire (op): One target gains the Dazed condition."
+        }
+    }
+
+    #L5RNA7RGsi59fHjCajpYUs ^"Scholarly Shugenja" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Subjects of Rokugan"
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Source Page" INTEGER 314
+            ^"Description" STRING "Shugenja are holy people, priests who commune with the kami, making invocations to persuade them to cause spectacular and even destructive effects in the Mortal Realm. However, shugenja are rare, and seldom encountered outside of shrines, temples, and libraries."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 45
+            ^"Status" INTEGER 39
+            ^"Demeanor" STRING "Ambitious"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 0", "Scholar 2", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Mystical Knowledge: (void) Scholar; Mental", "Holy Personage: (void) Social; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Scholar's Physique: (earth) Martial; Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Sanctified robes (Physical 1, Supernatural 3, Ceremonial)", "scroll satchel", "offerings"]
+        }
+        RULES {
+            #L5RNe6e6bLJVvYx8e5OmmS: scholarly_shugenja_path_to_inner_peace "Path to Inner Peace (Invocation): As a Support action, the shugenja may make a TN 2 Theology (Water) check targeting a character at range 0–2. If the shugenja succeeds, the target removes 3 fatigue, plus 1 per bonus success. A target can only be affected by the Path to Inner Peace invocation once per scene."
+            #L5RNm48EyVJjeUnWKrTFIj: scholarly_shugenja_the_fires_from_within "The Fires from Within (Invocation): As an Attack action, the shugenja may make a TN 3 Theology (Fire) check targeting up to three characters at range 1–3. If the shugenja succeeds, each target suffers 3 supernatural damage, plus 1 per bonus success. (op)+: Choose 1 additional target per (op) spent this way."
+            #L5RN92yMAizxbiJi5gjN4U: scholarly_shugenja_disciple_of_secret_lore "Disciple of Secret Lore: Activation: (Choose 0–5 additional invocations (see page 189) and 0–3 additional rituals (see page 212) that this shugenja can perform. Add 1 to this character’s combat rank for each invocation with a prerequisite of rank 3+ chosen this way."
+        }
+    }
+
+    #L5RNlN9HicBSIUDHeobO7H ^"Trained Ashigaru" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Subjects of Rokugan"
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Source Page" INTEGER 314
+            ^"Description" STRING "Ashigaru are the rank-and-file foot soldiers who make up the bulk of Rokugani armies. These foot soldiers are commoners, peasants who have been drafted into military service. Interestingly, once drafted, they are considered to belong to the lowest rank of the buke, the samurai caste, even though they aren’t samurai. When they are not performing military service, ashigaru generally revert to their peasant status as farmers or tradespeople, but some continue to serve as guards or scouts, or as dōshin to magistrates. If the player characters encounter ashigaru in formed bodies of troops, then it is almost certainly because they are from a clan that is at war. Samurai from that clan, such as officers and units of bushi, should be nearby."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 25
+            ^"Glory" INTEGER 29
+            ^"Status" INTEGER 19
+            ^"Demeanor" STRING "Gruff"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Earth -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Strength in Numbers: (earth) Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Jaded by Battle: (fire) Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Yari: Range 2, Damage 5, Deadliness 3, Wargear"]
+            ^"Gear" LIST OF STRING ["Ashigaru armor (Physical 3, Wargear)", "knife", "dice and cup or musical instrument", "a handful of bu and zeni"]
+        }
+        RULES {
+            #L5RNS0CeN9Evq2EKjBiiui: trained_ashigaru_rank_tactics "Rank Tactics: When an ashigaru provides assistance (see page 26) to the Martial skill check of another character at range 0–2, that character adds one kept (ring) set to a (su) result instead of rolling an additional die."
+        }
+    }
+
+    #L5RNjC0Ekju7VGMZ41Rrms ^"Venerable Provincial Daimyō" DEF {
+        EXTENDS ^"NPC"
+        ALIAS "Venerable Provincial Daimyo"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Subjects of Rokugan"
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 6
+            ^"Source Page" INTEGER 315
+            ^"Description" STRING "The typical daimyō is stern, serious, and inured to flattery. Their time is valuable, so they appreciate brevity and clarity from any samurai who address them. While most no longer take up arms often, they can be extremely deadly in battle, for they often possess arms and armor of surpassing quality and a lifetime of experience fighting to maintain what is theirs at court and in combat."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 4
+            }
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 70
+            ^"Status" INTEGER 65
+            ^"Demeanor" STRING "Assertive"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 4", "Scholar 3", "Social 3", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Wisdom of Experience: (void) Scholar; Mental", "Bolstering Presence: (earth) Social; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Long at Court: (water) Martial; Mental, Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Calligraphy set", "personal chop"]
+            ^"Gear (Other)" LIST OF STRING ["Daishō", "plated armor (Physical 5, Cumbersome, Durable, Wargear)", "various estates"]
+        }
+        RULES {
+            #L5RNKsrI8gCIEgyKvjxqrk: venerable_provincial_daimyo_lords_command "Lord’s Command: Once per scene, as a Support action, a daimyō may advise a character who can hear them on how to complete a task they wish the character to perform. The character may use the daimyō’s ring or skill in place of their own for the next check they make to complete this task before the end of the game session."
+        }
+    }
+
+    # ===========================
+    # NPC STAT BLOCKS - OUTLAWS AND RŌNIN
+    # ===========================
+
+    #L5RNeBf6FulQvXet32tLKy ^"Desperate Bandit" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Outlaws and Rōnin"
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Source Page" INTEGER 315
+            ^"Description" STRING "Bandits are outlaws who thrive in the more rural and remote regions of Rokugan. They usually form gangs because, unlike their urban criminal siblings, they rely more on swift, violent attack than on subtle manipulation, stealth, or subterfuge to achieve their nefarious objectives. Bandits usually target travelers on the Imperial roads, their scouts identifying easy targets in advance."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 5
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 15
+            ^"Glory" INTEGER 20
+            ^"Status" INTEGER 1
+            ^"Demeanor" STRING "Ambitious"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Nothing to Lose: (fire) Martial, Social; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Fool's Avarice: (earth) Social; Mental", "Quarrelsome: (void) Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Yari (Spear): Range 2, Damage 5, Deadliness 3, Wargear", "Sling: Range 2–3, Damage 3, Deadliness 3, Concealable, Mundane"]
+            ^"Gear" LIST OF STRING ["Thick clothes (Physical 2, Mundane)", "knife", "pouch of slingstones", "drinking cup"]
+        }
+        RULES {
+            #L5RNq0bOY2XNd3DuKiqOel: desperate_bandit_ambush_tactics "Ambush Tactics: When performing an Attack action against a target with the Dazed or Disoriented condition, increase any damage dealt by 2."
+        }
+    }
+
+    #L5RN1GQqE5DWdCgWDuBB2C ^"Experienced Bandit" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Outlaws and Rōnin"
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Source Page" INTEGER 316
+            ^"Description" STRING "Bandits who manage to survive their dangerous profession usually become cunning and dangerous. Often, they end up leading a gang of their less experienced fellows, or join forces with a truly lethal individual such as a rōnin."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 9
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 10
+            ^"Glory" INTEGER 15
+            ^"Status" INTEGER 3
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 0", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Age and Cunning: (water) Martial, Social; Interpersonal, Physical"]
+            ^"Disadvantages" LIST OF STRING ["Fool’s Avarice: (earth) Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Rusted Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Damaged, Razor-Edged", "Kusari-gama: Range 0/2–3, Damage 3, Deadliness 3, Concealable, Snaring, Wargear"]
+            ^"Gear" LIST OF STRING ["Ashigaru armor (Physical 3, Wargear)", "assortment of knives", "sake jug", "handful of bu"]
+        }
+        RULES {
+            #L5RNEYKeG3hnU52BxCc7lP: experienced_bandit_dirty_tricks "Dirty Tricks: When performing an Attack action check, an experienced bandit may spend (op) in the following way: (op): One character at range 0–2 suffers the Disoriented condition. Then you may move 1 range band."
+            #L5RNYX32UOROFOReVlEWDo: experienced_bandit_get_them_you_fools "...Get Them, You Fools!: As an action, an experienced bandit may have up to two Desperate Bandits who have not yet acted this round immediately move 1 range band and perform a Strike action with skilled assistance (see page 26)."
+        }
+    }
+
+    #L5RNJ31FEXXdgUIZg8huIO ^"Skillful Rōnin" DEF {
+        EXTENDS ^"NPC"
+        ALIAS "Skillful Ronin"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Outlaws and Rōnin"
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Source Page" INTEGER 316
+            ^"Description" STRING "Rōnin exist in a strange part of Rokugani society; they fight for money, but nominally do so for noble ends. Thus, the line between rōnin and bandits can be indistinct, depending on whether a rōnin can find legitimate work at a given time. What sets a rōnin apart is honor: a desire, on some level, to uphold Bushidō and its virtues."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 11
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 30
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 20
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Fire +1, Void -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 1", "Social 0", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Killer Instinct: (fire) Martial; Mental", "Worldly Wanderer: (void) Scholar, Trade; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Unnecessarily Rude: (water) Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged", "Yumi: Range 2–5, Damage 5, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Wakizashi", "worn traveler's robes (Physical 2, Mundane)", "quiver", "empty sake jug", "straw hat", "handful of bu and zeni"]
+        }
+        RULES {
+            #L5RNKQZrEFszhejCZJqcUP: skillful_ronin_school_of_the_wolf "School of the Wolf: Once per round, when an Attack action check targeting the rōnin succeeds, the rōnin may suffer 3 fatigue to change the target to another character (other than the attacker) at range 0–1 of the rōnin."
+            #L5RNlDpCbgNfyQZ4V3Yyg3: skillful_ronin_striking_as_fire "Striking as Fire: When performing an Attack action (Fire) check, a rōnin may spend (op) as follows: Fire (op)+: Increase the severity of any critical strike dealt as part of this attack by 2 per (op) spent this way."
+        }
+    }
+
+    # ===========================
+    # NPC STAT BLOCKS - CULTISTS
+    # ===========================
+
+    #L5RNQgClnGOCMEtUM85Ybf ^"Deadly Bloodspeaker" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Cultists"
+            ^"Combat Conflict Rank" INTEGER 9
+            ^"Intrigue Conflict Rank" INTEGER 9
+            ^"Source Page" INTEGER 317
+            ^"Description" STRING "While blood magic has been used by the servants of Fu Leng for centuries, it gained particular notoriety with the rise of the powerful and dangerous sorcerer Iuchiban. Even after his defeat, his students preserved his teachings, collecting themselves into a group known as the “Bloodspeakers.” A rare few learned to preserve their lives by placing their hearts in boxes, making them effectively immortal. After hundreds of years of study, their mastery of mahō is second to none."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 6
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 18
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 5
+            ^"Glory" INTEGER 7
+            ^"Status" INTEGER 0
+            ^"Demeanor" STRING "Ambitious"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 3", "Scholar 5", "Social 4", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Undying: (earth) Martial; Physical, Spiritual", "Whispers of Fu Leng: (void) Scholar; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Heartless: (void) Social; Physical, Spiritual"]
+            ^"Favored Weapons" LIST OF STRING ["Obsidian-Edged Katana: Range 1, Damage 5, Deadliness 9, Razor-Edged, Unholy"]
+            ^"Gear" LIST OF STRING ["Sorcerous raiment (Physical 2, Supernatural 4, Unholy)", "set of vile scrolls"]
+        }
+        RULES {
+            #L5RN5o1A3dSQ5UtOl4v4GE: deadly_bloodspeaker_bleed_the_soul "Bleed the Soul: After the Bloodspeaker inflicts a Critical Strike on a living target, the target suffers the Dazed condition and the Bloodspeaker removes 3 fatigue."
+            #L5RNqRxrdvy3RvqO8EJ8zz: deadly_bloodspeaker_hidden_heart "Hidden Heart: The Bloodspeaker cannot truly be vanquished until its heart (usually buried in some deadly tomb or sanctum of evil) has been destroyed. It ignores the Unconscious condition. If slain, it can possess a fresh corpse after its allies have prepared the corpse through a dark rite that takes four days to complete."
+            #L5RNS3Nd8zxoB6C6UlmaiM: deadly_bloodspeaker_master_of_vile_lore "Master of Vile Lore: The Bloodspeaker is a Tainted being who can perform all mahō (see page 224)."
+        }
+    }
+
+    #L5RNo6rB9sRFJ8tV5qqlhE ^"Wicked Mahō-Tsukai" DEF {
+        EXTENDS ^"NPC"
+        ALIAS "Wicked Maho-Tsukai"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Cultists"
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Source Page" INTEGER 318
+            ^"Description" STRING "With the whispered teachings of the kansen, mortals may learn to call upon the spirits of Jigoku with offerings of blood and death. Once they have learned how to work these evil magics, mahō-tsukai use their talents in their own selfish service, or in the name of Fu Leng's eventual return. No few shugenja who have believed they would merely study mahō to better counter its effects end up becoming corrupted by what they have learned and slowly turn toward evil ends without even realizing."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 1
+            ^"Glory" INTEGER 15
+            ^"Status" INTEGER 0
+            ^"Demeanor" STRING "Ambitious"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 3", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Excellent Liar: (air) Social; Interpersonal", "Whispers of Fu Leng: (void) Scholar; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Rotting from Within: (earth) Martial; Physical, Spiritual"]
+            ^"Favored Weapons" LIST OF STRING ["Ritual Knife: Range 0, Damage 2, Deadliness 6, Concealable, Razor-Edged, Unholy"]
+            ^"Gear" LIST OF STRING ["Sorcerous raiment (Physical 2, Supernatural 4, Unholy)", "set of vile scrolls", "concealing mask or cowl", "several bu"]
+        }
+        RULES {
+            #L5RNKUe534lv6vWAJplCMp: wicked_maho_tsukai_mark_of_desecration "Mark of Desecration: As a Support action, the mahō-tsukai may make a TN 2 Theology (Earth) check targeting up to three corpses at range 0–3. If the mahō-tsukai succeeds, each target rises as a Zombie Peasant (see page 321), or a Bushi Skeleton if it was a warrior in life (see page 318). Then, an area encompassing 1 range band around each target’s position gains the Defiled terrain quality (see page 267)."
+            #L5RNmOChBTherbTTCTXeYN: wicked_maho_tsukai_seeker_of_vile_lore "Seeker of Vile Lore: The mahō-tsukai is a Tainted being. Optionally, choose 0–2 additional mahō (see page 224) that the mahō-tsukai can perform. Add 1 to this character’s combat rank for each mahō chosen this way."
+        }
+    }
+
+    # ===========================
+    # NPC STAT BLOCKS - SHADOWLANDS HORRORS
+    # ===========================
+
+    # Profiles in this section that use the simplified stat block
+    # (see "Simplified Profile", page 320) omit honor, glory, and
+    # status: those creatures do not interact with those systems.
+
+    #L5RNEFbgvF2ZQH2ro2KIMi ^"Bushi Skeleton" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Shadowlands Horrors"
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Source Page" INTEGER 318
+            ^"Description" STRING "Little more than tattered flesh, bleached bones, and an undying hatred for all that is right and good in the world, a skeletal bushi is a terrifying opponent."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 7
+            ^"Composure" STRING "Infinity"
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Demeanor" STRING "Angry"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Air -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Unholy Vigor: (earth) Martial; Physical, Spiritual"]
+            ^"Disadvantages" LIST OF STRING ["Visage of Death: (water) Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Ancient Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Damaged, Razor-Edged", "Decrepit Yumi: Range 2–5, Damage 5, Deadliness 3, Damaged"]
+            ^"Gear" LIST OF STRING ["Ancient armor (Physical 3, Wargear)"]
+        }
+        RULES {
+            #L5RNYE0TiX9Vl9o5l3KD0O: bushi_skeleton_clattering_bones "Clattering Bones: A skeletal bushi is an Otherworldly, Tainted being. Additionally, the first time it would be defeated each scene, it receives a Scar disadvantage of the GM’s choice instead as one of its limbs snaps or flies off."
+            #L5RNKyYkU5pTmyjr7us0uk: bushi_skeleton_does_not_bleed "Does Not Bleed: A skeletal bushi ignores conditions and critical strikes from non-Sacred sources."
+        }
+    }
+
+    #L5RNT1vYZnWIsLyVMnScLL ^"Bog Hag" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Shadowlands Horrors"
+            ^"Combat Conflict Rank" INTEGER 8
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Source Page" INTEGER 319
+            ^"Description" STRING "Bog hags are superlative infiltrators who are among the more likely types of Shadowlands horrors to be encountered in the Empire. In their true form, bog hags are loathsome creatures with leathery greenish skin, ragged nails, and jagged teeth. They are, however, capable of using the flayed skin of a person they have killed as a disguise, enclosing themselves within it and taking on the appearance of the unfortunate victim. They typically live in swamps and waterways, preying upon those who venture near such places alone. Bog hags possess preternatural regeneration, and they sometimes practice mahō."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 5
+            ^"Status" INTEGER 0
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 2", "Scholar 6", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Shapeshifter’s Guile: (air) Social; Interpersonal", "Sorcerous Lore: (void) Scholar; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Dreadful Hunger: (earth) Social; Interpersonal, Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Twisted Talons: Range 1–2, Damage 4, Deadliness 5, Razor-Edged, Unholy", "Horrific Maw: Range 0, Damage 1, Deadliness 8"]
+            ^"Gear" LIST OF STRING ["Fresh skin (Physical 3, Spiritual 5, Unholy)", "3 doses of each poison (see page 244)", "human-skin scrolls of wicked lore"]
+        }
+        RULES {
+            #L5RNulQRIMGqhGbuUp7YEH: bog_hag_accursed_regeneration "Accursed Regeneration: At the end of each round, if the bog hag has not suffered damage from a Sacred source this round, the bog hag removes the Lightly Injured condition or reduces the Severely Injured condition to Lightly Injured."
+            #L5RNyHKzE5o5rOHXD6JUt3: bog_hag_seeker_of_vile_lore "Seeker of Vile Lore: The bog hag is an Otherworldly, Tainted being. Optionally, choose 0–3 mahō techniques (see page 224) that the bog hag can perform. Add 1 to this character’s combat rank for each mahō chosen this way."
+            #L5RNgmhc4m6P3vPhEsNcxQ: bog_hag_skins_of_the_slaughtered "Skins of the Slaughtered: As an action, a bog hag may assume the illusory form of anyone it has killed. A character may make a TN 3 Sentiment check (Earth 4, Fire 1), or another appropriate check to see through this illusion. At the GM’s discretion, a character may spend (op)(op) from any check to interact with the bog hag to see one of the following: a misplaced fold in the skin, luminescence in one eye, an impossible movement of the jaw, oddly sharp teeth, the smell of viscera, a conversational fixation on fresh and bloody meat."
+        }
+    }
+
+    #L5RNYhO465HRtOj1hA6M3S ^"Shadowlands Goblin" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Shadowlands Horrors"
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Source Page" INTEGER 320
+            ^"Description" STRING "Lithe and bestial, goblins are individually of little consequence, but hordes of them can fling themselves at the Wall in numbers sufficient to pose a major threat."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 3
+            ^"Composure" INTEGER 4
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 1
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Expert Skulker: (air) Martial, Trade; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Cowardice: (earth) Martial, Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Small Yari: Range 1, Damage 5, Deadliness 3, Wargear", "Small Yumi: Range 2–3, Damage 4, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Scavenged ashigaru armor (Physical 3)", "quiver", "teeth or other grotesque trophies"]
+        }
+        RULES {
+            #L5RNXUAkQlVjM7bEsAhug1: shadowlands_goblin_shadowlands_creature "Shadowlands Creature: A Shadowlands goblin is a Tainted being of silhouette 1."
+            #L5RNnmvTyaAf7lxpRju0St: shadowlands_goblin_unsightly_rabble "Unsightly Rabble: When making an Attack action check with assistance, a goblin may spend (op) as follows: (op)+: One character other than the target at range 0–2 suffers 4 physical damage. This (op) can be activated a number of times per round equal to the number of goblins assisting with the check."
+        }
+    }
+
+    #L5RNVrEwG4dqbf9IWwPkXX ^"Sinister Oni" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Shadowlands Horrors"
+            ^"Combat Conflict Rank" INTEGER 12
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Source Page" INTEGER 320
+            ^"Description" STRING "Of all the horrors to stalk forth from the Shadowlands, the demonic creatures called oni are by far the most powerful and dangerous. With twisted horns, razor-sharp teeth, and enormous talons on their hands and feet, these bestial creatures resemble the very Hells in which they dwell. Fortunately, they are only able to enter Ningen-dō of their own volition through the Festering Pit. Unfortunately, there is another way for oni to come to Ningen-dō that is far more insidious: invitation by misguided or evil mortals. Only when they are slain do their souls return to Meido, although the powerful ones are able to make their way back to Jigoku itself to be reborn."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 6
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 24
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 4
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 4
+            ^"Status" INTEGER 0
+            ^"Demeanor" STRING "Assertive"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 4", "Scholar 3", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Massive Stature: (earth) Martial; Physical", "Unholy Might: (fire) Martial; Physical, Spiritual"]
+            ^"Disadvantages" LIST OF STRING ["Horrifying Visage: (water) Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Crushing Claws: Range 1–2, Damage 6, Deadliness 8, Razor-Edged, Unholy"]
+            ^"Gear" LIST OF STRING ["Demonic hide and armor scraps (Physical 5, Spiritual 5, Unholy)"]
+        }
+        RULES {
+            #L5RNUrU5nQo61j0jcpkb9o: sinister_oni_dread_bellow "Dread Bellow: Once per scene as a Scheme action, the oni may roar, feeding on the primal terror it instills. Each other character at range 0–4 must resist with a TN 4 Meditation check (Earth 2, Air 5) or suffer the Afflicted condition and stumble back 1 range band from the oni. For each character who fails, the oni removes 2 fatigue."
+            #L5RNYY5MufQA0Tj3FbAFno: sinister_oni_horror_of_jigoku "Horror of Jigoku: An oni is an Otherworldly, Tainted being of silhouette 4. After any character performs a successful Attack action that deals 0 damage to the oni (after resistance is applied), that character suffers 3 strife."
+        }
+    }
+
+    #L5RNi4dAl9cYpp5BVJOO2f ^"Zombie Peasant" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Shadowlands Horrors"
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 0
+            ^"Source Page" INTEGER 321
+            ^"Description" STRING "Rokugani funerary rites involve cremation, and for good reason. Despite the costs it entails, this is afforded even to the lowliest members of society—for in Rokugan, the dead do not sleep soundly, and ancient stories tell of the days when cults of mahō-tsukai wandered the land backed by vast armies of the hungering dead."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 0
+            }
+            ^"Endurance" INTEGER 4
+            ^"Composure" STRING "Infinity"
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Demeanor" STRING "Hungry"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Air -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 0", "Scholar 0", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Hungry for Flesh: (fire) Martial; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Shambling Gait: (water) Martial; Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Jagged Teeth: Range 0, Damage 3, Deadliness 5, Unholy", "Grasping Hands: Range 0–1, Damage 2, Deadliness 1, Snaring"]
+            ^"Gear" LIST OF STRING ["Decaying flesh (Physical 2)"]
+        }
+        RULES {
+            #L5RNJ0F5iPhmvQY2bAvBhR: zombie_peasant_cadaverous_bite "Cadaverous Bite: Increase the TN of checks to resist critical strikes inflicted by zombies by 2."
+            #L5RNJk8Wqai3ilLHSsRCBn: zombie_peasant_horrifying_reanimation "Horrifying Reanimation: A zombie is an Otherworldly, Tainted being. The first time it is defeated by damage from a non-Sacred source, if a zombie is in Defiled terrain, it reanimates. At the start of its next turn, it removes all fatigue and staggers to its feet with a scar disadvantage of the GM's choice."
+        }
+    }
+
+    # ===========================
+    # NPC STAT BLOCKS - SPIRITS AND STRANGE BEINGS
+    # ===========================
+
+    #L5RNW1CGwn6rkjo9yBYOB1 ^"Forest Troll" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirits and Strange Beings"
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Source Page" INTEGER 321
+            ^"Description" STRING "Inside the Empire, trolls are quite rare, but they occasionally enter via the great forest of the Shinomen Mori on Rokugan’s western border. They are intelligent but unpredictable, and not above eating rude humans."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 5
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 3
+            }
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 9
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 4
+            ^"Honor" INTEGER 30
+            ^"Glory" INTEGER 10
+            ^"Status" INTEGER 5
+            ^"Demeanor" STRING "Assertive"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 3", "Scholar 3", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Brute Strength: (fire) Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Insatiable Appetite: (water) Social; Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Massive Cudgel: Range 2, Damage 9, Deadliness 5, Cumbersome", "Rending Grip: Range 1, Damage 4, Deadliness 6"]
+            ^"Gear" LIST OF STRING ["Scaled hide (Physical 1, Supernatural 1)", "animal-pelt clothes", "polished skull collection"]
+        }
+        RULES {
+            #L5RNFoh8T7vqSrxZx59ohj: forest_troll_ancient_and_powerful "Ancient and Powerful: A troll is an Otherworldly being of silhouette 4."
+            #L5RNWnaNfHdUyl4ariGMVL: forest_troll_sorcerous_scales "Sorcerous Scales: After a troll suffers damage from a physical or supernatural source, increase its resistance to that damage type by 4. This effect persists until it suffers damage from a source of a different type."
+        }
+    }
+
+    #L5RNJL62B8MZlsVNG8QiTW ^"Ki-Rin" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Spirits and Strange Beings"
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 7
+            ^"Source Page" INTEGER 322
+            ^"Description" STRING "Tradition says that deer are the messengers of the kami, and thus are sacred. This may or may not be true for the average deer that roams the mountains. However, sometimes a chimerical beast with great antlers or horns, dragon scales, the tail of an ox, and a flaming mane is whispered to come out of the deepest forests to speak to lone travelers. Its form varies slightly with the telling, but the tales remain much the same: such creatures speak of the will of the kami, and are so benevolent and compassionate that, rather than trampling even a single blade of grass, they float above the ground."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 5
+            }
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 5
+            ^"Silhouette" INTEGER 3
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 39
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Fire +1, Void -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 6", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Wisdom of the Forest: (air) Scholar; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Majestic Antlers or Horns: Range 1–2, Damage 4, Deadliness 6, Ceremonial, Sacred"]
+            ^"Gear" LIST OF STRING ["Magic hide (Physical 3, Supernatural 3)"]
+        }
+        RULES {
+            #L5RNpIpoC8PDBPTbTcx72p: ki_rin_mystical_creature "Mystical Creature: A ki-rin is an Otherworldly being of silhouette 3 that can fly. It can move vertically and ignores the negative effects of terrain. Additionally, once per scene, it may perform an Earth or Water invocation technique, and counts as succeeding with three bonus successes and (op)(op)."
+            #L5RNCQYwtzblJAdWXQFUG0: ki_rin_sacred_envoy "Sacred Envoy: The ki-rin can speak any language, and it knows many secrets of the world. The righteous can sense its hallowed nature; to perform an Attack action against it, a character must forfeit honor equal to their honor rank (and glory equal to their glory rank, if they are seen doing it)."
+            #L5RN8sz51mYvpRfrFt37SE: ki_rin_wrath_for_the_wicked "Wrath for the Wicked: Once per scene as a Attack action, the ki-rin may breathe holy fire from its mouth. Each Tainted being at range 0–4 must resist with a TN 4 Fitness check (Air 3, Earth 5) or suffer 8 supernatural damage with the Sacred quality, plus additional damage equal to its shortfall, and suffer the Burning condition."
+        }
+    }
+
+    # Core Rulebook, Chapter 8: Non-Player Characters, "Elemental
+    # Spirits" (pp. 322-324). These are the full-sized manifest kami
+    # of the core rulebook and are distinct from the Tiny Manifest
+    # Air/Earth/Fire/Water Kami of Path of Waves.
+
+    #KCbLWEvjbRARRKuViA67kl ^"Manifest Air Kami" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Kami"
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Source Page" INTEGER 322
+            ^"Description" STRING "When air kami abandon subtlety to act directly upon the world, they are terrifying to behold—their form is that of a many-armed whirlwind, flickering hands reaching out to toss about loose items."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 6
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 11
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 2
+            ^"Vigilance" INTEGER 4
+            ^"Demeanor" STRING "Flighty"
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 3", "Scholar 0", "Social 3", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Ethereal Form: (air) Martial, Trade; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Easily Distracted: (fire) Scholar, Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Talons of Air: Range 2–3, Damage 4, Deadliness 7, deals supernatural damage"]
+            ^"Gear" LIST OF STRING ["Misty Mantle (Physical 5, Supernatural 2)"]
+        }
+        RULES {
+            #dyNoRhtUk0n87mRhLefQEG: manifest_air_kami_flight "Flight: A manifest air kami can move vertically and ignores the negative effects of terrain."
+            #hBJJD2i9cVtIh7Rqfa5kTx: manifest_air_kami_living_air_spirit "Living Air Spirit: A manifest air kami is an Otherworldly being of silhouette 2, 3, or 4, and may change its size as an action. Additionally, once per scene as an action of the appropriate types, a manifest air kami may perform any one Air invocation other than Rise, Air. It counts as succeeding with 3 bonus successes and 2 (op)."
+            #QCJ5g3CfMLV6KfPXX5LtNc: manifest_air_kami_swoop "Swoop: When performing an Attack action check, a manifest air kami may spend (op) as follows: (op)+: Move 1 range band away from the target per (op) spent this way. If the target is of silhouette 5 or smaller, the air kami may carry it to its destination instead."
+        }
+    }
+
+    #LtFG3Z08q5MVgjgFOW4cdr ^"Manifest Earth Kami" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Kami"
+            ^"Combat Conflict Rank" INTEGER 8
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Source Page" INTEGER 323
+            ^"Description" STRING "When they take physical form, earth kami often shape bodies of stone for themselves, appearing as statues of warlike Fortunes or the sacred beasts that guard ancient shrines and tombs. These beings are powerful, wise, and slow to anger—but their wrath is that of an avalanche, and once started, it cannot be stopped."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 6
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 15
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 3
+            ^"Demeanor" STRING "Obstinate"
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 3", "Scholar 3", "Social 0", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Massive Stature: (earth) Martial, Trade; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Honest to a Fault: (air) Social, Trade; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Stone Fists: Range 0–2, Damage 7, Deadliness 4, deals physical or supernatural damage"]
+            ^"Gear" LIST OF STRING ["Rocky Hide (Physical 6, Sacred)"]
+        }
+        RULES {
+            #dEdHPtEK15MGeJRp8dsV1Q: manifest_earth_kami_burrow "Burrow: As a Movement action, a manifest earth kami may withdraw into the ground. It cannot be targeted by actions or effects, or perform actions other than Eruption."
+            #Khn8QZI3mczmTbV9yA6mC6: manifest_earth_kami_eruption "Eruption: As an Attack and Movement action while burrowed, a manifest earth kami may burst from the ground at a chosen point at range 0–3. Each character at range 0–2 of that point must resist with a TN 4 Fitness check (Air 2, Water 5) or suffer 6 physical damage and the Prone condition."
+            #HTnjuS93dxg55f9nNm4Eis: manifest_earth_kami_living_earth_spirit "Living Earth Spirit: A manifest earth kami is an Otherworldly being of silhouette 3. Additionally, once per scene as an action of the appropriate types, a manifest earth kami may perform any one Earth invocation other than Rise, Earth. It counts as succeeding with 3 bonus successes and 2 (op)."
+        }
+    }
+
+    #bFR456rILdIi9lpz4urQSC ^"Manifest Fire Kami" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Kami"
+            ^"Combat Conflict Rank" INTEGER 9
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Source Page" INTEGER 324
+            ^"Description" STRING "Energy given form, a manifest fire kami usually appears as a humanoid shape. Clothed in a robe of smoke and with blazing skin, it is the harbinger of destruction but also of renewal. While they are intelligent and knowledgeable, fire kami are notoriously single-minded once they have taken form, seeking only to consume everything within their reach before sputtering out."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 6
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 3
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 1
+            ^"Demeanor" STRING "Intense"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 3", "Social 2", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Primal Terror: (fire) Martial, Social; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Endless Hunger: (water) Artisan, Scholar; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Blazing Touch: Range 1–3, Damage 6, Deadliness 6, Razor-Edged, deals supernatural damage"]
+            ^"Gear" LIST OF STRING ["Corona of Flames (Physical 3)"]
+        }
+        RULES {
+            #lN57jDPhJBNHE2PrQ0RTyO: manifest_fire_kami_living_fire_spirit "Living Fire Spirit: A manifest kami is an Otherworldly being. Additionally, once per scene as an action of the appropriate types, a manifest fire kami may perform any one Fire invocation other than Rise, Fire. It counts as succeeding with 3 bonus successes and 2 (op)."
+            #sfrJonQKxZoBi2IzpKziDL: manifest_fire_kami_mantle_of_smoke_and_ash "Mantle of Smoke and Ash: Other characters treat the area at range 0–1 of the manifest fire kami as Dangerous and Obscuring terrain (see page 267)."
+            #RO2D7D1k172hmQvhM6ZJhr: manifest_fire_kami_searing_caress "Searing Caress: When performing an Attack action check, a manifest fire kami may spend (op) as follows: (op)+: The target and up to one other character per (op) spent this way at range 0–1 of the target suffer the Burning condition (see page 272)."
+        }
+    }
+
+    #JJFvYa2Xg0Sx1PkaIHRXpf ^"Manifest Water Kami" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Kami"
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Source Page" INTEGER 324
+            ^"Description" STRING "Water kami usually take the form of a humanoid torso rising from a source of water; if they have legs, these are often obscured within the water or become visible only if the kami stride onto land. The forms of these kami shift and change as circumstances require, and they can even split themselves to act in multiple places at once and reabsorb damaged copies to restore their own vitality."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 6
+                ^"Void" INTEGER 2
+            }
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 2
+            ^"Demeanor" STRING "Adaptable"
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 2", "Scholar 3", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Liquid Body: (water) Martial, Trade; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Without Convictions: (earth) Artisan, Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Smashing Torrent: Range 1–2, Damage 7, Deadliness 3, Snaring, deals supernatural damage"]
+            ^"Gear" LIST OF STRING ["Enshrouding Fog (Physical 3, Supernatural 4)"]
+        }
+        RULES {
+            #txrprO6I2ov2oawYwjVcpV: manifest_water_kami_living_water_spirit "Living Water Spirit: A manifest kami is an Otherworldly being. Additionally, once per scene as an action of the appropriate types, a manifest water kami may perform any one Water invocation other than Rise, Water. It counts as succeeding with 3 bonus successes and 2 (op)."
+            #IwL8mTYzjZRv0SonvesBiM: manifest_water_kami_split "Split: Once per round, after a manifest water kami suffers a critical strike, it may split in two. The two new manifest water kami each have endurance equal to half that of the original, and any fatigue it had suffered is divided as evenly as possible. Then, both may remove any conditions the original was suffering. All of them act during the original water kami's turn, in the order of the GM's choosing."
+        }
+    }
+
+    # ===========================
+    # NPC STAT BLOCKS - ANIMALS
+    # ===========================
+
+    #L5RNa2kUIxGJ7gBWwub7M7 ^"Animal Checks" DEF {
+        APPLIES TO [^"NPC"]
+
+        # Core Rulebook, page 325 sidebar.
+
+        PROPERTIES {
+            ^"Source Page" INTEGER 325
+            ^"Description" STRING "Animals don't generally have ranks in Trade skills, but if they need to roll it, any wild animal has Survival rank 2 and any domesticated animal has Survival rank 1."
+            ^"Wild Animal Survival Rank" INTEGER 2
+            ^"Domesticated Animal Survival Rank" INTEGER 1
+        }
+    }
+
+    #L5RNNhWSwg3AEZHc97zy8b ^"Bear" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Animals"
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Source Page" INTEGER 325
+            ^"Description" STRING "Bears are solitary, fiercely territorial animals that inhabit the wild regions of Rokugan. They range from the large and aggressive brown bears found in Shinomen Mori to the smaller black bears in the Seikitsu and the Twilight Mountains."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 9
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 3
+            ^"Demeanor" STRING "Intimidating"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Air -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Enormous Stature: (earth) Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Opportunist: (fire) Martial; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Claws and Fangs: Range 1–2, Damage 8, Deadliness 6"]
+            ^"Gear" LIST OF STRING ["Thick hide (Physical 4)"]
+        }
+        RULES {
+            #L5RNrb3JS2brMAsgYuUJ76: bear_crushing_swipe "Crushing Swipe: A bear is a silhouette 3 creature with terrifying strength. When a bear inflicts a critical strike, the TN of the check to resist is 4, and if the target fails, they suffer the Dazed condition in addition to the other effects."
+        }
+    }
+
+    #L5RN7g1IznLpWZ6mFVeoVy ^"Boar" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Animals"
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Source Page" INTEGER 325
+            ^"Description" STRING "Boars are aggressive and territorial wild pigs. Even an armored bushi can be slain by their sharp, jagged tusks."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 9
+            ^"Composure" INTEGER 4
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 2
+            ^"Demeanor" STRING "Territorial"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Air -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Keen Sense of Smell: (fire) Trade; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Hot-Tempered: (water) Martial; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Tusks: Range 0, Damage 7, Deadliness 7, Durable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Thick hide (Physical 4)"]
+        }
+        RULES {
+            #L5RNsyGHFQ6OxVwhgjhpo8: boar_sustaining_fury "Sustaining Fury: After a boar suffers a critical strike, it becomes Enraged. While Enraged, a boar cannot suffer the Unconscious condition and may perform Attack actions even while Incapacitated."
+        }
+    }
+
+    #L5RNqIcWhDn9eYCBJa18qU ^"Cat" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animals"
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Source Page" INTEGER 325
+            ^"Description" STRING "Cats are small, furry felines that have cunningly shaped human society to fulfill their needs over generations of adaptation. They reside in the homes of samurai and peasants alike, providing their nominal owners with entertainment, pest control, and occasional affection."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 3
+            ^"Composure" INTEGER 9
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 0
+            ^"Demeanor" STRING "Playful"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Water -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Silent Stalker: (air) Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Hubris: (air) Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Claws: Range 0, Damage 0, Deadliness 2, Concealable, Razor-Edged"]
+        }
+        RULES {
+            #L5RNGRRBpmJ6yQoB7s1hzh: cat_pouncing_predator "Pouncing Predator: A cat is a silhouette 0 creature. When performing an Attack action check against an unaware or Prone target, it may spend (op) as follows: (op): The target suffers the Disoriented condition."
+        }
+    }
+
+    #L5RN5IJBqiCWVbxgJBNyRp ^"Dog" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animals"
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Source Page" INTEGER 326
+            ^"Description" STRING "Extremely devoted to humans, dogs assist with a variety of tasks, including acting as guards, serving as trackers and hunters, and fighting alongside their masters."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 4
+            ^"Composure" INTEGER 5
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 4
+            ^"Demeanor" STRING "Friendly"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +1, Earth -2, Water -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Keen Tracker: (water) Trade; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Dependent on Humans: (fire) Trade; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Bite: Range 0, Damage 4, Deadliness 2, Snaring"]
+        }
+        RULES {
+            #L5RNGiFG3FMhg3t5FBdQzH: dog_working_companion "Working Companion: Choose one Martial or Trade skill. When the dog provides assistance on a check with this skill, it counts as providing skilled assistance (see page 26)."
+        }
+    }
+
+    #L5RNvTqqx4tdb1zj2F5OrR ^"Hawk" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animals"
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Source Page" INTEGER 326
+            ^"Description" STRING "Hawks are majestic, graceful creatures, and many samurai see a certain kinship with these lords of the skies. Some even tame them for sport hunting."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 2
+            ^"Composure" INTEGER 5
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 0
+            ^"Demeanor" STRING "Proud"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Sharp Eyesight: (water) Martial, Trade; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Hollow Bones: (earth) Martial; Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Beak and Talons: Range 0, Damage 1, Deadliness 6"]
+        }
+        RULES {
+            #L5RNgLkEXbhXVR1A5KLDpV: hawk_nimble_flyer "Nimble Flyer: A hawk is a silhouette 0 creature that can fly. It can move vertically and ignores the negative effects of terrain."
+            #L5RN5UKpiXR9Ik2rzWy7pN: hawk_swoop "Swoop: When performing an Attack action check, a hawk may spend (op) as follows: (op)+: Move 1 range band away from the target per (op) spent this way. If the target is of silhouette 0 or smaller, the hawk may carry it to its destination instead."
+        }
+    }
+
+    #L5RN0gOLaJVZQteJXvkX1R ^"Horse (Rokugani Pony)" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animals"
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Source Page" INTEGER 326
+            ^"Description" STRING "There were horses in Rokugan before the Unicorn Clan returned with their foreign-bred steeds, and though they are not as fierce, they still can be ridden."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 4
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 3
+            ^"Demeanor" STRING "Loyal"
+            ^"Social Skill Check TN Modifiers" STRING "Air +1, Earth -2, Fire -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 0", "Scholar 0", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Tireless Runner: (earth) Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Skittish: (fire) Martial; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Hooves: Range 1–2, Damage 6, Deadliness 5"]
+            ^"Gear" LIST OF STRING ["Hide (Physical 2)", "saddle", "saddlebags", "feed bag", "grooming kit"]
+        }
+        RULES {
+            #L5RND0noQggK3c9WkC5olb: horse_rokugani_pony_loyal_steed "Loyal Steed: A Rokugani pony is a silhouette 3 creature. It can be ridden by a human-sized (silhouette 2 or lower) rider."
+        }
+    }
+
+    #L5RNcGkpgu3hTZMIArth1R ^"Hunting Cat" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Category" STRING "Animals"
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Source Page" INTEGER 327
+            ^"Description" STRING "Hunting cats, such as cougars, lions, and tigers, are fearsome predators. They prefer to stalk and ambush their prey, mauling them quickly and savagely."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Silhouette" INTEGER 3
+            ^"Demeanor" STRING "Opportunistic"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 0", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Silent Stalker: (air) Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Hubris: (air) Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Claws and fangs: Range 1, Damage 5, Deadliness 9, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Thick fur (Physical 2)"]
+        }
+        RULES {
+            #L5RNI0t95D340irdzDMVsk: hunting_cat_pouncing_predator "Pouncing Predator: A hunting cat is a silhouette 3 creature. When performing an Attack action check against an unaware or Prone target, it may spend (op) as follows: (op): The target suffers the Disoriented condition."
+            #L5RN9cKQ2cJ0AncA0XUe6Q: hunting_cat_savage_mauling "Savage Mauling: Disoriented targets cannot defend against damage dealt by a hunting cat."
+        }
+    }
+
+    #L5RNErFC2jRCfBSeQWvxWG ^"Utaku Steed" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animals"
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Source Page" INTEGER 327
+            ^"Description" STRING "The sacred steeds of the Utaku Battlemaidens are paragons of horses. They are fiery and ferocious, but utterly loyal to their riders and fearless in the field."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 3
+            ^"Demeanor" STRING "Loyal"
+            ^"Social Skill Check TN Modifiers" STRING "Air +1, Earth -2, Fire -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Tireless Runner: (earth) Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Quick to Anger: (fire) Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Hooves: Range 1–2, Damage 7, Deadliness 6"]
+            ^"Gear" LIST OF STRING ["Hide and armor (Physical 4)", "saddle", "saddlebags", "feed bag", "grooming kit"]
+        }
+        RULES {
+            #L5RNz1ACFDh6gTBdKNbhNB: utaku_steed_legendary_steed "Legendary Steed: An Utaku steed is a silhouette 3 creature. It can be ridden by a human-sized (silhouette 2 or lower) rider, but generally does not tolerate any rider other than a worthy Utaku Battle Maiden."
+            #L5RNmqRIpD2Nm5EQPuOzI4: utaku_steed_paragon_of_horses "Paragon of Horses: A Utaku steed grants its rider skilled assistance (see page 26) on Martial checks they make while mounted."
+        }
+    }
+
+    #L5RNV9MAbdPWVMxSHmfiap ^"Wolf" DEF {
+        EXTENDS ^"NPC"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animals"
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Source Page" INTEGER 327
+            ^"Description" STRING "Wolves lurk among the forested regions of the Empire in packs of ten or more, working collectively to stalk and bring down prey. They use relentless pursuit and quick “hit-and-run” attacks to hunt, only closing for the kill when their quarry is weakened and worn down. They usually avoid humans, but can be territorial if provoked."
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Endurance" INTEGER 4
+            ^"Composure" INTEGER 4
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Demeanor" STRING "Cautious"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Earth -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Pack Tactics: (water) Martial, Social; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Cautious Hunter: (fire) Martial; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Fangs: Range 0, Damage 4, Deadliness 4, Snaring"]
+            ^"Gear" LIST OF STRING ["Hide (Physical 2)"]
+        }
+        RULES {
+            #L5RNsnNHLkYM5By9K66j4u: wolf_circle_the_kill "Circle the Kill: When performing a Martial Arts [Unarmed] check, a wolf may spend (op) in the following ways. Water (op): The target suffers the Bleeding condition. Fire (op): The target treats all terrain as Dangerous (see page 267) until the end of their next turn."
+        }
+    }
+
+    # ---------------------------
+    # ANIMAL PROFILE VARIANTS
+    # ---------------------------
+
+    # Sidebar variants of the profiles above. Values inside a
+    # ^"Profile Modifiers" block are added to the corresponding
+    # value on the base profile; ^"Silhouette" is an absolute
+    # override of the base profile's value.
+
+    #L5RN5kzPH5roAYEKAm60mI ^"Large Dog" DEF {
+        EXTENDS #L5RN5IJBqiCWVbxgJBNyRp ^"Dog"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animals"
+            ^"Source Page" INTEGER 326
+            ^"Description" STRING "Dogs come in a variety of sizes, from small hounds for rabbit hunting to massive beasts bred for battle. These can be represented with through one of the following sets of modifications to the Dog profile:"
+            ^"Silhouette" INTEGER 2
+            ^"Profile Modifiers" DEF {
+                ^"Physical Resistance" INTEGER 1
+                ^"Endurance" INTEGER 2
+                ^"Combat Conflict Rank" INTEGER 1
+            }
+        }
+    }
+
+    #L5RNyFDKuvTbdd4xuTJRdE ^"Small Dog" DEF {
+        EXTENDS #L5RN5IJBqiCWVbxgJBNyRp ^"Dog"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animals"
+            ^"Source Page" INTEGER 326
+            ^"Description" STRING "Dogs come in a variety of sizes, from small hounds for rabbit hunting to massive beasts bred for battle. These can be represented with through one of the following sets of modifications to the Dog profile:"
+            ^"Silhouette" INTEGER 1
+            ^"Profile Modifiers" DEF {
+                ^"Vigilance" INTEGER 1
+            }
+        }
+    }
+
+    #L5RNO8mbPNvXHvOYdxXd2U ^"Unicorn Warhorse" DEF {
+        EXTENDS #L5RN0gOLaJVZQteJXvkX1R ^"Horse (Rokugani Pony)"
+
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Category" STRING "Animals"
+            ^"Source Page" INTEGER 327
+            ^"Description" STRING "Unicorn warhorses are vastly superior to Rokugani ponies as warhorses. A Unicorn warhorse can be represented with the following modifications to the Rokugani Pony profile:"
+            ^"Removed Disadvantages" LIST OF STRING ["Skittish: (fire) Martial; Mental"]
+            ^"Added Advantages" DEF {
+                ^"Count" INTEGER 1
+                ^"Source" STRING "Warrior NPC template (page 311)"
+                ^"Options" LIST OF STRING ["Masterful Fighter: (earth) Martial; Mental", "Fearsome Presence: (fire) Social; Interpersonal", "Veteran’s Instincts: (water) Scholar; Mental"]
+            }
+            ^"Profile Modifiers" DEF {
+                ^"Endurance" INTEGER 4
+                ^"Composure" INTEGER 4
+                ^"Combat Conflict Rank" INTEGER 1
+            }
+        }
+    }
+}

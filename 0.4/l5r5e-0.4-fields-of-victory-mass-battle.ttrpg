@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
     NAME "Legend of the Five Rings 5th Edition - Fields of Victory: Expanded Mass Battle Rules"
-    VERSION "0.4"
+    VERSION "0.4.1"
     SPEC_VERSION "0.4"
     RELEASE_DATE "2026-03-01"
 
@@ -42,17 +42,17 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             # as smaller armies are easier to maintain.
 
             ENTRIES {
-                ^"Status 100"    { ^"Maximum Strength" INTEGER 150 }
-                ^"Status 90-99"  { ^"Maximum Strength" INTEGER 120 }
-                ^"Status 80-89"  { ^"Maximum Strength" INTEGER 100 }
-                ^"Status 70-79"  { ^"Maximum Strength" INTEGER 80 }
-                ^"Status 60-69"  { ^"Maximum Strength" INTEGER 65 }
-                ^"Status 50-59"  { ^"Maximum Strength" INTEGER 60 }
-                ^"Status 40-49"  { ^"Maximum Strength" INTEGER 55 }
-                ^"Status 30-39"  { ^"Maximum Strength" INTEGER 35 }
-                ^"Status 24-29"  { ^"Maximum Strength" INTEGER 20 }
-                ^"Status 20-24"  { ^"Maximum Strength" INTEGER 15 }
-                ^"Status 0-19"   { ^"Maximum Strength" INTEGER 5 }
+                #fMzQPFxFcs8uUodFydAtB7 ^"Status 100" DEF    { ^"Maximum Strength" INTEGER 150 }
+                #zztiG9ME34WKSwPfD8Cp4G ^"Status 90-99" DEF  { ^"Maximum Strength" INTEGER 120 }
+                #xmn6Wjz7uqntYHLwaaxpwc ^"Status 80-89" DEF  { ^"Maximum Strength" INTEGER 100 }
+                #F9oNje7GTQHWabs2MEw9rI ^"Status 70-79" DEF  { ^"Maximum Strength" INTEGER 80 }
+                #jXSOKd0GWv9pt7soEmzFb5 ^"Status 60-69" DEF  { ^"Maximum Strength" INTEGER 65 }
+                #1aYxUPoHKqAFasrY4fll13 ^"Status 50-59" DEF  { ^"Maximum Strength" INTEGER 60 }
+                #YyL08tSgJuGNBcNQoMpVX5 ^"Status 40-49" DEF  { ^"Maximum Strength" INTEGER 55 }
+                #lcoOXV7UVR338uKlfDvSgz ^"Status 30-39" DEF  { ^"Maximum Strength" INTEGER 35 }
+                #vCDcqctLNN1ffEIrYDB0Ig ^"Status 24-29" DEF  { ^"Maximum Strength" INTEGER 20 }
+                #wwblK6zDMW62ubxnrYIKB1 ^"Status 20-24" DEF  { ^"Maximum Strength" INTEGER 15 }
+                #f8R8oKQooR4FIVgKrBYDrG ^"Status 0-19" DEF   { ^"Maximum Strength" INTEGER 5 }
             }
 
             RULES {
@@ -69,11 +69,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             # and glory rank to the discipline total.
 
             ENTRIES {
-                ^"4+ Bonus Successes" { ^"Discipline" STRING "60 + ranks in Government + glory rank" }
-                ^"3 Bonus Successes"  { ^"Discipline" STRING "40 + ranks in Government + glory rank" }
-                ^"2 Bonus Successes"  { ^"Discipline" STRING "25 + ranks in Government" }
-                ^"1 Bonus Success"    { ^"Discipline" STRING "15 + ranks in Government" }
-                ^"0 Bonus Successes"  { ^"Discipline" STRING "10 + ranks in Government" }
+                #jGseV7ffipzJrGvWrpkI98 ^"4+ Bonus Successes" DEF { ^"Discipline" STRING "60 + ranks in Government + glory rank" }
+                #EbXZIo9PZ69w4CoGtriUuR ^"3 Bonus Successes" DEF  { ^"Discipline" STRING "40 + ranks in Government + glory rank" }
+                #Ns3pQmFnV1QKaiS2zBdv8O ^"2 Bonus Successes" DEF  { ^"Discipline" STRING "25 + ranks in Government" }
+                #2kJgwGwSPt28OAYuXNdKeA ^"1 Bonus Success" DEF    { ^"Discipline" STRING "15 + ranks in Government" }
+                #2CKMkI03uhdm7mHlJbtRPU ^"0 Bonus Successes" DEF  { ^"Discipline" STRING "10 + ranks in Government" }
             }
 
             RULES {
@@ -88,37 +88,37 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             # check to enhance their army in various ways.
 
             ENTRIES {
-                ^"Any (op)+" {
+                #WNlsXl9fg7VMVYviKxRMIu ^"Any (op)+" DEF {
                     ^"Effect" STRING "Reduce the TN of your first army maintenance check by 1 per (op) spent this way."
                 }
-                ^"Earth (op)" {
+                #2yBIYrcjsGgjtGWw4RYqjD ^"Earth (op)" DEF {
                     ^"Effect" STRING "You are given use of a fortification near your lands for the war effort. This fortification counts as an outpost (reduce attrition suffered by 2, difficulty value 6)."
                 }
-                ^"Earth (op)(op)" {
+                #VTfSRzQekhDpizV8Nm9pLX ^"Earth (op)(op)" DEF {
                     ^"Effect" STRING "Increase the army's discipline by 5."
                 }
-                ^"Water (op)+" {
+                #xd1mrhcjwU0XXn5bVxcWIm ^"Water (op)+" DEF {
                     ^"Effect" STRING "You raise 100 koku per (op) spent this way. You must forfeit 10 honor to spend this money on anything but equipment upgrades, mercenary forces, or other expenses that benefit the army or the cause."
                 }
-                ^"Water (op)(op)" {
+                #G3p58mBoe6t14VoIIYQECe ^"Water (op)(op)" DEF {
                     ^"Effect" STRING "The army gains one of the following equipment upgrades: Baggage Train, Battlefield Medical Supplies."
                 }
-                ^"Fire (op)" {
+                #ws12JpLyHWws6ttCtbqINB ^"Fire (op)" DEF {
                     ^"Effect" STRING "For the first mass battle in which the army participates, reduce the TN of each of its leaders' first Assault actions by 1 (to a minimum of 1)."
                 }
-                ^"Fire (op)(op)" {
+                #4fDGc83OwEJ1rHg5u2xXJx ^"Fire (op)(op)" DEF {
                     ^"Effect" STRING "Increase the army's strength by 5."
                 }
-                ^"Air (op)" {
+                #MqXtdkOWrDuAb00v1puPIs ^"Air (op)" DEF {
                     ^"Effect" STRING "The army assembles without attracting the attention of any local powers not currently at war with you."
                 }
-                ^"Air (op)(op)" {
+                #O2bYHTPdQRmSe8OXFnJB4f ^"Air (op)(op)" DEF {
                     ^"Effect" STRING "One cohort gains one of the following doctrines: Out of Nowhere, Sappers."
                 }
-                ^"Void (op)" {
+                #q7X4mg4vwa34r2nUqoaaCB ^"Void (op)" DEF {
                     ^"Effect" STRING "The army assembles at a place of your choosing (that soldiers could plausibly reach) in up to one month in the future rather than assembling immediately at your current location."
                 }
-                ^"Void (op)(op)" {
+                #ZWwiFzdkmGIXSciDENpAPj ^"Void (op)(op)" DEF {
                     ^"Effect" STRING "Increase the army's strength and discipline by 3."
                 }
             }
@@ -176,31 +176,31 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             # to the entire army if independent, or one cohort if joined.
 
             ENTRIES {
-                ^"Ashigaru Veterans" {
+                #Qht5uXsp31C8s7MlieKntZ ^"Ashigaru Veterans" DEF {
                     ^"Base Army Stats" STRING "Strength 20, Discipline 40"
                     ^"Modifiers" STRING "Strength +10, Discipline +5"
                     ^"Rule" STRING "Rank Formation (core rulebook p. 280)"
                     ^"Cost" STRING "200 koku per month"
                 }
-                ^"Foreign Sellswords" {
+                #nI4zcpbsmU9x2vU27vDFMz ^"Foreign Sellswords" DEF {
                     ^"Base Army Stats" STRING "Strength 25, Discipline 25"
                     ^"Modifiers" STRING "Strength +15, Discipline -10"
                     ^"Rule" STRING "Elite Training: Infantry (core rulebook p. 280)"
                     ^"Cost" STRING "400 koku per month"
                 }
-                ^"Mantis Privateers" {
+                #RApyz0NHPNnlQSShEatrug ^"Mantis Privateers" DEF {
                     ^"Base Army Stats" STRING "Strength 30, Discipline 30"
                     ^"Modifiers" STRING "Strength +20, Discipline -5"
                     ^"Rule" STRING "Strike as the Storm"
                     ^"Cost" STRING "475 koku per month"
                 }
-                ^"Ujik Outriders" {
+                #ebTc7NrUmiptbGrtTYQ0Lg ^"Ujik Outriders" DEF {
                     ^"Base Army Stats" STRING "Strength 35, Discipline 30"
                     ^"Modifiers" STRING "Strength +25, Discipline -5"
                     ^"Rule" STRING "Thunderous Charge"
                     ^"Cost" STRING "500 koku per month"
                 }
-                ^"Bandits" {
+                #LOG5saVLi5vNQGcxOzoAV6 ^"Bandits" DEF {
                     ^"Base Army Stats" STRING "Strength 20, Discipline 20"
                     ^"Modifiers" STRING "Strength +10, Discipline -15"
                     ^"Rule" STRING "Out of Nowhere"
@@ -225,57 +225,57 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             # per cohort or to the entire army as specified.
 
             ENTRIES {
-                ^"Allied Status 100" {
+                #Q7ZpSgDM3v69V1TF0IOCTG ^"Allied Status 100" DEF {
                     ^"Base Army Stats" STRING "Strength 150, Discipline 80"
                     ^"Modifiers" STRING "Strength +135, Discipline +20"
                     ^"Rules" STRING "Elite Training (one per cohort): Cavalry, Siege Specialists, Infantry, Archers, Mystics; Siege Defenders"
                 }
-                ^"Allied Status 90-99" {
+                #AJaN2tsg8zxkdMFa03w88c ^"Allied Status 90-99" DEF {
                     ^"Base Army Stats" STRING "Strength 120, Discipline 75"
                     ^"Modifiers" STRING "Strength +95, Discipline +15"
                     ^"Rules" STRING "Elite Training (one per cohort): Cavalry, Siege Specialists, Infantry, Archers, Mystics; Siege Defenders"
                 }
-                ^"Allied Status 80-89" {
+                #vRmfn5X2AvnNwFGRnEmcZl ^"Allied Status 80-89" DEF {
                     ^"Base Army Stats" STRING "Strength 100, Discipline 70"
                     ^"Modifiers" STRING "Strength +75, Discipline +10"
                     ^"Rules" STRING "Clan Doctrine; Elite Training (one per cohort): Cavalry, Siege Specialists, Infantry, Archers, Mystics"
                 }
-                ^"Allied Status 70-79" {
+                #rFJA8HG6WfLitIL0TxkguX ^"Allied Status 70-79" DEF {
                     ^"Base Army Stats" STRING "Strength 80, Discipline 65"
                     ^"Modifiers" STRING "Strength +55, Discipline +5"
                     ^"Rules" STRING "Clan Doctrine; Elite Training (one per cohort): Cavalry, Siege Specialists, Infantry, Archers"
                 }
-                ^"Allied Status 60-69" {
+                #wvEVgFdSAEC7ZJUMu7tObJ ^"Allied Status 60-69" DEF {
                     ^"Base Army Stats" STRING "Strength 65, Discipline 60"
                     ^"Modifiers" STRING "Strength +35, Discipline +0"
                     ^"Rules" STRING "Clan Doctrine; Elite Training (one per cohort): Cavalry, Infantry, Archers"
                 }
-                ^"Allied Status 50-59" {
+                #gRH4zvGZF76iHI8NZz0ZM7 ^"Allied Status 50-59" DEF {
                     ^"Base Army Stats" STRING "Strength 60, Discipline 50"
                     ^"Modifiers" STRING "Strength +30, Discipline +0"
                     ^"Rules" STRING "Clan Doctrine; Rank Formation"
                 }
-                ^"Allied Status 40-49" {
+                #edcLtnk8ZLHeafnjJeD6dQ ^"Allied Status 40-49" DEF {
                     ^"Base Army Stats" STRING "Strength 55, Discipline 40"
                     ^"Modifiers" STRING "Strength +25, Discipline +0"
                     ^"Rules" STRING "Rank Formation"
                 }
-                ^"Allied Status 30-39" {
+                #hJXGGFHsjZNFykAOnPEtNV ^"Allied Status 30-39" DEF {
                     ^"Base Army Stats" STRING "Strength 35, Discipline 20"
                     ^"Modifiers" STRING "Strength +15, Discipline -5"
                     ^"Rules" STRING "Conscripted"
                 }
-                ^"Allied Status 24-29" {
+                #1C1uxavdx43WENxksI4F09 ^"Allied Status 24-29" DEF {
                     ^"Base Army Stats" STRING "Strength 20, Discipline 15"
                     ^"Modifiers" STRING "Strength +10, Discipline -5"
                     ^"Rules" STRING "Conscripted"
                 }
-                ^"Allied Status 20-24" {
+                #vYyhbOV6EwqoZ4wGS3ViV6 ^"Allied Status 20-24" DEF {
                     ^"Base Army Stats" STRING "Strength 15, Discipline 15"
                     ^"Modifiers" STRING "Strength +5, Discipline -5"
                     ^"Rules" STRING "Conscripted"
                 }
-                ^"Allied Status 0-19" {
+                #lTevzUtbMs6DsB6ruPhyri ^"Allied Status 0-19" DEF {
                     ^"Base Army Stats" STRING "None"
                     ^"Modifiers" STRING "None"
                     ^"Rules" STRING "None"
@@ -356,25 +356,25 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             ENTRIES {
-                ^"Crab" {
+                #dxKPx8PvmcrwIr7rhzX2Gc ^"Crab" DEF {
                     ^"Effect" STRING "When this army would receive panic, it receives that amount minus 2 instead (to a minimum of 1)."
                 }
-                ^"Crane" {
+                #0HXL64iE8cS08HBtrLh9D1 ^"Crane" DEF {
                     ^"Effect" STRING "After a leader makes a successful Challenge action check, if the challenging leader wins the clash, the enemy receives panic equal to that character's glory rank. If the challenger loses, their own army receives panic equal to their glory rank."
                 }
-                ^"Dragon" {
+                #rJa4ylUlNif5yhs6gU4L3A ^"Dragon" DEF {
                     ^"Effect" STRING "When performing the Rally action, if a leader succeeds, add bonus successes equal to that leader's ranks in Meditation."
                 }
-                ^"Lion" {
+                #dlT1X6fb97x7lNFZyzLQrd ^"Lion" DEF {
                     ^"Effect" STRING "When this army would remove 1 or more casualties or panic, it may remove an amount equal to the status rank of its commander instead."
                 }
-                ^"Phoenix" {
+                #rnBLRoZsJDb5ZHwkd7UJHe ^"Phoenix" DEF {
                     ^"Effect" STRING "After a leader performs an Assault action, if they succeed, the enemy army suffers attrition equal to that leader's ranks in Theology instead of Command."
                 }
-                ^"Scorpion" {
+                #145NPDgieeAvieL9V6gKTh ^"Scorpion" DEF {
                     ^"Effect" STRING "Reduce the TN of the first Scheme action check each leader makes each mass battle by 1 (to a minimum of 1). If the army's commander is also a leader, reduce the TN of their first Scheme action check by 2 instead (to a minimum of 1)."
                 }
-                ^"Unicorn" {
+                #7rBgc9mj85xryQKczFFzjG ^"Unicorn" DEF {
                     ^"Effect" STRING "When performing the Rally action, a leader may make a TN 1 Survival check instead of a Command check."
                 }
             }
@@ -643,19 +643,19 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
         ^"Table 3-6: Army Maintenance Check Results" DEF {
 
             ENTRIES {
-                ^"Success with 1+ Bonus Successes" {
+                #oDWTHNnUUuUUbCd0u46cRT ^"Success with 1+ Bonus Successes" DEF {
                     ^"Effect" STRING "Remove casualties and panic from the army equal to your ranks in Government, plus 2 per bonus success."
                 }
-                ^"Success" {
+                #pm03T7MoZPJewyXegUVC8L ^"Success" DEF {
                     ^"Effect" STRING "Remove casualties and panic from the army equal to your ranks in Government."
                 }
-                ^"Failure with 1-3 Shortfall" {
+                #fKyMk49pIX3q0YV9ijElij ^"Failure with 1-3 Shortfall" DEF {
                     ^"Effect" STRING "The army receives panic equal to your shortfall. If the army's panic exceeds its discipline this way, reduce the army's panic to its discipline. However, the army refuses to fight for the next month."
                 }
-                ^"Failure with 4-6 Shortfall" {
+                #e2cTS8Pi9ODcxnWnGyuvgH ^"Failure with 4-6 Shortfall" DEF {
                     ^"Effect" STRING "The army receives panic equal to two times your shortfall. If the army's panic exceeds its discipline, it breaks apart into multiple chunks. These new armies and warbands spread across the countryside, pursuing their own agendas or turning to banditry."
                 }
-                ^"Failure with 7+ Shortfall" {
+                #Nqj2od9Voy34DRJ3hXUO7L ^"Failure with 7+ Shortfall" DEF {
                     ^"Effect" STRING "The army revolts and attempts to overthrow its commander and their leaders. Chaos ensues, and the commander must fight for their life, negotiate, or flee to survive."
                 }
             }
@@ -674,14 +674,14 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             # the TN.
 
             ENTRIES {
-                ^"Hostile lands without resupply"   { ^"TN Modifier" STRING "+1" }
-                ^"Winter without garrison shelter"  { ^"TN Modifier" STRING "+2" }
-                ^"Two+ weeks marching last month"   { ^"TN Modifier" STRING "+1" }
-                ^"Short on food"                    { ^"TN Modifier" STRING "+1" }
-                ^"Short on water"                   { ^"TN Modifier" STRING "+3" }
-                ^"Exceptionally hot conditions"     { ^"TN Modifier" STRING "+1" }
-                ^"Plagued by insects and vermin"    { ^"TN Modifier" STRING "+1" }
-                ^"Plagued by disease"               { ^"TN Modifier" STRING "+3" }
+                #ESa26PHhOG8wpbqmW4aXEm ^"Hostile lands without resupply" DEF   { ^"TN Modifier" STRING "+1" }
+                #0UFWJzxnl3XPwSXBk33AQW ^"Winter without garrison shelter" DEF  { ^"TN Modifier" STRING "+2" }
+                #dLY7gdQjZCh2Xxw7s4a09I ^"Two+ weeks marching last month" DEF   { ^"TN Modifier" STRING "+1" }
+                #GYb06k9uwjxqi8GAmO6gNC ^"Short on food" DEF                    { ^"TN Modifier" STRING "+1" }
+                #OUOhAZTsSWSiN6ZuILC0fx ^"Short on water" DEF                   { ^"TN Modifier" STRING "+3" }
+                #8TIV0Uu3XmzIk8ZxxZGavZ ^"Exceptionally hot conditions" DEF     { ^"TN Modifier" STRING "+1" }
+                #PmI4oU0UAKdhYTtXuMdKaf ^"Plagued by insects and vermin" DEF    { ^"TN Modifier" STRING "+1" }
+                #s8Z71rmZ70qw9BERTmeo1t ^"Plagued by disease" DEF               { ^"TN Modifier" STRING "+3" }
             }
 
             RULES {
@@ -696,14 +696,14 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             # the TN (to a minimum of 1).
 
             ENTRIES {
-                ^"Commander status rank 6+"                         { ^"TN Modifier" STRING "-2" }
-                ^"Promoted jizamurai or ashigaru last month"        { ^"TN Modifier" STRING "-2" }
-                ^"Troops have access to entertainment"              { ^"TN Modifier" STRING "-3" }
-                ^"Victorious in mass battle last month"             { ^"TN Modifier" STRING "-4" }
-                ^"Food is plentiful"                                { ^"TN Modifier" STRING "-3" }
-                ^"Fighting defensively in homeland"                 { ^"TN Modifier" STRING "-6" }
-                ^"Backing of status rank 7+ character"              { ^"TN Modifier" STRING "-3" }
-                ^"Considerable sacrifice of personal wealth"        { ^"TN Modifier" STRING "-1 per 5 status forfeited" }
+                #wfR1Tbhxzp3QDNTAeCzHwe ^"Commander status rank 6+" DEF                         { ^"TN Modifier" STRING "-2" }
+                #vbcyzA7fStxSpxRlRjTJHN ^"Promoted jizamurai or ashigaru last month" DEF        { ^"TN Modifier" STRING "-2" }
+                #wC0PZTjJ8V6V59NmTwU0mh ^"Troops have access to entertainment" DEF              { ^"TN Modifier" STRING "-3" }
+                #yibQPtqzY4UyzJAr95E1ax ^"Victorious in mass battle last month" DEF             { ^"TN Modifier" STRING "-4" }
+                #8y5uqbs7d3r5NDRolzaRx3 ^"Food is plentiful" DEF                                { ^"TN Modifier" STRING "-3" }
+                #fRjRRmYvIJy1NGPyn6wI7w ^"Fighting defensively in homeland" DEF                 { ^"TN Modifier" STRING "-6" }
+                #lqsjWbTZiBPEX7W162i2Iv ^"Backing of status rank 7+ character" DEF              { ^"TN Modifier" STRING "-3" }
+                #G5B3RqA0DkVLqZ1m5rRycz ^"Considerable sacrifice of personal wealth" DEF        { ^"TN Modifier" STRING "-1 per 5 status forfeited" }
             }
 
             RULES {
@@ -780,17 +780,17 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             # hostage of equal status or for a ransom in koku.
 
             ENTRIES {
-                ^"Status 100"   { ^"Ransom" STRING "N/A (decorum always demands safe return)" }
-                ^"Status 90-99" { ^"Ransom" STRING "10,000 koku" }
-                ^"Status 80-89" { ^"Ransom" STRING "1,000 koku" }
-                ^"Status 70-79" { ^"Ransom" STRING "500 koku" }
-                ^"Status 60-69" { ^"Ransom" STRING "250 koku" }
-                ^"Status 50-59" { ^"Ransom" STRING "100 koku" }
-                ^"Status 40-49" { ^"Ransom" STRING "50 koku" }
-                ^"Status 30-39" { ^"Ransom" STRING "10 koku" }
-                ^"Status 20-29" { ^"Ransom" STRING "1 koku" }
-                ^"Status 10-19" { ^"Ransom" STRING "5 bu" }
-                ^"Status 0-9"   { ^"Ransom" STRING "2 bu" }
+                #SkJoRG3rYw6kgqnBIBzxFI ^"Status 100" DEF   { ^"Ransom" STRING "N/A (decorum always demands safe return)" }
+                #4BDjXnb7sqk3ffrFEfb7qD ^"Status 90-99" DEF { ^"Ransom" STRING "10,000 koku" }
+                #wkVMJBYwuVH6jshM9VbWYg ^"Status 80-89" DEF { ^"Ransom" STRING "1,000 koku" }
+                #EU3l3zTc450xbl7HLY7sCh ^"Status 70-79" DEF { ^"Ransom" STRING "500 koku" }
+                #r2BwksEaTO9NoClwjUV5RI ^"Status 60-69" DEF { ^"Ransom" STRING "250 koku" }
+                #nXmYDSwZi0UXCuBn6gQ7HS ^"Status 50-59" DEF { ^"Ransom" STRING "100 koku" }
+                #D9YWzzWBct4Ta07c4CpMWq ^"Status 40-49" DEF { ^"Ransom" STRING "50 koku" }
+                #PrVelj8B5Md8z7AE1tILYj ^"Status 30-39" DEF { ^"Ransom" STRING "10 koku" }
+                #3nwWlyLoBK1G7VWRCXAwnY ^"Status 20-29" DEF { ^"Ransom" STRING "1 koku" }
+                #1twVA5cD5bougvIcOdWcb6 ^"Status 10-19" DEF { ^"Ransom" STRING "5 bu" }
+                #IPxGbDrl2MvzwFMwxYqqWE ^"Status 0-9" DEF   { ^"Ransom" STRING "2 bu" }
             }
 
             RULES {
@@ -899,19 +899,19 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             # any terrain qualities that affect cohorts within those zones.
 
             ENTRIES {
-                ^"Cliff"    { ^"Terrain Qualities" STRING "Elevated, Dangerous" }
-                ^"Hill"     { ^"Terrain Qualities" STRING "Elevated" }
-                ^"Hollow"   { ^"Terrain Qualities" STRING "Recessed" }
-                ^"Valley"   { ^"Terrain Qualities" STRING "Confining, Recessed" }
-                ^"Road"     { ^"Terrain Qualities" STRING "Open" }
-                ^"Town"     { ^"Terrain Qualities" STRING "Confining, Obscuring" }
-                ^"Field"    { ^"Terrain Qualities" STRING "Open" }
-                ^"River"    { ^"Terrain Qualities" STRING "Entangling, Recessed" }
-                ^"Swamp"    { ^"Terrain Qualities" STRING "Entangling" }
-                ^"Forest"   { ^"Terrain Qualities" STRING "Entangling, Obscuring" }
-                ^"Bridge"   { ^"Terrain Qualities" STRING "Confining" }
-                ^"Tunnel"   { ^"Terrain Qualities" STRING "Confining, Obscuring" }
-                ^"Chasm"    { ^"Terrain Qualities" STRING "Confining, Recessed" }
+                #GdJs7lfCgjhPwfeFYBvriA ^"Cliff" DEF    { ^"Terrain Qualities" STRING "Elevated, Dangerous" }
+                #vamzNkEE16o0ZIxIiTAYOO ^"Hill" DEF     { ^"Terrain Qualities" STRING "Elevated" }
+                #pqdfDg4Ju2jlGp20dhnG8k ^"Hollow" DEF   { ^"Terrain Qualities" STRING "Recessed" }
+                #fSqC6FxsfwYwYVY6Nb2wqu ^"Valley" DEF   { ^"Terrain Qualities" STRING "Confining, Recessed" }
+                #C01zgvwwn3HkL0BsM1AJXH ^"Road" DEF     { ^"Terrain Qualities" STRING "Open" }
+                #v5MzEkjNnA3h8tkY2Ot8rp ^"Town" DEF     { ^"Terrain Qualities" STRING "Confining, Obscuring" }
+                #C5aH6CQBojN1B7FNIPKut3 ^"Field" DEF    { ^"Terrain Qualities" STRING "Open" }
+                #FNKtoXcgu9cwCXOxAcxnlN ^"River" DEF    { ^"Terrain Qualities" STRING "Entangling, Recessed" }
+                #q2k4inHH2rncLzJZgAVH0g ^"Swamp" DEF    { ^"Terrain Qualities" STRING "Entangling" }
+                #p91Exyf4zocLUTA5FWKZgb ^"Forest" DEF   { ^"Terrain Qualities" STRING "Entangling, Obscuring" }
+                #EtjwxwCxPLNE0JGKvtikxz ^"Bridge" DEF   { ^"Terrain Qualities" STRING "Confining" }
+                #tIuzwKOZELhU2c22XVf0Ej ^"Tunnel" DEF   { ^"Terrain Qualities" STRING "Confining, Obscuring" }
+                #EkvxqKHVI4mPBpkG57dPmw ^"Chasm" DEF    { ^"Terrain Qualities" STRING "Confining, Recessed" }
             }
 
             RULES {
@@ -925,13 +925,13 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             # standard mass battle rules with the following amendments.
 
             ENTRIES {
-                ^"Targeting Restriction" {
+                #SLcYq1WiWWz7AK1m9PYQe4 ^"Targeting Restriction" DEF {
                     ^"Rule" STRING "Cohort leaders cannot target other cohort leaders who are not in the same zone."
                 }
-                ^"Free Movement" {
+                #02McABVO8w2dxdFYJcicAW ^"Free Movement" DEF {
                     ^"Rule" STRING "Once during each cohort leader's turn, before or after they perform an action, that leader may move their cohort to an adjacent zone."
                 }
-                ^"Withdrawal Panic" {
+                #hZBU78Un44M4GWoR4phimY ^"Withdrawal Panic" DEF {
                     ^"Rule" STRING "After a cohort leaves a zone occupied by an enemy cohort, the withdrawing cohort's army suffers 5 panic."
                 }
             }
@@ -968,13 +968,13 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             # when using the battle zones rules.
 
             ENTRIES {
-                ^"Cavalry" {
+                #x9BbkIUqg8aaDlTggcSyzd ^"Cavalry" DEF {
                     ^"Effect" STRING "This cohort does not suffer panic when leaving a battle zone with an enemy cohort."
                 }
-                ^"Archers" {
+                #N0jvnD1TnE4l92B5VAnL8V ^"Archers" DEF {
                     ^"Effect" STRING "While in Elevated terrain, this cohort can perform Assault actions targeting cohorts in an adjacent zone, increasing the TN of the check by 1. However, while performing an Assault action targeting a cohort in an adjacent zone, this cohort cannot fulfill the following strategic objectives: Capture a Position, Cut Off the Head, Seize Victory. It can still contribute momentum points to these objectives, but cannot be the action to complete them."
                 }
-                ^"Mystics" {
+                #J1TD8OAFtUJ0Gk9gcl6Zzu ^"Mystics" DEF {
                     ^"Effect" STRING "While in Elevated terrain, this cohort can perform Rally actions targeting cohorts in an adjacent zone, increasing the TN of the check by 1."
                 }
             }
@@ -1016,10 +1016,10 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             ENTRIES {
-                ^"Duel or Skirmish Effect" {
+                #0D31y1V54bV8Cbin5fGI3b ^"Duel or Skirmish Effect" DEF {
                     ^"Effect" STRING "When a character makes a check to wield a weapon or activate a technique with a maximum range of 2 or higher, increase the TN by 2."
                 }
-                ^"Mass Battle Effect" {
+                #3lCLvpIvYYiW47zc04XptG ^"Mass Battle Effect" DEF {
                     ^"Effect" STRING "When a cohort occupies Confining terrain, other cohorts cannot move into the same area of terrain. If using battle zones, other cohorts can enter the zone but cannot pass through it."
                 }
             }
@@ -1042,7 +1042,7 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             ENTRIES {
-                ^"Effect" {
+                #gN7IUtRSqs3pxbbj6i6EZQ ^"Effect" DEF {
                     ^"Effect" STRING "While within Elevated terrain, a character reduces the TN of their Martial Arts [Ranged] checks targeting characters outside of Elevated terrain by 1 (to a minimum of 1). At the GM's discretion, this benefit could extend to other ranged attacks such as invocations. Elevated terrain might require a check to reach depending on height and steepness."
                 }
             }
@@ -1064,7 +1064,7 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             ENTRIES {
-                ^"Effect" {
+                #lTqlzGZnL9YAyeI4UnM0ir ^"Effect" DEF {
                     ^"Effect" STRING "While within Open terrain, a character reduces the TN of their Movement action checks by 1 (to a minimum of 1)."
                 }
             }
@@ -1085,7 +1085,7 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             ENTRIES {
-                ^"Effect" {
+                #nJdEmQ2h5XVkKwVU2prXZU ^"Effect" DEF {
                     ^"Effect" STRING "While a character is within Recessed terrain, the TN of each Martial Arts [Ranged] check targeting them is reduced by 1 (to a minimum of 1). At the GM's discretion, this benefit could extend to other ranged attacks such as invocations. Recessed terrain might require a check to reach depending on depth and steepness."
                 }
             }

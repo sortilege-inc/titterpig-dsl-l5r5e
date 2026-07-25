@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Character creation, clans, schools, advantages, and advancement"
-    VERSION "0.4"
+    VERSION "0.4.1"
     SPEC_VERSION "0.4"
     RELEASE_DATE "2026-03-01"
 
@@ -877,6 +877,35 @@ BASE "L5R5e_Core_Character" {
             }
             ^"Glory"           INTEGER 44
             ^"Starting Wealth" INTEGER 6
+        }
+    }
+
+
+    # ===========================
+    # NON-CLAN FAMILIES
+    # ===========================
+
+    # Core Rulebook, Chapter 7: The Game Master, "Rise from the Dust"
+    # alternate playstyle (p. 306). Used by characters who are not
+    # samurai of a Great Clan (peasants, ashigaru, merchants,
+    # burakumin, and rōnin who are not fallen samurai).
+
+    #dQzGwI2RcFzv6ZAdl7V76g ^"Peasant Family" DEF {
+        EXTENDS #L5R251lM3nO5pQ7rS9tU1v ^"Family"
+        APPLIES TO [^"Samurai"]
+
+        PROPERTIES {
+            ^"Family Name"     STRING "Peasant" FIXED
+            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Earth", ^"Fire", ^"Water", ^"Void"] INTEGER 1 }
+            ^"Skill Increases" DEF {
+                CHOOSE 2 [^"Commerce", ^"Labor", ^"Seafaring", ^"Skulduggery", ^"Survival"] INTEGER 1
+            }
+            ^"Glory"           INTEGER 25
+            ^"Starting Wealth" DEF { ^"Zeni" INTEGER 10 }
+        }
+
+        RULES {
+            #Vn9Za1awCH9APjrRNFRyAw: peasant_family_default_for_non_samurai "Question 2: Who is your family? Unless you are a fallen samurai, your family falls far beneath the notice of the Great Clans—you might have no family but the comrades you choose for yourself. Use the Rokugani peasant family above unless you are a fallen samurai, in which case choose a family as normal."
         }
     }
 

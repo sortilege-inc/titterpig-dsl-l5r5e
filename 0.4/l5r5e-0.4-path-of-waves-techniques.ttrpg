@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
     NAME "Legend of the Five Rings 5th Edition - Path of Waves: New Techniques"
-    VERSION "0.4"
+    VERSION "0.4.1"
     SPEC_VERSION "0.4"
     RELEASE_DATE "2026-03-01"
 
@@ -702,13 +702,23 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
     # --- MANTRA TECHNIQUES ---
     # (Celestial Implements System rules are in path-of-waves-systems.ttrpg)
 
-    ^"Summoning Mantra: [Implement Name]" DEF {
+    # Path of Waves p. 98. The technique exists independently for each
+    # celestial implement; its printed title is "Summoning Mantra:
+    # [Implement Name]" (recorded in ^"Name").
+
+    #zIx1rwrpvHXVvOc22FphEH ^"Summoning Mantra" DEF {
         APPLIES TO [^"Technique"]
+        # The book titles this "Summoning Mantra: [Implement Name]" — the bracket is a
+        # slot, not part of the name, and each implement is bought as its own technique
+        # (see summoning_mantra_unique below). That is a parameter (S5b), so referring
+        # sites can bind it: ^"Summoning Mantra"(^"implement" = ^"Sacred Blade of Osano-Wo").
+        PARAMETERS { ^"implement" OF ^"Celestial Implement" }
         PROPERTIES {
+            ^"Name" STRING "Summoning Mantra: [Implement Name]"
             ^"Type" STRING "Mantra"
             ^"Rank" INTEGER 1
-            ^"Activation" STRING "As a Support action, make a TN 3 Theology check to call forth one celestial implement. Ring determined by the divinity whose implement you are summoning."
-            ^"Effect" STRING "If you succeed, summon and augment one readied item that becomes the celestial implement. Stake honor equal to 2x honor rank on upholding restriction. Implement persists until end of scene or until dispelled."
+            ^"Activation" STRING "As a Support action, you may make a TN 3 Theology check to call forth one celestial implement. The ring of the check is determined by the divinity whose implement you are summoning."
+            ^"Effect" STRING "If you succeed, you summon and augment one readied item that becomes the celestial implement. Then, you must stake honor equal to two times your honor rank on upholding the implement's restriction while you have the implement (see page 99). The implement persists until the end of the scene or until it is dispelled, at which point the blessing ends. If you break the implement's restriction during this time, you lose your staked honor and the implement is dispelled. You cannot summon this implement again this scene."
         }
         RULES {
             #L5RPW06wW2yF1kP5dW3nC5pK6xM: summoning_mantra_unique "Each Summoning Mantra is for a specific implement and must be purchased independently."
