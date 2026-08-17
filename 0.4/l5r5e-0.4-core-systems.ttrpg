@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Systems" {
     NAME "Legend of the Five Rings 5th Edition - Game systems: combat, conditions, strife, honor, weapons, armor, and NPCs"
-    VERSION "0.4.1"
+    VERSION "0.4.2"
     SPEC_VERSION "0.4"
     RELEASE_DATE "2026-03-01"
 
@@ -59,13 +59,45 @@ BASE "L5R5e_Core_Systems" {
         # Emotional accumulation from (st) symbols on kept dice,
         # anxieties, opposing ninjō, and narrative effects. When
         # strife exceeds composure, character becomes Compromised.
-        # Partially removed between scenes.
+        # Removed between scenes and by contemplative activity —
+        # see ^"Strife Removal".
 
         RULES {
             #L5R400aB2cD4eF6gH8iJ0k: strife_from_kept_dice
             #L5R401lM3nO5pQ7rS9tU1v: strife_from_anxieties
             #L5R402wX4yZ6aB8cD0eF2g: strife_removal_between_scenes
-            #L5R403hI5jK7lM9nO1pQ3r: strife_removal_equals_half_composure
+            #L5R403hI5jK7lM9nO1pQ3r: strife_reduced_to_half_composure
+        }
+    }
+
+    ^"Strife Removal" DEF {
+
+        # --- REMOVING STRIFE ---
+        # Characters naturally remove some strife as time passes. At the
+        # end of each scene (a self-contained event or events in an
+        # ongoing adventure) each character removes strife until it is
+        # equal to half their ^"Composure", rounded up (unless it is
+        # already lower).
+        #
+        # NOTE: this reduces strife TO half composure. It does not halve
+        # the character's current strife, and a character already at or
+        # below half composure does not change.
+        #
+        # Strife can be reduced further through restful contemplative
+        # activities including the pursuit of one's ^"Ninjō", pursuing a
+        # ^"Passion", meditating, or attending a tea ceremony. Such
+        # activities can potentially remove all of a character's current
+        # strife.
+        #
+        # Finally, a ^"Compromised" character can remove all of their
+        # strife by unmasking, briefly lowering their façade to act upon
+        # their emotions openly — see ^"Unmask".
+
+        RULES {
+            #L5R403aB4cD6eF8gH0iJ2k: strife_removal_between_scenes
+            #L5R403lM5nO7pQ9rS1tU3v: strife_reduced_to_half_composure_rounded_up
+            #L5R403wX6yZ8aB0cD2eF4g: strife_removal_contemplative_activities
+            #L5R403hI7jK9lM1nO3pQ5r: strife_removal_by_unmasking
         }
     }
 
