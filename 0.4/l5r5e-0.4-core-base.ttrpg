@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Core" {
     NAME "Legend of the Five Rings 5th Edition - Core mechanics, ACTORs, and fundamental game rules"
-    VERSION "0.4"
+    VERSION "0.4.1"
     SPEC_VERSION "0.4"
     RELEASE_DATE "2026-03-01"
 
@@ -71,7 +71,7 @@ BASE "L5R5e_Core_Core" {
         RULES {
             #L5R004jK5lM7nO9pQ1rS3t: WHEN [^"Samurai" CREATED] THEN REQUIRE ^"Clan", ^"School"
             #L5R005uV6wX8yZ0aB2cD4e: WHEN [^"Strife" > ^"Composure"] THEN ^"Samurai" IS compromised
-            #L5R006fG7hI9jK1lM3nO5p: WHEN [^"Fatigue" >= ^"Endurance"] THEN ^"Samurai" IS incapacitated
+            #L5R006fG7hI9jK1lM3nO5p: WHEN [^"Fatigue" > ^"Endurance"] THEN ^"Samurai" IS incapacitated
         }
     }
 
@@ -591,19 +591,25 @@ BASE "L5R5e_Core_Core" {
         # of their turn. The stance determines their default ring for checks
         # and grants specific benefits.
         #
-        # Air Stance: +1 TN for attack checks targeting you at range 1-2. Becomes +2 TN at Rank 4.
-        # Earth Stance: When other characters make Attack action checks and Scheme action checks that target you, they cannot spend (op) to inflict critical strikes or conditions on you.
-        # Fire Stance: Bonus success on Attack and Scheme checks if you keep (st)
-        # Water Stance: May perform an additional action that does not require a check. The additional action cannot be the same type as an action you've already performed that turn.
-        # Void Stance: You do not receive strife from (st) symbols on your kept dice. You can still receive strife from other sources.
+        # Air Stance: Increase the TN of Attack and Scheme action checks targeting
+        #   you by 1. If your school rank is 4 or higher, increase the TN by 2 instead.
+        # Earth Stance: When other characters make Attack action checks and Scheme
+        #   action checks that target you, they cannot spend (op) to inflict critical
+        #   strikes or conditions on you.
+        # Fire Stance: When you succeed on a check, you count as having one additional
+        #   bonus success for each (st) result on your check.
+        # Water Stance: During your turn, you may perform one additional action that
+        #   does not require a check. This action cannot share a type with another
+        #   action you perform this turn.
+        # Void Stance: While in a Void stance, you do not suffer strife from (st) results.
 
         RULES {
             #L5R048zA9bC1dE3fG5hI7j: stance_chosen_at_turn_start
-            #L5R049kL0mN2oP4qR6sT8u: air_stance_evasion_bonus
-            #L5R050vW1xY3zA5bC7dE9f: earth_stance_endurance_cap
-            #L5R051gH2iJ4kL6mN8oP0q: fire_stance_aggressive_bonus
-            #L5R052rS3tU5vW7xY9zA1b: water_stance_extra_action
-            #L5R053cD4eF6gH8iJ0kL2m: void_stance_scheme_immunity
+            #L5R049kL0mN2oP4qR6sT8u: air_stance_raises_tn_of_attack_and_scheme_targeting_you
+            #L5R050vW1xY3zA5bC7dE9f: earth_stance_blocks_op_crits_and_conditions
+            #L5R051gH2iJ4kL6mN8oP0q: fire_stance_strife_results_become_bonus_successes
+            #L5R052rS3tU5vW7xY9zA1b: water_stance_extra_action_without_a_check
+            #L5R053cD4eF6gH8iJ0kL2m: void_stance_no_strife_from_strife_results
         }
     }
 
