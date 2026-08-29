@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Celestial Realms: New Player Options"
-    VERSION "0.4"
+    VERSION "0.4.1"
     SPEC_VERSION "0.4"
     RELEASE_DATE "2026-03-01"
 
@@ -1183,21 +1183,148 @@ EXTENSION "L5R5e_Celestial_Realms" EXTENDS "L5R5e_Core_Character" {
     ^"New Samurai Heritages (Celestial Realms)" DEF {
         APPLIES TO [^"Samurai"]
 
-        # Table 2-1: New Samurai Heritages for characters
-        # connected to the Phoenix or the spiritual world.
+        # Table 2-1: New Samurai Heritages. Backgrounds for characters
+        # connected to the Phoenix or to the spiritual world. Used in the
+        # same manner as Table 2-1: Samurai Heritage on page 96 of the core
+        # rulebook; question 18, "Who was your character named to honor?",
+        # is explained on page 95 of the core rulebook.
 
-        PROPERTIES {
-            ^"Heritage Table" STRING "d10 roll" FIXED
-        }
+        HERITAGE_TABLE {
 
-        RULES {
-            #L5RCR23hI4jK6lM8nO0pQ2r: heritage_1_associated_with_natural_disaster_decrease_honor_3_gain_whispers_of_failure
-            #L5RCR24sT5uV7wX9yZ1aB3c: heritage_2_great_treatise_increase_status_3_gain_skill
-            #L5RCR25dE6fG8hI0jK2lM4n: heritage_3_4_guardian_of_forbidden_knowledge_decrease_status_5_gain_skill
-            #L5RCR26oP7qR9sT1uV3wX5y: heritage_5_6_mark_of_the_elements_increase_status_5_swap_ring
-            #L5RCR27zA8bC0dE2fG4hI6j: heritage_7_8_sacrifice_increase_glory_5_gain_heirloom
-            #L5RCR28kL9mN1oP3qR5sT7u: heritage_9_spirit_of_the_phoenix_increase_glory_3_gain_advantage
-            #L5RCR29vW0xY2zA4bC6dE8f: heritage_10_touched_by_the_fortunes_decrease_glory_5_gain_sixth_sense
+            1 #L5RCR23hI4jK6lM8nO0pQ2r ^"Associated with a Natural Disaster" DEF {
+                # An ancestor, through folly or hubris, caused or responded
+                # problematically to a natural disaster. They may have abused
+                # the power of the kami or taken flawed action such as
+                # refusing to allocate funds to repair a dam, leading poorly
+                # during a tsunami, or ignoring the severity of a plague
+                # outbreak.
+
+                MODIFIERS {
+                    ^"Honor" "-3"
+                }
+
+                EFFECT {
+                    "You gain the ^\"Whispers of Failure (Fire)\" adversity (see page 130 of the core rulebook)"
+                    "You may reduce the value of one of your character's rings by 1 to increase the value of a ring associated with the disaster—such as Earth for an earthquake or Water for a tsunami—by 1 (this still cannot raise a ring above 3)"
+                }
+            }
+
+            2 #L5RCR24sT5uV7wX9yZ1aB3c ^"Great Treatise" DEF {
+                # One of your kin has written a scholarly text, religious
+                # treatise, philosophical essay, or collection of poems
+                # known throughout the Emerald Empire.
+
+                MODIFIERS {
+                    ^"Status" "+3"
+                }
+
+                # Sub-table (roll 1d10): a skill your family values;
+                # gain +1 rank in that skill.
+                SUB_TABLE "1d10" {
+                    "1-3" "Gain +1 ^\"Composition\""
+                    "4-6" "Gain +1 ^\"Culture\""
+                    "7-8" "Gain +1 ^\"Government\""
+                    "9-10" "Gain +1 ^\"Theology\""
+                }
+            }
+
+            3-4 #L5RCR25dE6fG8hI0jK2lM4n ^"Guardian of Forbidden Knowledge" DEF {
+                # One of your kin guards or once guarded a reliquary of
+                # forbidden knowledge. Either your family still has
+                # responsibility for guarding the reliquary, or it has
+                # gone missing.
+
+                MODIFIERS {
+                    ^"Status" "-5"
+                }
+
+                # Sub-table (roll 1d10): the skill your family uses to guard
+                # this knowledge; gain +1 rank in that skill.
+                SUB_TABLE "1d10" {
+                    "1-3" "Gain +1 ^\"Martial Arts [Melee]\""
+                    "4-6" "Gain +1 ^\"Government\""
+                    "7-8" "Gain +1 ^\"Theology\""
+                    "9-10" "Gain +1 ^\"Skulduggery\""
+                }
+            }
+
+            5-6 #L5RCR26oP7qR9sT1uV3wX5y ^"Mark of the Elements" DEF {
+                # An ancestor had a story—perhaps true, perhaps apocryphal—of
+                # having been blessed by an element: i.e., was born of Fire,
+                # couldn't drown or could swim as a baby, fell a great
+                # distance and didn't get hurt, was buried alive but
+                # survived, etc.
+
+                MODIFIERS {
+                    ^"Status" "+5"
+                }
+
+                EFFECT {
+                    "Choose one of your character's rings; you may reduce the value of that ring by 1 to increase the value of the ring associated with the element by 1 (this still cannot raise a ring above 3)"
+                }
+            }
+
+            7-8 #L5RCR27zA8bC0dE2fG4hI6j ^"Sacrifice" DEF {
+                # A forebear sacrificed something for the greater good of
+                # their clan or the Empire. The sacrifice doesn't necessarily
+                # mean their life. It could have been as personal as love or
+                # family, but it should illustrate giving up an individual
+                # want, need, or desire for the good of society.
+
+                MODIFIERS {
+                    ^"Glory" "+5"
+                }
+
+                EFFECT {
+                    "You choose one item quality and the GM chooses another from the list of item qualities starting on page 240 of the core rulebook; these are applied to the item"
+                }
+
+                # Sub-table (roll 1d10): the heirloom added to your starting items.
+                SUB_TABLE "1d10" {
+                    "1-3" "A weapon"
+                    "4-6" "A set of armor"
+                    "7-8" "A valued piece of art"
+                    "9" "A horse or other animal"
+                    "10" "The deed to a small piece of land on the border of Phoenix territory"
+                }
+            }
+
+            9 #L5RCR28kL9mN1oP3qR5sT7u ^"Spirit of the Phoenix" DEF {
+                # One of your kin was reborn, either literally from death or
+                # figuratively through a public religious conversion, personal
+                # Enlightenment, or a famous second career after some
+                # debilitating trouble.
+
+                MODIFIERS {
+                    ^"Glory" "+3"
+                }
+
+                EFFECT {
+                    "You gain an advantage associated with your predecessor's rebirth (this can be assigned in excess of the normal limitations on advantages at character creation)"
+                }
+
+                # Sub-table (roll 1d10): the resulting advantage.
+                SUB_TABLE "1d10" {
+                    "1-2" "^\"Famously Kind\""
+                    "3-4" "^\"Famously Lucky\""
+                    "5-6" "^\"Famously Reliable\""
+                    "7-8" "^\"Famously Successful\""
+                    "9-10" "^\"Famously Wealthy\""
+                }
+            }
+
+            10 #L5RCR29vW0xY2zA4bC6dE8f ^"Touched by the Fortunes" DEF {
+                # An ancestor spent too much time with the Fortunes and forgot
+                # their humanity, or saw a mystical truth too terrible to bear.
+
+                MODIFIERS {
+                    ^"Glory" "-5"
+                }
+
+                EFFECT {
+                    "You gain the ^\"Sixth Sense\" distinction (see page 110 of the core rulebook) (this can be assigned in excess of the normal limitations on advantages at character creation)"
+                }
+            }
         }
     }
 

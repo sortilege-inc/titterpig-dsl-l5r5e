@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Fields of Victory: New Player Options"
-    VERSION "0.4.1"
+    VERSION "0.4.2"
     SPEC_VERSION "0.4"
     RELEASE_DATE "2026-03-01"
 
@@ -1203,70 +1203,166 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         # to the Lion Clan or to famous masters of the battlefield.
         # Used instead of the core rulebook heritage table.
 
-        ENTRIES {
-            #0SK0L6ks5W2WD8kM6OrdPa ^"Born on the Battlefield (Roll 1)" DEF {
-                ^"Description" STRING "One of your ancestors was born amid war and bloodshed, even if not literally on the front lines. The omens of your birth reflect an affinity for that ancestor."
-                ^"Modifier" STRING "Decrease glory by 3"
-                ^"Effect" STRING "You gain the Guiding Ancestor (Void) distinction."
+        HERITAGE_TABLE {
+
+            1 #0SK0L6ks5W2WD8kM6OrdPa ^"Born on the Battlefield" DEF {
+                # One of your ancestors was born amid war and bloodshed,
+                # even if not literally on the front lines. The omens of
+                # your birth reflect an affinity for that ancestor.
+
+                MODIFIERS {
+                    ^"Glory" "-3"
+                }
+
+                EFFECT {
+                    "You gain the Guiding Ancestor (Void) distinction"
+                }
             }
 
-            #iIQZVjxDNrycKFXhdMG7Hj ^"Strategic Mastermind (Roll 2)" DEF {
-                ^"Description" STRING "You are descended from a warrior known for their cunning and wartime acumen."
-                ^"Modifier" STRING "Increase glory by 5, decrease honor by 5"
-                ^"Effect" STRING "Roll d10 for skill: 1-2 Tactics, 3-4 Command, 5-6 Government, 7-8 Culture, 9 Commerce, 10 Theology; gain +1 rank in that skill."
+            2 #iIQZVjxDNrycKFXhdMG7Hj ^"Strategic Mastermind" DEF {
+                # You are descended from a warrior known for their cunning
+                # and wartime acumen.
+
+                MODIFIERS {
+                    ^"Glory" "+5"
+                    ^"Honor" "-5"
+                }
+
+                SUB_TABLE "1d10" {
+                    "1-2" "Tactics"
+                    "3-4" "Command"
+                    "5-6" "Government"
+                    "7-8" "Culture"
+                    "9" "Commerce"
+                    "10" "Theology"
+                }
             }
 
-            #UoXZRWG1ytFoEZdC6nporA ^"Victory against the Crane (Roll 3)" DEF {
-                ^"Description" STRING "In your family, one of your ancestors held a decisive victory over the Crane."
-                ^"Modifier" STRING "Increase glory by 3"
-                ^"Effect" STRING "Roll d10 for family heirloom: 1-3 a weapon, 4-6 a game set of your choice, 7-8 some other item relevant to your ancestor's victory, 9 a horse or other animal, 10 the deed to a small piece of land on the border of Crane territory. This item is a battlefield heirloom."
+            3 #UoXZRWG1ytFoEZdC6nporA ^"Victory against the Crane" DEF {
+                # In your family, one of your ancestors held a decisive
+                # victory over the Crane.
+
+                MODIFIERS {
+                    ^"Glory" "+3"
+                }
+
+                SUB_TABLE "1d10" {
+                    "1-3" "a weapon"
+                    "4-6" "a game set of your choice"
+                    "7-8" "some other item relevant to your ancestor's victory"
+                    "9" "a horse or other animal"
+                    "10" "the deed to a small piece of land on the border of Crane territory. This item is a battlefield heirloom"
+                }
             }
 
-            #XScIgfsSgDKDaKU0n7aYn3 ^"Victory against Invaders (Roll 4)" DEF {
-                ^"Description" STRING "The Lion Clan's foremost duty is to protect the Empire from outside threats, and one of your kin acquitted themselves honorably in this endeavor long ago."
-                ^"Modifier" STRING "Increase honor by 3"
-                ^"Effect" STRING "Roll d10 for skill: 1-2 Command, 3-4 Government, 5-6 Tactics, 7-8 Survival, 9 Theology, 10 Meditation; gain +1 rank in that skill."
+            4 #XScIgfsSgDKDaKU0n7aYn3 ^"Victory against Invaders" DEF {
+                # The Lion Clan's foremost duty is to protect the Empire
+                # from outside threats, and one of your kin acquitted
+                # themselves honorably in this endeavor long ago.
+
+                MODIFIERS {
+                    ^"Honor" "+3"
+                }
+
+                SUB_TABLE "1d10" {
+                    "1-2" "Command"
+                    "3-4" "Government"
+                    "5-6" "Tactics"
+                    "7-8" "Survival"
+                    "9" "Theology"
+                    "10" "Meditation"
+                }
             }
 
-            #NzTSDxYLs8FeZuG1bs5wg9 ^"Shamed by Defeat (Roll 5)" DEF {
-                ^"Description" STRING "Among your kin is one who failed the clan. Whether beaten in battle or a duel, humiliated in court, or something else, the need to redeem your line burns within you."
-                ^"Modifier" STRING "Decrease glory by 3"
-                ^"Effect" STRING "Choose one of the starting skills for your school in which your character has no ranks; gain +1 rank in that skill."
+            5 #NzTSDxYLs8FeZuG1bs5wg9 ^"Shamed by Defeat" DEF {
+                # Among your kin is one who failed the clan. Whether
+                # beaten in battle or a duel, humiliated in court, or
+                # something else, the need to redeem your line burns
+                # within you.
+
+                MODIFIERS {
+                    ^"Glory" "-3"
+                }
+
+                EFFECT {
+                    "Choose one of the starting skills for your school in which your character has no ranks; gain +1 rank in that skill"
+                }
             }
 
-            #4Ur9bjb2KL8cCmXcYAChv4 ^"Blade of 10,000 Battles (Roll 6)" DEF {
-                ^"Description" STRING "You have been entrusted with a storied weapon with an ancient history and lineage, and you must prove yourself worthy to continue its legacy."
-                ^"Modifier" STRING "Increase glory by 3"
-                ^"Effect" STRING "Choose a weapon and add it to your starting outfit. This item is a battlefield heirloom."
+            6 #4Ur9bjb2KL8cCmXcYAChv4 ^"Blade of 10,000 Battles" DEF {
+                # You have been entrusted with a storied weapon with an
+                # ancient history and lineage, and you must prove yourself
+                # worthy to continue its legacy.
+
+                MODIFIERS {
+                    ^"Glory" "+3"
+                }
+
+                EFFECT {
+                    "Choose a weapon and add it to your starting outfit"
+                    "This item is a battlefield heirloom"
+                }
             }
 
-            #MGZl7UIrPFoKcDf5AI1foe ^"Lost Heirloom (Roll 7)" DEF {
-                ^"Description" STRING "An ancestor of yours was once entrusted with a peerless weapon, but through their own failure, they lost it. It has fallen to you to recover it."
-                ^"Modifier" STRING "Increase honor by 5, decrease glory by 3"
-                ^"Effect" STRING "Choose a weapon to be the lost heirloom, now held by some individual or group hostile to you or your clan. This item is a battlefield heirloom."
+            7 #MGZl7UIrPFoKcDf5AI1foe ^"Lost Heirloom" DEF {
+                # An ancestor of yours was once entrusted with a peerless
+                # weapon, but through their own failure, they lost it. It
+                # has fallen to you to recover it.
+
+                MODIFIERS {
+                    ^"Honor" "+5"
+                    ^"Glory" "-3"
+                }
+
+                EFFECT {
+                    "Choose a weapon to be the lost heirloom, now held by some individual or group hostile to you or your clan"
+                    "This item is a battlefield heirloom"
+                }
             }
 
-            #FSTRVOZDQHw7x7NkI1UEoL ^"Selfless Sentinel (Roll 8)" DEF {
-                ^"Description" STRING "Your ancestor was not well-known or highly favored, but they served with honor, if not glory, and protected Lion lands from attack for all their life."
-                ^"Modifier" STRING "Increase honor by 5, decrease glory by 3"
-                ^"Effect" STRING "Gain the Traditional Adherent (Earth) distinction."
+            8 #FSTRVOZDQHw7x7NkI1UEoL ^"Selfless Sentinel" DEF {
+                # Your ancestor was not well-known or highly favored, but
+                # they served with honor, if not glory, and protected Lion
+                # lands from attack for all their life.
+
+                MODIFIERS {
+                    ^"Honor" "+5"
+                    ^"Glory" "-3"
+                }
+
+                EFFECT {
+                    "Gain the Traditional Adherent (Earth) distinction"
+                }
             }
 
-            #vqXA6ao42WwxQ7K78n1ozk ^"Mighty Conqueror (Roll 9)" DEF {
-                ^"Description" STRING "One of your ancestors once seized a valuable prize for the Lion Clan in a past war, such as a village, castle, or valuable hostage."
-                ^"Modifier" STRING "Increase glory by 3, decrease honor by 3"
-                ^"Effect" STRING "Choose one: double your starting koku, add one item of rarity 6 or lower to your starting items that is a battlefield heirloom, or gain the Glorious Deeds passion."
+            9 #vqXA6ao42WwxQ7K78n1ozk ^"Mighty Conqueror" DEF {
+                # One of your ancestors once seized a valuable prize for
+                # the Lion Clan in a past war, such as a village, castle,
+                # or valuable hostage.
+
+                MODIFIERS {
+                    ^"Glory" "+3"
+                    ^"Honor" "-3"
+                }
+
+                EFFECT {
+                    "Choose one: double your starting koku, add one item of rarity 6 or lower to your starting items that is a battlefield heirloom, or gain the Glorious Deeds passion"
+                }
             }
 
-            #OXecHLPnQEYf96GmYWNcdY ^"Right Hand of the Emperor (Roll 10)" DEF {
-                ^"Description" STRING "The crowning glory of your line is the victory one of your ancestors won in the name of a past Emperor."
-                ^"Modifier" STRING "Increase status by 3"
-                ^"Effect" STRING "Gain the Support of [One Group] distinction. The group chosen must be the Seppun, Otomo, or Miya family, or the Imperial Legions."
-            }
-        }
+            10 #OXecHLPnQEYf96GmYWNcdY ^"Right Hand of the Emperor" DEF {
+                # The crowning glory of your line is the victory one of
+                # your ancestors won in the name of a past Emperor.
 
-        RULES {
-            #L5RFV31sT2uV4wX6yZ8aB0c: fov_heritages_lion_and_battlefield_connections
+                MODIFIERS {
+                    ^"Status" "+3"
+                }
+
+                EFFECT {
+                    "Gain the Support of [One Group] distinction"
+                    "The group chosen must be the Seppun, Otomo, or Miya family, or the Imperial Legions"
+                }
+            }
         }
     }
 

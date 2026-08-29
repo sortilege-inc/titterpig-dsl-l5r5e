@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Children of the Five Winds: New Player Options"
-    VERSION "0.4.1"
+    VERSION "0.4.2"
     SPEC_VERSION "0.4"
     RELEASE_DATE "2026-03-01"
 
@@ -1207,30 +1207,142 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"New Samurai Heritages Table" DEF {
-        ENTRIES {
-            #gCFkEdJN0NrsGSzFVhq6hD ^"1 - Ancestral Horse Line" DEF {
-                ^"Effect" STRING "One of your ancestors possessed a mighty Unicorn warhorse. Increase glory by 3. Add additional warhorse to starting items (roll d10 for horse family: 1-2 Utaku, 3-4 Shinjo, 5-6 Iuchi, 7-8 Ide, 9-10 Moto)."
+        APPLIES TO [^"Samurai"]
+
+        # Table 2-1: New Samurai Heritages. Backgrounds for samurai with
+        # ancestral ties to the Unicorn Clan and the lands beyond Rokugan.
+        # Used instead of the core rulebook heritage table.
+
+        HERITAGE_TABLE {
+
+            1 #gCFkEdJN0NrsGSzFVhq6hD ^"Ancestral Horse Line" DEF {
+                # One of your ancestors possessed a mighty Unicorn
+                # warhorse.
+
+                MODIFIERS {
+                    ^"Glory" "+3"
+                }
+
+                EFFECT {
+                    "Add additional warhorse to starting items ("
+                }
+
+                SUB_TABLE "1d10" {
+                    "1-2" "Utaku"
+                    "3-4" "Shinjo"
+                    "5-6" "Iuchi"
+                    "7-8" "Ide"
+                    "9-10" "Moto)"
+                }
             }
-            #L8URXctUSTs5q0RApULhPA ^"2 - Heart of the Horse" DEF {
-                ^"Effect" STRING "Your horse chose you. Increase glory by 3, decrease status by 3. Gain a horse and the Karmic Tie (Void) distinction with it."
+
+            2 #L8URXctUSTs5q0RApULhPA ^"Heart of the Horse" DEF {
+                # Your horse chose you.
+
+                MODIFIERS {
+                    ^"Glory" "+3"
+                    ^"Status" "-3"
+                }
+
+                EFFECT {
+                    "Gain a horse and the Karmic Tie (Void) distinction with it"
+                }
             }
-            #KuGEkb3AAlrQ8DeDK8IIEU ^"3-4 - Knowledge Exchange" DEF {
-                ^"Effect" STRING "An ancestor learned techniques of another school. Decrease glory by 5. Learn one additional technique (roll d10 for category: 1-3 kata, 4-6 shūji, 7 ritual, 8 invocation, 9 kihō, 10 mahō or ninjutsu). Select rank 1 technique. You can perform that technique even if it is not normally allowed by your school."
+
+            3-4 #KuGEkb3AAlrQ8DeDK8IIEU ^"Knowledge Exchange" DEF {
+                # An ancestor learned techniques of another school.
+
+                MODIFIERS {
+                    ^"Glory" "-5"
+                }
+
+                EFFECT {
+                    "Learn one additional technique ("
+                }
+
+                SUB_TABLE "1d10" {
+                    "1-3" "kata"
+                    "4-6" "shūji"
+                    "7" "ritual"
+                    "8" "invocation"
+                    "9" "kihō"
+                    "10" "mahō or ninjutsu). Select rank 1 technique. You can perform that technique even if it is not normally allowed by your school"
+                }
             }
-            #LwBH4oJuiMiuHceoWTSEXh ^"5 - Lost Banner" DEF {
-                ^"Effect" STRING "Your family lost a symbolic banner. Decrease glory by 5. Gain Indomitable Will distinction (can exceed normal advantage limits at creation)."
+
+            5 #LwBH4oJuiMiuHceoWTSEXh ^"Lost Banner" DEF {
+                # Your family lost a symbolic banner.
+
+                MODIFIERS {
+                    ^"Glory" "-5"
+                }
+
+                EFFECT {
+                    "Gain Indomitable Will distinction (can exceed normal advantage limits at creation)"
+                }
             }
-            #OhRxrHSJXkLU2pLpLipNRQ ^"6-7 - Splintered Loyalties" DEF {
-                ^"Effect" STRING "Related to non-Rokugani people or raised outside Rokugan. Decrease status by 5. Roll d10 for skill: 1-2 Aesthetics, 3-4 Courtesy, 5-6 Culture, 7-8 Meditation, 9-10 Commerce. Gain +1 rank."
+
+            6-7 #OhRxrHSJXkLU2pLpLipNRQ ^"Splintered Loyalties" DEF {
+                # Related to non-Rokugani people or raised outside
+                # Rokugan.
+
+                MODIFIERS {
+                    ^"Status" "-5"
+                }
+
+                SUB_TABLE "1d10" {
+                    "1-2" "Aesthetics"
+                    "3-4" "Courtesy"
+                    "5-6" "Culture"
+                    "7-8" "Meditation"
+                    "9-10" "Commerce. Gain +1 rank"
+                }
             }
-            #M6OlywRl97YLVScUZemIx6 ^"8 - Sacred Wilderness" DEF {
-                ^"Effect" STRING "Ancestor established a protected sacred wilderness. Increase status by 5. Add estate to starting items with free food, shelter, and medical care."
+
+            8 #M6OlywRl97YLVScUZemIx6 ^"Sacred Wilderness" DEF {
+                # Ancestor established a protected sacred wilderness.
+
+                MODIFIERS {
+                    ^"Status" "+5"
+                }
+
+                EFFECT {
+                    "Add estate to starting items with free food, shelter, and medical care"
+                }
             }
-            #1skeeUyizts1f1x9yfAlBH ^"9 - Spirit Companion" DEF {
-                ^"Effect" STRING "Ancestor made an agreement with a spirit. Increase status by 3, decrease glory by 3. Know one additional meishōdō talisman (roll d10 for ring: 1-2 Air, 3-4 Water, 5-6 Earth, 7-8 Fire, 9-10 Void). Select rank 1 invocation. You can perform that invocation even if it is not normally allowed by your school."
+
+            9 #1skeeUyizts1f1x9yfAlBH ^"Spirit Companion" DEF {
+                # Ancestor made an agreement with a spirit.
+
+                MODIFIERS {
+                    ^"Status" "+3"
+                    ^"Glory" "-3"
+                }
+
+                EFFECT {
+                    "Know one additional meishōdō talisman ("
+                }
+
+                SUB_TABLE "1d10" {
+                    "1-2" "Air"
+                    "3-4" "Water"
+                    "5-6" "Earth"
+                    "7-8" "Fire"
+                    "9-10" "Void). Select rank 1 invocation. You can perform that invocation even if it is not normally allowed by your school"
+                }
             }
-            #Vb7AlY2oJr6tr0FG7FRC8m ^"10 - Spiritual Debt" DEF {
-                ^"Effect" STRING "Your family owes a spirit. Increase honor by 3, decrease glory by 3. Roll d10 for spirit's ring (1-2 Fire, 3-4 Earth, 5-6 Water, 7-8 Air, 9-10 Void). May increase matching ring by 1 and reduce another by 1 (max 3)."
+
+            10 #Vb7AlY2oJr6tr0FG7FRC8m ^"Spiritual Debt" DEF {
+                # Your family owes a spirit.
+
+                MODIFIERS {
+                    ^"Honor" "+3"
+                    ^"Glory" "-3"
+                }
+
+                SUB_TABLE "1d10" {
+                    "1" "and reduce another by 1 (max 3)"
+                }
             }
         }
     }

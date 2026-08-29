@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Courts of Stone: New Player Options"
-    VERSION "0.4.1"
+    VERSION "0.4.2"
     SPEC_VERSION "0.4"
     RELEASE_DATE "2026-03-01"
 
@@ -1816,48 +1816,133 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
     ^"Courts of Stone Heritages" DEF {
         APPLIES TO [^"Samurai"]
 
+        # Table 2-1: New Samurai Heritages (page 104).
         # New heritages for samurai with ancestral connections
         # to the Crane Clan or the mysterious underworld of the
-        # shinobi. Used instead of the core rulebook heritage table.
+        # shinobi. Used instead of Table 2-1 in the core rulebook.
 
-        ENTRIES {
-            #v4pzleB1tNtdgU1XO9iCEx ^"Dishonorable Cheat (Roll 1)" DEF {
-                ^"Description" STRING "One of your kin was caught cheating in a high-profile duel. Instead of committing seppuku, they ran away as a ronin."
-                ^"Modifier" STRING "Decrease glory by 5"
-                ^"Effect" STRING "Roll d10 for skill to bring kin to justice: 1-3 Martial Arts [Choose One], 4-6 Survival, 7-10 Government"
+        HERITAGE_TABLE {
+
+            1 #v4pzleB1tNtdgU1XO9iCEx ^"Dishonorable Cheat" DEF {
+                # One of your kin was caught cheating in a high-profile
+                # duel. Instead of committing seppuku to purge their
+                # dishonor and redeem their family, they ran away and
+                # became a rōnin, disgracing their bloodline.
+
+                MODIFIERS {
+                    ^"Glory" "-5"
+                }
+
+                # Sub-table (roll 1d10): a skill to aid you in bringing
+                # your disgraced kin to justice.
+                SUB_TABLE "1d10" {
+                    "1-3" "Gain +1 ^\"Martial Arts [Choose One]\""
+                    "4-6" "Gain +1 ^\"Survival\""
+                    "7-10" "Gain +1 ^\"Government\""
+                }
             }
 
-            #s0sUwIEvvlrRubJEwMn8PO ^"Triumph over the Lion (Roll 2-3)" DEF {
-                ^"Description" STRING "An ancestor held a decisive victory over the Lion - a duel, a game of Go, a battle."
-                ^"Modifier" STRING "Increase honor by 5"
-                ^"Effect" STRING "Roll d10 for family heirloom: 1-3 weapon, 4-6 game set, 7-8 relevant item, 9 horse/animal, 10 deed to small land on Lion border. You choose one quality, GM chooses one quality."
+            2-3 #s0sUwIEvvlrRubJEwMn8PO ^"Triumph over the Lion" DEF {
+                # In your family line one of your ancestors held a decisive
+                # victory over the Lion. It may have been a duel, a critical
+                # game of Go, a battle, or any number of things. The
+                # circumstances are irrelevant; the Lion were embarrassed,
+                # and your ancestor brought honor to your clan.
+
+                MODIFIERS {
+                    ^"Honor" "+5"
+                }
+
+                # Sub-table (roll 1d10): the family heirloom added to your
+                # starting items. You choose one quality and the GM chooses
+                # one quality from the item qualities list (core rulebook
+                # page 240); both are applied to the item.
+                SUB_TABLE "1d10" {
+                    "1-3" "A weapon"
+                    "4-6" "A game set of your choice"
+                    "7-8" "Some other item relevant to your ancestor's victory"
+                    "9" "A horse or another animal"
+                    "10" "The deed to a small piece of land on the border of Lion territory"
+                }
             }
 
-            #f4DhOygATi36KX70HPMmnW ^"Unforgivable Performance (Roll 4-5)" DEF {
-                ^"Description" STRING "A kin gave a truly horrible performance before the Imperial line, causing the Emperor to leave the theatre."
-                ^"Modifier" STRING "Decrease status by 3"
-                ^"Effect" STRING "Gain Benten's Curse (Air) disadvantage. Roll d10 for redemption skill: 1-3 Performance, 4-6 Culture, 7-9 Command, 10 Courtesy"
+            4-5 #f4DhOygATi36KX70HPMmnW ^"Unforgivable Performance" DEF {
+                # In the recent past one of your kin gave a truly horrible
+                # performance in the presence of the Imperial line. Through
+                # their embarrassing acting in a scene they caused the
+                # Emperor to leave the theatre, and now rumors abound of
+                # your family being cursed by the Fortunes for such a failure.
+
+                MODIFIERS {
+                    ^"Status" "-3"
+                }
+
+                EFFECT {
+                    "Gain the ^\"Benten's Curse (Air)\" disadvantage (core rulebook page 116)"
+                }
+
+                # Sub-table (roll 1d10): a skill that will help redeem your family.
+                SUB_TABLE "1d10" {
+                    "1-3" "Gain +1 ^\"Performance\""
+                    "4-6" "Gain +1 ^\"Culture\""
+                    "7-9" "Gain +1 ^\"Command\""
+                    "10" "Gain +1 ^\"Courtesy\""
+                }
             }
 
-            #IE4tFxWFofbGuImnBkFxlI ^"Triumph During Gempuku (Roll 6-7)" DEF {
-                ^"Description" STRING "One of your parents was a Topaz Champion and brought honor to your clan and family."
-                ^"Modifier" STRING "Increase honor and glory by 3"
-                ^"Effect" STRING "Gain Support of the Kakita Dueling Academy distinction"
+            6-7 #IE4tFxWFofbGuImnBkFxlI ^"Triumph During Gempuku" DEF {
+                # One of your parents was a Topaz Champion and brought
+                # honor to your clan and your family.
+
+                MODIFIERS {
+                    ^"Honor" "+3"
+                    ^"Glory" "+3"
+                }
+
+                EFFECT {
+                    "Gain the ^\"Support of the Kakita Dueling Academy\" distinction, where the Topaz Championship takes place"
+                }
             }
 
-            #vzCnLJmsIrSOsRx7N3erZs ^"A Little Too Close to Heaven (Roll 8-9)" DEF {
-                ^"Description" STRING "One of your ancestors is rumored to have had an illegitimate child with an Emperor."
-                ^"Modifier" STRING "Increase status by 5, decrease honor by 5"
-                ^"Effect" STRING "Roll d10 for skill to discover truth: 1-2 Government, 3-4 Commerce, 5-6 Sentiment, 7-8 Meditation, 9-10 Theology"
+            8-9 #vzCnLJmsIrSOsRx7N3erZs ^"A Little Too Close to Heaven" DEF {
+                # One of your ancestors is rumored to have had an
+                # illegitimate child with an Emperor. While you may be able
+                # to link your heritage to the Imperial line, the disgrace
+                # of such an affair stains this joy.
+
+                MODIFIERS {
+                    ^"Status" "+5"
+                    ^"Honor" "-5"
+                }
+
+                # Sub-table (roll 1d10): a skill that can aid you in
+                # discovering the truth about your lineage.
+                SUB_TABLE "1d10" {
+                    "1-2" "Gain +1 ^\"Government\""
+                    "3-4" "Gain +1 ^\"Commerce\""
+                    "5-6" "Gain +1 ^\"Sentiment\""
+                    "7-8" "Gain +1 ^\"Meditation\""
+                    "9-10" "Gain +1 ^\"Theology\""
+                }
             }
 
-            #GJzMXJAC0TdPMBdtGDaT4e ^"Elegant Craftsman (Roll 10)" DEF {
-                ^"Description" STRING "Your ancestor was a truly gifted artisan who produced a renowned masterwork."
-                ^"Modifier" STRING "Increase glory by 5"
-                ^"Effect" STRING "Gain Isolation anxiety. Choose one ring; reduce it by 1 to increase Fire or Air by 1 (cannot raise above 3)."
+            10 #GJzMXJAC0TdPMBdtGDaT4e ^"Elegant Craftsman" DEF {
+                # Your ancestor was a truly gifted artisan and produced in
+                # their lifetime a masterwork that is still renowned today.
+                # You now live in the shadow of this ancestor, and your clan
+                # expects your complete focus in bringing glory to your line
+                # once again.
+
+                MODIFIERS {
+                    ^"Glory" "+5"
+                }
+
+                EFFECT {
+                    "Gain the ^\"Isolation\" anxiety (page 103)"
+                    "Choose one of your character's rings; you may reduce the value of this ring by 1 to increase the value of your Fire or Air Ring by 1 (this still cannot raise it above 3)"
+                }
             }
         }
-
     }
 
     # ===========================
