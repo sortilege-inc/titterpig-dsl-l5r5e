@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Errata and FAQ (September 2019)"
-    VERSION "0.4.2"
+    VERSION "0.4.3"
     SPEC_VERSION "0.4"
     RELEASE_DATE "2026-03-01"
 
@@ -41,6 +41,20 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     # ---- Chapter 2: Schools ----
 
     MODIFY ^"Kakita Duelist" {
+
+        # --- correction ---
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Aesthetics"
+                SKILL "Courtesy"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Iaijutsu Cut: Crossing Blade" [kata]
+                ^"Cadence" [shuji]
+            }
+        }
+
         PROPERTIES {
             ^"Source Book"    STRING "Core Rulebook"
             ^"Source Chapter" STRING "Chapter 2"
@@ -54,6 +68,20 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Asako Loremaster" {
+
+        # --- correction ---
+        CURRICULUM {
+            RANK 2 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Government"
+                SKILL "Medicine"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-2 Air Shūji"
+                ^"All Arts are One" [shuji]
+                ^"Tea Ceremony" [ritual]
+            }
+        }
+
         PROPERTIES {
             ^"Source Book"    STRING "Core Rulebook"
             ^"Source Chapter" STRING "Chapter 2"
@@ -67,6 +95,20 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Shiba Guardian" {
+
+        # --- correction ---
+        CURRICULUM {
+            RANK 2 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Fitness"
+                SKILL "Meditation"
+                SKILL "Martial Arts [Melee]"
+                TECHNIQUE_GROUP "Rank 1-2 Kata"
+                ^"Rallying Cry" [shuji]
+                ^"Slippery Maneuvers" [shuji]
+            }
+        }
+
         PROPERTIES {
             ^"Source Book"    STRING "Core Rulebook"
             ^"Source Chapter" STRING "Chapter 2"
@@ -79,6 +121,20 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Kaito Shrine Keeper" {
+
+        # --- correction ---
+        CURRICULUM {
+            RANK 2 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Performance"
+                SKILL "Theology"
+                SKILL "Smithing"
+                TECHNIQUE_GROUP "Rank 1-2 Kata"
+                ^"Grasp of the Air Dragon" [invocation]
+                ^"Divination" [ritual]
+            }
+        }
+
         PROPERTIES {
             ^"Source Book"    STRING "Core Rulebook"
             ^"Source Chapter" STRING "Chapter 2"
@@ -91,6 +147,20 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Akodo Commander" {
+
+        # --- correction ---
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Government"
+                SKILL "Command"
+                SKILL "Performance"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Iron Forest Style" [kata]
+                ^"Honest Assessment" [shuji]
+            }
+        }
+
         PROPERTIES {
             ^"Source Book"    STRING "Core Rulebook"
             ^"Source Chapter" STRING "Chapter 2"
@@ -133,6 +203,20 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Utaku Battle Maiden" {
+
+        # --- correction ---
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Smithing"
+                SKILL "Survival"
+                TECHNIQUE_GROUP "Rank 1 Kata"
+                ^"Lady Shinjo's Speed" [shuji]
+                ^"Courtier's Resolve" [shuji]
+            }
+        }
+
         PROPERTIES {
             ^"Source Book"    STRING "Core Rulebook"
             ^"Source Chapter" STRING "Chapter 2"
@@ -148,6 +232,9 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
 
     MODIFY ^"Technique" {
         PROPERTIES {
+            # --- correction ---
+            ^"Prerequisites Waiver" STRING "Note that all prerequisites are waived if a character is granted a technique directly during character creation (or at another time), or if the technique appears by name on their curriculum. If a technique is part of a listed group (e.g. \"Rank 1-3 Kata\"), the character ignores school rank prerequisites, but not other prerequisites (clan, etc.)."
+
             ^"Source Book"    STRING "Core Rulebook"
             ^"Source Chapter" STRING "Chapter 4"
             ^"Source Page"    STRING "p. 173"
@@ -159,6 +246,10 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Iaijutsu Cut: Rising Blade" {
+
+        # --- correction ---
+        ACTIVATION "As an Attack action using one sheathed ^\"Razor-Edged\" weapon, you may make a Martial Arts [Melee] check targeting one character at range 0-1. The TN of this check is equal to the target's vigilance."
+
         PROPERTIES {
             ^"Source Book"    STRING "Core Rulebook"
             ^"Source Chapter" STRING "Chapter 4"
@@ -225,6 +316,10 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Wait" {
+
+        # --- correction ---
+        ACTIVATION "As an Attack, Scheme, and Support action, declare a non-Movement action you will perform after the occurrence of a specified event before the end of the round."
+
         PROPERTIES {
             ^"Source Book"    STRING "Core Rulebook"
             ^"Source Chapter" STRING "Chapter 6"
@@ -293,6 +388,15 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
 
     MODIFY ^"Manifest Fire Kami" {
         PROPERTIES {
+            # --- correction ---
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 6
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 3
+            }
+
             ^"Source Book"    STRING "Core Rulebook"
             ^"Source Chapter" STRING "Chapter 9"
             ^"Source Page"    STRING "p. 324"
@@ -309,6 +413,9 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
 
     MODIFY ^"Opportunity" {
         PROPERTIES {
+            # --- correction ---
+            ^"Fire Conflict Entry 1" STRING "Choose another character in the scene; increase the TN of the next check they make before the start of your next turn if it does not include you as a target."
+
             ^"Source Book"    STRING "Core Rulebook"
             ^"Source Chapter" STRING "Appendix"
             ^"Source Page"    STRING "p. 328"
@@ -324,6 +431,15 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     # =================================================================
 
     MODIFY ^"Moto Avenger" {
+
+        # --- correction ---
+        STARTING_OUTFIT [
+            "traveling clothes", "sanctified robes",
+            "daishō (any one sword of rarity 7 or lower and wakizashi)",
+            "scroll satchel", "traveling pack",
+            "Unicorn warhorse (see page 326 of the core rulebook)"
+        ]
+
         PROPERTIES {
             ^"Source Book"    STRING "Shadowlands"
             ^"Source Chapter" STRING "Chapter 2"
