@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Chargen" {
     NAME "Legend of the Five Rings 5th Edition - Character Creation Rules"
-    VERSION "0.4.2"
+    VERSION "0.4.3"
     SPEC_VERSION "0.4"
     RELEASE_DATE "2026-03-01"
 
@@ -594,6 +594,214 @@ BASE "L5R5e_Core_Chargen" {
         #   5. Apply the sub-table result
 
         HERITAGE_TABLE {
+
+            # Table 2-1 as printed on page 96. Every sub-table below had been
+            # rewritten with different roll ranges, and several with different
+            # or missing results, so each entry's odds and some of its outcomes
+            # differed from the book. Restored from the page.
+
+            1 ^"Famous Deed" DEF {
+                # One of your ancestors won a great victory for their clan or
+                # even the Emperor, and was rewarded with an item of incredible
+                # quality.
+
+                MODIFIERS {
+                    ^"Glory" "+3"
+                }
+
+                EFFECT {
+                    "Roll a ten-sided die again and add the resulting family heirloom to your starting items. You choose one quality and the GM chooses one quality from the list of item qualities, on page 240; these are applied to the item."
+                }
+
+                SUB_TABLE "1d10" {
+                    "1-3" "A weapon"
+                    "4-6" "A set of armor"
+                    "7-8" "Another item"
+                    "9" "A horse or other animal"
+                    "10" "A boat or estate"
+                }
+            }
+
+            2 ^"Glorious Sacrifice" DEF {
+                # One of your ancestors perished nobly in battle, and one of
+                # their signature items vanished with them or was lost in the
+                # subsequent years.
+
+                MODIFIERS {
+                    ^"Honor" "+5"
+                    ^"Glory" "+5"
+                }
+
+                EFFECT {
+                    "Roll a ten-sided die again to determine your lost family heirloom, which exists somewhere in the world. You choose one quality and the GM chooses one quality; these are applied to the item. You do not know where the heirloom is, but you could later reclaim it during the campaign."
+                }
+
+                SUB_TABLE "1d10" {
+                    "1-3" "A weapon"
+                    "4-6" "A set of armor"
+                    "7-8" "Another item"
+                    "9" "A horse or other animal"
+                    "10" "A boat or estate"
+                }
+            }
+
+            3 ^"Wondrous Work" DEF {
+                # One of your ancestors crafted a piece of great beauty that won
+                # renown for your family, and others expect you to live up to
+                # that legacy.
+
+                MODIFIERS {
+                    ^"Glory" "+5"
+                }
+
+                # Roll a ten-sided die again to determine an Artisan skill;
+                # gain +1 rank in that skill.
+                SUB_TABLE "1d10" {
+                    "1-3" "Gain +1 ^\"Aesthetics\""
+                    "4-6" "Gain +1 ^\"Composition\""
+                    "7-8" "Gain +1 ^\"Design\""
+                    "9-10" "Gain +1 ^\"Smithing\""
+                }
+            }
+
+            4 ^"Dynasty Builder" DEF {
+                # One of your ancestors was instrumental in the rise of a
+                # powerful lord, using cunning stratagems and shrewd advice to
+                # secure their ascension. You have heard this story many times
+                # and know the importance of power subtly wielded.
+
+                MODIFIERS {
+                    ^"Glory" "-3"
+                }
+
+                # Roll a ten-sided die again to determine a Social skill;
+                # gain +1 rank in that skill.
+                SUB_TABLE "1d10" {
+                    "1-3" "Gain +1 ^\"Command\""
+                    "4-6" "Gain +1 ^\"Courtesy\""
+                    "7-8" "Gain +1 ^\"Games\""
+                    "9-10" "Gain +1 ^\"Performance\""
+                }
+            }
+
+            5 ^"Discovery" DEF {
+                # One of your ancestors made an incredible discovery, invented
+                # something of great importance, or uncovered an ancient secret.
+                # Thanks to family lore, you have at least a rudimentary
+                # understanding of the subject of their discovery.
+
+                MODIFIERS {
+                    ^"Glory" "+3"
+                }
+
+                # Roll a ten-sided die again to determine a Scholar skill;
+                # gain +1 rank in that skill.
+                SUB_TABLE "1d10" {
+                    "1-3" "Gain +1 ^\"Culture\""
+                    "4-5" "Gain +1 ^\"Sentiment\""
+                    "6-7" "Gain +1 ^\"Government\""
+                    "8-9" "Gain +1 ^\"Medicine\""
+                    "10" "Gain +1 ^\"Theology\""
+                }
+            }
+
+            6 ^"Ruthless Victor" DEF {
+                # One of your ancestors claimed a bloody victory over a rival,
+                # smashing their forces with a cunning maneuver or seizing their
+                # domain after vanquishing them in battle. From this relative or
+                # their story, you learned well the importance of brute force.
+
+                MODIFIERS {
+                    ^"Honor" "-5"
+                }
+
+                # Roll a ten-sided die again to determine a Martial skill;
+                # gain +1 rank in that skill.
+                SUB_TABLE "1d10" {
+                    "1-3" "Gain +1 ^\"Fitness\""
+                    "4-5" "Gain +1 ^\"Martial Arts [Melee]\""
+                    "6-7" "Gain +1 ^\"Martial Arts [Ranged]\""
+                    "8" "Gain +1 ^\"Martial Arts [Unarmed]\""
+                    "9" "Gain +1 ^\"Tactics\""
+                    "10" "Gain +1 ^\"Meditation\""
+                }
+            }
+
+            7 ^"Elevated for Service" DEF {
+                # One of your ancestors was a jizamurai or even a commoner who
+                # served with such distinction that their position was elevated
+                # to that of a Great Clan samurai by marriage or mandate of a
+                # daimyō. As a child, you learned the basics of the skills for
+                # which they won their esteem.
+
+                MODIFIERS {
+                    ^"Glory" "-3"
+                    ^"Honor" "+3"
+                }
+
+                # Roll a ten-sided die again to determine a Trade skill;
+                # gain +1 rank in that skill.
+                SUB_TABLE "1d10" {
+                    "1-3" "Gain +1 ^\"Commerce\""
+                    "4-5" "Gain +1 ^\"Labor\""
+                    "6-7" "Gain +1 ^\"Seafaring\""
+                    "8" "Gain +1 ^\"Skulduggery\""
+                    "9-10" "Gain +1 ^\"Survival\""
+                }
+            }
+
+            8 ^"Stolen Knowledge" DEF {
+                # One of your ancestors learned a secret of another school and
+                # clandestinely passed it down through the ages; now, it has
+                # reached you.
+
+                MODIFIERS {
+                    ^"Honor" "-5"
+                }
+
+                EFFECT {
+                    "You know one additional technique. Roll a ten-sided die again to determine the category, and then select one technique with a prerequisite of school rank 1 and learn that technique. You can perform that technique even if it is not normally allowed by your school."
+                }
+
+                SUB_TABLE "1d10" {
+                    "1-3" "Kata"
+                    "4-6" "Shūji"
+                    "7" "Ritual"
+                    "8" "Invocation"
+                    "9" "Kihō"
+                    "10" "Mahō or ninjutsu"
+                }
+            }
+
+            9 ^"Imperial Heritage" DEF {
+                # You can trace your lineage back to the Imperial line.
+
+                MODIFIERS {
+                    ^"Status" "+10"
+                }
+
+                EFFECT {
+                    "You gain the ^\"Blessed Lineage\" advantage (see page 103) (this can be assigned in excess of the normal limitations on advantages at character creation)."
+                }
+            }
+
+            10 ^"Unusual Name Origin" DEF {
+                # Your character was not named for an ancestor—perhaps they were
+                # named for an outsider who did a great service to the clan,
+                # perhaps their name was bestowed upon them for a unique deed, or
+                # perhaps someone was trying to send a specific message in the
+                # selection of their name.
+
+                MODIFIERS {
+                    ^"Glory" "-3"
+                }
+
+                # A choice, not a further roll.
+                EFFECT {
+                    "Choose two of your character's rings; you may reduce the value of one of these rings by 1 to increase the value of the other by 1 (this still cannot raise a ring above 3). If you do not do so, choose one item of rarity 6 or lower and assign it to your starting outfit."
+                }
+            }
+        }      HERITAGE_TABLE {
 
             1 ^"Famous Deed" DEF {
                 # Your ancestor won a great victory for the clan,
