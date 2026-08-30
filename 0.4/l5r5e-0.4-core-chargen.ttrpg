@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Chargen" {
     NAME "Legend of the Five Rings 5th Edition - Character Creation Rules"
-    VERSION "0.4.1"
+    VERSION "0.4.2"
     SPEC_VERSION "0.4"
     RELEASE_DATE "2026-03-01"
 
@@ -75,7 +75,7 @@ BASE "L5R5e_Core_Chargen" {
         PHASES {
 
             # ---------------------------
-            # PART I: CORE IDENTITY (Q1-Q3)
+            # PART I: CORE IDENTITY (Q1-Q2)
             # ---------------------------
 
             ^"Part I: Core Identity" DEF {
@@ -140,11 +140,17 @@ BASE "L5R5e_Core_Chargen" {
                         #L5R328kL0mN2oP4qR6sT8u: q2_sets_starting_wealth
                     }
                 }
+            }
 
-                ^"Question 3: What Is Your Character's School?" DEF {
+            # ---------------------------
+            # PART II: ROLE AND SCHOOL (Q3-Q4)
+            # ---------------------------
+
+            ^"Part II: Role and School" DEF {
+                ^"Question 3: What Is Your Character's School, and What Roles Does That School Fall Into?" DEF {
                     PROPERTIES {
                         ^"Question" INTEGER 3 FIXED
-                        ^"Question Text" STRING "What Is Your Character's School?" FIXED
+                        ^"Question Text" STRING "What Is Your Character's School, and What Roles Does That School Fall Into?" FIXED
                     }
 
                     # Choose a school, typically from your clan. Choosing a
@@ -176,13 +182,7 @@ BASE "L5R5e_Core_Chargen" {
                         #L5R336uV8wX0yZ2aB4cD6e: q3_other_clan_school_requires_gm_approval
                     }
                 }
-            }
 
-            # ---------------------------
-            # PART II: ROLE AND SCHOOL (Q4)
-            # ---------------------------
-
-            ^"Part II: Role and School" DEF {
 
                 ^"Question 4: How Does Your Character Stand Out Within Their School?" DEF {
                     PROPERTIES {
@@ -211,10 +211,10 @@ BASE "L5R5e_Core_Chargen" {
 
             ^"Part III: Honor and Glory" DEF {
 
-                ^"Question 5: Who Is Your Character's Lord and What Is Their Duty?" DEF {
+                ^"Question 5: Who Is Your Lord, and What Is Your Character's Duty to Them?" DEF {
                     PROPERTIES {
                         ^"Question" INTEGER 5 FIXED
-                        ^"Question Text" STRING "Who Is Your Character's Lord and What Is Their Duty?" FIXED
+                        ^"Question Text" STRING "Who Is Your Lord, and What Is Your Character's Duty to Them?" FIXED
                     }
 
                     # Determine the character's ^"Giri" (sworn duty). This
@@ -232,10 +232,10 @@ BASE "L5R5e_Core_Chargen" {
                     }
                 }
 
-                ^"Question 6: What Does Your Character Long For?" DEF {
+                ^"Question 6: What Does Your Character Long For, and How Might This Impede Their Duty?" DEF {
                     PROPERTIES {
                         ^"Question" INTEGER 6 FIXED
-                        ^"Question Text" STRING "What Does Your Character Long For?" FIXED
+                        ^"Question Text" STRING "What Does Your Character Long For, and How Might This Impede Their Duty?" FIXED
                     }
 
                     # Determine the character's ^"Ninjō" (personal desire).
@@ -312,10 +312,10 @@ BASE "L5R5e_Core_Chargen" {
 
             ^"Part IV: Strengths and Weaknesses" DEF {
 
-                ^"Question 9: What Is Your Character's Greatest Accomplishment?" DEF {
+                ^"Question 9: What Is Your Character's Greatest Accomplishment So Far?" DEF {
                     PROPERTIES {
                         ^"Question" INTEGER 9 FIXED
-                        ^"Question Text" STRING "What Is Your Character's Greatest Accomplishment?" FIXED
+                        ^"Question Text" STRING "What Is Your Character's Greatest Accomplishment So Far?" FIXED
                     }
 
                     # Determine a defining positive quality or achievement.
@@ -332,10 +332,10 @@ BASE "L5R5e_Core_Chargen" {
                     }
                 }
 
-                ^"Question 10: What Is Your Character's Greatest Challenge?" DEF {
+                ^"Question 10: What Holds Your Character Back the Most in Life?" DEF {
                     PROPERTIES {
                         ^"Question" INTEGER 10 FIXED
-                        ^"Question Text" STRING "What Is Your Character's Greatest Challenge?" FIXED
+                        ^"Question Text" STRING "What Holds Your Character Back the Most in Life?" FIXED
                     }
 
                     # Determine the character's most significant hardship
@@ -352,10 +352,10 @@ BASE "L5R5e_Core_Chargen" {
                     }
                 }
 
-                ^"Question 11: What Activity Makes Your Character Feel at Peace?" DEF {
+                ^"Question 11: What Activity Most Makes Your Character Feel at Peace?" DEF {
                     PROPERTIES {
                         ^"Question" INTEGER 11 FIXED
-                        ^"Question Text" STRING "What Activity Makes Your Character Feel at Peace?" FIXED
+                        ^"Question Text" STRING "What Activity Most Makes Your Character Feel at Peace?" FIXED
                     }
 
                     # Determine what the character does for solace and
@@ -372,10 +372,10 @@ BASE "L5R5e_Core_Chargen" {
                     }
                 }
 
-                ^"Question 12: What Concern or Fear Plagues Your Character?" DEF {
+                ^"Question 12: What Concern, Fear, or Foible Troubles Your Character the Most?" DEF {
                     PROPERTIES {
                         ^"Question" INTEGER 12 FIXED
-                        ^"Question Text" STRING "What Concern or Fear Plagues Your Character?" FIXED
+                        ^"Question Text" STRING "What Concern, Fear, or Foible Troubles Your Character the Most?" FIXED
                     }
 
                     # Determine the character's deepest fear, worry, or
@@ -392,10 +392,10 @@ BASE "L5R5e_Core_Chargen" {
                     }
                 }
 
-                ^"Question 13: Who Has Your Character Learned the Most From?" DEF {
+                ^"Question 13: Who Has Your Character Learned the Most From During Their Life?" DEF {
                     PROPERTIES {
                         ^"Question" INTEGER 13 FIXED
-                        ^"Question Text" STRING "Who Has Your Character Learned the Most From?" FIXED
+                        ^"Question Text" STRING "Who Has Your Character Learned the Most From During Their Life?" FIXED
                     }
 
                     # Determine the character's most important mentor and
@@ -417,29 +417,34 @@ BASE "L5R5e_Core_Chargen" {
             }
 
             # ---------------------------
-            # PART V: PERSONALITY AND BEHAVIOR (Q14-Q16)
+            # PART V: PERSONALITY AND BEHAVIOR (Q14-Q20)
             # ---------------------------
 
             ^"Part V: Personality and Behavior" DEF {
 
-                ^"Question 14: What Do People Notice First About Your Character?" DEF {
+                ^"Question 14: What Do People Notice First Upon Encountering Your Character?" DEF {
                     PROPERTIES {
                         ^"Question" INTEGER 14 FIXED
-                        ^"Question Text" STRING "What Do People Notice First About Your Character?" FIXED
+                        ^"Question Text" STRING "What Do People Notice First Upon Encountering Your Character?" FIXED
                     }
 
                     # Determine the character's most striking feature or
-                    # quality that others observe upon first meeting. The
-                    # character gains a small personal item that reflects
-                    # this quality.
+                    # quality that others observe upon first meeting: unusual
+                    # looks, strange dress, far-flung ancestry, a minor
+                    # behavior such as chewing one's lip when nervous — or a
+                    # deliberate absence of memorable details.
                     #
                     # Mechanical effects:
-                    #   - Establish the character's ^"Demeanor"
-                    #   - Gain one distinctive personal effect or
-                    #     aesthetic accoutrement
+                    #   - Record the answer in Personality, Habits and Quirks
+                    #   - Choose one distinctive aesthetic accoutrement the
+                    #     character carries or wears most of the time
+                    #
+                    # Core Rulebook p. 93. The question does NOT set a
+                    # Demeanor: Demeanor is an NPC statblock field (see
+                    # ^"Core NPCs"), not an output of character creation.
 
                     RULES {
-                        #L5R353zA5bC7dE9fG1hI3j: q14_sets_demeanor
+                        #L5RUJzt0ASYmGCRLUS8WpfO6k: q14_records_personality_habits_quirks
                         #L5R354kL6mN8oP0qR2sT4u: q14_grants_aesthetic_item
                     }
                 }
@@ -464,10 +469,10 @@ BASE "L5R5e_Core_Chargen" {
                     }
                 }
 
-                ^"Question 16: What Are Your Character's Preexisting Relationships?" DEF {
+                ^"Question 16: What Are Your Character's Preexisting Relationships With Other Clans, Families, Organizations, and Traditions?" DEF {
                     PROPERTIES {
                         ^"Question" INTEGER 16 FIXED
-                        ^"Question Text" STRING "What Are Your Character's Preexisting Relationships?" FIXED
+                        ^"Question Text" STRING "What Are Your Character's Preexisting Relationships With Other Clans, Families, Organizations, and Traditions?" FIXED
                     }
 
                     # Establish the character's relationships with other
@@ -484,18 +489,11 @@ BASE "L5R5e_Core_Chargen" {
                         #L5R357rS9tU1vW3xY5zA7b: q16_grants_item_rarity_seven_or_lower
                     }
                 }
-            }
 
-            # ---------------------------
-            # PART VI: ANCESTRY AND FAMILY (Q17-Q19)
-            # ---------------------------
-
-            ^"Part VI: Ancestry and Family" DEF {
-
-                ^"Question 17: What Does Your Character's Parent Think of Them?" DEF {
+                ^"Question 17: How Would Your Character's Parents Describe Them?" DEF {
                     PROPERTIES {
                         ^"Question" INTEGER 17 FIXED
-                        ^"Question Text" STRING "What Does Your Character's Parent Think of Them?" FIXED
+                        ^"Question Text" STRING "How Would Your Character's Parents Describe Them?" FIXED
                     }
 
                     # Determine the character's relationship with their
@@ -512,10 +510,10 @@ BASE "L5R5e_Core_Chargen" {
                     }
                 }
 
-                ^"Question 18: Who Was Your Character's First Ancestor to Distinguish Themselves?" DEF {
+                ^"Question 18: Who Was Your Character Named to Honor?" DEF {
                     PROPERTIES {
                         ^"Question" INTEGER 18 FIXED
-                        ^"Question Text" STRING "Who Was Your Character's First Ancestor to Distinguish Themselves?" FIXED
+                        ^"Question Text" STRING "Who Was Your Character Named to Honor?" FIXED
                     }
 
                     # Determine the character's samurai heritage by rolling
@@ -553,13 +551,6 @@ BASE "L5R5e_Core_Chargen" {
                         #L5R362uV4wX6yZ8aB0cD2e: q19_narrative_only
                     }
                 }
-            }
-
-            # ---------------------------
-            # PART VII: DEATH (Q20)
-            # ---------------------------
-
-            ^"Part VII: Death" DEF {
 
                 ^"Question 20: How Should Your Character Die?" DEF {
                     PROPERTIES {
@@ -581,6 +572,7 @@ BASE "L5R5e_Core_Chargen" {
                     }
                 }
             }
+
         }
     }
 

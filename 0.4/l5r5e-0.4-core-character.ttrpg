@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Character creation, clans, schools, advantages, and advancement"
-    VERSION "0.4.1"
+    VERSION "0.4.2"
     SPEC_VERSION "0.4"
     RELEASE_DATE "2026-03-01"
 
@@ -20,31 +20,35 @@ BASE "L5R5e_Core_Character" {
         # disadvantages, ninjō, giri, and starting equipment.
 
         PHASES {
-            ^"Part I: Core Identity (Clan, Family, School)" DEF {
-                1 "What clan does your character belong to? (Sets starting ring, skill, status, glory)"
-                2 "What family does your character belong to? (Sets +1 ring, +1 skill, glory modifier)"
-                3 "What is your character's school, and what roles does that school fall into? (+1 ring, technique groups, starting techniques, school ability)"
-                4 "How does your character stand out within their school? (Choose a unique advantage or disadvantage)"
+            ^"Part I: Core Identity (Clan and Family)" DEF {
+                1 "What clan does your character belong to? (+1 ring, +1 skill, sets status)"
+                2 "What family does your character belong to? (+1 ring of two, +1 rank in each of two skills, sets glory and starting koku)"
             }
-            ^"Part II: Personality and Behavior" DEF {
-                5 "Who is your character's lord? And what is their duty to that lord? (Sets giri)"
-                6 "What does your character long for? And how might this be achieved? (Sets ninjō)"
-                7 "What is your character's relationship with their clan? (Determines advantages)"
-                8 "What does your character think of Bushido? (Sets starting honor)"
-                9 "What is your character's greatest accomplishment so far? (Determines skill)"
-                10 "What holds your character back most in life? (Determines anxiety or adversity)"
-                11 "What activity makes your character feel at peace? (Determines skill)"
-                12 "What concern, stake, or obligation makes your character feel stressed? (Determines disadvantage)"
-                13 "Who has your character learned the most from during their life? (Determines advantage and ring or skill)"
+            ^"Part II: Role and School" DEF {
+                3 "What is your character's school, and what roles does that school fall into? (Ring and skill increases, starting techniques, school ability, outfit, technique groups, sets honor)"
+                4 "How does your character stand out within their school? (Choose one ring and gain +1 rank)"
             }
-            ^"Part III: Final Details" DEF {
-                14 "What do people notice first upon meeting your character? (Advantage or disadvantage)"
-                15 "How does your character react to stressful situations? (Determines anxiety)"
-                16 "What are your character's preexisting relationships with other characters?"
-                17 "How does your character feel about their position in the Celestial Order?"
-                18 "What does your character's name mean? (Choose or create name)"
-                19 "How should the other players or GM expect your character to act?"
-                20 "What is your character's personal truth? (Final narrative detail)"
+            ^"Part III: Honor and Glory" DEF {
+                5 "Who is your lord, and what is your character's duty to them? (Sets giri)"
+                6 "What does your character long for, and how might this impede their duty? (Sets ninjo)"
+                7 "What is your character's relationship with their clan? (Either +5 glory, or +1 rank in a skill at rank 0)"
+                8 "What does your character think of Bushido? (Sets paramount and less significant tenets)"
+            }
+            ^"Part IV: Strengths and Weaknesses" DEF {
+                9 "What is your character's greatest accomplishment so far? (Gain a distinction)"
+                10 "What holds your character back the most in life? (Gain an adversity)"
+                11 "What activity most makes your character feel at peace? (Gain a passion)"
+                12 "What concern, fear, or foible troubles your character the most? (Gain an anxiety)"
+                13 "Who has your character learned the most from during their life? (Either an advantage, or a disadvantage plus +1 rank in a skill)"
+            }
+            ^"Part V: Personality and Behavior" DEF {
+                14 "What do people notice first upon encountering your character? (Choose an aesthetic accoutrement)"
+                15 "How does your character react to stressful situations? (Narrative only)"
+                16 "What are your character's preexisting relationships with other clans, families, organizations, and traditions? (Gain one item of rarity 7 or lower)"
+                17 "How would your character's parents describe them? (+1 rank in a skill at rank 0)"
+                18 "Who was your character named to honor? (Roll on the Samurai Heritage table)"
+                19 "What is your character's personal name? (Narrative only)"
+                20 "How should your character die? (Narrative only)"
             }
         }
 
