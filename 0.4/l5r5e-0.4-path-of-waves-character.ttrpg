@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Path of Waves: Character Creation"
-    VERSION "0.4"
+    VERSION "0.4.1"
     SPEC_VERSION "0.4"
     RELEASE_DATE "2026-03-01"
 
@@ -2054,6 +2054,19 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Question" INTEGER 17 FIXED
             ^"Question Text" STRING "What shared history does your character have with their group?" FIXED
             ^"Gain" STRING "One bond (narrative, determined with GM and group)"
+        }
+
+        # The prompts were stated only in the comment above, so composition
+        # dropped them and no consumer could offer the choice the question asks
+        # for. An NPC may stand in for another player character in any of them.
+        PROMPTS {
+            "The unthinkable" "Which PC (or NPC) have you gone through the unthinkable with? With whom have you survived, doing things you regret to this day? What did you do?"
+            "A secret" "Which character knows a secret you would rather forget about? What is the secret?"
+            "A debt" "You owe a debt to someone in your group. To whom do you owe a debt? What is the debt? How do you feel about it?"
+            "Intense feelings" "You have intense romantic or platonic feelings for someone else in the group. When you speak to them, you exhibit a quirk such as getting flustered, stammering, fidgeting, or otherwise acting strange. What is the quirk? Who is the other person, and do they know about your feelings?"
+            "A great beast" "You have conquered a great beast, whether mundane or supernatural, with two other members of your group. Which group members are they? What was the beast? Do you admit you needed help?"
+            "Impressed or jealous" "You are impressed with or jealous of another group member's skill in a particular area. Choose a skill you have 0 ranks in and then choose a group member who has one or more ranks in that skill. Is your goal to learn from them or to become better than them?"
+            "Blood or history" "You share blood or history with one other member of the group. You both might have served the same lord, lived in the same village, or had the same parent. When you choose this question, ask another player to choose this question as well."
         }
 
         RULES {
