@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Core" {
     NAME "Legend of the Five Rings 5th Edition - Core mechanics, ACTORs, and fundamental game rules"
-    VERSION "0.4.2"
+    VERSION "0.4.3"
     SPEC_VERSION "0.4"
     RELEASE_DATE "2026-03-01"
 
@@ -738,11 +738,14 @@ BASE "L5R5e_Core_Core" {
         # advantages during downtime.
 
         ADVANCEMENT_COSTS {
-            ^"Skill Rank" COST "new rank × 2 XP (curriculum), new rank × 3 XP (non-curriculum)"
-            ^"Ring Increase" COST "new rank × 3 XP (curriculum ring)"
-            ^"Technique" COST "3 XP (curriculum), 3 × technique rank XP (non-curriculum)"
-            ^"Distinction/Passion" COST "3 XP"
-            ^"Adversity/Anxiety" COST "3 XP"
+            # Restrictions, from the same table:
+            #   Ring value  cannot exceed lowest ring + Void Ring; maximum 5
+            #   Skill rank  maximum 5
+            #   Technique   category must be listed among available techniques,
+            #               or the technique must appear on your curriculum
+            ^"Ring Value +1" COST "3 XP × value purchased"
+            ^"Skill Rank +1" COST "2 XP × rank purchased"
+            ^"Technique" COST "3 XP, or other listed value"
         }
 
         RULES {
