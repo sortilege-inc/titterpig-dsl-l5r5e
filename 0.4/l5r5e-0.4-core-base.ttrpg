@@ -1,7 +1,7 @@
 BASE "L5R5e_Core_Core" {
     NAME "Legend of the Five Rings 5th Edition - Core mechanics, ACTORs, and fundamental game rules"
-    VERSION "0.4.3"
-    SPEC_VERSION "0.4"
+    VERSION "0.4.5"
+    SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
     # Core Rulebook: Legend of the Five Rings Roleplaying Game (FFG, 2018)
@@ -299,20 +299,22 @@ BASE "L5R5e_Core_Core" {
 
         ENUM ["Air", "Earth", "Fire", "Water", "Void"]
 
-        # Each ring represents a different approach to any skill check.
-        # The GM determines which ring applies based on how the character
-        # describes their action. This determines which ring dice to roll
-        # and how many dice to keep.
-        #
-        # Air: Precision, subtlety, grace — speaking carefully, striking precisely
-        # Earth: Resilience, patience, thoroughness — enduring, remembering, defending
-        # Fire: Passion, invention, ferocity — creating, commanding, attacking aggressively
-        # Water: Flexibility, awareness, adaptation — perceiving, persuading, flowing
-        # Void: Instinct, mysticism, wisdom — intuiting, sensing the supernatural
+        # Each ring represents a different approach to any skill check. The GM
+        # determines which ring applies based on how the character describes their
+        # action; this sets which ring dice to roll and how many dice to keep. The
+        # concept-words for each ring's approach are in the GUIDANCE block below.
 
         RULES {
             #L5R030jK1lM3nO5pQ7rS9t: approach_determines_ring_used
             #L5R031uV2wX4yZ6aB8cD0e: approach_determines_opportunity_options
+        }
+    }
+
+    GUIDANCE {
+        ENTRY ^"ring-approach-concepts" #L5RG06bC7dE8fG9hI0jK1l {
+            CONCERNS [ ^"Approach" ]
+            TOPICS [ "rings", "approaches" ]
+            TEXT "Each ring corresponds with a set of methods that relate to the following concepts (explored in more detail in Chapter 3: Skills): Air: Grace, cunning, precision, subtlety. Earth: Resilience, patience, memory, calm. Fire: Passion, invention, candor, ferocity. Water: Flexibility, awareness, efficiency, charm. Void: Mysticism, intuition, instinct, wisdom."
         }
     }
 
@@ -724,6 +726,34 @@ BASE "L5R5e_Core_Core" {
             #L5R066pQ7rS9tU1vW3xY5z: npc_control
             #L5R067aB8cD0eF2gH4iJ6k: rule_arbitration_authority
             #L5R068lM9nO1pQ3rS5tU7v: target_number_determination
+        }
+    }
+
+    ^"Player Character" DEF {
+
+        # A player character (PC) — the character a player portrays within the
+        # world of the game. A PC's numerical values live in ^"Rings" and the
+        # skill DEFs; who plays, and how, is covered in the GUIDANCE block below.
+    }
+
+    # -----------------------------------------------------------------------
+    # GUIDANCE (§22) — advisory prose about who plays and how (book pp.20-21).
+    # -----------------------------------------------------------------------
+    GUIDANCE {
+        ENTRY ^"players-and-pcs" #L5RG03uV4wX5yZ6aB7cD8e {
+            CONCERNS [ ^"Player Character" ]
+            TOPICS [ "players", "player characters" ]
+            TEXT "Most of the participants in the game, termed players, portray a person within the world of the game. Each player controls one such character (called, intuitively enough, a player character, or PC). Players decide the history, beliefs, desires, and quirks of their player characters; make decisions for their characters during the game; and control and portray their characters when roleplaying. PCs also have numerical values, such as rings and skills, that reflect their aptitudes, training, and traits. These values help them undertake tasks within the story."
+        }
+        ENTRY ^"the-game-masters-role" #L5RG04fG5hI6jK7lM8nO9p {
+            CONCERNS [ ^"GM Role" ]
+            TOPICS [ "game master" ]
+            TEXT "To aid in the telling of the story, one participant serves as the game master (GM) instead of as a player. The game master is the group's guide, who invents the frame of the story and presents the PCs with challenges, decisions, and opportunities. The game master is not the sole architect of the story, but this person does have a particularly important role in helping the PCs to interact with the world. They portray the other inhabitants of Rokugan (non-player characters, or NPCs), describe each scene to the players, and act as an arbitrator in the infinite number of situations that can arise."
+        }
+        ENTRY ^"what-is-the-game-masters-role" #L5RG05qR6sT7uV8wX9yZ0a {
+            CONCERNS [ ^"GM Role" ]
+            TOPICS [ "game master", "collaboration" ]
+            TEXT "The game master is the group's access point to the world of Rokugan, and the final arbiter on many matters of story and rules. However, that doesn't mean that the players have no say over the story—balance and respect for one another are key. The players should listen to the GM, and the GM should listen to the players, too, and incorporate their ideas as appropriate. If this is your first time playing or running a roleplaying game, make sure to read Chapter 7: The Game Master (see page 281) for insight on how both the GM and the players can collaborate to make the game the best it can be!"
         }
     }
 

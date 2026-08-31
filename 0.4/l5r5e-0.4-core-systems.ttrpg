@@ -1,7 +1,7 @@
 BASE "L5R5e_Core_Systems" {
     NAME "Legend of the Five Rings 5th Edition - Game systems: combat, conditions, strife, honor, weapons, armor, and NPCs"
-    VERSION "0.4.4"
-    SPEC_VERSION "0.4"
+    VERSION "0.4.5"
+    SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
     # Core Rulebook: Combat resolution, conditions, strife/composure,
@@ -17,6 +17,37 @@ BASE "L5R5e_Core_Systems" {
 
     ^"System" DEF {
         # Metatype anchor for game system and subsystem definitions
+    }
+
+    ^"Legend of the Five Rings" DEF {
+        APPLIES TO [^"System"]
+
+        # The game itself. The Legend of the Five Rings Roleplaying Game
+        # (abbreviated "L5R" or "L5R RPG") is a game of samurai drama set in the
+        # fictional land of Rokugan. Its premise, theme, and tone are carried in
+        # the GUIDANCE block below (see also ^"Ninjō" and ^"Giri").
+
+        PROPERTIES {
+            ^"Abbreviation" STRING "L5R"
+            ^"Genre" STRING "Samurai drama"
+            ^"Setting" STRING "Rokugan"
+        }
+    }
+
+    # -----------------------------------------------------------------------
+    # GUIDANCE (§22) — the game's premise, theme, and tone (book p.20).
+    # -----------------------------------------------------------------------
+    GUIDANCE {
+        ENTRY ^"what-is-a-roleplaying-game" #L5RG01aB2cD3eF4gH5iJ6k {
+            CONCERNS [ ^"Legend of the Five Rings" ]
+            TOPICS [ "tone", "rules philosophy" ]
+            TEXT "A roleplaying game is a group storytelling exercise that enables groups of people to develop their own characters, stories, and worlds together with their friends. Unlike those in a competitive game, the rules of a roleplaying game are intended first and foremost to help people tell stories and have fun. The rules for the Legend of the Five Rings Roleplaying Game (commonly abbreviated simply as \"L5R\" or \"L5R RPG\") are written with a certain degree of technical precision, but they should be understood as tools to facilitate storytelling rather than as restrictions that must be applied \"correctly\" in all cases. Remember, as long as everyone is having fun, you're playing the game properly!"
+        }
+        ENTRY ^"a-game-of-samurai-drama" #L5RG02kL3mN4oP5qR6sT7u {
+            CONCERNS [ ^"Legend of the Five Rings" ]
+            TOPICS [ "premise", "theme", "setting" ]
+            TEXT "The Legend of the Five Rings Roleplaying Game is a game of samurai drama. Set in the fictional land of Rokugan, it draws inspiration from real-world literature and history. The primary characters of the game are samurai, who are torn between their personal desires and their sworn duties. They must often contend with cunning court intrigues, deadly armed conflicts, and dangerous supernatural creatures."
+        }
     }
 
     ^"Item" DEF {
