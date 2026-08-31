@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Systems" {
     NAME "Legend of the Five Rings 5th Edition - Game systems: combat, conditions, strife, honor, weapons, armor, and NPCs"
-    VERSION "0.4.7"
+    VERSION "0.4.8"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -47,6 +47,11 @@ BASE "L5R5e_Core_Systems" {
             CONCERNS [ ^"Legend of the Five Rings" ]
             TOPICS [ "premise", "theme", "setting" ]
             TEXT "The Legend of the Five Rings Roleplaying Game is a game of samurai drama. Set in the fictional land of Rokugan, it draws inspiration from real-world literature and history. The primary characters of the game are samurai, who are torn between their personal desires and their sworn duties. They must often contend with cunning court intrigues, deadly armed conflicts, and dangerous supernatural creatures."
+        }
+        ENTRY ^"miyamoto-musashi-on-mastery" #L5RG33nO4pQ5rS6tU7vW8x {
+            CONCERNS [ ^"Legend of the Five Rings" ]
+            TOPICS [ "inspiration", "mastery" ]
+            TEXT "Legend of the Five Rings owes a great deal to the real world historical writings of Miyamoto Musashi, a famous Japanese sword master. The Book of Five Rings (c. 1645) is his martial and philosophical manual, and offers insights on fighting and how these apply to life more generally. Interestingly, Musashi did not write his account until decades after his legendary career as a duelist. Further, reflecting on his success in youth, he describes how he did not reach the underlying truth of martial arts until late in his life, decades after his last known duel. Despite achieving the height of his demonstrated fighting ability early in his career, he felt that his understanding of martial arts—and, by extension, all other arts he learned—was incomplete until he had spent another twenty years studying and reflecting. In this game, reaching Rank 5 in a skill is akin to Musashi reaching his peak as a practicing duelist in his youth. It is an incredible achievement, but does not yet reflect full understanding of the art or the wider implications of the idea of mastery itself. To achieve their greatest potential, a character must not only advance their skills and rings, but also come to understand themself and their place in the world."
         }
     }
 
@@ -116,6 +121,11 @@ BASE "L5R5e_Core_Systems" {
             CONCERNS [ ^"Strife" ]
             TOPICS [ "strife", "theme", "decorum" ]
             TEXT "Rokugani ideals state that samurai are to maintain proper decorum at all times, keeping their emotions under a tight leash except in specific situations. However, samurai are people, and thus they still experience the challenges, joys, frustrations, and sorrows that make up life. These myriad emotions are represented by strife. Players are responsible for tracking how much strife their characters have accrued. The GM should track strife for NPCs, though many NPCs use simplified rules for strife (see page 309). Even those raised under the strictest standards of emotional self-control or committed to finding spiritual peace risk cracking from time to time under the pressures of rule, courtly life, love, or warfare. In the game, strife can come from many activities."
+        }
+        ENTRY ^"stoicism-and-its-limits" #L5RG32mN3oP4qR5sT6uV7w {
+            CONCERNS [ ^"Strife", ^"Compromised" ]
+            TOPICS [ "strife", "theme", "decorum" ]
+            TEXT "Although specifics vary by region and tradition, Rokugani culture at large idealizes a samurai who maintains a stoic outward demeanor. Joys and sorrows alike are to be accepted with the same stern affect. However, the truth of the matter is that no human being can uphold this ideal perfectly all the time—without an outlet for their emotions, a character will eventually become unfocused, distracted, and exhausted."
         }
     }
 
@@ -194,6 +204,38 @@ BASE "L5R5e_Core_Systems" {
             #L5R408kL0mN2oP4qR6sT8u: unmask_removes_all_strife
             #L5R409vW1xY3zA5bC7dE9f: unmask_has_consequences
             #L5R410gH2iJ4kL6mN8oP0q: unmask_once_per_scene
+        }
+    }
+
+    # -----------------------------------------------------------------------
+    # GUIDANCE (§22) — verbatim ways to unmask (book p31); the structured
+    # UNMASK_OPTIONS above is the quick-reference, this preserves the exact text.
+    # -----------------------------------------------------------------------
+    GUIDANCE {
+        ENTRY ^"unmask-expose-opening" #L5RG34oP5qR6sT7uV8wX9y {
+            CONCERNS [ ^"Unmask" ]
+            TOPICS [ "unmask" ]
+            TEXT "The character reveals a vital flaw in their argument, defenses, or position, often related to one of their disadvantages. Unmasking this way allows others to strike at this weakness, reducing TN of the next check by a hostile character (as defined by the GM) that targets the character to 1."
+        }
+        ENTRY ^"unmask-honors-challenge" #L5RG35pQ6rS7tU8vW9xY0z {
+            CONCERNS [ ^"Unmask" ]
+            TOPICS [ "unmask", "duel" ]
+            TEXT "The character can bear their indignities no longer, and demands satisfaction by way of steel. The character must challenge an antagonist in the scene to a duel (not necessarily to the death). The duel might be fought immediately, or the participants might take the opportunity to prepare for their battle."
+        }
+        ENTRY ^"unmask-inappropriate-outburst" #L5RG36qR7sT8uV9wX0yZ1a {
+            CONCERNS [ ^"Unmask" ]
+            TOPICS [ "unmask" ]
+            TEXT "The character says something out of line or commits a deep breach of etiquette, shocking onlookers. Unmasking this way might let a character express a vital argument forbidden by propriety or reveal something that society demands they keep within. However, to do so, they must usually forfeit glory equal to their glory rank (a value equal to the tens digit of their Glory attribute), or more, at the GM's discretion."
+        }
+        ENTRY ^"unmask-panicked-retreat" #L5RG37rS8tU9vW0xY1zA2b {
+            CONCERNS [ ^"Unmask" ]
+            TOPICS [ "unmask" ]
+            TEXT "The character departs the scene immediately, without regard for propriety. Unmasking this way might allow a character to run away from certain defeat and live to fight another day. However, to flee from battle or another scene with similarly high stakes, they must usually forfeit honor equal to their honor rank, glory equal to their glory rank, or both."
+        }
+        ENTRY ^"unmask-rage" #L5RG38sT9uV0wX1yZ2aB3c {
+            CONCERNS [ ^"Unmask" ]
+            TOPICS [ "unmask" ]
+            TEXT "The character fails to contain their fury, and they lash out at people or objects around them. Unmasking this way might let a character launch a first strike against an unready foe or let them reinforce a threat by destroying a nearby object. However, to act so violently in an inappropriate context, the character must usually forfeit honor equal to their honor rank, glory equal to their glory rank, or both."
         }
     }
 

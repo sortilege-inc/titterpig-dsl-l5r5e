@@ -1,7 +1,7 @@
 BASE "L5R5e_Core_Traits" {
     NAME "Legend of the Five Rings 5th Edition - Rings, skills, and derived attributes"
-    VERSION "0.4.1"
-    SPEC_VERSION "0.4"
+    VERSION "0.4.2"
+    SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
     # Core Rulebook: Rings, skills, derived values, social attributes
@@ -35,10 +35,7 @@ BASE "L5R5e_Core_Traits" {
 
         INTEGER MIN 1 MAX 5
 
-        # Grace, cunning, precision, and subtlety. The Air ring
-        # represents the capacity for careful action, elegant speech,
-        # and quiet observation. Air characters notice small details,
-        # act with precision, and avoid drawing attention.
+        # Personality: see GUIDANCE ^"air-ring".
         #
         # Air approaches: speaking carefully, moving precisely,
         # noticing subtle clues, striking with finesse, deceiving
@@ -57,11 +54,7 @@ BASE "L5R5e_Core_Traits" {
 
         INTEGER MIN 1 MAX 5
 
-        # Resilience, patience, memory, and calm. The Earth ring
-        # represents steadfastness, the ability to endure hardship,
-        # recall information accurately, and remain composed under
-        # pressure. Earth characters are reliable, thorough, and hard
-        # to move.
+        # Personality: see GUIDANCE ^"earth-ring".
         #
         # Earth approaches: withstanding, remembering, maintaining,
         # defending patiently, observing thoroughly, enduring.
@@ -79,10 +72,7 @@ BASE "L5R5e_Core_Traits" {
 
         INTEGER MIN 1 MAX 5
 
-        # Passion, invention, candor, and ferocity. The Fire ring
-        # represents bold action, creative thinking, and direct
-        # confrontation. Fire characters are inventive, passionate,
-        # and forceful in their actions.
+        # Personality: see GUIDANCE ^"fire-ring".
         #
         # Fire approaches: creating, commanding, inventing, attacking
         # aggressively, speaking passionately, inspiring others.
@@ -100,10 +90,7 @@ BASE "L5R5e_Core_Traits" {
 
         INTEGER MIN 1 MAX 5
 
-        # Flexibility, awareness, efficiency, and charm. The Water ring
-        # represents adaptability, perception, and smooth action.
-        # Water characters flow around obstacles, perceive their
-        # surroundings clearly, and accomplish tasks efficiently.
+        # Personality: see GUIDANCE ^"water-ring".
         #
         # Water approaches: perceiving, persuading, adapting, flowing
         # around defenses, reading people, moving gracefully.
@@ -121,11 +108,7 @@ BASE "L5R5e_Core_Traits" {
 
         INTEGER MIN 1 MAX 5
 
-        # Mysticism, intuition, instinct, and wisdom. The Void ring
-        # represents connection to the spiritual, the ability to act
-        # on instinct, and transcendence of the other four elements.
-        # Void characters sense the supernatural, act on gut feelings,
-        # and see through deception.
+        # Personality: see GUIDANCE ^"void-ring".
         #
         # Void approaches: acting instinctively, sensing the supernatural,
         # achieving enlightenment, meditating, divining.
@@ -135,6 +118,42 @@ BASE "L5R5e_Core_Traits" {
             #L5R120mN2oP4qR6sT8uV0w: void_opportunity_reduce_tn
             #L5R121xY3zA5bC7dE9fG1h: void_determines_void_point_max
             #L5R122iJ4kL6mN8oP0qR2s: void_used_for_initiative
+        }
+    }
+
+    # -----------------------------------------------------------------------
+    # GUIDANCE (§22) — verbatim ring personalities (book pp.32-34).
+    # -----------------------------------------------------------------------
+    GUIDANCE {
+        ENTRY ^"the-five-rings" #L5RG20aB1cD2eF3gH4iJ5k {
+            CONCERNS [ ^"Ring" ]
+            TOPICS [ "rings" ]
+            TEXT "Each of the five rings represents a character's natural inclination toward a certain approach to solving problems. Rather than reflecting exclusively mental and physical parameters, a character's rings are primarily an expression of their propensity toward certain ways of seeing the world and facing challenges. When making a check using a given ring, a player rolls a number of Ring dice ((ring)) equal to their value for that ring. For player characters, each ring has a rank between 1 and 5, though some exceptional beings might possess values beyond this range."
+        }
+        ENTRY ^"air-ring" #L5RG21bC2dE3fG4hI5jK6l {
+            CONCERNS [ ^"Air" ]
+            TOPICS [ "rings", "air" ]
+            TEXT "The Air Ring represents a graceful, cunning, and precise personality. This approach is subtle or layered with nuance, as the character moves too nimbly or speaks too obliquely to be pinned down. A character with a high Air Ring value is eloquent, physically and socially deft, and shrewd."
+        }
+        ENTRY ^"earth-ring" #L5RG22cD3eF4gH5iJ6kL7m {
+            CONCERNS [ ^"Earth" ]
+            TOPICS [ "rings", "earth" ]
+            TEXT "The Earth Ring represents a character's aptitude for taking a steady, thorough, and grounded approach to problems. This approach is cautious and considerate, as the character works to get results without suffering losses or taking unneeded risks. A character with a high Earth Ring value is likely to be physically tough, mentally resilient, and reliable."
+        }
+        ENTRY ^"fire-ring" #L5RG23dE4fG5hI6jK7lM8n {
+            CONCERNS [ ^"Fire" ]
+            TOPICS [ "rings", "fire" ]
+            TEXT "The Fire Ring represents a ferocious, direct, and inventive personality. This approach is explosive and intense, as the character works to get results no matter the cost to himself or others. A character with a high Fire Ring value is likely to be passionate, curious, physically quick, occasionally brusque, and a fast learner."
+        }
+        ENTRY ^"water-ring" #L5RG24eF5gH6iJ7kL8mN9o {
+            CONCERNS [ ^"Water" ]
+            TOPICS [ "rings", "water" ]
+            TEXT "The Water Ring represents an adaptable, powerful, and perceptive personality. The approach is balanced and reversible, as the character works to achieve results without overextending themself or underperforming. A character with a high Water Ring value is naturally affable, physically flexible, observant, and easygoing."
+        }
+        ENTRY ^"void-ring" #L5RG25fG6hI7jK8lM9nO0p {
+            CONCERNS [ ^"Void" ]
+            TOPICS [ "rings", "void" ]
+            TEXT "The Void Ring represents a centered, unflinching personality; it can also represent the \"flow state.\" By letting go of the suffering inherent in one's ego-driven desires, the samurai can transcend earthly limitations. It is the enlightened approach, accepting the nature of all Elements, yet allowing no one Element to dominate. A character with a high Void Ring value is likely to be spiritually sensitive, wise, and introspective."
         }
     }
 
@@ -240,12 +259,10 @@ BASE "L5R5e_Core_Traits" {
 
         INTEGER MIN 0 MAX 100
 
-        # Measures a character's personal investment in the code of Bushido.
         # Rank = tens digit (e.g., honor 35 = rank 3).
         # Characters above rank 6 gain virtue advantages.
         # Characters below rank 3 gain flaw disadvantages.
-        # Changes through roleplay: honorable actions increase,
-        # dishonorable actions decrease.
+        # Description: see GUIDANCE ^"honor".
 
         RULES {
             #L5R131dE3fG5hI7jK9lM1n: honor_rank_calculation
@@ -261,11 +278,9 @@ BASE "L5R5e_Core_Traits" {
 
         INTEGER MIN 0 MAX 100
 
-        # Measures a character's reputation and fame in Rokugani society.
         # Rank = tens digit. Reflects how well-known a character's deeds are.
         # High glory grants fame advantages; low glory grants infamy.
-        # Changes through public deeds: heroic acts increase,
-        # shameful public acts decrease.
+        # Description: see GUIDANCE ^"glory".
 
         RULES {
             #L5R136gH8iJ0kL2mN4oP6q: glory_rank_calculation
@@ -281,16 +296,50 @@ BASE "L5R5e_Core_Traits" {
 
         INTEGER MIN 0 MAX 100
 
-        # Measures a character's social standing and rank within the
-        # Celestial Order. Rank = tens digit. Largely determined by
-        # birth and position. Changes infrequently, typically through
-        # promotion, demotion, or political upheaval.
+        # Rank = tens digit. Largely determined by birth and position.
         # Used by GM to determine social deference and authority.
+        # Description: see GUIDANCE ^"status".
 
         RULES {
             #L5R141jK3lM5nO7pQ9rS1t: status_rank_calculation
             #L5R142uV4wX6yZ8aB0cD2e: status_determines_social_deference
             #L5R143fG5hI7jK9lM1nO3p: status_rarely_changes
+        }
+    }
+
+    # -----------------------------------------------------------------------
+    # GUIDANCE (§22) — verbatim social-attribute descriptions (book p37).
+    # -----------------------------------------------------------------------
+    GUIDANCE {
+        ENTRY ^"honor" #L5RG26gH7iJ8kL9mN0oP1q {
+            CONCERNS [ ^"Honor" ]
+            TOPICS [ "honor", "social attributes" ]
+            TEXT "Honor represents a character's personal investment in the concept of Bushidō and that character's belief that they are upholding the values it entails. Honor increases when a character makes a hard choice in the name of Bushidō, and decreases when a character acts in opposition to these values, loses faith in their code, or stakes their honor on an oath that they break. A high or low honor attribute results in a character gaining virtue advantages or flaw disadvantages (see Table 7-2: Honor Scores, on page 302)."
+        }
+        ENTRY ^"glory" #L5RG27hI8jK9lM0nO1pQ2r {
+            CONCERNS [ ^"Glory" ]
+            TOPICS [ "glory", "social attributes" ]
+            TEXT "Glory represents society's view of a character's success in their mandated role. It reflects the reputation they have as an effective agent of their lord, as well as a general consensus on how they uphold Bushidō. Glory rises from a character's heroic deeds, and decreases when a character disparages Bushidō, lets their reputation suffer, or stakes it on a boastful claim they fail to fulfill. A high or low glory attribute results in a character gaining fame advantages or infamy disadvantages (see Table 7-3: Glory Scores, on page 304)."
+        }
+        ENTRY ^"status" #L5RG28iJ9kL0mN1oP2qR3s {
+            CONCERNS [ ^"Status" ]
+            TOPICS [ "status", "social attributes" ]
+            TEXT "Status is an attribute that reflects a character's social standing, based on both their political sway and the mandate of the Celestial Order. Status changes infrequently; instead, it is mostly used by the GM to measure the comparative social standing of the PCs and various NPCs, as well as by the PCs to know the proper etiquette they should use to interact with a given NPC (see Table 7-4: Status Scores, on page 305)."
+        }
+        ENTRY ^"social-attributes-and-inner-conflict" #L5RG29jK0lM1nO2pQ3rS4t {
+            CONCERNS [ ^"Honor", ^"Glory", ^"Status" ]
+            TOPICS [ "social attributes", "theme" ]
+            TEXT "Samurai dramas focus on characters' internal conflicts as much as external ones. While external foes and challenges frequently drive the plot, a samurai's principal battle is often fought within their own heart. In the Legend of the Five Rings Roleplaying Game, characters have three social attributes (honor, glory, and status) to help players weigh the societal forces constantly pulling upon a samurai."
+        }
+        ENTRY ^"gm-guidance-on-social-attributes" #L5RG30kL1mN2oP3qR4sT5u {
+            CONCERNS [ ^"Honor", ^"Glory", ^"Status" ]
+            TOPICS [ "social attributes", "game master" ]
+            TEXT "Chapter 7: The Game Master has resources for GMs to use social attributes during the game. If a character's honor or glory increases above 64 or falls below 30, they begin to receive advantages or disadvantages as described in these tables."
+        }
+        ENTRY ^"you-the-player-and-you-the-character" #L5RG31lM2nO3pQ4rS5tU6v {
+            CONCERNS [ ^"Advantage", ^"Technique" ]
+            TOPICS [ "abilities", "second person" ]
+            TEXT "Character abilities such as advantages and techniques are written in second person for clarity. As the player, you make all decisions for your character, who does what is described in the ability within the fiction of the game."
         }
     }
 
