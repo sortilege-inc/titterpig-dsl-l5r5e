@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_NPCs" {
     NAME "Legend of the Five Rings 5th Edition - Core Rulebook Chapter 8 non-player character stat blocks"
-    VERSION "0.4.1"
+    VERSION "0.4.2"
     SPEC_VERSION "0.4"
     RELEASE_DATE "2026-03-01"
 
@@ -1259,6 +1259,152 @@ BASE "L5R5e_Core_NPCs" {
                 ^"Composure" INTEGER 4
                 ^"Combat Conflict Rank" INTEGER 1
             }
+        }
+    }
+    ^"Artist Template" DEF {
+        APPLIES TO [^"NPC Template"]
+
+        # Core Rulebook p312: NPC template overlay applied to a base NPC profile.
+
+        PROPERTIES {
+            ^"Base Profile" STRING "Any NPC profile"
+            ^"Conflict Rank Modifier" STRING "Intrigue +2"
+            ^"Ring Modifier" STRING "+1 Fire"
+            ^"Skill Modifier" STRING "+2 Artisan and Social skills"
+            ^"Advantages (Add or Replace 0-2)" STRING "Eye for Detail (Air) [Artisan; Mental], Renown (Fire) [Artisan; Interpersonal], Steady Hand (Earth) [Artisan; Physical]"
+            ^"Disadvantages (Add or Replace 0-2)" STRING "Cantankerous (Water) [Social; Interpersonal], Naiveté (Fire) [Social; Interpersonal], World-Weariness (Earth) [Social; Interpersonal]"
+            ^"Techniques (Add)" STRING "Shūji (shuji)"
+            ^"Demeanor (Replace 1)" STRING "Detached, Gruff, Shrewd"
+        }
+
+        RULES {
+            #2ESMowcuaIwakEEmiQoaC8: artist_template_overlay
+        }
+    }
+
+    ^"Investigator Template" DEF {
+        APPLIES TO [^"NPC Template"]
+
+        # Core Rulebook p312: NPC template overlay applied to a base NPC profile.
+
+        PROPERTIES {
+            ^"Base Profile" STRING "Any NPC profile"
+            ^"Conflict Rank Modifier" STRING "Combat +2, Intrigue +2"
+            ^"Ring Modifier" STRING "+1 Air"
+            ^"Skill Modifier" STRING "+1 Martial and Scholar Skills"
+            ^"Advantages (Add or Replace 0-2)" STRING "Analytical Mind (Fire) [Scholar; Mental], Self-Awareness (Void) [Martial; Mental], Sharp Eyes (Water) [Scholar; Physical]"
+            ^"Disadvantages (Add or Replace 0-2)" STRING "Disbeliever (Fire) [Social; Mental], Haughty Tone (Air) [Social; Interpersonal], Severe Allergies (Earth) [Martial; Physical]"
+            ^"Techniques (Add)" STRING "Kata (kata), Shūji (shuji)"
+            ^"Demeanor (Replace 1)" STRING "Gruff, Shrewd"
+        }
+
+        RULES {
+            #Amya8uiiU4ayuYcUgcAKgo: investigator_template_overlay
+        }
+    }
+
+    ^"Sage Template" DEF {
+        APPLIES TO [^"NPC Template"]
+
+        # Core Rulebook p312: NPC template overlay applied to a base NPC profile.
+
+        PROPERTIES {
+            ^"Base Profile" STRING "Any NPC profile"
+            ^"Conflict Rank Modifier" STRING "Intrigue +2, Combat +1"
+            ^"Ring Modifier" STRING "+1 Earth"
+            ^"Skill Modifier" STRING "+1 Scholar and Trade skills"
+            ^"Advantages (Add or Replace 0-2)" STRING "Forbidden Knowledge [Mahō] (Fire) [Scholar; Mental], Exact Memory (Earth) [Scholar; Mental], Well-Read (Fire) [Scholar; Mental]"
+            ^"Disadvantages (Add or Replace 0-2)" STRING "Bitter Marriage (Water) [Social; Interpersonal], Know-It-All (Air) [Social; Interpersonal], Frailty (Earth) [Martial; Physical]"
+            ^"Techniques (Add)" STRING "Mahō (maho), Shūji (shuji)"
+            ^"Demeanor (Replace 1)" STRING "Detached, Shrewd"
+        }
+
+        RULES {
+            #YaqwY88Ms0oisCSwy84M86: sage_template_overlay
+        }
+    }
+
+    ^"Socialite Template" DEF {
+        APPLIES TO [^"NPC Template"]
+
+        # Core Rulebook p312: NPC template overlay applied to a base NPC profile.
+
+        PROPERTIES {
+            ^"Base Profile" STRING "Any NPC profile"
+            ^"Conflict Rank Modifier" STRING "Intrigue +2"
+            ^"Ring Modifier" STRING "+1 Water"
+            ^"Skill Modifier" STRING "+2 Social and Trade skills"
+            ^"Advantages (Add or Replace 0-2)" STRING "Well-Spoken (Air) [Social; Interpersonal], Prim (Earth) [Social; Interpersonal], Seems Trustworthy (Water) [Social; Interpersonal]"
+            ^"Disadvantages (Add or Replace 0-2)" STRING "Doomed Love (Fire) [Social; Interpersonal], Lack of Empathy (Air) [Social; Mental], Bad Eyesight (Water) [Scholar; Physical]"
+            ^"Techniques (Add)" STRING "Shūji (shuji)"
+            ^"Demeanor (Replace 1)" STRING "Assertive, Shrewd"
+        }
+
+        RULES {
+            #0OewaqqO6a2S6saQ2kgycU: socialite_template_overlay
+        }
+    }
+
+    ^"Spiritualist Template" DEF {
+        APPLIES TO [^"NPC Template"]
+
+        # Core Rulebook p312: NPC template overlay applied to a base NPC profile.
+
+        PROPERTIES {
+            ^"Base Profile" STRING "Any NPC profile"
+            ^"Conflict Rank Modifier" STRING "Combat +1, Intrigue +1"
+            ^"Ring Modifier" STRING "+1 Void"
+            ^"Skill Modifier" STRING "+1 Artisan and Scholar Skills"
+            ^"Advantages (Add or Replace 0-2)" STRING "Partial Enlightenment (Void) [Scholar; Spiritual], Keen Empathy (Air) [Social; Interpersonal], Friendly Kami or Spirit (Fire, Earth, Air, or Water) [Scholar; Spiritual]"
+            ^"Disadvantages (Add or Replace 0-2)" STRING "Poverty (Water) [Trade; Material], Fanaticism (Fire) [Social; Mental], Repressed (Fire) [Social; Mental]"
+            ^"Techniques (Add)" STRING "Invocations (invocation), Kihō (kiho)"
+            ^"Demeanor (Replace 1)" STRING "Detached, Assertive"
+        }
+
+        RULES {
+            #OK8WEwowqokkoumygcsc6s: spiritualist_template_overlay
+        }
+    }
+
+    ^"Trickster Template" DEF {
+        APPLIES TO [^"NPC Template"]
+
+        # Core Rulebook p312: NPC template overlay applied to a base NPC profile.
+
+        PROPERTIES {
+            ^"Base Profile" STRING "Any NPC profile"
+            ^"Conflict Rank Modifier" STRING "Combat +1, Intrigue +2"
+            ^"Ring Modifier" STRING "+1 Air"
+            ^"Skill Modifier" STRING "+1 Social and Scholar skills"
+            ^"Advantages (Add or Replace 0-2)" STRING "Excellent Liar (Air) [Social; Interpersonal], Patience (Earth) [Scholar; Mental], Loves Haggling (Water) [Trade; Interpersonal]"
+            ^"Disadvantages (Add or Replace 0-2)" STRING "Fear of Failure (Fire) [Martial; Mental], Narcissism (Earth) [Social; Mental], Unmemorable Face (Air) [Social; Physical]"
+            ^"Techniques (Add)" STRING "Ninjutsu (ninjutsu), Shūji (shuji)"
+            ^"Demeanor (Replace 1)" STRING "Ambitious, Shrewd"
+        }
+
+        RULES {
+            #m0OUAwmEWCEcwyAm60qUuK: trickster_template_overlay
+        }
+    }
+
+    ^"Warrior Template" DEF {
+        APPLIES TO [^"NPC Template"]
+
+        # Core Rulebook p312: NPC template overlay applied to a base NPC profile.
+
+        PROPERTIES {
+            ^"Base Profile" STRING "Any NPC profile"
+            ^"Conflict Rank Modifier" STRING "Combat +2, Intrigue +1"
+            ^"Ring Modifier" STRING "+1 Fire"
+            ^"Skill Modifier" STRING "+2 Martial and Social skills"
+            ^"Advantages (Add or Replace 0-2)" STRING "Masterful Fighter (Earth) [Martial; Mental], Fearsome Presence (Fire) [Social; Interpersonal], Veteran's Instincts (Water) [Scholar; Mental]"
+            ^"Disadvantages (Add or Replace 0-2)" STRING "Bad Dreams (Void) [Martial; Mental], Quick to Anger (Fire) [Social; Interpersonal], Shattered by War (Earth) [Social; Mental]"
+            ^"Techniques (Add)" STRING "Kata (kata)"
+            ^"Demeanor (Replace 1)" STRING "Assertive, Gruff"
+        }
+
+        RULES {
+            #yYuek8C2Y0sWMIKCwSGaOu: warrior_template_overlay
         }
     }
 }
