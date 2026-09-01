@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Systems" {
     NAME "Legend of the Five Rings 5th Edition - Game systems: combat, conditions, strife, honor, weapons, armor, and NPCs"
-    VERSION "0.4.13"
+    VERSION "0.4.14"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -2149,6 +2149,7 @@ BASE "L5R5e_Core_Systems" {
             ^"Qualities" LIST OF STRING  # References ^"Item Quality" values
             ^"Rarity" INTEGER MIN 1 MAX 9
             ^"Price" STRING
+            ^"Description" STRING  # Verbatim narrative flavor (no mechanical effect)
         }
 
         # --- WEARING ARMOR ---
@@ -2173,45 +2174,95 @@ BASE "L5R5e_Core_Systems" {
 
         # Format: Name, Resistance Values, Qualities, Rarity, Price
 
-        ARMOR_TABLE {
-            ^"Sleeping Garb" "Rarity 2, 1 koku"
-            # Loose robe, shift, or jinbei worn when sleeping. Those of
-            # sufficient wealth or status wear these for private lounging.
+        ARMOR {
+            #oAmMyus6GKQAeQskQUqMAu ^"Sleeping Garb" DEF {
+                PROPERTIES {
+                    ^"Rarity" INTEGER 2
+                    ^"Price" STRING "1 koku"
+                    ^"Description" STRING "Most Rokugani possess no dedicated sleeping clothes, but those of sufficient wealth or status (such as samurai) often wear a loose robe, a shift, or a jinbei when sleeping. A jinbei set consists of a short, loose, short-sleeved jacket that belts at the waist and matching short trousers. Jinbei sets are reserved for sleeping and private lounging, and are most often worn by men. Many women instead choose shifts or gowns that cover the wearer from shoulder to midcalf, though some prefer jinbei."
+                }
+            }
 
-            ^"Common Clothes" "Physical 1, Mundane, Rarity 1, 1 bu"
-            # Ranges from simple peasant trousers and smocks to the
-            # broad-shouldered haori or embroidered silk kimono.
+            #ScyaKoEAQem0GmQMeae0oY ^"Common Clothes" DEF {
+                PROPERTIES {
+                    ^"Physical Resistance" INTEGER 1
+                    ^"Qualities" LIST OF STRING ["Mundane"]
+                    ^"Rarity" INTEGER 1
+                    ^"Price" STRING "1 bu"
+                    ^"Description" STRING "Rokugani clothing runs the gamut from the simple trousers and smocks worn by peasants, to the broad-shouldered haori worn by traditionalist samurai, to the noble’s embroidered silk kimono."
+                }
+            }
 
-            ^"Ceremonial Clothes" "Physical 1, Ceremonial Resplendent, Rarity 4, 1 koku"
-            # Any garment worn during an official ceremony, from court
-            # kimono to Imperial accoutrement. Richly decorated, little protection.
+            #2GeQkig86E64CMeiWoW6A6 ^"Ceremonial Clothes" DEF {
+                PROPERTIES {
+                    ^"Physical Resistance" INTEGER 1
+                    ^"Qualities" LIST OF STRING ["Ceremonial", "Resplendent"]
+                    ^"Rarity" INTEGER 4
+                    ^"Price" STRING "1 koku"
+                    ^"Description" STRING "Ceremonial clothing is any garment worn during an official ceremony, from a samurai’s court kimono to the accoutrement of the Imperial family. Ceremonial clothing is often richly decorated and offers little protection."
+                }
+            }
 
-            ^"Sanctified Robes" "Physical 1 Supernatural 3, Ceremonial, Rarity 7, 4 koku"
-            # Vestments of shugenja, shrine keepers, and religious figures,
-            # blessed by kami. Traditionally jōe ("pure cloth") with peaked hat.
+            #YM0KwQCWUMqqUi2KsqYMKE ^"Sanctified Robes" DEF {
+                PROPERTIES {
+                    ^"Physical Resistance" INTEGER 1
+                    ^"Supernatural Resistance" INTEGER 3
+                    ^"Qualities" LIST OF STRING ["Ceremonial"]
+                    ^"Rarity" INTEGER 7
+                    ^"Price" STRING "4 koku"
+                    ^"Description" STRING "The vestments of shugenja, shrine keepers, and other religious figures are blessed by kami and thus grant mystical protection. Traditionally, such robes consist of a white garment called jōe (literally, “pure cloth”) and a peaked hat, but they can be simpler, such as a white haori top and red hakama bottoms, or even an elaborate kimono."
+                }
+            }
 
-            ^"Traveling Clothes" "Physical 2, Durable Mundane Subtle, Rarity 2, 2 bu"
-            # Roughspun garments designed to resist wear and tear. Anything
-            # from robes to jacket and leggings, often with hat or cloak.
+            #CoCYG4sku0kqAeM4iSoyCA ^"Traveling Clothes" DEF {
+                PROPERTIES {
+                    ^"Physical Resistance" INTEGER 2
+                    ^"Qualities" LIST OF STRING ["Durable", "Mundane", "Subtle"]
+                    ^"Rarity" INTEGER 2
+                    ^"Price" STRING "2 bu"
+                    ^"Description" STRING "Traveling clothes ordinarily consist of roughspun garments designed to resist wear and tear. They can be anything from robes to a kimono or jacket and leggings and are often accentuated with a hat or cloak."
+                }
+            }
 
-            ^"Concealed Armor" "Physical 2, Concealable, Rarity 4, 5 koku"
-            # Kimono, keikogi, or other garment with thin bamboo or metal
-            # plates sewn inside to turn an unexpected blade or arrow.
+            #esiiQGc8Sc8SO0qeImukYi ^"Concealed Armor" DEF {
+                PROPERTIES {
+                    ^"Physical Resistance" INTEGER 2
+                    ^"Qualities" LIST OF STRING ["Concealable"]
+                    ^"Rarity" INTEGER 4
+                    ^"Price" STRING "5 koku"
+                    ^"Description" STRING "Used by cautious courtiers, shinobi, and anyone else who fears assassination, concealed armor is a kimono, keikogi, or other garment with thin bamboo or metal plates sewn inside to turn an unexpected blade or arrow."
+                }
+            }
 
-            ^"Ashigaru Armor" "Physical 3, Wargear, Rarity 3, 5 koku"
-            # Cheap, lightweight peasant soldiery armor. Light plates sewn
-            # together protecting head, torso, and upper legs. Occasionally
-            # paired with a light helmet.
+            #Q2oaya82yYCMUuEqyO0MAS ^"Ashigaru Armor" DEF {
+                PROPERTIES {
+                    ^"Physical Resistance" INTEGER 3
+                    ^"Qualities" LIST OF STRING ["Wargear"]
+                    ^"Rarity" INTEGER 3
+                    ^"Price" STRING "5 koku"
+                    ^"Description" STRING "Cheap, lightweight, and easy to acquire, ashigaru armor is issued to the peasant soldiery. Possessing neither the beauty nor the fine craftsmanship of lacquered or plated armor, ashigaru armor consists of light plates sewn together to protect the head, torso, and upper legs. It is occasionally paired with a light helmet. Although it does not protect as well as heavier armor, it is lightweight, flexible, and inexpensive as armor goes."
+                }
+            }
 
-            ^"Lacquered Armor" "Physical 4, Ceremonial Cumbersome Wargear, Rarity 6, 25 koku"
-            # Thick leather or steel plates stitched/riveted to leather backing.
-            # Protects torso, head, upper arms, groin, and legs above knee.
-            # At home at war and at martial ceremony.
+            #w4MWAoKYqEyEi0Ec8y2S8i ^"Lacquered Armor" DEF {
+                PROPERTIES {
+                    ^"Physical Resistance" INTEGER 4
+                    ^"Qualities" LIST OF STRING ["Ceremonial", "Cumbersome", "Wargear"]
+                    ^"Rarity" INTEGER 6
+                    ^"Price" STRING "25 koku"
+                    ^"Description" STRING "Heavier than ashigaru armor, lacquered armor is worn by samurai who desire a good mix of protection and grandeur, and is just at home at war as at a martial ceremony. These suits are made of thick leather or steel plates stitched or riveted to a leather backing. They protect the torso, head, upper arms, and groin, and the legs above the knee. They can also include a helmet and mask, though these are not considered integral."
+                }
+            }
 
-            ^"Plated Armor" "Physical 5, Cumbersome Durable Wargear, Rarity 8, 40 koku"
-            # Also known as great armor. Numerous small steel and leather plates
-            # connected by rivets, woven silk cords, leather straps, or chains.
-            # Worn over silk clothing for added piercing protection.
+            #iWiGEuyEyQ0w0ekAmWUEmc ^"Plated Armor" DEF {
+                PROPERTIES {
+                    ^"Physical Resistance" INTEGER 5
+                    ^"Qualities" LIST OF STRING ["Cumbersome", "Durable", "Wargear"]
+                    ^"Rarity" INTEGER 8
+                    ^"Price" STRING "40 koku"
+                    ^"Description" STRING "Also known as great armor, suits of plated armor are among the heaviest worn by samurai. Not as ornate as lacquered armor and somewhat more restrictive but also notably more protective, plated armor is composed of numerous small steel and leather plates connected by rivets, woven silk cords, leather straps, or chains. The plates are attached to a leather or cloth backing and worn over silk clothing, which provides added protection from piercing attacks thanks to its tensile strength."
+                }
+            }
         }
 
         RULES {
