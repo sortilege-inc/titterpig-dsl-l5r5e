@@ -1,0 +1,495 @@
+# ============================================================================
+# .codex — lore knowledge graph for the Courts of Stone "Crane Clan" essay.
+# Stand-off over l5r5e-0.4-courts-of-stone-crane-clan.lore: every fact below is
+# derived from that prose, which stays byte-verbatim and UNTOUCHED. This file
+# points INTO it (SOURCE ... AT <heading-slug>) and records the verbatim surface
+# phrase each edge was read from (FROM "...").
+#
+# DATA-ONLY codex: the CATEGORIES taxonomy and RELATIONS predicate vocabulary
+# live in the shared l5r5e-0.4-codex-schema.codex, imported below via DEPENDS_ON.
+# Clan/family carets (^"Crane Clan", ^"Doji", ^"Kakita", ^"Daidoji", ^"Asahina",
+# ^"Lion Clan", ^"Matsu", ^"Shinjo", ^"Yasuki", ^"Crab Clan") resolve to the real
+# l5r5e DEFs when validated in the 0.4/ corpus — so lore entities link straight
+# to the mechanical clan/family DEFs.
+# ============================================================================
+
+CODEX "L5R5e_CoS_CraneClan_Codex" {
+    NAME "Courts of Stone: The Crane Clan — Lore Knowledge Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-01"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.1"   # shared CATEGORIES + RELATIONS
+
+    # ---- DATA: entities (nodes) + their relationships (typed edges) ---------
+
+    # -- People, Kami, spirits, fortunes --------------------------------------
+
+    ENTITY #L5RcxCrane001zqxawy ^"Lady Doji" {
+        IS ^"Kami"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "the-crane-clan"
+        RELATIONSHIPS {
+            ^"founder-of" -> ^"Crane Clan"       FROM "When the Kami Doji arrived in the Mortal Realm"
+            ^"sibling-of" -> ^"Shinjo"           FROM "the bond between Doji and Shinjo as siblings"
+            ^"parent-of"  -> ^"Yasurugi"         FROM "Lady Doji's eldest children"
+            ^"parent-of"  -> ^"Konishiko"        FROM "Lady Doji's eldest children"
+            ^"parent-of"  -> ^"Daidoji Hayaku"   FROM "Lady Doji's youngest son"
+        }
+    }
+
+    ENTITY #L5RcxCrane002zqxawy ^"Kakita the Swordsman" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "kakita----the-brilliant-blade"
+        RELATIONSHIPS {
+            ^"founder-of" -> ^"Kakita"  FROM "He softly replied"
+            ^"rival-of"   -> ^"Matsu"   FROM "the longest-running blood feud in Rokugan's history"
+        }
+    }
+
+    ENTITY #L5RcxCrane003zqxawy ^"Kiyamori" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "kakita----the-brilliant-blade"
+        RELATIONSHIPS {
+            ^"sibling-of" -> ^"Kakita the Swordsman" FROM "His twin sister Kiyamori"
+        }
+    }
+
+    ENTITY #L5RcxCrane004zqxawy ^"Yasurugi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "kakita----the-brilliant-blade"
+        RELATIONSHIPS {
+            ^"child-of"   -> ^"Lady Doji" FROM "Lady Doji's eldest children"
+            ^"sibling-of" -> ^"Konishiko" FROM "Lady Doji's eldest children"
+        }
+    }
+
+    ENTITY #L5RcxCrane005zqxawy ^"Konishiko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "kakita----the-brilliant-blade"
+        RELATIONSHIPS {
+            ^"child-of" -> ^"Lady Doji" FROM "Lady Doji's eldest children"
+        }
+    }
+
+    ENTITY #L5RcxCrane006zqxawy ^"Daidoji Hayaku" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "daidoji----the-silent-guardians"
+        RELATIONSHIPS {
+            ^"child-of"   -> ^"Lady Doji" FROM "Doji Hayaku, Lady Doji's youngest son"
+            ^"sibling-of" -> ^"Konishiko" FROM "to find his fallen sister Konishiko"
+            ^"founder-of" -> ^"Daidoji"   FROM "They called him Daidoji"
+        }
+    }
+
+    ENTITY #L5RcxCrane007zqxawy ^"Kakita Yoshi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "kakita----the-brilliant-blade"
+        RELATIONSHIPS {
+            ^"leads" -> ^"Kakita" FROM "The current daimyo Kakita Yoshi"
+        }
+    }
+
+    ENTITY #L5RcxCrane008zqxawy ^"Doji Satsume" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "doji----the-noble-heart"
+    }
+
+    ENTITY #L5RcxCrane009zqxawy ^"Doji Hotaru" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "doji----the-noble-heart"
+        RELATIONSHIPS {
+            ^"leads" -> ^"Crane Clan" FROM "Champion Doji Hotaru tasks the clan with finding allies"
+        }
+    }
+
+    ENTITY #L5RcxCrane010zqxawy ^"Isawa Asahina" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "asahina----the-peacemakers"
+        RELATIONSHIPS {
+            ^"founder-of" -> ^"Asahina" FROM "Isawa Asahina, the Elemental Master of Fire"
+        }
+    }
+
+    ENTITY #L5RcxCrane011zqxawy ^"Doji Kiriko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "asahina----the-peacemakers"
+    }
+
+    ENTITY #L5RcxCrane012zqxawy ^"Asahina Yajinden" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "asahina----the-peacemakers"
+    }
+
+    ENTITY #L5RcxCrane013zqxawy ^"Daidoji Yurei" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "the-night-of-falling-stars"
+        RELATIONSHIPS {
+            ^"haunts" -> ^"Yojin no Shiro" FROM "His spirit is said to haunt the gates"
+        }
+    }
+
+    ENTITY #L5RcxCrane014zqxawy ^"Prince Hantei XXIII" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "the-eye-of-the-needle"
+    }
+
+    ENTITY #L5RcxCrane015zqxawy ^"The Blind Monk" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "river-of-the-blind-monk"
+    }
+
+    ENTITY #L5RcxCrane016zqxawy ^"Benten" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "doji----the-noble-heart"
+    }
+
+    ENTITY #L5RcxCrane017zqxawy ^"Isora" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "uebe-beach"
+    }
+
+    ENTITY #L5RcxCrane018zqxawy ^"Daikumo-no-Kami" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "the-great-sea-spider"
+        RELATIONSHIPS {
+            ^"bound-to"    -> ^"Daidoji"             FROM "bound itself to the Daidoji family"
+            ^"located-in" -> ^"The Great Sea Spider" FROM "At the center of an atoll off the Daidoji coast churns a dark whirlpool"
+        }
+    }
+
+    ENTITY #L5RcxCrane019zqxawy ^"Kumo" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "the-great-sea-spider"
+    }
+
+    ENTITY #L5RcxCrane020zqxawy ^"Kawauso" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "motsureta-mura-tangled-path-village"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Motsureta Mura" FROM "inhabited by kawauso"
+        }
+    }
+
+    # -- Artifacts ------------------------------------------------------------
+
+    ENTITY #L5RcxCrane021zqxawy ^"Shukujo" {
+        IS ^"Artifact"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "kakita----the-brilliant-blade"
+        RELATIONSHIPS {
+            ^"forged-by"  -> ^"Yasurugi"       FROM "Yasurugi forged five exquisite blades for a tengu"
+            ^"wielded-by" -> ^"Konishiko"      FROM "picked up Shukujo and volunteered as the Crane Clan Thunder"
+            ^"wielded-by" -> ^"Daidoji Hayaku" FROM "returned after three years carrying Shukujo"
+        }
+    }
+
+    ENTITY #L5RcxCrane022zqxawy ^"Kunshu" {
+        IS ^"Artifact"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "kakita----the-brilliant-blade"
+        RELATIONSHIPS {
+            ^"forged-by" -> ^"Yasurugi" FROM "including Shukujo (ancestral sword of the Crane) and Kunshu"
+        }
+    }
+
+    ENTITY #L5RcxCrane023zqxawy ^"Yajinden's Cursed Works" {
+        IS ^"Artifact"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "asahina----the-peacemakers"
+        RELATIONSHIPS {
+            ^"forged-by"      -> ^"Asahina Yajinden" FROM "The resulting artifacts drove their wielders to madness and violence"
+            ^"sealed-beneath" -> ^"Shinden Asahina"  FROM "sealed his works beneath Shinden Asahina temple"
+        }
+    }
+
+    # -- Documents, events, traditions ----------------------------------------
+
+    ENTITY #L5RcxCrane024zqxawy ^"The Cost of Grace" {
+        IS ^"Document"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "the-cost-of-grace"
+    }
+
+    ENTITY #L5RcxCrane025zqxawy ^"The Night of Falling Stars" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "the-night-of-falling-stars"
+        RELATIONSHIPS {
+            ^"occurred-at" -> ^"Yojin no Shiro" FROM "Yojin no Shiro, just north of Kyuden Kakita, was seized by the Lion"
+            ^"involved"    -> ^"Lion Clan"      FROM "was seized by the Lion over 150 years ago"
+        }
+    }
+
+    ENTITY #L5RcxCrane026zqxawy ^"First Emerald Championship" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "kakita----the-brilliant-blade"
+        RELATIONSHIPS {
+            ^"involved" -> ^"Matsu" FROM "At the first Emerald Championship, Matsu swept every opponent aside"
+        }
+    }
+
+    ENTITY #L5RcxCrane027zqxawy ^"The Yasuki Grudge" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "daidoji----the-silent-guardians"
+        RELATIONSHIPS {
+            ^"involved" -> ^"Yasuki"    FROM "When the Yasuki defected to the Crab Clan in the fourth century"
+            ^"involved" -> ^"Crab Clan" FROM "the Yasuki defected to the Crab Clan"
+        }
+    }
+
+    ENTITY #L5RcxCrane028zqxawy ^"The Year Scroll" {
+        IS ^"Tradition"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "the-year-scroll"
+        RELATIONSHIPS {
+            ^"observed-by" -> ^"Crane Clan" FROM "Honored guests of Crane households may notice a scroll displayed prominently"
+        }
+    }
+
+    ENTITY #L5RcxCrane029zqxawy ^"Hanakotoba" {
+        IS ^"Tradition"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "doji----the-noble-heart"
+        RELATIONSHIPS {
+            ^"observed-by" -> ^"Doji" FROM "Hanakotoba (the language of flowers) encodes specific messages"
+        }
+    }
+
+    ENTITY #L5RcxCrane030zqxawy ^"Cadence" {
+        IS ^"Tradition"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "doji----the-noble-heart"
+        RELATIONSHIPS {
+            ^"observed-by" -> ^"Doji" FROM "Cadence is a secret Crane code of gestures, colors, and poetic words"
+        }
+    }
+
+    ENTITY #L5RcxCrane031zqxawy ^"Tsangusuri" {
+        IS ^"Tradition"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "asahina----the-peacemakers"
+        RELATIONSHIPS {
+            ^"observed-by" -> ^"Asahina" FROM "Known for their tsangusuri"
+        }
+    }
+
+    # -- Organizations & schools ----------------------------------------------
+
+    ENTITY #L5RcxCrane032zqxawy ^"Doji Academy" {
+        IS ^"School"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "shizuka-toshi-the-quiet-city"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Doji"          FROM "The Doji Academy at Shizuka Toshi is the clan's premier courtier training center"
+            ^"located-in"  -> ^"Shizuka Toshi" FROM "Home of the Doji Academy"
+        }
+    }
+
+    ENTITY #L5RcxCrane033zqxawy ^"Doji Bureaucrat School" {
+        IS ^"School"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "doji----the-noble-heart"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Doji" FROM "The Doji Bureaucrat School demands flawless calligraphy"
+        }
+    }
+
+    ENTITY #L5RcxCrane034zqxawy ^"Doji Rhetorician" {
+        IS ^"School"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "doji----the-noble-heart"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Doji" FROM "The Doji Rhetorician masters poetic metaphor"
+        }
+    }
+
+    ENTITY #L5RcxCrane035zqxawy ^"Inner Court Guard" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "doji----the-noble-heart"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Doji" FROM "The Inner Court Guard (elite bushi-courtiers) protect the Emperor's spouse"
+        }
+    }
+
+    ENTITY #L5RcxCrane036zqxawy ^"Kenshinzen" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "kakita----the-brilliant-blade"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Kakita" FROM "The most elite Kakita warriors"
+        }
+    }
+
+    ENTITY #L5RcxCrane037zqxawy ^"The Iron Crane" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "daidoji----the-silent-guardians"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Daidoji" FROM "The most prestigious Daidoji warriors"
+        }
+    }
+
+    ENTITY #L5RcxCrane038zqxawy ^"Kuranoko's Feathers" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "daidoji----the-silent-guardians"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Daidoji" FROM "secretly a smuggling organization that bypasses blockades"
+        }
+    }
+
+    ENTITY #L5RcxCrane039zqxawy ^"Brotherhood of Shinsei" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "doji----the-noble-heart"
+    }
+
+    # -- Places ---------------------------------------------------------------
+
+    ENTITY #L5RcxCrane040zqxawy ^"Crane Lands" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "crane-lands"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Crane Clan" FROM "Crane lands account for seventy percent of Rokugan's coastline"
+        }
+    }
+
+    ENTITY #L5RcxCrane041zqxawy ^"Northern Provinces" {
+        IS ^"Province"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "northern-and-southern-provinces"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Crane Lands" FROM "Northern provinces are the seat of power"
+        }
+    }
+
+    ENTITY #L5RcxCrane042zqxawy ^"Southern Provinces" {
+        IS ^"Province"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "northern-and-southern-provinces"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Crane Lands" FROM "Southern provinces are less developed and wilder"
+        }
+    }
+
+    ENTITY #L5RcxCrane043zqxawy ^"Shizuka Toshi" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "shizuka-toshi-the-quiet-city"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Osari Mori" FROM "nestled in the seclusion of the Osari Mori forest"
+        }
+    }
+
+    ENTITY #L5RcxCrane044zqxawy ^"Osari Mori" {
+        IS ^"Forest"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "shizuka-toshi-the-quiet-city"
+    }
+
+    ENTITY #L5RcxCrane045zqxawy ^"Shizuka Palace" {
+        IS ^"Palace"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "shizuka-toshi-the-quiet-city"
+        RELATIONSHIPS {
+            ^"located-in"    -> ^"Shizuka Toshi" FROM "Shizuka Palace, modeled after Kyuden Doji"
+            ^"modeled-after" -> ^"Kyuden Doji"   FROM "modeled after Kyuden Doji"
+        }
+    }
+
+    ENTITY #L5RcxCrane046zqxawy ^"Kyuden Doji" {
+        IS ^"Palace"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "northern-and-southern-provinces"
+        RELATIONSHIPS {
+            ^"located-in"   -> ^"Northern Provinces" FROM "Kyuden Doji and Kyuden Kakita are a day's ride from Otosan Uchi"
+            ^"located-near" -> ^"Otosan Uchi"        FROM "a day's ride from Otosan Uchi"
+        }
+    }
+
+    ENTITY #L5RcxCrane047zqxawy ^"Kyuden Kakita" {
+        IS ^"Palace"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "northern-and-southern-provinces"
+        RELATIONSHIPS {
+            ^"located-in"   -> ^"Northern Provinces" FROM "Kyuden Doji and Kyuden Kakita are a day's ride from Otosan Uchi"
+            ^"located-near" -> ^"Otosan Uchi"        FROM "a day's ride from Otosan Uchi"
+        }
+    }
+
+    ENTITY #L5RcxCrane048zqxawy ^"Otosan Uchi" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "northern-and-southern-provinces"
+    }
+
+    ENTITY #L5RcxCrane049zqxawy ^"The Eye of the Needle" {
+        IS ^"Forest"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "the-eye-of-the-needle"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Kyuden Doji" FROM "A tiny sacred forest near Kyuden Doji"
+        }
+    }
+
+    ENTITY #L5RcxCrane050zqxawy ^"River of the Blind Monk" {
+        IS ^"River"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "river-of-the-blind-monk"
+        RELATIONSHIPS {
+            ^"named-after" -> ^"The Blind Monk" FROM "Named for a mysterious figure who appears to lone travelers"
+        }
+    }
+
+    ENTITY #L5RcxCrane051zqxawy ^"Motsureta Mura" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "motsureta-mura-tangled-path-village"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Uebe Marshes" FROM "In the Uebe Marshes of the southern provinces"
+        }
+    }
+
+    ENTITY #L5RcxCrane052zqxawy ^"Uebe Marshes" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "motsureta-mura-tangled-path-village"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Southern Provinces" FROM "In the Uebe Marshes of the southern provinces"
+        }
+    }
+
+    ENTITY #L5RcxCrane053zqxawy ^"Laughing River Otter" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "motsureta-mura-tangled-path-village"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Motsureta Mura" FROM "The Laughing River Otter ryokan has an onsen"
+        }
+    }
+
+    ENTITY #L5RcxCrane054zqxawy ^"Musume Mura" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "musume-mura-daughter-village"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Kyuden Doji" FROM "Near Kyuden Doji"
+        }
+    }
+
+    ENTITY #L5RcxCrane055zqxawy ^"Lost Daughter Inlet" {
+        IS ^"Inlet"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "musume-mura-daughter-village"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Musume Mura" FROM "their intended spends a night alone in the shrine on Lost Daughter Inlet"
+        }
+    }
+
+    ENTITY #L5RcxCrane056zqxawy ^"The Great Sea Spider" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "the-great-sea-spider"
+    }
+
+    ENTITY #L5RcxCrane057zqxawy ^"Uebe Beach" {
+        IS ^"Beach"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "uebe-beach"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Motsureta Mura" FROM "The singing sands near Motsureta Mura"
+            ^"dedicated-to" -> ^"Isora"          FROM "A shrine to Isora, Fortune of the Shore, rises just offshore"
+        }
+    }
+
+    ENTITY #L5RcxCrane058zqxawy ^"Yojin no Shiro" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "the-night-of-falling-stars"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Kyuden Kakita" FROM "just north of Kyuden Kakita"
+        }
+    }
+
+    ENTITY #L5RcxCrane059zqxawy ^"Shinden Asahina" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "asahina----the-peacemakers"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Southern Provinces" FROM "rarely leaving their temples in the southern provinces"
+        }
+    }
+
+    ENTITY #L5RcxCrane060zqxawy ^"The Carpenter Wall" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-courts-of-stone-crane-clan.lore" AT "daidoji----the-silent-guardians"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Crab Clan" FROM "at least one year on the Carpenter Wall alongside the Crab"
+        }
+    }
+}

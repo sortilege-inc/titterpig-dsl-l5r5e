@@ -1,0 +1,81 @@
+# ============================================================================
+# .codex SCHEMA — the shared L5R5e lore-graph ontology (spec §25).
+#
+# Schema-only codex: the CATEGORIES type taxonomy and the RELATIONS predicate
+# vocabulary, with NO entity data. Every per-book L5R5e data codex imports this
+# via `DEPENDS_ON "L5R5e_Codex_Schema"` so the whole edition shares one taxonomy
+# and one predicate set — no category or predicate drift across books. This is
+# the BASE half of the BASE/EXTENSION split, applied to the lore graph.
+#
+# Category note: clans, families, and schools are NOT declared here — they are
+# already DEFs in the .ttrpg corpus, and `IS`/edge objects resolve to those DEFs
+# directly (lore taxonomy and mechanical types unify, §25). Only lore-native
+# types live below.
+# ============================================================================
+
+CODEX "L5R5e_Codex_Schema" {
+    NAME "L5R5e Lore Graph — Shared Ontology"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-01"
+    FOR EDITION "l5r5e"
+
+    # ---- Category taxonomy (the "IS a ___" types) ---------------------------
+    CATEGORIES {
+        ^"Person"        DEF {}
+        ^"Kami"          DEF { EXTENDS ^"Person" }
+        ^"Fortune"       DEF {}
+        ^"Spirit"        DEF {}
+        ^"Faction"       DEF {}
+        ^"Organization"  DEF { EXTENDS ^"Faction" }
+        ^"School"        DEF { EXTENDS ^"Organization" }
+        ^"Place"         DEF {}
+        ^"Region"        DEF { EXTENDS ^"Place" }
+        ^"Province"      DEF { EXTENDS ^"Region" }
+        ^"City"          DEF { EXTENDS ^"Place" }
+        ^"Village"       DEF { EXTENDS ^"Place" }
+        ^"Castle"        DEF { EXTENDS ^"Place" }
+        ^"Palace"        DEF { EXTENDS ^"Castle" }
+        ^"Temple"        DEF { EXTENDS ^"Place" }
+        ^"Forest"        DEF { EXTENDS ^"Place" }
+        ^"River"         DEF { EXTENDS ^"Place" }
+        ^"Beach"         DEF { EXTENDS ^"Place" }
+        ^"Inlet"         DEF { EXTENDS ^"Place" }
+        ^"Building"      DEF { EXTENDS ^"Place" }
+        ^"Landmark"      DEF { EXTENDS ^"Place" }
+        ^"Artifact"      DEF {}
+        ^"Document"      DEF {}
+        ^"Event"         DEF {}
+        ^"Tradition"     DEF {}
+    }
+
+    # ---- Relationship predicate vocabulary ----------------------------------
+    # Every predicate a data codex uses MUST be declared here (undeclared = a
+    # coherence error). INVERSE is tool-derivable; a consumer reads both
+    # directions from one asserted fact.
+    RELATIONS {
+        ^"founder-of"    { INVERSE ^"founded-by"  DOMAIN ^"Person"       RANGE ^"Faction" }
+        ^"leads"         { INVERSE ^"led-by"      DOMAIN ^"Person"       RANGE ^"Faction" }
+        ^"child-of"      { INVERSE ^"parent-of"   DOMAIN ^"Person"       RANGE ^"Person"  }
+        ^"sibling-of"    { SYMMETRIC               DOMAIN ^"Person"       RANGE ^"Person"  }
+        ^"rival-of"      { SYMMETRIC               DOMAIN ^"Faction"      RANGE ^"Faction" }
+        ^"ally-of"       { SYMMETRIC               DOMAIN ^"Faction"      RANGE ^"Faction" }
+        ^"enemy-of"      { SYMMETRIC               DOMAIN ^"Faction"      RANGE ^"Faction" }
+        ^"located-in"    { INVERSE ^"contains"    DOMAIN ^"Place"        RANGE ^"Place"    TRANSITIVE }
+        ^"located-near"  { SYMMETRIC               DOMAIN ^"Place"        RANGE ^"Place"   }
+        ^"modeled-after" {                          DOMAIN ^"Place"        RANGE ^"Place"   }
+        ^"named-after"   { INVERSE ^"namesake-of" DOMAIN ^"Place"        RANGE ^"Person"  }
+        ^"seat-of"       { INVERSE ^"seated-at"   DOMAIN ^"Place"        RANGE ^"Faction" }
+        ^"held-by"       { INVERSE ^"holds"       DOMAIN ^"Place"        RANGE ^"Faction" }
+        ^"operated-by"   { INVERSE ^"operates"    DOMAIN ^"Organization" RANGE ^"Faction" }
+        ^"forged-by"     { INVERSE ^"forged"      DOMAIN ^"Artifact"     RANGE ^"Person"  }
+        ^"wielded-by"    { INVERSE ^"wielded"     DOMAIN ^"Artifact"     RANGE ^"Person"  }
+        ^"sealed-beneath"{                          DOMAIN ^"Artifact"     RANGE ^"Place"   }
+        ^"occurred-at"   { INVERSE ^"site-of"     DOMAIN ^"Event"        RANGE ^"Place"   }
+        ^"involved"      {                          DOMAIN ^"Event"        RANGE ^"Faction" }
+        ^"haunted-by"    { INVERSE ^"haunts"      DOMAIN ^"Place"        RANGE ^"Person"  }
+        ^"bound-to"      {                          DOMAIN ^"Spirit"       RANGE ^"Faction" }
+        ^"observed-by"   { INVERSE ^"observes"    DOMAIN ^"Tradition"    RANGE ^"Faction" }
+        ^"dedicated-to"  {                          DOMAIN ^"Place"        RANGE ^"Fortune" }
+    }
+}
