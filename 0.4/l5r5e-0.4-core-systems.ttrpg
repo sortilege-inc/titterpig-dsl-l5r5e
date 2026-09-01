@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Systems" {
     NAME "Legend of the Five Rings 5th Edition - Game systems: combat, conditions, strife, honor, weapons, armor, and NPCs"
-    VERSION "0.4.14"
+    VERSION "0.4.15"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -2271,6 +2271,269 @@ BASE "L5R5e_Core_Systems" {
             #L5R444bR7sT9uV1wX3yZ5b: resistance_stacking_limit
         }
     }
+
+    ^"Personal Effect" DEF {
+        APPLIES TO [^"Samurai", ^"Adversary"]
+
+        # Core Rulebook Ch5: everyday tools, provisions, and personal items.
+        # Referenced by school starting outfits. Rarity/Price are STRING to
+        # allow ranges (e.g. "2-6", "1–5 bu per small bottle").
+
+        PROPERTIES {
+            ^"Name" STRING REQUIRED
+            ^"Qualities" LIST OF STRING  # References ^"Item Quality" values
+            ^"Rarity" STRING  # 1 (common) .. 9 (legendary); may be a range
+            ^"Price" STRING  # Cost to acquire
+            ^"Description" STRING  # Verbatim narrative flavor (no mechanical effect)
+        }
+
+        ITEMS {
+            #kAwUUOgoK42g0OG26AyGsU ^"Bottle of Sake" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "1"
+                    ^"Price" STRING "1 bu"
+                    ^"Description" STRING "Sake, a wine made from fermented rice, is popular throughout Rokugan and is readily available at any inn. The quality of sake varies widely depending on the maker and the seller."
+                }
+            }
+
+            #u88o0UeM4Saauya8WEEK6c ^"Bowyer's Kit" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "1"
+                    ^"Price" STRING "2 bu"
+                    ^"Description" STRING "A bowyer’s kit is a small tool kit used to maintain bows and arrows. It typically includes a selection of small hand tools, spare string, some feathers, wax, bamboo fibers, arrowheads, and other items needed to keep a bow and arrows in working order."
+                }
+            }
+
+            #46I6WSWKYgsMMaKQoW0Gyo ^"Calligraphy Set" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "3"
+                    ^"Price" STRING "1 bu"
+                    ^"Description" STRING "These ornate boxes contain items a practiced callig- rapher needs to craft books, letters, scrolls, and other written communications. It consists of a small wooden box that contains a variety of brushes, inkstones, and pigments; a small bowl for water; and a small bag of sand for drying. Calligraphers and scribes customari- ly carry a calligraphy set, as so do some samurai and courtiers who prefer to write their own correspon- dence."
+                }
+            }
+
+            #26AcYSMY4AuQ2mYS6Wa0M8 ^"Chopsticks" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "1"
+                    ^"Price" STRING "1 zeni"
+                    ^"Description" STRING "Chopsticks are the primary Rokugani eating utensils. Sold in pairs, these slender utensils are normally made of wood or bamboo, although some wealthy individ- uals use chopsticks of ivory, bone, or metal instead."
+                }
+            }
+
+            #C4OqyG4YUsC0uIC28oUQAa ^"Daishō Stand" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "4"
+                    ^"Price" STRING "1 koku"
+                    ^"Description" STRING "This is a small, collapsible wooden stand used to dis- play a samurai’s daishō. There is a particular etiquette to displaying the daishō on a rack that speaks to an individual’s ease or readiness to fight. If the swords are displayed with their pommels facing right, this means that the individual is ready to fight, as they can easily draw the swords from the rack with their right hand. If they are displayed with the pommels facing left, this means that the individual is less ready to fight but still guarded. If the pommels are facing left and the tsuba are on the inside of the rack arm, making drawing the swords impossible in one motion, this means that the individual is completely at ease."
+                }
+            }
+
+            #EWoWekCk0uG8uyoKEysWsQ ^"Dice and Cup" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "2"
+                    ^"Price" STRING "25 zeni"
+                    ^"Description" STRING "These are used to play a variety of dice games through- out Rokugan. Gambling is extremely popular in the Emerald Empire, but it is largely frowned upon by samu- rai. Organized gambling is controlled largely by various criminal syndicates and is often a source of corruption among local officials."
+                }
+            }
+
+            #KyQgSIaYkagMaMI0UkOsMU ^"Divination Kit" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "4"
+                    ^"Price" STRING "1 bu"
+                    ^"Description" STRING "Popular among both superstitious peasants and the mystical shugenja, divination kits are used to tell the future or otherwise commune with the Spirit Realms. A divination kit may contain special coins, sticks, bones, or other small items with metaphysical import. Diviners use these kits by casting their coins or sticks on the ground and reading the patterns they create for any omens or portents."
+                }
+            }
+
+            #MOuIWs2ywMaWMm8MKeIIIi ^"Finger of Jade" DEF {
+                PROPERTIES {
+                    ^"Qualities" LIST OF STRING ["Sacred"]
+                    ^"Rarity" STRING "6"
+                    ^"Price" STRING "1 koku"
+                    ^"Description" STRING "A finger of jade is a length of the precious green stone worn about the neck on a thong to ward off the cor- rupting effects of the Taint. Bit by bit, the finger of jade is consumed by this process."
+                }
+            }
+
+            #SsWOso64KQC2sE4EUe4WYG ^"Games" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "3"
+                    ^"Price" STRING "1 bu"
+                    ^"Description" STRING "These are small, portable, sturdy versions of games made to be taken on long journeys. Go, shōgi, and other games popular among bushi and courtiers are the ones most likely to be found in a travel-sized set, but there are as many different types of travel games as there are full-sized versions."
+                }
+            }
+
+            #UM2IyOoeoiswEUGssCUwKi ^"Kubi Bukuro" DEF {
+                PROPERTIES {
+                    ^"Qualities" LIST OF STRING ["Wargear"]
+                    ^"Rarity" STRING "2"
+                    ^"Price" STRING "2 zeni"
+                    ^"Description" STRING "These are simple net bags used to carry the severed head of an enemy, which is considered both a trophy and a good omen. Lion Clan samurai use them to carry their trophies without touching dead flesh, but the Kuni family uses them for collecting samples of Shadowlands crea- tures for study."
+                }
+            }
+
+            #WmeAckaoYyAU6K28S6YWoY ^"Lucky Cricket" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "4"
+                    ^"Price" STRING "4 bu"
+                    ^"Description" STRING "Very popular among the Mantis Clan, a small live crick- et in an ornate metal cage is thought to bring good fortune to whomever carries it."
+                }
+            }
+
+            #cG84WYOCoEwmYGukM4Wicg ^"Medicine Kit" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "3"
+                    ^"Price" STRING "1 bu"
+                    ^"Description" STRING "This is a simple first aid kit that contains all the nec- essary items to treat many kinds of injuries. A typical kit contains needle and thread, cloth bandages, herbal disinfectants, various balms and tinctures, and other healing items."
+                }
+            }
+
+            #Y0Ak84MOoMuAegcMkyUiKm ^"Musical Instrument" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "2–6"
+                    ^"Price" STRING "1–5 bu"
+                    ^"Description" STRING "Rokugani musical traditions are rich and varied. Many people in the Empire can at least pick out a simple tune on a flute or drum. Instruments also include the sham- isen, biwa, and koto. Many courtiers carry an instru- ment to display their talents, and drums are popular among the samurai class for signaling troops and send- ing messages."
+                }
+            }
+
+            #wUmOmcoakkugCLmaqAUug4 ^"Omamori" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "2"
+                    ^"Price" STRING "5 bu"
+                    ^"Description" STRING "Omamori are protective charms, sold at many shrines across the Emerald Empire, often in the form of a small envelope or bag containing a written or inscribed prayer to a particular kami (often one of the great Fortunes, but occasionally others). Most examples provide protection against ill fortune of a specific variety such as illness or accidents, or encourage good luck in some sphere, such as farming, travel, or marriage, but are never put to the test in any rigorous manner—the kami move by paths unseen by mortal eyes, after all, and it is hard to determine if a talisman was truly responsible for one’s safety. Shugenja and other powerful servants of the kami are capable of creating especially efficacious protective charms. These frequently contain appeals to the seven Great Fortunes (such as the three listed here), but can also offer other protections by appealing to different powers."
+                }
+            }
+
+            #EGe42yQCWgcQGmYc4wwQKS ^"Personal Seal or Chop" DEF {
+                PROPERTIES {
+                    ^"Qualities" LIST OF STRING ["Ceremonial"]
+                    ^"Rarity" STRING "6"
+                    ^"Price" STRING "4 bu"
+                    ^"Description" STRING "A personal chop is used by samurai to verify their iden- tity and sign documents, among other official business. Each one is a unique design that is registered with the Miya family. Using another samurai’s chop is consid- ered both an insult and a serious crime."
+                }
+            }
+
+            #4Mqq8OIYO6gy0iAwsAUc4G ^"Pillow Book" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "2"
+                    ^"Price" STRING "3 zeni"
+                    ^"Description" STRING "This is a small, loosely bound, cheap- ly made book written in a genre some samurai consid- er insufficiently serious, such as romance, adventure, or poetry. A pillow book can also be an account of a famous person’s life or an adaptation of a diary. Occa- sionally, important literary or academic works are con- verted to pillow books to make them more portable."
+                }
+            }
+
+            #eKiiO8oUu8KC2MMCkmQasE ^"Poison (One Vial)" DEF {
+                PROPERTIES {
+                    ^"Qualities" LIST OF STRING ["Forbidden"]
+                    ^"Rarity" STRING "5"
+                    ^"Price" STRING "30 zeni for one dose"
+                    ^"Description" STRING "In the courts of the Emerald Empire, the wheels of politics are sometimes turned by unsavory means. Members of the Scorpion Clan are certainly not above using poison to weaken or eliminate political rivals—not that one could ever prove their culpability—and many samurai turn to such measures in times of desperation or fear."
+                }
+            }
+
+            #CKCs8au2cUYMeCkaeoa4ee ^"Quiver of Arrows" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "1"
+                    ^"Price" STRING "20 zeni"
+                    ^"Description" STRING "A quiver is a cloth or leather container used to carry arrows. Worn at the waist or slung over the shoulder, a standard quiver can hold sixty or more arrows. There are also quivers or equivalent carrying pouches for crossbow quarrels, blowgun darts, stones, and other ammunition, and they function in the same manner."
+                }
+            }
+
+            #Gi0I6AIqo80WiM6wAI6Agu ^"Rope (By the Foot)" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "1"
+                    ^"Price" STRING "5-20 zeni per foot"
+                    ^"Description" STRING "Rope is made from a variety of materials and is used for tasks as varied as binding enemies, restraining live- stock, climbing, and rigging sailing vessels. Low-quality ropes are made of hemp and tend to be both rough and stiff. Higher-quality ropes are made of hair, silk, or more exotic fibers."
+                }
+            }
+
+            #KEyO06moCO6y0iCGiCyW88 ^"Sake Cup" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "2"
+                    ^"Price" STRING "1 bu"
+                    ^"Description" STRING "These are small wood, porcelain, or metal cups used for drinking sake. In many areas of the Empire, it is customary for a guest to bring their own cup to gath- erings and official functions. Wealthy or influential peo- ple tend to carry ornately decorated cups made from expensive materials to better impress fellow drinkers."
+                }
+            }
+
+            #wuWuUMQwCgSgqyGEkiKmkk ^"Spices" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "5–7"
+                    ^"Price" STRING "1–5 bu per small bottle"
+                    ^"Description" STRING "Spices are important both for flavoring food and as a trade commodity throughout Rokugan. While some important varieties are native to the Emerald Empire, such as wasabi and sanshō pepper, many are import- ed from abroad. Depending on their provenance and rarity, spices can be extremely expensive. Much blood has been spilled by various factions in attempts to control the spice trade."
+                }
+            }
+
+            #S84CSqK2Am6yCUG8MEoimw ^"Sweets (Four Servings)" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "1"
+                    ^"Price" STRING "1 bu"
+                    ^"Description" STRING "These are candies, small cakes, and other confections that are popular during the Empire’s many festival sea- sons. Typical Rokugani sweets are made from bean curd or honeyed rice, but a few gaijin treats made from exotic and foreign ingredients are produced here and there throughout Rokugan. This is especially true in the Unicorn lands."
+                }
+            }
+
+            #cMW0AKQI2O2yMAA2iWkUkS ^"Tattoo Needles" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "4"
+                    ^"Price" STRING "1 bu per set"
+                    ^"Description" STRING "Extremely popular among the Dragon Clan, these are steel or bamboo needles used to apply tattoos. Tattoo needles are ordinarily part of a kit that includes nee- dles, various pigments, and other tools used by tattoo artists in their work. Widespread not only in the Drag- on Clan, tattoos are also prevalent among the Empire’s numerous criminal cartels, which use them both to identify members of specific cartels and to record indi- viduals’ criminal exploits."
+                }
+            }
+
+            #W2CiyCSA8gk0k8KyY08eeO ^"Tea Set (Portable)" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "6"
+                    ^"Price" STRING "1 koku"
+                    ^"Description" STRING "The tea ceremony is exceptionally important in Rokugani society. These small, portable tea sets are designed to withstand rough handling and travel. They allow samurai to enjoy the harmony and relaxation of the tea ceremony even when they are far from home."
+                }
+            }
+
+            #m2cIGyyGoo0oQG6SAyaq4e ^"Tent (Chomchong)" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "7"
+                    ^"Price" STRING "20 koku"
+                    ^"Description" STRING "Chomchong are large, elaborate, portable homes popular with the Unicorn Clan. Sturdy and well protected from the elements, these tents can accommodate up to a dozen people in relative comfort. They are also used to house small noble families in as much luxury as can be afforded in the field. Chomchong take quite a bit of time to set up and tear down, and carrying them requires several oxen and a large wagon."
+                }
+            }
+
+            #uEm22seUoUMkwqC2m6CUuI ^"Tent (Small)" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "3"
+                    ^"Price" STRING "1 koku"
+                    ^"Description" STRING "These basic shelters are just big enough to keep two individuals warm and dry in the wilderness. They are extremely easy to set up and take down, pack down relatively small, and can be carried on a person’s back, in a cart, or slung over a horse."
+                }
+            }
+
+            #uoc4okWOGEgYSwKYc4K6W6 ^"Tent (Yurt)" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "5"
+                    ^"Price" STRING "10 koku"
+                    ^"Description" STRING "Bigger than basic tents but not as big or luxurious as chomchong, yurts were brought to Rokugan from the far-off steppes by the Unicorn Clan. Made from thick leather or canvas with a felt floor, a yurt can house a group of four indefinitely in relative comfort. They are heavy and awkward to build or take down, and require either a horse or oxen dedicated to carting them around."
+                }
+            }
+
+            #2CsmUcCioiW0WYyIOq4SO2 ^"Traveling Rations" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "1"
+                    ^"Price" STRING "5 zeni per meal"
+                    ^"Description" STRING "Traveling rations consist of a mix of preserved foods sufficient to keep an individual fed and healthy while on the road. They typically consist of a mix of dried fish, rice balls wrapped in paper, water or tea, pickled vege- tables, and other hardy foods that can withstand expo- sure to the elements."
+                }
+            }
+
+            #4cOegYo02eUgku26QSgemY ^"Umbrella" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "4"
+                    ^"Price" STRING "2 bu"
+                    ^"Description" STRING "Normally made of wicker and silk, umbrellas keep both the sun and the rain off of those who carry them. Sto- ries tell of umbrellas being used as improvised weap- ons by masters of the sword, though such fantastical feats would prove difficult for most to replicate."
+                }
+            }
+
+            #A6uWwQg0gy0ki6wGAI4Y8o ^"Whetstone" DEF {
+                PROPERTIES {
+                    ^"Rarity" STRING "1"
+                    ^"Price" STRING "1 zeni"
+                    ^"Description" STRING "Whetstones are portable grinding stones used to sharpen most bladed weapons, save for a samurai’s katana and wakizashi, which must be sharpened by an accomplished weaponsmith or professional polisher."
+                }
+            }
+        }
+    }
+
 
     # ===========================
     # HONOR/GLORY/STATUS MECHANICS
