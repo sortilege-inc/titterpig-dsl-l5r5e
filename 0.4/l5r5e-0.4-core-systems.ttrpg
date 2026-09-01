@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Systems" {
     NAME "Legend of the Five Rings 5th Edition - Game systems: combat, conditions, strife, honor, weapons, armor, and NPCs"
-    VERSION "0.4.9"
+    VERSION "0.4.13"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -1436,6 +1436,7 @@ BASE "L5R5e_Core_Systems" {
             ^"Qualities" LIST OF STRING  # References ^"Item Quality" values
             ^"Rarity" INTEGER MIN 1 MAX 9
             ^"Price" STRING
+            ^"Description" STRING  # Verbatim narrative flavor (no mechanical effect)
         }
 
         # --- READIED WEAPONS ---
@@ -1476,11 +1477,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Mundane"]
                     ^"Rarity" INTEGER 3
                     ^"Price" STRING "1 bu"
+                    ^"Description" STRING "Bokken are swords carved of wood rather than forged of metal. Generally used as a training weapon, a bokken still can be deadly in a skilled warrior’s hands. A properly shaped bokken can be used for Iaijutsu Cut techniques despite lacking the Razor-Edged quality."
                 }
             }
-            # Swords carved of wood. Training weapon, but deadly in skilled hands.
-            # A properly shaped bokken can be used for Iaijutsu Cut techniques
-            # despite lacking Razor-Edged.
 
             #Eoye9VrL2Q0OOqBu3W8aU0 ^"Chokutō" DEF {
                 PROPERTIES {
@@ -1493,10 +1492,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Ceremonial", "Razor-Edged"]
                     ^"Rarity" INTEGER 7
                     ^"Price" STRING "20 koku"
+                    ^"Description" STRING "The chokutō is an ancient design that predates the advent of the katana. Hung from a belt rather than tucked into a sash, a chokutō is roughly three feet long and has a straight, single-edged blade instead of the gentle curve found in newer Rokugani swords. Many of the clans’ most powerful nemuranai—weapons that were wielded by their founding Kami—have this shape, as do the blades used by the Yobanjin of the northern mountains."
                 }
             }
-            # Ancient design predating the katana. Straight, single-edged blade
-            # hung from a belt. Many founding Kami nemuranai have this shape.
 
             #ajpYUslN9HicBSIUDHeobO ^"Dao" DEF {
                 PROPERTIES {
@@ -1509,10 +1507,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING []
                     ^"Rarity" INTEGER 6
                     ^"Price" STRING "15 koku"
+                    ^"Description" STRING "Dao are weapons that look like a cross between a scimitar, a saber, and a peasant’s machete. They are one-handed swords two to three feet in length with a broad-bellied, single-edged blade designed for slashing and chopping, and are generally wielded in pairs."
                 }
             }
-            # Cross between scimitar, saber, and machete. Broad-bellied,
-            # single-edged blade for slashing and chopping; generally wielded in pairs.
 
             #f6FulQvXet32tLKy1GQqE5 ^"Gao" DEF {
                 PROPERTIES {
@@ -1525,10 +1522,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Snaring"]
                     ^"Rarity" INTEGER 7
                     ^"Price" STRING "15 koku"
+                    ^"Description" STRING "Known colloquially as “tiger hook swords” or “Heaven and Earth, Sun and Moon swords,” gao are curious weapons. Usually wielded in pairs, gao are flat, solid iron or steel blades roughly three feet long with several unique features. Their main blade has a hook at one end and a sharpened spike at the other. The grip is protected by a crescent-shaped hand guard with its points facing outward. Gao can be used to slash, capture, and stab, making them appealing to certain Mirumoto duelists."
                 }
             }
-            # "Tiger hook swords." Flat iron/steel blades with hook, spike,
-            # and crescent hand guard. Can slash, capture, and stab.
 
             #DWdCgWDuBB2CJ31FEXXdgU ^"Jian" DEF {
                 PROPERTIES {
@@ -1541,10 +1537,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING []
                     ^"Rarity" INTEGER 7
                     ^"Price" STRING "15 koku"
+                    ^"Description" STRING "Known primarily as a duelist’s weapon, the jian is an ancient and elegant sword that has changed very little in design since Rokugan’s misty past yet remains deadly to this day. About the same size as a chokutō, a typical jian has a straight, double-edged blade that tapers to a point; a small, thick, horizontal hand guard; and a heavy pommel with a tassel. Only slightly more common than the chokutō, it is used by some Mirumoto, Kitsuki, or Shiba swordmasters who favor its versatility."
                 }
             }
-            # Ancient duelist's weapon. Straight, double-edged blade tapering
-            # to a point. Favored by some Mirumoto, Kitsuki, or Shiba swordmasters.
 
             #IZg8huIOQgClnGOCMEtUM8 ^"Katana" DEF {
                 PROPERTIES {
@@ -1557,10 +1552,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Ceremonial", "Razor-Edged"]
                     ^"Rarity" INTEGER 7
                     ^"Price" STRING "20 koku"
+                    ^"Description" STRING "As much a work of art as it is a weapon, the katana is perhaps the most revered weapon in Rokugan. It has an elegant, slightly curved blade between three and four feet long, made of steel that is specially folded during its creation. This unique forging style ensures that the inner part of the blade remains springy and soft while the outside is as hard as tempered steel. Each sword likely has a history and legacy, and it is a constant reminder of the weight that destiny has placed upon its bearer’s shoulders as a samurai of Rokugan."
                 }
             }
-            # The most revered weapon in Rokugan. Elegant, slightly curved
-            # blade of specially folded steel. Part of the daishō.
 
             #EFbgvF2ZQH2ro2KIMiT1vY ^"Nodachi" DEF {
                 PROPERTIES {
@@ -1573,10 +1567,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Ceremonial", "Razor-Edged"]
                     ^"Rarity" INTEGER 8
                     ^"Price" STRING "20 koku"
+                    ^"Description" STRING "Larger than katana, nodachi are long and lethal swords more at home on the battlefield than in a city or at court. Roughly six feet long, these blades are relatively rare due to the skill and strength needed to wield them effectively. There are those who prize the raw force of these blades, however, such as members of the Matsu school. Too large to be worn at the waist, nodachi are normally worn on the back and drawn over the shoulder or even carried into battle by a samurai’s attendant."
                 }
             }
-            # Larger than katana, roughly six feet long. Worn on the back.
-            # Prized by the Matsu school for raw force.
 
             #ZnWIsLyVMnScLLYhO465HR ^"Scimitar" DEF {
                 PROPERTIES {
@@ -1589,10 +1582,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Durable", "Razor-Edged"]
                     ^"Rarity" INTEGER 8
                     ^"Price" STRING "20 koku"
+                    ^"Description" STRING "Perhaps the most common among foreign-designed swords found in Rokugan, scimitars were brought from the Burning Sands to the Emerald Empire by the Unicorn Clan. Often carried in place of the katana by those warriors, scimitars are heavy swords with a long, broad, curving blade. They possess a deadly cutting edge thanks to the extra surface area provided by their curvature."
                 }
             }
-            # Heavy sword with long, broad, curving blade. Brought from the
-            # Burning Sands by the Unicorn Clan. Often carried in place of katana.
 
             #tOj1hA6M3SVrEwG4dqbf9I ^"Wakizashi" DEF {
                 PROPERTIES {
@@ -1605,10 +1597,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Ceremonial", "Razor-Edged"]
                     ^"Rarity" INTEGER 7
                     ^"Price" STRING "15 koku"
+                    ^"Description" STRING "Whereas the katana represents a samurai’s status as a warrior, the wakizashi represents their place in Rokugan’s social order and strict caste system. The wakizashi is a small, katana-like sword usually two to three feet in length, with the same flexible blade and lethal edge. It is often made as part of a pair, with the same decorations as its matched katana. The wakizashi also fills another role: it clearly signals that its wearer is a samurai, and a person of honor who will make the ultimate sacrifice for their ideals and their master. It is the tool with which a samurai commits seppuku: ritual suicide, the last protest of an aggrieved and honorable samurai."
                 }
             }
-            # Small katana-like sword, two to three feet. Represents a samurai's
-            # place in Rokugan's social order. The tool for seppuku. Part of the daishō.
 
             #WwPkXXi4dAl9cYpp5BVJOO ^"Zanbatō" DEF {
                 PROPERTIES {
@@ -1621,10 +1612,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Cumbersome", "Wargear"]
                     ^"Rarity" INTEGER 8
                     ^"Price" STRING "40 koku"
+                    ^"Description" STRING "Larger even than mighty nodachi, zanbatō are swords with the reach of a spear. Zanbatō have a long, thick, katana-like blade roughly six feet in length attached to a two-handed hilt. They are dedicated anticavalry weapons—indeed, their name means “horse-chopping sword.” The Matsu school is famous for adopting them into the curriculum after their ill-fated encounter with the Utaku cavalry at the Battle of Plum Blossom Pass."
                 }
             }
-            # Swords with the reach of a spear, roughly six feet. Dedicated
-            # anticavalry weapons — "horse-chopping sword." Adopted by the Matsu.
         }
 
         # --- AXES ---
@@ -1640,10 +1630,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Mundane"]
                     ^"Rarity" INTEGER 5
                     ^"Price" STRING "3 bu"
+                    ^"Description" STRING "Similar in size and shape to the humble hatchet, a masakari is a one-handed ax with a single-sided ax-head affixed to one end of a short wooden haft. Such axes are an ordinary sight among peasant militia and rōnin who cannot afford a more prestigious weapon."
                 }
             }
-            # One-handed ax similar to a hatchet. Common among peasant militia
-            # and rōnin who cannot afford more prestigious weapons.
 
             #aJVZQteJXvkX1RcGkpgu3h ^"Ono" DEF {
                 PROPERTIES {
@@ -1656,10 +1645,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Wargear"]
                     ^"Rarity" INTEGER 7
                     ^"Price" STRING "5 koku"
+                    ^"Description" STRING "The ono is a dedicated, two-handed military ax, a rarity on Rokugan’s battlefields, at least outside of Crab lands. The ono consists of a broad, deeply curved ax-head mounted to a haft nearly as tall as a human. Opposite the ax-head is normally either an ornate peen or a long spike, which can pierce armor or monstrous hide."
                 }
             }
-            # Dedicated two-handed military ax. Broad, deeply curved ax-head
-            # on a haft nearly as tall as a human. Rare outside Crab lands.
         }
 
         # --- BLUNT WEAPONS ---
@@ -1675,10 +1663,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Mundane"]
                     ^"Rarity" INTEGER 1
                     ^"Price" STRING "1 bu"
+                    ^"Description" STRING "The humble club is perhaps the oldest weapon in Rokugan—at least among humans. Often little more than a length of stout wood or shaped stone, a club can be fashioned with available materials by nearly anyone. While a club can certainly be used to kill, doing so takes some work on the part of the wielder."
                 }
             }
-            # Perhaps the oldest weapon. Little more than a length of stout
-            # wood or shaped stone. Can be fashioned from available materials.
 
             #QWvxWGV9MAbdPWVMxSHmfi ^"Hammer" DEF {
                 PROPERTIES {
@@ -1691,10 +1678,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Mundane"]
                     ^"Rarity" INTEGER 4
                     ^"Price" STRING "2 bu"
+                    ^"Description" STRING "The simple hammer is used for driving nails and spikes and for other construction work. Throughout most of Rokugan, the hammer is only occasionally used as a weapon—typically in brawls or spur of the moment skirmishes when no other weapon is available."
                 }
             }
-            # Simple tool used for construction. Occasionally used as a weapon
-            # in brawls or spur-of-the-moment skirmishes.
 
             #ap5kzPH5roAYEKAm60mIyF ^"Kiseru" DEF {
                 PROPERTIES {
@@ -1707,10 +1693,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Concealable", "Mundane"]
                     ^"Rarity" INTEGER 5
                     ^"Price" STRING "1 koku"
+                    ^"Description" STRING "Kiseru are pipes used to smoke various herbs found throughout Rokugan. They consist of a metal mouthpiece and a metal bowl connected by a hollow wood or bamboo tube. Kiseru range in quality from a peasant’s rough-hewn pipe to a courtier or noble’s ivory-and-gold inlaid piece of art. Further, they can function as clandestine weapons. Since kiseru are not formally considered arms, it is easy to get them into places that forbid weapons."
                 }
             }
-            # Pipes used to smoke herbs. Metal mouthpiece and bowl connected
-            # by wood/bamboo tube. Not formally considered arms; clandestine weapons.
 
             #DKuvTbdd4xuTJRdEO8mbPN ^"Ōtsuchi" DEF {
                 PROPERTIES {
@@ -1723,10 +1708,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Cumbersome", "Wargear"]
                     ^"Rarity" INTEGER 8
                     ^"Price" STRING "30 koku"
+                    ^"Description" STRING "The ōtsuchi is to the carpenter’s hammer what the ono is to the woodcutter’s ax: larger, deadlier, and obviously designed with lethal purpose. With a shaft roughly six feet long topped by a huge, barrel-shaped mallet head, it is built to breach doors and smash walls—but it also works quite well on monsters with rock-like hides, as the warriors of the Hida school often demonstrate."
                 }
             }
-            # Huge barrel-shaped mallet on a six-foot shaft. Built to breach
-            # doors and smash walls. Works well on armored monsters (Hida school).
 
             #vXHvOYdxXd2UsIzKnVDtbR ^"Tetsubō" DEF {
                 PROPERTIES {
@@ -1739,10 +1723,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Cumbersome", "Durable", "Wargear"]
                     ^"Rarity" INTEGER 5
                     ^"Price" STRING "20 koku"
+                    ^"Description" STRING "Long and narrow, a tetsubō can be as tall as a human and normally is constructed of iron or hardwood. Above its grip, a tetsubō is covered in steel, iron, or even jade spikes or studs that add to the weapon’s lethality and crush armor or plated carapace with ease."
                 }
             }
-            # Long, narrow, tall as a human. Iron or hardwood covered in steel,
-            # iron, or jade spikes/studs. Crushes armor and carapace with ease.
         }
 
         # --- HAND WEAPONS ---
@@ -1758,10 +1741,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Concealable", "Snaring"]
                     ^"Rarity" INTEGER 5
                     ^"Price" STRING "5 bu"
+                    ^"Description" STRING "Typically just over a foot long, the jitte consists of a short steel or iron rod attached to a wooden handle. The rod tapers to a blunt point and has a single prong that extends from one side. This simple weapon is designed to disarm and subdue targets rather than to kill them. It is carried by law enforcement officers at all levels, from low-ranking town constables to high-ranking magistrates, as a symbol of their office."
                 }
             }
-            # Short steel/iron rod with single prong. Designed to disarm and
-            # subdue. Carried by law enforcement as symbol of office.
 
             #eD2ZlSUdmgzgKHVHxTqfKu ^"Knife" DEF {
                 PROPERTIES {
@@ -1774,10 +1756,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Concealable", "Mundane", "Razor-Edged"]
                     ^"Rarity" INTEGER 1
                     ^"Price" STRING "1 koku"
+                    ^"Description" STRING "Knives come in a dizzying array of types and styles, from the familiar crudely constructed knife in a peasant’s kitchen to the deadly combat knives samurai take into battle. Those particularly designed for combat—like the aiguchi—are often equipped with small hand guards to make them more useful in the field."
                 }
             }
-            # Dizzying array of types and styles. Combat knives (aiguchi, tantō)
-            # often equipped with small hand guards.
 
             #BBBkaqskhH9RIDJaICPiKK ^"Nunchaku" DEF {
                 PROPERTIES {
@@ -1790,10 +1771,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING []
                     ^"Rarity" INTEGER 6
                     ^"Price" STRING "1 koku"
+                    ^"Description" STRING "Originally hailing from the Islands of Spice and Silk, nunchaku have been used in certain Rokugani martial arts schools for centuries. Adapted from a simple threshing tool, nunchaku consist of two wood or iron rods connected by a short length of chain or rope."
                 }
             }
-            # Two wood or iron rods connected by chain or rope. Originally from
-            # the Islands of Spice and Silk. Adapted from a threshing tool.
 
             #Xw8Ulobk0XdHzne6e6bLJV ^"Tessen" DEF {
                 PROPERTIES {
@@ -1806,10 +1786,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Ceremonial", "Concealable"]
                     ^"Rarity" INTEGER 7
                     ^"Price" STRING "15 koku"
+                    ^"Description" STRING "Carried by courtiers and military leaders alike, tessen are fans specially built for fighting. However, they are not commonly viewed as weapons, and can be openly carried even into formal court chambers or negotiations. Usually made of wood with steel tines, they generally serve as defensive weapons, but wielders can also use them to deliver clubbing blows or to reinforce a punch."
                 }
             }
-            # Fighting fans. Carried by courtiers and military leaders. Not
-            # commonly viewed as weapons; openly carried even into formal court.
         }
 
         # --- POLEARMS ---
@@ -1825,10 +1804,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Cumbersome", "Durable", "Wargear"]
                     ^"Rarity" INTEGER 8
                     ^"Price" STRING "15 koku"
+                    ^"Description" STRING "The bisentō is a strange weapon not regularly seen on Rokugan’s battlefields. Essentially a scimitar with an extremely long hilt, the bisentō has a long, yari-like wooden shaft topped by a broad and heavy curved blade. Though it seems awkward and top-heavy, the bisentō is exceptionally dangerous in the right hands. The length of the shaft gives the wielder incredible leverage, allowing them to deliver great chopping blows that can slice a person in half or cleave through heavy armor. Typically seen among the more militant orders of monks, such as the Perfect Land Sect, the bisentō is sometimes used by heavy infantry units, like those of the Daidoji family."
                 }
             }
-            # Scimitar with extremely long hilt. Long yari-like shaft topped by
-            # broad, heavy curved blade. Seen among militant monks and heavy infantry.
 
             #KrTFIj92yMAizxbiJi5gjN ^"Bō" DEF {
                 PROPERTIES {
@@ -1841,10 +1819,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Mundane"]
                     ^"Rarity" INTEGER 2
                     ^"Price" STRING "2 bu"
+                    ^"Description" STRING "The bō, a humble staff, is a versatile weapon found throughout Rokugan. Roughly six feet long and made from sturdy hardwood, it is carried by travelers who need both a walking stick and an inconspicuous weapon."
                 }
             }
-            # Humble staff, roughly six feet of sturdy hardwood. Carried by
-            # travelers as walking stick and inconspicuous weapon.
 
             #rI8gCIEgyKvjxqrkq0bOY2 ^"Ji" DEF {
                 PROPERTIES {
@@ -1857,10 +1834,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Snaring", "Wargear"]
                     ^"Rarity" INTEGER 6
                     ^"Price" STRING "7 koku"
+                    ^"Description" STRING "Also known as the “dagger-spear,” the ji is a long polearm designed more for catching and controlling weapons than for direct attacks. Commonly used by the Dragon and Phoenix Clans, and a specialty of the Shiba Guardian School, the standard ji consists of a long wooden shaft topped by a hooked or crescent-shaped blade. Other ji have a head consisting of a single long, double-edged blade with one or two smaller crescent-shaped blades mounted to the sides."
                 }
             }
-            # "Dagger-spear." Designed for catching and controlling weapons.
-            # Used by Dragon and Phoenix Clans; specialty of Shiba Guardian School.
 
             #XNd3DuKiqOelEYKeG3hnU5 ^"Naginata" DEF {
                 PROPERTIES {
@@ -1873,10 +1849,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Cumbersome", "Razor-Edged", "Wargear"]
                     ^"Rarity" INTEGER 8
                     ^"Price" STRING "10 koku"
+                    ^"Description" STRING "Most samurai’s preferred polearm, the naginata is highly regarded. It has a long, flexible shaft made of bamboo or springy wood with a large, lightweight, slightly curved blade at the top. A naginata’s blade is forged with the same ceremony and meticulous craftsmanship as a katana’s, and commands the same reverence as the daishō. It is carried in elite units such as the Heaven’s Wing Brotherhood and the Utaku Battle Maidens."
                 }
             }
-            # Most samurai's preferred polearm. Long flexible shaft with large,
-            # slightly curved blade forged with same ceremony as a katana.
 
             #EWDoKQZrEFszhejCZJqcUP ^"Trident" DEF {
                 PROPERTIES {
@@ -1889,10 +1864,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Snaring", "Wargear"]
                     ^"Rarity" INTEGER 7
                     ^"Price" STRING "10 koku"
+                    ^"Description" STRING "The trident is a long, triple-headed spear generally associated with fishermen and the sea. On land, the trident is a formidable polearm with exceptional reach that can pierce, trap, and control opponents."
                 }
             }
-            # Triple-headed spear associated with fishermen. Formidable polearm
-            # that can pierce, trap, and control opponents.
 
             #lDpCbgNfyQZ4V3Yyg35o1A ^"Yari" DEF {
                 PROPERTIES {
@@ -1905,10 +1879,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Wargear"]
                     ^"Rarity" INTEGER 3
                     ^"Price" STRING "5 koku"
+                    ^"Description" STRING "A long-shafted spear, the yari is one of the most common weapons in Rokugan. Between six and eight feet long, its shaft is made of hardwood and topped with a leaf-shaped spearhead. Since it is easy to make, the yari is a customary weapon of ashigaru, but also elite clan samurai such as the Daidoji heavy infantry."
                 }
             }
-            # Long-shafted spear, six to eight feet. Most common weapon in
-            # Rokugan. Customary weapon of ashigaru and elite clan samurai.
         }
 
         # ==================
@@ -1928,10 +1901,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Wargear"]
                     ^"Rarity" INTEGER 6
                     ^"Price" STRING "6 koku"
+                    ^"Description" STRING "Daikyū are large composite bows designed to be fired from horseback. Conventionally around six feet long, these elegant weapons are constructed by gluing thin layers of wood, horn, leather, and sinew together. Daikyū differ from other bows in that they have an asymmetric shape. Their grip is about two-thirds of the way from the top, making the top curve longer than the bottom. This allows the bows to be fired easily from horseback in either direction. Each daikyū is made for a custom fit for a specific user."
                 }
             }
-            # Large composite bow designed for horseback. Asymmetric shape with
-            # grip two-thirds from top. Custom-fit for a specific user.
 
             #UlmaiMKUe534lv6vWAJplC ^"Shinjo Horsebow" DEF {
                 PROPERTIES {
@@ -1944,10 +1916,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Wargear"]
                     ^"Rarity" INTEGER 4
                     ^"Price" STRING "6 koku"
+                    ^"Description" STRING "Among the Unicorn Clan’s many adopted weapons is a small, sturdy bow used by the nomadic peoples of the steppes far to the west. Called the Shinjo horsebow in Rokugan, this weapon is a compact bow designed to be fired from the back of a moving horse. It is a short-range weapon intended for raiding and cavalry attacks."
                 }
             }
-            # Compact bow from the nomadic peoples west of Rokugan. Short-range
-            # weapon for raiding and cavalry attacks.
 
             #MpmOChBTherbTTCTXeYNYE ^"Yumi" DEF {
                 PROPERTIES {
@@ -1960,10 +1931,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING []
                     ^"Rarity" INTEGER 3
                     ^"Price" STRING "3 koku"
+                    ^"Description" STRING "The yumi is perhaps the most common bow used by Rokugani samurai. Similar to the daikyū, it is a long, graceful bow made from a composite of horn, sinew, leather, and wood. Smaller than the daikyū, but only just, the yumi has an asymmetric grip, general shape, and long-range killing power similar to those of its larger cousin. Where the daikyū is a cavalry bow, however, the yumi is designed to be fired while standing."
                 }
             }
-            # Most common bow. Composite of horn, sinew, leather, and wood.
-            # Asymmetric grip like the daikyū but designed for standing fire.
         }
 
         # --- CROSSBOWS ---
@@ -1979,11 +1949,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Prepare", "Wargear"]
                     ^"Rarity" INTEGER 8
                     ^"Price" STRING "40 koku"
+                    ^"Description" STRING "Developed out of necessity to fight the deadly forces of the Shadowlands, this weapon consists of a recurve or traditional bow laid horizontally on a long, stout stock. Held to the shoulder, the oyumi is fired by squeezing a long lever on the bottom of the stock. It fires short, arrow-like projectiles called quarrels. Its existence is a matter of some consternation among the other clans, but the Crab maintain that its use—even in the hands of ashigaru and peasants in times of crisis—has been vital to the preservation of the Empire."
                 }
             }
-            # Recurve or traditional bow laid horizontally on a stout stock.
-            # Fires quarrels. Rarely seen outside Crab lands. Controversial
-            # among other clans due to reliance on mechanism over skill.
         }
 
         # --- ARROWS ---
@@ -1995,6 +1963,7 @@ BASE "L5R5e_Core_Systems" {
                 PROPERTIES {
                     ^"Category" STRING "Arrows"
                     ^"Effect" STRING "Standard Rokugani arrows. As long as a character has a quiver, they do not need to track willow-leaf arrows individually."
+                    ^"Description" STRING "Willow-leaf arrows are broadhead arrows used for both hunting and warfare. These are “typical” arrows."
                 }
             }
 
@@ -2002,6 +1971,7 @@ BASE "L5R5e_Core_Systems" {
                 PROPERTIES {
                     ^"Category" STRING "Arrows"
                     ^"Effect" STRING "Ignore up to 2 points of the target's physical resistance."
+                    ^"Description" STRING "Armor-piercing arrows end in a long, hardened spike. These arrows can pierce even the toughest armor to strike at the flesh beneath."
                 }
             }
 
@@ -2009,6 +1979,7 @@ BASE "L5R5e_Core_Systems" {
                 PROPERTIES {
                     ^"Category" STRING "Arrows"
                     ^"Effect" STRING "Deadliness +2."
+                    ^"Description" STRING "Flesh-cutters have especially broad, multibladed, and often barbed heads designed to tear through unprotected flesh."
                 }
             }
 
@@ -2016,6 +1987,7 @@ BASE "L5R5e_Core_Systems" {
                 PROPERTIES {
                     ^"Category" STRING "Arrows"
                     ^"Effect" STRING "Damage -2, Deadliness -2. These arrows produce a loud noise audible at range 0-4 of the archer and of the path the arrow travels."
+                    ^"Description" STRING "Humming-Bulbs have an egg-shaped, hollow head with slots cut into its surface. As the arrow flies, the bulb emits a sharp whistling sound. These arrows are good for signaling and creating a distraction."
                 }
             }
         }
@@ -2040,10 +2012,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Concealable"]
                     ^"Rarity" INTEGER 7
                     ^"Price" STRING "5 bu"
+                    ^"Description" STRING "Made from a length of hollow bamboo or river reed, the blowgun is one of the simplest weapons that ninja use in their work. The blowgun’s primary use is as a ranged weapon, usually to deliver poison (see the Poisoned Weapons sidebar, page 244). In addition to darts, the blowgun can also be loaded with sand, dust, or other powders to blind or disorient foes, and it can even serve to let its user breathe while underwater."
                 }
             }
-            # Hollow bamboo or reed. Primary use is to deliver poison. Can also
-            # be loaded with sand/dust to blind/disorient, or used to breathe underwater.
 
             #JUt3gmhc4m6P3vPhEsNcxQ ^"Kama" DEF {
                 PROPERTIES {
@@ -2056,10 +2027,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Concealable"]
                     ^"Rarity" INTEGER 4
                     ^"Price" STRING "1 koku"
+                    ^"Description" STRING "The kama is another weapon adapted from an agricultural implement: in this case, a standard sickle used for harvesting rice. It consists of a short, roughly foot-long wooden haft topped by a long, curved sickle blade. Kama are often used in pairs, sometimes linked at the handles by a length of chain."
                 }
             }
-            # Sickle adapted from agricultural tool. Often used in pairs,
-            # sometimes linked at the handles by chain.
 
             #XUAkQlVjM7bEsAhug1nmvT ^"Kusari-Gama" DEF {
                 PROPERTIES {
@@ -2072,10 +2042,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Concealable", "Snaring", "Wargear"]
                     ^"Rarity" INTEGER 6
                     ^"Price" STRING "5 koku"
+                    ^"Description" STRING "Extremely versatile and deadly, the kusari-gama is one of the more difficult ninja weapons to master. It is a hybrid weapon consisting of a long-hafted kama with a lengthy chain attached to either the back of the blade or the bottom of the haft. A heavy iron weight called a fundo is mounted at the end of the chain. In combat, a wielder typically spins the chain over their head with one hand while holding the kama in the other. They whip the chain forward, entangling an opponent’s weapon or limbs, then rush in for the killing blow with the kama. A wielder can also attack with the weighted end of the chain, striking opponents at range and keeping them at bay."
                 }
             }
-            # Long-hafted kama with chain and iron weight (fundo). Spin chain
-            # to entangle, then rush in with kama. Extremely versatile.
 
             #yaAf7lxpRju0StUrU5nQo6 ^"Shuriken" DEF {
                 PROPERTIES {
@@ -2088,10 +2057,9 @@ BASE "L5R5e_Core_Systems" {
                     ^"Qualities" LIST OF STRING ["Concealable"]
                     ^"Rarity" INTEGER 6
                     ^"Price" STRING "1 koku"
+                    ^"Description" STRING "Favored by shinobi, shuriken are small metal discs with a sharpened edge that come in a dizzying array of sizes and styles. They are designed mainly to distract, but shuriken can also be coated with toxins for lethality, and any cutting edge can kill if used properly."
                 }
             }
-            # Small sharpened metal discs. Designed mainly to distract; can be
-            # coated with toxins for lethality.
         }
 
         # ==================
