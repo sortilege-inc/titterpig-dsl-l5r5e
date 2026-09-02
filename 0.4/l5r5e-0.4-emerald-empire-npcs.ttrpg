@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Emerald_Empire_NPCs" EXTENDS "L5R5e_Emerald_Empire" {
     NAME "Legend of the Five Rings 5th Edition - Emerald Empire: NPCs"
-    VERSION "0.4.2"
+    VERSION "0.4.3"
     SPEC_VERSION "0.4.1"
     RELEASE_DATE "2026-03-01"
 
@@ -485,6 +485,94 @@ EXTENSION "L5R5e_Emerald_Empire_NPCs" EXTENDS "L5R5e_Emerald_Empire" {
     }
 
     # --- Yasuki Trading Post (Crab) ---
+
+    # source stat block (page 86)
+    ^"Captain Byakko of the Takarabako" DEF {
+        EXTENDS ^"NPC"
+
+        # Fifth cousin to Mantis Clan Champion Yoritomo, who favors him despite
+        # his inexperience. Captains the new three-masted kobune Takarabako; an
+        # explorer at heart, loyal to his cousin and hungry for his approval.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Bold"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +1, Earth -1"
+            ^"Endurance" INTEGER 13
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 40
+            ^"Glory" INTEGER 52
+            ^"Status" INTEGER 41
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 2", "Trade 4"]
+            ^"Advantages" LIST OF STRING ["Ally (Yoritomo) (Water) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Inexperienced (Earth) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Kama: Range 0-1, Damage 3, Deadliness 3, Concealable"]
+            ^"Gear" LIST OF STRING ["Sailing clothes (Physical 2, Durable, Mundane)"]
+        }
+
+        ^"Brash Adventurer" DEF {
+            ^"Description" STRING "Once per scene after making a check involving sailing or exploring, Byakko may choose to re-roll all dice in the check before deciding which to keep. If he does so, any strife suffered as a result of the check is doubled."
+        }
+
+        RULES {
+            #L5REE28byakkoTakarabako1: byakko_takarabako
+        }
+    }
+
+    # source stat block (page 89)
+    ^"Imperial Governor Miya Tetsua" DEF {
+        EXTENDS ^"NPC"
+
+        # For seven years the Emperor's Imperial Governor in the City of the Rich
+        # Frog. Bogged down in clan river-disputes; escapes into the arts and a
+        # weekly Go game with the enigmatic shugenja Tonbo Kuma.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 45
+            ^"Glory" INTEGER 55
+            ^"Status" INTEGER 60
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 2", "Scholar 4", "Social 4", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Kuge Lineage (Earth) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Irrepressible Flirtation (Fire) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 4, Deadliness 5/7, Ceremonial, Concealable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Court hakama (Physical 1, Ceremonial, Resplendent)", "Personal chop", "Imperial seal"]
+        }
+
+        ^"Emerald Authority" DEF {
+            ^"Description" STRING "Once per scene when making a check, Miya Tetsua may count his ranks in the skill used as being equal to his status rank."
+        }
+
+        RULES {
+            #L5REE29miyaTetsuaGovernr1: miya_tetsua
+        }
+    }
 
     # source stat block (page 129)
     ^"Yasuki Nobuko, Merchant" DEF {
