@@ -1,0 +1,112 @@
+# .codex SECTION — Emerald Empire: Strongholds of Power (Chapter 1 — governance).
+# Stand-off graph over l5r5e-0.4-emerald-empire-governance.lore (spec §25). Part
+# of the L5R5e system graph. Built in batches (this file grows as the chapter is
+# folded in). Batch 1: the framing fiction, Unicorn castles, court institutions,
+# Rokugani court titles, and the artisan's Fortunes.
+
+CODEX "L5R5e_Codex_EE_Governance" {
+    NAME "Emerald Empire: Strongholds of Power — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.8"
+
+    ENTITY #L5RcxEEgov01dojisab ^"Doji Sabato" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "strongholds-of-power"
+    }
+
+    ENTITY #L5RcxEEgov02shugozz ^"Shugo" {
+        IS ^"Title"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "strongholds-of-power"
+    }
+
+    # -- Unicorn castles --------------------------------------------------------
+
+    ENTITY #L5RcxEEgov03fartrav ^"Far Traveler Castle" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "castles-of-rokugan"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Unicorn Clan" FROM "Far Traveler Castle is a single large three-sided keep"
+        }
+    }
+
+    ENTITY #L5RcxEEgov04battmai ^"Battle Maiden Castle" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "castles-of-rokugan"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Unicorn Clan" FROM "Battle Maiden Castle tops its multiple towers with bell-shaped domes"
+        }
+    }
+
+    ENTITY #L5RcxEEgov05greatd ^"Great Day Castle" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "castles-of-rokugan"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Unicorn Clan" FROM "Great Day Castle, which the clan built with the specific goal of forming good diplomatic relations"
+        }
+    }
+
+    # -- Court institutions -----------------------------------------------------
+
+    ENTITY #L5RcxEEgov06wintct ^"Imperial Winter Court" {
+        IS ^"Tradition"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "duties-of-lords"
+    }
+
+    ENTITY #L5RcxEEgov07tournk ^"Tournament of the Kami" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "duties-of-lords"
+        RELATIONSHIPS {
+            ^"involved" -> ^"Lord Togashi" FROM "Togashi's refusal to participate in the ancient Tournament of the Kami"
+        }
+    }
+
+    ENTITY #L5RcxEEgov08ikomab ^"Ikoma Bards" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "court-and-its-inhabitants"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Lion Clan" FROM "the Lion Clan's Ikoma Bards"
+        }
+    }
+
+    # -- Rokugani court titles --------------------------------------------------
+
+    ENTITY #L5RcxEEgov09karozz ^"Karō" {
+        IS ^"Title"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "seneschals-karō"
+    }
+
+    ENTITY #L5RcxEEgov10hatamo ^"Hatamoto" {
+        IS ^"Title"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "personal-vassals-hatamoto"
+    }
+
+    ENTITY #L5RcxEEgov11nakodo ^"Nakōdo" {
+        IS ^"Title"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "matchmakers-nakōdo"
+    }
+
+    ENTITY #L5RcxEEgov12sensei ^"Sensei" {
+        IS ^"Title"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "instructors-sensei"
+    }
+
+    # -- Fortunes venerated by artisans -----------------------------------------
+
+    ENTITY #L5RcxEEgov13benten ^"Benten" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-artisan"
+    }
+
+    ENTITY #L5RcxEEgov14tenjin ^"Tenjin" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-artisan"
+    }
+
+    ENTITY #L5RcxEEgov15sadaha ^"Sadahako" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-artisan"
+    }
+}
