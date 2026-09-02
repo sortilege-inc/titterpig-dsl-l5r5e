@@ -1,0 +1,149 @@
+# .codex SECTION — Fields of Victory: The Lion Clan. Stand-off graph over
+# l5r5e-0.4-fields-of-victory-lion-clan.lore (spec §25). Part of the L5R5e system
+# graph; DEPENDS_ON the shared schema. The four Lion families (Akodo, Matsu,
+# Ikoma, Kitsu) are DEFs; the Kitsu race, Last Breath Castle, Hall of Ancestors,
+# Valley of Storms, Beiden Pass, Lake of Sorrows, Kintani, and Yōjin no Shiro are
+# defined elsewhere. Kenson no Gakka is amended.
+
+CODEX "L5R5e_FoV_LionClan_Codex" {
+    NAME "Fields of Victory: The Lion Clan — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    ENTITY #L5RcxFoVlio01matsunao ^"Matsu Naoko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "matsu-naoko"
+        RELATIONSHIPS { ^"member-of" -> ^"Lion Clan" FROM "Matsu Naoko" }
+    }
+    ENTITY #L5RcxFoVlio02deathskr ^"Deathseekers" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "culture-and-traditions"
+        RELATIONSHIPS { ^"operated-by" -> ^"Lion Clan" FROM "these so-called \"Deathseekers\"" }
+    }
+    ENTITY #L5RcxFoVlio03kirifu ^"Kirifu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "culture-and-traditions"
+        RELATIONSHIPS { ^"member-of" -> ^"Lion Clan" FROM "the vanguard's only survivor, Kirifu, swore to serve in the army's most dangerous positions" }
+    }
+    ENTITY #L5RcxFoVlio04loyalcst ^"Loyalty Castle" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "loyalty-castle"
+        RELATIONSHIPS {
+            ^"held-by"      -> ^"Lion Clan"   FROM "Shiro Akodo, or Loyalty Castle, is the ancestral seat of the Akodo family's power"
+            ^"located-near" -> ^"Otosan Uchi" FROM "located a day's ride from Otosan Uchi"
+        }
+    }
+    ENTITY #L5RcxFoVlio05heartvsh ^"Heart of Vigilance Shrine" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "heart-of-vigilance-shrine"
+        RELATIONSHIPS { ^"located-in" -> ^"Heart of Vigilance" FROM "bushi discovered a forgotten shrine... within the Heart of Vigilance Forest" }
+    }
+    ENTITY #L5RcxFoVlio06authcity ^"Authorized City" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "authorized-city"
+        RELATIONSHIPS { ^"held-by" -> ^"Lion Clan" FROM "the vibrant town known as Authorized City, or Ninkatoshi" }
+    }
+    ENTITY #L5RcxFoVlio07sacwatch ^"Sacred Watch Palace" {
+        IS ^"Palace"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "sacred-watch-palace"
+        RELATIONSHIPS {
+            ^"held-by"      -> ^"Lion Clan"               FROM "The ancestral seat of the Ikoma family, Sacred Watch Palace (Kyūden Ikoma)"
+            ^"located-near" -> ^"Mountain of Seven Thunders" FROM "stands just beneath the face of the Mountain of Seven Thunders"
+        }
+    }
+    ENTITY #L5RcxFoVlio08mtsevthd ^"Mountain of Seven Thunders" {
+        IS ^"Mountain"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "sacred-watch-palace"
+    }
+    ENTITY #L5RcxFoVlio09ikomalib ^"Ikoma Libraries" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "sacred-watch-palace"
+        RELATIONSHIPS { ^"located-in" -> ^"Sacred Watch Palace" FROM "Within this keep are the vast Ikoma Libraries" }
+    }
+    ENTITY #L5RcxFoVlio10venplain ^"Venerable Plains of the Ikoma" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "lands-of-the-ikoma"
+        RELATIONSHIPS { ^"held-by" -> ^"Lion Clan" FROM "the Venerable Plains of the Ikoma" }
+    }
+    ENTITY #L5RcxFoVlio11cityhono ^"City of Honor's Sacrifice" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "the-city-of-honors-sacrifice"
+        RELATIONSHIPS {
+            ^"held-by"    -> ^"Lion Clan"     FROM "Among the oldest cities in Ikoma territory, the City of Honor's Sacrifice"
+            ^"located-in" -> ^"Firefly Plains" FROM "dominates the northern Firefly Plains"
+        }
+    }
+    ENTITY #L5RcxFoVlio12firefpln ^"Firefly Plains" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "the-city-of-honors-sacrifice"
+    }
+    ENTITY #L5RcxFoVlio13morndew ^"House of Morning Dew" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "the-city-of-honors-sacrifice"
+        RELATIONSHIPS { ^"located-in" -> ^"City of Honor's Sacrifice" FROM "the greatest geisha house in Lion lands, the House of Morning Dew" }
+    }
+    ENTITY #L5RcxFoVlio14ikomaari ^"Ikoma Arimi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "the-city-of-honors-sacrifice"
+        RELATIONSHIPS { ^"member-of" -> ^"Lion Clan" FROM "the legend of Ikoma Arimi, a Lion samurai" }
+    }
+    ENTITY #L5RcxFoVlio15shinkozz ^"Shinko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "the-city-of-honors-sacrifice"
+        RELATIONSHIPS { ^"member-of" -> ^"Lion Clan" FROM "adopted by an Ikoma samurai... Now a member of the Ikoma Shadow School, Shinko" }
+    }
+    ENTITY #L5RcxFoVlio16bluechry ^"Blue Chrysanthemum Village" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "blue-chrysanthemum-village"
+        RELATIONSHIPS { ^"held-by" -> ^"Lion Clan" FROM "Blue Chrysanthemum Village is the most common destination of travelers permitted to wander Kitsu territory" }
+    }
+    ENTITY #L5RcxFoVlio17swiftswd ^"Castle of the Swift Sword" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "castle-of-the-swift-sword"
+        RELATIONSHIPS {
+            ^"held-by"      -> ^"Lion Clan"              FROM "the Castle of the Swift Sword (Hayaken no Shiro)"
+            ^"located-near" -> ^"Drowned Merchant River" FROM "Standing watch over the Lion's northern border at the foot of the Drowned Merchant River"
+        }
+    }
+    ENTITY #L5RcxFoVlio18bloodhon ^"Plains of Bloodied Honor" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "castle-of-the-swift-sword"
+    }
+    ENTITY #L5RcxFoVlio19tombfive ^"Tomb of the Five" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "castle-of-the-swift-sword"
+        RELATIONSHIPS { ^"located-in" -> ^"Castle of the Swift Sword" FROM "Within this foundation sits the Tomb of the Five" }
+    }
+    ENTITY #L5RcxFoVlio20warcolg ^"Akodo War College" {
+        IS ^"School"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "castle-of-the-swift-sword"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Lion Clan"               FROM "the official estate of the Akodo War College"
+            ^"located-in"  -> ^"Castle of the Swift Sword" FROM "the Castle of the Swift Sword... is the official estate of the Akodo War College"
+        }
+    }
+    ENTITY #L5RcxFoVlio21kitstmb ^"Kitsu Tombs" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "the-kitsu-tombs"
+        RELATIONSHIPS { ^"located-in" -> ^"Kaeru Forest" FROM "visitors to mistake it for a small castle within the Kaeru Forest" }
+    }
+    ENTITY #L5RcxFoVlio22kaerufor ^"Kaeru Forest" {
+        IS ^"Forest"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "the-kitsu-tombs"
+    }
+    ENTITY #L5RcxFoVlio23ginchiyo ^"Ginchiyo" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "the-kitsu-tombs"
+        RELATIONSHIPS { ^"member-of" -> ^"Lion Clan" FROM "the sōdan-senzo... Ginchiyo can become possessed by an ancestor spirit" }
+    }
+
+    # Kenson no Gakka (Humility's Lesson) is defined in the Emerald Empire history
+    # section; amended here with this chapter's provenance and Lion tenancy.
+    ENTITY ^"Kenson no Gakka" {
+        SOURCE "l5r5e-0.4-fields-of-victory-lion-clan.lore" AT "humilitys-lesson"
+        RELATIONSHIPS { ^"held-by" -> ^"Lion Clan" FROM "the Matsu have retained the castle... renaming it Kenson no Gakka, or Humility's Lesson" }
+    }
+}

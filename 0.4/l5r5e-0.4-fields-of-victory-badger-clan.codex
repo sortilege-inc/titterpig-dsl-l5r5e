@@ -1,0 +1,113 @@
+# .codex SECTION — Fields of Victory: The Badger Clan. Stand-off graph over
+# l5r5e-0.4-fields-of-victory-badger-clan.lore (spec §25). Part of the L5R5e
+# system graph; DEPENDS_ON the shared schema. "Badger Clan" is lore-only (no
+# .ttrpg DEF); the Ichirō family and its schools are DEFs. The opening fiction is
+# a Lion vignette — Matsu Tsuko (defined in the Courts of Stone Castles section)
+# is amended, and her Lion associates captured.
+
+CODEX "L5R5e_FoV_BadgerClan_Codex" {
+    NAME "Fields of Victory: The Badger Clan — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # -- Opening fiction (a Lion vignette) --------------------------------------
+
+    ENTITY #L5RcxFoVbad01matsunir ^"Matsu Uniri" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-badger-clan.lore" AT "defenders-of-the-empire"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Lion Clan"   FROM "My father was Matsu Uniri, the late lord of our family"
+            ^"parent-of" -> ^"Matsu Tsuko" FROM "My father was Matsu Uniri... Now, I have inherited his position"
+        }
+    }
+    ENTITY #L5RcxFoVbad02fategrge ^"Battle of Fate Gorge" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-fields-of-victory-badger-clan.lore" AT "defenders-of-the-empire"
+        RELATIONSHIPS { ^"involved" -> ^"Lion Clan" FROM "victor of the Battle of Fate Gorge" }
+    }
+    ENTITY #L5RcxFoVbad03topazchm ^"Topaz Champion" {
+        IS ^"Title"
+        SOURCE "l5r5e-0.4-fields-of-victory-badger-clan.lore" AT "defenders-of-the-empire"
+    }
+    ENTITY #L5RcxFoVbad04lionprde ^"Lion's Pride" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-fields-of-victory-badger-clan.lore" AT "defenders-of-the-empire"
+        RELATIONSHIPS { ^"operated-by" -> ^"Lion Clan" FROM "even one endorsed by the Lion's Pride" }
+    }
+
+    # -- The Badger Clan --------------------------------------------------------
+
+    ENTITY #L5RcxFoVbad05badgercl ^"Badger Clan" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-fields-of-victory-badger-clan.lore" AT "the-badger-clan"
+    }
+    ENTITY #L5RcxFoVbad06hidadomo ^"Hida Domogu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-badger-clan.lore" AT "the-founding"
+        RELATIONSHIPS {
+            ^"founder-of" -> ^"Badger Clan" FROM "Ichirō was made their daimyō and the new clan was entrusted with defending Rokugan's border"
+            ^"member-of"  -> ^"Crab Clan"   FROM "a young Crab named Hida Domogu enjoyed sumai"
+        }
+    }
+    ENTITY #L5RcxFoVbad07pathwoe ^"Path of Woe" {
+        IS ^"Road"
+        SOURCE "l5r5e-0.4-fields-of-victory-badger-clan.lore" AT "lands-of-the-badger"
+    }
+    ENTITY #L5RcxFoVbad08castbadg ^"Castle of the Badger" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-fields-of-victory-badger-clan.lore" AT "lands-of-the-badger"
+        RELATIONSHIPS {
+            ^"held-by"      -> ^"Badger Clan" FROM "the Castle of the Badger is an enormous fortress built high on the mountainside"
+            ^"located-near" -> ^"Path of Woe"  FROM "overlooking the widest and most open section of the Path of Woe"
+        }
+    }
+    ENTITY #L5RcxFoVbad09greatgme ^"Great Games" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-fields-of-victory-badger-clan.lore" AT "lands-of-the-badger"
+        RELATIONSHIPS { ^"occurred-at" -> ^"Castle of the Badger" FROM "The Badger hold the Great Games in the Castle of the Badger (Shiro Ichirō) each year" }
+    }
+    ENTITY #L5RcxFoVbad10badgscwl ^"Badger's Scowl" {
+        IS ^"Mountain"
+        SOURCE "l5r5e-0.4-fields-of-victory-badger-clan.lore" AT "badgers-scowl"
+    }
+    ENTITY #L5RcxFoVbad11furehesh ^"Fureheshu Mine" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-fields-of-victory-badger-clan.lore" AT "fureheshu-mine"
+        RELATIONSHIPS { ^"held-by" -> ^"Badger Clan" FROM "The second-largest Badger holding, it is home to the Fureheshu daimyō" }
+    }
+    ENTITY #L5RcxFoVbad12mulbvall ^"Mulberry Valley" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-fields-of-victory-badger-clan.lore" AT "mulberry-valley"
+    }
+    ENTITY #L5RcxFoVbad13mystshri ^"Mysterious Shrine" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-fields-of-victory-badger-clan.lore" AT "mysterious-shrine"
+        RELATIONSHIPS { ^"located-near" -> ^"Badger's Scowl" FROM "This small shrine in the mountains near Badger's Scowl" }
+    }
+    ENTITY #L5RcxFoVbad14hinata ^"Hinata" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-badger-clan.lore" AT "badger-sapper"
+        RELATIONSHIPS { ^"member-of" -> ^"Badger Clan" FROM "Hinata can spot Badger-made traps" }
+    }
+    ENTITY #L5RcxFoVbad15ayaginu ^"Fureheshu Ayaginu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-badger-clan.lore" AT "fureheshu-ayaginu-sumai-champion"
+        RELATIONSHIPS {
+            ^"member-of"   -> ^"Badger Clan"   FROM "Fureheshu Ayaginu has held the title of Sumai Champion of the Badger Clan"
+            ^"holds-title" -> ^"Sumai Champion" FROM "Fureheshu Ayaginu has held the title of Sumai Champion"
+        }
+    }
+    ENTITY #L5RcxFoVbad16sumaichm ^"Sumai Champion" {
+        IS ^"Title"
+        SOURCE "l5r5e-0.4-fields-of-victory-badger-clan.lore" AT "fureheshu-ayaginu-sumai-champion"
+    }
+
+    # Matsu Tsuko is defined in the Courts of Stone Castles section; amended here.
+    ENTITY ^"Matsu Tsuko" {
+        SOURCE "l5r5e-0.4-fields-of-victory-badger-clan.lore" AT "defenders-of-the-empire"
+        RELATIONSHIPS { ^"holds-title" -> ^"Topaz Champion" FROM "even one who was Topaz Champion" }
+    }
+}

@@ -1,0 +1,430 @@
+# .codex SECTION — Fields of Victory: Glorious Histories (Armies of the Empire).
+# Stand-off graph over l5r5e-0.4-fields-of-victory-armies.lore (spec §25). Part
+# of the L5R5e system graph; DEPENDS_ON the shared schema. The opening unit-type
+# and clan-army descriptions are mechanical/overview; captured below are the
+# named legions, academies/libraries, texts, battles, and historical figures.
+# Already-defined: Leadership, Niten, Lies, The Sword, Battle of Sleeping River,
+# Battle of White Stag, Battle of Fate Gorge (badger-clan), Imperial Legions,
+# Akodo War College / Castle of the Swift Sword (lion-clan), Shiro Mirumoto
+# (governance), Matsu Uniri (badger-clan) — referenced or amended, not re-minted.
+
+CODEX "L5R5e_FoV_Armies_Codex" {
+    NAME "Fields of Victory: Glorious Histories — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # -- Legions, academies, libraries, and texts -------------------------------
+
+    ENTITY #L5RcxFoVarm01emerleg ^"Emerald Legions" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-imperial-legions"
+    }
+    ENTITY #L5RcxFoVarm02sepgensh ^"Seppun Genshin" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "command-and-leadership"
+    }
+    ENTITY #L5RcxFoVarm03matkaguy ^"Matsu Kaguya" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "origins"
+        RELATIONSHIPS { ^"member-of" -> ^"Lion Clan" FROM "the betrayal of General Matsu Kaguya" }
+    }
+    ENTITY #L5RcxFoVarm04losttrv ^"Lost Traveler Castle" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-imperial-legions"
+    }
+    ENTITY #L5RcxFoVarm05naishof ^"Naishō Fort" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-imperial-legions"
+    }
+    ENTITY #L5RcxFoVarm06yogasha ^"Shiro Yogasha" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-imperial-legions"
+    }
+    ENTITY #L5RcxFoVarm07sunrise ^"Sunrise Keep" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-imperial-legions"
+    }
+    ENTITY #L5RcxFoVarm08daidiron ^"Daidoji Iron Warriors" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "armies-in-action"
+        RELATIONSHIPS { ^"operated-by" -> ^"Crane Clan" FROM "the attack patterns of the Daidoji Iron Warriors" }
+    }
+    ENTITY #L5RcxFoVarm09daidojiu ^"Daidoji Uji" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "armies-in-action"
+        RELATIONSHIPS { ^"member-of" -> ^"Crane Clan" FROM "Daidoji Uji has been particularly aggressive in changing the attack patterns" }
+    }
+    ENTITY #L5RcxFoVarm10kyisawa ^"Kyūden Isawa" {
+        IS ^"Palace"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-great-library-at-kyūden-isawa"
+        RELATIONSHIPS { ^"held-by" -> ^"Phoenix Clan" FROM "The Isawa family keeps the largest library in Rokugan" }
+    }
+    ENTITY #L5RcxFoVarm11greatlib ^"Great Library" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-great-library-at-kyūden-isawa"
+        RELATIONSHIPS { ^"located-in" -> ^"Kyūden Isawa" FROM "The Great Library At Kyūden Isawa" }
+    }
+    ENTITY #L5RcxFoVarm12prncheav ^"The Prince of Heaven" {
+        IS ^"Document"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-great-library-at-kyūden-isawa"
+    }
+    ENTITY #L5RcxFoVarm13ikonorit ^"Ikoma Noritobe" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-great-library-at-kyūden-isawa"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Lion Clan"          FROM "after Ikoma Noritobe wrote his epic The Prince of Heaven"
+            ^"authored"  -> ^"The Prince of Heaven" FROM "Ikoma Noritobe wrote his epic The Prince of Heaven"
+        }
+    }
+    ENTITY #L5RcxFoVarm14kaiuenga ^"Kaiu Engineering Academy" {
+        IS ^"School"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "kaiu-engineering-academy"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Crab Clan"  FROM "the Kaiu Engineering Academy is where the greatest inventions of the Empire are created"
+            ^"located-in"  -> ^"Kaiu Castle" FROM "Located in Shiro Kaiu (Carpenter Castle), the Kaiu Engineering Academy"
+        }
+    }
+    ENTITY #L5RcxFoVarm15bluedrm ^"Blue Dreamers" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "kaiu-engineering-academy"
+        RELATIONSHIPS { ^"operated-by" -> ^"Crab Clan" FROM "The Blue Dreamers were a group of Kaiu Engineers" }
+    }
+    ENTITY #L5RcxFoVarm16kaiudesu ^"Kaiu Desura" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "kaiu-engineering-academy"
+        RELATIONSHIPS { ^"member-of" -> ^"Crab Clan" FROM "The Blue Dreamer Kaiu Desura, who died in 445" }
+    }
+    ENTITY #L5RcxFoVarm17goldhist ^"Golden History" {
+        IS ^"Document"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "secret-history-of-the-unicorn"
+    }
+    ENTITY #L5RcxFoVarm18shimakhi ^"Shima Khilan" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "secret-history-of-the-unicorn"
+    }
+    ENTITY #L5RcxFoVarm19akotokoy ^"Akodo Tokoyama" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "akodo-war-college"
+        RELATIONSHIPS { ^"member-of" -> ^"Lion Clan" FROM "Lion Clan Champion Akodo Tokoyama ordered the construction of a new castle" }
+    }
+    ENTITY #L5RcxFoVarm20kakduel ^"Kakita Dueling Academy" {
+        IS ^"School"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "akodo-war-college"
+        RELATIONSHIPS { ^"operated-by" -> ^"Crane Clan" FROM "one of the two most prestigious military schools in Rokugan, along with the Kakita Dueling Academy" }
+    }
+    ENTITY #L5RcxFoVarm21hallscrb ^"Ikoma Hall of Scribes" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "training-grounds"
+        RELATIONSHIPS { ^"located-near" -> ^"Castle of the Swift Sword" FROM "Adjoining the War College is the Ikoma Hall of Scribes" }
+    }
+    ENTITY #L5RcxFoVarm22matsudoj ^"Matsu Doju" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "matsu-doju"
+        RELATIONSHIPS { ^"member-of" -> ^"Lion Clan" FROM "Matsu Doju encompasses all the skill and passion of the Lion Clan" }
+    }
+    ENTITY #L5RcxFoVarm23ikotsanu ^"Ikoma Tsanuri" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "matsu-doju"
+        RELATIONSHIPS { ^"member-of" -> ^"Lion Clan" FROM "Ikoma Tsanuri said of him after the last battle for Toshi Ranbo" }
+    }
+
+    # -- Historical battles and their figures -----------------------------------
+
+    ENTITY #L5RcxFoVarm24regretsh ^"Battle of Regret's Shadow" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore"
+        RELATIONSHIPS { ^"involved" -> ^"Lion Clan" FROM "The ensuing Battle of Regret's Shadow saw the Lion repeatedly outmaneuver the Bloody Crane's forces" }
+    }
+    ENTITY #L5RcxFoVarm25dojtakam ^"Doji Takamori" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore"
+        RELATIONSHIPS { ^"member-of" -> ^"Crane Clan" FROM "a man named Doji Takamori rose to prominence... Nicknamed \"the Bloody Crane\"" }
+    }
+    ENTITY #L5RcxFoVarm26brokhoof ^"Battle of Broken Hooves" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-battle-of-broken-hooves"
+        RELATIONSHIPS { ^"involved" -> ^"Lion Clan" FROM "When the Battle of Broken Hooves was joined" }
+    }
+    ENTITY #L5RcxFoVarm27lordgrss ^"Lord of Grass" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "furious-invasion"
+    }
+    ENTITY #L5RcxFoVarm28akokimik ^"Akodo Kimiko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "furious-invasion"
+        RELATIONSHIPS { ^"member-of" -> ^"Lion Clan" FROM "the Lion Clan Champion, Akodo Kimiko" }
+    }
+    ENTITY #L5RcxFoVarm29kirinpth ^"Ki-Rin's Path" {
+        IS ^"Road"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "furious-invasion"
+    }
+    ENTITY #L5RcxFoVarm30stolgrav ^"Battle of Stolen Graves" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "immortal-villainy"
+        RELATIONSHIPS { ^"involved" -> ^"Bloodspeaker Cult" FROM "what would become known as the Battle of Stolen Graves" }
+    }
+    ENTITY #L5RcxFoVarm31soshtaka ^"Soshi Takasho" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "immortal-villainy"
+        RELATIONSHIPS { ^"member-of" -> ^"Scorpion Clan" FROM "a Scorpion Clan magistrate, Soshi Takasho" }
+    }
+    ENTITY #L5RcxFoVarm32akominob ^"Akodo Minobe" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "immortal-villainy"
+        RELATIONSHIPS { ^"member-of" -> ^"Lion Clan" FROM "accompanied by Imperial Guard Akodo Minobe" }
+    }
+    ENTITY #L5RcxFoVarm33bloodret ^"Battle of the Bloody Retreat" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-return"
+        RELATIONSHIPS { ^"involved" -> ^"Scorpion Clan" FROM "the Scorpion fought a bitter and brutal rearguard, now known as the Battle of the Bloody Retreat" }
+    }
+    ENTITY #L5RcxFoVarm34bearclan ^"Bear Clan" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "mahō-and-mystery"
+    }
+    ENTITY #L5RcxFoVarm35grimreso ^"Battle of Grim Resolve" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-battle-of-grim-resolve"
+        RELATIONSHIPS {
+            ^"involved" -> ^"Lion Clan" FROM "the last conflict in the brief campaign, took place near the present-day village of Shaiga"
+            ^"involved" -> ^"Bear Clan" FROM "the Bear Clan had been obliterated"
+        }
+    }
+    ENTITY #L5RcxFoVarm36shaiga ^"Shaiga" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "mahō-and-mystery"
+    }
+    ENTITY #L5RcxFoVarm37peopleg ^"People's Legion" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "driven-by-desperation"
+    }
+    ENTITY #L5RcxFoVarm38cityremm ^"City of Remembrance" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "driven-by-desperation"
+        RELATIONSHIPS { ^"held-by" -> ^"Phoenix Clan" FROM "the City of Remembrance in Phoenix lands" }
+    }
+    ENTITY #L5RcxFoVarm39drownmrr ^"Battle of Drowned Merchant River" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "driven-by-desperation"
+        RELATIONSHIPS {
+            ^"involved"    -> ^"Lion Clan"              FROM "The ensuing Battle of Drowned Merchant River raged on for several days"
+            ^"involved"    -> ^"Dragon Clan"            FROM "A Dragon army engaged the Lion soon after they crossed the border"
+            ^"occurred-at" -> ^"Drowned Merchant River" FROM "a Lion Clan delegation crossed the Drowned Merchant River to confront the Dragon Clan"
+        }
+    }
+    ENTITY #L5RcxFoVarm40akomasau ^"Akodo Masaumi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "driven-by-desperation"
+        RELATIONSHIPS { ^"member-of" -> ^"Lion Clan" FROM "the commander of the Lion delegation, General Akodo Masaumi" }
+    }
+    ENTITY #L5RcxFoVarm41ricewar ^"Rice War" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "driven-by-desperation"
+        RELATIONSHIPS {
+            ^"involved" -> ^"Crab Clan"  FROM "the Crab and Crane Clans engaged in an intense trade dispute"
+            ^"involved" -> ^"Crane Clan" FROM "In what became known as the Rice War"
+        }
+    }
+    ENTITY #L5RcxFoVarm42hidtsune ^"Hida Tsuneko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "driven-by-desperation"
+        RELATIONSHIPS { ^"member-of" -> ^"Crab Clan" FROM "Crab Clan Champion Hida Tsuneko appealed for aid" }
+    }
+    ENTITY #L5RcxFoVarm43kyudtonb ^"Kyūden Tonbo" {
+        IS ^"Palace"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "lands-and-legacies"
+        RELATIONSHIPS { ^"held-by" -> ^"Dragonfly Clan" FROM "Kyūden Tonbo, or Dragonfly Palace" }
+    }
+    ENTITY #L5RcxFoVarm44battonbo ^"Battle of Kyūden Tonbo" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "lands-and-legacies"
+        RELATIONSHIPS {
+            ^"involved"    -> ^"Lion Clan"    FROM "Yokutsu launched his attack. In the ensuing Battle of Kyūden Tonbo"
+            ^"occurred-at" -> ^"Kyūden Tonbo" FROM "When Yokutsu reached Dragonfly Palace"
+        }
+    }
+    ENTITY #L5RcxFoVarm45greatclm ^"Battle of the Great Climb" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "lands-and-legacies"
+        RELATIONSHIPS {
+            ^"involved" -> ^"Lion Clan"   FROM "He met the Dragon defenders in the Battle of the Great Climb"
+            ^"involved" -> ^"Dragon Clan" FROM "the Dragon forces withdrew into the stronghold of Shiro Mirumoto"
+        }
+    }
+    ENTITY #L5RcxFoVarm46akoyokut ^"Akodo Yokutsu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "lands-and-legacies"
+        RELATIONSHIPS { ^"member-of" -> ^"Lion Clan" FROM "the Lion general Akodo Yokutsu" }
+    }
+    ENTITY #L5RcxFoVarm47isamorok ^"Isawa Moroko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "lands-and-legacies"
+        RELATIONSHIPS { ^"member-of" -> ^"Phoenix Clan" FROM "was betrothed to Phoenix samurai Isawa Moroko" }
+    }
+    ENTITY #L5RcxFoVarm48mirashij ^"Mirumoto Ashijin" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "lands-and-legacies"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Dragon Clan"  FROM "her true love, Mirumoto Ashijin of the Dragon Clan"
+            ^"married-to" -> ^"Isawa Moroko" FROM "so that Moroko could be free to marry her true love, Mirumoto Ashijin"
+        }
+    }
+    ENTITY #L5RcxFoVarm49tonkuyuj ^"Tonbo Kuyujin" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "lands-and-legacies"
+        RELATIONSHIPS { ^"member-of" -> ^"Dragonfly Clan" FROM "Ashijin and Moroko had adopted a young samurai, Tonbo Kuyujin, as their son and heir" }
+    }
+    ENTITY #L5RcxFoVarm50hourwolf ^"Battle of the Hour of the Wolf" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-battle-of-the-hour-of-the-wolf"
+        RELATIONSHIPS { ^"involved" -> ^"Lion Clan" FROM "a Lion army consisting almost entirely of Matsu legions" }
+    }
+    ENTITY #L5RcxFoVarm51shinegls ^"Lake of Shining Glass" {
+        IS ^"Lake"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "an-accursed-hour"
+    }
+    ENTITY #L5RcxFoVarm52burnshad ^"Battle of Burning Shadows" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "invaders-from-the-past"
+        RELATIONSHIPS {
+            ^"involved" -> ^"Unicorn Clan" FROM "The Battle of Burning Shadows was brief and brutal"
+            ^"involved" -> ^"Crab Clan"    FROM "the Crab defenders finding themselves unprepared"
+        }
+    }
+    ENTITY #L5RcxFoVarm53shnnishi ^"Shinjo Nishijin" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "invaders-from-the-past"
+        RELATIONSHIPS { ^"member-of" -> ^"Unicorn Clan" FROM "the Unicorn followed their Clan Champion, Shinjo Nishijin" }
+    }
+    ENTITY #L5RcxFoVarm54whtshore ^"Battle of White Shore Plain" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "invaders-from-the-past"
+        RELATIONSHIPS {
+            ^"involved" -> ^"Unicorn Clan"  FROM "At the Battle of White Shore Plain, the Unicorn defeated a Scorpion army"
+            ^"involved" -> ^"Scorpion Clan" FROM "the Unicorn defeated a Scorpion army despite the underhanded tactics"
+        }
+    }
+    ENTITY #L5RcxFoVarm55thundgrv ^"Battle of Thunder Grove" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "invaders-from-the-past"
+        RELATIONSHIPS {
+            ^"involved" -> ^"Unicorn Clan" FROM "At the Battle of Thunder Grove, the Unicorn thwarted a Lion ambush"
+            ^"involved" -> ^"Lion Clan"    FROM "thwarted a Lion ambush with a cavalry retreat"
+        }
+    }
+    ENTITY #L5RcxFoVarm56battpeak ^"Battle of the Peaks" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "invaders-from-the-past"
+        RELATIONSHIPS {
+            ^"involved" -> ^"Unicorn Clan" FROM "at the Battle of the Peaks, as the Unicorn hordes crossed the Spine of the World Mountains"
+            ^"involved" -> ^"Phoenix Clan" FROM "a team of Phoenix Air Elemental Guards and the Hurricane Initiates attempted to ambush them"
+        }
+    }
+    ENTITY #L5RcxFoVarm57hurrinit ^"Hurricane Initiates" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "invaders-from-the-past"
+        RELATIONSHIPS { ^"operated-by" -> ^"Phoenix Clan" FROM "Phoenix Air Elemental Guards and the Hurricane Initiates" }
+    }
+    ENTITY #L5RcxFoVarm58ragingse ^"Raging Seas" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-return-of-the-ki-rin"
+    }
+    ENTITY #L5RcxFoVarm59plnwstn ^"Plain of Wind and Stone" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-return-of-the-ki-rin"
+    }
+    ENTITY #L5RcxFoVarm60sleeprvr ^"Sleeping River" {
+        IS ^"River"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-return"
+    }
+    ENTITY #L5RcxFoVarm61snowplbt ^"Battle of Snow Plain" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-battle-of-snow-plain"
+        RELATIONSHIPS {
+            ^"involved" -> ^"Lion Clan"    FROM "the Lion Clan Champion ordered his most skilled general, Matsu Sakura, to marshal an army to strike for the Snow Plain"
+            ^"involved" -> ^"Unicorn Clan" FROM "The Unicorn commanding the defenders, Shinjo Kamu"
+        }
+    }
+    ENTITY #L5RcxFoVarm62snowplan ^"Snow Plain" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "blood-in-the-water"
+    }
+    ENTITY #L5RcxFoVarm63matsakra ^"Matsu Sakura" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "blood-in-the-water"
+        RELATIONSHIPS { ^"member-of" -> ^"Lion Clan" FROM "his most skilled general, Matsu Sakura" }
+    }
+    ENTITY #L5RcxFoVarm64shnjkamu ^"Shinjo Kamu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "blood-in-the-water"
+        RELATIONSHIPS { ^"member-of" -> ^"Unicorn Clan" FROM "The Unicorn commanding the defenders, Shinjo Kamu" }
+    }
+    ENTITY #L5RcxFoVarm65ikokojim ^"Ikoma Kojima" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-battle-of-snow-plain"
+        RELATIONSHIPS { ^"member-of" -> ^"Lion Clan" FROM "the Lion Clan Champion Ikoma Kojima pressed his claim" }
+    }
+    ENTITY #L5RcxFoVarm66baykirik ^"Bayushi Kiriko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "blood-in-the-water"
+        RELATIONSHIPS { ^"member-of" -> ^"Scorpion Clan" FROM "The scholar Bayushi Kiriko holds that the accounts were likely altered" }
+    }
+    ENTITY #L5RcxFoVarm67isakaiyo ^"Isawa Kaiyoko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-battle-of-fate-gorge"
+        RELATIONSHIPS { ^"member-of" -> ^"Phoenix Clan" FROM "the Phoenix Clan's Master of Water, Isawa Kaiyoko" }
+    }
+    ENTITY #L5RcxFoVarm68matyunak ^"Matsu Yunaki" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-battle-of-fate-gorge"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Lion Clan"   FROM "Matsu Yunaki assumed command of the Lion army"
+            ^"married-to" -> ^"Matsu Uniri" FROM "his wife, Yunaki, and his daughter would be in the same war tent"
+        }
+    }
+    ENTITY #L5RcxFoVarm69tsunaleg ^"Tsunami Legion" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-battle-of-fate-gorge"
+        RELATIONSHIPS { ^"operated-by" -> ^"Phoenix Clan" FROM "she summoned the Tsunami Legion, one of the Elemental Legions" }
+    }
+    ENTITY #L5RcxFoVarm70elemleg ^"Elemental Legions" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-battle-of-fate-gorge"
+        RELATIONSHIPS { ^"operated-by" -> ^"Phoenix Clan" FROM "the Isawa family maintained the Elemental Legions" }
+    }
+    ENTITY #L5RcxFoVarm71tshrnbob ^"Battles of Toshi Ranbo" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-battles-of-toshi-ranbo"
+        RELATIONSHIPS {
+            ^"involved"    -> ^"Lion Clan"   FROM "conflict rage around its ownership, mainly between the Lion and Crane Clans"
+            ^"involved"    -> ^"Crane Clan"  FROM "mainly between the Lion and Crane Clans"
+            ^"occurred-at" -> ^"Toshi Ranbo" FROM "The Battles of Toshi Ranbo"
+        }
+    }
+    ENTITY #L5RcxFoVarm72damasu ^"Damasu" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "clashes-for-control"
+        RELATIONSHIPS { ^"vassal-of" -> ^"Lion Clan" FROM "The Tsume had already destroyed a Lion Clan vassal family, the Damasu" }
+    }
+    ENTITY #L5RcxFoVarm73goseki ^"Goseki" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "clashes-for-control"
+        RELATIONSHIPS { ^"vassal-of" -> ^"Lion Clan" FROM "ending the bloodline of another Lion Clan vassal family, the Goseki" }
+    }
+
+    # -- Amends -----------------------------------------------------------------
+
+    ENTITY ^"Matsu Uniri" {
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "the-battle-of-fate-gorge"
+        RELATIONSHIPS { ^"married-to" -> ^"Matsu Yunaki" FROM "his wife, Yunaki" }
+    }
+    ENTITY ^"Shiro Mirumoto" {
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "lands-and-legacies"
+    }
+    ENTITY ^"Akodo War College" {
+        SOURCE "l5r5e-0.4-fields-of-victory-armies.lore" AT "akodo-war-college"
+    }
+}
