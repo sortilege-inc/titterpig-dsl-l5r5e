@@ -1,0 +1,386 @@
+# .codex SECTION — Emerald Empire: Sacred Spaces (Chapter 4 — cosmology, the
+# Fortunes, shrines, festivals, and forbidden beliefs). Stand-off graph over
+# l5r5e-0.4-emerald-empire-religion.lore (spec §25). Part of the L5R5e system
+# graph; DEPENDS_ON the shared schema. Covers the realms of the cosmos (Yomi,
+# Senkyō, Yume-dō, Gaki-dō, Tōshigoku), Emma-Ō and the nine Kings of Hell, the
+# named Fortunes, the great shrines (Ki-Rin, Benten Seidō, Willow-Healing Kami),
+# the festivals, and the malicious Fortunes.
+
+CODEX "L5R5e_Codex_EE_Religion" {
+    NAME "Emerald Empire: Sacred Spaces — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # -- Cosmography: the realms ------------------------------------------------
+
+    ENTITY #L5RcxEErel01yomizzzz ^"Yomi" {
+        IS ^"Realm"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "yomi"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Tengoku" FROM "Yomi has been a fine precinct of the Heavens, a sort of province of Tengoku"
+        }
+    }
+    ENTITY #L5RcxEErel02senkyozz ^"Senkyō" {
+        IS ^"Realm"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "beside-senkyō"
+    }
+    ENTITY #L5RcxEErel03chikusho ^"Chikushō-dō" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "chikushō-dō-and-sakkaku"
+        RELATIONSHIPS {
+            ^"rival-of" -> ^"Sakkaku" FROM "Chikushō-dō and Sakkaku treat one another as foreign courts"
+        }
+    }
+    ENTITY #L5RcxEErel04sakkakuz ^"Sakkaku" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "chikushō-dō-and-sakkaku"
+    }
+    ENTITY #L5RcxEErel05yumedozz ^"Yume-dō" {
+        IS ^"Realm"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "yume-dō"
+    }
+    ENTITY #L5RcxEErel06gakidozz ^"Gaki-dō" {
+        IS ^"Realm"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "gaki-dō"
+    }
+    ENTITY #L5RcxEErel07toshigok ^"Tōshigoku" {
+        IS ^"Realm"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "tōshigoku"
+    }
+    ENTITY #L5RcxEErel08toshicas ^"Tōshigoku Castle" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "tōshigoku"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Tōshigoku" FROM "built a castle there, and appointed an especially competent mazoku"
+        }
+    }
+    ENTITY #L5RcxEErel09yellospr ^"Yellow Springs" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "yomi"
+    }
+    ENTITY #L5RcxEErel10mujokizz ^"Mujōki" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "tōshigoku"
+    }
+
+    # -- Emma-Ō, the Kings of Hell, and a notable sorei -------------------------
+
+    ENTITY #L5RcxEErel11emmaoozz ^"Emma-Ō" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "emma-ō"
+    }
+    ENTITY #L5RcxEErel12kingshel ^"Kings of Hell" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "meido"
+    }
+    ENTITY #L5RcxEErel13shinkozz ^"Shinkō" {
+        IS ^"Deity"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "meido"
+    }
+    ENTITY #L5RcxEErel14sokozzzz ^"Sokō" {
+        IS ^"Deity"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "meido"
+    }
+    ENTITY #L5RcxEErel15sotaizzz ^"Sotai" {
+        IS ^"Deity"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "meido"
+    }
+    ENTITY #L5RcxEErel16gokanzzz ^"Gokan" {
+        IS ^"Deity"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "meido"
+    }
+    ENTITY #L5RcxEErel17benjozzz ^"Benjō" {
+        IS ^"Deity"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "meido"
+    }
+    ENTITY #L5RcxEErel18taisenz ^"Taisen" {
+        IS ^"Deity"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "meido"
+    }
+    ENTITY #L5RcxEErel19toshizz ^"Toshi" {
+        IS ^"Deity"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "meido"
+    }
+    ENTITY #L5RcxEErel20byodozzz ^"Byōdō" {
+        IS ^"Deity"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "meido"
+    }
+    ENTITY #L5RcxEErel21tenrinz ^"Tenrin" {
+        IS ^"Deity"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "meido"
+    }
+    ENTITY #L5RcxEErel22chifunez ^"Chifune" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "yomi"
+    }
+
+    # -- The named Fortunes -----------------------------------------------------
+
+    ENTITY #L5RcxEErel23ebisuzz ^"Ebisu" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "veneration-of-the-dead"
+    }
+    ENTITY #L5RcxEErel24hoteizz ^"Hotei" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "hotei"
+    }
+    ENTITY #L5RcxEErel25jizozzz ^"Jizō" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "veneration-of-the-dead"
+    }
+    ENTITY #L5RcxEErel26kanoozz ^"Kan'o" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "cherry-blossom-festival"
+    }
+    ENTITY #L5RcxEErel27nagameru ^"Nagameru" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "cherry-blossom-festival"
+    }
+    ENTITY #L5RcxEErel28ekibyogm ^"Ekibyōgami" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "the-shrine-of-the-willow-healing-kami"
+    }
+    ENTITY #L5RcxEErel29hofukush ^"Hofukushu" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "corrupted-shrines"
+    }
+    ENTITY #L5RcxEErel30kamashio ^"Kamashi-Okara" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "corrupted-shrines"
+    }
+    ENTITY #L5RcxEErel31kirakozz ^"Kirako" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "corrupted-shrines"
+    }
+    ENTITY #L5RcxEErel32sengenzz ^"Sengen" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "sacred-sites"
+    }
+    ENTITY #L5RcxEErel33willohkm ^"Willow-Healing Kami" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "the-shrine-of-the-willow-healing-kami"
+    }
+    ENTITY #L5RcxEErel34panukuzz ^"P'an Ku" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "dark-shrines-noble-goals"
+    }
+    ENTITY #L5RcxEErel35dreamwvr ^"Dreamweavers" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "yume-dō"
+    }
+
+    # -- The Mezameta Shrine day-to-day (Ukabu Mura) ----------------------------
+
+    ENTITY #L5RcxEErel36mezameta ^"Mezameta Shrine" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "the-shrine-day-to-day"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Ukabu Mura" FROM "the humble Mezameta shrine, located within the outskirts of the city of Ukabu Mura"
+        }
+    }
+    ENTITY #L5RcxEErel37ukabumur ^"Ukabu Mura" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "the-shrine-day-to-day"
+    }
+    ENTITY #L5RcxEErel38kanawalk ^"Kanawa Lake" {
+        IS ^"Lake"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "the-shrine-day-to-day"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Drowned Merchant River" FROM "the kami of the nearby Kanawa Lake, which feeds the Drowned Merchant River"
+        }
+    }
+    ENTITY #L5RcxEErel39ukabudoj ^"Ukabu Mura Dōjō" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "the-shrine-day-to-day"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Ukabu Mura" FROM "a student from the Ukabu Mura Dōjō arrives"
+        }
+    }
+    ENTITY #L5RcxEErel40yojizzzz ^"Yōji" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "the-shrine-day-to-day"
+    }
+    ENTITY #L5RcxEErel41agakiori ^"Agasha Kiori" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "the-shrine-day-to-day"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Dragon Clan" FROM "Agasha Kiori arrives... Due to her caste and status as a shugenja"
+        }
+    }
+    ENTITY #L5RcxEErel42kokkazzz ^"Kokka" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "the-shrine-day-to-day"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Phoenix Clan" FROM "the shrine keeper named Kokka... the fifth-born child of an Asako lord"
+        }
+    }
+    ENTITY #L5RcxEErel43miyabosh ^"Miya Boshin" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "the-shrine-day-to-day"
+    }
+    ENTITY #L5RcxEErel44matsunik ^"Matsu Nioko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "the-shrine-day-to-day"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Lion Clan" FROM "Matsu Nioko wishes to have her new sword blessed"
+        }
+    }
+
+    # -- Festivals --------------------------------------------------------------
+
+    ENTITY #L5RcxEErel45bonfestv ^"Bon Festival" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "bon-festival"
+    }
+    ENTITY #L5RcxEErel46cherryfl ^"Cherry Blossom Festival" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "cherry-blossom-festival"
+    }
+    ENTITY #L5RcxEErel47shoutday ^"Shouting Day" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "shouting-day"
+    }
+    ENTITY #L5RcxEErel48setsuban ^"Setsuban Festival" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "the-setsuban-festival"
+        RELATIONSHIPS {
+            ^"occurred-at" -> ^"Shrine of the Ki-Rin" FROM "The most elaborate Setsuban Festival, held at the Shrine of the Ki-Rin"
+        }
+    }
+    ENTITY #L5RcxEErel49setsubun ^"Setsubun Festival" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "the-setsuban-festival"
+    }
+    ENTITY #L5RcxEErel50moonwrth ^"Festival of the Moon's Wrath" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "festivals"
+    }
+    ENTITY #L5RcxEErel51festhida ^"Festival of Hida" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "festivals"
+        RELATIONSHIPS {
+            ^"involved" -> ^"Crab Clan" FROM "the Festival of Hida, celebrated only by the Crab"
+        }
+    }
+    ENTITY #L5RcxEErel52barefoot ^"Barefoot Festival" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "festivals"
+        RELATIONSHIPS {
+            ^"occurred-at" -> ^"Crossroads Village" FROM "Crossroads Village is the site of the Barefoot Festival, which honors Koshin"
+        }
+    }
+    ENTITY #L5RcxEErel53suijnfst ^"Suijin Festival" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "festivals"
+    }
+    ENTITY #L5RcxEErel54willofst ^"Willow-Healing Kami Festival" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "the-shrine-of-the-willow-healing-kami"
+    }
+
+    # -- The great shrines and their people -------------------------------------
+
+    ENTITY #L5RcxEErel55shrkirin ^"Shrine of the Ki-Rin" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "the-shrine-of-the-ki-rin"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Great Wall of the North Mountains" FROM "a marble ki-rin entwined with sculpted flames facing the Great Wall of the North Mountains"
+        }
+    }
+    ENTITY #L5RcxEErel56shirogis ^"Shiro Gisu" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "approaching-the-shrine"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Phoenix Clan" FROM "roughly a half-day's travel from Shiro Gisu in the mountainous Asako provinces"
+        }
+    }
+    ENTITY #L5RcxEErel57hinokizz ^"Hinoki" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "approaching-the-shrine"
+    }
+    ENTITY #L5RcxEErel58kaithnow ^"Kaito Hinowa" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "approaching-the-shrine"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Phoenix Clan" FROM "a rustic shrine keeper from the Kaito family"
+        }
+    }
+    ENTITY #L5RcxEErel59takekozz ^"Takeko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "approaching-the-shrine"
+    }
+    ENTITY #L5RcxEErel60bentseid ^"Benten Seidō" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "benten-seidō"
+        RELATIONSHIPS {
+            ^"held-by"      -> ^"Crane Clan"        FROM "the largest and most impressive shrine to Benten rests in the domain of the Crane Clan"
+            ^"dedicated-to" -> ^"Benten"            FROM "the first of Benten's shrines ever erected"
+            ^"located-near" -> ^"Seikitsu Mountains" FROM "pilgrims must travel through the narrow Cold Wind Pass and up the easternmost of the Seikitsu Mountains"
+        }
+    }
+    ENTITY #L5RcxEErel61coldwind ^"Cold Wind Pass" {
+        IS ^"Road"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "benten-seidō"
+    }
+    ENTITY #L5RcxEErel62seikitmt ^"Seikitsu Mountains" {
+        IS ^"Mountain"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "benten-seidō"
+    }
+    ENTITY #L5RcxEErel63kawanazz ^"Kawana" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "benten-seidō"
+    }
+    ENTITY #L5RcxEErel64tsubaki ^"Tsubaki" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "benten-seidō"
+    }
+    ENTITY #L5RcxEErel65suzhinag ^"Suzume Hinagiku" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "benten-seidō"
+    }
+    ENTITY #L5RcxEErel66shrwillo ^"Shrine of the Willow-Healing Kami" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "the-shrine-of-the-willow-healing-kami"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Clear Water Village" FROM "Clear Water Village... also contains one of the Empire's oldest shrines"
+        }
+    }
+    ENTITY #L5RcxEErel67kayozzzz ^"Kayo" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "the-shrine-of-the-willow-healing-kami"
+    }
+    ENTITY #L5RcxEErel68sengenmt ^"Sengen Mountain" {
+        IS ^"Mountain"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "sacred-sites"
+    }
+    ENTITY #L5RcxEErel69shrhotei ^"Shrine to Hotei" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "shrine-economics"
+        RELATIONSHIPS {
+            ^"dedicated-to" -> ^"Hotei" FROM "the Shrine to Hotei is funded by the Bayushi family"
+        }
+    }
+    ENTITY #L5RcxEErel70amatshri ^"Amaterasu's Shrine" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "bell-tower"
+    }
+    ENTITY #L5RcxEErel71bridglit ^"Bridge of Lights" {
+        IS ^"Bridge"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "bon-festival"
+    }
+    ENTITY #L5RcxEErel72crossvil ^"Crossroads Village" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "festivals"
+    }
+    ENTITY #L5RcxEErel73frndtrav ^"Friendly Traveler Village" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "festivals"
+    }
+    ENTITY #L5RcxEErel74grndmstr ^"Grand Master of the Elements" {
+        IS ^"Title"
+        SOURCE "l5r5e-0.4-emerald-empire-religion.lore" AT "curses"
+    }
+}
