@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Systems" {
     NAME "Legend of the Five Rings 5th Edition - Game systems: combat, conditions, strife, honor, weapons, armor, and NPCs"
-    VERSION "0.4.22"
+    VERSION "0.4.23"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -2115,6 +2115,21 @@ BASE "L5R5e_Core_Systems" {
             #L5R440yZ2aB4cD6eF8gH0i: weapon_attributes_and_categories
             #L5R441jK3lM5nO7pQ9rS1t: readied_and_sheathed_weapons
             #L5R442uV4wX6yZ8aB0cD2e: grip_selection_and_switching
+        }
+    }
+
+    # A weapon type improvised from an object at hand. The core rulebook (p. 230)
+    # references improvised weapons but supplies no profile; the profile rule was
+    # added by errata. This stub establishes the entity so the errata (and the
+    # Shoddy Improvised Weapons variant) have a canonical target to extend.
+    ^"Improvised Weapons" DEF {
+        EXTENDS ^"Weapon"
+        PROPERTIES {
+            ^"Name"     STRING "Improvised Weapon"
+            ^"Category" STRING "Improvised"
+        }
+        RULES {
+            #L5R443iW5xY7zA9bC1dE3f: improvised_weapons
         }
     }
 
