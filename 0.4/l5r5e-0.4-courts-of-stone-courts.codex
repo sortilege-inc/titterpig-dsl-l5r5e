@@ -1,0 +1,33 @@
+# .codex SECTION — Courts of Stone: Games of Discourse. Stand-off graph over
+# l5r5e-0.4-courts-of-stone-courts.lore (spec §25). Part of the L5R5e system
+# graph; DEPENDS_ON the shared schema.
+#
+# This chapter is GM-facing procedure — running Winter Court games, the Courtesy
+# tenet, the Bonds subsystem, and new mechanical Titles (Castellan, Covert Agent,
+# Dread Enforcer, Esteemed Negotiator, Kenshinzen, Kyuden Asako Shieldbearer,
+# Master Artisan, Winter Court Champion, Seven Fold Palace Acolyte) — all DEFs,
+# not lore entities, and not reproduced. Its one lore-native named entity is the
+# opening-fiction character; Kakita Ryoku (defined elsewhere) is amended.
+
+CODEX "L5R5e_CoS_Courts_Codex" {
+    NAME "Courts of Stone: Games of Discourse — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    ENTITY #L5RcxCoScrt01qutlugh ^"Ide Qutlugh" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-courts.lore"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Unicorn Clan" FROM "Ide Qutlugh's hands froze on her obi's knot as she knelt before the mirror"
+        }
+    }
+
+    # Kakita Ryoku (defined in the Emerald Empire history section) appears in the
+    # opening fiction opposite Qutlugh; amended with this chapter's provenance.
+    ENTITY ^"Kakita Ryoku" {
+        SOURCE "l5r5e-0.4-courts-of-stone-courts.lore"
+    }
+}

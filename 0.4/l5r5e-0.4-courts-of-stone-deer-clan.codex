@@ -1,0 +1,97 @@
+# .codex SECTION — Courts of Stone: The Deer Clan. Stand-off graph over
+# l5r5e-0.4-courts-of-stone-deer-clan.lore (spec §25). Part of the L5R5e system
+# graph; DEPENDS_ON the shared schema.
+#
+# "Deer Clan" has no .ttrpg DEF (the mechanical family DEF is ^"Shika"), so it is
+# defined HERE as a lore-native Faction entity — the node the Courts of Stone
+# Castles section references for Kyūden Shika and the Shika NPCs. The chapter's
+# New Schools (Bayushi Deathdealer, Daidoji Spymaster, Shika Matchmaker/
+# Speardancer, etc.) are DEFs and not reproduced. Shika Renji, Aokami Forest, and
+# Kyūden Shika are amended (defined in the Castles section).
+
+CODEX "L5R5e_CoS_DeerClan_Codex" {
+    NAME "Courts of Stone: The Deer Clan — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    ENTITY #L5RcxCoSder01deerclan ^"Deer Clan" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-courts-of-stone-deer-clan.lore" AT "the-deer-clan"
+    }
+
+    ENTITY #L5RcxCoSder09yoshiro ^"Yoshiro" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-deer-clan.lore" AT "wars-of-words-and-shadows"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crane Clan" FROM "\"Quiet, Doji brat.\""
+        }
+    }
+
+    ENTITY #L5RcxCoSder02takuyazz ^"Asahina Takuya" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-deer-clan.lore" AT "unity-and-division"
+        RELATIONSHIPS {
+            ^"founder-of" -> ^"Deer Clan"       FROM "The Deer Clan draws its origin to one such rare marriage"
+            ^"member-of"  -> ^"Deer Clan"       FROM "the healer Asahina Takuya and the warrior Daidoji Kokoro married"
+            ^"married-to" -> ^"Daidoji Kokoro"  FROM "Asahina Takuya and the warrior Daidoji Kokoro married beneath an autumn cherry tree"
+        }
+    }
+    ENTITY #L5RcxCoSder03kokorozz ^"Daidoji Kokoro" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-deer-clan.lore" AT "unity-and-division"
+        RELATIONSHIPS {
+            ^"founder-of" -> ^"Deer Clan"      FROM "The Deer Clan draws its origin to one such rare marriage"
+            ^"member-of"  -> ^"Deer Clan"      FROM "the warrior Daidoji Kokoro"
+            ^"married-to" -> ^"Asahina Takuya" FROM "Asahina Takuya and the warrior Daidoji Kokoro married"
+        }
+    }
+    ENTITY #L5RcxCoSder04musubizz ^"Musubi" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-courts-of-stone-deer-clan.lore" AT "the-fortune-of-woven-fate"
+    }
+    ENTITY #L5RcxCoSder05musubu ^"Musubu" {
+        IS ^"Tradition"
+        SOURCE "l5r5e-0.4-courts-of-stone-deer-clan.lore" AT "the-fortune-of-woven-fate"
+        RELATIONSHIPS {
+            ^"observed-by" -> ^"Deer Clan" FROM "Musubu is an intimate process of shared meditation in which a Deer shugenja attunes themself"
+        }
+    }
+    ENTITY #L5RcxCoSder06tsuneko ^"Shika Tsuneko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-deer-clan.lore" AT "shika-tsuneko-first-spear"
+        RELATIONSHIPS {
+            ^"member-of"   -> ^"Deer Clan"   FROM "Although she often masquerades as a simple messenger of the Deer Clan, Shika Tsuneko"
+            ^"holds-title" -> ^"First Spear"  FROM "she holds the title of First Spear amongst her clan's bushi"
+            ^"serves"      -> ^"Deer Clan"   FROM "Tsuneko spends most of her time serving her clan daimyō Shika Renji"
+        }
+    }
+    ENTITY #L5RcxCoSder07firstspr ^"First Spear" {
+        IS ^"Title"
+        SOURCE "l5r5e-0.4-courts-of-stone-deer-clan.lore" AT "shika-tsuneko-first-spear"
+    }
+    ENTITY #L5RcxCoSder08centcast ^"Castle of the Centipede" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-courts-of-stone-deer-clan.lore" AT "growth"
+    }
+
+    # -- Amends (entities defined in the Courts of Stone Castles section) -------
+
+    ENTITY ^"Shika Renji" {
+        SOURCE "l5r5e-0.4-courts-of-stone-deer-clan.lore" AT "growth"
+        RELATIONSHIPS {
+            ^"leads" -> ^"Deer Clan" FROM "The daimyō of the Deer Clan is an elegant man named Shika Renji, also known as the White Deer"
+        }
+    }
+    ENTITY ^"Aokami Forest" {
+        SOURCE "l5r5e-0.4-courts-of-stone-deer-clan.lore" AT "growth"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Deer Clan" FROM "the newly formed Deer Clan was granted formal ownership of the Aokami Forest"
+        }
+    }
+    ENTITY ^"Kyūden Shika" {
+        SOURCE "l5r5e-0.4-courts-of-stone-deer-clan.lore" AT "growth"
+    }
+}

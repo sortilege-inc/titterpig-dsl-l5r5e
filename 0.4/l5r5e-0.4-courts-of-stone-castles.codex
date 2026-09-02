@@ -1,0 +1,335 @@
+# .codex SECTION — Courts of Stone: Castles in Rokugan. Stand-off graph over
+# l5r5e-0.4-courts-of-stone-castles.lore (spec §25). Part of the L5R5e system
+# graph; DEPENDS_ON the shared schema. The chapter's general castle-mechanics
+# prose (roles, defenses, Winter Court) names no unique entities; the graph
+# below captures the SAMPLE CASTLES and their people, spirits, and environs.
+#
+# "Deer Clan" is lore-only (no .ttrpg DEF; the family DEF is ^"Shika"); it is
+# defined as a codex Faction entity in the Deer Clan section and referenced here.
+# Kyūden Hida, Kyūden Doji, and Kakita Ryoku are amended (they are defined in the
+# Emerald Empire / Crane Clan sections); Hida Defender / Kitsuki Investigator
+# schools are DEFs and not reproduced.
+
+CODEX "L5R5e_CoS_Castles_Codex" {
+    NAME "Courts of Stone: Castles in Rokugan — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # -- Last Breath Castle (Shiro Matsu) ---------------------------------------
+
+    ENTITY #L5RcxCoScas01lbcastle ^"Last Breath Castle" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "last-breath-castle"
+        RELATIONSHIPS {
+            ^"held-by"      -> ^"Lion Clan"   FROM "the orange-and-gold banners of Shiro Matsu, Last Breath Castle"
+            ^"located-near" -> ^"Beiden Pass" FROM "From its position, it dominates Beiden Pass"
+        }
+    }
+    ENTITY #L5RcxCoScas02matsutsk ^"Matsu Tsuko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "last-breath-castle"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Lion Clan" FROM "the Matsu family daimyō, Matsu Tsuko, the Lady of Lions"
+            ^"leads"     -> ^"Matsu"     FROM "the Matsu family daimyō, Matsu Tsuko"
+        }
+    }
+    ENTITY #L5RcxCoScas03hallance ^"Hall of Ancestors" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "last-breath-castle"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Lion Clan" FROM "a sacred temple to the fallen warriors of every Lion family"
+        }
+    }
+    ENTITY #L5RcxCoScas04valstorm ^"Valley of Storms" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "last-breath-castle"
+    }
+    ENTITY #L5RcxCoScas05lionteet ^"Lion's Teeth" {
+        IS ^"Road"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "strengths-and-weaknesses"
+    }
+    ENTITY #L5RcxCoScas06beidenov ^"Beiden Overlook" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "beiden-overlook"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Beiden Pass" FROM "The lookout post on the southeastern end of Beiden Pass"
+        }
+    }
+    ENTITY #L5RcxCoScas07beidentw ^"Beiden" {
+        IS ^"Town"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "castle-culture"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Beiden Pass" FROM "Beiden is located on the southern side of the pass of the same name"
+        }
+    }
+    ENTITY #L5RcxCoScas08shmatsut ^"Shiro Matsu Toshi" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "shiro-matsu-toshi"
+        RELATIONSHIPS {
+            ^"held-by"    -> ^"Lion Clan"     FROM "the city, known simply as Shiro Matsu Toshi, is among the largest in the Empire"
+            ^"located-in" -> ^"Yama Province" FROM "who serve the Lion Clan not only at Last Breath Castle but throughout Yama Province"
+        }
+    }
+    ENTITY #L5RcxCoScas09shmakoto ^"Shrine of Makoto" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "shiro-matsu-toshi"
+    }
+    ENTITY #L5RcxCoScas10ikomakan ^"Ikoma Kanoko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "shiro-matsu-toshi"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Lion Clan" FROM "One of the most renowned bards of the present day, Ikoma Kanoko"
+        }
+    }
+    ENTITY #L5RcxCoScas11ryuheizz ^"Ryūhei" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "ryūhei-monk"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Lion Clan" FROM "having retired from his life as a samurai of the Akodo family"
+        }
+    }
+    ENTITY #L5RcxCoScas12akohisay ^"Akodo Hisayo" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "ryūhei-monk"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Lion Clan" FROM "murdered his friend and superior officer, Akodo Hisayo"
+        }
+    }
+
+    # -- Hida Palace (Kyūden Hida — amended) ------------------------------------
+
+    ENTITY ^"Kyūden Hida" {
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "hida-palace"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"River of the Last Stand" FROM "at the mouth of the River of the Last Stand, the immutable Kyūden Hida rises"
+        }
+    }
+    ENTITY #L5RcxCoScas13hidakisd ^"Hida Kisada" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "hida-palace"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "the seat of power of the \"Great Bear,\" Crab Clan champion Hida Kisada"
+            ^"leads"     -> ^"Crab Clan" FROM "Crab Clan champion Hida Kisada"
+        }
+    }
+
+    # -- Shiro Kandai (Crane) and Jukami Mura -----------------------------------
+
+    ENTITY #L5RcxCoScas14shrkanda ^"Shiro Kandai" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "shiro-kandai"
+        RELATIONSHIPS {
+            ^"held-by"      -> ^"Crane Clan"  FROM "the Crane builders retained a number of preexisting structures"
+            ^"located-near" -> ^"Jukami Mura" FROM "on the sharp northern promontory above Jukami Mura"
+        }
+    }
+    ENTITY #L5RcxCoScas15jukamiby ^"Jukami Bay" {
+        IS ^"Sea"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "shiro-kandai"
+    }
+    ENTITY #L5RcxCoScas16jukamimr ^"Jukami Mura" {
+        IS ^"Town"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "jukami-mura"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Crane Clan" FROM "A mercantile hub for the Crane Clan"
+        }
+    }
+    ENTITY #L5RcxCoScas17merchqtr ^"Merchants' Quarter" {
+        IS ^"Place"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "jukami-mura"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Jukami Mura" FROM "among them the infamous Merchants' Quarter down by the port"
+        }
+    }
+    ENTITY #L5RcxCoScas18asakosus ^"Asako Susumu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "strengths-and-weaknesses"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Phoenix Clan" FROM "The provincial daimyō, Asako Susumu"
+        }
+    }
+    ENTITY #L5RcxCoScas19asahshnk ^"Asahina Shinako" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "magistrate-asahina-shinako"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crane Clan" FROM "Asahina Shinako is thoroughly corrupt"
+            ^"serves"    -> ^"Crane Clan" FROM "Shinako serves as town magistrate to Asahina Susumu"
+        }
+    }
+
+    # -- Shiro Kitsuki (Dragon) -------------------------------------------------
+
+    ENTITY #L5RcxCoScas20shrkitsk ^"Shiro Kitsuki" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "shiro-kitsuki"
+        RELATIONSHIPS {
+            ^"held-by"      -> ^"Dragon Clan"    FROM "the forbidding peaks are to the Dragon as a stout bailey is to a fortress. Their gatehouse is Shiro Kitsuki"
+            ^"located-near" -> ^"Last Step Pass" FROM "Shiro Kitsuki straddles Last Step Pass"
+        }
+    }
+    ENTITY #L5RcxCoScas21laststep ^"Last Step Pass" {
+        IS ^"Road"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "shiro-kitsuki"
+    }
+    ENTITY #L5RcxCoScas22kitmaaya ^"Kitsuki Ma'aya" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "the-compass-keeps"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Dragon Clan" FROM "the current castellan, Investigator Emerita Kitsuki Ma'aya"
+        }
+    }
+    ENTITY #L5RcxCoScas23investmq ^"Investigators' Masquerade" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "supernatural-phenomena"
+        RELATIONSHIPS {
+            ^"occurred-at" -> ^"Shiro Kitsuki" FROM "redecorating the Shiro Kitsuki grounds as the setting"
+        }
+    }
+    ENTITY #L5RcxCoScas24agaposan ^"Agasha Pōsan" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "supernatural-phenomena"
+        RELATIONSHIPS {
+            ^"member-of"    -> ^"Dragon Clan" FROM "Agasha Pōsan was once the most promising shugenja studying at Shiro Kitsuki"
+            ^"corrupted-by" -> ^"Gaki-dō"     FROM "The ravenous being from Gaki-dō... trick her into becoming its conduit"
+        }
+    }
+    ENTITY #L5RcxCoScas25pojuzzzz ^"Pōju" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "supernatural-phenomena"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Dragon Clan"    FROM "Pōju is Pōsan's biological sister"
+            ^"sibling-of" -> ^"Agasha Pōsan"   FROM "Pōju is Pōsan's biological sister"
+        }
+    }
+
+    # -- The Seven Fold Palace (Crane) ------------------------------------------
+
+    ENTITY #L5RcxCoScas26sevfold ^"Seven Fold Palace" {
+        IS ^"Palace"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "the-seven-fold-palace"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Crane Clan" FROM "One part of this endeavor begins at the Seven Fold Palace"
+        }
+    }
+    ENTITY #L5RcxCoScas27kagutsuc ^"Kagutsuchi" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "supernatural-phenomena"
+    }
+    ENTITY #L5RcxCoScas28ezuizzz ^"Ezui" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "supernatural-phenomena"
+    }
+    ENTITY #L5RcxCoScas29mototada ^"Mototada" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "form-over-function"
+    }
+
+    # -- Kyūden Asako (Phoenix) -------------------------------------------------
+
+    ENTITY #L5RcxCoScas30kydasako ^"Kyūden Asako" {
+        IS ^"Palace"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "kyūden-asako"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Phoenix Clan" FROM "Historical scholarship, always a Phoenix Clan passion, thrives there"
+        }
+    }
+    ENTITY #L5RcxCoScas31land4riv ^"Land of Four Rivers" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "strengths-and-weaknesses"
+    }
+    ENTITY #L5RcxCoScas32silentpg ^"The Silent Pagoda" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "fun-and-entertainment"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Kyūden Asako" FROM "THE SILENT PAGODA"
+        }
+    }
+    ENTITY #L5RcxCoScas33asakraik ^"Asako Raikū" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "asako-raikū-castellan"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Phoenix Clan" FROM "Asako Raikū, Castellan"
+        }
+    }
+
+    # -- Kyūden Shika (Deer Clan) -----------------------------------------------
+
+    ENTITY #L5RcxCoScas34kydshika ^"Kyūden Shika" {
+        IS ^"Palace"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "kyūden-shika"
+        RELATIONSHIPS {
+            ^"held-by"    -> ^"Deer Clan"     FROM "Just the way the Deer Clan likes it"
+            ^"located-in" -> ^"Aokami Forest" FROM "Deep in the heart of spirit-haunted Aokami Forest"
+        }
+    }
+    ENTITY #L5RcxCoScas35aokamifr ^"Aokami Forest" {
+        IS ^"Forest"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "kyūden-shika"
+    }
+    ENTITY #L5RcxCoScas36shikakat ^"Shika Katsuteru" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "shika-katsuteru-castellan"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Deer Clan" FROM "Shika Katsuteru manages the castle's day-to-day operations"
+        }
+    }
+    ENTITY #L5RcxCoScas37renjizz ^"Shika Renji" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "shika-katsuteru-castellan"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Deer Clan" FROM "answering to the Shika daimyō, Renji"
+            ^"leads"     -> ^"Deer Clan" FROM "the Shika daimyō, Renji"
+        }
+    }
+
+    # -- Kyūden Doji (amended) + its shrine kami and people ---------------------
+
+    ENTITY ^"Kyūden Doji" {
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "kyūden-doji"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Heiwa Mura" FROM "Kyūden Doji lies on the coast of the Crane Clan lands, on a towering cliff overlooking the small port city of Heiwa Mura"
+        }
+    }
+    ENTITY #L5RcxCoScas38heiwamur ^"Heiwa Mura" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "strengths-and-weaknesses"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Crane Clan" FROM "the small port city of Heiwa Mura"
+        }
+    }
+    ENTITY #L5RcxCoScas39floattea ^"Floating Tea House" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "castle-culture"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Kyūden Doji" FROM "inhabitants of the palace know it as the Floating Tea House"
+        }
+    }
+    ENTITY #L5RcxCoScas40dojitosy ^"Doji Toshiyasu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "castle-culture"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crane Clan" FROM "Kyūden Doji's tea master, Doji Toshiyasu, lives in the Floating Tea House"
+        }
+    }
+    ENTITY #L5RcxCoScas41sarutahk ^"Sarutahiko" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "fun-and-entertainment"
+    }
+    ENTITY #L5RcxCoScas42danranpr ^"Danran Priest" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "supernatural-phenomena"
+    }
+
+    # Kakita Ryoku is defined in the Emerald Empire history section; amended here
+    # with the Courts of Stone provenance and her seat at Kyūden Doji.
+    ENTITY ^"Kakita Ryoku" {
+        SOURCE "l5r5e-0.4-courts-of-stone-castles.lore" AT "kakita-ryoku-elder-crane"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crane Clan"  FROM "Kakita Ryoku, Elder Crane"
+            ^"oversees"  -> ^"Kyūden Doji" FROM "Lady Ryoku's influence is only amplified within the beautiful walls of Kyūden Doji"
+        }
+    }
+}
