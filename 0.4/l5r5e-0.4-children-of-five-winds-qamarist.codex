@@ -1,0 +1,220 @@
+# .codex SECTION — Children of the Five Winds: The Qamarist Caliphate. Stand-off
+# graph over l5r5e-0.4-children-of-five-winds-qamarist.lore (spec §25). Part of
+# the L5R5e system graph; DEPENDS_ON the shared schema.
+#
+# This section mints the Qamarist Caliphate and the Nameless Prophet, which the
+# sand-road section forward-references. Its opening "Ganzu of the Hidden Valley"
+# block repeats the sand-road text and is already covered there (Ganzu / Hidden
+# Valley). Nehiri, Suhili, Sogdan, Bandar, Conqueror's Sea, al-Zawira, Cradle of
+# the World, Empire of Rempet, Ivory Kingdoms, and Mantis Clan are already in the
+# graph (referenced). Desert bestiary (djinn, marids, sea dragons) is not minted.
+
+CODEX "L5R5e_CFW_Qamarist_Codex" {
+    NAME "Children of the Five Winds: The Qamarist Caliphate — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # ---- The faith, the Prophet, the Caliphate -----------------------------
+    ENTITY #L5RcxCFWqam01calipht ^"Qamarist Caliphate" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-qamarist-caliphate"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Cradle of the World" FROM "the Caliphate rivals the Empire of Rempet for scope and power—it is a kingdom united not by blood or culture or even language, but by the Word"
+            ^"enemy-of"   -> ^"Unicorn Clan"        FROM "Although the Unicorn are arguably responsible for the Caliphate's rise amid the ruins of Rempet, they are also perennial enemies" }
+    }
+    ENTITY #L5RcxCFWqam02prophet ^"Nameless Prophet" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-qamarist-caliphate"
+        RELATIONSHIPS {
+            ^"founder-of" -> ^"Qamarist Caliphate" FROM "Into this unsettled land came peace, in the form of a prophet... began to unify the many disparate peoples of the Cradle of the World"
+            ^"authored"   -> ^"Word of the Prophet" FROM "it does record his many teachings and words of wisdom in a collection of writings known as the Word of the Prophet" }
+    }
+    ENTITY #L5RcxCFWqam03word ^"Word of the Prophet" {
+        IS ^"Document"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "qamarism"
+    }
+    ENTITY #L5RcxCFWqam04zeth ^"Zeth" {
+        IS ^"Deity"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "reputation-and-values"
+        RELATIONSHIPS {
+            ^"enemy-of"   -> ^"Qamarist Caliphate" FROM "the never-ending war against the Drowned God, Zeth, and the monsters that emerge from the Cursed Sea"
+            ^"located-in" -> ^"Cursed Sea"          FROM "Zeth, the Enemy, seeks to undo creation and must be opposed" }
+    }
+    ENTITY #L5RcxCFWqam05nasrene ^"Nasrenes" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "reputation-and-values"
+    }
+    ENTITY #L5RcxCFWqam06saborim ^"Saborim" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "reputation-and-values"
+        RELATIONSHIPS { ^"enemy-of" -> ^"Qamarist Caliphate" FROM "The first religious schism in the Qamarist faith occurred when the Saborim rejected the first caliph and all his successors, preferring to await the literal return of the Prophet" }
+    }
+    ENTITY #L5RcxCFWqam07harun ^"Harun al-Hakim" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "current-concerns"
+        RELATIONSHIPS {
+            ^"leads"      -> ^"Qamarist Caliphate" FROM "The current caliph, Harun al-Hakim, is not beloved by his subjects or his neighbors"
+            ^"located-in" -> ^"al-Zawira"          FROM "given excellent educations and every luxury of al-Zawira's Inner City" }
+    }
+
+    # ---- The lands of the Caliphate: seas, rivers, mountains ---------------
+    ENTITY #L5RcxCFWqam08jewelsea ^"Sea of Jewels" {
+        IS ^"Sea"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+    }
+    ENTITY #L5RcxCFWqam09cursdsea ^"Cursed Sea" {
+        IS ^"Sea"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+    }
+    ENTITY #L5RcxCFWqam10kingriv ^"King's River" {
+        IS ^"River"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+        RELATIONSHIPS { ^"located-in" -> ^"Cradle of the World" FROM "The King's River forms its eastern border, abutting the Burning Sands" }
+    }
+    ENTITY #L5RcxCFWqam11queenriv ^"Queen's River" {
+        IS ^"River"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+        RELATIONSHIPS { ^"located-in" -> ^"Cradle of the World" FROM "the Queen's River flows from both the Mountains of the Moon and the Mountains of the Sun" }
+    }
+    ENTITY #L5RcxCFWqam12mtsun ^"Mountains of the Sun" {
+        IS ^"Mountain"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+    }
+    ENTITY #L5RcxCFWqam13mtmoon ^"Mountains of the Moon" {
+        IS ^"Mountain"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+    }
+    ENTITY #L5RcxCFWqam14saltflat ^"Salt Flats" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+    }
+    ENTITY #L5RcxCFWqam15cityofgd ^"City of God" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+    }
+    ENTITY #L5RcxCFWqam16conqcst ^"Conqueror's Coast" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+        RELATIONSHIPS { ^"held-by" -> ^"Sogdan" FROM "lies the Conqueror's Coast, where the city-states of the Sogdans still rise" }
+    }
+    ENTITY #L5RcxCFWqam17djinpass ^"Djinni's Passage" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+    }
+    ENTITY #L5RcxCFWqam18bandhigh ^"Bandar Highlands" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+        RELATIONSHIPS { ^"held-by" -> ^"Bandar" FROM "Above these lie the Bandar Highlands... The inland Bandar of the highlands raise goats" }
+    }
+    ENTITY #L5RcxCFWqam19serpriv ^"Serpent River" {
+        IS ^"River"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+        RELATIONSHIPS { ^"located-in" -> ^"Bandar Highlands" FROM "The grandest of these rivers, the Serpent River, flows north and joins the mighty Beryt" }
+    }
+    ENTITY #L5RcxCFWqam20beryt ^"Beryt" {
+        IS ^"River"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+    }
+    ENTITY ^"Mweneta Empire" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+    }
+    ENTITY ^"Pavarre" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+    }
+    ENTITY #L5RcxCFWqam23mozedu ^"Mozedu" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+        RELATIONSHIPS { ^"held-by" -> ^"Bandar" FROM "From the great city of Mozedu, blessed with the finest harbor in the Caliphate, Bandar vessels seek out the Mweneta Empire" }
+    }
+
+    # ---- Sogdan city-states & the Tower of Heaven --------------------------
+    ENTITY #L5RcxCFWqam24nezer ^"Nezer" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+        RELATIONSHIPS { ^"held-by" -> ^"Sogdan" FROM "Nezer, the City of Stone, stands on the edge of a crystal lake in the mountains" }
+    }
+    ENTITY #L5RcxCFWqam25ninua ^"Ninua" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+        RELATIONSHIPS { ^"held-by" -> ^"Sogdan" FROM "Ninua, the City of Light, boasts the Caliphate's most impressive lighthouse in the form of a mighty ziggurat" }
+    }
+    ENTITY #L5RcxCFWqam26mashaluk ^"Mashalukan" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+        RELATIONSHIPS { ^"held-by" -> ^"Sogdan" FROM "Mashalukan, the City of the Serpent, nestles in a beautiful bay on the Conqueror's Coast" }
+    }
+    ENTITY #L5RcxCFWqam27towerhvn ^"Tower of Heaven" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+        RELATIONSHIPS { ^"forged-by" -> ^"Sogdan" FROM "They worked together and built a mighty ziggurat, a tower so tall that its highest levels approached Heaven... the gods smote the Tower of Heaven" }
+    }
+
+    # ---- Al-Zawira, the City of Books --------------------------------------
+    ENTITY #L5RcxCFWqam28roundcty ^"Round City" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "al-zawira-the-city-of-books-and-the-seat-of-the-caliph"
+        RELATIONSHIPS { ^"part-of" -> ^"al-Zawira" FROM "The famous Round City is celebrated not for its impressive height but for the perfection of its circles" }
+    }
+    ENTITY #L5RcxCFWqam29courtwis ^"Court of Wisdom" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "al-zawira-the-city-of-books-and-the-seat-of-the-caliph"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"al-Zawira"      FROM "the Court of Wisdom that is its true heart... lies at a modest remove from the Round City"
+            ^"operated-by" -> ^"Harun al-Hakim" FROM "Here in this many-columned palace, the caliph sponsors over a dozen brilliant scholars in their research" }
+    }
+    ENTITY #L5RcxCFWqam30mktbooks ^"Market of Books" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "al-zawira-the-city-of-books-and-the-seat-of-the-caliph"
+        RELATIONSHIPS { ^"part-of" -> ^"Round City" FROM "Many of the grandest palaces, gardens, and markets lie behind its walls, including the famous Market of Books" }
+    }
+    ENTITY #L5RcxCFWqam31innercty ^"Inner City" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "al-zawira-the-city-of-books-and-the-seat-of-the-caliph"
+        RELATIONSHIPS { ^"part-of" -> ^"Round City" FROM "the Inner City, which is the true heart of the caliph's power" }
+    }
+    ENTITY #L5RcxCFWqam32pilgcrt ^"Pilgrim's Court" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "al-zawira-the-city-of-books-and-the-seat-of-the-caliph"
+        RELATIONSHIPS { ^"part-of" -> ^"al-Zawira" FROM "It is beautiful, with its famous Round City and Pilgrim's Court" }
+    }
+
+    # ---- Zymarkin, the Suhili bastion --------------------------------------
+    ENTITY #L5RcxCFWqam33zymarkin ^"Zymarkin" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "zymarkin-the-city-of-the-bronze-gate"
+        RELATIONSHIPS {
+            ^"held-by"  -> ^"Suhili" FROM "The only city of the Suhili people, Zymarkin is the great bastion against the forces of Zeth"
+            ^"enemy-of" -> ^"Zeth"   FROM "Zymarkin is the great bastion against the forces of Zeth" }
+    }
+    ENTITY #L5RcxCFWqam34brassbll ^"Brass Bull of Zymarkin" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "zymarkin-the-city-of-the-bronze-gate"
+        RELATIONSHIPS { ^"part-of" -> ^"Zymarkin" FROM "The Brass Bull of Zymarkin stands guard at the city's northern gate" }
+    }
+    ENTITY #L5RcxCFWqam35ahtuthot ^"Ahtuthotep" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+        RELATIONSHIPS { ^"located-in" -> ^"Empire of Rempet" FROM "sightings of warriors bearing the sigil of the cursed undead pharaoh, Ahtuthotep, the Betrayer of Horiz-Rem" }
+    }
+    ENTITY #L5RcxCFWqam36horizrem ^"Horiz-Rem" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "the-lands-of-the-caliphate"
+    }
+    ENTITY #L5RcxCFWqam37saadiyah ^"Saadiyah bin Abdul Rahim al-Mozedu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "saadiyah-bin-abdul-rahim-al-mozedu"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Bandar"         FROM "The daughter of the most powerful of the Bandar emirs, Saadiyah has been a hostage in the caliph's court since she was a girl"
+            ^"serves"     -> ^"Harun al-Hakim" FROM "Saadiyah has matured into an intensely intelligent and surprisingly pious woman who has become one of the caliph's most valued advisors"
+            ^"located-in" -> ^"al-Zawira"      FROM "she is now one of the most promising scientific minds in al-Zawira" }
+    }
+
+    # ---- Amendment ----------------------------------------------------------
+    ENTITY ^"al-Zawira" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-qamarist.lore" AT "al-zawira-the-city-of-books-and-the-seat-of-the-caliph"
+        RELATIONSHIPS { ^"seat-of" -> ^"Qamarist Caliphate" FROM "it has always been counted foremost among the great cities of the Qamari and has been the home of the caliph more often than not" }
+    }
+}

@@ -1,0 +1,163 @@
+# .codex SECTION — Children of the Five Winds: "The Lost Writer in the City of
+# the Rich Frog" adventure + Ivory-Kingdoms/Burning-Sands bestiary. Stand-off
+# graph over l5r5e-0.4-children-of-five-winds-adventure.lore (spec §25). Part of
+# the L5R5e system graph; DEPENDS_ON the shared schema.
+#
+# The bestiary (Ujik war pony/dog, wild desert horse, chained djinni, ifrit, fox
+# prince, golden bird lord, marid, luusyn khan, manticore, snow lion, wind horse)
+# is species/templates, not individuals — not minted. The City of the Rich Frog,
+# Three Sides River, Drowned Merchant River, Miya Tetsua, Tonbo Kuma, Akodo
+# Minami, and the Kaeru rōnin are already in the graph (referenced; the first
+# three amended). Dragonfly Clan and the family DEFs (Shinjo, Asahina, Daidoji,
+# Ikoma, Iuchi, Kitsuki, Tonbo, Kaeru) are referenced.
+
+CODEX "L5R5e_CFW_Adventure_Codex" {
+    NAME "Children of the Five Winds: The Lost Writer — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # ---- The cast ----------------------------------------------------------
+    ENTITY #L5RcxCFWadv01higuchi ^"Shinjo Higuchi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "hana-no-ame"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Shinjo"      FROM "under the pseudonym Hana-no-Ame (her true name is Shinjo Higuchi)"
+            ^"companion-of" -> ^"Miya Tetsua" FROM "she has retreated to the City of the Rich Frog, where her friend Miya Tetsua serves as governor" }
+    }
+    ENTITY #L5RcxCFWadv02nao ^"Asahina Nao" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "nao"
+        RELATIONSHIPS { ^"member-of" -> ^"Asahina" FROM "Asahina Nao, a well-respected Crane Clan shugenja and meishōdō expert" }
+    }
+    ENTITY #L5RcxCFWadv03shin ^"Daidoji Shin" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "the-investigator"
+        RELATIONSHIPS { ^"member-of" -> ^"Daidoji" FROM "a man who introduces himself as Daidoji Shin... looking into rumors about the smuggling of dangerous magical artifacts" }
+    }
+    ENTITY #L5RcxCFWadv04kasami ^"Hiramori Kasami" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "nao"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crane Clan"   FROM "his bodyguard, Hiramori Kasami"
+            ^"serves"    -> ^"Daidoji Shin" FROM "he has posted his bodyguard, Hiramori Kasami, to await the PCs' arrival" }
+    }
+    ENTITY #L5RcxCFWadv05haya ^"Kaeru Haya" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "find-the-peacekeeper"
+        RELATIONSHIPS { ^"member-of" -> ^"Kaeru" FROM "a peacekeeper called Kaeru Haya... their informal captain, Kaeru Haya" }
+    }
+    ENTITY #L5RcxCFWadv06akiara ^"Kaeru Akiara" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "unicorn-wharf-unicorn-district"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Kaeru"      FROM "Kaeru Akiara is the somewhat distant cousin of Kaeru Haya"
+            ^"companion-of" -> ^"Kaeru Haya" FROM "Kaeru Akiara is the somewhat distant cousin of Kaeru Haya" }
+    }
+    ENTITY #L5RcxCFWadv07kotone ^"Ikoma Kotone" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "the-teahouse-with-no-name-lion-district"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Ikoma"               FROM "Tea Master Ikoma Kotone arrives and begins the tea ceremony"
+            ^"held-by"   -> ^"Teahouse with No Name" FROM "the revered tea master... Higuchi's visit" }
+    }
+    ENTITY #L5RcxCFWadv08shinchi ^"Iuchi Shinchiro" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "unicorn-district"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Iuchi"           FROM "the venerable Iuchi Shinchiro oversees the Unicorn trade flowing into and out of the city"
+            ^"oversees"  -> ^"Unicorn District" FROM "Iuchi Shinchiro oversees the Unicorn trade flowing into and out of the city via Ide caravans" }
+    }
+    ENTITY #L5RcxCFWadv09chiharu ^"Chiharu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "resolution"
+        RELATIONSHIPS { ^"held-by" -> ^"Curiosity Shop" FROM "a particular artifact dealer in the markets... Chiharu offers to sell the PCs a brand-new vessel" }
+    }
+    ENTITY #L5RcxCFWadv10tsubasa ^"Kitsuki Tsubasa" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "the-teahouse-with-no-name-lion-district"
+        RELATIONSHIPS { ^"member-of" -> ^"Kitsuki" FROM "in Kitsuki Tsubasa and Tonbo Goro's case, about the same mysterious woman who has been making inquiries about gaijin magic" }
+    }
+    ENTITY #L5RcxCFWadv11goro ^"Tonbo Goro" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "the-teahouse-with-no-name-lion-district"
+        RELATIONSHIPS { ^"member-of" -> ^"Tonbo" FROM "in Kitsuki Tsubasa and Tonbo Goro's case" }
+    }
+
+    # ---- The City of the Rich Frog: districts & sites ----------------------
+    ENTITY #L5RcxCFWadv12unidist ^"Unicorn District" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "unicorn-district"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"City of the Rich Frog" FROM "The Unicorn Clan controls the entire western bank of the Three Sides River"
+            ^"held-by" -> ^"Unicorn Clan"          FROM "The Unicorn Clan controls the entire western bank of the Three Sides River" }
+    }
+    ENTITY #L5RcxCFWadv13liodist ^"Lion District" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "lion-district"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"City of the Rich Frog" FROM "lies the Lion's district in the City of the Rich Frog, one of the Lion's most important trade hubs"
+            ^"held-by" -> ^"Lion Clan"             FROM "one of the Lion's most important trade hubs" }
+    }
+    ENTITY #L5RcxCFWadv14drgdist ^"Dragon District" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "dragon-district"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"City of the Rich Frog" FROM "their presence in the City of the Rich Frog confuses the other clans"
+            ^"held-by" -> ^"Dragon Clan"           FROM "As is typical of the Dragon, their presence in the City of the Rich Frog" }
+    }
+    ENTITY #L5RcxCFWadv15teahous ^"Teahouse with No Name" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "the-teahouse-with-no-name-lion-district"
+        RELATIONSHIPS { ^"located-in" -> ^"Lion District" FROM "In the Lion Clan's district within the City of the Rich Frog, an old and renowned teahouse overlooks the banks of the Drowned Merchant River" }
+    }
+    ENTITY #L5RcxCFWadv16shrgard ^"Shrine Gardens" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "the-shrine-gardens-dragon-district"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Dragon District" FROM "In the Dragon Clan district, the Dragonfly Clan operates a number of shrines... Encircling these shrines are beautiful, lavish gardens"
+            ^"operated-by" -> ^"Tonbo Kuma"      FROM "Kuma oversees the Dragonfly's shrine gardens" }
+    }
+    ENTITY #L5RcxCFWadv17uniwhrf ^"Unicorn Wharf" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "unicorn-wharf-unicorn-district"
+        RELATIONSHIPS { ^"located-in" -> ^"Unicorn District" FROM "The grand Unicorn Clan wharf lies along the western bank of the Three Sides River" }
+    }
+    ENTITY #L5RcxCFWadv18govmanr ^"Governor's Manor" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "the-governors-manor-governors-island"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"City of the Rich Frog" FROM "Located on a small island in the middle of the river junction is the resplendent governor's manor"
+            ^"held-by" -> ^"Miya Tetsua"           FROM "the governor of the City of the Rich Frog... his island manor here" }
+    }
+    ENTITY #L5RcxCFWadv19curshop ^"Curiosity Shop" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "resolution"
+        RELATIONSHIPS { ^"located-in" -> ^"Unicorn District" FROM "a particular artifact dealer in the markets who might have what she needed... the same dealer (see Curiosity Shop)" }
+    }
+
+    # ---- Amendments --------------------------------------------------------
+    ENTITY ^"City of the Rich Frog" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "the-city-of-the-rich-frog"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Three Sides River"      FROM "Located at the junction of the Three Sides River and Drowned Merchant River"
+            ^"located-near" -> ^"Drowned Merchant River" FROM "Located at the junction of the Three Sides River and Drowned Merchant River"
+            ^"operated-by"  -> ^"Kaeru"                  FROM "the Emperor declared the City of the Rich Frog an Imperial holding... Its governor relies on rōnin deputies... these rōnin have claimed the family name Kaeru" }
+    }
+    ENTITY ^"Miya Tetsua" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "hana-no-ame"
+        RELATIONSHIPS { ^"oversees" -> ^"City of the Rich Frog" FROM "her friend Miya Tetsua serves as governor" }
+    }
+    ENTITY ^"Tonbo Kuma" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "dragon-district"
+        RELATIONSHIPS {
+            ^"leads"    -> ^"Dragonfly Clan" FROM "the mysterious Tonbo Kuma, a powerful Dragonfly shrine keeper whose family line has overseen the Dragon holdings in the city"
+            ^"oversees" -> ^"Shrine Gardens"  FROM "Kuma oversees the Dragonfly's shrine gardens" }
+    }
+    ENTITY ^"Akodo Minami" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-adventure.lore" AT "lion-district"
+        RELATIONSHIPS { ^"oversees" -> ^"Lion District" FROM "the ranking Lion Clan samurai is Akodo Minami, who obsesses over security daily" }
+    }
+}

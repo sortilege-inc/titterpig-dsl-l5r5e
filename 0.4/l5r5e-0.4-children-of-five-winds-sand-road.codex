@@ -1,0 +1,464 @@
+# .codex SECTION — Children of the Five Winds: The Sand Road & Khanbulak.
+# Stand-off graph over l5r5e-0.4-children-of-five-winds-sand-road.lore (spec §25).
+# Part of the L5R5e system graph; DEPENDS_ON the shared schema.
+#
+# The Sand Road, Burning Sands, Khanbulak, al-Zawira, Cradle of the World, Ivory
+# Kingdoms, Bhavyatapura, Land of Four Rivers, Amaterasu, White Horde, White
+# Guard, Scarlet Banners, Ganzu, Hidden Valley, Lords of Death, Shinjo Nishijin,
+# Moto Ogödei, Empire of Rempet, and Pillar of the Sky are already in the graph
+# (referenced; several amended below with new provenance/edges). Qamarist
+# Caliphate and the Nameless Prophet are minted in the qamarist section and
+# referenced here. Ujik and the clan/family DEFs are referenced. Desert bestiary
+# (djinn, marids, ghuls, sand worms, manticores) is not minted.
+
+CODEX "L5R5e_CFW_SandRoad_Codex" {
+    NAME "Children of the Five Winds: The Sand Road & Khanbulak — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # ---- Framing vignettes -------------------------------------------------
+    ENTITY #L5RcxCFWsnd01katatsu ^"Ide Katatsune" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore"
+        RELATIONSHIPS { ^"member-of" -> ^"Ide" FROM "I am Ide Katatsune, riding to Khanbulak" }
+    }
+    ENTITY #L5RcxCFWsnd02nomolun ^"Nomolun" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore"
+        RELATIONSHIPS { ^"member-of" -> ^"Ujik" FROM "\"Nomolun, a daughter of Erdene,\" the Ujik hunter replied" }
+    }
+    ENTITY #L5RcxCFWsnd03kaede ^"Shinjo Kaede" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-way-of-winds"
+        RELATIONSHIPS { ^"member-of" -> ^"Shinjo" FROM "Shinjo Kaede's parents watched their grown but not mature child... The Fire-Eyed Oni Kaede" }
+    }
+
+    # ---- The Sand Road: history & rulers -----------------------------------
+    ENTITY #L5RcxCFWsnd04temujin ^"Shinjo Temujin" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-sand-road"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Shinjo"          FROM "the Unicorn Clan Champion Shinjo Temujin"
+            ^"leads"      -> ^"Unicorn Clan"     FROM "Newly ascending to become Great Khan, the Unicorn Clan Champion Shinjo Temujin"
+            ^"child-of"   -> ^"Shinjo Nishijin"  FROM "promised his father, the hero Shinjo Nishijin"
+            ^"founder-of" -> ^"Sand Road"        FROM "a path that would soon become the Sand Road... Choosing the city of Khanbulak as his terminus" }
+    }
+    ENTITY #L5RcxCFWsnd05worldgar ^"World's Garden" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-sand-road"
+    }
+    ENTITY #L5RcxCFWsnd06conqsea ^"Conqueror's Sea" {
+        IS ^"Sea"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-sand-road"
+    }
+    ENTITY #L5RcxCFWsnd07aliwalid ^"Ali al-Walid" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "unicorn-trade-along-the-sand-road"
+        RELATIONSHIPS { ^"leads" -> ^"Qamarist Caliphate" FROM "the caliph of Qamari, Ali al-Walid, seized a large portion of the Sand Road near the Hidden Valley of the Ganzu people" }
+    }
+
+    # ---- The Ujik: notable tribes & peoples of the sands -------------------
+    ENTITY #L5RcxCFWsnd08barga ^"Barga" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-land-of-four-rivers-and-the-sand-road"
+        RELATIONSHIPS { ^"part-of" -> ^"Ujik" FROM "The Barga, also known as \"the people at the land's end,\" are renowned explorers" }
+    }
+    ENTITY #L5RcxCFWsnd09daur ^"Daur" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-land-of-four-rivers-and-the-sand-road"
+        RELATIONSHIPS { ^"part-of" -> ^"Ujik" FROM "The Daur, also known as \"those who seek,\" are excellent cartographers" }
+    }
+    ENTITY #L5RcxCFWsnd10nokhoi ^"Nokhoi" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-land-of-four-rivers-and-the-sand-road"
+        RELATIONSHIPS { ^"part-of" -> ^"Ujik" FROM "The Nokhoi, also known as the \"dog-eyed clan,\" are famous for their prowess in war and hunting" }
+    }
+    ENTITY #L5RcxCFWsnd11nehiri ^"Nehiri" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "unicorn-trade-along-the-sand-road"
+        RELATIONSHIPS { ^"located-in" -> ^"al-Zawira" FROM "The great city of al-Zawira is the capital of the Nehiri people" }
+    }
+    ENTITY #L5RcxCFWsnd12sogdan ^"Sogdan" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-land-of-four-rivers-and-the-sand-road"
+    }
+    ENTITY #L5RcxCFWsnd13suhili ^"Suhili" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-land-of-four-rivers-and-the-sand-road"
+    }
+    ENTITY #L5RcxCFWsnd14bandar ^"Bandar" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-land-of-four-rivers-and-the-sand-road"
+    }
+    ENTITY #L5RcxCFWsnd15tegensai ^"Tegensai" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "outside-the-walls"
+        RELATIONSHIPS { ^"located-near" -> ^"Pillar of the Sky" FROM "Tegensai pilgrims and fur traders from the Pillar of the Sky mountains" }
+    }
+    ENTITY #L5RcxCFWsnd16kurichit ^"Kurichitai" {
+        IS ^"Tradition"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-ten-lords-of-death"
+        RELATIONSHIPS { ^"operated-by" -> ^"Ujik" FROM "The Unicorn and the Ujik have a shared tradition known as kurichitai, whereby a person who knows they are nearing their life's end takes a horse and minimal supplies and rides out into the desert one last time" }
+    }
+
+    # ---- Desert landmarks & legends ----------------------------------------
+    ENTITY #L5RcxCFWsnd17cavenite ^"Cave of Nights" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-land-of-four-rivers-and-the-sand-road"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Burning Sands"  FROM "One of the largest and most extensive of the Ujik settlements has been lovingly dubbed \"the Cave of Nights.\" Its caves of volcanic glass stretch out for miles under the dunes"
+            ^"held-by"    -> ^"Lords of Death" FROM "It is said that the Ten Lords of Death, looking for a way to protect the Ujik from the heat, made the Cave of Nights" }
+    }
+    ENTITY #L5RcxCFWsnd18cityknow ^"City of Knowledge" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "allies-of-the-ujik"
+        RELATIONSHIPS { ^"located-in" -> ^"Burning Sands" FROM "the City of Knowledge lies abandoned somewhere out in the sands, deserted by an inhuman culture" }
+    }
+
+    # ---- Khanbulak: founders & governance ----------------------------------
+    ENTITY #L5RcxCFWsnd19qaro ^"Moto Qaro Khan" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "khanbulak"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Moto"      FROM "she ordered her trusted friend Moto Qaro Khan to build a city on the border"
+            ^"founder-of" -> ^"Khanbulak" FROM "Moto Qaro Khan to build a city on the border... the new City of the Khan" }
+    }
+    ENTITY #L5RcxCFWsnd20enkhar ^"Moto Enkhar" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "city-government"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Moto"      FROM "The current governor is Moto Enkhar, a stout middle-aged man who is cousin to the khan"
+            ^"oversees"  -> ^"Khanbulak" FROM "The current governor is Moto Enkhar" }
+    }
+    ENTITY #L5RcxCFWsnd21teru ^"Teru" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "city-government"
+        RELATIONSHIPS {
+            ^"married-to" -> ^"Moto Enkhar" FROM "His secret weapon is his closest wife, Teru"
+            ^"member-of"  -> ^"Yasuki"      FROM "worthy of the reputation of her birth family, the Yasuki of the Crab Clan" }
+    }
+    ENTITY ^"Moto Rurame" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "city-government"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Moto"           FROM "Moto Rurame, the khan's sister"
+            ^"leads"     -> ^"Scarlet Banners" FROM "Moto Rurame, the khan's sister and commander of the Scarlet Banners" }
+    }
+    ENTITY #L5RcxCFWsnd23jurik ^"Temur Jurik" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "city-government"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Ujik"                     FROM "Jurik, a member of a minor Ujik family"
+            ^"member-of" -> ^"White Horde"              FROM "Temur Jurik, the logistical officer of the White Horde"
+            ^"leads"     -> ^"Castle of the Road's End" FROM "he is the commander of the castle and first among equals among the White Horde's officers" }
+    }
+    ENTITY #L5RcxCFWsnd24ideyasu ^"Ide Yasu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "city-government"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Ide"            FROM "they regularly meet in the home of Ide Yasu, the wealthiest and most influential of them all"
+            ^"held-by"   -> ^"Sunlight Bazaar" FROM "the building is owned by the powerful merchant patron Ide Yasu" }
+    }
+    ENTITY #L5RcxCFWsnd25sasaki ^"Sasaki Kanehira" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "city-government"
+        RELATIONSHIPS { ^"member-of" -> ^"Crane Clan" FROM "Their delegate, Sasaki Kanehira, is making the best of his exile by investing in local businesses" }
+    }
+    ENTITY #L5RcxCFWsnd26kensuke ^"Bayushi Kensuke" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "city-government"
+        RELATIONSHIPS { ^"member-of" -> ^"Scorpion Clan" FROM "Their ambassador, Bayushi Kensuke, wears a mask with a permanent smile" }
+    }
+    ENTITY #L5RcxCFWsnd27hajime ^"Asako Hajime" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "city-government"
+        RELATIONSHIPS { ^"member-of" -> ^"Phoenix Clan" FROM "The delegation is led by Asako Hajime, a scholar" }
+    }
+    ENTITY #L5RcxCFWsnd28tahir ^"Tahir" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "city-government"
+        RELATIONSHIPS {
+            ^"member-of"    -> ^"Ujik" FROM "two brothers, Tahir and Uraz, who are fierce war leaders of their tribe"
+            ^"sibling-of"   -> ^"Uraz" FROM "two brothers, Tahir and Uraz" }
+    }
+    ENTITY #L5RcxCFWsnd29uraz ^"Uraz" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "city-government"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Ujik"  FROM "two brothers, Tahir and Uraz, who are fierce war leaders of their tribe"
+            ^"sibling-of" -> ^"Tahir" FROM "two brothers, Tahir and Uraz" }
+    }
+    ENTITY #L5RcxCFWsnd30hafsa ^"Hafsa bint Shadah" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "city-government"
+        RELATIONSHIPS { ^"located-near" -> ^"Khanbulak" FROM "mistress Hafsa bint Shadah, who owns a coffee house opposite the Qamarist temple" }
+    }
+    ENTITY #L5RcxCFWsnd31vazhuthi ^"Vazhuthi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "city-government"
+        RELATIONSHIPS { ^"located-in" -> ^"Bhavyatapura" FROM "Hailing from the City of Splendor, Bhavyatapura, Vazhuthi has a friendly demeanor" }
+    }
+    ENTITY #L5RcxCFWsnd32sosuke ^"Sosuke" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "city-government"
+        RELATIONSHIPS { ^"serves" -> ^"Ide Yasu" FROM "her client merchant, Sosuke, administers the bazaar on her behalf" }
+    }
+    ENTITY #L5RcxCFWsnd33humbjoh ^"Humble Joh" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "city-government"
+        RELATIONSHIPS { ^"located-in" -> ^"Sunlight Bazaar" FROM "Sosuke is assisted in his endeavors by a looming, taciturn rōnin called Humble Joh" }
+    }
+    ENTITY #L5RcxCFWsnd34kiyotak ^"Daidoji Kiyotaka" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "city-government"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Daidoji"               FROM "The Evening Flower is the project of Daidoji Kiyotaka"
+            ^"held-by"   -> ^"Evening Flower Teahouse" FROM "The Evening Flower is the project of Daidoji Kiyotaka" }
+    }
+
+    # ---- Khanbulak: districts & institutions -------------------------------
+    ENTITY #L5RcxCFWsnd35sunlibz ^"Sunlight Bazaar" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "city-government"
+        RELATIONSHIPS { ^"located-in" -> ^"Khanbulak" FROM "the tremendous rotunda of the Sunlight Bazaar... a large, round building with a tall, domed roof" }
+    }
+    ENTITY #L5RcxCFWsnd36merchst ^"Merchant Street" {
+        IS ^"Road"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "city-government"
+        RELATIONSHIPS { ^"located-in" -> ^"Khanbulak" FROM "the Merchant's Street, where thousands of buyers and sellers throng every day" }
+    }
+    ENTITY #L5RcxCFWsnd37goldpal ^"Golden Palace" {
+        IS ^"Palace"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "city-government"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Khanbulak" FROM "the southern quarter sports the khan's palace... The formal seat of the Moto family"
+            ^"seat-of"    -> ^"Moto"      FROM "The formal seat of the Moto family, the khan's palace... its nickname, \"the Golden Palace.\"" }
+    }
+    ENTITY #L5RcxCFWsnd38borte ^"Bortë" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "city-government"
+        RELATIONSHIPS { ^"serves" -> ^"Moto Ogödei" FROM "The khan's faithful steward, Bortë, maintains the palace in his absence" }
+    }
+    ENTITY #L5RcxCFWsnd39lucky ^"Lucky Donkey Sake House" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "lucky-donkey-sake-house"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Khanbulak"  FROM "The Lucky Donkey Sake House is a misnomer twice"
+            ^"held-by"    -> ^"White Lady" FROM "the owner of the Lucky Donkey, called simply the White Lady, is the most powerful figure in Khanbulak's criminal underworld" }
+    }
+    ENTITY #L5RcxCFWsnd40whitlady ^"White Lady" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "lucky-donkey-sake-house"
+        RELATIONSHIPS { ^"located-in" -> ^"Khanbulak" FROM "As the head of Khanbulak's criminal underworld, the White Lady is a dangerous person to deal with" }
+    }
+    ENTITY #L5RcxCFWsnd41grovedd ^"Grove of the Dead" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-grove-of-the-dead"
+        RELATIONSHIPS {
+            ^"located-in"   -> ^"Khanbulak"      FROM "In Khanbulak, the Grove of the Dead is a patch of swampy land near the edge of the city"
+            ^"dedicated-to" -> ^"Lords of Death" FROM "Ten such trees are arrayed throughout the Grove, each a shrine to a different Lord of Death" }
+    }
+    ENTITY #L5RcxCFWsnd42dayan ^"Ujin Dayan" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-grove-of-the-dead"
+        RELATIONSHIPS { ^"located-in" -> ^"Grove of the Dead" FROM "The most reliable and revered priest in the Grove is the wizened Ujin Dayan herself" }
+    }
+    ENTITY #L5RcxCFWsnd43amateras ^"Temple of Amaterasu's Rest" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "temple-of-amaterasus-rest"
+        RELATIONSHIPS {
+            ^"located-in"   -> ^"Khanbulak" FROM "the relatively dramatic and proud Temple of Amaterasu's Rest, which hosts worship in both Fortunist and Shinseist traditions"
+            ^"dedicated-to" -> ^"Amaterasu" FROM "The principal shrine is dedicated to Lady Sun, Amaterasu" }
+    }
+    ENTITY #L5RcxCFWsnd44fanir ^"Fanir" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "temple-of-amaterasus-rest"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Ujik"                       FROM "The head priest, Fanir, is an Ujik convert to Shinseism"
+            ^"oversees"  -> ^"Temple of Amaterasu's Rest" FROM "The head priest, Fanir" }
+    }
+    ENTITY #L5RcxCFWsnd45roadend ^"Castle of the Road's End" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "castle-of-the-roads-end"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Khanbulak"   FROM "Standing athwart the northern wall of Khanbulak is a modest but well-built castle that forms the key to the city's defenses"
+            ^"held-by" -> ^"White Horde" FROM "the castle does house the residences and offices of principal officers of the White Horde" }
+    }
+    ENTITY #L5RcxCFWsnd46evenflw ^"Evening Flower Teahouse" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "city-government"
+        RELATIONSHIPS { ^"located-in" -> ^"Khanbulak" FROM "Nestled against the eastern wall, in a quiet section of the city, rests a small teahouse... known as the Evening Flower Teahouse" }
+    }
+
+    # ---- Outside the walls: temple, market, caravanserai, ordus ------------
+    ENTITY #L5RcxCFWsnd47qamtmpl ^"Qamarist Temple" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-qamarist-temple"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Khanbulak"        FROM "the spires of a Qamarist temple now rise outside the walls of the Unicorn city"
+            ^"dedicated-to" -> ^"Nameless Prophet" FROM "The teachers are eager to spread the Word of the Prophet to others" }
+    }
+    ENTITY #L5RcxCFWsnd48horsemk ^"Horse Market" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-horse-market"
+        RELATIONSHIPS { ^"located-near" -> ^"Khanbulak" FROM "the largest group of human beings in the Moto steppe features the largest gathering of horses... Enormous paddocks with fieldstone walls dot the landscape outside the city" }
+    }
+    ENTITY #L5RcxCFWsnd49noriyor ^"Utaku Noriyori" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-horse-market"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Utaku"       FROM "the most respected of them all is Utaku Noriyori. Nominally retired, Noriyori was once the head breeder for the Utaku daimyō"
+            ^"located-in" -> ^"Horse Market" FROM "Now, he spends his time at the horse market" }
+    }
+    ENTITY #L5RcxCFWsnd50bekwari ^"Al-Bekwari's Caravanserai" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "al-bekwaris-caravanserai"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Khanbulak"         FROM "A sprawling complex on a small rise, almost a li from Khanbulak's gates"
+            ^"held-by"      -> ^"Hassuf al-Bekwari" FROM "The proprietor, Hassuf al-Bekwari" }
+    }
+    ENTITY #L5RcxCFWsnd51hassuf ^"Hassuf al-Bekwari" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "al-bekwaris-caravanserai"
+        RELATIONSHIPS { ^"serves" -> ^"Nameless Prophet" FROM "A good Qamarist, he nonetheless finds the heathen faiths of the locals fascinating" }
+    }
+    ENTITY #L5RcxCFWsnd52menghes ^"Menghes" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "menghes-ordu"
+        RELATIONSHIPS {
+            ^"part-of"  -> ^"Ujik"          FROM "One of the largest Ujik ordus in residence belongs to the Menghes family"
+            ^"rival-of" -> ^"Calamac"       FROM "the Menghes family endures the presence of its hated rival" }
+    }
+    ENTITY #L5RcxCFWsnd53daidu ^"Menghes Daidu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "menghes-ordu"
+        RELATIONSHIPS { ^"leads" -> ^"Menghes" FROM "under the patriarchal leadership of Menghes Daidu" }
+    }
+    ENTITY #L5RcxCFWsnd54bortelun ^"Bortelun" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "menghes-ordu"
+        RELATIONSHIPS {
+            ^"married-to" -> ^"Menghes Daidu" FROM "one of Daidu's wives, Bortelun, is a renowned weaver of blankets, carpets, and other woolen goods"
+            ^"member-of"  -> ^"Menghes"       FROM "one of Daidu's wives, Bortelun" }
+    }
+    ENTITY #L5RcxCFWsnd55orojin ^"Menghes Orojin" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "menghes-ordu"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Menghes"       FROM "an urn with a name: Orojin, Daidu's eldest son"
+            ^"child-of"  -> ^"Menghes Daidu" FROM "Orojin, Daidu's eldest son" }
+    }
+    ENTITY #L5RcxCFWsnd56benve ^"Menghes Benve" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "menghes-ordu"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Menghes"     FROM "hot-blooded Menghes Benve and her brother Menghes Rom"
+            ^"sibling-of" -> ^"Menghes Rom" FROM "hot-blooded Menghes Benve and her brother Menghes Rom" }
+    }
+    ENTITY #L5RcxCFWsnd57rom ^"Menghes Rom" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "menghes-ordu"
+        RELATIONSHIPS { ^"member-of" -> ^"Menghes" FROM "her brother Menghes Rom" }
+    }
+    ENTITY #L5RcxCFWsnd58calamac ^"Calamac" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "calamac-ordu"
+        RELATIONSHIPS {
+            ^"part-of"  -> ^"Ujik"    FROM "The Calamac ordu, an Ujik family, is every bit as large, prominent, and wealthy as its long-time rivals, the Menghes"
+            ^"rival-of" -> ^"Menghes" FROM "its long-time rivals, the Menghes" }
+    }
+    ENTITY #L5RcxCFWsnd59mala ^"Calamac Mala" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "calamac-ordu"
+        RELATIONSHIPS { ^"leads" -> ^"Calamac" FROM "The head of the Calamac family is Calamac Mala" }
+    }
+    ENTITY #L5RcxCFWsnd60tygan ^"Calamac Tygan" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "calamac-ordu"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Calamac" FROM "sneering, superior Calamac Tygan and his cousin Yoo-lin"
+            ^"companion-of" -> ^"Yoo-lin" FROM "Calamac Tygan and his cousin Yoo-lin" }
+    }
+    ENTITY #L5RcxCFWsnd61yoolin ^"Yoo-lin" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "calamac-ordu"
+        RELATIONSHIPS { ^"member-of" -> ^"Calamac" FROM "his cousin Yoo-lin" }
+    }
+
+    # ---- The White Horde: units, commanders, battles -----------------------
+    ENTITY #L5RcxCFWsnd62shinrng ^"Shinomen Rangers" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "outside-the-walls"
+        RELATIONSHIPS { ^"operated-by" -> ^"Unicorn Clan" FROM "the majority of the border is unpeopled and defended only by patrols of the White Horde or Shinomen Rangers" }
+    }
+    ENTITY #L5RcxCFWsnd63chagata ^"Moto Chagatai" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "outside-the-walls"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Moto"        FROM "the commander of the White Guard is the Moto khan's son and heir, Moto Chagatai"
+            ^"child-of"  -> ^"Moto Ogödei" FROM "The eldest son of Moto Ogödei's second wife, Chagatai is a bold, ambitious officer"
+            ^"leads"     -> ^"White Guard" FROM "the commander of the White Guard is the Moto khan's son and heir, Moto Chagatai" }
+    }
+    ENTITY #L5RcxCFWsnd64jealgrf ^"Battle of the Jealous Griffin" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "outside-the-walls"
+        RELATIONSHIPS {
+            ^"occurred-at" -> ^"Battle Maiden Castle" FROM "marching deep across the Golden Plains and assaulting Battle Maiden Castle"
+            ^"involved"    -> ^"White Guard"          FROM "It wasn't until the mingghan's critical role in the Battle of the Jealous Griffin that their reputation reversed"
+            ^"involved"    -> ^"Batujin"              FROM "the exiled warlord Batujin, once a Shinjo who dreamed of being khan, took advantage of his cousin's absence to attempt an invasion" }
+    }
+    ENTITY #L5RcxCFWsnd65batujin ^"Batujin" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "outside-the-walls"
+        RELATIONSHIPS { ^"enemy-of" -> ^"Unicorn Clan" FROM "the exiled warlord Batujin, once a Shinjo who dreamed of being khan... this army smashed every force the Unicorn Clan could muster" }
+    }
+    ENTITY #L5RcxCFWsnd66alakhai ^"Moto Alakhai" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "outside-the-walls"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"White Guard" FROM "one of the White Guard's officers, Moto Alakhai, knocked Batujin from his horse and trampled him to death"
+            ^"enemy-of"  -> ^"Batujin"     FROM "Moto Alakhai, knocked Batujin from his horse and trampled him to death" }
+    }
+    ENTITY #L5RcxCFWsnd67caliwar ^"Second Caliphate War" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "trade-with-foreigners"
+        RELATIONSHIPS {
+            ^"involved"    -> ^"Qamarist Caliphate" FROM "By 1072... the Second Caliphate War. A new, adventurous caliph gathered a mighty army and attacked the Sand Road"
+            ^"occurred-at" -> ^"Hidden Valley"      FROM "Even the Ganzu's Hidden Valley was discovered and overwhelmed" }
+    }
+
+    # ---- Amendments to entities already in the graph -----------------------
+    ENTITY ^"Khanbulak" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "khanbulak"
+        RELATIONSHIPS {
+            ^"founder-of" -> ^"Sand Road" FROM "the destination for all the overland trade roads coming in from the lands beyond Rokugan... the new City of the Khan"
+            ^"seat-of"    -> ^"Moto"      FROM "A mighty castle was erected as well, where the Moto headquartered their White Guard" }
+    }
+    ENTITY ^"Lords of Death" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-ten-lords-of-death"
+        RELATIONSHIPS { ^"operated-by" -> ^"Ujik" FROM "Each of the Ten Lords of Death was once an Ujik elder, one who died honorably and was venerated, giving up the names they held in life" }
+    }
+    ENTITY ^"Ganzu" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-ganzu-of-the-hidden-valley"
+        RELATIONSHIPS {
+            ^"vassal-of" -> ^"Shinjo" FROM "As vassals of the Shinjo family and allies of the Moto, the Ganzu protect the Hidden Valley"
+            ^"ally-of"   -> ^"Moto"   FROM "As vassals of the Shinjo family and allies of the Moto" }
+    }
+    ENTITY ^"Hidden Valley" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-ganzu-of-the-hidden-valley"
+        RELATIONSHIPS { ^"located-near" -> ^"Sand Road" FROM "The Hidden Valley is the only oasis between al-Zawira and Khanbulak along the Sand Road" }
+    }
+    ENTITY ^"Scarlet Banners" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-scarlet-banners"
+        RELATIONSHIPS { ^"part-of" -> ^"White Horde" FROM "This mingghan of the White Horde is second only to the White Guard" }
+    }
+    ENTITY ^"White Guard" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "outside-the-walls"
+        RELATIONSHIPS { ^"part-of" -> ^"White Horde" FROM "the most famous and feared of these units, the White Guard" }
+    }
+    ENTITY ^"Shinjo Nishijin" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-sand-road.lore" AT "the-sand-road"
+    }
+}

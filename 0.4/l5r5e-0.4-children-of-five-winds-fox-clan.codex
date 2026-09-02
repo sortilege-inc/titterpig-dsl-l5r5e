@@ -1,0 +1,91 @@
+# .codex SECTION — Children of the Five Winds: The Fox Clan. Stand-off graph over
+# l5r5e-0.4-children-of-five-winds-fox-clan.lore (spec §25). Part of the L5R5e
+# system graph; DEPENDS_ON the shared schema.
+#
+# "Fox Minor Clan" and the "Kitsune" family are DEFs (referenced, never minted).
+# Senkyō / Chikushō-dō / Sakkaku / Ningen-dō, Kitsune Forest, Inari, River of
+# Gold, Uebe Marshes, Hare Clan, Doji Hotaru, Hantei Genji, and the Lion-Phoenix
+# War are already in the graph — referenced (Doji Hotaru amended for the marriage
+# alliance). Yōkai species (kitsune, kawauso, tanuki, bakeneko, jorōgumo) and the
+# generic "Forest Lord" of the adventure seed are not minted. The "New Schools"
+# section is mechanical (school DEFs); only its lore-native entities are captured.
+
+CODEX "L5R5e_CFW_FoxClan_Codex" {
+    NAME "Children of the Five Winds: The Fox Clan — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    ENTITY #L5RcxCFWfox01kaichi ^"Kaichi" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-fox-clan.lore" AT "the-founding"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Unicorn Clan" FROM "a remnant remained behind to safeguard Shinjo's lands in her absence. Known as the Kaichi, they became Shinjo's voice in the courts"
+            ^"serves"  -> ^"Lady Shinjo"  FROM "carrying her word on her behalf... spoke with a Kami's authority" }
+    }
+    ENTITY #L5RcxCFWfox02shinun ^"Kitsune Shinun" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-fox-clan.lore" AT "the-children-of-shinun"
+        RELATIONSHIPS {
+            ^"founder-of" -> ^"Kitsune"        FROM "This was the start of the Kitsune family line... Kitsune Shinun made an ancestral pact with yōkai, becoming the first Fox Clan shugenja"
+            ^"member-of"  -> ^"Fox Minor Clan" FROM "becoming the first Fox Clan shugenja" }
+    }
+    ENTITY #L5RcxCFWfox03kitshime ^"Kitsunehime" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-children-of-five-winds-fox-clan.lore" AT "the-lands-of-the-fox-clan"
+        RELATIONSHIPS {
+            ^"companion-of" -> ^"Fox Minor Clan" FROM "Kitsunehime, an ancient guardian of the Fox Clan who is said to watch over the groves that are sacred to Inari"
+            ^"serves"       -> ^"Kisshōten"      FROM "Other tales attest that she is a servant of Kisshōten, the Fortune of Happiness and Fertility" }
+    }
+    ENTITY #L5RcxCFWfox04kisshotn ^"Kisshōten" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-children-of-five-winds-fox-clan.lore" AT "the-lands-of-the-fox-clan"
+    }
+    ENTITY #L5RcxCFWfox05kydnkits ^"Kyūden Kitsune" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-children-of-five-winds-fox-clan.lore" AT "the-lands-of-the-fox-clan"
+        RELATIONSHIPS {
+            ^"held-by"      -> ^"Kitsune"        FROM "When the Kitsune family chose to build their home at the fork of the River of Gold... Kyūden Kitsune. The Castle of the Fox"
+            ^"located-near" -> ^"Kitsune Forest" FROM "the forest has reached across the river to embrace the keep, and now the palace is surrounded by lush woods"
+            ^"located-near" -> ^"River of Gold"  FROM "the Kitsune family chose to build their home at the fork of the River of Gold" }
+    }
+    ENTITY #L5RcxCFWfox06shinunor ^"Shinun's Orchard" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-children-of-five-winds-fox-clan.lore" AT "the-lands-of-the-fox-clan"
+        RELATIONSHIPS {
+            ^"part-of"      -> ^"Kyūden Kitsune" FROM "Within the palace grounds is Shinun's Orchard, an impressive copse of persimmon and akebia trees"
+            ^"dedicated-to" -> ^"Inari"          FROM "ivy embraces its small shrine to Inari" }
+    }
+    ENTITY #L5RcxCFWfox07autoakli ^"Autumn Oak Library" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-children-of-five-winds-fox-clan.lore" AT "autumn-oak-library"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"River of Gold"  FROM "the stone complex suspended over the River of Gold... the Autumn Oak Library is one of the oldest lore depositories in the Empire"
+            ^"held-by"      -> ^"Fox Minor Clan" FROM "It is customary for long-staying guests to leave something behind for this library" }
+    }
+    ENTITY #L5RcxCFWfox08ryosei ^"Kitsune Ryōsei" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-fox-clan.lore" AT "adventure-seed-hunting-not-permitted"
+        RELATIONSHIPS { ^"member-of" -> ^"Kitsune" FROM "This profile is for the real Kitsune Ryōsei, who may be wandering the Empire" }
+    }
+    ENTITY #L5RcxCFWfox09kuzunobu ^"Kitsune Kuzunobu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-fox-clan.lore" AT "bending-to-the-woods"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Kitsune"     FROM "the marriage of Kitsune Kuzunobu, the Fox daimyō's great-nephew"
+            ^"married-to" -> ^"Doji Hotaru" FROM "the marriage of Kitsune Kuzunobu, the Fox daimyō's great-nephew, to Doji Hotaru, the Crane Clan Champion" }
+    }
+    ENTITY #L5RcxCFWfox10sparrow ^"Sparrow Clan" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-fox-clan.lore" AT "bending-to-the-woods"
+        RELATIONSHIPS { ^"rival-of" -> ^"Fox Minor Clan" FROM "The Fox also had a brief logging disagreement with the Sparrow Clan, a misunderstanding that the Suzume family is still trying to repair" }
+    }
+
+    # ---- Amendment ----------------------------------------------------------
+    ENTITY ^"Doji Hotaru" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-fox-clan.lore" AT "bending-to-the-woods"
+        RELATIONSHIPS { ^"married-to" -> ^"Kitsune Kuzunobu" FROM "the marriage of Kitsune Kuzunobu... to Doji Hotaru, the Crane Clan Champion" }
+    }
+}

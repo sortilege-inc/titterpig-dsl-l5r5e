@@ -1,0 +1,57 @@
+# .codex SECTION — Children of the Five Winds: New Character Options. Stand-off
+# graph over l5r5e-0.4-children-of-five-winds-character-options.lore (spec §25).
+# Part of the L5R5e system graph; DEPENDS_ON the shared schema.
+#
+# This chapter is overwhelmingly mechanical (advantages, heritages, weapons,
+# gear, armor, meishōdō-talisman rules, item patterns) — those are DEFs and are
+# not minted. What IS lore-native here are the named, unique "Blessed Treasures"
+# (nemuranai): captured below as Artifacts, plus Orochi the Great Serpent, whom
+# Shinjo confronted. Kiro (already minted in the unicorn-clan section) is only
+# cross-referenced here.
+
+CODEX "L5R5e_CFW_CharOptions_Codex" {
+    NAME "Children of the Five Winds: New Character Options — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    ENTITY #L5RcxCFWcho01talissun ^"Talisman of the Sun" {
+        IS ^"Artifact"
+        SOURCE "l5r5e-0.4-children-of-five-winds-character-options.lore" AT "talisman-of-the-sun"
+        RELATIONSHIPS {
+            ^"held-by"    -> ^"Iuchi"                   FROM "Iuchi made many attempts to free the imprisoned spirit from the talisman, as did his daughter and grandson after him"
+            ^"located-in" -> ^"Gatherer of Winds Castle" FROM "The Talisman of the Sun is now a treasure resting in Gatherer of Winds Castle" }
+    }
+    ENTITY #L5RcxCFWcho02yuki ^"Yuki" {
+        IS ^"Artifact"
+        SOURCE "l5r5e-0.4-children-of-five-winds-character-options.lore" AT "yuki-the-ancestral-armor-of-the-unicorn-clan"
+        RELATIONSHIPS {
+            ^"held-by"    -> ^"Unicorn Clan"        FROM "the ancestral armor of the Unicorn Clan has seen many revisions and upgrades"
+            ^"wielded-by" -> ^"Lady Shinjo"         FROM "the very armor that Shinjo wore when she left the Empire"
+            ^"located-in" -> ^"Far Traveler Castle" FROM "It currently rests on display at Far Traveler Castle" }
+    }
+    ENTITY #L5RcxCFWcho03hayai ^"Hayai" {
+        IS ^"Artifact"
+        SOURCE "l5r5e-0.4-children-of-five-winds-character-options.lore" AT "blessed-treasures"
+        RELATIONSHIPS { ^"held-by" -> ^"Unicorn Clan" FROM "Hayai, the ancestral sword of the Unicorn (and Kiro, the lost ancestral sword of the Ki-Rin)" }
+    }
+    ENTITY #L5RcxCFWcho04foxsword ^"Ancestral Sword of the Fox Clan" {
+        IS ^"Artifact"
+        SOURCE "l5r5e-0.4-children-of-five-winds-character-options.lore" AT "the-ancestral-sword-of-the-fox-clan"
+        RELATIONSHIPS {
+            ^"held-by"   -> ^"Fox Minor Clan" FROM "a grand sword to be presented to the Fox Clan Champion"
+            ^"forged-by" -> ^"Agasha"         FROM "Agasha family blacksmiths forged a splendid blade, and after consultations with the daimyō of the Yogo family, the sword was inscribed with spiritual wards" }
+    }
+    ENTITY #L5RcxCFWcho05foxpipe ^"Fox Pipe" {
+        IS ^"Artifact"
+        SOURCE "l5r5e-0.4-children-of-five-winds-character-options.lore" AT "fox-pipe"
+        RELATIONSHIPS { ^"held-by" -> ^"Fox Minor Clan" FROM "The common superstition among Fox Clan samurai... ethereal spirits said to live within smoking pipes enchanted for this purpose" }
+    }
+    ENTITY #L5RcxCFWcho06orochi ^"Orochi" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-children-of-five-winds-character-options.lore" AT "yuki-the-ancestral-armor-of-the-unicorn-clan"
+        RELATIONSHIPS { ^"enemy-of" -> ^"Lady Shinjo" FROM "before her confrontation with Orochi, the Great Serpent" }
+    }
+}

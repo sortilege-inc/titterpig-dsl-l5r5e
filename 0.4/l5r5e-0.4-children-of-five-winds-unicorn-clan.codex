@@ -1,0 +1,354 @@
+# .codex SECTION — Children of the Five Winds: The Unicorn Clan. Stand-off graph
+# over l5r5e-0.4-children-of-five-winds-unicorn-clan.lore (spec §25). Part of the
+# L5R5e system graph; DEPENDS_ON the shared schema.
+#
+# The five families (Shinjo, Utaku, Iuchi, Ide, Moto) and the Unicorn Clan are
+# DEFs — referenced via ^"...", never minted. The Kami-era founders whose mononym
+# EQUALS a family DEF (Iuchi, Ide, and the unnamed Moto khan) are therefore NOT
+# minted as person nodes (a colliding caret would shadow the family DEF); their
+# founding is carried by founder-of edges pointing at the family DEF. Utaku's
+# founder is minted as "Lady Utaku" (the source's own honorific — no collision),
+# and Utaku Shiko (distinct name) is minted. "Ki-Rin Clan" is the historical name
+# of the Unicorn and resolves to ^"Unicorn Clan". Named mounts (Yue, Kushami) are
+# not minted (no category; consistent with not minting beasts). Overlaps already
+# in the graph — Far Traveler Castle, Battle Maiden Castle, Dreamer's Forest,
+# Khanbulak, Moto Tsume, Shinjo Altansarnai, Lady Shinjo — are amended here.
+
+CODEX "L5R5e_CFW_UnicornClan_Codex" {
+    NAME "Children of the Five Winds: The Unicorn Clan — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # ---- The Five Winds: the historical hordes ----------------------------
+    ENTITY #L5RcxCFWuni01purpleh ^"Purple Horde" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "utaku"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Unicorn Clan" FROM "When the Five Winds of the Ki-Rin parted, Utaku Shiko led the Purple Horde east into the Ivory Kingdoms"
+            ^"led-by"     -> ^"Utaku Shiko"  FROM "Utaku Shiko led the Purple Horde east into the Ivory Kingdoms. They were the first to part and the last to return"
+        }
+    }
+    ENTITY #L5RcxCFWuni02greenhd ^"Green Horde" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "iuchi"
+        RELATIONSHIPS { ^"part-of" -> ^"Unicorn Clan" FROM "When the Five Winds, the five families, of the Ki-Rin parted, Iuchi led the Green Horde south in search of hidden secrets. They were the only horde never to return" }
+    }
+    ENTITY #L5RcxCFWuni03goldenh ^"Golden Horde" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "ide"
+        RELATIONSHIPS {
+            ^"part-of"      -> ^"Unicorn Clan"       FROM "When the Five Winds of the Ki-Rin parted, Ide remained in the valley with the Golden Horde"
+            ^"founder-of"   -> ^"City of the Ki-Rin" FROM "the Golden Horde founded the City of the Ki-Rin and waited for the other hordes to return"
+        }
+    }
+    ENTITY ^"White Horde" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "moto"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Unicorn Clan"    FROM "When the Five Winds of the Ki-Rin parted, Moto Chabi Khan led the White Horde north across the Burning Sands"
+            ^"led-by"     -> ^"Moto Chabi Khan" FROM "Moto Chabi Khan led the White Horde north across the Burning Sands"
+        }
+    }
+    ENTITY #L5RcxCFWuni05citykir ^"City of the Ki-Rin" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "ide"
+    }
+
+    # ---- Shinjo lands & people --------------------------------------------
+    ENTITY ^"Dragon's Heart Forest" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "far-traveler-castle"
+        RELATIONSHIPS { ^"located-near" -> ^"Far Traveler Castle" FROM "rising over Water Dragon Lake to the west and Dragon's Heart Forest to the south" }
+    }
+    ENTITY #L5RcxCFWuni07watrdrgl ^"Water Dragon Lake" {
+        IS ^"Lake"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "water-dragon-lake"
+        RELATIONSHIPS { ^"located-near" -> ^"Far Traveler Castle" FROM "Located at the foot of Far Traveler Castle, Water Dragon Lake is a subject of legends older than the Empire" }
+    }
+    ENTITY #L5RcxCFWuni08watrdrgs ^"Water Dragon Shrine" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "water-dragon-lake"
+        RELATIONSHIPS { ^"located-near" -> ^"Water Dragon Lake" FROM "Water Dragon Shrine, whose keepers still draw upon the lake's waters for worship" }
+    }
+    ENTITY #L5RcxCFWuni09haruko ^"Shinjo Haruko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "shinjo-haruko"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Shinjo"             FROM "The Unicorn Champion's only biological daughter"
+            ^"child-of"  -> ^"Shinjo Altansarnai" FROM "The Unicorn Champion's only biological daughter spends most of her days on horseback"
+            ^"authored"  -> ^"Wishes at Dawn"     FROM "Her most recent play, Wishes at Dawn, debuted at a provincial Winter Court" }
+    }
+    ENTITY #L5RcxCFWuni10wishes ^"Wishes at Dawn" {
+        IS ^"Document"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "shinjo-haruko"
+        RELATIONSHIPS { ^"located-in" -> ^"Far Traveler Castle" FROM "It depicts two star-crossed lovers, a Kakita and a Matsu, who must cross swords on the battlefield despite their secret love" }
+    }
+
+    # ---- Utaku: founders, orders, lands ------------------------------------
+    ENTITY #L5RcxCFWuni11ladyuta ^"Lady Utaku" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "utaku"
+        RELATIONSHIPS {
+            ^"founder-of" -> ^"Utaku"       FROM "the Ki-Rin Clan Thunder, Lady Utaku, and her daughter, Utaku Shiko"
+            ^"serves"     -> ^"Lady Shinjo" FROM "she was one of the Kami's most devoted followers... Shinjo's right-hand enforcer who let her sword do her talking" }
+    }
+    ENTITY #L5RcxCFWuni12shiko ^"Utaku Shiko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "utaku"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Utaku"      FROM "her daughter, Utaku Shiko"
+            ^"child-of"  -> ^"Lady Utaku" FROM "Lady Utaku, and her daughter, Utaku Shiko"
+            ^"leads"       -> ^"Purple Horde" FROM "Utaku Shiko led the Purple Horde east into the Ivory Kingdoms" }
+    }
+    ENTITY ^"Battle Maidens" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "the-battle-maidens"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Utaku"       FROM "the Shiotome, or \"Battle Maidens.\"... Only women who carry the Utaku family name are permitted to train in the school"
+            ^"ally-of"     -> ^"Lion's Pride" FROM "One of the Battle Maidens' closest interclan allies is the Lion's Pride, the Matsu family's monastic council" }
+    }
+    ENTITY #L5RcxCFWuni14flyingar ^"Utaku Flying Army" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "matriarchal-traditions"
+        RELATIONSHIPS { ^"operated-by" -> ^"Utaku" FROM "There does exist a fraternal organization within the Utaku family: the Utaku Flying Army. These soldiers ride into battle but then dismount to fight" }
+    }
+    ENTITY #L5RcxCFWuni15thunderd ^"House of the Thunders' Daughters" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "culture-and-traditions"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Otosan Uchi"  FROM "In Otosan Uchi, the Battle Maidens and Lion's Pride together maintain a modest dōjō. Known as the House of the Thunders' Daughters"
+            ^"held-by"    -> ^"Battle Maidens" FROM "the Battle Maidens and Lion's Pride together maintain a modest dōjō" }
+    }
+    ENTITY #L5RcxCFWuni16blessedh ^"Blessed Herd" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "the-battle-maidens"
+        RELATIONSHIPS { ^"located-near" -> ^"Shrine of Shimmering Grasses" FROM "the shrine is a favorite grazing spot for the Blessed Herd, which roams freely throughout the nearby Utaku meadows" }
+    }
+    ENTITY #L5RcxCFWuni17shimmerg ^"Shrine of Shimmering Grasses" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "battle-maiden-castle"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Utaku"    FROM "While locals call it Utaku's Shrine, it is known abroad by its poetic name: the Shrine of Shimmering Grasses"
+            ^"dedicated-to" -> ^"Lady Utaku" FROM "Watching over the gardens are the Mother-Sister statues, depicting Utaku and her daughter" }
+    }
+    ENTITY #L5RcxCFWuni18fieldsbh ^"Fields of the Blessed Herd" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "fields-of-the-blessed-herd"
+    }
+    ENTITY #L5RcxCFWuni19asagao ^"Asagao" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "fields-of-the-blessed-herd"
+        RELATIONSHIPS { ^"member-of" -> ^"Utaku" FROM "Path to Inner Peace (Invocation)... If Asagao succeeds, the target removes 3 fatigue" }
+    }
+
+    # ---- Iuchi: traditions, lands, people ----------------------------------
+    ENTITY ^"Meishōdō" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "iuchi"
+        RELATIONSHIPS { ^"operated-by" -> ^"Iuchi" FROM "As the lone masters of meishōdō (\"the way of names\"), they are the predominant spiritual advisors of the Unicorn" }
+    }
+    ENTITY #L5RcxCFWuni21doomhunt ^"Doomhunter" {
+        IS ^"Tradition"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "culture-and-traditions"
+        RELATIONSHIPS { ^"operated-by" -> ^"Iuchi" FROM "it began the Iuchi family's most unusual and esoteric tradition: that of the Doomhunter... a Meishōdō Master whose purpose is to hunt and kill immortals" }
+    }
+    ENTITY #L5RcxCFWuni22meiko ^"Iuchi Meiko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "culture-and-traditions"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Iuchi"       FROM "the research of Iuchi Meiko, one of Iuchi's children"
+            ^"member-of" -> ^"Purple Horde" FROM "one of Iuchi's children who accompanied the Purple Horde of Utaku Shiko" }
+    }
+    ENTITY #L5RcxCFWuni23gatherer ^"Gatherer of Winds Castle" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "culture-and-traditions"
+        RELATIONSHIPS {
+            ^"held-by"    -> ^"Iuchi"              FROM "The ancestral home of the Iuchi... Its poetic name, Gatherer of Winds Castle"
+            ^"located-in" -> ^"Seikitsu Mountains" FROM "it is built into the foothills of the nearby Seikitsu Mountains" }
+    }
+    ENTITY #L5RcxCFWuni24gatheret ^"Gatherer of Winds Temple" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "culture-and-traditions"
+        RELATIONSHIPS { ^"part-of" -> ^"Gatherer of Winds Castle" FROM "so long as they do not venture into the Gatherer of Winds Temple, which is off-limits to all but the family elite" }
+    }
+    ENTITY #L5RcxCFWuni25grandtwr ^"Grandfather Iuchi's Tower" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "grandfather-iuchis-tower"
+        RELATIONSHIPS { ^"held-by" -> ^"Iuchi" FROM "Grandfather Iuchi's Tower is the largest and best-stocked depository of foreign texts" }
+    }
+    ENTITY #L5RcxCFWuni26itsuki ^"Iuchi Itsuki" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "iuchi-itsuki"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Iuchi"           FROM "Iuchi Itsuki has the duty of maintaining the wards and statues that contain the Dreamer's Forest"
+            ^"oversees"  -> ^"Dreamer's Forest" FROM "One of a handful of Meishōdō Masters entrusted with this task, Iuchi Itsuki has the duty of maintaining the wards" }
+    }
+
+    # ---- Ide: lands, holdings, people --------------------------------------
+    ENTITY #L5RcxCFWuni27peacekpr ^"Imperial Peacekeepers" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "reputation-and-values"
+        RELATIONSHIPS { ^"oversees" -> ^"Emerald Empire" FROM "a special organization of Imperial ambassadors. Recruited from many clans by the Imperial Herald, the peacekeepers' purpose is to prevent or limit interclan conflicts" }
+    }
+    ENTITY #L5RcxCFWuni28chryplak ^"Chrysanthemum Petal Lake" {
+        IS ^"Lake"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "the-lands-of-the-ide"
+        RELATIONSHIPS { ^"held-by" -> ^"Ide" FROM "the Ide provinces are dominated by Chrysanthemum Petal Lake, one of the largest in Rokugan" }
+    }
+    ENTITY #L5RcxCFWuni29riverhro ^"River of the Unexpected Hero" {
+        IS ^"River"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "the-lands-of-the-ide"
+        RELATIONSHIPS { ^"located-in" -> ^"Shinomen Forest" FROM "The River of the Unexpected Hero bisects their provinces and eventually winds into the Shinomen Forest" }
+    }
+    ENTITY #L5RcxCFWuni30greatday ^"Great Day Palace" {
+        IS ^"Palace"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "the-lands-of-the-ide"
+        RELATIONSHIPS {
+            ^"held-by"      -> ^"Ide"                     FROM "Kyūden Ide is the only \"traditional\" keep in Unicorn lands... Great Day Castle"
+            ^"located-near" -> ^"Chrysanthemum Petal Lake" FROM "Rising above the northern banks of Chrysanthemum Petal Lake and the surrounding lakeside town, Kyūden Ide" }
+    }
+    ENTITY #L5RcxCFWuni31goldyurt ^"Golden Yurts" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "the-lands-of-the-ide"
+        RELATIONSHIPS { ^"held-by" -> ^"Ide" FROM "they maintain a fleet of mobile palatial tents known as the Golden Yurts... a portable palace" }
+    }
+    ENTITY #L5RcxCFWuni32ideyuto ^"Ide Yūto" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "ide-yūto"
+        RELATIONSHIPS { ^"member-of" -> ^"Ide" FROM "As the son of high-ranking diplomats, wayward slacker Ide Yūto" }
+    }
+
+    # ---- Moto: steppes, hordes, the Dark Moto ------------------------------
+    ENTITY #L5RcxCFWuni33chabikan ^"Moto Chabi Khan" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "moto"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Moto"       FROM "Moto Chabi Khan led the White Horde"
+            ^"leads"       -> ^"White Horde" FROM "Moto Chabi Khan led the White Horde north across the Burning Sands" }
+    }
+    ENTITY ^"Dark Moto" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "moto"
+        RELATIONSHIPS {
+            ^"led-by"          -> ^"Moto Tsume"             FROM "Now, Moto Tsume's undying forces ride atop skeletal onikage... the Dark Moto endlessly train and launch relentless raids against the Kaiu Wall"
+            ^"corrupted-by" -> ^"Jigoku"                 FROM "Moto Tsume himself is an immortal wraith enthralled by Jigoku's Taint"
+            ^"located-in"   -> ^"Fallen Chrysanthemum Lake" FROM "From their stronghold at Fallen Chrysanthemum Lake, the Dark Moto endlessly train" }
+    }
+    ENTITY ^"Second Wind" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "moto"
+        RELATIONSHIPS { ^"led-by" -> ^"Moto Tsume" FROM "he... led one-third of the Moto's warriors, the Second Wind, beyond the Wall to defeat the Shadowlands menace once and for all" }
+    }
+    ENTITY ^"Fallen Chrysanthemum Lake" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "moto"
+        RELATIONSHIPS { ^"held-by" -> ^"Dark Moto" FROM "From their stronghold at Fallen Chrysanthemum Lake, the Dark Moto endlessly train and launch relentless raids against the Kaiu Wall" }
+    }
+    ENTITY #L5RcxCFWuni37kiro ^"Kiro" {
+        IS ^"Artifact"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "moto"
+        RELATIONSHIPS { ^"held-by" -> ^"Moto Tsume" FROM "In his grip is Kiro, the ancestral sword of the Ki-Rin, once a symbol of the Shinjo's kinship and trust, now a trophy of the family's hubris" }
+    }
+    ENTITY ^"Moto Ogödei" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "moto"
+        RELATIONSHIPS { ^"member-of" -> ^"Moto" FROM "They say Moto Ogödei's youngest son is determined to join the Crab Clan" }
+    }
+    ENTITY #L5RcxCFWuni39khulan ^"Shinjo Khulan Khan" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "the-hidden-valley"
+        RELATIONSHIPS {
+            ^"member-of"   -> ^"Shinjo"        FROM "the Unicorn Clan Champion Shinjo Khulan Khan"
+            ^"leads"       -> ^"Unicorn Clan"  FROM "The people who live here, the Ganzu, pledged themselves to the Unicorn Clan Champion Shinjo Khulan Khan in 1010" }
+    }
+    ENTITY #L5RcxCFWuni40hiddenvl ^"Hidden Valley" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "the-hidden-valley"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Pillar of the Sky" FROM "the Hidden Valley is a peaceful oasis in the deserts beyond the Pillar of the Sky mountains"
+            ^"held-by"      -> ^"Ganzu"             FROM "The people who live here, the Ganzu, pledged themselves to the Unicorn Clan Champion" }
+    }
+    ENTITY #L5RcxCFWuni41ganzu ^"Ganzu" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "the-hidden-valley"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Hidden Valley" FROM "The people who live here, the Ganzu"
+            ^"serves"     -> ^"Unicorn Clan"  FROM "the Ganzu, pledged themselves to the Unicorn Clan Champion Shinjo Khulan Khan in 1010... stewarding the Sand Road on the clan's behalf" }
+    }
+    ENTITY #L5RcxCFWuni42lordsdth ^"Lords of Death" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "religious-beliefs"
+        RELATIONSHIPS { ^"member-of" -> ^"Moto" FROM "Chief among the Moto traditions is the worship of the Lords of Death... the traditional pantheon, the Ten Lords of Death" }
+    }
+
+    # ---- The world beyond Rokugan (Ki-Rin's exile) -------------------------
+    ENTITY #L5RcxCFWuni43rempet ^"Empire of Rempet" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "iuchi"
+    }
+    ENTITY #L5RcxCFWuni44sunkings ^"Sun Kings" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "the-lands-of-the-shinjo"
+        RELATIONSHIPS { ^"located-in" -> ^"Empire of Rempet" FROM "when Shinjo fell into the hands of the Sun Kings and was held hostage for a profane ritual" }
+    }
+    ENTITY #L5RcxCFWuni45alqamari ^"al-Qamari" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "the-lands-of-the-shinjo"
+        RELATIONSHIPS {
+            ^"enemy-of"  -> ^"Sun Kings"    FROM "an organization that opposed the life-extending Sun Kings"
+            ^"ally-of"   -> ^"Unicorn Clan" FROM "It was he who found allies in al-Qamari and orchestrated Shinjo's rescue" }
+    }
+    ENTITY #L5RcxCFWuni46nephrent ^"Nephrentep" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "reputation-and-values"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Empire of Rempet" FROM "the sorcerer-king Nephrentep—a necromancer tyrant who was overthrown by the Ki-Rin and al-Qamari"
+            ^"enemy-of"   -> ^"al-Qamari"        FROM "a necromancer tyrant who was overthrown by the Ki-Rin and al-Qamari" }
+    }
+    ENTITY #L5RcxCFWuni47plainsws ^"Plains of Wind and Stone" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "moto"
+        RELATIONSHIPS { ^"located-near" -> ^"Ujik" FROM "It was in the brutal Plains of Wind and Stone that the fledgling Ki-Rin first encountered the Ujik nomads" }
+    }
+    ENTITY #L5RcxCFWuni48pillarsk ^"Pillar of the Sky" {
+        IS ^"Mountain"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "moto"
+    }
+    ENTITY #L5RcxCFWuni49silkroad ^"Silk Road" {
+        IS ^"Road"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "culture-and-traditions"
+    }
+    ENTITY #L5RcxCFWuni50horsesfr ^"Fortune of Horses" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "culture-and-traditions"
+    }
+
+    # ---- Amendments to entities already in the graph -----------------------
+    ENTITY ^"Far Traveler Castle" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "far-traveler-castle"
+        RELATIONSHIPS {
+            ^"held-by"      -> ^"Shinjo"           FROM "The seat of the Shinjo's power, Far Traveler Castle"
+            ^"located-near" -> ^"Water Dragon Lake" FROM "rising over Water Dragon Lake to the west and Dragon's Heart Forest to the south" }
+    }
+    ENTITY ^"Shinjo Altansarnai" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "far-traveler-castle"
+        RELATIONSHIPS { ^"leads" -> ^"Unicorn Clan" FROM "The current champion, Shinjo Altansarnai, proudly hangs monuments to her children's hunting prowess on these walls" }
+    }
+    ENTITY ^"Battle Maiden Castle" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "battle-maiden-castle"
+        RELATIONSHIPS {
+            ^"held-by"      -> ^"Utaku"               FROM "the Utaku's ancestral keep stands less than a day's ride from Far Traveler Castle"
+            ^"located-near" -> ^"Far Traveler Castle" FROM "the Utaku's ancestral keep stands less than a day's ride from Far Traveler Castle" }
+    }
+    ENTITY ^"Dreamer's Forest" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "the-dreamers-forest"
+        RELATIONSHIPS { ^"located-near" -> ^"Gatherer of Winds Castle" FROM "South of Shiro Iuchi is a lone patch of woods in the midst of the rolling plains... This cursed forest is off-limits, filled with malicious kansen" }
+    }
+    ENTITY ^"Moto Tsume" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "moto"
+        RELATIONSHIPS { ^"member-of" -> ^"Moto" FROM "Moto Tsume, the family daimyō, declared that he and his warriors would ride forth and conquer the Shadowlands" }
+    }
+    ENTITY ^"Lady Shinjo" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "the-lands-of-the-shinjo"
+        RELATIONSHIPS { ^"leads" -> ^"Unicorn Clan" FROM "the Moto Ujik broke this tradition when they pledged themselves to Shinjo and named her the Khan of Khans" }
+    }
+    ENTITY ^"Khanbulak" {
+        SOURCE "l5r5e-0.4-children-of-five-winds-unicorn-clan.lore" AT "moto"
+        RELATIONSHIPS { ^"held-by" -> ^"Moto" FROM "Khanbulak, the great western gateway into the Empire, is the Moto's lone holding within Rokugan" }
+    }
+}
