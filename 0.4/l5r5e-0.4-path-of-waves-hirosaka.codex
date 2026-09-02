@@ -1,0 +1,63 @@
+# .codex SECTION — Path of Waves: Hirosaka (a modular sample town). Stand-off
+# graph over l5r5e-0.4-path-of-waves-hirosaka.lore (spec §25). Part of the L5R5e
+# system graph; DEPENDS_ON the shared schema. Hirosaka is a customizable template
+# town whose ruling clan varies (the governor is "Seppun Sora" by default, or
+# Doji Sora / Shiba Sora, etc.) — the default-named NPCs are minted once. Its
+# generic template locations (Governor's Estate, Municipal Court, the Market,
+# the Barracks…) are not minted; the distinctively named establishments are. The
+# Seppun/Otomo NPCs are Imperial-family members (no clan DEF), so no member-of.
+
+CODEX "L5R5e_PoW_Hirosaka_Codex" {
+    NAME "Path of Waves: Hirosaka — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    ENTITY #L5RcxPoWhir01hirosaka ^"Hirosaka" {
+        IS ^"Town"
+        SOURCE "l5r5e-0.4-path-of-waves-hirosaka.lore" AT "hirosaka"
+    }
+    ENTITY #L5RcxPoWhir02seppsora ^"Seppun Sora" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-path-of-waves-hirosaka.lore" AT "seppun-sora-ambitious-governor"
+        RELATIONSHIPS { ^"oversees" -> ^"Hirosaka" FROM "the best his well-connected family could arrange was having him appointed governor of Hirosaka" }
+    }
+    ENTITY #L5RcxPoWhir03otokazuk ^"Otomo Kazuko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-path-of-waves-hirosaka.lore" AT "otomo-kazuko-scheming-chancellor"
+    }
+    ENTITY #L5RcxPoWhir04seppishm ^"Seppun Ishima" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-path-of-waves-hirosaka.lore" AT "seppun-ishima-conflicted-magistrate"
+    }
+    ENTITY #L5RcxPoWhir05baytouma ^"Bayushi Touma" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-path-of-waves-hirosaka.lore" AT "the-sake-works"
+        RELATIONSHIPS { ^"member-of" -> ^"Scorpion Clan" FROM "the Scorpion samurai Bayushi Touma, who owns the brewery" }
+    }
+    ENTITY #L5RcxPoWhir06kakseiic ^"Kakita Seiichi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-path-of-waves-hirosaka.lore" AT "important-people"
+        RELATIONSHIPS { ^"member-of" -> ^"Crane Clan" FROM "Kakita Seiichi, an artisan and head of the Warai Puppet Troupe" }
+    }
+    ENTITY #L5RcxPoWhir07tamiko ^"Tamiko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-path-of-waves-hirosaka.lore"
+    }
+    ENTITY #L5RcxPoWhir08cloudshi ^"Clouds above Hirosaka" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-path-of-waves-hirosaka.lore" AT "the-sake-works"
+        RELATIONSHIPS { ^"located-in" -> ^"Hirosaka" FROM "Hirosaka is home to a small sake brewery, Clouds above Hirosaka" }
+    }
+    ENTITY #L5RcxPoWhir09waraipup ^"Warai Puppet Troupe" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-path-of-waves-hirosaka.lore" AT "important-people"
+    }
+    ENTITY #L5RcxPoWhir10grinmuji ^"The Grinning Mujina" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-path-of-waves-hirosaka.lore" AT "important-people"
+        RELATIONSHIPS { ^"located-in" -> ^"Hirosaka" FROM "Watchful owns The Grinning Mujina, a shabby sake house in Hirosaka" }
+    }
+}

@@ -1,0 +1,82 @@
+# .codex SECTION — Path of Waves: The World Outside of Rokugan (the Ivory
+# Kingdoms). Stand-off graph over l5r5e-0.4-path-of-waves-gaijin.lore (spec §25).
+# Part of the L5R5e system graph; DEPENDS_ON the shared schema. The Ivory
+# Kingdoms already exists in the graph. New: Bhavyatapura and its geography, the
+# Sheelavaan, the Ghostlands + Queen of the Rakshasa + the rakshasa, the Yodha
+# and their schism, and the Mukka. Ghostlands lesser creatures (aleya, pishachas,
+# bhoot, vetala, etc.) are bestiary species and not minted.
+
+CODEX "L5R5e_PoW_Gaijin_Codex" {
+    NAME "Path of Waves: The Ivory Kingdoms — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    ENTITY #L5RcxPoWgai01bhavyat ^"Bhavyatapura" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-path-of-waves-gaijin.lore" AT "bhavyatapura-the-city-of-splendor"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Ivory Kingdoms" FROM "there are two that are particularly prominent... Bhavyatapura, the City of Splendor"
+            ^"located-in" -> ^"Sonagiri"       FROM "Located in the midst of the fertile plains atop the immense plateau known as Sonagiri"
+        }
+    }
+    ENTITY #L5RcxPoWgai02sonagiri ^"Sonagiri" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-path-of-waves-gaijin.lore" AT "layout"
+    }
+    ENTITY #L5RcxPoWgai03himapaat ^"Himapaat" {
+        IS ^"River"
+        SOURCE "l5r5e-0.4-path-of-waves-gaijin.lore" AT "layout"
+    }
+    ENTITY #L5RcxPoWgai04sheelav ^"Sheelavaan" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-path-of-waves-gaijin.lore" AT "culture-religion-and-politics"
+    }
+    ENTITY #L5RcxPoWgai05mukka ^"Mukka" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-path-of-waves-gaijin.lore" AT "important-factions"
+    }
+    ENTITY #L5RcxPoWgai06ghostlnd ^"The Ghostlands" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-path-of-waves-gaijin.lore" AT "the-ghostlands"
+        RELATIONSHIPS { ^"located-near" -> ^"Ivory Kingdoms" FROM "the Shadowlands-Tainted region that borders the Ivory Kingdoms to the northeast" }
+    }
+    ENTITY #L5RcxPoWgai07queenrak ^"Queen of the Rakshasa" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-path-of-waves-gaijin.lore" AT "the-ghostlands"
+    }
+    ENTITY #L5RcxPoWgai08rakshasa ^"Rakshasa" {
+        IS ^"Race"
+        SOURCE "l5r5e-0.4-path-of-waves-gaijin.lore" AT "creatures-of-the-ghostlands"
+    }
+    ENTITY #L5RcxPoWgai09yodha ^"Yodha" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-path-of-waves-gaijin.lore" AT "the-ghostlands"
+    }
+    ENTITY #L5RcxPoWgai10yodhaviy ^"Yodhaviya" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-path-of-waves-gaijin.lore" AT "creatures-of-the-ghostlands"
+        RELATIONSHIPS { ^"ally-of" -> ^"Yodha" FROM "The Yodhaviya are those Yodha who maintain a watch over the Ghostlands from outside" }
+    }
+    ENTITY #L5RcxPoWgai11yodhaniy ^"Yodhaniya" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-path-of-waves-gaijin.lore" AT "creatures-of-the-ghostlands"
+        RELATIONSHIPS { ^"ally-of" -> ^"Yodha" FROM "The Yodhaniya are those Yodha who have chosen to effectively take the battle into the Ghostlands" }
+    }
+    ENTITY #L5RcxPoWgai12pillpure ^"Pillars of Purity" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-path-of-waves-gaijin.lore" AT "creatures-of-the-ghostlands"
+        RELATIONSHIPS { ^"located-near" -> ^"Nadati River" FROM "located on the Nadati River, where ancient stone columns known as the Pillars of Purity stand" }
+    }
+    ENTITY #L5RcxPoWgai13nadatiri ^"Nadati River" {
+        IS ^"River"
+        SOURCE "l5r5e-0.4-path-of-waves-gaijin.lore" AT "creatures-of-the-ghostlands"
+    }
+    ENTITY #L5RcxPoWgai14shibharu ^"Shiba Haru" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-path-of-waves-gaijin.lore"
+        RELATIONSHIPS { ^"member-of" -> ^"Phoenix Clan" FROM "Shiba Haru" }
+    }
+}

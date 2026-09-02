@@ -1,0 +1,98 @@
+# .codex SECTION — Path of Waves: Twin Blessings Village (a modular sample
+# village). Stand-off graph over l5r5e-0.4-path-of-waves-twin-blessings.lore
+# (spec §25). Part of the L5R5e system graph; DEPENDS_ON the shared schema. The
+# village's named features (Koden Mori, the Cursed Stone, Pearl-Shine River,
+# Closed-Shell Castle) and its roster of named villagers are captured; the
+# villagers are commoners (given names, no clan).
+
+CODEX "L5R5e_PoW_TwinBlessings_Codex" {
+    NAME "Path of Waves: Twin Blessings Village — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    ENTITY #L5RcxPoWtwn01twinbles ^"Twin Blessings Village" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-path-of-waves-twin-blessings.lore" AT "twin-blessings-village"
+    }
+    ENTITY #L5RcxPoWtwn02kodenmor ^"Koden Mori" {
+        IS ^"Forest"
+        SOURCE "l5r5e-0.4-path-of-waves-twin-blessings.lore" AT "koden-mori"
+        RELATIONSHIPS { ^"located-near" -> ^"Twin Blessings Village" FROM "The large forest near the village" }
+    }
+    ENTITY #L5RcxPoWtwn03cursston ^"Cursed Stone" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-path-of-waves-twin-blessings.lore" AT "the-cursed-stone"
+        RELATIONSHIPS { ^"located-in" -> ^"Koden Mori" FROM "they never pass the Cursed Stone that marks the end of their iriaiyama" }
+    }
+    ENTITY #L5RcxPoWtwn04pearlriv ^"Pearl-Shine River" {
+        IS ^"River"
+        SOURCE "l5r5e-0.4-path-of-waves-twin-blessings.lore" AT "pearl-shine-river"
+    }
+    ENTITY #L5RcxPoWtwn05closhell ^"Closed-Shell Castle" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-path-of-waves-twin-blessings.lore" AT "pearl-shine-river"
+        RELATIONSHIPS { ^"located-near" -> ^"Pearl-Shine River" FROM "Pearl-Shine River, wide and fast-moving, flows past Closed-Shell Castle" }
+    }
+    ENTITY #L5RcxPoWtwn06setsuo ^"Setsuo" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-path-of-waves-twin-blessings.lore" AT "pearl-shine-river"
+    }
+    ENTITY #L5RcxPoWtwn07ichiro ^"Ichiro" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-path-of-waves-twin-blessings.lore" AT "pearl-shine-river"
+        RELATIONSHIPS { ^"child-of" -> ^"Setsuo" FROM "Ichiro, Setsuo's son" }
+    }
+    ENTITY #L5RcxPoWtwn08hiroto ^"Hiroto" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-path-of-waves-twin-blessings.lore" AT "pearl-shine-river"
+        RELATIONSHIPS { ^"married-to" -> ^"Ehana" FROM "Hiroto, the brewer. A hard worker, Ehana's husband" }
+    }
+    ENTITY #L5RcxPoWtwn09ehana ^"Ehana" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-path-of-waves-twin-blessings.lore" AT "pearl-shine-river"
+        RELATIONSHIPS { ^"married-to" -> ^"Hiroto" FROM "Ehana, a master weaver. Committed to tradition; Hiroto's wife" }
+    }
+    ENTITY #L5RcxPoWtwn10kaiya ^"Kaiya" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-path-of-waves-twin-blessings.lore" AT "pearl-shine-river"
+        RELATIONSHIPS {
+            ^"child-of" -> ^"Hiroto" FROM "Kaiya, daughter of Hiroto and Ehana"
+            ^"child-of" -> ^"Ehana"  FROM "Kaiya, daughter of Hiroto and Ehana"
+        }
+    }
+    ENTITY #L5RcxPoWtwn11koson ^"Koson" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-path-of-waves-twin-blessings.lore" AT "pearl-shine-river"
+    }
+    ENTITY #L5RcxPoWtwn12haru ^"Haru" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-path-of-waves-twin-blessings.lore" AT "pearl-shine-river"
+    }
+    ENTITY #L5RcxPoWtwn13michi ^"Michi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-path-of-waves-twin-blessings.lore" AT "pearl-shine-river"
+    }
+    ENTITY #L5RcxPoWtwn14yorio ^"Yorio" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-path-of-waves-twin-blessings.lore" AT "pearl-shine-river"
+    }
+    ENTITY #L5RcxPoWtwn15kokoro ^"Kokoro" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-path-of-waves-twin-blessings.lore" AT "pearl-shine-river"
+    }
+    ENTITY #L5RcxPoWtwn16reo ^"Reo" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-path-of-waves-twin-blessings.lore" AT "pearl-shine-river"
+    }
+    ENTITY #L5RcxPoWtwn17daizo ^"Daizō" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-path-of-waves-twin-blessings.lore" AT "pearl-shine-river"
+    }
+    ENTITY #L5RcxPoWtwn18otoha ^"Otoha" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-path-of-waves-twin-blessings.lore" AT "pearl-shine-river"
+    }
+}
