@@ -1,0 +1,32 @@
+# .codex SECTION — Celestial Realms: The Centipede Clan. Stand-off graph over
+# l5r5e-0.4-celestial-realms-centipede-clan.lore (spec §25). Part of the L5R5e
+# system graph; DEPENDS_ON the shared schema. "Centipede Clan" is lore-only (the
+# mechanical family DEF is ^"Moshi"); it is defined here as a Faction entity and
+# referenced by the Amaterasu Seidō section. The Agasha Alchemist School is a DEF.
+
+CODEX "L5R5e_CR_CentipedeClan_Codex" {
+    NAME "Celestial Realms: The Centipede Clan — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    ENTITY #L5RcxCRcen01centiped ^"Centipede Clan" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-celestial-realms-centipede-clan.lore"
+    }
+    ENTITY #L5RcxCRcen02moshchia ^"Moshi Chiasa" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-celestial-realms-centipede-clan.lore" AT "moshi-chiasa-centipede-clan-champion"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Centipede Clan" FROM "Lady Moshi Chiasa was chosen as clan champion"
+            ^"leads"     -> ^"Centipede Clan" FROM "Moshi Chiasa, Centipede Clan Champion"
+        }
+    }
+    ENTITY #L5RcxCRcen03akohinat ^"Akodo Hinata" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-celestial-realms-centipede-clan.lore"
+        RELATIONSHIPS { ^"member-of" -> ^"Lion Clan" FROM "Akodo Hinata is a powerful force, but does not know it" }
+    }
+}

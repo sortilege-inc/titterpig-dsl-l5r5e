@@ -1,0 +1,29 @@
+# .codex SECTION — The Mantis Clan (standalone essay). Stand-off graph over
+# l5r5e-0.4-mantis-clan.lore (spec §25). Part of the L5R5e system graph;
+# DEPENDS_ON the shared schema. Mostly mechanical — clan/family traits, Mantis
+# weapons/armor/equipment, and aquatic-creature statblocks (bestiary species,
+# not minted). The Mantis Clan is a .ttrpg DEF; Yoritomo and the Islands of Spice
+# and Silk are already in the graph. New: two Mantis ports.
+
+CODEX "L5R5e_MantisClan_Codex" {
+    NAME "The Mantis Clan — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    ENTITY #L5RcxMan01tempisl ^"Tempest Island" {
+        IS ^"Place"
+        SOURCE "l5r5e-0.4-mantis-clan.lore" AT "what-does-your-character-know"
+        RELATIONSHIPS { ^"held-by" -> ^"Mantis Clan" FROM "ports many Mantis call home, such as Tempest Island and Thunder Dragon Bay" }
+    }
+    ENTITY #L5RcxMan02thundrbay ^"Thunder Dragon Bay" {
+        IS ^"Sea"
+        SOURCE "l5r5e-0.4-mantis-clan.lore" AT "what-does-your-character-know"
+    }
+
+    ENTITY ^"Yoritomo" {
+        SOURCE "l5r5e-0.4-mantis-clan.lore" AT "the-mantis-minor-clan"
+    }
+}

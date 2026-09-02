@@ -1,0 +1,51 @@
+# .codex SECTION — Celestial Realms: New Character Options. Stand-off graph over
+# l5r5e-0.4-celestial-realms-character-options.lore (spec §25). Mechanical — new
+# schools, passions, disadvantages, heritages, item patterns, and techniques
+# (all DEFs). Captured: the Phoenix ancestral sword and the vignette NPCs.
+# Shukujo (Crane pilot), its smith Yasurugi, and the ningyo princess Tsumaru are
+# already in the graph; Shukujo is amended. The Dragon's ancestral sword is
+# described only by role, not a proper name, so it is not minted.
+
+CODEX "L5R5e_CR_CharOptions_Codex" {
+    NAME "Celestial Realms: New Character Options — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    ENTITY #L5RcxCRchr01ofushika ^"Ofushikai" {
+        IS ^"Artifact"
+        SOURCE "l5r5e-0.4-celestial-realms-character-options.lore" AT "ofushikai-ancestral-sword-of-the-phoenix"
+        RELATIONSHIPS { ^"forged-by" -> ^"Tsumaru" FROM "Ofushikai was forged by Shiba's wife, the ningyo princess Tsamaru, as a wedding gift" }
+    }
+    ENTITY #L5RcxCRchr02asahsora ^"Asahina Sora" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-celestial-realms-character-options.lore"
+        RELATIONSHIPS { ^"member-of" -> ^"Crane Clan" FROM "Asahina Sora" }
+    }
+    ENTITY #L5RcxCRchr03matmakot ^"Matsu Makoto" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-celestial-realms-character-options.lore"
+        RELATIONSHIPS { ^"member-of" -> ^"Lion Clan" FROM "Matsu Makoto" }
+    }
+    ENTITY #L5RcxCRchr04motchizu ^"Moto Chizue" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-celestial-realms-character-options.lore"
+        RELATIONSHIPS { ^"member-of" -> ^"Unicorn Clan" FROM "Moto Chizue" }
+    }
+    ENTITY #L5RcxCRchr05daidhana ^"Daidoji Hanae" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-celestial-realms-character-options.lore"
+        RELATIONSHIPS { ^"member-of" -> ^"Crane Clan" FROM "Daidoji Hanae" }
+    }
+    ENTITY #L5RcxCRchr06isawchiz ^"Isawa Chizue" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-celestial-realms-character-options.lore"
+        RELATIONSHIPS { ^"member-of" -> ^"Phoenix Clan" FROM "Isawa Chizue" }
+    }
+
+    ENTITY ^"Shukujo" {
+        SOURCE "l5r5e-0.4-celestial-realms-character-options.lore" AT "shukujo-ancestral-sword-of-the-crane"
+    }
+}

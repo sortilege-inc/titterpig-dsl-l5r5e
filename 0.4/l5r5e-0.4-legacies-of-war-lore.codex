@@ -1,0 +1,43 @@
+# .codex SECTION — Legacies of War. Stand-off graph over
+# l5r5e-0.4-legacies-of-war-lore.lore (spec §25). Part of the L5R5e system graph;
+# DEPENDS_ON the shared schema. This book is largely mechanical — the Legacy
+# template subsystem, wartime random-encounter tables, and custom-template rules
+# (all DEFs/rules), plus a Badger PC family option. Captured: the awakened item,
+# the Fureheshu vassal family + its founder, and the Antiquity-in-the-Arts
+# shrine. The "Mountain of Seven Thunders" (Fields of Victory, lion-clan) and
+# "Seven Thunders Mountain" here are the same peak; the Shrine of the Seven
+# Thunders (already in the graph) is amended and located there.
+
+CODEX "L5R5e_LegaciesOfWar_Codex" {
+    NAME "Legacies of War — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    ENTITY #L5RcxLoW01thewargm ^"The War Game" {
+        IS ^"Artifact"
+        SOURCE "l5r5e-0.4-legacies-of-war-lore.lore" AT "the-war-game"
+    }
+    ENTITY #L5RcxLoW02fureheshfm ^"Fureheshu Family" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-legacies-of-war-lore.lore" AT "the-fureheshu-family"
+        RELATIONSHIPS { ^"vassal-of" -> ^"Badger Clan" FROM "A vassal family to the Ichirō, the Fureheshu family" }
+    }
+    ENTITY #L5RcxLoW03ichfureh ^"Ichirō Fureheshu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-legacies-of-war-lore.lore" AT "the-fureheshu-family"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Badger Clan"      FROM "a Badger samurai named Ichirō Fureheshu traveled to Crab lands to study sumai"
+            ^"founder-of" -> ^"Fureheshu Family" FROM "the Ichirō daimyō was so pleased she granted Fureheshu and his heirs status as a vassal family"
+        }
+    }
+
+    ENTITY ^"Shrine of the Seven Thunders" {
+        SOURCE "l5r5e-0.4-legacies-of-war-lore.lore" AT "temples"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Mountain of Seven Thunders" FROM "The Shrine of the Seven Thunders was built upon the slopes of Seven Thunders Mountain"
+        }
+    }
+}

@@ -1,0 +1,91 @@
+# .codex SECTION — Celestial Realms: Bonds of the Realms (cosmology & shrines).
+# Stand-off graph over l5r5e-0.4-celestial-realms-cosmology.lore (spec §25). Part
+# of the L5R5e system graph; DEPENDS_ON the shared schema. Most realms (Meido,
+# Gaki-dō, Tōshigoku, Jigoku, Transcendents, Emma-Ō, the Kings of Hell, Yume-dō)
+# are already in the graph. New: the Tengoku features, Emma-Ō's estate/court, and
+# the named shrines. The Shrine to Hantei-no-Kami here is the same structure as
+# governance's "Temple to Hantei" (island honden on the statue-bridge); that
+# entity is amended. Kami shrines use located relationships rather than
+# dedicated-to (which ranges over Fortunes).
+
+CODEX "L5R5e_CR_Cosmology_Codex" {
+    NAME "Celestial Realms: Bonds of the Realms — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    ENTITY #L5RcxCRcos01elemrivr ^"Elemental River" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-celestial-realms-cosmology.lore" AT "the-elemental-river"
+        RELATIONSHIPS { ^"part-of" -> ^"Tengoku" FROM "Higher than the Heavenly Palace are the dwellings of the Elemental Dragons... the Elemental River" }
+    }
+    ENTITY #L5RcxCRcos02heavnpal ^"Heavenly Palace" {
+        IS ^"Palace"
+        SOURCE "l5r5e-0.4-celestial-realms-cosmology.lore" AT "the-elemental-river"
+        RELATIONSHIPS { ^"part-of" -> ^"Tengoku" FROM "Higher than the Heavenly Palace are the dwellings of the Elemental Dragons" }
+    }
+    ENTITY #L5RcxCRcos03emmaesta ^"Emma-Ō's Estate" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-celestial-realms-cosmology.lore" AT "emma-ōs-estate"
+        RELATIONSHIPS { ^"located-in" -> ^"Meido" FROM "At the center of this vast realm sits the estate of Emma-Ō" }
+    }
+    ENTITY #L5RcxCRcos04emmacurt ^"Court of Emma-Ō" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-celestial-realms-cosmology.lore" AT "the-court-of-emma-ō"
+        RELATIONSHIPS { ^"part-of" -> ^"Emma-Ō's Estate" FROM "In the court within his estate, Emma-Ō weighs the karma of the soul" }
+    }
+    ENTITY #L5RcxCRcos05wellater ^"Well of the Ateru" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-celestial-realms-cosmology.lore" AT "below-meido-and-the-realms-of-punishment"
+        RELATIONSHIPS { ^"held-by" -> ^"Phoenix Clan" FROM "The Well of the Ateru, a sacred place in the lands of the Phoenix's Kaito family" }
+    }
+    ENTITY #L5RcxCRcos06gardemp ^"Garden of Emperors" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-celestial-realms-cosmology.lore" AT "the-torii-gate-and-bridge"
+        RELATIONSHIPS { ^"located-in" -> ^"Forbidden City" FROM "the Garden of Emperors was created, a special place within the Forbidden City" }
+    }
+    ENTITY #L5RcxCRcos07shrakodo ^"Shrine to Lord Akodo" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-celestial-realms-cosmology.lore" AT "shrines-of-rokugan"
+    }
+    ENTITY #L5RcxCRcos08shrdoji ^"Shrine to Lady Doji" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-celestial-realms-cosmology.lore" AT "shrines-of-rokugan"
+    }
+    ENTITY #L5RcxCRcos09dojinio ^"Doji Nio" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-celestial-realms-cosmology.lore" AT "shrines-of-rokugan"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crane Clan" FROM "It is where Doji Nio watched his mother, Doji, walk into the ocean"
+            ^"child-of"  -> ^"Lady Doji"  FROM "Doji Nio watched his mother, Doji, walk into the ocean and vanish"
+        }
+    }
+    ENTITY #L5RcxCRcos10shrshiba ^"Shrine to Lord Shiba" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-celestial-realms-cosmology.lore" AT "devoted-sermon"
+        RELATIONSHIPS { ^"located-in" -> ^"Shiro Shiba" FROM "A secluded structure on a courtyard hill within Shiro Shiba" }
+    }
+    ENTITY #L5RcxCRcos11akotadeo ^"Akodo Tadeo" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-celestial-realms-cosmology.lore" AT "akodo-tadeo-inspired-zealot"
+        RELATIONSHIPS { ^"member-of" -> ^"Lion Clan" FROM "Akodo Tadeo, Inspired Zealot" }
+    }
+    ENTITY #L5RcxCRcos12isawyasu ^"Isawa Yasu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-celestial-realms-cosmology.lore"
+        RELATIONSHIPS { ^"member-of" -> ^"Phoenix Clan" FROM "Isawa Yasu" }
+    }
+    ENTITY #L5RcxCRcos13kaitshin ^"Kaito Shin" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-celestial-realms-cosmology.lore"
+        RELATIONSHIPS { ^"member-of" -> ^"Phoenix Clan" FROM "Kaito Shin" }
+    }
+
+    # The Shrine to Hantei-no-Kami is governance's "Temple to Hantei"; amended.
+    ENTITY ^"Temple to Hantei" {
+        SOURCE "l5r5e-0.4-celestial-realms-cosmology.lore" AT "approaching-the-shrine"
+        RELATIONSHIPS { ^"located-in" -> ^"Forbidden City" FROM "The Shrine to Hantei-no-Kami conforms to the traditional layout of a Rokugani shrine" }
+    }
+}
