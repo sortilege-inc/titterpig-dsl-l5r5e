@@ -2,11 +2,16 @@
 # Stand-off graph over l5r5e-0.4-emerald-empire-governance.lore (spec §25). Part
 # of the L5R5e system graph. Built in batches (this file grows as the chapter is
 # folded in). Batch 1: the framing fiction, Unicorn castles, court institutions,
-# Rokugani court titles, and the artisan's Fortunes.
+# Rokugani court titles, and the artisan's Fortunes. Batch 2: the eleven remaining
+# Hours of Rokugan, gempuku, the named castles/palaces (Shiro Mirumoto, Pale Oak,
+# Shiro Ide, Kyūden Togashi/Hida/Bayushi/Doji/Gotei, Shiro Shiba, Toshi Ranbo and
+# its history), the Forbidden City complex, Seppun Ishikawa, the Mantis holdings,
+# the ceremonial court offices (Hands of the Emperor, chancellor, advisor), the
+# three named wars, and the Fortunes of war.
 
 CODEX "L5R5e_Codex_EE_Governance" {
     NAME "Emerald Empire: Strongholds of Power — Lore Graph"
-    VERSION "0.1"
+    VERSION "0.2"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-02"
     FOR EDITION "l5r5e"
@@ -108,5 +113,435 @@ CODEX "L5R5e_Codex_EE_Governance" {
     ENTITY #L5RcxEEgov15sadaha ^"Sadahako" {
         IS ^"Fortune"
         SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-artisan"
+    }
+
+    # -- The twelve Hours of Rokugan (the daily divisions) ----------------------
+    # Hour of the Horse is defined elsewhere in the graph; the other eleven are
+    # enumerated in the sidebar under THE STUDENT.
+
+    ENTITY #L5RcxEEgov16hourhare ^"Hour of the Hare" {
+        IS ^"Calendar Term"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-student"
+    }
+    ENTITY #L5RcxEEgov17hourdrag ^"Hour of the Dragon" {
+        IS ^"Calendar Term"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-student"
+    }
+    ENTITY #L5RcxEEgov18hourserp ^"Hour of the Serpent" {
+        IS ^"Calendar Term"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-student"
+    }
+    ENTITY #L5RcxEEgov19hourgoat ^"Hour of the Goat" {
+        IS ^"Calendar Term"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-student"
+    }
+    ENTITY #L5RcxEEgov20hourmonk ^"Hour of the Monkey" {
+        IS ^"Calendar Term"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-student"
+    }
+    ENTITY #L5RcxEEgov21hourroos ^"Hour of the Rooster" {
+        IS ^"Calendar Term"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-student"
+    }
+    ENTITY #L5RcxEEgov22hourdogz ^"Hour of the Dog" {
+        IS ^"Calendar Term"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-student"
+    }
+    ENTITY #L5RcxEEgov23hourboar ^"Hour of the Boar" {
+        IS ^"Calendar Term"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-student"
+    }
+    ENTITY #L5RcxEEgov24hourratz ^"Hour of the Rat" {
+        IS ^"Calendar Term"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-student"
+    }
+    ENTITY #L5RcxEEgov25houroxzz ^"Hour of the Ox" {
+        IS ^"Calendar Term"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-student"
+    }
+    ENTITY #L5RcxEEgov26hourtigr ^"Hour of the Tiger" {
+        IS ^"Calendar Term"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-student"
+    }
+
+    # -- Coming-of-age tradition ------------------------------------------------
+
+    ENTITY #L5RcxEEgov27gempukuu ^"Gempuku" {
+        IS ^"Tradition"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "gempuku"
+    }
+
+    # -- Castles named in the shiro/kyūden discussion ---------------------------
+
+    ENTITY #L5RcxEEgov28shrmirum ^"Shiro Mirumoto" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "location-and-construction-of-castles"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Dragon Clan" FROM "Shiro Mirumoto in the Dragon lands"
+        }
+    }
+    ENTITY #L5RcxEEgov29paleoakc ^"Pale Oak Castle" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "location-and-construction-of-castles"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Phoenix Clan" FROM "Pale Oak Castle in the Phoenix lands"
+        }
+    }
+    ENTITY #L5RcxEEgov30shiroide ^"Shiro Ide" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "location-and-construction-of-castles"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Unicorn Clan" FROM "In the lands of the Unicorn, one may consider the plight of Shiro Ide"
+        }
+    }
+    ENTITY #L5RcxEEgov31kydtogas ^"Kyūden Togashi" {
+        IS ^"Palace"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "location-and-construction-of-castles"
+        RELATIONSHIPS {
+            ^"seat-of" -> ^"Dragon Clan" FROM "Kyūden Togashi, also known as the High House of Light"
+        }
+    }
+    ENTITY #L5RcxEEgov32kydhidaa ^"Kyūden Hida" {
+        IS ^"Palace"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "location-and-construction-of-castles"
+        RELATIONSHIPS {
+            ^"seat-of" -> ^"Crab Clan" FROM "Kyūden Hida in the Crab lands"
+        }
+    }
+    ENTITY #L5RcxEEgov33shrsanok ^"Shiro Sano ken Hayai" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "courtyard"
+    }
+    ENTITY #L5RcxEEgov34rvrlasts ^"River of the Last Stand" {
+        IS ^"River"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "moats-mizuki"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Carpenter Wall" FROM "the River of the Last Stand functions rather like a moat for the Kaiu Wall"
+        }
+    }
+
+    # -- Toshi Ranbo and its history --------------------------------------------
+
+    ENTITY #L5RcxEEgov35toshiran ^"Toshi Ranbo" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "toshi-ranbo"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Crane Clan" FROM "claimed Toshi Ranbo for the Crane"
+        }
+    }
+    ENTITY #L5RcxEEgov36kitayosa ^"Kita no Yosa" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "a-bloody-history"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Lion Clan" FROM "the Lion Clan built a castle called Kita no Yosa (Northern Fortress)"
+        }
+    }
+    ENTITY #L5RcxEEgov37kintanii ^"Kintani" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "a-bloody-history"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Crane Clan" FROM "granted the Crane Clan control of the Kintani, the Golden Valley"
+        }
+    }
+    ENTITY #L5RcxEEgov38tsmdojir ^"Tsume no Doji Retsu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "a-bloody-history"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crane Clan" FROM "daimyō of the Crane Clan's Tsume vassal family"
+        }
+    }
+    ENTITY #L5RcxEEgov39akodaras ^"Akodo Arasou" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "a-bloody-history"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Lion Clan" FROM "the life of Lion Clan Champion Akodo Arasou"
+        }
+    }
+    ENTITY #L5RcxEEgov40kaksuken ^"Kakita Sukenobu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "toshi-ranbo"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crane Clan" FROM "When Kakita Sukenobu or an ally"
+        }
+    }
+
+    # -- Kyūden Bayushi and Traitor's Grove -------------------------------------
+
+    ENTITY #L5RcxEEgov41kydbayus ^"Kyūden Bayushi" {
+        IS ^"Palace"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "kyūden-bayushi"
+        RELATIONSHIPS {
+            ^"seat-of" -> ^"Scorpion Clan" FROM "Silk and Shadow Palace, home of the Scorpion Clan's ruling family"
+        }
+    }
+    ENTITY #L5RcxEEgov42bayulaby ^"Bayushi's Labyrinth" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "kyūden-bayushi"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Kyūden Bayushi" FROM "Known colloquially as Bayushi's Labyrinth, the maze"
+        }
+    }
+    ENTITY #L5RcxEEgov43traigrov ^"Traitor's Grove" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "traitors-grove"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Kyūden Bayushi" FROM "outside the walls and just beyond the plateau: the sinister, haunted copse of trees known as Traitor's Grove"
+            ^"haunted-by"    -> ^"Bayushi Tesaguri" FROM "he was punished with a ritual that bound his soul into a tree"
+        }
+    }
+    ENTITY #L5RcxEEgov44baytesag ^"Bayushi Tesaguri" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "traitors-grove"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Scorpion Clan" FROM "when Bayushi Tesaguri sold three of the legendary Black Scrolls to the Phoenix Clan"
+        }
+    }
+    ENTITY #L5RcxEEgov45shossana ^"Shosuro Sanae" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "master-of-games"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Scorpion Clan" FROM "When Shosuro Sanae exploits an opponent's disadvantage"
+        }
+    }
+
+    # -- Kyūden Doji (amend: add governance provenance) + Lady's Rest -----------
+
+    ENTITY ^"Kyūden Doji" {
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "kyūden-doji"
+        RELATIONSHIPS {
+            ^"seat-of" -> ^"Crane Clan" FROM "The seat of the Crane Clan's ruling family"
+        }
+    }
+    ENTITY #L5RcxEEgov46ladyrest ^"Lady's Rest" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "kyūden-doji"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Kyūden Doji" FROM "A rocky outcropping on the seashore below Kyūden Doji is the site of the Lady's Rest"
+        }
+    }
+
+    # -- Otosan Uchi: the Imperial Palace and the Forbidden City ----------------
+
+    ENTITY #L5RcxEEgov47forbcity ^"Forbidden City" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-imperial-palace"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Otosan Uchi" FROM "within the enchanted walls of the Ekohikei, Otosan Uchi's inner districts, lies the Forbidden City"
+        }
+    }
+    ENTITY #L5RcxEEgov48ekohikei ^"Ekohikei" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-imperial-palace"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Otosan Uchi" FROM "the Ekohikei, Otosan Uchi's inner districts"
+        }
+    }
+    ENTITY #L5RcxEEgov49imppalac ^"Imperial Palace" {
+        IS ^"Palace"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-imperial-palace"
+        RELATIONSHIPS {
+            ^"part-of"    -> ^"Forbidden City" FROM "The heart of the Forbidden City is the Imperial Palace"
+            ^"located-in" -> ^"Otosan Uchi"    FROM "the Emperor's ancient and magnificent residence, a ten-story keep"
+        }
+    }
+    ENTITY #L5RcxEEgov50necegate ^"Necessary Gate" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-imperial-palace"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Forbidden City" FROM "the much smaller Necessary Gate, used by servants and hinin"
+        }
+    }
+    ENTITY #L5RcxEEgov51impmound ^"Imperial Mound" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-imperial-palace"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Forbidden City" FROM "an artificial plateau known as the Imperial Mound"
+        }
+    }
+    ENTITY #L5RcxEEgov52rdmosthi ^"Road of the Most High" {
+        IS ^"Road"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-imperial-palace"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Otosan Uchi" FROM "the so-called Road of the Most High that the Emperor uses to arrive at and depart from Otosan Uchi"
+        }
+    }
+    ENTITY #L5RcxEEgov53tmphante ^"Temple to Hantei" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-imperial-palace"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Forbidden City" FROM "The gardens are also home to the Temple to Hantei, built by Hantei Genji"
+        }
+    }
+
+    # -- Seppun Ishikawa --------------------------------------------------------
+
+    ENTITY #L5RcxEEgov54sepishik ^"Seppun Ishikawa" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "seppun-ishikawa-captain-of-the-seppun-honor-guard"
+        RELATIONSHIPS {
+            ^"serves"     -> ^"Seppun Honor Guard" FROM "named captain of the Seppun Honor Guard"
+            ^"student-of" -> ^"Doji Satsume"       FROM "he soon drew positive notice from his superiors, especially Emerald Champion Doji Satsume"
+        }
+    }
+
+    # -- Kyūden Gotei (Mantis) --------------------------------------------------
+
+    ENTITY #L5RcxEEgov55goteisla ^"Gotei Island" {
+        IS ^"Place"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "kyūden-gotei"
+    }
+    ENTITY #L5RcxEEgov56kydgotei ^"Kyūden Gotei" {
+        IS ^"Palace"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "kyūden-gotei"
+        RELATIONSHIPS {
+            ^"seat-of"    -> ^"Mantis Clan" FROM "\"Kyūden\" Gotei in many ways epitomizes the Mantis Clan"
+            ^"located-in" -> ^"Gotei Island" FROM "It is built primarily from stone quarried on Gotei Island, on which it stands"
+        }
+    }
+    ENTITY #L5RcxEEgov57hvnbankh ^"Heaven's Bank Hold" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-lair-of-the-great-wind"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Kyūden Gotei" FROM "these tunnels also provide access to Heaven's Bank Hold, a massive vault deep underground"
+        }
+    }
+    ENTITY #L5RcxEEgov58stormleg ^"Storm Legion" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "the-lair-of-the-great-wind"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Mantis Clan" FROM "the elite unit known as the Storm Legion"
+        }
+    }
+    ENTITY #L5RcxEEgov59koharuzz ^"Koharu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "koharu-mantis-mercenary"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Mantis Clan" FROM "the Mantis Clan, who recruited Koharu and her followers"
+        }
+    }
+
+    # -- War and diplomacy: ceremonial institutions and court offices -----------
+
+    ENTITY #L5RcxEEgov60handsemp ^"Hands of the Emperor" {
+        IS ^"Tradition"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "war-and-diplomacy"
+    }
+    ENTITY #L5RcxEEgov61lefthand ^"Left Hand" {
+        IS ^"Title"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "war-and-diplomacy"
+    }
+    ENTITY #L5RcxEEgov62righthnd ^"Right Hand" {
+        IS ^"Title"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "war-and-diplomacy"
+    }
+    ENTITY #L5RcxEEgov63impchanc ^"Imperial Chancellor" {
+        IS ^"Title"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "court-structures"
+    }
+    ENTITY #L5RcxEEgov64impadvis ^"Imperial Advisor" {
+        IS ^"Title"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "court-structures"
+    }
+    ENTITY #L5RcxEEgov65baykachi ^"Bayushi Kachiko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "court-structures"
+        RELATIONSHIPS {
+            ^"member-of"   -> ^"Scorpion Clan"    FROM "Bayushi Kachiko is the current, and first, Imperial Advisor"
+            ^"holds-title" -> ^"Imperial Advisor" FROM "Bayushi Kachiko is the current, and first, Imperial Advisor"
+        }
+    }
+
+    # -- Wars and their aftermath -----------------------------------------------
+
+    ENTITY #L5RcxEEgov66lionphxw ^"Lion-Phoenix War" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "dust-of-the-battlefield"
+        RELATIONSHIPS {
+            ^"involved" -> ^"Lion Clan"    FROM "the Lion had exhausted their own food resources"
+            ^"involved" -> ^"Phoenix Clan" FROM "marching upon Phoenix lands: their true intent all along"
+            ^"involved" -> ^"Crane Clan"   FROM "The Crane maneuvered for months in the Imperial Court"
+        }
+    }
+    ENTITY #L5RcxEEgov67isawtomo ^"Isawa Tomokazu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "dust-of-the-battlefield"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Phoenix Clan" FROM "when Isawa Tomokazu sought vengeance against the Lion"
+        }
+    }
+    ENTITY #L5RcxEEgov68dojirits ^"Doji Ritsuko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "dust-of-the-battlefield"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crane Clan" FROM "the Crane Champion Doji Ritsuko rode to stop him"
+        }
+    }
+    ENTITY #L5RcxEEgov69vicnostr ^"Victory with No Strike" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "dust-of-the-battlefield"
+        RELATIONSHIPS {
+            ^"involved" -> ^"Crane Clan"   FROM "the Victory with No Strike"
+            ^"involved" -> ^"Phoenix Clan" FROM "the Phoenix forces lost the will to fight and surrendered"
+        }
+    }
+    ENTITY #L5RcxEEgov70hantfuji ^"Hantei Fujiwa" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "dust-of-the-battlefield"
+    }
+    ENTITY #L5RcxEEgov71yasukiwr ^"Yasuki War" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "crane-crab-war-the-yasuki-war"
+        RELATIONSHIPS {
+            ^"involved" -> ^"Crab Clan"  FROM "Open warfare erupted when the Crab seized the Yasuki lands"
+            ^"involved" -> ^"Crane Clan" FROM "driving a wedge between the courtly Doji family and the mercantile Yasuki family, which was then a part of the Crane"
+        }
+    }
+    ENTITY #L5RcxEEgov72draglion ^"Dragon-Lion War" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "dragon-lion-war"
+        RELATIONSHIPS {
+            ^"involved" -> ^"Dragon Clan" FROM "the incensed Clan Champion Togashi Toshimasa led an attack into Lion territory"
+            ^"involved" -> ^"Lion Clan"   FROM "The Lion, though taxed by keeping the peace"
+        }
+    }
+    ENTITY #L5RcxEEgov73greatfam ^"Great Famine" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "dragon-lion-war"
+    }
+    ENTITY #L5RcxEEgov74togtoshi ^"Togashi Toshimasa" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "dragon-lion-war"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Dragon Clan" FROM "the incensed Clan Champion Togashi Toshimasa"
+        }
+    }
+    ENTITY #L5RcxEEgov75vly2genr ^"Valley of the Two Generals" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "dust-of-the-battlefield"
+    }
+    ENTITY #L5RcxEEgov76shrshiba ^"Shiro Shiba" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "dust-of-the-battlefield"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Phoenix Clan" FROM "the Lion besieged their Phoenix allies at Shiro Shiba"
+        }
+    }
+
+    # -- War and the Clans: the Elemental Guard + the Fortunes of war -----------
+
+    ENTITY #L5RcxEEgov77elemgurd ^"Elemental Guard" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "phoenix-clan"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Phoenix Clan" FROM "The champion and the Elemental Guard personally take the field"
+        }
+    }
+    ENTITY #L5RcxEEgov78hachiman ^"Hachiman" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "toshi-ranbo"
+    }
+    ENTITY #L5RcxEEgov79bishamon ^"Bishamon" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-governance.lore" AT "toshi-ranbo"
     }
 }
