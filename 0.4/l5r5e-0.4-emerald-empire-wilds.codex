@@ -1,0 +1,321 @@
+# .codex SECTION — Emerald Empire: Wilds of Rokugan (Chapter 6 — coasts,
+# forests, mountains, and ruins). Stand-off graph over
+# l5r5e-0.4-emerald-empire-wilds.lore (spec §25). Part of the L5R5e system
+# graph; DEPENDS_ON the shared schema. Covers the mountain passes and forges,
+# the great forests and their spirits, Shinomen Forest and the nezumi, the
+# haunted ruins (Burned Monk, Forgotten Village), and the coastal sites.
+#
+# Note: the chapter opens by reprinting the Dai / Plains Wind statblock from
+# enlightenment.lore — that entity is already in the enlightenment section.
+
+CODEX "L5R5e_Codex_EE_Wilds" {
+    NAME "Emerald Empire: Wilds of Rokugan — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # -- Framing fiction (no matching heading; bound at file level) -------------
+
+    ENTITY #L5RcxEEwil01nejiropr ^"Nejiro Province" {
+        IS ^"Province"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore"
+    }
+    ENTITY #L5RcxEEwil02shibadai ^"Shiba Daigo" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Phoenix Clan" FROM "Shiba Daigo had led them on a search through the Isawa Mori"
+        }
+    }
+    ENTITY #L5RcxEEwil03korihaka ^"Korihaka Ruins" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore"
+    }
+
+    # -- Mountain passes, volcanoes, mines, and forges --------------------------
+
+    ENTITY #L5RcxEEwil04beidenps ^"Beiden Pass" {
+        IS ^"Road"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "ore"
+    }
+    ENTITY #L5RcxEEwil05mtregret ^"Mountains of Regret" {
+        IS ^"Mountain"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "ore"
+    }
+    ENTITY #L5RcxEEwil06treacpas ^"Treacherous Pass" {
+        IS ^"Road"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "ore"
+    }
+    ENTITY #L5RcxEEwil07wrathkam ^"Wrath of the Kami" {
+        IS ^"Mountain"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "ore"
+    }
+    ENTITY #L5RcxEEwil08serptail ^"Serpent's Tail Mine" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "ore"
+    }
+    ENTITY #L5RcxEEwil09ironmtn ^"Iron Mountain" {
+        IS ^"Mountain"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "ore"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Dragon Clan" FROM "the forge atop Iron Mountain resonates with the chanting of shugenja"
+        }
+    }
+    ENTITY #L5RcxEEwil10dragblod ^"Dragon's Blood" {
+        IS ^"Artifact"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "ore"
+    }
+    ENTITY #L5RcxEEwil11celstore ^"Celestial Ore" {
+        IS ^"Artifact"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "ore"
+    }
+    ENTITY #L5RcxEEwil12dragmtns ^"Dragon Mountains" {
+        IS ^"Mountain"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "the-dragon-mountains"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Dragon Clan" FROM "the section of the range known as the Dragon mountains provides the Dragon Clan"
+        }
+    }
+    ENTITY #L5RcxEEwil13stlcrfrg ^"Steel Crane Forge" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "ore"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Crane Clan" FROM "Within the Steel Crane Forge, the resulting steel only requires a few folds"
+        }
+    }
+    ENTITY #L5RcxEEwil14kaiuforg ^"Kaiu Forge" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "ore"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Crab Clan" FROM "the Crab smiths at the Kaiu Forge craft each blade with three types of steel"
+        }
+    }
+    ENTITY #L5RcxEEwil15blazefrg ^"Blazing Forge" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "ore"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Lion Clan" FROM "the Lion Clan's Blazing Forge, which specializes in these metals"
+        }
+    }
+    ENTITY #L5RcxEEwil16sojobozz ^"Sōjōbō" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "the-dragon-mountains"
+    }
+    ENTITY #L5RcxEEwil17westmtnv ^"West Mountain Village" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "the-jade-mine-of-west-mountain-village"
+    }
+    ENTITY #L5RcxEEwil18westjade ^"West Mountain Jade Mine" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "the-jade-mine-of-west-mountain-village"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"West Mountain Village" FROM "the West Mountain jade mine... The miners return to West Mountain Village"
+        }
+    }
+    ENTITY #L5RcxEEwil19kuniharu ^"Kuni Haruna" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "kuni-haruna-sinister-witch-hunter"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "Haruna is a tsukai-sagasu, a Witch Hunter of the Crab Clan"
+        }
+    }
+
+    # -- The great forests ------------------------------------------------------
+
+    ENTITY #L5RcxEEwil20needleye ^"Needle's Eye Forest" {
+        IS ^"Forest"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "lumber"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Crane Clan" FROM "the sacred Needle's Eye Forest, the Crane's woodlands"
+        }
+    }
+    ENTITY #L5RcxEEwil21akagifor ^"Akagi Forest" {
+        IS ^"Forest"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "lumber"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Crane Clan" FROM "Akagi Forest contains a stretch of pale-green bamboo"
+        }
+    }
+    ENTITY #L5RcxEEwil22heartvig ^"Heart of Vigilance" {
+        IS ^"Forest"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "lumber"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Lion Clan" FROM "the Lion Clan has watched their only forest, the Heart of Vigilance, slowly become smaller"
+        }
+    }
+    ENTITY #L5RcxEEwil23dragheart ^"Dragon's Heart Forest" {
+        IS ^"Forest"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "lumber"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Dragon Clan" FROM "the trees of Dragon's Heart Forest to create intricate wood mosaics"
+        }
+    }
+    ENTITY #L5RcxEEwil24isawafor ^"Isawa Forest" {
+        IS ^"Forest"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "lumber"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Phoenix Clan" FROM "the Phoenix make the finest parchment in Rokugan with trees from the depths of Isawa Forest"
+        }
+    }
+    ENTITY #L5RcxEEwil25kitsnfor ^"Kitsune Forest" {
+        IS ^"Forest"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "spirits-and-senkyō"
+    }
+    ENTITY #L5RcxEEwil26morikuro ^"Mori Kuroi" {
+        IS ^"Forest"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "violent-spirits"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Isawa Forest" FROM "The Isawa Forest is a peaceful woodland, but deep within its expanse... It is called Mori Kuroi, the dark forest"
+        }
+    }
+    ENTITY #L5RcxEEwil27dreamfor ^"Dreamer's Forest" {
+        IS ^"Forest"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "violent-spirits"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Tower of Kelet" FROM "Below the Tower of Kelet lies an abomination against nature. The Dreamer's Forest"
+        }
+    }
+    ENTITY #L5RcxEEwil28twrkelet ^"Tower of Kelet" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "violent-spirits"
+    }
+
+    # -- Shinomen Forest, the nezumi, and the naga ------------------------------
+
+    ENTITY #L5RcxEEwil29nezumizz ^"Nezumi" {
+        IS ^"Race"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "shinomen-forest"
+    }
+    ENTITY #L5RcxEEwil30rememble ^"Rememberers" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "shinomen-forest"
+    }
+    ENTITY #L5RcxEEwil31ihtzykzz ^"Iht-zyk" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "geography"
+    }
+    ENTITY #L5RcxEEwil32shadwmrs ^"Shadowlands Marshes" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "geography"
+    }
+    ENTITY #L5RcxEEwil33forestkl ^"Forest Killer Bandits" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "geography"
+    }
+    ENTITY #L5RcxEEwil34shjkazue ^"Shinjo Kazue" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "a-report-from-shinomen-watchtower"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Unicorn Clan" FROM "In Service, Shinjo Kazue"
+        }
+    }
+    ENTITY #L5RcxEEwil35snakecln ^"Snake Clan" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "a-report-from-shinomen-watchtower"
+    }
+    ENTITY #L5RcxEEwil36nagazzzz ^"Naga" {
+        IS ^"Race"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "ruins"
+    }
+
+    # -- The haunted ruins ------------------------------------------------------
+
+    ENTITY #L5RcxEEwil37burnmonk ^"Temple of the Burned Monk" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "temple-of-the-burned-monk"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Nanashi Mura" FROM "In Nanashi Mura, the village of rōnin on the border of the Dragon lands... the ruined Moeta Shūdō-Shi no Jiin—the Temple of the Burned Monk"
+        }
+    }
+    ENTITY #L5RcxEEwil38nanashim ^"Nanashi Mura" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "temple-of-the-burned-monk"
+    }
+    ENTITY #L5RcxEEwil39hasuzzzz ^"Hasu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "temple-of-the-burned-monk"
+    }
+    ENTITY #L5RcxEEwil40shibitoz ^"Shibito" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "temple-of-the-burned-monk"
+    }
+    ENTITY #L5RcxEEwil41wasureta ^"Wasureta Mura" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "forgotten-village-wasureta-mura"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Valley of Spirits" FROM "In the Valley of Spirits, between the Shinomen Mori and Twilight Mountains, a long-dead village"
+        }
+    }
+    ENTITY #L5RcxEEwil42valspirt ^"Valley of Spirits" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "forgotten-village-wasureta-mura"
+    }
+    ENTITY #L5RcxEEwil43kasaizzz ^"Kasai" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "kasai-mournful-troll"
+    }
+
+    # -- The coast --------------------------------------------------------------
+
+    ENTITY #L5RcxEEwil44fldmorng ^"Fields of the Morning Sun" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "coast"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Shinkyou Province" FROM "the Fields of the Morning Sun in Shinkyou Province, a place dedicated to sacred nonviolence"
+        }
+    }
+    ENTITY #L5RcxEEwil45shinkyou ^"Shinkyou Province" {
+        IS ^"Province"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "coast"
+    }
+    ENTITY #L5RcxEEwil46daidojtc ^"Daidoji Trading Council" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "coast"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Crane Clan" FROM "The Daidoji Trading Council, a group of intermediaries formed centuries ago to handle the Crane's economic affairs"
+        }
+    }
+    ENTITY #L5RcxEEwil47whtshore ^"White Shore Lake" {
+        IS ^"Lake"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "coast"
+    }
+    ENTITY #L5RcxEEwil48kydmoreh ^"Kyuden Morehei" {
+        IS ^"Palace"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "coast"
+    }
+    ENTITY #L5RcxEEwil49stonchld ^"Cave of the Stone Children" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "the-cave-of-the-stone-children-ishiko-no-dōkutsu"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Umoeru Province" FROM "near Akagi Mori in the Umoeru Province"
+        }
+    }
+    ENTITY #L5RcxEEwil50umoeru ^"Umoeru Province" {
+        IS ^"Province"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "the-cave-of-the-stone-children-ishiko-no-dōkutsu"
+    }
+    ENTITY #L5RcxEEwil51asajizzz ^"Asaji" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "the-cave-of-the-stone-children-ishiko-no-dōkutsu"
+    }
+    ENTITY #L5RcxEEwil52taketoki ^"Taketoki" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "the-cave-of-the-stone-children-ishiko-no-dōkutsu"
+        RELATIONSHIPS {
+            ^"married-to" -> ^"Asaji" FROM "A couple, Asaji and Taketoki"
+        }
+    }
+    ENTITY #L5RcxEEwil53summerld ^"Summerlands" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "the-summerlands"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Wakiaiai Province" FROM "Located in Wakiaiai Province, these wet, marshy lands"
+        }
+    }
+    ENTITY #L5RcxEEwil54wakiaiai ^"Wakiaiai Province" {
+        IS ^"Province"
+        SOURCE "l5r5e-0.4-emerald-empire-wilds.lore" AT "the-summerlands"
+    }
+}
