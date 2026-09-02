@@ -225,4 +225,95 @@ CODEX "L5R5e_Codex_EE_History" {
         IS ^"Race"
         SOURCE "l5r5e-0.4-emerald-empire-history.lore" AT "the-descent-of-the-kami"
     }
+
+    # ===================================================================
+    # THE LIGHT OF A NEW DAWN / WAR AGAINST FU LENG / A KAMI KNEELS /
+    # THE LITTLE TEACHER  (the founding of the Empire and the first war)
+    # ===================================================================
+
+    ENTITY #L5RcxEEhist29otosanuc ^"Otosan Uchi" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-emerald-empire-history.lore" AT "the-light-of-a-new-dawn-5-ic39-ic"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Emerald Empire" FROM "Otosan Uchi was built"
+        }
+    }
+
+    ENTITY #L5RcxEEhist30jigokuzz ^"Jigoku" {
+        IS ^"Realm"
+        SOURCE "l5r5e-0.4-emerald-empire-history.lore" AT "the-war-against-fu-leng-39-ic42-ic"
+    }
+
+    ENTITY #L5RcxEEhist31shadowla ^"Shadowlands" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-emerald-empire-history.lore" AT "the-war-against-fu-leng-39-ic42-ic"
+    }
+
+    # Amend Fu Leng: corruption and retreat to the Shadowlands.
+    ENTITY ^"Fu Leng" {
+        IS ^"Kami"
+        SOURCE "l5r5e-0.4-emerald-empire-history.lore" AT "the-war-against-fu-leng-39-ic42-ic"
+        RELATIONSHIPS {
+            ^"corrupted-by" -> ^"Jigoku"      FROM "Fu Leng had been corrupted by the evil of Jigoku"
+            ^"travels-to"   -> ^"Shadowlands" FROM "Fu Leng retreated to the Shadowlands"
+        }
+    }
+
+    # Amend Lord Togashi: founder of the Dragon Clan.
+    ENTITY ^"Lord Togashi" {
+        IS ^"Kami"
+        SOURCE "l5r5e-0.4-emerald-empire-history.lore" AT "the-war-against-fu-leng-39-ic42-ic"
+        RELATIONSHIPS {
+            ^"founder-of" -> ^"Dragon Clan" FROM "the founder of the Dragon Clan"
+        }
+    }
+
+    # Amend Lord Shiba: founder of the Phoenix Clan (named in the creation myth).
+    ENTITY ^"Lord Shiba" {
+        IS ^"Kami"
+        SOURCE "l5r5e-0.4-emerald-empire-history.lore" AT "the-creation-of-the-world"
+        RELATIONSHIPS {
+            ^"founder-of" -> ^"Phoenix Clan" FROM "founder of the Phoenix Clan"
+        }
+    }
+
+    ENTITY #L5RcxEEhist32isawazzz ^"Isawa" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-history.lore" AT "a-kami-kneels"
+    }
+
+    ENTITY #L5RcxEEhist33shinseiz ^"Shinsei" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-history.lore" AT "the-little-teacher"
+        RELATIONSHIPS {
+            ^"leads" -> ^"Seven Thunders" FROM "Shinsei led these warriors, the Seven Thunders"
+        }
+    }
+
+    ENTITY #L5RcxEEhist34taoshins ^"Tao of Shinsei" {
+        IS ^"Document"
+        SOURCE "l5r5e-0.4-emerald-empire-history.lore" AT "the-little-teacher"
+    }
+
+    ENTITY #L5RcxEEhist35sevthund ^"Seven Thunders" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-emerald-empire-history.lore" AT "the-little-teacher"
+    }
+
+    ENTITY #L5RcxEEhist36shosuroz ^"Shosuro" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-history.lore" AT "the-little-teacher"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Seven Thunders" FROM "only Shinsei and Shosuro, the Scorpion Thunder, returned"
+            ^"member-of" -> ^"Scorpion Clan"  FROM "Shosuro, the Scorpion Thunder"
+        }
+    }
+
+    ENTITY #L5RcxEEhist37daythund ^"Day of Thunder" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-emerald-empire-history.lore" AT "the-little-teacher"
+        RELATIONSHIPS {
+            ^"involved" -> ^"Seven Thunders" FROM "the Day of Thunder had arrived"
+        }
+    }
 }
