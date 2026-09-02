@@ -1,0 +1,38 @@
+# ============================================================================
+# .codex PARENT — the single L5R5e system lore knowledge graph (spec §25).
+#
+# One derived graph for the WHOLE edition. It is stand-off over the .lore prose
+# (SOURCE "<file>" AT "<heading-slug>") and never edits it. Physically it is
+# SPLIT into lightweight section files (l5r5e-0.4-codex-<book>[-<section>].codex),
+# each its own CODEX block that DEPENDS_ON the shared schema; together with this
+# parent they form one logical graph over a single entity namespace. Entities are
+# first-class caret targets, so any section resolves ^"Name" to any other; and a
+# later-loaded section may RE-STATE an ENTITY #hash to ADD sources/relationships
+# to it (the §13 amend-by-load-order mechanism) — multiple books contributing to
+# the same entry is expected and correct.
+#
+# The header SOURCES block records which prose files, at which versions, this
+# graph is derived from — grown per section as each book is folded in, in build
+# order (core first, errata last). Books still pending: Emerald Empire,
+# Shadowlands, Fields of Victory, Legacies of War, Celestial Realms, Path of
+# Waves, Writ of the Wilds, Children of the Five Winds.
+# ============================================================================
+
+CODEX "L5R5e_Codex" {
+    NAME "Legend of the Five Rings 5e — System Lore Knowledge Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.1"   # shared CATEGORIES + RELATIONS
+
+    SOURCES {
+        # Courts of Stone
+        "l5r5e-0.4-courts-of-stone-crane-clan.lore" VERSION "0.4.1"
+        # Errata & FAQ
+        "l5r5e-0.4-errata-faq-kisshoten.lore"       VERSION "0.4.1"
+    }
+
+    # This parent holds only the manifest + edition-spanning anchor entities that
+    # many books reference. Book-specific nodes live in the section files.
+}
