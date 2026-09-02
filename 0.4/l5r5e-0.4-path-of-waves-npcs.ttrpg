@@ -1,0 +1,468 @@
+# L5R 5E - PATH OF WAVES: NON-PLAYER CHARACTERS (NPCs)
+# Village, temple, and wilderness NPCs + local spirits from Twin Blessings
+# Village (Ch.4), Hirosaka (Ch.5), and Chapter 7. Source: Path of Waves.
+
+EXTENSION "L5R5e_PathOfWaves_NPCs" {
+    VERSION "0.4.1"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-02"
+    DEPENDS_ON "L5R5e_Core_Core"
+
+    # source stat block (page 126)
+    ^"Setsuo, Village Leader" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 24
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 1", "Social 3", "Trade 4"]
+            ^"Advantages" LIST OF STRING ["Support of the Village (Fire) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Dark Secret (Fire) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Nearby Object: Range 0-1, Damage 2, Deadliness 3/4, Mundane"]
+            ^"Gear" LIST OF STRING ["Common clothes (Physical 1, Mundane)", "withered twine necklace"]
+        }
+        DESCRIPTION "Setsuo is a lean, hardworking man with strong arms and a bent back. His greying hair, rough skin, and bright eyes make his age difficult to guess, though his son is barely a man, so Setsuo can't be as old as he appears. Years of stooping in the rice paddies have taken their toll, though he is optimistic, lively, and genuinely fond of visitors and the news they might bring from the rest of Rokugan. Setsuo has received more of an education than most peasants, sometime in his past. He tries to keep this hidden, but sometimes his knowledge of court politics, samurai etiquette, and geography can be surprising. If questioned, he'll admit that he hasn't spent his whole life in the village, as most have. As a youth, he left to live in Hirosaka, where he gained experience of things he won't admit to. This isn't a period of his life he likes to talk about, particularly within hearing of his son. Setsuo is also cunning and willing to lie to the magistrate when taxes must be paid, in order for the village to prosper. He has lofty ideas, as though he questions his place in the Celestial Order, but he dislikes violence and would rather use his intellect than rebellion to improve his lot."
+        ^"Overlooked" DEF {
+            ^"Description" STRING "When Setsuo makes a check targeting a character with a higher status rank, they treat that character's vigilance as 1 lower."
+        }
+        RULES {
+            #L5RPOWnpc10Setsuo: setsuo
+        }
+    }
+
+    # source stat block (page 127)
+    ^"Hiroto, Sake Brewer" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Loyal"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
+            ^"Endurance" INTEGER 9
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 5
+            ^"Honor" INTEGER 40
+            ^"Glory" INTEGER 35
+            ^"Status" INTEGER 22
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 2", "Scholar 0", "Social 2", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Large Stature (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Superstitious (Fire) [Social; Spiritual]"]
+            ^"Favored Weapons" LIST OF STRING ["Sake bottle: Range 0-1, Damage 2, Deadliness 3/5, Mundane"]
+            ^"Gear" LIST OF STRING ["Common clothes (Physical 1, Mundane)", "bottle of sake"]
+        }
+        DESCRIPTION "Hiroto the brewer is a large, well-built, down-to-earth fellow who is nevertheless highly superstitious. At night, he stops his ears with wax so he won't hear anything calling him from the forest, and this makes him hard to wake. Hiroto works tirelessly in the fields, but his passion is for making sake. He is never happier than when pounding the rice and chanting the brewers' chants at the top of his lungs. This might be why he built his home apart from the others, so no one has to hear him but his tolerant family. He is immensely proud of his daughter, Kaiya. He is too polite to say so, however, and only sings her praises when he's been indulging in his sake, when the only ones likely to hear are Setsuo or Michi, his closest friends among many in the village. He respects the priest but is somewhat in awe of religious leaders and so cannot relax around Daizō. The same is true, and even more obvious, when he meets a shugenja. He was the same with monks until he encountered Michi, who has been careful to foster an irreverent reputation."
+        ^"Surprising Prowess" DEF {
+            ^"Description" STRING "The first time a character makes a Martial Arts check against Hiroto each scene, the TN of that check is increased by 2."
+        }
+        RULES {
+            #L5RPOWnpc11Hiroto: hiroto
+        }
+    }
+
+    # source stat block (page 128)
+    ^"Kitsune" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Clever"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 25
+            ^"Glory" INTEGER 20
+            ^"Status" INTEGER 20
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 0", "Scholar 0", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Dangerous Allure (Fire) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Irrepressible Flirtation (Fire) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Claws and Fangs: Range 0-1, Damage 3, Deadliness 4, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Elaborate Robes (Physical 1, Resplendent)", "sake cup (Sacred)"]
+        }
+        DESCRIPTION "The three kitsune, one woman and two others with androgynous appearances, look like beautiful, jovial young humans and are dressed like wealthy courtiers, in fine silks of russet and silver. They all have the same narrow faces and delicate features, giving the impression they are closely related. Though they seem to maintain human form effortlessly, they retain their bushy tails, which they hide within their clothes. This may be because they cannot change their forms completely, or because they are too proud of their tails to lose them. Either way, after their party has gone on a while, they are less careful to keep the tails concealed."
+        ^"Shapeshifter" DEF {
+            ^"Description" STRING "As a Support action, a kitsune can transform into human form (or back again). While in their fox form, they are silhouette 1. When they become Compromised, their fox feet, ears, or tails reappear."
+        }
+        RULES {
+            #L5RPOWnpc12Kitsune: kitsune
+        }
+    }
+
+    # source stat block (page 129)
+    ^"Kami of the Hot Spring" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 8
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 5
+                ^"Void" INTEGER 1
+            }
+            ^"Demeanor" STRING "Irritable"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Earth -1, Fire -1"
+            ^"Endurance" INTEGER 13
+            ^"Composure" INTEGER 5
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 2
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 3", "Scholar 3", "Social 3", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Liquid Body (Water) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Ever-Changing (Water) [Social, Martial; Interpersonal, Physical]"]
+            ^"Favored Weapons" LIST OF STRING ["Scalding Spit: Range 0-3, Damage 5, Deadliness 5, deals supernatural damage"]
+            ^"Gear" LIST OF STRING ["Cloud of steam (Physical 3, Supernatural 3)"]
+        }
+        DESCRIPTION "Only an experienced shugenja would detect the presence of this kami. Yet anyone entering the spring can experience its lively, warming energy, something beyond the simple temperature of the water. Those who fail to approach the spring correctly soon learn of the kami's displeasure, as the water bubbles and spits. If the kami is not quickly appeased with a gift, or the unwelcome visitor does not leave, the kami grows angry enough to manifest. It rises out of the water in a seething rage: a mutable, watery, humanoid form giving off scalding steam. While this kami has a quick temper, its watery nature means it may also quickly change its mind and return to its spring, so it won't pursue anyone for long."
+        ^"Hot Water Spirit" DEF {
+            ^"Description" STRING "The kami of the spring is an Otherworldly being of silhouette 2. Once per scene, as an Attack and Support action, it may target two positions at range 2-4. Hot water erupts between the target points that extends to range 1 in thickness and range 3 in height; this area counts as Dangerous terrain (page 267 of the core rulebook). This effect persists for two rounds. Any character standing where the steam erupts suffers the Dazed condition and must resist with a TN 2 Fitness check (Air 3, Water 1) or suffer 5 supernatural damage and the Burning condition."
+        }
+        RULES {
+            #L5RPOWnpc13KamioftheH: kami_of_the_hot_spring
+        }
+    }
+
+    # source stat block (page 134)
+    ^"Otoha, Waystop Proprietor" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 8
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
+            ^"Endurance" INTEGER 7
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 5
+            ^"Honor" INTEGER 15
+            ^"Glory" INTEGER 35
+            ^"Status" INTEGER 9
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 0", "Scholar 1", "Social 4", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Fortune Telling (Void) [Scholar; Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Whispers of Cruelty (Void) [Social; Interpersonal, Infamy]"]
+            ^"Favored Weapons" LIST OF STRING ["Tessen: Range 0-1, Damage 4, Deadliness 3, Ceremonial, Concealable"]
+            ^"Gear" LIST OF STRING ["Lucky robes (Physical 1, Supernatural 1)", "2 poison vials (noxious poison)", "8 koku"]
+        }
+        DESCRIPTION "ADVANTAGES Fortune Telling: [icon] Scholar; Spiritual"
+        ^"Skilled Herbalist" DEF {
+            ^"Description" STRING "Once per scene, Otoha may make a TN 3 Medicine check (Air 5, Fire 1) targeting one character. If she succeeds, she may remove 3 fatigue and strife from the target, plus 1 additional fatigue and strife for each bonus (ring) or (op). Additionally, she may remove one of the following conditions from the target: Bleeding, Burning, Dazed, Disoriented, Dying, Unconscious, or Lightly Wounded."
+        }
+        ^"Future Sight" DEF {
+            ^"Description" STRING "Once per scene, a character may exchange a favor to Otoha for insight into their future. The character chooses a skill group. The next time that character makes a check using a skill from that group, they roll and keep one additional (ring)."
+        }
+        RULES {
+            #L5RPOWnpc14Otoha: otoha
+        }
+    }
+
+    # source stat block (page 135)
+    ^"Haru, the Thief" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 6
+            ^"Honor" INTEGER 5
+            ^"Glory" INTEGER 22
+            ^"Status" INTEGER 5
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 1", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Persuasive (Void) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Ambitious Fool (Void) [Social; Interpersonal, Spiritual]"]
+            ^"Favored Weapons" LIST OF STRING ["Knife: Range 0, Damage 2, Deadliness 4/6, Concealable, Mundane, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Ragged robes (Physical 1, Damaged)"]
+        }
+        DESCRIPTION "ADVERSARY CONFLICT RANK: 2 / 3 Haru has fallen on desperate times: otherwise, he wouldn't have stooped to hiding in a hinin hut. However, he is a practical man, one whose fortunes rise and fall erratically, and he comforts himself with the thought that next month he might be sleeping in far grander accommodations. Haru's ambition and confidence are both his greatest assets and his most terrible flaws. He can skillfully impersonate a high-ranking courtier flawlessly for weeks and be treated like an honored guest by a host who's too embarrassed to admit they can't remember their distant cousin. Then, he'll grow overconfident and make a mistake, such as claiming knowledge or a skill he lacks, prostrating himself before someone of inferior rank, or seducing his host's spouse. He managed to do all three recently while staying in Hirosaka, and he left on foot with mounted samurai after him. He knew there was a good chance they'd ride through the village and check the forest, but there was little chance they would think to investigate a hinin hut. Haru keeps his true origins a closely guarded secret. He has fabricated so many differing stories in his time there is a good chance he couldn't remember the truth accurately anyway. He is of average height and build, with a pleasant but forgettable face, which he uses to his advantage. His deceptive nature and disregard for the Celestial Order may well offend samurai and possibly the villagers as well. Michi would be intrigued to learn of his existence, however, and may have a suggestion for his next endeavor. The monk might tell Setsuo that Haru should be allowed to go to a monastery but secretly encourage Haru to find and join the Perfect Land Sect, which could put his skills to good use."
+        ^"Experienced Impersonator" DEF {
+            ^"Description" STRING "Once per scene, Haru can change his demeanor to Ambitious (Fire +2, Void -2), Assertive (Fire +2, Water -2), Gruff (Earth +2, Air -2), or Shrewd (Water +2, Fire -2)."
+        }
+        RULES {
+            #L5RPOWnpc15HaruZzZz: haru
+        }
+    }
+
+    # source stat block (page 139)
+    ^"Kijimuna" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Demeanor" STRING "Curious"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +1, Air +1, Void -2"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 5
+            ^"Silhouette" INTEGER 1
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 20
+            ^"Status" INTEGER 5
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 0", "Scholar 1", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Sneaky (Void) [Martial; Mental, Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Childish (Fire) [Social; Interpersonal, Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Spirit Fire: Range 1, Damage 3, Deadliness 5, deals supernatural damage"]
+        }
+        DESCRIPTION "These small trickster spirits live in trees deep in the forest. The only sight of them most villagers have caught have been glimpses of distant flames like candles burning in the branches. The kijimuna have hair like flames, but otherwise they look like children playing in the forest or fishing in the river. Mischievous rather than malicious, they flee rather than fight."
+        ^"Forest Kin" DEF {
+            ^"Description" STRING "Kijimuna are Otherworldly beings of silhouette 1. As a Movement action, they may hide from characters with vigilance 3 or lower."
+        }
+        RULES {
+            #L5RPOWnpc16Kijimuna: kijimuna
+        }
+    }
+
+    # source stat block (page 140)
+    ^"Osamu, Malicious Peddler" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Demeanor" STRING "Assertive"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Void +2"
+            ^"Endurance" INTEGER 7
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 22
+            ^"Glory" INTEGER 18
+            ^"Status" INTEGER 7
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 2", "Scholar 2", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Rare Knowledge (Void) [Scholar; Social, Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Hot-Tempered (Fire) [Social; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Knife: Range 0, Damage 2, Deadliness 4/6, Concealable, Mundane, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Cursed robes (Physical 1, Supernatural 2)", "cursed dog's head", "2 poison vials (noxious poison)"]
+        }
+        DESCRIPTION "ADVERSARY CONFLICT RANK: 2 (Air), 3 (Water) At first glance, this mysterious peddler doesn't look much different from the villagers, but there's an odd light to his eyes that becomes an obvious glow when seen in darkness. His dark traveling cloak is made of an odd, stiff material, and the shape of his body is undetectable beneath it, giving rise to rumors that his form is other than human. Osamu has many strange tales to tell, but no one believes they can all be true. He claims to have traveled all across Rokugan and beyond and he has picked up a few tricks on his journeys. When he's pleased, which means he is getting what he wants, he is polite and pleasant. When he is displeased, he is quick to anger. Perhaps because he has traveled with no company beyond his own for so long, he cares for no one but himself. His selfish attitude, once revealed, seems unnatural to the villagers, for whom community is extremely important; this attitude alarms them even before he pulls any unpleasant tricks out of his bag."
+        ^"Strike and Flee" DEF {
+            ^"Description" STRING "Once per round, after performing an Attack action, Osamu may immediately move two range bands."
+        }
+        RULES {
+            #L5RPOWnpc17Osamu: osamu
+        }
+    }
+
+    # source stat block (page 141)
+    ^"Nekomata" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 1
+            }
+            ^"Demeanor" STRING "Confused"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +1, Air +1, Water -2"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 5
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 5
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 0", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Free Spirit (Void) [Social; Physical, Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Wild Rage (Fire) [Social; Physical]"]
+            ^"Favored Weapons" LIST OF STRING ["Claws and Fangs (after transformation): Range 1, Damage 5, Deadliness 7, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Common Clothes (Physical 1) or thick fur (Physical 2) if transformed"]
+        }
+        DESCRIPTION "A creature of the mountains, this nekomata—a type of cat yōkai, or living ghost—is a long way from home, which is why it appears so confused. It has traveled a significant distance and has become disoriented in the process. Many nekomata can talk, act, and appear fully human as they carefully select their victims to further their nefarious goals. This particular nekomata was driven from her home and has wandered since, using her powers to survive but taking risks most of her kin would never dare. She knows there are easy pickings in a human village, but she forgets that calling upon the dead to entertain her will likely cause her more problems than it is worth. While she appears to the villagers as a frail old woman, her natural form is that of a very large two-tailed cat. In this form, she is strong and can rely on her instinct to survive, so she'll probably do very well in the forest, where she can hunt for food. If she survives the encounter, there is a good chance she will return to the village again, but the villagers may be better prepared for her appearance next time. Advantages: Free Spirit: Social; Physical, Spiritual Disadvantages: Wild Rage: Social; Physical Favored Weapons: Claws and Fangs (after transformation): Range 1, Damage 5, Deadliness 7, Razor-Edged Gear (equipped): Common Clothes (Physical 1) or thick fur (Physical 2) if transformed Abilities: TRUE FORM A nekomata is an Otherworldly being. As a Support action, a nekomata can revert to its true feline form, increasing its endurance and composure values by 4 each."
+        ^"True Form" DEF {
+            ^"Description" STRING "A nekomata is an Otherworldly being. As a Support action, a nekomata can revert to its true feline form, increasing its endurance and composure values by 4 each."
+        }
+        RULES {
+            #L5RPOWnpc18Nekomata: nekomata
+        }
+    }
+
+    # source stat block (page 163)
+    ^"Hinata" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 4
+            }
+            ^"Demeanor" STRING "Amiable"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Earth -2"
+            ^"Endurance" INTEGER 7
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 70
+            ^"Status" INTEGER 35
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 0", "Scholar 4", "Social 4", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Keen Empathy (Void) [Social; Interpersonal]", "Scholar of the Tao (Void) [Scholar; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Dangerous Secrets (Fire) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Bō: Range 1-2, Damage 6, Deadliness 2, Mundane"]
+            ^"Gear" LIST OF STRING ["Sanctified robes (Physical 1, Supernatural 3, Ceremonial)", "copy of the Tao of Shinsei"]
+        }
+        DESCRIPTION "Hinata is a lean and wiry man in his late forties with a friendly and outgoing demeanor, a ready smile, and a quick wit. He is extremely charismatic, applying his innate charm to all his interactions, but he is particularly amiable when dealing with commoners (both heimin and hinin). His knowledge of the Tao of Shinsei is almost encyclopedic, and he often punctuates his speech with appropriate quotes from it."
+        ^"Quote the Tao" DEF {
+            ^"Description" STRING "Once per scene, Hinata may quote from the Tao of Shinsei in a way particularly relevant to the situation and choose a character in the scene. The next Social skill or Scholar skill check the chosen character makes in that scene reduces its TN by 2 (to a minimum of 1)."
+        }
+        RULES {
+            #L5RPOWnpc19Hinata: hinata
+        }
+    }
+
+    # source stat block (page 165)
+    ^"Yuuto" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Restrained"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Air -2"
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 30
+            ^"Glory" INTEGER 44
+            ^"Status" INTEGER 20
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 3", "Social 3", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Of the People (Void) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Scars of Battle (Fire) [Martial; Physical]"]
+            ^"Favored Weapons" LIST OF STRING ["Knife: Range 0, Damage 2, Deadliness 4, Concealable, Mundane, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Common clothes (Physical 1, Mundane)", "10 koku", "a small logbook written in code that contains blackmail on many people in Hirosaka"]
+        }
+        DESCRIPTION "Yuuto is an older man bearing the marks of battle: his face is scarred, and he walks with a pronounced limp. He is intelligent, insightful, and politically astute, but particularly in the presence of samurai, he tends to speak only when he has something he considers important to say—and then does so with perfect deference."
+        ^"The People's Champion" DEF {
+            ^"Description" STRING "When Yuuto makes a Social skill check, if no target has a status of 26 or higher, he treats the TN as 2 lower (minimum of 1)."
+        }
+        RULES {
+            #L5RPOWnpc20Yuuto: yuuto
+        }
+    }
+
+    # source stat block (page 232)
+    ^"Novice Rōnin" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 1
+            }
+            ^"Demeanor" STRING "Gruff"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Air -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 33
+            ^"Glory" INTEGER 35
+            ^"Status" INTEGER 21
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 1", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Martial Instinct (Fire) [Martial; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Unnecessarily Rude (Water) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged", "Yumi: Range 2-5, Damage 5, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Worn traveler's clothes (Physical 2, Mundane)", "quiver", "straw cloak", "handful of zeni"]
+        }
+        DESCRIPTION "To survive on their own, or out of a need to belong, rōnin sometimes band together in small mercenary groups. At a cursory glance, these groups appear identical to bandit gangs, but what distinguishes them is some sense of honor. Upon joining, those recently cast aside by the clans will fashion themselves after a mentor, a rōnin who has proven they can survive the indifference of the waves."
+        ^"Striking as Fire" DEF {
+            ^"Description" STRING "When performing an Attack action (Fire) check, a novice rōnin may spend (op) as follows: Fire (op)+: Increase the severity of any critical strike dealt as part of this attack by 2 per (op) spent in this way."
+        }
+        RULES {
+            #L5RPOWnpc21NoviceRoni: novice_ronin
+        }
+    }
+
+}
