@@ -1403,79 +1403,91 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
         ENTRIES {
             #aKuW4Oy3IdcioGBRU5JrFf ^"Accursed Summoning" DEF {
                 ^"Rank" INTEGER 1
-                ^"Activation" STRING "As a downtime activity, make a Theology (Void) check with TN equal to the oni's Intrigue rank."
-                ^"Effect" STRING "If you succeed, summon and bind the desired oni. If you fail, summon it (or different one) but it breaks free and you suffer Afflicted. If 3+ kept (st) results, the oni learns your name."
-                ^"Opportunities" STRING "(op)+: Each character who can see the oni within range 3 suffers strife equal to (op) spent. (op)(op): Oni instills a Shadowlands Taint disadvantage on anyone within range equal to your Taint-linked rings."
+                ^"Description" STRING "The mahō-tsukai spills blood and recites a foul prayer to summon a chosen oni and bind it to their will. The oni appears caught in an invisible prison, unable to act except at the summoner's direction."
+                ^"XP Cost" INTEGER 3
+                ^"Activation" STRING "As a downtime activity action, you may make a Theology (Void) check with TN equal to the oni's Intrigue rank."
+                ^"Effect" STRING "If you succeed, you summon the desired oni and bind it to your will, unable to act without your consent. If you fail, you summon the desired oni (or a different one, at the GM's discretion) but it breaks free of your control and curses you, causing you to suffer the Afflicted condition. If you have 3 or more kept (ring) results, the summoned oni scries and learns your name."
+                ^"Opportunities" STRING "(op)+: The sight of the oni instills primal terror in any onlookers. Each character who can see the oni and is within range 3 suffers a number of strife equal to (op) spent this way. (op)(op): The oni instills a Shadowlands Taint disadvantage of your choice upon anyone within a range equal to the number of your rings with the Shadowlands Taint disadvantage attached."
             }
 
             #oAQtXgIZM8JjiDeJjxQXpN ^"Bind the Undead" DEF {
                 ^"Rank" INTEGER 2
-                ^"Activation" STRING "As a Scheme action, make a TN 2 Theology (Fire) check targeting up to your Earth Ring undead creatures at range 0-4 (combat rank 3 or lower)."
-                ^"Effect" STRING "Bind targets to your will via voice commands. If you are killed or become Unconscious, all bound undead cease to function. Area at range 0-1 of each target gains Defiled terrain."
-                ^"Opportunities" STRING "(op)(op): One undead becomes a revenant. (op)+: Maximum range +1 per (op). (op)+: Maximum combat rank +1 per (op)."
+                ^"Description" STRING "The mahō-tsukai draws on the power of Jigoku to extend their will over the animated dead (such as skeletons or zombies). These undead then act as the mahō-tsukai commands, mimicking gestures or following simple instructions. They can attack a target or follow the mahō-tsukai like a squad of troops follows their leader. A smaller number of undead allows the practitioner greater control, and a single undead being can act naturally enough to infiltrate a town or castle, if the practitioner remains nearby and sustains the necessary concentration."
+                ^"Activation" STRING "As a Scheme action, you may make a TN 2 Theology (Fire) check targeting a number of undead creatures up to your Earth Ring at range 0–4. You can only choose undead creatures with combat rank 3 or lower this way."
+                ^"Effect" STRING "If you succeed, you bind each target to your will. They can now act only under your control, via simple voice commands. You can issue straightforward commands with your allocated five words per turn, or you can issue more complex commands if you dedicate your action to giving a command. If you are killed or become Unconscious due to a critical strike, all bound undead under your control cease to function, slumping to the ground as inanimate corpses. Whether you succeed or fail, an area encompassing 1 range band around each target's position gains the Defiled terrain quality."
+                ^"Opportunities" STRING "(op)(op): One undead creature you choose becomes a revenant (see page 18) in addition to becoming bound. (op)+: Treat the maximum range of the technique as 1 higher per (op) spent this way. (op)+: Treat the maximum combat rank of an undead creature you can bind as 1 higher per (op) spent this way. If you bind an intelligent undead creature this way and later lose control of it, it reverts to its own goals instead of becoming inanimate."
             }
 
             #FKmujLSSs35USGKWx0VVg9 ^"Commune with Evil" DEF {
                 ^"Rank" INTEGER 1
-                ^"Activation" STRING "As a downtime activity, make a TN 1 Theology (Void) check."
-                ^"Effect" STRING "Scry for Otherworldly or Tainted beings at range 0-6."
-                ^"Opportunities" STRING "(op): Receive unholy blessing increasing ring value by 1 (one at a time, until end of scene). (op)(op)(op)+: Additional +1 per (op)(op)(op). (op)+: Blessing persists 1 additional round per (op)."
+                ^"Description" STRING "The practitioner detects any malevolent supernatural entities in the area, senses their desires, and makes a bargain for an unholy blessing."
+                ^"Activation" STRING "As a downtime activity action, you may make a TN 1 Theology (Void) check."
+                ^"Effect" STRING "If you succeed, you scry for the presence of any Otherworldly or Tainted beings at range 0–6."
+                ^"Opportunities" STRING "(op): If there are any such beings, they accept your offering, and they augment you with an unholy blessing that increases the value of the ring you used for the check by 1. You can only have one unholy blessing at a time, and it persists until the end of the scene. (op)(op)(op)+: If you receive an unholy blessing, it temporarily increases the ring's value by an additional 1 per (op)(op)(op) spent this way. (op)+: If you receive an unholy blessing, it persists for 1 additional round per (op) spent this way."
             }
 
             #RAAE0KVOZV2XhSYoSatg3a ^"Dark Reflection" DEF {
                 ^"Rank" INTEGER 1
-                ^"Activation" STRING "As a Support action, make a TN 2 Theology (Water) check targeting a person, object, or location you have encountered before."
-                ^"Effect" STRING "Scry upon chosen target. Image is distorted: one minor detail is always incorrect, reflecting fears or desires."
-                ^"Opportunities" STRING "(op)(op)(op): Bind kansen within the object permanently; it gains Unholy and retains divinatory properties. As Support action, give offering of blood to scry again."
+                ^"Description" STRING "The mahō-tsukai must obtain an obsidian mirror, pool of Tainted water, or other corrupted reflective surface. By appealing to kansen, the practitioner makes the object become a divinatory tool for a time. The practitioner can receive visual answers to questions or spy on a person or area. Kansen are willing to play this \"game,\" but the accuracy of images may not be reliable."
+                ^"Activation" STRING "As a Support action, you may make a TN 2 Theology (Water) check targeting a person, object, or location you have encountered before."
+                ^"Effect" STRING "If you succeed, you scry upon a chosen person or location. However, the image is distorted: one minor detail within it, of the GM's choosing, is always incorrect, reflecting instead the fears or desires of the mahō-tsukai."
+                ^"Opportunities" STRING "(op)(op)(op): You bind the kansen within the object permanently. The object gains the Unholy quality and retains its divinatory properties after the initial use. As a Support action, a character may give the object an offering of blood to show the chosen object, person, or location again."
             }
 
             #BEiQjehGHikrsECdUVEtbP ^"Entreat the Shadow Steed" DEF {
                 ^"Rank" INTEGER 2
-                ^"Activation" STRING "As a Support action, make a TN 2 Theology (Earth) check. Only usable in Shadowlands or near horse corpses."
-                ^"Effect" STRING "Summon an onikage and bind it to your will. It obeys commands and allows you to ride it. Reacts violently to other riders."
-                ^"Opportunities" STRING "(op)(op): Onikage retains enough flesh to pass as living; vigilance 3 or lower do not detect undead status. (op)(op)(op): Others you designate can also ride it. (op)(op)+: Summon one additional onikage per (op)(op)."
+                ^"Description" STRING "The mahō-tsukai compels the kansen to fetch a suitable mount. The onikage rises from the ground as a skeletal mount, or an undead horse with decaying flesh comes galloping across the Shadowlands."
+                ^"Activation" STRING "As a Support action, you may make a TN 2 Theology (Earth) check. This technique can be used only in the Shadowlands, or near a place where the corpse of a horse might be found, such as an ancient or recent battlefield."
+                ^"Effect" STRING "If you succeed, you summon an onikage (see page 23) and bind it to your will. It obeys your commands, allowing you to ride it as per the Mounts and Riding rules on page 326 of the core rulebook. It reacts violently if others try to ride it."
+                ^"Opportunities" STRING "(op)(op): The equine creature retains enough flesh to pass as a living horse; characters with vigilance 3 or lower do not notice its undead status. (op)(op)(op): Other characters whom you designate can also ride the onikage. (op)(op)+: Summon one additional onikage per (op)(op) spent this way."
             }
 
             #ULC2xpBdXz04vCZ3LBNsAg ^"Fiend's Retreat" DEF {
                 ^"Rank" INTEGER 3
-                ^"Activation" STRING "Once per scene, as an Attack and Movement action or out-of-turn action when targeted by an attack, make a Theology (Air) check targeting one Incapacitated or minion NPC at range 2-3 (TN equal to target's vigilance)."
-                ^"Effect" STRING "Force target to exchange physical locations with you. Target becomes the target of attacks that were targeting you."
-                ^"Opportunities" STRING "(op)+: Choose one additional character to move and one additional target per (op). (op): Increase maximum range by 1 per (op)."
+                ^"Description" STRING "This technique allows its user to exchange positions with an unsuspecting character, leaving them to meet a miserable end. The blade descends, but the sorcerer's flesh twists like wax and melts to foul muck, revealing some unfortunate whom the mahō-tsukai left to meet the judgment they so richly deserve."
+                ^"Activation" STRING "Once per scene, as an Attack and Movement action or as an out-of-turn action when you are targeted by an attack, you may make a Theology (Air) check targeting one character at range 2–3. The target must be Incapacitated or a minion NPC, and the TN of the check is equal to the target's vigilance."
+                ^"Effect" STRING "If you succeed, you curse the target, forcing them to exchange physical locations with you. The target becomes the target of any attacks that were targeting you."
+                ^"Opportunities" STRING "(op)+: Choose one additional character at range 0–1 to move and one additional target per (op) spent this way. (op): Increase the maximum range by 1 per (op) spent this way."
             }
 
             #KiGd5T95TxFEjjx5djW8hH ^"Shape the Flesh" DEF {
                 ^"Rank" INTEGER 4
-                ^"Activation" STRING "As a Support action, make a TN 4 Theology check."
-                ^"Effect" STRING "Augment and curse yourself based on ring used: Fire (Talons/Fangs): Unarmed damage and deadliness become 6, Unholy. Earth (Thick Hide): Physical resistance becomes 7. Air (Wings): Gain flight, ignore terrain. Water (Malleable Form): Melee/unarmed max range becomes 3. Void (Shadowy Form): Supernatural resistance becomes 7, count as Otherworldly."
-                ^"Opportunities" STRING "(op)(op): Once before end of scene, perform again with different ring and maintain both effects."
+                ^"Description" STRING "The mahō-tsukai transforms their body, taking on a demonic aspect. Ragged wings or a glistening carapace sprouts from their flesh, or their form flows like befouled water, extending unnaturally. They might even fade into living shadow, becoming a creature of pure obscurity that shrugs off even the holiest of talismans and prayers."
+                ^"Activation" STRING "As a Support action, you may make a TN 4 Theology check."
+                ^"Effect" STRING "If you succeed, you augment and curse yourself in one of the following ways, depending on the ring you used: Talons and Fangs (Fire): The damage and deadliness of your Unarmed profile become 6, and it gains the Unholy quality. Thick Hide (Earth): Your physical resistance becomes 7. Wings (Air): You gain flight; you can move vertically and ignore the negative effects of terrain. Malleable Form (Water): The maximum range of your unarmed and melee attacks becomes 3. Shadowy Form (Void): Your supernatural resistance becomes 7. You count as an Otherworldly being."
+                ^"Opportunities" STRING "(op)(op): Once before the end of the scene, as an action, you may perform this technique again with a different ring and maintain both effects."
             }
 
             #gXpX7wNpEpQoTTsym6jkpf ^"Spiritual Shackles" DEF {
                 ^"Rank" INTEGER 1
-                ^"Activation" STRING "As an Attack and Intrigue action, make a Theology (Air) check targeting one Otherworldly being at range 0-1 (TN equal to vigilance, reduced by 2 if Tainted)."
-                ^"Effect" STRING "Bind spirit inside an object of silhouette 1 or less at range 0-2. If Tainted, object gains Unholy. If you fail, suffer Afflicted."
-                ^"Opportunities" STRING "(op): Object gains one quality: Concealable, Durable, Resplendent, or Subtle. (op): Holder may release being to importune one mahō or invocation without usual costs or TN adjustments."
+                ^"Description" STRING "Mahō-tsukai deal constantly with powerful, dangerous beings, and those who live long enough learn that kansen can only be trusted to be untrustworthy—but deceit can be repaid in kind. Other spirits might also seek to wreak vengeance upon mahō-tsukai, from the hungering ghosts called gaki to wrathful ancestor spirits, and it pays to have protection against such beings. The mahō-tsukai uses trickery and sheer will on a kansen or other spirit, sealing it within an object."
+                ^"Activation" STRING "As an Attack and Intrigue action, you may make a Theology (Air) check targeting one Otherworldly being at range 0–1. The TN of this check is equal to the target's vigilance and is reduced by 2 if the target is also a Tainted being."
+                ^"Effect" STRING "If you succeed, you bind the spirit inside an object of silhouette 1 or less at range 0–2. If the being you bound is Tainted, the object gains the Unholy quality. If you fail, the spirit curses you, and you suffer the Afflicted condition."
+                ^"Opportunities" STRING "(op): The object gains one other quality of your choice from the following list: Concealable, Durable, Resplendent, Subtle. (op): As an action, the holder of the object may release the bound being to importune one mahō (or invocation, if you have bound an elemental spirit) without paying the usual costs or making the usual TN adjustments (see Importune Invocations on page 189 and Importune Mahō on page 225 of the core rulebook)."
             }
 
             #h6FrAFAKdxfnVMjC8Goim3 ^"Spread Corruption" DEF {
                 ^"Rank" INTEGER 2
-                ^"Activation" STRING "As a Support action, make a TN 2 Theology (Fire) check."
-                ^"Effect" STRING "Augment your touch with corrupting influence. Anyone whose skin you touch must resist with TN 4 Fitness or Meditation (Earth 2, Fire 5) or suffer fatigue equal to shortfall and Afflicted condition. Persists until end of scene."
-                ^"Opportunities" STRING "(op)(op): Touch effect is delayed for three rounds. (op): Ground you walk on becomes Defiled terrain. (op)(op): Increase severity of unarmed critical strikes by 2 per Taint-linked ring."
+                ^"Description" STRING "The practitioner channels their inner corruption into their skin, so that their touch becomes contagious. Anyone or anything they touch is assailed by the foul influence of the Shadowlands, which seeks any gap in their spiritual fortitude that it can grasp."
+                ^"Activation" STRING "As a Support action, you may make a TN 2 Theology (Fire) check."
+                ^"Effect" STRING "If you succeed, you augment your touch with a corrupting influence. Anyone whose skin you touch (such as with an unarmed attack) is cursed, and they must resist with a TN 4 Fitness or Meditation check (Earth 2, Fire 5) or suffer fatigue equal to their shortfall and the Afflicted condition. This effect persists until the end of the scene."
+                ^"Opportunities" STRING "(op)(op): After you touch someone, the effect is delayed for three rounds, or about a minute in narrative time. (op): While this effect persists, any ground you walk on becomes Defiled terrain (see Terrain on page 267 of the core rulebook). (op)(op): Increase the severity of any critical strike you inflict with your unarmed attack profiles by 2 for each of your rings with the Shadowlands Taint disadvantage."
             }
 
             #ww1vtd8puCN5512Vr66ZO8 ^"Sword of Blood" DEF {
                 ^"Rank" INTEGER 2
-                ^"Activation" STRING "As a Support action, make a TN 2 Theology (Water) check. Requires blood source; using own blood causes 3 fatigue."
-                ^"Effect" STRING "Summon a weapon of your choosing made of blood with Unholy quality."
-                ^"Opportunities" STRING "(op): Summon a pair of identical weapons. (op): At end of each turn, transform weapon into a different weapon. (op)(op): Immediately perform a Strike action. (op)(op): After inflicting a critical strike, remove fatigue equal to severity."
+                ^"Description" STRING "The mahō-tsukai draws blood from an open wound, the vital fluid swirling up to their outstretched palm and congealing into a deadly weapon."
+                ^"Activation" STRING "As a Support action, you may make a TN 2 Theology (Water) check. Performing this technique requires a source of blood, such as a corpse or nearby foe with the Bleeding condition. If the mahō-tsukai uses their own blood, they receive 3 fatigue."
+                ^"Effect" STRING "If you succeed, you summon a weapon of your choosing made of blood. It has the Unholy quality (see page 241 of the core rulebook)."
+                ^"Opportunities" STRING "(op): You may summon a pair of identical weapons instead of a single weapon. (op): At the end of each of your turns, you may transform the weapon into a different weapon. (op)(op): You may immediately perform a Strike action using the weapon you summoned. (op)(op): After you inflict a critical strike on another character with this weapon, remove fatigue from yourself equal to the severity of the critical strike (after the check to resist)."
             }
 
             #D15iSHCb6v8x43MeVJmyue ^"Twisted Summons" DEF {
                 ^"Rank" INTEGER 3
-                ^"Activation" STRING "As an Intrigue and Support action, make a TN 3 Theology (Earth) check targeting corpses at range 0-2."
-                ^"Effect" STRING "Summon an Undead Horror and bind it. If you become Compromised or Incapacitated, it breaks free. Area at range 0-2 becomes Defiled terrain."
-                ^"Opportunities" STRING "(op)+: Undead Horror absorbs up to two additional corpses per (op), gaining +2 endurance each. Every five corpses absorbed increases silhouette by 1."
+                ^"Description" STRING "The mahō-tsukai calls forth an abomination from Jigoku, giving it a temporary cage of flesh from which to wreak carnage upon the Mortal Realm. The being that comes forth is a fused horror, an agglomeration of multiple corpses twisted into unnatural form."
+                ^"Activation" STRING "As an Intrigue and Support action, you may make a TN 3 Theology (Earth) check to call upon a foul spirit to target a number of corpses at range 0–2, reshaping them into an abominable body for its use."
+                ^"Effect" STRING "If you succeed, you summon an Undead Horror (see page 19) and bind it to your will. However, the summoned creature is one not easily kept shackled; if you become Compromised or Incapacitated, it breaks the binding and sets off on its own to devour the living and absorb the dead. Whether you succeed or fail, an area at range 0–2 of your target becomes Defiled terrain."
+                ^"Opportunities" STRING "(op)+: The Undead Horror absorbs up to two additional corpses at range 0–2 for each (op) spent this way. Increase its endurance by 2 for each corpse it absorbs. For every five corpses the monster absorbs this way, increase its silhouette by 1."
             }
         }
 
