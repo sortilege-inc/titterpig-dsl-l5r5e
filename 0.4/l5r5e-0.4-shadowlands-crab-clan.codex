@@ -1,0 +1,192 @@
+# .codex SECTION — Shadowlands: Families of the Crab. Stand-off graph over
+# l5r5e-0.4-shadowlands-crab-clan.lore (spec §25). Part of the L5R5e system
+# graph; DEPENDS_ON the shared schema. The five Crab families (Hida, Hiruma,
+# Kaiu, Kuni, Yasuki) are .ttrpg DEFs; leads/member-of edges resolve to them.
+# Kyūden Hida, Hida Kisada, Daylight Castle, the Maw, Fortress of the Forgotten,
+# Friendly Traveler Village, Kaiu Wave Wall, Clear Water Village, and Earthquake
+# Fish Bay are defined elsewhere in the graph (referenced/amended, not re-minted).
+
+CODEX "L5R5e_Shl_CrabClan_Codex" {
+    NAME "Shadowlands: Families of the Crab — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # -- Hida -------------------------------------------------------------------
+
+    ENTITY #L5RcxShlcrb01hidasukn ^"Hida Sukune" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "reputation-and-values"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan"   FROM "Daimyō Kisada's physically weak son, Hida Sukune"
+            ^"child-of"  -> ^"Hida Kisada" FROM "Daimyō Kisada's physically weak son, Hida Sukune"
+        }
+    }
+    ENTITY #L5RcxShlcrb02hidakoto ^"Hida Kotoe" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "hida-kotoe-stout-warrior"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "Kotoe comes from a long line of warriors"
+        }
+    }
+    ENTITY #L5RcxShlcrb03koboichi ^"Kobo Ichi-Kai Jiujutsu" {
+        IS ^"Tradition"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "reputation-and-values"
+    }
+
+    # -- Hiruma -----------------------------------------------------------------
+
+    ENTITY #L5RcxShlcrb04hajimeno ^"Hajimeno Tatakai no Oni" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "hiruma"
+    }
+    ENTITY #L5RcxShlcrb05hirmizum ^"Hiruma Izumi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "hiruma-izumi-cautious-scout"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "Hiruma Izumi, Cautious Scout"
+        }
+    }
+    ENTITY #L5RcxShlcrb06candltmp ^"Candle Temple" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "the-landless"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Daylight Castle" FROM "the Candle Temple in Daylight Castle has resisted the befouling infection"
+        }
+    }
+
+    # -- Kaiu -------------------------------------------------------------------
+
+    ENTITY #L5RcxShlcrb07kaiucstl ^"Kaiu Castle" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "the-lands-of-the-kaiu"
+        RELATIONSHIPS {
+            ^"held-by"      -> ^"Crab Clan"      FROM "Shiro Kaiu, known as the Carpenter Castle, predates and adjoins the Wall"
+            ^"located-near" -> ^"Carpenter Wall" FROM "Shiro Kaiu, known as the Carpenter Castle, predates and adjoins the Wall"
+        }
+    }
+    ENTITY #L5RcxShlcrb08chikara ^"Chikara" {
+        IS ^"Artifact"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "kaiu"
+    }
+    ENTITY #L5RcxShlcrb09kaiushih ^"Kaiu Shihobu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "the-lands-of-the-kaiu"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "the family daimyō, Kaiu Shihobu"
+            ^"leads"     -> ^"Kaiu"      FROM "the family daimyō, Kaiu Shihobu"
+        }
+    }
+    ENTITY #L5RcxShlcrb10goldcarp ^"Golden Carp Marketplace" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "the-lands-of-the-kaiu"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Face of the East Castle" FROM "The Golden Carp Marketplace lies at the base of Higashino shiro no kao, the Kaiu family's Face of the East Castle"
+        }
+    }
+    ENTITY #L5RcxShlcrb11faceeast ^"Face of the East Castle" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "the-lands-of-the-kaiu"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Crab Clan" FROM "the Kaiu family's Face of the East Castle"
+        }
+    }
+    ENTITY #L5RcxShlcrb12slowtide ^"Slow Tide Harbor" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "kaiu"
+    }
+
+    # -- Kuni -------------------------------------------------------------------
+
+    ENTITY #L5RcxShlcrb13kuniyori ^"Kuni Yori" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "reputation-and-values"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "their current daimyō, Kuni Yori, who is terse, methodical, and bitingly sarcastic"
+            ^"leads"     -> ^"Kuni"      FROM "their current daimyō, Kuni Yori"
+        }
+    }
+    ENTITY #L5RcxShlcrb14dokutsu ^"Dōkutsu no Majo" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "culture-and-traditions"
+    }
+    ENTITY #L5RcxShlcrb15kuniwast ^"Kuni Wastelands" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "culture-and-traditions"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Crab Clan" FROM "a desolate region devoid of spiritual energy: the Kuni Wastelands"
+        }
+    }
+    ENTITY #L5RcxShlcrb16kunicstl ^"Kuni Castle" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "kuni-castle"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Crab Clan" FROM "the comparatively small Kuni Castle is no exception"
+        }
+    }
+    ENTITY #L5RcxShlcrb17kunisymp ^"Kuni Symposium" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "kuni-castle"
+        RELATIONSHIPS {
+            ^"occurred-at" -> ^"Kuni Castle" FROM "the castle hosts the Kuni Symposium"
+        }
+    }
+    ENTITY #L5RcxShlcrb18barrdamn ^"Barracks of the Damned" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "the-barracks-of-the-damned"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Kuni Wastelands" FROM "the Kuni Wardens maintain the Barracks of the Damned"
+        }
+    }
+    ENTITY #L5RcxShlcrb19kunihats ^"Kuni Hatsu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "kuni-hatsu-legendary-witch-hunter"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "Hatsu has served as a Witch Hunter for many long years"
+        }
+    }
+
+    # -- Yasuki -----------------------------------------------------------------
+
+    ENTITY #L5RcxShlcrb20yasukitk ^"Yasuki Taka" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "current-concerns"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "their daimyō, Yasuki Taka, is known to many by his epithet, the Merchant King"
+            ^"leads"     -> ^"Yasuki"    FROM "their daimyō, Yasuki Taka"
+        }
+    }
+    ENTITY #L5RcxShlcrb21yasukikr ^"Yasuki Kiringu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "current-concerns"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "Yasuki Kiringu, the daimyō who joined us to the Crab"
+        }
+    }
+    ENTITY #L5RcxShlcrb22yasukiest ^"Yasuki Estates" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "yasuki-estates"
+        RELATIONSHIPS {
+            ^"held-by"      -> ^"Crab Clan"          FROM "The cliffside estates of the Yasuki... Also known as the Black Crane Estates"
+            ^"located-near" -> ^"Earthquake Fish Bay" FROM "safe and comfortable above the gently lapping seas overlooking Earthquake Fish Bay"
+        }
+    }
+    ENTITY #L5RcxShlcrb23yaskinar ^"Yasuki Narumi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "yasuki-narumi-observant-merchant"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "Narumi runs a small series of stalls in Friendly Traveler Village"
+        }
+    }
+
+    # Hida Kisada is defined in the Courts of Stone Castles section; amended here
+    # with the Shadowlands provenance and his parentage of Hida Sukune.
+    ENTITY ^"Hida Kisada" {
+        SOURCE "l5r5e-0.4-shadowlands-crab-clan.lore" AT "reputation-and-values"
+        RELATIONSHIPS {
+            ^"parent-of" -> ^"Hida Sukune" FROM "Daimyō Kisada's physically weak son, Hida Sukune"
+        }
+    }
+}

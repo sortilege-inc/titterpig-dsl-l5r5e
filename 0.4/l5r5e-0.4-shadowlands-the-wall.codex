@@ -1,0 +1,151 @@
+# .codex SECTION — Shadowlands: The Wall. Stand-off graph over
+# l5r5e-0.4-shadowlands-the-wall.lore (spec §25). Part of the L5R5e system graph;
+# DEPENDS_ON the shared schema. The Carpenter Wall (Kaiu Kabe), River of the Last
+# Stand, Battle of the Cresting Wave, the Maw, Fortress of the Forgotten, and
+# Kuni Castle (= "Shiro Kuni") are defined elsewhere (referenced/amended). The
+# twelve numbered Kaiu Towers are folded into one collective "Kaiu Towers" node
+# rather than minting twelve positional entities; "Seigo River" is the old name
+# of the River of the Last Stand (same river, not a second node).
+
+CODEX "L5R5e_Shl_TheWall_Codex" {
+    NAME "Shadowlands: The Wall — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    ENTITY #L5RcxShlwal01kaiutwrs ^"Kaiu Towers" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-shadowlands-the-wall.lore" AT "the-kaiu-towers"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Carpenter Wall" FROM "Foremost among the strongpoints are the twelve Kaiu Towers"
+        }
+    }
+    ENTITY #L5RcxShlwal02kuniosak ^"Kuni Osaku" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-the-wall.lore" AT "from-desperation-hope"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "a shugenja named Kuni Osaku importuned the water kami to raise the river"
+        }
+    }
+    ENTITY #L5RcxShlwal03hidabanu ^"Hida Banuken" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-the-wall.lore" AT "from-desperation-hope"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "the Crab Champion, Hida Banuken, ordered the Crab to begin construction"
+        }
+    }
+    ENTITY #L5RcxShlwal04kaiushui ^"Kaiu Shuichi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-the-wall.lore" AT "the-architecture-of-the-wall"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "FROM THE JOURNALS OF KAIU SHUICHI"
+        }
+    }
+    ENTITY #L5RcxShlwal05wtdeadcl ^"Watchtower of Deadly Claws" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-shadowlands-the-wall.lore" AT "the-architecture-of-the-wall"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Carpenter Wall" FROM "a delegation of Lion who are viewing the Kaiu Kabe near the Watchtower of Deadly Claws"
+        }
+    }
+    ENTITY #L5RcxShlwal06mudcrows ^"Mudcrows" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-shadowlands-the-wall.lore" AT "curtain-walls"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Crab Clan" FROM "Commonly known as the \"Mudcrows,\" these hinin levies"
+        }
+    }
+    ENTITY #L5RcxShlwal07wtthundr ^"Watchtower of Thunderous Blows" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-shadowlands-the-wall.lore" AT "life-on-the-wall"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Carpenter Wall" FROM "I find myself at the Watchtower of Thunderous Blows"
+        }
+    }
+    ENTITY #L5RcxShlwal08wtcrash ^"Watchtower of the Crashing Wave" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-shadowlands-the-wall.lore" AT "life-on-the-wall"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Carpenter Wall" FROM "the Watchtower of the Crashing Wave is an unlucky posting"
+        }
+    }
+    ENTITY #L5RcxShlwal09hidanano ^"Hida Nanako" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-the-wall.lore" AT "hida-nanako-garrison-taisa"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "she is a powerful fighter and as strong as any Crab"
+        }
+    }
+    ENTITY #L5RcxShlwal10wtemrdwn ^"Watchtower of the Emerald Dawn" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-shadowlands-the-wall.lore" AT "hida-nanako-garrison-taisa"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Carpenter Wall" FROM "the prestigious First Garrison of the Watchtower of the Emerald Dawn"
+        }
+    }
+    ENTITY #L5RcxShlwal11hidamasu ^"Hida Masuo" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-the-wall.lore" AT "hida-masuo-wall-gunsō"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "Masuo was recently promoted to gunsō"
+        }
+    }
+    ENTITY #L5RcxShlwal12rideunic ^"Ride of the Unicorn" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-shadowlands-the-wall.lore" AT "the-ride-of-the-unicorn"
+        RELATIONSHIPS {
+            ^"involved" -> ^"Unicorn Clan" FROM "a thundering horde of riders stormed across the Shadowlands and breached the Crab defenses"
+            ^"involved" -> ^"Crab Clan"    FROM "The Unicorn routed the Crab infantry"
+        }
+    }
+    ENTITY #L5RcxShlwal13razrdawn ^"Razor of the Dawn Castle" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-shadowlands-the-wall.lore" AT "the-ride-of-the-unicorn"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Crab Clan" FROM "crossed near Razor of the Dawn Castle"
+        }
+    }
+    ENTITY #L5RcxShlwal14tunlstdr ^"Tunnel of Lost Dreams" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-shadowlands-the-wall.lore" AT "patrolling-the-shadowlands"
+    }
+    ENTITY #L5RcxShlwal15twntgobl ^"Twenty Goblin Winters" {
+        IS ^"Tradition"
+        SOURCE "l5r5e-0.4-shadowlands-the-wall.lore" AT "patrol-tools"
+        RELATIONSHIPS {
+            ^"observed-by" -> ^"Crab Clan" FROM "The Crab use this heavily defended location to stage their Twenty Goblin Winters"
+        }
+    }
+    ENTITY #L5RcxShlwal16shinlast ^"Shinsei's Last Hope" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-shadowlands-the-wall.lore" AT "patrol-tools"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Earthquake Fish Bay" FROM "There is a small village on Earthquake Fish Bay that has resisted the Taint for centuries"
+        }
+    }
+    ENTITY #L5RcxShlwal17wteternl ^"Watchtower of Eternal Stone" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-shadowlands-the-wall.lore" AT "learning-quickly"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Carpenter Wall" FROM "as I inspected the Watchtower of Eternal Stone"
+        }
+    }
+
+    # -- Amends -----------------------------------------------------------------
+
+    ENTITY ^"Carpenter Wall" {
+        SOURCE "l5r5e-0.4-shadowlands-the-wall.lore" AT "the-wall"
+        RELATIONSHIPS {
+            ^"held-by"      -> ^"Crab Clan"            FROM "its stones are said to be mortared in place with the blood of fallen Crab"
+            ^"located-near" -> ^"Sea of the Sun Goddess" FROM "extends from the Sea of the Sun Goddess in the east to the Plains above Evil"
+        }
+    }
+    ENTITY ^"River of the Last Stand" {
+        SOURCE "l5r5e-0.4-shadowlands-the-wall.lore" AT "a-new-wall"
+    }
+    ENTITY ^"Battle of the Cresting Wave" {
+        SOURCE "l5r5e-0.4-shadowlands-the-wall.lore" AT "from-desperation-hope"
+    }
+}

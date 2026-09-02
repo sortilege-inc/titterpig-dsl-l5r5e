@@ -1,0 +1,248 @@
+# .codex SECTION — Shadowlands: The Shadowlands (Geography & Dark Places).
+# Stand-off graph over l5r5e-0.4-shadowlands-geography.lore (spec §25). Part of
+# the L5R5e system graph; DEPENDS_ON the shared schema.
+#
+# The chapter's closing bestiary (gashadokuro, penanggalan, ravenous ogre,
+# tsumunagi, wanyūdō, undead horror) names monster SPECIES, not individuals —
+# treated like goblins/oni and NOT minted (only the Five Ancient Races are
+# entities). Daylight Castle and Candle Temple (defined elsewhere) are amended.
+
+CODEX "L5R5e_Shl_Geography_Codex" {
+    NAME "Shadowlands: Geography & Dark Places — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # -- Regions and reaches of the Shadowlands ---------------------------------
+
+    ENTITY #L5RcxShlgeo01festpit ^"Festering Pit of Fu Leng" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "the-festering-pit-of-fu-leng"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Shadowlands" FROM "The dark heart of this terrible realm is the Festering Pit of Fu Leng"
+        }
+    }
+    ENTITY #L5RcxShlgeo02deepshad ^"Deep Shadowlands" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "the-deep-shadowlands"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Shadowlands" FROM "what the Crab recognize only as the Deep Shadowlands"
+        }
+    }
+    ENTITY #L5RcxShlgeo03hauntjng ^"Haunted Jungles" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "the-deep-shadowlands"
+    }
+    ENTITY #L5RcxShlgeo04seashadw ^"Sea of Shadows" {
+        IS ^"Sea"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "the-deep-shadowlands"
+    }
+    ENTITY #L5RcxShlgeo05skulltid ^"Skull Tide" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "the-deep-shadowlands"
+    }
+    ENTITY #L5RcxShlgeo06thorncst ^"Thorn Coast" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "the-deep-shadowlands"
+    }
+    ENTITY #L5RcxShlgeo07plnsevil ^"Plains above Evil" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "the-deep-shadowlands"
+    }
+    ENTITY #L5RcxShlgeo08thelost ^"The Lost" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "plant-and-animal-life"
+    }
+    ENTITY #L5RcxShlgeo09bigstink ^"Big Stink" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "plant-and-animal-life"
+    }
+    ENTITY #L5RcxShlgeo10haikappa ^"Haikyo sano Kappa" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "plant-and-animal-life"
+    }
+    ENTITY #L5RcxShlgeo11wallsght ^"Wall-Sight" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "plant-and-animal-life"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Shadowlands" FROM "The strip of land within sight of the Wall is simply known as \"Wall-Sight.\""
+        }
+    }
+    ENTITY #L5RcxShlgeo12threedmr ^"Three Days' March" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "plant-and-animal-life"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Shadowlands" FROM "The wider strip of land known to the Crab as \"Three Days' March\""
+        }
+    }
+    ENTITY #L5RcxShlgeo13blackscr ^"Black Scrolls" {
+        IS ^"Document"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "the-first-war"
+    }
+
+    # -- Fallen Chrysanthemum Lake and the Dark Moto ----------------------------
+
+    ENTITY #L5RcxShlgeo14fallchry ^"Fallen Chrysanthemum Lake" {
+        IS ^"Lake"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "fallen-chrysanthemum-lake"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Shadowlands" FROM "they have stumbled upon Fallen Chrysanthemum Lake"
+        }
+    }
+    ENTITY #L5RcxShlgeo15darkmoto ^"Dark Moto" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "the-rise-of-the-dark-moto"
+        RELATIONSHIPS {
+            ^"enemy-of" -> ^"Crab Clan" FROM "The Crab realized they now faced a new enemy across the Wall"
+        }
+    }
+    ENTITY #L5RcxShlgeo16mototsum ^"Moto Tsume" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "the-rise-of-the-dark-moto"
+        RELATIONSHIPS {
+            ^"leads"     -> ^"Dark Moto"    FROM "Tsume himself was sighted on occasion, leading his fallen troops"
+            ^"member-of" -> ^"Unicorn Clan" FROM "their daimyō, Moto Tsume, declared that he and the greatest of his warriors would ride forth"
+        }
+    }
+    ENTITY #L5RcxShlgeo17thndtide ^"Thundering Tide Keep" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "home-of-the-dark-moto"
+        RELATIONSHIPS {
+            ^"held-by"      -> ^"Dark Moto"                 FROM "He and his Dark Moto reside there"
+            ^"located-near" -> ^"Fallen Chrysanthemum Lake" FROM "constructed an equally pleasing village known as Thundering Tide Keep along a bank"
+        }
+    }
+    ENTITY #L5RcxShlgeo18secndwnd ^"Second Wind" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "home-of-the-dark-moto"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Dark Moto" FROM "watchers on the Wall have claimed to have seen the Second Wind's own tattered banner"
+        }
+    }
+    ENTITY #L5RcxShlgeo19onifeath ^"Oni of Feathers" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "fallen-chrysanthemum-lake"
+    }
+    ENTITY #L5RcxShlgeo20soulbrkr ^"Soulbreaker" {
+        IS ^"Artifact"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "fallen-chrysanthemum-lake"
+        RELATIONSHIPS {
+            ^"wielded-by" -> ^"Kaiu Kyosuke" FROM "the great hammer Soulbreaker, from the hero Kaiu Kyosuke"
+        }
+    }
+    ENTITY #L5RcxShlgeo21kaiukyos ^"Kaiu Kyosuke" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "fallen-chrysanthemum-lake"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "the hero Kaiu Kyosuke"
+        }
+    }
+
+    # -- The Forgotten Tomb, the Obsidian Flower, and the Lost Library ----------
+
+    ENTITY #L5RcxShlgeo22forgtomb ^"Forgotten Tomb of Fu Leng" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "the-forgotten-tomb-of-fu-leng"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Shadowlands" FROM "Deep within the Shadowlands lies an utterly inhuman building"
+        }
+    }
+    ENTITY #L5RcxShlgeo23hirkosam ^"Hiruma Kosami" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "the-forgotten-tomb-of-fu-leng"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "Under Hiruma Kosami, a legendary Crab renowned for his bold tactics"
+        }
+    }
+    ENTITY #L5RcxShlgeo24obsflowr ^"Obsidian Flower" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "the-obsidian-flower"
+    }
+    ENTITY #L5RcxShlgeo25lostlibr ^"Lost Library" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "the-lost-library"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Shadowlands" FROM "No one knows who gathered this profane collection deep in the Shadowlands"
+        }
+    }
+    ENTITY #L5RcxShlgeo26kunitor ^"Kuni Toriko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "the-lost-library"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "Renowned scholar Kuni Toriko is said to have visited the tower"
+        }
+    }
+
+    # -- Daylight Castle: its history, foes, and denizens -----------------------
+
+    ENTITY #L5RcxShlgeo27firstwal ^"First Wall" {
+        IS ^"Wall"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "the-history-of-daylight-castle"
+    }
+    ENTITY #L5RcxShlgeo28kaigenzz ^"Kaigen" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "a-glorious-early-history"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "facilitated by the treachery of a Kuni shugenja named Kaigen"
+        }
+    }
+    ENTITY #L5RcxShlgeo29hirkazum ^"Hiruma Kazumi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "a-glorious-early-history"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "the bravery of a young scout named Hiruma Kazumi"
+        }
+    }
+    ENTITY #L5RcxShlgeo30usunooni ^"Usu no Oni" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "a-glorious-early-history"
+    }
+    ENTITY #L5RcxShlgeo31lststand ^"Last Stand Plain" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "a-glorious-early-history"
+    }
+    ENTITY #L5RcxShlgeo32crestwav ^"Battle of the Cresting Wave" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "a-glorious-early-history"
+        RELATIONSHIPS {
+            ^"involved"    -> ^"Crab Clan"              FROM "the Crab finally stopped the Maw and its army at the River of the Last Stand"
+            ^"occurred-at" -> ^"River of the Last Stand" FROM "stopped the Maw and its army at the River of the Last Stand, defeating them in what would become known as the Battle of the Cresting Wave"
+        }
+    }
+    ENTITY #L5RcxShlgeo33falslant ^"False Lantern Grove" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "false-lantern-grove"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Shadowlands" FROM "The False Lantern Grove is an apparent oasis of spiritual purity in these fell lands"
+        }
+    }
+    ENTITY #L5RcxShlgeo34sirenzz ^"Siren" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "a-place-of-horror"
+    }
+    ENTITY #L5RcxShlgeo35watcherz ^"Watcher" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "a-place-of-horror"
+    }
+    ENTITY #L5RcxShlgeo36woundbsh ^"Wounded Bushi" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "denizens-of-the-castle"
+    }
+
+    # -- Amends -----------------------------------------------------------------
+
+    ENTITY ^"Daylight Castle" {
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "daylight-castle"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Shadowlands" FROM "it fell to the Shadowlands, and it remains mired there still"
+        }
+    }
+    ENTITY ^"Candle Temple" {
+        SOURCE "l5r5e-0.4-shadowlands-geography.lore" AT "a-glimmer-of-light"
+        RELATIONSHIPS {
+            ^"dedicated-to" -> ^"Osano-wo" FROM "houses a shrine to the Fortunes—particularly Osano-wo, Fortune of Fire and Thunder"
+        }
+    }
+}

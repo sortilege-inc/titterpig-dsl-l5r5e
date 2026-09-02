@@ -1,0 +1,67 @@
+# .codex SECTION — Shadowlands: The Falcon Clan. Stand-off graph over
+# l5r5e-0.4-shadowlands-falcon-clan.lore (spec §25). Part of the L5R5e system
+# graph; DEPENDS_ON the shared schema. "Falcon Clan" and "Hare Clan" are
+# lore-only (no .ttrpg DEF); the Toritaka family IS a DEF. The Toritaka Phantom
+# Hunter School is a DEF and not reproduced.
+
+CODEX "L5R5e_Shl_FalconClan_Codex" {
+    NAME "Shadowlands: The Falcon Clan — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    ENTITY #L5RcxShlfal01falconcl ^"Falcon Clan" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-shadowlands-falcon-clan.lore" AT "the-falcon-clan"
+    }
+    ENTITY #L5RcxShlfal02yotogizz ^"Yotogi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-falcon-clan.lore" AT "the-founding"
+        RELATIONSHIPS {
+            ^"founder-of" -> ^"Falcon Clan" FROM "the Emperor granted his son the right to form a clan, the Falcon Clan"
+            ^"leads"      -> ^"Toritaka"    FROM "Yotogi led the Toritaka family in this quest"
+        }
+    }
+    ENTITY #L5RcxShlfal03ladymaz ^"Lady Mazoku" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-shadowlands-falcon-clan.lore" AT "yotogi-and-the-lady-mazoku"
+    }
+    ENTITY #L5RcxShlfal04toritakp ^"Toritaka Province" {
+        IS ^"Province"
+        SOURCE "l5r5e-0.4-shadowlands-falcon-clan.lore" AT "lands-of-the-falcon"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Falcon Clan" FROM "Toritaka Province, the home of the Falcon Clan"
+        }
+    }
+    ENTITY #L5RcxShlfal05valspir2 ^"Valley of the Spirits" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-shadowlands-falcon-clan.lore" AT "valley-of-the-spirits"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Toritaka Province" FROM "The wide area between mountains and forest is commonly known as the Valley of the Spirits"
+        }
+    }
+    ENTITY #L5RcxShlfal06castfalc ^"Castle of the Falcon" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-shadowlands-falcon-clan.lore" AT "castle-of-the-falcon"
+        RELATIONSHIPS {
+            ^"held-by"    -> ^"Falcon Clan"          FROM "the Castle of the Falcon, Shiro Toritaka... the ancestral home of the Toritaka family"
+            ^"located-in" -> ^"Valley of the Spirits" FROM "At the center of the valley is the Castle of the Falcon"
+        }
+    }
+    ENTITY #L5RcxShlfal07counctwi ^"Council of Twilight" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-shadowlands-falcon-clan.lore" AT "the-council-of-twilight"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Falcon Clan" FROM "This is where the Council of Twilight convenes"
+        }
+    }
+    ENTITY #L5RcxShlfal08hareclan ^"Hare Clan" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-shadowlands-falcon-clan.lore" AT "the-falcon-and-the-hare"
+        RELATIONSHIPS {
+            ^"rival-of" -> ^"Falcon Clan" FROM "the two clans have a lengthy history of enmity"
+        }
+    }
+}
