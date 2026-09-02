@@ -15,7 +15,7 @@
 
 CODEX "L5R5e_Codex_Schema" {
     NAME "L5R5e Lore Graph — Shared Ontology"
-    VERSION "0.5"
+    VERSION "0.6"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-02"
     FOR EDITION "l5r5e"
@@ -100,5 +100,6 @@ CODEX "L5R5e_Codex_Schema" {
         ^"corrupted-by"  {                          DOMAIN ^"Person"       RANGE ^"Realm"   }
         ^"authored"      { INVERSE ^"authored-by"  DOMAIN ^"Person"       RANGE ^"Document" }
         ^"originated"    { INVERSE ^"originated-by" DOMAIN ^"Person"      RANGE ^"Tradition" }
+        ^"student-of"    { INVERSE ^"teacher-of"   DOMAIN ^"Person"       RANGE ^"Person"  }
     }
 }
