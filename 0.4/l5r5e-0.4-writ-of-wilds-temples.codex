@@ -1,0 +1,96 @@
+# .codex SECTION — Writ of the Wilds: Temples. Stand-off graph over
+# l5r5e-0.4-writ-of-wilds-temples.lore (spec §25). Part of the L5R5e system
+# graph; DEPENDS_ON the shared schema. Wrath of the Kami (the volcano) and the
+# Brotherhood of Shinsei are already in the graph. "Second Mountain" here is the
+# same peak the Wilderness essay calls "Furthest Fortress Mountain".
+
+CODEX "L5R5e_WoW_Temples_Codex" {
+    NAME "Writ of the Wilds: Temples — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    ENTITY #L5RcxWoWtmp01wrathtmp ^"Wrath of the Kami Temple" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-writ-of-wilds-temples.lore" AT "wrath-of-the-kami-temple"
+        RELATIONSHIPS {
+            ^"held-by"      -> ^"Dragon Clan"     FROM "the Agasha family have constructed a formal temple on a plateau adjacent to the volcano"
+            ^"located-near" -> ^"Wrath of the Kami" FROM "constructed a formal temple on a plateau adjacent to the volcano"
+        }
+    }
+    ENTITY #L5RcxWoWtmp02brothwra ^"Brothers of Wrath" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-writ-of-wilds-temples.lore" AT "wrath-of-the-kami-temple"
+        RELATIONSHIPS { ^"operated-by" -> ^"Dragon Clan" FROM "A small order of monks lives here... known as the Brothers of Wrath" }
+    }
+    ENTITY #L5RcxWoWtmp03kaimasaf ^"Kaiu Masafumi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-writ-of-wilds-temples.lore" AT "consigned-to-the-flames"
+        RELATIONSHIPS { ^"member-of" -> ^"Crab Clan" FROM "a Crab samurai named Kaiu Masafumi" }
+    }
+    ENTITY #L5RcxWoWtmp04highwall ^"High Wall Village" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-writ-of-wilds-temples.lore" AT "consigned-to-the-flames"
+        RELATIONSHIPS { ^"held-by" -> ^"Dragon Clan" FROM "High Wall Village, in the northwestern Togashi lands" }
+    }
+    ENTITY #L5RcxWoWtmp05kaikokum ^"Kaikoga Kumi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-writ-of-wilds-temples.lore" AT "consigned-to-the-flames"
+    }
+    ENTITY #L5RcxWoWtmp06kitsrumi ^"Kitsuki Rumi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-writ-of-wilds-temples.lore" AT "consigned-to-the-flames"
+        RELATIONSHIPS { ^"member-of" -> ^"Dragon Clan" FROM "the village magistrate, Kitsuki Rumi" }
+    }
+    ENTITY #L5RcxWoWtmp07suoh ^"Suoh" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-writ-of-wilds-temples.lore" AT "consigned-to-the-flames"
+    }
+    ENTITY #L5RcxWoWtmp08togkoma ^"Togashi Koma" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-writ-of-wilds-temples.lore" AT "consigned-to-the-flames"
+        RELATIONSHIPS { ^"member-of" -> ^"Dragon Clan" FROM "Togashi Koma, representing the Abbot" }
+    }
+    ENTITY #L5RcxWoWtmp09furthfrt ^"Furthest Fortress" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-writ-of-wilds-temples.lore" AT "furthest-fortress"
+        RELATIONSHIPS {
+            ^"held-by"      -> ^"Dragon Clan"     FROM "constructed by the Togashi at the direction of the Dragon Clan Champion"
+            ^"located-in"   -> ^"Second Mountain" FROM "looms over the pass from atop a rocky ridge thrust out from the flank of Second Mountain"
+        }
+    }
+    ENTITY #L5RcxWoWtmp10northwch ^"Northern Watch" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-writ-of-wilds-temples.lore" AT "furthest-fortress"
+        RELATIONSHIPS { ^"operated-by" -> ^"Dragon Clan" FROM "a particularly militant sect of Togashi monks known the Northern Watch" }
+    }
+    ENTITY #L5RcxWoWtmp11secondmt ^"Second Mountain" {
+        IS ^"Mountain"
+        SOURCE "l5r5e-0.4-writ-of-wilds-temples.lore" AT "an-imposing-fortification"
+    }
+    ENTITY #L5RcxWoWtmp12mtsongtm ^"Mountain Song Temple" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-writ-of-wilds-temples.lore" AT "mountain-song-temple"
+        RELATIONSHIPS { ^"held-by" -> ^"Brotherhood of Shinsei" FROM "While it is officially a holding of the Brotherhood of Shinsei, Mountain Song Temple" }
+    }
+    ENTITY #L5RcxWoWtmp13yamanokm ^"Yama-no-kami" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-writ-of-wilds-temples.lore" AT "mountain-song-temple"
+    }
+    ENTITY #L5RcxWoWtmp14kota ^"Kōta" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-writ-of-wilds-temples.lore" AT "kōta-ambitious-agitator"
+        RELATIONSHIPS { ^"member-of" -> ^"Phoenix Clan" FROM "Kōta, who was originally a courtier of the Phoenix Clan" }
+    }
+    ENTITY #L5RcxWoWtmp15thespire ^"The Spire" {
+        IS ^"Mountain"
+        SOURCE "l5r5e-0.4-writ-of-wilds-temples.lore" AT "kōta-ambitious-agitator"
+    }
+
+    ENTITY ^"Wrath of the Kami" {
+        SOURCE "l5r5e-0.4-writ-of-wilds-temples.lore" AT "wrath-of-the-kami"
+        RELATIONSHIPS { ^"held-by" -> ^"Dragon Clan" FROM "an enormous volcano located close to the center of the Dragon Clan lands" }
+    }
+}

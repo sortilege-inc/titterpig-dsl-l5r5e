@@ -1,0 +1,189 @@
+# .codex SECTION — Writ of the Wilds: The Dragon Clan (and the Dragonfly).
+# Stand-off graph over l5r5e-0.4-writ-of-wilds-dragon-clan.lore (spec §25). Part
+# of the L5R5e system graph; DEPENDS_ON the shared schema. The Dragon families
+# (Togashi/Mirumoto/Agasha/Kitsuki) and Dragonfly (Tonbo) are DEFs; Shiro
+# Mirumoto, Nanashi Mura, Kyūden Tonbo, Serpent's Tail Mine, Wrath of the Kami,
+# Isawa Moroko, Mirumoto Ashijin, Akodo Yokutsu, and Togashi Yokuni are already
+# in the graph (referenced/amended).
+
+CODEX "L5R5e_WoW_DragonClan_Codex" {
+    NAME "Writ of the Wilds: The Dragon Clan — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # -- Mirumoto lands ---------------------------------------------------------
+
+    ENTITY #L5RcxWoWdra01heibesu ^"Heibesu" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "heibesu"
+        RELATIONSHIPS { ^"held-by" -> ^"Dragon Clan" FROM "Heibesu is a major commercial hub for the Dragon" }
+    }
+    ENTITY #L5RcxWoWdra02izakulib ^"Izaku Library" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "heibesu"
+        RELATIONSHIPS { ^"located-in" -> ^"Heibesu" FROM "The Izaku Library, named after a Dragon vassal family, is located here" }
+    }
+    ENTITY #L5RcxWoWdra03ironmtdj ^"Iron Mountain Dōjō" {
+        IS ^"School"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "iron-mountain-dōjō"
+        RELATIONSHIPS { ^"operated-by" -> ^"Dragon Clan" FROM "this Dōjō has functioned as the training academy for most Dragon bushi" }
+    }
+    ENTITY #L5RcxWoWdra04pathhoja ^"Path of Hojatsu" {
+        IS ^"School"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "shiro-mirumoto"
+        RELATIONSHIPS { ^"located-in" -> ^"Shiro Mirumoto" FROM "Shiro Mirumoto is also home to the Path of Hojatsu dōjō" }
+    }
+    ENTITY #L5RcxWoWdra05kichiru ^"Mirumoto Kichiru" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore"
+        RELATIONSHIPS { ^"member-of" -> ^"Dragon Clan" FROM "a Mirumoto yōjimbō named Kichiru" }
+    }
+    ENTITY #L5RcxWoWdra06hideharu ^"Kitsuki Hideharu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore"
+        RELATIONSHIPS { ^"member-of" -> ^"Dragon Clan" FROM "the head of the Dragon delegation, a wizened, older samurai named Kitsuki Hideharu" }
+    }
+    ENTITY #L5RcxWoWdra07chiyeko ^"Kakita Chiyeko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore"
+        RELATIONSHIPS { ^"member-of" -> ^"Crane Clan" FROM "a renowned duelist present in the court, a woman named Kakita Chiyeko" }
+    }
+
+    # -- Agasha lands -----------------------------------------------------------
+
+    ENTITY #L5RcxWoWdra08twistlab ^"The Twisting Labyrinth" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "lands-of-the-agasha"
+        RELATIONSHIPS { ^"held-by" -> ^"Dragon Clan" FROM "The lands of the Agasha, known as The Twisting Labyrinth" }
+    }
+    ENTITY #L5RcxWoWdra09shiragas ^"Shiro Agasha" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "shiro-agasha"
+        RELATIONSHIPS {
+            ^"held-by"    -> ^"Dragon Clan"        FROM "The ancestral home of the Agasha"
+            ^"located-in" -> ^"Fire Tooth Mountain" FROM "looming on the peak of a dormant volcano known as Fire Tooth Mountain"
+        }
+    }
+    ENTITY #L5RcxWoWdra10firetoth ^"Fire Tooth Mountain" {
+        IS ^"Mountain"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "shiro-agasha"
+    }
+    ENTITY #L5RcxWoWdra11saclibag ^"Sacred Library of the Agasha" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "shiro-agasha"
+        RELATIONSHIPS { ^"located-in" -> ^"Shiro Agasha" FROM "Shiro Agasha is home to the Sacred Library of the Agasha" }
+    }
+    ENTITY #L5RcxWoWdra12mysteryls ^"The Mysteries of Leaf and Stone" {
+        IS ^"Document"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "culture-and-traditions"
+    }
+    ENTITY #L5RcxWoWdra13waterhmr ^"Water Hammer City" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "serpents-tail-mine"
+        RELATIONSHIPS { ^"held-by" -> ^"Dragon Clan" FROM "endeavors they hone in the forges and furnaces of their holding, Water Hammer City" }
+    }
+    ENTITY #L5RcxWoWdra14cavecrys ^"Cave of Crystal" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "the-cave-of-crystal"
+    }
+    ENTITY #L5RcxWoWdra15kesshokm ^"Kesshō no Kami" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "the-cave-of-crystal"
+    }
+    ENTITY #L5RcxWoWdra16agashinj ^"Agasha Shinji" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "agasha-shinji-zealous-naturalist"
+        RELATIONSHIPS { ^"member-of" -> ^"Dragon Clan" FROM "an intense young man named Agasha Shinji" }
+    }
+
+    # -- Kitsuki lands ----------------------------------------------------------
+
+    ENTITY #L5RcxWoWdra17agakitsu ^"Agasha Kitsuki" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Dragon Clan" FROM "a brilliant young Dragon Clan magistrate, Agasha Kitsuki"
+            ^"founder-of" -> ^"Kitsuki"     FROM "Kitsuki was granted the enormous honor of founding his own family"
+        }
+    }
+    ENTITY #L5RcxWoWdra18fukuseid ^"Fukurokujin Seidō" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "current-concerns"
+        RELATIONSHIPS { ^"dedicated-to" -> ^"Fukurokujin" FROM "making a pilgrimage to Fukurokujin Seidō in the Togashi lands" }
+    }
+    ENTITY #L5RcxWoWdra19saibankn ^"Saibankan" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "current-concerns"
+    }
+    ENTITY #L5RcxWoWdra20keeneyes ^"Keen Eyes Strike Village" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "keen-eyes-strike-village"
+        RELATIONSHIPS { ^"held-by" -> ^"Dragon Clan" FROM "Keen Eyes Strike Village is a small, tidy settlement located in the southern Kitsuki lands" }
+    }
+    ENTITY #L5RcxWoWdra21distpady ^"Distant Paddy Village" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "distant-paddy-village"
+        RELATIONSHIPS { ^"held-by" -> ^"Dragon Clan" FROM "Distant Paddy Village is the major trade and commercial interface between the Dragon and the rest of the Empire" }
+    }
+    ENTITY #L5RcxWoWdra22kitnorik ^"Kitsuki Noriko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "kitsuki-noriko-conflicted-magistrate"
+        RELATIONSHIPS { ^"member-of" -> ^"Dragon Clan" FROM "a magistrate, Kitsuki Noriko" }
+    }
+
+    # -- The Dragonfly Clan -----------------------------------------------------
+
+    ENTITY #L5RcxWoWdra23shirtonb ^"Shiro Tonbo" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "dragonfly-lands"
+        RELATIONSHIPS { ^"held-by" -> ^"Dragonfly Clan" FROM "the Castle of the Dragonfly, also known as Shiro Tonbo" }
+    }
+    ENTITY #L5RcxWoWdra24mirtomo ^"Mirumoto Tomo" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "the-rise-to-minor-clan"
+        RELATIONSHIPS { ^"member-of" -> ^"Dragon Clan" FROM "his daimyō, Mirumoto Tomo" }
+    }
+    ENTITY #L5RcxWoWdra25miryuwa ^"Mirumoto Yuwa" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "the-rise-to-minor-clan"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Dragon Clan"      FROM "his beloved wife, Mirumoto Yuwa, died while giving birth"
+            ^"married-to" -> ^"Mirumoto Ashijin" FROM "Ashijin suffered a terrible tragedy when his beloved wife, Mirumoto Yuwa, died"
+        }
+    }
+    ENTITY #L5RcxWoWdra26isaejuko ^"Isawa Ejuko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "unrequited-love"
+        RELATIONSHIPS { ^"member-of" -> ^"Phoenix Clan" FROM "her teacher, Isawa Ejuko, who was the Master of Water at the time" }
+    }
+    ENTITY #L5RcxWoWdra27tonbsada ^"Tonbo Sadao" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore"
+        RELATIONSHIPS { ^"member-of" -> ^"Dragonfly Clan" FROM "\"Matsu Danuja-sama,\" Sadao smiled beatifically" }
+    }
+    ENTITY #L5RcxWoWdra28matdanuj ^"Matsu Danuja" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore"
+        RELATIONSHIPS { ^"member-of" -> ^"Lion Clan" FROM "\"Matsu Danuja-sama,\" Sadao smiled" }
+    }
+    ENTITY #L5RcxWoWdra29hallwait ^"Halls of Waiting" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "the-halls-of-waiting"
+    }
+    ENTITY #L5RcxWoWdra30glasswrd ^"Glass Sword Philosophy" {
+        IS ^"Tradition"
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "the-glass-sword-philosophy"
+    }
+
+    ENTITY ^"Shiro Mirumoto" {
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "shiro-mirumoto"
+        RELATIONSHIPS { ^"held-by" -> ^"Dragon Clan" FROM "The ancestral home of the Mirumoto daimyō" }
+    }
+    ENTITY ^"Mirumoto Ashijin" {
+        SOURCE "l5r5e-0.4-writ-of-wilds-dragon-clan.lore" AT "the-rise-to-minor-clan"
+        RELATIONSHIPS { ^"married-to" -> ^"Mirumoto Yuwa" FROM "his beloved wife, Mirumoto Yuwa" }
+    }
+}

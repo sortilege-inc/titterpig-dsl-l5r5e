@@ -1,0 +1,105 @@
+# .codex SECTION — Writ of the Wilds: Peoples of the Wilds. Stand-off graph over
+# l5r5e-0.4-writ-of-wilds-peoples.lore (spec §25). Part of the L5R5e system
+# graph; DEPENDS_ON the shared schema. The Naga and Yobanjin races and the Kaito
+# family are already in the graph; "Isawa Mori" here is the Isawa Forest (Wilds
+# section), amended.
+
+CODEX "L5R5e_WoW_Peoples_Codex" {
+    NAME "Writ of the Wilds: Peoples of the Wilds — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    ENTITY #L5RcxWoWppl01thefoul ^"The Foul" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-writ-of-wilds-peoples.lore" AT "the-unity"
+    }
+    ENTITY #L5RcxWoWppl02shinnaga ^"Shinomen Naga" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-writ-of-wilds-peoples.lore" AT "the-unity"
+        RELATIONSHIPS { ^"enemy-of" -> ^"The Foul" FROM "their never-ending vigil against The Foul" }
+    }
+    ENTITY #L5RcxWoWppl03defiantp ^"Defiant's Path" {
+        IS ^"Road"
+        SOURCE "l5r5e-0.4-writ-of-wilds-peoples.lore" AT "defiants-path"
+    }
+    ENTITY #L5RcxWoWppl04hyoketsu ^"Hyōketsu" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-writ-of-wilds-peoples.lore" AT "yobanjin"
+        RELATIONSHIPS { ^"enemy-of" -> ^"Phoenix Clan" FROM "the Hyōketsu were the ancestral enemies of the Tribe of Isawa" }
+    }
+    ENTITY #L5RcxWoWppl05kaitomom ^"Kaito no Momotsukihime" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-writ-of-wilds-peoples.lore" AT "yobanjin"
+        RELATIONSHIPS {
+            ^"member-of"    -> ^"Phoenix Clan" FROM "founding a vassal family of the Isawa with herself as daimyō"
+            ^"founder-of"   -> ^"Kaito"        FROM "the newly established Kaito family"
+            ^"betrothed-to" -> ^"Ateru"        FROM "daughter of the tribe elder, and betrothed to the leader, a man known as Ateru"
+        }
+    }
+    ENTITY #L5RcxWoWppl06ateru ^"Ateru" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-writ-of-wilds-peoples.lore" AT "yobanjin"
+        RELATIONSHIPS {
+            ^"leads"        -> ^"Hyōketsu"               FROM "Ateru, who led the raids"
+            ^"betrothed-to" -> ^"Kaito no Momotsukihime" FROM "betrothed to the leader, a man known as Ateru"
+        }
+    }
+    ENTITY #L5RcxWoWppl07shibtsuk ^"Shiba Tsukune" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-writ-of-wilds-peoples.lore" AT "yobanjin"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Phoenix Clan" FROM "the most recent Clan Champion Shiba Tsukune uncovered it"
+            ^"leads"     -> ^"Phoenix Clan" FROM "the most recent Clan Champion Shiba Tsukune"
+        }
+    }
+    ENTITY #L5RcxWoWppl08woolhoof ^"Woolen Hooves" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-writ-of-wilds-peoples.lore" AT "the-kogarashi-and-the-woolen-hooves"
+    }
+    ENTITY #L5RcxWoWppl09kogarash ^"Kogarashi" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-writ-of-wilds-peoples.lore" AT "the-kogarashi-and-the-woolen-hooves"
+    }
+    ENTITY #L5RcxWoWppl10seikyob ^"Seikitsu Yobanjin" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-writ-of-wilds-peoples.lore" AT "the-seikitsu-yobanjin"
+    }
+    ENTITY #L5RcxWoWppl11laughmtn ^"Laughing Mountain" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-writ-of-wilds-peoples.lore" AT "tengus-overlook-and-the-laughing-mountain-tribe"
+    }
+    ENTITY #L5RcxWoWppl12tenguovr ^"Tengu's Overlook" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-writ-of-wilds-peoples.lore" AT "tengus-overlook-and-the-laughing-mountain-tribe"
+        RELATIONSHIPS { ^"held-by" -> ^"Laughing Mountain" FROM "the city of Tengu's Overlook... the people of this city call themselves \"the Laughing Mountain\"" }
+    }
+    ENTITY #L5RcxWoWppl13yobmura ^"Yobanjin Mura" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-writ-of-wilds-peoples.lore" AT "yobanjin-mura"
+    }
+    ENTITY #L5RcxWoWppl14sachitwr ^"Sachihoko Tower" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-writ-of-wilds-peoples.lore" AT "sachihoko-tower"
+        RELATIONSHIPS { ^"held-by" -> ^"Dragon Clan" FROM "Most samurai within the Dragon Clan consider the massive Sachihoko Tower to be the northernmost point of Dragon Clan territory" }
+    }
+    ENTITY #L5RcxWoWppl15watrclou ^"Water Becomes Clouds" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-writ-of-wilds-peoples.lore" AT "yobanjin"
+    }
+    ENTITY #L5RcxWoWppl16cliffshr ^"Cliffside Shrine" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-writ-of-wilds-peoples.lore" AT "yobanjin"
+    }
+    ENTITY #L5RcxWoWppl17kinenkan ^"Kinenkan" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-writ-of-wilds-peoples.lore" AT "the-wrath-of-the-kami"
+        RELATIONSHIPS { ^"held-by" -> ^"Dragon Clan" FROM "it rises at the center of the Kinenkan province" }
+    }
+
+    ENTITY ^"Isawa Forest" {
+        SOURCE "l5r5e-0.4-writ-of-wilds-peoples.lore" AT "isawa-mori"
+    }
+}

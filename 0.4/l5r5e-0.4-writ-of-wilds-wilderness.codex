@@ -1,0 +1,62 @@
+# .codex SECTION — Writ of the Wilds: Wilds of Rokugan. Stand-off graph over
+# l5r5e-0.4-writ-of-wilds-wilderness.lore (spec §25). Part of the L5R5e system
+# graph; DEPENDS_ON the shared schema. Shinomen Forest, the Shadowlands Marshes,
+# Mori Kuroi (the Kuroi Mori / Dark Wood), the Forest Killer Bandits, Second
+# Mountain (= "Furthest Fortress Mountain"), and the Land of Four Rivers are
+# already in the graph. Yōkai species (kawauso, kōmori, kodama, onikuma, snow
+# maidens) are not minted. Shinomen Forest is amended.
+
+CODEX "L5R5e_WoW_Wilderness_Codex" {
+    NAME "Writ of the Wilds: Wilds of Rokugan — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    ENTITY #L5RcxWoWwld01yakeishi ^"Yakeishi Province" {
+        IS ^"Province"
+        SOURCE "l5r5e-0.4-writ-of-wilds-wilderness.lore" AT "yakeishi-province-1123"
+    }
+    ENTITY #L5RcxWoWwld02goldensn ^"Golden Sun Plains" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-writ-of-wilds-wilderness.lore" AT "the-golden-sun-plains"
+    }
+    ENTITY #L5RcxWoWwld03cherrysn ^"Lake of Cherry Blossom Snow" {
+        IS ^"Lake"
+        SOURCE "l5r5e-0.4-writ-of-wilds-wilderness.lore" AT "the-lake-of-cherry-blossom-snow"
+        RELATIONSHIPS { ^"located-in" -> ^"Shinomen Forest" FROM "The southernmost lake of the Shinomen is named for the sakura trees that thrive along its shores" }
+    }
+    ENTITY #L5RcxWoWwld04gatespst ^"Gates of Persistence" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-writ-of-wilds-wilderness.lore" AT "the-gates-of-persistence"
+        RELATIONSHIPS { ^"located-near" -> ^"Shinomen Forest" FROM "laboriously dragged to the southern border of the forest, the Gates of Persistence are a lone torii archway" }
+    }
+    ENTITY #L5RcxWoWwld05kaisudar ^"Kaiu Sudaro" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-writ-of-wilds-wilderness.lore" AT "the-gates-of-persistence"
+        RELATIONSHIPS { ^"member-of" -> ^"Crab Clan" FROM "the son of Kaiu Sudaro had been lost in the Shinomen... earning him ascension as the Fortune of Persistence" }
+    }
+    ENTITY #L5RcxWoWwld06riversky ^"River of the Sky" {
+        IS ^"River"
+        SOURCE "l5r5e-0.4-writ-of-wilds-wilderness.lore" AT "river-of-the-sky"
+        RELATIONSHIPS { ^"located-in" -> ^"Shinomen Forest" FROM "Winding north to south in a cascade throughout the Shinomen, the River of the Sky" }
+    }
+    ENTITY #L5RcxWoWwld07isaforst ^"Isawa Foresters" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-writ-of-wilds-wilderness.lore"
+        RELATIONSHIPS { ^"operated-by" -> ^"Phoenix Clan" FROM "Trained and maintained by a small vassal family of the Isawa, the Isawa Foresters" }
+    }
+    ENTITY #L5RcxWoWwld08sorrowpa ^"Sorrows Path" {
+        IS ^"Road"
+        SOURCE "l5r5e-0.4-writ-of-wilds-wilderness.lore" AT "sorrows-path"
+    }
+    ENTITY #L5RcxWoWwld09mtexile ^"Mountains of Exile" {
+        IS ^"Mountain"
+        SOURCE "l5r5e-0.4-writ-of-wilds-wilderness.lore" AT "northern-border"
+    }
+
+    ENTITY ^"Shinomen Forest" {
+        SOURCE "l5r5e-0.4-writ-of-wilds-wilderness.lore" AT "shinomen-mori"
+    }
+}
