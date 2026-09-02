@@ -1,0 +1,582 @@
+# .codex SECTION — Emerald Empire: Centers of Trade (Chapter 2 — cities, towns,
+# harbors, and the judicial system). Stand-off graph over
+# l5r5e-0.4-emerald-empire-trade.lore (spec §25). Part of the L5R5e system graph;
+# DEPENDS_ON the shared schema. Covers Otosan Uchi's structure and the Enchanted
+# Wall, Ryokō Owari Toshi (the City of Lies), Khanbulak and the Sand Road, Red
+# Horn Village and the Kolat, the harbor Fortunes, Gotei City, the City of the
+# Rich Frog, and the Emerald/Jade magistracy.
+
+CODEX "L5R5e_Codex_EE_Trade" {
+    NAME "Emerald Empire: Centers of Trade — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # -- Otosan Uchi: outer districts, sacred sites, museum ---------------------
+
+    ENTITY #L5RcxEEtra01toshisot ^"Toshisoto" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "otosan-uchi"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Otosan Uchi" FROM "the Toshisoto, or outer districts"
+        }
+    }
+    ENTITY #L5RcxEEtra02sepphill ^"Seppun Hill" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "otosan-uchi"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Ekohikei" FROM "Seppun Hill is the most important of the venerated locations in the Ekohikei"
+        }
+    }
+    ENTITY #L5RcxEEtra03impmuseu ^"Imperial Museum of Antiquities" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "otosan-uchi"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Otosan Uchi" FROM "other famous structures such as the Imperial Museum of Antiquities"
+        }
+    }
+    ENTITY #L5RcxEEtra04tmpkamii ^"Temple to the Kami" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "otosan-uchi"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Otosan Uchi" FROM "the Temple to the Kami"
+        }
+    }
+    ENTITY #L5RcxEEtra05hitowatr ^"Hito Water Gardens" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "otosan-uchi"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Otosan Uchi" FROM "the Hito Water Gardens"
+        }
+    }
+    ENTITY #L5RcxEEtra06kunihazu ^"Kuni Hazu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-tunnels"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "supposedly brought there by the museum's founder, Kuni Hazu"
+        }
+    }
+    ENTITY #L5RcxEEtra07sorrfall ^"Sorrow's Falls" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-tunnels"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Otosan Uchi" FROM "At the Sorrow's Falls, a young Ikoma samurai is said to have flung herself to her death"
+        }
+    }
+    ENTITY #L5RcxEEtra08fldsharp ^"Field of Sharp Returns" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-tunnels"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Otosan Uchi" FROM "a teahouse in the Karada District of the Ekohikei called the Field of Sharp Returns"
+        }
+    }
+    ENTITY #L5RcxEEtra09baygoldn ^"Bay of the Golden Sun" {
+        IS ^"Sea"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-tunnels"
+    }
+    ENTITY #L5RcxEEtra10sentaktr ^"Sentaku Tribunal" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-governors-and-the-sentaku"
+    }
+
+    # -- The four inner districts (Ekohikei) ------------------------------------
+
+    ENTITY #L5RcxEEtra11kanjodis ^"Kanjo District" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "crime-and-conspiracy"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Ekohikei" FROM "Kanjo District (Phoenix, Scorpion, and Lion): Religion and ceremony"
+        }
+    }
+    ENTITY #L5RcxEEtra12chiseidi ^"Chisei District" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "crime-and-conspiracy"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Ekohikei" FROM "Chisei District (Crane, Dragon, and Minor Clans): Law and interclan relations"
+        }
+    }
+    ENTITY #L5RcxEEtra13hitodist ^"Hito District" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "crime-and-conspiracy"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Ekohikei" FROM "Hito District (Unicorn and Lion): Defense and logistics"
+        }
+    }
+    ENTITY #L5RcxEEtra14karadadi ^"Karada District" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "crime-and-conspiracy"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Ekohikei" FROM "Karada District (Crab and Crane): Trade policies and the treasury"
+        }
+    }
+
+    # -- The Enchanted Wall (Miwaku Kabe) and its four sides --------------------
+
+    ENTITY #L5RcxEEtra15enchwall ^"Enchanted Wall" {
+        IS ^"Wall"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-enchanted-wall-miwaku-kabe"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Otosan Uchi" FROM "The famous Miwaku Kabe, the Enchanted Wall of the Forbidden City"
+        }
+    }
+    ENTITY #L5RcxEEtra16southgat ^"Southern Gate" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-enchanted-wall-miwaku-kabe"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Forbidden City" FROM "The Southern Gate is the main gate into the Forbidden City"
+        }
+    }
+    ENTITY #L5RcxEEtra17eastwall ^"Eastern Wall" {
+        IS ^"Wall"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-eastern-wall"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Enchanted Wall" FROM "The Eastern Wall is said to draw its strength from the gloriousness of those who have stood to defend it"
+        }
+    }
+    ENTITY #L5RcxEEtra18souwall2 ^"Southern Wall" {
+        IS ^"Wall"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-southern-wall"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Enchanted Wall" FROM "The Southern Wall was consecrated by the lives of a shugenja named Isawa Naigama"
+        }
+    }
+    ENTITY #L5RcxEEtra19westwall ^"Western Wall" {
+        IS ^"Wall"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-western-wall"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Enchanted Wall" FROM "This wall is believed to contain the bound and imprisoned spirits of the Shadowlands creatures"
+        }
+    }
+    ENTITY #L5RcxEEtra20nortwall ^"Northern Wall" {
+        IS ^"Wall"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-northern-wall"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Enchanted Wall" FROM "The Northern Wall was actually destroyed by Fu Leng's forces during the First War and rebuilt afterward"
+        }
+    }
+    ENTITY #L5RcxEEtra21isawnaig ^"Isawa Naigama" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-southern-wall"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Phoenix Clan" FROM "a shugenja named Isawa Naigama and his pupils"
+        }
+    }
+    ENTITY #L5RcxEEtra22asahiart ^"Asahina Artificers" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-southern-wall"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Crane Clan" FROM "the Asahina Artificers have tried to determine what became of the lost horde"
+        }
+    }
+
+    # -- Ryokō Owari Toshi (the City of Lies): quarters and temples -------------
+
+    ENTITY #L5RcxEEtra23fishquar ^"Fishers' Quarter" {
+        IS ^"Place"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "ryokō-owari-toshi-the-city-of-lies"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Ryokō Owari Toshi" FROM "the Fishers' Quarter, the heimin-dominated main population center"
+        }
+    }
+    ENTITY #L5RcxEEtra24merchqua ^"Merchant Quarter" {
+        IS ^"Place"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "ryokō-owari-toshi-the-city-of-lies"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Ryokō Owari Toshi" FROM "the Merchant Quarter, heavily populated and receiving shipments of goods from three great wharves"
+        }
+    }
+    ENTITY #L5RcxEEtra25templqua ^"Temple Quarter" {
+        IS ^"Place"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "ryokō-owari-toshi-the-city-of-lies"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Ryokō Owari Toshi" FROM "the Temple Quarter, home to the massive Temple of Daikoku"
+        }
+    }
+    ENTITY #L5RcxEEtra26noblequa ^"Noble Quarter" {
+        IS ^"Place"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "ryokō-owari-toshi-the-city-of-lies"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Ryokō Owari Toshi" FROM "the Noble Quarter, where the city's court and Scorpion nobles reside"
+        }
+    }
+    ENTITY #L5RcxEEtra27licenqua ^"Licensed Quarter" {
+        IS ^"Place"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "ryokō-owari-toshi-the-city-of-lies"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Ryokō Owari Toshi" FROM "the Licensed Quarter of Teardrop Island, the pleasure section of the city"
+        }
+    }
+    ENTITY #L5RcxEEtra28leathqua ^"Leatherworkers' Quarter" {
+        IS ^"Place"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "ryokō-owari-toshi-the-city-of-lies"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Ryokō Owari Toshi" FROM "the Leatherworkers' Quarter, sprawls outside the city's southwestern walls"
+        }
+    }
+    ENTITY #L5RcxEEtra29tmpdaiko ^"Temple of Daikoku" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "ryokō-owari-toshi-the-city-of-lies"
+        RELATIONSHIPS {
+            ^"located-in"   -> ^"Ryokō Owari Toshi" FROM "home to the massive Temple of Daikoku"
+            ^"dedicated-to" -> ^"Daikoku"           FROM "the massive Temple of Daikoku"
+        }
+    }
+    ENTITY #L5RcxEEtra30tmpamat ^"Temple of Amaterasu" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "ryokō-owari-toshi-the-city-of-lies"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Ryokō Owari Toshi" FROM "equally resplendent Temple of Amaterasu"
+        }
+    }
+    ENTITY #L5RcxEEtra31teardrop ^"Teardrop Island" {
+        IS ^"Place"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-licensed-quarter"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Ryokō Owari Toshi" FROM "Teardrop Island, a densely populated island in the center of a smaller bay"
+        }
+    }
+    ENTITY #L5RcxEEtra32thundgrd ^"Thunder Guard" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "celestial-disorder"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Scorpion Clan" FROM "the governor's personal troops, the elite Thunder Guard"
+        }
+    }
+    ENTITY #L5RcxEEtra33shoshyob ^"Shosuro Hyobu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "shosuro-hyobu-corrupt-governor"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Scorpion Clan" FROM "she is a Scorpion still, and she rules the Shosuro cartel with an iron fist"
+        }
+    }
+    ENTITY #L5RcxEEtra34jochozzz ^"Jocho" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "shosuro-hyobu-corrupt-governor"
+        RELATIONSHIPS {
+            ^"child-of"  -> ^"Shosuro Hyobu"  FROM "fiercely protective of her son, Jocho"
+            ^"member-of" -> ^"Scorpion Clan"  FROM "fiercely protective of her son, Jocho"
+        }
+    }
+
+    # -- Khanbulak, the Sand Road, and the Moto ---------------------------------
+
+    ENTITY ^"Khanbulak" {
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "khanbulak"
+        RELATIONSHIPS {
+            ^"seat-of" -> ^"Unicorn Clan" FROM "It is the seat of the Moto family and the White Guard"
+        }
+    }
+    ENTITY #L5RcxEEtra35sandroad ^"Sand Road" {
+        IS ^"Road"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "khanbulak"
+    }
+    ENTITY #L5RcxEEtra36kirinrd ^"Ki-Rin's Road" {
+        IS ^"Road"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "khanbulak"
+    }
+    ENTITY #L5RcxEEtra37burnsand ^"Burning Sands" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "khanbulak"
+    }
+    ENTITY #L5RcxEEtra38alzawira ^"al-Zawira" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "khanbulak"
+    }
+    ENTITY #L5RcxEEtra39whitegrd ^"White Guard" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "khanbulak"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Unicorn Clan" FROM "the seat of the Moto family and the White Guard, which patrols the official Rokugani border"
+        }
+    }
+    ENTITY #L5RcxEEtra40motorura ^"Moto Rurame" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "moto-rurame-restless-commander"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Unicorn Clan" FROM "Moto Rurame, the Noyan of the Scarlet Banners"
+        }
+    }
+    ENTITY #L5RcxEEtra41motoogod ^"Moto Ogödei" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "moto-rurame-restless-commander"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Unicorn Clan" FROM "sister of Moto Ogödei, the Moto khan"
+            ^"sibling-of" -> ^"Moto Rurame"  FROM "sister of Moto Ogödei, the Moto khan"
+        }
+    }
+    ENTITY #L5RcxEEtra42scarlban ^"Scarlet Banners" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "moto-rurame-restless-commander"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Unicorn Clan" FROM "Her Scarlet Banners, a mingg-han of the White Horde, patrol Khanbulak"
+        }
+    }
+    ENTITY #L5RcxEEtra43whithord ^"White Horde" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "moto-rurame-restless-commander"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Unicorn Clan" FROM "a mingg-han of the White Horde"
+        }
+    }
+
+    # -- Red Horn Village and the Kolat conspiracy ------------------------------
+
+    ENTITY #L5RcxEEtra44redhornv ^"Red Horn Village" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "red-horn-village"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Dragon Heart Plains" FROM "Located in the southeastern corner of the Dragon Heart Plains, Red Horn Village"
+        }
+    }
+    ENTITY #L5RcxEEtra45draghrtp ^"Dragon Heart Plains" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "red-horn-village"
+    }
+    ENTITY #L5RcxEEtra46jadedawn ^"House of the Jade Dawn" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "red-horn-village"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Red Horn Village" FROM "The Isawa maintain a permanent embassy and trade center called the House of the Jade Dawn"
+        }
+    }
+    ENTITY #L5RcxEEtra47kolatzzz ^"Kolat" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "red-horn-village"
+    }
+    ENTITY #L5RcxEEtra48chinokoz ^"Chinoko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "chinoko-deceitful-geisha"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Kolat" FROM "The Kolat became her second home, and they trained her in the arts of assassination"
+        }
+    }
+
+    # -- Harbor Fortunes (the wind Fortunes and the Fortune of Fish) ------------
+
+    ENTITY #L5RcxEEtra49hamanari ^"Hamanari" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "fishing-ports"
+    }
+    ENTITY #L5RcxEEtra50tamonzzz ^"Tamon" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "fishing-ports"
+    }
+    ENTITY #L5RcxEEtra51zochozzz ^"Zocho" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "fishing-ports"
+    }
+    ENTITY #L5RcxEEtra52jikojuzz ^"Jikoju" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "fishing-ports"
+    }
+    ENTITY #L5RcxEEtra53komokuzz ^"Komoku" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "fishing-ports"
+    }
+
+    # -- Gotei City (Islands of Spice and Silk) ---------------------------------
+
+    ENTITY #L5RcxEEtra54goteicty ^"Gotei City" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "gotei-city-port-district"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Islands of Spice and Silk" FROM "Gotei City is the capital of the Islands of Spice and Silk"
+            ^"held-by" -> ^"Mantis Clan"               FROM "Located within a natural inlet on the westernmost island in the Mantis Clan's archipelago"
+        }
+    }
+    ENTITY #L5RcxEEtra55goteihbr ^"Gotei Harbor" {
+        IS ^"Place"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "bay-of-bandits"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Gotei City" FROM "is Gotei Harbor, where one can find sailors from faraway lands"
+        }
+    }
+    ENTITY #L5RcxEEtra56paththun ^"Path of Thunder" {
+        IS ^"Road"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "bay-of-bandits"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Gotei City" FROM "separated from the palace by the Path of Thunder"
+        }
+    }
+    ENTITY #L5RcxEEtra57gaijnpth ^"Gaijin's Path" {
+        IS ^"Road"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "gaijins-path"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"Gotei City" FROM "This long street of shops... contains the densest collection of foreign-run businesses in Rokugan"
+        }
+    }
+    ENTITY #L5RcxEEtra58seninbrw ^"Sen'in Brew House" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "senin-brew-house-the-napping-sailor"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Gotei City" FROM "Sen'in Brew House, also called the Napping Sailor, is an infamous brew house in Gotei City"
+        }
+    }
+    ENTITY #L5RcxEEtra59capfumik ^"Captain Fumiko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "senin-brew-house-the-napping-sailor"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Mantis Clan" FROM "I saw Captain Fumiko with a map of secret passages"
+        }
+    }
+    ENTITY #L5RcxEEtra60libkanid ^"Library of Kanidoko Itte" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-library-of-kanidoko-itte"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Gotei City" FROM "Chartmaster Kanidoko Itte's offices"
+        }
+    }
+    ENTITY #L5RcxEEtra61kanidokt ^"Kanidoko Itte" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-library-of-kanidoko-itte"
+    }
+    ENTITY #L5RcxEEtra62capbyakk ^"Captain Byakko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "captain-byakko-of-the-takarabako"
+        RELATIONSHIPS {
+            ^"member-of"     -> ^"Mantis Clan" FROM "Captain Byakko is fifth cousin to Mantis Clan Champion Yoritomo"
+            ^"companion-of"  -> ^"Yoritomo"    FROM "the two spent a fair amount of time together as boys"
+        }
+    }
+    ENTITY #L5RcxEEtra63takaraba ^"Takarabako" {
+        IS ^"Vessel"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "captain-byakko-of-the-takarabako"
+        RELATIONSHIPS {
+            ^"wielded-by" -> ^"Captain Byakko" FROM "Byakko captains the Takarabako, a gleaming new three-masted kobune ship"
+        }
+    }
+    ENTITY #L5RcxEEtra64yoritomo ^"Yoritomo" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "captain-byakko-of-the-takarabako"
+        RELATIONSHIPS {
+            ^"leads"     -> ^"Mantis Clan" FROM "Mantis Clan Champion Yoritomo"
+            ^"member-of" -> ^"Mantis Clan" FROM "Mantis Clan Champion Yoritomo"
+        }
+    }
+    ENTITY #L5RcxEEtra65ladyagur ^"Lady Aguri" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "captain-byakko-of-the-takarabako"
+        RELATIONSHIPS {
+            ^"member-of"    -> ^"Mantis Clan"    FROM "Lady Aguri, a young but gifted shugenja adopted by his uncle"
+            ^"companion-of" -> ^"Captain Byakko" FROM "assigned Lady Aguri... to watch over Byakko and keep him out of trouble"
+        }
+    }
+
+    # -- City of the Rich Frog --------------------------------------------------
+
+    ENTITY #L5RcxEEtra66richfrog ^"City of the Rich Frog" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "city-of-the-rich-frog"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Drowned Merchant River" FROM "located at the junction of the Three Sides River and the Drowned Merchant River"
+        }
+    }
+    ENTITY #L5RcxEEtra67threesid ^"Three Sides River" {
+        IS ^"River"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "city-of-the-rich-frog"
+    }
+    ENTITY #L5RcxEEtra68kaeruzzz ^"Kaeru" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "history"
+    }
+    ENTITY #L5RcxEEtra69iuchshic ^"Iuchi Shichiro" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "unicorn-district"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Unicorn Clan" FROM "the elderly Iuchi Shichiro oversees the Unicorn trade"
+        }
+    }
+    ENTITY #L5RcxEEtra70akodmina ^"Akodo Minami" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "lion-district"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Lion Clan" FROM "the ranking Lion Clan samurai is Akodo Minami"
+        }
+    }
+    ENTITY #L5RcxEEtra71iuchkono ^"Iuchi Konomi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "lion-district"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Unicorn Clan"   FROM "Iuchi Konomi, Iuchi Shichiro's daughter"
+            ^"child-of"  -> ^"Iuchi Shichiro" FROM "Iuchi Konomi, Iuchi Shichiro's daughter"
+        }
+    }
+    ENTITY #L5RcxEEtra72miyatets ^"Miya Tetsua" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "lion-district"
+    }
+    ENTITY #L5RcxEEtra73phoenest ^"Phoenix's Nest" {
+        IS ^"Artifact"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "lion-district"
+    }
+    ENTITY #L5RcxEEtra74tonbkuma ^"Tonbo Kuma" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "dragon-district"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Dragonfly Clan" FROM "the mysterious Tonbo Kuma, a powerful Dragonfly shugenja"
+        }
+    }
+    ENTITY #L5RcxEEtra75saibansh ^"Saibanshoki" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "saibanshoki"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"City of the Rich Frog" FROM "Growing straight from the water at the river junction is Rokugan's largest and oldest willow tree, named Saibanshoki"
+        }
+    }
+
+    # -- The magistracy: Emerald and Jade -------------------------------------
+
+    ENTITY #L5RcxEEtra76chartmag ^"Charter of the Emerald Magistrates" {
+        IS ^"Document"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-emerald-magistrates"
+    }
+    ENTITY #L5RcxEEtra77kuroiban ^"Kuroiban" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-emerald-magistrates"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Scorpion Clan" FROM "the secretive Kuroiban, or Black Watch, of the Scorpion"
+        }
+    }
+    ENTITY #L5RcxEEtra78asakoinq ^"Asako Inquisitors" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-emerald-magistrates"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Phoenix Clan" FROM "the Asako Inquisitors of the Phoenix"
+        }
+    }
+    ENTITY #L5RcxEEtra79jadechmp ^"Jade Champion" {
+        IS ^"Title"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-emerald-magistrates"
+    }
+    ENTITY #L5RcxEEtra80jademag ^"Jade Magistrates" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-emerald-magistrates"
+    }
+
+    ENTITY ^"Soshi Saibankan" {
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "magistrates"
+        RELATIONSHIPS {
+            ^"authored" -> ^"Charter of the Emerald Magistrates" FROM "The Charter of the Emerald Magistrates, which was drafted by Soshi Saibankan"
+        }
+    }
+
+    # -- Geography named in passing ---------------------------------------------
+
+    ENTITY #L5RcxEEtra81seikpass ^"Seikitsu Pass" {
+        IS ^"Road"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-birth-of-a-city"
+    }
+    ENTITY #L5RcxEEtra82rivrgold ^"River of Gold" {
+        IS ^"River"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "the-birth-of-a-city"
+    }
+    ENTITY #L5RcxEEtra83kudozzzz ^"Kudo" {
+        IS ^"Town"
+        SOURCE "l5r5e-0.4-emerald-empire-trade.lore" AT "crime-and-conspiracy"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"River of Gold" FROM "Kudo, a port town located downriver from the city along the River of Gold"
+        }
+    }
+}
