@@ -1,0 +1,168 @@
+# L5R 5E - L5R5e ChildrenOfFiveWinds NPCs (NPCs)
+# Authored from the doublecheck vision inventory (structured stats + abilities).
+
+EXTENSION "L5R5e_ChildrenOfFiveWinds_NPCs" {
+    VERSION "0.4.1"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-02"
+    DEPENDS_ON "L5R5e_Core_Core"
+
+    # source stat block (page 48)
+    ^"Shinjo Haruko" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 0
+            ^"Rings" DEF {
+                ^"Air" INTEGER 0
+                ^"Earth" INTEGER 0
+                ^"Fire" INTEGER 0
+                ^"Water" INTEGER 0
+                ^"Void" INTEGER 0
+            }
+            ^"Demeanor" STRING "Modifiers"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 65
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 3", "Scholar 2", "Social 3", "Trade 1"]
+            ^"Favored Weapons" LIST OF STRING ["Shinjo Horsebow: Range 2–4, Damage 4, Deadliness 5, Wargear"]
+            ^"Gear" LIST OF STRING ["Lamellar armor (Physical 4, Wargear)", "quiver", "20 razor-leaf arrows Companion: Yue (see Shinjo courser on page 143). Gear (other): Scimitar", "wakizashi (short sword)", "fine clothes", "traveling clothes", "some worn-out pillow books"]
+        }
+        DESCRIPTION "ADVERSARY CONFLICT RANK: 6 5"
+        ^"Shinjo Haruko" DEF { ^"Effect" STRING "The Unicorn Champion's only biological daughter spends most of her days on horseback, galloping along the shore of Water Dragon Lake. Only a few seasons ago, all paths seemed open to her: a likely appointment to the Imperial Guard, fame and recognition in the Bowman's Wager at the Imperial Winter Court, and the many adventures both would bring. However, in the wake of an Imperial censure and the falling out of the Shinjo and Ikoma families, all of those doors have abruptly shut. Shinjo Haruko spends her days riding her favorite horse, Yue, through the surrounding lands, but what she is seeking, a new purpose, cannot be found near Far Traveler Castle. Haruko is never content to remain in one place. She grew up in many courts, accompanying her mother, and she has friends among virtually all the Great Clans as a consequence. Although she is one of the most talented horse archers of her generation, Haruko has always tended to stir up trouble when bored. And she has become so bored as of late…" }
+        ^"Horse Girl" DEF { ^"Effect" STRING "Any steed Haruko rides or has personally trained gives the rider an additional bonus success on any Movement action check they make." }
+        ^"Utaku" DEF { ^"Effect" STRING "Most Great Clan families have built a culture centered around the life of their founder. The Utaku family built theirs around two: the Ki-Rin Clan Thunder, Lady Utaku, and her daughter, Utaku Shiko. Yet while there are many accounts from Utaku Shiko's life and adventures, her mother's story remains steeped in legend. These stories describe Utaku as a woman of few words, great convictions, and preternatural fighting prowess. Scholars debate whether she ever spoke at all, but while she never actually swore any oaths to Shinjo, she was one of the Kami's most devoted followers. Legends describe her as a kind, good-humored person who smiled often, but they also mention her great ire against cruelty. This is the version of Utaku remembered in the tales of the Seven Thunders: a warrior who would not hesitate to avenge an injustice, no matter how small—and Shinjo's right-hand enforcer who let her sword do her talking. While only a fraction of the Utaku follow the Battle Maiden tradition, the entire family embraces the values that Utaku and her daughter stood for. They are the warrior conscience of the Unicorn, a reminder that no matter what the future may demand, they must never cast aside the things they truly believe in." }
+        RULES {
+            #L5Rnpc00ShinjoHarukoZzZzZzZz: shinjo_haruko
+        }
+    }
+
+    # source stat block (page 54)
+    ^"Utaku Asagao" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF {
+                ^"Air" INTEGER 0
+                ^"Earth" INTEGER 0
+                ^"Fire" INTEGER 0
+                ^"Water" INTEGER 0
+                ^"Void" INTEGER 0
+            }
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 0", "Scholar 0", "Social 0", "Trade 0"]
+            ^"Favored Weapons" LIST OF STRING ["Broom (improvised weapon): Treat as bō (staff)"]
+            ^"Gear" LIST OF STRING ["Shrine keeper robes (Physical 1, Supernatural 3, Ceremonial)", "offerings Companion: Taiyo (see Utaku warhorse on page 143)"]
+        }
+        DESCRIPTION "ADVERSARY CONFLICT RANK: 3 2 Once known by a different name, the shrine keeper Asagao discovered who she truly was when, during an emergency, a horse of the Blessed Herd allowed her onto its back and delivered her to her lord's estate. Finally realizing a truth she had grappled with her entire life, Asagao made a pilgrimage to Utaku's Shrine, where she was accepted by the shrine keepers as their new sister. Now, a decade later, Asagao is completely devoted to the shrine's protection and prosperity, offering a sympathetic ear and a word of wisdom for anyone who feels lost on their path through life."
+        ^"Sacred Stables" DEF { ^"Effect" STRING "Adding to this is the shrine's apparent 'disrepair.' The fields and bamboo thicket nearby are wild and overgrown, and an ancient horse-chestnut tree grows out of the roof of the ivy-coated honden. The truth is that Utaku herself planted the horse-chestnut tree before venturing into the Shadowlands with the Seven Thunders, and so the shrine was carefully built around it. Chestnuts gathered from this tree are used to make a special pastry that is eaten during festivals. Another feature is the 'horseflower garden,' filled with herbs and blooms that horses especially enjoy. These include purple valerian and verdant fenugreek from beyond Rokugan's borders, alongside native strains of marigold and catmint. Watching over the gardens are the Mother-Sister statues, depicting Utaku and her daughter. Battle Maidens make frequent pilgrimages here, laying offerings at Utaku's feet for courage and at Shiko's feet for devotion. A samurai seeking counsel with a Battle Maiden is wise to look here, as Battle Maidens are always coming and going, meditating within the shrine or perusing its collection of accounts from Utaku Shiko's life. Aspiring Battle Maidens spend the night prior to their coming-of-age ceremony here, and designated visitor quarters are maintained year-round for these purposes." }
+        RULES {
+            #L5Rnpc01UtakuAsagaoZzZzZzZz: utaku_asagao
+        }
+    }
+
+    # source stat block (page 62)
+    ^"Iuchi Itsuki" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 0
+            ^"Intrigue Conflict Rank" INTEGER 0
+            ^"Rings" DEF {
+                ^"Air" INTEGER 0
+                ^"Earth" INTEGER 0
+                ^"Fire" INTEGER 0
+                ^"Water" INTEGER 0
+                ^"Void" INTEGER 0
+            }
+            ^"Demeanor" STRING "Ambitious"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 40
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 30
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 1", "Scholar 2", "Social 4", "Trade 2"]
+            ^"Favored Weapons" LIST OF STRING ["Kiseru (smoking pipe): Range 0, Damage 2, Deadliness 2, Concealable, Mundane"]
+            ^"Gear" LIST OF STRING ["1 to 4 meishōdō talismans (see Abilities, below)", "sanctified robes (Physical 1, Supernatural 3, Ceremonial)", "divination kit", "medicine kit Companion: Natsu (see Iuchi riding steed on page 141). Gear (other): Up to three omamori"]
+        }
+        DESCRIPTION "SOCIETAL / PERSONAL rings and skill blocks as printed"
+        ^"Iuchi Itsuki" DEF { ^"Effect" STRING "One of a handful of Meishōdō Masters entrusted with this task, Iuchi Itsuki has the duty of maintaining the wards and statues that contain the Dreamer's Forest. Twice every season, guarded with protective talismans and accompanied by trusted companions, he patrols the outermost portions of the woods, checking to be sure the malicious forest is still bound. While Itsuki would never outwardly complain, to his trusted friends he has long bemoaned his station, for he has always felt that he was meant for something greater. During his most recent venture, one of the talismans spoke to him, claiming to be an innocent trapped fox spirit, not a malicious baku—a dream spirit—of Yume-dō. She pleaded to be released, promising to share some power if only Itsuki would free her from the prison of the charm. Itsuki knows better than to trust this voice in his head, and yet he cannot be fully sure that the spirit is lying. If she is telling the truth, then he would be complicit in an innocent spirit's unjust imprisonment. And ever since, he has seen the spirit in his dreams: a shackled fox maiden, begging to be freed. With each passing night of interrupted sleep, he feels his resolve slipping a little more." }
+        ^"Ide" DEF { ^"Effect" STRING "It is said that when Ide initially joined Shinjo's journey, many wondered what use he would be. He was no warrior, and he could barely remain on his steed. But Shinjo saw great potential in the clever, likable man, and since Utaku Shiko seemed taken with him, Shinjo did not object. It was not long before Ide made his usefulness clear, conducting trade, smoothing over tensions both within and without, and keeping accurate histories of Shinjo's travels. But it was in the Empire of Rempet, when Shinjo fell into the hands of the Sun Kings and was held hostage for a profane ritual, that Ide rose into legend. It was he who found allies in al-Qamari and orchestrated Shinjo's rescue. Rewarded with his own family and entrusted with the leadership of an entire horde, Ide went from a simple merchant to a clan daimyō. The Ide still remain the clan's primary representatives. As administrators, they oversee the day-to-day operations that keep the clan prosperous and politically shielded. They take on the Unicorn's social burdens so that the other families can remain independent and free. Chroniclers, diplomats, and exceptional traders, the humble and peaceful Ide are the ones to whom the Unicorn Clan owes its comfortable position." }
+        ^"Deft Negotiator" DEF { ^"Effect" STRING "During an intrigue or other noncombat scene, when making a Scheme action check, Itsuki may add a kept ■ set to a ☯ result to the check. During otherworldly encounters (see page 125), Itsuki gains this bonus on all actions. MEISHŌDŌ ARTIST Choose up to four invocations of rank 1–3 and one invocation of rank 4–5. Itsuki has meishōdō talismans with the chosen invocations bound to them and can activate those invocations using the talismans as described in Iuchi Meishōdō Master School in the core rulebook, page 83. You may also choose up to three rituals that Itsuki can perform." }
+        RULES {
+            #L5Rnpc02IuchiItsukiZzZzZzZz: iuchi_itsuki
+        }
+    }
+
+    # source stat block (page 66)
+    ^"Ide Yūto" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 0
+            ^"Intrigue Conflict Rank" INTEGER 0
+            ^"Rings" DEF {
+                ^"Air" INTEGER 0
+                ^"Earth" INTEGER 0
+                ^"Fire" INTEGER 0
+                ^"Water" INTEGER 0
+                ^"Void" INTEGER 0
+            }
+            ^"Demeanor" STRING "Trait"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 40
+            ^"Glory" INTEGER 44
+            ^"Status" INTEGER 37
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 0", "Scholar 3", "Social 3", "Trade 2"]
+        }
+        DESCRIPTION "ADVERSARY CONFLICT RANK: 1 3 SOCIETAL 40 HONOR 44 GLORY 37 STATUS +2, −2 DEMEANOR · AMBITIOUS Ring values (circle icons): 2, 2, 3, 3, 2 PERSONAL ENDURANCE 10 COMPOSURE 10 FOCUS 5 VIGILANCE 2 ARTISAN 1 MARTIAL 0 SCHOLAR 3 SOCIAL 3 TRADE 2"
+        ^"Ide Yūto" DEF { ^"Effect" STRING "As the son of high-ranking diplomats, wayward slacker Ide Yūto had few obligations and could seek whatever path he wished. So it was to his family's great distress when, while staying at Far Traveler Castle, Yūto vanished without a trace. Months passed, and his family was prepared to accept his unexplained death when he suddenly arrived at Great Day Castle, road-worn and grinning ear to ear. He claimed that he had seen a glimmer under the waters of Water Dragon Lake, and that after diving as far as he could go, he had surfaced in the territory of the Centipede Clan on the eastern coast of Rokugan. He had spent the last two seasons traveling back across the Empire, sending several messages that ultimately never reached his family. While unbelievable, his story was supported by the various trinkets and gifts he had brought back, including silks from Moshi looms. Yūto has craved adventure since that day. He is often seen accosting travelers as they pass through the town near Kyūden Ide, hoping for a chance to return to a life of excitement." }
+        ^"Quick Assessment" DEF { ^"Effect" STRING "As a Support action, Yūto may target an NPC within range 0–3 who is currently engaged in conversation or combat. He discerns the target's demeanor, vigilance, and composure (and may reveal them to his allies)." }
+        ^"Unassuming" DEF { ^"Effect" STRING "When Yūto makes a check targeting a character with a higher status rank, he treats the target's vigilance as 1 lower." }
+        RULES {
+            #L5Rnpc03IdeYūtoZzZzZzZz: ide_yūto
+        }
+    }
+
+    # source stat block (page 80)
+    ^"Kitsune Ryōsei" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 0
+            ^"Rings" DEF {
+                ^"Air" INTEGER 0
+                ^"Earth" INTEGER 0
+                ^"Fire" INTEGER 0
+                ^"Water" INTEGER 0
+                ^"Void" INTEGER 0
+            }
+            ^"Demeanor" STRING "Assertive"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 45
+            ^"Status" INTEGER 64
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 3", "Scholar 4", "Social 2", "Trade 2"]
+        }
+        DESCRIPTION "Young and untested, Kitsune Ryōsei only recently began shadowing her father in preparation to take over for him as the Fox Clan Champion. The entire clan has watched Ryōsei grow into a gallant, witty, and fearless woman, but while many believe she will prove a capable daimyō, she has shown no desire to lead. Her teachers say she possesses 'the heart of a Shinjo,' and time has only proven them right. Still, Ryōsei has set aside her wanderlust and struggles to remain engaged in her father's lessons, if only out of obligation. Due to her father's age, until recently, Ryōsei was gradually shouldering more and more of his duties. She regarded each task with boredom, relying heavily on advisors and delegation so as to return to her own interests as quickly as possible. Then, almost overnight, Ryōsei changed completely, embracing her authority, disregarding advisors, and handling everything herself. Furthermore, among other sudden policy changes, she began pushing for the Fox to become deeply involved in the Empire's affairs, alarming many of her elder samurai. While this sudden change in attitude took many by surprise, it is also well known that Ryōsei made several pacts with tricksters of Sakkaku. Some wonder if the young champion is heeding the advice of an otherworldly counselor—or perhaps has been replaced entirely."
+        RULES {
+            #L5Rnpc04KitsuneRyōseZzZzZzZz: kitsune_ryōsei
+        }
+    }
+
+}
