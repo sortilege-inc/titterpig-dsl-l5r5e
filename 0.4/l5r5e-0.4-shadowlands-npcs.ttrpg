@@ -2130,4 +2130,232 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
         }
     }
 
+    # ===========================
+    # ONI GENERATION — base profiles (Chapter 3, pp.134-136)
+    # ===========================
+
+    # source stat block (page 134)
+    ^"Vile Trickster (Lesser Oni)" DEF {
+        EXTENDS ^"NPC"
+
+        # A base profile for oni that focus on misdirection, deceit,
+        # and subtle corruption rather than raw power.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 8
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 4
+            ^"Silhouette" INTEGER 2
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 6
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 1", "Social 3", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Unholy Might (Fire) [Martial; Physical, Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Sickening Visage (Water) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Cruel Talons: Range 0-1, Damage 5, Deadliness 4, Unholy"]
+            ^"Gear" LIST OF STRING ["Demonic hide (Physical 2, Spiritual 2, Unholy)"]
+        }
+
+        ^"Trickery of Jigoku" DEF {
+            ^"Description" STRING "A vile trickster oni is a Tainted, Otherworldly being of silhouette 2. It may purchase up to two of the Shadowlands powers beginning on page 137."
+        }
+
+        RULES {
+            #L5RSHoniGen01vileTricksterXx: vile_trickster_oni
+        }
+    }
+
+    # source stat block (page 135)
+    ^"Savage Brute (Lesser Oni)" DEF {
+        EXTENDS ^"NPC"
+
+        # A base profile for physically mighty oni that lack the
+        # malign intellect of their more insidious cousins.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 10
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 5
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Near Feral"
+            ^"Social Skill Check TN Modifiers" STRING "Water +1, Fire -1"
+            ^"Endurance" INTEGER 18
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 2
+            ^"Silhouette" INTEGER 4
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 3
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 0", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Unholy Might (Fire) [Martial; Physical, Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Sickening Visage (Water) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Corrupted Tetsubō: Range 1-2, Damage 8, Deadliness 3, Durable, Unholy"]
+            ^"Gear" LIST OF STRING ["Thick demonic hide (Physical 3, Supernatural 3, Unholy)"]
+        }
+
+        ^"Savagery of Jigoku" DEF {
+            ^"Description" STRING "A savage brute oni is a Tainted, Otherworldly being of silhouette 4. It may purchase up to two of the Shadowlands powers beginning on page 137, except for Captivating Voice, Human Mask, Illusion Master, or Scent of Weakness."
+        }
+
+        RULES {
+            #L5RSHoniGen02savageBruteXxx: savage_brute_oni
+        }
+    }
+
+    # source stat block (page 135)
+    ^"Hellish Sorcerer (Powerful Oni)" DEF {
+        EXTENDS ^"NPC"
+
+        # A base profile for oni that tap into the Taint to power
+        # dangerous magic rivaling the most depraved mahō-tsukai.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 8
+            ^"Intrigue Conflict Rank" INTEGER 10
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 5
+                ^"Fire" INTEGER 5
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 4
+            }
+            ^"Demeanor" STRING "Capricious"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Earth -2"
+            ^"Endurance" INTEGER 20
+            ^"Composure" INTEGER 18
+            ^"Focus" INTEGER 9
+            ^"Vigilance" INTEGER 4
+            ^"Silhouette" INTEGER 3
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 7
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 2", "Social 3", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Devious Cunning (Void) [Scholar; Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Sickening Visage (Water) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Bone Naginata: Range 2, Damage 6, Deadliness 7, Durable, Razor-Edged, Unholy"]
+            ^"Gear" LIST OF STRING ["Thick demonic hide (Physical 3, Supernatural 3, Unholy)"]
+        }
+
+        ^"Sorcery of Jigoku" DEF {
+            ^"Description" STRING "A hellish sorcerer oni is a Tainted, Otherworldly being of silhouette 3. It automatically possesses the Tainted Sorcery Shadowlands power, and it may purchase up to two additional Shadowlands powers from those beginning on page 137."
+        }
+
+        RULES {
+            #L5RSHoniGen03hellishSorcererX: hellish_sorcerer_oni
+        }
+    }
+
+    # source stat block (page 136)
+    ^"Monstrous Warrior (Powerful Oni)" DEF {
+        EXTENDS ^"NPC"
+
+        # A base profile whose raw power suits a wide variety of
+        # deadly oni antagonists.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 12
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 5
+                ^"Fire" INTEGER 6
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Aggressive"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Endurance" INTEGER 22
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 9
+            ^"Vigilance" INTEGER 3
+            ^"Silhouette" INTEGER 4
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 6
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 1", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Unholy Strength (Fire) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Sickening Visage (Water) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Massive Ax: Range 1-2, Damage 10, Deadliness 7, Durable, Razor-Edged, Unholy"]
+            ^"Gear" LIST OF STRING ["Demonic hide and scavenged armor (Physical 4, Supernatural 3, Unholy)"]
+        }
+
+        ^"Monster of Jigoku" DEF {
+            ^"Description" STRING "A monstrous warrior oni is a Tainted, Otherworldly being of silhouette 4. It may purchase up to four Shadowlands powers from those beginning on page 137."
+        }
+
+        RULES {
+            #L5RSHoniGen04monstrousWarr: monstrous_warrior_oni
+        }
+    }
+
+    # source stat block (page 136)
+    ^"Warlord of Jigoku (Powerful Oni)" DEF {
+        EXTENDS ^"NPC"
+
+        # A base profile for the mightiest oni, including those that
+        # have gained power from a stolen or granted name.
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 14
+            ^"Intrigue Conflict Rank" INTEGER 10
+            ^"Rings" DEF {
+                ^"Air" INTEGER 4
+                ^"Earth" INTEGER 6
+                ^"Fire" INTEGER 6
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 4
+            }
+            ^"Demeanor" STRING "Arrogant"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Endurance" INTEGER 24
+            ^"Composure" INTEGER 20
+            ^"Focus" INTEGER 10
+            ^"Vigilance" INTEGER 4
+            ^"Silhouette" INTEGER 5
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 9
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 4", "Scholar 3", "Social 4", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Aura of Terror (Void) [Social; Spiritual]"]
+            ^"Disadvantages" LIST OF STRING ["Sickening Visage (Water) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Massive Claws: Range 1-2, Damage 9, Deadliness 8, Razor-Edged, Unholy"]
+            ^"Gear" LIST OF STRING ["Demonic hide and Pit-forged armor (Physical 5, Supernatural 5, Unholy)"]
+        }
+
+        ^"Lord of Jigoku" DEF {
+            ^"Description" STRING "A warlord oni of Jigoku is a Tainted, Otherworldly being of silhouette 5. It may purchase up to five Shadowlands powers from those beginning on page 137."
+        }
+
+        ^"Stolen Name" DEF {
+            ^"Description" STRING "An oni that was summoned by a mahō-tsukai and given a name (or stole a name) gains tremendous power. Should the GM decide to have an oni possess a name, increase each of its rings by 1. The oni may also purchase up to two additional Shadowlands powers from those beginning on page 137."
+        }
+
+        RULES {
+            #L5RSHoniGen05warlordJigoku: warlord_of_jigoku_oni
+        }
+    }
+
 }
