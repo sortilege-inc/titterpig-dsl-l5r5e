@@ -1,0 +1,58 @@
+# .codex SECTION — Errata & FAQ (lore): Kisshōten and the Eight Great Fortunes.
+# Stand-off graph over l5r5e-0.4-errata-faq-kisshoten.lore (spec §25). Part of
+# the L5R5e system graph; DEPENDS_ON the shared schema.
+#
+# The errata restores Kisshōten to the canonical roster of the Eight Great
+# Fortunes (dropped from Emerald Empire as an in-world act). All eight Fortunes
+# already exist in the graph (Fortune EXTENDS Deity EXTENDS Person, so member-of
+# applies); this file mints the "Eight Great Fortunes" collective and amends each
+# Fortune into it, recording the errata as provenance. Kisshōten itself was first
+# minted in the fox-clan section and is amended here.
+
+CODEX "L5R5e_Errata_Kisshoten_Codex" {
+    NAME "Errata & FAQ: The Eight Great Fortunes — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    ENTITY #L5RcxErr01eightfrt ^"Eight Great Fortunes" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-errata-faq-kisshoten.lore" AT "the-eight-great-fortunes"
+    }
+
+    # ---- The roster (all eight already minted; amended into the collective) --
+    ENTITY ^"Bishamon" {
+        SOURCE "l5r5e-0.4-errata-faq-kisshoten.lore" AT "the-eight-great-fortunes"
+        RELATIONSHIPS { ^"member-of" -> ^"Eight Great Fortunes" FROM "Bishamon: Fortune of Strength" }
+    }
+    ENTITY ^"Fukurokujin" {
+        SOURCE "l5r5e-0.4-errata-faq-kisshoten.lore" AT "the-eight-great-fortunes"
+        RELATIONSHIPS { ^"member-of" -> ^"Eight Great Fortunes" FROM "Fukurokujin: Fortune of Wisdom and Mercy" }
+    }
+    ENTITY ^"Kisshōten" {
+        SOURCE "l5r5e-0.4-errata-faq-kisshoten.lore" AT "the-eight-great-fortunes"
+        RELATIONSHIPS { ^"member-of" -> ^"Eight Great Fortunes" FROM "Kisshōten: Fortune of Happiness, Fertility, and Beauty" }
+    }
+    ENTITY ^"Ebisu" {
+        SOURCE "l5r5e-0.4-errata-faq-kisshoten.lore" AT "the-eight-great-fortunes"
+        RELATIONSHIPS { ^"member-of" -> ^"Eight Great Fortunes" FROM "Ebisu: Fortune of Honest Work" }
+    }
+    ENTITY ^"Daikoku" {
+        SOURCE "l5r5e-0.4-errata-faq-kisshoten.lore" AT "the-eight-great-fortunes"
+        RELATIONSHIPS { ^"member-of" -> ^"Eight Great Fortunes" FROM "Daikoku: Fortune of Wealth" }
+    }
+    ENTITY ^"Benten" {
+        SOURCE "l5r5e-0.4-errata-faq-kisshoten.lore" AT "the-eight-great-fortunes"
+        RELATIONSHIPS { ^"member-of" -> ^"Eight Great Fortunes" FROM "Benten: Fortune of Arts and Romantic Love" }
+    }
+    ENTITY ^"Hotei" {
+        SOURCE "l5r5e-0.4-errata-faq-kisshoten.lore" AT "the-eight-great-fortunes"
+        RELATIONSHIPS { ^"member-of" -> ^"Eight Great Fortunes" FROM "Hotei: Fortune of Contentment" }
+    }
+    ENTITY ^"Jurōjin" {
+        SOURCE "l5r5e-0.4-errata-faq-kisshoten.lore" AT "the-eight-great-fortunes"
+        RELATIONSHIPS { ^"member-of" -> ^"Eight Great Fortunes" FROM "Jurōjin: Fortune of Longevity" }
+    }
+}
