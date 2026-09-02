@@ -1,0 +1,267 @@
+# .codex SECTION — Emerald Empire: Paths to Enlightenment (Chapter 5 — Shinsei,
+# the Brotherhood, and the monastic orders). Stand-off graph over
+# l5r5e-0.4-emerald-empire-enlightenment.lore (spec §25). Part of the L5R5e
+# system graph; DEPENDS_ON the shared schema. Covers the three interpretations
+# of Shinsei (and Kongōten/the Thunder Dialogue), the well-known orders and their
+# temples (Osano-wo's Shinden Kasai/Sandā, the Temple of Listening Ghosts, the
+# Four Temples of Kyūden Seppun, the High House of Light, the Silent Ones and
+# Plains Wind monasteries), and their Fortunes and people.
+#
+# Note: the chapter opens by reprinting religion.lore's Forbidden Rituals /
+# Fox's Tale (Grand Master of the Elements, the Yogo curse) — those entities are
+# already in the religion section and are not duplicated here.
+
+CODEX "L5R5e_Codex_EE_Enlightenment" {
+    NAME "Emerald Empire: Paths to Enlightenment — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # -- The Mystery of Shinsei: the hero and god interpretations ----------------
+
+    ENTITY #L5RcxEEenl01kitemtn ^"Kite Mountain" {
+        IS ^"Mountain"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "shinsei-the-hero"
+    }
+    ENTITY #L5RcxEEenl02thundgd ^"Thunder Goddess" {
+        IS ^"Deity"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "shinsei-the-hero"
+    }
+    ENTITY #L5RcxEEenl03thundlg ^"Thunder Dialogue" {
+        IS ^"Document"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "shinsei-the-hero"
+    }
+    ENTITY #L5RcxEEenl04kongoten ^"Kongōten" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "shinsei-the-god"
+    }
+    ENTITY #L5RcxEEenl05shjaltan ^"Shinjo Altansarnai" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "shinsei-the-god"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Unicorn Clan" FROM "Shinjo Altansarnai herself has opined that Shinsei's divine persona as Kongōten"
+        }
+    }
+
+    # -- The well-known monastic orders and their temples -----------------------
+
+    ENTITY #L5RcxEEenl06bishlib ^"Bishamon's Divine Library" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "bishamon-monks"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Otosan Uchi" FROM "Bishamon's Divine Library, in the highlands near Otosan Uchi"
+        }
+    }
+    ENTITY #L5RcxEEenl07order7t ^"Order of the Seven Thunders" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "monks-of-the-seven-thunders"
+    }
+    ENTITY #L5RcxEEenl08tamadora ^"Tamadora" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "monks-of-osano-wo"
+    }
+    ENTITY #L5RcxEEenl09tamaryuu ^"Tamadora-ryū" {
+        IS ^"School"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "monks-of-osano-wo"
+    }
+    ENTITY #L5RcxEEenl10gisetosh ^"Gisei Toshi" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "temple-life"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Phoenix Clan" FROM "the Phoenix's hidden city of Gisei Toshi"
+        }
+    }
+
+    # -- Osano-wo's temples on the Plains of Thunder ----------------------------
+
+    ENTITY #L5RcxEEenl11plnthund ^"Plains of Thunder" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "sacred-thresholds"
+    }
+    ENTITY #L5RcxEEenl12shndkasi ^"Shinden Kasai" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "sacred-thresholds"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Plains of Thunder" FROM "This temple to Osano-wo... Built by Crab warriors on the Plains of Thunder"
+            ^"held-by"    -> ^"Crab Clan"         FROM "Shinden Kasai, was later built by Crab architects on the Plains of Thunder"
+        }
+    }
+    ENTITY #L5RcxEEenl13shndsand ^"Shinden Sandā" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "sacred-thresholds"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Inazuma Province" FROM "The Mantis built one of the two major temples to Osano-wo, Shinden Sandā in Inazuma Province"
+            ^"held-by"    -> ^"Mantis Clan"      FROM "given for safekeeping to Shinden Sandā in Mantis lands"
+        }
+    }
+    ENTITY #L5RcxEEenl14inazuma ^"Inazuma Province" {
+        IS ^"Province"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "sacred-thresholds"
+    }
+    ENTITY #L5RcxEEenl15kusuburu ^"Kusuburu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "sacred-thresholds"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Lion Clan" FROM "The master sensei is a retired Lion samurai now known as Kusuburu"
+        }
+    }
+    ENTITY #L5RcxEEenl16kaiutomo ^"Kaiu Tomoki" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "sacred-thresholds"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "a samurai named Kaiu Tomoki was given the task of building a temple"
+        }
+    }
+    ENTITY #L5RcxEEenl17thsohei ^"Thunder Sōhei" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "sacred-thresholds"
+    }
+    ENTITY #L5RcxEEenl18thdragon ^"Thunder Dragon" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "sacred-thresholds"
+    }
+    ENTITY #L5RcxEEenl19kenzanzz ^"Kenzan" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "sacred-thresholds"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "He named one son, Kenzan, his heir, and through him, the Hida family can trace their bloodline back to the Kami"
+        }
+    }
+    ENTITY #L5RcxEEenl20kaimetsu ^"Kaimetsu-Uo" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "sacred-thresholds"
+        RELATIONSHIPS {
+            ^"founder-of" -> ^"Mantis Clan" FROM "His other son, Kaimetsu-Uo, left to found the Mantis Clan"
+            ^"member-of"  -> ^"Crab Clan"   FROM "the second son of the Kami Hida"
+        }
+    }
+    ENTITY #L5RcxEEenl21takeshi ^"Takeshi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "strength-of-thunder"
+    }
+
+    # -- The Temple of Listening Ghosts (Lion / Kitsu) --------------------------
+
+    ENTITY #L5RcxEEenl22listghst ^"Temple of Listening Ghosts" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "temple-of-listening-ghosts"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Lion Clan" FROM "Temple of Listening Ghosts stands guard over the Lion Clan"
+        }
+    }
+    ENTITY #L5RcxEEenl23shizuka ^"Shizuka" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "temple-of-listening-ghosts"
+    }
+    ENTITY #L5RcxEEenl24ikomaeij ^"Ikoma Eiji" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "akodo-and-the-kitsu"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Lion Clan" FROM "Ikoma Eiji is a visiting historian"
+        }
+    }
+
+    # -- The Four Temples of Kyūden Seppun --------------------------------------
+
+    ENTITY #L5RcxEEenl25kydsepun ^"Kyūden Seppun" {
+        IS ^"Palace"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "listening"
+    }
+    ENTITY #L5RcxEEenl26fourtemp ^"Four Temples" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "four-aspects-of-shinsei"
+    }
+    ENTITY #L5RcxEEenl27chmpurty ^"Chimes of Purity" {
+        IS ^"Artifact"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "listening"
+    }
+    ENTITY #L5RcxEEenl28gm4temp ^"Grand Master of the Four Temples" {
+        IS ^"Title"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "listening"
+    }
+    ENTITY #L5RcxEEenl29dorizzz ^"Dōri" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "listening"
+        RELATIONSHIPS {
+            ^"holds-title" -> ^"Grand Master of the Four Temples" FROM "The current Grand Master is Dōri"
+        }
+    }
+    ENTITY #L5RcxEEenl30yoshizz ^"Yoshi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "listening"
+    }
+    ENTITY #L5RcxEEenl31asahatsu ^"Asahina Atsushi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "listening"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crane Clan" FROM "Asahina Atsushi is a young, inexperienced courtier who has come to stay at Kyūden Seppun"
+        }
+    }
+    ENTITY #L5RcxEEenl32junzzzzz ^"Jun" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "attuned-to-the-way"
+    }
+
+    # -- The High House of Light (Togashi Order) --------------------------------
+
+    ENTITY ^"Kyūden Togashi" {
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "the-high-house-of-light"
+    }
+    ENTITY #L5RcxEEenl33togyoku ^"Togashi Yokuni" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "the-high-house-of-light"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Dragon Clan"   FROM "Togashi Yokuni is both the Dragon Clan Champion and the head of the Togashi Order"
+            ^"leads"     -> ^"Togashi Order"  FROM "the head of the Togashi Order"
+        }
+    }
+    ENTITY #L5RcxEEenl34toggaij ^"Togashi Gaijustsu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "the-high-house-of-light"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Dragon Clan" FROM "Togashi Gaijustsu is a blind tattoo master"
+        }
+    }
+    ENTITY #L5RcxEEenl35togumu ^"Togashi Umu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "the-high-house-of-light"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Dragon Clan" FROM "Togashi Umu lives in a hamlet at the base of the mountain"
+        }
+    }
+    ENTITY #L5RcxEEenl36chikako ^"Chikako" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "chikako-initiate-monk"
+    }
+
+    # -- The Silent Ones and Plains Wind monasteries ----------------------------
+
+    ENTITY #L5RcxEEenl37silentm ^"Silent Ones Monastery" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "silent-ones-monastery"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Ryokō Owari Toshi" FROM "The Silent Ones Monastery, devoted to Tsugumu, Fortune of Secrets, is hidden near the City of Lies"
+        }
+    }
+    ENTITY #L5RcxEEenl38tsugumu ^"Tsugumu" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "silent-ones-monastery"
+    }
+    ENTITY #L5RcxEEenl39plnswind ^"Plains Wind Monastery" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "plains-wind-monastery"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Unicorn Clan" FROM "help supply the Unicorn army with food and healing herbs"
+        }
+    }
+    ENTITY #L5RcxEEenl40kuroshin ^"Kuroshin" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "plains-wind-monastery"
+    }
+    ENTITY #L5RcxEEenl41daizzzzz ^"Dai" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-enlightenment.lore" AT "plains-wind-monastery"
+    }
+}
