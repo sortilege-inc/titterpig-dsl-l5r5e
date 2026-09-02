@@ -1,0 +1,155 @@
+# .codex SECTION — Emerald Empire: Heart of the Empire (Chapter 3). Stand-off
+# graph over l5r5e-0.4-emerald-empire-heart.lore (spec §25). Part of the L5R5e
+# system graph. Built in batches; this file grows as the chapter is folded in.
+# (Batch 1: the systemic entities + the rural village vignettes.)
+
+CODEX "L5R5e_Codex_EE_Heart" {
+    NAME "Emerald Empire: Heart of the Empire — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.7"
+
+    # -- Fortunes, orders, and offices -----------------------------------------
+
+    ENTITY #L5RcxEEheart01inariz ^"Inari" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-heart.lore" AT "heart-of-the-empire"
+    }
+
+    ENTITY #L5RcxEEheart02koshin ^"Koshin" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-emerald-empire-heart.lore" AT "other-resources"
+    }
+
+    ENTITY #L5RcxEEheart03barefo ^"Barefoot Brethren" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-heart.lore" AT "other-resources"
+    }
+
+    ENTITY #L5RcxEEheart04heralds ^"Imperial Heralds" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-heart.lore" AT "other-resources"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Miya" FROM "The Imperial Heralds of the Miya family"
+        }
+    }
+
+    ENTITY #L5RcxEEheart05goshiz ^"Goshi" {
+        IS ^"Title"
+        SOURCE "l5r5e-0.4-emerald-empire-heart.lore" AT "samurai-among-the-commoners"
+    }
+
+    ENTITY #L5RcxEEheart06doshin ^"Dōshin" {
+        IS ^"Title"
+        SOURCE "l5r5e-0.4-emerald-empire-heart.lore" AT "tax-collectors"
+    }
+
+    # -- Buzzing Fly Village ----------------------------------------------------
+
+    ENTITY #L5RcxEEheart07buzzvil ^"Buzzing Fly Village" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-emerald-empire-heart.lore" AT "buzzing-fly-village"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Rugashi Province" FROM "It is located in Rugashi Province"
+            ^"held-by"    -> ^"Lion Clan"        FROM "within the Kitsu lands of the Lion Clan"
+        }
+    }
+
+    ENTITY #L5RcxEEheart08rugprov ^"Rugashi Province" {
+        IS ^"Province"
+        SOURCE "l5r5e-0.4-emerald-empire-heart.lore" AT "buzzing-fly-village"
+    }
+
+    ENTITY #L5RcxEEheart09rugcity ^"Rugashi City" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-emerald-empire-heart.lore" AT "buzzing-fly-village"
+    }
+
+    ENTITY #L5RcxEEheart10buzzbrew ^"Buzzing Fly Brewery" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-emerald-empire-heart.lore" AT "buzzing-fly-village"
+    }
+
+    ENTITY #L5RcxEEheart11reihaz ^"Reiha" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-heart.lore" AT "brewmaster-reiha"
+        RELATIONSHIPS {
+            ^"oversees" -> ^"Buzzing Fly Brewery" FROM "Reiha is in charge of the Buzzing Fly Brewery"
+        }
+    }
+
+    # -- Anbasukai Village ------------------------------------------------------
+
+    ENTITY #L5RcxEEheart12anbavil ^"Anbasukai Village" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-emerald-empire-heart.lore" AT "anbasukai-village"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Senseki Province" FROM "Located in the mountains of the Senseki Province"
+            ^"held-by"    -> ^"Unicorn Clan"     FROM "one of the Unicorn Clan's most valuable holdings"
+        }
+    }
+
+    ENTITY #L5RcxEEheart13sensekp ^"Senseki Province" {
+        IS ^"Province"
+        SOURCE "l5r5e-0.4-emerald-empire-heart.lore" AT "anbasukai-village"
+    }
+
+    ENTITY #L5RcxEEheart14earthhs ^"Earth's Heart Shrine" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-emerald-empire-heart.lore" AT "anbasukai-village"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Anbasukai Village" FROM "The village's homes radiate out from a beautifully crafted shrine, Earth's Heart Shrine"
+        }
+    }
+
+    ENTITY #L5RcxEEheart15utakanb ^"Utaku Anbasukai" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-heart.lore" AT "anbasukai-village"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Unicorn Clan" FROM "reported his findings to the Unicorn"
+        }
+    }
+
+    ENTITY #L5RcxEEheart16uchidaz ^"Uchida" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-heart.lore" AT "uchida"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crab Clan" FROM "Formerly of the Crab Clan"
+        }
+    }
+
+    # -- Swirling Pool Village --------------------------------------------------
+
+    ENTITY #L5RcxEEheart17swirlvi ^"Swirling Pool Village" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-emerald-empire-heart.lore" AT "swirling-pool-village"
+        RELATIONSHIPS {
+            ^"located-in"   -> ^"Sunda Mizu Province"  FROM "the hills of Sunda Mizu Province"
+            ^"held-by"      -> ^"Yasuki"               FROM "under the authority of the Yasuki family"
+            ^"located-near" -> ^"Earthquake Fish Bay"  FROM "along the shores of Earthquake Fish Bay"
+        }
+    }
+
+    ENTITY #L5RcxEEheart18sundamz ^"Sunda Mizu Province" {
+        IS ^"Province"
+        SOURCE "l5r5e-0.4-emerald-empire-heart.lore" AT "swirling-pool-village"
+    }
+
+    ENTITY #L5RcxEEheart19fourgif ^"Shrine of the Four Gifts" {
+        IS ^"Temple"
+        SOURCE "l5r5e-0.4-emerald-empire-heart.lore" AT "swirling-pool-village"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Swirling Pool Village" FROM "The community maintains the Shrine of the Four Gifts"
+        }
+    }
+
+    ENTITY #L5RcxEEheart20muratah ^"Murata Hisao" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-heart.lore" AT "murata-hisao"
+        RELATIONSHIPS {
+            ^"oversees" -> ^"Shrine of the Four Gifts" FROM "The priest who oversees the Shrine of the Four Gifts"
+        }
+    }
+}
