@@ -15,7 +15,7 @@
 
 CODEX "L5R5e_Codex_Schema" {
     NAME "L5R5e Lore Graph — Shared Ontology"
-    VERSION "0.4"
+    VERSION "0.5"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-02"
     FOR EDITION "l5r5e"
@@ -98,5 +98,7 @@ CODEX "L5R5e_Codex_Schema" {
         ^"occurs-during" {                          DOMAIN ^"Event"        RANGE ^"Calendar Term" }
         ^"part-of"       { INVERSE ^"has-part"    DOMAIN ^"Place"        RANGE ^"Place"   }
         ^"corrupted-by"  {                          DOMAIN ^"Person"       RANGE ^"Realm"   }
+        ^"authored"      { INVERSE ^"authored-by"  DOMAIN ^"Person"       RANGE ^"Document" }
+        ^"originated"    { INVERSE ^"originated-by" DOMAIN ^"Person"      RANGE ^"Tradition" }
     }
 }
