@@ -1,0 +1,68 @@
+# .codex SECTION — Emerald Empire: New Player Options (Chapter 7). Stand-off
+# graph over l5r5e-0.4-emerald-empire-new-player-options.lore (spec §25). Part of
+# the L5R5e system graph; DEPENDS_ON the shared schema.
+#
+# This chapter is overwhelmingly MECHANICAL — new schools (Miya Cartographer,
+# Otomo Schemer, Seppun Astrologer/Palace Guard, Fortunist/Shinseist Monk Orders,
+# Kitsune Impersonator Tradition, Kolat Saboteur Conspiracy), advantages,
+# disadvantages, techniques, and Additional Titles (Advisor, Clan Magistrate,
+# Daimyō, Gunsō, Monastic Acolyte, Priest, Spy, Yōjimbō, Yoriki). Those are DEFs
+# in the .ttrpg corpus, not lore entities, so they are NOT reproduced here (per
+# the §25 rule that clans/families/schools resolve to their DEFs directly). The
+# Imperial families (Miya, Otomo, Seppun) are likewise DEFs. Captured below are
+# the chapter's lore-native named entities: the pirate NPC, the Imperial-family
+# customs and institutions, and a vignette character.
+
+CODEX "L5R5e_Codex_EE_NewPlayerOptions" {
+    NAME "Emerald Empire: New Player Options — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    ENTITY #L5RcxEEnpo01uranmnmi ^"Uranaishi no Manami" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-new-player-options.lore" AT "uranaishi-no-manami-ambitious-pirate"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Mantis Clan" FROM "The Mantis consider Manami one of their best pirates"
+        }
+    }
+    ENTITY #L5RcxEEnpo02toshinaz ^"Toshi no Inazuma" {
+        IS ^"City"
+        SOURCE "l5r5e-0.4-emerald-empire-new-player-options.lore" AT "uranaishi-no-manami-ambitious-pirate"
+    }
+
+    # -- Imperial-family customs and institutions -------------------------------
+
+    ENTITY #L5RcxEEnpo03empbless ^"Emperor's Blessing" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-emerald-empire-new-player-options.lore" AT "the-miya-family"
+    }
+    ENTITY #L5RcxEEnpo04impheral ^"Imperial Herald" {
+        IS ^"Title"
+        SOURCE "l5r5e-0.4-emerald-empire-new-player-options.lore" AT "the-miya-family"
+    }
+    ENTITY #L5RcxEEnpo05ritabdic ^"Ritual of Abdication" {
+        IS ^"Tradition"
+        SOURCE "l5r5e-0.4-emerald-empire-new-player-options.lore" AT "the-otomo-family"
+    }
+    ENTITY #L5RcxEEnpo06hidnguard ^"Hidden Guard" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-emerald-empire-new-player-options.lore" AT "the-seppun-family"
+    }
+    ENTITY #L5RcxEEnpo07implibry ^"Imperial Library" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-emerald-empire-new-player-options.lore" AT "the-seppun-family"
+    }
+
+    # -- Vignette character -----------------------------------------------------
+
+    ENTITY #L5RcxEEnpo08dojikent ^"Doji Kentarō" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-new-player-options.lore" AT "rock-gardening-void"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Crane Clan" FROM "Doji Kentarō allowed a tiny grin to sneak into his lips"
+        }
+    }
+}
