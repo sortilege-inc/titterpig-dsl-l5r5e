@@ -1,0 +1,115 @@
+# L5R 5E - CELESTIAL REALMS: NON-PLAYER CHARACTERS (NPCs)
+# NPCs from Chapter 2 (The Soul of the Empire). Source: Celestial Realms.
+
+EXTENSION "L5R5e_CelestialRealms_NPCs" {
+    VERSION "0.4.1"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-02"
+    DEPENDS_ON "L5R5e_Core_Core"
+
+    # source stat block (page 39)
+    ^"Akodo Tadeo, Inspired Zealot" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 6
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 4
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Devoted"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 80
+            ^"Glory" INTEGER 65
+            ^"Status" INTEGER 45
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 3", "Scholar 4", "Social 3", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Tactical Prowess (Fire) [Martial; Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Intolerant (Fire) [Social; Interpersonal]"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Wakizashi", "ceremonial clothes (Physical 1, Ceremonial, Resplendent)", "personal chop"]
+        }
+        DESCRIPTION "ADVERSARY CONFLICT RANK: 6 (Ninjo icon) 6 (Giri icon) Akodo Tadeo maintains a remarkable claim—that the Kami Hantei appeared to him, telling him that his duty to the Empire was complete, and that his reward would be elevation to the Celestial Heavens. His family connections to the Seppun have earned him access to the Shrine to Hantei-no-Kami, where he has made offerings and prayed several times. As yet, however, the Kami has not returned to him. While Tadeo's claim seems outlandish, a fire of fierce conviction burns in his eyes; clearly, he fervently believes that what he is saying is true. His Seppun patrons weary of him, though, and he will soon have to leave the Forbidden City. Tadeo's response is that he can now answer only to the Kami Hantei himself and will remain until the Kami comes to take him to Tengoku."
+        RULES {
+            #L5RCELcel01akodotadeoZzZzZz: akodo_tadeo__inspired_zealot
+        }
+    }
+
+    # source stat block (page 77)
+    ^"Moshi Chiasa, Centipede Clan Champion" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 8
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 5
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 3
+            }
+            ^"Demeanor" STRING "Idealistic"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 62
+            ^"Glory" INTEGER 53
+            ^"Status" INTEGER 76
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 3", "Scholar 4", "Social 2", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Mother's Blessing (Void) [Scholar, Social; Interpersonal, Mental]", "Local Renown (Fire) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Inexperienced Leader (Void) [Social; Interpersonal, Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged", "Righteous Sunlight (Bō): Range 1-2, Damage 4, Deadliness 5, Sacred"]
+            ^"Gear" LIST OF STRING ["Tear-blessed robes (Physical 2, Supernatural 4, Ceremonial)", "wakizashi", "personal chop", "various offerings for to Amaterasu and fire kami"]
+        }
+        DESCRIPTION "ADVERSARY CONFLICT RANK: 8 5 SOCIETAL / PERSONAL rings and traits Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged Righteous Sunlight (Bō): Range 1–2, Damage 4, Deadliness 5, Sacred. Gear (equipped): Tear-blessed robes (Physical 2, Supernatural 4, Ceremonial), wakizashi, personal chop, various offerings for to Amaterasu and fire kami"
+        RULES {
+            #L5RCELcel02moshichiasaZzZzZz: moshi_chiasa__centipede_clan_champion
+        }
+    }
+
+    # source stat block (page 78)
+    ^"Akodo Hinata, Headstrong Adept" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 4
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Demeanor" STRING "Flighty"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 37
+            ^"Glory" INTEGER 36
+            ^"Status" INTEGER 36
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 1", "Scholar 2", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Determined Nature (Void) [Social; Interpersonal, Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Youthful Ignorance (Fire) [Social; Interpersonal, Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Traveling clothes (Physical 2, Durable, Mundane, Subtle)", "wakizashi", "journal of incoherent dream-related notes"]
+        }
+        DESCRIPTION "ADVERSARY CONFLICT RANK: 4 5"
+        RULES {
+            #L5RCELcel03akodohinataZzZzZz: akodo_hinata__headstrong_adept
+        }
+    }
+
+}
