@@ -15,7 +15,7 @@
 
 CODEX "L5R5e_Codex_Schema" {
     NAME "L5R5e Lore Graph — Shared Ontology"
-    VERSION "0.2"
+    VERSION "0.3"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-02"
     FOR EDITION "l5r5e"
@@ -24,8 +24,11 @@ CODEX "L5R5e_Codex_Schema" {
     CATEGORIES {
         ^"Person"        DEF {}
         ^"Kami"          DEF { EXTENDS ^"Person" }
-        ^"Fortune"       DEF {}
+        ^"Deity"         DEF { EXTENDS ^"Person" }
+        ^"Fortune"       DEF { EXTENDS ^"Deity" }
         ^"Spirit"        DEF {}
+        ^"Race"          DEF {}
+        ^"Realm"         DEF { EXTENDS ^"Place" }
         ^"Faction"       DEF {}
         ^"Organization"  DEF { EXTENDS ^"Faction" }
         ^"School"        DEF { EXTENDS ^"Organization" }
@@ -89,6 +92,7 @@ CODEX "L5R5e_Codex_Schema" {
         ^"serves"        { INVERSE ^"served-by"   DOMAIN ^"Person"       RANGE ^"Faction" }
         ^"holds-title"   { INVERSE ^"held-by-person" DOMAIN ^"Person"    RANGE ^"Title"   }
         ^"betrothed-to"  { SYMMETRIC               DOMAIN ^"Person"       RANGE ^"Person"  }
+        ^"married-to"    { SYMMETRIC               DOMAIN ^"Person"       RANGE ^"Person"  }
         ^"companion-of"  { SYMMETRIC               DOMAIN ^"Person"       RANGE ^"Person"  }
         ^"travels-to"    {                          DOMAIN ^"Person"       RANGE ^"Place"   }
         ^"occurs-during" {                          DOMAIN ^"Event"        RANGE ^"Calendar Term" }
