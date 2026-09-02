@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Emerald_Empire_NPCs" EXTENDS "L5R5e_Emerald_Empire" {
     NAME "Legend of the Five Rings 5th Edition - Emerald Empire: NPCs"
-    VERSION "0.4.4"
+    VERSION "0.4.5"
     SPEC_VERSION "0.4.1"
     RELEASE_DATE "2026-03-01"
 
@@ -1494,6 +1494,50 @@ EXTENSION "L5R5e_Emerald_Empire_NPCs" EXTENDS "L5R5e_Emerald_Empire" {
     }
 
     # --- Wilderness (Troll) ---
+
+    # source stat block (page 218)
+    ^"Kaiu “Shibito” Tsuneko" DEF {
+        EXTENDS ^"NPC"
+
+        # A Kaiu architect who forsook her family's vocation to study ancient
+        # ruins; after an encounter near Morikage Toshi she believes the dead
+        # speak to her. Wan and emaciated, disowned, called Shibito (corpse).
+
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 4
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Demeanor" STRING "Detached"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Void -2"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 30
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 35
+            ^"Skills" LIST OF STRING ["Artisan 4", "Martial 1", "Scholar 3", "Social 1", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Secrets (Fire) [Social; Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Superstitious (Fire) [Scholar; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0-1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Ragged traveling clothes", "Calligraphy set", "Scroll satchel", "Pack of offerings"]
+        }
+
+        ^"Touched by Meido" DEF {
+            ^"Description" STRING "Activation: When making a check pertaining to spirits, Shibito may receive 3 strife to roll 1 additional ring die and keep 1 additional die as if she had spend 1 Void point."
+        }
+
+        RULES {
+            #L5REE30kaiuShibitoTsune1: kaiu_shibito_tsuneko
+        }
+    }
 
     # source stat block (page 221)
     ^"Kasai, Mournful Troll" DEF {
