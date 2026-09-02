@@ -15,7 +15,7 @@
 
 CODEX "L5R5e_Codex_Schema" {
     NAME "L5R5e Lore Graph — Shared Ontology"
-    VERSION "0.7"
+    VERSION "0.8"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-02"
     FOR EDITION "l5r5e"
@@ -102,5 +102,6 @@ CODEX "L5R5e_Codex_Schema" {
         ^"originated"    { INVERSE ^"originated-by" DOMAIN ^"Person"      RANGE ^"Tradition" }
         ^"student-of"    { INVERSE ^"teacher-of"   DOMAIN ^"Person"       RANGE ^"Person"  }
         ^"oversees"      { INVERSE ^"overseen-by"  DOMAIN ^"Person"       RANGE ^"Place"   }
+        ^"vassal-of"     { INVERSE ^"has-vassal"   DOMAIN ^"Faction"      RANGE ^"Faction" }
     }
 }
