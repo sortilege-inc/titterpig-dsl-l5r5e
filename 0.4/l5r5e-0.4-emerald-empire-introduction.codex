@@ -1,0 +1,174 @@
+# .codex SECTION — Emerald Empire: Introduction. Stand-off graph over
+# l5r5e-0.4-emerald-empire-introduction.lore (spec §25). Part of the single
+# L5R5e system graph (parent: l5r5e-0.4-codex.codex). Everything named in the
+# prose gets a node, including the opening-fiction characters.
+
+CODEX "L5R5e_Codex_EE_Introduction" {
+    NAME "Emerald Empire: Introduction — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.2"
+
+    # -- Opening fiction: "18th Day of the Month of Hantei, 1122 ..." ----------
+
+    ENTITY #L5RcxEEintro01narisawaa ^"Daidoji Narisawa" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "18th-day-of-the-month-of-hantei-1122-on-a-road-in-eastern-yama-province"
+        RELATIONSHIPS {
+            ^"member-of"    -> ^"Daidoji"            FROM "Daidoji Narisawa had never been a particularly pious man"
+            ^"companion-of" -> ^"Hiramichi Asao"     FROM "his companion Hiramichi Asao"
+            ^"betrothed-to" -> ^"Matsu Chieko"       FROM "meet his future wife"
+            ^"travels-to"   -> ^"Last Breath Castle" FROM "We should reach Last Breath Castle"
+        }
+    }
+
+    ENTITY #L5RcxEEintro02asaozzzz ^"Hiramichi Asao" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "18th-day-of-the-month-of-hantei-1122-on-a-road-in-eastern-yama-province"
+        RELATIONSHIPS {
+            ^"member-of"    -> ^"Hiramichi"        FROM "his companion Hiramichi Asao"
+            ^"companion-of" -> ^"Daidoji Narisawa" FROM "his companion Hiramichi Asao"
+        }
+    }
+
+    ENTITY #L5RcxEEintro03hidejizz ^"Matsu Hideji" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "18th-day-of-the-month-of-hantei-1122-on-a-road-in-eastern-yama-province"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Matsu"     FROM "I am Matsu Hideji, magistrate of the Lion Clan"
+            ^"serves"    -> ^"Lion Clan" FROM "magistrate of the Lion Clan"
+        }
+    }
+
+    ENTITY #L5RcxEEintro04chiekozz ^"Matsu Chieko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "18th-day-of-the-month-of-hantei-1122-on-a-road-in-eastern-yama-province"
+        RELATIONSHIPS {
+            ^"member-of"    -> ^"Matsu"            FROM "throw me before Matsu Chieko-san"
+            ^"betrothed-to" -> ^"Daidoji Narisawa" FROM "meet his future wife"
+        }
+    }
+
+    ENTITY #L5RcxEEintro05tarozzzz ^"Taro" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "18th-day-of-the-month-of-hantei-1122-on-a-road-in-eastern-yama-province"
+    }
+
+    ENTITY #L5RcxEEintro06hiramichi ^"Hiramichi" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "18th-day-of-the-month-of-hantei-1122-on-a-road-in-eastern-yama-province"
+    }
+
+    # -- Places named in the fiction -------------------------------------------
+
+    ENTITY #L5RcxEEintro07yamaprov ^"Yama Province" {
+        IS ^"Province"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "18th-day-of-the-month-of-hantei-1122-on-a-road-in-eastern-yama-province"
+    }
+
+    ENTITY #L5RcxEEintro08daidojica ^"Daidoji Castle" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "18th-day-of-the-month-of-hantei-1122-on-a-road-in-eastern-yama-province"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Daidoji" FROM "the back of Daidoji Castle"
+        }
+    }
+
+    ENTITY #L5RcxEEintro09lastbreat ^"Last Breath Castle" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "18th-day-of-the-month-of-hantei-1122-on-a-road-in-eastern-yama-province"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Matsu" FROM "the stronghold of the family that trained both the berserkers and beastmasters"
+        }
+    }
+
+    ENTITY #L5RcxEEintro10lakesorro ^"Lake of Sorrows" {
+        IS ^"Lake"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "18th-day-of-the-month-of-hantei-1122-on-a-road-in-eastern-yama-province"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Last Breath Castle" FROM "the nearby Lake of Sorrows"
+        }
+    }
+
+    ENTITY #L5RcxEEintro11threeston ^"Three Stone River" {
+        IS ^"River"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "18th-day-of-the-month-of-hantei-1122-on-a-road-in-eastern-yama-province"
+    }
+
+    ENTITY #L5RcxEEintro12kyudendoj ^"Kyūden Doji" {
+        IS ^"Palace"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "18th-day-of-the-month-of-hantei-1122-on-a-road-in-eastern-yama-province"
+        RELATIONSHIPS {
+            ^"held-by" -> ^"Doji" FROM "All the way from Kyūden Doji"
+        }
+    }
+
+    ENTITY #L5RcxEEintro21monthhant ^"Month of Hantei" {
+        IS ^"Calendar Term"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "18th-day-of-the-month-of-hantei-1122-on-a-road-in-eastern-yama-province"
+    }
+
+    ENTITY #L5RcxEEintro22horsehour ^"Hour of the Horse" {
+        IS ^"Calendar Term"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "18th-day-of-the-month-of-hantei-1122-on-a-road-in-eastern-yama-province"
+    }
+
+    # -- "Welcome to Rokugan": the realm and its bounds ------------------------
+
+    ENTITY #L5RcxEEintro13empirezz ^"Emerald Empire" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "welcome-to-rokugan"
+    }
+
+    ENTITY #L5RcxEEintro14twilight ^"Twilight Mountains" {
+        IS ^"Mountain"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "welcome-to-rokugan"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Emerald Empire" FROM "reaches from the Twilight Mountains in the south"
+        }
+    }
+
+    ENTITY #L5RcxEEintro15northmtn ^"North Mountains" {
+        IS ^"Mountain"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "welcome-to-rokugan"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Emerald Empire" FROM "the Great Wall of the North Mountains"
+        }
+    }
+
+    ENTITY #L5RcxEEintro16greatwal ^"Great Wall of the North Mountains" {
+        IS ^"Wall"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "welcome-to-rokugan"
+        RELATIONSHIPS {
+            ^"part-of" -> ^"North Mountains" FROM "the Great Wall of the North Mountains"
+        }
+    }
+
+    ENTITY #L5RcxEEintro17shinomen ^"Shinomen Forest" {
+        IS ^"Forest"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "welcome-to-rokugan"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Emerald Empire" FROM "the Shinomen Forest in the west"
+        }
+    }
+
+    ENTITY #L5RcxEEintro18seasungo ^"Sea of the Sun Goddess" {
+        IS ^"Sea"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "welcome-to-rokugan"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Emerald Empire" FROM "the Sea of the Sun Goddess in the east"
+        }
+    }
+
+    ENTITY #L5RcxEEintro19bushidoz ^"Code of Bushidō" {
+        IS ^"Tradition"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "welcome-to-rokugan"
+    }
+
+    ENTITY #L5RcxEEintro20celestia ^"Celestial Heavens" {
+        IS ^"Place"
+        SOURCE "l5r5e-0.4-emerald-empire-introduction.lore" AT "welcome-to-rokugan"
+    }
+}

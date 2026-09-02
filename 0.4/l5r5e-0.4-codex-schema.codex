@@ -15,9 +15,9 @@
 
 CODEX "L5R5e_Codex_Schema" {
     NAME "L5R5e Lore Graph — Shared Ontology"
-    VERSION "0.1"
+    VERSION "0.2"
     SPEC_VERSION "0.5"
-    RELEASE_DATE "2026-09-01"
+    RELEASE_DATE "2026-09-02"
     FOR EDITION "l5r5e"
 
     # ---- Category taxonomy (the "IS a ___" types) ---------------------------
@@ -39,14 +39,22 @@ CODEX "L5R5e_Codex_Schema" {
         ^"Temple"        DEF { EXTENDS ^"Place" }
         ^"Forest"        DEF { EXTENDS ^"Place" }
         ^"River"         DEF { EXTENDS ^"Place" }
+        ^"Mountain"      DEF { EXTENDS ^"Place" }
+        ^"Sea"           DEF { EXTENDS ^"Place" }
+        ^"Lake"          DEF { EXTENDS ^"Place" }
         ^"Beach"         DEF { EXTENDS ^"Place" }
         ^"Inlet"         DEF { EXTENDS ^"Place" }
+        ^"Road"          DEF { EXTENDS ^"Place" }
+        ^"Bridge"        DEF { EXTENDS ^"Place" }
+        ^"Wall"          DEF { EXTENDS ^"Place" }
         ^"Building"      DEF { EXTENDS ^"Place" }
         ^"Landmark"      DEF { EXTENDS ^"Place" }
         ^"Artifact"      DEF {}
         ^"Document"      DEF {}
         ^"Event"         DEF {}
         ^"Tradition"     DEF {}
+        ^"Title"         DEF {}
+        ^"Calendar Term" DEF {}
     }
 
     # ---- Relationship predicate vocabulary ----------------------------------
@@ -77,5 +85,13 @@ CODEX "L5R5e_Codex_Schema" {
         ^"bound-to"      {                          DOMAIN ^"Spirit"       RANGE ^"Faction" }
         ^"observed-by"   { INVERSE ^"observes"    DOMAIN ^"Tradition"    RANGE ^"Faction" }
         ^"dedicated-to"  {                          DOMAIN ^"Place"        RANGE ^"Fortune" }
+        ^"member-of"     { INVERSE ^"has-member"  DOMAIN ^"Person"       RANGE ^"Faction" }
+        ^"serves"        { INVERSE ^"served-by"   DOMAIN ^"Person"       RANGE ^"Faction" }
+        ^"holds-title"   { INVERSE ^"held-by-person" DOMAIN ^"Person"    RANGE ^"Title"   }
+        ^"betrothed-to"  { SYMMETRIC               DOMAIN ^"Person"       RANGE ^"Person"  }
+        ^"companion-of"  { SYMMETRIC               DOMAIN ^"Person"       RANGE ^"Person"  }
+        ^"travels-to"    {                          DOMAIN ^"Person"       RANGE ^"Place"   }
+        ^"occurs-during" {                          DOMAIN ^"Event"        RANGE ^"Calendar Term" }
+        ^"part-of"       { INVERSE ^"has-part"    DOMAIN ^"Place"        RANGE ^"Place"   }
     }
 }
