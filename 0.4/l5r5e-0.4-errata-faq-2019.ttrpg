@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Errata and FAQ (September 2019)"
-    VERSION "0.4.5"
+    VERSION "0.4.6"
     SPEC_VERSION "0.4"
     RELEASE_DATE "2026-03-01"
 
@@ -24,13 +24,6 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     # ---- Chapter 1 ----
 
     MODIFY ^"Universal Tiebreaker" {
-
-        # When effects that break ties still result in a stalemate:
-        # - PCs supersede NPCs
-        # - Adversary NPCs supersede minion NPCs
-        # If there is still a tie, the GM should use a randomized
-        # means (coin flip, rock-paper-scissors, etc.).
-
         GUIDANCE {
             ENTRY ^"errata-universal-tiebreaker-0" #L5RERG0TplpshcZa3oDYQ3 {
                 CONCERNS [ ^"Universal Tiebreaker" ]
@@ -41,51 +34,6 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Kakita Duelist" {
-
-        # The Kakita Duelist School emphasizes "one strike, one kill,"
-        # seeking for its students to master the one perfect strike performed
-        # in an iaijutsu duel. For the Kakita Duelists, such is the pinnacle
-        # of all martial skills.
-
-        PROPERTIES {
-            ^"School Name" STRING "Kakita Duelist" FIXED
-            ^"Clan" STRING "Crane"
-            ^"Roles" LIST ["Bushi", "Artisan"]
-            ^"Ring Increase" DEF {
-                ^"Air" INTEGER 1
-                ^"Earth" INTEGER 1
-            }
-            ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Design", ^"Fitness", ^"Martial Arts [Melee]", ^"Meditation", ^"Sentiment", ^"Smithing"] INTEGER 1 }
-            ^"Starting Honor" INTEGER DEFAULT 50
-            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
-        }
-
-        STARTING_TECHNIQUES {
-            KATA ^"Iaijutsu Cut: Rising Blade"
-            SHUJI CHOOSE 1 [^"Shallow Waters", ^"Weight of Duty"]
-        }
-
-        SCHOOL_ABILITY "Way of the Crane" {
-            "Once per round, you may increase or decrease the severity of a critical strike you inflict by an amount up to your school rank."
-        }
-
-        MASTERY_ABILITY ^"Strike with No Thought" {
-            # "Strike with No Thought" has opportunity effects:
-            # (op)+: One character of your choice at range 0-2 of your target
-            #   per (op) spent this way suffers the Dazed and Disoriented conditions.
-            # (op)(op)+: Treat the maximum range of this technique as 1 higher
-            #   per (op)(op) spent this way.
-            "Once per scene, as an Attack and Movement action, you may make a Martial Arts [Melee] (Void) check targeting one character at range 2-3 using a sheathed katana or wakizashi. The TN of this check is equal to your target's vigilance. You immediately move to range 1 of your target and draw the weapon you used. If you succeed, your target suffers a critical strike with severity equal to the deadliness of your weapon plus your bonus successes. (op)+: One character of your choice at range 0-2 of your target per (op) spent this way suffers the Dazed and Disoriented conditions. (op)(op)+: Treat the maximum range of this technique as 1 higher per (op)(op) spent this way."
-        }
-
-        STARTING_OUTFIT [
-            "Traveling clothes", "ceremonial clothes",
-            "daishō (katana and wakizashi)",
-            "yari (spear) or yumi (bow)", "quiver of arrows",
-            "traveling pack",
-            "an attendant or Rokugani pony"
-        ]
-
         CURRICULUM {
             RANK 1 {
                 SKILL_GROUP "Martial Skills"
@@ -95,45 +43,6 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
                 TECHNIQUE_GROUP "Rank 1 Kata"
                 ^"Iaijutsu Cut: Crossing Blade" [kata]
                 ^"Cadence" [shuji]
-            }
-            RANK 2 {
-                SKILL_GROUP "Scholar Skills"
-                SKILL "Martial Arts [Melee]"
-                SKILL "Martial Arts [Ranged]"
-                SKILL "Smithing"
-                TECHNIQUE_GROUP "Rank 1-2 Kata"
-                ^"All Arts Are One" [shuji]
-                ^"Thunderclap Strike" [kata]
-            }
-            RANK 3 {
-                SKILL_GROUP "Artisan Skills"
-                SKILL "Martial Arts [Melee]"
-                SKILL "Meditation"
-                SKILL "Survival"
-                TECHNIQUE_GROUP "Rank 1-3 Air Shūji"
-                ^"A Samurai's Fate" [shuji]
-                ^"Heartpiercing Strike" [kata]
-            }
-            RANK 4 {
-                SKILL_GROUP "Social Skills"
-                SKILL "Fitness"
-                SKILL "Tactics"
-                SKILL "Martial Arts [Melee]"
-                TECHNIQUE_GROUP "Rank 1-4 Kata"
-                ^"Striking as Void" [kata]
-                ^"Pillar of Calm" [shuji]
-            }
-            RANK 5 {
-                SKILL_GROUP "Martial Skills"
-                SKILL "Aesthetics"
-                SKILL "Survival"
-                SKILL "Theology"
-                TECHNIQUE_GROUP "Rank 1-5 Fire Shūji"
-                ^"Soul Sunder" [kata]
-                ^"Rouse the Soul" [shuji]
-            }
-            RANK 6 {
-                ^"Strike with No Thought"
             }
         }
 
@@ -152,59 +61,7 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Asako Loremaster" {
-
-        # The Asako Loremasters study widely, and from that broad and firm base,
-        # they develop their specialties. It is rare for a Loremaster not to have
-        # at least passing knowledge of a subject, no matter how obscure. Acting
-        # as the courtiers of the Phoenix, the Asako Loremasters marshal arguments
-        # based on their expertise in the revered knowledge of the past. One should
-        # look for an Asako first in the library and then in court, usually deep in
-        # discussion. Few care to challenge an Asako Loremaster on the field of
-        # knowledge, but such disputations are often one of the highlights of court.
-
-        PROPERTIES {
-            ^"School Name" STRING "Asako Loremaster" FIXED
-            ^"Clan" STRING "Phoenix"
-            ^"Roles" LIST ["Courtier"]
-            ^"Ring Increase" DEF {
-                ^"Air" INTEGER 1
-                ^"Earth" INTEGER 1
-            }
-            ^"Starting Skills" DEF { CHOOSE 5 [^"Culture", ^"Government", ^"Martial Arts [Unarmed]", ^"Medicine", ^"Performance", ^"Sentiment", ^"Theology"] INTEGER 1 }
-            ^"Starting Honor" INTEGER DEFAULT 45
-            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
-        }
-
-        STARTING_TECHNIQUES {
-            SHUJI ^"Civility Foremost"
-            SHUJI CHOOSE 1 [^"Ancestry Unearthed", ^"Cadence"]
-        }
-
-        SCHOOL_ABILITY "Wisdom of the Ages" {
-            "When performing a Scholar skill check, you may treat your ranks in the skill as being equal to your school rank. If your ranks in that Scholar skill are equal to or higher than your school rank, or if you have 5 ranks in the skill, you may add one kept (ring) set to an (op) result instead."
-        }
-
-        MASTERY_ABILITY ^"Insufferable Genius" {
-            "After you succeed at a check to acquire or remember information, you may spend 1 Void point and choose any number of characters with whom you can communicate. You must describe how the knowledge you acquired helps each character you choose. Each of those characters reduces the TN of their next check by 1 (to a minimum of 1) and suffers 1 strife."
-        }
-
-        STARTING_OUTFIT [
-            "Ceremonial robes", "sanctified robes",
-            "traveling clothes",
-            "wakizashi (short sword)", "knife",
-            "scroll satchel", "calligraphy set", "traveling pack"
-        ]
-
         CURRICULUM {
-            RANK 1 {
-                SKILL_GROUP "Scholar Skills"
-                SKILL "Courtesy"
-                SKILL "Games"
-                SKILL "Martial Arts [Unarmed]"
-                TECHNIQUE_GROUP "Rank 1 Earth Shūji"
-                ^"Open-Hand Style" [kata]
-                ^"Divination" [ritual]
-            }
             RANK 2 {
                 SKILL_GROUP "Social Skills"
                 SKILL "Government"
@@ -214,36 +71,9 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
                 ^"All Arts are One" [shuji]
                 ^"Tea Ceremony" [ritual]
             }
-            RANK 3 {
-                SKILL_GROUP "Scholar Skills"
-                SKILL "Courtesy"
-                SKILL "Performance"
-                SKILL "Meditation"
-                TECHNIQUE_GROUP "Rank 1-3 Fire Shūji"
-                ^"Pillar of Calm" [shuji]
-                ^"Ebb and Flow" [shuji]
-            }
-            RANK 4 {
-                SKILL_GROUP "Social Skills"
-                SKILL "Culture"
-                SKILL "Medicine"
-                SKILL "Theology"
-                TECHNIQUE_GROUP "Rank 1-4 Earth Shūji"
-                ^"Cleansing Spirit" [kiho]
-                ^"Wolf's Proposal" [shuji]
-            }
-            RANK 5 {
-                SKILL_GROUP "Scholar Skills"
-                SKILL "Courtesy"
-                SKILL "Performance"
-                SKILL "Meditation"
-                TECHNIQUE_GROUP "Rank 1-5 Water Shūji"
-                ^"Still the Elements" [kiho]
-                ^"Bend with the Storm" [shuji]
-            }
-            RANK 6 {
-                ^"Insufferable Genius"
-            }
+        }
+        SCHOOL_ABILITY "Wisdom of the Ages" {
+            "When performing a Scholar skill check, you may treat your ranks in the skill as being equal to your school rank. If your ranks in that Scholar skill are equal to or higher than your school rank, or if you have 5 ranks in the skill, you may add one kept (ring) set to an (op) result instead."
         }
 
         GUIDANCE {
@@ -261,62 +91,7 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Shiba Guardian" {
-
-        # As Shiba swore to protect Isawa, so the Shiba Guardian School emphasizes
-        # the defense of and cooperation with the Isawa; its members complement
-        # and protect priests, shrine keepers, and shugenja. The Shiba Guardians
-        # are broadly trained, often as much scholars as warriors, and they approach
-        # conflict as a problem to be solved without bloodshed if possible. Those
-        # who underestimate them due to their reluctance to take a life usually only
-        # do so once: the Shiba Guardians are as devoted to the perfection of the
-        # martial arts as any samurai. Their commitment to theological study and
-        # long hours of meditation have taught the Shiba Guardians how to dance
-        # in harmony with elemental kami called forth by the invocations of the
-        # shugenja.
-
-        PROPERTIES {
-            ^"School Name" STRING "Shiba Guardian" FIXED
-            ^"Clan" STRING "Phoenix"
-            ^"Roles" LIST ["Bushi", "Courtier"]
-            ^"Ring Increase" DEF {
-                ^"Earth" INTEGER 1
-                ^"Water" INTEGER 1
-            }
-            ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Fitness", ^"Martial Arts [Melee]", ^"Meditation", ^"Survival", ^"Tactics", ^"Theology"] INTEGER 1 }
-            ^"Starting Honor" INTEGER DEFAULT 45
-            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
-        }
-
-        STARTING_TECHNIQUES {
-            KATA ^"Lord Shiba's Valor"
-            KATA CHOOSE 1 [^"Striking as Earth", ^"Striking as Water"]
-        }
-
-        SCHOOL_ABILITY "Way of the Phoenix" {
-            "Once per scene, when a character at range 0-3 makes a check that contains 1 or more (st) symbols, you may negate all of those (st) symbols. Then, that character removes strife and fatigue equal to your school rank."
-        }
-
-        MASTERY_ABILITY ^"Stand of Honor" {
-            "At the end of your turn, you may spend 1 Void point to prepare to fend off advancing foes; this effect persists until the start of your next turn. When an enemy enters the range of one of your readied weapons, you may immediately make a Strike action using that weapon and targeting that enemy; if you succeed, the target suffers the Immobilized condition in addition to any other effects."
-        }
-
-        STARTING_OUTFIT [
-            "Ashigaru armor", "traveling clothes",
-            "daishō (katana and wakizashi)",
-            "naginata (polearm) or yari (spear)",
-            "traveling pack"
-        ]
-
         CURRICULUM {
-            RANK 1 {
-                SKILL_GROUP "Martial Skills"
-                SKILL "Courtesy"
-                SKILL "Sentiment"
-                SKILL "Survival"
-                TECHNIQUE_GROUP "Rank 1 Kata"
-                ^"Civility Foremost" [shuji]
-                ^"Stirring the Embers" [shuji]
-            }
             RANK 2 {
                 SKILL_GROUP "Scholar Skills"
                 SKILL "Fitness"
@@ -325,36 +100,6 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
                 TECHNIQUE_GROUP "Rank 1-2 Kata"
                 ^"Rallying Cry" [shuji]
                 ^"Slippery Maneuvers" [shuji]
-            }
-            RANK 3 {
-                SKILL_GROUP "Social Skills"
-                SKILL "Culture"
-                SKILL "Meditation"
-                SKILL "Martial Arts [Melee]"
-                TECHNIQUE_GROUP "Rank 1-3 Water Shūji"
-                ^"A Samurai's Fate" [shuji]
-                ^"Touchstone of Courage" [shuji]
-            }
-            RANK 4 {
-                SKILL_GROUP "Scholar Skills"
-                SKILL "Command"
-                SKILL "Martial Arts [Melee]"
-                SKILL "Tactics"
-                TECHNIQUE_GROUP "Rank 1-4 Kata"
-                ^"The Immovable Hand of Peace" [shuji]
-                ^"Touch the Void Dragon" [kiho]
-            }
-            RANK 5 {
-                SKILL_GROUP "Martial Skills"
-                SKILL "Sentiment"
-                SKILL "Survival"
-                SKILL "Theology"
-                TECHNIQUE_GROUP "Rank 1-5 Earth Shūji"
-                ^"Way of the Edgeless Sword" [kiho]
-                ^"Rouse the Soul" [shuji]
-            }
-            RANK 6 {
-                ^"Stand of Honor"
             }
         }
 
@@ -368,65 +113,7 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Kaito Shrine Keeper" {
-
-        # Kaito Shrine Keepers work alongside priests to protect temples across
-        # Phoenix lands, or keep smaller shrines on their own. The Kaito learn
-        # mystical arts to propitiate the kami -- sometimes even serving as vessels
-        # for them -- and practical ones to maintain the shrines. Shrine Keepers
-        # make use of protective magic -- such as ofuda, paper charms -- and
-        # spiritually enhanced archery to defend shrines against threats both
-        # mystical and mundane.
-
-        PROPERTIES {
-            ^"School Name" STRING "Kaito Shrine Keeper" FIXED
-            ^"Clan" STRING "Phoenix"
-            ^"Roles" LIST ["Monk"]
-            ^"Ring Increase" DEF {
-                ^"Air" INTEGER 1
-                ^"Water" INTEGER 1
-            }
-            ^"Starting Skills" DEF { CHOOSE 4 [^"Fitness", ^"Martial Arts [Ranged]", ^"Meditation", ^"Performance", ^"Smithing", ^"Theology"] INTEGER 1 }
-            ^"Starting Honor" INTEGER DEFAULT 45
-            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
-        }
-
-        STARTING_TECHNIQUES {
-            KATA ^"Hawk's Precision"
-            INVOCATION ^"Tempest of Air"
-            RITUAL CHOOSE 2 [^"Cleansing Rite", ^"Commune with the Spirits", ^"Threshold Barrier"]
-        }
-
-        SCHOOL_ABILITY "Sacred Arrows" {
-            "As an action, you may augment one of your arrows with a prayer to the kami. Make the check to perform one invocation you know, reducing the TN by your school rank, and record the result. The arrow gains the Sacred quality, and remains infused with the invocation until the end of the scene. After you perform an Attack action using the arrow (or fire it at a location, at the GM's discretion), you may resolve the effects of the invocation from the place the arrow landed. You may spend (op)+ to delay resolving the effects of the invocation for 1 round per (op) spent this way, and may spend (op) (op) from a failed check to affect one target of the attack that you missed."
-        }
-
-        MASTERY_ABILITY ^"Demon, Begone!" {
-            "As an action, you may make a TN 3 Meditation (Void) check by plucking the string of a bow you are wielding, targeting each Otherworldly being within a number of range bands equal to your ranks in Meditation. If you succeed, each target suffers strife equal to your ranks in Meditation plus your bonus successes. (op): Each target must resist with a TN 3 Meditation (Void) check or treat its physical and supernatural resistances as 0. This effect persists until the end of the scene."
-        }
-
-        STARTING_OUTFIT [
-            "Sanctified robes",
-            "wakizashi (short sword)",
-            "yumi (bow)", "quiver of arrows",
-            "bō (staff) or knife",
-            "scroll satchel", "traveling pack"
-        ]
-
-        # The Kaito Shrine Keepers make themselves vessels in which kami may
-        # dwell, and so they know their invocations by the Fortunist name of the
-        # spirit they are invoking.
-        # (See ^"Invocation Names and Traditions")
-
         CURRICULUM {
-            RANK 1 {
-                SKILL_GROUP "Scholar Skills"
-                SKILL "Fitness"
-                SKILL "Martial Arts [Ranged]"
-                SKILL "Meditation"
-                TECHNIQUE_GROUP "Rank 1 Air Invocations"
-                ^"Bind the Shadow" [invocation]
-                ^"Striking as Air" [kata]
-            }
             RANK 2 {
                 SKILL_GROUP "Martial Skills"
                 SKILL "Performance"
@@ -435,36 +122,6 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
                 TECHNIQUE_GROUP "Rank 1-2 Kata"
                 ^"Grasp of the Air Dragon" [invocation]
                 ^"Divination" [ritual]
-            }
-            RANK 3 {
-                SKILL_GROUP "Social Skills"
-                SKILL "Labor"
-                SKILL "Medicine"
-                SKILL "Survival"
-                TECHNIQUE_GROUP "Rank 1-3 Water Invocations"
-                ^"Breath of Wind Style" [kata]
-                ^"Flowing Water Strike" [kata]
-            }
-            RANK 4 {
-                SKILL_GROUP "Scholar Skills"
-                SKILL "Fitness"
-                SKILL "Martial Arts [Ranged]"
-                SKILL "Meditation"
-                TECHNIQUE_GROUP "Rank 1-4 Kata"
-                ^"Rise, Air" [invocation]
-                ^"Soul Sunder" [kata]
-            }
-            RANK 5 {
-                SKILL_GROUP "Martial Skills"
-                SKILL "Command"
-                SKILL "Sentiment"
-                SKILL "Theology"
-                TECHNIQUE_GROUP "Rank 1-5 Fire Invocations"
-                ^"Tomb of Jade" [invocation]
-                ^"Pin the Fan" [kata]
-            }
-            RANK 6 {
-                ^"Demon, Begone!"
             }
         }
 
@@ -478,51 +135,6 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Akodo Commander" {
-
-        # The Akodo War College's curriculum is focused on control: of one's
-        # weapons, of the battlefield, over the flow of conflict, and ultimately,
-        # over oneself. Its students study the advice of Akodo's Leadership,
-        # which was written by the Lion Clan Kami himself. In addition to
-        # training as warriors, Akodo Commanders are educated to be
-        # battlefield leaders. They often treat war as a game of Go, to be
-        # decided by exact moves. Akodo Commanders strike precisely and
-        # without hesitation with sword and army alike. Their goal is the
-        # pinnacle of the art of war: to minimize losses while achieving
-        # their objectives.
-
-        PROPERTIES {
-            ^"School Name" STRING "Akodo Commander" FIXED
-            ^"Clan" STRING "Lion"
-            ^"Roles" LIST ["Bushi"]
-            ^"Ring Increase" DEF {
-                ^"Earth" INTEGER 1
-                ^"Water" INTEGER 1
-            }
-            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Fitness", ^"Government", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Meditation", ^"Tactics"] INTEGER 1 }
-            ^"Starting Honor" INTEGER DEFAULT 50
-            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
-        }
-
-        STARTING_TECHNIQUES {
-            KATA CHOOSE 1 [^"Striking as Earth", ^"Striking as Water"]
-            SHUJI ^"Lord Akodo's Roar"
-        }
-
-        SCHOOL_ABILITY "Way of the Lion" {
-            "When you succeed at an Attack or Support action check, you may remove an amount of strife from yourself up to your school rank. For each strife you remove this way, add that one bonus success to the check and receive 1 fatigue."
-        }
-
-        MASTERY_ABILITY ^"Akodo's Final Lesson" {
-            "Once per game session during a skirmish or mass battle, after you fail a check, you may attempt the check again, treating the TN as 1."
-        }
-
-        STARTING_OUTFIT [
-            "Ashigaru armor", "traveling clothes",
-            "daishō (katana and wakizashi)", "yari (spear)",
-            "any one weapon of rarity 6 or lower", "two knives",
-            "yumi (bow)", "quiver of arrows", "traveling pack"
-        ]
-
         CURRICULUM {
             RANK 1 {
                 SKILL_GROUP "Martial Skills"
@@ -532,45 +144,6 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
                 TECHNIQUE_GROUP "Rank 1 Kata"
                 ^"Iron Forest Style" [kata]
                 ^"Honest Assessment" [shuji]
-            }
-            RANK 2 {
-                SKILL_GROUP "Martial Skills"
-                SKILL "Command"
-                SKILL "Medicine"
-                SKILL "Survival"
-                TECHNIQUE_GROUP "Rank 1-2 Kata"
-                ^"Rallying Cry" [shuji]
-                ^"Lightning Raid" [shuji]
-            }
-            RANK 3 {
-                SKILL_GROUP "Martial Skills"
-                SKILL "Government"
-                SKILL "Composition"
-                SKILL "Sentiment"
-                TECHNIQUE_GROUP "Rank 1-3 Kata"
-                ^"A Samurai's Fate" [shuji]
-                ^"Touchstone of Courage" [shuji]
-            }
-            RANK 4 {
-                SKILL_GROUP "Social Skills"
-                SKILL "Government"
-                SKILL "Martial Arts [Melee]"
-                SKILL "Tactics"
-                TECHNIQUE_GROUP "Rank 1-4 Fire Shūji"
-                ^"Rouse the Soul" [shuji]
-                ^"Disappearing World Style" [kata]
-            }
-            RANK 5 {
-                SKILL_GROUP "Scholar Skills"
-                SKILL "Martial Arts [Melee]"
-                SKILL "Meditation"
-                SKILL "Tactics"
-                TECHNIQUE_GROUP "Rank 1-5 Earth Shūji"
-                ^"Bend with the Storm" [shuji]
-                ^"Striking as Void" [kata]
-            }
-            RANK 6 {
-                ^"Akodo's Final Lesson"
             }
         }
 
@@ -584,100 +157,9 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Ide Trader" {
-
-        # The ever-friendly face of the Unicorn is the Ide. Ide Traders always
-        # attempt to solve problems with negotiation first and foremost, as
-        # they know any business dealings between friends and equals forge
-        # bonds as strong as steel. While some of the other clans think of
-        # the Ide as soft, none can point to when they were able to take
-        # advantage of this perceived weakness. The Ide Traders ignore
-        # insults and politely welcome compliments in equal measure. They
-        # have a vast knowledge of cultures, both Rokugani and foreign,
-        # which allows them to tailor their dealings with precision.
-
-        PROPERTIES {
-            ^"School Name" STRING "Ide Trader" FIXED
-            ^"Clan" STRING "Unicorn"
-            ^"Roles" LIST ["Courtier"]
-            ^"Ring Increase" DEF {
-                ^"Air" INTEGER 1
-                ^"Water" INTEGER 1
-            }
-            ^"Starting Skills" DEF { CHOOSE 5 [^"Commerce", ^"Courtesy", ^"Games", ^"Labor", ^"Martial Arts [Ranged]", ^"Medicine", ^"Survival"] INTEGER 1 }
-            ^"Starting Honor" INTEGER DEFAULT 45
-            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
-        }
-
-        STARTING_TECHNIQUES {
-            SHUJI ^"Tributaries of Trade"
-            SHUJI CHOOSE 1 [^"Cadence", ^"Shallow Waters"]
-        }
-
         SCHOOL_ABILITY "Vendor of Strange Wares" {
             "Ignore the Forbidden quality when acquiring and handling items."
             "When acquiring, selling, or gifting an item, you may treat its rarity as reduced or increased by your school rank."
-        }
-
-        MASTERY_ABILITY ^"A Friend in Every City" {
-            "As a downtime activity in any place of human habitation, you may make a TN 4 Commerce (Water) check to find a merchant with whom you (or your relatives) have done business. If you succeed, you find this individual and gain the Ally advantage for them (see page 101), which predisposes them to assist you in various ways."
-        }
-
-        STARTING_OUTFIT [
-            "Traveling clothes",
-            "wakizashi (short sword)", "yumi (bow)", "quiver of arrows",
-            "calligraphy set", "traveling pack",
-            "Unicorn warhorse", "journal"
-        ]
-
-        CURRICULUM {
-            RANK 1 {
-                SKILL_GROUP "Trade Skills"
-                SKILL "Courtesy"
-                SKILL "Fitness"
-                SKILL "Martial Arts [Ranged]"
-                TECHNIQUE_GROUP "Rank 1 Air Shūji"
-                ^"Feigned Opening" [shuji]
-                ^"Hawk's Precision" [kata]
-            }
-            RANK 2 {
-                SKILL_GROUP "Social Skills"
-                SKILL "Commerce"
-                SKILL "Martial Arts [Ranged]"
-                SKILL "Survival"
-                TECHNIQUE_GROUP "Rank 1-2 Water Shūji"
-                ^"Ebb and Flow" [shuji]
-                ^"Lady Shinjo's Speed" [shuji]
-            }
-            RANK 3 {
-                SKILL_GROUP "Martial Skills"
-                SKILL "Aesthetics"
-                SKILL "Commerce"
-                SKILL "Games"
-                TECHNIQUE_GROUP "Rank 1-3 Earth Shūji"
-                ^"Pillar of Calm" [shuji]
-                ^"All Arts are One" [shuji]
-            }
-            RANK 4 {
-                SKILL_GROUP "Social Skills"
-                SKILL "Aesthetics"
-                SKILL "Martial Arts [Ranged]"
-                SKILL "Sentiment"
-                TECHNIQUE_GROUP "Rank 1-4 Fire Shūji"
-                ^"Sear the Wound" [shuji]
-                ^"Regal Bearing" [shuji]
-            }
-            RANK 5 {
-                SKILL_GROUP "Trade Skills"
-                SKILL "Command"
-                SKILL "Fitness"
-                SKILL "Games"
-                TECHNIQUE_GROUP "Rank 1-5 Void Shūji"
-                ^"Bend with the Storm" [shuji]
-                ^"The Immovable Hand of Peace" [shuji]
-            }
-            RANK 6 {
-                ^"A Friend in Every City"
-            }
         }
 
         GUIDANCE {
@@ -690,99 +172,9 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Shinjo Outrider" {
-
-        # The core of the Unicorn military, the Shinjo Outriders emphasize
-        # speed and flexibility. All Shinjo Outriders learn the art of
-        # reconnaissance and how to get the most out of their horses. No
-        # samurai is more mobile than a mounted Shinjo Outrider. Their
-        # preferred weapon is the Shinjo horsebow, which they use with
-        # great accuracy even while riding at a gallop. Trained to live off
-        # the land, the Shinjo Outriders thoroughly learn the terrain of each
-        # potential battlefield before having to fight over it.
-
-        PROPERTIES {
-            ^"School Name" STRING "Shinjo Outrider" FIXED
-            ^"Clan" STRING "Unicorn"
-            ^"Roles" LIST ["Bushi", "Courtier"]
-            ^"Ring Increase" DEF {
-                ^"Earth" INTEGER 1
-                ^"Fire" INTEGER 1
-            }
-            ^"Starting Skills" DEF { CHOOSE 5 [^"Commerce", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Medicine", ^"Skulduggery", ^"Survival", ^"Tactics"] INTEGER 1 }
-            ^"Starting Honor" INTEGER DEFAULT 40
-            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
-        }
-
         STARTING_TECHNIQUES {
             KATA CHOOSE 1 [^"Striking as Fire", ^"Striking as Water"]
-            KATA ^"Lady Shinjo's Speed"
-        }
-
-        SCHOOL_ABILITY "Born in the Saddle" {
-            "Once per scene, before rolling dice, you may declare that you are directing your horse (who must be present) to aid in a task and describe how its efforts help in those circumstances. Reduce the TN of the check by your school rank."
-        }
-
-        MASTERY_ABILITY ^"I Will Always Return" {
-            "Once per game session, you may call out for your steed. At the beginning of the following round, your horse arrives, regardless of any barriers that might normally have prevented it from reaching your location. If your steed has recently been slain, its spirit will possess the closest horse to you and come to your aid regardless, such is its loyalty to you."
-        }
-
-        STARTING_OUTFIT [
-            "Ashigaru armor", "traveling clothes",
-            "daishō (katana or scimitar, wakizashi)",
-            "yumi (bow)", "quiver of arrows",
-            "knife", "traveling pack",
-            "Unicorn warhorse"
-        ]
-
-        CURRICULUM {
-            RANK 1 {
-                SKILL_GROUP "Martial Skills"
-                SKILL "Commerce"
-                SKILL "Courtesy"
-                SKILL "Survival"
-                TECHNIQUE_GROUP "Rank 1 Earth Shūji"
-                ^"Pelting Hail Style" [kata]
-                ^"Cadence" [shuji]
-            }
-            RANK 2 {
-                SKILL_GROUP "Trade Skills"
-                SKILL "Courtesy"
-                SKILL "Martial Arts [Melee]"
-                SKILL "Martial Arts [Ranged]"
-                TECHNIQUE_GROUP "Rank 1-2 Kata"
-                ^"Flowing Water Strike" [kata]
-                ^"Dazzling Performance" [shuji]
-            }
-            RANK 3 {
-                SKILL_GROUP "Scholar Skills"
-                SKILL "Martial Arts [Ranged]"
-                SKILL "Performance"
-                SKILL "Survival"
-                TECHNIQUE_GROUP "Rank 1-3 Water Shūji"
-                ^"Crashing Wave Style" [kata]
-                ^"Crimson Leaves Strike" [kata]
-            }
-            RANK 4 {
-                SKILL_GROUP "Martial Skills"
-                SKILL "Command"
-                SKILL "Skulduggery"
-                SKILL "Survival"
-                TECHNIQUE_GROUP "Rank 1-4 Kata"
-                ^"Bend with the Storm" [shuji]
-                ^"Bravado" [shuji]
-            }
-            RANK 5 {
-                SKILL_GROUP "Social Skills"
-                SKILL "Government"
-                SKILL "Meditation"
-                SKILL "Survival"
-                TECHNIQUE_GROUP "Rank 1-5 Fire Shūji"
-                ^"Pin the Fan" [kata]
-                ^"Rouse the Soul" [shuji]
-            }
-            RANK 6 {
-                ^"I Will Always Return"
-            }
+            SHUJI ^"Lady Shinjo's Speed"
         }
 
         GUIDANCE {
@@ -795,53 +187,6 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Utaku Battle Maiden" {
-
-        # The most traditional and prestigious of the Unicorn Clan's
-        # schools, the Shiotome, or "Battle Maidens," are revered as
-        # legendary cavalry. The dōjō only accepts women who carry the
-        # Utaku name, and even then prospective students must meet
-        # stringent standards of prowess and honor. This is the only
-        # school in the Empire that teaches the secrets required to tame
-        # the powerful Utaku steeds, massive warhorses that refuse all
-        # other riders. In battle, graceful, continuous movements mark
-        # their style, as does their unnerving serenity. Even when
-        # charging into the fray, Battle Maidens often move in utter silence.
-
-        PROPERTIES {
-            ^"School Name" STRING "Utaku Battle Maiden" FIXED
-            ^"Clan" STRING "Unicorn"
-            ^"Roles" LIST ["Bushi"]
-            ^"Ring Increase" DEF {
-                ^"Air" INTEGER 1
-                ^"Earth" INTEGER 1
-            }
-            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Fitness", ^"Government", ^"Martial Arts [Melee]", ^"Meditation", ^"Smithing", ^"Survival"] INTEGER 1 }
-            ^"Starting Honor" INTEGER DEFAULT 50
-            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
-        }
-
-        STARTING_TECHNIQUES {
-            KATA CHOOSE 1 [^"Crescent Moon Style", ^"Iron Forest Style"]
-            KATA ^"Warrior's Resolve"
-        }
-
-        SCHOOL_ABILITY "Heroic Charge" {
-            "When you succeed at an Attack action check, add bonus successes equal to the number of range bands you have moved this round, to a maximum of your school rank."
-            "During a duel or mass battle, if you are mounted on your steed, you always count as having moved a number of range bands equal to your school rank this turn."
-        }
-
-        MASTERY_ABILITY ^"Sensing the Breeze" {
-            "Once per round, after you defend against damage, you may move 1 range band and you may switch to a different stance."
-        }
-
-        STARTING_OUTFIT [
-            "Lacquered armor", "ceremonial clothes",
-            "daishō (katana or scimitar, wakizashi)",
-            "yari (spear)", "yumi (bow)", "quiver of arrows",
-            "knife", "traveling pack",
-            "Utaku steed"
-        ]
-
         CURRICULUM {
             RANK 1 {
                 SKILL_GROUP "Martial Skills"
@@ -853,45 +198,6 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
                 # Errata FAQ v2.0 (2020-08-12), core rulebook p. 86: rank 1
                 # "Striking as Air" (kata) is replaced with "Courtier's Resolve" (shūji).
                 ^"Courtier's Resolve" [shuji]
-            }
-            RANK 2 {
-                SKILL_GROUP "Artisan Skills"
-                SKILL "Fitness"
-                SKILL "Martial Arts [Melee]"
-                SKILL "Tactics"
-                TECHNIQUE_GROUP "Rank 1-2 Earth Shūji"
-                ^"Thunderclap Strike" [kata]
-                ^"Rushing Avalanche Style" [kata]
-            }
-            RANK 3 {
-                SKILL_GROUP "Martial Skills"
-                SKILL "Medicine"
-                SKILL "Survival"
-                SKILL "Theology"
-                TECHNIQUE_GROUP "Rank 1-3 Kata"
-                ^"Pillar of Calm" [shuji]
-                ^"Touchstone of Courage" [shuji]
-            }
-            RANK 4 {
-                SKILL_GROUP "Scholar Skills"
-                SKILL "Command"
-                SKILL "Fitness"
-                SKILL "Martial Arts [Melee]"
-                TECHNIQUE_GROUP "Rank 1-4 Air Shūji"
-                ^"Soul Sunder" [kata]
-                ^"Breath of Wind Style" [kata]
-            }
-            RANK 5 {
-                SKILL_GROUP "Martial Skills"
-                SKILL "Command"
-                SKILL "Culture"
-                SKILL "Survival"
-                TECHNIQUE_GROUP "Rank 1-5 Kata"
-                ^"Rouse the Soul" [shuji]
-                ^"Bend with the Storm" [shuji]
-            }
-            RANK 6 {
-                ^"Sensing the Breeze"
             }
         }
 
@@ -905,95 +211,6 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Technique" {
-
-        # Techniques are special abilities that represent advanced training.
-        # They enable a character to perform feats more quickly or in a
-        # unique way, or to exploit opportunities others would overlook.
-
-        # --- CATEGORY ---
-        # Each character is granted access to technique categories by their
-        # ^"School". The categories are:
-
-        CATEGORY ENUM ["Kata", "Kihō", "Invocation", "Ritual", "Shūji", "Mahō", "Ninjutsu"]
-        # Additional categories from sourcebooks: Inversion, Mantra
-
-        # --- NAME ---
-        # Each technique has a name, though different schools may describe
-        # similar tactics differently. Some techniques (especially invocations)
-        # have an "Other Names" field. Players are encouraged to use them
-        # to underscore the unique traditions of individual schools.
-
-        # --- PREREQUISITES ---
-        # School ranks, clan affiliations, role/schools, ring values, skill
-        # ranks, other techniques, or other qualifiers required to purchase
-        # a technique with experience.
-        #
-        # Prerequisites are WAIVED if:
-        # - A character is directly granted a technique during character
-        #   creation (or at another time), OR
-        # - The technique appears on the character's curriculum by name or
-        #   as part of a listed group (e.g. "Rank 1-3 Kata").
-        #
-        # Such techniques and groups are marked with = to denote their
-        # special status. If a character does not choose a technique to
-        # which they have special access, or advances past the school rank
-        # that enables them to buy it without purchasing it, they LOSE
-        # their special access and can no longer purchase it at reduced cost.
-
-        # --- XP COST ---
-        # All techniques cost 3 XP to purchase. If a technique costs a
-        # different amount, it is listed in the entry.
-
-        # --- ACTIVATION ---
-        # Each technique specifies when and how it can be used. The
-        # activation generally includes some or all of the following:
-        ACTIVATION_COMPONENTS {
-            ^"Use" DEF {
-                "As an Action: Character must perform an action during a conflict scene. If the action lists one or more types, it possesses each of those types."
-                "As a Downtime Activity: Character must spend a downtime scene to attempt the task."
-                "When Making a Check: Character can activate only during checks using the specified skill, skill group, ring, or combination. Usually requires spending (op)."
-            }
-            ^"Check" "If activation requires an action or downtime scene, it generally requires a separate check with a specified TN. If no ring is specified, any ring may be used (e.g. the one matching current stance in conflict). If a skill group is listed, the character chooses any skill from that group."
-            ^"Targets" "Characters, positions, or objects affected. When a character has a choice of multiple possible targets, they must choose from among the valid targets."
-            ^"Range" "Specified as 'at range [number]', 'at range [number]-[number]', 'in range of your weapon', or similar. Targets beyond the specified range are not affected."
-            ^"Other Requirements" "Circumstantial requirements such as 'using a readied weapon', 'under the full moon', or 'while on ^\"Hallowed\" ground'."
-        }
-
-        # --- EFFECTS ---
-        # Each technique lists effects that occur after activation. Each
-        # paragraph represents a distinct effect.
-        #
-        # - "If you succeed" effects only resolve on successful check.
-        # - "If you fail" effects only resolve on failed check.
-        # - Effects with alternate conditions resolve under stated conditions.
-        # - Effects with no conditions always resolve.
-        #
-        # Persistent Effects: Some effects persist for a set duration
-        # (e.g. "until the beginning of your next turn", "for one round
-        # plus additional rounds equal to your bonus successes", "until
-        # the end of the scene"). A character cannot benefit (or suffer)
-        # from more than one instance of the same persistent effect, even
-        # from multiple sources. If overlapping: player chooses if beneficial,
-        # GM chooses if harmful.
-
-        # --- NEW OPPORTUNITIES ---
-        # Many techniques list one or more uses of (op) specific to the
-        # check. Some are preceded by a ring requirement (e.g. "Air (op)")
-        # meaning the character can only spend (op) this way if they used
-        # that ring for the check.
-
-        PROPERTIES {
-            ^"Name" STRING REQUIRED
-            ^"Category" STRING  # References category ENUM above
-            ^"Rank" INTEGER MIN 1 MAX 5
-            ^"Prerequisites" STRING  # School rank, ring values, clan, etc.
-            ^"XP Cost" INTEGER DEFAULT 3
-            ^"Activation" STRING  # Use, Check, Targets, Range, Other Requirements
-            ^"Description" STRING  # Narrative description (no mechanical effect)
-            ^"Effects" STRING  # Mechanical effects with conditional resolution
-            ^"New Opportunities" STRING  # Technique-specific (op) spends
-        }
-
         GUIDANCE {
             ENTRY ^"errata-technique-0" #L5RERGJPDSVtRQ5l9Sn3xM {
                 CONCERNS [ ^"Technique" ]
@@ -1004,16 +221,7 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Iaijutsu Cut: Rising Blade" {
-            RANK 2
-            DESCRIPTION "The bushi grips their scabbard against their hip and draws, cutting upward to catch an advancing foe without being cut themself."
-            ACTIVATION "As an Attack action using one sheathed ^\"Razor-Edged\" weapon, make a TN 3 Martial Arts [Melee] check targeting one character at range 0-1."
-            EFFECTS {
-                "You draw and ready the sheathed weapon in a one-handed grip."
-                "If you succeed, deal physical damage equal to the weapon's deadliness. Target cannot defend against this damage if they are ^\"Compromised\"."
-            }
-            OPPORTUNITIES {
-                "(op): Ready one other sheathed Razor-Edged weapon."
-            }
+        ACTIVATION "As an Attack action using one sheathed ^\"Razor-Edged\" weapon, you may make a Martial Arts [Melee] check targeting one character at range 0-1. The TN of this check is equal to the target's vigilance."
 
         GUIDANCE {
             ENTRY ^"errata-iaijutsu-cut-rising-blade-0" #L5RERG04cPpnQQo9l21uhb {
@@ -1030,18 +238,8 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Zanbatō" {
-                PROPERTIES {
-                    ^"Category" STRING "Swords"
-                    ^"Skill" STRING "Martial Arts [Melee]"
-                    ^"Range" STRING "1-2"
-                    ^"Base Damage" INTEGER 6
-                    ^"Deadliness" INTEGER 7
-                    ^"Grips" STRING "2-hand: –"
-                    ^"Qualities" LIST OF STRING ["Cumbersome", "Wargear"]
-                    ^"Rarity" INTEGER 8
-                    ^"Price" STRING "40 koku"
-                    ^"Description" STRING "Larger even than mighty nodachi, zanbatō are swords with the reach of a spear. Zanbatō have a long, thick, katana-like blade roughly six feet in length attached to a two-handed hilt. They are dedicated anticavalry weapons—indeed, their name means “horse-chopping sword.” The Matsu school is famous for adopting them into the curriculum after their ill-fated encounter with the Utaku cavalry at the Battle of Plum Blossom Pass."
-                }
+        SET ^"Base Damage" INTEGER 6
+        SET ^"Deadliness" INTEGER 7
 
         GUIDANCE {
             ENTRY ^"errata-zanbat-0" #L5RERGGiLB3S4OVnaE8YAU {
@@ -1053,14 +251,6 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Scheme Action" {
-
-        PROPERTIES {
-            ^"Action Type Name" STRING "Scheme" FIXED
-            ^"Source Page" INTEGER 253
-            ^"Description" STRING "Scheme actions allow a character to attempt to influence targets with whom they can communicate—manipulating them, wearing them down, or bringing them around to a different point of view. A Scheme action usually specifies at least one target who suffers any relevant effects."
-            ^"Requirement" STRING "To affect another character with a Scheme action, a character must generally be able to communicate with that character, verbally or otherwise."
-        }
-
         GUIDANCE {
             ENTRY ^"errata-scheme-action-0" #L5RERG1gkQQUHLUxguBYzS {
                 CONCERNS [ ^"Scheme Action" ]
@@ -1071,9 +261,7 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Wait" {
-                DESCRIPTION "You bide your time, waiting to spring into action."
-                ACTIVATION "As an Attack, Scheme, and Support action, declare a non-Movement action you will perform after the occurrence of a specified event before the end of the round."
-                EFFECTS "After the specified event occurs before the end of the round, you may perform the action. You must still use the ring matching your ^\"Stance\" for this action. If the specified event does not occur this round, you may perform one action of your choice (other than Wait) at the end of the round."
+        ACTIVATION "As an Attack, Scheme, and Support action, declare a non-Movement action you will perform after the occurrence of a specified event before the end of the round."
 
         GUIDANCE {
             ENTRY ^"errata-wait-0" #L5RERGx2z5H32RPu3X5UOW {
@@ -1085,23 +273,6 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Target Number" {
-
-        INTEGER MIN 1 MAX 8
-
-        # Number of (su) and (ex) symbols needed for the check to succeed.
-        # Set by the GM based on difficulty of the task.
-
-        DIFFICULTY_SCALE {
-            1 "An easy task for most people, such as carrying half one's weight or finding a misplaced item."
-            2 "An average task, such as jumping a ten-foot ditch or recognizing someone in disguise."
-            3 "A difficult task, such as scaling a cliff without rope or finding a well-hidden object."
-            4 "A very hard task, such as diving safely from the top of a waterfall or recalling someone's exact words years later."
-            5 "An extremely hard task, such as stirring a demoralized army to action or hurling someone using only one hand."
-            6 "An extraordinary task, such as discerning someone's whereabouts from the mud on their sandals or felling a tree with a single ax blow."
-            7 "A heroic task, such as outwrestling a troll or naming all of one's ancestors in order."
-            8 "A legendary task, such as shattering stone with one's bare hands or outwitting a Fortune."
-        }
-
         GUIDANCE {
             ENTRY ^"errata-target-number-0" #L5RERGBK2Dw1bl6XhEaf3G {
                 CONCERNS [ ^"Target Number" ]
@@ -1112,27 +283,7 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Emerald Magistrate" {
-
-        # Emerald Magistrates are agents of the Emperor's Law,
-        # warrior-sages who dispense wisdom and justice.
-
-        ASSIGNED_BY "The Emerald Champion, the Emperor, and other high-ranking officials in the office of the Emerald Champion can appoint Emerald Magistrates, and do so when a samurai proves worthy of the post or when the need arises for more arbiters of the Emperor's Justice."
-        STATUS_AWARD "+15 (to a maximum of 40)"
-        XP_TO_COMPLETION 30
-
-        TITLE_ABILITY {
-            ^"Voice of Authority" "Once per game session when making a Scheme or Support action check using a Social skill, you may choose additional targets equal to your ^\"Glory\" rank. You cannot choose any additional target with vigilance higher than the highest among your initial targets."
-        }
-
-        CURRICULUM {
-            "Trade Skills" "Skill Group"
-            "Fitness" "Skill"
-            "Martial Arts [Choose One]" "Skill"
-            "Performance" "Skill"
-            "Rank 1-2 Kata" "Technique Group"
-            "Open-Hand Style" "Technique (Kata)"
-            "Shallow Waters" "Technique (Shūji)"
-        }
+        STATUS_AWARD "+15 (to a minimum of 40)"
 
         GUIDANCE {
             ENTRY ^"errata-emerald-magistrate-0" #L5RERG1cx5zrdop96NHbTA {
@@ -1149,15 +300,10 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Peasant Family" {
-
         PROPERTIES {
-            ^"Family Name"     STRING "Peasant" FIXED
-            ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Earth", ^"Fire", ^"Water", ^"Void"] INTEGER 1 }
             ^"Skill Increases" DEF {
                 CHOOSE 2 [^"Commerce", ^"Labor", ^"Seafaring", ^"Skulduggery", ^"Survival"] INTEGER 1
             }
-            ^"Glory"           INTEGER 25
-            ^"Starting Wealth" DEF { ^"Zeni" INTEGER 10 }
         }
 
         GUIDANCE {
@@ -1170,14 +316,7 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Manifest Fire Kami" {
-
         PROPERTIES {
-            ^"Type" STRING "Adversary" FIXED
-            ^"Category" STRING "Kami"
-            ^"Combat Conflict Rank" INTEGER 9
-            ^"Intrigue Conflict Rank" INTEGER 2
-            ^"Source Page" INTEGER 324
-            ^"Description" STRING "Energy given form, a manifest fire kami usually appears as a humanoid shape. Clothed in a robe of smoke and with blazing skin, it is the harbinger of destruction but also of renewal. While they are intelligent and knowledgeable, fire kami are notoriously single-minded once they have taken form, seeking only to consume everything within their reach before sputtering out."
             ^"Rings" DEF {
                 ^"Air" INTEGER 1
                 ^"Earth" INTEGER 2
@@ -1185,16 +324,6 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
                 ^"Water" INTEGER 2
                 ^"Void" INTEGER 1
             }
-            ^"Endurance" INTEGER 12
-            ^"Composure" INTEGER 3
-            ^"Focus" INTEGER 4
-            ^"Vigilance" INTEGER 1
-            ^"Demeanor" STRING "Intense"
-            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 3", "Social 2", "Trade 3"]
-            ^"Advantages" LIST OF STRING ["Primal Terror: (fire) Martial, Social; Interpersonal"]
-            ^"Disadvantages" LIST OF STRING ["Endless Hunger: (water) Artisan, Scholar; Mental"]
-            ^"Favored Weapons" LIST OF STRING ["Blazing Touch: Range 1–3, Damage 6, Deadliness 6, Razor-Edged, deals supernatural damage"]
-            ^"Gear" LIST OF STRING ["Corona of Flames (Physical 3)"]
         }
 
         GUIDANCE {
@@ -1207,172 +336,6 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Opportunity" {
-
-        # (op) symbols on kept dice can be spent for additional narrative
-        # effects. Available options depend on the ring used for the check
-        # and the context (general, conflict, initiative, skill group, downtime).
-        # General opportunities are always available regardless of context.
-
-        # -----------------------------------------------
-        # GENERAL EXAMPLES OF (op)
-        # Available on any check regardless of context.
-        # -----------------------------------------------
-
-        GENERAL_OPPORTUNITIES {
-            ANY {
-                "(op): If you failed, determine the easiest way to accomplish the task you were attempting (skill and approach)."
-                "(op)+: Remove 1 strife you gained from this check per (op) spent this way."
-                "(op)(op): Provide assistance to the next character to attempt a check to accomplish something similar."
-            }
-            AIR {
-                "(op): Learn another character in the scene's demeanor (if an NPC) and current strife."
-                "(op)+: Act subtly to attract minimal attention in your efforts. Extra (op) makes the attempt even subtler."
-                "(op)(op): Notice an interesting detail about a character in the scene, such as an advantage or disadvantage. At the GM's discretion, you may establish a new detail for an NPC."
-            }
-            EARTH {
-                "(op): Reassure another character in the scene with your presence, allowing them to remove 2 strife."
-                "(op)+: Act carefully to minimize consequences of failure or other dangers that could arise from the task. Extra (op) makes the attempt even safer."
-                "(op)(op): Suddenly recall an important piece of information not directly related to the task. At the GM's discretion, you may establish a small preparatory action you took earlier, such as bringing along a common useful item."
-            }
-            FIRE {
-                "(op): Inflame another character in the scene with your presence, causing them to receive 2 strife."
-                "(op)+: Perform the task in a flashy way, drawing attention to yourself. Extra (op) attracts even more notice."
-                "(op)(op): Notice something missing or out of place in the vicinity that is not directly related to the task. At the GM's discretion, you may establish an absence, such as a lack of shoes outside indicating the occupant's absence."
-            }
-            WATER {
-                "(op): Remove 2 strife from yourself."
-                "(op)+: Perform the task efficiently, completing it more quickly or saving supplies. Extra (op) further reduces the time or materials expended."
-                "(op)(op): Spot an interesting physical detail present in your environment not directly related to your check. At the GM's discretion, you may establish a piece of terrain or a mundane object nearby."
-            }
-            VOID {
-                "(op): Choose a ring other than Void. Reduce the TN of your next check by 1 if it uses that ring."
-                "(op)+: Feel a chill down your spine, notice a sudden silence, or detect another sign of the supernatural if there is a spiritual disturbance in the scene. Extra (op) gives an increasingly precise location for the supernatural occurrence."
-                "(op)(op): Gain spiritual insight into the nature of the universe or your own heart. At the GM's discretion, you may establish a fact about your character that has not been previously revealed but relates to the situation."
-            }
-        }
-
-        # -----------------------------------------------
-        # CONFLICT AND MARTIAL SKILL EXAMPLES OF (op)
-        # Available during conflict scenes on Martial skill checks.
-        # -----------------------------------------------
-
-        CONFLICT_OPPORTUNITIES {
-            AIR {
-                "(op): Add a kept (ring) set to an (op) result to your next Martial skill check."
-                "(op)+: During a Movement action check, up to 1 range band of any distance you move per (op) spent this way may be along a vertical surface."
-                "(op)(op): Increase the TN of the next Martial Arts [Ranged] check targeting you before the start of your next turn by 2."
-            }
-            EARTH {
-                "(op): During a Movement action, ignore one terrain quality of your choice."
-                "(op)+: Reduce the severity of the next critical strike you suffer before the start of your next turn by 1 per (op) spent this way."
-                "(op)(op): Do not apply one of your disadvantages to checks until the end of your next turn."
-            }
-            FIRE {
-                "(op): Choose another character in the scene; increase the TN of the next check they make before the end of their next turn by 1 if it does not include you as a target."
-                "(op)+: During an Attack action check, increase the TN of the next check the target makes to resist a critical strike they suffer before the start of your next turn by 1 per (op) spent this way."
-                "(op)(op): Other characters must receive 2 strife to choose you as the target of their Attack and Scheme actions until the start of your next turn."
-            }
-            WATER {
-                "(op): Remove 1 fatigue."
-                "(op)+: During an Attack action check, ignore 1 point of target's physical resistance per (op) spent this way."
-                "(op)(op): Move 1 range band."
-            }
-            VOID {
-                "(op): During the next Attack action check you make before the end of your next turn, ignore one terrain quality of your choice."
-                "(op)+: During a Support action check, increase your Initiative value by 1 per (op) spent this way."
-                "(op)(op): Ignore the effects of one condition you are suffering until the end of your next turn."
-            }
-        }
-
-        # -----------------------------------------------
-        # INITIATIVE CHECK EXAMPLES OF (op)
-        # Available when making Initiative checks.
-        # -----------------------------------------------
-
-        INITIATIVE_OPPORTUNITIES {
-            AIR {
-                "(op): Assess one foe's weakness. Learn one of their disadvantages of that foe's choice."
-            }
-            EARTH {
-                "(op): Choose another character's disadvantage you know. They do not apply that disadvantage to their checks this scene."
-            }
-            FIRE {
-                "(op): Use your focus instead of your vigilance for your initiative when surprised."
-            }
-            WATER {
-                "(op): Assess the qualities of all terrain in the scene."
-            }
-            VOID {
-                "(op): Sense if there is an Otherworldly being in the scene."
-            }
-        }
-
-        # -----------------------------------------------
-        # OTHER SKILL EXAMPLES OF (op)
-        # Available on non-Martial skill checks by skill group.
-        # -----------------------------------------------
-
-        SKILL_OPPORTUNITIES {
-            AIR {
-                ARTISAN "(op): If you succeed, add the Resplendent or Subtle quality to an item that you are refining."
-                SCHOLAR "(op): Learn something about a character who created or used the item you are studying (such as one of their advantages or disadvantages of the GM's choice that affected their creation or use of the item)."
-                SOCIAL "(op): Learn if the honor, glory, or status attribute of a character in the scene is higher, lower, or equal to yours."
-                TRADE "(op): Convince a buyer to pay an additional 10% for an item you are selling."
-            }
-            EARTH {
-                ARTISAN "(op): If you succeed, add the Durable quality to an item that you are restoring."
-                SCHOLAR "(op): Remember a place where you can research or study the topic you were attempting to recall."
-                SOCIAL "(op): Increase the TN of the next Social check another character makes before the end of the scene by 1."
-                TRADE "(op): Reduce the TN of the next check another character makes with the same skill before the end of the scene by 1."
-            }
-            FIRE {
-                ARTISAN "(op): If you succeed, make one additional copy of the item you are creating."
-                SCHOLAR "(op): Extrapolate the motivations or desires of another character in the scene or wider situation."
-                SOCIAL "(op): Reduce the TN of the next Social check another character makes before the end of the scene by 1."
-                TRADE "(op): Unusual inspiration strikes; add a kept (ring) set to an (op) result to the next check you make with another skill."
-            }
-            WATER {
-                ARTISAN "(op): Add a kept (ring) set to an (op) result to the next Artisan skill check you make before the end of the game session."
-                SCHOLAR "(op): Spot a unique or identifying quality, aspect, or ability of something that you are identifying."
-                SOCIAL "(op): Add a kept (ring) set to an (op) result to your next Social check before the end of the scene."
-                TRADE "(op): Convince a seller to give you an additional 10% discount for an item you are buying."
-            }
-            VOID {
-                ARTISAN "(op): Reduce the TN of the next check you make using the item you are attuning yourself to by 1."
-                SCHOLAR "(op): Intuit whether you can learn anything of value from your current course of inquiry."
-                SOCIAL "(op): Discern the objective of another character in the scene."
-                TRADE "(op): Reduce any effect you have on your environment (and physical traces of your efforts) to a minimum."
-            }
-        }
-
-        # -----------------------------------------------
-        # DOWNTIME CHECK EXAMPLES OF (op)
-        # Available during downtime scene checks.
-        # -----------------------------------------------
-
-        DOWNTIME_OPPORTUNITIES {
-            AIR {
-                "(op)+: Learn a detail about one person in your company (such as an advantage or disadvantage of their choice) per (op) spent this way. You can learn only one detail about each person this way in a single downtime scene."
-                "(op)(op): Perform your downtime activity without letting one or more others of your choice know that you did."
-            }
-            EARTH {
-                "(op)+: Another character in your company may remove 1 strife or fatigue per (op) spent this way."
-                "(op)(op): Memorize a small but vital detail from your activity; you can recall it later without a check."
-            }
-            FIRE {
-                "(op)+: Assist one other character per (op) spent this way with their next downtime activity check this session."
-                "(op)(op): Energize another character in your company with your efforts; they may perform 1 additional downtime action this downtime (to a maximum of 2)."
-            }
-            WATER {
-                "(op)+: Remove 1 strife or fatigue per (op) spent this way."
-                "(op)(op): Make a new friend while undertaking your downtime activity."
-            }
-            VOID {
-                "(op)+: Reserve 1 dropped die from your check, to a maximum of your ranks in the skill you used. Add that die to your next check with the same skill as a kept die instead of rolling it."
-                "(op)(op): Have a brief premonition of a possible future event while undertaking your downtime activity."
-            }
-        }
-
         GUIDANCE {
             ENTRY ^"errata-opportunity-0" #L5RERGRUazh9AVRT8ulf7b {
                 CONCERNS [ ^"Opportunity" ]
@@ -1383,98 +346,12 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Moto Avenger" {
-        DESCRIPTION "The Moto revere life, death, and the passage between the two. Life comes from the meeting of earth and sky as the rain falls to the plains; at death, the two are divided, for the body returns to the soil while the spirit returns to the sky. Moto spiritualists work to guide spirits to their proper place, that they may return to the eternal cycle, keeping the cosmos in balance. However, some beings defy the cycle through heresies such as undeath—and Moto Avengers are specialists trained to rectify such perversions of the natural order. The many Moto who have became Tainted within the Shadowlands have drawn Avengers from the distant corners of the Moto lands, that they might destroy these abominations and free the spirits of their fallen comrades."
-
-        # Moto spiritualists guide spirits to their proper place.
-        # Avengers specialize in rectifying perversions of the
-        # natural order such as undeath. Many Moto fallen to
-        # the Taint have drawn Avengers from distant corners.
-
-        PROPERTIES {
-            ^"School Name" STRING "Moto Avenger" FIXED
-            ^"Clan" STRING "Unicorn"
-            ^"Roles" LIST ["Shugenja"]
-            ^"Ring Increase" DEF {
-                ^"Air" INTEGER 1
-                ^"Earth" INTEGER 1
-            }
-            ^"Starting Skills" DEF { CHOOSE 3 [^"Courtesy", ^"Culture", ^"Martial Arts [Melee]", ^"Sentiment", ^"Survival", ^"Theology"] INTEGER 1 }
-            ^"Starting Honor" INTEGER DEFAULT 44
-            ^"Techniques Available" LIST ["Air and Earth Invocations", "Rituals", "Shūji"]
-        }
-
-
-        STARTING_TECHNIQUES {
-            INVOCATION ^"Grasp of Earth"
-            INVOCATION ^"Tempest of Air"
-            SHUJI ^"Ancestry Unearthed"
-            SHUJI ^"Honest Assessment"
-        }
-
-        SCHOOL_ABILITY "Hands of Earth and Sky" {
-            "When you perform an invocation that targets at least one other character, if you succeed, you may nourish or drain: Nourish: receive fatigue up to your school rank. One target removes fatigue equal to amount received. Drain: remove fatigue up to your school rank. One target receives fatigue equal to amount removed."
-        }
-
-        MASTERY_ABILITY ^"Empathic Transfer" {
-            "When you nourish, you may remove one condition the target is suffering by transferring it to yourself. When you drain, you may remove one condition you are suffering by transferring it to one of your targets."
-        }
         STARTING_OUTFIT [
             "traveling clothes", "ashigaru armor",
             "wakizashi", "scroll satchel",
             "finger of jade", "traveling pack",
             "Unicorn warhorse"
         ]
-
-        CURRICULUM {
-            RANK 1 {
-                SKILL_GROUP "Scholar Skills"
-                SKILL "Command"
-                SKILL "Martial Arts [Melee]"
-                SKILL "Survival"
-                TECHNIQUE_GROUP "Rank 1 Rituals"
-                ^"Bind the Shadow" [invocation]
-                ^"Caress of Earth" [invocation]
-            }
-            RANK 2 {
-                SKILL_GROUP "Martial Skills"
-                SKILL "Culture"
-                SKILL "Medicine"
-                SKILL "Theology"
-                TECHNIQUE_GROUP "Rank 1-2 Air Invocations"
-                ^"Essence of Jade" [invocation]
-                ^"Touchstone of Courage" [shuji]
-            }
-            RANK 3 {
-                SKILL_GROUP "Trade Skills"
-                SKILL "Courtesy"
-                SKILL "Martial Arts [Melee]"
-                SKILL "Tactics"
-                TECHNIQUE_GROUP "Rank 1-3 Earth Shūji"
-                ^"Earthquake" [invocation]
-                ^"Earth Becomes Sky" [invocation]
-            }
-            RANK 4 {
-                SKILL_GROUP "Social Skills"
-                SKILL "Medicine"
-                SKILL "Sentiment"
-                SKILL "Theology"
-                TECHNIQUE_GROUP "Rank 1-4 Earth Invocations"
-                ^"Rise, Air" [invocation]
-                ^"Wolf's Proposal" [shuji]
-            }
-            RANK 5 {
-                SKILL_GROUP "Scholar Skills"
-                SKILL "Martial Arts [Melee]"
-                SKILL "Performance"
-                SKILL "Survival"
-                TECHNIQUE_GROUP "Rank 1-5 Air Invocations"
-                ^"Rouse the Soul" [shuji]
-                ^"Tomb of Jade" [invocation]
-            }
-            RANK 6 {
-                ^"Empathic Transfer"
-            }
-        }
 
         GUIDANCE {
             ENTRY ^"errata-moto-avenger-0" #L5RERGKb4Jje2xMz4zyuZM {
@@ -1486,22 +363,6 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"School" {
-
-        # Generic school type. School definitions EXTENDS this type.
-        # A school defines the character's role, ring and skill
-        # bonuses, starting honor, technique access, school ability,
-        # curriculum, and mastery ability.
-
-        PROPERTIES {
-            ^"School Name" STRING REQUIRED FIXED
-            ^"Clan" STRING REQUIRED
-            ^"Roles" LIST REQUIRED                   # ["Bushi"], ["Courtier", "Shugenja"], etc.
-            ^"Ring Increase" STRING REQUIRED          # "+1 [Ring], +1 [Ring]"
-            ^"Starting Skills" STRING REQUIRED        # "choose N: +1 [Skill], +1 [Skill], ..."
-            ^"Starting Honor" INTEGER MIN 0 MAX 100 REQUIRED
-            ^"Techniques Available" LIST REQUIRED     # ["Kata", "Rituals", "Shūji"]
-        }
-
         GUIDANCE {
             ENTRY ^"faq-school-0" #L5RERGneAUxHfehA6NpuUz {
                 CONCERNS [ ^"School" ]
@@ -1517,102 +378,6 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Asahina Artificer" {
-
-        # Art and religion intertwine for the Asahina, for to them, faith,
-        # beauty, and peace are all aspects of the same truth. The Asahina
-        # take any opportunity to teach their philosophy and try to improve
-        # harmony in the Empire.
-
-        PROPERTIES {
-            ^"School Name" STRING "Asahina Artificer" FIXED
-            ^"Clan" STRING "Crane"
-            ^"Roles" LIST ["Shugenja", "Artisan"]
-            ^"Ring Increase" DEF {
-                ^"Air" INTEGER 1
-                ^"Fire" INTEGER 1
-            }
-            ^"Starting Skills" DEF { CHOOSE 3 [^"Aesthetics", ^"Courtesy", ^"Culture", ^"Design", ^"Games", ^"Theology"] INTEGER 1 }
-            ^"Starting Honor" INTEGER DEFAULT 50
-            ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
-        }
-
-        STARTING_TECHNIQUES {
-            INVOCATION CHOOSE 3 [^"Blessed Wind", ^"Armor of Radiance", ^"Inari's Blessing", ^"Reflections of P'an Ku", ^"Token of Memory"]
-            RITUAL ^"Commune with the Spirits"
-            RITUAL ^"Cleansing Rite"
-        }
-
-        SCHOOL_ABILITY "Spiritual Artisan" {
-            "When making a check to mystically summon an illusion or to summon, augment, or awaken an object, you may add a number of kept (ring) set to (op) results equal to your school rank."
-        }
-
-        MASTERY_ABILITY ^"Stir the Slumbering Spirit" {
-            "Once per game session as a downtime activity, you may make a TN 4 Artisan (Void) check to awaken an item's spirit. If you succeed, until the end of the game session, it becomes a nemuranai (see page 307) with a sealed invocation of your choice based on the item's history. The GM is the final arbiter of the appropriateness of any invocation selected this way."
-        }
-
-        STARTING_OUTFIT [
-            "Sanctified robes",
-            "wakizashi (short sword)", "knife",
-            "yumi (bow)", "quiver of arrows",
-            "scroll satchel", "traveling pack"
-        ]
-
-        # The Asahina Artificer School teaches its students invocations by
-        # Elemental names, for they continue the traditions passed down from
-        # Isawa Asahina, their founder.
-        # (See ^"Invocation Names and Traditions")
-
-        CURRICULUM {
-            RANK 1 {
-                SKILL_GROUP "Artisan Skills"
-                SKILL "Courtesy"
-                SKILL "Culture"
-                SKILL "Theology"
-                TECHNIQUE_GROUP "Rank 1 Air Invocations"
-                ^"Path to Inner Peace" [invocation]
-                ^"Artisan's Appraisal" [shuji]
-            }
-            RANK 2 {
-                SKILL_GROUP "Scholar Skills"
-                SKILL "Aesthetics"
-                SKILL "Design"
-                SKILL "Performance"
-                TECHNIQUE_GROUP "Rank 1-2 Water Invocations"
-                ^"Grasp of the Air Dragon" [invocation]
-                ^"Tea Ceremony" [ritual]
-            }
-            RANK 3 {
-                SKILL_GROUP "Social Skills"
-                SKILL "Aesthetics"
-                SKILL "Design"
-                SKILL "Theology"
-                TECHNIQUE_GROUP "Rank 1-3 Fire Invocations"
-                ^"Wings of the Phoenix" [invocation]
-                ^"Vapor of Nightmare" [invocation]
-            }
-            RANK 4 {
-                SKILL_GROUP "Artisan Skills"
-                SKILL "Fitness"
-                SKILL "Performance"
-                SKILL "Theology"
-                TECHNIQUE_GROUP "Rank 1-4 Water Invocations"
-                ^"Bend with the Storm" [shuji]
-                ^"Rise, Air" [invocation]
-            }
-            RANK 5 {
-                SKILL_GROUP "Scholar Skills"
-                SKILL "Aesthetics"
-                SKILL "Design"
-                SKILL "Performance"
-                TECHNIQUE_GROUP "Rank 1-5 Air Invocations"
-                ^"Ever-Changing Waves" [invocation]
-                ^"Buoyant Arrival" [shuji]
-            }
-            RANK 6 {
-                ^"Stir the Slumbering Spirit"
-            }
-        }
-
         GUIDANCE {
             ENTRY ^"faq-asahina-artificer-0" #L5RERGYUsd6AYBGKboJWeU {
                 CONCERNS [ ^"Asahina Artificer" ]
@@ -1623,101 +388,6 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Matsu Berserker" {
-
-        # The Matsu's soldiers are the front line and main strength of the
-        # Lion armies. Their bravery and zeal for battle are unquestioned.
-        # The Matsu warrior dōjō teaches the primacy of offense and the
-        # necessity of seizing the initiative in all things. Aggression is the
-        # hallmark of the Matsu style; direct action is their watchword.
-        # This bellicose attitude often puts them at odds with the careful
-        # strategies of the Akodo, but the Matsu serve the Lion and the
-        # Empire with unquestioned loyalty.
-
-        PROPERTIES {
-            ^"School Name" STRING "Matsu Berserker" FIXED
-            ^"Clan" STRING "Lion"
-            ^"Roles" LIST ["Bushi"]
-            ^"Ring Increase" DEF {
-                ^"Earth" INTEGER 1
-                ^"Fire" INTEGER 1
-            }
-            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Fitness", ^"Labor", ^"Martial Arts [Melee]", ^"Martial Arts [Ranged]", ^"Martial Arts [Unarmed]", ^"Survival"] INTEGER 1 }
-            ^"Starting Honor" INTEGER DEFAULT 55
-            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
-        }
-
-        STARTING_TECHNIQUES {
-            KATA CHOOSE 1 [^"Rushing Avalanche Style", ^"Spinning Blades Style"]
-            SHUJI ^"Stirring the Embers"
-        }
-
-        SCHOOL_ABILITY "Matsu's Fury" {
-            "After you suffer a critical strike or unmask, you may suffer the Enraged condition to remove an amount of fatigue from yourself equal to your school rank."
-        }
-
-        MASTERY_ABILITY ^"Rending Jaws of the Lion" {
-            "Once per round, when performing an Attack action check while Enraged, you may spend 1 Void point to alter each kept die containing (su) to a result containing (ex)."
-        }
-
-        STARTING_OUTFIT [
-            "Ashigaru armor", "traveling clothes",
-            "daishō (katana and wakizashi)",
-            "nodachi (greatsword) or tessen (war fan)",
-            "knife", "yumi (bow)", "quiver of arrows",
-            "traveling pack"
-        ]
-
-        CURRICULUM {
-            RANK 1 {
-                SKILL_GROUP "Martial Skills"
-                SKILL "Command"
-                SKILL "Labor"
-                SKILL "Survival"
-                TECHNIQUE_GROUP "Rank 1 Kata"
-                ^"Lord Akodo's Roar" [shuji]
-                ^"Stonewall Tactics" [shuji]
-            }
-            RANK 2 {
-                SKILL_GROUP "Martial Skills"
-                SKILL "Command"
-                SKILL "Medicine"
-                SKILL "Smithing"
-                TECHNIQUE_GROUP "Rank 1-2 Kata"
-                ^"Heartpiercing Strike" [kata]
-                ^"Fanning the Flames" [shuji]
-            }
-            RANK 3 {
-                SKILL_GROUP "Martial Skills"
-                SKILL "Composition"
-                SKILL "Government"
-                SKILL "Theology"
-                TECHNIQUE_GROUP "Rank 1-3 Kata"
-                ^"Disappearing World Style" [kata]
-                ^"Rallying Cry" [shuji]
-            }
-            RANK 4 {
-                SKILL_GROUP "Martial Skills"
-                SKILL "Command"
-                SKILL "Courtesy"
-                SKILL "Culture"
-                TECHNIQUE_GROUP "Rank 1-4 Kata"
-                ^"Striking as Void" [kata]
-                ^"Bravado" [shuji]
-            }
-            RANK 5 {
-                SKILL_GROUP "Martial Skills"
-                SKILL "Labor"
-                SKILL "Medicine"
-                SKILL "Smithing"
-                TECHNIQUE_GROUP "Rank 1-5 Kata"
-                ^"Rouse the Soul" [shuji]
-                ^"Sear the Wound" [shuji]
-            }
-            RANK 6 {
-                ^"Rending Jaws of the Lion"
-            }
-        }
-
         GUIDANCE {
             ENTRY ^"faq-matsu-berserker-0" #L5RERGJgdGZ49gvKqnrCr9 {
                 CONCERNS [ ^"Matsu Berserker" ]
@@ -1728,8 +398,6 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"NPC" {
-        # Metatype anchor for non-player character definitions
-
         GUIDANCE {
             ENTRY ^"faq-npc-0" #L5RERG3d9X5uMSdOhtGB7Z {
                 CONCERNS [ ^"NPC" ]
@@ -1750,13 +418,6 @@ EXTENSION "L5R5e_Errata_FAQ_2019" EXTENDS "L5R5e_Core_Character" {
     }
 
     MODIFY ^"Improvised Weapons" {
-        PROPERTIES {
-            ^"Name"     STRING "Improvised Weapon"
-            ^"Category" STRING "Improvised"
-            ^"Skill"    STRING "Martial Arts [Unarmed]"
-            ^"Profile"  STRING "An improvised weapon uses the most similar weapon profile (often a club or a knife), with DMG and DLS reduced by 1, or more at the GM's discretion. They are wielded with Martial Arts [Unarmed]."
-        }
-
         GUIDANCE {
             ENTRY ^"errata-improvised-weapons-margin-note" #L5RERGimprvwpn2019aaaa {
                 CONCERNS [ ^"Improvised Weapons" ]

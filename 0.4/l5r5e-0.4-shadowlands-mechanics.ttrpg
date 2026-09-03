@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Shadowlands: New Player Options"
-    VERSION "0.4.2"
+    VERSION "0.4.3"
     SPEC_VERSION "0.4.1"
     RELEASE_DATE "2026-03-01"
 
@@ -1427,11 +1427,13 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
             }
 
             #FKmujLSSs35USGKWx0VVg9 ^"Commune with Evil" DEF {
-                ^"Rank" INTEGER 1
-                ^"Description" STRING "The practitioner detects any malevolent supernatural entities in the area, senses their desires, and makes a bargain for an unholy blessing."
-                ^"Activation" STRING "As a downtime activity action, you may make a TN 1 Theology (Void) check."
-                ^"Effect" STRING "If you succeed, you scry for the presence of any Otherworldly or Tainted beings at range 0–6."
-                ^"Opportunities" STRING "(op): If there are any such beings, they accept your offering, and they augment you with an unholy blessing that increases the value of the ring you used for the check by 1. You can only have one unholy blessing at a time, and it persists until the end of the scene. (op)(op)(op)+: If you receive an unholy blessing, it temporarily increases the ring's value by an additional 1 per (op)(op)(op) spent this way. (op)+: If you receive an unholy blessing, it persists for 1 additional round per (op) spent this way."
+                PROPERTIES {
+                    ^"Rank" INTEGER 1
+                    ^"Description" STRING "The practitioner detects any malevolent supernatural entities in the area, senses their desires, and makes a bargain for an unholy blessing."
+                    ^"Activation" STRING "As a downtime activity action, you may make a TN 1 Theology (Void) check."
+                    ^"Effect" STRING "If you succeed, you scry for the presence of any Otherworldly or Tainted beings at range 0–6."
+                    ^"Opportunities" STRING "(op): If there are any such beings, they accept your offering, and they augment you with an unholy blessing that increases the value of the ring you used for the check by 1. You can only have one unholy blessing at a time, and it persists until the end of the scene. (op)(op)(op)+: If you receive an unholy blessing, it temporarily increases the ring's value by an additional 1 per (op)(op)(op) spent this way. (op)+: If you receive an unholy blessing, it persists for 1 additional round per (op) spent this way."
+                }
             }
 
             #RAAE0KVOZV2XhSYoSatg3a ^"Dark Reflection" DEF {
@@ -1451,11 +1453,13 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
             }
 
             #ULC2xpBdXz04vCZ3LBNsAg ^"Fiend's Retreat" DEF {
-                ^"Rank" INTEGER 3
-                ^"Description" STRING "This technique allows its user to exchange positions with an unsuspecting character, leaving them to meet a miserable end. The blade descends, but the sorcerer's flesh twists like wax and melts to foul muck, revealing some unfortunate whom the mahō-tsukai left to meet the judgment they so richly deserve."
-                ^"Activation" STRING "Once per scene, as an Attack and Movement action or as an out-of-turn action when you are targeted by an attack, you may make a Theology (Air) check targeting one character at range 2–3. The target must be Incapacitated or a minion NPC, and the TN of the check is equal to the target's vigilance."
-                ^"Effect" STRING "If you succeed, you curse the target, forcing them to exchange physical locations with you. The target becomes the target of any attacks that were targeting you."
-                ^"Opportunities" STRING "(op)+: Choose one additional character at range 0–1 to move and one additional target per (op) spent this way. (op): Increase the maximum range by 1 per (op) spent this way."
+                PROPERTIES {
+                    ^"Rank" INTEGER 3
+                    ^"Description" STRING "This technique allows its user to exchange positions with an unsuspecting character, leaving them to meet a miserable end. The blade descends, but the sorcerer's flesh twists like wax and melts to foul muck, revealing some unfortunate whom the mahō-tsukai left to meet the judgment they so richly deserve."
+                    ^"Activation" STRING "Once per scene, as an Attack and Movement action or as an out-of-turn action when you are targeted by an attack, you may make a Theology (Air) check targeting one character at range 2–3. The target must be Incapacitated or a minion NPC, and the TN of the check is equal to the target's vigilance."
+                    ^"Effect" STRING "If you succeed, you curse the target, forcing them to exchange physical locations with you. The target becomes the target of any attacks that were targeting you."
+                    ^"Opportunities" STRING "(op)+: Choose one additional character at range 0–1 to move and one additional target per (op) spent this way. (op): Increase the maximum range by 1 per (op) spent this way."
+                }
             }
 
             #KiGd5T95TxFEjjx5djW8hH ^"Shape the Flesh" DEF {
@@ -1467,11 +1471,13 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
             }
 
             #gXpX7wNpEpQoTTsym6jkpf ^"Spiritual Shackles" DEF {
-                ^"Rank" INTEGER 1
-                ^"Description" STRING "Mahō-tsukai deal constantly with powerful, dangerous beings, and those who live long enough learn that kansen can only be trusted to be untrustworthy—but deceit can be repaid in kind. Other spirits might also seek to wreak vengeance upon mahō-tsukai, from the hungering ghosts called gaki to wrathful ancestor spirits, and it pays to have protection against such beings. The mahō-tsukai uses trickery and sheer will on a kansen or other spirit, sealing it within an object."
-                ^"Activation" STRING "As an Attack and Intrigue action, you may make a Theology (Air) check targeting one Otherworldly being at range 0–1. The TN of this check is equal to the target's vigilance and is reduced by 2 if the target is also a Tainted being."
-                ^"Effect" STRING "If you succeed, you bind the spirit inside an object of silhouette 1 or less at range 0–2. If the being you bound is Tainted, the object gains the Unholy quality. If you fail, the spirit curses you, and you suffer the Afflicted condition."
-                ^"Opportunities" STRING "(op): The object gains one other quality of your choice from the following list: Concealable, Durable, Resplendent, Subtle. (op): As an action, the holder of the object may release the bound being to importune one mahō (or invocation, if you have bound an elemental spirit) without paying the usual costs or making the usual TN adjustments (see Importune Invocations on page 189 and Importune Mahō on page 225 of the core rulebook)."
+                PROPERTIES {
+                    ^"Rank" INTEGER 1
+                    ^"Description" STRING "Mahō-tsukai deal constantly with powerful, dangerous beings, and those who live long enough learn that kansen can only be trusted to be untrustworthy—but deceit can be repaid in kind. Other spirits might also seek to wreak vengeance upon mahō-tsukai, from the hungering ghosts called gaki to wrathful ancestor spirits, and it pays to have protection against such beings. The mahō-tsukai uses trickery and sheer will on a kansen or other spirit, sealing it within an object."
+                    ^"Activation" STRING "As an Attack and Intrigue action, you may make a Theology (Air) check targeting one Otherworldly being at range 0–1. The TN of this check is equal to the target's vigilance and is reduced by 2 if the target is also a Tainted being."
+                    ^"Effect" STRING "If you succeed, you bind the spirit inside an object of silhouette 1 or less at range 0–2. If the being you bound is Tainted, the object gains the Unholy quality. If you fail, the spirit curses you, and you suffer the Afflicted condition."
+                    ^"Opportunities" STRING "(op): The object gains one other quality of your choice from the following list: Concealable, Durable, Resplendent, Subtle. (op): As an action, the holder of the object may release the bound being to importune one mahō (or invocation, if you have bound an elemental spirit) without paying the usual costs or making the usual TN adjustments (see Importune Invocations on page 189 and Importune Mahō on page 225 of the core rulebook)."
+                }
             }
 
             #h6FrAFAKdxfnVMjC8Goim3 ^"Spread Corruption" DEF {
