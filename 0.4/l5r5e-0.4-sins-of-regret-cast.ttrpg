@@ -1,0 +1,335 @@
+# L5R 5E — Sins of Regret: Dramatis Personae (cast NPCs / adversaries)
+# "Sins of Regret: An Adventure in the Forgotten Heart of the Empire" (FFG),
+# a rōnin adventure at Closed Shell Castle. NPC statblocks transcribed verbatim
+# from the printed profiles: rings, conflict ranks, derived attributes, honor/
+# glory/status, skill-group ranks, advantages/disadvantages, favored weapons &
+# gear, and abilities (verbatim in nested ^"Name" DEF { ^"Effect" ... } blocks).
+# The Otherworldly beings (kyōkotsu, shachihoko) carry no societal scores. This
+# adventure uses the players' own rōnin characters, so there are no pregens; the
+# structure is in l5r5e-0.4-sins-of-regret.arc and the narrative in the .lore.
+
+EXTENSION "L5R5e_SinsOfRegret_Cast" {
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-03"
+    DEPENDS_ON "L5R5e_Core_Core"
+
+    # ═══════════════════════ TWIN BLESSINGS VILLAGE ═══════════════════════
+
+    ^"Ichirō" DEF {
+        EXTENDS ^"NPC"
+        # A bandit leader in the forest near the village: son of the village leader
+        # Setsuo, young and naïve, who abandoned the village to gather villagers into
+        # a rebel band, hoping to overthrow the unjust daimyō Jikai. Claims to have
+        # joined the Perfect Land Sect.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 2 ^"Fire" INTEGER 3 ^"Water" INTEGER 2 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Ambitious"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 7
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 10
+            ^"Glory" INTEGER 10
+            ^"Status" INTEGER 15
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 0", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Wary — Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Idealistic — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Kama: Range 0–1, Damage 3, Deadliness 3/5, Concealable"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Peasant garb (Physical 1), bandit mask"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 2, Intrigue 1. Bandit Leader."
+        ^"Forest Fighter" DEF { ^"Effect" STRING "When Ichirō makes a Martial skill check while in forest, he adds one rolled Ring die." }
+    }
+
+    ^"Reju Tsugumasa" DEF {
+        EXTENDS ^"NPC"
+        # The daimyō's magistrate, an aloof but honest man long in Reju service, sent
+        # to the village to collect the rice tax early. Accustomed to ordering
+        # servants; loyal and dedicated but with a fondness for wealth and comfort.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 3 ^"Fire" INTEGER 1 ^"Water" INTEGER 2 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Detached"
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 34
+            ^"Glory" INTEGER 42
+            ^"Status" INTEGER 40
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 2", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Analytical Thinking — Scholar; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Haughty — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Lacquered armor (Physical 4, Ceremonial, Cumbersome, Wargear), wakizashi"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 2, Intrigue 3. Magistrate."
+        ^"Elitist" DEF { ^"Effect" STRING "When making a check to give orders to a subordinate or other character with lower status, Tsugumasa counts his Social skill ranks as 4. After making a Social skill check targeting one or more peasants, Tsugumasa receives 2 strife." }
+    }
+
+    ^"Michi" DEF {
+        EXTENDS ^"NPC"
+        # A wandering monk who once stayed at the Hermitage and trained the villagers;
+        # friendly and cryptic on the road, serious and Shinsei-quoting at the castle,
+        # where he seems to be waiting for something he will not name.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 3 ^"Fire" INTEGER 3 ^"Water" INTEGER 2 ^"Void" INTEGER 4 }
+            ^"Demeanor" STRING "Teasing"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 6
+            ^"Honor" INTEGER 25
+            ^"Glory" INTEGER 36
+            ^"Status" INTEGER 22
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 1", "Social 2", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Quick Reflexes — Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Poverty — Trade; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Sturdy Walking Stick: Range 0–1, Damage 3, Deadliness 3/5, Mundane"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Monk's robes (Physical 1, Mundane)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 2. The Monk."
+        ^"Everything Is Connected" DEF { ^"Effect" STRING "As an action, Michi can activate any rank 1 kihō of any element but cannot use its burst effect." }
+    }
+
+    # ═══════════════════════ THE REJU FAMILY (CLOSED SHELL CASTLE) ════════
+
+    ^"Reju Jikai" DEF {
+        EXTENDS ^"NPC"
+        # The daimyō of Closed Shell Castle — once an idealist, now bitter and angry,
+        # mostly with himself, deferring governance to his steward while indulging his
+        # interest in falconry, poetry, and gaijin cultures. Suffers the Exhausted
+        # condition from the nightingale-floor and the noises on the roof.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 4 ^"Void" INTEGER 3 }
+            ^"Demeanor" STRING "Irritable"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 32
+            ^"Glory" INTEGER 57
+            ^"Status" INTEGER 58
+            ^"Skills" LIST OF STRING ["Artisan 4", "Martial 2", "Scholar 4", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Poetic Soul — Scholar; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Fatalistic — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Ceremonial robes (Physical 1, Ceremonial, Resplendent), calligraphy set, personal chop"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 3, Intrigue 5. Daimyō of Closed Shell Castle."
+        ^"Selective Hearing" DEF { ^"Effect" STRING "The first time another character makes a Social skill check targeting Jikai each scene, if there are 3 or more rolled dice containing Opportunity or Strife, that character must reroll those results." }
+    }
+
+    ^"Reju Toshio" DEF {
+        EXTENDS ^"NPC"
+        # Jikai's spiritual advisor, who traveled with him from Otosan Uchi and
+        # resents the remote castle. Rather than righting the elemental imbalance, he
+        # has deliberately worsened it and offended the kami — a serious spiritual
+        # crime — at the steward Nobu's suggestion, in exchange for wealth and power.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 4 ^"Fire" INTEGER 3 ^"Water" INTEGER 2 ^"Void" INTEGER 3 }
+            ^"Demeanor" STRING "Fixated"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 10
+            ^"Glory" INTEGER 32
+            ^"Status" INTEGER 35
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 1", "Scholar 3", "Social 2", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Obsessive Learning — Scholar; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Ingratitude — Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Sanctified robes (Physical 1, Supernatural 3, Ceremonial), scroll satchel, enough offerings for 3 earth invocations"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 4. Embittered Shugenja."
+        ^"Manipulator of Kami" DEF { ^"Effect" STRING "Each time Toshio attempts an invocation he uses a material offering, but still suffers spiritual backlash if he generates 3 or more Strife. This becomes 1 or more Strife without offerings." }
+        ^"Tiny Tremors" DEF { ^"Effect" STRING "(Invocation) As an Attack action, Toshio can make a TN 1 Theology (Earth) check to summon a small vibration in the floor or ground at a chosen position at range 0–3. Opportunity+: Each character at range 0–2 of the chosen position suffer 1 physical damage per Opportunity spent this way." }
+    }
+
+    ^"Reju Ume" DEF {
+        EXTENDS ^"NPC"
+        # Jikai's niece and heir, a tall, graceless girl who is a beautiful duelist —
+        # trained in Otosan Uchi by the Kakita master Kakita Chisato — and resents her
+        # uncle for dragging her to this remote home. Will speak to Jikai for PCs who
+        # best her in an iaijutsu duel.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 3 ^"Fire" INTEGER 3 ^"Water" INTEGER 2 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Ambitious"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 56
+            ^"Glory" INTEGER 49
+            ^"Status" INTEGER 45
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 2", "Scholar 2", "Social 2", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Dedicated — Martial, Scholar; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Restless — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Bokken: Range 1, Damage 3, Deadliness 3, Mundane"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Training clothes (Physical 1), katana, wakizashi"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 3, Intrigue 2. Duelist and Heir."
+        ^"Dramatic Duelist" DEF { ^"Effect" STRING "When performing an Attack action, Ume may spend Opportunity as follows: Opportunity Opportunity: If she succeeds, Ume inflicts no damage, and her target receives strife equal to her weapon's base damage plus her bonus successes." }
+    }
+
+    ^"Seppun Azusa" DEF {
+        EXTENDS ^"NPC"
+        # Married to Reju Jikai (she keeps her prestigious Seppun name); a powerfully
+        # built bushi who has given up her martial duties since a hand injury and
+        # turned to obsessive devotion to Shinsei. Her Disabled Hand can be overcome,
+        # and she reconciled with Jikai, if the PCs help.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 3 ^"Fire" INTEGER 4 ^"Water" INTEGER 3 ^"Void" INTEGER 4 }
+            ^"Demeanor" STRING "Obsessive"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 61
+            ^"Glory" INTEGER 56
+            ^"Status" INTEGER 58
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 4", "Scholar 3", "Social 2", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Formidable — Martial; Mental, Physical"]
+            ^"Disadvantages" LIST OF STRING ["Resentful — Social; Mental", "Disabled Hand — Martial; Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Ceremonial robes (Physical 1, Ceremonial, Resplendent), unpleasant incense, prayer strips, katana"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 6, Intrigue 4. Lady of the Castle."
+        ^"Harnessed Anger" DEF { ^"Effect" STRING "Once per round, Azusa may receive 3 strife to treat the deadliness of her readied weapon as 3 higher. Azusa loses this ability if she both learns to overcome her injury and reconciles with Jikai." }
+    }
+
+    # ═══════════════════════ THE OTOMO SCHEMERS ══════════════════════════
+
+    ^"Otomo Nobu" DEF {
+        EXTENDS ^"NPC"
+        # The castle steward — ruthless and ambitious but hiding it well. He ran the
+        # castle for months before Jikai's appointment, grew accustomed to power, and
+        # has convinced himself that removing Jikai will make him daimyō. He murdered
+        # Otomo Nahoko and threw her bones into the well.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF { ^"Air" INTEGER 4 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 3 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 10
+            ^"Glory" INTEGER 32
+            ^"Status" INTEGER 45
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 1", "Scholar 3", "Social 4", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Flatterer — Social; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Ambitious — Scholar; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Concealed armor (Physical 2, concealable) under robes"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 1, Intrigue 5. Castle Steward."
+        ^"Controller of the Castle" DEF { ^"Effect" STRING "During any intrigue conflict taking place within Closed Shell Castle, Nobu begins with one momentum point toward his objective." }
+    }
+
+    ^"Otomo Kazumi" DEF {
+        EXTENDS ^"NPC"
+        # The commander of the rival lord's invading force, waiting for a chance to
+        # prove herself and willing to do whatever it takes to claim victory. Keen of
+        # body and mind, with no fear of death, only obscurity.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 4 ^"Fire" INTEGER 3 ^"Water" INTEGER 3 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Ambitious"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 50
+            ^"Glory" INTEGER 58
+            ^"Status" INTEGER 45
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 4", "Scholar 3", "Social 2", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Military Historian — Scholar; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Untested — Martial; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Tessen: Range 0–1, Damage 4, Deadliness 3, Ceremonial, Concealable"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Lacquered armor (Physical 4, Ceremonial, Cumbersome, Wargear), katana, wakizashi"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 7, Intrigue 5. Commander of the rival lord's force."
+        ^"Claim the Advantage" DEF { ^"Effect" STRING "In a mass battle, each opposing commander treats the TN of their initiative check as increased by 2." }
+    }
+
+    # ═══════════════════════ OTHERWORLDLY BEINGS ═════════════════════════
+
+    ^"Kyōkotsu" DEF {
+        EXTENDS ^"NPC"
+        # The vengeful undead remains of Otomo Nahoko, murdered by the steward Nobu
+        # and thrown into the castle well. A horrific spectral figure of decayed,
+        # unarticulated bones that screams with soul-shriving rage.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 2 ^"Fire" INTEGER 4 ^"Water" INTEGER 3 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Vengeful"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 2
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 4", "Scholar 1", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Feels No Pain — Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Lost and Confused — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Mournful Wail: Range 0–3, Damage 3, Deadliness 3, inflicts supernatural damage"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Infused bones (Physical 5, Supernatural 2)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 5, Intrigue 1. The Remains of Nahoko. No societal scores (Otherworldly)."
+        ^"Animated Bones" DEF { ^"Effect" STRING "A kyōkotsu is an Otherworldly being of silhouette 1. A critical strike of any severity scatters the bones and renders them inanimate for one round. It is only defeated when its fatigue exceeds its endurance." }
+        ^"Vengeful Touch" DEF { ^"Effect" STRING "Anyone who comes within range 0 of the spirit or otherwise directly touches it suffers the Enraged condition (see page 272 of the core rulebook)." }
+    }
+
+    ^"Shachihoko" DEF {
+        EXTENDS ^"NPC"
+        # Carp with the faces of tigers, carved onto the roof to protect the keep from
+        # evil spirits and fire. Neglected by Toshio and inflamed by the spiritual
+        # turbulence, these guardian spirits have grown paranoid and attack any
+        # perceived intruder on the roof without warning.
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 3 ^"Fire" INTEGER 2 ^"Water" INTEGER 2 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Assertive"
+            ^"Endurance" INTEGER 11
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 0", "Social 0", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Wood and Stone — Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Quick to Attack — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Tiger Teeth: Range 0, Damage 6, Deadliness 9, Razor-Edged", "Water Torrent: Range 0–3, Damage 5, Deadliness 7"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Wooden scales (Physical 1)"]
+        }
+        DESCRIPTION "MINION. Conflict Rank — Combat 3, Intrigue 1. Roof-guardian carp. No societal scores (Otherworldly)."
+        ^"Protective Spirit" DEF { ^"Effect" STRING "A shachihoko is an Otherworldly being of silhouette 1 that can fly. It can move vertically and ignore the negative effects of terrain." }
+    }
+}
