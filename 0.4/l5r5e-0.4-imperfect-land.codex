@@ -1,0 +1,86 @@
+# .codex SECTION — Imperfect Land (adventure). Stand-off graph over
+# l5r5e-0.4-imperfect-land.lore (spec §25). Part of the L5R5e system graph;
+# DEPENDS_ON the shared schema.
+#
+# The adventure's cast (18 NPCs in l5r5e-0.4-imperfect-land-cast.ttrpg) are DEFs —
+# referenced via ^"...", never minted. The Perfect Land Sect, the Brotherhood of
+# Shinsei, the Mountain Song Temple (Writ of the Wilds), the Kolat, Shinsei, and
+# the Shosuro family are already in the graph — referenced, and the Perfect Land
+# Sect / Mountain Song Temple / Kolat / Shosuro amended. This section mints the
+# Kolat front (the Mountain Sect), the founding sutra, and the lore-only figures
+# (the founders Yuzue and Gatai, the reincarnation Senzai, the ise zumi Togashi
+# Kazue, and the Scorpion spymaster Yogo Hiroue).
+
+CODEX "L5R5e_ImperfectLand_Codex" {
+    NAME "Imperfect Land — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-03"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # ---- The Kolat front & the founding sutra -----------------------------
+    ENTITY #L5RcxIL01mountainsect ^"Mountain Sect" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-imperfect-land.lore" AT "adventure-background"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Kolat"  FROM "the merchant Kanbei, master of the Mountain Sect (a Kolat organization)"
+            ^"led-by"      -> ^"Kanbei" FROM "the merchant Kanbei, master of the Mountain Sect" }
+    }
+    ENTITY #L5RcxIL02perfectlandsutra ^"The Perfect Land Sutra" {
+        IS ^"Document"
+        SOURCE "l5r5e-0.4-imperfect-land.lore" AT "the-perfect-land"
+        RELATIONSHIPS { ^"authored-by" -> ^"Yuzue" FROM "the founding sutra Yuzue allegedly wrote before her death, which describes a realm within the Celestial Court — the Perfect Land" }
+    }
+
+    # ---- Lore-only figures -------------------------------------------------
+    ENTITY #L5RcxIL03yuzuefounder ^"Yuzue" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-imperfect-land.lore" AT "the-perfect-land"
+        RELATIONSHIPS {
+            ^"founder-of" -> ^"Perfect Land Sect"       FROM "a young monk of the Shrine of the Seven Thunders, theorized that the Little Teacher's conversation with Hantei had begun the Age of Celestial Virtue"
+            ^"authored"   -> ^"The Perfect Land Sutra"   FROM "the founding sutra Yuzue allegedly wrote before her death" }
+    }
+    ENTITY #L5RcxIL04gataistudent ^"Gatai" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-imperfect-land.lore" AT "the-perfect-land"
+        RELATIONSHIPS { ^"student-of" -> ^"Yuzue" FROM "The movement became an organized force only after Yuzue's passing, thanks to her student Gatai" }
+    }
+    ENTITY #L5RcxIL05senzaishinsei ^"Senzai" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-imperfect-land.lore" AT "part-three-the-silent-song"
+    }
+    ENTITY #L5RcxIL06togashikazue ^"Togashi Kazue" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-imperfect-land.lore" AT "part-three-the-silent-song"
+        RELATIONSHIPS { ^"member-of" -> ^"Togashi" FROM "The ise zumi Togashi Kazue found her, and in the ensuing battle used his interlaced-knot tattoo to bring her a moment of kenshō" }
+    }
+    ENTITY #L5RcxIL07yogohiroue ^"Yogo Hiroue" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-imperfect-land.lore" AT "part-two-the-perfect-land-arrives"
+        RELATIONSHIPS { ^"member-of" -> ^"Yogo" FROM "the Scorpion shinobi Shosuro Miyako, sent by Yogo Hiroue to investigate the sect" }
+    }
+
+    # ---- Amendments to existing graph nodes --------------------------------
+    ENTITY ^"Perfect Land Sect" {
+        SOURCE "l5r5e-0.4-imperfect-land.lore" AT "adventure-background"
+        RELATIONSHIPS {
+            ^"led-by"      -> ^"Hige"  FROM "the sect's humble leader Hige"
+            ^"founded-by"  -> ^"Yuzue" FROM "The sect's origins lie in the late ninth century, when Yuzue, a young monk of the Shrine of the Seven Thunders" }
+    }
+    ENTITY ^"Mountain Song Temple" {
+        SOURCE "l5r5e-0.4-imperfect-land.lore" AT "part-one-the-brotherhood-gathers"
+        RELATIONSHIPS { ^"overseen-by" -> ^"Mirumoto Masashige" FROM "under the hospitality of Dragon family daimyō Mirumoto Masashige" }
+    }
+    ENTITY ^"Kolat" {
+        SOURCE "l5r5e-0.4-imperfect-land.lore" AT "adventure-background"
+        RELATIONSHIPS { ^"has-member" -> ^"Kanbei" FROM "the merchant Kanbei, master of the Mountain Sect (a Kolat organization)" }
+    }
+    ENTITY ^"Shosuro" {
+        SOURCE "l5r5e-0.4-imperfect-land.lore" AT "part-two-the-perfect-land-arrives"
+        RELATIONSHIPS { ^"has-member" -> ^"Yuki (Shosuro Miyako)" FROM "'Yuki' — in truth the Scorpion shinobi Shosuro Miyako" }
+    }
+    ENTITY ^"Brotherhood of Shinsei" {
+        SOURCE "l5r5e-0.4-imperfect-land.lore" AT "adventure-background"
+    }
+}
