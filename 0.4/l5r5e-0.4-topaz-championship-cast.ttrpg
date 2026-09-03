@@ -1,0 +1,70 @@
+# L5R 5E — The Topaz Championship: Dramatis Personae (cast NPCs)
+# The L5R Beginner Game's core adventure (FFG), the prequel to "In the Palace of
+# the Emerald Champion." These are Beginner Game *simplified* NPC profiles (rings,
+# derived attributes, honor/glory/status, skill-group ranks, favored weapons &
+# gear, and "NPC ABILITY" blocks — no Conflict Ranks or Advantages/Disadvantages).
+# Every value and ability text is transcribed VERBATIM from the printed statblock
+# page. The seven pregenerated PCs are the shared Beginner Game character folios,
+# already authored in l5r5e-0.4-emerald-champion-pregens.actor and referenced from
+# this adventure's .arc — not re-authored here. Narrative figures (Ryu, the ghost
+# Doji Satsume, Kitsuki Yuikimi, Hitoshi, Kakita Toshimoko, Kakita Riku, Bayushi
+# Mei Lin) live in the .lore / .codex; tournament finalists use the Experienced
+# Bandit profile (Beginner Game Rulebook p42).
+
+EXTENSION "L5R5e_TopazChampionship_Cast" {
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-03"
+    DEPENDS_ON "L5R5e_Core_Core"
+
+    ^"Bayushi Sugai" DEF {
+        EXTENDS ^"NPC"
+        # The Scorpion courtier behind the plot to dishonor the Crane at the Topaz
+        # Championship — by swapping the Crane duelist Kakita Riku's blunt training
+        # sword for a real, razor-sharp double. With his scheme foiled, he flees the
+        # city, willing to cut down the young PCs who chase him. (Coexists with the
+        # codex entity of the same name minted in the Emerald Champion fold.)
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 2 ^"Fire" INTEGER 3 ^"Water" INTEGER 2 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Ambitious"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 24
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 0", "Social 1", "Trade 0"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Damage 4; Range 1"]
+            ^"Gear" LIST OF STRING ["Daishō, elegant clothing, fine mask"]
+        }
+        DESCRIPTION "Beginner Game simplified profile. Bayushi Sugai — the Scorpion mastermind of the plot against the Crane."
+        ^"Cutting Wit" DEF { ^"Effect" STRING "Sugai may spend Opportunity Opportunity from a successful attack check to also inflict 2 strife on the target." }
+    }
+
+    ^"Ruffian" DEF {
+        EXTENDS ^"NPC"
+        # Rōnin who come to Bayushi Sugai's aid, ready to defend him against the
+        # inexperienced children chasing him — though they will eagerly flee if
+        # things start to go poorly. A minion; they open the Scene 5 sake-house
+        # brawl in a Void stance with an initiative value of 4.
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 2 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Intimidating"
+            ^"Endurance" INTEGER 5
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 17
+            ^"Glory" INTEGER 22
+            ^"Status" INTEGER 21
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 0"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Damage 4; Range 1"]
+            ^"Gear" LIST OF STRING ["Daishō, grimy kimono, sake jug (empty)"]
+        }
+        DESCRIPTION "Beginner Game simplified profile. Minion — Sugai's hired rōnin."
+        ^"Sit Down, Child!" DEF { ^"Effect" STRING "A ruffian may spend Opportunity from a successful attack to knock the PC down. The PC must use their movement on their next turn to stand up, and they suffer 1 strife from embarrassment." }
+    }
+}
