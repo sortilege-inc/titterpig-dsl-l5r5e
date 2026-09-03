@@ -1,0 +1,79 @@
+# .codex SECTION — The Scroll or the Blade (adventure). Stand-off graph over
+# l5r5e-0.4-scroll-or-blade.lore (spec §25). Part of the L5R5e system graph;
+# DEPENDS_ON the shared schema.
+#
+# The 9 cast NPCs (cast.ttrpg) are DEFs — referenced via ^"...", never minted.
+# Kyūden Doji, the Perfect Land Sect, Kakita Ryoku, and the Deer Clan are already
+# in the graph (referenced; Kyūden Doji and Kakita Ryoku amended). The family DEFs
+# (Kitsuki, Shiba, Miya, Kakita) are referenced. Winter's Embrace cameo NPCs
+# (Ikoma Rumiko, Susano-O no Izen, Doji Hatsuhina, Asahina Takako, Otomo
+# Koryusai) belong to that adventure and are not minted here. This section mints
+# the adventure's village, the Fortune Yamakaze, the Hinokami Prophecy, and its
+# lore-only figures.
+
+CODEX "L5R5e_ScrollOrBlade_Codex" {
+    NAME "The Scroll or the Blade — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-03"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # ---- Place & Fortune --------------------------------------------------
+    ENTITY #L5RcxSoB01chisanru ^"Chisanrū" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-scroll-or-blade.lore" AT "storyline-background"
+        RELATIONSHIPS { ^"dedicated-to" -> ^"Yamakaze" FROM "Unbeknownst to its inhabitants, a sacred shrine to Yamakaze lay buried beneath the village" }
+    }
+    ENTITY #L5RcxSoB02yamakaze ^"Yamakaze" {
+        IS ^"Fortune"
+        SOURCE "l5r5e-0.4-scroll-or-blade.lore" AT "storyline-background"
+        RELATIONSHIPS { ^"companion-of" -> ^"Masayo" FROM "a minor fortune of the mountain winds, known as Yamakaze, saw Masayo's natural affinity and became enraptured by her... The Fortune has become tied to Masayo" }
+    }
+    ENTITY #L5RcxSoB03hinokami ^"Hinokami Prophecy" {
+        IS ^"Document"
+        SOURCE "l5r5e-0.4-scroll-or-blade.lore" AT "act-3-those-who-receive"
+    }
+
+    # ---- Lore-only figures -------------------------------------------------
+    ENTITY #L5RcxSoB04miyasatoshi ^"Miya Satoshi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-scroll-or-blade.lore" AT "storyline-background"
+        RELATIONSHIPS { ^"member-of" -> ^"Miya" FROM "his daimyō, Miya Satoshi... the Imperial Herald Miya Satoshi" }
+    }
+    ENTITY #L5RcxSoB05kitsukitaiki ^"Kitsuki Taiki" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-scroll-or-blade.lore" AT "storyline-background"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Kitsuki"     FROM "Kitsuki Taiki, a Dragon warrior... the fallen samurai buried within the crushed villa (Masayo's father)"
+            ^"married-to" -> ^"Shiba Miku"  FROM "two samurai; Kitsuki Taiki, a Dragon warrior, and Shiba Miku, a Phoenix shugenja... eventually giving birth to a daughter, Masayo" }
+    }
+    ENTITY #L5RcxSoB06shibamiku ^"Shiba Miku" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-scroll-or-blade.lore" AT "storyline-background"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Shiba"          FROM "Shiba Miku, a Phoenix shugenja (Masayo's mother)"
+            ^"married-to" -> ^"Kitsuki Taiki"  FROM "Kitsuki Taiki, a Dragon warrior, and Shiba Miku, a Phoenix shugenja"
+            ^"sibling-of" -> ^"Isawa Yoshiko"  FROM "Yoshiko realized that Miku must be her half sister, and Masayo is her niece by blood" }
+    }
+    ENTITY #L5RcxSoB07bunjihanae ^"Hanae" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-scroll-or-blade.lore" AT "winters-embrace-tie-ins"
+        RELATIONSHIPS { ^"married-to" -> ^"Miya Bunji" FROM "his wife Hanae and his daughter Nanako were lost to a tsunami that crushed the northern coast of the Crane Lands" }
+    }
+    ENTITY #L5RcxSoB08bunjinanako ^"Nanako" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-scroll-or-blade.lore" AT "winters-embrace-tie-ins"
+        RELATIONSHIPS { ^"child-of" -> ^"Miya Bunji" FROM "his wife Hanae and his daughter Nanako were lost to a tsunami" }
+    }
+
+    # ---- Amendments to entities already in the graph ----------------------
+    ENTITY ^"Kyūden Doji" {
+        SOURCE "l5r5e-0.4-scroll-or-blade.lore" AT "storyline-summary"
+        RELATIONSHIPS { ^"seat-of" -> ^"Crane Clan" FROM "Taking place in the heart of Kyūden Doji... The Esteemed Palaces of the Crane" }
+    }
+    ENTITY ^"Kakita Ryoku" {
+        SOURCE "l5r5e-0.4-scroll-or-blade.lore" AT "act-1-the-lost-child"
+        RELATIONSHIPS { ^"ally-of" -> ^"Shika Yuki" FROM "She is an ally and close friend to Kakita Ryoku, to whom she owes a debt of gratitude... Shika Yuki, through her connection with Kakita Ryoku" }
+    }
+}
