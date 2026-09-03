@@ -1,0 +1,99 @@
+# .codex SECTION — Deathly Turns (supplemental encounters). Stand-off graph over
+# l5r5e-0.4-deathly-turns.lore (spec §25). Part of the L5R5e system graph;
+# DEPENDS_ON the shared schema.
+#
+# The cast (l5r5e-0.4-deathly-turns-cast.ttrpg) and the two new traditions
+# (l5r5e-0.4-deathly-turns-mechanics.ttrpg) are DEFs — referenced via ^"...", never
+# minted. Jigoku, Gaki-dō, Ningen-dō, Emma-Ō, the Falcon Clan, and Lonely Shore
+# City are already in the graph — referenced, and Jigoku / Gaki-dō / Emma-Ō / the
+# Falcon Clan / Lonely Shore City amended. This section mints the Spirit-Realm
+# places (the Bleak Place, Hiniku's Estate), the Fel Mantle artifact, the Phantom
+# Hunters, and the lore-only figures (the maō Burakakin, Hagane's victims Kakita
+# Sadao and Doji Yūdai, his target Shiba Akifusa, and the magistrate Daidoji
+# Himanari).
+
+CODEX "L5R5e_DeathlyTurns_Codex" {
+    NAME "Deathly Turns — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-03"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # ---- Spirit-Realm places ----------------------------------------------
+    ENTITY #L5RcxDT01bleakplace ^"The Bleak Place" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-deathly-turns.lore" AT "the-course-of-the-encounter"
+        RELATIONSHIPS { ^"located-in" -> ^"Jigoku" FROM "a cavern in Jigoku holding nothing but pools of stagnant water — one of the very few parts of the Realm of Evil that does not shift" }
+    }
+    ENTITY #L5RcxDT02hinikuestate ^"Hiniku's Estate" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-deathly-turns.lore" AT "encounter-2-escape-of-the-hungry-dead-gaki-dō"
+        RELATIONSHIPS { ^"located-in" -> ^"Gaki-dō" FROM "A sumptuous estate amid the joylessly bleak realm of Gaki-dō" }
+    }
+
+    # ---- The artifact ------------------------------------------------------
+    ENTITY #L5RcxDT03felmantle ^"Fel Mantle" {
+        IS ^"Artifact"
+        SOURCE "l5r5e-0.4-deathly-turns.lore" AT "the-course-of-the-encounter"
+        RELATIONSHIPS { ^"wielded-by" -> ^"Jya-Aku" FROM "a mahō-tsukai of prodigious power wearing the Fel Mantle — an artifact of dead-oni hide that lets her, a mortal, walk in Jigoku" }
+    }
+
+    # ---- The Falcon Clan's hunters -----------------------------------------
+    ENTITY #L5RcxDT04phantomhunters ^"Phantom Hunters" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-deathly-turns.lore" AT "encounter-3-a-mission-from-lady-mazoku-ningen-dō"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Falcon Clan" FROM "Lady Mazoku, secret patron of the Falcon Clan and its Phantom Hunters"
+            ^"led-by"      -> ^"Lady Mazoku"  FROM "who has taught its Phantom Hunters" }
+    }
+
+    # ---- Lore-only figures -------------------------------------------------
+    ENTITY #L5RcxDT05burakakin ^"Burakakin" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-deathly-turns.lore" AT "encounter-1-blood-and-magic-jigoku"
+    }
+    ENTITY #L5RcxDT06kakitasadao ^"Kakita Sadao" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-deathly-turns.lore" AT "the-trail-of-blood"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Kakita" FROM "Kakita Sadao, old instructor of the Whispering Blade Dōjō"
+            ^"enemy-of"  -> ^"Hagane" FROM "was found dead — his katana deliberately broken — after an unsanctioned duel" }
+    }
+    ENTITY #L5RcxDT07dojiyudai ^"Doji Yūdai" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-deathly-turns.lore" AT "the-trail-of-blood"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Doji"   FROM "the aged duelist Doji Yūdai in Eastern Petal Village near Otosan Uchi"
+            ^"enemy-of"  -> ^"Hagane" FROM "a similar killing of the aged duelist Doji Yūdai" }
+    }
+    ENTITY #L5RcxDT08shibaakifusa ^"Shiba Akifusa" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-deathly-turns.lore" AT "the-trail-of-blood"
+        RELATIONSHIPS { ^"member-of" -> ^"Shiba" FROM "move to protect his next target, Shiba Akifusa" }
+    }
+    ENTITY #L5RcxDT09daidojihimanari ^"Daidoji Himanari" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-deathly-turns.lore" AT "the-trail-of-blood"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Daidoji"           FROM "the chief magistrate, Daidoji Himanari"
+            ^"oversees"  -> ^"Lonely Shore City" FROM "the chief magistrate, Daidoji Himanari, to share what little the Crane know" }
+    }
+
+    # ---- Amendments to existing graph nodes --------------------------------
+    ENTITY ^"Jigoku" {
+        SOURCE "l5r5e-0.4-deathly-turns.lore" AT "encounter-1-blood-and-magic-jigoku"
+    }
+    ENTITY ^"Gaki-dō" {
+        SOURCE "l5r5e-0.4-deathly-turns.lore" AT "encounter-2-escape-of-the-hungry-dead-gaki-dō"
+    }
+    ENTITY ^"Emma-Ō" {
+        SOURCE "l5r5e-0.4-deathly-turns.lore" AT "encounter-3-a-mission-from-lady-mazoku-ningen-dō"
+    }
+    ENTITY ^"Falcon Clan" {
+        SOURCE "l5r5e-0.4-deathly-turns.lore" AT "encounter-3-a-mission-from-lady-mazoku-ningen-dō"
+    }
+    ENTITY ^"Lonely Shore City" {
+        SOURCE "l5r5e-0.4-deathly-turns.lore" AT "the-trail-of-blood"
+    }
+}
