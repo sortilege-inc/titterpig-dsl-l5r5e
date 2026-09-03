@@ -1,0 +1,318 @@
+# L5R 5E — Imperfect Land: Dramatis Personae (cast NPCs / adversaries)
+# "Imperfect Land" — an adventure uncovering the secrets of the Perfect Land Sect
+# (FFG). This file holds three tiers of NPC, all transcribed VERBATIM from the
+# source:
+#   1. Four full ADVERSARY statblocks (rings, conflict ranks, derived attributes,
+#      honor/glory/status, skill-group ranks, advantages/disadvantages, favored
+#      weapons & gear, abilities) — read from the statblock page images.
+#   2. Five profile-based leaders — modeled the way the source presents them, by
+#      naming a core-rulebook profile + template + adjustments (^"Profile").
+#   3. Nine "Undecided" conclave delegates (Part One persuasion targets), each
+#      given as the source lists them: an Order, a Vigilance (the persuasion TN),
+#      a Demeanor with its unmasking modifiers, and the Check that best sways them.
+# Ability text is reproduced verbatim in nested ^"Name" DEF { ^"Effect" ... }.
+# This adventure uses the players' own characters — there are no pregens. Purely
+# narrative figures (Senzai, Yohori, Satto, Fuchō's fellow scholars, the historical
+# Yuzue / Gatai / Togashi Kazue) and generic foes (monks as Trained Ashigaru,
+# Desperate Bandits) live in the .lore / .codex.
+
+EXTENSION "L5R5e_ImperfectLand_Cast" {
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-03"
+    DEPENDS_ON "L5R5e_Core_Core"
+
+    # ═══════════════ FULL STATBLOCKS ═══════════════════════════════════════
+
+    ^"Iwa" DEF {
+        EXTENDS ^"NPC"
+        # A militant sōhei, Abbot of the southern branch of the Four Temples, who
+        # has long tied her fate to Abbot Naigen and the anti-Perfect Land faction.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 9
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 4 ^"Fire" INTEGER 4 ^"Water" INTEGER 2 ^"Void" INTEGER 3 }
+            ^"Demeanor" STRING "Fanatical"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 54
+            ^"Glory" INTEGER 56
+            ^"Status" INTEGER 27
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 5", "Scholar 2", "Social 2", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Paragon of Strength — Martial; Mental, Physical, Spiritual", "Unrelenting — Social; Interpersonal, Mental"]
+            ^"Disadvantages" LIST OF STRING ["Inflexible — Scholar; Mental", "Old Wounds — Martial; Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Vicious Bisentō: Range 2, Damage 4/6, Deadliness 6, Cumbersome, Durable, Razor-Edged, Wargear"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Sōhei robes (Supernatural 2, Durable)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 9, Intrigue 4. Scaling note: if the PC party is small, low-rank, or not combat-oriented, replace her bisentō with a bō, remove the Trial of Fire ability, or reduce her Earth and Fire rings from 4 to 3."
+        ^"Master Sōhei" DEF { ^"Effect" STRING "Iwa may sustain two kihō enhancement effects at the same time and may perform any polearm-related kata." }
+        ^"Conquering the Mountain" DEF { ^"Effect" STRING "Iwa's blows make the world tremble. She starts any duel, skirmish, or mass battle conflict scene with the Way of the Earthquake kihō's enhancement effect activated." }
+        ^"Trial of Fire" DEF { ^"Effect" STRING "The first time Iwa would otherwise become Incapacitated during a scene, she refuses to accept defeat and is able to activate the effects of the kihō The Body Is an Anvil, with its burst effect aimed at whoever has dared to approach her. Then, she removes fatigue until it equals half her endurance." }
+    }
+
+    ^"Ichirō" DEF {
+        EXTENDS ^"NPC"
+        # Raised believing he was Mirumoto Masashige's biological son and in the
+        # karmic right of samurai to rule; on his gempuku he learned he was adopted
+        # from a peasant family. His world shattered, he renounced the name and
+        # turned to the Perfect Land for meaning.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 3 ^"Fire" INTEGER 4 ^"Water" INTEGER 4 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Idealistic"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 25
+            ^"Glory" INTEGER 28
+            ^"Status" INTEGER 22
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 4", "Scholar 1", "Social 4", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Burning Conviction — Social; Interpersonal, Mental", "Pragmatist — Martial; Mental, Physical"]
+            ^"Disadvantages" LIST OF STRING ["Bitter — Social; Interpersonal, Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Pure Earth Dao: Range 1, Damage 3, Deadliness 6, Ceremonial, Durable, Razor-Edged", "Pure Heavens Gao: Range 1, Damage 5, Deadliness 3, Ceremonial, Durable, Snaring", "Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Austere robes (Physical 2, Ceremonial, Durable)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 7, Intrigue 4. Adopted son of Mirumoto Masashige; now a Perfect Land adherent."
+        ^"Twin Dragons Striking" DEF { ^"Effect" STRING "Ichirō may perform any Iaijutsu kata. Once per scene when dual wielding, he may reduce the cost of activating a kata to Opportunity." }
+        ^"Empathic Objection" DEF { ^"Effect" STRING "Once per scene, when the Pure Land Sect or his faith are being challenged, Ichirō may vocally object and reduce his strife by a number equal to his focus. Any character who voices support of his objection also receives this benefit. In an intrigue, this ability cancels 1 momentum point gained from attacking or discrediting the sect." }
+    }
+
+    ^"Yuki (Shosuro Miyako)" DEF {
+        EXTENDS ^"NPC"
+        # Seemingly one of the many peasants who have flocked to Hige, Yuki is in
+        # truth Shosuro Miyako, a Scorpion shinobi sent by Yogo Hiroue to investigate
+        # the sect and its ties to the Dragon Clan. She has grown fond of Hige and
+        # is reluctant to act without orders — unless his life is threatened. Her
+        # first glory/status values are as "Yuki"; the second reflect her revealed
+        # identity as Shosuro Miyako.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 6
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 3 ^"Fire" INTEGER 2 ^"Water" INTEGER 2 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Cautious"
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 45
+            ^"Glory" STRING "44 (as Yuki) / 25 (revealed)"
+            ^"Status" STRING "15 (as Yuki) / 37 (revealed)"
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 2", "Scholar 1", "Social 3", "Trade 4"]
+            ^"Advantages" LIST OF STRING ["Low Profile — Social; Interpersonal", "Attentive to Detail — Scholar; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Risk Averse — Martial; Interpersonal, Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Shuriken: Range 0/1–3, Damage 2, Deadliness 4, Concealable"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Inconspicuous clothes (Physical 1, Mundane, Subtle)", "Gear (unequipped): Shinobi outfit (Physical 2, Concealable, Subtle)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 6. A Scorpion shinobi (Shosuro Miyako) undercover as the peasant 'Yuki'."
+        ^"Master Infiltrator" DEF { ^"Effect" STRING "Miyako is a crafty operative with a wide arsenal of tricks. She may perform any ninjutsu techniques and any Air shūji. When doing so, she may suffer 1 fatigue and 1 strife to count her target's vigilance as 1 lower." }
+        ^"Snowpetal of No Importance" DEF { ^"Effect" STRING "When Miyako is disguised, any character who does not know her true identity and has no reason to pay attention to her treats their own vigilance as 1 lower." }
+        ^"Clean Escape" DEF { ^"Effect" STRING "Once per scene, Miyako can use servants' tools to create improvised Obscuring terrain that extends around her up to range 1 and lasts one round." }
+    }
+
+    ^"Ajari" DEF {
+        EXTENDS ^"NPC"
+        # A solitary tengu who has haunted the wilderness around the Mountain Song
+        # Temple for years, sometimes visiting disguised as a human monk. His ascetic
+        # contemplation lets him recognize Senzai as Shinsei; he acts only to protect
+        # her so events may take their course. Unusually powerful illusion magic lets
+        # him impersonate a specific individual.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 7
+            ^"Rings" DEF { ^"Air" INTEGER 4 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 4 ^"Void" INTEGER 4 }
+            ^"Demeanor" STRING "Otherworldly"
+            ^"Endurance" INTEGER 11
+            ^"Composure" INTEGER 13
+            ^"Focus" INTEGER 9
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 26
+            ^"Glory" INTEGER 35
+            ^"Status" INTEGER 28
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 4", "Scholar 3", "Social 4", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Elusive — Martial; Interpersonal, Physical", "Good-Hearted — Social; Interpersonal, Mental"]
+            ^"Disadvantages" LIST OF STRING ["Indirect — Martial; Interpersonal, Mental, Physical", "Hollow-Boned — Martial; Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Bō: Range 1–2, Damage 6, Deadliness 2, Mundane"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Traveling clothes (Physical 2, Durable, Mundane, Subtle)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 7, Intrigue 7. A tengu of the wilderness around the Mountain Song Temple; secret protector of Senzai."
+        ^"Trickster Tengu" DEF { ^"Effect" STRING "Ajari is especially aligned with Air. He can perform any Air shūji, Air kihō, Air ninjutsu, or Air invocation. However, he may not repeat techniques obtained this way within the same scene, as his tricks grow thin." }
+        ^"Crafty Visage" DEF { ^"Effect" STRING "Ajari's Mask of Wind invocation is especially refined, allowing him to impersonate a specific individual." }
+        ^"Master of the Staff" DEF { ^"Effect" STRING "Ajari can use a staff to perform any polearm or blunt weapon kata." }
+        ^"Carried by the Wind" DEF { ^"Effect" STRING "During his turn, Ajari may choose to replace his current enhancement effect with the Riding the Clouds or Way of the Willow kihō. He can also move vertically and ignore the negative effects of terrain." }
+    }
+
+    # ═══════════════ PROFILE-BASED LEADERS ═════════════════════════════════
+
+    ^"Hige" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Profile" STRING "Seasoned Courtier (core rulebook page 313) with the Spiritualist template (page 311), adjusting his skills to Artisan 0, Trade 3"
+            ^"Demeanor" STRING "Generous and humble"
+        }
+        DESCRIPTION "Leader of the Perfect Land movement — a generous, humble old man, formerly a Brotherhood monk of the Fortune of Compassion and Forgiveness, who labors alongside his followers. Behind the kindly exterior is a firm will: his belief in Shinsei's benevolence (fed by a dream five years ago — a distorted echo of Togashi Kazue's interaction with Senzai) has, under Kanbei's subtle pressure, hardened into strident opposition to samurai rule and Fortunist worship. Nothing short of meeting the Little Teacher herself will change his faith."
+    }
+
+    ^"Kanbei" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Profile" STRING "Seasoned Courtier (core rulebook page 313) with the Trickster template (page 311)"
+            ^"Demeanor" STRING "Ruthless"
+        }
+        DESCRIPTION "A wealthy heimin merchant and the master of the Mountain Sect, a Kolat organization dedicated to controlling the Perfect Land movement and directing it toward the overthrow of the samurai order. He steadily encourages Hige to condemn the samurai and forbid Fortune-worship, and does not hesitate to shed blood if someone threatens his efforts. He launches the assassination attempt in Part Four."
+    }
+
+    ^"Anmoku" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Profile" STRING "Scholarly Shugenja (core rulebook page 314), replacing the invocations with kihō and adding the Sage template (page 311)"
+            ^"Demeanor" STRING "Open-minded"
+        }
+        DESCRIPTION "Abbot of the Stone Sages order and leader of the pro-Perfect Land faction. Through devotion to the Fortune of Wisdom and Mercy, she holds the Dragon philosophy of mental openness and fears the Brotherhood has grown too entrenched. She supports admitting the sect as an order, though she is troubled by Hige's demand that followers abandon the Fortunes; she hopes he can be persuaded to show the powers of the world proper respect."
+    }
+
+    ^"Naigen" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Profile" STRING "Scholarly Shugenja (core rulebook page 314), replacing the invocations with kihō and adding the Socialite template (page 311)"
+            ^"Demeanor" STRING "Rigid"
+        }
+        DESCRIPTION "Abbot of the eastern branch of the Four Temples and leader of the anti-Perfect Land faction. His rigid worldview will not accept the Little Teacher even when she stands before him. Iwa, the militant sōhei, has long tied her fate to his."
+    }
+
+    ^"Mirumoto Masashige" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Profile" STRING "Venerable Provincial Daimyō (core rulebook page 315), with two kata of the GM's choosing"
+            ^"Demeanor" STRING "Careworn"
+        }
+        DESCRIPTION "Daimyō of the Mirumoto family and, with the Clan Champion away, acting leader of the Dragon; host of the Brotherhood's conclave at the Mountain Song Temple. His feelings toward the sect are complicated — long worried about its destabilizing potential, bound by his Champion's policy of toleration, and thrown into turmoil when his adopted son Ichirō left to join it. Officially neutral, he is open to persuasion, and to reconciling with his son."
+    }
+
+    # ═══════════════ PART ONE — "THE UNDECIDED" CONCLAVE DELEGATES ═════════
+    # Persuasion targets: the TN to sway a delegate equals their Vigilance; their
+    # Demeanor (with unmasking modifiers) and the noted Check are how best to
+    # persuade them. Swaying Kaimoku or Yoshi has double the usual effect on
+    # Sympathy. Rekigan additionally has a full profile for a sparring duel.
+
+    ^"Kaimoku" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Persuasion Target" FIXED
+            ^"Order" STRING "Four Temples, northern branch"
+            ^"Vigilance" INTEGER 5
+            ^"Demeanor" STRING "Meticulous (+1 Fire, +1 Water, –1 Air, –1 Earth)"
+            ^"Persuasion Check" STRING "TN 3 Government"
+        }
+        DESCRIPTION "Seeks to understand how the Perfect Land fits into Rokugani society; interested in tales of peasant resistance and rebellion. Because of their influential position, swaying Kaimoku has double the usual effect on Sympathy."
+    }
+
+    ^"Kūen" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Persuasion Target" FIXED
+            ^"Order" STRING "Order of Eternity"
+            ^"Vigilance" INTEGER 4
+            ^"Demeanor" STRING "Watchful (+2 Fire, –1 Earth, –1 Void)"
+            ^"Persuasion Check" STRING "TN 2 Meditation (Earth 1, Void 1, Fire 4)"
+        }
+        DESCRIPTION "A woman of few words who embodies her order's philosophy of seeking the right moment to act. She will listen to those who show their patience by first meditating with her."
+    }
+
+    ^"Rekigan" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Persuasion Target" FIXED
+            ^"Order" STRING "Order of Osano-wo"
+            ^"Vigilance" INTEGER 4
+            ^"Demeanor" STRING "Direct (+2 Air, –1 Fire, –1 Water)"
+            ^"Persuasion Check" STRING "Sparring bout duel"
+            ^"Profile" STRING "Skillful Rōnin (core rulebook page 316) with the Spiritualist template (page 311)"
+        }
+        DESCRIPTION "A scarred, heavily muscled sōhei who respects those who show their strength; more willing to heed those who first acquit themselves well in a bout of sparring."
+    }
+
+    ^"Fuchō" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Persuasion Target" FIXED
+            ^"Order" STRING "Temple of Celestial Knowledge"
+            ^"Vigilance" INTEGER 4
+            ^"Demeanor" STRING "Fervent (+1 Air, +1 Water, –1 Fire, –1 Void)"
+            ^"Persuasion Check" STRING "TN 3 Theology"
+        }
+        DESCRIPTION "A scholarly woman who wants to bring everyone to Shinsei's way; she appreciates theological arguments about the dangers of heresy or the possibility that Perfect Land practices will redirect peasant attention from the Fortunes to the Tao."
+    }
+
+    ^"Shōka" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Persuasion Target" FIXED
+            ^"Order" STRING "Heaven's Fist"
+            ^"Vigilance" INTEGER 3
+            ^"Demeanor" STRING "Sociable (+1 Air, +1 Earth, –1 Fire, –1 Water)"
+            ^"Persuasion Check" STRING "TN 3 Fitness (Water or Earth 2)"
+        }
+        DESCRIPTION "An elder sōhei who still likes to drink and will happily discuss the Perfect Land with someone who can hold their sake."
+    }
+
+    ^"Tanbu" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Persuasion Target" FIXED
+            ^"Order" STRING "Pure Song Shrine"
+            ^"Vigilance" INTEGER 4
+            ^"Demeanor" STRING "Refined (+1 Earth, +1 Water, –1 Air, –1 Fire)"
+            ^"Persuasion Check" STRING "TN 3 Performance"
+        }
+        DESCRIPTION "Clearly a former courtier; his attention is drawn to an argument's elegance as much as its content. He can be persuaded by those with a flair for the dramatic."
+    }
+
+    ^"Yoshi" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Persuasion Target" FIXED
+            ^"Order" STRING "Four Temples, western branch"
+            ^"Vigilance" INTEGER 5
+            ^"Demeanor" STRING "Meticulous (+1 Fire, +1 Water, –2 Earth)"
+            ^"Persuasion Check" STRING "Scholar approach to a relevant skill, TN 3"
+        }
+        DESCRIPTION "Knows two of his fellow abbots are firmly set against the Perfect Land, but has not yet made up his mind. Historical arguments are most persuasive to him — especially ones citing previous False Paths or unusual sects admitted to the Brotherhood. Because of his influential position, swaying Yoshi has double the usual effect on Sympathy."
+    }
+
+    ^"Yuro" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Persuasion Target" FIXED
+            ^"Order" STRING "Order of Longevity"
+            ^"Vigilance" INTEGER 4
+            ^"Demeanor" STRING "Compassionate (+2 Water, –2 Void)"
+            ^"Persuasion Check" STRING "TN 3 Medicine"
+        }
+        DESCRIPTION "A follower of Jurōjin, the Fortune of Longevity; his heart is moved by stories of individual suffering, whether peasants hurt by samurai injustice or innocents hurt by Perfect Land fanatics."
+    }
+
+    ^"Zenjō" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Persuasion Target" FIXED
+            ^"Order" STRING "Silent Ones"
+            ^"Vigilance" INTEGER 4
+            ^"Demeanor" STRING "Patient (+1 Fire, +1 Water, –1 Air, –1 Void)"
+            ^"Persuasion Check" STRING "TN 3 Composition (Air 2, Fire 4)"
+        }
+        DESCRIPTION "Has taken an unbreakable vow of silence, expressing herself through writing. Her hearing is fine, but she admires fine calligraphy and gives more credence to arguments expressed through that medium."
+    }
+}
