@@ -1,0 +1,219 @@
+# L5R 5E — The Knotted Tails: Dramatis Personae (cast NPCs / adversaries)
+# A supplemental storyline for "Mask of the Oni" (FFG), among the nezumi of the
+# Knotted Tails tribe in the Shadowlands. NPC statblocks transcribed verbatim
+# from the printed profiles: rings, conflict ranks, derived attributes, honor/
+# glory/status, skill-group ranks, advantages/disadvantages, favored weapons &
+# gear, and abilities (verbatim in nested ^"Name" DEF { ^"Effect" ... } blocks).
+# This supplement uses the players' existing Shadowlands PCs, so there are no
+# pregens; the structure is in l5r5e-0.4-knotted-tails.arc and the narrative in
+# l5r5e-0.4-knotted-tails.lore.
+
+EXTENSION "L5R5e_KnottedTails_Cast" {
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-03"
+    DEPENDS_ON "L5R5e_Core_Core"
+
+    # ═══════════════════════ THE TRIBE ════════════════════════════════════
+
+    ^"Lucky Silver" DEF {
+        EXTENDS ^"NPC"
+        # The silver-furred leader of the Knotted Tails, long-lived and skilled with
+        # her blade. She believes her tribe's ancestors were close allies of the
+        # Hiruma and considers herself an honorary samurai, inheriting the Kaiu
+        # wakizashi of her ancestor, the former leader Silver Ears.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 3 ^"Fire" INTEGER 4 ^"Water" INTEGER 2 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Dedicated"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 7
+            ^"Honor" INTEGER 65
+            ^"Glory" INTEGER 25
+            ^"Status" INTEGER 5
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 3", "Scholar 0", "Social 2", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Veteran's Fortitude — Martial; Mental, Physical"]
+            ^"Disadvantages" LIST OF STRING ["Hot-Tempered — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Kaiu Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Concealable, Durable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Altered Crab armor (Physical 3)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 2. Leader of the Knotted Tails."
+        ^"Lucky" DEF { ^"Effect" STRING "Lucky Silver is a being of silhouette 1 who can never gain the Afflicted condition or the Shadowlands Taint disadvantage. Once per scene, when making a check, Lucky Silver may reroll any number of her dice." }
+    }
+
+    ^"One Eye" DEF {
+        EXTENDS ^"NPC"
+        # The tribe's Dreamer (once named Twitching Tail); white-furred and revered
+        # above even the leader. Long-lived enough to have been present at the fall
+        # of Shiro Hiruma, he spends much of his time dreamdwelling and communing
+        # with Transcendents in the Realm of Dreams.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 3 ^"Void" INTEGER 4 }
+            ^"Demeanor" STRING "Detached"
+            ^"Endurance" INTEGER 7
+            ^"Composure" INTEGER 11
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 35
+            ^"Glory" INTEGER 25
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 0", "Scholar 4", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Friendly Transcendents — Scholar; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Distant — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Claws and Teeth: Range 0, Damage 2, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Bandages, worn blanket"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 2, Intrigue 2. The Dreamer of the Knotted Tails."
+        ^"Dreamreader" DEF { ^"Effect" STRING "One Eye is a being of silhouette 1 who can never gain the Afflicted condition or the Shadowlands Taint disadvantage. As a Scheme action, One Eye may enter a trance state. In a trance state, he counts as being Unconscious, but may perform the actions listed below: Free the Dreamer (Support): One Eye purifies one target at range 0–2, removing the Unconscious condition and any effects that cloud its mind. Whispers of the Mind (Scheme): One Eye scrys upon the mind of a sleeping or unconscious target at range 0–4." }
+    }
+
+    ^"Three Tooth" DEF {
+        EXTENDS ^"NPC"
+        # A lean, brown-furred infiltrator who specializes in helping scouts on their
+        # missions and boasts of being one of the few of his tribe to have entered
+        # Shiro Hiruma. Braver than most, but with a keen survival instinct — he
+        # flees when the odds turn against him. May guide the PCs into the castle.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 2 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Curious"
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 7
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 8
+            ^"Honor" INTEGER 30
+            ^"Glory" INTEGER 20
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 1", "Social 1", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Fleet of Foot — Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Opportunist — Martial; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Nezumi blade: Range 0–1, Damage 3, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Makeshift armor (Physical 2)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 2, Intrigue 1. Knotted Tails infiltrator."
+        ^"Escape Artist" DEF { ^"Effect" STRING "Three Tooth is a being of silhouette 1 who can never gain the Afflicted condition or the Shadowlands Taint disadvantage. When cornered or about to be captured, the infiltrator can perform a TN 2 Survival (Fire) check to find an escape route for himself and any companions." }
+    }
+
+    ^"Knotted Tails Warrior" DEF {
+        EXTENDS ^"NPC"
+        # A rag-tag tribe warrior wielding whatever weapon or tool they can find, who
+        # nonetheless takes pride in the role and shows courage when the tribe is
+        # threatened. Also serve as scavengers, lookouts, healers, and pup-sitters.
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 3 ^"Fire" INTEGER 2 ^"Water" INTEGER 3 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Endurance" INTEGER 9
+            ^"Composure" INTEGER 7
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 30
+            ^"Glory" INTEGER 15
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Strength in Numbers — Martial; Physical, Mental"]
+            ^"Disadvantages" LIST OF STRING ["Deferential — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Makeshift Spear: Range 2, Damage 3, Deadliness 3, Mundane"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Scrounged Armor (Physical 2), nutritional glowing fungus"]
+        }
+        DESCRIPTION "MINION. Conflict Rank — Combat 3, Intrigue 1. (The scout Nine Claws uses this profile.)"
+        ^"For the Tribe" DEF { ^"Effect" STRING "A Knotted Tails warrior is a being of silhouette 1 who can never gain the Afflicted condition or the Shadowlands Taint disadvantage. As long as one or more of its living comrades or its village are visible, a Knotted Tails warrior treats its Endurance as 12." }
+    }
+
+    ^"Nezumi Pup" DEF {
+        EXTENDS ^"NPC"
+        # Young nezumi — inquisitive and playful, knowing from scent markers where
+        # they can safely explore. Only wander in extreme circumstances; a pup whose
+        # home is destroyed flees on instinct and may perish or become an outcast.
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 1 ^"Fire" INTEGER 2 ^"Water" INTEGER 1 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Curious"
+            ^"Endurance" INTEGER 4
+            ^"Composure" INTEGER 4
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 1
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 5
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Unnoticed — Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Defenseless — Martial; Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Teeth and Claws: Range 0, Damage 1, Deadliness 2"]
+            ^"Gear" LIST OF STRING []
+        }
+        DESCRIPTION "MINION. Conflict Rank — Combat 1, Intrigue 1."
+    }
+
+    # ═══════════════════════ THE OUTCASTS & THE THREAT ════════════════════
+
+    ^"Outcast Nezumi" DEF {
+        EXTENDS ^"NPC"
+        # Nezumi surviving by instinct, running on four paws and eating anything,
+        # including carrion. Their solitary life leaves them unable to communicate;
+        # they are usually a threat only to lone or wounded samurai.
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 2 ^"Fire" INTEGER 3 ^"Water" INTEGER 2 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Feral"
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 3
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 0", "Social 1", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Instinctive Behavior — Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Always Hungry — Martial; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Claws and Teeth: Range 0, Damage 2, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Fur (Physical 1), several haunches of raw meat"]
+        }
+        DESCRIPTION "MINION. Conflict Rank — Combat 2, Intrigue 1."
+        ^"Ferocious Defender" DEF { ^"Effect" STRING "An outcast nezumi is a being of silhouette 1 who can never gain the Afflicted condition or the Shadowlands Taint disadvantage. When it is the target of an Attack action check, it may receive 1 strife to negate 1 Opportunity from the attacker's check result." }
+    }
+
+    ^"Frayed Whisker" DEF {
+        EXTENDS ^"NPC"
+        # The antagonist: a nezumi Lucky Silver once exiled, older than he looks and
+        # tormented by waking and sleeping visions. A dreamwalker who binds and
+        # curses nezumi — including the Knotted Tails' own — to his will. Should he
+        # fall or be incapacitated, those he controls cease fighting for him.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 2 ^"Fire" INTEGER 4 ^"Water" INTEGER 2 ^"Void" INTEGER 3 }
+            ^"Demeanor" STRING "Fanatical"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 6
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 5
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 1", "Social 2", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Sneaky — Martial, Trade; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Arrogance — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Makeshift Blade: Range 0–1, Damage 4, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Ragged Armored Robes (Physical 2)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 3, Intrigue 2. The exiled dreamwalker hunting the tribe."
+        ^"Dreamwalker" DEF { ^"Effect" STRING "Frayed Whisker is a being of silhouette 1 who can never gain the Afflicted condition or the Shadowlands Taint disadvantage. Frayed Whisker can perform the actions listed below: Ensnare the Dreamer (Scheme): Frayed Whisker binds one Unconscious target at range 0–2. The target can act as if they were not Unconscious, but do so according to Frayed Whisker's will. This effect persists until the target ceases to be Unconscious. Rattle the Mind (Scheme): Frayed Whisker curses up to 2 nezumi at range 0–1. The affected nezumi immediately perform an Attack action targeting a target of Frayed Whisker's choosing (then regains control of itself)." }
+    }
+}
