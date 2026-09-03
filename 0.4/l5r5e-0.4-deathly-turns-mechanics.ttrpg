@@ -1,0 +1,202 @@
+# L5R 5E — Deathly Turns: Mechanics (new schools)
+# "Deathly Turns" (supplemental encounters for Wheel of Judgment, FFG) closes with
+# an appendix of two new BUSHI traditions, suitable for characters created in the
+# afterlife. Both are transcribed VERBATIM from the school pages (read as images):
+# rings, starting skills, honor, techniques available/starting, school ability,
+# mastery ability, starting outfit, and the six-rank curriculum. Technique names
+# are listed as the school grants them; the technique DEFinitions themselves live
+# in the core rulebook and the Celestial Realms sourcebook.
+
+EXTENSION "L5R5e_DeathlyTurns_Mechanics" EXTENDS "L5R5e_Core_Character" {
+    NAME "Deathly Turns — New Schools"
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-03"
+    DEPENDS_ON "L5R5e_Core_Character"
+
+    # ═══════════════ MAZOKU'S ENFORCER TRADITION [Bushi, Sage] ═════════════
+    ^"Mazoku's Enforcer" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Occasionally, overworked mazoku "recruit" humans (living or dead) to serve
+        # as their swords, training them to adjudicate spiritual disputes and uphold
+        # the justice of Emma-Ō across all realms — as at the foundation of the Falcon
+        # Clan. Those trained in these arts are not shugenja, but can see and interact
+        # with spirits to pursue wayward ghosts and bring peace to their souls.
+
+        PROPERTIES {
+            ^"School Name" STRING "Mazoku's Enforcer Tradition" FIXED
+            ^"Roles" LIST ["Bushi", "Sage"]
+            ^"Ring Increase" DEF { ^"Earth" INTEGER 1 ^"Void" INTEGER 1 }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Command", ^"Fitness", ^"Martial Art [Melee]", ^"Martial Arts [Unarmed]", ^"Meditation", ^"Tactics", ^"Theology"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 45
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+            ^"Starting Advantage" STRING "Sixth Sense"
+            ^"Starting Disadvantage" STRING "Haunting or Omen of Bad Luck (choose one)"
+        }
+
+        STARTING_TECHNIQUES {
+            KATA ^"Open-Hand Style"
+            RITUAL ^"Commune with Spirits"
+        }
+
+        SCHOOL_ABILITY "Mazoku's Authority" {
+            "When you perform an Attack or Scheme action check targeting an Otherworldly being, if you succeed, add a number of bonus successes equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"Hunter of the Supernatural" {
+            "When making a check targeting an Otherworldly being, you may seize one of its advantages (see page 101 of the core rulebook) by receiving 2 fatigue instead of spending 1 Void point. If you do, your target receives strife equal to your ranks in Command."
+        }
+
+        STARTING_OUTFIT [
+            "Traveling clothes", "robes of judgment or sanctified robes",
+            "daishō (katana and wakizashi)",
+            "shakujo (ceremonial staff) or yumi (bow) and quiver of arrows",
+            "scroll satchel", "journal", "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Command"
+                SKILL "Sentiment"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1 Rituals"
+                ^"Iaijutsu Cut: Crossing Blade" [kata]
+                ^"Weight of Duty" [shuji]
+            }
+            RANK 2 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Martial Arts [Melee]"
+                SKILL "Meditation"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-2 Earth Shūji"
+                ^"Touchstone of Courage" [shuji]
+                ^"Rite of the Wheel" [ritual]
+            }
+            RANK 3 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Performance"
+                SKILL "Sentiment"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-3 Kata"
+                ^"Soul Sunder" [kata]
+                ^"Rallying Cry" [shuji]
+            }
+            RANK 4 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Courtesy"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-4 Rituals"
+                ^"Striking as Void" [kata]
+                ^"Prayer of Protection" [ritual]
+            }
+            RANK 5 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Courtesy"
+                SKILL "Sentiment"
+                SKILL "Theology"
+                TECHNIQUE_GROUP "Rank 1-5 Kata"
+                ^"Rouse the Soul" [shuji]
+                ^"The Immovable Hand of Peace" [shuji]
+            }
+            RANK 6 {
+                ^"Hunter of the Supernatural"
+            }
+        }
+    }
+
+    # ═══════════════ CHAMPION OF DAYS GONE TRADITION [Bushi] ═══════════════
+    ^"Champion of Days Gone" DEF {
+        EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
+        APPLIES TO [^"Samurai"]
+
+        # Samurai of past ages lived and fought differently — in the days of Hantei
+        # Genji the bow held the prestige the daishō does today. Souls parted from
+        # the living since an ancient war (such as the Battle of Regret's Shadow) may
+        # find much about their modern companions unexpected. A tradition for such
+        # historical characters returned from the afterlife.
+
+        PROPERTIES {
+            ^"School Name" STRING "Champion of Days Gone Tradition" FIXED
+            ^"Roles" LIST ["Bushi"]
+            ^"Ring Increase" DEF { ^"Air" INTEGER 1 ^"Void" INTEGER 1 }
+            ^"Starting Skills" DEF { CHOOSE 5 [^"Courtesy", ^"Composition", ^"Fitness", ^"Martial Art [Ranged]", ^"Martial Arts [Melee]", ^"Meditation", ^"Sentiment"] INTEGER 1 }
+            ^"Starting Honor" INTEGER DEFAULT 50
+            ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
+        }
+
+        STARTING_TECHNIQUES {
+            KATA ^"Hawk's Precision"
+            SHUJI ^"Courtier's Resolve"
+        }
+
+        SCHOOL_ABILITY "Effortless Aim" {
+            "When making a check using a bow, add a number of kept ring dice set to an Opportunity result equal to your school rank."
+        }
+
+        MASTERY_ABILITY ^"An Arrow Loosed" {
+            "Once per game session, before making a check with a bow, you may declare your confidence in a shot and stake up to 6 glory upon hitting your mark. Reduce the TN of the check by that amount. If you succeed, you recover your staked glory. If succeeding in the shot would cause you to receive a glory award (such as if you were competing with another skilled archer, or felled a dangerous beast on the hunt), you receive that amount of glory plus 3 instead. If you fail, you lose your staked glory."
+        }
+
+        STARTING_OUTFIT [
+            "Resplendent traveling clothes", "chokutō", "knife",
+            "Ceremonial yumi (bow) with quiver of arrows",
+            "5 armor-piercing arrows", "5 fleshcutter arrows",
+            "2 humming bulb arrows", "traveling pack"
+        ]
+
+        CURRICULUM {
+            RANK 1 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Courtesy"
+                SKILL "Culture"
+                SKILL "Government"
+                TECHNIQUE_GROUP "Rank 1 Air Shūji"
+                ^"Pelting Hail Style" [kata]
+                ^"Striking as Air" [kata]
+            }
+            RANK 2 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Fitness"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Sentiment"
+                TECHNIQUE_GROUP "Rank 1-2 Water Shūji"
+                ^"All Arts are One" [shuji]
+                ^"Tactical Assessment" [shuji]
+            }
+            RANK 3 {
+                SKILL_GROUP "Scholar Skills"
+                SKILL "Aesthetics"
+                SKILL "Command"
+                SKILL "Martial Arts [Ranged]"
+                TECHNIQUE_GROUP "Rank 1-3 Fire Shūji"
+                ^"A Samurai's Fate" [shuji]
+                ^"Breath of Wind Style" [kata]
+            }
+            RANK 4 {
+                SKILL_GROUP "Martial Skills"
+                SKILL "Culture"
+                SKILL "Design"
+                SKILL "Government"
+                TECHNIQUE_GROUP "Rank 1-4 Earth Shūji"
+                ^"Pin the Fan" [kata]
+                ^"Disappearing World Style" [kata]
+            }
+            RANK 5 {
+                SKILL_GROUP "Social Skills"
+                SKILL "Martial Arts [Ranged]"
+                SKILL "Sentiment"
+                SKILL "Tactics"
+                TECHNIQUE_GROUP "Rank 1-5 Void Shūji"
+                ^"Soul Sunder" [kata]
+                ^"Striking as Void" [kata]
+            }
+            RANK 6 {
+                ^"An Arrow Loosed"
+            }
+        }
+    }
+}

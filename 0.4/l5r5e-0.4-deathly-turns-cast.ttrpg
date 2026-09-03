@@ -1,0 +1,194 @@
+# L5R 5E — Deathly Turns: Dramatis Personae (cast NPCs / adversaries)
+# "Deathly Turns" — supplemental encounters for the Wheel of Judgment adventure
+# (FFG). Full NPC profiles (rings, conflict ranks, derived attributes,
+# honor/glory/status, skill-group ranks, advantages/disadvantages, favored weapons
+# & gear, abilities) are transcribed VERBATIM from the statblock page images;
+# ability text is reproduced verbatim in nested ^"Name" DEF { ^"Effect" ... }.
+# Hiniku and Hogo-sha are modeled the way the source presents them, by naming a
+# Wheel of Judgment profile plus its modifications. These encounters use the
+# players' own characters — no pregens. Purely narrative figures (the maō
+# Burakakin, Emma-Ō, the victims Kakita Sadao and Doji Yūdai, the target Shiba
+# Akifusa, the magistrate Daidoji Himanari) live in the .lore / .codex; generic
+# foes use profiles from Wheel of Judgment (Mazoku Bureaucrat, Mazoku Guard) and
+# the core rulebook (gaki, bushi skeletons, zombie peasants).
+
+EXTENSION "L5R5e_DeathlyTurns_Cast" {
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-03"
+    DEPENDS_ON "L5R5e_Core_Core"
+
+    # ═══════════════ ENCOUNTER 1 — BLOOD AND MAGIC (JIGOKU) ════════════════
+
+    ^"The Brute" DEF {
+        EXTENDS ^"NPC"
+        # A vile behemoth oni of vast and ancient power, wrapped in flayed skin and
+        # wielding a monstrous obsidian ax; it has gathered the Trio of Vicious Oni
+        # and carries the scroll naming the Bleak Place, where it meets Jya-Aku.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 12
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 5 ^"Fire" INTEGER 5 ^"Water" INTEGER 3 ^"Void" INTEGER 3 }
+            ^"Demeanor" STRING "Aggressive"
+            ^"Endurance" INTEGER 18
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 10
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 1", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Massive Stature — Martial; Physical", "Unholy Strength — Martial; Physical, Spiritual"]
+            ^"Disadvantages" LIST OF STRING ["Unquenchable Bloodthirst — Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Massive Obsidian Ax: Range 1–2, Damage 8, Deadliness 7, Durable, Razor-Edged, Unholy"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Blood-soaked hide robes (Physical 5, Supernatural 2, Unholy), the scroll"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 12, Intrigue 5. An Otherworldly, Tainted being of silhouette 5."
+        ^"Dread Bellow" DEF { ^"Effect" STRING "Once per scene as a Scheme action, the Brute may roar, feeding on the primal terror it instills. Each other character at range 0–4 must resist with a TN 4 Meditation check (Earth 2, Air 5) or suffer the Afflicted condition and stumble back 1 range band from the Brute. For each character who fails, the Brute removes 2 fatigue." }
+        ^"Harvester of Heads" DEF { ^"Effect" STRING "The Brute reduces the TN of Attack action checks against Compromised characters by 1 (to a minimum of 1)." }
+        ^"Giant of Jigoku" DEF { ^"Effect" STRING "The Brute is an Otherworldly, Tainted being of silhouette 5. After any character performs a successful Attack action that deals 0 damage to the Brute (after resistance is applied), that character suffers 3 strife." }
+    }
+
+    ^"Trio of Vicious Oni" DEF {
+        EXTENDS ^"NPC"
+        # Three cruel, capricious oni the Brute has gathered — a bird-headed skeleton
+        # with feathers of blood, a swirling pit of darkness with insect legs, and a
+        # blazing corpse studded with iron nails — forever squabbling. A minion.
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 3 ^"Fire" INTEGER 3 ^"Water" INTEGER 2 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Hubristic"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 3
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 2", "Social 0", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Unholy Might — Martial; Physical, Spiritual"]
+            ^"Disadvantages" LIST OF STRING ["Sickening Visage — Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Corrupted Talons and Spines: Range 0–1, Damage 5, Deadliness 5, Durable, Unholy"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Vile hide (Physical 2, Supernatural 1, Unholy)"]
+        }
+        DESCRIPTION "MINION. Conflict Rank — Combat 4, Intrigue 3. Fielded per Table 1-1 (Oni Battle Scaling) alongside the Brute."
+        ^"Bound for Eternity" DEF { ^"Effect" STRING "As a Support action, one member of the Trio of Vicious Oni may revive one trio member who was defeated in the previous round. Spectral chains reach from the surviving member to the other, dragging the soul back immediately through their unholy bond and returning the fallen comrade with 6 fatigue and 4 strife, and all conditions and injury disadvantages removed. After a trio member is revived, each foe at range 0–2 of the returned oni receives 3 strife. Members of the trio who are not participating in the battle do not use this ability." }
+        ^"Hell Is Other Demons" DEF { ^"Effect" STRING "After a member of the trio becomes Compromised, it always chooses to become Enraged as its unmasking. It moves toward its nearest trio comrade and performs a Strike action against that other member, if able. It does so even during a scene in which this would not normally be allowed, such as an intrigue." }
+    }
+
+    ^"Jya-Aku" DEF {
+        EXTENDS ^"NPC"
+        # "Wickedness" — surely an alias. A mahō-tsukai of prodigious power and
+        # unknown identity, cunning, elusive, and profoundly dangerous. The Fel
+        # Mantle lets her enter Jigoku; she carries a map to a tunnel from the
+        # Shadowlands to Rokugan, and meets the Brute at the Bleak Place.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 8
+            ^"Intrigue Conflict Rank" INTEGER 6
+            ^"Rings" DEF { ^"Air" INTEGER 4 ^"Earth" INTEGER 3 ^"Fire" INTEGER 4 ^"Water" INTEGER 3 ^"Void" INTEGER 4 }
+            ^"Demeanor" STRING "Sinister"
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 1
+            ^"Glory" INTEGER 11
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 2", "Scholar 4", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Forbidden Knowledge [Mahō] — Scholar; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Sinister Arrogance — Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Blasphemous Knife: Range 0, Damage 3, Deadliness 6, Concealable, Razor-Edged, Unholy"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Fel Mantle (Physical 5, Supernatural 5, Unholy), concealing hat, set of forbidden scrolls, leather map to tunnel from the Shadowlands to Rokugan"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 8, Intrigue 6. While wearing the Fel Mantle she is a Tainted, Otherworldly being."
+        ^"Mahō Master" DEF { ^"Effect" STRING "Jya-Aku is a Tainted being, and while wearing the Fel Mantle she is also an Otherworldly being. She can perform any of the following mahō techniques from the core rulebook: Grip of Anguish (see page 224), Mark of Desecration (see page 225), Sinful Whispers (see page 225). Additionally, if the GM possesses the Shadowlands sourcebook, Jya-Aku can perform any of the following techniques from that volume: Shape the Flesh (see page 120), Spiritual Shackles (see page 120), Spread Corruption (see page 120)." }
+    }
+
+    # ═══════════════ ENCOUNTER 3 — A MISSION FROM LADY MAZOKU ══════════════
+
+    ^"Lady Mazoku" DEF {
+        EXTENDS ^"NPC"
+        # The secret patron of the Falcon Clan, who has taught its Phantom Hunters
+        # for centuries. A magistrate of Gaki-dō who returns escaped spirits to the
+        # afterlife on behalf of Emma-Ō — and must keep her mortal agents hidden.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 8
+            ^"Intrigue Conflict Rank" INTEGER 10
+            ^"Rings" DEF { ^"Air" INTEGER 5 ^"Earth" INTEGER 4 ^"Fire" INTEGER 3 ^"Water" INTEGER 4 ^"Void" INTEGER 5 }
+            ^"Demeanor" STRING "Assertive"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 20
+            ^"Focus" INTEGER 9
+            ^"Vigilance" INTEGER 5
+            ^"Honor" INTEGER 70
+            ^"Glory" INTEGER 70
+            ^"Status" INTEGER 65
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 4", "Scholar 6", "Social 5", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Gaki-dō Knowledge — Social; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Desperate for Aid — Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Unearthly Limbs: Range 0–2, Damage 7, Deadliness 4, Sacred, Snaring", "Ancient Falcon Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged, Sacred"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): ghostly form (Physical 10, Supernatural 10), numerous scrolls pertaining to Gaki-dō law and individual gaki"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 8, Intrigue 10. An Otherworldly being who appears as an elegant woman in robes of a style not seen for centuries."
+        ^"Magistrate of Gaki-dō" DEF { ^"Effect" STRING "Lady Mazoku is an Otherworldly being, though she appears as a normal human. She doubles her vigilance when detecting Otherworldly or Tainted beings, mahō use, or kansen activity. When Lady Mazoku unmasks, everyone who can see her suffers 6 strife as her form shifts into inhuman shapes before settling as she composes herself." }
+        ^"Veteran Gaki Hunter" DEF { ^"Effect" STRING "Once per scene, should a PC sufficiently impress Lady Mazoku with devotion to the cause of capturing and containing malign spirits, she may impart to the PC some of her wisdom concerning this subject. The PC lowers the TN of their checks targeting such spirits by 1 for the remainder of the session." }
+    }
+
+    ^"Hagane" DEF {
+        EXTENDS ^"NPC"
+        # "Steel" — the alias of a shade who escaped the afterlife. In life he was
+        # Mirumoto Ikutsuki, wrongly exiled from the Dragon Clan; now he wreaks
+        # bloody vengeance on older warriors, wielding his namesake cursed daishō.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 8
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 4 ^"Fire" INTEGER 4 ^"Water" INTEGER 3 ^"Void" INTEGER 4 }
+            ^"Demeanor" STRING "Obsessed"
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 40
+            ^"Glory" INTEGER 20
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 1", "Scholar 2", "Social 1", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Fearsome Duelist — Martial; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Consumed by Vengeance — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Hagane (katana): Range 1, Damage 5, Deadliness 6/9, Ceremonial, Razor-Edged", "Noroi (wakizashi): Range 0–1, Damage 4, Deadliness 6/9, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Incorporeal robes, straw hat"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 8, Intrigue 5. An incorporeal Otherworldly shade; Martial skill is 1 as printed. His daishō is a cursed nemuranai."
+        ^"Avenger from the Afterlife" DEF { ^"Effect" STRING "Hagane is an Otherworldly being with physical resistance 10 and supernatural resistance 3. He is incorporeal and can perform unnerving ghostly phenomena such as walking on walls or ceilings, floating, and causing objects to move slightly on their own. While dueling, he makes himself fully visible to his opponent, but otherwise he appears as a mass of swirling shadows, coalesced around a katana and wakizashi. In a skirmish, increase the TN of Attack action checks targeting him by 1." }
+        ^"Ghostly Swords" DEF { ^"Effect" STRING "After Hagane perished in a nameless battle and his body was left to the crows, his blades rose by the will of their dead wielder, the daishō becoming a cursed artifact. The daishō is treated as a nemuranai with the Biting Steel invocation (see page 202 of the core rulebook) sealed within it, which a character wielding both the katana and wakizashi can perform using the Meditation skill instead of Theology. While Hagane still pursues his revenge, the daishō possesses the Unholy item quality, and it whispers dread words of vengeance to any beings who hold it. However, should Hagane's business be resolved and his spirit set to rest, the nemuranai loses the Unholy quality and gains the Sacred quality instead, and its quirk changes to issuing a whisper of warning whenever anyone at range 0–3 of its user forfeits 3 or more honor (though it does not specify why)." }
+        ^"Twin Streams Style" DEF { ^"Effect" STRING "While Hagane performs an Attack action check with a sword in each hand, he may spend Opportunity Opportunity as follows: Opportunity Opportunity: If your target suffers a critical strike as a result of this check, increase its severity by the deadliness of your other readied weapon." }
+        ^"Unearthly Draw" DEF { ^"Effect" STRING "As he is a spirit and one with his swords, Hagane can draw and swing his blades without fear of cutting himself, allowing him to perform draw techniques that would be impossible for a mortal, passing his blades unnervingly through his own body. As a Movement action, Hagane may ready up to two weapons. In a duel, if his opponent has not drawn a weapon yet, they must resist with a TN 3 Meditation check (Void 1) or receive strife equal to 3 plus their shortfall." }
+    }
+
+    # ═══════════ ENCOUNTER 2 — ESCAPE OF THE HUNGRY DEAD (profile NPCs) ════
+
+    ^"Hiniku" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Profile" STRING "Mazoku Guard (page 4 of Wheel of Judgment), with the Dour demeanor (Earth +1, Water +1, Air –1)"
+            ^"Demeanor" STRING "Dour (Earth +1, Water +1, Air –1)"
+        }
+        DESCRIPTION "A Gaki-dō estate-holder secretly working to engineer a mass escape of gaki into Ningen-dō — carefully keeping herself unimplicated. She believes the PCs are oni and offers them rewards (travel papers; a set of forbidden goods) to help or to look the other way. Her staff are represented by the Mazoku Bureaucrat profile (page 8 of Wheel of Judgment)."
+    }
+
+    ^"Hogo-sha" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Profile" STRING "Mazoku Guard (page 4 of Wheel of Judgment), with endurance increased to 20, Martial skill group increased to 4, and mazoku robes replaced with mazoku armor"
+            ^"Demeanor" STRING "Dutiful guardian"
+        }
+        DESCRIPTION "A fierce red mazoku warrior whose name means 'guardian' or 'protector'; he guards the long-disused passage from Gaki-dō to Ningen-dō. The PCs cannot simply persuade him to abandon his duty, but may bluff, distract, incapacitate, or banish him by defeating him in combat."
+    }
+}
