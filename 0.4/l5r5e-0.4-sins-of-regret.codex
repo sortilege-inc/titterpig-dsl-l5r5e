@@ -1,0 +1,159 @@
+# .codex SECTION — Sins of Regret (adventure). Stand-off graph over
+# l5r5e-0.4-sins-of-regret.lore (spec §25). Part of the L5R5e system graph;
+# DEPENDS_ON the shared schema.
+#
+# The 11 cast NPCs (cast.ttrpg) are DEFs — referenced via ^"...", never minted.
+# The Kyōkotsu (a cast DEF) is the undead remains of Otomo Nahoko, who is minted
+# here as the person she was. Twin Blessings Village and the Perfect Land Sect
+# are already in the graph (Twin Blessings amended). The Otomo, Seppun, Miya, and
+# Kakita family DEFs are referenced. This section mints Closed Shell Castle and
+# the other places, the Reju vassal family, and the adventure's lore-only figures.
+
+CODEX "L5R5e_SinsOfRegret_Codex" {
+    NAME "Sins of Regret — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-03"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # ---- Places -----------------------------------------------------------
+    ENTITY #L5RcxSoR01closedshell ^"Closed Shell Castle" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "part-two-closed-shell-castle"
+        RELATIONSHIPS {
+            ^"held-by"      -> ^"Reju"                   FROM "The daimyō Reju Jikai's cold, unhappy castle"
+            ^"seat-of"      -> ^"Reju"                   FROM "the daimyō Reju Jikai's castle... the family quarters on the topmost floor of the keep"
+            ^"located-near" -> ^"Twin Blessings Village" FROM "traveling to Closed Shell Castle... a journey that takes half a day on foot from the village" }
+    }
+    ENTITY #L5RcxSoR02waystation ^"The Way Station" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "the-way-station"
+        RELATIONSHIPS { ^"located-near" -> ^"Twin Blessings Village" FROM "a burnt way station where the bushi Rin murdered travellers" }
+    }
+    ENTITY #L5RcxSoR03hermitage ^"The Hermitage" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "part-one-twin-blessings-village"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Twin Blessings Village" FROM "in the forest, the Hermitage, where the monk Michi once stayed"
+            ^"held-by"      -> ^"Ichirō"                 FROM "where Ichirō — Setsuo's son — now leads rebel bandits" }
+    }
+
+    # ---- The Reju vassal family -------------------------------------------
+    ENTITY #L5RcxSoR04rejufamily ^"Reju" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "storyline-background"
+        RELATIONSHIPS { ^"led-by" -> ^"Reju Jikai" FROM "their unsympathetic daimyō, Reju Jikai" }
+    }
+
+    # ---- Twin Blessings villagers ------------------------------------------
+    ENTITY ^"Setsuo" {
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "part-one-twin-blessings-village"
+        RELATIONSHIPS { ^"located-in" -> ^"Twin Blessings Village" FROM "Its leader is Setsuo... Setsuo's son (Ichirō)" }
+    }
+    ENTITY #L5RcxSoR06natsumi ^"Natsumi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "part-one-twin-blessings-village"
+        RELATIONSHIPS { ^"located-in" -> ^"Twin Blessings Village" FROM "the fiercer Natsumi would rather the village fight back" }
+    }
+    ENTITY ^"Daizō" {
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "part-one-twin-blessings-village"
+        RELATIONSHIPS {
+            ^"located-in"   -> ^"Twin Blessings Village" FROM "The priest Daizō prays helplessly at the river shrine"
+            ^"companion-of" -> ^"Kokoro"                 FROM "haunted by a vision of his dead friend Kokoro" }
+    }
+    ENTITY ^"Kokoro" {
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "part-one-twin-blessings-village"
+    }
+    ENTITY #L5RcxSoR09shinichi ^"Shinichi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "the-way-station"
+        RELATIONSHIPS { ^"located-in" -> ^"Twin Blessings Village" FROM "The villager Shinichi witnessed the atrocity" }
+    }
+    ENTITY #L5RcxSoR10naokipilgrim ^"Naoki" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "part-one-twin-blessings-village"
+    }
+
+    # ---- Jikai's bushi & the way-station dead ------------------------------
+    ENTITY #L5RcxSoR11rinbushi ^"Rin" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "the-way-station"
+        RELATIONSHIPS { ^"member-of" -> ^"Reju" FROM "the bushi Rin took her orders further — trapping everyone inside and burning them alive" }
+    }
+    ENTITY #L5RcxSoR12genzobushi ^"Genzo" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "the-way-station"
+        RELATIONSHIPS { ^"member-of" -> ^"Reju" FROM "the guilt-wracked Genzo did not stop her" }
+    }
+    ENTITY #L5RcxSoR13miyaemon ^"Miya Emon" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "the-way-station"
+        RELATIONSHIPS { ^"member-of" -> ^"Miya" FROM "Miya Emon, a shugenja of an Imperial family... among the victims" }
+    }
+    ENTITY #L5RcxSoR14miyashinako ^"Miya Shinako" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "part-two-closed-shell-castle"
+        RELATIONSHIPS { ^"member-of" -> ^"Miya" FROM "his niece Miya Shinako at Closed Shell Castle" }
+    }
+
+    # ---- The castle household ----------------------------------------------
+    ENTITY #L5RcxSoR15nahoko ^"Otomo Nahoko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "part-two-closed-shell-castle"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Otomo"      FROM "Nobu murdered Otomo Nahoko and threw her bones down the well"
+            ^"enemy-of"  -> ^"Otomo Nobu" FROM "Nobu murdered Otomo Nahoko" }
+    }
+    ENTITY #L5RcxSoR16jinzaburo ^"Jinzaburō" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "part-two-closed-shell-castle"
+        RELATIONSHIPS { ^"companion-of" -> ^"Reju Jikai" FROM "his yōjimbō Jinzaburō" }
+    }
+    ENTITY #L5RcxSoR17chisato ^"Kakita Chisato" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "part-two-closed-shell-castle"
+        RELATIONSHIPS { ^"member-of" -> ^"Kakita" FROM "a duelist trained by Kakita Chisato in Otosan Uchi" }
+    }
+    ENTITY #L5RcxSoR18atsuko ^"Atsuko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "part-two-closed-shell-castle"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Closed Shell Castle" FROM "the servants (including Shaki and the frightened Atsuko) cannot draw water"
+            ^"ally-of"    -> ^"Otomo Nobu"          FROM "spread his influence through the servants" }
+    }
+    ENTITY #L5RcxSoR19daihachi ^"Reju Daihachi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "part-three-the-final-conflict"
+        RELATIONSHIPS { ^"member-of" -> ^"Reju" FROM "aiding Reju Daihachi as he tries to spirit Ume to safety through the derelict tower" }
+    }
+
+    # ---- The rival Otomo ---------------------------------------------------
+    ENTITY #L5RcxSoR20itsuki ^"Otomo Itsuki" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "the-rival-daimyō"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Otomo"      FROM "Otomo Itsuki, who holds no respect for Jikai"
+            ^"enemy-of"  -> ^"Reju Jikai" FROM "Otomo Itsuki, who holds no respect for Jikai" }
+    }
+    ENTITY #L5RcxSoR21otomoosamu ^"Otomo Osamu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "the-rival-daimyō"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Otomo"      FROM "working through Otomo Osamu's representative Otomo Niko to have troops sent"
+            ^"enemy-of"  -> ^"Reju Jikai" FROM "Osamu's Army: Well-trained bushi... Otomo Kazumi is acting as commander" }
+    }
+    ENTITY #L5RcxSoR22otomoniko ^"Otomo Niko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "the-rival-daimyō"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Otomo"      FROM "Otomo Osamu's representative Otomo Niko"
+            ^"ally-of"   -> ^"Otomo Nobu" FROM "the steward has been working through Otomo Osamu's representative Otomo Niko" }
+    }
+
+    # ---- Amendment ---------------------------------------------------------
+    ENTITY ^"Twin Blessings Village" {
+        SOURCE "l5r5e-0.4-sins-of-regret.lore" AT "storyline-background"
+        RELATIONSHIPS { ^"held-by" -> ^"Reju" FROM "the villagers' main problems... their unsympathetic daimyō, Reju Jikai" }
+    }
+}
