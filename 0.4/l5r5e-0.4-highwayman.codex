@@ -1,0 +1,121 @@
+# .codex SECTION — The Highwayman (adventure). Stand-off graph over
+# l5r5e-0.4-highwayman.lore (spec §25). Part of the L5R5e system graph;
+# DEPENDS_ON the shared schema.
+#
+# The adventure's cast (5 NPCs in l5r5e-0.4-highwayman-cast.ttrpg) and the 6
+# pregens (l5r5e-0.4-highwayman-pregens.actor) are DEFs — referenced via ^"...",
+# never minted. The Shinomen Forest, Ivory Kingdoms, Burning Sands, Shadowlands,
+# Jigoku, Khanbulak, Mountains of Regret, and the Yodha order are already in the
+# graph (referenced; Shinomen, Yodha, and Mountains of Regret amended). Matsu is
+# a family DEF (Maki Haruko was born Matsu Megumi — the same person as the pregen
+# DEF, not re-minted). Bataar the haunting spirit and Od the hawk relate to the
+# pregen Otgontogoch Turgen (a DEF). This section mints the adventure's places,
+# the Hidetaka family, and its lore-only figures.
+
+CODEX "L5R5e_Highwayman_Codex" {
+    NAME "The Highwayman — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-02"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # ---- Places -----------------------------------------------------------
+    ENTITY #L5RcxHwy01kawacho ^"Kawacho" {
+        IS ^"Town"
+        SOURCE "l5r5e-0.4-highwayman.lore" AT "act-1-the-missing-courier"
+        RELATIONSHIPS {
+            ^"held-by"      -> ^"Soshi"           FROM "Kawacho, a small town controlled by the Soshi through a vassal family"
+            ^"located-near" -> ^"Shinomen Forest" FROM "The PCs arrive at Kawacho, a small town... built near very fertile land" }
+    }
+    ENTITY #L5RcxHwy02estate ^"Yukiko's Estate" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-highwayman.lore" AT "act-3-the-estate"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Shinomen Forest" FROM "the PCs arrive at a large estate in a clearing. This is all an illusion created by the rakshasa; in reality, the estate is built on a fetid marsh"
+            ^"held-by"    -> ^"Lady Yukiko"      FROM "you are welcome in the estate of Lady Kuriyama Yukiko" }
+    }
+    ENTITY #L5RcxHwy03ghostlnd ^"Ghostlands" {
+        IS ^"Region"
+        SOURCE "l5r5e-0.4-highwayman.lore" AT "player-handouts"
+        RELATIONSHIPS {
+            ^"part-of"      -> ^"Shadowlands"    FROM "the Ghostland's forests (the southern region of the Shadowlands)"
+            ^"located-near" -> ^"Ivory Kingdoms" FROM "the Yodha... keeping the threats of the Ghostland's forests... out of their homeland" }
+    }
+    ENTITY #L5RcxHwy04kaiuwall ^"Kaiu Wall" {
+        IS ^"Wall"
+        SOURCE "l5r5e-0.4-highwayman.lore" AT "player-handouts"
+        RELATIONSHIPS { ^"located-near" -> ^"Shadowlands" FROM "Daichi grew up in a small village near the Crab Clan's Kaiu Wall" }
+    }
+    ENTITY #L5RcxHwy05redlotus ^"Red Lotus" {
+        IS ^"Building"
+        SOURCE "l5r5e-0.4-highwayman.lore" AT "player-handouts"
+    }
+
+    # ---- The Hidetaka family & Kawacho folk -------------------------------
+    ENTITY #L5RcxHwy06hidetaka ^"Hidetaka" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-highwayman.lore" AT "act-1-the-missing-courier"
+        RELATIONSHIPS { ^"located-in" -> ^"Kawacho" FROM "Home of the Hidetaka family" }
+    }
+    ENTITY #L5RcxHwy07noricourier ^"Hidetaka Nori" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-highwayman.lore" AT "adventure-background"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Hidetaka"         FROM "the missing courier Hidetaka Nori... the exorbitantly expensive sake he was supposed to deliver to Moronoka"
+            ^"sibling-of" -> ^"Hidetaka Sasuke"  FROM "He was last seen leaving the village by his brother, Sasuke" }
+    }
+    ENTITY #L5RcxHwy08sazuko ^"Hidetaka Sazuko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-highwayman.lore" AT "act-1-the-missing-courier"
+        RELATIONSHIPS { ^"member-of" -> ^"Hidetaka" FROM "Nori's mother Sazuko and sister Sasami worry over him" }
+    }
+    ENTITY #L5RcxHwy09sasami ^"Hidetaka Sasami" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-highwayman.lore" AT "act-1-the-missing-courier"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Hidetaka"      FROM "Nori's mother Sazuko and sister Sasami"
+            ^"sibling-of" -> ^"Hidetaka Nori" FROM "sister Sasami" }
+    }
+
+    # ---- Other lore-only figures ------------------------------------------
+    ENTITY #L5RcxHwy10moronoka ^"Ito Moronoka" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-highwayman.lore" AT "adventure-background"
+        RELATIONSHIPS { ^"ally-of" -> ^"Ahuja Mishti" FROM "the PCs... gain the Ally [Ito Moronoka] distinction" }
+    }
+    ENTITY #L5RcxHwy11asukaworker ^"Asuka" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-highwayman.lore" AT "act-4-conclusion"
+        RELATIONSHIPS { ^"ally-of" -> ^"Ito Moronoka" FROM "summoning his workers (such as the burly Asuka)" }
+    }
+    ENTITY #L5RcxHwy12nakamura ^"Nakamura Jun'ichi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-highwayman.lore" AT "player-handouts"
+        RELATIONSHIPS { ^"enemy-of" -> ^"Hiyabayashi Kenshin" FROM "they took out a substantial loan from a man named Nakamura Jun'ichi... now Kenshin is taking on whatever work they can to pay him back" }
+    }
+    ENTITY #L5RcxHwy13sukhbatar ^"Sukhbatar" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-highwayman.lore" AT "player-handouts"
+        RELATIONSHIPS {
+            ^"sibling-of" -> ^"Otgontogoch Turgen" FROM "Turgen left his homeland in the Burning Sands... with his brother, Sukhbatar"
+            ^"located-in" -> ^"Burning Sands"       FROM "Turgen left his homeland in the Burning Sands a little over a year ago with his brother, Sukhbatar" }
+    }
+    ENTITY #L5RcxHwy14bataar ^"Bataar" {
+        IS ^"Spirit"
+        SOURCE "l5r5e-0.4-highwayman.lore" AT "player-handouts"
+    }
+
+    # ---- Amendments to entities already in the graph ----------------------
+    ENTITY ^"Shinomen Forest" {
+        SOURCE "l5r5e-0.4-highwayman.lore" AT "adventure-background"
+        RELATIONSHIPS { ^"corrupted-by" -> ^"Lady Yukiko" FROM "the rakshasa who masquerades as the Highwayman has invited two oni to be her honored guests... a final banquet before they sow discord in the rest of Rokugan" }
+    }
+    ENTITY ^"Yodha" {
+        SOURCE "l5r5e-0.4-highwayman.lore" AT "player-handouts"
+        RELATIONSHIPS { ^"enemy-of" -> ^"Lady Yukiko" FROM "One of the Yodha's greatest enemies are the rakshasa, shapeshifting demons that revel in tricking and eating unsuspecting humans" }
+    }
+    ENTITY ^"Mountains of Regret" {
+        SOURCE "l5r5e-0.4-highwayman.lore" AT "player-handouts"
+    }
+}
