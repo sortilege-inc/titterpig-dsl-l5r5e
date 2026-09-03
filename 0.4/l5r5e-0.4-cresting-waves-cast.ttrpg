@@ -1,0 +1,137 @@
+# L5R 5E — Cresting Waves: Dramatis Personae (cast NPCs / adversaries)
+# "Cresting Waves" — three supplemental encounters for the Sins of Regret
+# adventure (FFG). Full NPC profiles transcribed VERBATIM from the printed
+# statblock pages (read as page images): rings, conflict ranks, derived
+# attributes, honor/glory/status, skill-group ranks, advantages/disadvantages,
+# favored weapons & gear, and abilities. Ability text is reproduced verbatim in
+# nested ^"Name" DEF { ^"Effect" ... } blocks. This supplement is for the players'
+# own (typically rōnin) characters — there are no pregens. Non-statblocked NPCs
+# (Jimba, Nayaka, Miyoko, Kyou, Sora, Sayaka, and Banji's Humble Peasant
+# supporters) live in the .lore / .codex.
+
+EXTENSION "L5R5e_CrestingWaves_Cast" {
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-03"
+    DEPENDS_ON "L5R5e_Core_Core"
+
+    # ═══════════════ ENCOUNTER 1 — AT THE VILLAGE ══════════════════════════
+
+    ^"Onryō, Vengeful Ghost" DEF {
+        EXTENDS ^"NPC"
+        # The ghost of Jimba, a villager murdered and dismembered by his friend
+        # Banji; a pale, shrouded figure in a faded kimono, its face hidden by long
+        # black hair. An Otherworldly being that inflicts its curse on all it touches.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 10
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF { ^"Air" INTEGER 4 ^"Earth" INTEGER 1 ^"Fire" INTEGER 4 ^"Water" INTEGER 3 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Vengeful"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 10
+            ^"Vigilance" INTEGER 4
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 0", "Social 0", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Insubstantial — Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Doomed — Mental; Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Shared Pain: Range 0–2, Damage 5, Deadliness 4, inflicts Supernatural damage"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Ethereal robes (Physical 5, Supernatural 2)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 10, Intrigue 2. An Otherworldly being of silhouette 2; no honor, glory, or status. The vengeful ghost of the murdered villager Jimba."
+        ^"Vengeful Ghost" DEF { ^"Effect" STRING "An onryō is an Otherworldly being of silhouette 2. As a Movement action, it can freely disappear at will and reappear at any position within three range bands without needing a clear path to its new location." }
+        ^"Cursed Touch" DEF { ^"Effect" STRING "As an Attack action, the onryō may attempt to touch a character. That character must then resist with a TN 3 Fitness check (Air 2, Earth 5). If the character succeeds, they evade; if they fail, they suffer the Afflicted condition (see page 271 of the core rulebook) and receive strife and fatigue equal to their shortfall." }
+        ^"Disturbing Presence" DEF { ^"Effect" STRING "Any character at range 0–2 of the onryō receives 1 strife at the beginning of the onryō's turn." }
+    }
+
+    ^"Banji, Murderous Villager" DEF {
+        EXTENDS ^"NPC"
+        # Nayaka's husband; formerly jovial, now a gruff, unpleasant man. Out of
+        # jealousy he murdered and dismembered his friend Jimba, whose ghost now
+        # haunts the village. He carries the cursed kama he used for the deed.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 2 ^"Fire" INTEGER 3 ^"Water" INTEGER 2 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Defensive"
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 15
+            ^"Glory" INTEGER 20
+            ^"Status" INTEGER 18
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Vicious — Martial; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Guilty — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Cursed Kama: Range 0–1, Damage 4, Deadliness 4, Concealable, Cursed, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Ragged clothes (Physical 1)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 2, Intrigue 2. His cursed kama reduces the carrier's composure by 2 (already factored into his profile). His crowd of supporters use the Humble Peasant profile (core p313), each carrying a kama."
+        ^"Overlooked" DEF { ^"Effect" STRING "When a peasant makes a check targeting a character with a higher status rank, they treat that character's vigilance as 1 lower." }
+    }
+
+    # ═══════════════ ENCOUNTER 2 — IN THE WOODS ════════════════════════════
+
+    ^"Aguri, Yamauba" DEF {
+        EXTENDS ^"NPC"
+        # A yamauba who appears as a common peasant, concealing the second, ever-
+        # hungry mouth atop her head with a tenugui. She has lived isolated for
+        # untold decades, luring and capturing prey; she holds Kyou and Sora captive.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 6
+            ^"Rings" DEF { ^"Air" INTEGER 4 ^"Earth" INTEGER 3 ^"Fire" INTEGER 2 ^"Water" INTEGER 3 ^"Void" INTEGER 4 }
+            ^"Demeanor" STRING "Hungry"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 10
+            ^"Glory" INTEGER 5
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 1", "Social 4", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Devious Liar — Social; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Isolated — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Knife: Range 0, Damage 2, Deadliness 4/6, Concealable, Mundane, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Layered rags (Physical 2, Supernatural 1), intoxicating poison (one dose), tenugui (towel)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 6. An Otherworldly being of silhouette 2."
+        ^"Monstrous Invulnerability" DEF { ^"Effect" STRING "A yamauba is an Otherworldly being of silhouette 2. Her physical resistance is increased by 3 unless the attack was made using a weapon with the Sacred or Unholy item quality." }
+    }
+
+    # ═══════════════ ENCOUNTER 3 — ON THE ROAD ═════════════════════════════
+
+    ^"Mamoru Nakama, Wolf Guardian" DEF {
+        EXTENDS ^"NPC"
+        # The larger, wilier leader of a starving wolf pack whose forest the castle's
+        # daimyō has over-hunted; a shapeshifter inspired by the senbiki ōkami
+        # legend. In human form he passes as a silver-grey-robed courtier at Closed
+        # Shell Castle, bearing whatever wound the PCs dealt the wolf.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 9
+            ^"Intrigue Conflict Rank" INTEGER 6
+            ^"Rings" DEF { ^"Air" INTEGER 5 ^"Earth" INTEGER 3 ^"Fire" INTEGER 4 ^"Water" INTEGER 4 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 9
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 12
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 26
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 4", "Scholar 1", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Supernatural Speed — Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Territorial — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Claws and fangs: Range 0, Damage 5, Deadliness 8, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Thick hide (Physical 4), wakizashi (in human form)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 9, Intrigue 6. An Otherworldly being of silhouette 2."
+        ^"Shift Form" DEF { ^"Effect" STRING "Nakama is an Otherworldly being of silhouette 2. As a Support action on his turn, he can change from wolf to human form or from human to wolf. While in wolf form, or in the presence of a character who knows his true nature, Nakama treats his status and glory as –." }
+        ^"Lone Wolf" DEF { ^"Effect" STRING "Mamoru reduces the TN of all Social checks by 1 and increases the TN of Social checks targeting him by 1 while in a scene with no allies." }
+        ^"Circle the Kill" DEF { ^"Effect" STRING "When performing a Martial Arts [Unarmed] check in wolf form, the wolf guardian may spend Opportunity as follows: Fire Opportunity: The target suffers the Bleeding condition. Water Opportunity: The target treats all terrain as Dangerous (see page 267 of the core rulebook) until the end of their next turn." }
+    }
+}
