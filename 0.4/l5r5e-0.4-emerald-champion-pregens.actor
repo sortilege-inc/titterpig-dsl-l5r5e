@@ -1,0 +1,205 @@
+# L5R 5E — In the Palace of the Emerald Champion: Pregenerated Characters (.actor)
+# The seven pregens from the Legend of the Five Rings Beginner Game (FFG, 2018).
+# Each is a Samurai instance EXTENDS ^"Samurai"; stats transcribed verbatim from
+# the printed Character Folio sheets (Beginner-Game simplified: rings, ranked
+# skills, derived attributes, honor/glory, Personal Turmoil [ninjō], Personal
+# Unmasking, school ability, and advantage). School-ability and advantage text is
+# reproduced verbatim in nested ^"Name" DEF { ^"Effect" ... } blocks. As students
+# competing to graduate as samurai, the pregens have a clan and family but no
+# formal school; each carries its clan's signature school ability.
+
+EXTENSION "L5R5e_EmeraldChampion_Pregens" {
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-03"
+    DEPENDS_ON "L5R5e_Core_Core"
+
+    # ── Akodo Masako — Bushi of the Lion Clan ──────────────────────────────
+    ^"Akodo Masako" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Akodo Masako" FIXED
+            ^"Clan" STRING "Lion" FIXED
+            ^"Family" STRING "Akodo" FIXED
+            ^"Roles" LIST OF STRING ["Bushi"]
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 3 ^"Fire" INTEGER 1 ^"Water" INTEGER 3 ^"Void" INTEGER 2 }
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 47
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 2
+            ^"Vigilance" INTEGER 2
+            ^"Void Points" INTEGER 2
+            ^"Ninjo" STRING "You desire personal glory, the better to ensure your clan's role in Rokugan, but you know as a Lion there is no greater role than to serve on the battlefield, where there may be little recognition."
+            ^"Demeanor" STRING "Personal Unmasking: Angrily call out challenges to foes for combat!"
+            ^"Skills" LIST OF STRING ["Smithing 1", "Fitness 1", "Martial Arts [Melee] 2", "Martial Arts [Unarmed] 1", "Meditation 1", "Tactics 1", "Culture 1", "Government 2"]
+            ^"Advantages" LIST OF STRING ["Indomitable Will"]
+            ^"Equipment" LIST OF STRING ["Fists: Martial Arts [Unarmed], Range 0, Damage 1", "Blunted or wooden sword: Martial Arts [Melee], Range 1, Damage 2", "Tough Robes", "Traveling Pack", "5 koku"]
+        }
+        DESCRIPTION "Beginner Game pregen — Bushi of the Lion Clan."
+        ^"Way of the Lion" DEF { ^"Effect" STRING "When you succeed at an Attack check during a skirmish, you may remove 1 strife and add 1 bonus success to the check." }
+        ^"Indomitable Will" DEF { ^"Effect" STRING "Although nobody is without fear, your will is strong and cannot be overcome easily. You may reroll up to 2 dice of your choice when your advantage helps you on any check." }
+    }
+
+    # ── Bayushi Kyo — Courtier of the Scorpion Clan ────────────────────────
+    ^"Bayushi Kyo" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Bayushi Kyo" FIXED
+            ^"Clan" STRING "Scorpion" FIXED
+            ^"Family" STRING "Bayushi" FIXED
+            ^"Roles" LIST OF STRING ["Courtier"]
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 1 ^"Fire" INTEGER 3 ^"Water" INTEGER 1 ^"Void" INTEGER 2 }
+            ^"Honor" INTEGER 30
+            ^"Glory" INTEGER 45
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 4
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 2
+            ^"Void Points" INTEGER 2
+            ^"Ninjo" STRING "You seek to uncover and eliminate any weaknesses within your clan, but also desire to embrace a life where no deception or lying is needed—to become your masked identity."
+            ^"Demeanor" STRING "Personal Unmasking: Distracting giggling and gesturing"
+            ^"Skills" LIST OF STRING ["Design 1", "Fitness 1", "Martial Arts [Melee] 1", "Culture 1", "Government 1", "Sentiment 1", "Courtesy 1", "Games 1", "Performance 1", "Skulduggery 2"]
+            ^"Advantages" LIST OF STRING ["Flexibility"]
+            ^"Equipment" LIST OF STRING ["Fists: Martial Arts [Unarmed], Range 0, Damage 1", "Blunted or wooden sword: Martial Arts [Melee], Range 1, Damage 2", "Common Robes", "Traveling Pack", "Poison (1 vial)", "4 koku"]
+        }
+        DESCRIPTION "Beginner Game pregen — Courtier of the Scorpion Clan."
+        ^"Path of Shadows" DEF { ^"Effect" STRING "Add 2 to your damage against Unmasked, Incapacitated, or Unconscious targets, or those unaware of your presence." }
+        ^"Flexibility" DEF { ^"Effect" STRING "You can fit through narrow spaces and perform sinuous dances or grappling maneuvers others would wince to attempt. You may reroll up to 2 dice of your choice when your advantage helps you on any check." }
+    }
+
+    # ── Doji Ren — Courtier of the Crane Clan ──────────────────────────────
+    ^"Doji Ren" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Doji Ren" FIXED
+            ^"Clan" STRING "Crane" FIXED
+            ^"Family" STRING "Doji" FIXED
+            ^"Roles" LIST OF STRING ["Courtier"]
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 1 ^"Fire" INTEGER 2 ^"Water" INTEGER 2 ^"Void" INTEGER 2 }
+            ^"Honor" INTEGER 57
+            ^"Glory" INTEGER 47
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Void Points" INTEGER 2
+            ^"Ninjo" STRING "You seek a life full of challenges and wonders! Your skill at sumi-e painting could bring great honor to your clan and family—but also a much less adventurous life than you desire."
+            ^"Demeanor" STRING "Personal Unmasking: Unseemly weeping"
+            ^"Skills" LIST OF STRING ["Aesthetics 1", "Composition 1", "Design 1", "Martial Arts [Ranged] 1", "Culture 1", "Government 1", "Courtesy 2", "Performance 1", "Seafaring 1"]
+            ^"Advantages" LIST OF STRING ["Dangerous Allure"]
+            ^"Equipment" LIST OF STRING ["Fists: Martial Arts [Unarmed], Range 0, Damage 1", "Blunted or wooden sword: Martial Arts [Melee], Range 1, Damage 2", "Elegant Robes", "Traveling Pack", "Calligraphy Kit", "2 koku"]
+        }
+        DESCRIPTION "Beginner Game pregen — Courtier of the Crane Clan."
+        ^"Speaking in Silence" DEF { ^"Effect" STRING "Once per scene when making a check to persuade or influence someone, you may add 1 kept Ring die showing an Opportunity result." }
+        ^"Dangerous Allure" DEF { ^"Effect" STRING "You have an air of intimidating beauty about you that others can rarely ignore, and leaves an impression on those around you. You may reroll up to 2 dice of your choice when your advantage helps you on any check." }
+    }
+
+    # ── Hida Sugi — Bushi of the Crab Clan ─────────────────────────────────
+    ^"Hida Sugi" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Hida Sugi" FIXED
+            ^"Clan" STRING "Crab" FIXED
+            ^"Family" STRING "Hida" FIXED
+            ^"Roles" LIST OF STRING ["Bushi"]
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 3 ^"Void" INTEGER 2 }
+            ^"Honor" INTEGER 49
+            ^"Glory" INTEGER 45
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Void Points" INTEGER 2
+            ^"Ninjo" STRING "You desire to defend the Empire and recruit others to this cause, but wish to see more of what you would die defending and want to ensure it is worth defending."
+            ^"Demeanor" STRING "Personal Unmasking: Rage at everyone not serving on the Wall!"
+            ^"Skills" LIST OF STRING ["Fitness 1", "Martial Arts [Melee] 2", "Martial Arts [Unarmed] 1", "Medicine 1", "Theology 1", "Command 1", "Games 1", "Labor 1", "Survival 2"]
+            ^"Advantages" LIST OF STRING ["Large Stature"]
+            ^"Equipment" LIST OF STRING ["Fists: Martial Arts [Unarmed], Range 0, Damage 1", "Blunted or wooden sword: Martial Arts [Melee], Range 1, Damage 2", "Worn Robes", "Traveling Pack", "Finger of Jade (to ward off the effects of the Taint)", "3 koku"]
+        }
+        DESCRIPTION "Beginner Game pregen — Bushi of the Crab Clan."
+        ^"Way of the Crab" DEF { ^"Effect" STRING "Once per game session, prevent 1 critical strike you would suffer." }
+        ^"Large Stature" DEF { ^"Effect" STRING "While not as tall as some of the other Crab in your homelands, elsewhere in Rokugan you tower over almost everyone around you. You may reroll up to 2 dice of your choice when your advantage helps you on any check." }
+    }
+
+    # ── Isawa Aki — Shugenja of the Phoenix Clan ───────────────────────────
+    ^"Isawa Aki" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Isawa Aki" FIXED
+            ^"Clan" STRING "Phoenix" FIXED
+            ^"Family" STRING "Isawa" FIXED
+            ^"Roles" LIST OF STRING ["Shugenja"]
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 1 ^"Fire" INTEGER 3 ^"Water" INTEGER 2 ^"Void" INTEGER 2 }
+            ^"Honor" INTEGER 45
+            ^"Glory" INTEGER 47
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 2
+            ^"Void Points" INTEGER 2
+            ^"Ninjo" STRING "You are aware of your power, and want to gain even more. Your expert researches have gained attention, though, which may mean you are instead destined to be only a scholar and never wield real power."
+            ^"Demeanor" STRING "Personal Unmasking: Withdraw into quiet contemplation"
+            ^"Skills" LIST OF STRING ["Composition 1", "Meditation 1", "Culture 1", "Theology 3", "Courtesy 1", "Games 1"]
+            ^"Advantages" LIST OF STRING ["Sixth Sense"]
+            ^"Equipment" LIST OF STRING ["Fists: Martial Arts [Unarmed], Range 0, Damage 1", "Staff: Martial Arts [Melee], Range 1, Damage 2", "Robes", "Traveling Pack", "Satchel of Scrolls", "5 koku"]
+        }
+        DESCRIPTION "Beginner Game pregen — Shugenja of the Phoenix Clan."
+        ^"At One with the Elements" DEF { ^"Effect" STRING "Once per scene when making a Theology check, before rolling the dice you may reduce the TN of the check by 1." }
+        ^"Sixth Sense" DEF { ^"Effect" STRING "You are especially in tune with the spirit world, and are especially sensitive to mystical phenomena. You may reroll up to 2 dice of your choice when your advantage helps you on any check." }
+    }
+
+    # ── Shinjo Takuya — Bushi of the Unicorn Clan ──────────────────────────
+    ^"Shinjo Takuya" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Shinjo Takuya" FIXED
+            ^"Clan" STRING "Unicorn" FIXED
+            ^"Family" STRING "Shinjo" FIXED
+            ^"Roles" LIST OF STRING ["Bushi"]
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 3 ^"Fire" INTEGER 2 ^"Water" INTEGER 2 ^"Void" INTEGER 2 }
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 46
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Void Points" INTEGER 2
+            ^"Ninjo" STRING "You want to prove that Unicorn samurai are not barbarians and are just as good as any other, but you also desire to get revenge on the Crane and others who look down on your clan."
+            ^"Demeanor" STRING "Personal Unmasking: Blushing and Blustering"
+            ^"Skills" LIST OF STRING ["Fitness 1", "Martial Arts [Melee] 1", "Martial Arts [Ranged] 1", "Tactics 1", "Culture 1", "Medicine 1", "Sentiment 1", "Performance 1", "Commerce 1", "Skulduggery 1", "Survival 2"]
+            ^"Advantages" LIST OF STRING ["Bishamon's Blessing"]
+            ^"Equipment" LIST OF STRING ["Fists: Martial Arts [Unarmed], Range 0, Damage 1", "Blunted or wooden sword: Martial Arts [Melee], Range 1, Damage 2", "Riding clothes", "Traveling Pack", "Unicorn Warhorse", "3 koku"]
+        }
+        DESCRIPTION "Beginner Game pregen — Bushi of the Unicorn Clan."
+        ^"Born in the Saddle" DEF { ^"Effect" STRING "Once per scene, before rolling dice in a check, you may direct your horse (if present) to aid you and reduce the TN by 1." }
+        ^"Bishamon's Blessing" DEF { ^"Effect" STRING "You quickly recover from exhaustion after long durations of exertion and strenuous physical activity. You may reroll up to 2 dice of your choice when your advantage helps you on any check." }
+    }
+
+    # ── Togashi Yoshi — Tattooed Monk of the Dragon Clan ──────────────────
+    ^"Togashi Yoshi" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Togashi Yoshi" FIXED
+            ^"Clan" STRING "Dragon" FIXED
+            ^"Family" STRING "Togashi" FIXED
+            ^"Roles" LIST OF STRING ["Tattooed Monk"]
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 3 ^"Fire" INTEGER 2 ^"Water" INTEGER 2 ^"Void" INTEGER 2 }
+            ^"Honor" INTEGER 45
+            ^"Glory" INTEGER 53
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Void Points" INTEGER 2
+            ^"Ninjo" STRING "You have very close bonds with your family, but you also wish to become trustworthy enough to become a spiritual advisor for your clan—which might mean letting your family connections lapse."
+            ^"Demeanor" STRING "Personal Unmasking: Inappropriate laughter and ridicule"
+            ^"Skills" LIST OF STRING ["Fitness 2", "Martial Arts [Melee] 1", "Martial Arts [Unarmed] 1", "Meditation 2", "Theology 2", "Survival 1"]
+            ^"Advantages" LIST OF STRING ["Keen Sight"]
+            ^"Equipment" LIST OF STRING ["Fists: Martial Arts [Unarmed], Range 0, Damage 1", "Staff: Martial Arts [Melee], Range 1, Damage 2", "Common Clothing", "Traveling Pack", "Prayer Beads", "5 koku"]
+        }
+        DESCRIPTION "Beginner Game pregen — Tattooed Monk of the Dragon Clan."
+        ^"Blood of the Kami" DEF { ^"Effect" STRING "When making a Martial Arts [Unarmed] check, you may add one rolled Ring die showing 1 Opportunity result. This doesn't increase the number of dice you can keep." }
+        ^"Keen Sight" DEF { ^"Effect" STRING "You can spot details of objects at a much greater distance than others can, and can pick up on small visual details that others might overlook. You may reroll up to 2 dice of your choice when your advantage helps you on any check." }
+    }
+}

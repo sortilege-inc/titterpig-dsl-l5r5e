@@ -1,0 +1,276 @@
+# L5R 5E — In the Palace of the Emerald Champion: Dramatis Personae (cast NPCs)
+# The L5R Beginner Game adventure "In the Palace of the Emerald Champion" (FFG).
+# These are Beginner Game *simplified* NPC profiles: they carry rings, derived
+# attributes (Endurance/Composure/Focus/Vigilance), honor/glory/status, skill
+# GROUP ranks (Artisan/Martial/Scholar/Social/Trade), favored weapons & gear, and
+# "NPC ABILITY" blocks — but no Conflict Ranks and no Advantages/Disadvantages,
+# which the simplified format omits. Every statblock value and ability text below
+# is transcribed VERBATIM from the printed profile pages (read as page images).
+# Doji Satsume appears only as a narrative ghost (no combat statblock) and lives
+# in the .lore / .codex, as do the non-statblocked suspects Hiruma Shigeki and
+# the peasant Sō. The seven pregens are in l5r5e-0.4-emerald-champion-pregens.actor.
+
+EXTENSION "L5R5e_EmeraldChampion_Cast" {
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-03"
+    DEPENDS_ON "L5R5e_Core_Core"
+
+    # ═══════════════════════ ACT I — THE JOURNEY ═══════════════════════════
+
+    ^"Ryu" DEF {
+        EXTENDS ^"NPC"
+        # An old peasant servant of the Emerald Champion who grew up in Tsuma but
+        # has lived most of his adult life at Shiro Yogasha; the PCs met him at the
+        # Topaz Championship. He guides them by cart along the road to the castle.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 2 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Endurance" INTEGER 4
+            ^"Composure" INTEGER 4
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 20
+            ^"Glory" INTEGER 25
+            ^"Status" INTEGER 15
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 0", "Scholar 0", "Social 1", "Trade 2"]
+            ^"Favored Weapons" LIST OF STRING ["Walking Stick: Damage 2; Range 1–2"]
+            ^"Gear" LIST OF STRING ["Peasant garb, cart and pony, meager handful of zeni"]
+        }
+        DESCRIPTION "Beginner Game simplified profile. Ryu, Peasant Servant — the PCs' cart-driver and road guide."
+        ^"Knows the Road" DEF { ^"Effect" STRING "Ryu has made the trek between the Emerald Champion's castle and Tsuma many times over his life. Should the PCs treat him well, he can offer the best spots to rest at the end while on the road. This allows each PC to remove one additional strife when removing strife at the end of each scene." }
+    }
+
+    ^"Goro the Bandit Leader" DEF {
+        EXTENDS ^"NPC"
+        # Goro became leader of this bandit group through cunning and guile,
+        # targeting travelers on isolated roads — though he accepts tougher
+        # assignments if there is enough koku involved.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 3 ^"Fire" INTEGER 3 ^"Water" INTEGER 3 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Ambitious"
+            ^"Endurance" INTEGER 9
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 10
+            ^"Glory" INTEGER 15
+            ^"Status" INTEGER 3
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 0", "Social 1", "Trade 1"]
+            ^"Favored Weapons" LIST OF STRING ["Rusted Katana: Damage 4; Range 1"]
+            ^"Gear" LIST OF STRING ["Thick traveling clothes, sake jug (full), knife, handful of bu"]
+        }
+        DESCRIPTION "Beginner Game simplified profile. Goro the Bandit Leader."
+        ^"...Get Them, Fools!" DEF { ^"Effect" STRING "As an action, Goro may have up to two of his bandits who have not yet acted this round immediately move 1 range band and perform a Strike action." }
+    }
+
+    ^"Bandits" DEF {
+        EXTENDS ^"NPC"
+        # Outlaws who thrive in the rural and remote regions of Rokugan; Goro was
+        # once one of them. A minion adversary.
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 2 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Intimidating"
+            ^"Endurance" INTEGER 5
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 15
+            ^"Glory" INTEGER 20
+            ^"Status" INTEGER 1
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 0"]
+            ^"Favored Weapons" LIST OF STRING ["Yari (Spear): Damage 5; Range 2"]
+            ^"Gear" LIST OF STRING ["Grimy traveling clothes, sake jug (empty)"]
+        }
+        DESCRIPTION "Beginner Game simplified profile. Minion — Goro's bandits."
+        ^"Hit Them While They're Down" DEF { ^"Effect" STRING "When one of Goro's bandits performs an Attack action against a target suffering from one or more critical strikes, increase any damage dealt by 2." }
+    }
+
+    ^"Airi the Tengu" DEF {
+        EXTENDS ^"NPC"
+        # An avian humanoid of an ancient race predating the Empire, roaming the
+        # countryside for centuries seeking students worthy of her wisdom and
+        # sword. She tests the PCs with a display of prowess or a duel to first
+        # strike, then reveals her true tengu form and takes wing.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Rings" DEF { ^"Air" INTEGER 4 ^"Earth" INTEGER 2 ^"Fire" INTEGER 3 ^"Water" INTEGER 3 ^"Void" INTEGER 4 }
+            ^"Demeanor" STRING "Detached"
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 80
+            ^"Glory" INTEGER 64
+            ^"Status" INTEGER 30
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 2", "Social 2", "Trade 1"]
+            ^"Favored Weapons" LIST OF STRING ["Ancient Katana: Damage 5; Range 1"]
+            ^"Gear" LIST OF STRING ["Impressive robes (Resistance 2)"]
+        }
+        DESCRIPTION "Beginner Game simplified profile. The Mysterious Stranger — an ancient tengu sword-master."
+        ^"Master of Illusion" DEF { ^"Effect" STRING "Once per scene as a Support action, Airi can use her illusion powers to appear human or become invisible until the end of the scene. A character must make a TN 4 Theology (Void) or Survival (Void) check to detect her while she is invisible." }
+        ^"Flight" DEF { ^"Effect" STRING "While in her winged form, Airi may also move via flight vertically and ignore the negative effects of terrain." }
+        ^"Void Points" DEF { ^"Effect" STRING "Airi has 2 Void points which can be used per the normal rules for spending Void points." }
+    }
+
+    ^"Goblins" DEF {
+        EXTENDS ^"NPC"
+        # Small, vicious creatures that infest Rokugan's mountains and wilds —
+        # far more common in the Shadowlands, so a band seen on a well-traveled
+        # northern road is cause for alarm. A minion adversary.
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 2 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Endurance" INTEGER 5
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 9
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 0"]
+            ^"Favored Weapons" LIST OF STRING ["Goblin-sized Scavenged Yari (Spear): Damage 4; Range 1", "Goblin-sized Scavenged Yumi (Bow): Damage 4; Range 1–4"]
+            ^"Gear" LIST OF STRING ["Salvaged armor (Resistance 1)"]
+        }
+        DESCRIPTION "Beginner Game simplified profile. Minion — a small horde thriving far north of the Wall, a sign vile magic may have lured them."
+        ^"Small" DEF { ^"Effect" STRING "Goblins are Silhouette 1." }
+        ^"Surefooted" DEF { ^"Effect" STRING "Goblins ignore the negative effects of terrain." }
+    }
+
+    ^"Teru the Ogre" DEF {
+        EXTENDS ^"NPC"
+        # A huge, violent creature that dimly remembers a Shadowlands home but is
+        # now thriving in these greener regions with a small horde of goblins,
+        # preying on passersby and raiding villages. Currently Wounded.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 3 ^"Fire" INTEGER 3 ^"Water" INTEGER 2 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Gruff"
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 5
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 0", "Trade 1"]
+            ^"Favored Weapons" LIST OF STRING ["Giant club or Tree Branch: Damage 7; Range 2"]
+            ^"Gear" LIST OF STRING ["Tattered hides (Resistance 1)"]
+        }
+        DESCRIPTION "Beginner Game simplified profile. Teru the Ogre — leader of the goblin horde. NPC STATUS: WOUNDED — Teru is currently suffering from 8 fatigue."
+        ^"Crushing Blow" DEF { ^"Effect" STRING "Whenever Teru inflicts a critical strike, the target suffers the Prone condition as well as any other conditions from the critical strike. While prone, a character cannot move more than one range band during their turn (probably by crawling). At the end of their turn, if the character did not perform a Movement action, they may choose to remove the Prone condition (by standing up)." }
+        ^"Rage of the Beast" DEF { ^"Effect" STRING "Once per scene, after Teru suffers a critical strike, it becomes Enraged (increasing the damage it both inflicts and suffers by 2) until its critical strikes are removed." }
+        ^"Huge" DEF { ^"Effect" STRING "Ogres are Silhouette 4." }
+    }
+
+    # ═══════════════════════ ACT II & III — SHIRO YOGASHA ══════════════════
+
+    ^"Agasha Sumiko" DEF {
+        EXTENDS ^"NPC"
+        # A pale, powerful Dragon bushi, Ruby Champion for several years and now
+        # also acting as Emerald Champion until a new one can be chosen. Extremely
+        # busy; claims she wants the truth of Satsume's death — or perhaps she views
+        # "truth" as "what is best for the Empire." (Distinct from any codex entity
+        # of the same name; this DEF carries her Beginner Game profile.)
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 4 ^"Fire" INTEGER 2 ^"Water" INTEGER 4 ^"Void" INTEGER 3 }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 70
+            ^"Glory" INTEGER 66
+            ^"Status" INTEGER 80
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 4", "Scholar 3", "Social 3", "Trade 1"]
+            ^"Favored Weapons" LIST OF STRING ["Ruby Champion's Katana: Damage 6; Range 1"]
+            ^"Gear" LIST OF STRING ["Daishō, Ruby Champion's Armor (Resistance 4), scrolls"]
+        }
+        DESCRIPTION "Beginner Game simplified profile. Agasha Sumiko, Ruby Champion and Acting Emerald Champion at Shiro Yogasha."
+        ^"Expert in the Dōjō" DEF { ^"Effect" STRING "Though she rarely displays it now, Sumiko is an expert at both employing and teaching Martial Arts. After sparring with her, a character may purchase Rank 1 of a single Martial skill in which they have 0 ranks for 1 XP instead of 2." }
+        ^"For the Good of the Empire" DEF { ^"Effect" STRING "Sumiko is a firm believer in the Emperor's divine right to rule, and thinks foremost of the Empire's well-being in each decision she makes. Increase the TN of Command or Courtesy skill checks to convince her to act against the wishes of the Emperor, even for the best of reasons, by 2." }
+    }
+
+    ^"Kitsuki Kāgi" DEF {
+        EXTENDS ^"NPC"
+        # Chief Yoriki (senior assistant) to the Emerald Magistrate. Formerly of the
+        # Lion Matsu family, he married into the Dragon Clan and took the Kitsuki
+        # name. Overly curious — perhaps gathering information for the Lion. He
+        # grudgingly respected Satsume, but does not get along with Sumiko.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 2 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Inquisitive"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 58
+            ^"Status" INTEGER 38
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 2", "Social 1", "Trade 0"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Damage 4; Range 1"]
+            ^"Gear" LIST OF STRING ["Wakizashi, family armor (Resistance 3), handful of scrolls"]
+        }
+        DESCRIPTION "Beginner Game simplified profile. Kitsuki Kāgi, Chief Yoriki to the Emerald Magistrate; Sumiko's personal assistant and a possible Lion spy."
+        ^"Knows Everybody" DEF { ^"Effect" STRING "While Kāgi is present in the scene, any character making a Scholar skill check (such as Culture, Government, or Theology) to ascertain or remember a detail about someone in the castle may spend Opportunity Opportunity. If they fail the check, Kāgi approaches and supplies the information in question." }
+    }
+
+    ^"Shosuro Hametsu" DEF {
+        EXTENDS ^"NPC"
+        # Daimyō of the Shosuro family and brother of Bayushi Kachiko; a master
+        # poisoner. He attends the castle in disguise as the Emerald Magistrate
+        # "Bayushi Ago," his cover story being that he is here to study historical
+        # rulings. He hates Doji Hotaru and schemes to frame her for Satsume's death.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Rings" DEF { ^"Air" INTEGER 4 ^"Earth" INTEGER 3 ^"Fire" INTEGER 3 ^"Water" INTEGER 4 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Scheming"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 6
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 58
+            ^"Status" INTEGER 70
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 3", "Scholar 4", "Social 3", "Trade 4"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Damage 4; Range 1"]
+            ^"Gear" LIST OF STRING ["Wakizashi, concealed armor under robes (Resistance 3), variety of hidden vials filled with poisons"]
+        }
+        DESCRIPTION "Beginner Game simplified profile. Shosuro Hametsu, Family Daimyō, posing as the Emerald Magistrate 'Bayushi Ago'; brother of Bayushi Kachiko."
+        ^"Master of Poisons" DEF { ^"Effect" STRING "As a Support action, Hametsu may make TN 2 Skulduggery (Air) check instead of a Medicine check to apply a dose of poison to a weapon or item (see page 26 of the Rulebook). If successful, no one notices this action." }
+        ^"Master of Disguises" DEF { ^"Effect" STRING "Hametsu may make a TN 1 Skulduggery (Water) check to adopt a disguise. The TN of checks to notice this disguise is 2 plus the number of bonus successes he gains on this check. Characters must know Hametsu personally or have seen him in person to determine he is the one in disguise, however." }
+    }
+
+    ^"Kitsuki Tomo" DEF {
+        EXTENDS ^"NPC"
+        # A fanatical Kolat for years, ever since he witnessed one of the Emperor's
+        # heirs kill a peasant — convincing him humans, not the offspring of the
+        # Kami, should rule Rokugan. He serves as one of Kāgi's assistants. His Kolat
+        # superiors ordered Satsume eliminated for keeping the Empire secure; Satsume
+        # died of natural causes first, so Tomo now sets out to kill the Ruby Champion.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Rings" DEF { ^"Air" INTEGER 4 ^"Earth" INTEGER 3 ^"Fire" INTEGER 3 ^"Water" INTEGER 2 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Fanatical"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 47
+            ^"Status" INTEGER 35
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 2", "Social 2", "Trade 3"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Damage 4; Range 1", "Shuriken: Damage 2; Range 1–3"]
+            ^"Gear" LIST OF STRING ["Daishō, thick clothing with concealed armor (Resistance 3), vials of poison, coil of thin rope, climbing hooks"]
+        }
+        DESCRIPTION "Beginner Game simplified profile. Kitsuki Tomo, Kolat Assassin — posing as one of Kāgi's assistants."
+        ^"Skilled Assassin" DEF { ^"Effect" STRING "When making an Attack check, Tomo may spend Opportunity Opportunity to move 1 range band and throw a shuriken at a character at range 1–2 other than his target. That character must resist with a TN 3 Fitness (Earth) check or suffer 5 damage." }
+        ^"Single-Minded" DEF { ^"Effect" STRING "During battle scenes, Tomo does not receive strife from strife results on his checks." }
+    }
+}
