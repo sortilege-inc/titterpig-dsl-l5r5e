@@ -1,0 +1,166 @@
+# L5R 5E — The Highwayman: Dramatis Personae (cast NPCs / adversaries)
+# The 2019 L5R Gen Con adventure "The Highwayman" (FFG). NPC statblocks
+# transcribed verbatim from the printed profiles: rings, conflict ranks, derived
+# attributes, honor/glory/status, skill-group ranks, advantages/disadvantages,
+# favored weapons & gear, and abilities. Ability text is reproduced verbatim in
+# nested ^"Name" DEF { ^"Effect" ... } blocks. Non-statblocked NPCs (the courier
+# Hidetaka Nori, his mother Sazuko and sister Sasami, the merchant Ito Moronoka)
+# live in the .lore / .codex. The six pregens are in l5r5e-0.4-highwayman-pregens.actor.
+
+EXTENSION "L5R5e_Highwayman_Cast" {
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-02"
+    DEPENDS_ON "L5R5e_Core_Core"
+
+    # ═══════════════════════ ACT 1 — KAWACHO ═══════════════════════════════
+
+    ^"Hidetaka Sasuke" DEF {
+        EXTENDS ^"NPC"
+        # A large, barrel-chested peasant bartender who owns the Kawacho sake
+        # house; brother of the missing courier Hidetaka Nori. Fiercely protective
+        # of his family.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 3 ^"Fire" INTEGER 3 ^"Water" INTEGER 2 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Ambitious"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 40
+            ^"Glory" INTEGER 20
+            ^"Status" INTEGER 20
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 2", "Scholar 0", "Social 2", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Natural Strength — Martial; Physical", "Endearing Face — Social; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Soft-hearted — Social; Interpersonal, Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Rusty Blade: Range 0–1, Damage 4, Deadliness 4/6"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Two bottles of sake, record book, pouch of 5 bu and 12 zeni"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 2, Intrigue 2."
+        ^"Bearish Strength" DEF { ^"Effect" STRING "Once per scene, as a Movement action, Sasuke may receive 3 fatigue. If he does, he treats his Earth Ring as 5 until the end of his next turn and reduces the TN of Attack action checks he makes by 1 (minimum 1)." }
+    }
+
+    # ═══════════════════════ ACT 2 — THE SHINOMEN ═════════════════════════
+
+    ^"Sayaka" DEF {
+        EXTENDS ^"NPC"
+        # A cloaked, muscular trader — originally Bataar Badma of the Burning Sands,
+        # who lived in the shadow of Khanbulak. Changes her name often. An optional
+        # helpful NPC who can guide the PCs and warns of the red crescent marks.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 2 ^"Fire" INTEGER 3 ^"Water" INTEGER 2 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Adventurous"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 2", "Scholar 2", "Social 2", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Worldly — Social; Interpersonal, Mental"]
+            ^"Disadvantages" LIST OF STRING ["Blunt — Social; Interpersonal, Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Chain Whip: Range 1–2, Damage 3, Deadliness 5, Razor-Edged, Snaring"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Hand-drawn maps of Rokugan, the Burning Sands, and other lands, four days' rations, various small trinkets and wonders, a pouch of 13 bu"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 2, Intrigue 3. Originally named Bataar Badma, from the Burning Sands."
+        ^"I Learned This on My Travels" DEF { ^"Effect" STRING "Once per scene, after Sayaka or an ally within range 0–2 of her rolls dice, but before they apply effects, Sayaka may have them reroll any number of those dice." }
+    }
+
+    # ═══════════════ ACT 3 — THE ESTATE (Otherworldly beings) ═════════════
+
+    ^"Lady Yukiko" DEF {
+        EXTENDS ^"NPC"
+        # The Highwayman: a rakshasa of the Ghostlands that plague the Ivory
+        # Kingdoms — a shapeshifting, reality-bending being with a taste for human
+        # flesh. Bored, arrogant, short-tempered, and painfully sweet.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 8
+            ^"Intrigue Conflict Rank" INTEGER 8
+            ^"Rings" DEF { ^"Air" INTEGER 6 ^"Earth" INTEGER 4 ^"Fire" INTEGER 4 ^"Water" INTEGER 4 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Arrogant"
+            ^"Endurance" INTEGER 20
+            ^"Composure" INTEGER 18
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 5
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 5
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 3", "Scholar 2", "Social 4", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Devious Cunning — Scholar; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Arrogant — Social; Interpersonal, Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Claws: Range 1–2, Damage 6, Deadliness 5, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Scaled hide (Physical 3, Supernatural 3)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 8, Intrigue 8. A rakshasa of the Ghostlands; the fabled Highwayman."
+        ^"Illusory Hunter" DEF { ^"Effect" STRING "Lady Yukiko is an Otherworldly being of silhouette 3 that can change her form to appear as a creature of silhouette 2–4. At the start of a scene characters must make a TN 6 Survival or Theology check (Air 8, Void 4) to attempt to see through her illusionary form. If they fail, they cannot attempt see through the illusion for the remainder of the scene." }
+        ^"Just a Taste" DEF { ^"Effect" STRING "When Yukiko makes an Attack action check, she may spend Opportunity in the following ways: Opportunity: If she succeeds, the target suffers the Bleeding condition. Opportunity Opportunity: If she succeeds and the target is Bleeding, Yukiko removes 2 fatigue and 2 strife. Opportunity Opportunity: If she succeeds, she may choose one additional target within range 0–1 to suffer damage equal to the base damage of her weapon." }
+        ^"Darker Purpose" DEF { ^"Effect" STRING "If Yukiko would suffer a critical strike of severity 7 or higher, she explodes in a rain of blood with a menacing cackle. She is defeated." }
+    }
+
+    ^"Lady Atsuko" DEF {
+        EXTENDS ^"NPC"
+        # An oni born from the very marsh the estate is built on — the Taint mixed
+        # with the spiritual power of the Shinomen. True form: a giant 15-foot
+        # centipede with the body of an old woman. Intensely jealous of Yukiko's
+        # beauty; averse to fire.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 8
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 2 ^"Fire" INTEGER 3 ^"Water" INTEGER 5 ^"Void" INTEGER 3 }
+            ^"Demeanor" STRING "Jealous"
+            ^"Endurance" INTEGER 17
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 6
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 2", "Social 4", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Flexible — Martial, Social; Interpersonal, Physical, Mental"]
+            ^"Disadvantages" LIST OF STRING ["Jealousy — Social; Interpersonal, Mental", "Aversion to Fire — Martial, Social; Physical, Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Venomous Bite: Range 0, Damage 5, Deadliness 6, Unholy", "Crushing Body: Range 0–3, Damage 6, Deadliness 5"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Segmented hide (Physical 3, Supernatural 1)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 7, Intrigue 8. A centipede oni born of the Shinomen marsh."
+        ^"Constricting Body" DEF { ^"Effect" STRING "Atsuko is a Otherworldly, Tainted being of silhouette 3. When she makes an Attack action check using her Crushing Body, she may spend Opportunity in the following ways: Opportunity: If she succeeds, she may immediately make an Attack action check against the same target using her Venomous Bite. Opportunity+: If she succeeds, the target suffers one of the following conditions for each Opportunity spent this way: Dazed, Immobilized, Silenced. Opportunity Opportunity: If she succeeds, the target is Immobilized and the target begins to suffocate until they are no longer Immobilized (see page 269 of the core rulebook)." }
+        ^"Painted Words" DEF { ^"Effect" STRING "As a Scheme action, Atsuko may make a Social (Fire) check targeting one character within the scene, with a TN equal to the target's vigilance. If she succeeds, she influences the target's mind, causing them to receive 2 strife, plus 1 strife for every 2 bonus successes." }
+        ^"Venomous Strike" DEF { ^"Effect" STRING "When Atsuko makes an Attack action check using her Venomous Bite, she may spend Opportunity in the following way: Opportunity Opportunity: The target becomes Disoriented and Intoxicated." }
+    }
+
+    ^"Lord Kenta" DEF {
+        EXTENDS ^"NPC"
+        # A massive, muscular ogre-like oni with the head of a wolf, originating
+        # from the pits of Jigoku by way of the Shadowlands. Easy to please —
+        # eating and wrestling — and strangely honest for an oni; he hates cheating.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 5 ^"Fire" INTEGER 4 ^"Water" INTEGER 2 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Gruff"
+            ^"Endurance" INTEGER 24
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 20
+            ^"Glory" INTEGER 0
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 1", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Supernatural Strength — Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Dim-witted — Social; Interpersonal, Mental", "Old Wound (Knee) — Martial; Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Massive teeth: Range 0–1, Damage 5, Deadliness 7, Razor-Edged, Unholy", "Clawed fists: Range 0–3, Damage 4, Deadliness 5"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Bone armor (Physical 3)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 7, Intrigue 4. A wolf-headed oni of Jigoku."
+        ^"Crushing Grip" DEF { ^"Effect" STRING "Kenta is a Otherworldly, Tainted being of silhouette 4. At the end of Kenta's turn, he makes an additional Attack action check, if able. When Kenta makes an Attack action check, he may spend Opportunity in the following way: Opportunity: The attack gains the Snaring quality. Opportunity+: Increase the deadliness of the attack by 1 for each Opportunity spent this way." }
+    }
+}

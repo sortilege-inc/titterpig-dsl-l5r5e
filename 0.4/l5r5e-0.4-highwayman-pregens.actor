@@ -1,0 +1,289 @@
+# L5R 5E — The Highwayman: Pregenerated Characters (.actor)
+# The six pregens from the 2019 L5R Gen Con adventure "The Highwayman" (FFG) —
+# gaijin, rōnin, peasant, and monk character types. Their sheets use
+# Region/Upbringing in place of Clan/Family and a "Past" line in place of Giri.
+# Stats transcribed verbatim from the printed Narrative-/Conflict-Mode sheets
+# (rings, skills, derived attributes, ninjō/past, distinctions/adversities/
+# passions/anxieties, school ability, techniques, weapons/armor/gear, and the
+# pre-written party relationships). Technique names are listed; their full text
+# is the core rulebook's (reproduced on each sheet's reference page).
+
+EXTENSION "L5R5e_Highwayman_Pregens" {
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-02"
+    DEPENDS_ON "L5R5e_Core_Core"
+
+    # ── Ahuja Mishti — Gaijin (Yodha / Ivory Kingdoms Sage) ────────────────
+    ^"Ahuja Mishti" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Ahuja Mishti" FIXED
+            ^"Region" STRING "Yodha" FIXED
+            ^"Upbringing" STRING "Hunter" FIXED
+            ^"School" STRING "Ivory Kingdoms Sage" FIXED
+            ^"School Rank" INTEGER 2
+            ^"Roles" LIST OF STRING ["Sage", "Bushi"]
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 2
+            }
+            ^"Honor" INTEGER 50
+            ^"Glory" INTEGER 34
+            ^"Status" INTEGER 3
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Void Points" INTEGER 2
+            ^"Ninjo" STRING "To recover your family's lost blade and make peace with yourself."
+            ^"Past" STRING "Haunted by your part in your family's death, you fear that recovering their blade won't relieve your guilt."
+            ^"Skills" LIST OF STRING ["Fitness 1", "Martial Arts [Melee] 2", "Martial Arts [Unarmed] 2", "Meditation 1", "Medicine 1", "Theology 2", "Command 1", "Courtesy 1", "Labor 1", "Skulduggery 1", "Survival 2"]
+            ^"Advantages" LIST OF STRING ["Sixth Sense (Void) — Distinction", "Large Stature (Earth) — Distinction", "Curiosity (Fire) — Passion"]
+            ^"Disadvantages" LIST OF STRING ["Encompassing Duty (Earth) — Adversity", "Gaijin Name (Fire) — Adversity", "The Coming Storm (Void) — Anxiety"]
+            ^"Techniques" LIST OF STRING ["Bellow of Resolve (Kata)", "Cleansing Spirit (Kihō)", "Ki Protection (Kihō)", "Threshold Barrier (Ritual)", "Earth Needs No Eyes (Kihō)", "Earthen Fist (Kihō)", "Landslide Strike (Kata)"]
+            ^"Equipment" LIST OF STRING ["Talwar: Damage 4/6, Range 1, Cumbersome, Durable, Razor-Edged", "Chain Whip: Damage 3/5, Range 1–2, Razor-Edged, Snaring", "Punch: Damage 1/2, Range 0, Snaring", "Kick: Damage 2/1, Range 1", "Traveling Clothes (Physical 2, Durable, Mundane, Subtle)", "Sanctified Robes (Physical 1, Supernatural 3, Ceremonial)", "Map of the route to Crab lands from the Sand Road", "5 days' rations", "small sketch of family", "finger of jade", "finger of coral", "small tent", "whetstone", "fishing kit", "4 bu"]
+            ^"Relationships" LIST OF STRING ["Haruko: Friendly, she seems like a kindred spirit who has seen struggle", "Kenshin: Friendly, seems friendly and honest", "Turgen: Friendly, another person who knows the realities of being in Rokugan as an outsider. He has a mischievous spirit haunting him, but you don't see any reason for that to hinder your friendship", "Daichi: Neutral, he seems to be nervous most of the time", "Noboru: Friendly, they remind you of the wizened sage of your village"]
+            ^"Demeanor" STRING "Technique types available: Kata, Rituals, Kihō."
+        }
+        DESCRIPTION "Pregenerated gaijin PC for The Highwayman."
+
+        ^"Gift of Inner Power" DEF { ^"Effect" STRING "You can infuse other characters with your inner energy. After you perform a check to activate one of your kihō (Cleansing Spirit, Earth Needs No Eyes, Earthen Fist, or Ki Protection), you can receive up to your school rank and choose another character at range 0–1. If you do, that character gains the enhancement effect of your kihō in your stead (you may still resolve the burst effect, if able). The effect persists a number of rounds equal to the amount of fatigue you received this way plus your ranks in Meditation (1). Only one character can benefit from your kihō in this way at a time." }
+        ^"Sixth Sense (Void)" DEF { ^"Effect" STRING "You have the instinctive sense of supernatural beings, and you can sense the presence of spirits even if they have not revealed themselves. This feeling is ominous in the presence of evil and neutral if the beings are going about their usual business. You are exceptionally good at following your hunches." }
+        ^"Large Stature (Earth)" DEF { ^"Effect" STRING "You are easy to spot in a crowd, can reach high spaces, can see over others, and tend to hit your head on doorways." }
+        ^"Encompassing Duty (Earth)" DEF { ^"Effect" STRING "You have a duty to avenge your family. You must secure your family's sacred gada (mace) and destroy the monster who stole it. Whenever you make a check related to overcoming something that is hindering you in achieving your goal, you must choose and reroll two dice containing Success or Strife symbols." }
+        ^"Gaijin Name (Fire)" DEF { ^"Effect" STRING "People of a higher status tend to assume you are uneducated, while people of lower status tend to be fearful of you. You struggle to inspire those who are not from your culture." }
+        ^"Curiosity (Fire)" DEF { ^"Effect" STRING "The first time you attempt a new task and fail, you always think of another route you could try to take to overcome or learn more about the problem. You always feel better after taking a step closer to answering an interesting question." }
+        ^"The Coming Storm (Void)" DEF { ^"Effect" STRING "Your family has been plagued by wicked creatures for generations. As a result, you are constantly vigilant for Tainting beings that will spell your demise. When performing a check that involves planning or preparation for securing your family's well-being (such as a Command check to warn others of an impending attack related to wicked creatures), you receive 3 strife. If this was the first time this has occurred this scene, gain 1 Void point." }
+    }
+
+    # ── Akagi Daichi — Peasant/hinin in disguise (Artisan of the Roads) ────
+    ^"Akagi Daichi" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Akagi Daichi" FIXED
+            ^"Region" STRING "Haunted Land" FIXED
+            ^"Upbringing" STRING "Hinin (Secret)" FIXED
+            ^"School" STRING "Artisan of the Roads" FIXED
+            ^"School Rank" INTEGER 2
+            ^"Roles" LIST OF STRING ["Artisan"]
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Honor" INTEGER 30
+            ^"Glory" INTEGER 28
+            ^"Status" INTEGER 24
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 2
+            ^"Void Points" INTEGER 1
+            ^"Ninjo" STRING "To be well-liked and to prove to the world that you are more than the circumstances of your birth."
+            ^"Past" STRING "You were born a hinin, part of the lowest caste in the whole of Rokugan, but you lie about this past."
+            ^"Skills" LIST OF STRING ["Aesthetics 1", "Composition 1", "Smithing 2", "Fitness 1", "Martial Arts [Melee] 1", "Culture 1", "Sentiment 2", "Command 1", "Courtesy 2", "Performance 2", "Commerce 1", "Labor 2", "Survival 1"]
+            ^"Advantages" LIST OF STRING ["Ebisu's Blessing (Earth) — Distinction", "Subtle Observer (Air) — Distinction", "Generosity (Water) — Passion"]
+            ^"Disadvantages" LIST OF STRING ["Momoku (Void) — Adversity", "Dark Secret (Void) — Anxiety"]
+            ^"Techniques" LIST OF STRING ["Artisan's Appraisal (Shūji)", "Fanning the Flames (Shūji)", "Fluent Bargaining (Shūji)", "Shallow Waters (Shūji)", "Improvised Assault (Kata)"]
+            ^"Equipment" LIST OF STRING ["Knife: Damage 2/(4/6), Range 0, Concealable, Razor-Edged", "Lute: Damage (1/2)/(2/3), Range 0–1, Mundane", "Blowgun: Damage 1/2, Range 2–3, Concealable", "Traveling Clothes (Physical 2, Durable, Mundane, Subtle)", "Cooking Kit", "Tailor's Kit", "Art Supplies", "One 1/2 Finished Art Piece", "Box of Darts", "One Vial of Nightmilk Poison (when introduced into a character's bloodstream, the character suffers 5 fatigue and the Disoriented and Prone conditions; when applied to a weapon, after a target suffers a critical strike from the weapon, they suffer the Disoriented and Prone conditions)", "5 zeni"]
+            ^"Relationships" LIST OF STRING ["Noboru: Friendly, they seem kind and treat you well", "Mishti: Friendly, she has never been anything but nice", "Turgen: Neutral, he seems a bit odd. The hawk is interesting, though", "Haruko: Neutral, Haruko is a bit formal, and samurai make you nervous", "Kenshin: Friendly, Kenshin seems like another person trying to make their way in a world that wants to dictate what you can accomplish by your birth, a kindred soul"]
+            ^"Demeanor" STRING "Technique types available: Kata, Rituals, Shūji."
+        }
+        DESCRIPTION "Pregenerated peasant (hinin in disguise) PC for The Highwayman."
+
+        ^"Resourceful Artistry" DEF { ^"Effect" STRING "Once per game session when performing a downtime activity to craft, you may scavenge supplies for your craft worth up to 2 koku. These materials do not have the same resale value if not used to make something." }
+        ^"Ebisu's Blessing (Earth)" DEF { ^"Effect" STRING "Laborer's recognize you as a kindred spirit. NPC characters with a status of 30 or lower automatically trust you unless you give them a reason not to." }
+        ^"Subtle Observer (Air)" DEF { ^"Effect" STRING "You can read people's lips and facial expressions with ease. Spotting minute details comes naturally to you." }
+        ^"Momoku (Void)" DEF { ^"Effect" STRING "You do not detect supernatural presences even when they are obvious. You can observe how such presences affect the physical world, but only when it is painfully obvious. You also have difficulties understanding such things even when they are obvious." }
+        ^"Generosity (Water)" DEF { ^"Effect" STRING "You can always identify a proper gift for a particular person that does not risk giving offense." }
+        ^"Dark Secret (Void)" DEF { ^"Effect" STRING "You are secretly from the lowest caste in Rokugan; a hinin. Even though you are extremely talented, if anyone were to find out your secret you would be ruined and may even face punishment." }
+    }
+
+    # ── Hiyabayashi Kenshin — Commoner shugenja (Voice of the Wilds) ───────
+    ^"Hiyabayashi Kenshin" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Hiyabayashi Kenshin" FIXED
+            ^"Region" STRING "Urban" FIXED
+            ^"Upbringing" STRING "Geisha House" FIXED
+            ^"School" STRING "Voice of the Wilds" FIXED
+            ^"School Rank" INTEGER 2
+            ^"Roles" LIST OF STRING ["Shugenja", "Courtier"]
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 2
+            }
+            ^"Honor" INTEGER 35
+            ^"Glory" INTEGER 29
+            ^"Status" INTEGER 0
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Void Points" INTEGER 2
+            ^"Ninjo" STRING "To earn fame and prestige, and to make powerful contacts, all while providing entertainment."
+            ^"Past" STRING "You owe a massive debt to a moneylender and need to pay it down as soon as possible."
+            ^"Skills" LIST OF STRING ["Aesthetics 1", "Composition 1", "Sentiment 1", "Theology 3", "Courtesy 2", "Games 1", "Performance 1", "Commerce 2", "Labor 1", "Skulduggery 2"]
+            ^"Advantages" LIST OF STRING ["Quick Reflexes (Fire) — Distinction", "Small Stature (Air) — Distinction", "Attention (Fire) — Passion"]
+            ^"Disadvantages" LIST OF STRING ["Debt to Nakamura Jun'ichi, Loan Shark (Air) — Adversity", "Eyes of Many (Fire) — Anxiety"]
+            ^"Techniques" LIST OF STRING ["Commune with the Spirits (Ritual)", "Nature's Touch (Invocation)", "Sensational Distraction (Shūji)", "Well of Desire (Shūji)", "Cloak of Night (Invocation, Rank 1 from school ability)", "Breath of the Fire Dragon (Invocation, Rank 3 from school ability)"]
+            ^"Equipment" LIST OF STRING ["Kiseru (Smoking Pipe): Damage 2/2, Range 0, Concealable, Mundane", "Knife: Damage 2/(4/6), Range 0, Concealable, Mundane, Razor-Edged", "Traveling Clothes (Physical 2, Durable, Mundane, Subtle)", "Calligraphy set", "2 days' rations", "small tent", "umbrella", "Winter (a pillowbook written by Kakita Ryoku about her exploits)", "makeup kit", "an Omamari (Blessing of Benten; Benten watches over artists and lovers, guiding them in their endeavors; once per game session, after rolling dice, you may spend 1 Void point to add a kept Ring die set to an Opportunity result to an Artisan or Social check)", "3 koku"]
+            ^"Relationships" LIST OF STRING ["Maki Haruko: Neutral, you feel as if she only tolerates you", "Mishti: Friendly, her grace is undeniable, and she carries herself well", "Turgen: Neutral, there is only room for one real star", "Daichi: Friendly, he seems like he is an honest man", "Noboru: Friendly, seems like they have a lot of interesting stories you can add into your repertoire"]
+            ^"Demeanor" STRING "Technique types available: Rituals, Shūji."
+        }
+        DESCRIPTION "Pregenerated commoner shugenja PC for The Highwayman."
+
+        ^"Naturally Attuned" DEF { ^"Effect" STRING "As a downtime activity, you may select a number of invocations with total school rank prerequisites equal to double your school rank. You can perform these invocations as if you knew them. When making a check to activate an invocation, if you become Compromised, you suffer spiritual backlash." }
+        ^"Spiritual Backlash" DEF { ^"Effect" STRING "This happens if you generate 3 or more strife symbols on dice you keep when using an invocation, or if you become Compromised (because of your Naturally Attuned ability). You suffer 3 fatigue as the raw power of your invocation overtaxes you. You cannot use invocations of that element again until the end of the scene. If the element was Air, the GM may choose two additional targets for your invocation. If the element was Fire, the invocation targets every character within range, and applicable terrain at range 0–2 catches on fire." }
+        ^"Quick Reflexes (Fire)" DEF { ^"Effect" STRING "At the start of each scene, you can always grab an item within reach or reposition it a few paces within your environment (up to GM discretion). You are also able to act very swiftly in nearly any circumstance." }
+        ^"Small Stature (Air)" DEF { ^"Effect" STRING "You can fit into small spaces, hid behind other people, are hard to spot in a crowd, and sometimes need assistance reaching objects on high shelves. Being small is an asset to you that you can employ in many circumstances." }
+        ^"Debt to Nakamura Jun'ichi, Loan Shark (Air)" DEF { ^"Effect" STRING "You a massive debt to Nakamura Jun'ichi, and if you do not make regular payments to him then he will surely hunt you down and may you pay, one way or another. When dodging or making choices that will worsen your debt you exacerbate this problem." }
+        ^"Attention (Fire)" DEF { ^"Effect" STRING "At the start of each scene, you can always determine the most effective way to gain the attention of those around you." }
+        ^"Eyes of Many (Fire)" DEF { ^"Effect" STRING "You are constantly worried others are watching and judging you, whether you fear they are Nakamura Jun'ichi's underlings or simply strangers mocking you. You find it difficult to relax in public spaces and tend to worry about other people's impressions of you more than most others would. When in crowded places or in situations where two or more strangers are actively listening to you, you experience a great deal of anxiety." }
+    }
+
+    # ── Maki Haruko — Rōnin (fallen Lion noble; Wandering Blade) ───────────
+    ^"Maki Haruko" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Maki Haruko" FIXED
+            ^"Region" STRING "Rural Farmland" FIXED
+            ^"Upbringing" STRING "Fallen Noble (Lion Clan)" FIXED
+            ^"School" STRING "Wandering Blade" FIXED
+            ^"School Rank" INTEGER 2
+            ^"Roles" LIST OF STRING ["Bushi"]
+            ^"Rings" DEF {
+                ^"Air" INTEGER 1
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 2
+            }
+            ^"Honor" INTEGER 45
+            ^"Glory" INTEGER 34
+            ^"Status" INTEGER 34
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Void Points" INTEGER 2
+            ^"Ninjo" STRING "To atone by being a strong leader, protecting others, and proving your worth as a person of integrity."
+            ^"Past" STRING "Your family disowned you after you disobeyed an order and caused the deaths of those under your charge."
+            ^"Skills" LIST OF STRING ["Smithing 1", "Fitness 2", "Martial Arts [Melee] 3", "Meditation 1", "Tactics 1", "Government 1", "Medicine 1", "Sentiment 1", "Command 1", "Courtesy 1", "Commerce 1", "Labor 1"]
+            ^"Advantages" LIST OF STRING ["Ardent Leader (Fire) — Distinction", "Indomitable Will (Earth) — Distinction", "Honest Work (Earth) — Passion"]
+            ^"Disadvantages" LIST OF STRING ["Incurable Illness (Earth) — Adversity", "Failure (Water) — Anxiety"]
+            ^"Techniques" LIST OF STRING ["Bellow of Resolve (Shūji)", "Wanderer's Resolve (Shūji)", "Mind's Edge (Kata)", "Striking as Earth (Kata)", "Striking as Fire (Kata)", "Tactical Assessment (Kata)"]
+            ^"Equipment" LIST OF STRING ["Nodachi (longsword): Damage 5/6, Range 1–2, Ceremonial, Razor-Edged", "Katana: Damage 4/(5/7), Range 1, Ceremonial, Razor-Edged", "Traveling Clothes (Physical 2, Durable, Mundane, Subtle)", "Ashigaru Armor (Physical 3, Wargear)", "Two days' rations", "medicine kit", "a gold-inlayed helmet with a faux Lion's mane (worth approx. 3 koku)", "0 koku"]
+            ^"Relationships" LIST OF STRING ["Noboru: Good terms, but they give a lot of questionable advice", "Mishti: Friendly, something about her reminds you of your situation", "Turgen: A strange man, but seems generally honorable", "Akagi Daichi: Neutral, seems a little suspicious", "Kenshin: Neutral, seems geisha are a part of Rokugan"]
+            ^"Demeanor" STRING "Technique types available: Kata, Rituals, Shūji."
+        }
+        DESCRIPTION "Pregenerated rōnin PC for The Highwayman."
+
+        ^"Signature Weapon" DEF { ^"Effect" STRING "When using a weapon from the Sword category (such as your nodachi, or katana) to perform an Attack action or Performance check, roll one additional skill die. Additionally, when making such a check you may suffer fatigue up to your school rank (2) to alter that many results of your kept dice to Opportunity results." }
+        ^"Ardent Leader (Fire)" DEF { ^"Effect" STRING "People are more likely to hear what you have to say even if they are of a higher status (though that doesn't save you from consequences of being impolite or foolish)." }
+        ^"Indomitable Will (Earth)" DEF { ^"Effect" STRING "You can always choose to stand your ground, even when faced with untenable odds or supernatural terrors that bend the minds of lesser souls." }
+        ^"Incurable Illness (Earth)" DEF { ^"Effect" STRING "Periodically, if you push yourself too hard, you find yourself significantly restricted in your activity for a brief period of time." }
+        ^"Honest Work (Earth)" DEF { ^"Effect" STRING "You are always able to determine how much work is needed to complete a physical, hands-on task, and your work on such tasks is always markedly better than that of others." }
+        ^"Failure (Water)" DEF { ^"Effect" STRING "The thought of letting someone down to which you have made a promise induces panic in you that manifests physically and can only be soothed by making a step towards accomplishing your goal. Shirking your obligations or working against keeping a promise you made causes you significant anxiety." }
+    }
+
+    # ── Noburo — Monk (Mystic of the Mountain) ─────────────────────────────
+    ^"Noburo" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Noburo" FIXED
+            ^"Region" STRING "Mountainous" FIXED
+            ^"Upbringing" STRING "Temple/Monastic" FIXED
+            ^"School" STRING "Mystic of the Mountain" FIXED
+            ^"School Rank" INTEGER 2
+            ^"Roles" LIST OF STRING ["Monk", "Courtier"]
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 3
+            }
+            ^"Honor" INTEGER 50
+            ^"Glory" INTEGER 38
+            ^"Status" INTEGER 35
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Void Points" INTEGER 3
+            ^"Ninjo" STRING "To help bring others closer to a path of Enlightenment, and to fill others' lives with peace."
+            ^"Past" STRING "A terrible fire left awful scars on your body and your mind, and stole those you cherished from you."
+            ^"Skills" LIST OF STRING ["Fitness 1", "Martial Arts [Melee] 1", "Martial Arts [Unarmed] 2", "Meditation 1", "Medicine 1", "Sentiment 2", "Theology 2", "Courtesy 2", "Performance 1", "Commerce 1", "Survival 1"]
+            ^"Advantages" LIST OF STRING ["Paragon of Bushidō Tenet [Righteousness] (Void) — Distinction", "Enlightenment (Void) — Passion"]
+            ^"Disadvantages" LIST OF STRING ["Horrible Scar (Air) — Adversity", "Maimed Arm (Air) — Adversity", "Softheartedness (Fire) — Anxiety"]
+            ^"Techniques" LIST OF STRING ["Cleansing Rite (Ritual)", "Artisan's Appraisal (Shūji)", "Air Fist (Kihō)", "Honest Assessment (Shūji)", "Ki Protection (Kihō)", "Way of the Earthquake (Kihō)"]
+            ^"Equipment" LIST OF STRING ["Bō (staff): Damage 6/2, Range 1–2, Mundane", "Punch (hand): Damage 1/2, Range 0, Snaring", "Kick (leg): Damage 2/1, Range 1", "Traveling Clothes (Physical 2, Durable, Mundane, Subtle)", "Sanctified Robes (Physical 1, Supernatural 3, Ceremonial)", "1 day's worth of rations", "small tent", "a journal of somewhat useful musings", "a lucky cricket in a tiny box with holes", "cooking kit", "0 koku"]
+            ^"Relationships" LIST OF STRING ["Haruko: Good terms, she seems like a wayward soul", "Mishti: Friendly, she seems determined and honest", "Turgen: Friendly, a kind man with a love of animals", "Daichi: Very friendly, you know his secret — he's a hinin, but you don't mind (titles are a worldly concern...) and are compassionate to his struggles", "Kenshin: Friendly, they seem ambitious and conscientious"]
+            ^"Demeanor" STRING "Technique types available: Kata, Rituals, Shūji."
+        }
+        DESCRIPTION "Pregenerated monk PC for The Highwayman."
+
+        ^"Unexpected Wisdom" DEF { ^"Effect" STRING "You are (or at least believe yourself to be) a wealth of wisdom, which you can dispense up to 2 times during this game session. On your turn or at any appropriate time during a narrative scene, you may dispense a small bit of wisdom to a character who can hear you and has not benefited from this ability this scene. The next time a character, including yourself, employs that wisdom they may reduce the TN of that check by 1 and may negate a number of strife up to your ranks in Sentiment or Theology." }
+        ^"Paragon of Bushidō Tenet [Righteousness] (Void)" DEF { ^"Effect" STRING "You believe utterly in Righteousness, and others instinctively discern that your actions are genuine when you act in accordance with it. Righteousness is also known as the Right Action, or Justice." }
+        ^"Horrible Scar (Air)" DEF { ^"Effect" STRING "You have an awful scar that covers half your face and your upper arm, and strangers stare at you, treat you unfairly, and otherwise judge you for your appearance." }
+        ^"Maimed Arm (Air)" DEF { ^"Effect" STRING "Your left arm is injured, making it much harder to perform activities that involve using it. Gripping anything tightly causes you pain." }
+        ^"Enlightenment (Void)" DEF { ^"Effect" STRING "You feel no attachment to mundane items and earthly titles; you cannot be tempted with material wealth or the promise of power. Detaching yourself from material concerns through contemplation, engaging with nature, and meditating brings you relief from mortal concerns." }
+        ^"Softheartedness (Fire)" DEF { ^"Effect" STRING "If given the choice to kill someone or show mercy, you always spare their life, even if it is not your interest to let them live. When dealing with matters of killing you experience significant distress." }
+    }
+
+    # ── Otgontogoch Turgen — Gaijin (Ujik / Treasure Hunter) ───────────────
+    ^"Otgontogoch Turgen" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Otgontogoch Turgen" FIXED
+            ^"Region" STRING "Ujik" FIXED
+            ^"Upbringing" STRING "Hunter" FIXED
+            ^"School" STRING "Treasure Hunter" FIXED
+            ^"School Rank" INTEGER 2
+            ^"Roles" LIST OF STRING ["Courtier", "Bushi"]
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Honor" INTEGER 27
+            ^"Glory" INTEGER 30
+            ^"Status" INTEGER 3
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 5
+            ^"Void Points" INTEGER 2
+            ^"Ninjo" STRING "Appease the spirit that haunts you, find your brother, and save him from his curse as well."
+            ^"Past" STRING "Wherever you go, an angry spirit you call Bataar causes mischief and inconvenient nuisances."
+            ^"Skills" LIST OF STRING ["Fitness 1", "Martial Arts [Melee] 3", "Medicine 1", "Sentiment 1", "Theology 1", "Courtesy 2", "Games 1", "Labor 1", "Survival 3"]
+            ^"Advantages" LIST OF STRING ["Lucky Hunter (Void) — Distinction", "Dashing Scar (Air) — Distinction", "Animal Bond (Earth) — Passion"]
+            ^"Disadvantages" LIST OF STRING ["Haunting (Earth) — Adversity", "Gaijin Name (Fire) — Adversity", "Fear of Stagnation (Earth) — Anxiety"]
+            ^"Techniques" LIST OF STRING ["Rustling of Leaves (Shūji)", "Chaotic Scattering (Kata)", "Tactical Assessment (Kata)", "Striking as Air (Kata)"]
+            ^"Equipment" LIST OF STRING ["Masakari (Axe): Damage 3/(4/6), Range 0–1, Mundane", "Scimitar (Sword): Damage 4/5, Range 1, Durable, Razor-Edged", "Yumi (Bow): Damage 5/3, Range 2–5", "Traveling Clothes (Physical 2, Durable, Mundane, Subtle)", "Ankle-bones Gaming Set", "Medicine Kit", "Silver Snuff Box", "Bear-fur Bedroll", "Tattoo Needles", "Quiver of Arrows", "4 bu", "Companion: Od (a hawk)"]
+            ^"Relationships" LIST OF STRING ["Haruko: Friendly, seems like she could use someone to talk to!", "Kenshin: Friendly, seems like they could use some help!", "Mishti: Friendly, she understands the struggles of being an outsider in Rokugan", "Daichi: Friendly, seems talented and kind-hearted", "Noboru: Neutral, they remind you of the shaman who cursed you, and that makes you nervous"]
+            ^"Demeanor" STRING "Technique types available: Kata, Rituals, Shūji. Focus/Vigilance shown here are the uncompromised values (7/5); when Compromised, Risk and Reward lowers them to 5/3."
+        }
+        DESCRIPTION "Pregenerated gaijin (Ujik) PC for The Highwayman."
+
+        ^"Risk and Reward" DEF { ^"Effect" STRING "You have an uncanny sense for dangerous situations. Your vigilance and focus are increased by your school rank, unless you are Compromised (this is factored in to your Conflict Mode statistics, the first number is when you are not Compromised, the second number is when you are)." }
+        ^"Lucky Hunter (Void)" DEF { ^"Effect" STRING "You are exceptionally fortunate as a hunter and are always able to identify the best spots for doing so." }
+        ^"Dashing Scar (Air)" DEF { ^"Effect" STRING "You have a long scar that curves from your lower jaw down to your rib cage that suggests a heroic act to all who see it, and people tend to remember and think of you positively unless you give them a reason not it. You can leverage your scar to help you." }
+        ^"Haunting (Earth)" DEF { ^"Effect" STRING "A spirit haunts you and interferes with your agenda in irritating ways (subject to GM discretion). You know the spirit only as Bataar. The spirit tends to cause particularly hindersome acts when you attempt to make friends." }
+        ^"Gaijin Name (Fire)" DEF { ^"Effect" STRING "People of a higher status tend to assume you are uneducated, while people of lower status tend to be fearful of you. You find it particularly difficult to inspire those who are not from your culture." }
+        ^"Animal Bond (Earth)" DEF { ^"Effect" STRING "You are bonded to a hawk named Od [Augh-d] who generally acts as your companion. He can be cajoled to do things for you, but might need incentives. Interacting with animals in general make you feel at peace." }
+        ^"Fear of Stagnation (Earth)" DEF { ^"Effect" STRING "Staying in one place too long frustrates you. You also have a fear of intense relational commitments that tie you to one place, and you also prefer moving forward (and prefer people who are similarly–minded). Performing tasks that keep you in one place too long or that require a lot of repetition vexes you and causes you a great deal of stress." }
+    }
+}
