@@ -1,0 +1,79 @@
+# .codex SECTION — The Topaz Championship (adventure). Stand-off graph over
+# l5r5e-0.4-topaz-championship.lore (spec §25). Part of the L5R5e system graph;
+# DEPENDS_ON the shared schema.
+#
+# The cast (Bayushi Sugai and the Ruffian in l5r5e-0.4-topaz-championship-cast.ttrpg)
+# and the shared Beginner Game pregens are DEFs — referenced via ^"...", never
+# minted. Tsuma, Bayushi Sugai (both minted in the Emerald Champion fold), and Doji
+# Satsume are already in the graph — referenced, and Tsuma / Bayushi Sugai / Doji
+# Satsume amended (this being where Satsume's ghost first appears). This section
+# mints the Topaz Championship itself and its lore-only figures (the Crane sensei
+# Kakita Toshimoko and his secret son Hitoshi, the framed duelist Kakita Riku, the
+# Dragon investigator Kitsuki Yuikimi, the finalist Bayushi Mei Lin, and the cart-
+# driver Ryu).
+
+CODEX "L5R5e_TopazChampionship_Codex" {
+    NAME "The Topaz Championship — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-03"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # ---- The tournament ---------------------------------------------------
+    ENTITY #L5RcxTC01topazchampionship ^"Topaz Championship" {
+        IS ^"Event"
+        SOURCE "l5r5e-0.4-topaz-championship.lore" AT "adventure-background"
+        RELATIONSHIPS {
+            ^"occurred-at" -> ^"Tsuma"          FROM "Tsuma — a small fishing town in Crane lands, significant only as the site of the Topaz Championship"
+            ^"involved"    -> ^"Crane Clan"     FROM "a covert conflict between the Scorpion and the Crane"
+            ^"involved"    -> ^"Scorpion Clan"  FROM "The courtier Bayushi Sugai schemes to dishonor the Crane at their own tournament" }
+    }
+
+    # ---- Lore-only figures -------------------------------------------------
+    ENTITY #L5RcxTC02kakitatoshimoko ^"Kakita Toshimoko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-topaz-championship.lore" AT "adventure-background"
+        RELATIONSHIPS { ^"member-of" -> ^"Kakita" FROM "the famed Crane duelist and master sensei Kakita Toshimoko" }
+    }
+    ENTITY #L5RcxTC03kakitariku ^"Kakita Riku" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-topaz-championship.lore" AT "adventure-background"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Kakita"        FROM "the Crane duelist Kakita Riku"
+            ^"enemy-of"  -> ^"Bayushi Sugai" FROM "swap the Crane duelist Kakita Riku's blunt training sword for a real, razor-sharp double, so that in the final duel she fatally wounds her opponent and is forced to commit seppuku" }
+    }
+    ENTITY #L5RcxTC04kitsukiyuikimi ^"Kitsuki Yuikimi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-topaz-championship.lore" AT "scene-1-the-cart"
+        RELATIONSHIPS { ^"member-of" -> ^"Kitsuki" FROM "the kind Kitsuki Yuikimi of the Dragon" }
+    }
+    ENTITY #L5RcxTC05hitoshi ^"Hitoshi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-topaz-championship.lore" AT "scene-1-the-cart"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Mantis Clan"        FROM "The boy Hitoshi, of the Mantis Minor Clan, is a pawn"
+            ^"child-of"  -> ^"Kakita Toshimoko"   FROM "he is the bastard son of the famed Crane duelist and master sensei Kakita Toshimoko" }
+    }
+    ENTITY #L5RcxTC06bayushimeilin ^"Bayushi Mei Lin" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-topaz-championship.lore" AT "aftermath"
+        RELATIONSHIPS { ^"member-of" -> ^"Bayushi" FROM "the PC with the most tournament points duels Kakita Riku (or Bayushi Mei Lin, if Riku is dead)" }
+    }
+    ENTITY #L5RcxTC07ryucartdriver ^"Ryu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-topaz-championship.lore" AT "scene-1-the-cart"
+    }
+
+    # ---- Amendments to existing graph nodes --------------------------------
+    ENTITY ^"Bayushi Sugai" {
+        SOURCE "l5r5e-0.4-topaz-championship.lore" AT "adventure-background"
+        RELATIONSHIPS { ^"member-of" -> ^"Bayushi" FROM "The courtier Bayushi Sugai schemes to dishonor the Crane" }
+    }
+    ENTITY ^"Doji Satsume" {
+        SOURCE "l5r5e-0.4-topaz-championship.lore" AT "scene-1-the-cart"
+    }
+    ENTITY ^"Tsuma" {
+        SOURCE "l5r5e-0.4-topaz-championship.lore" AT "adventure-background"
+    }
+}
