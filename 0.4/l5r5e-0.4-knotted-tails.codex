@@ -1,0 +1,76 @@
+# .codex SECTION — The Knotted Tails (adventure). Stand-off graph over
+# l5r5e-0.4-knotted-tails.lore (spec §25). Part of the L5R5e system graph;
+# DEPENDS_ON the shared schema.
+#
+# The 7 cast NPCs (cast.ttrpg) are DEFs — referenced via ^"...", never minted.
+# Nezumi, Transcendents, Shadowlands, Yume-dō, and Fu Leng are already in the
+# graph (referenced; Transcendents amended). Hiruma is a family DEF (referenced).
+# One Eye's former name Twitching Tail is the same being as the cast DEF and is
+# not re-minted. Mask of the Oni cast (Hida Kurumi, Hida Nagahide, Kitsu Sokori)
+# belong to that adventure and are not minted here. This section mints the
+# Knotted Tails tribe, its village and graveyard, Shiro Hiruma, and the tribe's
+# lore-only figures.
+
+CODEX "L5R5e_KnottedTails_Codex" {
+    NAME "The Knotted Tails — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-03"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # ---- The tribe --------------------------------------------------------
+    ENTITY #L5RcxKnt01knottedtails ^"Knotted Tails" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-knotted-tails.lore" AT "part-1-storyline-background"
+        RELATIONSHIPS {
+            ^"part-of"  -> ^"Nezumi"        FROM "The Knotted Tails, a nezumi tribe that prides itself on remembering the past"
+            ^"led-by"   -> ^"Lucky Silver"  FROM "their leader Lucky Silver"
+            ^"ally-of"  -> ^"Hiruma"        FROM "believe their ancestors were once close allies of the Hiruma family"
+            ^"enemy-of" -> ^"Frayed Whisker" FROM "a nezumi Lucky Silver once exiled, now a dreamwalker who binds and curses nezumi to his will" }
+    }
+    ENTITY #L5RcxKnt02village ^"The Knotted Tails Village" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-knotted-tails.lore" AT "part-3-the-knotted-tails-village"
+        RELATIONSHIPS {
+            ^"held-by"    -> ^"Knotted Tails" FROM "your first view of the nezumi village, a scattering of mismatched tents hidden amongst the rocks"
+            ^"located-in" -> ^"Shadowlands"   FROM "the nezumi of the Knotted Tails tribe... in the Shadowlands" }
+    }
+    ENTITY #L5RcxKnt03graveyard ^"The Nezumi Graveyard" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-knotted-tails.lore" AT "part-4-the-nezumi-graveyard"
+        RELATIONSHIPS { ^"located-in" -> ^"Shadowlands" FROM "a natural pit the nezumi have filled with the corpses of their dead over the centuries" }
+    }
+    ENTITY #L5RcxKnt04shirohiruma ^"Shiro Hiruma" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-knotted-tails.lore" AT "part-1-storyline-background"
+        RELATIONSHIPS {
+            ^"held-by"    -> ^"Hiruma"      FROM "The ruined ancestral castle of the Hiruma family, deep in the Shadowlands"
+            ^"located-in" -> ^"Shadowlands" FROM "their shrinking territory still includes Shiro Hiruma, and they remain protective of the ruins" }
+    }
+
+    # ---- Lore-only figures -------------------------------------------------
+    ENTITY #L5RcxKnt05silverears ^"Silver Ears" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-knotted-tails.lore" AT "part-3-the-knotted-tails-village"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Knotted Tails" FROM "her predecessor Silver Ears, whose Kaiu wakizashi she bears"
+            ^"leads"     -> ^"Knotted Tails" FROM "the former leader Silver Ears... the Hiruma made our leader, Silver Ears, an honorary samurai" }
+    }
+    ENTITY #L5RcxKnt06quickshadow ^"Quick Shadow" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-knotted-tails.lore" AT "part-3-the-knotted-tails-village"
+        RELATIONSHIPS { ^"member-of" -> ^"Knotted Tails" FROM "Quick Shadow, the Rememberer's apprentice, sent to the graveyard and now in danger" }
+    }
+    ENTITY #L5RcxKnt07nineclaws ^"Nine Claws" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-knotted-tails.lore" AT "part-2-being-watched"
+        RELATIONSHIPS { ^"member-of" -> ^"Knotted Tails" FROM "the scout Nine Claws requesting the PCs come to their village" }
+    }
+
+    # ---- Amendment ---------------------------------------------------------
+    ENTITY ^"Transcendents" {
+        SOURCE "l5r5e-0.4-knotted-tails.lore" AT "part-1-storyline-background"
+        RELATIONSHIPS { ^"member-of" -> ^"Knotted Tails" FROM "believe their ancestors were once close allies of the Hiruma family. Some of these ancestors are now Transcendents" }
+    }
+}
