@@ -1,0 +1,68 @@
+# .codex SECTION — Winter's Embrace (adventure). Stand-off graph over
+# l5r5e-0.4-winters-embrace.lore (spec §25). Part of the L5R5e system graph;
+# DEPENDS_ON the shared schema.
+#
+# The 11 cast NPCs (cast.ttrpg) are DEFs — referenced via ^"...", never minted;
+# some (Kakita Ryoku, Miya Satoshi) also already have codex entities from other
+# books, which the DEFs coexist with. Kyūden Doji, the Kolat, Ikoma Ujiaki,
+# Bayushi Kachiko, Doji Hotaru, Kakita Yoshi, Gotei City, and the Islands of
+# Spice and Silk are already in the graph (Kyūden Doji amended). The Ikoma,
+# Bayushi, Doji, and Mantis Clan DEFs are referenced. This section mints the
+# play, the Storm Fleet, the Ikoma Shadow School, and a few lore-only figures.
+
+CODEX "L5R5e_WintersEmbrace_Codex" {
+    NAME "Winter's Embrace — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-03"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # ---- The play & the institutions --------------------------------------
+    ENTITY #L5RcxWin01fishermansdaughter ^"The Tale of the Fisherman's Daughter" {
+        IS ^"Document"
+        SOURCE "l5r5e-0.4-winters-embrace.lore" AT "act-ii-the-tale-of-the-fishermans-daughter"
+        RELATIONSHIPS { ^"located-in" -> ^"Kyūden Doji" FROM "the upcoming Kabuki production the Emperor will attend... The play is The Tale of the Fisherman's Daughter" }
+    }
+    ENTITY #L5RcxWin02dojimioko ^"Doji Mioko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-winters-embrace.lore" AT "act-ii-the-tale-of-the-fishermans-daughter"
+    }
+    ENTITY #L5RcxWin03stormfleet ^"Storm Fleet" {
+        IS ^"Organization"
+        SOURCE "l5r5e-0.4-winters-embrace.lore" AT "the-courts-players-and-their-schemes"
+        RELATIONSHIPS {
+            ^"operated-by" -> ^"Mantis Clan"   FROM "Trusted captain in the Mantis' Storm Fleet"
+            ^"led-by"      -> ^"Lord Yoritomo"  FROM "the Son of Storms, Mantis Champion and leader of the Storm Fleet" }
+    }
+    ENTITY #L5RcxWin04ikomashadowschool ^"Ikoma Shadow School" {
+        IS ^"School"
+        SOURCE "l5r5e-0.4-winters-embrace.lore" AT "act-i-storms-roll-ashore"
+        RELATIONSHIPS { ^"operated-by" -> ^"Ikoma" FROM "a shinobi trained in the Lion's Ikoma Shadow School" }
+    }
+
+    # ---- Lore-only figures -------------------------------------------------
+    ENTITY #L5RcxWin05bayushimikuru ^"Bayushi Mikuru" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-winters-embrace.lore" AT "the-courts-players-and-their-schemes"
+        RELATIONSHIPS {
+            ^"member-of"  -> ^"Bayushi"        FROM "wed to Bayushi Mikuru"
+            ^"married-to" -> ^"Otomo Koryusai" FROM "Since his wedding to Bayushi Mikuru, Koryusai has succumbed to cynicism and sorrow" }
+    }
+    ENTITY #L5RcxWin06linmei ^"Linmei" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-winters-embrace.lore" AT "the-courts-players-and-their-schemes"
+        RELATIONSHIPS { ^"married-to" -> ^"Lord Yoritomo" FROM "Married to Linmei of the kōmori people, he honors the roots of his people" }
+    }
+    ENTITY #L5RcxWin07masato ^"Masato" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-winters-embrace.lore" AT "the-courts-players-and-their-schemes"
+        RELATIONSHIPS { ^"married-to" -> ^"Doji Shigeru" FROM "Shigeru lives with his husband, Masato, a former member of the Matsu family" }
+    }
+
+    # ---- Amendment ---------------------------------------------------------
+    ENTITY ^"Kyūden Doji" {
+        SOURCE "l5r5e-0.4-winters-embrace.lore" AT "adventure-background"
+        RELATIONSHIPS { ^"held-by" -> ^"Doji" FROM "This year, Kyūden Doji hosts His Imperial Majesty and his retinue, in part to celebrate the recent ascension of Doji Hotaru as Crane Clan Champion" }
+    }
+}
