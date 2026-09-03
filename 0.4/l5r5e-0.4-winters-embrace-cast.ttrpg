@@ -1,0 +1,268 @@
+# L5R 5E — Winter's Embrace: Dramatis Personae (cast NPCs)
+# "Winter's Embrace: An Adventure at the Winter Court" (FFG, product L5R09), a
+# Crane-vs-Mantis political adventure at Kyūden Doji. Six major NPCs have full
+# printed profiles (transcribed verbatim below); five secondary NPCs use a core-
+# rulebook profile plus a template (captured as NPC DEFs naming the profile and
+# template, with the book's status/glory overrides, rather than inventing stats).
+# Ability text is reproduced verbatim in nested ^"Name" DEF { ^"Effect" ... }
+# blocks. This adventure uses the players' own Winter Court characters, so there
+# are no pregens; the structure is in l5r5e-0.4-winters-embrace.arc and the
+# narrative in the .lore.
+
+EXTENSION "L5R5e_WintersEmbrace_Cast" {
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-03"
+    DEPENDS_ON "L5R5e_Core_Core"
+
+    # ═══════════════════════ FULL PROFILES ═══════════════════════════════
+
+    ^"Doji Hatsuhina" DEF {
+        EXTENDS ^"NPC"
+        # Deputy seneschal of Kyūden Doji and a primary host of the Winter Court.
+        # Once betrothed to Otomo Koryusai, cast aside for a better match, she is now
+        # bitter and manipulative, seeking to flaunt a better catch and ruin his
+        # happiness. Beautiful, vindictive, and given to alcohol, gambling, and excess.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF { ^"Air" INTEGER 4 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 3 ^"Void" INTEGER 3 }
+            ^"Demeanor" STRING "Ambitious"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 60
+            ^"Status" INTEGER 40
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 0", "Scholar 2", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Sake Connoisseur — Social; Material, Mental", "Karmic Tie (Koryusai) — Martial, Social; Interpersonal, Spiritual"]
+            ^"Disadvantages" LIST OF STRING ["Vindictive — Social; Mental", "Whispers of Failure — Social; Interpersonal, Infamy"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Ceremonial clothes (Physical 1, Ceremonial, Resplendent), personal chop", "Gear (other): Calligraphy set, pillow book"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 2, Intrigue 5. Deputy seneschal of Kyūden Doji."
+        ^"Speaking in Silence" DEF { ^"Effect" STRING "Once per scene when making a check to persuade or influence someone, Hatsuhina may add two kept Ring dice set to Opportunity results." }
+        ^"Rustling of Leaves" DEF { ^"Effect" STRING "Activation: When Hatsuhina makes a Social skill (Air) check to spread a rumor, she may spend Opportunity in the following way: Air Opportunity+: Increase the TN of any check to trace the rumor back to Hatsuhina by 2 per Opportunity spent this way." }
+    }
+
+    ^"Kakita Ryoku" DEF {
+        EXTENDS ^"NPC"
+        # The honorable, elegant, and infamous legendary courtier — author of the
+        # famed novel "Winter" and former Imperial Advisor to Emperor Hantei XXXVIII.
+        # Now "retired," she meddles in politics: tasked by Chancellor Kakita Yoshi to
+        # see the crown prince betrothed to Doji Chiyoe, and driven to disgrace the
+        # Mantis and ruin Bayushi Kachiko.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 9
+            ^"Rings" DEF { ^"Air" INTEGER 5 ^"Earth" INTEGER 2 ^"Fire" INTEGER 3 ^"Water" INTEGER 4 ^"Void" INTEGER 3 }
+            ^"Demeanor" STRING "Assertive"
+            ^"Endurance" INTEGER 4
+            ^"Composure" INTEGER 19
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 5
+            ^"Honor" INTEGER 76
+            ^"Glory" INTEGER 85
+            ^"Status" INTEGER 70
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 0", "Scholar 3", "Social 5", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Famously Successful — Social; Interpersonal, Fame", "Love of Storytelling — Artisan; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Broken Hearted — Social; Mental", "Whispers of Treachery — Social; Interpersonal, Infamy"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Ceremonial clothes (Physical 1, Ceremonial, Resplendent), personal chop", "Gear (other): Pillow book, calligraphy set, omamori (a ward against vengeful spirits) given to Ryoku by Emperor Hantei XXXVII"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 3, Intrigue 9. Legendary Crane courtier and author of Winter."
+        ^"Ebb and Flow" DEF { ^"Effect" STRING "Activation: As a Scheme or Support action, Ryoku may make a Courtesy (Water), Command (Water), or Games (Water) check targeting one character. The TN of this check is equal to the target's vigilance. Effects: If Ryoku succeeds (and chose Scheme action), she may choose one of the target's advantages that she knows, and whenever it applies, invert it. This effect persists until the end of the scene. If Ryoku succeeds (and chose Support action) she may choose one of the target's disadvantages she knows and, whenever it applies, invert it. This effect persists until the end of the scene." }
+        ^"I Have Met Your Like Before" DEF { ^"Effect" STRING "When performing a Scheme action, Ryoku may spend Opportunity in the following way: Opportunity: Learn the target's ninjō or giri, or a single advantage or disadvantage. Opportunity Opportunity: Learn the target's current goal in this scene." }
+        ^"Speaking in Silence" DEF { ^"Effect" STRING "Once per scene when making a check to persuade or influence someone, Ryoku may add five kept Ring dice set to Opportunity." }
+        ^"Everything Tells a Story" DEF { ^"Effect" STRING "When performing an Artisan skill check, Ryoku may add one kept Ring die set to an Opportunity result." }
+    }
+
+    ^"Ikoma Rumiko" DEF {
+        EXTENDS ^"NPC"
+        # A famed Kabuki actor, gregarious and playful — and secretly a Lion shinobi
+        # trained in the Ikoma Shadow School, sent to the Winter Court to keep the
+        # Lion's plan secret and thwart the Crane. Cast as the island spirit in "The
+        # Tale of the Fisherman's Daughter"; she forged the Mantis' invitation.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 2 ^"Fire" INTEGER 3 ^"Water" INTEGER 4 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Playful"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 25
+            ^"Glory" INTEGER 60
+            ^"Status" INTEGER 35
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 2", "Scholar 3", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["As We Say in the Theater… — Scholar; Mental", "Unparalleled Wit — Social; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Dark Secret — Social; Material", "Disdain for Honor — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Kiseru: Range 0, Damage 2, Deadliness 2, Concealable, Mundane", "Knife: Range 0, Damage 2, Deadliness 4/6, Concealable, Mundane, Razor-Edged", "Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Concealed armor (Physical 2, Concealable), 10 doses of fire biter poison, script for the play The Tale of the Fisherman's Daughter"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 5, Intrigue 5. Kabuki actor; secretly a Lion shinobi."
+        ^"Heart of the Lion" DEF { ^"Effect" STRING "Once per scene, after Rumiko performs a Social skill check targeting one or more characters, she may agitate or console: If she agitates, she transfers strife up to 10 strife from herself to her targets (divided among them as she chooses). If she consoles, she transfers up to 10 strife from her targets (divided among them as she choose) to herself." }
+        ^"Noxious Cloud" DEF { ^"Effect" STRING "Activation: As an Attack action, Rumiko may use two doses of any single poison and make a TN 2 Medicine (Air) check targeting each other character at range 0–2. Effects: If Rumiko succeeds, each target suffers 3 physical damage, ignoring their resistance. This damage counts as being inflicted by a weapon envenomed with the poison she chose. Air Opportunity: Move 1 range band. Air Opportunity Opportunity: Until the end of the scene, the area at range 0–2 becomes Obscuring and Dangerous terrain." }
+        ^"Victory Before Honor" DEF { ^"Effect" STRING "Once per scene when performing a check, Rumiko may stake up to 5 honor to re-roll a number of dice equal to twice the amount of honor staked. For each re-rolled die result that does not contain an Opportunity or Strife, she forfeits one staked honor." }
+    }
+
+    ^"Miya Satoshi" DEF {
+        EXTENDS ^"NPC"
+        # The Imperial Herald and daimyō of the Miya family — outwardly the Master of
+        # Ceremonies, secretly a Kolat agent who fixates on the Emperor's failings and
+        # seeks to sow as much chaos at court as possible, including propping up the
+        # Mantis' bid to make Lady Magami Empress.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 8
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 4 ^"Fire" INTEGER 3 ^"Water" INTEGER 2 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 29
+            ^"Glory" INTEGER 85
+            ^"Status" INTEGER 75
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 2", "Scholar 3", "Social 3", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Ear of the Emperor — Social; Interpersonal", "Heartless — Social; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Dark Secret — Social; Interpersonal", "Contrary — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Satoshi's War Fans: Range 0–1, Damage 5, Deadliness 4, Ceremonial, Concealable, Resplendent", "Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Imperial robes (Physical 1, Supernatural 1, Ceremonial, Resplendent), scroll cases"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 5, Intrigue 8. Imperial Herald; secretly a Kolat agent."
+        ^"Voice of the Emperor" DEF { ^"Effect" STRING "Once per round, after a character at range 0–4 succeeds on an Attack or Scheme action check, Satoshi may cause them to receive 5 strife." }
+        ^"Civility Foremost" DEF { ^"Effect" STRING "Activation: As a Scheme action, Satoshi may make a Command or Courtesy (Earth) check targeting one character to claim protection for an individual of his choice by right of honor. The TN of the check is equal to the target's vigilance. Effects: If Satoshi succeeds, the target must forfeit 4 honor, plus 1 per bonus success, and suffer that much strife to perform an Attack or Scheme action against the protected individual. This effect persists until the end of the scene, or until the target performs an Attack or Scheme action. Earth Opportunity+: Choose one additional target with vigilance lower than or equal to Satoshi's first target's vigilance per Opportunity spent this way." }
+    }
+
+    ^"Otomo Koryusai" DEF {
+        EXTENDS ^"NPC"
+        # An overworked, under-resourced young Imperial bureaucrat blamed for his
+        # superiors' failures. Cynical and sorrowful since his wedding to Bayushi
+        # Mikuru, he wants nothing more than to win back Doji Hatsuhina, his true love,
+        # to whom he was once betrothed.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 6
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 3 ^"Fire" INTEGER 4 ^"Water" INTEGER 2 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Crestfallen"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 45
+            ^"Glory" INTEGER 60
+            ^"Status" INTEGER 45
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 1", "Scholar 3", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Bureaucratic Expertise — Scholar; Mental", "Karmic Tie (Hatsuhina) — Martial, Social; Interpersonal, Spiritual"]
+            ^"Disadvantages" LIST OF STRING ["Cynical — Social; Mental", "Insensitive — Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Imperial robes (Physical 1, Supernatural 1, Ceremonial, Resplendent), personal chop, scroll cases, unfinished poem (secretly to Hatsuhina)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 3, Intrigue 6. Imperial bureaucrat pining for Hatsuhina."
+        ^"Fanning the Flames" DEF { ^"Effect" STRING "Activation: When making a Social skill (Fire) check targeting one or more characters, Koryusai may spend Opportunity in the following way: Fire Opportunity+: One target gains the Dazed condition per Opportunity spent this way. Fire Opportunity Opportunity+: One target gains the Enraged condition per Opportunity Opportunity spent this way." }
+    }
+
+    ^"Susano-o no Izen" DEF {
+        EXTENDS ^"NPC"
+        # Captain of the Storm Fleet ship Susano-o and a trusted Mantis officer,
+        # attending as Lady Magami's advocate and protector. Loud, gleeful, and
+        # plain-spoken — everything the Crane find distasteful about the Mantis — but
+        # an idealist with a never-give-up attitude.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 3 ^"Fire" INTEGER 2 ^"Water" INTEGER 4 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Personable"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 35
+            ^"Glory" INTEGER 45
+            ^"Status" INTEGER 25
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 1", "Social 2", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Love of the Sea — Social, Trade; Mental", "Gregarious — Social; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Disdain for Authority — Social; Interpersonal", "Inferiority Complex — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Tonfa: Range 0–1, Damage 3, Deadliness 3, Concealable, Durable", "Bō: Range 1–2, Damage 6, Deadliness 2, Mundane", "Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Ashigaru armor (Physical 3, Wargear)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 6, Intrigue 4. Storm Fleet captain and Magami's advocate."
+        ^"Striking as Water" DEF { ^"Effect" STRING "Activation: When Izen make a Martial Arts [Melee, Ranged, or Unarmed] (Water) check, he may spend Opportunity in the following way: Water Opportunity+: Izen's target treats their physical resistance as 1 lower per Opportunity spent this way. This effect persists until the end of his next turn." }
+        ^"Spinning Blades Style" DEF { ^"Effect" STRING "Activation: When Izen makes a Martial Arts [Melee] or Martial Arts [Unarmed] check, if he has a second readied weapon he did not use for the attack, he may spend Opportunity in the following way: Opportunity+: Izen must spend Opportunity equal to his target's Vigilance to activate this technique. He uses his second readied weapon against one target of his action, inflicting physical damage equal to its base damage. If that target is Dazed, increase this damage by his ranks in the skill he used for the check." }
+    }
+
+    # ═══════════════════ SECONDARY NPCS (core profile + template) ═════════
+
+    ^"Asahina Takako" DEF {
+        EXTENDS ^"NPC"
+        # Daughter of the Asahina daimyō, an up-and-coming artificer and priest who
+        # oversees the poetry competition's ceremonies. Gentle and kind, a paragon of
+        # pacifism who hopes the court's conflicts can be resolved without bloodshed.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Profile" STRING "Scholarly Shugenja (core rulebook page 314)"
+            ^"Role" STRING "Crane; priest overseeing the poetry competition ceremonies"
+        }
+        DESCRIPTION "Secondary NPC — uses the Scholarly Shugenja profile (core p314)."
+    }
+    ^"Doji Chiyoe" DEF {
+        EXTENDS ^"NPC"
+        # Second cousin to Doji Hotaru and Kakita Ryoku's apprentice, groomed since
+        # childhood as a candidate for betrothal to the crown prince. Sheltered and
+        # naïve to peasant hardship, devoutly religious, and secretly exposed to
+        # Perfect Land Sect philosophies.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Profile" STRING "Seasoned Courtier (core rulebook page 313) with the Spiritualist template; status 55, glory 49"
+            ^"Role" STRING "Crane; candidate for betrothal to the crown prince"
+        }
+        DESCRIPTION "Secondary NPC — uses the Seasoned Courtier profile with the Spiritualist template (status 55, glory 49)."
+    }
+    ^"Doji Shigeru" DEF {
+        EXTENDS ^"NPC"
+        # A renowned Crane performer whose secret persona is the famous, mysterious
+        # Lady Shike; he specializes in portraying female characters in Nō and Kabuki,
+        # and is slated to portray Doji Mioko in The Tale of the Fisherman's Daughter.
+        # He is also the play's director. Lives with his husband Masato (formerly Matsu).
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Profile" STRING "Seasoned Courtier (core rulebook page 313) with the Artist template"
+            ^"Role" STRING "Crane; performer, director, and the secret Lady Shike"
+        }
+        DESCRIPTION "Secondary NPC (also known as Lady Shike) — uses the Seasoned Courtier profile with the Artist template."
+    }
+    ^"Lady Magami" DEF {
+        EXTENDS ^"NPC"
+        # Niece of Lord Yoritomo, the Mantis Clan Champion, groomed as a candidate for
+        # betrothal to the crown prince. A sickly child healed by a fire spirit from a
+        # volcanic island; demure, educated, and fluent in foreign texts, she makes her
+        # debut at the poetry competition to impress the Emperor.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Profile" STRING "Seasoned Courtier (core rulebook page 313) with the Sage template; status 65, glory 44"
+            ^"Role" STRING "Mantis; candidate for betrothal to the crown prince"
+        }
+        DESCRIPTION "Secondary NPC — uses the Seasoned Courtier profile with the Sage template (status 65, glory 44)."
+    }
+    ^"Lord Yoritomo" DEF {
+        EXTENDS ^"NPC"
+        # The Son of Storms — fearless Mantis Clan Champion and leader of the Storm
+        # Fleet, married to Linmei of the kōmori people, and uncle to Lady Magami. He
+        # seeks to raise the Mantis from a Minor Clan to a Great Clan.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Profile" STRING "Venerable Provincial Daimyō (core rulebook page 315) with the Warrior template"
+            ^"Role" STRING "Mantis Clan Champion; leader of the Storm Fleet"
+        }
+        DESCRIPTION "Secondary NPC — uses the Venerable Provincial Daimyō profile with the Warrior template."
+    }
+}
