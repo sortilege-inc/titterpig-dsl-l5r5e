@@ -1,0 +1,65 @@
+# .codex SECTION — Mask of the Oni (adventure). Stand-off graph over
+# l5r5e-0.4-mask-of-the-oni.lore (spec §25). Part of the L5R5e system graph;
+# DEPENDS_ON the shared schema.
+#
+# The adventure's cast (Kitsu Sokori, Atsumari no Oni, Hida Nagahide in
+# l5r5e-0.4-mask-of-the-oni-cast.ttrpg) are DEFs — referenced via ^"...", never
+# minted. Shiro Hiruma (Knotted Tails), the Kaiu Wall (Highwayman), Slow Tide
+# Harbor (Shadowlands), and the Maw are already in the graph — referenced, and
+# Shiro Hiruma / the Kaiu Wall / Slow Tide Harbor / the Maw amended. This section
+# mints the historical figures: the Moth/Kaikoga shugenja Hiruma Masami, the
+# cartographer Yasuki Keiji, and the Hiruma rōnin Hozumi whom Sokori tortured for
+# the castle's secrets.
+
+CODEX "L5R5e_MaskOfTheOni_Codex" {
+    NAME "Mask of the Oni — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-03"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # ---- The Moth Clan family ---------------------------------------------
+    ENTITY #L5RcxMoO04kaikogafamily ^"Kaikoga" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-mask-of-the-oni.lore" AT "the-fall-of-daylight"
+    }
+
+    # ---- Historical & lore-only figures -----------------------------------
+    ENTITY #L5RcxMoO01hirumamasami ^"Hiruma Masami" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-mask-of-the-oni.lore" AT "the-fall-of-daylight"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Kaikoga"          FROM "Born of the Kaikoga family of the Moth Clan (a Minor Clan devoted to studying Yume-dō, the Realm of Dreams), Masami married into the Hiruma"
+            ^"enemy-of"  -> ^"Atsumari no Oni"   FROM "sacrificing her life to send the oni back to Jigoku and herself to Yume-dō" }
+    }
+    ENTITY #L5RcxMoO02yasukikeiji ^"Yasuki Keiji" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-mask-of-the-oni.lore" AT "part-four-shadow-of-daylight"
+        RELATIONSHIPS { ^"member-of" -> ^"Yasuki" FROM "may retrieve the stolen maps of Yasuki Keiji that first drew them into the mission" }
+    }
+    ENTITY #L5RcxMoO03hozumironin ^"Hozumi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-mask-of-the-oni.lore" AT "the-involvement-of-kitsu-sokori"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Hiruma"        FROM "a washed-up rōnin named Hozumi, once of the Hiruma family"
+            ^"enemy-of"  -> ^"Kitsu Sokori"  FROM "she abducted and tortured a washed-up rōnin named Hozumi" }
+    }
+
+    # ---- Amendments to existing graph nodes --------------------------------
+    ENTITY ^"Shiro Hiruma" {
+        SOURCE "l5r5e-0.4-mask-of-the-oni.lore" AT "the-fall-of-daylight"
+        RELATIONSHIPS {
+            ^"seat-of"     -> ^"Hiruma"          FROM "Shiro Hiruma was the Hiruma family's ancestral seat"
+            ^"haunted-by"  -> ^"Atsumari no Oni" FROM "among the forces that felled Shiro Hiruma was Atsumari no Oni" }
+    }
+    ENTITY ^"The Maw" {
+        SOURCE "l5r5e-0.4-mask-of-the-oni.lore" AT "the-fall-of-daylight"
+    }
+    ENTITY ^"Slow Tide Harbor" {
+        SOURCE "l5r5e-0.4-mask-of-the-oni.lore" AT "the-involvement-of-kitsu-sokori"
+    }
+    ENTITY ^"Kaiu Wall" {
+        SOURCE "l5r5e-0.4-mask-of-the-oni.lore" AT "part-two-arriving-at-the-kaiu-wall"
+    }
+}
