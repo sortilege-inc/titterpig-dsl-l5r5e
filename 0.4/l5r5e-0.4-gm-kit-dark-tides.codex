@@ -1,0 +1,50 @@
+# .codex SECTION — Dark Tides (Game Master's Kit adventure). Stand-off graph over
+# l5r5e-0.4-gm-kit-dark-tides.lore (spec §25). Part of the L5R5e system graph;
+# DEPENDS_ON the shared schema.
+#
+# The adventure's large cast (defined as DEFs in l5r5e-0.4-gm-kit-dark-tides.arc,
+# with statblocks in l5r5e-0.4-gm-kit-mechanics.ttrpg) is referenced via ^"...",
+# not minted. Slow Tide Harbor is already in the graph (Shadowlands) — referenced
+# and amended. This section gives the recurring mahō-tsukai Kitsu Sokori her home
+# node (she returns as the antagonist of Mask of the Oni), plus her agent Gaku,
+# the Tortoise Clan, and the primary victim Otomo Hiroshige.
+
+CODEX "L5R5e_DarkTides_Codex" {
+    NAME "Dark Tides — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-03"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # ---- The Tortoise Clan ------------------------------------------------
+    ENTITY #L5RcxDkT01tortoiseclan ^"Tortoise Clan" {
+        IS ^"Faction"
+        SOURCE "l5r5e-0.4-gm-kit-dark-tides.lore" AT "the-setting-slow-tide-harbor"
+    }
+
+    # ---- The recurring villain & her agent --------------------------------
+    ENTITY #L5RcxDkT02kitsusokori ^"Kitsu Sokori" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-gm-kit-dark-tides.lore" AT "the-conspiracy-kitsu-sokori"
+        RELATIONSHIPS { ^"member-of" -> ^"Kitsu" FROM "the daughter of a Lion Kitsu lord, fallen to blood magic" }
+    }
+    ENTITY #L5RcxDkT03gakuagent ^"Gaku" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-gm-kit-dark-tides.lore" AT "the-conspiracy-kitsu-sokori"
+        RELATIONSHIPS { ^"student-of" -> ^"Kitsu Sokori" FROM "her agent Gaku, a large, formidable rōnin mahō apprentice ... who coordinates the kidnappings, ships the prisoners to Sokori" }
+    }
+
+    # ---- The primary victim ------------------------------------------------
+    ENTITY #L5RcxDkT04otomohiroshige ^"Otomo Hiroshige" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-gm-kit-dark-tides.lore" AT "adventure-background"
+        RELATIONSHIPS { ^"member-of" -> ^"Otomo" FROM "the wastrel, opium-addicted son of the influential Imperial noble Otomo Saneda" }
+    }
+
+    # ---- Amendment to existing graph node ---------------------------------
+    ENTITY ^"Slow Tide Harbor" {
+        SOURCE "l5r5e-0.4-gm-kit-dark-tides.lore" AT "the-setting-slow-tide-harbor"
+        RELATIONSHIPS { ^"held-by" -> ^"Tortoise Clan" FROM "the Tortoise Clan's major holding and primary smuggling nexus" }
+    }
+}
