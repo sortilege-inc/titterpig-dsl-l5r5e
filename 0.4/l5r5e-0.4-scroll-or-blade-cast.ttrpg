@@ -1,0 +1,287 @@
+# L5R 5E — The Scroll or the Blade: Dramatis Personae (cast NPCs / adversaries)
+# A supplemental adventure for "Winter's Embrace" (FFG). NPC statblocks
+# transcribed verbatim from the Appendix (Non-Player Characters): rings, conflict
+# ranks, derived attributes, honor/glory/status, skill-group ranks, advantages/
+# disadvantages, favored weapons & gear, and abilities. Ability text is reproduced
+# verbatim in nested ^"Name" DEF { ^"Effect" ... } blocks. This supplemental
+# scenario uses the players' existing Winter Court characters, so there are no
+# pregens; the structure is in l5r5e-0.4-scroll-or-blade.arc and the narrative in
+# l5r5e-0.4-scroll-or-blade.lore.
+
+EXTENSION "L5R5e_ScrollOrBlade_Cast" {
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-03"
+    DEPENDS_ON "L5R5e_Core_Core"
+
+    # ═══════════════════════ THE CHILD & HER GUARDIAN ═════════════════════
+
+    ^"Masayo" DEF {
+        EXTENDS ^"NPC"
+        # The orphaned 12-year-old at the heart of the dispute — daughter of the
+        # Dragon Kitsuki Taiki and the Phoenix Shiba Miku, with a profound,
+        # undisciplined connection to the kami and bonded to the Fortune Yamakaze.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 1 ^"Void" INTEGER 3 }
+            ^"Demeanor" STRING "Detached"
+            ^"Endurance" INTEGER 7
+            ^"Composure" INTEGER 5
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 38
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 0", "Scholar 2", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Blessed Lineage — Social; Spiritual"]
+            ^"Disadvantages" LIST OF STRING ["Easily Frightened — Martial; Mental", "Mysterious Protector — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING []
+            ^"Gear" LIST OF STRING ["Gear (equipped): Traveling clothes (Physical 2, Durable, Mundane, Subtle), straw bear"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 1, Intrigue 2. Her status is effectively zero until she completes her gempuku."
+        ^"Accidentally Unleashed" DEF { ^"Effect" STRING "If Masayo loses her temper or becomes scared, or otherwise becomes Compromised, she must make a TN 2 Theology (Air) check targeting all characters within range 0–2. If successful, a gust of wind rushes through the area. All targets within range suffer 1 supernatural damage plus 1 per bonus success (to a maximum of 3). Until calmed with a TN 2 Sentiment (Void 1, Earth 3, Fire 3) check or rendered unconscious, targets in the area continue to suffer 1 supernatural damage per round." }
+    }
+
+    ^"Miya Bunji" DEF {
+        EXTENDS ^"NPC"
+        # A respected Herald of the Miya family and skilled cartographer; Masayo's
+        # temporary guardian. Lost his wife Hanae and daughter Nanako to a tsunami
+        # on the northern Crane coast; found Masayo while mapping the storm-struck
+        # Dragon-Phoenix border and now must decide her fate. Serves Miya Satoshi.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 7
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 3 ^"Fire" INTEGER 3 ^"Water" INTEGER 4 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 65
+            ^"Glory" INTEGER 55
+            ^"Status" INTEGER 45
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 1", "Scholar 3", "Social 2", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Famously Honest — Social; Interpersonal, Mental", "Superb Spatial Reasoning — Scholar; Material, Mental"]
+            ^"Disadvantages" LIST OF STRING ["Traumatic Loss — Social; Interpersonal, Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 4, Deadliness 5/7, Ceremonial, Concealable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Extravagant robes (Physical 1, Ceremonial, Resplendent), calligraphy set, scroll cases filled with Imperial maps, personal chop"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 5, Intrigue 7."
+        ^"The Path of Least Resistance" DEF { ^"Effect" STRING "As a Support action, Bunji may make a TN 3 Government (Water) check to determine the best course of action. On a success, he may choose himself or a different target who may add a kept Ring die set to a Success or Opportunity result to their next check. If he succeeds, Bunji may spend Opportunity Opportunity+ from this check to provide the same benefit to another target." }
+    }
+
+    # ═══════════════════════ THE PHOENIX DELEGATION ══════════════════════
+
+    ^"Asako Haruki" DEF {
+        EXTENDS ^"NPC"
+        # Head of the Phoenix delegation and cousin of the Asako daimyō; optimistic
+        # to the point of arrogance. Longtime lover of Mirumoto Kazuya, which the
+        # dispute over Masayo has strained. Has installed Isawa Yoshiko as the
+        # Phoenix candidate, meaning to blame her if they fail to secure Masayo.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 8
+            ^"Rings" DEF { ^"Air" INTEGER 4 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 4 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Endurance" INTEGER 9
+            ^"Composure" INTEGER 15
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 62
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 0", "Scholar 3", "Social 4", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Excellent Liar — Social; Interpersonal", "Patience — Scholar; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Fear of Failure — Martial; Mental", "Dark Secret — Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 4, Deadliness 5/7, Ceremonial, Concealable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Extravagant robes (Physical 1, Ceremonial, Resplendent), calligraphy set"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 8."
+        ^"Whispering Winds" DEF { ^"Effect" STRING "Once per session as a Scheme action, Haruki may make a Courtesy (Air) check targeting one character in the scene. The TN is equal to 6 minus the target's glory rank (to a minimum of 1). If successful, Haruki learns a rumor about the target. Haruki may spend Opportunity Opportunity to learn one of the target's advantages or disadvantages of the target's choice." }
+        ^"Fanning the Flames" DEF { ^"Effect" STRING "When making a Social skill (Fire) check, Haruki may spend Opportunity in the following way: Fire Opportunity+: One target gains the Dazed condition." }
+    }
+
+    ^"Isawa Yoshiko" DEF {
+        EXTENDS ^"NPC"
+        # A reserved, clever shugenja delegated as the Phoenix's candidate to adopt
+        # Masayo. Born out of wedlock and given to the Isawa; she has realized that
+        # Masayo's mother, Shiba Miku, was her own half-sister — making Masayo her
+        # niece by blood, a secret that could disqualify or empower her.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 7
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 3 ^"Fire" INTEGER 3 ^"Water" INTEGER 4 ^"Void" INTEGER 4 }
+            ^"Demeanor" STRING "Compassionate"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 45
+            ^"Status" INTEGER 34
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 0", "Scholar 4", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Mystical Knowledge — Scholar; Mental", "Quick Study — Scholar; Martial, Mental"]
+            ^"Disadvantages" LIST OF STRING ["Shamed Upbringing — Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 4, Deadliness 5/7, Ceremonial, Concealable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Sanctified robes (Physical 1, Supernatural 3, Ceremonial), scroll satchel, various trinkets and offerings for the spirits"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 3, Intrigue 7."
+        ^"Path to Inner Peace" DEF { ^"Effect" STRING "As a Support action, Yoshiko may make a TN 2 Theology (Water) check targeting herself or another character at range 0–2. If she succeeds, the target removes 4 fatigue plus 1 for each bonus success. A target can only benefit from this ability once per scene. Opportunity: Yoshiko may also remove strife from her target equal to her bonus successes. Opportunity Opportunity+: Yoshiko may remove one of the following conditions from her target for every Opportunity Opportunity she spends this way: Bleeding, Dazed, Disoriented, or Lightly Wounded." }
+    }
+
+    # ═══════════════════════ THE DRAGON DELEGATION ═══════════════════════
+
+    ^"Kitsuki Tomoyo" DEF {
+        EXTENDS ^"NPC"
+        # Head of the Dragon delegation and youngest daughter of the Kitsuki daimyō;
+        # dynamic, impulsive, and eager to duel. Herself an orphan adopted by the
+        # Kitsuki daimyō — which lets her empathize with Masayo — she believes the
+        # child may be the one described in the Hinokami Prophecy.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 4 ^"Fire" INTEGER 3 ^"Water" INTEGER 4 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Gruff"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 45
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 68
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 4", "Scholar 2", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Tested in War — Martial; Mental, Physical", "Sworn to Bushidō — Social; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Hot Tempered — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Concealable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Sanctified robes (Physical 1, Supernatural 3, Ceremonial), wakizashi, scroll satchel"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 7, Intrigue 5."
+        ^"Let's Get This Over With" DEF { ^"Effect" STRING "When Tomoyo makes an initiative roll during an intrigue scene, she may spend Opportunity Opportunity to choose a known objective that a friendly target is going to attempt and reduces the momentum required to complete that task by 1." }
+        ^"Striking as Fire" DEF { ^"Effect" STRING "When performing an Attack action (Fire) check, Tomoyo may spend Opportunity to increase the severity of any critical strike dealt as part of this attack by 2 per Opportunity spent this way." }
+    }
+
+    ^"Mirumoto Kazuya" DEF {
+        EXTENDS ^"NPC"
+        # A veteran Dragon officer who offered to adopt Masayo, hoping to become the
+        # father figure to the child of the Hinokami Prophecy. Lover of the Phoenix
+        # Asako Haruki; volatile and easily influenced, he has gained a dangerous
+        # interest in the Perfect Land Sect.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 4 ^"Fire" INTEGER 3 ^"Water" INTEGER 3 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Assertive"
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 60
+            ^"Status" INTEGER 50
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 4", "Scholar 2", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Masterful Fighter — Martial; Physical", "Veteran's Instincts — Martial; Mental, Spiritual"]
+            ^"Disadvantages" LIST OF STRING ["Dark Secret (Perfect Land Sect) — Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Concealable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Ceremonial clothes (Physical 1, Ceremonial, Resplendent), wakizashi, knife, love letter from Asako Haruki"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 6, Intrigue 4."
+    }
+
+    # ═══════════════════ THE CRANE HOST & THE DEER CLAN ═══════════════════
+
+    ^"Daidoji Aki" DEF {
+        EXTENDS ^"NPC"
+        # The kemari Winter Court Champion for four years running and a notorious
+        # philanderer; playful, overly friendly, and happy to offer opinions on any
+        # crisis if it puts a competitor off their game.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF { ^"Air" INTEGER 4 ^"Earth" INTEGER 3 ^"Fire" INTEGER 4 ^"Water" INTEGER 2 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Ambitious"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 37
+            ^"Glory" INTEGER 55
+            ^"Status" INTEGER 40
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 4", "Scholar 1", "Social 3", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Kemari Champion — Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Irresistible Flirtation — Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Concealable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Plain robes (Physical 1, Mundane), wakizashi, knife, hair ribbon", "Gear (other): Concealed armor (Physical 2, Concealable)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 7, Intrigue 5."
+        ^"Tactics of Kemari" DEF { ^"Effect" STRING "Prior to a round of kemari, Aki may make a TN 2 Sentiment (Air) check targeting a single character. If he succeeds, Aki may choose one of the target's disadvantages. The target applies that disadvantage to their next check, and receives 3 strife if they fail." }
+        ^"Sworn Protector" DEF { ^"Effect" STRING "Once per scene, when an Attack action check targeting another character at range 0–1 succeeds, Aki may intervene, becoming the target of the Attack action instead." }
+    }
+
+    ^"Shika Yuki" DEF {
+        EXTENDS ^"NPC"
+        # An origami master and matchmaker of the Deer Clan with unparalleled
+        # knowledge of samurai lineages, and Miya Bunji's lifelong friend. She sensed
+        # a great imbalance and the strong connection between Bunji and Masayo, and
+        # is an ally of Kakita Ryoku, to whom she owes a debt of gratitude.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 7
+            ^"Rings" DEF { ^"Air" INTEGER 4 ^"Earth" INTEGER 4 ^"Fire" INTEGER 2 ^"Water" INTEGER 3 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 40
+            ^"Glory" INTEGER 35
+            ^"Status" INTEGER 45
+            ^"Skills" LIST OF STRING ["Artisan 4", "Martial 0", "Scholar 3", "Social 4", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Origami Master — Artisan; Physical", "Traces of Ancestry — Scholar; Mental, Spiritual"]
+            ^"Disadvantages" LIST OF STRING ["Obligated (Kakita Ryoku) — Social; Mental", "Overly Cautious — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 4, Deadliness 5/7, Ceremonial, Concealable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Sanctified robes (Physical 1, Supernatural 3, Ceremonial), scroll satchel"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 3, Intrigue 7."
+        ^"Secrets on the Wind" DEF { ^"Effect" STRING "As a Scheme action, Yuki may make a TN 3 Theology (Air) check targeting one position at range 0. If she succeeds, she can eavesdrop on the chosen position within 4 range bands. This effect persists for twenty-four hours or until she designates a new area for eavesdropping. While in effect, Yuki may spend an action to hear anything said at that moment in the designated area." }
+        ^"The Ties That Bind" DEF { ^"Effect" STRING "As an action, Yuki may make a TN 3 Sentiment (Void) check targeting one character. If she succeeds, she learns of another character whom would be a particularly inauspicious match for her target, and one likely future consequence of their relationship. Yuki may spend Opportunity Opportunity to learn of one more likely future consequence of that relationship." }
+    }
+
+    # ═══════════════════════ HIRED BLADES ════════════════════════════════
+
+    ^"Mercenary Shinobi" DEF {
+        EXTENDS ^"NPC"
+        # An outlawed assassin-spy secretly employed by a clan; exposure would bring
+        # great dishonor upon their master. Used as a minion for the attack scene.
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 2 ^"Fire" INTEGER 3 ^"Water" INTEGER 3 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Endurance" INTEGER 11
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 35
+            ^"Glory" INTEGER 20
+            ^"Status" INTEGER 4
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 1", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Killer Instinct — Martial; Mental", "Deadly Silent — Martial; Physical, Mental"]
+            ^"Disadvantages" LIST OF STRING ["Heartless — Social; Physical, Spiritual"]
+            ^"Favored Weapons" LIST OF STRING ["Kyoketsu Shoge: Range 0–2, Damage 2, Deadliness 3, Concealable, Forbidden, Snaring", "Shinobigatana: Range 0–1, Damage 4, Deadliness 5/6, Ceremonial, Concealable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Worn traveler's clothes (Physical 2, Mundane), straw hat, sorted knives, caltrops, vials, handful of zeni"]
+        }
+        DESCRIPTION "MINION. Conflict Rank — Combat 3, Intrigue 3."
+        ^"Fang of the Wolf" DEF { ^"Effect" STRING "Once per round, when an Attack action targeting this character succeeds, this character may suffer 3 fatigue to change the target of the attack to another character (other than the attacker) at range 0–1 of the original target." }
+        ^"Flowing Water Strike" DEF { ^"Effect" STRING "As an Attack and Movement action using a readied weapon, a Mercenary Shinobi may make a TN 3 Martial Arts (Water) check using the appropriate skill for that readied weapon, targeting one character at range 0–2. Effects: On a success, the target suffers 3 physical damage and suffers the Bleeding condition. The target must resist with a TN 4 Fitness check (Earth 2, Fire 5); if they fail, increase the damage they suffer by the Shinobi's bonus successes." }
+    }
+}
