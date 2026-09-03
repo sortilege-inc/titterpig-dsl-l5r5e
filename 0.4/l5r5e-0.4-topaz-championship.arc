@@ -8,7 +8,7 @@
 
 ARC "topaz-championship" EXTENDS "l5r5e" {
     NAME "The Topaz Championship"
-    VERSION "0.4"
+    VERSION "0.4.1"
     SPEC_VERSION "0.4"
     SYSTEM "l5r5e"
     SOURCE "The Topaz Championship: the adventure included in the L5R Roleplaying Beginner Game (Fantasy Flight Games)"
@@ -70,7 +70,7 @@ ARC "topaz-championship" EXTENDS "l5r5e" {
     # CAST (resolve to l5r5e-0.4-topaz-championship-cast.ttrpg)
     # ─────────────────────────────────────────────
     KEY_NPCS {
-        ANTAGONISTS [^"Bayushi Sugai", ^"Ruffian"]
+        ANTAGONISTS [^"Bayushi Sugai", ^"Ruffian (Topaz Championship)"]
     }
 
     # ─────────────────────────────────────────────

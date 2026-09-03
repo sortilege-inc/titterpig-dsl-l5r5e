@@ -1,15 +1,17 @@
-# L5R 5E — Deathly Turns: Mechanics (new schools)
+# L5R 5E — Deathly Turns: Mechanics (new schools, title, and nemuranai)
 # "Deathly Turns" (supplemental encounters for Wheel of Judgment, FFG) closes with
 # an appendix of two new BUSHI traditions, suitable for characters created in the
-# afterlife. Both are transcribed VERBATIM from the school pages (read as images):
-# rings, starting skills, honor, techniques available/starting, school ability,
-# mastery ability, starting outfit, and the six-rank curriculum. Technique names
-# are listed as the school grants them; the technique DEFinitions themselves live
-# in the core rulebook and the Celestial Realms sourcebook.
+# afterlife, plus a new title (Spirit Hunter) and a nemuranai katana (Mizutsumi)
+# awarded within the third encounter. All are transcribed VERBATIM from the source
+# pages: for the schools, rings, starting skills, honor, techniques
+# available/starting, school ability, mastery ability, starting outfit, and the
+# six-rank curriculum. Technique names are listed as the school grants them; the
+# technique DEFinitions themselves live in the core rulebook and the Celestial
+# Realms sourcebook.
 
 EXTENSION "L5R5e_DeathlyTurns_Mechanics" EXTENDS "L5R5e_Core_Character" {
     NAME "Deathly Turns — New Schools"
-    VERSION "0.4"
+    VERSION "0.4.1"
     SPEC_VERSION "0.4"
     RELEASE_DATE "2026-09-03"
     DEPENDS_ON "L5R5e_Core_Character"
@@ -197,6 +199,45 @@ EXTENSION "L5R5e_DeathlyTurns_Mechanics" EXTENDS "L5R5e_Core_Character" {
             RANK 6 {
                 ^"An Arrow Loosed"
             }
+        }
+    }
+
+    # ═══════════════════════ NEW TITLE ═════════════════════════
+    # source stat block (page 20). Lady Mazoku's trusted agents. The Foundry
+    # compendium files this title as "Spirits hunter" (a typo); the book prints
+    # "Spirit Hunter" throughout. She elevates mortals to detect and banish
+    # harmful spirits; a completed holder has privileges in certain realms of the
+    # dead (Meido, Gaki-dō, or Tōshigoku) and abilities dealing with their
+    # denizens, but lives most of their life in their normal station. The PCs are
+    # offered this title after they set the shade Hagane to rest. It grants no
+    # glory award — secrecy is important to Lady Mazoku's work.
+    ^"Spirit Hunter" DEF {
+        APPLIES TO [^"Samurai"]
+        PROPERTIES {
+            ^"Type" STRING "Title"
+            ^"Assigned By" STRING "Lady Mazoku"
+            ^"Status Modifier" INTEGER 5
+            ^"Glory Modifier" INTEGER 0
+            ^"XP Cost" INTEGER 12
+            ^"Title Ability" STRING "Celestial Influence: Reduce the TN of your Attack and Scheme action checks targeting Otherworldly beings by 1 (to a minimum of 1)."
+            ^"Advances" STRING "Martial Skills (skill group), Social Skills (skill group), Government (skill), Theology (skill), = Rank 1 Rituals (ritual, tech group)"
+        }
+    }
+
+    # ═════════════════════ NEW NEMURANAI ═══════════════════════
+    # source (page 19). Mizutsumi, the ancestral katana of Shiba Akifusa, given to
+    # the PCs in thanks if they save him and set Hagane to rest. A katana (core
+    # rulebook profile) that is a nemuranai; its Sacred quality lets it bite
+    # through Hagane's supernatural resistance.
+    ^"Mizutsumi" DEF {
+        APPLIES TO [^"Item"]
+        PROPERTIES {
+            ^"Item Type" STRING "Nemuranai (katana)" FIXED
+            ^"Weapon Type" STRING "Katana"
+            ^"Profile" STRING "Range 1, Damage 4, Deadliness 5, Ceremonial, Razor-Edged, Sacred"
+            ^"Quirk" STRING "Causes a gentle rain or snow to fall for a few hours the first time it is drawn each season (it has not been drawn in some years)."
+            ^"Special" STRING "As the nemuranai possesses the Sacred item quality, Mizutsumi ignores Hagane's considerable physical resistance."
+            ^"Sealed Invocation" STRING "Heart of the Water Dragon (see pages 208 and 307 of the core rulebook) is sealed within it; the wielder can perform the invocation once per game session using the Sentiment skill instead of Theology."
         }
     }
 }

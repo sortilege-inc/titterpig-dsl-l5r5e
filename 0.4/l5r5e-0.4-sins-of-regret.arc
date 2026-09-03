@@ -8,7 +8,7 @@
 ARC "sins-of-regret" EXTENDS "l5r5e" {
     NAME "Sins of Regret"
     SUBTITLE "An Adventure in the Forgotten Heart of the Empire"
-    VERSION "0.4"
+    VERSION "0.4.1"
     SPEC_VERSION "0.4"
     SYSTEM "l5r5e"
     SOURCE "Sins of Regret (Fantasy Flight Games, 2020 — product L5R11)"
@@ -49,7 +49,7 @@ ARC "sins-of-regret" EXTENDS "l5r5e" {
         ^"Twin Blessings Village" DEF {
             TYPE "Village"
             DESCRIPTION "A remote rural village introduced in Path of Waves, far from any major holding and under the neglectful rule of the daimyō Reju Jikai. Suffers a ruinous elemental imbalance — a changed river, dead crops, no fish — plus a burnt way station, hidden weapon caches, and a forest Hermitage now held by Ichirō's rebel bandits."
-            NPCS [^"Ichirō", ^"Reju Tsugumasa", ^"Michi"]
+            NPCS [^"Ichirō (Sins of Regret)", ^"Reju Tsugumasa", ^"Michi"]
         }
         ^"Closed Shell Castle" DEF {
             TYPE "Castle"
@@ -62,7 +62,7 @@ ARC "sins-of-regret" EXTENDS "l5r5e" {
     # CAST (resolve to l5r5e-0.4-sins-of-regret-cast.ttrpg)
     # ─────────────────────────────────────────────
     KEY_NPCS {
-        VILLAGE [^"Ichirō", ^"Reju Tsugumasa", ^"Michi"]
+        VILLAGE [^"Ichirō (Sins of Regret)", ^"Reju Tsugumasa", ^"Michi"]
         REJU [^"Reju Jikai", ^"Seppun Azusa", ^"Reju Ume", ^"Reju Toshio"]
         SCHEMERS [^"Otomo Nobu", ^"Otomo Kazumi"]
         SPIRITS [^"Kyōkotsu", ^"Shachihoko"]

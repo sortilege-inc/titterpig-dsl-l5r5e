@@ -7,7 +7,7 @@
 
 ARC "emerald-champion" EXTENDS "l5r5e" {
     NAME "In the Palace of the Emerald Champion"
-    VERSION "0.4"
+    VERSION "0.4.1"
     SPEC_VERSION "0.4"
     SYSTEM "l5r5e"
     SOURCE "In the Palace of the Emerald Champion: A Bonus Adventure for the L5R Roleplaying Beginner Game (Fantasy Flight Games, 2018)"
@@ -32,6 +32,48 @@ ARC "emerald-champion" EXTENDS "l5r5e" {
         PART 2 "Act 2: The Castle" {
             SCENES ["Arrival at Shiro Yogasha", "Sumiko's Charge", "Daily Training", "Questioning the Witnesses (Sō, Kāgi, 'Bayushi Ago', Hiruma Shigeki)", "Satsume's Papers and the Secret Room", "The Assassin Strikes (Kitsuki Tomo)"]
             DESCRIPTION "Over four days — the day of arrival and three days of training — the PCs immerse themselves in becoming Emerald Magistrates while Agasha Sumiko secretly commands them to investigate Satsume's death, insisting the official story remains that the case is closed and no foul play was involved. Interviewing witnesses and suspects (the peasant Sō who found the body, the curious steward Kitsuki Kāgi, the disguised Scorpion 'Bayushi Ago,' the paranoid Crab magistrate Hiruma Shigeki), searching Satsume's offices, the secret room, and the Emerald Archives, they piece together a tangle: heretical correspondence in Satsume's own hand, a Scorpion scheme to frame Doji Hotaru, and evidence of the Kolat. It culminates when Kitsuki Tomo — the Kolat assassin sent to kill Satsume, thwarted only because Satsume died of natural causes first — turns his blade on the Ruby Champion."
+
+            # Rumors and Information from the Clan Representatives (page 20): where
+            # each clan's representative meets its PC, and what each conveys about
+            # Satsume. Getting information from another clan's rep needs a TN 2
+            # Courtesy or Sentiment check.
+            REFERENCE_TABLE "Rumors and Information from the Clan Representatives" {
+                ^"Crab" DEF {
+                    ^"Representative" STRING "Hida Mikoro"
+                    ^"Meeting Location" STRING "Armory"
+                    ^"Information Provided" STRING "Satsume was a strict father. He hardly spoke to his eldest daughter, Hotaru, after his wife's death. Not that he spoke with her much before it, either."
+                }
+                ^"Crane" DEF {
+                    ^"Representative" STRING "Asahina Tadane"
+                    ^"Meeting Location" STRING "Private Dining Hall"
+                    ^"Information Provided" STRING "Since the death of his wife, Satsume was not very well liked, even among his own clan. Everyone secretly blamed him for her untimely end, his daughter Hotaru most of all."
+                }
+                ^"Dragon" DEF {
+                    ^"Representative" STRING "Mirumoto Tanetsu"
+                    ^"Meeting Location" STRING "Room of Law"
+                    ^"Information Provided" STRING "Sumiko would often grumble about Satsume's secrets, frustrated with how he felt no obligation to keep her informed of his efforts and whereabouts. She absolutely did not trust him."
+                }
+                ^"Lion" DEF {
+                    ^"Representative" STRING "Kitsu Tsuguri"
+                    ^"Meeting Location" STRING "Training Dōjō"
+                    ^"Information Provided" STRING "Satsume was an aggressive sparring partner, at times needlessly injuring his soldiers during martial practices in the training yard. He was often very harsh in his criticisms, and demanded more from everyone around him."
+                }
+                ^"Phoenix" DEF {
+                    ^"Representative" STRING "Shiba Sono"
+                    ^"Meeting Location" STRING "Garden of Verdant Serenity"
+                    ^"Information Provided" STRING "During the last several months, Satsume spent more and more time in the library, where he used to spend hours referencing the Rokugani law books. It seems that he had become interested in precedent and ways to justify novel interpretations of Imperial law."
+                }
+                ^"Scorpion" DEF {
+                    ^"Representative" STRING "Bayushi Negi"
+                    ^"Meeting Location" STRING "Courtyard of Punishment"
+                    ^"Information Provided" STRING "Satsume disappeared often, but no one could figure out how he left the castle or by what entrance he returned. This would suggest some secret in the castle's architecture."
+                }
+                ^"Unicorn" DEF {
+                    ^"Representative" STRING "Shinjo Akiba"
+                    ^"Meeting Location" STRING "Stables"
+                    ^"Information Provided" STRING "Satsume was a great compromiser, ensuring that no one was happy with his decisions but also that no one was too angry with them. He didn't get along with most people, though. One time, Akiba says, she overheard Sumiko and Satsume arguing about their duties to the Emperor, but the disagreement went unresolved."
+                }
+            }
         }
         PART 3 "Act 3: The Findings" {
             SCENES ["Your Report to the Ruby Champion", "Report Options (Natural Causes / Assassination / Something Else)", "The Official Finding", "The Ruby Champion's Statement"]

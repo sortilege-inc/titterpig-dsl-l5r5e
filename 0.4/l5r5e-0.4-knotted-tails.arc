@@ -7,7 +7,7 @@
 
 ARC "the-knotted-tails" EXTENDS "l5r5e" {
     NAME "The Knotted Tails"
-    VERSION "0.4"
+    VERSION "0.4.1"
     SPEC_VERSION "0.4"
     SYSTEM "l5r5e"
     SOURCE "The Knotted Tails: A Supplemental Storyline for Mask of the Oni (Fantasy Flight Games, 2020)"
@@ -52,7 +52,7 @@ ARC "the-knotted-tails" EXTENDS "l5r5e" {
             TYPE "Village"
             DANGER_LEVEL "Shadowlands (mobile nezumi encampment)"
             DESCRIPTION "A scattering of mismatched tents and underground burrows hidden among the rocks of the Shadowlands, home to the nomadic Knotted Tails tribe. Holds the Leader's Tent, the Rememberer's place, and the Shrine to Memory."
-            NPCS [^"Lucky Silver", ^"One Eye", ^"Knotted Tails Warrior", ^"Nezumi Pup", ^"Three Tooth"]
+            NPCS [^"Lucky Silver", ^"One Eye", ^"Knotted Tails Warrior", ^"Nezumi Pup (Knotted Tails)", ^"Three Tooth"]
         }
         ^"The Nezumi Graveyard" DEF {
             TYPE "Landmark"
@@ -70,8 +70,8 @@ ARC "the-knotted-tails" EXTENDS "l5r5e" {
     # CAST (resolve to l5r5e-0.4-knotted-tails-cast.ttrpg)
     # ─────────────────────────────────────────────
     KEY_NPCS {
-        TRIBE [^"Lucky Silver", ^"One Eye", ^"Three Tooth", ^"Knotted Tails Warrior", ^"Nezumi Pup"]
-        THREAT [^"Frayed Whisker", ^"Outcast Nezumi"]
+        TRIBE [^"Lucky Silver", ^"One Eye", ^"Three Tooth", ^"Knotted Tails Warrior", ^"Nezumi Pup (Knotted Tails)"]
+        THREAT [^"Frayed Whisker", ^"Outcast Nezumi (Knotted Tails)"]
     }
 
     # A supplement to Mask of the Oni; the players use their existing Shadowlands

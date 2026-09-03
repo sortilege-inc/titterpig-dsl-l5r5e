@@ -8,7 +8,7 @@
 ARC "winters-embrace" EXTENDS "l5r5e" {
     NAME "Winter's Embrace"
     SUBTITLE "An Adventure at the Winter Court"
-    VERSION "0.4"
+    VERSION "0.4.1"
     SPEC_VERSION "0.4"
     SYSTEM "l5r5e"
     SOURCE "Winter's Embrace (Fantasy Flight Games, 2019 — product L5R09; ISBN 978-1-63344-360-0)"
@@ -29,6 +29,52 @@ ARC "winters-embrace" EXTENDS "l5r5e" {
         PART 1 "Act I: Storms Roll Ashore" {
             SCENES ["Day 1: A Tea Ceremony Fit for an Empress", "The Mantis Invitation", "The Game of Letters", "The Poetry Competition"]
             DESCRIPTION "Invited to tea at the floating teahouse by Kakita Ryoku (received by her apprentice Doji Chiyoe), the PCs are asked to discover who invited the Mantis to the Emperor's court — a truth those who know it want hidden. Investigating across the first week's happenings (the Game of Letters, the poetry competition where Lady Magami debuts), the PCs trace the forged invitation to the disguised Lion shinobi Ikoma Rumiko, and are swept into the greater intrigue of the future Empress."
+
+            # Competitors' Scores (page 9): pre-set NPC results for the Compose a
+            # Poem intrigue in the Poetry Competition, so the GM need not roll them.
+            # Columns are the five artisan approaches (ring in parentheses).
+            RESULTS_TABLE "Competitors' Scores (Poetry Competition)" {
+                ^"Ikoma Rumiko" DEF {
+                    ^"Recall (Earth)" INTEGER 0
+                    ^"Charm (Water)" INTEGER 2
+                    ^"Invent (Fire)" INTEGER 1
+                    ^"Refine (Air)" INTEGER 1
+                    ^"Attune (Void)" INTEGER 0
+                    ^"Total" INTEGER 4
+                }
+                ^"Doji Chiyoe" DEF {
+                    ^"Recall (Earth)" INTEGER 1
+                    ^"Charm (Water)" INTEGER 1
+                    ^"Invent (Fire)" INTEGER 1
+                    ^"Refine (Air)" INTEGER 2
+                    ^"Attune (Void)" INTEGER 1
+                    ^"Total" INTEGER 6
+                }
+                ^"Lady Magami" DEF {
+                    ^"Recall (Earth)" INTEGER 1
+                    ^"Charm (Water)" INTEGER 3
+                    ^"Invent (Fire)" INTEGER 2
+                    ^"Refine (Air)" INTEGER 0
+                    ^"Attune (Void)" INTEGER 1
+                    ^"Total" INTEGER 7
+                }
+                ^"Otomo Koryusai" DEF {
+                    ^"Recall (Earth)" INTEGER 1
+                    ^"Charm (Water)" INTEGER 0
+                    ^"Invent (Fire)" INTEGER 2
+                    ^"Refine (Air)" INTEGER 1
+                    ^"Attune (Void)" INTEGER 0
+                    ^"Total" INTEGER 4
+                }
+                ^"Doji Hatsuhina" DEF {
+                    ^"Recall (Earth)" INTEGER 1
+                    ^"Charm (Water)" INTEGER 2
+                    ^"Invent (Fire)" INTEGER 1
+                    ^"Refine (Air)" INTEGER 2
+                    ^"Attune (Void)" INTEGER 0
+                    ^"Total" INTEGER 5
+                }
+            }
         }
         PART 2 "Act II: The Tale of the Fisherman's Daughter" {
             SCENES ["Ryoku's New Request", "Casting the Play (Doji Shigeru / Lady Shike)", "The Kabuki Performance", "The Emperor's Impression"]

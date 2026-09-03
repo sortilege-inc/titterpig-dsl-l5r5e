@@ -8,7 +8,7 @@
 
 ARC "imperfect-land" EXTENDS "l5r5e" {
     NAME "Imperfect Land"
-    VERSION "0.4"
+    VERSION "0.4.1"
     SPEC_VERSION "0.4"
     SYSTEM "l5r5e"
     SOURCE "Imperfect Land: An Adventure Uncovering the Secrets of the Perfect Land Sect (Fantasy Flight Games)"
@@ -67,7 +67,7 @@ ARC "imperfect-land" EXTENDS "l5r5e" {
     # CAST (resolve to l5r5e-0.4-imperfect-land-cast.ttrpg)
     # ─────────────────────────────────────────────
     KEY_NPCS {
-        PERFECT_LAND [^"Hige", ^"Anmoku", ^"Ichirō", ^"Kanbei"]
+        PERFECT_LAND [^"Hige", ^"Anmoku", ^"Ichirō (Imperfect Land)", ^"Kanbei"]
         BROTHERHOOD [^"Naigen", ^"Iwa", ^"Mirumoto Masashige"]
         HIDDEN [^"Yuki (Shosuro Miyako)", ^"Ajari"]
         DELEGATES [^"Kaimoku", ^"Kūen", ^"Rekigan", ^"Fuchō", ^"Shōka", ^"Tanbu", ^"Yoshi", ^"Yuro", ^"Zenjō"]

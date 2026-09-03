@@ -7,7 +7,7 @@
 
 ARC "the-scroll-or-the-blade" EXTENDS "l5r5e" {
     NAME "The Scroll or the Blade"
-    VERSION "0.4"
+    VERSION "0.4.1"
     SPEC_VERSION "0.4"
     SYSTEM "l5r5e"
     SOURCE "The Scroll or the Blade: A Supplemental Adventure for Winter's Embrace (Fantasy Flight Games, 2020)"
@@ -27,10 +27,71 @@ ARC "the-scroll-or-the-blade" EXTENDS "l5r5e" {
         PART 1 "Act 1: The Lost Child" {
             SCENES ["Meeting Masayo", "With Honor They Served", "The Storm", "Bunji's Request"]
             DESCRIPTION "The PCs guard a memorial service for Masayo's parents at a Shinseist hill temple overlooking Kyūden Doji. A ferocious snowstorm — Yamakaze stirred by the frightened child — traps the assembly; the PCs keep order and reassure Masayo (whose neck bears a birthmark like Yamakaze's symbol). Impressed, the cartographer Miya Bunji asks the PCs to help adjudicate Masayo's adoption between the Dragon and Phoenix. Per-clan letters privately brief each player on their lord's agenda."
+
+            # Table 1-1 (page 7): social objectives for keeping order during the storm.
+            INTRIGUE_TABLE "Objectives at the Temple" {
+                ^"Calming Attendees" DEF {
+                    ^"Difficulty" STRING "TN 3 Courtesy (Earth 2, Fire 4) check or a TN 3 Command (Earth 2, Fire 4) check"
+                    ^"Momentum Required" STRING "4"
+                }
+                ^"Consoling Masayo" DEF {
+                    ^"Difficulty" STRING "TN 3 Sentiment (Water 2, Air 4) check or a TN 4 Theology (Void 3, Air 3, Earth 5) check"
+                    ^"Momentum Required" STRING "4"
+                }
+                ^"Reinforcing the Temple" DEF {
+                    ^"Difficulty" STRING "TN 3 Labor (Fire 2, Air 4) check or a TN 2 Fitness (Earth 2, Void 4) check"
+                    ^"Momentum Required" STRING "4"
+                }
+            }
+
+            # Table 1-2 (page 8): example claims each clan offers for Masayo's placement,
+            # grouped by clan (the source lists three per clan).
+            REFERENCE_TABLE "Clan Claims" {
+                ^"Phoenix" DEF {
+                    ^"Claim 1" STRING "Prior to her disappearance, Shiba Miku was a Phoenix shugenja. Records exist of her birthmark which consists of three wavy lines. This matches the birthmark found on Masayo's neck."
+                    ^"Claim 2" STRING "There is a precedence for talented shugenja to join the Phoenix, even though a heritable connection exists with other clans."
+                    ^"Claim 3" STRING "Existing maps show the village of Chisanrū was formerly a part of Phoenix lands, and Phoenix scrolls were found at the destroyed villa that Masayo came from."
+                }
+                ^"Dragon" DEF {
+                    ^"Claim 1" STRING "The katana recovered by Bunji is an old Dragon design, its blade etched with murals of an epic battle in the mountains, its hilt adorned with the markings of the Kitsuki family mon."
+                    ^"Claim 2" STRING "Historical documents exist showing the foundation of the Chisanrū village and its position within Dragon borders."
+                    ^"Claim 3" STRING "The teachings of the Hinokami Prophecy speak of a child of two families who joins the Dragon Clan, her destiny to defeat a massive creature that will threaten Dragon holdings. The Dragon believe Masayo is this child."
+                }
+            }
         }
         PART 2 "Act 2: Those Who Take" {
             SCENES ["Games We Play", "The Kemari Tournament", "The Duel", "The Kidnapping"]
             DESCRIPTION "Shika Yuki arranges a kemari tournament to let the candidates vent their frustrations; instead tempers flare and the Dragon candidate challenges the Phoenix candidate to a duel that draws in the PCs. The kemari champion Daidoji Aki works the crowd (pining after Isawa Yoshiko). That evening, mercenary shinobi try to kidnap Masayo; an injured Bunji alerts the PCs, who must pursue the kidnappers and begin to suspect a clan — or a third party — is sowing discord."
+
+            # Table 1-3 (page 11): pre-rolled per-round dice results for each NPC
+            # contestant, so the GM need not roll them ((op) = Opportunity, (st) = strife).
+            RESULTS_TABLE "Kemari Tournament Results" {
+                ^"Asako Haruki" DEF {
+                    ^"Round 1 (TN 2)" STRING "Success with 1 bonus (op), and 1 (st)"
+                    ^"Round 2 (TN 3)" STRING "Success with 0 bonus (op)"
+                    ^"Round 3 (TN 4)" STRING "Knocked out"
+                }
+                ^"Daidoji Aki" DEF {
+                    ^"Round 1 (TN 2)" STRING "Success with 2 bonus (op), and 2 (st)"
+                    ^"Round 2 (TN 3)" STRING "Success with 2 bonus (op), and 1 (st)"
+                    ^"Round 3 (TN 4)" STRING "Success with 1 bonus (op), and 1 (st)"
+                }
+                ^"Isawa Yoshiko" DEF {
+                    ^"Round 1 (TN 2)" STRING "Success with 2 bonus (op), and 2 (st)"
+                    ^"Round 2 (TN 3)" STRING "Success with 2 bonus (op), and 1 (st)"
+                    ^"Round 3 (TN 4)" STRING "Success with 1 bonus (op)"
+                }
+                ^"Kitsuki Tomoyo" DEF {
+                    ^"Round 1 (TN 2)" STRING "Success with 1 bonus (op)"
+                    ^"Round 2 (TN 3)" STRING "Success with 0 bonus (op), and 1 (st)"
+                    ^"Round 3 (TN 4)" STRING "Success with 0 bonus (op)"
+                }
+                ^"Mirumoto Kazuya" DEF {
+                    ^"Round 1 (TN 2)" STRING "Success with 2 bonus (op)"
+                    ^"Round 2 (TN 3)" STRING "Success with 1 bonus (op)"
+                    ^"Round 3 (TN 4)" STRING "Success with 0 bonus (op), and 1 (st)"
+                }
+            }
         }
         PART 3 "Act 3: Those Who Receive" {
             SCENES ["Bunji's Confession", "Preparing for Court", "Testing Masayo", "Semblance of Order (the court)", "Decisions, Decisions"]
