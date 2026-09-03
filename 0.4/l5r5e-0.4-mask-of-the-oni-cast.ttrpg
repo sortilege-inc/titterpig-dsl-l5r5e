@@ -1,0 +1,98 @@
+# L5R 5E — Mask of the Oni: Dramatis Personae (cast NPCs / adversaries)
+# "Mask of the Oni" — an adventure in the Shadowlands (FFG, product L5R07). The
+# two full ADVERSARY statblocks (rings, conflict ranks, derived attributes,
+# honor/glory/status, skill-group ranks, advantages/disadvantages, favored
+# weapons & gear, abilities) are transcribed VERBATIM from the statblock page
+# images; ability text is reproduced verbatim in nested ^"Name" DEF { ^"Effect"
+# ... } blocks. The Crab escort leader Hida Nagahide is modeled the way the source
+# presents her, by naming a core-rulebook profile. This adventure uses the players'
+# own characters (Crab-connected PCs ideal) — there are no pregens. The Crab-lands
+# interaction NPCs (Kaiu Riko, Yasuki Ippei, Bayushi Tsubasa, Hida Hachirō) and the
+# historical figures (Hiruma Masami, Yasuki Keiji, the Maw) live in the .lore /
+# .codex; generic foes use core profiles (Shadowlands goblins, bushi skeletons
+# core p318, zombie peasants core p321, skillful rōnin, loyal bushi core p312).
+
+EXTENSION "L5R5e_MaskOfTheOni_Cast" {
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-03"
+    DEPENDS_ON "L5R5e_Core_Core"
+
+    # ═══════════════ THE VILLAIN ═══════════════════════════════════════════
+
+    ^"Kitsu Sokori" DEF {
+        EXTENDS ^"NPC"
+        # The mahō-tsukai antagonist: daughter of a minor lord of the Kitsu family
+        # of the Lion Clan, a talented shugenja who murdered her brother with blood
+        # magic when passed over as heir, fell to mahō, and now seeks to reverse
+        # Hiruma Masami's ritual and claim the Hiruma souls as her army.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 8
+            ^"Intrigue Conflict Rank" INTEGER 6
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 4 ^"Fire" INTEGER 3 ^"Water" INTEGER 4 ^"Void" INTEGER 4 }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 1
+            ^"Glory" INTEGER 25
+            ^"Status" INTEGER 5
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 3", "Social 3", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Sixth Sense — Scholar; Spiritual", "Indomitable Will — Scholar; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Whispers of Cruelty — Social; Infamy", "Shadowlands Taint — Social; Spiritual"]
+            ^"Favored Weapons" LIST OF STRING ["Corrupted Wakizashi: Range 0–1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged, Unholy", "Sacrificial Knife: Range 0, Damage 2, Deadliness 4, Concealable, Mundane, Razor-Edged, Unholy"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Profane robes (Physical 1, Supernatural 4), scroll satchel containing mahō scrolls and the stolen maps of Yasuki Keiji"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 8, Intrigue 6. A Kitsu (Lion) turned mahō-tsukai; first introduced in the Dark Tides adventure. She favors indirect, insidious tactics — undead servants, exploiting the PCs' flaws and any conflict among them — over direct combat, and is expected to die by the end of the confrontation unless the GM wishes her to escape as a future antagonist."
+        ^"Mahō-Sensei" DEF { ^"Effect" STRING "Sokori can use any mahō technique in the core rulebook (beginning on page 224). She generally uses Unholy Fervor to empower her minions and Grip of Anguish on any PCs attempt to engage her directly. At the GM's discretion, she may also have access to the new mahō techniques in Shadowlands (beginning on page 116)." }
+        ^"Walking the Way" DEF { ^"Effect" STRING "Sokori can draw upon her Kitsu heritage to part the veil separating the Spirit Realms from Ningen-dō, then pass through to emerge in a new place. For the purposes of this adventure, Sokori is presumed to use this ability only once, the first time the PCs encounter her, to escape the confrontation. As a Movement and Support action, Sokori begins stepping out of the Realm of Mortals, her form shimmering slightly. At the start of her next turn, she vanishes and reappears in another location at range 0–6 of her prior location (including a location out of line of sight)." }
+        ^"Whispers in Blood" DEF { ^"Effect" STRING "In a vile fusion of her Kitsu ancestor-speaking and mahō abilities, Sokori can use the blood of a mortal to perceive much about that mortal's flaws and weaknesses—and then use that information against them. Sokori must have access to the blood of a mortal; enough to coat the blade of a small knife is sufficient. As a downtime activity, she makes a TN 2 Theology (Water) check; if it is successful, she learns all of that mortal's advantages and disadvantages." }
+    }
+
+    # ═══════════════ THE ONI ═══════════════════════════════════════════════
+
+    ^"Atsumari no Oni" DEF {
+        EXTENDS ^"NPC"
+        # The oni instrumental in the fall of Shiro Hiruma in the eighth century,
+        # banished to Jigoku by Hiruma Masami's sacrifice and waiting centuries to
+        # return and claim the Hiruma souls it was denied. Its role in the finale is
+        # variable — it may ally with Sokori or be hostile to her and the PCs alike.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 12
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 3 ^"Fire" INTEGER 6 ^"Water" INTEGER 4 ^"Void" INTEGER 4 }
+            ^"Demeanor" STRING "Power-Hungry"
+            ^"Endurance" INTEGER 22
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 9
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 15
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 3", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Massive Stature — Martial; Physical", "Unholy Might — Martial; Physical, Spiritual"]
+            ^"Disadvantages" LIST OF STRING ["Horrifying Visage — Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Crushing Claws: Range 1-2, Damage 6, Deadliness 8, Razor-Edged, Unholy"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Demonic hide and armor scraps (Physical 5, Spiritual 5, Unholy)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 12, Intrigue 5. An Otherworldly, Tainted being of silhouette 4."
+        ^"Horror of Jigoku" DEF { ^"Effect" STRING "Atsumari no Oni is an Otherworldly, Tainted being of silhouette 4. After any character performs a successful Attack action that deals 0 damage to the oni (after resistance is applied), that character suffers 3 strife." }
+        ^"Corrupt the Fallen" DEF { ^"Effect" STRING "As an action, Atsumari no Oni may enslave the souls of the dead, which become Tainted. The souls of the deceased must be present, which is normally only true if they died during the current encounter. Additionally, once per round Atsumari no Oni may command any number of enslaved souls to possess an equal number of corpses within range 4. The corpses immediately rise as bushi skeletons (see page 318 of the core rulebook) or zombie peasants (see page 321 of the core rulebook), depending on the condition of the corpse, and they are under Atsumari no Oni's control. To ensure the battle is not impossible, see Encounter Difficulties on page 14 for help determining when and if the oni should use this ability." }
+        ^"Aura of Dread" DEF { ^"Effect" STRING "Atsumari no Oni's malign ability to corrupt and enslave the souls of the fallen surrounds it with a chilling aura that saps the wills of those who would risk their lives to confront it in close melee combat. When a character within range 3 attempts to move closer to Atsumari no Oni, they must resist with a TN 2 Meditation check (Earth 1, Air 4) or suffer the Disoriented condition and remain at their current distance from the oni. Once a character succeeds on this check, they do not have to make it again during the current scene." }
+    }
+
+    # ═══════════════ THE CRAB ESCORT ═══════════════════════════════════════
+
+    ^"Hida Nagahide" DEF {
+        EXTENDS ^"NPC"
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Profile" STRING "Loyal Bushi (core rulebook page 312); her squad numbers roughly twice the number of PCs (a mix of Hida and Hiruma bushi)"
+            ^"Demeanor" STRING "Cautious veteran"
+        }
+        DESCRIPTION "The gunsō leading the squad of Crab bushi who may escort the PCs into the Shadowlands — a veteran of more than a few expeditions, her face and body bearing numerous scars, who knows that caution and planning is what wins battles against the Shadowlands. The PCs interact primarily with her; the bushi under her defer to her experience. She (or Bayushi Tsubasa) leads the PCs beyond the Wall."
+    }
+}
