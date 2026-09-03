@@ -1,0 +1,81 @@
+# .codex SECTION — Cresting Waves (supplemental encounters). Stand-off graph over
+# l5r5e-0.4-cresting-waves.lore (spec §25). Part of the L5R5e system graph;
+# DEPENDS_ON the shared schema.
+#
+# The four adversaries (l5r5e-0.4-cresting-waves-cast.ttrpg) are DEFs — referenced
+# via ^"...", never minted. Twin Blessings Village, Closed Shell Castle, Setsuo,
+# Daizō, and Reo are already in the graph from Sins of Regret / Path of Waves —
+# referenced, and Twin Blessings Village / Closed Shell Castle / Setsuo amended.
+# This section mints Nestled Village and the encounters' lore-only villagers
+# (Jimba, Nayaka, Miyoko, Kyou, Sora, Sayaka).
+
+CODEX "L5R5e_CrestingWaves_Codex" {
+    NAME "Cresting Waves — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-03"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # ---- Place ------------------------------------------------------------
+    ENTITY #L5RcxCW07nestledvillage ^"Nestled Village" {
+        IS ^"Village"
+        SOURCE "l5r5e-0.4-cresting-waves.lore" AT "encounter-2-in-the-woods"
+        RELATIONSHIPS { ^"located-near" -> ^"Twin Blessings Village" FROM "the common-land forest between Twin Blessings Village and the rival Nestled Village" }
+    }
+
+    # ---- Encounter 1 villagers (lore-only) --------------------------------
+    ENTITY #L5RcxCW01jimbavictim ^"Jimba" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-cresting-waves.lore" AT "encounter-1-at-the-village"
+        RELATIONSHIPS { ^"enemy-of" -> ^"Banji, Murderous Villager" FROM "a villager who was murdered and dismembered weeks ago by his friend Banji" }
+    }
+    ENTITY #L5RcxCW02nayakawife ^"Nayaka" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-cresting-waves.lore" AT "investigating"
+        RELATIONSHIPS {
+            ^"married-to" -> ^"Banji, Murderous Villager" FROM "Banji's wife and Miyoko's sister"
+            ^"sibling-of" -> ^"Miyoko"                    FROM "Banji's wife and Miyoko's sister" }
+    }
+    ENTITY #L5RcxCW03miyokodoshin ^"Miyoko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-cresting-waves.lore" AT "investigating"
+    }
+
+    # ---- Encounter 2 villagers (lore-only) --------------------------------
+    ENTITY #L5RcxCW04kyouyouth ^"Kyou" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-cresting-waves.lore" AT "encounter-2-in-the-woods"
+        RELATIONSHIPS { ^"companion-of" -> ^"Sora" FROM "Kyou has found true love with Sora, an inhabitant of Nestled Village" }
+    }
+    ENTITY #L5RcxCW05soralover ^"Sora" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-cresting-waves.lore" AT "encounter-2-in-the-woods"
+        RELATIONSHIPS { ^"member-of" -> ^"Nestled Village" FROM "Sora, an inhabitant of Nestled Village" }
+    }
+    ENTITY #L5RcxCW06sayakaelder ^"Sayaka the Elder" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-cresting-waves.lore" AT "the-prisoners"
+        RELATIONSHIPS { ^"member-of" -> ^"Nestled Village" FROM "a rescue party from Nestled Village, led by the elder Sayaka" }
+    }
+
+    # ---- Amendments to existing graph nodes --------------------------------
+    ENTITY ^"Twin Blessings Village" {
+        SOURCE "l5r5e-0.4-cresting-waves.lore" AT "encounter-1-at-the-village"
+        RELATIONSHIPS { ^"haunted-by" -> ^"Onryō, Vengeful Ghost" FROM "Twin Blessings Village is being haunted by an onryō — the vengeful ghost of Jimba" }
+    }
+    ENTITY ^"Closed Shell Castle" {
+        SOURCE "l5r5e-0.4-cresting-waves.lore" AT "encounter-3-on-the-road"
+        RELATIONSHIPS { ^"located-near" -> ^"Twin Blessings Village" FROM "the road between Twin Blessings Village and Closed Shell Castle" }
+    }
+    ENTITY ^"Setsuo" {
+        SOURCE "l5r5e-0.4-cresting-waves.lore" AT "encounter-2-in-the-woods"
+        RELATIONSHIPS { ^"oversees" -> ^"Twin Blessings Village" FROM "Setsuo, the village leader" }
+    }
+    ENTITY ^"Daizō" {
+        SOURCE "l5r5e-0.4-cresting-waves.lore" AT "supernatural-wounds"
+    }
+    ENTITY ^"Reo" {
+        SOURCE "l5r5e-0.4-cresting-waves.lore" AT "investigating"
+    }
+}
