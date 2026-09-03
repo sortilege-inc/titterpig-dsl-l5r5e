@@ -1,0 +1,387 @@
+# L5R 5E — Wedding at Kyotei Castle: Dramatis Personae (cast NPCs / adversaries)
+# The 2018 L5R Gen Con adventure "Wedding at Kyotei Castle" (FFG). NPC statblocks
+# transcribed verbatim from the printed Dramatis Personae (pages 4–13): rings,
+# conflict ranks, derived attributes, honor/glory/status, skill-group ranks,
+# advantages/disadvantages, favored weapons & gear, and abilities. Ability text
+# is reproduced verbatim in nested ^"Name" DEF { ^"Effect" ... } blocks. The seven
+# pregenerated PCs live in l5r5e-0.4-wedding-kyotei-pregens.actor.
+
+EXTENSION "L5R5e_WeddingKyotei_Cast" {
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-02"
+    DEPENDS_ON "L5R5e_Core_Core"
+
+    # ═══════════════════════ CRANE CLAN CAST ═══════════════════════════════
+
+    ^"Tsume no Doji Takashi" DEF {
+        EXTENDS ^"NPC"
+        # The groom; Kyotei Castle's daimyō in service to the Crane. Trained at the
+        # Kakita Duelist Academy. Giri: defend Kyotei Castle. Ninjō: reunite with Reika.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 6
+            ^"Rings" DEF { ^"Air" INTEGER 4 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 3 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 2", "Scholar 2", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Forbidden Love (Reika) — Mental; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Dark Secret (Reika killed his father) — Martial; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Extravagant robes (Physical 1, Ceremonial), calligraphy set", "Gear (other): Tea set, Rokugani pony"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 3, Intrigue 6."
+        ^"Whispering Winds" DEF { ^"Effect" STRING "Once per session as an action, Takashi may make a Courtesy (Air) check targeting one character in the scene. The TN is equal to 6 minus the target's glory rank (to a minimum of 1). If he succeeds, Takashi learns a rumor about the target. Opportunity Opportunity: Takashi learns one of the target's advantages or disadvantages of the target's choice." }
+        ^"Fanning the Flames" DEF { ^"Effect" STRING "When making a Social skill (Fire) check, Takashi may spend Opportunity in the following way: Fire Opportunity: One target gains the Dazed condition." }
+    }
+
+    ^"Nasu no Shiba Shizuma" DEF {
+        EXTENDS ^"NPC"
+        # Lord Takashi's general and chief advisor; formerly Tsume Retsu's yojimbo.
+        # Bears the Nasu no Shiba name; a devout follower of Shinsei's teachings.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 6
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 4 ^"Fire" INTEGER 4 ^"Water" INTEGER 3 ^"Void" INTEGER 4 }
+            ^"Demeanor" STRING "Assertive"
+            ^"Endurance" INTEGER 16
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 70
+            ^"Status" INTEGER 65
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 4", "Scholar 3", "Social 3", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Wisdom of Experience — Scholar; Mental", "Bolstering Presence — Social; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Long at Court — Martial; Mental, Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Calligraphy set, personal chop", "Gear (other): Katana, plated armor (Physical 5, Cumbersome, Durable, Wargear), various estates"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 7, Intrigue 6."
+        ^"Lord's Command" DEF { ^"Effect" STRING "Once per scene, as a Support action, Shizuma may advise a character who can hear them on how to complete a task they wish the character to perform. The character may use his ring or skill in place of their own for the next check they make to complete this task before the end of the game session." }
+    }
+
+    ^"Tsume Kotonoha" DEF {
+        EXTENDS ^"NPC"
+        # Takashi's captain of the guard, responsible for security within the castle.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 3 ^"Fire" INTEGER 3 ^"Water" INTEGER 3 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Assertive"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 9
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 3", "Scholar 2", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Tested in War — Martial; Mental, Physical", "Sworn to Bushidō — Social; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Hot-Tempered — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged", "Yumi (Bow): Range 2–5, Damage 5, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Lacquered armor (Physical 4, Ceremonial, Cumbersome, Wargear), wakizashi, quiver", "Gear (other): Plain robes (Physical 1, Mundane), yari (spear), knife, a handful of koku and bu"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 2."
+        ^"Crescent Moon Style" DEF { ^"Effect" STRING "When performing a Guard action, Kotonoha may spend Opportunity in the following way: Opportunity: After another character performs an Attack action targeting Kotonoha or another character she is guarding, Kotonoha may perform a Strike action targeting them. This effect persists until the start of Kotonoha's next turn or until she performs a Strike action." }
+        ^"Sworn Protector" DEF { ^"Effect" STRING "Once per scene, when an Attack action check targeting another character at range 0–1 succeeds, Kotonoha may intervene, becoming the target of the action instead." }
+    }
+
+    ^"Tsume Yemon" DEF {
+        EXTENDS ^"NPC"
+        # The head priest of the Kyotei Castle shrine; his sanity eroded by the
+        # Damasu ghost infestation. Blames the vengeful ghosts of the Damasu.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 3 ^"Fire" INTEGER 3 ^"Water" INTEGER 3 ^"Void" INTEGER 3 }
+            ^"Demeanor" STRING "Ambitious"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 45
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 0", "Scholar 2", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Mystical Knowledge — Scholar; Mental", "Holy Personage — Social; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Scholar's Physique — Martial; Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Sanctified robes (Physical 1, Supernatural 3, Ceremonial), scroll satchel, offerings"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 3."
+        ^"Commune with the Spirits" DEF { ^"Effect" STRING "(Ritual) As a downtime activity or Support action, Yemon may make a TN 1 Theology check using Air, Earth, Fire, Water, or Void to appeal to nearby spirits of that Element (appeal to the departed, such as ancestor spirits, and other non-elemental supernatural presences if using Void) for aid. If successful, he may choose and receive one of the following boons from the spirit or spirits he contacted: Sense the Kami: Detect all spirits and uses of their magic by shugenja within a number of range bands equal to the ring he used plus his bonus successes. Spiritual Knowledge: Learn one fact the spirits know about the area. Elemental Gift: The kami deliver a small amount of the Element in question to him. For instance, a prayer to a water kami might cause it to begin raining lightly, for a short time." }
+        ^"Threshold Barrier" DEF { ^"Effect" STRING "(Ritual) As a downtime activity, Yemon may make a TN 2 Theology check using Air, Earth, Fire, Water, or Void targeting a threshold, gate, or other entryway at range 0–1. If successful, the threshold is barred against a particular type of entity, based on the ring he chose, for one hour, plus additional hours equal to his bonus successes. When an entity of this type attempts to enter, it must resist with a TN 3 Meditation (Void) check or be repelled by the spiritual barrier. Whether it succeeds or fails, Yemon immediately becomes aware of its attempted entry. The particular type of being is based on the ring he chose, as follows: Air: Ethereal Otherworldly beings such as spirits and ghosts. Earth: Living Tainted beings. Fire: Undead beings with corporeal form. Water: Wild animals. Void: Humans. New Opportunities — Opportunity: Instead of protecting a threshold, Yemon may protect the entirety of a sealed area that extends a number of range bands around him no greater than his bonus successes. Opportunity: If any beings of the type Yemon is attempting to seal the threshold against have passed through the threshold within the last twenty-four hours, he becomes aware of their passage." }
+    }
+
+    ^"Doji Kuzunobu" DEF {
+        EXTENDS ^"NPC"
+        # Husband to Crane Clan Champion Doji Hotaru; grew up among the Fox Clan in
+        # the Kitsune Forest and carries the shapeshifter's blood.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 2 ^"Fire" INTEGER 4 ^"Water" INTEGER 2 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Ambitious"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 45
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 0", "Scholar 2", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Gift of the Forest — Scholar; Mental", "Blood of the Fox — Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Mischievous Heart — Social; Mental, Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Concealed armor (Physical 2, concealable), book of personal poems, sweets"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 3."
+        ^"On Friendly Terms" DEF { ^"Effect" STRING "Doji Kuzunobu can talk to animals and understand their speech (though he usually hides this ability)." }
+        ^"Mysterious Escape" DEF { ^"Effect" STRING "Should Doji Kuzunobu be declared the target of an attack, he vanishes in a swirl of leaves and condescending laughter." }
+    }
+
+    # ═══════════════════════ LION CLAN CAST ════════════════════════════════
+
+    ^"Damasu no Akodo Maeda" DEF {
+        EXTENDS ^"NPC"
+        # The antagonist: born Damasu no Akodo Maeda, daughter of Damasu Kojima
+        # (former lord of Kyotei); raised as the geisha Reika, murdered Tsume Retsu,
+        # readopted into the Lion as Akodo Maeda. Plans to hijack the wedding.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 3 ^"Fire" INTEGER 4 ^"Water" INTEGER 3 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Assertive"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 9
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 5", "Scholar 2", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Geisha Training — Social; Mental, Physical"]
+            ^"Disadvantages" LIST OF STRING ["Dark Secret (Is the geisha Reika) — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged", "Yumi (Bow): Range 2–5, Damage 5, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Lacquered armor (Physical 4, Ceremonial, Cumbersome, Wargear), wakizashi, quiver, yari (spear), knife", "Gear (other): Plain robes (Physical 1, Mundane), a handful of koku and bu"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 6, Intrigue 3. Also known as the geisha Reika."
+        ^"Crescent Moon Style" DEF { ^"Effect" STRING "When performing a Guard action, Maeda may spend Opportunity in the following way: Opportunity: After another character performs an Attack action targeting Maeda or another character she is guarding, Maeda may perform a Strike action targeting them. This effect persists until the start of her next turn or until she performs a Strike action." }
+        ^"Sworn Protector" DEF { ^"Effect" STRING "Once per scene, when an Attack action check targeting another character at range 0–1 succeeds, Maeda may intervene, becoming the target of the action instead." }
+    }
+
+    ^"Itto" DEF {
+        EXTENDS ^"NPC"
+        # Rōnin and Maeda's bodyguard; once loyal to her father Kojima. Originally of
+        # the Goseki family — the Kitsu Medium's lost uncle.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 3 ^"Fire" INTEGER 2 ^"Water" INTEGER 2 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Detached"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 11
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 30
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 20
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 1", "Social 0", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Killer Instinct — Martial; Mental", "Worldly Wanderer — Scholar, Trade; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Unnecessarily Rude — Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged", "Yumi: Range 2–5, Damage 5, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Wakizashi, worn traveler's robes (Physical 2, Mundane), quiver, empty sake jug, straw hat, handful of bu and zeni"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 2."
+        ^"School of the Wolf" DEF { ^"Effect" STRING "Once per round, when an Attack action check targeting him succeeds, Itto may suffer 3 fatigue to change the target to another character (other than the attacker) at range 0–1 of him." }
+        ^"Striking as Fire" DEF { ^"Effect" STRING "When performing an Attack action (Fire) check, Itto may spend Opportunity as follows: Fire Opportunity+: Increase the severity of any critical strike dealt as part of this attack by 2 per Opportunity spent this way." }
+    }
+
+    # ═══════════════════════ PHOENIX CLAN CAST ═════════════════════════════
+
+    ^"Shiba Itsuyo" DEF {
+        EXTENDS ^"NPC"
+        # The bride-to-be; daughter of the lord of Nikesake. A trained bushi who sees
+        # this marriage as her current battlefield.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 3 ^"Fire" INTEGER 3 ^"Water" INTEGER 4 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Assertive"
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 9
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 3", "Scholar 2", "Social 3", "Trade 2"]
+            ^"Advantages" LIST OF STRING ["Tested in War — Martial; Mental, Physical", "Sworn to Bushidō — Social; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Ebisu's Curse — Social; Physical, Spiritual"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged", "Yumi (Bow): Range 2–5, Damage 5, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Lacquered armor (Physical 4, Ceremonial, Cumbersome, Wargear), wakizashi, quiver, knife", "Gear (other): Plain robes (Physical 1, Mundane), a handful of koku and bu"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 4."
+        ^"Crescent Moon Style" DEF { ^"Effect" STRING "When performing a Guard action, Itsuyo may spend Opportunity in the following way: Opportunity: After another character performs an Attack action targeting Itsuyo or another character she is guarding, Itsuyo may perform a Strike action targeting them. This effect persists until the start of Itsuyo's next turn or until Itsuyo performs a Strike action." }
+        ^"Sworn Protector" DEF { ^"Effect" STRING "Once per scene, when an Attack action check targeting another character at range 0–1 succeeds, Itsuyo may intervene, becoming the target of the action instead." }
+    }
+
+    ^"Shiba Katsuda" DEF {
+        EXTENDS ^"NPC"
+        # Lord of Nikesake and Itsuyo's father, proud of the match Nasu Shizuma
+        # helped arrange. Younger daughter Kanoka is his intended successor.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 6
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 4 ^"Fire" INTEGER 4 ^"Water" INTEGER 4 ^"Void" INTEGER 4 }
+            ^"Demeanor" STRING "Assertive"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 70
+            ^"Status" INTEGER 65
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 4", "Scholar 3", "Social 3", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Wisdom of Experience — Scholar; Mental", "Bolstering Presence — Social; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Long at Court — Martial; Mental, Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Calligraphy set, personal chop", "Gear (other): Daishō, plated armor (Physical 5, Cumbersome, Durable, Wargear), various estates"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 7, Intrigue 6."
+        ^"Lord's Command" DEF { ^"Effect" STRING "Once per scene, as a Support action, Katsuda may advise a character who can hear them on how to complete a task they wish the character to perform. The character may use Katsuda's ring or skill in place of their own for the next check they make to complete this task before the end of the game session." }
+    }
+
+    ^"Lady Chisei" DEF {
+        EXTENDS ^"NPC"
+        # Raised among the librarians of the Asako family and trained as a scholar; a
+        # resource for PCs needing a primer on history or theology.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF { ^"Air" INTEGER 4 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 3 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 0", "Scholar 2", "Social 3", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Inexhaustible Politeness — Social; Interpersonal", "Wealth and Resources — Trade; Material"]
+            ^"Disadvantages" LIST OF STRING ["Sheltered from War — Martial; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Extravagant robes (Physical 1, Ceremonial), calligraphy set", "Gear (other): Tea set, Rokugani pony"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 1, Intrigue 5. She does not need to make checks to recall scholarly information."
+        ^"Whispering Winds" DEF { ^"Effect" STRING "Once per session as an action, Chisei may make a Courtesy (Air) check targeting one character in the scene. The TN is equal to 6 minus the target's glory rank (to a minimum of 1). If they succeed, Chisei learns a rumor about the target. Opportunity Opportunity: Chisei learns one of the target's advantages or disadvantages of the target's choice." }
+        ^"Fanning the Flames" DEF { ^"Effect" STRING "When making a Social skill (Fire) check, Chisei may spend Opportunity in the following way: Fire Opportunity: One target gains the Dazed condition." }
+    }
+
+    ^"Asako Maezawa" DEF {
+        EXTENDS ^"NPC"
+        # Phoenix Clan Champion Shiba Tsukune's newest personal advisor; a trained
+        # healer, scholar, philosopher, and investigator sent to look into the
+        # elemental imbalance and the slaughtered cranes (found no mahō-tsukai).
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 5
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF { ^"Air" INTEGER 4 ^"Earth" INTEGER 3 ^"Fire" INTEGER 3 ^"Water" INTEGER 3 ^"Void" INTEGER 3 }
+            ^"Demeanor" STRING "Ambitious"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 45
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 0", "Scholar 3", "Social 4", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Excellent Liar — Social; Interpersonal", "Patience — Scholar; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Ulterior Motives — Social; Interpersonal", "World Weariness — Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Sanctified robes (Physical 1, Supernatural 3, Ceremonial), scroll satchel, offerings"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 5, Intrigue 5."
+        ^"Whispering Winds" DEF { ^"Effect" STRING "Once per session as an action, Maezawa may make a Courtesy (Air) check targeting one character in the scene. The TN is equal to 6 minus the target's glory rank (to a minimum of 1). If they succeed, Maezawa learns a rumor about the target. Opportunity Opportunity: Maezawa learns one of the target's advantages or disadvantages of the target's choice." }
+        ^"Fanning the Flames" DEF { ^"Effect" STRING "When making a Social skill (Fire) check, Maezawa may spend Opportunity in the following way: Fire Opportunity: One target gains the Dazed condition." }
+    }
+
+    # ═══════════════════════ SCORPION CLAN CAST ════════════════════════════
+
+    ^"Soshi Ozuru" DEF {
+        EXTENDS ^"NPC"
+        # A courtier of the Scorpion Clan sent to lead intrepid investigators off the
+        # trail of the Scorpion operative (Shosuro Yu). Works unknowingly in concert
+        # with Yu; a shrewd courtier under handler Lady Kachiko.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 7
+            ^"Rings" DEF { ^"Air" INTEGER 5 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 3 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 0", "Scholar 3", "Social 4", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Excellent Liar — Social; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Fear of Failure — Martial; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Extravagant robes (Physical 1, Ceremonial), calligraphy set", "Gear (other): Tea set, Rokugani pony"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 2, Intrigue 7."
+        ^"Whispering Winds" DEF { ^"Effect" STRING "Once per session as an action, Ozuru may make a Courtesy (Air) check targeting one character in the scene. The TN is equal to 6 minus the target's glory rank (to a minimum of 1). If Ozuru succeeds, Ozuru learns a rumor about the target. Opportunity Opportunity: Ozuru learns one of the target's advantages or disadvantages of the target's choice." }
+        ^"Fanning the Flames" DEF { ^"Effect" STRING "When making a Social skill (Fire) check, Ozuru may spend Opportunity in the following way: Fire Opportunity: One target gains the Dazed condition." }
+    }
+
+    ^"Ide Torao aka Shosuro Yu" DEF {
+        EXTENDS ^"NPC"
+        # A guise of Shosuro Yu, a Shosuro-trained actor and agent of one of Bayushi
+        # Shoju's spymasters. Stirred up bandit activity, killed the Crane to force
+        # the wedding to move, and coordinated the kidnapping and the Akodo attack.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF { ^"Air" INTEGER 4 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 3 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Shrewd"
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 14
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 3", "Scholar 2", "Social 3", "Trade 3"]
+            ^"Advantages" LIST OF STRING ["Master of Disguise — Social; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Disdain for a Bushido Tenet (Honor) — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Wakizashi: Range 0–1, Damage 3, Deadliness 5/7, Ceremonial, Razor-Edged", "Shuriken ([Thrown]): Range 1–3, Damage 2, Deadliness 4, Concealable", "Ninjatō (short sword): Range 0–1, Damage 3, Deadliness 5, Concealable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Extravagant robes (Physical 1, Ceremonial), calligraphy set", "Gear (other): Tea set, Rokugani pony"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 1, Intrigue 5. A Vigilance 4 character can discern that Torao/Yu's eyes are hazel, and capable of seeming as both."
+        ^"Whispering Winds" DEF { ^"Effect" STRING "Once per session as an action, Yu may make a Courtesy (Air) check targeting one character in the scene. The TN is equal to 6 minus the target's glory rank (to a minimum of 1). If they succeed, Yu learns a rumor about the target. Opportunity Opportunity: The courtier learns one of the target's advantages or disadvantages of the target's choice." }
+        ^"Fanning the Flames" DEF { ^"Effect" STRING "When making a Social skill (Fire) check, Yu may spend Opportunity in the following way: Fire Opportunity: One target gains the Dazed condition." }
+    }
+}

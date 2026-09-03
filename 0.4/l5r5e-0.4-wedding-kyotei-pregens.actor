@@ -1,0 +1,329 @@
+# L5R 5E — Wedding at Kyotei Castle: Pregenerated Characters (.actor)
+# The seven pregens from the 2018 L5R Gen Con adventure "Wedding at Kyotei
+# Castle" (FFG). Each is a Samurai instance EXTENDS ^"Samurai"; stat blocks are
+# transcribed verbatim from the printed Narrative-Mode / Conflict-Mode character
+# sheets (rings, skills, ninjō/giri, distinctions/adversities/passions/anxieties,
+# school ability, techniques, weapons, armor, gear). Ability/technique text is
+# reproduced verbatim in nested ^"Name" DEF { ^"Effect" ... } blocks.
+
+EXTENSION "L5R5e_WeddingKyotei_Pregens" {
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-02"
+    DEPENDS_ON "L5R5e_Core_Core"
+
+    # ── Bayushi Hibiki — Scorpion Bayushi Manipulator (Courtier) ───────────
+    ^"Bayushi Hibiki" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Bayushi Hibiki" FIXED
+            ^"Clan" STRING "Scorpion" FIXED
+            ^"Family" STRING "Bayushi" FIXED
+            ^"School" STRING "Bayushi Manipulator" FIXED
+            ^"School Rank" INTEGER 2
+            ^"Roles" LIST OF STRING ["Courtier"]
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 2
+            }
+            ^"Honor" INTEGER 32
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 35
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 3
+            ^"Void Points" INTEGER 2
+            ^"Ninjo" STRING "To always feel in control. It doesn't matter the outcome, so long as you know that you've masterminded the events and outwitted your rivals."
+            ^"Giri" STRING "Uncover any Scorpion agents sent by your lord's rivals and determine their agendas. Stop them if they are threats to your clan."
+            ^"Skills" LIST OF STRING ["Aesthetics 1", "Composition 2", "Design 1", "Fitness 2", "Martial Arts [Melee] 1", "Martial Arts [Ranged] 1", "Martial Arts [Unarmed] 1", "Tactics 1", "Culture 1", "Government 1", "Medicine 1", "Sentiment 1", "Courtesy 3", "Performance 1", "Skulduggery 2"]
+            ^"Advantages" LIST OF STRING ["Quick Reflexes (Fire) — Distinction", "Provocation (Fire) — Passion"]
+            ^"Disadvantages" LIST OF STRING ["Incurable Illness (Earth) — Adversity", "Fear of Death (Earth) — Anxiety"]
+            ^"Techniques" LIST OF STRING ["Lightning Raid (Shūji)", "Skulk (New Opportunity)"]
+            ^"Equipment" LIST OF STRING ["Wakizashi (short sword): Damage 3/5 (7 DLS if 2 handed), Range 0–1, Ceremonial, Razor-Edged", "Shuriken: Damage 2/4, Range 0, Concealable", "Shuriken (thrown): Damage 2/4, Range 1–3, Concealable", "Common Clothes (Physical 1, Mundane)", "Concealed Armor (Physical 2, Concealed)", "Ceremonial Clothes (Physical 1, Ceremonial, Resplendent)", "Traveling clothes", "calligraphy set", "traveling pack", "shamisen (three-stringed guitar)", "8 koku"]
+            ^"Demeanor" STRING "Hums childhood tunes while walking; hates the outdoors, especially unkept wilderness."
+        }
+        DESCRIPTION "Pregenerated PC for Wedding at Kyotei Castle. Technique types available: Kata, Rituals, Shūji."
+
+        ^"Weakness Is My Strength" DEF { ^"Effect" STRING "When you exploit a target's disadvantage (see Turning Advantages and Disadvantages, page 100) as part of a Scheme action, you do not need to spend a Void point, and you may reroll additional dice up to your school rank (2)." }
+        ^"Quick Reflexes (Fire)" DEF { ^"Effect" STRING "At the start of each scene, you can always grab an item within reach or reposition it a few paces within your environment. The GM is the final arbiter of how much you can prepare or how much distance you can achieve before the rest of the scene begins." }
+        ^"Provocation (Fire)" DEF { ^"Effect" STRING "You can always identify a point of sensitivity that you can push upon in another person—though not whether they will take your comment as slightly aggressive banter or a grave insult." }
+        ^"Incurable Illness (Earth)" DEF { ^"Effect" STRING "Periodically, if you push yourself too hard, you are afflicted by especially violent fits that significantly restrict your activity for a brief period of time." }
+        ^"Fear of Death (Earth)" DEF { ^"Effect" STRING "You cannot voluntarily choose to die or sacrifice your life (including committing seppuku when honor demands it), and if there is a chance you could live, you must always pursue it." }
+        ^"Lightning Raid" DEF { ^"Effect" STRING "Once per scene, as an Attack and Movement action, you may make a TN 3 Command (Fire) check targeting any number of characters in the scene. If you succeed, each character increases their initiative by your Fire Ring plus your bonus successes at the beginning of the next round. Fire Opportunity: Immediately perform a Strike action (see page 260)." }
+        ^"Skulk" DEF { ^"Effect" STRING "When you perform an Initiative or Attack check using Air, you may spend Opportunity as follows: Opportunity: If you are in Obscuring terrain, a crowd, or otherwise concealed from sight, one character with vigilance lower than or equal to your ranks in Skulduggery loses sight of you." }
+    }
+
+    # ── Kaito Natsuyuki — Phoenix Kaito Shrine Keeper (Monk) ────────────────
+    ^"Kaito Natsuyuki" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Kaito Natsuyuki" FIXED
+            ^"Clan" STRING "Phoenix" FIXED
+            ^"Family" STRING "Kaito" FIXED
+            ^"School" STRING "Kaito Shrine Keeper" FIXED
+            ^"School Rank" INTEGER 2
+            ^"Roles" LIST OF STRING ["Monk"]
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 1
+                ^"Fire" INTEGER 2
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Honor" INTEGER 45
+            ^"Glory" INTEGER 30
+            ^"Status" INTEGER 35
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Void Points" INTEGER 2
+            ^"Ninjo" STRING "Prove to the members of the other Great Clans—and to yourself—that the Kaito are as worthy as any other major family."
+            ^"Giri" STRING "Investigate sources of elemental imbalance in the Golden Valley, such as displeased kami and restless ghosts, and assist in appeasing them."
+            ^"Skills" LIST OF STRING ["Aesthetics 1", "Design 1", "Smithing 1", "Fitness 1", "Martial Arts [Melee] 1", "Martial Arts [Ranged] 3", "Meditation 2", "Tactics 1", "Sentiment 1", "Theology 2", "Courtesy 1", "Performance 1", "Labor 1", "Survival 2"]
+            ^"Advantages" LIST OF STRING ["Sixth Sense (Void) — Distinction", "Sake (Water) — Passion"]
+            ^"Disadvantages" LIST OF STRING ["Bluntness (Air) — Adversity", "Softheartedness (Fire) — Anxiety"]
+            ^"Techniques" LIST OF STRING ["Tempest of Air (Invocation)", "Hawk's Precision (New Opportunity)"]
+            ^"Equipment" LIST OF STRING ["Yumi (bow): Damage 5/3, Range 2–5", "Wakizashi (short sword): Damage 3/5 (7 DLS if 2 handed), Range 0–1, Ceremonial, Razor-Edged", "Sanctified Robes (Physical 1, Supernatural 3, Ceremonial)", "Ceremonial Clothes (Physical 1, Ceremonial, Resplendent)", "Quiver of arrows", "knife", "scroll satchel", "traveling pack", "4 koku"]
+            ^"Demeanor" STRING "Has a long scar along one arm, but refuses to speak of it; wears hair in a severe bun, and is obsessive about keeping it perfect."
+        }
+        DESCRIPTION "Pregenerated PC for Wedding at Kyotei Castle. Technique types available: Kata, Invocations, Rituals, Shūji."
+
+        ^"Sacred Arrows" DEF { ^"Effect" STRING "As an action, you may augment one of your arrows with a prayer to the kami. Make the check to perform one invocation you know, reducing the TN by your school rank (2), and record the result. The arrow unleashes the invocation wherever it lands after you fire it and remains infused with the invocation until the end of the scene." }
+        ^"Sixth Sense (Void)" DEF { ^"Effect" STRING "You have an instinctive sense of supernatural beings, and you can feel the presence of spirits and similar entities even when they have not chosen to reveal themselves. This feeling is ominous in the presence of beings with evil intentions and neutral when the beings are simply going about their business as usual." }
+        ^"Bluntness (Air)" DEF { ^"Effect" STRING "You have difficulty expressing things indirectly, and you overlook insinuations and implications in the statements of others unless they are pointed out to you directly." }
+        ^"Sake (Water)" DEF { ^"Effect" STRING "You can identify regional variations in sake and other alcohol, and you know a great deal about the various processes involved in making sake. It takes you twice as much alcohol as it does anyone else to become intoxicated." }
+        ^"Softheartedness (Fire)" DEF { ^"Effect" STRING "If given the choice to kill someone or show mercy, you always spare their life, even if it is not in your interest to let them live." }
+        ^"Tempest of Air" DEF { ^"Effect" STRING "As an Attack action, you may make a TN 3 Theology (Air) check targeting each character at range 2–3. If you succeed, blasts of wind smite each target. Each target suffers supernatural damage equal to your Air Ring and must resist with a TN 4 Fitness check (Earth 5, Fire 2) or suffer the Disoriented condition. Air Opportunity+: Each target who fails their Fitness check is also pushed 1 range band away from you per Opportunity spent this way." }
+        ^"Hawk's Precision" DEF { ^"Effect" STRING "When you make a Martial Arts [Ranged] check, you may spend Opportunity in the following way: Opportunity+: Treat the range of the weapon as 1 higher per Opportunity spent this way, to a maximum of range 6." }
+    }
+
+    # ── Kakita Hikaru — Crane Kakita Duelist (Bushi, Artisan) ──────────────
+    ^"Kakita Hikaru" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Kakita Hikaru" FIXED
+            ^"Clan" STRING "Crane" FIXED
+            ^"Family" STRING "Kakita" FIXED
+            ^"School" STRING "Kakita Duelist" FIXED
+            ^"School Rank" INTEGER 2
+            ^"Roles" LIST OF STRING ["Bushi", "Artisan"]
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 1
+                ^"Void" INTEGER 2
+            }
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 35
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 2
+            ^"Void Points" INTEGER 2
+            ^"Ninjo" STRING "Find a rival truly worthy of your skills with the blade."
+            ^"Giri" STRING "See that Takashi gets married, so that he can maintain Crane influence over the Golden Valley and dispel the concerns of his seeming weakness."
+            ^"Skills" LIST OF STRING ["Aesthetics 2", "Composition 1", "Design 1", "Smithing 1", "Fitness 1", "Martial Arts [Melee] 3", "Meditation 2", "Tactics 1", "Culture 1", "Government 1", "Sentiment 1", "Command 1", "Courtesy 2", "Games 1", "Performance 1"]
+            ^"Advantages" LIST OF STRING ["Dangerous Allure (Fire) — Distinction", "Stories (Earth) — Passion"]
+            ^"Disadvantages" LIST OF STRING ["Benten's Curse (Air) — Adversity", "Perfectionism (Water) — Anxiety"]
+            ^"Techniques" LIST OF STRING ["Iaijutsu Cut (Rising Blade) (Kata)", "Sensational Distraction (New Opportunity)"]
+            ^"Equipment" LIST OF STRING ["Katana: Damage 4/5 (7 DLS if 2 handed), Range 1, Ceremonial, Razor-Edged", "Wakizashi (short sword): Damage 3/5 (7 DLS if 2 handed), Range 0–1, Ceremonial, Razor-Edged", "Resplendent Robes (Physical 1, Mundane)", "Ceremonial Clothes (Physical 1, Ceremonial, Resplendent)", "Traveling clothes", "traveling pack", "an attendant or Rokugani pony", "7 koku"]
+            ^"Demeanor" STRING "Strokes his long, glorious, pure white hair when he thinks no one is watching him; keeps sizing up everyone he meets as potential dueling opponents."
+        }
+        DESCRIPTION "Pregenerated PC for Wedding at Kyotei Castle. Technique types available: Kata, Rituals, Shūji."
+
+        ^"Way of the Crane" DEF { ^"Effect" STRING "Once per round, you may increase or decrease the severity of a critical strike you inflict by an amount up to your school rank (2)." }
+        ^"Dangerous Allure (Fire)" DEF { ^"Effect" STRING "You always make an impression, and NPCs remember your name and face after interacting with you for one or more scenes (unless you take pains to disguise yourself)." }
+        ^"Benten's Curse (Air)" DEF { ^"Effect" STRING "Your romantic efforts are always stymied by circumstances, and your gestures to get the romantic attention of others are usually misinterpreted." }
+        ^"Stories (Earth)" DEF { ^"Effect" STRING "You can recall any story you have been told, including the details that others would gloss over or forget." }
+        ^"Perfectionism (Water)" DEF { ^"Effect" STRING "Anything short of perfection in your work is unacceptable to you, and you have been known to create works of beauty only to cast them aside over some perceived flaw. You cannot help but try to improve any work in which you identify a flaw, even if it means informing someone of higher status of an error they have made." }
+        ^"Iaijutsu Cut (Rising Blade)" DEF { ^"Effect" STRING "As an Attack action using one sheathed Razor-Edged weapon, you may make a TN 3 Martial Arts [Melee] check targeting one character at range 0–1 and draw and ready the sheathed weapon in a one-handed grip. If you succeed, you deal physical damage to the target equal to the weapon's deadliness. Your target cannot defend against this damage if they are Compromised. Opportunity: Ready one other sheathed Razor-Edged weapon." }
+        ^"Sensational Distraction" DEF { ^"Effect" STRING "When making a Social skill (Fire) check targeting one or more characters, you may spend Opportunity in the following way: Fire Opportunity+: When interacting with other characters, the target treats their vigilance as 1 lower per Opportunity spent this way; when interacting with you, the target treats their vigilance as 1 higher per Opportunity spent this way. This effect persists until the end of the scene." }
+    }
+
+    # ── Kitsu Kohaku — Lion Kitsu Medium (Shugenja) ────────────────────────
+    ^"Kitsu Kohaku" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Kitsu Kohaku" FIXED
+            ^"Clan" STRING "Lion" FIXED
+            ^"Family" STRING "Kitsu" FIXED
+            ^"School" STRING "Kitsu Medium" FIXED
+            ^"School Rank" INTEGER 2
+            ^"Roles" LIST OF STRING ["Shugenja"]
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 2
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 3
+            }
+            ^"Honor" INTEGER 60
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 35
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 3
+            ^"Void Points" INTEGER 3
+            ^"Ninjo" STRING "Find out what became of your uncle's body as the Crane never returned it after the Tsume family massacred everyone and took the castle."
+            ^"Giri" STRING "The Golden Valley has been in spiritual disarray since the Crane violently seized it. You must find a way to end the cycle of hate once and for all."
+            ^"Skills" LIST OF STRING ["Aesthetics 1", "Composition 1", "Design 1", "Fitness 1", "Martial Arts [Melee] 2", "Martial Arts [Unarmed] 1", "Tactics 1", "Culture 1", "Government 1", "Medicine 1", "Sentiment 2", "Theology 3", "Command 1", "Games 2", "Survival 1"]
+            ^"Advantages" LIST OF STRING ["Bishamon's Blessing (Water) — Distinction", "Brushwork (Air) — Passion"]
+            ^"Disadvantages" LIST OF STRING ["Haunting (Void) — Adversity", "Superstition (Void) — Anxiety"]
+            ^"Techniques" LIST OF STRING ["Path to Inner Peace (Invocation)", "Commune with the Spirits (Ritual)"]
+            ^"Equipment" LIST OF STRING ["Bō (staff): Damage 6/2, Range 1–2, Mundane", "Wakizashi (short sword): Damage 3/5 (7 DLS if 2 handed), Range 0–1, Ceremonial, Razor-Edged", "Sanctified Robes (Physical 1, Supernatural 3, Ceremonial)", "Ceremonial Clothes (Physical 1, Ceremonial, Resplendent)", "Traveling clothes", "scroll satchel", "traveling pack", "4 koku"]
+            ^"Demeanor" STRING "Extremely pale and dislikes direct sunlight; doesn't like touching other people."
+        }
+        DESCRIPTION "Pregenerated PC for Wedding at Kyotei Castle. Technique types available: Invocations, Rituals, Shūji."
+
+        ^"Favor of the Ancestors" DEF { ^"Effect" STRING "Once per scene, you may invoke an ancestor spirit to aid you and guide your hand by making a TN 2 Theology (Void) check as an action. Choose a number of skills up to your school rank (2): roll additional Ring dice and keep 1 additional die on your checks using those skills until the end of the scene." }
+        ^"Bishamon's Blessing (Water)" DEF { ^"Effect" STRING "You recover from physical exhaustion twice as quickly as others." }
+        ^"Haunting (Void)" DEF { ^"Effect" STRING "The spirit of your uncle, Goseki Yobuhito, seems to be everywhere you go, always demanding vengeance for his lord Damasu Kojima, who was slain by the Tsume family." }
+        ^"Brushwork (Air)" DEF { ^"Effect" STRING "You can identify the signature styles of numerous different schools and individual artists in paintings and calligraphy, as well as common motifs and techniques." }
+        ^"Superstition (Void)" DEF { ^"Effect" STRING "When faced with signs of the supernatural, you become visibly agitated, and you attempt to leave the scene, appease the being or phenomenon in question, or acquire supernatural protection of some kind." }
+        ^"Path to Inner Peace" DEF { ^"Effect" STRING "As a Support action, you may make a TN 2 Theology (Water) check targeting yourself or another character at range 0–2. If you succeed, the target removes fatigue equal to your Water Ring plus your bonus successes. (Once per scene per target) Water Opportunity: Remove Bleeding, Dazed, Disoriented, or Lightly Wounded from target. Water Opportunity: Your target also removes strife equal to your bonus successes." }
+        ^"Commune with the Spirits" DEF { ^"Effect" STRING "As a downtime activity or Support action, make a TN 1 Theology check to perform a ritual to appeal to nearby spirits of that Element for aid. If you succeed, choose and receive one of the following boons from the spirit you contacted: Sense the Kami: Detect all spirits and uses of their magic by shugenja within a number of range bands equal to the ring you used plus your bonus successes. Spiritual Knowledge: Learn one fact the spirits know about the area. Opportunity: Reduce the TN of your next check to interact with or appeal to kami or supernatural presences of this Element by 1." }
+    }
+
+    # ── Kitsuki Sora — Dragon Kitsuki Investigator (Courtier, Bushi) ───────
+    ^"Kitsuki Sora" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Kitsuki Sora" FIXED
+            ^"Clan" STRING "Dragon" FIXED
+            ^"Family" STRING "Kitsuki" FIXED
+            ^"School" STRING "Kitsuki Investigator" FIXED
+            ^"School Rank" INTEGER 2
+            ^"Roles" LIST OF STRING ["Courtier", "Bushi"]
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 3
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 1
+            }
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 45
+            ^"Status" INTEGER 35
+            ^"Endurance" INTEGER 12
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Void Points" INTEGER 1
+            ^"Ninjo" STRING "Find out the truth surrounding the murder of Retsu and use this knowledge to the advantage of the Dragon Clan."
+            ^"Giri" STRING "As a diplomat, ensure that the Dragon Clan is considered an ally of the lord and lady of Kyotei Castle (regardless of their allegiance)."
+            ^"Skills" LIST OF STRING ["Smithing 1", "Fitness 1", "Martial Arts [Melee] 2", "Martial Arts [Ranged] 1", "Tactics 1", "Government 1", "Medicine 1", "Sentiment 3", "Theology 1", "Command 1", "Performance 1", "Commerce 1", "Labor 1", "Skulduggery 2", "Survival 1"]
+            ^"Advantages" LIST OF STRING ["Ambidexterity (Air) — Distinction", "History (Earth) — Passion"]
+            ^"Disadvantages" LIST OF STRING ["Whispers of Doom (Void) — Adversity", "Impatience (Earth) — Anxiety"]
+            ^"Techniques" LIST OF STRING ["Striking as Earth (New Opportunity)", "Truth Burns through Lies (New Opportunity)"]
+            ^"Equipment" LIST OF STRING ["Jian (sword): Damage 5/3, Range 0–1", "Jitte (forked hand weapon): Damage 3/2, Range 0, Concealable, Snaring", "Wakizashi (short sword): Damage 3/5 (7 DLS if 2 handed), Range 0–1, Ceremonial, Razor-Edged", "Common Clothes (Physical 1, Mundane)", "Ceremonial Clothes (Physical 1, Ceremonial, Resplendent)", "Traveling clothes", "knife", "calligraphy set", "traveling pack", "journal of observations", "6 koku"]
+            ^"Demeanor" STRING "Very fastidious, especially around crime scenes; strokes beard when thinking."
+        }
+        DESCRIPTION "Pregenerated PC for Wedding at Kyotei Castle. Technique types available: Kata, Rituals, Shūji."
+
+        ^"Kitsuki's Method" DEF { ^"Effect" STRING "When performing a check to investigate with any skill, you may treat your ranks in the skill you are using as being equal to your school rank (2). If your ranks in the skill are equal to or higher than your school rank, or if you have 5 ranks in the skill, you may add a kept Opportunity set to an Explosive Success result instead." }
+        ^"Ambidexterity (Air)" DEF { ^"Effect" STRING "As you have no dominant hand, you can compensate if your right hand is injured or lost. This lets you use weapons and make actions with either hand." }
+        ^"Whispers of Doom (Void)" DEF { ^"Effect" STRING "You are well-known, but not for the right reasons. Characters who do not know you personally always assume that those around you will perish or meet bad ends, even if you survive to spread your ill fortune further." }
+        ^"History (Earth)" DEF { ^"Effect" STRING "After a short time spent studying it, you can discern the era and context of any object, structure, or text you encounter—or else you know for certain that no chronicler of the Emerald Empire has encountered this thing before." }
+        ^"Impatience (Earth)" DEF { ^"Effect" STRING "You find it difficult to repress yourself, and when you are forced to wait, it causes you palpable discomfort. If given the choice between seizing an opportunity and waiting for a better moment, you strive to seize the opportunity despite risks that might be mitigated if you act later." }
+        ^"Striking as Earth" DEF { ^"Effect" STRING "When you make a Martial Arts [Melee, Ranged, or Unarmed] (Earth) check, you may spend Opportunity in the following way: Earth Opportunity+: Treat your physical resistance as 1 higher per Opportunity spent this way until the beginning of your next turn." }
+        ^"Truth Burns through Lies" DEF { ^"Effect" STRING "When making a Scholar skill (Fire) check to assess a character's story, you may spend Opportunity in the following way: Fire Opportunity: If there is a single statement upon which the character's story hinges, you determine what it is and what you would need to do to verify or disprove it." }
+    }
+
+    # ── Utaku Azami — Unicorn Utaku Battle Maiden (Bushi) ──────────────────
+    ^"Utaku Azami" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Utaku Azami" FIXED
+            ^"Clan" STRING "Unicorn" FIXED
+            ^"Family" STRING "Utaku" FIXED
+            ^"School" STRING "Utaku Battle Maiden" FIXED
+            ^"School Rank" INTEGER 2
+            ^"Roles" LIST OF STRING ["Bushi"]
+            ^"Rings" DEF {
+                ^"Air" INTEGER 3
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 2
+                ^"Void" INTEGER 2
+            }
+            ^"Honor" INTEGER 65
+            ^"Glory" INTEGER 50
+            ^"Status" INTEGER 35
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Void Points" INTEGER 2
+            ^"Ninjo" STRING "Minimize the suffering of the common people, the defenseless, and the innocent. Don't allow cruelty or injustice to continue to cause suffering."
+            ^"Giri" STRING "Ensure the Unicorn Clan is considered an ally of the Crane, and improve relations between the Unicorn and Phoenix clans."
+            ^"Skills" LIST OF STRING ["Design 1", "Smithing 1", "Fitness 2", "Martial Arts [Melee] 2", "Martial Arts [Unarmed] 1", "Tactics 2", "Culture 1", "Government 1", "Medicine 1", "Sentiment 1", "Command 1", "Games 1", "Labor 1", "Survival 3"]
+            ^"Advantages" LIST OF STRING ["Animal Bond—Steed (Earth) — Distinction", "Tea (Void) — Passion"]
+            ^"Disadvantages" LIST OF STRING ["Gaijin Culture (Fire) — Adversity", "Materialism (Void) — Anxiety"]
+            ^"Techniques" LIST OF STRING ["Honest Assessment (Shūji)", "Striking as Air (New Opportunity)"]
+            ^"Equipment" LIST OF STRING ["Yari (spear): Damage 5/3, Range 2, Wargear", "Scimitar: Damage 4/5, Range 1, Durable, Razor-Edged", "Wakizashi (short sword): Damage 3/5 (+2 DLS if 2 handed), Range 0–1, Ceremonial, Razor-Edged", "Common Clothes (Physical 1, Mundane)", "Lacquered Armor (Physical 4, Ceremonial, Cumbersome, Wargear)", "Ceremonial Clothes (Physical 1, Ceremonial, Resplendent)", "Traveling clothes", "knife", "traveling pack", "Utaku steed (Chikara)", "6 koku"]
+            ^"Demeanor" STRING "Sometimes uses gaijin words or phrases; loves the outdoors and feels uncomfortable in crowds."
+        }
+        DESCRIPTION "Pregenerated PC for Wedding at Kyotei Castle. Technique types available: Kata, Rituals, Shūji."
+
+        ^"Heroic Charge" DEF { ^"Effect" STRING "When you succeed at an Attack action check, add bonus successes equal to the number of range bands you have moved this round, to a maximum of your school rank (2)." }
+        ^"Animal Bond—Steed (Earth)" DEF { ^"Effect" STRING "Your horse Chikara follows you around wherever you go and generally acts as your companion. It can be cajoled to do what you want, but it might need incentives (usually food) to perform difficult tasks on demand." }
+        ^"Gaijin Culture (Fire)" DEF { ^"Effect" STRING "People of higher and equal status tend to assume that you are uneducated at best and a barbarian at worst, while people of lower status respond to you with fear." }
+        ^"Tea (Void)" DEF { ^"Effect" STRING "You can identify regional variations in tea, and you know a great deal about the process of preparing and drying leaves. In the wilderness, you can acquire the natural ingredients required to make rustic teas of various sorts with relative ease." }
+        ^"Materialism (Void)" DEF { ^"Effect" STRING "You are obsessed with physical possessions and objects, despite what the Tao of Shinsei says about such material earthly bonds. You cannot refuse gifts of rarity 3 or higher." }
+        ^"Honest Assessment" DEF { ^"Effect" STRING "As a Support action, you may make a TN 2 Courtesy (Earth) check to appraise the weaknesses of a character. If you succeed, choose one of the target's known disadvantages. The target does not apply that disadvantage to their checks until the end of the scene. Earth Opportunity+: Choose one additional disadvantage per Opportunity spent this way. Earth Opportunity Opportunity: Reduce the TN of the target's next skill check using the ring the disadvantage is attached to by 2." }
+        ^"Striking as Air" DEF { ^"Effect" STRING "When you make a Martial Arts [Melee, Ranged, or Unarmed] (Air) check, you may spend Opportunity in the following way: Air Opportunity+: Reserve one of your rolled dice, plus one additional die per Opportunity spent this way. These dice become dropped dice. When making a check with the same skill before the end of your next turn, you may roll one fewer Ring die per reserved Ring die and one fewer Skill die per reserved Skill die, then add the reserved dice to your roll. These dice count as rolled dice, but are added set to the results they had when they were reserved." }
+    }
+
+    # ── Yasuki Toru — Crab Yasuki Merchant (Courtier) ─────────────────────
+    ^"Yasuki Toru" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Yasuki Toru" FIXED
+            ^"Clan" STRING "Crab" FIXED
+            ^"Family" STRING "Yasuki" FIXED
+            ^"School" STRING "Yasuki Merchant" FIXED
+            ^"School Rank" INTEGER 2
+            ^"Roles" LIST OF STRING ["Courtier"]
+            ^"Rings" DEF {
+                ^"Air" INTEGER 2
+                ^"Earth" INTEGER 3
+                ^"Fire" INTEGER 1
+                ^"Water" INTEGER 3
+                ^"Void" INTEGER 2
+            }
+            ^"Honor" INTEGER 37
+            ^"Glory" INTEGER 45
+            ^"Status" INTEGER 35
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 3
+            ^"Void Points" INTEGER 2
+            ^"Ninjo" STRING "Make the Crane Clan pay for what that they did to your family long ago. They refuse to honor your claims to your ancestral homelands."
+            ^"Giri" STRING "Make a deal to trade vital supplies in order to gain access to new jade mine located near Toshi Ranbo."
+            ^"Skills" LIST OF STRING ["Composition 1", "Smithing 1", "Fitness 1", "Martial Arts [Ranged] 1", "Tactics 1", "Culture 2", "Government 1", "Medicine 2", "Sentiment 1", "Command 1", "Courtesy 1", "Games 2", "Performance 1", "Commerce 3", "Skulduggery 1", "Survival 1"]
+            ^"Advantages" LIST OF STRING ["Keen Hearing (Air) — Distinction", "Travel (Water) — Passion"]
+            ^"Disadvantages" LIST OF STRING ["Sworn Enemy—Doji family of Crane Clan (Earth) — Adversity", "Phobia—Horses (Water) — Anxiety"]
+            ^"Techniques" LIST OF STRING ["Tributaries of Trade (Shūji)", "Weight of Duty (New Opportunity)"]
+            ^"Equipment" LIST OF STRING ["Yumi (bow): Damage 5/3, Range 2–5", "Wakizashi (short sword): Damage 3/5 (7 DLS if 2 handed), Range 0–1, Ceremonial, Razor-Edged", "Common Clothes (Physical 1, Mundane)", "Concealed Armor (Physical 2, Concealed)", "Ceremonial Clothes (Physical 1, Ceremonial, Resplendent)", "Traveling clothes", "knife", "quiver of arrows", "calligraphy set", "traveling pack", "scrolls of trade records", "10 koku"]
+            ^"Demeanor" STRING "Acts the \"absent-minded elderly person\" but is still very sharp; chuckles a bit even when nothing humorous is happening; obsessive about his favorite pipe."
+        }
+        DESCRIPTION "Pregenerated PC for Wedding at Kyotei Castle. Technique types available: Kata, Rituals, Shūji."
+
+        ^"Way of the Carp" DEF { ^"Effect" STRING "As a downtime activity, if you have access to a market, you may acquire a number of items up to your school rank of rarity 4 or lower, or a single item of up to rarity 4 plus your school rank [2] (the item may be up to rarity 6)." }
+        ^"Keen Hearing (Air)" DEF { ^"Effect" STRING "You can assess your environment by sound alone. Even in darkness, you can accurately pinpoint the location of people and other moving objects near you." }
+        ^"Sworn Enemy—Doji family of Crane Clan (Earth)" DEF { ^"Effect" STRING "The family responsible for keeping you from regaining your ancestral homelands!" }
+        ^"Travel (Water)" DEF { ^"Effect" STRING "You aren't unsettled by foreign customs, and enjoy traveling to new locations and interacting with novel things." }
+        ^"Phobia—Horses (Water)" DEF { ^"Effect" STRING "You have a debilitating fear of these large, unpleasant, smelly beasts. Being around them is disturbing and you're likely to try and make up excuses to leave if one is around." }
+        ^"Tributaries of Trade" DEF { ^"Effect" STRING "Once per scene as a Scheme and Support action, you may make a TN 1 Commerce (Water) skill check to establish that you acquired a chosen item earlier. If you succeed, you produce an item with a rarity less than or equal to 1 plus your bonus successes. You must still pay the price of the item. Opportunity+: Reduce the price you must pay for the item by one-quarter per Opportunity spent this way (to a minimum of one-quarter of the original price)." }
+        ^"Weight of Duty" DEF { ^"Effect" STRING "When you make a Social skill (Earth) check targeting a character, you may spend Opportunity as follows: Earth Opportunity: Learn one way the target fears failing as a samurai. Earth Opportunity Opportunity: Learn the target's giri." }
+    }
+}
