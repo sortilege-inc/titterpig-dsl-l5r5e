@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Shadowlands: New Player Options"
-    VERSION "0.4.3"
+    VERSION "0.4.4"
     SPEC_VERSION "0.4.1"
     RELEASE_DATE "2026-03-01"
 
@@ -1272,7 +1272,8 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
     # ITEM PATTERNS
     # ===========================
 
-    # source (page 109)
+    # source (page 109) for all but Pit-Forged Obsidian, which is a page 29
+    # sidebar in Chapter 1 and carries its own ^"Source Page".
     ^"Shadowlands Item Patterns" DEF {
         APPLIES TO [^"Samurai"]
 
@@ -1282,7 +1283,16 @@ EXTENSION "L5R5e_Shadowlands" EXTENDS "L5R5e_Core_Character" {
             #kvDvJ5DqAQGfy9zmxGUXAT ^"Shirogane Jade Inlay" DEF { ^"Effect" STRING "Weapon/armor gains Sacred quality. Armor loses 1 physical resistance; weapons lose 1 deadliness. If item becomes Damaged, jade must be reapplied (TN 3 Smithing [Earth] downtime, consumes 1 finger of jade)." ^"XP Cost" INTEGER 3 ^"Rarity Modifier" STRING "+2" }
             #AQf7v8DqlFv5xxX2pdbV61 ^"Uchema's Technique" DEF { ^"Effect" STRING "Armor loses Cumbersome quality and loses 1 physical resistance." ^"XP Cost" INTEGER 4 ^"Rarity Modifier" STRING "+3" }
             #QfxCb0J3vLvnNuIFKc29G3 ^"Yasunori Steel" DEF { ^"Effect" STRING "Weapon loses Ceremonial, Cumbersome, and Resplendent (can never gain these). Gains Durable; if already Durable, gains +1 deadliness instead." ^"XP Cost" INTEGER 5 ^"Rarity Modifier" STRING "+4" }
-            #VDjF5H34WyhB1OLSz6V6cr ^"Pit-Forged Obsidian" DEF { ^"Effect" STRING "Item gains +1 damage, +1 deadliness, and the Unholy quality. While in possession of such an item, increase the TN of Fitness and Meditation checks to prevent the Afflicted condition from conferring the Shadowlands Taint disadvantage by 2 (to TN 6)." ^"XP Cost" INTEGER 4 ^"Rarity Modifier" STRING "+4" }
+            # Not printed with the other five: this one is a sidebar in
+            # Chapter 1 (Dark Histories) on page 29, which cross-references
+            # the pattern rules on page 109. Filed here because it is a
+            # Shadowlands item pattern, with its own page recorded.
+            #VDjF5H34WyhB1OLSz6V6cr ^"Pit-Forged Obsidian" DEF {
+                ^"Effect" STRING "An item produced with Pit-forged obsidian gains +1 damage, +1 deadliness, and the Unholy quality. Additionally, while in possession of such an item, a character increases the TN of their Fitness and Meditation checks to prevent the Afflicted condition (see p. 271 of the Core Rulebook) from conferring the Shadowlands Taint disadvantage by 2 (to TN 6)."
+                ^"XP Cost" INTEGER 4
+                ^"Rarity Modifier" STRING "+4"
+                ^"Source Page" INTEGER 29
+            }
         }
 
     }
