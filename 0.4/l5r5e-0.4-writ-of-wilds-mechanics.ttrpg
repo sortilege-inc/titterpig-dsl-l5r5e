@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Writ of the Wilds: New Player Options"
-    VERSION "0.4.1"
+    VERSION "0.4.2"
     SPEC_VERSION "0.4.1"
     RELEASE_DATE "2026-03-01"
 
@@ -60,10 +60,8 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
                 ^"Culture" INTEGER 1
             }
             ^"Glory"           INTEGER 35
-            ^"Starting Wealth" DEF {
-                ^"Koku" INTEGER 1
-                ^"Dragonfly glass ornaments" INTEGER 2
-            }
+            ^"Wealth" DEF { ^"Count" INTEGER 1  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
+            ^"Item" DEF { ^"Count" INTEGER 2  ^"Description" STRING "Dragonfly glass ornaments"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -693,7 +691,7 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
                 ^"Design" INTEGER 1
             }
             ^"Status Modification" STRING "-2 (minimum 0)"
-            ^"Starting Wealth" INTEGER 1
+            ^"Wealth" DEF { ^"Count" INTEGER 1  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
 
         RULES {
@@ -716,7 +714,7 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
                 ^"Fitness" INTEGER 1
             }
             ^"Status Modification" STRING "+4"
-            ^"Starting Wealth" DEF { ^"Bu" INTEGER 2 }
+            ^"Wealth" DEF { ^"Count" INTEGER 2  ^"Type" STRING "bu"  ^"Starting" BOOLEAN true }
         }
 
         RULES {
@@ -739,7 +737,7 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
                 CHOOSE 1 [^"Seafaring", ^"Survival"] INTEGER 1
             }
             ^"Status Modification" STRING "+3"
-            ^"Starting Wealth" DEF { ^"Bu" INTEGER 4 }
+            ^"Wealth" DEF { ^"Count" INTEGER 4  ^"Type" STRING "bu"  ^"Starting" BOOLEAN true }
         }
 
         RULES {
@@ -762,7 +760,7 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
                 ^"Courtesy" INTEGER 1
             }
             ^"Status Modification" STRING "+11"
-            ^"Starting Wealth" DEF { ^"Day's Rations" INTEGER 1 }
+            ^"Item" DEF { ^"Count" INTEGER 1  ^"Description" STRING "One day's rations"  ^"Starting" BOOLEAN true }
         }
 
         RULES {

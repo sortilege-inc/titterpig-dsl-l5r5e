@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Path of Waves: Character Creation"
-    VERSION "0.4.4"
+    VERSION "0.4.5"
     SPEC_VERSION "0.4.1"
     RELEASE_DATE "2026-03-01"
 
@@ -316,7 +316,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Design" INTEGER 1
             }
             ^"Status Modification" INTEGER -2
-            ^"Starting Wealth" INTEGER 1
+            ^"Wealth" DEF { ^"Count" INTEGER 1  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -349,10 +349,8 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 }
             }
             ^"Status Modification" INTEGER 10
-            ^"Starting Wealth" DEF {
-                ^"Heirloom" DEF { ^"Koku" INTEGER 3 }
-                ^"Wakizashi" INTEGER 1   # or gaijin equivalent
-            }
+            ^"Item" DEF { ^"Count" INTEGER 1  ^"Description" STRING "An heirloom worth 3 koku"  ^"Starting" BOOLEAN true }
+            ^"Item" DEF { ^"Count" INTEGER 1  ^"Description" STRING "wakizashi"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -368,7 +366,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Fitness" INTEGER 1
             }
             ^"Status Modification" INTEGER 4
-            ^"Starting Wealth" DEF { ^"Bu" INTEGER 2 }
+            ^"Wealth" DEF { ^"Count" INTEGER 2  ^"Type" STRING "bu"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -384,7 +382,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Courtesy" INTEGER 1
             }
             ^"Status Modification" INTEGER -20
-            ^"Starting Wealth" INTEGER 3
+            ^"Wealth" DEF { ^"Count" INTEGER 3  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -400,7 +398,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Survival" INTEGER 1
             }
             ^"Status Modification" INTEGER -20
-            ^"Starting Wealth" DEF { ^"Zeni" INTEGER 5 }
+            ^"Wealth" DEF { ^"Count" INTEGER 5  ^"Type" STRING "zeni"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -416,7 +414,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 CHOOSE 1 [^"Seafaring", ^"Survival"] INTEGER 1
             }
             ^"Status Modification" INTEGER 3
-            ^"Starting Wealth" DEF { ^"Bu" INTEGER 4 }
+            ^"Wealth" DEF { ^"Count" INTEGER 4  ^"Type" STRING "bu"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -432,7 +430,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Command" INTEGER 1
             }
             ^"Status Modification" INTEGER 5
-            ^"Starting Wealth" INTEGER 1
+            ^"Wealth" DEF { ^"Count" INTEGER 1  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -448,7 +446,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Government" INTEGER 1
             }
             ^"Status Modification" INTEGER 5
-            ^"Starting Wealth" INTEGER 1
+            ^"Wealth" DEF { ^"Count" INTEGER 1  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -464,7 +462,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Martial Arts [Melee]" INTEGER 1
             }
             ^"Status Modification" INTEGER 2
-            ^"Starting Wealth" INTEGER 1
+            ^"Wealth" DEF { ^"Count" INTEGER 1  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -480,7 +478,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Games" INTEGER 1
             }
             ^"Status Modification" INTEGER -8
-            ^"Starting Wealth" INTEGER 3
+            ^"Wealth" DEF { ^"Count" INTEGER 3  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -493,7 +491,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Ring Increase" DEF { CHOOSE 1 [^"Air", ^"Fire"] INTEGER 1 }
             ^"Skill Increases" DEF { ^"Skulduggery" INTEGER 2 }
             ^"Status Modification" INTEGER -7
-            ^"Starting Wealth" DEF { ^"Bu" INTEGER 4 }
+            ^"Wealth" DEF { ^"Count" INTEGER 4  ^"Type" STRING "bu"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -509,7 +507,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Courtesy" INTEGER 1
             }
             ^"Status Modification" INTEGER 11
-            ^"Starting Wealth" DEF { ^"Day's Rations" INTEGER 1 }
+            ^"Item" DEF { ^"Count" INTEGER 1  ^"Description" STRING "One day's rations"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -525,7 +523,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
                 ^"Aesthetics" INTEGER 1
             }
             ^"Status Modification" INTEGER -6
-            ^"Starting Wealth" INTEGER 2
+            ^"Wealth" DEF { ^"Count" INTEGER 2  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 

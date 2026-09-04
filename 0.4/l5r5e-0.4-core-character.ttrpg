@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Character creation, clans, schools, advantages, and advancement"
-    VERSION "0.4.12"
+    VERSION "0.4.13"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -208,7 +208,8 @@ BASE "L5R5e_Core_Character" {
             ^"Ring Increase" STRING REQUIRED        # "+1 [Ring] or [Ring]"
             ^"Skill Increases" STRING REQUIRED      # "+1 [Skill], +1 [Skill]"
             ^"Glory" INTEGER MIN 0 MAX 100 REQUIRED
-            ^"Starting Wealth" STRING REQUIRED      # "N koku"
+            ^"Wealth" DEF { }        # money: ^"Count" INTEGER, ^"Type" STRING "koku"|"bu"|"zeni", ^"Starting" BOOLEAN true
+            ^"Item" DEF { }          # zero or more; each: ^"Count" INTEGER, ^"Description" STRING, ^"Starting" BOOLEAN true
         }
 
         RULES {
@@ -379,7 +380,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Tactics" INTEGER 1
             }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" INTEGER 4
+            ^"Wealth" DEF { ^"Count" INTEGER 4  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -396,7 +397,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Survival" INTEGER 1
             }
             ^"Glory"           INTEGER 39
-            ^"Starting Wealth" INTEGER 3
+            ^"Wealth" DEF { ^"Count" INTEGER 3  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -413,7 +414,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Labor" INTEGER 1
             }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" INTEGER 5
+            ^"Wealth" DEF { ^"Count" INTEGER 5  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -430,7 +431,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Theology" INTEGER 1
             }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" INTEGER 4
+            ^"Wealth" DEF { ^"Count" INTEGER 4  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -447,7 +448,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Design" INTEGER 1
             }
             ^"Glory"           INTEGER 39
-            ^"Starting Wealth" INTEGER 10
+            ^"Wealth" DEF { ^"Count" INTEGER 10  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -498,7 +499,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Theology" INTEGER 1
             }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" INTEGER 6
+            ^"Wealth" DEF { ^"Count" INTEGER 6  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -515,7 +516,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Tactics" INTEGER 1
             }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" INTEGER 7
+            ^"Wealth" DEF { ^"Count" INTEGER 7  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -532,7 +533,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Design" INTEGER 1
             }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" INTEGER 8
+            ^"Wealth" DEF { ^"Count" INTEGER 8  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -549,7 +550,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Meditation" INTEGER 1
             }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" INTEGER 7
+            ^"Wealth" DEF { ^"Count" INTEGER 7  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -600,7 +601,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Smithing" INTEGER 1
             }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" INTEGER 4
+            ^"Wealth" DEF { ^"Count" INTEGER 4  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -617,7 +618,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Sentiment" INTEGER 1
             }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" INTEGER 6
+            ^"Wealth" DEF { ^"Count" INTEGER 6  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -634,7 +635,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Tactics" INTEGER 1
             }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" INTEGER 5
+            ^"Wealth" DEF { ^"Count" INTEGER 5  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -651,7 +652,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Theology" INTEGER 1
             }
             ^"Glory"           INTEGER 45
-            ^"Starting Wealth" INTEGER 3
+            ^"Wealth" DEF { ^"Count" INTEGER 3  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -702,7 +703,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Government" INTEGER 1
             }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" INTEGER 5
+            ^"Wealth" DEF { ^"Count" INTEGER 5  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -719,7 +720,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Performance" INTEGER 1
             }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" INTEGER 5
+            ^"Wealth" DEF { ^"Count" INTEGER 5  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -736,7 +737,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Theology" INTEGER 1
             }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" INTEGER 4
+            ^"Wealth" DEF { ^"Count" INTEGER 4  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -753,7 +754,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Fitness" INTEGER 1
             }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" INTEGER 5
+            ^"Wealth" DEF { ^"Count" INTEGER 5  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -804,7 +805,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Sentiment" INTEGER 1
             }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" INTEGER 5
+            ^"Wealth" DEF { ^"Count" INTEGER 5  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -821,7 +822,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Theology" INTEGER 1
             }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" INTEGER 5
+            ^"Wealth" DEF { ^"Count" INTEGER 5  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -838,7 +839,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Theology" INTEGER 1
             }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" INTEGER 4
+            ^"Wealth" DEF { ^"Count" INTEGER 4  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -855,7 +856,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Tactics" INTEGER 1
             }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" INTEGER 5
+            ^"Wealth" DEF { ^"Count" INTEGER 5  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -906,7 +907,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Design" INTEGER 1
             }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" INTEGER 8
+            ^"Wealth" DEF { ^"Count" INTEGER 8  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -923,7 +924,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Performance" INTEGER 1
             }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" INTEGER 6
+            ^"Wealth" DEF { ^"Count" INTEGER 6  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -940,7 +941,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Theology" INTEGER 1
             }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" INTEGER 6
+            ^"Wealth" DEF { ^"Count" INTEGER 6  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -957,7 +958,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Theology" INTEGER 1
             }
             ^"Glory"           INTEGER 39
-            ^"Starting Wealth" INTEGER 4
+            ^"Wealth" DEF { ^"Count" INTEGER 4  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -1009,7 +1010,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Courtesy" INTEGER 1
             }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" INTEGER 9
+            ^"Wealth" DEF { ^"Count" INTEGER 9  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -1026,7 +1027,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Theology" INTEGER 1
             }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" INTEGER 5
+            ^"Wealth" DEF { ^"Count" INTEGER 5  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -1043,7 +1044,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Survival" INTEGER 1
             }
             ^"Glory"           INTEGER 40
-            ^"Starting Wealth" INTEGER 6
+            ^"Wealth" DEF { ^"Count" INTEGER 6  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -1060,7 +1061,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Survival" INTEGER 1
             }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" INTEGER 8
+            ^"Wealth" DEF { ^"Count" INTEGER 8  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -1077,7 +1078,7 @@ BASE "L5R5e_Core_Character" {
                 ^"Tactics" INTEGER 1
             }
             ^"Glory"           INTEGER 44
-            ^"Starting Wealth" INTEGER 6
+            ^"Wealth" DEF { ^"Count" INTEGER 6  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
     }
 
@@ -1102,7 +1103,7 @@ BASE "L5R5e_Core_Character" {
                 CHOOSE 2 [^"Commerce", ^"Labor", ^"Seafaring", ^"Skulduggery", ^"Survival"] INTEGER 1
             }
             ^"Glory"           INTEGER 25
-            ^"Starting Wealth" DEF { ^"Zeni" INTEGER 10 }
+            ^"Wealth" DEF { ^"Count" INTEGER 10  ^"Type" STRING "zeni"  ^"Starting" BOOLEAN true }
         }
 
         RULES {
