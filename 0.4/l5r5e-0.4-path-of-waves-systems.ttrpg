@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Path_of_Waves_Systems" EXTENDS "L5R5e_Core_Systems" {
     NAME "Legend of the Five Rings 5th Edition - Path of Waves: Systems, Titles, Bonds, and NPCs"
-    VERSION "0.4.3"
+    VERSION "0.4.4"
     SPEC_VERSION "0.4.1"
     RELEASE_DATE "2026-03-01"
 
@@ -2011,17 +2011,124 @@ EXTENSION "L5R5e_Path_of_Waves_Systems" EXTENDS "L5R5e_Core_Systems" {
         PROPERTIES {
             ^"Description" STRING "Step-by-step system for creating custom schools. Steps: 1) Determine role(s), 2) Choose affiliations and summary, 3) Design school ability, 4) Choose ring bonuses, 5) Choose skills, 6) Select technique access and starting techniques, 7) Build curriculum and mastery ability, 8) Starting outfit, 9) Name."
         }
-        RULES {
-            #L5RPW07wF3jC4fW5yF6uI0aO9cW: school_build_roles "Seven roles available: Artisan, Bushi, Courtier, Monk, Sage, Shinobi, Shugenja. Recommend 1-2 roles (max 3)."
-            #L5RPW07jZ4xF4dQ7cW8oB7vL0pT: school_build_skills_artisan "Artisan: 7 skills available, 5 picks. Common: Aesthetics, Composition, Courtesy, Culture, Design, Martial Arts [Melee], Smithing."
-            #L5RPW07bG2yZ0cQ4oG2yZ5pZ6wD: school_build_skills_bushi "Bushi: 7 skills available, 5 picks. Common: Command, Fitness, Government, Martial Arts [Melee/Ranged/Unarmed], Meditation, Tactics."
-            #L5RPW07gK3lO5pV5eH3xO4bV1pV: school_build_skills_courtier "Courtier: 7 skills available, 5 picks. Common: Composition, Courtesy, Culture, Government, Martial Arts [Ranged], Performance, Sentiment."
-            #L5RPW07gJ0rE6rX0oI7pF7kD8yR: school_build_skills_monk "Monk: 6 skills available, 4 picks. Common: Fitness, Martial Arts [Melee/Unarmed], Meditation, Survival, Theology."
-            #L5RPW07bD9gZ7eG0mG5kZ4yD2cC: school_build_skills_sage "Sage: 6 skills available, 3 picks. Common: Courtesy, Games, Labor, Meditation, Survival, Theology."
-            #L5RPW07mP7tQ3cK2rR5vV5wN2gS: school_build_skills_shinobi "Shinobi: 7 skills available, 5 picks. Common: Courtesy, Culture, Skulduggery, Martial Arts [Melee/Ranged], Medicine, Performance."
-            #L5RPW07wZ1qM0xN8bC1cU3cO6dK: school_build_skills_shugenja "Shugenja: 6 skills available, 3 picks. Common: Composition, Courtesy, Culture, Games, Meditation, Theology."
-            #L5RPW07jL5iU5uA8tJ1dF6gC7fL: school_build_starting_techniques "Starting techniques by role: Artisan 3, Bushi 2, Courtier 2, Monk 3, Sage 4-5, Shinobi 2, Shugenja 4-5 (including Commune with Spirits)."
-            #L5RPW07xV5yE9aO5oC4lI9gU8oV: school_build_first_ring "Suggested first ring: Artisan (Fire/Water), Bushi (Earth), Courtier/Shinobi (Air), Monk/Sage (Void), Shugenja (attuned element)."
+        # source table (page 76). The seven roles a school can take; the role(s)
+        # drive skills, techniques, and ring bonuses in the steps that follow.
+        #L5RPW07i2cs9XlGP54LtGz ^"Table 2-3: Role Breakdown" DEF {
+            ENTRIES {
+                #L5RPW07Po5dTIUNMx2JfR3 ^"Artisan" DEF  { ^"Description" STRING "Creators, advisors, engineers, and scholars of art" }
+                #L5RPW07ue5cw9G3jfaSs40 ^"Bushi" DEF    { ^"Description" STRING "Warriors, guards, and instructors" }
+                #L5RPW07NVHxK9f1ssqLmaq ^"Courtier" DEF { ^"Description" STRING "Politicians, emissaries, and civil servants" }
+                #L5RPW07XArmniV4mCqtHlz ^"Monk" DEF     { ^"Description" STRING "Political influencers, traveling historians, pinnacles of monastic life and (supposedly) above earthly concerns" }
+                #L5RPW07v79w3pAKi3tBH5h ^"Sage" DEF     { ^"Description" STRING "Those who wield supernatural powers differently from or beyond how a shugenja might wield them in Rokugan" }
+                #L5RPW079cQrnWSb3ocMsE0 ^"Shinobi" DEF  { ^"Description" STRING "Assassins and spies" }
+                #L5RPW07IN5rid5LqVwyhU4 ^"Shugenja" DEF { ^"Description" STRING "Priests of the samurai caste or others who have a special bond with the kami or can control them" }
+            }
+        }
+
+        # source table (pages 78-79). School-ability templates by role; two are open to Any role.
+        #L5RPW07eCo27KwuQzU6dMD ^"Table 2-4: Generic School Abilities" DEF {
+            ENTRIES {
+                #L5RPW07XZ3OIYxS8bxbATk ^"School Ability Template 1" DEF { ^"Role" STRING "Any" ^"Ability Template" STRING "Choose one skill group when you create this school ability. When you perform a check using a skill from that group, you may treat your ranks in the skill as being equal to your school rank. If your ranks in that skill are equal to or higher than your school rank, or if you have 5 ranks in the skill, you may add one kept ■ set to an ⚙ result instead." }
+                #L5RPW07ZT6hUD2vM6Pbpuu ^"School Ability Template 2" DEF { ^"Role" STRING "Any" ^"Ability Template" STRING "Choose one skill when you create this school ability. Once per scene, when you make a check using this skill, you may add a number of kept ■ set to ⚙ results equal to your school rank." }
+                #L5RPW076LZqQNaU60H1jyU ^"School Ability Template 3" DEF { ^"Role" STRING "Artisan" ^"Ability Template" STRING "Choose one Artisan skill when you create this school ability. Before you make a check using that skill, you may receive strife up to your school rank to reduce the TN by that amount." }
+                #L5RPW07hlRuqkugL8LrF2W ^"School Ability Template 4" DEF { ^"Role" STRING "Bushi" ^"Ability Template" STRING "Choose one weapon type or unarmed when you create this school ability. When you make a skill check using this weapon type, if you succeed, you may receive fatigue up to your school rank to add that many bonus successes." }
+                #L5RPW077sMf2v31gHgi3XE ^"School Ability Template 5" DEF { ^"Role" STRING "Courtier" ^"Ability Template" STRING "Choose one Scholar or Social skill when you create this school ability. When you make a check using that skill, you may negate a number of ⚈ symbols up to your school rank." }
+                #L5RPW07v2ggGnhBXmzmOva ^"School Ability Template 6" DEF { ^"Role" STRING "Monk" ^"Ability Template" STRING "Choose an action type (Attack, Movement, Scheme, or Support) when you create this school ability. When you make a check to perform an action of this type, before rolling, you may exchange a number of ■ up to your school rank for ⚈. When you provide assistance on an action of this type, the character you assist may exchange one ■ for an ⚈." }
+                #L5RPW070gItoRac4gDLUYX ^"School Ability Template 7" DEF { ^"Role" STRING "Sage" ^"Ability Template" STRING "Choose one Artisan or Scholar skill when you create this school ability. You may use this skill for invocations, and you cannot channel invocations (see pages 189–190 of the core rulebook). Once per scene, when you succeed on a check to use an invocation technique, you may receive a number of strife up to your school rank to add that many bonus successes." }
+                #L5RPW07fHyuiRAqPMT1wa3 ^"School Ability Template 8" DEF { ^"Role" STRING "Shinobi" ^"Ability Template" STRING "Choose one Social or Trade skill when you create this school ability. Once per scene when you make a check using that skill, you may choose a number of dropped dice up to your school rank and reserve them. Until the end of the scene, when you make a check using a different skill, you may add one of the reserved dice to the check as a kept die, set to the result it had when it was reserved. This expends that reserved die." }
+                #L5RPW07G979MHKgYwve65y ^"School Ability Template 9" DEF { ^"Role" STRING "Shugenja" ^"Ability Template" STRING "Choose an effect keyword (Augment, Bind, Curse, Mend, Purify, Scry, Smite, Summon, etc.; see pages 192 and 225 of the core rulebook) when you create this school ability. When you make a check for an action that uses that keyword, you may choose a number of your rolled dice up to your school rank containing ⚈ symbols and reroll them." }
+            }
+        }
+
+        # source table (page 79). Suggested first ring increase by the school's primary role.
+        #L5RPW07SxReWDu92zh6ZKP ^"Table 2-5: Suggested First Ring Bonuses" DEF {
+            ENTRIES {
+                #L5RPW07tnXomvsgPe41iEP ^"Artisan" DEF { ^"Ring Increase" STRING "Fire or Water" }
+                #L5RPW07tJzGM73QLQwX1zV ^"Bushi" DEF { ^"Ring Increase" STRING "Earth" }
+                #L5RPW07OT3nHlAxOQvgQ7e ^"Courtier or Shinobi" DEF { ^"Ring Increase" STRING "Air" }
+                #L5RPW07TT4IspGuYqvJIJS ^"Monk or Sage" DEF { ^"Ring Increase" STRING "Void" }
+                #L5RPW07NaXltjV9CIWez8c ^"Shugenja" DEF { ^"Ring Increase" STRING "The element the school is attuned to" }
+            }
+        }
+
+        # source table (page 79). Suggested second ring increase by what the school is known for.
+        #L5RPW07IGE9GL53SPJKXE3 ^"Table 2-6: Suggested Second Ring Bonus" DEF {
+            ENTRIES {
+                #L5RPW074U4ldUjxeI7M4qA ^"Air" DEF { ^"Trait School Is Known For" STRING "Precision, grace, or manners" }
+                #L5RPW07rBsIeAyfMzNqMIJ ^"Earth" DEF { ^"Trait School Is Known For" STRING "Patience, tradition, or resilience" }
+                #L5RPW07iAV3JBl92tL7b1e ^"Fire" DEF { ^"Trait School Is Known For" STRING "Inventiveness, ferocity, or speed" }
+                #L5RPW07dI3JLYbkSLz0ExT ^"Void" DEF { ^"Trait School Is Known For" STRING "Philosophy, selflessness, or insight" }
+                #L5RPW07kzKF4IuoF4hArLz ^"Water" DEF { ^"Trait School Is Known For" STRING "Adaptability, flexibility, or awareness" }
+            }
+        }
+
+        # source table (page 80). Per role: how many skills the school makes available, how many a player picks, and the common skills for that role.
+        #L5RPW07mWtzRR0sulWuz9V ^"Table 2-7: Skill Choices" DEF {
+            ENTRIES {
+                #L5RPW07VR7YdrYo5kdf6wO ^"Artisan" DEF { ^"Skills Available" INTEGER 7 ^"Skill Picks" INTEGER 5 ^"Common Skills Available" STRING "Aesthetics, Composition, Courtesy, Culture, Design, Martial Arts [Melee], Smithing" }
+                #L5RPW07f38aQRu7EKHUZbW ^"Bushi" DEF { ^"Skills Available" INTEGER 7 ^"Skill Picks" INTEGER 5 ^"Common Skills Available" STRING "Command, Fitness, Government, Martial Arts [Melee], Martial Arts [Ranged], Martial Arts [Unarmed], Meditation, Tactics" }
+                #L5RPW07IiSLzLM17Ry0LZP ^"Courtier" DEF { ^"Skills Available" INTEGER 7 ^"Skill Picks" INTEGER 5 ^"Common Skills Available" STRING "Composition, Courtesy, Culture, Government, Martial Arts [Ranged], Performance, Sentiment" }
+                #L5RPW07ubZYC7CiWvLmaD2 ^"Monk" DEF { ^"Skills Available" INTEGER 6 ^"Skill Picks" INTEGER 4 ^"Common Skills Available" STRING "Fitness, Martial Arts [Melee], Martial Arts [Unarmed], Meditation, Survival, Theology" }
+                #L5RPW07Qsj9ghNTDBmfEiO ^"Sage" DEF { ^"Skills Available" INTEGER 6 ^"Skill Picks" INTEGER 3 ^"Common Skills Available" STRING "Courtesy, Games, Labor, Meditation, Survival, Theology" }
+                #L5RPW07wagxJMEqbyxgQZ8 ^"Shinobi" DEF { ^"Skills Available" INTEGER 7 ^"Skill Picks" INTEGER 5 ^"Common Skills Available" STRING "Courtesy, Culture, Skulduggery, Martial Arts [Melee], Martial Arts [Ranged], Medicine, Performance" }
+                #L5RPW07y4dqpoTxwo85Zin ^"Shugenja" DEF { ^"Skills Available" INTEGER 6 ^"Skill Picks" INTEGER 3 ^"Common Skills Available" STRING "Composition, Courtesy, Culture, Games, Meditation, Theology" }
+            }
+        }
+
+        # source table (page 81). Number of starting techniques by primary role.
+        #L5RPW074j65P0EmWG9h2AR ^"Table 2-8: Starting Techniques" DEF {
+            ENTRIES {
+                #L5RPW07WFUmOnL2bvHwJiE ^"Artisan" DEF { ^"Number of Starting Techniques" STRING "3" }
+                #L5RPW071SoJR4AhrkSkzcz ^"Bushi" DEF { ^"Number of Starting Techniques" STRING "2" }
+                #L5RPW07dyEWFG3ZgHe8A4d ^"Courtier" DEF { ^"Number of Starting Techniques" STRING "2" }
+                #L5RPW07MgnAlVMDmWXFRg4 ^"Monk" DEF { ^"Number of Starting Techniques" STRING "3" }
+                #L5RPW07ccis8eLKtiSoFMI ^"Sage" DEF { ^"Number of Starting Techniques" STRING "4–5" }
+                #L5RPW076b5H2He75uQJcQf ^"Shinobi" DEF { ^"Number of Starting Techniques" STRING "2" }
+                #L5RPW07KAjxqqAAt1vM2ig ^"Shugenja" DEF { ^"Number of Starting Techniques" STRING "4–5 (including the Commune with Spirits Ritual ⛩)" }
+            }
+        }
+
+        # source table (page 82). The worked example of a rank's seven advances (one skill group, three skills, one technique group, two techniques).
+        #L5RPW07zIl3BYkF4Rpq7MU ^"Table 2-9: Morgan's Rank 1 Sample Curriculum" DEF {
+            ENTRIES {
+                #L5RPW07XCnCku5wyND4Lgu ^"Artisan Skills" DEF { ^"Type" STRING "Skl. Grp." }
+                #L5RPW074T3NWZTonTZ75TO ^"Courtesy" DEF { ^"Type" STRING "Skill" }
+                #L5RPW07uVLv2Q3KXrJNhT6 ^"Theology" DEF { ^"Type" STRING "Skill" }
+                #L5RPW07CeaDDE7OjqpeUtj ^"Martial Arts [Melee]" DEF { ^"Type" STRING "Skill" }
+                #L5RPW070vbjhOJcEOCsDsZ ^"Rank 1 Shūji" DEF { ^"Type" STRING "Tech. Grp." ^"Category" STRING "✎" }
+                #L5RPW07mPDEc8xqVnM7LAC ^"Civility Foremost" DEF { ^"Type" STRING "Technique" ^"Category" STRING "✎" }
+                #L5RPW07756pnwg8LS2K3ne ^"Snapping Branch Style" DEF { ^"Type" STRING "Technique" ^"Category" STRING "⚔" }
+            }
+        }
+
+        # source table (page 83). Mastery-ability templates; six are open to Any role, the rest are role-gated.
+        #L5RPW07NQztp4lvRkiwxbC ^"Table 2-10: Generic Mastery Abilities" DEF {
+            ENTRIES {
+                #L5RPW070bq0qNIgQn04FBg ^"Mastery Ability Template 1" DEF { ^"Role" STRING "Any" ^"Ability Template" STRING "Increase your endurance by your ranks in Fitness." }
+                #L5RPW07L6pRbXI4VdBpFpg ^"Mastery Ability Template 2" DEF { ^"Role" STRING "Any" ^"Ability Template" STRING "Increase your composure by your ranks in Meditation." }
+                #L5RPW07oyd12IE3UBtD5hN ^"Mastery Ability Template 3" DEF { ^"Role" STRING "Any" ^"Ability Template" STRING "Choose one technique category the school does not already have available (kata, kihō, invocations, shūji, etc.) when you gain this mastery ability. That technique type becomes available to you." }
+                #L5RPW07q2Jmqt3ARowjEE7 ^"Mastery Ability Template 4" DEF { ^"Role" STRING "Any" ^"Ability Template" STRING "If your school ability can be used a limited number of times per scene, you may spend 1 Void point to use it one additional time per scene." }
+                #L5RPW072gf2u0Ilw3PkSUe ^"Mastery Ability Template 5" DEF { ^"Role" STRING "Any" ^"Ability Template" STRING "If your school ability requires you to choose something from a list (a skill, a skill group, a technique category, etc.), choose one additional entry from that list when you create this mastery ability. Your school ability applies to both chosen entries." }
+                #L5RPW07gA6limF3kHQnghI ^"Mastery Ability Template 6" DEF { ^"Role" STRING "Any" ^"Ability Template" STRING "Choose one skill when you create this mastery ability. Once per game session when you make a check using that skill, you may reroll all of your dice. If you do not succeed after rerolling, gain 1 Void point." }
+                #L5RPW07qyG8YNQH94647V6 ^"Mastery Ability Template 7" DEF { ^"Role" STRING "Monk, Sage, Shugenja" ^"Ability Template" STRING "When you defend against damage, you may treat your physical resistance and supernatural resistance as equal to your ranks in Theology." }
+                #L5RPW07Y5ty6fbGXo2A8ng ^"Mastery Ability Template 8" DEF { ^"Role" STRING "Monk, Sage, Shugenja" ^"Ability Template" STRING "Choose one ring when you create this mastery ability. You may train that ring to rank 6 (paying 18 XP)." }
+                #L5RPW07C8rcgwkbv1UpjKj ^"Mastery Ability Template 9" DEF { ^"Role" STRING "Artisan, Bushi, Courtier, Shinobi" ^"Ability Template" STRING "Choose one skill group when you choose this mastery ability. You may train skills in that group to rank 6 (paying 12 XP per skill raised from rank 5 to rank 6 this way)." }
+                #L5RPW07QpgwCqjBtsuX3g7 ^"Mastery Ability Template 10" DEF { ^"Role" STRING "Artisan, Bushi, Courtier, Shinobi" ^"Ability Template" STRING "Choose one technique on the curriculum that requires a check to activate when you create this mastery ability. You treat the TN of this check as reduced by your ranks in the skill to activate it (to a minimum of TN 1)." }
+                #L5RPW071ashSJOJTKH7FgP ^"Mastery Ability Template 11" DEF { ^"Role" STRING "Artisan, Bushi, Courtier, Shinobi" ^"Ability Template" STRING "Choose one technique on the curriculum that requires spending one or more ⚙ to activate when you create this mastery ability. When you spend at least the minimum amount of ⚙ to activate that technique, you count as spending that amount of ⚙ plus ⚙⚙ instead." }
+            }
+        }
+
+        # source table (page 84). Standard starting equipment by role. (“journel” in the Monk row is reproduced as printed.)
+        #L5RPW07T9XAj3Z7QDnHALb ^"Table 2-11: Suggested Starting Outfits" DEF {
+            ENTRIES {
+                #L5RPW07g69AkOi7Nvip69d ^"Artisan" DEF { ^"Clothing and Armor" STRING "Traveling clothes, ceremonial clothes, and ashigaru armor" ^"Weapons" STRING "Wakizashi (short sword) and yumi (bow) with a quiver of arrows" ^"Other Gear" STRING "Traveling pack, scroll satchel, calligraphy set or musical instrument, journal" }
+                #L5RPW07KS9OEVcgUPjQyK8 ^"Bushi" DEF { ^"Clothing and Armor" STRING "Traveling clothes, choice of ashigaru armor or lacquered armor" ^"Weapons" STRING "Daishō (katana and wakizashi); choice of yari (spear), yumi (bow) and a quiver of arrows, or naginata (polearm)" ^"Other Gear" STRING "Traveling pack" }
+                #L5RPW07VfGknrdAsv6TVy3 ^"Courtier" DEF { ^"Clothing and Armor" STRING "Traveling clothes, ceremonial clothes" ^"Weapons" STRING "Daishō (katana and wakizashi) and yumi (bow) with a quiver of arrows" ^"Other Gear" STRING "Traveling pack, calligraphy set, scroll satchel" }
+                #L5RPW07ErZmXzyZkqvrNXk ^"Monk" DEF { ^"Clothing and Armor" STRING "Traveling clothes" ^"Weapons" STRING "Daishō (katana and wakizashi) and 1 weapon of rarity 6 or lower" ^"Other Gear" STRING "Traveling pack, journel" }
+                #L5RPW07h1PpFSxsU2DSmE6 ^"Sage" DEF { ^"Clothing and Armor" STRING "Traveling clothes, choice of sanctified robes or concealed armor" ^"Weapons" STRING "Wakizashi (short sword) and 1 weapon of rarity 5 or lower" ^"Other Gear" STRING "Traveling pack, scroll satchel, calligraphy set, various vials and components" }
+                #L5RPW07JwdrUBpY020zhtD ^"Shinobi" DEF { ^"Clothing and Armor" STRING "Traveling clothes, concealed armor, and mundane clothes" ^"Weapons" STRING "Daishō (katana and wakizashi) and 1 weapon of rarity 7 or lower" ^"Other Gear" STRING "Traveling pack, two knives, makeup kit, one vial of poison" }
+                #L5RPW07IQuDQssKwuOJGea ^"Shugenja" DEF { ^"Clothing and Armor" STRING "Traveling clothes and sanctified robes" ^"Weapons" STRING "Wakizashi (short sword); choice of yumi (bow) with a quiver of arrows or a bō (staff)" ^"Other Gear" STRING "Traveling pack, scroll satchel, calligraphy set, knife, gifts for the kami" }
+            }
         }
     }
 }
