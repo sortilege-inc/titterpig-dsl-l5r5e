@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Path of Waves: Character Creation"
-    VERSION "0.4.2"
+    VERSION "0.4.4"
     SPEC_VERSION "0.4.1"
     RELEASE_DATE "2026-03-01"
 
@@ -1666,6 +1666,58 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     # ===========================
+    # QUESTIONS 1-3: REGION, UPBRINGING, SCHOOL
+    # ===========================
+
+    # source (pages 36-38). Region a rōnin/peasant/gaijin comes from, in
+    # place of a clan; each gives a ring increase, a skill increase, and a
+    # starting glory. Flavor for each region lives in the .lore.
+    ^"Question 1: Region" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        PROPERTIES {
+            ^"Question" INTEGER 1 FIXED
+            ^"Question Text" STRING "What region does your character come from?" FIXED
+        }
+        # A region replaces a clan for rōnin, peasants, and gaijin. The options
+        # are the six ^"... Region" DEFs in this file (each carries ^"Region",
+        # a Ring Increase, a Skill Increase, and a Glory); flavor is in the .lore.
+        RULES {
+            #L5RPW05hshwQphe3dmS3PE: q1_choose_a_region
+        }
+    }
+
+    ^"Question 2: Upbringing" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        PROPERTIES {
+            ^"Question" INTEGER 2 FIXED
+            ^"Question Text" STRING "What was your character's upbringing?" FIXED
+        }
+        # An upbringing replaces a family. The options are the thirteen
+        # ^"... Upbringing" DEFs in this file (each carries ^"Upbringing", a
+        # Ring Increase, Skill Increases, a Status Modification, and Starting
+        # Wealth); flavor is in the .lore.
+        RULES {
+            #L5RPW05AcyX3HMoO8siCka: q2_choose_an_upbringing
+        }
+    }
+
+    # source (page 46). The character's school and its roles. Choose one of the
+    # rōnin/peasant/gaijin schools defined in this file (each names its own
+    # Roles), or build a custom one with the ^"School Building System" (Path of
+    # Waves pages 76-84). The seven roles are Artisan, Bushi, Courtier, Monk,
+    # Sage, Shinobi, and Shugenja.
+    ^"Question 3: School" DEF {
+        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        PROPERTIES {
+            ^"Question" INTEGER 3 FIXED
+            ^"Question Text" STRING "What is your character's school, and what are its associated roles?" FIXED
+        }
+        RULES {
+            #L5RPW05O7jjeoqs87aA1HO: q3_choose_a_ronin_school_or_build_one
+        }
+    }
+
+    # ===========================
     # QUESTION 4: WHAT GETS YOUR
     # CHARACTER IN AND OUT OF TROUBLE?
     # ===========================
@@ -1702,8 +1754,13 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     # source stat block (page 215)
-    ^"The Past System" DEF {
+    ^"Question 5: The Past" DEF {
         APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+
+        PROPERTIES {
+            ^"Question" INTEGER 5 FIXED
+            ^"Question Text" STRING "What is your character's past and how does it affect them?" FIXED
+        }
 
         # Ronin, peasants, and gaijin do not have the same giri
         # attribute as samurai. Instead, giri is replaced by the
@@ -1726,19 +1783,19 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     TABLE "Sample Pasts" {
         ROLL "d100"
-        "01-06" "Spiritual Troubles: Because you desecrated a shrine, ignored an oath, or crossed the Fortunes (or other spirits) in some other way, these forces hound you at every turn. You face curses; misfortune; subtle distrust from those around you, even if they do not know what you did; or direct attacks by spirits."
-        "07-14" "Bad Family History: Your family may or may not have been falsely accused, but sometimes the accusation is enough. Too many people know and judge you for it."
-        "15-22" "Bad Reputation: Due to an actual or imagined wrongdoing, your name is a burden to you. You, or a close relation associated with you, may have: • Been accused of murder • Authored an inappropriate work (a pillow book, a heretical tract, or a satire about the Emperor) • Had a messy affair and perhaps produced a child • Engaged in thievery • Voluntarily left your liege"
-        "23-30" "Debts to Pay: You owe a vast sum of money to some individual or family, and you must pay back a percentage of it on a regular basis. If you fail to make a payment, you may find yourself the target of a bounty."
-        "31-38" "Desertion: Whether due to cowardice or for admirable reasons, you left your post. Your commander, liege, or peers intend to bring you back to answer for your crime."
-        "39-46" "Duty: You still adhere to an ideal, whether it comes from a clan, your monastic vows, a governmental post, your family, or other outsiders. Without this ideal, you would fall apart. If you choose this past, you may optionally use the rules for giri in the core rulebook, with your GM’s approval (pages 88–90)."
-        "47-54" "Fallen Family Legacy: Your family once had a name, land, and title. You still have the name, but nothing else. Your name, however, does not protect you from bitter heimin or ruthless bandits, and other samurai treat you worse than dirt."
-        "55-62" "Family in Need: Your family needs money, medicine, care, attention, rescue from a rival clan or mysterious captors, or some other thing from you. Without it, they will perish."
-        "63-70" "Forsaken Vows: Perhaps you still keep your head shaved, but you were expelled from a monastery or left for personal reasons. You cannot return until you resolve those issues."
-        "71-78" "Long Path of Waves: After your gempuku, you set out to explore the world. You have not returned to your home, and your family seeks to take you back."
-        "79-86" "Lifelong Enemy: An individual or a family has competed against you for the same love, position, power, wealth, or fame all your life. They block you at every turn."
-        "87-93" "Unearned Heroism: You won a duel or contest against a master by accident or via nefarious means. The master or their subordinate seeks you out, and the pressures of your reputation follow you."
-        "94-100" "Witness: You know too much, having observed a crime, spied on some evil magic, or seen nobility where they shouldn’t have been. You’ve kept your mouth shut, but the spied-upon party wants you silent permanently."
+        "01-06" "Spiritual Troubles" "Because you desecrated a shrine, ignored an oath, or crossed the Fortunes (or other spirits) in some other way, these forces hound you at every turn. You face curses; misfortune; subtle distrust from those around you, even if they do not know what you did; or direct attacks by spirits."
+        "07-14" "Bad Family History" "Your family may or may not have been falsely accused, but sometimes the accusation is enough. Too many people know and judge you for it."
+        "15-22" "Bad Reputation" "Due to an actual or imagined wrongdoing, your name is a burden to you. You, or a close relation associated with you, may have: • Been accused of murder • Authored an inappropriate work (a pillow book, a heretical tract, or a satire about the Emperor) • Had a messy affair and perhaps produced a child • Engaged in thievery • Voluntarily left your liege"
+        "23-30" "Debts to Pay" "You owe a vast sum of money to some individual or family, and you must pay back a percentage of it on a regular basis. If you fail to make a payment, you may find yourself the target of a bounty."
+        "31-38" "Desertion" "Whether due to cowardice or for admirable reasons, you left your post. Your commander, liege, or peers intend to bring you back to answer for your crime."
+        "39-46" "Duty" "You still adhere to an ideal, whether it comes from a clan, your monastic vows, a governmental post, your family, or other outsiders. Without this ideal, you would fall apart. If you choose this past, you may optionally use the rules for giri in the core rulebook, with your GM’s approval (pages 88–90)."
+        "47-54" "Fallen Family Legacy" "Your family once had a name, land, and title. You still have the name, but nothing else. Your name, however, does not protect you from bitter heimin or ruthless bandits, and other samurai treat you worse than dirt."
+        "55-62" "Family in Need" "Your family needs money, medicine, care, attention, rescue from a rival clan or mysterious captors, or some other thing from you. Without it, they will perish."
+        "63-70" "Forsaken Vows" "Perhaps you still keep your head shaved, but you were expelled from a monastery or left for personal reasons. You cannot return until you resolve those issues."
+        "71-78" "Long Path of Waves" "After your gempuku, you set out to explore the world. You have not returned to your home, and your family seeks to take you back."
+        "79-86" "Lifelong Enemy" "An individual or a family has competed against you for the same love, position, power, wealth, or fame all your life. They block you at every turn."
+        "87-93" "Unearned Heroism" "You won a duel or contest against a master by accident or via nefarious means. The master or their subordinate seeks you out, and the pressures of your reputation follow you."
+        "94-100" "Witness" "You know too much, having observed a crime, spied on some evil magic, or seen nobility where they shouldn’t have been. You’ve kept your mouth shut, but the spied-upon party wants you silent permanently."
     }
 
     # ===========================
@@ -1767,26 +1824,26 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     TABLE "Sample Ninjō" {
         ROLL "d100"
-        "01-04" "Achieve Mastery: Whether at swordplay, art, calligraphy, poetry, or even butchery, you seek to be the best through constant challenges. You may, however, settle for merely being seen as the best."
-        "05-08" "Amass Followers: You claim to be a bandit leader, crime lord, or head of a heretical cult. You may actually be charismatic or have an elitist or populist message, but you still need an audience to appreciate you."
-        "09-13" "Assist the Spirits: While others deal with the corporeal, your concern lies with the spiritual. Plenty of spirits are lost, abused by humans, or unmoored from where they belong, and they require compassion."
-        "14-18" "Atonement: You did a great wrong and must make up for it. Your guilt drives you, as does the belief that your death can’t correct the mistake: only your actions can."
-        "19-23" "Construct a Great Work: You are driven to construct a masterwork, whether a gate, sculpture, painting, text, or shrine. You need the best materials, ideal location, and perfect inspiration, however, to make your magnum opus last the ages."
-        "24-28" "Discover a Family Heritage: Your family has lost a claim to greatness. You must find it. It could be a lineage scroll, an ancient relic, or a piece of art or architecture."
-        "29-33" "Enact Justice: The Celestial Order has been disrupted. You intend to embody justice by exposing a vicious secret, revealing evidence of a crime, or getting a criminal to confess."
-        "34-38" "Establish a Family: You want to begin a grand lineage. Love in this case is secondary, but your partner, or partners, must share your goal for this family to be strong and united."
-        "39-43" "Find a Lord to Serve: You wish to do what many rōnin long to for—find a lord, a house, and a place where you belong. You wish to regain a status you once lost, improve your station, or integrate into a foreign society as fully as you are able."
-        "44-48" "Find a Sensei: To study under the great masters is the path to becoming a great master yourself, and a sensei’s recognition of your potential is the greatest compliment. For those less scrupulous, this also means benefiting from a sensei’s reputation."
-        "49-53" "Find True Love: Love may be a frivolous emotion, but it brings you happiness. The world scoffs at such trivialities, making true love rare, but rarity makes it all the more valuable."
-        "54-58" "Gain Mystical Power: You want the power to change the world—reality itself—through legitimate study or as a mahō-tsukai, a blood magic practitioner. You might obtain this power through ancient knowledge, bargaining with a spirit, or supernatural insight from kami or kansen."
-        "59-63" "Kill Monsters: Demons cause misery and weaken society. They may also have caused harm to you or your loved ones. You must destroy these spirits of corruption, both for your own sake and for the sake of the world."
-        "64-68" "Regain Your Home: Perhaps you have traveled far from your homeland and have since lost your way, or maybe your home was destroyed by a natural event, a supernatural creature, or an angry noble. Whatever it was, your home is gone, and you desperately wish to return to or rebuild it."
-        "69-73" "Personal Security: Be it a parcel of land, money to buy your way into a more secure living situation, or a financial stipend, you want some reliable material resource to ensure that you and your family have a future."
-        "74-78" "Recover a Relic: History is a story, and stories carry power. A relic holds all three, connecting you to the past. The relic you strive to recover—whether it has cultural, monetary, or spiritual power—can grant you a future."
-        "79-83" "Build a Reputation: You want your reputation to spread throughout Rokugan, to samurai and heimin alike. Perhaps with a little inspiration, your deeds will be written into history."
-        "84-88" "Tame a Great Beast: Terrifying creatures roam Rokugan. They harass farmers and hunters and disrupt the order of life. Only you can end this threat, by taming it, but there is always another one in the next forest."
-        "89-93" "Uncover a Conspiracy: Whispers in the shadows and behind walls hint of a plot to overthrow or murder those in power. Friends may be foes, and trust is a rare commodity. You walk in those same shadows to bring the conspirators into the light."
-        "94-100" "Wreak Vengeance: A villain has wronged you or someone you care about. The wrongdoer may or may not know or remember you. You have pledged something worse than death for them."
+        "01-04" "Achieve Mastery" "Whether at swordplay, art, calligraphy, poetry, or even butchery, you seek to be the best through constant challenges. You may, however, settle for merely being seen as the best."
+        "05-08" "Amass Followers" "You claim to be a bandit leader, crime lord, or head of a heretical cult. You may actually be charismatic or have an elitist or populist message, but you still need an audience to appreciate you."
+        "09-13" "Assist the Spirits" "While others deal with the corporeal, your concern lies with the spiritual. Plenty of spirits are lost, abused by humans, or unmoored from where they belong, and they require compassion."
+        "14-18" "Atonement" "You did a great wrong and must make up for it. Your guilt drives you, as does the belief that your death can’t correct the mistake: only your actions can."
+        "19-23" "Construct a Great Work" "You are driven to construct a masterwork, whether a gate, sculpture, painting, text, or shrine. You need the best materials, ideal location, and perfect inspiration, however, to make your magnum opus last the ages."
+        "24-28" "Discover a Family Heritage" "Your family has lost a claim to greatness. You must find it. It could be a lineage scroll, an ancient relic, or a piece of art or architecture."
+        "29-33" "Enact Justice" "The Celestial Order has been disrupted. You intend to embody justice by exposing a vicious secret, revealing evidence of a crime, or getting a criminal to confess."
+        "34-38" "Establish a Family" "You want to begin a grand lineage. Love in this case is secondary, but your partner, or partners, must share your goal for this family to be strong and united."
+        "39-43" "Find a Lord to Serve" "You wish to do what many rōnin long to for—find a lord, a house, and a place where you belong. You wish to regain a status you once lost, improve your station, or integrate into a foreign society as fully as you are able."
+        "44-48" "Find a Sensei" "To study under the great masters is the path to becoming a great master yourself, and a sensei’s recognition of your potential is the greatest compliment. For those less scrupulous, this also means benefiting from a sensei’s reputation."
+        "49-53" "Find True Love" "Love may be a frivolous emotion, but it brings you happiness. The world scoffs at such trivialities, making true love rare, but rarity makes it all the more valuable."
+        "54-58" "Gain Mystical Power" "You want the power to change the world—reality itself—through legitimate study or as a mahō-tsukai, a blood magic practitioner. You might obtain this power through ancient knowledge, bargaining with a spirit, or supernatural insight from kami or kansen."
+        "59-63" "Kill Monsters" "Demons cause misery and weaken society. They may also have caused harm to you or your loved ones. You must destroy these spirits of corruption, both for your own sake and for the sake of the world."
+        "64-68" "Regain Your Home" "Perhaps you have traveled far from your homeland and have since lost your way, or maybe your home was destroyed by a natural event, a supernatural creature, or an angry noble. Whatever it was, your home is gone, and you desperately wish to return to or rebuild it."
+        "69-73" "Personal Security" "Be it a parcel of land, money to buy your way into a more secure living situation, or a financial stipend, you want some reliable material resource to ensure that you and your family have a future."
+        "74-78" "Recover a Relic" "History is a story, and stories carry power. A relic holds all three, connecting you to the past. The relic you strive to recover—whether it has cultural, monetary, or spiritual power—can grant you a future."
+        "79-83" "Build a Reputation" "You want your reputation to spread throughout Rokugan, to samurai and heimin alike. Perhaps with a little inspiration, your deeds will be written into history."
+        "84-88" "Tame a Great Beast" "Terrifying creatures roam Rokugan. They harass farmers and hunters and disrupt the order of life. Only you can end this threat, by taming it, but there is always another one in the next forest."
+        "89-93" "Uncover a Conspiracy" "Whispers in the shadows and behind walls hint of a plot to overthrow or murder those in power. Friends may be foes, and trust is a rare commodity. You walk in those same shadows to bring the conspirators into the light."
+        "94-100" "Wreak Vengeance" "A villain has wronged you or someone you care about. The wrongdoer may or may not know or remember you. You have pledged something worse than death for them."
     }
 
     # ===========================
