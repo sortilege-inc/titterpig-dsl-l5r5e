@@ -1,0 +1,118 @@
+# L5R 5E — Blood of the Lioness: The Advisors (premade historical personas)
+# The premade historical counterparts for Part Two (Blood of the Lioness, FFG,
+# p.12 "The Advisors", plus Matsu no Shion Nori from the p.13 sidebar). The source
+# is explicit that these are NOT full characters: "Mechanically, they use their
+# normal character sheet, and are armed and armored with historical Lion versions
+# of their usual attire." A player keeps their own rings, skills, school, and
+# techniques, and adopts only the persona's identity, ninjō, giri, and backstory
+# for the vision of the Battle of Snow Plain.
+#
+# They are therefore modeled as a persona OVERLAY, not a ^"Samurai" instance:
+# ^"Historical Persona" APPLIES TO [^"Samurai"] — it attaches to the player's own
+# samurai rather than being one, so it carries no rings/skills/school of its own.
+# The full advisor blurb is reproduced verbatim in each DESCRIPTION; the ninjō and
+# giri are lifted into fields for consumers, matching the pregen convention.
+
+EXTENSION "L5R5e_BloodOfTheLioness_Advisors" {
+    NAME "Blood of the Lioness — The Advisors"
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-05"
+    DEPENDS_ON "L5R5e_Core_Core"
+
+    # The overlay type: a premade historical identity a PC takes on for Part Two.
+    ^"Historical Persona" DEF {
+        APPLIES TO [^"Samurai"]
+
+        # A persona overlay applied to a player's own character during the Battle
+        # of Snow Plain vision. The player retains their character's rings, skills,
+        # school, techniques, and derived attributes; the persona supplies only the
+        # historical identity, ninjō, giri, and backstory. Armament and armor are
+        # the character's usual gear in historical Lion form.
+        PROPERTIES {
+            ^"Name" STRING REQUIRED
+            ^"Clan" STRING
+            ^"Family" STRING
+            ^"Ninjo" STRING   # the persona's personal desire
+            ^"Giri" STRING    # the persona's sworn duty
+        }
+    }
+
+    # ── Matsu Sugi ─────────────────────────────────────────────────────────
+    #L5RBOLadvMatsuSugi0001 ^"Matsu Sugi" DEF {
+        EXTENDS ^"Historical Persona"
+        PROPERTIES {
+            ^"Name" STRING "Matsu Sugi" FIXED
+            ^"Clan" STRING "Lion"
+            ^"Family" STRING "Matsu"
+            ^"Ninjo" STRING "To survive this military campaign and enjoy a quiet retirement at a monastery."
+            ^"Giri" STRING "To keep Sakura alive at any cost."
+        }
+        DESCRIPTION "Matsu Sugi is a veteran bodyguard of Sakura. Their ninjō is simply to survive this military campaign and enjoy a quiet retirement at a monastery. Their giri, however, is to keep Sakura alive at any cost."
+    }
+
+    # ── Akodo Heihachi ─────────────────────────────────────────────────────
+    #L5RBOLadvAkodoHeihachi1 ^"Akodo Heihachi" DEF {
+        EXTENDS ^"Historical Persona"
+        PROPERTIES {
+            ^"Name" STRING "Akodo Heihachi" FIXED
+            ^"Clan" STRING "Lion"
+            ^"Family" STRING "Akodo"
+            ^"Ninjo" STRING "To find a chance to express their true (romantic or platonic) feelings to Yū."
+            ^"Giri" STRING "To root out any Unicorn spies in the camp."
+        }
+        DESCRIPTION "Akodo Heihachi is a magistrate with a sharp intuition and is an old friend of Kitsu Yū. Their ninjō is to find a chance to express their true (romantic or platonic) feelings to Yū. Their giri is to root out any Unicorn spies in the camp."
+    }
+
+    # ── Ikoma Tsurayui ─────────────────────────────────────────────────────
+    #L5RBOLadvIkomaTsurayui1 ^"Ikoma Tsurayui" DEF {
+        EXTENDS ^"Historical Persona"
+        PROPERTIES {
+            ^"Name" STRING "Ikoma Tsurayui" FIXED
+            ^"Clan" STRING "Lion"
+            ^"Family" STRING "Ikoma"
+            ^"Ninjo" STRING "To travel to foreign lands and someday write the greatest travelogue of a generation."
+            ^"Giri" STRING "To spy on Sakura for Kojima."
+        }
+        DESCRIPTION "Ikoma Tsurayui is a recent addition to Sakura's retinue who is just past their gempuku, and who was sent by the Clan Champion, Ikoma Kojima, to assist as a scribe. Their ninjō is to travel to foreign lands and someday write the greatest travelogue of a generation. Their giri is to spy on Sakura for Kojima."
+    }
+
+    # ── Kitsu Ryōma ────────────────────────────────────────────────────────
+    #L5RBOLadvKitsuRyoma0001 ^"Kitsu Ryōma" DEF {
+        EXTENDS ^"Historical Persona"
+        PROPERTIES {
+            ^"Name" STRING "Kitsu Ryōma" FIXED
+            ^"Clan" STRING "Lion"
+            ^"Family" STRING "Kitsu"
+            ^"Ninjo" STRING "To win glory in battle despite their family's dismissal of their abilities."
+            ^"Giri" STRING "To serve without making a scene that would shame their family."
+        }
+        DESCRIPTION "Kitsu Ryōma is a member of the Kitsu with a weak connection to the spirits, or perhaps none at all, who has been sent to serve on the front lines. Their ninjō is to win glory in battle despite their family's dismissal of their abilities. Their giri is to serve without making a scene that would shame their family."
+    }
+
+    # ── Matsu no Shion Yui ─────────────────────────────────────────────────
+    #L5RBOLadvShionYui00001 ^"Matsu no Shion Yui" DEF {
+        EXTENDS ^"Historical Persona"
+        PROPERTIES {
+            ^"Name" STRING "Matsu no Shion Yui" FIXED
+            ^"Clan" STRING "Lion"
+            ^"Family" STRING "Shion"
+            ^"Ninjo" STRING "To help Sakura succeed and climb the ranks of the clan."
+            ^"Giri" STRING "To help the Shion family flourish."
+        }
+        DESCRIPTION "Matsu no Shion Yui is from the Shion vassal family of the Matsu and is a lifelong companion of Sakura and the twin of Nori. Their ninjō is to help Sakura succeed and climb the ranks of the clan. Their giri is to help the Shion family flourish."
+    }
+
+    # ── Matsu no Shion Nori (p.13 sidebar; Yui's twin) ─────────────────────
+    #L5RBOLadvShionNori0001 ^"Matsu no Shion Nori" DEF {
+        EXTENDS ^"Historical Persona"
+        PROPERTIES {
+            ^"Name" STRING "Matsu no Shion Nori" FIXED
+            ^"Clan" STRING "Lion"
+            ^"Family" STRING "Shion"
+            ^"Ninjo" STRING "To see Sakura achieve happiness."
+            ^"Giri" STRING "To help the Shion flourish."
+        }
+        DESCRIPTION "Matsu no Shion Nori is also a member of the Shion vassal family, a lifelong companion of Sakura, and Yui's twin. Their ninjō is to see Sakura achieve happiness. Their giri is help the Shion flourish."
+    }
+}

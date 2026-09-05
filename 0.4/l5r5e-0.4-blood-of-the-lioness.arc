@@ -11,7 +11,7 @@
 
 ARC "blood-of-the-lioness" EXTENDS "l5r5e" {
     NAME "Blood of the Lioness"
-    VERSION "0.4"
+    VERSION "0.4.1"
     SPEC_VERSION "0.4"
     SYSTEM "l5r5e"
     SOURCE "Blood of the Lioness: An Adventure at the Battle of Snow Plain (Fantasy Flight Games)"
@@ -83,6 +83,8 @@ ARC "blood-of-the-lioness" EXTENDS "l5r5e" {
     PARTY {
         NOTE "The players use their own characters throughout. In Part Two they also play historical figures — either the premade Advisors (page 12) or their own historical selves — optionally linked to their present PCs via a Legacy (from the external Blood of the Lioness online supplement)."
         CAST_FILE "l5r5e-0.4-blood-of-the-lioness-cast.ttrpg"
+        ADVISORS_FILE "l5r5e-0.4-blood-of-the-lioness-pregens.actor"
+        ADVISORS ["Matsu Sugi", "Akodo Heihachi", "Ikoma Tsurayui", "Kitsu Ryōma", "Matsu no Shion Yui", "Matsu no Shion Nori"]
         ADVERSARIES ["Matsu Sakura", "Kitsu Yū", "Shinjo Kamu"]
         PROFILE_NPCS ["Shosuro Amane", "Matsu Hisoka", "Ancestral Warriors"]
         NARRATIVE_NPCS ["Kitsu Ayako", "Kitsu Taigen", "Kitsu Takeko", "Kitsu Yayoi", "Akodo Atsushi", "Ikoma Ichigo", "Ikoma Hideri", "Shosuro Yasu (impersonating Akodo Kamayoko)", "Moto Ghazan", "Matsu no Shion Nori", "Yui", "Ikoma Kojima (Lion Champion)", "Kitsuki Kāgi (magistrate)", "Shosuro Aishi", "Ide Tsubame"]

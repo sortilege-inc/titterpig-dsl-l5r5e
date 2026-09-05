@@ -7,14 +7,22 @@
 # sheets (rings, ranked skills, honor/glory/status, derived attributes, void
 # points, ninjō, giri, passion, anxiety, school ability, technique-type access,
 # techniques, weapons, armor, and gear). Passion, anxiety, and school-ability
-# text is reproduced verbatim in nested ^"Name" DEF { ^"Effect" ... } blocks; the
-# techniques are named (their full rules live in the core corpus). The generic
+# text is reproduced verbatim in nested ^"Name" DEF { ^"Effect" ... } blocks; each
+# technique is named and tagged with its corpus technique type — (Kata), (Shūji),
+# (Invocation), (Ritual) — resolved from the type block each name sits under in
+# l5r5e-0.4-core-techniques.ttrpg (their full rules live there). The generic
 # distinction rule ("Reroll up to two dice of your choice when a distinction
 # helps you on a check") is standard to all six and is not repeated per character.
+#
+# Two School fields print the sheet's shorthand rather than the full corpus DEF
+# name, verbatim as the folios give them: Kaeru Akiara's sheet prints "Rōnin"
+# (corpus school DEF ^"Worldly Rōnin Path", Core p.87), and Tonbo Goro's prints
+# "Grace of the Spirits" (corpus school DEF ^"Dragonfly Grace of the Spirits", Writ
+# of the Wilds p.96). Both are the correct school under its short-form name.
 
 EXTENSION "L5R5e_ChildrenOfFiveWinds_Pregens" {
     NAME "Children of the Five Winds — Pregens"
-    VERSION "0.4"
+    VERSION "0.4.1"
     SPEC_VERSION "0.4"
     RELEASE_DATE "2026-09-05"
     DEPENDS_ON "L5R5e_Core_Core"
@@ -43,7 +51,7 @@ EXTENSION "L5R5e_ChildrenOfFiveWinds_Pregens" {
             ^"Giri" STRING "To protect Higuchi, her secret identity, and her ability to continue writing as her work provides a great deal of financial assets to your lord."
             ^"Skills" LIST OF STRING ["Martial Arts [Ranged] 1", "Courtesy 2", "Games 1", "Commerce 2", "Survival 2"]
             ^"Technique Types Available" LIST OF STRING ["Kata", "Rituals", "Shūji"]
-            ^"Techniques" LIST OF STRING ["Tributaries of Trade", "Shallow Waters", "Feigned Opening"]
+            ^"Techniques" LIST OF STRING ["Tributaries of Trade (Shūji)", "Shallow Waters (Shūji)", "Feigned Opening (Shūji)"]
             ^"Weapons" LIST OF STRING ["Wakizashi (shortsword): Damage 3, Deadliness 5/7, Range 0-1, Ceremonial, Razor-Edged", "Yumi (bow): Damage 5, Deadliness 3, Range 2-5"]
             ^"Armor" LIST OF STRING ["Traveling Clothes: Physical 2, Durable, Mundane, Subtle"]
             ^"Gear" LIST OF STRING ["Quiver of arrows", "calligraphy set", "traveling pack", "Ide traveling pony [Miki] (page 141)", "journal", "4 koku", "3 bu"]
@@ -79,7 +87,7 @@ EXTENSION "L5R5e_ChildrenOfFiveWinds_Pregens" {
             ^"Giri" STRING "Your sworn duty to your clan, family, and lord is to first and foremost represent the Unicorn Clan with integrity and grace, and to secondly maintain the tenuous balance between spirits and humankind."
             ^"Skills" LIST OF STRING ["Design 2", "Meditation 2", "Theology 2", "Survival 1"]
             ^"Technique Types Available" LIST OF STRING ["Invocations", "Rituals", "Shūji"]
-            ^"Techniques" LIST OF STRING ["Grasp of Earth", "The Rushing Wave", "Sympathetic Energies", "Commune with the Spirits", "Well of Desire"]
+            ^"Techniques" LIST OF STRING ["Grasp of Earth (Invocation)", "The Rushing Wave (Invocation)", "Sympathetic Energies (Invocation)", "Commune with the Spirits (Ritual)", "Well of Desire (Shūji)"]
             ^"Weapons" LIST OF STRING ["Wakizashi (shortsword): Damage 3, Deadliness 5/7, Range 0-1, Ceremonial, Razor-Edged", "Kiseru (smoking pipe): Damage 2, Deadliness 2, Range 0, Concealable, Mundane"]
             ^"Armor" LIST OF STRING ["Traveling Clothes: Physical 2, Durable, Mundane, Subtle", "Ceremonial Clothes: Physical 1, Ceremonial, Resplendent"]
             ^"Gear" LIST OF STRING ["Calligraphy set", "traveling pack", "Iuchi riding steed [Kaede] (page 141)", "5 koku", "2 bu"]
@@ -99,7 +107,7 @@ EXTENSION "L5R5e_ChildrenOfFiveWinds_Pregens" {
             ^"Pronouns" STRING "He/Him"
             ^"Clan" STRING "Rōnin (formerly Lion)"
             ^"Family" STRING "Kaeru (formerly Akodo)"
-            ^"School" STRING "Rōnin (Worldly Rōnin Path)"
+            ^"School" STRING "Rōnin"
             ^"School Rank" INTEGER 1
             ^"Roles" LIST OF STRING ["Bushi", "Courtier"]
             ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 1 ^"Fire" INTEGER 2 ^"Water" INTEGER 2 ^"Void" INTEGER 2 }
@@ -115,7 +123,7 @@ EXTENSION "L5R5e_ChildrenOfFiveWinds_Pregens" {
             ^"Giri" STRING "To uphold the laws of the City of the Rich Frog and maintain the strength and prosperity of your found-family, the Kaeru."
             ^"Skills" LIST OF STRING ["Design 2", "Martial Arts [Melee] 1", "Martial Arts [Ranged] 1", "Tactics 1", "Government 1", "Command 2", "Courtesy 1", "Labor 1", "Skulduggery 1"]
             ^"Technique Types Available" LIST OF STRING ["Kata", "Shūji"]
-            ^"Techniques" LIST OF STRING ["Hawk's Precision", "Pelting Hail Style", "All in Jest"]
+            ^"Techniques" LIST OF STRING ["Hawk's Precision (Kata)", "Pelting Hail Style (Kata)", "All in Jest (Shūji)"]
             ^"Weapons" LIST OF STRING ["Yari (polearm): Damage 5, Deadliness 3, Range 2, Wargear", "Yumi (bow): Damage 5, Deadliness 3, Range 2-5"]
             ^"Armor" LIST OF STRING ["Traveling Clothes: Physical 2, Durable, Mundane, Subtle"]
             ^"Gear" LIST OF STRING ["Quiver of arrows", "pillow book", "2 koku", "4 bu"]
@@ -151,7 +159,7 @@ EXTENSION "L5R5e_ChildrenOfFiveWinds_Pregens" {
             ^"Giri" STRING "Your duty to your clan is to find the missing author and protect the City of the Rich Frog, while saving face for the Lion Clan and the Governor Miya."
             ^"Skills" LIST OF STRING ["Fitness 2", "Martial Arts [Melee] 1", "Martial Arts [Unarmed] 1", "Tactics 1", "Government 1", "Medicine 1", "Command 1", "Survival 1"]
             ^"Technique Types Available" LIST OF STRING ["Kata", "Shūji"]
-            ^"Techniques" LIST OF STRING ["Spinning Blades Style", "Stirring the Embers", "Lord Akodo's Roar"]
+            ^"Techniques" LIST OF STRING ["Spinning Blades Style (Kata)", "Stirring the Embers (Shūji)", "Lord Akodo's Roar (Shūji)"]
             ^"Weapons" LIST OF STRING ["Wakizashi (shortsword): Damage 3, Deadliness 5/7, Range 0-1, Ceremonial, Razor-Edged", "Nodachi (greatsword): Damage 5, Deadliness 6, Range 1-2, Ceremonial, Razor-Edged", "Katana: Damage 4, Deadliness 5/7, Range 1, Ceremonial, Razor-Edged"]
             ^"Armor" LIST OF STRING ["Ashigaru Armor: Physical 3, Wargear"]
             ^"Gear" LIST OF STRING ["Knife", "quiver of arrows", "traveling pack", "4 koku", "3 bu"]
@@ -187,7 +195,7 @@ EXTENSION "L5R5e_ChildrenOfFiveWinds_Pregens" {
             ^"Giri" STRING "Your sworn duty is to protect the shrine garden of the City of the Rich Frog and do whatever you can to bring peace to the spirits under your care that dwell in the city."
             ^"Skills" LIST OF STRING ["Martial Arts [Melee] 1", "Meditation 1", "Culture 2", "Theology 1", "Courtesy 2", "Games 1"]
             ^"Technique Types Available" LIST OF STRING ["Invocations", "Rituals", "Shūji"]
-            ^"Techniques" LIST OF STRING ["Dominion of Suijin", "Reflections of P'an Ku", "Heart of the Water Dragon", "Cleansing Rite", "Commune with the Spirits", "Threshold Barrier", "Truth Burns through Lies"]
+            ^"Techniques" LIST OF STRING ["Dominion of Suijin (Invocation)", "Reflections of P'an Ku (Invocation)", "Heart of the Water Dragon (Invocation)", "Cleansing Rite (Ritual)", "Commune with the Spirits (Ritual)", "Threshold Barrier (Ritual)", "Truth Burns through Lies (Shūji)"]
             ^"Weapons" LIST OF STRING ["Wakizashi (shortsword): Damage 3, Deadliness 5/7, Range 0-1, Ceremonial, Razor-Edged", "Ji (polearm): Damage 2, Deadliness 5, Range 2, Snaring, Wargear"]
             ^"Armor" LIST OF STRING ["Sanctified Robes: Physical 1, Supernatural 3, Ceremonial"]
             ^"Gear" LIST OF STRING ["Scroll satchel", "calligraphy set", "list of observations", "traveling pack", "1 koku", "4 bu", "6 zeni"]
@@ -223,7 +231,7 @@ EXTENSION "L5R5e_ChildrenOfFiveWinds_Pregens" {
             ^"Giri" STRING "Your sworn duty is to seek the truth, but also maintain the social order. You are expected to smooth over any situation that would cause the Dragon Clan or their allies embarrassment."
             ^"Skills" LIST OF STRING ["Martial Arts [Melee] 1", "Meditation 1", "Government 2", "Medicine 1", "Sentiment 2", "Skulduggery 1"]
             ^"Technique Types Available" LIST OF STRING ["Kata", "Shūji"]
-            ^"Techniques" LIST OF STRING ["Tactical Assessment", "Shallow Waters", "Honest Assessment"]
+            ^"Techniques" LIST OF STRING ["Tactical Assessment (Kata)", "Shallow Waters (Shūji)", "Honest Assessment (Shūji)"]
             ^"Weapons" LIST OF STRING ["Wakizashi (shortsword): Damage 3, Deadliness 5/7, Range 0-1, Ceremonial, Razor-Edged", "Jian (straightsword): Damage 4, Deadliness 4/5, Range 0-1"]
             ^"Armor" LIST OF STRING ["Traveling Clothes: Physical 2, Durable, Mundane, Subtle"]
             ^"Gear" LIST OF STRING ["Knife", "calligraphy set", "traveling pack", "journal of observations", "6 koku", "4 bu"]
