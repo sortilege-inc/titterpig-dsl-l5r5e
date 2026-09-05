@@ -1,0 +1,145 @@
+# L5R 5E — Blood of the Lioness: Dramatis Personae (cast NPCs / adversaries)
+# "Blood of the Lioness" (L5R15DLC01a, FFG). Full NPC profiles (rings, conflict
+# ranks, derived attributes, honor/glory/status, skill-group ranks, advantages/
+# disadvantages, favored weapons & gear, abilities) are transcribed VERBATIM from
+# the statblock page images (Matsu Sakura p.16, Kitsu Yū p.13, Shinjo Kamu p.18–19).
+# Ring values were read from the ring diagrams; demeanor ring modifiers are given
+# inline in the Demeanor field as printed. NPCs the source presents by naming an
+# existing profile plus modifications (Shosuro Amane, Matsu Hisoka, the Ancestral
+# Warriors summoned by the Ancestral Army invocation) are modeled that way, via a
+# ^"Profile" reference. Purely narrative figures (Kitsu Ayako — who uses the Kitsu
+# Yū profile — Kitsu Taigen, Kitsu Takeko, Ikoma Ichigo, Ikoma Hideri, Ikoma
+# Kojima, Matsu no Shion Nori and Yui, Kitsuki Kāgi, Moto Ghazan) live in the
+# .lore / .codex.
+
+EXTENSION "L5R5e_BloodOfTheLioness_Cast" {
+    NAME "Blood of the Lioness — Cast"
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-05"
+
+    # ═══════════════ MATSU SAKURA, LION GENERAL ═══════════════
+    #L5RBOLcastMatsuSakura01 ^"Matsu Sakura" DEF {
+        EXTENDS ^"NPC"
+        # The Lion general leading the reclamation of the Snow Plain; both her
+        # parents were Matsu, but she trained at the Akodo War College.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Title" STRING "Lion General"
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 3 ^"Fire" INTEGER 4 ^"Water" INTEGER 2 ^"Void" INTEGER 3 }
+            ^"Demeanor" STRING "Assertive (Earth +2, Air –2)"
+            ^"Endurance" INTEGER 18
+            ^"Composure" INTEGER 15
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 6
+            ^"Honor" INTEGER 70
+            ^"Glory" INTEGER 65
+            ^"Status" INTEGER 60
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 4", "Scholar 2", "Social 2", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Experienced General — Martial; Interpersonal", "Famously Ferocious — Social; Fame, Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Fear of Failure — Martial; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Lacquered armor (Physical 4, Ceremonial, Cumbersome, Wargear), wakizashi, knife"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 2. Sakura is a tall, muscular woman whose eyes miss nothing. She has led her army well in the past but has not had the chance to gain any famous victories until now. Sakura's parents were both Matsu, but she trained at the Akodo War College. Channeling her natural Matsu ferocity has made her an effective and accomplished general."
+        ^"The General's Eye" DEF { ^"Effect" STRING "While Sakura is the commander of her army, the leader of each cohort who can see her reduces the TN of their Attack action checks and Movement action checks by 1." }
+    }
+
+    # ═══════════════ KITSU YŪ, ANCESTRAL SUMMONER ═══════════════
+    #L5RBOLcastKitsuYuu0001 ^"Kitsu Yū" DEF {
+        EXTENDS ^"NPC"
+        # A Kitsu warrior who discovers her latent shugenja gift at Snow Plain when
+        # ancestor spirits answer her prayers; her discovery leads to the founding
+        # of the Golden Lantern Dōjō. Kitsu Ayako (the present-day PC ally) uses
+        # this same profile.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Title" STRING "Ancestral Summoner"
+            ^"Combat Conflict Rank" INTEGER 3
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 3 ^"Void" INTEGER 3 }
+            ^"Demeanor" STRING "Detached (Earth +1, Water +1, Air –2)"
+            ^"Endurance" INTEGER 15
+            ^"Composure" INTEGER 15
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 65
+            ^"Glory" INTEGER 45
+            ^"Status" INTEGER 39
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 3", "Scholar 3", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Favored by Spirits — Scholar; Spiritual", "Paragon of Courage — Social; Mental, Virtue"]
+            ^"Disadvantages" LIST OF STRING ["Untapped Potential — Social; Mental, Spiritual"]
+            ^"Favored Weapons" LIST OF STRING ["Katana: Range 1, Damage 4, Deadliness 5/7, Ceremonial, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Lacquered armor (Physical 4, Ceremonial, Cumbersome, Wargear), wakizashi, knife"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 3, Intrigue 3. Kitsu Yū is older than Ayako and is naturally more confident and self-assured. She is a strong, honorable, and devout warrior who is respected by her fellow soldiers. Ayako feels out of place as an armored combatant, but what she doesn't learn until later is that Yū sometimes felt similarly. Yū is a descendant of the Kitsu family but has showed no ability as a shugenja and does not know of her abilities until the spirits answer her cries on Day 3. After praying to her ancestors during the battle, she is as surprised as anyone when Lion Clan ancestor spirits appear to fight alongside her. Though she won't live long enough to see it, her discovery at Snow Plain leads to the creation of the Golden Lantern Dōjō, where Kitsu shugenja study the Ancestral Summons invocation in secret."
+        ^"Ancestral Summons" DEF { ^"Type" STRING "Invocation"  ^"Effect" STRING "Once per game session as a Support action, the shugenja may attract numerous ancestral spirits to fight at her side. In a skirmish, these are treated as six Loyal Bushi (see page 312 of the core rulebook) who have physical resistance 10 and are Otherworldly beings. In a mass battle, increase the strength of her army by 20. These effects persist until Yū becomes incapacitated or, if she does not, until the end of the scene." }
+    }
+
+    # ═══════════════ SHINJO KAMU, UNICORN GENERAL ═══════════════
+    #L5RBOLcastShinjoKamu001 ^"Shinjo Kamu" DEF {
+        EXTENDS ^"NPC"
+        # The proud, traditional Unicorn general holding the Snow Plain; he prefers
+        # battle to diplomacy and resents his orders to keep the peace.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Title" STRING "Unicorn General"
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 3
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 2 ^"Fire" INTEGER 3 ^"Water" INTEGER 4 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Gruff (Fire +2, Earth –2)"
+            ^"Endurance" INTEGER 18
+            ^"Composure" INTEGER 15
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 5
+            ^"Honor" INTEGER 65
+            ^"Glory" INTEGER 68
+            ^"Status" INTEGER 70
+            ^"Skills" LIST OF STRING ["Artisan 3", "Martial 5", "Scholar 2", "Social 2", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Indomitable Will — Social; Mental, Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Quick to Anger — Social; Interpersonal"]
+            ^"Favored Weapons" LIST OF STRING ["Scimitar: Range 1, Damage 4, Deadliness 5, Durable, Razor-Edged"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Cavalry armor (Physical 3, Wargear), wakizashi"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 3. General Shinjo Kamu is in charge of the Unicorn forces at Snow Plain. The hatred he has for the Lion is even stronger than his desire to keep the plain. Kamu is a proud and traditional man who prefers battle to diplomacy. He believes the plain is his clan's by right, since the Emperor granted these and other lands to the Unicorn once their return to Rokugan was made official. However, his orders from the Unicorn Champion were to keep the peace as much as possible and avoid further enmity. Therefore, he asked the visiting Scorpion, Shosuro Amane, to help negotiate peace. This he soon regrets, as the Scorpion's apparent benevolence quickly becomes suspect."
+        ^"Inspiring Leader" DEF { ^"Effect" STRING "While Kamu is present in the battle, his army removes 3 panic at the end of each round." }
+    }
+
+    # ═══════════════ PROFILE-BY-REFERENCE NPCs ═══════════════
+    # The source presents these by naming an existing profile plus modifications.
+
+    #L5RBOLcastShosuroAmane01 ^"Shosuro Amane" DEF {
+        EXTENDS ^"NPC"
+        # An ambitious, opportunistic Scorpion sent to "negotiate" between Unicorn
+        # and Lion, whose true aim is to secure a still-productive diamond mine.
+        PROPERTIES {
+            ^"Type" STRING "NPC" FIXED
+            ^"Profile" STRING "Seasoned Courtier (page 313 of the core rulebook), with the addition of the Trickster template (page 311 of the core rulebook) and the ninjutsu techniques Skulk and Silencing Stroke (see page 226 of the core rulebook)"
+        }
+        DESCRIPTION "Shosuro Amane came to the Snow Plain to negotiate for access to the mountains, hoping that one single forgotten mine still contains diamonds worth excavating. They are ambitious, opportunistic, and sly, even for a Scorpion; they do not care who wins as long as they can manipulate the situation to claim the mineral-rich mine for the Scorpion."
+    }
+
+    #L5RBOLcastMatsuHisoka001 ^"Matsu Hisoka" DEF {
+        EXTENDS ^"NPC"
+        # Sakura's husband and subordinate officer; quiet and contemplative, he
+        # defers to her in all things and only offers advice when asked.
+        PROPERTIES {
+            ^"Type" STRING "NPC" FIXED
+            ^"Profile" STRING "Loyal Bushi (page 312 of the core rulebook)"
+        }
+        DESCRIPTION "Hisoka can be represented by the Loyal Bushi profile (page 312 of the core rulebook). He willingly defers to Sakura in all things, as she is not only his wife but his superior officer. He only offers his advice when asked and otherwise is quiet and contemplative. He attended the Akodo War College and now is a general in his wife's army. She respects and trusts him, and invites him to attend her meetings. He sometimes notices things she misses, and he often provides an unusual perspective on problems."
+    }
+
+    #L5RBOLcastAncestralWarr01 ^"Ancestral Warriors" DEF {
+        EXTENDS ^"NPC"
+        # The ancestral warriors summoned by the Ancestral Army invocation (see the
+        # mechanics file). A Loyal Bushi variant.
+        PROPERTIES {
+            ^"Type" STRING "NPC" FIXED
+            ^"Profile" STRING "Loyal Bushi (page 312 of the core rulebook), with the following alterations"
+            ^"Alterations" STRING "They are Minion NPCs. If they become Incapacitated, they vanish. Their physical and supernatural resistances are equal to your honor rank (instead of being determined by their armor). They are Otherworldly beings, and can pass through solid objects, float, and perform other ghostly phenomena at the GM's discretion. Ancestral warriors will never voluntarily forfeit honor; if a request you make of them would cause them to forfeit honor, they vanish instead."
+        }
+    }
+}

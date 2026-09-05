@@ -1,0 +1,237 @@
+# L5R 5E — Children of the Five Winds: Pregenerated Characters (.actor)
+# The six pregens from the official L5R5e DLC character-sheet pack
+# (ESL5R18EN-DLC01, Edge Studio) — organized here with Children of the Five Winds,
+# the campaign set in the City of the Rich Frog these characters serve (Governor
+# Miya, the Kaeru, the missing author). Each is a Samurai instance EXTENDS ^"Samurai";
+# stats are transcribed VERBATIM from the printed Narrative-Mode / Conflict-Mode
+# sheets (rings, ranked skills, honor/glory/status, derived attributes, void
+# points, ninjō, giri, passion, anxiety, school ability, technique-type access,
+# techniques, weapons, armor, and gear). Passion, anxiety, and school-ability
+# text is reproduced verbatim in nested ^"Name" DEF { ^"Effect" ... } blocks; the
+# techniques are named (their full rules live in the core corpus). The generic
+# distinction rule ("Reroll up to two dice of your choice when a distinction
+# helps you on a check") is standard to all six and is not repeated per character.
+
+EXTENSION "L5R5e_ChildrenOfFiveWinds_Pregens" {
+    NAME "Children of the Five Winds — Pregens"
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-05"
+    DEPENDS_ON "L5R5e_Core_Core"
+
+    # ── Ide Yuina — Courtier of the Unicorn Clan (Ide Trader) ──────────────
+    ^"Ide Yuina" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Ide Yuina" FIXED
+            ^"Pronouns" STRING "She/Her"
+            ^"Clan" STRING "Unicorn" FIXED
+            ^"Family" STRING "Ide" FIXED
+            ^"School" STRING "Ide Trader"
+            ^"School Rank" INTEGER 1
+            ^"Roles" LIST OF STRING ["Courtier"]
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 2 ^"Fire" INTEGER 1 ^"Water" INTEGER 3 ^"Void" INTEGER 1 }
+            ^"Honor" INTEGER 45
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 30
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 3
+            ^"Void Points" INTEGER 1
+            ^"Ninjo" STRING "To protect your friend, Higuchi, from harm – even if that means convincing her to give up writing because she is putting herself in increasingly dangerous situations trying to perfect her stories."
+            ^"Giri" STRING "To protect Higuchi, her secret identity, and her ability to continue writing as her work provides a great deal of financial assets to your lord."
+            ^"Skills" LIST OF STRING ["Martial Arts [Ranged] 1", "Courtesy 2", "Games 1", "Commerce 2", "Survival 2"]
+            ^"Technique Types Available" LIST OF STRING ["Kata", "Rituals", "Shūji"]
+            ^"Techniques" LIST OF STRING ["Tributaries of Trade", "Shallow Waters", "Feigned Opening"]
+            ^"Weapons" LIST OF STRING ["Wakizashi (shortsword): Damage 3, Deadliness 5/7, Range 0-1, Ceremonial, Razor-Edged", "Yumi (bow): Damage 5, Deadliness 3, Range 2-5"]
+            ^"Armor" LIST OF STRING ["Traveling Clothes: Physical 2, Durable, Mundane, Subtle"]
+            ^"Gear" LIST OF STRING ["Quiver of arrows", "calligraphy set", "traveling pack", "Ide traveling pony [Miki] (page 141)", "journal", "4 koku", "3 bu"]
+            ^"Personality" STRING "You often talk to your horse, Miki, as if she were a person - and you have a habit of doing so under your breath even if Miki isn't around."
+        }
+        DESCRIPTION "DLC pregen — Courtier of the Unicorn Clan, an Ide Trader."
+        ^"Vendor of Strange Wares" DEF { ^"Type" STRING "School Ability"  ^"Effect" STRING "Ignore the Forbidden quality when acquiring and handling items. When acquiring, selling, or gifting an item, you may treat its rarity as reduced or increased by your school rank." }
+        ^"Brushwork" DEF { ^"Type" STRING "Passion"  ^"Ring" STRING "Air"  ^"Effect" STRING "You can identify the signature styles of numerous different schools and individual artists, as well as common motifs and techniques." }
+        ^"Meekness" DEF { ^"Type" STRING "Anxiety"  ^"Ring" STRING "Fire"  ^"Effect" STRING "You are extremely shy, and you struggle to stand up for yourself. You cannot interrupt people of higher status, and you find it very hard to assert yourself over anyone, including people of lower status." }
+    }
+
+    # ── Iuchi Minoru — Shugenja/Artisan of the Unicorn Clan (Meishōdō Master) ──
+    ^"Iuchi Minoru" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Iuchi Minoru" FIXED
+            ^"Pronouns" STRING "They/Them"
+            ^"Clan" STRING "Unicorn" FIXED
+            ^"Family" STRING "Iuchi" FIXED
+            ^"School" STRING "Iuchi Meishōdō Master"
+            ^"School Rank" INTEGER 1
+            ^"Roles" LIST OF STRING ["Shugenja", "Artisan"]
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 3 ^"Void" INTEGER 1 }
+            ^"Honor" INTEGER 40
+            ^"Glory" INTEGER 40
+            ^"Status" INTEGER 30
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Void Points" INTEGER 1
+            ^"Ninjo" STRING "You are bitter than the rest of the Empire looks down upon the tradition of meishōdō magic, and you desperately want to prove that the art of containing spirits within talismans can be done with the same respect that other practices use."
+            ^"Giri" STRING "Your sworn duty to your clan, family, and lord is to first and foremost represent the Unicorn Clan with integrity and grace, and to secondly maintain the tenuous balance between spirits and humankind."
+            ^"Skills" LIST OF STRING ["Design 2", "Meditation 2", "Theology 2", "Survival 1"]
+            ^"Technique Types Available" LIST OF STRING ["Invocations", "Rituals", "Shūji"]
+            ^"Techniques" LIST OF STRING ["Grasp of Earth", "The Rushing Wave", "Sympathetic Energies", "Commune with the Spirits", "Well of Desire"]
+            ^"Weapons" LIST OF STRING ["Wakizashi (shortsword): Damage 3, Deadliness 5/7, Range 0-1, Ceremonial, Razor-Edged", "Kiseru (smoking pipe): Damage 2, Deadliness 2, Range 0, Concealable, Mundane"]
+            ^"Armor" LIST OF STRING ["Traveling Clothes: Physical 2, Durable, Mundane, Subtle", "Ceremonial Clothes: Physical 1, Ceremonial, Resplendent"]
+            ^"Gear" LIST OF STRING ["Calligraphy set", "traveling pack", "Iuchi riding steed [Kaede] (page 141)", "5 koku", "2 bu"]
+            ^"Personality" STRING "You love to feel the texture of different objects around you, from fine tea cups to the fabric of clothing. You never touch others without asking, but if an object is unattended or unadorned your desire can sometimes be overwhelming."
+        }
+        DESCRIPTION "DLC pregen — Shugenja and Artisan of the Unicorn Clan, an Iuchi Meishōdō Master."
+        ^"The Way of Names" DEF { ^"Type" STRING "School Ability"  ^"Effect" STRING "As a downtime activity, you may make a TN 2 Design check using any ring to bind a spirit to an inanimate vessel, creating a meishōdō talisman for one invocation of that Element that you have learned. While you have the talisman in your possession, reduce the TN of checks to activate that invocation by 1. You can give the talisman to another shugenja, allowing them to perform that invocation even if they have not learned it and reducing the TN to activate it by 1, but the talisman ceases to function after a number of uses equal to your school rank." }
+        ^"Generosity" DEF { ^"Type" STRING "Passion"  ^"Ring" STRING "Water"  ^"Effect" STRING "You can always identify a proper gift for a particular person that does not risk giving offense or slighting them publicly." }
+        ^"Delusions of Grandeur" DEF { ^"Type" STRING "Anxiety"  ^"Ring" STRING "Void"  ^"Effect" STRING "You believe yourself destined for greatness, and nothing will dissuade you from your fixation upon this goal. When you are presented with a chance to advance your glory, you must attempt to pursue it." }
+    }
+
+    # ── Kaeru Akiara — Bushi/Courtier, Rōnin (formerly Lion Clan) ──────────
+    ^"Kaeru Akiara" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Kaeru Akiara" FIXED
+            ^"Pronouns" STRING "He/Him"
+            ^"Clan" STRING "Rōnin (formerly Lion)"
+            ^"Family" STRING "Kaeru (formerly Akodo)"
+            ^"School" STRING "Rōnin (Worldly Rōnin Path)"
+            ^"School Rank" INTEGER 1
+            ^"Roles" LIST OF STRING ["Bushi", "Courtier"]
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 1 ^"Fire" INTEGER 2 ^"Water" INTEGER 2 ^"Void" INTEGER 2 }
+            ^"Honor" INTEGER 30
+            ^"Glory" INTEGER 44
+            ^"Status" INTEGER 35
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 2
+            ^"Void Points" INTEGER 2
+            ^"Ninjo" STRING "Your heart yearns for the bygone days where you fought side-by-side with your fellow soldiers in the Lion Clan. You are always craving a fight, and that sometimes overwhelms your better judgment."
+            ^"Giri" STRING "To uphold the laws of the City of the Rich Frog and maintain the strength and prosperity of your found-family, the Kaeru."
+            ^"Skills" LIST OF STRING ["Design 2", "Martial Arts [Melee] 1", "Martial Arts [Ranged] 1", "Tactics 1", "Government 1", "Command 2", "Courtesy 1", "Labor 1", "Skulduggery 1"]
+            ^"Technique Types Available" LIST OF STRING ["Kata", "Shūji"]
+            ^"Techniques" LIST OF STRING ["Hawk's Precision", "Pelting Hail Style", "All in Jest"]
+            ^"Weapons" LIST OF STRING ["Yari (polearm): Damage 5, Deadliness 3, Range 2, Wargear", "Yumi (bow): Damage 5, Deadliness 3, Range 2-5"]
+            ^"Armor" LIST OF STRING ["Traveling Clothes: Physical 2, Durable, Mundane, Subtle"]
+            ^"Gear" LIST OF STRING ["Quiver of arrows", "pillow book", "2 koku", "4 bu"]
+            ^"Personality" STRING "You have habit of stroking your chin when idle or listening to others. You also still maintain the stiff posture of a soldier, even though your days on the battlefield are long past."
+        }
+        DESCRIPTION "DLC pregen — a Bushi and Courtier rōnin, formerly an Akodo of the Lion Clan, now of the Kaeru of the City of the Rich Frog."
+        ^"School of Waves" DEF { ^"Type" STRING "School Ability"  ^"Effect" STRING "Choose one bonus curriculum skill; this skill henceforth counts as part of the Worldly Rōnin Path curriculum for you at all ranks. Each time your school rank increases, choose one additional bonus curriculum skill this way. When you make a check using one of your bonus curriculum skills, you may negate 1 Strife symbol." }
+        ^"Playfulness" DEF { ^"Type" STRING "Passion"  ^"Ring" STRING "Air"  ^"Effect" STRING "When you say something untoward to someone of lower or equal status, they write it off as your playful nature instead of being significantly angered or saddened by it." }
+        ^"Impatience" DEF { ^"Type" STRING "Anxiety"  ^"Ring" STRING "Earth"  ^"Effect" STRING "You find it difficult to repress yourself, and when you are forced to wait, it causes you palpable discomfort. If given the choice between seizing an opportunity and waiting for a better moment, you strive to seize the opportunity despite risks that might be mitigated if you act later." }
+    }
+
+    # ── Matsu Rin — Bushi of the Lion Clan (Matsu Berserker) ───────────────
+    ^"Matsu Rin" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Matsu Rin" FIXED
+            ^"Pronouns" STRING "She/Her"
+            ^"Clan" STRING "Lion" FIXED
+            ^"Family" STRING "Matsu" FIXED
+            ^"School" STRING "Matsu Berserker"
+            ^"School Rank" INTEGER 1
+            ^"Roles" LIST OF STRING ["Bushi"]
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 2 ^"Fire" INTEGER 3 ^"Water" INTEGER 3 ^"Void" INTEGER 1 }
+            ^"Honor" INTEGER 55
+            ^"Glory" INTEGER 44
+            ^"Status" INTEGER 35
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Void Points" INTEGER 1
+            ^"Ninjo" STRING "You have the heart of a romantic and have a soft spot for the injured, frightened, or love stuck – whether they are mortals or spirits."
+            ^"Giri" STRING "Your duty to your clan is to find the missing author and protect the City of the Rich Frog, while saving face for the Lion Clan and the Governor Miya."
+            ^"Skills" LIST OF STRING ["Fitness 2", "Martial Arts [Melee] 1", "Martial Arts [Unarmed] 1", "Tactics 1", "Government 1", "Medicine 1", "Command 1", "Survival 1"]
+            ^"Technique Types Available" LIST OF STRING ["Kata", "Shūji"]
+            ^"Techniques" LIST OF STRING ["Spinning Blades Style", "Stirring the Embers", "Lord Akodo's Roar"]
+            ^"Weapons" LIST OF STRING ["Wakizashi (shortsword): Damage 3, Deadliness 5/7, Range 0-1, Ceremonial, Razor-Edged", "Nodachi (greatsword): Damage 5, Deadliness 6, Range 1-2, Ceremonial, Razor-Edged", "Katana: Damage 4, Deadliness 5/7, Range 1, Ceremonial, Razor-Edged"]
+            ^"Armor" LIST OF STRING ["Ashigaru Armor: Physical 3, Wargear"]
+            ^"Gear" LIST OF STRING ["Knife", "quiver of arrows", "traveling pack", "4 koku", "3 bu"]
+            ^"Personality" STRING "You love delicate and beautiful jewelry and trinkets, and often feel the strong desire to invest in or comment on frivolous objects despite how it might look to others."
+        }
+        DESCRIPTION "DLC pregen — Bushi of the Lion Clan, a Matsu Berserker."
+        ^"Matsu's Fury" DEF { ^"Type" STRING "School Ability"  ^"Effect" STRING "After you suffer a critical strike or unmask, you may suffer the Enraged condition to remove an amount of fatigue from yourself equal to your school rank." }
+        ^"Daredevil" DEF { ^"Type" STRING "Passion"  ^"Ring" STRING "Fire"  ^"Effect" STRING "You can risk your life without consideration or hesitation, even if the potential consequences are obvious and dire." }
+        ^"Painful Honesty" DEF { ^"Type" STRING "Anxiety"  ^"Ring" STRING "Air"  ^"Effect" STRING "You are tormented by internal conflict when you lie or allow a lie to pass. You cannot make claims you know to be false, although you can say technically truthful things that imply untruths, if politeness or circumstances demand it." }
+    }
+
+    # ── Tonbo Goro — Courtier/Shugenja of the Dragonfly Clan (Grace of the Spirits) ──
+    ^"Tonbo Goro" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Tonbo Goro" FIXED
+            ^"Pronouns" STRING "He/Him"
+            ^"Clan" STRING "Dragonfly" FIXED
+            ^"Family" STRING "Tonbo" FIXED
+            ^"School" STRING "Grace of the Spirits"
+            ^"School Rank" INTEGER 1
+            ^"Roles" LIST OF STRING ["Courtier", "Shugenja"]
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 1 ^"Fire" INTEGER 2 ^"Water" INTEGER 3 ^"Void" INTEGER 2 }
+            ^"Honor" INTEGER 40
+            ^"Glory" INTEGER 35
+            ^"Status" INTEGER 30
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 4
+            ^"Vigilance" INTEGER 2
+            ^"Void Points" INTEGER 2
+            ^"Ninjo" STRING "You secretly wish to leave the City of the Rich Frog and pursue spiritual studies elsewhere, as your current position feels stifling and mentally taxing."
+            ^"Giri" STRING "Your sworn duty is to protect the shrine garden of the City of the Rich Frog and do whatever you can to bring peace to the spirits under your care that dwell in the city."
+            ^"Skills" LIST OF STRING ["Martial Arts [Melee] 1", "Meditation 1", "Culture 2", "Theology 1", "Courtesy 2", "Games 1"]
+            ^"Technique Types Available" LIST OF STRING ["Invocations", "Rituals", "Shūji"]
+            ^"Techniques" LIST OF STRING ["Dominion of Suijin", "Reflections of P'an Ku", "Heart of the Water Dragon", "Cleansing Rite", "Commune with the Spirits", "Threshold Barrier", "Truth Burns through Lies"]
+            ^"Weapons" LIST OF STRING ["Wakizashi (shortsword): Damage 3, Deadliness 5/7, Range 0-1, Ceremonial, Razor-Edged", "Ji (polearm): Damage 2, Deadliness 5, Range 2, Snaring, Wargear"]
+            ^"Armor" LIST OF STRING ["Sanctified Robes: Physical 1, Supernatural 3, Ceremonial"]
+            ^"Gear" LIST OF STRING ["Scroll satchel", "calligraphy set", "list of observations", "traveling pack", "1 koku", "4 bu", "6 zeni"]
+            ^"Personality" STRING "You have a habit of repeating back what others say to you. Though you do so to show you are listening and to verify your understanding, this is sometimes seemed as annoying or frustrating to others."
+        }
+        DESCRIPTION "DLC pregen — Courtier and Shugenja of the Dragonfly Clan, of the Grace of the Spirits school."
+        ^"May the Spirits Show the Path" DEF { ^"Type" STRING "School Ability"  ^"Effect" STRING "Once per scene if you would fail a Social check, you may immediately make a TN 5 Theology check, with the TN being reduced by a number equal to your school rank (to a minimum of 1). If you succeed, you may change any kept Strife on that Social check to Success results instead." }
+        ^"Travel" DEF { ^"Type" STRING "Passion"  ^"Ring" STRING "Water"  ^"Effect" STRING "You are not unsettled by foreign customs, and you can comfortably fit in even in strange environments." }
+        ^"Fear of Death" DEF { ^"Type" STRING "Anxiety"  ^"Ring" STRING "Earth"  ^"Effect" STRING "You cannot voluntarily choose to die or sacrifice your life (including committing seppuku when honor demands it), and if there is a chance you could live, you must always pursue it." }
+    }
+
+    # ── Kitsuki Tsubasa — Courtier/Bushi of the Dragon Clan (Kitsuki Investigator) ──
+    ^"Kitsuki Tsubasa" DEF {
+        EXTENDS ^"Samurai"
+        PROPERTIES {
+            ^"Name" STRING "Kitsuki Tsubasa" FIXED
+            ^"Pronouns" STRING "They/Them"
+            ^"Clan" STRING "Dragon" FIXED
+            ^"Family" STRING "Kitsuki" FIXED
+            ^"School" STRING "Kitsuki Investigator"
+            ^"School Rank" INTEGER 1
+            ^"Roles" LIST OF STRING ["Courtier", "Bushi"]
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 3 ^"Fire" INTEGER 2 ^"Water" INTEGER 1 ^"Void" INTEGER 1 }
+            ^"Honor" INTEGER 45
+            ^"Glory" INTEGER 44
+            ^"Status" INTEGER 30
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 2
+            ^"Void Points" INTEGER 1
+            ^"Ninjo" STRING "Your desire for the truth in every situation is absolute, and can sometimes put yourself or others in awkward or dangerous situations."
+            ^"Giri" STRING "Your sworn duty is to seek the truth, but also maintain the social order. You are expected to smooth over any situation that would cause the Dragon Clan or their allies embarrassment."
+            ^"Skills" LIST OF STRING ["Martial Arts [Melee] 1", "Meditation 1", "Government 2", "Medicine 1", "Sentiment 2", "Skulduggery 1"]
+            ^"Technique Types Available" LIST OF STRING ["Kata", "Shūji"]
+            ^"Techniques" LIST OF STRING ["Tactical Assessment", "Shallow Waters", "Honest Assessment"]
+            ^"Weapons" LIST OF STRING ["Wakizashi (shortsword): Damage 3, Deadliness 5/7, Range 0-1, Ceremonial, Razor-Edged", "Jian (straightsword): Damage 4, Deadliness 4/5, Range 0-1"]
+            ^"Armor" LIST OF STRING ["Traveling Clothes: Physical 2, Durable, Mundane, Subtle"]
+            ^"Gear" LIST OF STRING ["Knife", "calligraphy set", "traveling pack", "journal of observations", "6 koku", "4 bu"]
+            ^"Personality" STRING "You have a habit of ending most sentences with the phrase, \"or so it seems.\" even when it makes little sense. You follow each utterance of the phrase with a serious, perplexed look of pondering."
+        }
+        DESCRIPTION "DLC pregen — Courtier and Bushi of the Dragon Clan, a Kitsuki Investigator."
+        ^"Kitsuki's Method" DEF { ^"Type" STRING "School Ability"  ^"Effect" STRING "When performing a check to investigate with any skill (see The Art of Investigation, on page 170 of the CRB), you may treat your ranks in the skill you are using as being equal to your school rank. If your ranks in the skill are equal to or higher than your school rank, or if you have 5 ranks in the skill, you may add a kept Success set to an Opportunity result instead." }
+        ^"Gossip" DEF { ^"Type" STRING "Passion"  ^"Ring" STRING "Air"  ^"Effect" STRING "At the start of each scene, you can always identify the character present who will know the juiciest rumors (besides yourself, obviously)." }
+        ^"Perfectionism" DEF { ^"Type" STRING "Anxiety"  ^"Ring" STRING "Water"  ^"Effect" STRING "Anything short of perfection in your work is unacceptable to you, and you have been known to create works of beauty only to cast them aside over some perceived flaw. You cannot help but try to improve any work in which you identify a flaw, even if it means informing someone of higher status of an error they have made." }
+    }
+}

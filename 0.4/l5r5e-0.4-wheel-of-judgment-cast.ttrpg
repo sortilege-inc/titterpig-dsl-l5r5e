@@ -1,0 +1,277 @@
+# L5R 5E — Wheel of Judgment: Dramatis Personae (cast NPCs / adversaries)
+# "Wheel of Judgment" (L5R13DLC01a, FFG) — an adventure in the underworld. Full
+# profiles (rings, conflict ranks, derived attributes, honor/glory/status,
+# skill-group ranks, advantages/disadvantages, favored weapons & gear, abilities)
+# are transcribed VERBATIM from the statblock page images: Mazoku Guard (p.4–5),
+# Mazoku Bureaucrat (p.8), Torikkusutā the Trickster Oni (p.16), Bladed Oni (p.18),
+# Word-Hungry Oni and Word-Hungry Hand (p.21), Scribe of Jigoku (p.24), Gaki
+# (p.26), Phantasmal Oni (p.28). Ring values were read from the ring diagrams;
+# demeanor ring modifiers are given inline in the Demeanor field as printed. Named
+# NPCs the source presents by naming these profiles (Minroki the Mazoku Guard,
+# Rikakima the Mazoku Bureaucrat/Magistrate) live in the .lore/.codex; oni without
+# unique profiles (the Guardian Oni, Captain Oni, Insectoid Oni, Sinister Oni) use
+# core-rulebook profiles. Purely narrative figures (the maō Burakakin, Emma-Ō, Fu
+# Leng, Ryoshun) live in the .lore/.codex.
+
+EXTENSION "L5R5e_WheelOfJudgment_Cast" {
+    NAME "Wheel of Judgment — Cast"
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-05"
+
+    # ═══════════════ MAZOKU GUARD (Minroki) ═══════════════
+    #L5RWOJcastMazokuGuard01 ^"Mazoku Guard" DEF {
+        EXTENDS ^"NPC"
+        # The mazoku who herd newly arrived souls into the queues of Meido. Minroki
+        # (a muscular, red-skinned, hot-tempered guard) uses this profile.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 4
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 3 ^"Fire" INTEGER 3 ^"Water" INTEGER 3 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Gruff (Fire +2, Earth –2)"
+            ^"Endurance" INTEGER 14
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 35
+            ^"Glory" INTEGER 25
+            ^"Status" INTEGER 20
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 1", "Social 0", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Vigilant — Social; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Hot-Tempered — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Yari: Range 2, Damage 5, Deadliness 3, Wargear", "Claws: Range 0, Damage 3, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Mazoku robes (Physical 1, Supernatural 1), jitte, small bag of Meido dust"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 2. Mazoku guards ensure a peaceful procession of souls to be judged and deal with any unruly dead. A mazoku guard who does their duty loyally and consistently can hope for a rebirth as an animal or perhaps even a human."
+        ^"Roamer of Realms" DEF { ^"Effect" STRING "A mazoku is an Otherworldly being. Once per round as a Movement action, a mazoku can move to any other position in their current realm instantaneously. When they do, they may choose any number of captives or companions at range 0–1 to move with them." }
+        ^"Herder of Spirits" DEF { ^"Effect" STRING "A mazoku can clearly perceive and interact with spirits and shades normally, regardless of their tangibility. When a spirit or shade attempts to hide from a mazoku, increase the TN of their check by 1." }
+    }
+
+    # ═══════════════ MAZOKU BUREAUCRAT (Rikakima) ═══════════════
+    #L5RWOJcastMazokuBureau01 ^"Mazoku Bureaucrat" DEF {
+        EXTENDS ^"NPC"
+        # The mazoku who process the paperwork of Meido. Rikakima (a glum,
+        # blue-skinned magistrate who takes bribes) uses this profile.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 4
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 3 ^"Fire" INTEGER 2 ^"Water" INTEGER 3 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Detached (Earth +1, Fire +1, Air –2)"
+            ^"Endurance" INTEGER 10
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 30
+            ^"Glory" INTEGER 25
+            ^"Status" INTEGER 30
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 0", "Scholar 3", "Social 2", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Precise Memory — Scholar; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Covetous — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Claws: Range 0, Damage 3, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Mazoku robes (Physical 1, Supernatural 1), bundle of scrolls, calligraphy set"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 2, Intrigue 4. Mazoku bureaucrats are responsible for the various procedures that allow souls to progress through Meido, receive their judgment, and reincarnate. Regardless of their specific duties, these mazoku deal with a range of processes and documents."
+        ^"Roamer of Realms" DEF { ^"Effect" STRING "A mazoku is an Otherworldly being. Once per round as a Movement action, a mazoku can move to any other position in their current realm instantaneously. When they do, they may choose any number of captives or companions at range 0–1 to move with them." }
+        ^"Herder of Spirits" DEF { ^"Effect" STRING "A mazoku can clearly perceive and interact with spirits and shades normally, regardless of their tangibility. When a spirit or shade attempts to hide from a mazoku, increase the TN of their check by 1." }
+    }
+
+    # ═══════════════ TORIKKUSUTĀ, THE TRICKSTER ONI ═══════════════
+    #L5RWOJcastTricksterOni01 ^"Trickster Oni" DEF {
+        EXTENDS ^"NPC"
+        # An oni who poses as a mazoku, giving her name as Torikkusutā; weak, she
+        # survives by trickery. In life she was a Togashi monk.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Also Known As" STRING "Torikkusutā"
+            ^"Combat Conflict Rank" INTEGER 2
+            ^"Intrigue Conflict Rank" INTEGER 6
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 3 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Defensive (Earth +2, Air –2)"
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 2
+            ^"Glory" INTEGER 2
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 1", "Martial 0", "Scholar 2", "Social 3", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Excellent Liar — Social; Interpersonal"]
+            ^"Disadvantages" LIST OF STRING ["Fear of Pain — Martial; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Claws and Fangs: Range 0, Damage 4, Deadliness 6"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Tattered rags"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 2, Intrigue 6. Pretending to be a mazoku, the Trickster Oni gives her name as Torikkusutā. She is weaker than most oni and survives by keeping out of the way and tricking other oni into protecting her. She takes special delight in trickery and manipulation, though she does not create pain or chaos for their own sake. If she believes the PCs might escape Jigoku, she wants to go with them."
+        ^"Sense Truth" DEF { ^"Effect" STRING "The Trickster Oni is an Otherworldly, Tainted being. As a Scheme action, she may make a TN 2 Meditation check to learn one fact about any target at range 0–1. For each bonus success, the Trickster Oni learns one additional fact." }
+    }
+
+    # ═══════════════ BLADED ONI ═══════════════
+    #L5RWOJcastBladedOni0001 ^"Bladed Oni" DEF {
+        EXTENDS ^"NPC"
+        # An oni sheathed in armor fused to its flesh, with katana-like arms. In
+        # life a samurai, sent to Jigoku through the Phantasm's machinations.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 6
+            ^"Intrigue Conflict Rank" INTEGER 2
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 3 ^"Fire" INTEGER 4 ^"Water" INTEGER 1 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Bloodthirsty (Fire +2, Water –2)"
+            ^"Endurance" INTEGER 15
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 2
+            ^"Honor" INTEGER 5
+            ^"Glory" INTEGER 8
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 4", "Scholar 0", "Social 3", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Feels No Pain — Martial; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Overconfidence — Martial; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Blade Arm: Range 2, Damage 4, Deadliness 6, Razor-Edged", "Spiked Limbs: Range 0–1, Damage 4, Deadliness 5, Snaring"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Armored flesh (Physical 4)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 6, Intrigue 2. This demon's features are hidden beneath metal armor fused to its flesh, with arms like katana and razor-sharp spikes all over its body. It likes to keep trophies of its victims in a heap in its lair. Its weak points are its mouth and eyes, which it protects in battle. While this oni enjoys victory, it is one of the few oni who likes rules, so it duels relatively fairly — making it a natural enemy of the chaos-spreading Phantasmal Oni."
+        ^"Poor Loser" DEF { ^"Effect" STRING "If at any time during a duel the Bladed Oni's current fatigue exceeds its opponent's, it gains the Enraged condition. If the Bladed Oni becomes Compromised, it may unmask by gaining the Enraged condition." }
+    }
+
+    # ═══════════════ WORD-HUNGRY ONI ═══════════════
+    #L5RWOJcastWordHungryOni1 ^"Word-Hungry Oni" DEF {
+        EXTENDS ^"NPC"
+        # An oni of many ever-writing hands that absorbs knowledge but cannot
+        # contain it. In life a Kuni shugenja whose vile experiments earned her
+        # reincarnation as a demon. An agent of the Phantasm.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 7
+            ^"Intrigue Conflict Rank" INTEGER 5
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 4 ^"Fire" INTEGER 3 ^"Water" INTEGER 4 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Inquisitive (Earth +2, Air –2)"
+            ^"Endurance" INTEGER 20
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 7
+            ^"Vigilance" INTEGER 4
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 3
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 2", "Scholar 4", "Social 1", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Well-Read — Scholar; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Overwhelmed — Social; Mental"]
+            ^"Favored Weapons" LIST OF STRING ["Clawing hands: Range 0–1, Damage 5, Deadliness 4, Snaring"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Demonic flesh (Physical 1, Spiritual 1)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 7, Intrigue 5. This oni sits in the midst of a vast pile of scrolls, made of flesh and bone, with many hands always moving, scratching words onto scrolls, the walls, and anything within reach. It absorbs knowledge but cannot contain it, which is why it must write everything down. An agent of the Phantasm."
+        ^"Absorb Knowledge" DEF { ^"Effect" STRING "The Word-Hungry Oni is an Otherworldly, Tainted being. By placing a hand directly on a victim's flesh, the oni can draw knowledge from them, gaining one piece of information per round as long as it maintains contact (this includes any target Immobilized by the oni's clawing hands). After 1 round, the victim gains the Disoriented condition (see page 272 of the core rulebook). After 4 rounds, the victim gains the Muteness (Air) disadvantage (see page 126 of the core rulebook)." }
+        ^"Flurry of Hands" DEF { ^"Effect" STRING "When making a Strike action using its clawing hands, the Word-Hungry Oni may spend (op) as follows: (op)+: If the oni succeeds, deal 5 physical damage to the target or to another target at range 0–1 per (op) spent this way." }
+        ^"Hand Separation" DEF { ^"Effect" STRING "As a Support action, the Word-Hungry Oni may detach a hand, which then uses the Word-Hungry Hand profile. Up to ten hands may operate independently at a time. If any remain detached when the oni sleeps, it begins to grow a new hand in its place, leaving the extra hand to roam until destroyed." }
+    }
+
+    # ═══════════════ WORD-HUNGRY HAND (Minion) ═══════════════
+    #L5RWOJcastWordHungryHnd1 ^"Word-Hungry Hand" DEF {
+        EXTENDS ^"NPC"
+        # A detached hand of the Word-Hungry Oni, retaining its hunger for knowledge.
+        PROPERTIES {
+            ^"Type" STRING "Minion" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 1 ^"Fire" INTEGER 1 ^"Water" INTEGER 2 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Inquisitive (Earth +2, Air –2)"
+            ^"Endurance" INTEGER 4
+            ^"Composure" INTEGER 4
+            ^"Focus" INTEGER 3
+            ^"Vigilance" INTEGER 2
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 1", "Social 0", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Dreadful Grip — Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Dulled Senses — Trade; Mental, Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Claw: Range 0, Damage 3, Deadliness 4"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Demonic flesh (Physical 1, Spiritual 1)"]
+        }
+        DESCRIPTION "MINION. Conflict Rank — Combat 1, Intrigue 1. Even detached, this hand retains the desire for knowledge. Though it obeys the will of the Word-Hungry Oni, it cannot resist the temptation of nearby victims, crawling after them with alarming speed."
+        ^"Ink-Blooded" DEF { ^"Effect" STRING "Word-Hungry Hand is an Otherworldly, Tainted being of silhouette 0. It cannot speak but can communicate by writing with its elongated finger." }
+        ^"Absorb Knowledge" DEF { ^"Effect" STRING "By touching a victim's flesh, the hand can draw information from them, gaining one piece of information per round as long as it maintains contact. After 1 round, the victim gains the Disoriented condition (see page 272 of the core rulebook). After 4 rounds, the victim gains the Muteness (Air) disadvantage (see page 126 of the core rulebook)." }
+    }
+
+    # ═══════════════ SCRIBE OF JIGOKU ═══════════════
+    #L5RWOJcastScribeJigoku01 ^"Scribe of Jigoku" DEF {
+        EXTENDS ^"NPC"
+        # Tools made by Fu Leng from the fabric of Jigoku; the one in the archive is
+        # also an agent of the Phantasm.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 2 ^"Void" INTEGER 2 }
+            ^"Demeanor" STRING "Loyal (Earth +1, Water –1)"
+            ^"Endurance" INTEGER 8
+            ^"Composure" INTEGER 8
+            ^"Focus" INTEGER 5
+            ^"Vigilance" INTEGER 3
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 0
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 2", "Martial 0", "Scholar 2", "Social 0", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Industrious — Artisan; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Silent — Social; Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Quill-like Finger: Range 0, Damage 1, Deadliness 2"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 1, Intrigue 1. The scribes have a limited skill set, and without direction from their master they are purposeless. They may not be true oni at all, but tools made by Fu Leng from the fabric of Jigoku. All the scribes consider themselves servants of Fu Leng, while the one found in the archive is also an agent of the Phantasm."
+        ^"Bodily Retreat" DEF { ^"Effect" STRING "The scribe is an Otherworldly, Tainted being that cannot speak. If Compromised or Incapacitated, it sinks into the floor, permanently reverting to its former state as part of the fabric of Jigoku." }
+    }
+
+    # ═══════════════ GAKI ═══════════════
+    #L5RWOJcastGaki00000001 ^"Gaki" DEF {
+        EXTENDS ^"NPC"
+        # The starving spirits of those who indulged their appetites in life,
+        # inhabiting Gaki-dō, the Realm of the Hungry Dead.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Combat Conflict Rank" INTEGER 1
+            ^"Intrigue Conflict Rank" INTEGER 1
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 1 ^"Fire" INTEGER 1 ^"Water" INTEGER 1 ^"Void" INTEGER 1 }
+            ^"Demeanor" STRING "Starved (Earth +2, Air –2)"
+            ^"Endurance" INTEGER 3
+            ^"Composure" INTEGER 3
+            ^"Focus" INTEGER 2
+            ^"Vigilance" INTEGER 1
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 0
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 1"]
+            ^"Advantages" LIST OF STRING ["Ravenous — Martial; Mental"]
+            ^"Disadvantages" LIST OF STRING ["Insatiable — Social; Spiritual"]
+            ^"Favored Weapons" LIST OF STRING ["Clawing Hands: Range 0–1, Damage 2, Deadliness 3, Snaring", "Gnashing Teeth: Range 0, Damage 3, Deadliness 5"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Tattered rags"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 1, Intrigue 1. These pitiful figures are more unpleasant than frightening. The gaki are starving spirits of those who indulged their appetites in their previous life, and now face a life of suffering before they have another chance in the Mortal Realm. Always hungry, they eat anything and everything in the hope of satisfying their terrible need."
+        ^"Hungry Ghost" DEF { ^"Effect" STRING "A gaki is an Otherworldly being of silhouette 1. As a Scheme action, a gaki can consume any substance in hand to temporarily bolster its strength, increasing one of its ring values by two." }
+    }
+
+    # ═══════════════ PHANTASMAL ONI (the Phantasm) ═══════════════
+    #L5RWOJcastPhantasmalOni1 ^"Phantasmal Oni" DEF {
+        EXTENDS ^"NPC"
+        # The demon of illusion behind the sabotage in Meido; the adventure's chief
+        # antagonist. It manifests physically from the fabric of the realm.
+        PROPERTIES {
+            ^"Type" STRING "Adversary" FIXED
+            ^"Also Known As" STRING "the Phantasm"
+            ^"Combat Conflict Rank" INTEGER 12
+            ^"Intrigue Conflict Rank" INTEGER 8
+            ^"Rings" DEF { ^"Air" INTEGER 6 ^"Earth" INTEGER 5 ^"Fire" INTEGER 2 ^"Water" INTEGER 3 ^"Void" INTEGER 3 }
+            ^"Demeanor" STRING "Vindictive (Earth +2, Air –2)"
+            ^"Endurance" INTEGER 22
+            ^"Composure" INTEGER 16
+            ^"Focus" INTEGER 8
+            ^"Vigilance" INTEGER 5
+            ^"Honor" INTEGER 0
+            ^"Glory" INTEGER 10
+            ^"Status" INTEGER 0
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 4", "Scholar 3", "Social 4", "Trade 0"]
+            ^"Advantages" LIST OF STRING ["Stone Resilience — Martial; Physical"]
+            ^"Disadvantages" LIST OF STRING ["Lumbering — Martial; Physical"]
+            ^"Favored Weapons" LIST OF STRING ["Marble Hands: Range 1–2, Damage 8, Deadliness 4, Snaring", "Stone Stomp: Range 0, Damage 10, Deadliness 6"]
+            ^"Gear" LIST OF STRING ["Gear (equipped): Stone form (Physical 5, Spiritual 5)"]
+        }
+        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 12, Intrigue 8. Manifested physically, the Phantasmal Oni is large and fearsome. Its skin is hard as stone and repels mundane weapons. It uses the fabric of the realm to manifest, so in Meido it appears to be made of marble (if it manifested in Jigoku, it would appear obsidian or molten). In solid form it is slow, but it retains its power of illusion."
+        ^"Phantasm" DEF { ^"Effect" STRING "The Phantasmal Oni is an Otherworldly being of silhouette 4. As an insubstantial cloud, the Phantasm cannot physically interact with its environment or other characters, reduces all physical damage it suffers to 0, and cannot suffer critical strikes. It can use its powers of illusion in this form and can communicate in an audible whisper. As an Attack and Scheme action, the oni may take on tangible form, creating a body from the physical structure of its environment (usually stone); it then obeys all normal rules and uses the weapons and gear noted in this profile." }
+        ^"Powerful Illusions" DEF { ^"Effect" STRING "As a Scheme action, the Phantasmal Oni may summon an illusion at range 0–6. The illusion can be of almost any size or complexity; for example, it might entirely replace the viewers' environment and contents, or simulate actions taken by particular characters. The illusion encompasses all the senses, so that it feels real to the touch and can even cause pain. A character who has reason to suspect the illusion is false may attempt to see through it as a Scheme action, making a TN 4 Meditation check (Void 3, Fire 5). If the check is successful, the character sees the world as it really is, though others remain affected. The GM may also allow a character to make this check to avoid making a huge mistake (such as attacking an ally or putting themself in physical danger) as a result of the illusion." }
+    }
+}

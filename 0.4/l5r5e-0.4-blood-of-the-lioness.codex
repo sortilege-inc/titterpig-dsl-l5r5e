@@ -1,0 +1,126 @@
+# .codex SECTION — Blood of the Lioness. Stand-off graph over
+# l5r5e-0.4-blood-of-the-lioness.lore (spec §25). Part of the L5R5e system graph;
+# DEPENDS_ON the shared schema.
+#
+# The cast (l5r5e-0.4-blood-of-the-lioness-cast.ttrpg) is DEFs, referenced via
+# ^"..." never minted. Snow Plain, the Battle of Snow Plain, the Castle of the
+# Swift Sword, the Akodo War College, and the Ikoma Hall of Scribes are already in
+# the graph (from Fields of Victory) — referenced. Clan and family DEFs (Lion
+# Clan, Unicorn Clan, Kitsu, Ikoma, Akodo, Shosuro, Ide, Kitsuki) resolve to the
+# .ttrpg corpus. This section mints the new figures (the librarian Kitsu Ayako and
+# her adoptive father Kitsu Taigen, the daimyō Kitsu Takeko, the drill sergeant
+# Akodo Atsushi, the historians Ikoma Hideri and Ikoma Ichigo, the shinobi Shosuro
+# Yasu, the magistrate Kitsuki Kāgi, and the present-day claimants Shosuro Aishi
+# and Ide Tsubame), the secret Golden Lantern Dōjō, the contested diamond mine,
+# and the text Akodo's Leadership.
+
+CODEX "L5R5e_BloodOfTheLioness_Codex" {
+    NAME "Blood of the Lioness — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-05"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # ---- The secret dōjō ---------------------------------------------------
+    ENTITY #L5RcxBOL01goldenlantern ^"Golden Lantern Dōjō" {
+        IS ^"School"
+        SOURCE "l5r5e-0.4-blood-of-the-lioness.lore" AT "part-one-the-official-record-castle-of-the-swift-sword-1123"
+        RELATIONSHIPS {
+            ^"located-in"  -> ^"Castle of the Swift Sword" FROM "The secret Golden Lantern Dōjō is also located on the premises, but is known only to its students"
+            ^"operated-by" -> ^"Kitsu" FROM "where Kitsu shugenja study the Ancestral Summons invocation in secret" }
+    }
+
+    # ---- The contested resource --------------------------------------------
+    ENTITY #L5RcxBOL02diamondmine ^"Snow Plain Diamond Mine" {
+        IS ^"Mountain"
+        SOURCE "l5r5e-0.4-blood-of-the-lioness.lore" AT "part-one-the-official-record-castle-of-the-swift-sword-1123"
+        RELATIONSHIPS {
+            ^"located-near" -> ^"Snow Plain" FROM "a dispute over a diamond mine in Unicorn territory that the Scorpion claim was promised to them for their aid at the Battle of Snow Plain" }
+    }
+
+    # ---- The text ----------------------------------------------------------
+    ENTITY #L5RcxBOL03akodosleader ^"Akodo's Leadership" {
+        IS ^"Document"
+        SOURCE "l5r5e-0.4-blood-of-the-lioness.lore" AT "part-one-the-official-record-castle-of-the-swift-sword-1123"
+    }
+
+    # ---- The Kitsu of the castle -------------------------------------------
+    ENTITY #L5RcxBOL04kitsuayako ^"Kitsu Ayako" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-blood-of-the-lioness.lore" AT "part-one-the-official-record-castle-of-the-swift-sword-1123"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Kitsu" FROM "a slight and hesitant young woman dressed in scholar's robes… 'I am Kitsu Ayako'"
+            ^"child-of"  -> ^"Kitsu Taigen" FROM "the peasant-born librarian Kitsu Ayako, adopted by the elderly historian Kitsu Taigen" }
+    }
+    ENTITY #L5RcxBOL05kitsutaigen ^"Kitsu Taigen" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-blood-of-the-lioness.lore" AT "part-one-the-official-record-castle-of-the-swift-sword-1123"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Kitsu" FROM "Ayako introduces Kitsu Taigen, her father (through adoption)… old, wise, and helpful" }
+    }
+    ENTITY #L5RcxBOL06kitsutakeko ^"Kitsu Takeko" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-blood-of-the-lioness.lore" AT "part-one-the-official-record-castle-of-the-swift-sword-1123"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Kitsu" FROM "the young Kitsu daimyō and a talented shugenja"
+            ^"leads"     -> ^"Kitsu" FROM "the Kitsu daimyō, Kitsu Takeko" }
+    }
+    ENTITY #L5RcxBOL07kitsuyayoi ^"Kitsu Yayoi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-blood-of-the-lioness.lore" AT "part-one-the-official-record-castle-of-the-swift-sword-1123"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Kitsu" FROM "one of the daimyō's advisors… 'I am Kitsu Yayoi'" }
+    }
+
+    # ---- The Akodo ---------------------------------------------------------
+    ENTITY #L5RcxBOL08akodoatsushi ^"Akodo Atsushi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-blood-of-the-lioness.lore" AT "part-one-the-official-record-castle-of-the-swift-sword-1123"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Akodo" FROM "a drill sergeant and teacher at the War College. Gruff and dutiful" }
+    }
+
+    # ---- The Ikoma historians ----------------------------------------------
+    ENTITY #L5RcxBOL09ikomahideri ^"Ikoma Hideri" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-blood-of-the-lioness.lore" AT "part-two-the-vision-battle-of-snow-plain-820"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Ikoma" FROM "the historian assigned to Matsu Sakura's army… a meticulous chronicler of history and courageous during battle" }
+    }
+    ENTITY #L5RcxBOL10ikomaichigo ^"Ikoma Ichigo" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-blood-of-the-lioness.lore" AT "part-one-the-official-record-castle-of-the-swift-sword-1123"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Ikoma" FROM "an energetic and proud member of the Ikoma Bards. Detail-oriented and charming" }
+    }
+
+    # ---- The Scorpion shinobi ----------------------------------------------
+    ENTITY #L5RcxBOL11shosuroyasu ^"Shosuro Yasu" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-blood-of-the-lioness.lore" AT "part-two-the-vision-battle-of-snow-plain-820"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Shosuro" FROM "A shinobi called Shosuro Yasu, who is impersonating the medic Akodo Kamayoko, was responsible for the death of Ikoma Hideri, but her name has been kept out of the histories" }
+    }
+
+    # ---- Part Three: the magistrate and the claimants ----------------------
+    ENTITY #L5RcxBOL12kitsukikagi ^"Kitsuki Kāgi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-blood-of-the-lioness.lore" AT "part-three-the-truth-castle-of-the-swift-sword-1123"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Kitsuki" FROM "the appointed magistrate who will render a judgment on the claim"
+            ^"serves"    -> ^"Lion Clan" FROM "a deputy sent by the acting Emerald Champion, Agasha Sumiko, to arbitrate negotiations" }
+    }
+    ENTITY #L5RcxBOL13shosuroaishi ^"Shosuro Aishi" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-blood-of-the-lioness.lore" AT "part-three-the-truth-castle-of-the-swift-sword-1123"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Shosuro" FROM "Shosuro Aishi, a descendant of the Scorpion emissary Shosuro Amane in the vision" }
+    }
+    ENTITY #L5RcxBOL14idetsubame ^"Ide Tsubame" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-blood-of-the-lioness.lore" AT "part-three-the-truth-castle-of-the-swift-sword-1123"
+        RELATIONSHIPS {
+            ^"member-of" -> ^"Ide" FROM "Ide Tsubame, an ambitious young Unicorn courtier and descendant of Shinjo Kamu" }
+    }
+}

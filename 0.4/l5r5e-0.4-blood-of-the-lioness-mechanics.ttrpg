@@ -1,0 +1,53 @@
+# L5R 5E — Blood of the Lioness: Mechanics (new invocation + distinction)
+# "Blood of the Lioness" (L5R15DLC01a, FFG) is a military-themed Lion Clan
+# adventure. Its appendix of new player-facing rules is small: one new Kitsu
+# invocation (Ancestral Army) and one new distinction (Student of Akodo), both
+# tied to Lion/Kitsu tradition. All text is transcribed VERBATIM from the source
+# page images (p.9). The invocation's opportunity symbols are written with the
+# corpus (op) convention; the distinction's effect prose is mirrored in the .lore
+# per the l5r5e convention (distinction DEFs carry Ring + Types only).
+#
+# The "Legacy" advantage the booklet mentions (p.2) is NOT defined here: the text
+# points to "the Blood of the Lioness online supplement" for those rules, and no
+# Legacy rules appear in this booklet — so there is nothing to convert for it.
+
+EXTENSION "L5R5e_BloodOfTheLioness_Mechanics" EXTENDS "L5R5e_Core_Techniques" {
+    NAME "Blood of the Lioness — New Mechanics"
+    VERSION "0.4"
+    SPEC_VERSION "0.4"
+    RELEASE_DATE "2026-09-05"
+    DEPENDS_ON "L5R5e_Core_Techniques"
+
+    # ═══════════════ ANCESTRAL ARMY [Invocation] ═══════════════
+    # A new Rank 1 invocation restricted to Kitsu Family shugenja trained at the
+    # Golden Lantern Dōjō. It summons ancestral warriors (see the Ancestral
+    # Warriors profile in the cast file, which the invocation references).
+    #L5RBOL01AncestralArmyInv ^"Ancestral Army" DEF {
+        EXTENDS #L5R350fG9hI1jK3lM5nO7p ^"Technique"
+        ^"Category" STRING "Invocation"
+        RANK 1
+        ^"Restriction" STRING "Kitsu Family; can only be learned at Golden Lantern Dōjō"
+        DESCRIPTION "A powerful invocation that can only be learned at Golden Lantern Dōjō which allows some gifted Kitsu shugenja to call forth ancestor spirits. However, these ancestors will only answer the call of a warrior who seeks to live up to their ideals, and will swiftly abandon any who refuse to comport themselves with the dignity of their station. Additionally, the technique takes a toll the longer the warriors are manifest, and risks leaving the shugenja exhausted and defenseless after they depart."
+        ACTIVATION "Once per scene as a Support action, you may make a TN 3 Theology (Water) check targeting one position at range 1. When you activate this invocation, you must stake 5 honor upon behaving properly in the presence of your ancestors."
+        EFFECTS "If you succeed during a narrative scene, intrigue, or skirmish, you summon a number of ancestral warriors (see Ancestral Warriors, on this page) equal to your school rank to aid you in battle. These characters fight for you for a number of rounds equal to your honor rank, plus one additional round per bonus success, taking their turns immediately after yours. When this effect ends, the ancestral warriors return to the afterlife. If you forfeit honor while this effect persists, it ends immediately instead, and you also lose your staked honor. After this effect ends, receive fatigue equal to your bonus successes. If you succeed during a mass battle, you summon reinforcements to your army, increasing its strength and discipline by two times your school rank (if you did not have an army, it creates one with strength equal to your school rank times two and discipline 40). This effect persists for a number of rounds equal to your honor rank plus your bonus successes. When this effect ends, the ancestral warriors return to the afterlife, and your army's strength and discipline decrease accordingly (if you no longer have an army as a result, your army counts as being routed, as described on page 279 of the core rulebook). If you forfeit honor while this effect persists, it ends immediately instead, and you also lose your staked honor. After this effect ends, receive fatigue equal to your bonus successes."
+        OPPORTUNITIES {
+            "(op)+ (Narrative Scene, Intrigue, or Skirmish): Up to one of the ancestors you summon this way per (op) spent this way appears at a location at range 0–3 of you instead."
+            "(op)(op)+ (Narrative Scene, Intrigue, or Skirmish): Up to one of the ancestors you summon per (op)(op) spent this way may be a specific individual, using any appropriate human (or other ancestor, such as a kitsu) profile with combined (combat) and (intrigue) threat rating no greater than your honor rank."
+            "(op)(op)+ (Mass Battle): One cohort in your army per (op)(op) spent this way gains one of the following abilities: Cavalry, Siege Specialists, Infantry, Archers, Mystics (see page 280 of the core rulebook)."
+        }
+    }
+
+    # ═══════════════ STUDENT OF AKODO [Distinction] ═══════════════
+    # A new interpersonal/mental distinction (Void) purchasable for 3 XP by a
+    # character who studies the text "Akodo's Leadership" (see the Akodo's
+    # Leadership sidebar, p.9). Distinction DEFs in l5r5e carry Ring + Types; the
+    # full effect text is reproduced verbatim in the .lore.
+    #L5RBOL02StudentOfAkodoDst ^"Student of Akodo" DEF {
+        EXTENDS #L5R266oP8qR0sT2uV4wX6y ^"Distinction"
+
+        PROPERTIES {
+            ^"Ring" STRING "Void"
+            ^"Types" LIST ["Interpersonal", "Mental"]
+        }
+    }
+}

@@ -1,0 +1,70 @@
+# .codex SECTION — Wheel of Judgment. Stand-off graph over
+# l5r5e-0.4-wheel-of-judgment.lore (spec §25). Part of the L5R5e system graph;
+# DEPENDS_ON the shared schema.
+#
+# The nine statblocks (l5r5e-0.4-wheel-of-judgment-cast.ttrpg) are DEFs, referenced
+# via ^"..." never minted. Meido, Jigoku, Gaki-dō, Ningen-dō, Emma-Ō, Fu Leng,
+# Ryoshun, and the maō Burakakin are already in the graph (Emerald Empire /
+# Deathly Turns) — referenced. This section mints the new places of the adventure
+# (the Palace of Emma-Ō, the Fortress of Fu Leng and its Archive and Repository of
+# All Knowledge) and the lore-only figures (the mazoku Minroki and Rikakima, the
+# murdered courtier Reju Tabito and his student Akio).
+
+CODEX "L5R5e_WheelOfJudgment_Codex" {
+    NAME "Wheel of Judgment — Lore Graph"
+    VERSION "0.1"
+    SPEC_VERSION "0.5"
+    RELEASE_DATE "2026-09-05"
+    FOR EDITION "l5r5e"
+    DEPENDS_ON "L5R5e_Codex_Schema" VERSION "0.9"
+
+    # ---- Places of the underworld -----------------------------------------
+    ENTITY #L5RcxWOJ01palaceemmao ^"Palace of Emma-Ō" {
+        IS ^"Palace"
+        SOURCE "l5r5e-0.4-wheel-of-judgment.lore" AT "part-one-meido-the-realm-of-waiting"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Meido" FROM "The many-tiered palace of Emma-Ō is visible from everywhere, surrounded by eight citadels and, seen from above, resembling an enormous wheel with the palace at the center and the queues of souls as its spokes" }
+    }
+    ENTITY #L5RcxWOJ02fortressfuleng ^"Fortress of Fu Leng" {
+        IS ^"Castle"
+        SOURCE "l5r5e-0.4-wheel-of-judgment.lore" AT "part-two-jigoku-the-realm-of-evil"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Jigoku" FROM "she suggests looking in the archives of the Fortress of Fu Leng" }
+    }
+    ENTITY #L5RcxWOJ03thearchive ^"The Archive (Fortress of Fu Leng)" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-wheel-of-judgment.lore" AT "part-two-jigoku-the-realm-of-evil"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Fortress of Fu Leng" FROM "Searching Fu Leng's fortress, they can recover — in The Archive — a scroll that looks like a list: in fact a coded roster of mazoku working for or compromised by the Phantasm" }
+    }
+    ENTITY #L5RcxWOJ04repository ^"Repository of All Knowledge" {
+        IS ^"Landmark"
+        SOURCE "l5r5e-0.4-wheel-of-judgment.lore" AT "part-two-jigoku-the-realm-of-evil"
+        RELATIONSHIPS {
+            ^"located-in" -> ^"Fortress of Fu Leng" FROM "unreadable without the cipher found on the skin of an oni in the Repository of All Knowledge" }
+    }
+
+    # ---- The mazoku of Meido -----------------------------------------------
+    ENTITY #L5RcxWOJ05minroki ^"Minroki" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-wheel-of-judgment.lore" AT "part-one-meido-the-realm-of-waiting"
+        RELATIONSHIPS {
+            ^"companion-of" -> ^"Rikakima" FROM "Minroki has been partnered with Rikakima as long as he can remember, and he trusts her judgment" }
+    }
+    ENTITY #L5RcxWOJ06rikakima ^"Rikakima" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-wheel-of-judgment.lore" AT "part-one-meido-the-realm-of-waiting"
+    }
+
+    # ---- The murdered courtier and his student -----------------------------
+    ENTITY #L5RcxWOJ07rejutabito ^"Reju Tabito" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-wheel-of-judgment.lore" AT "part-one-meido-the-realm-of-waiting"
+        RELATIONSHIPS {
+            ^"teacher-of" -> ^"Akio" FROM "he fears he was replaced and murdered so a spirit or shinobi could get close to his young student, a Seppun boy called Akio" }
+    }
+    ENTITY #L5RcxWOJ08akioseppun ^"Akio" {
+        IS ^"Person"
+        SOURCE "l5r5e-0.4-wheel-of-judgment.lore" AT "part-one-meido-the-realm-of-waiting"
+    }
+}
