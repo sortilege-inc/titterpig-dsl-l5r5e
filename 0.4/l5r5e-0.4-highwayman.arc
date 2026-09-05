@@ -6,7 +6,7 @@
 
 ARC "the-highwayman" EXTENDS "l5r5e" {
     NAME "The Highwayman"
-    VERSION "0.4"
+    VERSION "0.4.1"
     SPEC_VERSION "0.4"
     SYSTEM "l5r5e"
     SOURCE "The Highwayman: The Legend of the Five Rings 2019 Gen Con Adventure (Fantasy Flight Games, 2020)"
@@ -75,6 +75,6 @@ ARC "the-highwayman" EXTENDS "l5r5e" {
     # PREGENS (resolve to l5r5e-0.4-highwayman-pregens.actor)
     # ─────────────────────────────────────────────
     PARTY {
-        PREGENS [^"Ahuja Mishti", ^"Akagi Daichi", ^"Hiyabayashi Kenshin", ^"Maki Haruko", ^"Noburo", ^"Otgontogoch Turgen"]
+        PREGENS [^"Ahuja Mishti", ^"Akagi Daichi", ^"Hiyabayashi Kenshin", ^"Maki Haruko", ^"Noboru", ^"Otgontogoch Turgen"]
     }
 }
