@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Children of the Five Winds: New Player Options"
-    VERSION "0.4.3"
+    VERSION "0.4.4"
     SPEC_VERSION "0.4.1"
     RELEASE_DATE "2026-03-01"
 
@@ -1242,7 +1242,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 }
 
                 EFFECT {
-                    "Add additional warhorse to starting items ("
+                    "You add an additional warhorse to your starting items. Roll a ten-sided die again to determine the horse’s original family. New horse options can be found beginning on page 141."
                 }
 
                 SUB_TABLE "1d10" {
@@ -1250,7 +1250,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                     "3-4" "Shinjo"
                     "5-6" "Iuchi"
                     "7-8" "Ide"
-                    "9-10" "Moto)"
+                    "9-10" "Moto"
                 }
             }
 
@@ -1275,7 +1275,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                 }
 
                 EFFECT {
-                    "Learn one additional technique ("
+                    "You know one additional technique. Roll a ten-sided die again to determine the category. Then select one technique with a prerequisite of school rank 1 and learn that technique. You can perform that technique even if it is not normally allowed by your school."
                 }
 
                 SUB_TABLE "1d10" {
@@ -1284,7 +1284,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                     "7" "ritual"
                     "8" "invocation"
                     "9" "kihō"
-                    "10" "mahō or ninjutsu). Select rank 1 technique. You can perform that technique even if it is not normally allowed by your school"
+                    "10" "mahō or ninjutsu"
                 }
             }
 
@@ -1308,12 +1308,16 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                     ^"Status" "-5"
                 }
 
+                EFFECT {
+                    "Roll a ten-sided die again to determine the skill you learned from your other culture. You gain +1 rank in that skill."
+                }
+
                 SUB_TABLE "1d10" {
                     "1-2" "Aesthetics"
                     "3-4" "Courtesy"
                     "5-6" "Culture"
                     "7-8" "Meditation"
-                    "9-10" "Commerce. Gain +1 rank"
+                    "9-10" "Commerce"
                 }
             }
 
@@ -1358,8 +1362,16 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                     ^"Glory" "-3"
                 }
 
+                EFFECT {
+                    "Roll a ten-sided die again to determine the spirit’s ring. You may increase the value of your matching ring by 1 and reduce the value of a different ring by 1 (this still cannot raise a ring above 3)."
+                }
+
                 SUB_TABLE "1d10" {
-                    "1" "and reduce another by 1 (max 3)"
+                    "1-2" "Fire"
+                    "3-4" "Earth"
+                    "5-6" "Water"
+                    "7-8" "Air"
+                    "9-10" "Void"
                 }
             }
         }
