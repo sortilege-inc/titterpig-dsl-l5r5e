@@ -131,7 +131,50 @@ cd "../titterpig-dsl" && python3 ttrpg_validator.py ../titterpig-dsl-l5r5e/0.4
 
 Must stay 0 errors / 0 warnings.
 
-## 2026-09-15 — §5d migration done; one spec gap left open
+## 2026-09-15 — 0.5 MIGRATION COMPLETE
+
+The corpus was **not** on 0.5. Only 74 of 164 files declared it — the 69 `.codex`
+files (a 0.5-only construct) and the five core `.ttrpg` they depend on. Every
+sourcebook, actor, arc and frame still said 0.4. All 164 now declare
+`SPEC_VERSION "0.5"` with `VERSION` anchored to it.
+
+**Construct adoption, measured:**
+
+| construct | before | after |
+|---|---:|---:|
+| `GUIDANCE` (§22) | 93 blocks / 449 entries | unchanged — already adopted |
+| `.codex` (§25) | 69 files | unchanged — already adopted |
+| `REFERENCES` (§5c) | **1 block** | **41 blocks, 49 refs** |
+| `HOOKS` (§23) | 0 | 0 — no candidates |
+| `OPTIONAL` (§24) | 0 | 0 — no variant rules marked in the source |
+
+`MENTIONS` was 0, so nothing needed renaming: in-prose references had simply
+never been annotated here. `apply_references.py` generated 49; 16 came out
+hashless because their target carried no anchor, so 14 were minted (§12). The
+last two were `^"Mountain Song Temple"` — defined in **both** Writ of the Wilds
+(the gazetteer entry) and The Imperfect Land (the adventure's own location, which
+cites *Writ p76* as its source). Both anchored; the adventure's cast references
+the adventure's.
+
+**Checked and deliberately not moved:** 52 `.lore` files carry blockquote
+sidebars — *The Year Scroll*, *The Doji Family Mon*, *Perception as Reality*.
+Those are world-building; §22 `GUIDANCE` is prose **about mechanics**. They stay
+in `.lore`.
+
+**Migrated in place.** 49 files across the tree reference
+`titterpig-dsl-l5r5e/0.4`, including live campaign tooling (Fragile Peace sheet
+builders, Portents & Fortunes). The owner's rule is explicit that a filename's
+version segment tracks the content line, not the header `VERSION`, so the
+directory keeps its name and nothing downstream broke.
+
+```
+validator  164 files 0/0
+constructs 386 guidance, 0 errors
+references 49 refs, 0 errors, 0 hashless · §5d 2313 sites, 0 ambiguous
+synthesist 1461 entities, 842 flattened, 0 missing parents, 0 cycles
+```
+
+### §5d reference resolution — done
 
 Every by-name reference in this corpus now carries its `#hash` (DSL §5d,
 DECISION-13). 685 filled mechanically, 44 resolved by owner ruling.
