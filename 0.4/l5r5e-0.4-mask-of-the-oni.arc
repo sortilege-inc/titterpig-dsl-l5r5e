@@ -8,8 +8,8 @@
 
 ARC "mask-of-the-oni" EXTENDS "l5r5e" {
     NAME "Mask of the Oni"
-    VERSION "0.4"
-    SPEC_VERSION "0.4"
+    VERSION "0.5.0"
+    SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Mask of the Oni: An Adventure in the Shadowlands (Fantasy Flight Games, product L5R07)"
     LEAD_WRITER "Fantasy Flight Games"

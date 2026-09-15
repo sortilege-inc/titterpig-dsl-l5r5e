@@ -7,8 +7,8 @@
 
 ARC "the-knotted-tails" EXTENDS "l5r5e" {
     NAME "The Knotted Tails"
-    VERSION "0.4.1"
-    SPEC_VERSION "0.4"
+    VERSION "0.5.0"
+    SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "The Knotted Tails: A Supplemental Storyline for Mask of the Oni (Fantasy Flight Games, 2020)"
     LEAD_WRITER "Alexis Dykema"

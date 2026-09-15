@@ -11,8 +11,8 @@
 
 ARC "blood-of-the-lioness" EXTENDS "l5r5e" {
     NAME "Blood of the Lioness"
-    VERSION "0.4.1"
-    SPEC_VERSION "0.4"
+    VERSION "0.5.0"
+    SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Blood of the Lioness: An Adventure at the Battle of Snow Plain (Fantasy Flight Games)"
     LEAD_WRITER "Fantasy Flight Games"

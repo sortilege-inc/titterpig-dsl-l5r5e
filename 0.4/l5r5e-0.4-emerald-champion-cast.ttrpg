@@ -11,8 +11,8 @@
 # the peasant Sō. The seven pregens are in l5r5e-0.4-emerald-champion-pregens.actor.
 
 EXTENSION "L5R5e_EmeraldChampion_Cast" {
-    VERSION "0.4.1"
-    SPEC_VERSION "0.4"
+    VERSION "0.5.0"
+    SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-03"
     DEPENDS_ON "L5R5e_Core_Core"
 
@@ -42,7 +42,7 @@ EXTENSION "L5R5e_EmeraldChampion_Cast" {
         ^"Knows the Road" DEF { ^"Effect" STRING "Ryu has made the trek between the Emerald Champion's castle and Tsuma many times over his life. Should the PCs treat him well, he can offer the best spots to rest at the end while on the road. This allows each PC to remove one additional strife when removing strife at the end of each scene." }
     }
 
-    ^"Goro the Bandit Leader" DEF {
+    #t2496c476c54913e2fde85 ^"Goro the Bandit Leader" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
         # Goro became leader of this bandit group through cunning and guile,
         # targeting travelers on isolated roads — though he accepts tougher
@@ -63,6 +63,9 @@ EXTENSION "L5R5e_EmeraldChampion_Cast" {
             ^"Gear" LIST OF STRING ["Thick traveling clothes, sake jug (full), knife, handful of bu"]
         }
         DESCRIPTION "Beginner Game simplified profile. Goro the Bandit Leader."
+        REFERENCES {
+            "Goro the Bandit Leader" -> #t2496c476c54913e2fde85 ^"Goro the Bandit Leader"
+        }
         ^"...Get Them, Fools!" DEF { ^"Effect" STRING "As an action, Goro may have up to two of his bandits who have not yet acted this round immediately move 1 range band and perform a Strike action." }
     }
 
@@ -141,7 +144,7 @@ EXTENSION "L5R5e_EmeraldChampion_Cast" {
         ^"Surefooted" DEF { ^"Effect" STRING "Goblins ignore the negative effects of terrain." }
     }
 
-    ^"Teru the Ogre" DEF {
+    #t2059f22528a6b112ed0f4 ^"Teru the Ogre" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
         # A huge, violent creature that dimly remembers a Shadowlands home but is
         # now thriving in these greener regions with a small horde of goblins,
@@ -162,6 +165,9 @@ EXTENSION "L5R5e_EmeraldChampion_Cast" {
             ^"Gear" LIST OF STRING ["Tattered hides (Resistance 1)"]
         }
         DESCRIPTION "Beginner Game simplified profile. Teru the Ogre — leader of the goblin horde. NPC STATUS: WOUNDED — Teru is currently suffering from 8 fatigue."
+        REFERENCES {
+            "Teru the Ogre" -> #t2059f22528a6b112ed0f4 ^"Teru the Ogre"
+        }
         ^"Crushing Blow" DEF { ^"Effect" STRING "Whenever Teru inflicts a critical strike, the target suffers the Prone condition as well as any other conditions from the critical strike. While prone, a character cannot move more than one range band during their turn (probably by crawling). At the end of their turn, if the character did not perform a Movement action, they may choose to remove the Prone condition (by standing up)." }
         ^"Rage of the Beast" DEF { ^"Effect" STRING "Once per scene, after Teru suffers a critical strike, it becomes Enraged (increasing the damage it both inflicts and suffers by 2) until its critical strikes are removed." }
         ^"Huge" DEF { ^"Effect" STRING "Ogres are Silhouette 4." }
@@ -169,7 +175,7 @@ EXTENSION "L5R5e_EmeraldChampion_Cast" {
 
     # ═══════════════════════ ACT II & III — SHIRO YOGASHA ══════════════════
 
-    ^"Agasha Sumiko" DEF {
+    #ta5848f6e8bb7d252e50e1 ^"Agasha Sumiko" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
         # A pale, powerful Dragon bushi, Ruby Champion for several years and now
         # also acting as Emerald Champion until a new one can be chosen. Extremely
@@ -192,11 +198,14 @@ EXTENSION "L5R5e_EmeraldChampion_Cast" {
             ^"Gear" LIST OF STRING ["Daishō, Ruby Champion's Armor (Resistance 4), scrolls"]
         }
         DESCRIPTION "Beginner Game simplified profile. Agasha Sumiko, Ruby Champion and Acting Emerald Champion at Shiro Yogasha."
+        REFERENCES {
+            "Agasha Sumiko" -> #ta5848f6e8bb7d252e50e1 ^"Agasha Sumiko"
+        }
         ^"Expert in the Dōjō" DEF { ^"Effect" STRING "Though she rarely displays it now, Sumiko is an expert at both employing and teaching Martial Arts. After sparring with her, a character may purchase Rank 1 of a single Martial skill in which they have 0 ranks for 1 XP instead of 2." }
         ^"For the Good of the Empire" DEF { ^"Effect" STRING "Sumiko is a firm believer in the Emperor's divine right to rule, and thinks foremost of the Empire's well-being in each decision she makes. Increase the TN of Command or Courtesy skill checks to convince her to act against the wishes of the Emperor, even for the best of reasons, by 2." }
     }
 
-    ^"Kitsuki Kāgi" DEF {
+    #t0c848834c60fb715dc0c1 ^"Kitsuki Kāgi" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
         # Chief Yoriki (senior assistant) to the Emerald Magistrate. Formerly of the
         # Lion Matsu family, he married into the Dragon Clan and took the Kitsuki
@@ -218,10 +227,14 @@ EXTENSION "L5R5e_EmeraldChampion_Cast" {
             ^"Gear" LIST OF STRING ["Wakizashi, family armor (Resistance 3), handful of scrolls"]
         }
         DESCRIPTION "Beginner Game simplified profile. Kitsuki Kāgi, Chief Yoriki to the Emerald Magistrate; Sumiko's personal assistant and a possible Lion spy."
+        REFERENCES {
+            "Kitsuki Kāgi" -> #t0c848834c60fb715dc0c1 ^"Kitsuki Kāgi"
+            "Emerald Magistrate" -> #te00d8a952f43f435d9017 ^"Emerald Magistrate"
+        }
         ^"Knows Everybody" DEF { ^"Effect" STRING "While Kāgi is present in the scene, any character making a Scholar skill check (such as Culture, Government, or Theology) to ascertain or remember a detail about someone in the castle may spend Opportunity Opportunity. If they fail the check, Kāgi approaches and supplies the information in question." }
     }
 
-    ^"Shosuro Hametsu" DEF {
+    #t1880ce7af8fa1dd5793fc ^"Shosuro Hametsu" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
         # Daimyō of the Shosuro family and brother of Bayushi Kachiko; a master
         # poisoner. He attends the castle in disguise as the Emerald Magistrate
@@ -243,11 +256,15 @@ EXTENSION "L5R5e_EmeraldChampion_Cast" {
             ^"Gear" LIST OF STRING ["Wakizashi, concealed armor under robes (Resistance 3), variety of hidden vials filled with poisons"]
         }
         DESCRIPTION "Beginner Game simplified profile. Shosuro Hametsu, Family Daimyō, posing as the Emerald Magistrate 'Bayushi Ago'; brother of Bayushi Kachiko."
+        REFERENCES {
+            "Shosuro Hametsu" -> #t1880ce7af8fa1dd5793fc ^"Shosuro Hametsu"
+            "Emerald Magistrate" -> #te00d8a952f43f435d9017 ^"Emerald Magistrate"
+        }
         ^"Master of Poisons" DEF { ^"Effect" STRING "As a Support action, Hametsu may make TN 2 Skulduggery (Air) check instead of a Medicine check to apply a dose of poison to a weapon or item (see page 26 of the Rulebook). If successful, no one notices this action." }
         ^"Master of Disguises" DEF { ^"Effect" STRING "Hametsu may make a TN 1 Skulduggery (Water) check to adopt a disguise. The TN of checks to notice this disguise is 2 plus the number of bonus successes he gains on this check. Characters must know Hametsu personally or have seen him in person to determine he is the one in disguise, however." }
     }
 
-    ^"Kitsuki Tomo" DEF {
+    #t4120c3938e1a6324cebe1 ^"Kitsuki Tomo" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
         # A fanatical Kolat for years, ever since he witnessed one of the Emperor's
         # heirs kill a peasant — convincing him humans, not the offspring of the
@@ -270,6 +287,9 @@ EXTENSION "L5R5e_EmeraldChampion_Cast" {
             ^"Gear" LIST OF STRING ["Daishō, thick clothing with concealed armor (Resistance 3), vials of poison, coil of thin rope, climbing hooks"]
         }
         DESCRIPTION "Beginner Game simplified profile. Kitsuki Tomo, Kolat Assassin — posing as one of Kāgi's assistants."
+        REFERENCES {
+            "Kitsuki Tomo" -> #t4120c3938e1a6324cebe1 ^"Kitsuki Tomo"
+        }
         ^"Skilled Assassin" DEF { ^"Effect" STRING "When making an Attack check, Tomo may spend Opportunity Opportunity to move 1 range band and throw a shuriken at a character at range 1–2 other than his target. That character must resist with a TN 3 Fitness (Earth) check or suffer 5 damage." }
         ^"Single-Minded" DEF { ^"Effect" STRING "During battle scenes, Tomo does not receive strife from strife results on his checks." }
     }

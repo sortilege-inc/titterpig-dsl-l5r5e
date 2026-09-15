@@ -14,8 +14,8 @@
 
 EXTENSION "L5R5e_BloodOfTheLioness_Cast" {
     NAME "Blood of the Lioness — Cast"
-    VERSION "0.4.1"
-    SPEC_VERSION "0.4"
+    VERSION "0.5.0"
+    SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-05"
 
     # ═══════════════ MATSU SAKURA, LION GENERAL ═══════════════
@@ -75,7 +75,12 @@ EXTENSION "L5R5e_BloodOfTheLioness_Cast" {
             ^"Gear" LIST OF STRING ["Gear (equipped): Lacquered armor (Physical 4, Ceremonial, Cumbersome, Wargear), wakizashi, knife"]
         }
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 3, Intrigue 3. Kitsu Yū is older than Ayako and is naturally more confident and self-assured. She is a strong, honorable, and devout warrior who is respected by her fellow soldiers. Ayako feels out of place as an armored combatant, but what she doesn't learn until later is that Yū sometimes felt similarly. Yū is a descendant of the Kitsu family but has showed no ability as a shugenja and does not know of her abilities until the spirits answer her cries on Day 3. After praying to her ancestors during the battle, she is as surprised as anyone when Lion Clan ancestor spirits appear to fight alongside her. Though she won't live long enough to see it, her discovery at Snow Plain leads to the creation of the Golden Lantern Dōjō, where Kitsu shugenja study the Ancestral Summons invocation in secret."
-        ^"Ancestral Summons" DEF { ^"Type" STRING "Invocation"  ^"Effect" STRING "Once per game session as a Support action, the shugenja may attract numerous ancestral spirits to fight at her side. In a skirmish, these are treated as six Loyal Bushi (see page 312 of the core rulebook) who have physical resistance 10 and are Otherworldly beings. In a mass battle, increase the strength of her army by 20. These effects persist until Yū becomes incapacitated or, if she does not, until the end of the scene." }
+        REFERENCES {
+            "Kitsu Yū" -> #L5RBOLcastKitsuYuu0001 ^"Kitsu Yū"
+            "Lion Clan" -> #t20b5c8b8945614187b543 ^"Lion Clan"
+            "Ancestral Summons" -> #td0c67ab0f81aad9a88d6f ^"Ancestral Summons"
+        }
+        #td0c67ab0f81aad9a88d6f ^"Ancestral Summons" DEF { ^"Type" STRING "Invocation"  ^"Effect" STRING "Once per game session as a Support action, the shugenja may attract numerous ancestral spirits to fight at her side. In a skirmish, these are treated as six Loyal Bushi (see page 312 of the core rulebook) who have physical resistance 10 and are Otherworldly beings. In a mass battle, increase the strength of her army by 20. These effects persist until Yū becomes incapacitated or, if she does not, until the end of the scene." }
     }
 
     # ═══════════════ SHINJO KAMU, UNICORN GENERAL ═══════════════
@@ -104,6 +109,10 @@ EXTENSION "L5R5e_BloodOfTheLioness_Cast" {
             ^"Gear" LIST OF STRING ["Gear (equipped): Cavalry armor (Physical 3, Wargear), wakizashi"]
         }
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 3. General Shinjo Kamu is in charge of the Unicorn forces at Snow Plain. The hatred he has for the Lion is even stronger than his desire to keep the plain. Kamu is a proud and traditional man who prefers battle to diplomacy. He believes the plain is his clan's by right, since the Emperor granted these and other lands to the Unicorn once their return to Rokugan was made official. However, his orders from the Unicorn Champion were to keep the peace as much as possible and avoid further enmity. Therefore, he asked the visiting Scorpion, Shosuro Amane, to help negotiate peace. This he soon regrets, as the Scorpion's apparent benevolence quickly becomes suspect."
+        REFERENCES {
+            "Shinjo Kamu" -> #L5RBOLcastShinjoKamu001 ^"Shinjo Kamu"
+            "Shosuro Amane" -> #L5RBOLcastShosuroAmane01 ^"Shosuro Amane"
+        }
         ^"Inspiring Leader" DEF { ^"Effect" STRING "While Kamu is present in the battle, his army removes 3 panic at the end of each round." }
     }
 
@@ -130,6 +139,9 @@ EXTENSION "L5R5e_BloodOfTheLioness_Cast" {
             ^"Profile" STRING "Loyal Bushi (page 312 of the core rulebook)"
         }
         DESCRIPTION "Hisoka can be represented by the Loyal Bushi profile (page 312 of the core rulebook). He willingly defers to Sakura in all things, as she is not only his wife but his superior officer. He only offers his advice when asked and otherwise is quiet and contemplative. He attended the Akodo War College and now is a general in his wife's army. She respects and trusts him, and invites him to attend her meetings. He sometimes notices things she misses, and he often provides an unusual perspective on problems."
+        REFERENCES {
+            "Loyal Bushi" -> #L5RNSYqNiaIsD00qkid7td ^"Loyal Bushi"
+        }
     }
 
     #L5RBOLcastAncestralWarr01 ^"Ancestral Warriors" DEF {

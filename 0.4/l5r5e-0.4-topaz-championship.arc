@@ -8,8 +8,8 @@
 
 ARC "topaz-championship" EXTENDS "l5r5e" {
     NAME "The Topaz Championship"
-    VERSION "0.4.1"
-    SPEC_VERSION "0.4"
+    VERSION "0.5.0"
+    SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "The Topaz Championship: the adventure included in the L5R Roleplaying Beginner Game (Fantasy Flight Games)"
     LEAD_WRITER "Fantasy Flight Games"

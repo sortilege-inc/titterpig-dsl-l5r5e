@@ -15,8 +15,8 @@
 
 ARC "L5R5e_DarkTides" {
     NAME "Dark Tides"
-    VERSION "0.4.1"
-    SPEC_VERSION "0.4"
+    VERSION "0.5.0"
+    SPEC_VERSION "0.5"
     DEPENDS_ON "L5R5e_Core_Core"
     USES_EXTENSION "L5R5e_GM_Kit_Mechanics"
 

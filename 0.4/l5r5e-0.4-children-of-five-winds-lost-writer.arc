@@ -5,8 +5,8 @@
 
 ARC "L5R5e_LostWriter" {
     NAME "The Lost Writer in the City of the Rich Frog"
-    VERSION "0.4.1"
-    SPEC_VERSION "0.4"
+    VERSION "0.5.0"
+    SPEC_VERSION "0.5"
     DEPENDS_ON "L5R5e_Core_Core"
     USES_EXTENSION "L5R5e_Children_of_Five_Winds"
 

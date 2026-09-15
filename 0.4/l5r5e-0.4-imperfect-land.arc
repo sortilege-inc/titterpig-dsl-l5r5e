@@ -8,8 +8,8 @@
 
 ARC "imperfect-land" EXTENDS "l5r5e" {
     NAME "Imperfect Land"
-    VERSION "0.4.1"
-    SPEC_VERSION "0.4"
+    VERSION "0.5.0"
+    SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Imperfect Land: An Adventure Uncovering the Secrets of the Perfect Land Sect (Fantasy Flight Games)"
     LEAD_WRITER "Fantasy Flight Games"
@@ -51,7 +51,7 @@ ARC "imperfect-land" EXTENDS "l5r5e" {
     # LOCATIONS
     # ─────────────────────────────────────────────
     LOCATIONS {
-        ^"Mountain Song Temple" DEF {
+        #te4013301f2fe7da3be2ff ^"Mountain Song Temple" DEF {
             TYPE "Temple"
             DESCRIPTION "A Brotherhood temple in Dragon lands (Writ of the Wilds p76) that seems to grow out of the mountains, wrapped in the constant rise and fall of the Mountain Song. Host to this year's conclave under Mirumoto Masashige; its halls, libraries, and shrines shelter a fractious assembly of monks — and, in the wilderness beyond, a tengu ruin."
             NPCS [^"Mirumoto Masashige", ^"Naigen", ^"Anmoku", ^"Iwa"]

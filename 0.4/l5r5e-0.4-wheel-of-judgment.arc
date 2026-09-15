@@ -9,8 +9,8 @@
 
 ARC "wheel-of-judgment" EXTENDS "l5r5e" {
     NAME "Wheel of Judgment"
-    VERSION "0.4"
-    SPEC_VERSION "0.4"
+    VERSION "0.5.0"
+    SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Wheel of Judgment: An Adventure in the Underworld (Fantasy Flight Games)"
     LEAD_WRITER "Fantasy Flight Games"

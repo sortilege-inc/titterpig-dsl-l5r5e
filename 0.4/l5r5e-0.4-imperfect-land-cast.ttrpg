@@ -17,8 +17,8 @@
 # Desperate Bandits) live in the .lore / .codex.
 
 EXTENSION "L5R5e_ImperfectLand_Cast" {
-    VERSION "0.4.2"
-    SPEC_VERSION "0.4"
+    VERSION "0.5.0"
+    SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-03"
     DEPENDS_ON "L5R5e_Core_Core"
 
@@ -48,9 +48,12 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
             ^"Gear" LIST OF STRING ["Gear (equipped): Sōhei robes (Supernatural 2, Durable)"]
         }
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 9, Intrigue 4. Scaling note: if the PC party is small, low-rank, or not combat-oriented, replace her bisentō with a bō, remove the Trial of Fire ability, or reduce her Earth and Fire rings from 4 to 3."
+        REFERENCES {
+            "Trial of Fire" -> #te1429a15a1b6afd84f528 ^"Trial of Fire"
+        }
         ^"Master Sōhei" DEF { ^"Effect" STRING "Iwa may sustain two kihō enhancement effects at the same time and may perform any polearm-related kata." }
         ^"Conquering the Mountain" DEF { ^"Effect" STRING "Iwa's blows make the world tremble. She starts any duel, skirmish, or mass battle conflict scene with the Way of the Earthquake kihō's enhancement effect activated." }
-        ^"Trial of Fire" DEF { ^"Effect" STRING "The first time Iwa would otherwise become Incapacitated during a scene, she refuses to accept defeat and is able to activate the effects of the kihō The Body Is an Anvil, with its burst effect aimed at whoever has dared to approach her. Then, she removes fatigue until it equals half her endurance." }
+        #te1429a15a1b6afd84f528 ^"Trial of Fire" DEF { ^"Effect" STRING "The first time Iwa would otherwise become Incapacitated during a scene, she refuses to accept defeat and is able to activate the effects of the kihō The Body Is an Anvil, with its burst effect aimed at whoever has dared to approach her. Then, she removes fatigue until it equals half her endurance." }
     }
 
     ^"Ichirō (Imperfect Land)" DEF {
@@ -79,6 +82,9 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
             ^"Gear" LIST OF STRING ["Gear (equipped): Austere robes (Physical 2, Ceremonial, Durable)"]
         }
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 7, Intrigue 4. Adopted son of Mirumoto Masashige; now a Perfect Land adherent."
+        REFERENCES {
+            "Mirumoto Masashige" -> #te90b9e3d93bb1dc0748b0 ^"Mirumoto Masashige"
+        }
         ^"Twin Dragons Striking" DEF { ^"Effect" STRING "Ichirō may perform any Iaijutsu kata. Once per scene when dual wielding, he may reduce the cost of activating a kata to Opportunity." }
         ^"Empathic Objection" DEF { ^"Effect" STRING "Once per scene, when the Pure Land Sect or his faith are being challenged, Ichirō may vocally object and reduce his strife by a number equal to his focus. Any character who voices support of his objection also receives this benefit. In an intrigue, this ability cancels 1 momentum point gained from attacking or discrediting the sect." }
     }
@@ -143,6 +149,9 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
             ^"Gear" LIST OF STRING ["Gear (equipped): Traveling clothes (Physical 2, Durable, Mundane, Subtle)"]
         }
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 7, Intrigue 7. A tengu of the wilderness around the Mountain Song Temple; secret protector of Senzai."
+        REFERENCES {
+            "Mountain Song Temple" -> #te4013301f2fe7da3be2ff ^"Mountain Song Temple"
+        }
         ^"Trickster Tengu" DEF { ^"Effect" STRING "Ajari is especially aligned with Air. He can perform any Air shūji, Air kihō, Air ninjutsu, or Air invocation. However, he may not repeat techniques obtained this way within the same scene, as his tricks grow thin." }
         ^"Crafty Visage" DEF { ^"Effect" STRING "Ajari's Mask of Wind invocation is especially refined, allowing him to impersonate a specific individual." }
         ^"Master of the Staff" DEF { ^"Effect" STRING "Ajari can use a staff to perform any polearm or blunt weapon kata." }
@@ -191,7 +200,7 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
         DESCRIPTION "Abbot of the eastern branch of the Four Temples and leader of the anti-Perfect Land faction. His rigid worldview will not accept the Little Teacher even when she stands before him. Iwa, the militant sōhei, has long tied her fate to his."
     }
 
-    ^"Mirumoto Masashige" DEF {
+    #te90b9e3d93bb1dc0748b0 ^"Mirumoto Masashige" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
@@ -199,6 +208,9 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
             ^"Demeanor" STRING "Careworn"
         }
         DESCRIPTION "Daimyō of the Mirumoto family and, with the Clan Champion away, acting leader of the Dragon; host of the Brotherhood's conclave at the Mountain Song Temple. His feelings toward the sect are complicated — long worried about its destabilizing potential, bound by his Champion's policy of toleration, and thrown into turmoil when his adopted son Ichirō left to join it. Officially neutral, he is open to persuasion, and to reconciling with his son."
+        REFERENCES {
+            "Mountain Song Temple" -> #te4013301f2fe7da3be2ff ^"Mountain Song Temple"
+        }
     }
 
     # ═══════════════ PART ONE — "THE UNDECIDED" CONCLAVE DELEGATES ═════════

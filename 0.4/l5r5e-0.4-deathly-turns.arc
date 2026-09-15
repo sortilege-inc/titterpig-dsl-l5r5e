@@ -10,8 +10,8 @@
 
 ARC "deathly-turns" EXTENDS "l5r5e" {
     NAME "Deathly Turns"
-    VERSION "0.4.2"
-    SPEC_VERSION "0.4"
+    VERSION "0.5.0"
+    SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Deathly Turns: Supplemental Encounters for Wheel of Judgment (Fantasy Flight Games)"
     LEAD_WRITER "Fantasy Flight Games"
