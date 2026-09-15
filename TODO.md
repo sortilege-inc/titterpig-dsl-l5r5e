@@ -191,13 +191,29 @@ them would break the lore graph.
 
 **So this wants a construct, not an edit.** Reverted; nothing is broken today.
 
-### Pre-existing, untouched
+### Versions anchored to their spec — FIXED 2026-09-15
 
-**24 files carry a `VERSION` whose first two digits do not match their
-`SPEC_VERSION`** — mostly `VERSION "0.4"` with `SPEC_VERSION "0.5"`, and
-`l5r5e-0.4-codex-schema.codex` says `VERSION "0.9"`. The owner rule (2026-07-27)
-is that the first two digits track `SPEC_VERSION`. Flagged by the version
-bumper, deliberately left alone.
+93 files carried a `VERSION` that did not anchor to their `SPEC_VERSION`. All
+were in the live `0.4/` directory; no frozen directory was touched.
+
+- **19 files declared `SPEC_VERSION "0.4.1"`** — not a DSL spec version; the spec
+  knows only `0.4` and `0.5`. Their `VERSION` was already `0.4.x`, so the
+  malformed field was `SPEC_VERSION`: truncated to `0.4`, VERSION untouched.
+- **74 files declared `SPEC_VERSION "0.5"` with a VERSION from the 0.1-era**
+  (`0.1` ×64, `0.1.1` ×3, `0.2`, and assorted `0.4.x`). Re-anchored to `0.5.0`
+  per the migration rule.
+- **`l5r5e-0.4-codex-schema.codex` was `VERSION "0.9.1"`** and is the one case
+  where VERSION was doing a second job: it is the shared lore-graph ontology and
+  **68 data codices pin its version**. Anchored to **`0.5.9`** (owner,
+  2026-09-15) rather than `0.5.0`, so the schema's 9th revision survives and
+  ordering still works. All 68 pins updated to `0.5.9` — including five stale
+  ones (`0.1`, `0.2`, `0.3`, `0.7`, `0.8`) that were naming revisions of a file
+  there is only one of.
+
+**Still inconsistent, and a separate question:** `0.4/` now holds 74 files
+declaring spec **0.5** and 71 declaring **0.4**. The directory name no longer
+describes its contents. That is the 0.4 → 0.5 migration the atlas lists as
+backlog, not a versioning defect.
 
 Also unchanged: `stash@{1}` is Jordan's real `0.1/` edits to reconcile with
 remote `cf78e5e`; `stash@{0}` is droppable whitespace noise. Neither popped.
