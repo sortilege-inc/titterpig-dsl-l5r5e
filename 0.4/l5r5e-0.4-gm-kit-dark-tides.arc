@@ -15,7 +15,7 @@
 
 ARC "L5R5e_DarkTides" {
     NAME "Dark Tides"
-    VERSION "0.4"
+    VERSION "0.4.1"
     SPEC_VERSION "0.4"
     DEPENDS_ON "L5R5e_Core_Core"
     USES_EXTENSION "L5R5e_GM_Kit_Mechanics"
@@ -36,7 +36,7 @@ ARC "L5R5e_DarkTides" {
         # Stat blocks in l5r5e-0.3-gm-kit-mechanics.ttrpg
 
         #L5RGMK30aB2cD4eF6gH8iJ0k ^"Kasuga Yumiko" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             # See: l5r5e-0.3-gm-kit-mechanics.ttrpg::Kasuga Yumiko, Renegade Samurai
 
@@ -47,7 +47,7 @@ ARC "L5R5e_DarkTides" {
         }
 
         #L5RGMK31lM3nO5pQ7rS9tU1v ^"Boss Yaguro" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             # See: l5r5e-0.3-gm-kit-mechanics.ttrpg::Boss Yaguro, Gang Leader
 
@@ -58,7 +58,7 @@ ARC "L5R5e_DarkTides" {
         }
 
         #L5RGMK32wX4yZ6aB8cD0eF2g ^"Azif the Smooth" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             # See: l5r5e-0.3-gm-kit-mechanics.ttrpg::Azif the Smooth, Gaijin Smuggler
 
@@ -71,7 +71,7 @@ ARC "L5R5e_DarkTides" {
         # --- Kitsu Sokori (true mastermind, recurring nemesis) ---
 
         #L5RGMK33hI5jK7lM9nO1pQ3r ^"Kitsu Sokori" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             # See: l5r5e-0.3-gm-kit-mechanics.ttrpg::Kitsu Sokori, Maho-Tsukai
 
@@ -84,7 +84,7 @@ ARC "L5R5e_DarkTides" {
         # --- Kitsu Sokori's Agent ---
 
         #L5RGMK34sT6uV8wX0yZ2aB4c ^"Gaku" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             # See: l5r5e-0.3-gm-kit-mechanics.ttrpg::Gaku, Maho Apprentice
 
@@ -97,7 +97,7 @@ ARC "L5R5e_DarkTides" {
         # --- Crime Lords ---
 
         #L5RGMK35dE7fG9hI1jK3lM5n ^"Boss Hana" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             # See: l5r5e-0.3-gm-kit-mechanics.ttrpg::Boss Hana, Gang Leader
 
@@ -108,7 +108,7 @@ ARC "L5R5e_DarkTides" {
         }
 
         #L5RGMK36oP8qR0sT2uV4wX6y ^"Boss Kizo" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             # See: l5r5e-0.3-gm-kit-mechanics.ttrpg::Boss Kizo, Gang Leader
 
@@ -121,7 +121,7 @@ ARC "L5R5e_DarkTides" {
         # --- Town Officials ---
 
         #L5RGMK37zA9bC1dE3fG5hI7j ^"Kasuga Mugatsu" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             # See: l5r5e-0.3-gm-kit-mechanics.ttrpg::Kasuga Mugatsu, Governor
 
@@ -132,7 +132,7 @@ ARC "L5R5e_DarkTides" {
         }
 
         #L5RGMK38kL0mN2oP4qR6sT8u ^"Kasuga Mikoto" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             # See: l5r5e-0.3-gm-kit-mechanics.ttrpg::Kasuga Mikoto, Magistrate
 
@@ -145,7 +145,7 @@ ARC "L5R5e_DarkTides" {
         # --- Investigation NPCs (narrative only) ---
 
         #L5RGMK39vW1xY3zA5bC7dE9f ^"Doji Hiroka" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             PROPERTIES {
                 ^"Role"        STRING "Crane courtier who briefs the PCs"
@@ -154,7 +154,7 @@ ARC "L5R5e_DarkTides" {
         }
 
         #L5RGMK40gH2iJ4kL6mN8oP0q ^"Chiyu" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             PROPERTIES {
                 ^"Role"        STRING "Innkeeper of the Inn of Many Paths"
@@ -163,7 +163,7 @@ ARC "L5R5e_DarkTides" {
         }
 
         #L5RGMK41rS3tU5vW7xY9zA1b ^"Kakita Amano" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             PROPERTIES {
                 ^"Role"        STRING "Crane artist and opium addict, Hiroshige's friend"
@@ -172,7 +172,7 @@ ARC "L5R5e_DarkTides" {
         }
 
         #L5RGMK42cD4eF6gH8iJ0kL2m ^"Bayushi Naizu" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             PROPERTIES {
                 ^"Role"        STRING "Scorpion junshin living in exile"
@@ -181,7 +181,7 @@ ARC "L5R5e_DarkTides" {
         }
 
         #L5RGMK43nO5pQ7rS9tU1vW3x ^"Hade" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             PROPERTIES {
                 ^"Role"        STRING "Gaudy ronin, witness to a kidnapping"
@@ -190,7 +190,7 @@ ARC "L5R5e_DarkTides" {
         }
 
         #L5RGMK44yZ6aB8cD0eF2gH4i ^"Master Aoi" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             PROPERTIES {
                 ^"Role"        STRING "Manager of the Golden Dream opium den"
@@ -199,7 +199,7 @@ ARC "L5R5e_DarkTides" {
         }
 
         #L5RGMK45jK7lM9nO1pQ3rS5t ^"Master Awa" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             PROPERTIES {
                 ^"Role"        STRING "Manager of the Green Rest opium den"
@@ -208,7 +208,7 @@ ARC "L5R5e_DarkTides" {
         }
 
         #L5RGMK46uV8wX0yZ2aB4cD6e ^"Doro" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             PROPERTIES {
                 ^"Role"        STRING "Pawnbroker and moneylender in the Wallow"
@@ -217,7 +217,7 @@ ARC "L5R5e_DarkTides" {
         }
 
         #L5RGMK47fG9hI1jK3lM5nO7p ^"Kasuga Nagato" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             PROPERTIES {
                 ^"Role"        STRING "Harbormaster"
@@ -226,7 +226,7 @@ ARC "L5R5e_DarkTides" {
         }
 
         #L5RGMK48qR0sT2uV4wX6yZ8a ^"Ojo" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             PROPERTIES {
                 ^"Role"        STRING "Chief priest at the Shrine to Jikoju"
@@ -237,7 +237,7 @@ ARC "L5R5e_DarkTides" {
         # --- Victims ---
 
         #L5RGMK49bC1dE3fG5hI7jK9l ^"Otomo Hiroshige" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             PROPERTIES {
                 ^"Role"        STRING "Missing Imperial noble (primary investigation target)"
@@ -246,7 +246,7 @@ ARC "L5R5e_DarkTides" {
         }
 
         #L5RGMK50mN2oP4qR6sT8uV0w ^"Kasuga Toru" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             PROPERTIES {
                 ^"Role"        STRING "Missing Tortoise samurai"

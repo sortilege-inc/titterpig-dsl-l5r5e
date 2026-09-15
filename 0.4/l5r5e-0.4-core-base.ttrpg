@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Core" {
     NAME "Legend of the Five Rings 5th Edition - Core mechanics, ACTORs, and fundamental game rules"
-    VERSION "0.4.10"
+    VERSION "0.4.11"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -40,10 +40,10 @@ BASE "L5R5e_Core_Core" {
             ^"Family" STRING REQUIRED
             ^"School" STRING REQUIRED
             ^"School Rank" INTEGER MIN 1 MAX 6 DEFAULT 1
-            ^"Skills" LIST OF ^"Skill"
-            ^"Techniques" LIST OF ^"Technique"
-            ^"Advantages" LIST OF ^"Advantage"
-            ^"Disadvantages" LIST OF ^"Disadvantage"
+            ^"Skills" LIST OF #L5R199uV8wX0yZ2aB4cD6e ^"Skill"
+            ^"Techniques" LIST OF #L5R350fG9hI1jK3lM5nO7p ^"Technique"
+            ^"Advantages" LIST OF #L5R263hI5jK7lM9nO1pQ3r ^"Advantage"
+            ^"Disadvantages" LIST OF #L5R264sT6uV8wX0yZ2aB4c ^"Disadvantage"
             ^"Honor" INTEGER MIN 0 MAX 100
             ^"Glory" INTEGER MIN 0 MAX 100
             ^"Status" INTEGER MIN 0 MAX 100
@@ -60,7 +60,7 @@ BASE "L5R5e_Core_Core" {
             ^"Equipment" LIST OF STRING
             ^"Roles" LIST OF STRING       # School roles (Bushi, Courtier, Shugenja, Monk, Shinobi, etc.)
             ^"Titles" LIST OF ^"Title"    # Earned titles
-            ^"Bonds" LIST OF ^"Bond"      # Per Courts of Stone bonds system
+            ^"Bonds" LIST OF #L5R262wX4yZ6aB8cD0eF2g ^"Bond"      # Per Courts of Stone bonds system
             ^"Bushido" DEF {
                 ^"Paramount Tenet" STRING  # Most important tenet
                 ^"Less Significant Tenet" STRING  # Least important tenet
@@ -89,7 +89,7 @@ BASE "L5R5e_Core_Core" {
                 ^"Water" INTEGER MIN 1 MAX 5 DEFAULT 1
                 ^"Void" INTEGER MIN 1 MAX 5 DEFAULT 1
             }
-            ^"Skills" LIST OF ^"Skill"
+            ^"Skills" LIST OF #L5R199uV8wX0yZ2aB4cD6e ^"Skill"
             ^"Endurance" INTEGER MIN 0
             ^"Composure" INTEGER MIN 0
         }
@@ -115,14 +115,14 @@ BASE "L5R5e_Core_Core" {
                 ^"Water" INTEGER MIN 1 MAX 5
                 ^"Void" INTEGER MIN 1 MAX 5
             }
-            ^"Skills" LIST OF ^"Skill"
+            ^"Skills" LIST OF #L5R199uV8wX0yZ2aB4cD6e ^"Skill"
             ^"Endurance" INTEGER MIN 0
             ^"Composure" INTEGER MIN 0
             ^"Focus" INTEGER MIN 0
             ^"Vigilance" INTEGER MIN 0
-            ^"Advantages" LIST OF ^"Advantage"
-            ^"Disadvantages" LIST OF ^"Disadvantage"
-            ^"Techniques" LIST OF ^"Technique"
+            ^"Advantages" LIST OF #L5R263hI5jK7lM9nO1pQ3r ^"Advantage"
+            ^"Disadvantages" LIST OF #L5R264sT6uV8wX0yZ2aB4c ^"Disadvantage"
+            ^"Techniques" LIST OF #L5R350fG9hI1jK3lM5nO7p ^"Technique"
             ^"Demeanor" STRING
             ^"Favored Weapons" LIST OF STRING
         }
@@ -132,11 +132,11 @@ BASE "L5R5e_Core_Core" {
         }
     }
 
-    ^"NPC" DEF {
+    #t4540de6f35155c46f41f0 ^"NPC" DEF {
         # Metatype anchor for non-player character definitions
     }
 
-    ^"NPC Template" DEF {
+    #t2513b5e05d845f4411465 ^"NPC Template" DEF {
         # Metatype anchor for NPC template overlay definitions
     }
 
@@ -160,7 +160,7 @@ BASE "L5R5e_Core_Core" {
         # A group of player characters traveling and adventuring together
 
         PROPERTIES {
-            ^"Members" LIST OF ^"Samurai" REQUIRED
+            ^"Members" LIST OF #L5R003xY4zA6bC8dE0fG2hI ^"Samurai" REQUIRED
             ^"Shared Resources" LIST OF STRING
             ^"Current Location" STRING
         }
@@ -220,7 +220,7 @@ BASE "L5R5e_Core_Core" {
         }
     }
 
-    ^"Dice Symbols" DEF {
+    #t202588bb0b32758539464 ^"Dice Symbols" DEF {
 
         # Four unique symbols appearing on L5R custom dice in various
         # combinations. Resolved in specific order during Step 6 of a check.
@@ -244,7 +244,7 @@ BASE "L5R5e_Core_Core" {
         }
     }
 
-    ^"Check" DEF {
+    #t7945706680f94a9e75d70 ^"Check" DEF {
 
         # The core resolution mechanic for L5R. Roll and Keep system:
         # 1) Assemble dice pool (Ring dice + Skill dice)
@@ -271,7 +271,7 @@ BASE "L5R5e_Core_Core" {
         }
     }
 
-    ^"Target Number" DEF {
+    #t27f6687c632e46f015c24 ^"Target Number" DEF {
 
         INTEGER MIN 1 MAX 8
 
@@ -295,7 +295,7 @@ BASE "L5R5e_Core_Core" {
         }
     }
 
-    ^"Approach" DEF {
+    #ta2a3de96d67e6cfc017ed ^"Approach" DEF {
 
         ENUM ["Air", "Earth", "Fire", "Water", "Void"]
 
@@ -312,53 +312,53 @@ BASE "L5R5e_Core_Core" {
 
     GUIDANCE {
         ENTRY ^"ring-approach-concepts" #L5RG06bC7dE8fG9hI0jK1l {
-            CONCERNS [ ^"Approach" ]
+            CONCERNS [ #ta2a3de96d67e6cfc017ed ^"Approach" ]
             TOPICS [ "rings", "approaches" ]
             TEXT "Each ring corresponds with a set of methods that relate to the following concepts (explored in more detail in Chapter 3: Skills): Air: Grace, cunning, precision, subtlety. Earth: Resilience, patience, memory, calm. Fire: Passion, invention, candor, ferocity. Water: Flexibility, awareness, efficiency, charm. Void: Mysticism, intuition, instinct, wisdom."
         }
         ENTRY ^"checks-in-text" #L5RG07cD8eF9gH0iJ1kL2m {
-            CONCERNS [ ^"Check" ]
+            CONCERNS [ #t7945706680f94a9e75d70 ^"Check" ]
             TOPICS [ "reading the rules" ]
             TEXT "When a check appears in print, it often has a preset skill, ring, or TN, along with recommended modifiers that apply to certain situations. If it allows any ring, it will not list a ring; if it allows any skill within a group, it will list a group rather than a specific skill. If a check in print allows multiple rings, it will sometimes be followed by parentheses containing ring names and values, such as \"(Air 3, Water 1)\". These values are the TNs to use those rings."
         }
         ENTRY ^"matching-rings-with-skills" #L5RG08dE9fG0hI1jK2lM3n {
-            CONCERNS [ ^"Approach" ]
+            CONCERNS [ #ta2a3de96d67e6cfc017ed ^"Approach" ]
             TOPICS [ "rings", "approaches" ]
             TEXT "The Five Rings are important philosophical concepts in Rokugan, and thus each ring says something important about a character. Rather than reflecting measurable mental or physical traits of a character, each ring represents an aspect of a character's personality, and their inclination toward certain ways of thinking, acting, and using the tools that their skills provide them. Thus, each ring can function alongside any skill, but each pairing reflects a different strategy and thus leads to a different outcome."
         }
         ENTRY ^"example-uses-of-opportunity" #L5RG09eF0gH1iJ2kL3mN4o {
-            CONCERNS [ ^"Opportunity" ]
+            CONCERNS [ #t0be2b3f270d6247a9c35d ^"Opportunity" ]
             TOPICS [ "opportunity" ]
             TEXT "Beyond the narrative uses discussed here, an extensive list of example uses of (op) can be found in Table 8-1: Examples of (op) (see page 328). Players and GMs can use these directly, or as inspiration for their own new opportunities."
         }
         ENTRY ^"scaling-opportunity-effects" #L5RG10fG1hI2jK3lM4nO5p {
-            CONCERNS [ ^"Opportunity" ]
+            CONCERNS [ #t0be2b3f270d6247a9c35d ^"Opportunity" ]
             TOPICS [ "opportunity", "scaling" ]
             TEXT "The opportunities described on this page can generally scale for effect, becoming more efficacious if additional (op) symbols are spent on them. For uses of (op) whose specific effects are spelled out in text, scaling is indicated with a \"+\" symbol, and opportunities in text without the \"+\" symbol do not scale. If the cost of an opportunity is \"(op)+,\" the character may spend 1 or more (op) when activating the effect. The effect then scales; the more (op) that was spent to activate it, the more impactful it becomes."
         }
         ENTRY ^"when-to-make-a-check" #L5RG13iJ4kL5mN6oP7qR8s {
-            CONCERNS [ ^"Check" ]
+            CONCERNS [ #t7945706680f94a9e75d70 ^"Check" ]
             TOPICS [ "when to make a check" ]
             TEXT "The GM gets to decide when it's worthwhile for a character to make a check. As a rule of thumb, the GM should consider the following questions: Could the character fail? Could the character possibly succeed? Are the consequences of success and failure interesting and meaningfully different? If the answer to any of these is \"no,\" the GM probably shouldn't ask for a check. The character can simply succeed at their action or fail at it, and the GM can work with the player to narrate the results in the story."
         }
         ENTRY ^"narrating-a-checks-results" #L5RG14jK5lM6nO7pQ8rS9t {
-            CONCERNS [ ^"Check" ]
+            CONCERNS [ #t7945706680f94a9e75d70 ^"Check" ]
             TOPICS [ "narration", "roleplaying" ]
             TEXT "A check is a mechanical activity, but it shouldn't be devoid of roleplaying, as it presents excellent opportunity to describe what your character is doing in the story. If the character succeeds on the check, their player gets to narrate the outcome of the success, within the confines of the intention described in Step 1: Declare Intention. For example, if a bushi (warrior) character succeeds at an Attack action their player declared and inflicts a lethal blow on their foe, the player can narrate how their character slashes upward with their katana, cutting through the robes of their adversary and into the soft flesh beneath. By contrast, if they fail, the player can still describe their strike, but instead give a description of why they failed. The GM might offer a reason as well—perhaps the foe's evasive footwork made them harder to hit than usual! The player can also think about the emotions that any strife they incurred represents, and may narrate this if they desire. Depending on the circumstances, the (st) they accumulated as part of the Attack action could represent their character's grief at being forced to cut down a loved one at their lord's order—or it might simply be the dull ache of killing yet another anonymous stranger in a world that does not seem to care how much blood is spilled. The narrative context of the check is key, and should define how players and GMs interpret a character's strife. Finally, the player gets the chance to interpret the (op) they spend as part of the check: they should indicate whether they want to spend it in a manner that steers the narrative in a direction interesting to them, in a way based on an example option appropriate to the ring used on the check, or in a manner provided by a special ability. Sometimes, the GM must approve or contribute to the interpretation of (op), such as if the character notices an important detail that might change the story or remember a relevant fact of the setting that their player does not know. Unspent (op) simply goes unused and has no effect. Table 8-1: Examples of (op), on page 328, provides a number of examples players can employ in a wide array of circumstances and use as guidelines for creating new ways to spend (op). The GM and players alike are encouraged to use these for inspiration, or when they simply want a quick option to keep play moving."
         }
         ENTRY ^"using-opportunity" #L5RG15kL6mN7oP8qR9sT0u {
-            CONCERNS [ ^"Opportunity" ]
+            CONCERNS [ #t0be2b3f270d6247a9c35d ^"Opportunity" ]
             TOPICS [ "opportunity", "narration" ]
             TEXT "Opportunity ((op)) is a symbol that gives players and GMs a cue to add narrative flair and secondary effects to the tasks the characters attempt. It can be spent to add details that make the story more vivid or exciting. Like most improvisational tools, (op) can be extremely effective when used to build upon details that already exist in the scene. The only thing (op) cannot do is change a success to a failure, or vice-versa—though it can add to or mitigate the consequences of succeeding or failing, at the GM's discretion. In terms of procedure, the player should suggest the detail or addition they wish to include with the (op), then the GM should either approve it or pose an alternative option that fits within the story. A character can only resolve a given opportunity effect once per check, but many opportunities can scale with additional (op) symbols spent."
         }
         ENTRY ^"opportunity-descriptors" #L5RG16lM7nO8pQ9rS0tU1v {
-            CONCERNS [ ^"Opportunity" ]
+            CONCERNS [ #t0be2b3f270d6247a9c35d ^"Opportunity" ]
             TOPICS [ "opportunity", "narration" ]
             TEXT "One way to use (op) is to add a descriptive adverb to the verb that describes one's activity in a check, based on the ring used for the check. Adding one of these descriptors can significantly change the way a character's activity (the check) actually occurs in the narrative. The GM should consider how the character's descriptor might change how their success or failure is received, what consequences it has, or what new narrative opportunities it might create. The other fundamental way to use (op) is to add a narrative detail that surfaces as the character undertakes the task—a new piece of information that their character notices which can create interesting new avenues for the story. The type of detail a character can add varies by ring."
         }
     }
 
-    ^"Opportunity" DEF {
+    #t0be2b3f270d6247a9c35d ^"Opportunity" DEF {
 
         # (op) symbols on kept dice can be spent for additional narrative
         # effects. Available options depend on the ring used for the check
@@ -532,8 +532,8 @@ BASE "L5R5e_Core_Core" {
         }
     }
 
-    ^"Void Points" DEF {
-        APPLIES TO [^"Samurai"]
+    #t517e363091d571b19bd62 ^"Void Points" DEF {
+        APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
         INTEGER MIN 0
 
@@ -576,7 +576,7 @@ BASE "L5R5e_Core_Core" {
         }
     }
 
-    ^"Scene" DEF {
+    #t0310138a2b906b0e4af7c ^"Scene" DEF {
 
         ENUM ["Narrative", "Downtime", "Conflict"]
 
@@ -586,7 +586,7 @@ BASE "L5R5e_Core_Core" {
         PROPERTIES {
             ^"Scene Type" ENUM ["Narrative", "Downtime", "Conflict"]
             ^"Location" STRING
-            ^"Participants" LIST OF ^"Entity"
+            ^"Participants" LIST OF #L5R001aB2cD4eF6gH8iJ0kL ^"Entity"
         }
 
         RULES {
@@ -655,7 +655,7 @@ BASE "L5R5e_Core_Core" {
         }
     }
 
-    ^"Initiative" DEF {
+    #tf2cd15e64454ec22b5c18 ^"Initiative" DEF {
 
         # Turn order in conflict scenes. Characters make a TN 1 Initiative
         # check at the start of each round using any ring of their choice.
@@ -701,7 +701,7 @@ BASE "L5R5e_Core_Core" {
         }
     }
 
-    ^"Range Band" DEF {
+    #t6a1d1f5c1365aca69c1e8 ^"Range Band" DEF {
 
         ENUM ["Range 0", "Range 1", "Range 2", "Range 3", "Range 4", "Range 5", "Range 6"]
 
@@ -753,7 +753,7 @@ BASE "L5R5e_Core_Core" {
         }
     }
 
-    ^"GM Role" DEF {
+    #t53e040a67ec04e3085911 ^"GM Role" DEF {
 
         BOOLEAN DEFAULT false
 
@@ -769,7 +769,7 @@ BASE "L5R5e_Core_Core" {
         }
     }
 
-    ^"Player Character" DEF {
+    #tbbf26ea191f0bd2062fc4 ^"Player Character" DEF {
 
         # A player character (PC) — the character a player portrays within the
         # world of the game. A PC's numerical values live in ^"Rings" and the
@@ -781,24 +781,24 @@ BASE "L5R5e_Core_Core" {
     # -----------------------------------------------------------------------
     GUIDANCE {
         ENTRY ^"players-and-pcs" #L5RG03uV4wX5yZ6aB7cD8e {
-            CONCERNS [ ^"Player Character" ]
+            CONCERNS [ #tbbf26ea191f0bd2062fc4 ^"Player Character" ]
             TOPICS [ "players", "player characters" ]
             TEXT "Most of the participants in the game, termed players, portray a person within the world of the game. Each player controls one such character (called, intuitively enough, a player character, or PC). Players decide the history, beliefs, desires, and quirks of their player characters; make decisions for their characters during the game; and control and portray their characters when roleplaying. PCs also have numerical values, such as rings and skills, that reflect their aptitudes, training, and traits. These values help them undertake tasks within the story."
         }
         ENTRY ^"the-game-masters-role" #L5RG04fG5hI6jK7lM8nO9p {
-            CONCERNS [ ^"GM Role" ]
+            CONCERNS [ #t53e040a67ec04e3085911 ^"GM Role" ]
             TOPICS [ "game master" ]
             TEXT "To aid in the telling of the story, one participant serves as the game master (GM) instead of as a player. The game master is the group's guide, who invents the frame of the story and presents the PCs with challenges, decisions, and opportunities. The game master is not the sole architect of the story, but this person does have a particularly important role in helping the PCs to interact with the world. They portray the other inhabitants of Rokugan (non-player characters, or NPCs), describe each scene to the players, and act as an arbitrator in the infinite number of situations that can arise."
         }
         ENTRY ^"what-is-the-game-masters-role" #L5RG05qR6sT7uV8wX9yZ0a {
-            CONCERNS [ ^"GM Role" ]
+            CONCERNS [ #t53e040a67ec04e3085911 ^"GM Role" ]
             TOPICS [ "game master", "collaboration" ]
             TEXT "The game master is the group's access point to the world of Rokugan, and the final arbiter on many matters of story and rules. However, that doesn't mean that the players have no say over the story—balance and respect for one another are key. The players should listen to the GM, and the GM should listen to the players, too, and incorporate their ideas as appropriate. If this is your first time playing or running a roleplaying game, make sure to read Chapter 7: The Game Master (see page 281) for insight on how both the GM and the players can collaborate to make the game the best it can be!"
         }
     }
 
-    ^"Experience Points" DEF {
-        APPLIES TO [^"Samurai"]
+    #te8c28d9e740ccae9f502d ^"Experience Points" DEF {
+        APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
         INTEGER MIN 0 MAX 999999
 
@@ -827,19 +827,19 @@ BASE "L5R5e_Core_Core" {
 
     GUIDANCE {
         ENTRY ^"practical-experience-and-advancement" #L5RG56jK9lM0nO1pQ2rS3t {
-            CONCERNS [ ^"Experience Points" ]
+            CONCERNS [ #te8c28d9e740ccae9f502d ^"Experience Points" ]
             TOPICS [ "advancement", "experience", "game master" ]
             TEXT "A little bit of practical experience can be as potent as years of training. Characters in any campaign should be allowed to spend their experience on skills and rings during play as they desire, as one can learn through practice no matter their circumstances. In the fiction of the setting, a character is usually taught school secrets, like techniques, by an instructor in their school or another individual who knows the technique. Advancing to the next school rank might be a more involved process, requiring the character to undertake tests or visit specific locations and meet with particular instructors of their tradition. In practice, many campaigns are not conducive to having characters return to their dōjō as frequently as they would like to spend experience or increase their school rank. As a result, the game's default assumption is that characters can learn techniques and increase school rank wherever they go, presumably receiving foundational methods to practice on their travels or scrolls containing deeper mysteries for them to decipher during their journeys. A character might need to return to their school to formally verify their newly elevated rank within their school from a thematic standpoint, but they can use its mechanical benefits as soon as they earn it. If you, as a GM, want to maintain the narrative element of learning techniques and advancing school ranks, you can do so by specifying that a character must use a downtime activity to visit their dōjō or search for an NPC who knows the technique. School ranks can only be increased after visiting the proper dōjō and passing the requisite test or training under an individual who has attained a higher rank in that school. If you decide to take this route for your game, be sure that you inform your players before the game begins and provide the PCs with sufficient opportunities to spend their hard-earned experience on techniques."
         }
         ENTRY ^"xp-award-guideline" #L5RG76mN2oP3qR4sT5uV6w {
-            CONCERNS [ ^"Experience Points" ]
+            CONCERNS [ #te8c28d9e740ccae9f502d ^"Experience Points" ]
             TOPICS [ "experience", "advancement", "game master" ]
             TEXT "As a general guideline, GMs should award about 1 XP per hour of play. GMs can award additional XP at their discretion, as discussed in Chapter 7: The Game Master (see page 299)."
         }
     }
     GUIDANCE {
         ENTRY ^"reading-the-dice-symbols" #KKSwUCKWmoocoqkeI0U2Oi {
-            CONCERNS [ ^"Dice Symbols" ]
+            CONCERNS [ #t202588bb0b32758539464 ^"Dice Symbols" ]
             TOPICS [ "dice", "symbols", "strife" ]
             TEXT "The strife symbol ([Strife icon]) represents an upwelling of emotion. Strife does not affect success or failure on the check but instead accumulates over time, potentially leading to outward displays of emotion that can alter the direction of the story for good or for ill. The more it accumulates, the harder it is to maintain the decorum expected of a samurai—a key struggle in the genre of samurai drama. The explosive success symbol (Explosive Success) represents a particularly effective part of the character’s effort. In addition to counting as a Success symbol, it gives the character a chance to roll an additional die and decide whether to add its result to the check—potentially letting them succeed at a task they normally couldn’t overcome. See Explosive Success under Step 6: Resolve Symbols of Kept Dice, on page 24. The opportunity symbol (Opportunity) does not contribute directly to success, but it lets the character resolve an opportunity—a chance to do or notice something useful that is unrelated to their goal at the outset, or expand on their success with an additional effect or story detail. undefined"
         }

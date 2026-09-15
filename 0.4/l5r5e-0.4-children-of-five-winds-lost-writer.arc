@@ -5,7 +5,7 @@
 
 ARC "L5R5e_LostWriter" {
     NAME "The Lost Writer in the City of the Rich Frog"
-    VERSION "0.4"
+    VERSION "0.4.1"
     SPEC_VERSION "0.4"
     DEPENDS_ON "L5R5e_Core_Core"
     USES_EXTENSION "L5R5e_Children_of_Five_Winds"
@@ -24,7 +24,7 @@ ARC "L5R5e_LostWriter" {
         # --- Primary NPCs ---
 
         #L5RCW50aB2cD4eF6gH8iJ0k ^"Shinjo Higuchi" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             PROPERTIES {
                 ^"Role"        STRING "The missing author, possessed by an ifrit"
@@ -50,7 +50,7 @@ ARC "L5R5e_LostWriter" {
         }
 
         #L5RCW51lM3nO5pQ7rS9tU1v ^"Miya Tetsua" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             PROPERTIES {
                 ^"Role"        STRING "Governor of the City of the Rich Frog"
@@ -76,7 +76,7 @@ ARC "L5R5e_LostWriter" {
         }
 
         #L5RCW52wX4yZ6aB8cD0eF2g ^"Ikoma Kotone" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             PROPERTIES {
                 ^"Role"        STRING "Tea master at the Teahouse with No Name"
@@ -102,7 +102,7 @@ ARC "L5R5e_LostWriter" {
         }
 
         #L5RCW53hI5jK7lM9nO1pQ3r ^"Tonbo Kuma" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             PROPERTIES {
                 ^"Role"        STRING "Dragonfly shrine keeper"
@@ -128,7 +128,7 @@ ARC "L5R5e_LostWriter" {
         }
 
         #L5RCW54sT6uV8wX0yZ2aB4c ^"Kaeru Haya" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             PROPERTIES {
                 ^"Role"        STRING "Ronin peacekeeper of the Unicorn wharf"
@@ -154,7 +154,7 @@ ARC "L5R5e_LostWriter" {
         }
 
         #L5RCW55dE7fG9hI1jK3lM5n ^"Ide Chiharu" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             PROPERTIES {
                 ^"Role"        STRING "Unicorn antiquarian and artifact dealer"
@@ -180,7 +180,7 @@ ARC "L5R5e_LostWriter" {
         }
 
         #L5RCW56oP8qR0sT2uV4wX6y ^"Daidoji Shin" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             PROPERTIES {
                 ^"Role"        STRING "Crane trade envoy and amateur detective"
@@ -206,7 +206,7 @@ ARC "L5R5e_LostWriter" {
         }
 
         #L5RCW57zA9bC1dE3fG5hI7j ^"Asahina Nao" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             PROPERTIES {
                 ^"Role"        STRING "Crane shugenja with meishōdō expertise"
@@ -232,7 +232,7 @@ ARC "L5R5e_LostWriter" {
         }
 
         #L5RCW58kL0mN2oP4qR6sT8u ^"Adventure Ifrit" DEF {
-            APPLIES TO [^"NPC"]
+            APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
             PROPERTIES {
                 ^"Role"        STRING "Fire spirit possessing Higuchi"

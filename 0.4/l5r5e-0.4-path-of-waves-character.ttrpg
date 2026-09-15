@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Path of Waves: Character Creation"
-    VERSION "0.4.5"
+    VERSION "0.4.6"
     SPEC_VERSION "0.4.1"
     RELEASE_DATE "2026-03-01"
 
@@ -35,14 +35,14 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # NEW ENTITY TYPES
     # ===========================
 
-    ^"Ronin" DEF {
+    #t14626300ed0f58aa6f93a ^"Ronin" DEF {
         EXTENDS #L5R003xY4zA6bC8dE0fG2hI ^"Samurai"
         # Masterless samurai who walk the Path of Waves.
         # Ronin retain samurai social standing but lack
         # a lord, clan, or formal family backing.
     }
 
-    ^"Gaijin" DEF {
+    #t822273f0dfaf436b4dfe8 ^"Gaijin" DEF {
         EXTENDS #L5R001aB2cD4eF6gH8iJ0kL ^"Entity"
         # Foreigners from outside Rokugan: Ujik nomads,
         # Qamarist scholars, Ivory Kingdoms warriors, etc.
@@ -55,7 +55,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Path of Waves Character Creation" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # Limits: rings and skills have a maximum rank of 3
         # during character creation. Starting values: 1 rank
@@ -78,7 +78,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 32)
     ^"Urban Region" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant"]
 
         # Cities are places where trade flourishes, cultures meet,
         # and many different types of people mix and mingle.
@@ -98,7 +98,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 33)
     ^"Rural Farmland Region" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant"]
 
         # Food is the core of any prosperous civilization.
         # Farmers tame the land and carry the weight of
@@ -119,7 +119,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 34)
     ^"Sea River or Lake Region" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant"]
 
         # The sea provides and takes away in equal measure.
         # Water has strong ties to trade and travel.
@@ -139,7 +139,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 35)
     ^"Forest Region" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant"]
 
         # Forests are wildernesses with trees more ancient
         # than Rokugan itself. Those who live among the trees
@@ -160,7 +160,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 36)
     ^"Mountain Region" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant"]
 
         # In the mountains, the peaks reach to the Heavens.
         # This environment is perfect for monks and those
@@ -181,7 +181,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 37)
     ^"Haunted Region" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant"]
 
         # Lands affected by the Taint or otherwise desecrated
         # by foul acts. Those who hail from such regions view
@@ -210,7 +210,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 39)
     ^"Ujik of the Plains of Wind and Stone" DEF {
-        APPLIES TO [^"Gaijin"]
+        APPLIES TO [#t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # The Ujik are a nomadic people living on expansive
         # grassy plains north and west of Rokugan. They are
@@ -234,7 +234,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 40)
     ^"Qamarists in the Cradle of the World" DEF {
-        APPLIES TO [^"Gaijin"]
+        APPLIES TO [#t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # The Qamarist Caliphate is a powerful nation-state
         # far to the west, thriving in fertile land between two
@@ -257,7 +257,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 41)
     ^"Yodha of the Ghostlands" DEF {
-        APPLIES TO [^"Gaijin"]
+        APPLIES TO [#t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # Warriors from the Ivory Kingdoms who wage a
         # never-ending struggle against evil forces in the
@@ -280,7 +280,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 42)
     ^"Sheelavaan of Bhavyatapura" DEF {
-        APPLIES TO [^"Gaijin"]
+        APPLIES TO [#t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # The people of the City of Splendor in the central
         # Ivory Kingdoms. Sophisticated, gregarious, eloquent,
@@ -306,7 +306,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 43)
     ^"Craftsperson Upbringing" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Craftsperson" FIXED
@@ -322,7 +322,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 43)
     ^"Fallen Noble Upbringing" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # A fallen noble may use ring and skill increases
         # based on their chosen clan, or +1 to any ring and
@@ -356,7 +356,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 43)
     ^"Farmer Upbringing" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Farmer" FIXED
@@ -372,7 +372,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 44)
     ^"Geisha House Upbringing" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Geisha House" FIXED
@@ -388,7 +388,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 44)
     ^"Hinin Upbringing" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Hinin" FIXED
@@ -404,7 +404,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 44)
     ^"Hunter or Fisher Upbringing" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Hunter or Fisher" FIXED
@@ -420,7 +420,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 45)
     ^"Law Enforcement Upbringing" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Law Enforcement" FIXED
@@ -436,7 +436,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 45)
     ^"Military Upbringing" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Military" FIXED
@@ -452,7 +452,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 45)
     ^"Ronin Family Upbringing" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Ronin Family" FIXED
@@ -468,7 +468,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 45)
     ^"Organized Crime Upbringing" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Organized Crime" FIXED
@@ -484,7 +484,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 46)
     ^"Street Urchin Upbringing" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Street Urchin" FIXED
@@ -497,7 +497,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 46)
     ^"Temple Upbringing" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Temple" FIXED
@@ -513,7 +513,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 46)
     ^"Tradesperson Upbringing" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         PROPERTIES {
             ^"Upbringing" STRING "Tradesperson" FIXED
@@ -535,7 +535,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     ^"Wandering Blade" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # Warriors who have honed their skill with a signature
         # weapon. Their power and skill rival the training of
@@ -628,7 +628,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # source stat block (page 49)
     ^"Student of the Talon" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # Adept at landing critical blows from distance with
         # spears, bows, or other ranged weapons. Precision
@@ -720,7 +720,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     #L5RPW40nO5pQ7rS9tU1vW3x ^"Treasure Hunter" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # Roguish smooth talkers adept at dodging dangerous
         # situations. Quick thinking and a discerning eye for
@@ -813,7 +813,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # source stat block (page 51)
     ^"School of Leaves" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # Outcasts who have become precisely what society
         # deems them: those who slink about the shadows,
@@ -905,9 +905,9 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     }
 
-    ^"Voice of the Wilds" DEF {
+    #t98c94ea22b6eb93d5ce27 ^"Voice of the Wilds" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # Shugenja who have received no formal training but
         # have developed a knack for building positive
@@ -997,7 +997,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # source stat block (page 53)
     ^"Artisan of the Roads" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # Adept at scrounging suitable materials in almost any
         # circumstance, using surroundings as inspiration to
@@ -1091,7 +1091,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # source stat block (page 54)
     ^"Mystic of the Mountain" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # Wandering monks who dole out wisdom and practice
         # unarmed martial arts and storytelling in equal measure.
@@ -1187,7 +1187,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     ^"Ujik Diviner" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
-        APPLIES TO [^"Gaijin"]
+        APPLIES TO [#t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # Diviners call upon the wisdom of the Lords of Death,
         # honored ancestors ascended to godhood. The first
@@ -1281,9 +1281,9 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     # source stat block (page 56)
-    ^"Qamarist Shield Bearer Tradition" DEF {
+    #te33117e92e0a11c14ded4 ^"Qamarist Shield Bearer Tradition" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
-        APPLIES TO [^"Gaijin"]
+        APPLIES TO [#t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # Proud and formidable guards of the Qamarist Caliphate
         # who use advanced alchemical arts and imposing command
@@ -1379,7 +1379,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # source stat block (page 57)
     ^"Qamarist Alchemist Tradition" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
-        APPLIES TO [^"Gaijin"]
+        APPLIES TO [#t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # Gifted alchemists who research and experiment to
         # unlock secrets of creating elixirs, draughts, and
@@ -1476,7 +1476,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # source stat block (page 58)
     ^"Ivory Kingdoms Sage Tradition" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
-        APPLIES TO [^"Gaijin"]
+        APPLIES TO [#t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # Individuals so tuned to their inner energy (lojas) that
         # they can infuse others with it. They go on long
@@ -1571,7 +1571,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # source stat block (page 59)
     ^"Ivory Kingdoms Dancing Blades Tradition" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
-        APPLIES TO [^"Gaijin"]
+        APPLIES TO [#t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # Warriors trained to wield astras (implements of the
         # gods). They look as though they are dancing as they
@@ -1671,7 +1671,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # place of a clan; each gives a ring increase, a skill increase, and a
     # starting glory. Flavor for each region lives in the .lore.
     ^"Question 1: Region" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
         PROPERTIES {
             ^"Question" INTEGER 1 FIXED
             ^"Question Text" STRING "What region does your character come from?" FIXED
@@ -1685,7 +1685,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     }
 
     ^"Question 2: Upbringing" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
         PROPERTIES {
             ^"Question" INTEGER 2 FIXED
             ^"Question Text" STRING "What was your character's upbringing?" FIXED
@@ -1705,7 +1705,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # Waves pages 76-84). The seven roles are Artisan, Bushi, Courtier, Monk,
     # Sage, Shinobi, and Shugenja.
     ^"Question 3: School" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
         PROPERTIES {
             ^"Question" INTEGER 3 FIXED
             ^"Question Text" STRING "What is your character's school, and what are its associated roles?" FIXED
@@ -1722,7 +1722,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 118)
     ^"Question 4: Trouble" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # Choose one option that best describes your character's
         # personality. This determines an additional ring increase.
@@ -1753,7 +1753,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 215)
     ^"Question 5: The Past" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         PROPERTIES {
             ^"Question" INTEGER 5 FIXED
@@ -1802,7 +1802,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Question 6: Ninjō" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # What does your character long for, and how might their
         # past impact their ninjō? Same concept as core Q6 but
@@ -1850,7 +1850,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Question 7: Known For" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # DIFFERS FROM CORE Q7 (clan relationship).
         # In PoW, Q7 asks what the character is known for in
@@ -1886,7 +1886,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Question 8: Bushido" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # DIFFERS FROM CORE Q8 (two options).
         # PoW Q8 has THREE options instead of two.
@@ -1921,7 +1921,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Question 9: Distinction" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # What is your character's greatest accomplishment so far?
         # Same structure as core Q9. Gain one Distinction advantage.
@@ -1945,7 +1945,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 8)
     ^"Question 10: Adversity" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # What holds your character back most in life?
         # Same structure as core Q10. Gain one Adversity disadvantage.
@@ -1969,7 +1969,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 8)
     ^"Question 11: Passion" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # What activity most makes your character feel at peace?
         # Same structure as core Q11. Gain one Passion advantage.
@@ -1993,7 +1993,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 8)
     ^"Question 12: Anxiety" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # What concern, fear, or foible troubles your character most?
         # Same structure as core Q12. Gain one Anxiety disadvantage.
@@ -2017,7 +2017,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 8)
     ^"Question 13: Mentor" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # Who has your character learned the most from during
         # their life? Same structure as core Q13. Choose one:
@@ -2047,7 +2047,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 66)
     ^"Question 14: Prized Possession" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # DIFFERS FROM CORE Q14 ("What do people notice first?").
         # PoW Q14: When all of your life can fit in a pack on your
@@ -2076,7 +2076,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 8)
     ^"Question 15: Stress Reaction" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # How does your character react to stressful situations?
         # Same as core Q15 -- purely narrative. Describe a noteworthy
@@ -2100,7 +2100,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 8)
     ^"Question 16: Relationships" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # DIFFERS FROM CORE Q16 (heritage table roll).
         # PoW Q16: What are your relationships to your family,
@@ -2128,7 +2128,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 8)
     ^"Question 17: Group History" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # COMPLETELY DIFFERENT FROM CORE Q17 ("Parent's opinion").
         # PoW Q17: What shared history does your character have
@@ -2176,7 +2176,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 67)
     ^"Question 18: Who Raised You" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # COMPLETELY DIFFERENT FROM CORE Q18 (Samurai Heritage Table).
         # PoW Q18: Who raised your character? Record the relationship
@@ -2204,7 +2204,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 8)
     ^"Question 19: Name" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # What is your character's personal name?
         # Same concept as core Q19. Narrative only.
@@ -2227,7 +2227,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Question 20: Death" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # How should your character die?
         # Same concept as core Q20. Narrative only.
@@ -2567,7 +2567,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Sage Role" DEF {
-        APPLIES TO [^"Ronin", ^"Peasant", ^"Gaijin"]
+        APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
         # Like shugenja, sages wield special powers, but theirs
         # are bestowed by other means, usually outside the
@@ -2585,7 +2585,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # SCHOOL ROLE EXTENSION
     # ===========================
 
-    MODIFY ^"School Role" {
+    MODIFY #L5R260aB2cD4eF6gH8iJ0k ^"School Role" {
         ENUM EXTEND ["Sage", "Artisan"]
         # Path of Waves introduces two new school roles for gaijin and ronin traditions
     }
