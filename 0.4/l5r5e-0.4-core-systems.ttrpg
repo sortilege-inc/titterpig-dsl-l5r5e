@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Systems" {
     NAME "Legend of the Five Rings 5th Edition - Game systems: combat, conditions, strife, honor, weapons, armor, and NPCs"
-    VERSION "0.4.24"
+    VERSION "0.4.25"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -123,7 +123,7 @@ BASE "L5R5e_Core_Systems" {
             TEXT "Rokugani ideals state that samurai are to maintain proper decorum at all times, keeping their emotions under a tight leash except in specific situations. However, samurai are people, and thus they still experience the challenges, joys, frustrations, and sorrows that make up life. These myriad emotions are represented by strife. Players are responsible for tracking how much strife their characters have accrued. The GM should track strife for NPCs, though many NPCs use simplified rules for strife (see page 309). Even those raised under the strictest standards of emotional self-control or committed to finding spiritual peace risk cracking from time to time under the pressures of rule, courtly life, love, or warfare. In the game, strife can come from many activities."
         }
         ENTRY ^"stoicism-and-its-limits" #L5RG32mN3oP4qR5sT6uV7w {
-            CONCERNS [ #t2bd057b321169907586e9 ^"Strife", ^"Compromised" ]
+            CONCERNS [ #t2bd057b321169907586e9 ^"Strife", #L5Rcond0Compromised01 ^"Compromised" ]
             TOPICS [ "strife", "theme", "decorum" ]
             TEXT "Although specifics vary by region and tradition, Rokugani culture at large idealizes a samurai who maintains a stoic outward demeanor. Joys and sorrows alike are to be accepted with the same stern affect. However, the truth of the matter is that no human being can uphold this ideal perfectly all the time—without an outlet for their emotions, a character will eventually become unfocused, distracted, and exhausted."
         }
@@ -160,7 +160,7 @@ BASE "L5R5e_Core_Systems" {
         }
     }
 
-    ^"Compromised" DEF {
+    #L5Rcond0Compromised01 ^"Compromised" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai", #L5R009mN0oP2qR4sT6uV8w ^"Adversary"]
 
         # Condition when strife exceeds composure. The character's
@@ -3913,7 +3913,7 @@ BASE "L5R5e_Core_Systems" {
             TEXT "Example breaches of Honor include: (Minor) Touching dead flesh anywhere other than at war, persuading another to act dishonorably; (Major) Neglecting your duty to pursue your earthly desires, killing in an unjustified duel; (Massive) Refusing seppuku when required. Example sacrifices for Honor include: (Minor) Persuading someone to abandon a dishonorable plan to help you; (Major) Negotiating to avoid an unjustified duel; (Massive) Offering to commit seppuku for failure."
         }
         ENTRY ^"righteousness-breaches-and-sacrifices" #ksWY4E4CsOcEWyesMUEOYC {
-            CONCERNS [ ^"Righteousness (Gi)" ]
+            CONCERNS [ #zoVoPia0hYHe9WL4wjCD3F ^"Righteousness (Gi)" ]
             TOPICS [ "bushido", "righteousness" ]
             TEXT "Example breaches of Righteousness include: (Minor) Abetting or covering for a comrade's major breach of honor, lying to someone of equal or lower status for personal gain; (Major) Abetting or covering for a comrade's massive breach of honor, lying to someone of higher status for personal gain; (Massive) Murdering someone of equal or higher status, lying to your lord for selfish gain. Example sacrifices for Righteousness include: (Minor) Delivering bad news to your lord without deflecting blame, taking responsibility for the failure of a subordinate; (Major) Retiring from a post you can no longer fulfill, relinquishing a claim or large gift to your lord; (Massive) Refusing to deny true allegations of a failure requiring you to forfeit 9+ glory or status."
         }
