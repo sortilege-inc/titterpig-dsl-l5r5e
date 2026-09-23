@@ -283,3 +283,15 @@ turned up:
    four `.actor` files (e.g. `highwayman-pregens.actor` `^"Ninjo" STRING …`), so a consumer that
    reads the sheet from the ACTOR finds no Ninjō on them (the VTT shows it under "Also on the
    sheet"). *Recommendation:* rename to `^"Ninjō"` in the pregens (a VERSION patch bump each).
+
+## House rule: round up, everywhere — a deliberate departure from the printed text
+
+**Owner, 2026-09-23:** "the rule should be round up anywhere that needs to be rounded, not round
+down" … "round up the Path of Waves kami strife too." The corpus rounds UP wherever it rounds.
+
+The Path of Waves tiny manifest kami (air, earth, fire, water) are printed "that character suffers
+half as much strife (rounded down)" (Path of Waves pp. 241–257). They now read "(rounded up)" in
+`path-of-waves-systems.ttrpg` (the four `*_kami_spirit` RULES lines, VERSION 0.5.1) and in
+`path-of-waves-chapter7-npcs.lore` (four paragraphs, Version 0.5.1). **These eight lines differ from
+the source on purpose — a verbatim check against the PDF / `Temp/sources` will flag them; do not
+revert them.** With the Vigilance FORMULA (above), the corpus now contains no "rounded down".
