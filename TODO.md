@@ -260,3 +260,24 @@ backlog, not a versioning defect.
 
 Also unchanged: `stash@{1}` is Jordan's real `0.1/` edits to reconcile with
 remote `cf78e5e`; `stash@{0}` is droppable whitespace noise. Neither popped.
+
+## Found by the VTT build (sortilege-vtt-l5r5e, 2026-09-23) — reported, not patched
+
+The VTT evaluates the corpus's own `FORMULA` strings for the derived attributes of a character
+made in its creator (a printed stat block's values always win, per the note above). Two things it
+turned up:
+
+1. **Vigilance's FORMULA adds a rounding the book does not print.**
+   `l5r5e-0.5-core-traits.ttrpg` `^"Vigilance"` has `FORMULA "(Air + Water) / 2 (rounded down)"`
+   (and the same words in its comment). The core rulebook, p. 41, prints only
+   "Vigilance: Calculated based on your final ring values; (Air + Water) / 2."
+   (`Temp/sources/l5r5e/core-md/…_pages_41-50.md`). Every pregen with an odd Air + Water prints
+   the value **rounded up** — 11 of 11: Ahuja Mishti, Hiyabayashi Kenshin, Maki Haruko, Noboru,
+   Bayushi Hibiki, Kitsu Kohaku, Utaku Azami, Yasuki Toru, Doji Ren, Shinjo Takuya, Togashi Yoshi.
+   *Recommendation:* find the book's rounding rule (not located in the core md by a grep for
+   "round up"/"rounded up") and correct the FORMULA to it; until then a created character's
+   Vigilance is one lower than the pregens' convention whenever Air + Water is odd.
+2. **The pregens spell `^"Ninjo"`; the Samurai ACTOR declares `^"Ninjō"`.** 26 pregens across
+   four `.actor` files (e.g. `highwayman-pregens.actor` `^"Ninjo" STRING …`), so a consumer that
+   reads the sheet from the ACTOR finds no Ninjō on them (the VTT shows it under "Also on the
+   sheet"). *Recommendation:* rename to `^"Ninjō"` in the pregens (a VERSION patch bump each).
