@@ -284,6 +284,8 @@ turned up:
    reads the sheet from the ACTOR finds no Ninjō on them (the VTT shows it under "Also on the
    sheet"). *Recommendation:* rename to `^"Ninjō"` in the pregens (a VERSION patch bump each).
 
+3. **An unmatched parenthesis in *Disciple of Secret Lore*** (found converting Portents & Fortunes' NPCs into its campaign layer, 2026-09-23). `core-npcs.ttrpg` (0.5.0), the Scholarly Shugenja's `#L5RN92yMAizxbiJi5gjN4U` reads *"Disciple of Secret Lore: Activation: (Choose 0–5 additional invocations (see page 189) and 0–3 additional rituals (see page 212) that this shugenja can perform. …"* — three opening parentheses, two closing; the one before *Choose* is never closed. The Portents site's copy of the line, taken from 0.4, reads *"Activation: Choose 0–5 …"* without it. The campaign layer carries 0.5 as printed. *Recommendation:* check the core (p. 311, the Scholarly Shugenja profile) and remove the `(` or close it where the book does (a VERSION patch bump).
+
 ## House rule: round up by default; round down only where the text says so
 
 **Owner, 2026-09-23:** "Where it explicitly says rounded down, we should round down. Round up should
