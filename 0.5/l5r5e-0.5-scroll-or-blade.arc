@@ -7,7 +7,7 @@
 
 ARC "the-scroll-or-the-blade" EXTENDS "l5r5e" {
     NAME "The Scroll or the Blade"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "The Scroll or the Blade: A Supplemental Adventure for Winter's Embrace (Fantasy Flight Games, 2020)"

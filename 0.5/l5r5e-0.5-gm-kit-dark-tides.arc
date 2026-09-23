@@ -15,7 +15,7 @@
 
 ARC "L5R5e_DarkTides" {
     NAME "Dark Tides"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     DEPENDS_ON "L5R5e_Core_Core"
     USES_EXTENSION "L5R5e_GM_Kit_Mechanics"
@@ -213,6 +213,10 @@ ARC "L5R5e_DarkTides" {
             PROPERTIES {
                 ^"Role"        STRING "Pawnbroker and moneylender in the Wallow"
                 ^"Description" STRING "Studious older commoner with gaijin spectacles. Lends to opium addicts. Two of his debtors (Hiroshige and Kasuga Michiko) have disappeared. When he inquired, a trio of ruffians led by a large tattooed ronin threatened him."
+            }
+
+            RULES {
+                #fmrulqvltHT6OsJ5cbLFoU: doro_shares_information "The presence of clean-cut, obviously non-addicted samurai in his shop alarms Doro, but once he knows why the PCs are here, he readily shares all his information. If the PCs ask for more details about the threatening trio, Doro knows nothing more about the tattooed leader (\"never seen him before\") but vaguely recognized the other two as local ruffians who work for one of the bad characters in town. \"Not sure which one; there are so many! One of the gangs, or maybe a smuggling ring? It's more than a poor pawnbroker can keep track of.\""
             }
         }
 
@@ -663,7 +667,6 @@ ARC "L5R5e_DarkTides" {
             }
 
             # --- Doro the Moneylender ---
-            # (Freely shares information once he knows why PCs are there)
         }
 
         CLUES {
@@ -729,7 +732,6 @@ ARC "L5R5e_DarkTides" {
             TYPE "combat"
             STAKES "Whether the PCs can secure the warehouse and capture prisoners for interrogation"
             OPPONENTS [#yaguro_b9b70348c102, #azif_9fc007a20ec3, #yumiko_81f780d897df]
-            # Ruffians: encounter rank equal to half or two-thirds of group rank
         }
 
         CHECKS {
@@ -844,7 +846,6 @@ ARC "L5R5e_DarkTides" {
             TYPE "combat"
             STAKES "The lives of four kidnapped samurai and the villain's capture"
             OPPONENTS [#gaku_f6b1b6e5d2c8, #yumiko_81f780d897df, #yaguro_b9b70348c102, #azif_9fc007a20ec3]
-            # Encounter rank should equal or slightly exceed PCs' group rank
         }
 
         CHECKS {

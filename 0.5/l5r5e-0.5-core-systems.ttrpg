@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Systems" {
     NAME "Legend of the Five Rings 5th Edition - Game systems: combat, conditions, strife, honor, weapons, armor, and NPCs"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -21,11 +21,6 @@ BASE "L5R5e_Core_Systems" {
 
     #td160895c785eb4ecd2c6a ^"Legend of the Five Rings" DEF {
         APPLIES TO [#t9446c0a7f578c8eaf296f ^"System"]
-
-        # The game itself. The Legend of the Five Rings Roleplaying Game
-        # (abbreviated "L5R" or "L5R RPG") is a game of samurai drama set in the
-        # fictional land of Rokugan. Its premise, theme, and tone are carried in
-        # the GUIDANCE block below (see also ^"Ninjō" and ^"Giri").
 
         PROPERTIES {
             ^"Abbreviation" STRING "L5R"
@@ -92,17 +87,10 @@ BASE "L5R5e_Core_Systems" {
 
         INTEGER MIN 0
 
-        # Emotional accumulation from (st) symbols on kept dice,
-        # anxieties, opposing ninjō, and narrative effects. When
-        # strife exceeds composure, character becomes Compromised.
-        # Removed between scenes and by contemplative activity —
-        # see ^"Strife Removal".
-
         RULES {
-            #L5R400aB2cD4eF6gH8iJ0k: strife_from_kept_dice
-            #L5R401lM3nO5pQ7rS9tU1v: strife_from_anxieties
-            #L5R402wX4yZ6aB8cD0eF2g: strife_removal_between_scenes
-            #L5R403hI5jK7lM9nO1pQ3r: strife_reduced_to_half_composure
+            #L5R400aB2cD4eF6gH8iJ0k: strife_from_kept_dice "Strife from Checks: Strife is in all things, and therefore a common face on both (skill) and (ring) is a result containing (su) (st). When kept dice contain (st) symbols, the character receives strife as part of their effort."
+            #L5R401lM3nO5pQ7rS9tU1v: strife_from_other_sources "Strife from Other Sources: Characters can also acquire strife from other sources. A character might receive strife when they encounter their anxieties (see page 99), face challenges related to their ninjō (see page 38) or giri (see page 39), are affected by an ability used by another character, or respond to the twists and turns of the story they inhabit. Players can even choose to inflict strife on their own characters (and the GM can inflict strife on their characters as well) when it makes narrative sense, such as in response to fear, longing, desire, or other strong emotional stimuli."
+            #PwYaWrzAp0LmMdu0Mq1bk6: comparing_strife_to_composure "Comparing Strife to Composure: Each character has a composure attribute (see page 36), which represents the character's ability to withstand strife. As a character's strife approaches that character's composure, they move toward an emotional tipping point, at which point they become Compromised (see page 30)."
         }
     }
 
@@ -132,65 +120,26 @@ BASE "L5R5e_Core_Systems" {
     ^"Strife Removal" DEF {
 
         # --- REMOVING STRIFE ---
-        # Characters naturally remove some strife as time passes. At the
-        # end of each scene (a self-contained event or events in an
-        # ongoing adventure) each character removes strife until it is
-        # equal to half their ^"Composure", rounded up (unless it is
-        # already lower).
-        #
-        # NOTE: this reduces strife TO half composure. It does not halve
-        # the character's current strife, and a character already at or
-        # below half composure does not change.
-        #
-        # Strife can be reduced further through restful contemplative
-        # activities including the pursuit of one's ^"Ninjō", pursuing a
-        # ^"Passion", meditating, or attending a tea ceremony. Such
-        # activities can potentially remove all of a character's current
-        # strife.
-        #
-        # Finally, a ^"Compromised" character can remove all of their
-        # strife by unmasking, briefly lowering their façade to act upon
-        # their emotions openly — see ^"Unmask".
 
         RULES {
-            #L5R403aB4cD6eF8gH0iJ2k: strife_removal_between_scenes
-            #L5R403lM5nO7pQ9rS1tU3v: strife_reduced_to_half_composure_rounded_up
-            #L5R403wX6yZ8aB0cD2eF4g: strife_removal_contemplative_activities
-            #L5R403hI7jK9lM1nO3pQ5r: strife_removal_by_unmasking
+            #L5R403wX6yZ8aB0cD2eF4g: strife_removal_contemplative_activities "Strife can be reduced further through restful contemplative activities including the pursuit of one's ninjō (see page 38), pursuing a passion (see page 99), meditating, or attending a tea ceremony. Such activities can potentially remove all of a character's current strife."
+            #L5R403hI7jK9lM1nO3pQ5r: strife_removal_by_unmasking "Finally, a Compromised character can remove all of their strife by unmasking, briefly lowering their façade to act upon their emotions openly (see page 30)."
         }
     }
 
     #L5Rcond0Compromised01 ^"Compromised" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai", #L5R009mN0oP2qR4sT6uV8w ^"Adversary"]
 
-        # Condition when strife exceeds composure. The character's
-        # emotions are barely contained and about to boil over.
-        #
-        # Effects while Compromised:
-        # - Vigilance treated as 1 (easier to Scheme against)
-        # - Cannot keep dice with (st) symbols
-        # - May Unmask once per scene to end Compromised
-
         RULES {
-            #L5R404sT6uV8wX0yZ2aB4c: compromised_when_strife_exceeds_composure
-            #L5R405dE7fG9hI1jK3lM5n: vigilance_reduced_to_one
-            #L5R406oP8qR0sT2uV4wX6y: cannot_keep_strife_dice
-            #L5R407zA9bC1dE3fG5hI7j: may_unmask_once_per_scene
+            #L5R404sT6uV8wX0yZ2aB4c: becoming_compromised "Becoming Compromised: While a character's strife is in excess of their composure, the tumult of emotions that has built up causes the character to become Compromised. While suffering this condition, they are at their emotional limit, which their player should roleplay through various subtle cues that they are repressing accumulated emotion."
+            #L5R405dE7fG9hI1jK3lM5n: effects_of_being_compromised "Effects of Being Compromised: A compromised character's vigilance attribute (see page 36) counts as 1. Additionally, when making a check, a Compromised character cannot keep dice containing (st) symbols (to a potential minimum of 0 kept dice)."
+            #L5R407zA9bC1dE3fG5hI7j: recovering_from_being_compromised "Recovering from Being Compromised: A character ceases to be Compromised when their strife drops back to (or below) their composure. A Compromised character can always rid themself of all of their strife through unmasking."
         }
     }
 
     #t6a207ecd51cb23828b155 ^"Unmask" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # When Compromised, a character may Unmask — an outward display
-        # of raw emotion that ends the Compromised condition. The player
-        # chooses how the emotion manifests. All strife is removed, but
-        # there are narrative and mechanical consequences.
-
-        # Unmask options are recommendations, not requirements.
-        # When forfeiting honor or glory, the general rule of thumb
-        # is to lose an amount equal to your rank (the tens digit)
-        # of the relevant attribute.
         UNMASK_OPTIONS {
             ^"Bend Principles" "Compromise your beliefs. May forfeit honor."
             ^"Expose an Opening" "Emotional vulnerability reveals weakness. Enemies may gain advantage."
@@ -201,9 +150,9 @@ BASE "L5R5e_Core_Systems" {
         }
 
         RULES {
-            #L5R408kL0mN2oP4qR6sT8u: unmask_removes_all_strife
-            #L5R409vW1xY3zA5bC7dE9f: unmask_has_consequences
-            #L5R410gH2iJ4kL6mN8oP0q: unmask_once_per_scene
+            #L5R408kL0mN2oP4qR6sT8u: benefits_and_risks_of_unmasking "Benefits and Risks of Unmasking: When a character unmasks, they remove all of their strife. Then, the player roleplays the way in which their character lets their façade fall, and the GM determines any narrative and mechanical consequences this has. Players and GMs can look to the examples of unmasking in this section for inspiration, or invent their own to fit the scene and the character.\n\nLike any moment of vulnerability, unmasking is a risk but also a chance to achieve things one otherwise could not. Important moments in a character's life often revolve around the incidents in which they allow their façade to slip, even briefly. Sometimes, this bared emotion even allows the character to transgress societal norms for an advantage or surpass their own limitations to pursue a goal they otherwise could not.\n\nThey can also say and do things they normally couldn't—and while such behavior might have a cost in honor or glory (see page 37 for more on honor and glory), a valid point raised in anger is still often valid. The GM should take this into account for the character's checks during the remainder of the scene. A character who rebukes their lord should suffer any natural consequences for doing so (perhaps forfeiting honor or glory, and suffering potential narrative costs), but might also convince their lord to reconsider a foolish course of action. A character who reveals their secret love for someone beyond their station might suffer social repercussions but also catch that person's attention, allowing them to begin a clandestine relationship. A character who challenges a social superior in anger might get that person to accept a duel they would normally refuse without consideration—though of course, this too carries its own deadly risks. The GM and player should consider the risks the act of unmasking entails in the scene, but also the unique possibilities it might create."
+            #L5R409vW1xY3zA5bC7dE9f: example_ways_of_unmasking "Example Ways of Unmasking: Regardless of how the player decides to roleplay the unmasking, there should be narrative consequences for it, usually both for good and for ill. Sometimes, the GM and player will need to work together to determine how best to suit the temporary slip of their composure to the scene.\n\nThe following are a few examples of ways a character can reveal their inner emotions, but players are encouraged to invent other forms of unmasking based on their character's personality and the circumstances. The GM should inform the player of any honor, glory, or status their character might have to forfeit or stake before the player commits to the course of action (see page 37 for more information on social attributes and staking those attributes)."
+            #L5R410gH2iJ4kL6mN8oP0q: unmasking "Unmasking: Once per scene, while a character is Compromised, their player may choose to have the character unmask, briefly expressing the true emotions beneath the guise of a perfect samurai that society demands they maintain. Keep in mind that the character may stay Compromised as long as their player deems it appropriate, and can seek other ways to soothe their emotions, but these often take time. The act of unmasking gives a character the chance to achieve immediate emotional clarity and openness, at the cost of potentially disturbing the scene.\n\nUnmasking is an outpouring of raw emotion: anger at difficult circumstances or injustice, joy as a result of success over harsh trials, mirth at a humorous occurrence, or despair at a tragic turn of events. Importantly, the player never loses control of their character while unmasking, because the player chooses the shape the character's unmasking takes and the time at which it occurs. The form of the unmasking should be suited to the scene in which it takes place and the various emotions that have led the character to become Compromised."
         }
     }
 
@@ -258,15 +207,9 @@ BASE "L5R5e_Core_Systems" {
 
         INTEGER MIN 0
 
-        # Physical exhaustion and injury tracked as fatigue points.
-        # Suffered from damage, exertion, and some technique effects.
-        # When fatigue exceeds endurance, character gains the Incapacitated
-        # condition (see ^"Condition" DEF).
-
         RULES {
-            #L5R411rS3tU5vW7xY9zA1b: fatigue_from_damage
-            #L5R412cD4eF6gH8iJ0kL2m: incapacitated_at_endurance
-            #L5R413nO5pQ7rS9tU1vW3x: fatigue_recovery_between_scenes
+            #L5R411rS3tU5vW7xY9zA1b: fatigue "Fatigue: Fatigue represents a character's growing exhaustion as a battle wears on—shortness of breath, gaps in their perception, and strained muscles that accumulate from blocking and evading against oncoming strikes.\n\nWhen a character suffers fatigue, their player should record it on their character sheet."
+            #L5R412cD4eF6gH8iJ0kL2m: consequences_of_fatigue "Consequences of Fatigue: After a character suffers fatigue, if their fatigue exceeds their endurance, the character suffers the Incapacitated condition (see page 272). This represents the character's being overwhelmed to such a degree that they cannot take effective action or mount a meaningful defense."
         }
     }
 
@@ -281,9 +224,6 @@ BASE "L5R5e_Core_Systems" {
               "Disoriented", "Dying", "Enraged", "Exhausted", "Immobilized",
               "Incapacitated", "Intoxicated", "Prone", "Silenced",
               "Unconscious", "Wounded"]
-
-        # Persistent status effects applied during play. Each condition
-        # has specific triggers, effects, and removal conditions.
 
         CONDITION_DEFINITIONS {
 
@@ -454,9 +394,7 @@ BASE "L5R5e_Core_Systems" {
         }
 
         RULES {
-            #L5R414yZ6aB8cD0eF2gH4i: conditions_have_specific_triggers
-            #L5R415jK7lM9nO1pQ3rS5t: conditions_have_removal_methods
-            #L5R416uV8wX0yZ2aB4cD6e: multiple_conditions_can_stack
+            #L5R414yZ6aB8cD0eF2gH4i: conditions "Conditions: Sometimes, a character is subjected to a temporary effect called a condition. While a character is under the effects of a condition, all of its effects are applied to them. Each condition specifies these effects, as well as how the condition is removed."
         }
     }
 
@@ -467,26 +405,9 @@ BASE "L5R5e_Core_Systems" {
     #tcb46502597698cdc8c989 ^"Skirmish" DEF {
         EXTENDS #L5R072cD4eF6gH8iJ0kL2m ^"Conflict Type"
 
-        # Small-scale tactical combat between individual characters
-        # and small groups. The primary combat conflict type.
-        # Ideal for bar brawls to dramatic encounters between rival groups.
-        # Follows the general Conflict Scene pattern with the following
-        # additions and alterations.
-
         # --- INITIATIVE ---
-        # The ^"Initiative" check for a skirmish is a TN 1 ^"Tactics" check
-        # to gain a read on battlefield conditions and enemy. Characters
-        # may spend (op) from this check to get additional information about
-        # surroundings or undertake small tasks such as readying weapons or
-        # diving for cover (see ^"Opportunity" INITIATIVE_OPPORTUNITIES).
-        # Characters act in descending order of initiative value for the scene.
-        # Ties broken by lowest ^"Honor" first, then ascending order of honor.
 
         # --- TAKING TURNS ---
-        # Each character takes one turn each round in initiative order.
-        # Skirmishes do not have a fixed round limit. When things are
-        # clearly going badly for one side, many combatants will retreat
-        # and regroup.
 
         TURN_SUMMARY {
             1 "Choose a ^\"Stance\", which reflects approach to the fight and grants a passive benefit."
@@ -495,10 +416,6 @@ BASE "L5R5e_Core_Systems" {
         }
 
         # --- MOVEMENT AND POSITIONING ---
-        # Skirmishes make the most detailed use of ^"Range Band" of all
-        # conflict types. Once during their turn, before or after performing
-        # an action, a character may move 1 range band. This is not an action.
-        # To move further, use the Maneuver action.
 
         # --- SKIRMISH ACTIONS ---
 
@@ -527,8 +444,6 @@ BASE "L5R5e_Core_Systems" {
                 }
 
                 #5c0Hjsw4YvoXhdYJWljtAx ^"Clash" DEF {
-                    # A clash embeds a ^"Duel" within another scene. Clashes can
-                    # arise from the Challenge action or via narrative events.
 
                     STRUCTURE {
                         1 "Staredown: Characters receive strife equal to the round of the clash and bid strife to increase their current initiative."
@@ -583,44 +498,23 @@ BASE "L5R5e_Core_Systems" {
         }
 
         # --- RESOLVING A SKIRMISH ---
-        # A skirmish continues until only one group of combatants remains
-        # standing in the field. The GM should conclude a skirmish when one
-        # side has vanquished or driven off all their foes, or when it becomes
-        # clear that they will claim victory. If a warrior believes they have
-        # a chance to escape and survive, most will not voluntarily choose to
-        # fight to the death. Honor forfeited when retreating can be regained,
-        # but an ignoble death is more enduring.
 
         RULES {
-            #L5R417fG9hI1jK3lM5nO7p: skirmish_round_structure
-            #L5R418qR0sT2uV4wX6yZ8a: stance_selection_each_round
-            #L5R419bC1dE3fG5hI7jK9l: initiative_determines_turn_order
-            #L5R420mN2oP4qR6sT8uV0w: skirmish_actions
-            #L5R421xY3zA5bC7dE9fG1h: clash_embedded_duel
-            #L5R422iJ4kL6mN8oP0qR2s: free_movement_one_range_band
+            #L5R417fG9hI1jK3lM5nO7p: skirmish_taking_turns "Taking Turns: Each character takes one turn each round in the order dictated by the characters' initiative values. During this part of a skirmish, characters fight for their lives!\n\nSkirmishes do not have a fixed round limit. However, when things are clearly going badly for one side, many combatants will retreat and regroup."
+            #L5R419bC1dE3fG5hI7jK9l: skirmish_initiative "Initiative: During this phase of a skirmish, characters get their bearings, identify their foes, determine their initiative value, and prepare to do battle.\n\nFor a skirmish, the Initiative check is a TN 1 Tactics check to gain a read on the battlefield conditions and enemy. Remember, characters may spend (op) from this check to get additional information about their surroundings or undertake small tasks such as readying weapons or diving for cover (see Table 8–1: Examples of (op) on page 328).\n\nCharacters act in descending order of initiative value for the scene. If two or more characters tie for initiative, the character with the lowest honor acts first, and then the other tied characters act in ascending order of honor."
+            #L5R420mN2oP4qR6sT8uV0w: skirmish_actions "Skirmish Actions: The following sample actions are available to all characters in a skirmish, along with actions granted to them by techniques and abilities. Players can also propose actions of their own invention based on the circumstances (per the GM's approval)."
+            #L5R421xY3zA5bC7dE9fG1h: clashes "Clashes: Even as lesser combatants swirl around them, heroes frequently mark each other out for challenges. A clash is one way to embed a duel in another scene. Clashes can arise from the use of the Challenge action, or via narrative events that lead to a formal duel occurring during another scene (such as an intrigue)."
+            #L5R422iJ4kL6mN8oP0qR2s: skirmish_movement_and_positioning "Movement and Positioning: Of all conflict types, skirmishes make the most detailed use of range bands, described on page 265.\n\nOnce during their turn, before or after performing an action, a character may move 1 range band. Note that moving this way is not an action.\n\nIn addition to this movement, a character who wishes to move a greater distance can dedicate their action to moving via the Maneuver action (see page 264).\n\nIn skirmishes, range bands are used to measure the distances between characters, objects, and positions on the battlefield. See page 265 for more information on range bands."
+            #iGNHREIwLId1YU4E21TOB9: skirmishes "Skirmishes: Skirmishes are pitched battles between small groups of combatants—a few individuals, or small squads at the largest. This type of conflict can represent anything from a clash of scouting forces, to a teahouse raid with a few dozen combatants, to a pitched battle between several individuals in an alleyway. In a skirmish, the winner is the one who survives, whatever that might require."
+            #J0VL4lu4VH6zxHOv5ANq9C: special_rules_for_skirmishes "Special Rules for Skirmishes: Skirmishes follow the general pattern described in Conflict Scenes on page 249, with the following minor additions and alterations:"
+            #xY2aTXUvws4DkFBgNp7JAY: when_to_use_a_skirmish "When to Use a Skirmish: Skirmishes are ideal for small-scale combat engagements, from bar brawls to dramatic encounters between rival groups. Many combat encounters are likely to be skirmishes."
+            #zdsbudzU0apns7x6lC0oUJ: resolving_a_skirmish "Resolving a Skirmish: A skirmish continues until only one group of combatants remains standing in the field. The GM should conclude a skirmish when one side has vanquished or driven off all their foes, or when it becomes clear that they will claim victory.\n\nIf a warrior believes they have a chance to escape and survive, most will not voluntarily choose to fight to the death. Honor forfeited when retreating can be regained, but an ignoble death is more enduring."
         }
     }
 
     #t1891f53b2f17a3a96f0b7 ^"Critical Strike" DEF {
 
-        # Particularly deadly blows that slip past a character's defenses
-        # to inflict injuries, permanent scars, or even death. When a
-        # character fails to defend against damage, they suffer a critical
-        # strike. Additionally, some effects inflict critical strikes directly.
-
         # --- SUFFERING CRITICAL STRIKES ---
-        # A critical strike has a severity value dictated by the method
-        # by which it was inflicted:
-        # - After failing to defend against damage: severity = deadliness
-        #   of the source of damage.
-        # - From a direct effect: severity specified by the effect
-        #   (otherwise, see Unspecified Deadliness).
-        #
-        # The character must make a TN 1 ^"Fitness" check to mitigate
-        # (using a ring of their choice in narrative, or the ring their
-        # ^"Stance" dictates in conflict). If they succeed, reduce severity
-        # by 1 plus bonus successes (minimum 0). Then consult the
-        # severity table.
 
         UNSPECIFIED_DEADLINESS {
             "Invocations and ^\"Mahō\": Deadliness equal to the value of the ring used for the Attack action check plus kept (st) symbols on that check."
@@ -666,10 +560,9 @@ BASE "L5R5e_Core_Systems" {
         }
 
         RULES {
-            #L5R424eF6gH8iJ0kL2mN4o: critical_severity_calculation
-            #L5R425pQ7rS9tU1vW3xY5z: fitness_resistance_check
-            #L5R426aB8cD0eF2gH4iJ6k: shattering_parry_reduces_severity
-            #L5R427lM9nO1pQ3rS5tU7v: permanent_injury_effects
+            #L5R424eF6gH8iJ0kL2mN4o: suffering_critical_strikes "Suffering Critical Strikes: A critical strike has a severity value, which is dictated by the method by which it was inflicted. When a character suffers a critical strike after failing to defend against damage, the severity is the deadliness of the source of the damage. When an effect inflicts a critical strike directly, it usually specifies the severity (otherwise, see Unspecified Deadliness)."
+            #L5R425pQ7rS9tU1vW3xY5z: check_to_resist_critical_strike "When a character suffers a critical strike, they must make a TN 1 Fitness check to mitigate its effects (using a ring of their choice in a narrative scene, or the ring their stance dictates in a conflict scene).\n\nIf the character succeeds, they reduce the severity by 1 plus their bonus successes on the check (to a minimum of 0). Then, consult Table 6–6: Results of Critical Strikes by Severity and apply the listed effects to the character."
+            #dFjoWIryYcL6gBK80Ghsfn: critical_strikes "Critical Strikes: Critical strikes represent particularly deadly blows that have slipped past a character's defenses to inflict injuries, permanent scars, or even death. When a character fails to defend against damage, they suffer a critical strike. Additionally, some effects inflict critical strikes directly. See page 270 for more on Suffering Critical Strikes."
         }
     }
 
@@ -680,20 +573,7 @@ BASE "L5R5e_Core_Systems" {
     #tafe52b4a03561134d1004 ^"Duel" DEF {
         EXTENDS #L5R072cD4eF6gH8iJ0kL2m ^"Conflict Type"
 
-        # Stylized one-on-one engagements fought to settle disputes that
-        # cannot be put to rest with words alone. A duel is fought by
-        # individuals, but the fate of families, clans, or the entire
-        # realm might ride on a duel. Follows the general Conflict Scene
-        # pattern with the following additions and alterations.
-
         # --- SETTING THE TERMS ---
-        # Characters must agree on:
-        # - The objective (to the first strike, to incapacitation, to
-        #   the death, or another goal).
-        # - The weapons and fighting styles allowed.
-        # If belligerents cannot agree, the reigning lord (highest
-        # ^"Status" present, or the one on whose lands the duel takes
-        # place in case of tie) decides the method and stakes.
 
         COMMON_FORMS {
             #REAHqu3FTQ2JifeFUkIqEn ^"Iaijutsu Duel (to first strike)" DEF {
@@ -723,42 +603,24 @@ BASE "L5R5e_Core_Systems" {
         }
 
         # --- CONCESSION ---
-        # At the start of any round, a character may concede, honorably
-        # withdrawing from the contest. They have lost for all intents
-        # and purposes and are expected to fulfill the terms of defeat.
-        # However, the victor may forswear some or all stakes in the name
-        # of Compassion (e.g., telling the vanquished to cut their topknot
-        # instead of severing their head).
 
         # --- INITIATIVE ---
-        # The ^"Initiative" check for a duel is a TN 1 ^"Meditation" check
-        # to attempt to foresee how the duel will transpire. Each character
-        # has an initiative value based on results, as usual. However, each
-        # round at the start of Phase 2: Take Turns, characters participate
-        # in a staredown that modifies initiative.
 
         #PjMVv0dpUa2ZZ1E27BTxVQ ^"Staredown" DEF {
-            # As tension mounts, even the most stoic samurai feel building
-            # pressure. This is a special step at the start of Phase 2
-            # each round.
             EFFECTS {
                 "Each character receives strife equal to the number of the round (1 for round 1, 2 for round 2, etc.)."
                 "After receiving this strife, each character who is not ^\"Compromised\" may bid additional strife to increase their initiative value for that round."
                 "To bid: each participating character secretly chooses a number between 0 and their ^\"Focus\" attribute. All simultaneously reveal; each suffers that strife and adds it to their initiative for the round."
             }
+
+            RULES {
+                #ttk4Gsg92R3iIzHxZPk8aH: staredown "Staredown: As tension mounts during a duel, even the most stoic of samurai feel a building pressure. The warrior's senses are elevated, and even the crunch of gravel or a cicada's cry becomes thunderous. This is the staredown, a special step at the start of Phase 2: Take Turns each round."
+            }
         }
 
         # --- TAKING TURNS ---
-        # Each character takes one turn each round in order of initiative.
-        # Higher initiative acts first. If tied, lower ^"Honor" acts first.
-        # At end of round, each character's initiative value resets to its
-        # value before the staredown.
-        # No fixed round limit. At end of each round, if either character
-        # achieved their objective, the duel ends and proceeds to Resolution.
 
         #0eBxf9vESEBudf6aVs1rXZ ^"Finishing Blow" DEF {
-            # As a combatant makes a move, a gap sometimes opens in their
-            # defenses, giving their foe a chance to end the fight.
             TRIGGER "The first time their opponent becomes ^\"Compromised\" or unmasks during a duel, a character may immediately execute a finishing blow. This is a special action that can be performed out of turn."
             EFFECTS {
                 "Choose an Attack action and perform it against the opponent, interrupting anything the target is doing (including resolving a check — the finishing blow resolves during Step 6 of the ^\"Check\", after (st) symbols are resolved but before (op) is spent)."
@@ -770,10 +632,6 @@ BASE "L5R5e_Core_Systems" {
         }
 
         # --- MOVEMENT AND RANGE ---
-        # At the start, characters move to range 2 from each other. During
-        # the duel, each character is considered to be in range of any
-        # effect their opponent resolves. At the end, they move to range 2
-        # again. Players should narrate movement as they vie for position.
 
         # --- DUEL ACTIONS ---
 
@@ -812,9 +670,6 @@ BASE "L5R5e_Core_Systems" {
         }
 
         # --- RESOLVING A DUEL ---
-        # A duel ends at the end of any round in which one or more
-        # characters achieve their objectives. During Phase 3: Resolution,
-        # each participant tallies their score.
 
         SCORING {
             "Achieved your objective: +6 points"
@@ -838,29 +693,23 @@ BASE "L5R5e_Core_Systems" {
         ^"One-Roll Duel" DEF {
             EXTENDS #L5R465jK7lM9nO1pQ3rS5t ^"Optional Rule"
 
-            # Fast resolution for groups that don't want tactical duels.
-            # Setup: Each combatant describes their intended action, detailing
-            # relevant advantages, disadvantages, terrain, and circumstances.
-            # Check: Each combatant chooses weapon(s) and makes a competitive
-            # check using the appropriate skill and the ring their description
-            # dictates. Base TN 1 (adjustable by GM). Treated as an Attack
-            # action check targeting the opponent for ability purposes.
-            # Resolution: Character with more bonus successes wins.
-            # In live-weapon duels, victor inflicts a ^"Critical Strike" with
-            # severity = 2× weapon's deadliness + bonus successes. Foe resists
-            # as usual. If neither succeeds, the one with lower shortfall wins
-            # (inelegantly) and inflicts critical strike at 2× deadliness.
-            # If tied, both are considered victorious and defeated; higher
-            # severity critical (after resistance) wins. If tied or no
-            # criticals, the outcome is inconclusive.
+            RULES {
+                #JRVOz88NTImWHurNhWmWol: one_roll_duels "One-Roll Duels (Optional Rule): Dueling is an activity that many groups will want to explore tactically, but for other groups, it is simply a means to an end. Even in games where players often want tactical duels, this fast resolution is sometimes appropriate."
+                #leMwEOnPA66S4wEVb3UWxb: one_roll_duel_setup_and_check "Setup and Check: Each combatant describes their intended action, detailing how they factor in relevant advantages, disadvantages, terrain, and other circumstances they could use to gain an edge.\n\nThen, each combatant chooses their weapon (or weapons) and makes the competitive check, using the appropriate skill for the duel and the ring that their description dictates. The base TN for this check is 1, but it can be adjusted to account for relevant factors such as the players' description and the circumstances, at the GM's discretion. This check is treated as an Attack action check targeting their opponent for the purposes of abilities."
+                #Yj7BsNiCOMxQb5jFXwLcBQ: one_roll_duel_resolution "Resolution: The character who has more bonus successes is victorious in the duel.\n\nIn a duel using live weapons, such as a duel to the first blood or to the death, the victor inflicts a critical strike with severity equal to twice their weapon's deadliness, plus their bonus successes upon their foe. The enemy can resist as usual (see page 270).\n\nIn any type of duel, if neither fighter succeeds, the character with the lower shortfall is victorious (albeit inelegantly) and inflicts a critical strike with severity equal to twice their weapon's deadliness on the foe, reflecting an accidental harm that might occur even in a practice duel.\n\nIf the characters are tied, both are considered both victorious and defeated for the purpose of inflicting any critical strikes. The one who inflicts the critical strike with the higher severity (after the check to resist) wins. If these are tied (or no critical strikes were inflicted), the duel's outcome is inconclusive."
+            }
         }
 
         RULES {
-            #L5R428wX0yZ2aB4cD6eF8g: duel_formal_structure
-            #L5R429hI1jK3lM5nO7pQ9r: setting_terms_and_concession
-            #L5R430sT2uV4wX6yZ8aB0c: staredown_initiative_modification
-            #L5R431dE3fG5hI7jK9lM1n: finishing_blow_mechanics
-            #L5R432oP4qR6sT8uV0wX2y: duel_scoring_and_resolution
+            #L5R428wX0yZ2aB4cD6eF8g: duels "Duels: Duels are stylized engagements, usually fought to settle disputes that cannot be put to rest with words alone. A duel is fought by individuals, but the fate of families, clans, or the entire realm might ride on a duel."
+            #L5R429hI1jK3lM5nO7pQ9r: setting_the_terms "Setting the Terms: The objective of the duel (to the first strike, to incapacitation, to the death, or another goal).\n\nThe weapons and fighting styles allowed."
+            #L5R430sT2uV4wX6yZ8aB0c: duel_initiative "Initiative: For a duel, the Initiative check is a TN 1 Meditation check to attempt to foresee how the duel will transpire. Each character has an initiative value based on the results of their Initiative check, as usual. However, each round, at the start of Phase 2: Take Turns, the characters participate in a staredown that modifies initiative."
+            #L5R431dE3fG5hI7jK9lM1n: the_finishing_blow "The Finishing Blow: As a combatant begins to make a move, a gap sometimes opens in their defenses, giving their foe a chance to end the fight with a well-placed attack."
+            #L5R432oP4qR6sT8uV0wX2y: resolving_a_duel "Resolving a Duel: A duel draws to a close at the end of any round in which one or more characters achieve their objectives (see Common Forms of Duels, on page 258).\n\nWhile some duels are clear in their outcome, with one samurai dead and the other standing, blade red with blood, most are more ambiguous and messier. It falls to one or more judges to call the legality of strikes, who struck first, and the efficacy of blows delivered.\n\nDuring Phase 3: Resolution of a duel, each participant tallies up their score based on the various feats noted in Table 6–2: Duel Scoring. The difference between the higher score and the lower determines the duel result, as described below:"
+            #kklT7ESEVDJTBcKnw4R3D8: special_rules_of_duels "Special Rules of Duels: Duels follow the general pattern described in Conflict Scenes on page 249, with the following minor additions and alterations:"
+            #NOixsPupBkIGM8UbDFNIVG: concession "Concession: At the start of any round, a character may concede a duel, honorably withdrawing from the contest. Rokugani law dictates that they have lost the battle for all intents and purposes and are expected to fulfill the terms of their defeat—up to and including forfeiting their life, if that was included in the terms of the duel.\n\nHowever, provisions in the law allow for the victor to forswear some or all stakes in the name of the Bushidō tenet of Compassion; a warrior might tell a vanquished enemy to cut their topknot instead of severing their head, for instance, signifying that they must retire to a monastery but keep their life. Sparing a foe's life or even conceding can also be practical, letting a duelist preserve societal harmony without appearing weak. A duelist who has seen that they cannot win might surrender not in the hopes of saving their own life, but to keep their own family entering into a cycle of retribution."
+            #zUNQNMcc7p4OWupZPVdp9n: duel_taking_turns "Taking Turns: During this phase, characters size up their foe, prepare their attack, and launch deadly strikes!\n\nEach character takes one turn each round in order of initiative. The character with the higher initiative value takes their turn, followed by the character with the lower value. If they are tied, the one with the lower honor acts first. At the end of the round, each character's initiative value resets to its value before the staredown.\n\nA duel does not last a fixed number of rounds. At the end of each round, if either character achieved their objective, the duel ends and proceeds to Phase 3: Resolution. Otherwise, the duel returns to Phase 2: Take Turns and continues for an additional round."
+            #bpb3YHYKud4AWes9IXFtdt: duel_movement_and_range "Movement and Range: Mechanically, ranges are handled quite simply in a duel: at the start, the characters move to range 2 from each other.\n\nPlayers should feel free to narrate how their characters are moving as they vie for position, feint, and sideslip unexpectedly."
         }
     }
 
@@ -871,23 +720,7 @@ BASE "L5R5e_Core_Systems" {
     #ted4d58667e51e9107000f ^"Intrigue" DEF {
         EXTENDS #L5R072cD4eF6gH8iJ0kL2m ^"Conflict Type"
 
-        # Social engagements: persuading the opposition, gathering favor
-        # from superiors, sowing the seeds of plots, or subtly besmirching
-        # rivals' reputations. How the fortunes of clans rise and fall.
-        # Follows the general Conflict Scene pattern with the following
-        # additions and alterations.
-
         # --- SOCIAL OBJECTIVES ---
-        # Overarching goals that give an intrigue structure and tell the
-        # GM when the intrigue should draw to a close. Use momentum
-        # points to track progress toward goals.
-        #
-        # At the start of Phase 1: Initiative, each participating character
-        # may choose a social objective. Any number of characters can
-        # pursue the same objective. PCs may confer, then each decides
-        # and informs the GM. The GM decides objectives for adversary
-        # NPCs (but does not reveal them). Minion NPCs generally do not
-        # need objectives.
 
         SOCIAL_OBJECTIVES {
 
@@ -921,24 +754,8 @@ BASE "L5R5e_Core_Systems" {
         }
 
         # --- INITIATIVE ---
-        # The ^"Initiative" check for an intrigue is a TN 1 ^"Sentiment"
-        # check to politely probe other characters' strengths, weaknesses,
-        # and objectives.
-        #
-        # Intrigues are relatively freeflowing: each character takes one
-        # turn when they see fit during each round, rather than at an
-        # appointed time. Initiative values come into play when two or more
-        # characters wish to act simultaneously — highest initiative acts
-        # first. A character must forfeit 1 ^"Honor" and 1 ^"Glory" to
-        # preempt characters of higher ^"Status" (and may suffer further
-        # narrative ramifications).
 
         # --- TAKING TURNS ---
-        # Each character takes one turn each round whenever they see fit.
-        # A character who does not wish to take a turn may pass. Once each
-        # character has taken a turn or passed, play proceeds to the next
-        # round. No fixed round limit; moves to Resolution once all
-        # objectives have been achieved or clearly cannot be achieved.
 
         TURN_SUMMARY {
             1 "Choose a ^\"Stance\", which reflects physical posture, tone, and rhetorical approach."
@@ -947,10 +764,6 @@ BASE "L5R5e_Core_Systems" {
         }
 
         # --- MOVEMENT AND POSITIONING ---
-        # Characters can generally be assumed to be within range to resolve
-        # effects. Movement need not be closely tracked unless relevant.
-        # If it becomes relevant, the GM adjudicates distances in
-        # ^"Range Band" units.
 
         # --- INTRIGUE ACTIONS ---
 
@@ -987,16 +800,14 @@ BASE "L5R5e_Core_Systems" {
         }
 
         # --- RESOLVING AN INTRIGUE ---
-        # The GM should end an intrigue once all characters' social
-        # objectives have been achieved or clearly failed, or the
-        # characters pursuing them decide to let them drop for narrative
-        # reasons. Then proceeds to Phase 3: Resolution.
 
         RULES {
-            #L5R433zA5bC7dE9fG1hI3j: intrigue_social_conflict
-            #L5R434kL6mN8oP0qR2sT4u: social_objectives_and_momentum
-            #L5R435vW7xY9zA1bC3dE5f: vigilance_is_persuade_tn
-            #L5R436gH8iJ0kL2mN4oP6q: freeflowing_initiative_order
+            #L5R434kL6mN8oP0qR2sT4u: social_objectives_and_momentum "Social Objectives: Social objectives are overarching goals that give an intrigue structure, and they give the GM a guideline on when the intrigue should draw to a close. Additionally, they use the rules for momentum points to track characters' progress toward their goals (see page 253)."
+            #L5R436gH8iJ0kL2mN4oP6q: intrigue_initiative "Initiative: For an intrigue, the Initiative check is a TN 1 Sentiment check not just to listen, but to politely probe other characters' strengths, weaknesses, and perhaps most importantly, objectives.\n\nIntrigues are relatively freeflowing scenes, so each character takes one turn when they see fit during each round, rather than at an appointed time based on the initiative order. Initiative values instead come into play when two or more characters wish to act simultaneously, at which point the character with the highest initiative acts first, followed by the character with the next highest initiative, and so on.\n\nHowever, because propriety is vitally important in Rokugan, a character must forfeit 1 honor and 1 glory to preempt one or more characters of higher status in this way (and might suffer further narrative ramifications for doing so, depending on circumstances)."
+            #BkFUDaP4lpncxM39NCIzOx: choosing_social_objectives "Choosing Social Objectives: At the start of Phase 1: Initiative during an intrigue, each participating character may choose a social objective. This is a concrete goal that the character hopes to accomplish during the scene; this goal also helps to define when the conflict should end.\n\nAny number of characters can choose to pursue the same objective. For instance, all player characters in a group might choose the same objective and support each other in accomplishing it. Alternatively, each PC might have their own objective—and thus, their own priorities—in a given intrigue. The PCs might even need to accomplish numerous objectives to bring a larger plan to fruition. The players can confer as they desire, and then each player should decide upon their character's objective and inform the GM.\n\nThe GM should also decide upon objectives for any adversary NPCs in the conflict who have an agenda of their own, but the GM should not tell the players these objectives (though careful sleuthing and observation might reveal them). At the GM's discretion, an adversary NPC with no concrete goal relevant to the scene might not have an objective, and minion NPCs generally do not need to have objectives."
+            #xRxvLEewXCooupRB9aNwQN: intrigue_taking_turns "Taking Turns: During this phase of an intrigue, characters can raise points, refute arguments brought up by others, and generally engage in social intrigue to attempt to achieve their social objectives.\n\nEach character takes one turn each round, but they take that turn whenever they see fit rather than at a specific time determined by the initiative order. A character who does not wish to take a turn during a given round may pass. Once each character has taken a turn or passed, play proceeds to the next round.\n\nAn intrigue does not last a fixed number of rounds, and instead moves to Step 3: Resolution once all objectives have been achieved or it is clear that they cannot be achieved."
+            #ZNc3nFOTDC276K9NM4B3Kc: intrigue_movement_and_positioning "Movement and Positioning: Players should feel free to narrate how their characters physically position themselves in intrigues, but characters can generally be assumed to be within range to resolve their effects, and movement need not be closely tracked unless it is relevant. If it becomes relevant, the GM should adjudicate the distances between various characters and objects in range bands."
+            #sdrnQk30AHwGQGZwm6YBkl: resolving_an_intrigue "Resolving an Intrigue: The GM should generally end an intrigue once all characters' social objectives have been achieved or have clearly failed, or the characters pursuing these objectives decide to let them drop for narrative reasons. At this point, it proceeds to Phase 3: Resolution."
         }
     }
 
@@ -1007,14 +818,7 @@ BASE "L5R5e_Core_Systems" {
     #t82038999289b137374e3e ^"Mass Battle" DEF {
         EXTENDS #L5R072cD4eF6gH8iJ0kL2m ^"Conflict Type"
 
-        # Large-scale warfare with abstracted armies. Characters contribute
-        # as commanders and leaders directing cohorts. Follows the general
-        # Conflict Scene pattern with the following additions and alterations.
-
         # --- ARMIES ---
-        # Abstracted representations of large groups of warriors including
-        # general acumen, training, and equipment. Like characters, armies
-        # possess attributes and abilities.
 
         ARMY_ATTRIBUTES {
             #zehJFGxzccIYSucB441pIv ^"Strength" DEF {
@@ -1030,32 +834,10 @@ BASE "L5R5e_Core_Systems" {
         }
 
         # --- COMMANDERS ---
-        # Each army has one commander who directs the entire army.
-        # Selected during Phase 1: Initiative. Characters with lower
-        # ^"Status" are expected to defer to those with higher status.
-        # At the beginning of each round, the commander selects the
-        # army's strategic objective for the round.
-        # If a commander is killed, the army suffers 10 panic. Then the
-        # character with highest ^"Status" assumes command (or appoints
-        # someone else).
 
         # --- LEADERS AND COHORTS ---
-        # Each leader commands a relatively independent chunk of the army
-        # called a cohort. The commander chooses leaders during Phase 1.
-        # Generally each PC should be a leader. Each cohort is defined by
-        # its leader for targeting and effects. Cohorts do not usually
-        # suffer casualties directly; casualties apply to overall army
-        # strength. Terrain qualities affect cohorts that occupy them
-        # (damage becomes attrition).
 
         # --- STRATEGIC OBJECTIVES ---
-        # At the beginning of each round, each commander chooses one
-        # strategic objective. Leaders must take actions to accrue
-        # momentum points toward the goal. Once fulfilled, that objective
-        # cannot be chosen again for three rounds. If not completed, it
-        # may be selected again with progress continuing.
-        # When a leader's action completes an objective, that leader is
-        # awarded 3 ^"Glory".
 
         STRATEGIC_OBJECTIVES {
 
@@ -1096,22 +878,8 @@ BASE "L5R5e_Core_Systems" {
         }
 
         # --- INITIATIVE ---
-        # 1. Choose Commander: Each army selects its commander.
-        # 2. Initiative Check: Commander makes a TN 1 ^"Command" check
-        #    to marshal and organize forces.
-        # 3. Select Leaders: Commander chooses leaders (may personally
-        #    be one). Must choose at least one leader.
 
         # --- TAKING TURNS ---
-        # At start of Phase 2, the commander with the higher initiative
-        # decides if their army moves first or waits. If tied, lower
-        # ^"Honor" must move first. Then, starting with the first army,
-        # each commander alternates nominating one leader who has not
-        # acted yet to act.
-        # At the beginning of each round, each commander selects the
-        # strategic objective. A PC commander unsure what to do may make
-        # a ^"Tactics" check with TN equal to enemy commander's ^"Vigilance"
-        # for insight.
 
         # --- MASS BATTLE ACTIONS ---
 
@@ -1148,23 +916,10 @@ BASE "L5R5e_Core_Systems" {
         }
 
         # --- RETREATING ---
-        # As an action, a character can retreat from a mass battle.
-        # Must forfeit 10 ^"Honor". Must also forfeit 10 ^"Glory" if
-        # anyone knows they willingly retreated. If they leave their
-        # cohort leaderless, the army suffers 10 panic.
-        # If ordered to retreat by their lord, must stake 10 honor and
-        # 10 glory on completing whatever other task their lord assigned.
 
         # --- READIED WEAPONS ---
-        # At the start of each round, each character may choose one
-        # (or two, if both are used one-handed) weapons to count as
-        # readied for the round.
 
         # --- ANNIHILATING A COHORT ---
-        # At GM's discretion, if a cohort suffers casualties greater
-        # than a quarter of the army's total strength from a single
-        # action, it is wiped out. Its leader suffers a ^"Critical Strike"
-        # with severity 12, and the cohort ceases to exist.
 
         # --- RESOLVING A MASS BATTLE ---
 
@@ -1175,13 +930,6 @@ BASE "L5R5e_Core_Systems" {
         }
 
         # --- BATTLE LENGTH AND FATIGUE ---
-        # Mass battle rounds are long in fictional time; six rounds cover
-        # a full day of fighting. After six rounds, armies generally
-        # withdraw to camps. If a commander decides to remain in the field,
-        # during Phase 1 of the seventh round and each subsequent round,
-        # the commander must make a TN 4 ^"Command" check. If they fail,
-        # the army suffers 10 panic plus panic equal to the commander's
-        # shortfall.
 
         # --- FORTIFICATIONS ---
 
@@ -1225,9 +973,18 @@ BASE "L5R5e_Core_Systems" {
         }
 
         RULES {
-            #L5R437rS9tU1vW3xY5zA7b: mass_battle_round_structure
-            #L5R438cD0eF2gH4iJ6kL8m: commanders_and_leaders
-            #L5R439nO1pQ3rS5tU7vW9x: strategic_objectives_and_momentum
+            #L5R437rS9tU1vW3xY5zA7b: mass_battle_taking_turns "Taking Turns: During this phase of a mass battle, commanders give leaders strategic direction and leaders direct their cohorts against enemy cohorts. Each leader commands their cohort in performing one action on their turn.\n\nAt the start of Phase 2, the commander with the higher initiative result decides if their army makes the first move or waits. If the commanders have the same initiative result, the one with the lower honor must have their army make the first move. Then, starting with the army that makes the first move, each commander nominates one of their leaders who has not acted yet that round to act, alternating back and forth until all leaders have acted.\n\nAt the beginning of each round, each commander chooses the army's strategic objective for the round. If they are not sure what to do, a PC commander may make a Tactics check with TN equal to the enemy commander's vigilance to gain insight into their foe and what sorts of moves they could use to gain the upper hand.\n\nEach cohort leader takes one turn each round when called upon to act by their commander."
+            #L5R438cD0eF2gH4iJ6kL8m: commanders "Commanders: Each army has one commander, a character appointed to direct the entire army. This character is chosen during Phase 1: Initiative. Usually, a prior appointment by powers supporting the army dictates which character will be the commander, but if there are disagreements— or if the commander is killed without a clear chain of command in place—the role might come into contention. Characters with lower status are expected to defer to characters with higher status in these situations.\n\nAt the beginning of each round of a mass battle, the commander selects the army's strategic objective for the round, which in turn influences the actions performed by the army's leaders.\n\nIf an army's commander is killed, the army suffers 10 panic (see page 276). Then, if the army has not collapsed, the character with the highest status assumes command (or appoints someone else to command). The GM might wish to briefly shift to a narrative scene (see page 247) if several characters get into an argument over command before returning to the mass battle."
+            #L5R439nO1pQ3rS5tU7vW9x: strategic_objectives "Strategic Objectives: At the beginning of each round, each army's commander chooses one strategic objective for the entire army for that round (a few examples can be found below). The commander should also describe some specifics of the objective, fitting the details into the story of the battle that has unfolded so far.\n\nTo fulfill this strategic objective, the army's leaders must take actions to accrue momentum points toward this goal (see page 253). Once a particular strategic objective has been fulfilled, the commander cannot choose that objective again for three rounds. If an objective was not completed in a prior round, the commander may select it again, and the army's progress toward it continues.\n\nWhen a leader's action completes a strategic objective, that leader is awarded 3 glory, and the effects described in the strategic objective resolve. Note that only the leader who personally completed the objective gets this glory reward—others who contributed do not receive the same benefit."
+            #i5J4yPzX78c3vh93AreDCI: rules_for_mass_battles "Rules for Mass Battles: Mass battles follow the general pattern described in Conflict Scenes on page 249, with the following additions and alterations:"
+            #Hl5TCxeEyBTzRh1gyPfAOY: armies "Armies: While some individual PCs and NPCs act during a mass battle, the majority of the conflict is handled by each side's army. Armies are abstracted representations of large groups of warriors as well as the general acumen, training, and equipment of those assembled. Like characters, armies possess certain attributes and abilities."
+            #r3irHXFeg7133eK91QWKBn: leaders_and_cohorts "Leaders and Cohorts: In addition to a commander, an army has one or more leaders. Depending on the size of the conflict, their ranks might vary from squad leaders to full-fledged generals in their own right. Regardless of the size of the forces involved, each leader commands a relatively independent chunk of the army called a cohort and must be able to make tactical decisions that serve the commander's goal without direct oversight. The commander of each army chooses the army's leaders during Phase 1: Initiative. Generally, each PC participating in a mass battle should be chosen as a leader, to give all players an important job in the conflict. The GM should then assign a similar number of NPCs as leaders of cohorts of the opposing army.\n\nDuring each round of a mass battle, each leader selects an action and leads their cohort in pursuing that action.\n\nFor the purposes of identification, targeting, and effects, each cohort is defined by its leader.\n\nAn army can be organized into any number of cohorts, but it is generally prudent to have enough cohorts in an army for all of the PCs to be able to do important things during the battle.\n\nNote that cohorts usually do not suffer casualties directly; instead, casualties are applied to the overall strength of the army. Given the strategic pace of mass battles, damaged cohorts can usually be reinforced from elsewhere in the army long before they are wiped out.\n\nIn mass battles, terrain qualities (see page 267), affect the cohorts that occupy them. When a cohort would suffer damage from a terrain effect, it suffers that much attrition instead."
+            #ZzwpUmiwjDF7hgamiu7aU3: mass_battle_initiative "Initiative: During this phase of a mass battle, each army selects a commander, who then makes an Initiative check and assigns leaders.\n\n1. Choose Commander: At the start of Phase 1: Initiative, each army selects its commander.\n\n2. Initiative Check: The commander performs an Initiative check to marshal and organize the forces of the army by making a TN 1 Command check.\n\n3. Select Leaders: Next, the commander chooses the army's leaders. The commander may choose to personally be one of the army's leaders. The commander must choose at least one leader (generally, it is a good idea to make each PC or important NPC a leader)."
+            #vbnV4YnWpdNyNgFBj45kCM: retreating "Retreating: As an action, a character can also retreat from a mass battle. A character must forfeit 10 honor to do so, and they must also forfeit 10 glory if anyone else knows that they willingly retreated. Additionally, if they leave their cohort leaderless, the army suffers 10 panic.\n\nIf a character is ordered to retreat by their lord, they must stake 10 honor and 10 glory on completing whatever other task their lord has given them to accomplish instead of staying to fight."
+            #ZgNHm8XakZlZ26DErpVQop: readied_weapons_in_mass_battles "Readied Weapons in Mass Battles: At the start of each round, each character may choose one (or two, if both are used one-handed) weapons to count as readied for the round."
+            #hdWTVZn0TwpdlKaB7QEKCs: annihilating_a_cohort "Annihilating a Cohort: At the GM's discretion, a cohort can be annihilated by a particularly devastating attack. If a cohort suffers a number of casualties greater than a quarter of the army's total strength as the result of a single action, it is wiped out. Its leader suffers a critical strike with severity 12, and the cohort ceases to exist."
+            #cnyEMxurzjdfUg6GnALpaU: length_of_a_mass_battle "Length of a Mass Battle: Mortal armies can only remain in the field for so long before needing to resupply and recuperate. Mass battle rounds are quite long in the fictional time of the game; six rounds cover a full day of fighting.\n\nAfter six rounds of a mass battle, strategic engagement generally terminates, and armies withdraw to their camps. If a commander decides to have their army remain in the field, both armies begin to suffer the effects of battle fatigue."
+            #j2w42RWkbwbSaaRTq1B6bf: battle_fatigue "Battle Fatigue: During Phase 1 of the seventh round of a mass battle and in each subsequent round, each army's commander must make a TN 4 Command check to control their beleaguered forces. If the commander fails, the army suffers 10 panic, plus panic equal to the commander's shortfall."
         }
     }
 
@@ -1242,8 +999,6 @@ BASE "L5R5e_Core_Systems" {
               "Destroyed", "Durable", "Forbidden", "Mundane", "Prepare",
               "Razor-Edged", "Resplendent", "Sacred", "Snaring", "Subtle",
               "Unholy", "Wargear"]
-
-        # Qualities common to weapons, armor, and other items.
 
         QUALITY_DEFINITIONS {
 
@@ -1374,8 +1129,6 @@ BASE "L5R5e_Core_Systems" {
         }
 
         # --- CANCELLING ITEM QUALITIES ---
-        # Multiple instances of the same item quality do not stack.
-        # If an item would gain one quality, it loses the other instead.
         CANCELLING_PAIRS {
             "Concealable and Cumbersome"
             "Ceremonial and Mundane"
@@ -1384,12 +1137,9 @@ BASE "L5R5e_Core_Systems" {
             "Subtle and Wargear"
             "Sacred and Unholy"
         }
-        # Removing the new quality and restoring the old one requires
-        # a TN 2 Artisan (Earth) check using an appropriate skill.
 
         RULES {
-            #L5R440aY2aB4cD6eF8gH0i: item_quality_definitions
-            #L5R440bZ3bC5dE7fG9hI1j: cancelling_item_qualities
+            #L5R440bZ3bC5dE7fG9hI1j: canceling_item_qualities "Canceling Item Qualities: Multiple instances of the same item quality do not stack. Further, some item qualities cannot overlap; if an item would gain one quality for any reason, it loses the other instead of gaining it. Item qualities that cancel each other out are as follows:\n\nRemoving the new quality and restoring the old one requires a TN 2 Artisan (Earth) check using an appropriate skill."
         }
     }
 
@@ -1400,30 +1150,7 @@ BASE "L5R5e_Core_Systems" {
     #t2eb48f120feed79eefc02 ^"Weapon" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai", #L5R009mN0oP2qR4sT6uV8w ^"Adversary"]
 
-        # It is said that the sword is "the soul of the samurai." On the
-        # field, a samurai might wield numerous different armaments — a bow
-        # to hit targets from afar, a spear to strike from horseback, or a
-        # katana to cut down foes in the bloody fray.
-
         # --- ATTRIBUTES OF A WEAPON ---
-        # Category: The archetype (swords, polearms, bows, etc.). Some
-        #   techniques require specific categories.
-        # Name: The name of the weapon.
-        # Skill: The specific skill used to wield the weapon, usually one
-        #   of: Martial Arts [Melee], [Ranged], or [Unarmed].
-        # Range (RNG): The distance in range bands at which an attacker
-        #   can hit a target. A single number or range of values. Range is
-        #   both a maximum AND a minimum; a target closer than the lowest
-        #   value is not considered in range.
-        # Base Damage (DMG): How quickly blows wear a defender down.
-        #   Attack actions frequently reference this value.
-        # Deadliness (DLS): The lethality of the weapon. High deadliness
-        #   more easily inflicts gruesome injuries or death (see ^"Critical Strike").
-        # Grips: The ways to wield the weapon. If multiple grips are listed,
-        #   each shows any alterations to base attributes for that grip.
-        # Qualities: Any additional effects (see ^"Item Quality").
-        # Rarity: How difficult the item is to find (1 = common, 9 = legendary).
-        # Price: The cost to acquire.
 
         PROPERTIES {
             ^"Name" STRING REQUIRED
@@ -1440,23 +1167,8 @@ BASE "L5R5e_Core_Systems" {
         }
 
         # --- READIED WEAPONS ---
-        # A weapon is readied if a character is physically prepared to use
-        # it offensively and defensively. A character may ready a weapon at
-        # will during narrative time, or as an action during a conflict scene.
-        # When readying weapons, a character may choose any number of
-        # weapons at range 0-1 they can hold at once. Maximum: one pair of
-        # 1-handed grip weapons (one in each hand) or a single 2-handed
-        # grip weapon. Readied weapons remain readied until the character
-        # sheathes, relinquishes, or drops them.
-        # When readying a weapon, the character must choose one of its
-        # grips; they may switch grips whenever they have the chance to
-        # ready a weapon.
 
         # --- SHEATHED WEAPONS ---
-        # A weapon is sheathed if it is on a character's person, properly
-        # stowed for access but not yet readied. A character can sheathe
-        # a weapon at will during narrative time, or as an action during
-        # a conflict scene.
 
         # ==================
         # MELEE WEAPONS
@@ -1955,7 +1667,6 @@ BASE "L5R5e_Core_Systems" {
         }
 
         # --- ARROWS ---
-        # When used with a bow, these arrows modify the weapon's profile:
         ARROWS {
             # Arrows are not weapon profiles — they modify the bow that fires them —
             # so they carry an Effect rather than the Range/Damage/Deadliness set.
@@ -1995,10 +1706,6 @@ BASE "L5R5e_Core_Systems" {
         # ==================
         # SPECIALIST WEAPONS
         # ==================
-
-        # Weapons used by assassins and spies — a mix of improvised tools,
-        # modified agricultural implements, and bespoke weapons. They emphasize
-        # stealth and accessibility over sheer killing power.
 
         SPECIALIST_WEAPONS {
             #buUp7YEHyHKzE5o5rOHXD6 ^"Blowgun" DEF {
@@ -2066,14 +1773,7 @@ BASE "L5R5e_Core_Systems" {
         # UNARMED PROFILES
         # ==================
 
-        # A character always counts as having these Martial Arts [Unarmed]
-        # profiles readied, provided the relevant body parts are not occupied
-        # (such as with a weapon) or bound.
-
         UNARMED {
-            # A character always counts as having these readied, provided the
-            # relevant body parts are not occupied or bound (p. 237). The book's
-            # table names the body part alongside each profile.
             #BEUiHiz89myUcFkHavaizC ^"Punch" DEF {
                 PROPERTIES {
                     ^"Category" STRING "Unarmed"
@@ -2112,9 +1812,13 @@ BASE "L5R5e_Core_Systems" {
         }
 
         RULES {
-            #L5R440yZ2aB4cD6eF8gH0i: weapon_attributes_and_categories
-            #L5R441jK3lM5nO7pQ9rS1t: readied_and_sheathed_weapons
-            #L5R442uV4wX6yZ8aB0cD2e: grip_selection_and_switching
+            #L5R440yZ2aB4cD6eF8gH0i: weapon_attributes "Attributes of a Weapon: Weapons have the following attributes:\n\nCategory: The archetype of the weapon, such as \"swords,\" \"polearms,\" or \"bows.\" Some techniques require specific categories.\n\nName: The name of the weapon.\n\nSkill: The specific skill used to wield the weapon. This is usually one of the Martial Arts skills: Martial Arts [Melee], [Ranged], or [Unarmed].\n\nRange (RNG): The distance in range bands at which an attacker can hit a target with the weapon. A single number (e.g., \"1\") or a range of values (e.g., \"1–2\").\n\nNote that range is both a maximum and a minimum; a target closer than the lowest listed value of a weapon's range is not considered to be in range of that weapon.\n\nBase Damage (DMG): A reflection of how quickly blows from this weapon wear a defender down. Attack actions frequently reference this value.\n\nDeadliness (DLS): The lethality of the weapon. A weapon with high deadliness more easily inflicts gruesome injuries or death (see page 269).\n\nGrips: The ways to wield the weapon (1-hand, 2-hand, or others). If a weapon lists multiple grips, each lists any alterations to the attributes that using that grip applies.\n\nQualities: Any additional effects not covered by a weapon's table profile or individual entry."
+            #L5R441jK3lM5nO7pQ9rS1t: readied_weapons "Readied Weapons: A weapon is considered readied if a character is physically prepared to use it, offensively and defensively. A character may ready a weapon at will during narrative time, or as an action during a conflict scene.\n\nWhen a character has the opportunity to ready weapons, they may choose to ready any number of weapons at range 0–1 that they can hold at once. For most characters, the maximum is one pair of 1-handed grip weapons (one in each hand) or a single 2-handed grip weapon. Readied weapons remain readied until the character sheathes, relinquishes, or drops them.\n\nWhen a character readies a weapon, they must choose one of its grips to use; they may also switch grips whenever they have the chance to ready a weapon.\n\nEven without weapons, a warrior is dangerous. See Unarmed Profiles on page 237."
+            #lz8daEoyNTE2ca5Su2ob5Y: weapons "Weapons: It is said that the sword is \"the soul of the samurai.\" On the field, a samurai might wield numerous different armaments—a bow to hit targets from afar, a spear to strike from horseback, or a katana to cut down foes in the bloody fray. What differentiates the sword from other arms is its symbolic status in the Emerald Empire. Bushi wear the daishō, removing their blades only when courtesy demands it. Even samurai who serve as courtiers, artisans, and shugenja carry the short blade as a reminder of their responsibilities and privileges. Thus, many samurai specialize in swordplay, for if a fight breaks out, it is the weapon most likely to be on hand.\n\nNevertheless, countless martial traditions use other weapons, from knives and staves to spears and war hammers, not to mention the myriad styles that have come from outside Rokugan's borders."
+            #y5rZpB3Mfm4tfoGW2HyHCn: sheathed_weapons "Sheathed Weapons: A weapon is considered sheathed if it is on a character's person, properly stowed for access but not yet readied for use. A character can sheathe a weapon at will during narrative time, or as an action during a conflict scene."
+            #rtFsXU7mBkAPkMXuLnWcvy: arrows "Arrows: When used with a bow, these arrows modify the weapons's profile as follows:"
+            #ICqENjlhOpCWPf8lO7x9Ok: specialist_weapons "Specialist Weapons: The weapons used by assassins and spies are a mix of improvised tools, modified agricultural implements, and bespoke weapons. They emphasize stealth and accessibility over sheer killing power, and have an unsavory reputation thanks to their association with assassination."
+            #mIzZ1JPi7KR8q3qGnI32MN: unarmed_profiles "Unarmed Profiles: A character always counts as having these Martial Arts [Unarmed] profiles readied, provided the relevant body parts are not occupied (such as with a weapon) or bound:"
         }
     }
 
@@ -2129,7 +1833,7 @@ BASE "L5R5e_Core_Systems" {
             ^"Category" STRING "Improvised"
         }
         RULES {
-            #L5R443iW5xY7zA9bC1dE3f: improvised_weapons
+            #L5R443iW5xY7zA9bC1dE3f: improvised_weapons "Improvised Weapons: An improvised weapon uses the most similar weapon profile (often a club or a knife), with DMG and DLS reduced by 1, or more at the GM's discretion. It is wielded with Martial Arts [Unarmed]."
         }
     }
 
@@ -2140,22 +1844,7 @@ BASE "L5R5e_Core_Systems" {
     #t98e5792c3c1f12ac72fb1 ^"Armor" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai", #L5R009mN0oP2qR4sT6uV8w ^"Adversary"]
 
-        # Samurai armor themselves with a wide variety of garments, suiting
-        # their choices to their needs. Whether lacquered plates to protect
-        # against swords or fashionable clothes to bolster reputation at
-        # court, a samurai's garb serves many important purposes.
-
         # --- ATTRIBUTES OF ARMOR ---
-        # Name: The name of the armor.
-        # Resistance Values (R. Values): Most armor provides defense against
-        #   one or more categories of damage. While equipped, the character
-        #   gains the indicated amounts of resistance. Common categories:
-        #   - Physical: Resistance against physical harm in its many forms.
-        #   - Supernatural: Resistance against invocations, ^"Mahō", and
-        #     other mystical effects.
-        # Qualities: Any nonstandard effects (see ^"Item Quality").
-        # Rarity: How difficult the item is to find (1 = common, 9 = legendary).
-        # Price: The cost to acquire.
 
         PROPERTIES {
             ^"Name" STRING REQUIRED
@@ -2168,24 +1857,6 @@ BASE "L5R5e_Core_Systems" {
         }
 
         # --- WEARING ARMOR ---
-        # While wearing armor, a character benefits from its resistance
-        # values and applicable qualities.
-        #
-        # If a character dons a second set of armor (e.g., concealed armor
-        # under sleeping garb, or ashigaru armor pulled over ceremonial
-        # clothes), they must choose one to count as equipped. The other
-        # does not provide its resistances or qualities until one set is
-        # removed.
-        #
-        # Exception: The GM may decide that unequipped armor's qualities
-        # still hamper the character (e.g., lacquered armor under common
-        # clothing may still impose the ^"Cumbersome" quality). This is
-        # solely at the GM's discretion.
-        #
-        # A character can benefit from one set of armor and one effect that
-        # increases their resistance at a time, combining these benefits.
-        # If a character would benefit from more than one such effect, the
-        # character chooses which increase applies.
 
         # Format: Name, Resistance Values, Qualities, Rarity, Price
 
@@ -2281,9 +1952,10 @@ BASE "L5R5e_Core_Systems" {
         }
 
         RULES {
-            #L5R443fG5hI7jK9lM1nO3p: armor_resistance_values
-            #L5R444qR6sT8uV0wX2yZ4a: wearing_multiple_armor_sets
-            #L5R444bR7sT9uV1wX3yZ5b: resistance_stacking_limit
+            #L5R443fG5hI7jK9lM1nO3p: armor_attributes "Attributes of Armor: Armor has the following attributes:\n\nName: The name of the armor.\n\nResistance Values (R. Values): Most armor provides defense against one or more categories of damage. While a character is equipped with a set of armor, they gain the indicated amounts of resistance against the damage types listed for the armor. Two common categories are:\n\nPhysical: Provides the listed resistance against physical harm in its many forms.\n\nSupernatural: Provides the listed resistance against invocations, mahō, and other mystical effects.\n\nQualities: Any nonstandard effects not covered by an armor type's profile or entry (see page 240)."
+            #L5R444qR6sT8uV0wX2yZ4a: wearing_armor "Wearing Armor: While wearing armor, a character benefits from the resistance values it provides, as well as any applicable qualities and specific rules it possesses.\n\nIf a character dons a second set of armor (such as subtly hiding concealed armor underneath sleeping garb, or haphazardly pulling ashigaru armor over ceremonial clothes as a battle erupts), as soon as the character is wearing both sets of armor, they much choose one to count as equipped. Any other armor they are wearing in the context of the story does not provide its resistances or qualities. This lasts until the character removes one of the two sets of armor.\n\nThe only exception of this is if the GM decides that the unequipped armor's qualities may still hamper the character's actions. For example, the GM may decide that a character lacquered armor under common clothing may still be affected by the lacquered armor's Cumbersome quality. This is left solely to the GM's discretion."
+            #L5R444bR7sT9uV1wX3yZ5b: resistance "Resistance: A character can benefit from one set of armor and one effect that in creases their resistance at a time, combining these benefits. If a character would benefit from more than one such effect, the character chooses which increase applies."
+            #u77o2W2PeNhSQdgEk5oFjF: armor "Armor: Samurai armor themselves with a wide variety of garments, suiting their choices to their needs. Whether it is lacquered plates to protect against swords or fashionable clothes to bolster one's reputation at court, the garb a samurai chooses can serve many important purposes."
         }
     }
 
@@ -2549,23 +2221,11 @@ BASE "L5R5e_Core_Systems" {
         }
     }
 
-
     # ===========================
     # HONOR/GLORY/STATUS MECHANICS
     # ===========================
 
-    # Honor, glory, and status are important aspects of a character.
-    # They help players roleplay and give clear indicators of costs
-    # their choices might incur and the standing of others. It usually
-    # falls to the GM to bring these attributes into the game.
-    #
-    # Players can make checks to determine an NPC's honor, glory, or
-    # status to predict their behavior. The GM can have NPCs do the
-    # same to the PCs, giving different reactions based on these values.
-
     # --- FORFEIT AND AWARD SCALE ---
-    # When a player chooses to forfeit or stake honor or glory, or
-    # when the GM awards honor or glory, consult this scale:
     ^"Honor and Glory Forfeit and Award Scale" DEF {
         EXTENDS #L5R464yZ6aB8cD0eF2gH4i ^"Table"
 
@@ -2575,9 +2235,10 @@ BASE "L5R5e_Core_Systems" {
             "Major" "Forfeit: Attribute Rank x 2, Award: 6"
             "Massive" "Forfeit: Attribute Rank x 4, Award: 9"
         }
-        # "Attribute Rank" is the tens digit of the relevant attribute
-        # (honor or glory). A trifling breach or sacrifice is any the GM
-        # deems too small to be minor but too large to fully ignore.
+
+        RULES {
+            #Y3Nmx8kFvTxhA39ODOwxOg: value_and_rank "Value and Rank: A character's honor, glory, and status attributes each have a value between 0 and 100. When an effect calls for a character's honor, glory, or status rank, the rank is determined by the tens digit of the value (or 10, if the value is 100)."
+        }
     }
 
     # ===========================
@@ -2587,27 +2248,7 @@ BASE "L5R5e_Core_Systems" {
     ^"Honor in Play" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Bushidō ("way of the warrior") is the code by which nearly all
-        # samurai strive to live. Samurai are taught to reach for these
-        # ideals at the expense of personal gain. The "breaking point"
-        # when one abandons Bushidō makes for rich story material, as
-        # does when tenets inevitably conflict with each other.
-        #
-        # Honor does not align exactly with Rokugan's legal system. Some
-        # things are dishonorable but not criminal — killing someone of
-        # lower station without just cause may be within legal rights but
-        # is a severe violation of Compassion (Jin).
-
         # --- FORFEITING AND STAKING HONOR ---
-        # Characters must forfeit honor to breach the tenets of their code,
-        # and are awarded honor when they make sacrifices in the name of
-        # those tenets. Because honor is internal to the character, this
-        # occurs regardless of how few witnesses there are.
-        #
-        # Honor cannot be gained without adversity. The GM should award
-        # honor for deeds that put the code above immediate needs or desires.
-        # Characters generally should not be awarded honor for things that
-        # cost them nothing or are not accompanied by risks.
 
         # --- THE TENETS OF BUSHIDŌ ---
 
@@ -2713,8 +2354,6 @@ BASE "L5R5e_Core_Systems" {
         }
 
         # --- CLAN VIEWS OF BUSHIDŌ ---
-        # Each clan has paramount tenets (double forfeit AND double award)
-        # and lesser tenets (halve forfeit AND halve award, rounded up, min 1).
 
         CLAN_PARAMOUNT_TENETS {
             "Crab" "^\"Courage (Yū)\""
@@ -2748,10 +2387,8 @@ BASE "L5R5e_Core_Systems" {
         }
 
         RULES {
-            #L5R445bC7dE9fG1hI3jK5l: honor_forfeiting_and_awarding
-            #L5R446mN8oP0qR2sT4uV6w: bushido_tenets_and_breaches
-            #L5R446aN8oP0qR2sT4uV7x: clan_paramount_and_lesser_tenets
-            #L5R447xY9zA1bC3dE5fG7h: honor_score_thresholds
+            #L5R445bC7dE9fG1hI3jK5l: forfeiting_and_staking_honor "Forfeiting and Staking Honor: Characters must forfeit honor to breach the tenets of their code, and are awarded honor when they make sacrifices in the name of these tenets. Because honor is internal to the character, this occurs no matter how few witnesses there are to their fateful decision."
+            #ZiezZn0D1WqzNewKmuROzy: awarding_honor_for_deeds "Awarding Honor for Deeds: Honor cannot be gained without adversity. As such, the GM should award honor to characters for deeds that put their code above their immediate needs or desires. Characters generally should not be awarded honor for things that cost them nothing or are not accompanied by risks. A trifling breach or sacrifice is any that the GM deems too small to be minor but too large to fully ignore."
         }
     }
 
@@ -2762,16 +2399,7 @@ BASE "L5R5e_Core_Systems" {
     ^"Glory in Play" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Glory is the external measure of a character's outward success
-        # as a samurai. The higher a character's glory, the more widely
-        # they are recognized as a paragon; the lower, the more others
-        # believe they are unworthy of the name.
-
         # --- FORFEITING GLORY ---
-        # A character must forfeit glory to undertake certain actions
-        # publicly. Unlike honor, glory relies upon external perception,
-        # so actions taken clandestinely do not require forfeiting glory
-        # (though sometimes they require staking it upon avoiding discovery).
 
         GLORY_FORFEITS {
             "Minor: Ignoring an insult to your person, choosing to share credit for a deed, admitting a lie publicly, declining a gift from someone of higher ^\"Status\", losing an ancestral weapon."
@@ -2780,9 +2408,6 @@ BASE "L5R5e_Core_Systems" {
         }
 
         # --- AWARDING GLORY ---
-        # When a character is recognized for a notable deed (real or
-        # fabricated), the GM should award glory based on the degree
-        # of acclaim it represents.
 
         GLORY_AWARDS {
             "Minor: Receiving a gift from someone of higher ^\"Status\", beating a foe with glory 40+ in a duel or public contest, marrying or arranging a family marriage to someone of higher glory."
@@ -2807,8 +2432,9 @@ BASE "L5R5e_Core_Systems" {
         }
 
         RULES {
-            #L5R448iJ0kL2mN4oP6qR8s: glory_forfeiting_and_awarding
-            #L5R449tU1vW3xY5zA7bC9d: glory_score_thresholds
+            #L5R448iJ0kL2mN4oP6qR8s: forfeiting_glory "Forfeiting Glory: A character must forfeit glory to undertake certain actions publicly. When a player chooses to forfeit or stake their character's glory, consult Table 7–1: Honor and Glory Forfeits/Awards for guidance on how much glory they must give up. Unlike honor, glory relies upon external perception, so actions taken clandestinely do not require forfeiting glory, though sometimes they require staking it upon avoiding discovery. Sample diminishments for various decisions include:"
+            #YkaU56tj9YbI5AAWCSAUpX: glory_in_play "Glory in Play: Glory is the external measure of a character's outward success as a samurai. The higher a character's glory, the more widely they are recognized as a paragon of samurai virtues; the lower a character's glory, the more others believe they are unworthy of the name. See Table 7–1: Honor and Glory Forfeits/Awards on page 300 for how much glory a character must lose or stands to gain for a given admission of failure or acknowledgment."
+            #FjxeSUmUV9ET0X0txrYmJS: awarding_glory_for_deeds "Awarding Glory for Deeds: When a character is recognized for a notable deed (real or fabricated), the GM should award that character glory based on the degree of acclaim it represents, such as:"
         }
     }
 
@@ -2819,23 +2445,7 @@ BASE "L5R5e_Core_Systems" {
     ^"Status in Play" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Status is much more static than honor and glory: rarely do
-        # characters need to forfeit it, and generally they only receive
-        # it upon receiving a new title. If a character does need to
-        # forfeit status, they often reset it to a specific value (e.g.,
-        # retiring to a monastery sets status to 25). Rarely, characters
-        # can be stripped of status. To willfully endanger status, a
-        # character must stake an amount determined by the GM on covering
-        # up their actions.
-
         # --- COMPARING STATUS ---
-        # Status is most often used to know which of two characters stands
-        # higher in the Celestial Order. The Social skills reference
-        # interacting with characters of lower, higher, or equal status,
-        # as do many examples of honor and glory forfeits/awards.
-        # Most NPCs defer to those of higher status and expect obedience
-        # from people of lower status — how they express this can hint
-        # at their true nature.
 
         STATUS_SCORES {
             "100" "The ruling Emperor."
@@ -2854,8 +2464,8 @@ BASE "L5R5e_Core_Systems" {
         }
 
         RULES {
-            #L5R450eF2gH4iJ6kL8mN0o: status_comparison_and_forfeiting
-            #L5R450aF3gH5iJ7kL9mN1p: status_score_examples
+            #L5R450eF2gH4iJ6kL8mN0o: status_in_play "Status in Play: Status is much more static than honor and glory: rarely do characters need to forfeit it, and generally, they only receive it as a reward upon receiving a new title. If a character does need to forfeit status, they often reset it to a specific value; for instance, if a character retires to a monastery, their status becomes 25 (a monk's status). Rarely, characters can be stripped of status. To willfully endanger their status, a character must stake an amount determined by the GM on covering up their actions."
+            #DiovghWUHsXrqHDdToXDAn: comparing_status "Comparing Status: Status is most often used to know which of two characters stands higher in the Celestial Order. This has many uses, both narratively and with regard to abilities. The Social skills reference interacting with characters of lower, higher, or equal status, as do many examples of times a character must forfeit (or be awarded) glory or honor.\n\nThe GM should compare the status of the PCs to that of NPCs as relevant. Most NPCs defer to those of higher status and expect obedience people of lower status— how they express this can hint at their true nature."
         }
     }
 
@@ -2866,28 +2476,6 @@ BASE "L5R5e_Core_Systems" {
     #L5R463nO5pQ7rS9tU1vW3x ^"Title" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # A title is assigned as a result of narrative events. It functions
-        # much like a school curriculum: a character can spend experience
-        # to deepen their understanding of how to fulfill its functions,
-        # and eventually unlock a special ability after spending the listed XP.
-        #
-        # When assigned a title, a character's ^"Status" might change based
-        # on the Status Award listed in the title.
-        #
-        # A title exists in parallel to a character's ^"School". A character
-        # can only have one incomplete title at a time.
-        #
-        # Each time a character purchases an advancement, the character may
-        # allocate the XP spent to completing their title (with full value
-        # for listed advancements and half value for non-listed advancements,
-        # as with a curriculum). XP allocated to a title does NOT count
-        # toward the character's current school rank (and vice-versa).
-        #
-        # Once a character has allocated the completion cost in XP, they
-        # acquire the title ability. The title is then considered complete
-        # (though narratively the character retains it), and they may be
-        # assigned a new title as narrative events permit.
-
         PROPERTIES {
             ^"Assigned By" STRING  # Who can grant this title
             ^"Status Award" STRING  # Status change on assignment (e.g. "+15 to max 40")
@@ -2897,16 +2485,12 @@ BASE "L5R5e_Core_Systems" {
         }
 
         RULES {
-            #L5R450bG4hI6jK8lM0nO2p: title_assignment_and_completion
-            #L5R450cH5iJ7kL9mN1oP3q: title_xp_allocation_parallel_to_school
+            #L5R450bG4hI6jK8lM0nO2p: titles "Titles: A title is assigned as a result of narrative events, but besides that, it functions much like a school curriculum: a character can spend experience to deepen their understanding of how to fulfill its functions, and eventually unlock a special ability after spending the listed XP.\n\nWhen a character is assigned a title, their status might change based on the Status Award listed in the title.\n\nA title exists in parallel to a character's school. A character can only have one incomplete title at a time.\n\nEach time a character purchases an advancement, the character may allocate the XP spent to completing their title (with full value for listed advancements and half value for non-listed advancements, as with a curriculum). XP allocated to a title does not count toward the character's current school rank (and vice-versa).\n\nOnce a character has allocated the amount of experience listed in the title's listed completion cost, the character acquires the title ability associated with the title. The title is then considered complete (though narratively, the character retains it), and the character may be assigned a new title as narrative events permit."
         }
     }
 
     #te00d8a952f43f435d9017 ^"Emerald Magistrate" DEF {
         EXTENDS #L5R463nO5pQ7rS9tU1vW3x ^"Title"
-
-        # Emerald Magistrates are agents of the Emperor's Law,
-        # warrior-sages who dispense wisdom and justice.
 
         ASSIGNED_BY "The Emerald Champion, the Emperor, and other high-ranking officials in the office of the Emerald Champion can appoint Emerald Magistrates, and do so when a samurai proves worthy of the post or when the need arises for more arbiters of the Emperor's Justice."
         STATUS_AWARD "+15 (to a maximum of 40)"
@@ -2925,6 +2509,10 @@ BASE "L5R5e_Core_Systems" {
             "Open-Hand Style" "Technique (Kata)"
             "Shallow Waters" "Technique (Shūji)"
         }
+
+        RULES {
+            #aeeenKfff4sog79l2HzOFa: emerald_magistrate "Example Title: Emerald Magistrate: Emerald Magistrates are agents of the Emperor's Law, warrior-sages who dispense wisdom and justice."
+        }
     }
 
     # ===========================
@@ -2933,108 +2521,47 @@ BASE "L5R5e_Core_Systems" {
 
     ^"Assistance" DEF {
 
-        # When one character dedicates significant effort to helping
-        # another (rather than accomplishing a separate goal).
-
-        # Step 3 (Assemble and Roll Dice Pool): The character making
-        # the check rolls one additional (skill) per assisting character
-        # who has 1+ ranks in the skill in use, and one additional (ring)
-        # per assisting character who has 0 ranks. Each assisting player
-        # must describe how they are helping; the GM decides if they
-        # can contribute.
-        #
-        # Step 4 (Modify Rolled Dice): At GM's discretion, up to one
-        # advantage from one assisting character can be applied.
-        #
-        # Step 5 (Choose Kept Dice): The character making the check
-        # may keep up to 1 additional die per assisting character.
-        #
-        # Step 6 (Resolve Symbols): Each assisting character may choose
-        # to suffer 1 strife to negate 1 (st) symbol on the check.
-
         # --- LIMITS ON ASSISTANCE ---
-        # The GM is the final arbiter of whether a character's attempt
-        # to help is actually useful enough to grant this benefit, as
-        # well as whether there is a maximum number of characters who
-        # can feasibly assist. GMs should feel free to allow only one
-        # character to assist in many circumstances.
 
         RULES {
-            #L5R451pQ3rS5tU7vW9xY1z: helper_rolls_skill_or_ring_die
-            #L5R452aB4cD6eF8gH0iJ2k: main_keeps_plus_one_per_helper
-            #L5R453lM5nO7pQ9rS1tU3v: one_advantage_from_one_helper
-            #L5R454wX6yZ8aB0cD2eF4g: helper_spends_strife_to_negate
+            #L5R451pQ3rS5tU7vW9xY1z: helper_rolls_skill_or_ring_die "Using Assistance: During Step 3: Assemble and Roll Dice Pool, if a character making a check receives assistance from one or more others, the character making the check rolls one additional (skill) per assisting character who has 1 or more ranks of the skill in use, and one additional (ring) per assisting character who has 0 ranks in the skill in use. Each player whose character assists must describe how they are helping, and the GM decides if they can contribute."
+            #L5R452aB4cD6eF8gH0iJ2k: main_keeps_plus_one_per_helper "Then, during Step 5: Choose Kept Dice, a character making a check with assistance may keep up to 1 additional die per assisting character."
+            #L5R453lM5nO7pQ9rS1tU3v: one_advantage_from_one_helper "At the GM's discretion, during Step 4: Modify Rolled Dice, up to one advantage from one assisting character can be applied."
+            #L5R454wX6yZ8aB0cD2eF4g: helper_spends_strife_to_negate "Finally, during Step 6: Resolve Symbols on Kept Dice, each assisting character may choose to suffer 1 strife to negate 1 (st) symbol on the check."
+            #ID9CnmkF1MBpVvTna1Ib2y: assistance "Assistance: While a samurai must face some tasks alone, allies can frequently offer critical assistance during major challenges. When one character dedicates significant effort to helping another (rather than accomplishing a separate goal), use the rules for assistance."
+            #csq0WezcYhsFK5C506pgVv: limits_on_assistance "Limits on Assistance: The GM is the final arbiter of whether a character's attempt to help is actually useful enough to grant this benefit, as well as whether there is a maximum number of characters who can feasibly assist. Given the logistical challenges it can have (physical space, proximity, relevant expertise, etc.) and the mechanical potency of assistance, GMs should feel free to allow only one character to assist in many circumstances."
         }
     }
 
     ^"Bonus Successes and Shortfall" DEF {
 
-        # Sometimes the degree of success or failure matters.
-
-        # Bonus Successes: If a character succeeds on a check, their
-        # bonus successes are the number of (su) and (ex) symbols in
-        # excess of the target number.
-        #
-        # Shortfall: If a character fails, their shortfall is the TN
-        # minus the sum of their (su) and (ex) symbols.
-
         RULES {
-            #L5R454aX6yZ8aB0cD2eF5h: bonus_successes_calculation
-            #L5R454bY7zA9bC1dE3fG6i: shortfall_calculation
+            #iRRTkllDGN9YUNL2xoq7DS: bonus_successes_and_shortfall "Bonus Successes and Shortfall: Sometimes it is important to know the amount by which a character succeeded at a task (or the extent of their failure). While success and failure are sometimes all-or-nothing, at other times, the degree of one's success or failure is relevant. Successes in excess of the target number of successes (bonus successes) might help the character succeed more thoroughly. On the other hand, if the character fails, the amount by which they fell short of the target number of successes (their shortfall) can reveal the depths of their failure."
         }
     }
 
     ^"Checks to Resist Effects" DEF {
 
-        # Sometimes the target of a check can make their own check to
-        # resist. When a character succeeds at a check to resist an
-        # effect, they avoid some or all ill effects they would
-        # otherwise have suffered.
-        #
-        # When setting the TN to resist another check's effects, if
-        # no TN is listed, the GM sets one. If they want to account
-        # for the acting character's effort, they can use the acting
-        # character's bonus successes to modify the resisting TN.
-
         RULES {
-            #L5R454cZ8aB0cD2eF4gH7j: resist_check_mechanics
+            #L5R454cZ8aB0cD2eF4gH7j: checks_to_resist_effects "Checks to Resist Effects: While most checks targeting other characters are made against static values (such as the target's vigilance attribute), sometimes the target can make their own check to resist. When a character succeeds at a check to resist an effect (whether the effect comes from a check or another source), they avoid some or all of the ill effects they would otherwise have suffered.\n\nFor instance, if one character succeeds on a check to hurl an opponent off a parapet, the target gets a chance to resist with a skill check using an elemental approach based on their chosen method of resistance. If the target succeeds on the check to resist, they are able to avoid being thrown off the parapet, perhaps catching the edge or barely maintaining their footing.\n\nWhen setting the TN for a check to resist the effects of another check, if the effect does not have a listed TN, the GM should come up with a TN for the check to resist. If they want to take the other character's effort into account, they can use the acting character's bonus successes to modify the resisting character's TN."
         }
     }
 
     ^"Competitive Checks" DEF {
 
-        # When the GM needs to compare performance of two or more
-        # characters on similar checks where neither is clearly
-        # resisting the other. The character with the most bonus
-        # successes (or smallest shortfall, if all failed) performs
-        # the task best, most quickly, or most efficiently.
-
         RULES {
-            #L5R454dA9bC1dE3fG5hI8k: competitive_check_comparison
+            #L5R454dA9bC1dE3fG5hI8k: competitive_checks "Competitive Checks: If the GM needs to compare the performance of two or more characters on similar checks where neither is clearly resisting the other, each character's bonus successes (or shortfall) provide this information. The character with the most bonus successes (or smallest shortfall, if all failed) performs the task best, most quickly, or most efficiently (or least badly, in the case of failure).\n\nFor example, if two characters are engaged in a footrace and both succeed on their check, the one with more bonus successes finishes first. If three characters are preparing poems for a poetry contest but all fail, the character with the smallest shortfall on their check writes the least embarrassing of the bad poems."
         }
     }
 
     ^"Minimum TN" DEF {
 
-        # The TN of a check cannot be reduced below 1 by modifiers.
-        # A TN 0 check would be trivial (carrying quarter of one's
-        # weight, remembering a cousin's name) and should not normally
-        # require a check. However, if circumstances make it hard
-        # enough or it is important to know bonus successes, the GM
-        # could call for a TN 0 check.
-
         RULES {
-            #L5R454eB0cD2eF4gH6iJ9l: minimum_tn_is_one
+            #L5R454eB0cD2eF4gH6iJ9l: minimum_tn "Minimum TN: The TN of a check cannot be reduced below 1 by modifiers. A TN 0 check would be a simple task for most, such as carrying one quarter of one's weight or remembering a cousin's name. This sort of task should not require a check, but circumstances might make it hard enough to warrant a check. Conversely, if circumstances make a check utterly trivial, but it is important to know a character's bonus successes, the GM could call for a TN 0 check."
         }
     }
 
     ^"Modifying the Dice Pool" DEF {
-
-        # Any effect that changes the contents of the dice pool (dice,
-        # results, or symbols) after it has been rolled. A die can be
-        # modified multiple times if multiple different effects instruct
-        # it. Each effect is fully resolved before resolving a different
-        # effect.
 
         TERMINOLOGY {
             "Specific Results: A die set to or showing a specific result refers to a face with exactly the specified symbols (e.g. 'add a (ring) set to an (op)(st) result')."
@@ -3057,42 +2584,24 @@ BASE "L5R5e_Core_Systems" {
         }
 
         # --- SIMULTANEOUS DICE MODIFICATION ---
-        # If two or more effects would modify a die, the player who
-        # made the check resolves them in order:
-        # 1. NPCs' effects (and other effects the GM controls)
-        # 2. Other player characters' effects
-        # 3. Their own character's effects
-        # If a single player controls multiple effects, that player
-        # chooses the order.
 
         RULES {
-            #L5R454fC1dE3fG5hI7jK0m: dice_modification_rules
-            #L5R454gD2eF4gH6iJ8kL1n: simultaneous_modification_order
+            #L5R454fC1dE3fG5hI7jK0m: modifying_the_dice_pool "Modifying the Dice Pool: Any effect that changes the contents of the dice pool (dice, results, or symbols) after it has been rolled is considered a die modification effect . A die can be modified multiple times (including by the same form of modification) if multiple different effects instruct it. Each effect is fully resolved before resolving a different effect."
+            #L5R454gD2eF4gH6iJ8kL1n: simultaneous_dice_modification "Simultaneous Dice Modification: If two or more effects would modify a die, the player who made the check resolves them in the following order:\n\n1. NPCs' effects (and other effects the GM controls)\n\n2. Other player characters' effects\n\n3. Their own character's effects\n\nIf a single player controls multiple such effects, that player chooses the order in which they resolve."
         }
     }
 
     ^"Targeting and Checks" DEF {
 
-        # Some checks directly affect one or more other characters.
-        # These characters are considered targets of that check. If
-        # an effect specifies it, objects and positions in space can
-        # also be the target of a check.
-
         RULES {
-            #L5R454hE3fG5hI7jK9lM2o: targeting_rules
+            #L5R454hE3fG5hI7jK9lM2o: targeting_and_checks "Targeting and Checks: Some checks directly affect one or more other characters. These characters are considered targets of that check. If an effect specifies it, objects and positions in space can also be the target of a check."
         }
     }
 
     #tbebb8a5383255856b3d30 ^"Universal Tiebreaker" DEF {
 
-        # When effects that break ties still result in a stalemate:
-        # - PCs supersede NPCs
-        # - Adversary NPCs supersede minion NPCs
-        # If there is still a tie, the GM should use a randomized
-        # means (coin flip, rock-paper-scissors, etc.).
-
         RULES {
-            #L5R454iF4gH6iJ8kL0mN3p: universal_tiebreaker
+            #L5R454iF4gH6iJ8kL0mN3p: universal_tiebreaker "Universal Tiebreaker: Many effects explain how to break ties between characters, but sometimes there might be a stalemate if these values are tied as well. In these cases:\n\nPCs supersede NPCs\n\nAdversary NPCs supersede minion NPCs\n\nIf there is still a tie, the GM should use a randomized means of breaking the tie, such as flipping a coin or having the tied parties play rock-paper-scissors."
         }
     }
 
@@ -3102,52 +2611,17 @@ BASE "L5R5e_Core_Systems" {
 
     #t402c98704cbf0add96f12 ^"Downtime" DEF {
 
-        # Downtime scenes encompass the passage of time — as short as a
-        # few hours of rest or as long as a journey from Otosan Uchi to
-        # the Kaiu Wall. Generally low dramatic stakes, though still
-        # important to character arcs and narrative.
-        #
-        # Time is not formally regimented; the GM and players roleplay
-        # only the moments that matter, treating anecdotes as narrative
-        # scenes interspersed within the downtime scene. A journey might
-        # last weeks but contain only a few roleplayed interactions.
-        #
-        # Characters can be called upon to make checks during downtime
-        # based on desired activities or circumstances the GM introduces.
-        # If the order and economy of actions becomes important, the GM
-        # should switch to a conflict scene. If a player wishes to jump
-        # into interpersonal interaction, the GM should briefly shift to
-        # a narrative scene.
-
         # --- DOWNTIME ACTIVITIES ---
-        # At the start of each downtime scene, each player chooses the
-        # downtime activity their character is pursuing. Not all activities
-        # are suitable to all downtime scenes — the GM is the final arbiter
-        # of whether an activity can reasonably be completed during a
-        # particular downtime scene.
 
         # --- LONG DOWNTIME SCENES ---
-        # During especially lengthy downtime scenes (longer than two days),
-        # each PC may pursue multiple activities sequentially. As a rule of
-        # thumb, the GM should allow one downtime activity per two days of
-        # downtime. At GM's discretion, a character might squeeze in an
-        # extra activity by sacrificing sleep and other necessities.
-        # Downtime scenes dedicated to arduous activities such as travel
-        # might not give PCs any opportunity for downtime activities besides
-        # traveling itself, or at least limit their options.
 
         # --- EXTREMELY LONG NARRATIVE GAPS ---
-        # For time-skips of a month or more, the GM should stipulate the
-        # time passes, let players describe what their characters do, and
-        # allocate a small amount of XP to reflect growth. Such gaps are
-        # good opportunities for PCs to pursue societal obligations, return
-        # to their dōjō for training, or undertake individual endeavors
-        # that do not involve the larger group.
 
         RULES {
-            #L5R455hI7jK9lM1nO3pQ5r: downtime_activities_per_scene
-            #L5R456sT8uV0wX2yZ4aB6c: long_downtime_one_per_two_days
-            #L5R457dE9fG1hI3jK5lM7n: extremely_long_narrative_gaps
+            #L5R455hI7jK9lM1nO3pQ5r: downtime_activities "Downtime Activities: At the start of each downtime scene, each player chooses the downtime activity that their character is pursuing. Downtime activities are meant to help give players clear options for their characters during downtime scenes."
+            #L5R456sT8uV0wX2yZ4aB6c: long_downtime_scenes "Long Downtime Scenes: During especially lengthy downtime scenes (those longer than two days), each PC might be able to pursue multiple different downtime activities sequentially. As a general rule of thumb, the GM should allow each PC to pursue one downtime activity for every two days of downtime—though at the GM's discretion, a character might be able to squeeze in an extra activity if they sacrifice sleeping and other necessities. In contrast, downtime scenes dedicated to arduous activities such as travel might not give the PCs an opportunity to perform any downtime activities besides the act of traveling itself, or at least such a scene would limit their options."
+            #L5R457dE9fG1hI3jK5lM7n: extremely_long_narrative_gaps "Extremely Long Narrative Gaps: If the GM wants to have an extremely long time-skip within the story (a month or more), the GM should simply stipulate that the time passes, though they should perhaps let the players describe what their characters do during this extended period of inaction and allocate a small amount of experience points to the PCs for their activities to reflect their growth in the interim. Such gaps are a good opportunity for PCs to pursue their societal obligations, return to their dōjō for training, or undertake individual endeavors that do not involve the larger group."
+            #GWyJd7OlGWrSjCkhNsqnph: downtime_scenes "Downtime Scenes: Downtime scenes are scenes that encompass the passage of time. This can be as short as a few hours of rest or as long as a journey from Otosan Uchi to the Kaiu Wall. Generally, downtime scenes have low dramatic stakes, though they can still be very important to the narrative arcs of the characters and overall story.\n\nDuring a downtime scene, time is not regimented formally; instead, the GM and players should choose to roleplay only the moments that matter, treating these anecdotes as narrative scenes that intersperse the downtime scene. A journey might last weeks, but contain only a few individual roleplayed interactions.\n\nCharacters can be called upon to make checks during downtime scenes, based on their desired activities or circumstances that the GM introduces. However, if the order and economy of actions becomes important, the GM should switch the scene to a conflict scene.\n\nDowntime scenes also offer an excellent opportunity for roleplaying, but they lend themselves better to characters pursuing their big-picture goals. If a player wishes to jump into a more interpersonal interaction between their character and someone else in the downtime scene, the GM should consider briefly shifting the scene to a narrative scene."
         }
     }
 
@@ -3157,111 +2631,52 @@ BASE "L5R5e_Core_Systems" {
 
     ^"Damage" DEF {
 
-        # When a character is in peril of suffering bodily harm, this
-        # is represented through damage — a numerical abstraction of
-        # the harm a character could suffer from a blow, fall, or mishap.
-
         # --- DEALING DAMAGE ---
-        # When an effect deals damage, three possible outcomes:
-        # 1. The character reduces the damage to 0 with armor or
-        #    similar protection.
-        # 2. The character defends against the damage by receiving
-        #    fatigue equal to any remaining damage.
-        # 3. If the character does not reduce to 0 or defend, they
-        #    suffer a ^"Critical Strike" with severity based on the
-        #    damage source.
 
         # --- INCREASING AND REDUCING DAMAGE ---
-        # Before dealing damage, first apply increases, then reductions
-        # (to a minimum of 0). If reduced to 0, the character does not
-        # need to defend. Resistance from armor and other effects is
-        # one way to reduce damage.
 
         # --- DEFENDING AGAINST DAMAGE ---
-        # When damage remains after reductions, the character must
-        # defend by receiving fatigue equal to the remaining damage.
-        # If they cannot defend, they suffer a ^"Critical Strike".
-        # Defending is not normally optional — instinctive reactions
-        # cause dodging and rolling away. However, a character who is
-        # not ^"Incapacitated" may spend 1 ^"Void Points" to voluntarily
-        # suffer a critical strike instead of defending, seizing a
-        # tactical advantage.
-        # An ^"Incapacitated" character cannot defend and thus suffers
-        # a critical strike whenever they take damage.
-        # Note: A character CAN defend even if fatigue would exceed
-        # ^"Endurance", but this renders them ^"Incapacitated".
 
         DAMAGE_TYPES {
             "Physical Damage: Dealt by punches, cuts, falls, and other physical phenomena."
             "Supernatural Damage: Dealt by invocations, ^\"Mahō\", and other mystical phenomena."
         }
 
-        # Damage Source: determined by the effect that deals it.
-        # Weapon → that weapon is the source. Supernatural power → that
-        # power. Physical phenomenon (gravity, fire) → that phenomenon.
-
         RULES {
-            #L5R458oP0qR2sT4uV6wX8y: damage_dealing_and_defense
-            #L5R459zA1bC3dE5fG7hI9j: damage_types_physical_supernatural
+            #L5R458oP0qR2sT4uV6wX8y: dealing_damage "Dealing Damage: When an effect states that it deals damage to a character, there are three possible outcomes:\n\nThe character reduces the damage to 0 with armor or similar protection against the strike.\n\nThe character defends against the damage by receiving fatigue equal to any remaining damage to dodge, block, or deflect a telling blow.\n\nIf the character does not reduce the damage to 0 or defend, they suffer a critical strike with severity based on the damage source."
+            #L5R459zA1bC3dE5fG7hI9j: damage_types "Damage Types: Each instance of damage has a damage type, which is specified in the effect that deals the damage (or is determined by the GM). Two common types are:"
+            #v2V4wKqZrKY5HsYO1Ms2D6: damage "Damage: When a character is in peril of suffering bodily harm, this is represented through damage. Damage is a numerical abstraction of the harm a character could suffer from a blow, fall, or mishap—if they cannot defend themself."
+            #SToFHo2xkwnT1Ckb0B6ord: increasing_and_reducing_damage "Increasing and Reducing Damage: Some effects increase damage, while others reduce damage. Before dealing damage to a character, first apply any increases to the damage, and then apply any reductions to the damage, to a minimum of 0.\n\nIf a character reduces damage they would suffer to 0, they do not need to defend against it—if the blow lands, it glances off harmlessly. Resistance from armor and other effects (see page 238) is one way to reduce damage."
+            #aJfhmRdI3MASGwQ1oLcQfV: defending_against_damage "Defending against Damage: When an effect deals damage to a character even after reductions, the character must defend against that damage; if they cannot, they suffer a critical strike with severity based on the damage source (the deadliness, for most weapons). To defend, they must receive an amount of fatigue equal to the remaining damage; otherwise, they suffer a critical strike with severity based on the source.\n\nDefending is not normally optional—instinctive reactions cause a character to duck, dodge, or roll away from harm—but a character who is not Incapacitated may spend 1 Void point to voluntarily suffer a critical strike instead of defending. By overcoming their survival instinct with sheer willpower, they allow themself to be struck to seize a tactical advantage.\n\nNote that an Incapacitated character (see page 272) cannot defend against damage, and thus suffers a critical strike whenever they suffer damage."
+            #bM6urPU0bdtVAKbVrOgGx6: damage_source "Damage Source: The source of damage is determined by the effect that deals it. If damage is dealt by an effect \"using a weapon,\" that weapon is the source of the damage."
         }
     }
 
     ^"Fatigue Recovery" DEF {
 
         # --- RECOVERING FROM FATIGUE ---
-        # At the end of each scene, characters catch their breath.
-        # Each character reduces their fatigue to half their ^"Endurance"
-        # (rounded up) if it is over half their endurance.
-        # After a full night's rest, a character heals fatigue equal to
-        # two times their ^"Water" ring.
 
         RULES {
-            #L5R460kL2mN4oP6qR8sT0u: fatigue_recovery_between_scenes
-            #L5R460aL2mN4oP6qR8sT1v: fatigue_recovery_full_rest
+            #L5R460kL2mN4oP6qR8sT0u: recovering_from_fatigue "Recovering from Fatigue: From rest and various game effects, such as the Medicine skill, characters can remove fatigue. When a character removes an amount of fatigue, their player removes that much fatigue from their character sheet.\n\nAt the end of each scene, characters catch their breath. Each character reduces their fatigue to half of their endurance (rounded up) if it is over half their endurance."
+            #L5R460aL2mN4oP6qR8sT1v: fatigue_recovery_full_rest "After a full night's rest, a character heals fatigue equal to two times their Water Ring."
         }
     }
 
     ^"Falling" DEF {
 
-        # The length of a fall is measured in ^"Range Band" and determines
-        # the ill effects. When a character lands, they must resist with
-        # a TN 3 ^"Fitness" (Air 1, Earth 5) check. If they succeed,
-        # reduce the number of range bands they count as having fallen
-        # by 1 plus bonus successes (minimum range 0 fall).
-
         RULES {
-            #L5R460bM3nO5pQ7rS9tU2w: falling_damage_by_range_band
+            #L5R460bM3nO5pQ7rS9tU2w: falling "Falling: The length of a fall is measured in range bands, and the number of range bands a character falls determines the ill effects they suffer. When a character lands, they must resist with a TN 3 Fitness (Air 1, Earth 5) check; if they succeed, the character reduces the number of range bands they count as having fallen by 1 plus their bonus successes (to a minimum of a Range 0 fall).\n\nRange 0 The character suffers the Disoriented condition.\n\nRange 1 The character suffers 4 physical damage and the Disoriented condition.\n\nRange 2 The character suffers 8 physical damage and the Prone and Disoriented conditions.\n\nRange 3 The character suffers 12 physical damage and the Prone and Unconscious conditions.\n\nRange 4 The character suffers a critical strike with severity 10 and the Prone and Unconscious conditions.\n\nRange 5 The character suffers a critical strike with severity 16 and the Prone and Unconscious conditions.\n\nRange 6 The character suffers a critical strike with severity 18 and the Prone and Unconscious conditions."
         }
     }
 
     ^"Suffocation" DEF {
 
-        # At the beginning of each of their turns, a suffocating
-        # character receives 2 fatigue and 2 strife. The character does
-        # not suffer ^"Critical Strike" for wounds suffered this way.
-        # At the beginning of each turn while suffocating, if the
-        # character is suffering ^"Unconscious", they must resist with
-        # a TN 3 ^"Fitness" (Earth) check. If they fail, they perish.
-
         RULES {
-            #L5R460cN4oP6qR8sT0uV3x: suffocation_fatigue_and_strife
+            #L5R460cN4oP6qR8sT0uV3x: suffocation "Suffocation: At the beginning of each of their turns, a character who is suffocating receives 2 fatigue and 2 strife. The character does not suffer critical strikes for wounds suffered this way. At the beginning of each of the character's turns while they are suffocating, if they are suffering the Unconscious condition, they must resist with a TN 3 Fitness (Earth) check; if the character fails, they perish."
         }
     }
 
     ^"Death" DEF {
-
-        # Player characters are the main characters of the story.
-        # Death at a particular juncture is not always the most
-        # interesting outcome. It is a classic trope for a samurai to
-        # survive defeat and bear shame while seeking to restore honor.
-        # However, L5R is meant to evoke a setting where characters
-        # stand to lose their lives in pursuit of duties and passions.
-        # The rules are calibrated to balance dramatic tension, story
-        # flow, and fun for everyone at the table.
-
-        RULES {
-            #L5R460dO5pQ7rS9tU1vW4y: death_narrative_considerations
-        }
     }
 
     # ===========================
@@ -3271,14 +2686,6 @@ BASE "L5R5e_Core_Systems" {
     #t2baba6626d9f2edff18f4 ^"Terrain" DEF {
 
         ENUM ["Dangerous", "Defiled", "Entangling", "Hallowed", "Imbalanced", "Obscuring"]
-
-        # Terrain features occupy a number of ^"Range Band" around a
-        # particular position, as determined by the GM. A terrain feature
-        # can be as small as range 0 or much larger, and can stretch
-        # unevenly in different directions. At the outset of a conflict,
-        # the GM establishes relevant terrain features, identifiable by
-        # checks or by spending (op) from ^"Initiative" checks.
-        # In mass battles, terrain qualities affect cohorts that occupy them.
 
         TERRAIN_QUALITIES {
 
@@ -3320,17 +2727,12 @@ BASE "L5R5e_Core_Systems" {
         }
 
         RULES {
-            #L5R461vW3xY5zA7bC9dE1f: terrain_modifies_combat
-            #L5R462gH4iJ6kL8mN0oP2q: terrain_modifies_movement
+            #L5R461vW3xY5zA7bC9dE1f: terrain_qualities "Terrain Qualities: While within a terrain feature, a character is subject to any effects its terrain qualities entail."
         }
     }
 
     ^"Tactical Grid" DEF {
         EXTENDS #L5R465jK7lM9nO1pQ3rS5t ^"Optional Rule"
-
-        # Using ^"Range Band" on a tactical grid adds granularity.
-        # Note that some distances are adjusted slightly to fit on
-        # commonly sized tactical maps.
 
         GRID_DISTANCES {
             "Range 0: The square the character occupies."
@@ -3351,20 +2753,24 @@ BASE "L5R5e_Core_Systems" {
             "Resolving Movement: Each move from one square to the next is resolved sequentially. If a character cannot complete a proposed move with remaining movement, they must stop or move to a different reachable square."
             "Combining Movement: At GM's discretion, multiple effects allowing movement can be combined (total squares = sum of range bands × 3)."
         }
+
+        RULES {
+            #uOAtjgCrOnnUK2BLJdJuB8: range_bands_on_a_tactical_grid "Range Bands on a Tactical Grid (Optional Rule): Using range bands on a tactical grid requires a few additional guidelines, but adds a level of granularity many players enjoy. Note that some of the distances of the individual range bands are adjusted slightly in this model to fit on commonly sized tactical maps, and the same situation may produce different results than it would using the more abstract model. As with all matters, GMs should choose the option that best suits their storytelling style, campaign, and each individual scene."
+        }
     }
 
     # ===========================
     # CONFLICT: ACTION TYPES
     # ===========================
 
-    # Core Rulebook, Chapter 6: Scenes and Conflicts, "Action Types"
-    # (pp. 252-253). Most actions have one or more types ascribed to
-    # them or assigned by the GM. Common types are listed below.
-
     #t94f48ba4939cdfabb2bf3 ^"Action Type" DEF {
         # Metatype anchor for conflict action type definitions
 
         ENUM ["Attack", "Movement", "Scheme", "Support"]
+
+        RULES {
+            #t4Fl46PeOT59wEveCliC7N: action_types "Action Types: Most actions have one or more types ascribed to it or assigned by the GM. Common types are listed below:"
+        }
     }
 
     #TTI4pBnX6buLAo1ORQ8lvw ^"Attack Action" DEF {

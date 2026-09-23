@@ -301,3 +301,47 @@ be the default unless otherwise specified." So:
   reverted.
 - Every other rounding in the corpus is stated "rounded up" (Starting Void Points, out-of-curriculum
   XP, the core-systems composure note).
+
+## 2026-09-23 — rules out of comments, into data, in the book's words — DONE
+
+**Found** (Portents & Fortunes' M4 audit): the rules behind the stances and the standard effects of
+distinctions, passions, adversities and anxieties were **comments** — no build carried them. The
+cause was corpus-wide: the first hand-written pass (0.1, Feb 2026) wrote ~1,100 rules as spec §12
+"named rule placeholders" (`#hash: slug`, no text — "description lives in comments"), with a
+*paraphrase* in the comments beside them, and every migration since carried them forward. At 0.5:
+**980** text-less rules and **5,934** prose comment lines across 82 files.
+
+**Fixed** (owner: "fix the corpus"): every text-less rule now carries the book's own text,
+verbatim, or is removed where the book has no such rule or the text is already data in the same
+place; every prose comment inside a definition is either replaced by data or kept only as a note
+about the encoding, each keep recorded with its reason.
+
+- **664** rules given the book's text (`#hash: slug "Label: text"`, paragraphs as `\n\n`),
+  **316** removed (each with its reason — e.g. there is no default TN of 2, no "focus breaks
+  initiative ties", no "melee requires range 0"; the book: pp. 22–24, 250, 265), **231** slugs
+  renamed where they misstated the rule, **477** rules added for book content that lived only in
+  comments (tables, lists, sidebars), **5** text-layer repairs (named, sourced); **4,359** comment
+  lines dropped, **1,575** kept as encoding notes. Every changed file VERSION patch-bumped.
+- **Proof.** Every text verified against the source's text layer (md, or the adventure PDFs via
+  pdftotext; whitespace, typographic quotes, dashes and hyphens folded, the dice glyphs mapped,
+  nothing else forgiven), each at its cited page; the verifier made to fail on a planted word
+  change, a wrong page and an uncovered comment; the corpus-wide gate — 0 text-less rules, every
+  remaining prose comment a recorded keep — **PASS, 0 files open**. Validator 164 files 0/0; §5d
+  2,313 sites 0 hashless; 386 guidance 0 errors. sortilege-vtt-l5r5e builds from it: 4,666
+  entities, 31,886 strings round-trip 0/0/0, shape 75 OK.
+- **Tooling and ledger** (outside this repo, as the rest of the l5r5e audit):
+  `~/Sortilege/Titterpig/Utilities/titterpig-audit/l5r5e/lift_rules/` — `lift.py`, `book.py`,
+  `BRIEF.md`, every file's applied assignment and kept-comment ledger (`assign/applied/`).
+- **Found along the way, not fixed** — 317 notes in that directory's `FOLLOWUPS.md`. The largest
+  class: **data strings that paraphrase the book** (the check's STEPS and the dice symbols'
+  definitions in core-base; 320 of 448 long strings in core-systems — condition effects, action
+  ACTIVATION/EFFECTS, the severity table; technique Activation/Effect properties; most
+  supplements' advantage EFFECTs). Also duplicated DEFs (a stale HERITAGE_TABLE in core-chargen,
+  three NPCs in emerald-empire-npcs, the Writ of the Wilds NPCs), NPC values that disagree with
+  their stat blocks, and kept comments citing wrong pages or 0.3 filenames.
+- **Root cause, open:** the spec still permits a text-less rule (§12). A proposal to the owner:
+  the validator warns on one.
+
+The buyer watermark the retailer stamps into the PDFs had reached one string here (the Sentiment
+skill's guidance, p. 158) — removed in `a42bd48` as an explicit owner override of the verbatim
+rule; the lift's sources strip it and its verifier rejects any text carrying it.

@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - The Mantis Clan: Rules for Playing Characters from the Islands of Spice and Silk"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -27,16 +27,13 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
         }
 
         FAMILIES {
-            # The Mantis do not have a family name. Samurai take their
-            # names from the kobune ships they sail with.
             ^"Families of the Fleet"
         }
 
         RULES {
-            #L5RMC01aB2cD4eF6gH8iJ0k: mantis_clan_minor_clan_traits
+            #L5RMC01aB2cD4eF6gH8iJ0k: mantis_clan_minor_clan_traits "The Mantis Minor Clan: The Mantis minor clan are a group of rugged sailors, having grown from a loose alliance of merchants, rōnin, and castoff members of the Great Clans to a massive organization that operates along Rokugan's coastline. While the Crane Clan has historically been one of the Mantis' major clients, recent political turmoil has pushed them apart, and the Mantis have sought allies elsewhere in the Empire. They sail from mainland ports to the Isles of Silk and Spice and beyond, and rival the Unicorn Clan in their exposure to foreign cultures. Having risen from less than the Great Clans, they are not so quick to look down upon those of lower station—but humble origins do nothing to quell the ambitions of their dashing and piratical leader, Mantis Clan Champion Yoritomo."
         }
     }
-
 
     # ===========================
     # MANTIS FAMILIES
@@ -57,8 +54,11 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
             ^"Glory"           INTEGER 36
             ^"Wealth" DEF { ^"Count" INTEGER 7  ^"Type" STRING "koku"  ^"Starting" BOOLEAN true }
         }
-    }
 
+        RULES {
+            #YffJEMfn7fg6BRimt7Ei53: families_of_the_fleet_names "The Families of the Fleet: For complicated historical reasons, the Mantis do not have a family name. Its samurai all belong to the Mantis Clan fleet, however, and so they take their names from the kobune ships they sail with. Tsuraikaze no Kudaka (Kudaka of the Bitter Wind) or Susano-o no Hitoshi (Hitoshi of the Susano-o) are how they style themselves, changing their names as they sign on with different crews. Those Mantis who stay on land are known by the port where they live, such as Kinushima no Miaka or Tokigogachu no Tōya."
+        }
+    }
 
     # ===========================
     # SCHOOLS
@@ -67,11 +67,6 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
     ^"Storm Fleet Sailor" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # Life on the seas has made the Mantis practical. Their
-        # sailors know most true fights do not take place in a dojo.
-        # Opportunists to the core, they eschew no weapon, push
-        # every advantage, and yield only to the rolling sea.
 
         PROPERTIES {
             ^"School Name" STRING "Storm Fleet Sailor" FIXED
@@ -162,18 +157,15 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
                 ^"Storm Lord's Gambit"
             }
         }
+
+        RULES {
+            #bDrfN65jjwRLHkfoX4Yg0O: storm_fleet_sailor_description "Storm Fleet Sailor School [Bushi]: Life on the seas between and beyond the Isles of Silk and Spice has made the Mantis Clan practical. Its sailors know most true fights do not take place in a dōjō, but in wild ambushes and on the rocking decks of kobune. A sailor must know when to push their luck—and when to settle for what they have. Opportunists to the core, the warriors of the Mantis Storm Fleet eschew no weapon, push every advantage, and yield only to the rolling sea."
+        }
     }
 
     ^"Storm Fleet Tide Seer" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # The tenkinja are priests of the tide, trained in reading
-        # the sea and appeasing the kami of wave and storm. Without
-        # their blessing, even seasoned Mantis sailors are uneasy to
-        # take to the open ocean. They have no formal center of
-        # learning, instead training individual apprentices during
-        # journeys and congregating in the Isles of Silk and Spice.
 
         PROPERTIES {
             ^"School Name" STRING "Storm Fleet Tide Seer" FIXED
@@ -263,6 +255,10 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
                 ^"Storm Surge"
             }
         }
+
+        RULES {
+            #S89rdGgdjLiLG65dPnLuCq: storm_fleet_tide_seer_description "Storm Fleet Tide Seer [Shugenja]: The tenkinja are priests of the tide, trained in the ways of reading the sea and appeasing the kami of wave and storm. These seers have served the Mantis Clan for generations, and without their blessing at the outset of a journey, even the most seasoned of Mantis sailors are uneasy to take to the open ocean. As with most Mantis traditions, the tenkinja have no formal center of learning, instead training individual apprentices during their journeys and periodically congregating in the Isles of Silk and Spice to share the wisdom they have attained."
+        }
     }
 
     # ===========================
@@ -272,10 +268,6 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
     ^"Osano-wo's Boast" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Mantis Clan, Rank 3 Shūji
-        # Like their fabled founder, Mantis often boast of their
-        # future glory to strengthen resolve and drive comrades.
-
         PROPERTIES {
             ^"Technique Type" STRING "Shūji" FIXED
             ^"Technique Subtype" STRING "Mantis" FIXED
@@ -283,17 +275,9 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
             ^"Activation" STRING "Once per game session as a Support action, make a TN 2 Command or Performance (Fire) check to boast of a deed you will attempt."
         }
 
-        # Effects: If you succeed, increase your composure and
-        # endurance by 3. Persists until end of scene or until you
-        # complete the deed. At end of scene, if deed not completed,
-        # suffer 3 fatigue and 3 strife.
-        #
-        # If you succeed or fail, after you perform this action, any
-        # other character in the scene who knows this technique may
-        # immediately perform this action (if they have not done so).
-
         RULES {
-            #L5RMC09kL0mN2oP4qR6sT8u: technique_osanowos_boast
+            #L5RMC09kL0mN2oP4qR6sT8u: osanowos_boast_effects "Effects: If you succeed, increase your composure and your endurance by 3. This effect persists until the end of the scene or until you complete the deed of which you boasted. At the end of the scene, if you have not completed the deed, suffer 3 fatigue and 3 strife.\n\nIf you succeed or fail, after you perform this action, any other character in the scene who knows this technique may immediately perform this action (if they have not done so already)."
+            #AbALboiSvBStkuVpK2kcII: osanowos_boast_description "Osano-wo's Boast: Like their fabled founder, members of the Mantis Clan often boast of their future glory, to strengthen their own resolve and drive their comrades to greater heights."
         }
     }
 
@@ -381,7 +365,7 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RMC14nO5pQ7rS9tU1vW3x: weapon_butterfly_sword
+            #L5RMC14nO5pQ7rS9tU1vW3x: weapon_butterfly_sword "Butterfly Sword: Short, slashing blades often designed with hooks above the guard, these blades are extremely versatile—easily concealed on one's person, offensively and defensively potent, and useful as a tool. Often wielded in pairs and usually custom-made for an individual wielder, butterfly swords are a favorite of many Mantis sailors."
         }
     }
 
@@ -400,11 +384,8 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
             ^"Cost" STRING "2 koku"
         }
 
-        # Special: While you have a pair of sai readied, reduce the
-        # (op) you must spend to activate their Snaring quality by 1.
-
         RULES {
-            #L5RMC15yZ6aB8cD0eF2gH4i: weapon_sai
+            #L5RMC15yZ6aB8cD0eF2gH4i: weapon_sai "Sai: A sai is a forked weapon that appears in many places and may be an ancestor of the jitte. Unicorn travelers have even reported seeing such weapons in the Ivory Kingdoms, and some archives in Rokugan from ancient days contain drawings of similar designs. The sai is commonly used in the Isles of Silk and Spice, wielded as a pair and usually blunted at the tips to allow a warrior to trap, control, punch, and jab to subdue a foe.\n\nWhile you have a pair of sai readied, reduce the (op) you must spend to activate their Snaring quality by 1."
         }
     }
 
@@ -423,14 +404,8 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
             ^"Cost" STRING "4 koku"
         }
 
-        # Special: As a Movement and Support action, if you have a
-        # tonfa readied, you may increase the TN of the next Attack
-        # action check targeting you by 1 and decrease the TN of your
-        # next Attack action check using a tonfa by 1. Persists until
-        # end of your next turn.
-
         RULES {
-            #L5RMC16jK7lM9nO1pQ3rS5t: weapon_tonfa
+            #L5RMC16jK7lM9nO1pQ3rS5t: weapon_tonfa "Tonfa: Another ancient design of uncertain origins, the tonfa is a thick stock attached at a 90-degree angle to a handle that allows it to spin freely. An incredibly versatile defensive weapon, a tonfa can be used to reinforce blocks and launch blisteringly fast short circular attacks. Tonfa are often wielded in pairs, or alongside an open hand.\n\nAs a Movement and Support action, if you have a tonfa readied, you may increase the TN of the next Attack action check targeting you by 1 and decrease the TN of your next Attack action check using a tonfa by 1. This effect persists until the end of your next turn."
         }
     }
 
@@ -450,7 +425,7 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RMC17uV8wX0yZ2aB4cD6e: weapon_eku
+            #L5RMC17uV8wX0yZ2aB4cD6e: weapon_eku "Eku: An eku is a weaponized oar, wielded as a polearm. Like the smith's hammer or the farmer's hoe, it likely came into being as a tool and was turned to violent purpose when seafarers came under attack and needed something with which to defend themselves. Heavier than a staff and harder to wield, the eku is a surprisingly dangerous weapon, best used for sweeping attacks. Mantis sailors tell of similar weapons made of wood or even whale-bone wielded by warriors of other seafaring cultures they have encountered."
         }
     }
 
@@ -470,7 +445,7 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RMC18fG9hI1jK3lM5nO7p: weapon_tinbe
+            #L5RMC18fG9hI1jK3lM5nO7p: weapon_tinbe "Tinbe-Rochin: A tinbe-rochin is actually two weapons wielded as a pair: a short spear (the tinbe) and a small shield (the rochin), both excellent for close quarters or the rolling deck of a ship. The haft of the tinbe is cut short, and the head is often shaped to accommodate both stabbing and slashing motions. The rochin can be made of many different materials, including wood or turtle shell, and is generally used to deflect rather than block with full force. If executed properly, this allows the wielder to open their opponent to a killing strike with the tinbe."
         }
     }
 
@@ -489,15 +464,8 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
             ^"Cost" STRING "25 koku"
         }
 
-        # Special: A character can only wield one shield at a time.
-        # As a Movement and Support action, if you have a rochin
-        # readied, you may increase the TN of the next Attack action
-        # check targeting you by 1 and decrease the TN of your next
-        # Attack action check using a tinbe by 1. Persists until end
-        # of your next turn.
-
         RULES {
-            #L5RMC19qR0sT2uV4wX6yZ8a: weapon_rochin_shield
+            #L5RMC19qR0sT2uV4wX6yZ8a: weapon_rochin_shield "Tinbe-Rochin: A rochin is a shield, and a character can only wield one shield at a time. As a Movement and Support action, if you have a rochin readied, you may increase the TN of the next Attack action check made targeting you by 1 and decrease the TN of your next Attack action check using a tinbe by 1. This effect persists until the end of your next turn."
         }
     }
 
@@ -516,11 +484,8 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
             ^"Cost" STRING "1 bu"
         }
 
-        # Special: Reduce the TN of checks to repair or maintain
-        # sailor's garb by 1.
-
         RULES {
-            #L5RMC20bC1dE3fG5hI7jK9l: armor_sailors_garb
+            #L5RMC20bC1dE3fG5hI7jK9l: armor_sailors_garb "Sailor's Garb: Mantis sailors generally dress in practical clothes made of sturdy, resilient cloth that will not fall apart when soaked by the sea or baked by the sun. These clothes are also generally easy to repair, even aboard a ship where supplies are often very scare.\n\nReduce the TN of checks to repair or maintain sailor's garb by 1."
         }
     }
 
@@ -535,11 +500,8 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
             ^"Cost" STRING "12 koku"
         }
 
-        # Special: When you succeed at a check to resist a critical
-        # strike while wearing this armor, add two bonus successes.
-
         RULES {
-            #L5RMC21mN2oP4qR6sT8uV0w: armor_shark_leather
+            #L5RMC21mN2oP4qR6sT8uV0w: armor_shark_leather "Shark Leather Armor: While the flesh of beasts is considered unclean by some traditionalist samurai, leather can also be harvested from fish such as sharks and rays. Rokugani swords often incorporate this leather in their grip, and through special treatment, it can be used to make lightweight armor, especially if reinforced with wood or metal bands. Leather does little to deflect oncoming attacks, but it is hard to pierce, protecting the wearer against telling blows. Many Mantis samurai who can afford it favor its light weight and striking looks.\n\nWhen you succeed at a check to resist a critical strike while wearing this armor, add two bonus successes."
         }
     }
 
@@ -557,7 +519,7 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RMC22xY3zA5bC7dE9fG1h: equipment_astrolabe
+            #L5RMC22xY3zA5bC7dE9fG1h: equipment_astrolabe "Astrolabe: Rokugani scholars have long studied the sky and the movement of celestial bodies, and their records date back to the start of the Empire, but the refined use of this information for navigation has been refined even further in other lands. Traders who encounter vessels from the Qamarist Caliphate often go to great lengths to acquire the navigation devices called astrolabes, or star-takers. Developed using advanced mathematics to identify and precisely note the position of celestial bodies in the sky, these devices are costly to acquire—but invaluable to any sea captain who ventures into waters uncharted. (Cost: 30 koku. Rarity: 10.)"
         }
     }
 
@@ -571,7 +533,7 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RMC23iJ4kL6mN8oP0qR2s: equipment_fishing_rod
+            #L5RMC23iJ4kL6mN8oP0qR2s: equipment_fishing_rod "Fishing Rod and Line: On long voyages or while moored at far-flung ports, fishing is not only a profitable activity, but also a way to pass the time in quiet contemplation. As such, many members of the Mantis Clan carry a fishing rod, and spend their spare time tying or cutting lures. So popular a pastime is fishing that an old story claims the iconic, sickle-shaped kama was first picked up by a curious Mantis captain who mistook it for a fishhook. (Cost: 1 bu. Rarity: 1.)"
         }
     }
 
@@ -585,7 +547,7 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RMC24tU5vW7xY9zA1bC3d: equipment_taraibune
+            #L5RMC24tU5vW7xY9zA1bC3d: equipment_taraibune "Taraibune: Sometimes called \"tub boats,\" taraibune are small, barrel-shaped, circular vessels five to six feet in diameter, designed for one operator who steers by oar. Sturdy and cheap to build, they serve as additional vessels for families in many fishing villages across Rokugan, and as single-person landing craft aboard some Mantis vessels. (Cost: 1 koku. Rarity: 4.)"
         }
     }
 
@@ -623,15 +585,14 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
         }
 
         ^"Swarming Hunter" DEF {
-            # Aquatic animal (silhouette 1). When making an Attack action
-            # check with assistance, may spend (op):
-            # (op)+: One character other than the target at range 0-2
-            # suffers 2 physical damage. Activatable per round equal to
-            # the number of eels assisting.
+
+            RULES {
+                #cF7dR8ohQAeiEXdx2KuJEO: swarming_hunter "Swarming Hunter: An eel is a silhouette 1 aquatic animal. When making an Attack action check with assistance, an eel may spend (op) as follows:\n\n(op)+: One character other than the target at range 0–2 suffers 2 physical damage. This (op) can be activated a number of times per round equal to the number of eels assisting with the check."
+            }
         }
 
         RULES {
-            #L5RMC25eF6gH8iJ0kL2mN4o: npc_eel
+            #L5RMC25eF6gH8iJ0kL2mN4o: npc_eel "Eels are long, slippery fish. Scavengers or predators, they can be aggressive if provoked, but generally prefer to hide within crevasses, striking at smaller prey when the time is right. Eel is a popular food in Rokugan."
         }
     }
 
@@ -665,14 +626,14 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
         }
 
         ^"Master of Disguise" DEF {
-            # Aquatic animal (silhouette 1). When performing a check,
-            # may spend (op):
-            # (op)+: Disguises itself in environment, causing each
-            # character with vigilance <= (op) spent to lose sight of it.
+
+            RULES {
+                #JWOlG1sTRxOmumktZHB1l5: master_of_disguise "Master of Disguise: An octopus is a silhouette 1 aquatic animal. When performing a check, an octopus may spend (op) as follows:\n\n(op)+: The octopus disguises itself in its environment, causing each character with vigilance lower than or equal to the (op) spent this way to lose sight of it."
+            }
         }
 
         RULES {
-            #L5RMC26pQ7rS9tU1vW3xY5z: npc_octopus
+            #L5RMC26pQ7rS9tU1vW3xY5z: npc_octopus "One of the strangest creatures of the sea, the octopus is remarkably intelligent, capable of changing its skin color and even texture to blend into its environment and getting into or out of nearly any enclosure. These creatures are short-lived, but their curiosity and cunning is legendary. Ranging in size from tiny specimens to behemoths nearly as large as a person, their strangeness makes them the subject of fascination for humans. Octopus is also a delicacy in coastal Rokugan."
         }
     }
 
@@ -706,19 +667,21 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
         }
 
         ^"Apex Hunter of the Seas" DEF {
-            # Aquatic animal (silhouette 3). Increase the deadliness
-            # of its bite against a Bleeding target by 4.
+
+            RULES {
+                #TjtHZnlkSRz4nam1mFJxTQ: apex_hunter_of_the_seas "Apex Hunter of the Seas: A shark is a silhouette 3 aquatic animal. Increase the deadliness of its bite against a Bleeding target by 4."
+            }
         }
 
         ^"Blood in the Water" DEF {
-            # As an Attack and Movement action, make TN 2 Fitness
-            # (Water) check to slam a target at range 0-1. If succeeds,
-            # target suffers Dazed condition and must resist with a TN 3
-            # Fitness check (Earth 2, Fire 5) or suffer Bleeding condition.
+
+            RULES {
+                #S56Yy2VyT0CA1BrjTjCGs5: blood_in_the_water "Blood in the Water: As an Attack and Movement action, a shark may make a TN 2 Fitness (Water) check to slam a target at range 0–1. If it succeeds, the target suffers the Dazed condition, and must resist with a TN 3 Fitness check (Earth 2, Fire 5) or suffer the Bleeding condition."
+            }
         }
 
         RULES {
-            #L5RMC27aB8cD0eF2gH4iJ6k: npc_shark
+            #L5RMC27aB8cD0eF2gH4iJ6k: npc_shark "The triangle fin of a shark cutting through the waves sends chills down many a sailor's spine. Despite the fear they evoke, even large sharks rarely hunt humans. By contrast, shark fishing is common, and hunting a shark is a rite of passage in the Isles of Silk and Spice."
         }
     }
 
@@ -756,20 +719,21 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
         }
 
         ^"Aquatic Humanoid" DEF {
-            # A ningyo is an aquatic being of silhouette 2.
+
+            RULES {
+                #MriCWJxcEAl2zi398kyJbh: aquatic_humanoid "Aquatic Humanoid: A ningyo is an aquatic being of silhouette 2."
+            }
         }
 
         ^"Drag Under" DEF {
-            # When making an attack action check, may spend (op):
-            # Water (op)+: Attempt to drag one target with vigilance <=
-            # (op) spent beneath the waves. If succeeds, target must
-            # resist with TN 3 Fitness check (Earth 1, Fire 4) or be
-            # pulled 1 range band under water and begin to suffocate
-            # (see p. 269 of the core rulebook).
+
+            RULES {
+                #ffROsubMnKZloCTjM4sDhP: drag_under "Drag Under: Activation: When making an attack action check, a ningyo may spend (op) as follows:\n\nWater (op)+: The ningyo attempt to drag one of its targets with vigilance lower than or equal to the (op) spent this way beneath the waves. If it succeeds, the target must resist with a TN 3 Fitness check (Earth 1, Fire 4) or be pulled 1 range band under water and begin to suffocate (see p. 269 of the core rulebook)."
+            }
         }
 
         RULES {
-            #L5RMC28lM9nO1pQ3rS5tU7v: npc_ningyo
+            #L5RMC28lM9nO1pQ3rS5tU7v: npc_ningyo "To most Rokugani, the idea of a city beneath the waves, filled with piscine folk called ningyo, seems nothing more than a fanciful tale—a myth of ancient days. The Kami Shiba was said to have visited such a place during his mythic journeys, but if such a place exists, it has been forgotten. Sailors claim to have seen ningyo; in their stories, sometimes ningyo are friendly despite their predatory appearance—and other times they are merciless hunters."
         }
     }
 
@@ -807,15 +771,21 @@ EXTENSION "L5R5e_Mantis_Clan" EXTENDS "L5R5e_Core_Character" {
         }
 
         ^"Ancient and Powerful" DEF {
-            # A sea troll is an aquatic Otherworldly being of silhouette 4.
+
+            RULES {
+                #b9wN5l5Vp5pxizalMQr7IR: ancient_and_powerful "Ancient and Powerful: A sea troll is an aquatic Otherworldly being of silhouette 4."
+            }
         }
 
         ^"Mystical Diffusion" DEF {
-            # While fully submerged in water, supernatural resistance is 8.
+
+            RULES {
+                #b0HXkmqXTfyV8LmQJEe6o9: mystical_diffusion "Mystical Diffusion: While a sea troll is fully submerged in the water, its supernatural resistance is 8."
+            }
         }
 
         RULES {
-            #L5RMC29wX0yZ2aB4cD6eF8g: npc_sea_troll
+            #L5RMC29wX0yZ2aB4cD6eF8g: npc_sea_troll "Trolls are ancient and mysterious beings—intelligent but often belligerent, wise but often short-tempered. Whether sea trolls are the same species as their landborne cousins or merely superficially similar in the manner of humans and ningyo remains a topic of debate by those few scholars who even believe they exist."
         }
     }
 }

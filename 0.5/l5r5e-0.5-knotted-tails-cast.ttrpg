@@ -9,7 +9,7 @@
 # l5r5e-0.5-knotted-tails.lore.
 
 EXTENSION "L5R5e_KnottedTails_Cast" {
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-03"
     DEPENDS_ON "L5R5e_Core_Core"
@@ -18,10 +18,6 @@ EXTENSION "L5R5e_KnottedTails_Cast" {
 
     ^"Lucky Silver" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The silver-furred leader of the Knotted Tails, long-lived and skilled with
-        # her blade. She believes her tribe's ancestors were close allies of the
-        # Hiruma and considers herself an honorary samurai, inheriting the Kaiu
-        # wakizashi of her ancestor, the former leader Silver Ears.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 4
@@ -43,14 +39,14 @@ EXTENSION "L5R5e_KnottedTails_Cast" {
         }
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 2. Leader of the Knotted Tails."
         ^"Lucky" DEF { ^"Effect" STRING "Lucky Silver is a being of silhouette 1 who can never gain the Afflicted condition or the Shadowlands Taint disadvantage. Once per scene, when making a check, Lucky Silver may reroll any number of her dice." }
+
+        RULES {
+            #IwYF7jy5FA4DhraVUpOtkC: background "The silver-furred leader of the Knotted Tails is respected and even feared within her tribe, though she is related to many of them. She is older than most nezumi, but her skill with her blade makes up for any frailties of age. She isn't merely interested in samurai, but considers herself one and tries to live up to the title. Her tribe looks up to her and is unwaveringly loyal; in turn, she sees her role as leader as a sacred duty, so the tribe always comes first."
+        }
     }
 
     ^"One Eye" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The tribe's Dreamer (once named Twitching Tail); white-furred and revered
-        # above even the leader. Long-lived enough to have been present at the fall
-        # of Shiro Hiruma, he spends much of his time dreamdwelling and communing
-        # with Transcendents in the Realm of Dreams.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 2
@@ -72,14 +68,14 @@ EXTENSION "L5R5e_KnottedTails_Cast" {
         }
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 2, Intrigue 2. The Dreamer of the Knotted Tails."
         ^"Dreamreader" DEF { ^"Effect" STRING "One Eye is a being of silhouette 1 who can never gain the Afflicted condition or the Shadowlands Taint disadvantage. As a Scheme action, One Eye may enter a trance state. In a trance state, he counts as being Unconscious, but may perform the actions listed below: Free the Dreamer (Support): One Eye purifies one target at range 0–2, removing the Unconscious condition and any effects that cloud its mind. Whispers of the Mind (Scheme): One Eye scrys upon the mind of a sleeping or unconscious target at range 0–4." }
+
+        RULES {
+            #FrfojGqlBo3mtILEPvPAYR: background "The One Eye's fur is white, and so bright it picks up even the dim light of the mushrooms in his home and seems to glow. The only member of his tribe to wear no clothes or armor, he merely drapes a ragged blanket upon his shoulders, pulling it over his head like a hood and hiding his single eye from the sunlight when he leaves his burrow. His tribe grants him even greater respect than their leader or Rememberer, and some seem a little afraid of him. They whisper that he was actually there at the fall of Shiro Hiruma, he is so long lived. He spends much of his time dreamdwelling and communing with Transcendents or contemplating their cryptic warnings and advice. His self-imposed solitude and extended time in the Realm of Dreams has left him disconnected from the rest of his tribe. He is easily distracted and easily frustrated."
+        }
     }
 
     ^"Three Tooth" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # A lean, brown-furred infiltrator who specializes in helping scouts on their
-        # missions and boasts of being one of the few of his tribe to have entered
-        # Shiro Hiruma. Braver than most, but with a keen survival instinct — he
-        # flees when the odds turn against him. May guide the PCs into the castle.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 2
@@ -101,13 +97,14 @@ EXTENSION "L5R5e_KnottedTails_Cast" {
         }
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 2, Intrigue 1. Knotted Tails infiltrator."
         ^"Escape Artist" DEF { ^"Effect" STRING "Three Tooth is a being of silhouette 1 who can never gain the Afflicted condition or the Shadowlands Taint disadvantage. When cornered or about to be captured, the infiltrator can perform a TN 2 Survival (Fire) check to find an escape route for himself and any companions." }
+
+        RULES {
+            #uFcGqoReY9lSGK3NY3bxTU: background "While adaptable like the Knotted Tails warriors, Three Tooth is a lean, brown-furred nezumi who specializes in helping scouts on their missions and boasts that he is one of the few in his tribe to have actually entered Shiro Hiruma before, though he is known to overexaggerate. Braver than most of his tribe, he nevertheless has a keen survival instinct and will flee if he feels the odds are against him. Using his size and speed to his advantage, Three Tooth is able to hide, sneak, and run really fast."
+        }
     }
 
     ^"Knotted Tails Warrior" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # A rag-tag tribe warrior wielding whatever weapon or tool they can find, who
-        # nonetheless takes pride in the role and shows courage when the tribe is
-        # threatened. Also serve as scavengers, lookouts, healers, and pup-sitters.
         PROPERTIES {
             ^"Type" STRING "Minion" FIXED
             ^"Combat Conflict Rank" INTEGER 3
@@ -129,13 +126,14 @@ EXTENSION "L5R5e_KnottedTails_Cast" {
         }
         DESCRIPTION "MINION. Conflict Rank — Combat 3, Intrigue 1. (The scout Nine Claws uses this profile.)"
         ^"For the Tribe" DEF { ^"Effect" STRING "A Knotted Tails warrior is a being of silhouette 1 who can never gain the Afflicted condition or the Shadowlands Taint disadvantage. As long as one or more of its living comrades or its village are visible, a Knotted Tails warrior treats its Endurance as 12." }
+
+        RULES {
+            #zQDZSWQTOhWi1t7qjYuKPw: background "A rag-tag bunch wielding whatever weapon or tool they can find, these warriors nonetheless take pride in their role, and might surprise the PCs by showing great courage when their tribe is threatened or if fighting becomes inevitable. After all, survivors in the Shadowlands face many terrifying threats. Nezumi society is so different to that of samurai, that they are unlikely to gain most samurai's respect. Regardless of this, PCs should be left with the impression that these are warriors with their own sense of honor and duty.\n\nSome nezumi tribes have dedicated warriors among them, trained to fight and die for the tribe from birth, but this is not the case in the Knotted Tails. Being relatively small, most of the tribe takes on different roles as necessary, and no roles are considered demeaning. The Knotted Tail warriors that make up the patrol are also scavengers, lookouts, healers, and pup-sitters. They therefore vary considerably and show no evidence of any military training and discipline that a Lion or Crab would recognize."
+        }
     }
 
     ^"Nezumi Pup (Knotted Tails)" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Young nezumi — inquisitive and playful, knowing from scent markers where
-        # they can safely explore. Only wander in extreme circumstances; a pup whose
-        # home is destroyed flees on instinct and may perish or become an outcast.
         PROPERTIES {
             ^"Type" STRING "Minion" FIXED
             ^"Combat Conflict Rank" INTEGER 1
@@ -156,15 +154,16 @@ EXTENSION "L5R5e_KnottedTails_Cast" {
             ^"Gear" LIST OF STRING []
         }
         DESCRIPTION "MINION. Conflict Rank — Combat 1, Intrigue 1."
+
+        RULES {
+            #j8SbNWeQpKcslpCAusKgb5: background "Nezumi pups begin life helpless, blind, and hairless. They develop quickly, emerging after two weeks to join older pups in training, foraging, and listening to stories. They are inquisitive and playful but know from scent markers where they can safely explore. Pups only wander away in extreme circumstances. Fear usually drives a pup back to a parent or other adult, but if its home suffers a disaster or is attacked, a pup obeys the instinct to flee. Unless found by its own or a friendly tribe, such pups either perish or become outcast nezumi."
+        }
     }
 
     # ═══════════════════════ THE OUTCASTS & THE THREAT ════════════════════
 
     ^"Outcast Nezumi (Knotted Tails)" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Nezumi surviving by instinct, running on four paws and eating anything,
-        # including carrion. Their solitary life leaves them unable to communicate;
-        # they are usually a threat only to lone or wounded samurai.
         PROPERTIES {
             ^"Type" STRING "Minion" FIXED
             ^"Combat Conflict Rank" INTEGER 2
@@ -186,14 +185,14 @@ EXTENSION "L5R5e_KnottedTails_Cast" {
         }
         DESCRIPTION "MINION. Conflict Rank — Combat 2, Intrigue 1."
         ^"Ferocious Defender" DEF { ^"Effect" STRING "An outcast nezumi is a being of silhouette 1 who can never gain the Afflicted condition or the Shadowlands Taint disadvantage. When it is the target of an Attack action check, it may receive 1 strife to negate 1 Opportunity from the attacker's check result." }
+
+        RULES {
+            #fkX2rrO5gZcxjYdCM95ykg: background "These nezumi survive by instinct, running on four paws and eating anything they find, including rotting carcasses. Their solitary life in the Shadowlands leaves them unable to communicate even with other nezumi. They recognize scent signals to keep away, so they rarely bother the tribes, but consider any Rokugani either as an enemy or potential food. Without the advantages of civilized nezumi, they are usually a threat only to a lone scout or group of wounded samurai. Occasionally, they band together to hunt, but once the prey runs out they inevitably turn on each other."
+        }
     }
 
     ^"Frayed Whisker" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The antagonist: a nezumi Lucky Silver once exiled, older than he looks and
-        # tormented by waking and sleeping visions. A dreamwalker who binds and
-        # curses nezumi — including the Knotted Tails' own — to his will. Should he
-        # fall or be incapacitated, those he controls cease fighting for him.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 3

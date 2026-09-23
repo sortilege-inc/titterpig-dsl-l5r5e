@@ -10,7 +10,7 @@
 # supporters) live in the .lore / .codex.
 
 EXTENSION "L5R5e_CrestingWaves_Cast" {
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-03"
     DEPENDS_ON "L5R5e_Core_Core"
@@ -19,9 +19,6 @@ EXTENSION "L5R5e_CrestingWaves_Cast" {
 
     ^"Onryō, Vengeful Ghost" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The ghost of Jimba, a villager murdered and dismembered by his friend
-        # Banji; a pale, shrouded figure in a faded kimono, its face hidden by long
-        # black hair. An Otherworldly being that inflicts its curse on all it touches.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 10
@@ -42,13 +39,14 @@ EXTENSION "L5R5e_CrestingWaves_Cast" {
         ^"Vengeful Ghost" DEF { ^"Effect" STRING "An onryō is an Otherworldly being of silhouette 2. As a Movement action, it can freely disappear at will and reappear at any position within three range bands without needing a clear path to its new location." }
         ^"Cursed Touch" DEF { ^"Effect" STRING "As an Attack action, the onryō may attempt to touch a character. That character must then resist with a TN 3 Fitness check (Air 2, Earth 5). If the character succeeds, they evade; if they fail, they suffer the Afflicted condition (see page 271 of the core rulebook) and receive strife and fatigue equal to their shortfall." }
         ^"Disturbing Presence" DEF { ^"Effect" STRING "Any character at range 0–2 of the onryō receives 1 strife at the beginning of the onryō's turn." }
+
+        RULES {
+            #LPEfUcGlUaVp1tOC7bwWX1: background "The ghost of a person who died in extreme circumstances, an onryō is usually bound to a violent betrayal that was their last experience in life and consumed by the need for vengeance. The spirit that the PCs encounter appears as a pale, shrouded figure in a faded kimono, its face usually hidden by long, black hair. When revealed, its countenance is one of fear, the last expression it wore in life. The onryō is incapable of reason and inflicts its curse on everyone with whom it comes into contact. Such is the power of its curse that it lives on after the onryō is defeated."
+        }
     }
 
     ^"Banji, Murderous Villager" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Nayaka's husband; formerly jovial, now a gruff, unpleasant man. Out of
-        # jealousy he murdered and dismembered his friend Jimba, whose ghost now
-        # haunts the village. He carries the cursed kama he used for the deed.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 2
@@ -73,15 +71,16 @@ EXTENSION "L5R5e_CrestingWaves_Cast" {
             "Humble Peasant" -> #L5RNRJmKEoye9VrL2Q0OOq ^"Humble Peasant"
         }
         ^"Overlooked" DEF { ^"Effect" STRING "When a peasant makes a check targeting a character with a higher status rank, they treat that character's vigilance as 1 lower." }
+
+        RULES {
+            #jXWRjN2vTT1pFw25gkH3Ip: background "Formerly jovial and outgoing, Banji is a now gruff, unpleasant man who does not want to answer questions and resents the PCs' interference. He carries a cursed kama, the one he used to murder and dismember his friend, Jimba. This weapon is keen for him to use it again so, despite the odds, Banji spoils for a fight with the PCs."
+        }
     }
 
     # ═══════════════ ENCOUNTER 2 — IN THE WOODS ════════════════════════════
 
     ^"Aguri, Yamauba" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # A yamauba who appears as a common peasant, concealing the second, ever-
-        # hungry mouth atop her head with a tenugui. She has lived isolated for
-        # untold decades, luring and capturing prey; she holds Kyou and Sora captive.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 4
@@ -109,10 +108,6 @@ EXTENSION "L5R5e_CrestingWaves_Cast" {
 
     ^"Mamoru Nakama, Wolf Guardian" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The larger, wilier leader of a starving wolf pack whose forest the castle's
-        # daimyō has over-hunted; a shapeshifter inspired by the senbiki ōkami
-        # legend. In human form he passes as a silver-grey-robed courtier at Closed
-        # Shell Castle, bearing whatever wound the PCs dealt the wolf.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 9

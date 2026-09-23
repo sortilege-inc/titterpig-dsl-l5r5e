@@ -6,7 +6,7 @@
 
 ARC "wedding-kyotei-castle" EXTENDS "l5r5e" {
     NAME "Wedding at Kyotei Castle"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Wedding at Kyotei Castle: The 2018 L5R Gen Con Adventure (Fantasy Flight Games, 2019)"

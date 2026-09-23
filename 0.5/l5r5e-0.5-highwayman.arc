@@ -6,7 +6,7 @@
 
 ARC "the-highwayman" EXTENDS "l5r5e" {
     NAME "The Highwayman"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "The Highwayman: The Legend of the Five Rings 2019 Gen Con Adventure (Fantasy Flight Games, 2020)"

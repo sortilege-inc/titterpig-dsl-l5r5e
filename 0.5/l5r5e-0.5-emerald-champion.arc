@@ -7,7 +7,7 @@
 
 ARC "emerald-champion" EXTENDS "l5r5e" {
     NAME "In the Palace of the Emerald Champion"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "In the Palace of the Emerald Champion: A Bonus Adventure for the L5R Roleplaying Beginner Game (Fantasy Flight Games, 2018)"

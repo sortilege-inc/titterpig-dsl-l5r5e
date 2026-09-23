@@ -9,7 +9,7 @@
 # l5r5e-0.5-scroll-or-blade.lore.
 
 EXTENSION "L5R5e_ScrollOrBlade_Cast" {
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-03"
     DEPENDS_ON "L5R5e_Core_Core"
@@ -18,9 +18,6 @@ EXTENSION "L5R5e_ScrollOrBlade_Cast" {
 
     ^"Masayo" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The orphaned 12-year-old at the heart of the dispute — daughter of the
-        # Dragon Kitsuki Taiki and the Phoenix Shiba Miku, with a profound,
-        # undisciplined connection to the kami and bonded to the Fortune Yamakaze.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 1
@@ -42,14 +39,14 @@ EXTENSION "L5R5e_ScrollOrBlade_Cast" {
         }
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 1, Intrigue 2. Her status is effectively zero until she completes her gempuku."
         ^"Accidentally Unleashed" DEF { ^"Effect" STRING "If Masayo loses her temper or becomes scared, or otherwise becomes Compromised, she must make a TN 2 Theology (Air) check targeting all characters within range 0–2. If successful, a gust of wind rushes through the area. All targets within range suffer 1 supernatural damage plus 1 per bonus success (to a maximum of 3). Until calmed with a TN 2 Sentiment (Void 1, Earth 3, Fire 3) check or rendered unconscious, targets in the area continue to suffer 1 supernatural damage per round." }
+
+        RULES {
+            #MinaVU9ugdEACXScLH98pp: background "Masayo is a child of 12 years possessing a profound connection to the kami. Her gifts are undisciplined and lacking focus. Raised by the peasants of her village from a young age, she is ignorant of the ways of a samurai. She is frightened and far from the home she knows and the people she loves, and has brought with her Yamakaze, the Fortune of the Mountain Winds. The Fortune has become tied to Masayo and the bond is so strong that Masayo may not even be aware of what invokes Yamakaze. On top of that, Masayo is so attuned to the elements around her that just her stress and fear in agitates any kami nearby, causing furniture to move, water to flow strangely, and other phenomenon to occur."
+        }
     }
 
     ^"Miya Bunji" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # A respected Herald of the Miya family and skilled cartographer; Masayo's
-        # temporary guardian. Lost his wife Hanae and daughter Nanako to a tsunami
-        # on the northern Crane coast; found Masayo while mapping the storm-struck
-        # Dragon-Phoenix border and now must decide her fate. Serves Miya Satoshi.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 5
@@ -77,10 +74,6 @@ EXTENSION "L5R5e_ScrollOrBlade_Cast" {
 
     ^"Asako Haruki" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Head of the Phoenix delegation and cousin of the Asako daimyō; optimistic
-        # to the point of arrogance. Longtime lover of Mirumoto Kazuya, which the
-        # dispute over Masayo has strained. Has installed Isawa Yoshiko as the
-        # Phoenix candidate, meaning to blame her if they fail to secure Masayo.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 4
@@ -103,14 +96,14 @@ EXTENSION "L5R5e_ScrollOrBlade_Cast" {
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 8."
         ^"Whispering Winds" DEF { ^"Effect" STRING "Once per session as a Scheme action, Haruki may make a Courtesy (Air) check targeting one character in the scene. The TN is equal to 6 minus the target's glory rank (to a minimum of 1). If successful, Haruki learns a rumor about the target. Haruki may spend Opportunity Opportunity to learn one of the target's advantages or disadvantages of the target's choice." }
         ^"Fanning the Flames" DEF { ^"Effect" STRING "When making a Social skill (Fire) check, Haruki may spend Opportunity in the following way: Fire Opportunity+: One target gains the Dazed condition." }
+
+        RULES {
+            #Fc832qPTRa3Am4JJPd7M8I: background "Knowing a life of privilege and plenty, Haruki is the head of the Phoenix delegation at Winter Court and the cousin of the Asako daimyō. He is optimistic to the point of arrogance, and he believes that Masayo offers hope to the Phoenix considering the recent difficulties they have had communing with the kami. He would stop at nothing to secure her normally, but the man standing as her potential parent is his longtime lover, Mirumoto Kazuya. Because of the rising tensions over Masayo, the relationship between Kazuya and Haruki has become strained. Each has a duty to their clan to secure the child, and no possible answer in Haruki's mind and to the fighting between the clans. Because of rising tempers, Haruki and Kazuya are able to see one another less and less, and any hope for their relationship to flourish is beginning to look bleak. Not wishing to face Kazuya's anger and competitive nature, Haruki has elected for Isawa Yoshiko to act as the Phoenix candidate and plans to blame her if they fail to secure Masayo."
+        }
     }
 
     ^"Isawa Yoshiko" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # A reserved, clever shugenja delegated as the Phoenix's candidate to adopt
-        # Masayo. Born out of wedlock and given to the Isawa; she has realized that
-        # Masayo's mother, Shiba Miku, was her own half-sister — making Masayo her
-        # niece by blood, a secret that could disqualify or empower her.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 3
@@ -132,16 +125,16 @@ EXTENSION "L5R5e_ScrollOrBlade_Cast" {
         }
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 3, Intrigue 7."
         ^"Path to Inner Peace" DEF { ^"Effect" STRING "As a Support action, Yoshiko may make a TN 2 Theology (Water) check targeting herself or another character at range 0–2. If she succeeds, the target removes 4 fatigue plus 1 for each bonus success. A target can only benefit from this ability once per scene. Opportunity: Yoshiko may also remove strife from her target equal to her bonus successes. Opportunity Opportunity+: Yoshiko may remove one of the following conditions from her target for every Opportunity Opportunity she spends this way: Bleeding, Dazed, Disoriented, or Lightly Wounded." }
+
+        RULES {
+            #Ma5RJmMmMKF63nL9NFSgV9: background "Yoshiko is a reserved yet clever shugenja who is always looking to stay one step ahead of any competitors. She chooses to rely on her knowledge of clan politics and law to sway the decision toward the Phoenix, though she willingly offers the PCs help if given the opportunity, so long as she believes it might work in the Phoenix's favor.\n\nDelegated as the Phoenix representative to adopt Masayo, Yoshiko is struggling to keep an embarrassing secret hidden. Yoshiko was born out of wedlock, and the shame of her parents resulted in her being given to the Isawa to avoid the political backlash of her father and mother's inappropriate relationship. Yoshiko knows who her parents were, a fact she overheard at a young age from her caretakers. It was not until shortly before the memorial service that she heard her mother's name again when speaking of Shiba Miku, Masayo's mother. Yoshiko realized that Miku must be her half sister, and Masayo is her niece by blood. Such a familial bond could have a dramatic effect on the proceedings, either embarrassing and disqualifying Yoshiko from the adoption because she has no proof, or by strengthening the Phoenix's claim on the child."
+        }
     }
 
     # ═══════════════════════ THE DRAGON DELEGATION ═══════════════════════
 
     ^"Kitsuki Tomoyo" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Head of the Dragon delegation and youngest daughter of the Kitsuki daimyō;
-        # dynamic, impulsive, and eager to duel. Herself an orphan adopted by the
-        # Kitsuki daimyō — which lets her empathize with Masayo — she believes the
-        # child may be the one described in the Hinokami Prophecy.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 7
@@ -164,14 +157,14 @@ EXTENSION "L5R5e_ScrollOrBlade_Cast" {
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 7, Intrigue 5."
         ^"Let's Get This Over With" DEF { ^"Effect" STRING "When Tomoyo makes an initiative roll during an intrigue scene, she may spend Opportunity Opportunity to choose a known objective that a friendly target is going to attempt and reduces the momentum required to complete that task by 1." }
         ^"Striking as Fire" DEF { ^"Effect" STRING "When performing an Attack action (Fire) check, Tomoyo may spend Opportunity to increase the severity of any critical strike dealt as part of this attack by 2 per Opportunity spent this way." }
+
+        RULES {
+            #K4fmnRLNggqrwsJJtTH1Po: background "The head of the Dragon delegation and the youngest daughter of the Kitsuki daimyō, Tomoyo is a young and dynamic woman who is dedicated to her clan, and ready to back up her words with steel. Tomoyo is at Winter Court to fight, both politically and physically. If her time allows, she is eager to show off her prowess as a duelist to anyone who shows interest. She is impulsive and strongly believes that Masayo may be the child described in the Hinokami Prophecy, a story that she holds dear to her heart and one she was raised listening to. Her intention is to quickly end this stalemate and sees no other solution except for the return of the child to her home in the Dragon lands. What is not known to most is that Tomoyo is herself an orphan, adopted by the Kitsuki daimyō at birth, a fact that allows Tomoyo be in a unique position to empathize with Masayo."
+        }
     }
 
     ^"Mirumoto Kazuya" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # A veteran Dragon officer who offered to adopt Masayo, hoping to become the
-        # father figure to the child of the Hinokami Prophecy. Lover of the Phoenix
-        # Asako Haruki; volatile and easily influenced, he has gained a dangerous
-        # interest in the Perfect Land Sect.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 6
@@ -192,15 +185,16 @@ EXTENSION "L5R5e_ScrollOrBlade_Cast" {
             ^"Gear" LIST OF STRING ["Gear (equipped): Ceremonial clothes (Physical 1, Ceremonial, Resplendent), wakizashi, knife, love letter from Asako Haruki"]
         }
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 6, Intrigue 4."
+
+        RULES {
+            #kci5Ekj5TBpEUuRSjmcH2X: background "A veteran officer of the Dragon Clan, Kazuya offered to adopt Masayo in the hope of elevating his status and becoming part of history as the father figure to the child of the Hinokami Prophecy. He is also the lover of the lead Phoenix delegate Asako Haruki, which given the current situation leaves his relationship with the Dragon in jeopardy.\n\nVolatile and easily influenced, Kazuya has gained an interest in the Perfect Land Sect––a fact of which his lover is aware. Haruki has tried desperately to sway him from this path, which is the only reason Kazuya hasn't embraced their beliefs completely. Should Kazuya gain control of Masayo, and his relationship with Haruki deteriorate, there is no telling what he could do with the child's power, nor what devastation the Perfect Land Sect could cause. Kazuya is arrogant and knows the Dragon have the strongest claim and refuses to hear anything to the contrary. His love for Asako Haruki is strong, but his faith in the prophecy is stronger."
+        }
     }
 
     # ═══════════════════ THE CRANE HOST & THE DEER CLAN ═══════════════════
 
     ^"Daidoji Aki" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The kemari Winter Court Champion for four years running and a notorious
-        # philanderer; playful, overly friendly, and happy to offer opinions on any
-        # crisis if it puts a competitor off their game.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 7
@@ -223,14 +217,14 @@ EXTENSION "L5R5e_ScrollOrBlade_Cast" {
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 7, Intrigue 5."
         ^"Tactics of Kemari" DEF { ^"Effect" STRING "Prior to a round of kemari, Aki may make a TN 2 Sentiment (Air) check targeting a single character. If he succeeds, Aki may choose one of the target's disadvantages. The target applies that disadvantage to their next check, and receives 3 strife if they fail." }
         ^"Sworn Protector" DEF { ^"Effect" STRING "Once per scene, when an Attack action check targeting another character at range 0–1 succeeds, Aki may intervene, becoming the target of the Attack action instead." }
+
+        RULES {
+            #NY5wkMFW85MMIjaATVl1ei: background "As a rising star in the sport of kemari, Aki is equally well-known as a philanderer, often heard recounting his 'victories' to any who are willing to listen to his sordid tales. Playful and overly-friendly, his sophistication is a hit among the upper echelons of nobility, a trait that often finds him in hot water, particularly with the partners of his conquests. As the kemari Winter Court Champion for the last four years, he hopes to continue his winning streak. He is happy to offer his thoughts on any crisis, personal or political, especially if he can use it to put his competition off their game."
+        }
     }
 
     ^"Shika Yuki" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # An origami master and matchmaker of the Deer Clan with unparalleled
-        # knowledge of samurai lineages, and Miya Bunji's lifelong friend. She sensed
-        # a great imbalance and the strong connection between Bunji and Masayo, and
-        # is an ally of Kakita Ryoku, to whom she owes a debt of gratitude.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 3
@@ -253,14 +247,16 @@ EXTENSION "L5R5e_ScrollOrBlade_Cast" {
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 3, Intrigue 7."
         ^"Secrets on the Wind" DEF { ^"Effect" STRING "As a Scheme action, Yuki may make a TN 3 Theology (Air) check targeting one position at range 0. If she succeeds, she can eavesdrop on the chosen position within 4 range bands. This effect persists for twenty-four hours or until she designates a new area for eavesdropping. While in effect, Yuki may spend an action to hear anything said at that moment in the designated area." }
         ^"The Ties That Bind" DEF { ^"Effect" STRING "As an action, Yuki may make a TN 3 Sentiment (Void) check targeting one character. If she succeeds, she learns of another character whom would be a particularly inauspicious match for her target, and one likely future consequence of their relationship. Yuki may spend Opportunity Opportunity to learn of one more likely future consequence of that relationship." }
+
+        RULES {
+            #H3iPtrA44MC26xqiVaY9co: background "An origami master and matchmaker of the Deer Clan, Yuki has unparalleled knowledge of samurai lineages. She gained insight many months ago that a great imbalance lay on the horizon; her only hint was that she must be at the Winter Court. What took her by surprise was when her lifelong friend Miya Bunji approached her with his current dilemma. She assured Bunji that she would help him, but did not reveal the strong connection she sensed between Bunji and Masayo.\n\nYuki is kind but measured, using words carefully to convey as few of her secrets as possible. She is fully aware of the ramifications should the Dragon or Phoenix adopt Masayo, and may seek assistance from her speardancers should the situation deteriorate. Not wanting to interfere, however, she monitors the situation until she feels the time is right to reveal her vision. She is an ally and close friend to Kakita Ryoku, to whom she owes a debt of gratitude since she was instrumental in raising her standing in the Imperial Court."
+        }
     }
 
     # ═══════════════════════ HIRED BLADES ════════════════════════════════
 
     ^"Mercenary Shinobi" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # An outlawed assassin-spy secretly employed by a clan; exposure would bring
-        # great dishonor upon their master. Used as a minion for the attack scene.
         PROPERTIES {
             ^"Type" STRING "Minion" FIXED
             ^"Combat Conflict Rank" INTEGER 3
@@ -283,5 +279,9 @@ EXTENSION "L5R5e_ScrollOrBlade_Cast" {
         DESCRIPTION "MINION. Conflict Rank — Combat 3, Intrigue 3."
         ^"Fang of the Wolf" DEF { ^"Effect" STRING "Once per round, when an Attack action targeting this character succeeds, this character may suffer 3 fatigue to change the target of the attack to another character (other than the attacker) at range 0–1 of the original target." }
         ^"Flowing Water Strike" DEF { ^"Effect" STRING "As an Attack and Movement action using a readied weapon, a Mercenary Shinobi may make a TN 3 Martial Arts (Water) check using the appropriate skill for that readied weapon, targeting one character at range 0–2. Effects: On a success, the target suffers 3 physical damage and suffers the Bleeding condition. The target must resist with a TN 4 Fitness check (Earth 2, Fire 5); if they fail, increase the damage they suffer by the Shinobi's bonus successes." }
+
+        RULES {
+            #ABI5QpQskYABndLN5qKlJG: background "While the use of shinobi has been outlawed by the Emperor, these specialized assassins and spies are still secretly employed by most Clans. However, if such information were brought to light it would bring great dishonor and consequences down upon the heads of those who would so boldly disobey the Son of Heaven."
+        }
     }
 }

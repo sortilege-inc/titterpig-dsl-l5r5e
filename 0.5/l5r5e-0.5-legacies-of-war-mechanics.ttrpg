@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Legacies_of_War" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Legacies of War: Supplemental Rules"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -27,17 +27,10 @@ EXTENSION "L5R5e_Legacies_of_War" EXTENDS "L5R5e_Core_Character" {
     ^"Character Legacies System" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # When a player makes a new character during a campaign
-        # using Legacies, they may choose to take on the Legacy
-        # of their last PC (or another character, at the GM's
-        # discretion). If they do, the player does not apply any
-        # results from the Heritage table in Question 18.
-
         RULES {
-            #L5RLW01aB2cD4eF6gH8iJ0k: legacy_replaces_heritage_table_result
-            #L5RLW02lM3nO5pQ7rS9tU1v: legacy_applied_at_same_time_as_distinctions
-            #L5RLW03wX4yZ6aB8cD0eF2g: legacy_can_exceed_standard_advantage_limit
-            #L5RLW04hI5jK7lM9nO1pQ3r: legacy_can_be_inverted_as_adversity_at_gm_discretion
+            #L5RLW01aB2cD4eF6gH8iJ0k: legacy_replaces_heritage_table_result "Choosing a Legacy: When a player is making a new character during a campaign using Legacies, that player may choose to take on the Legacy of their last PC in the campaign (or another character, at the GM's discretion). If they do, the player does not apply any results from the Heritage table in Question 18 to their character (see page 96 of the core rulebook). They still choose an ancestor for whom they are named. This ancestor might, in fact, be the character whose legacy they are taking on, but characters can also take on Legacies from characters who are their contemporaries, or to whom they are unrelated."
+            #L5RLW02lM3nO5pQ7rS9tU1v: legacy_applied_at_same_time_as_distinctions "Note that Legacies are a new kind of advantage, separate from distinctions and passions (found beginning on page 101 of the core rulebook). They are applied at the same time as distinctions (except as individual entries dictate). Like distinctions, they can be inverted at the GM's discretion, applying as if they were an adversity (see page 100 of the core rulebook)."
+            #L5RLW03wX4yZ6aB8cD0eF2g: legacy_can_exceed_standard_advantage_limit "Benefits of a Legacy: Each Legacy imparts a unique advantage that the new character receives (this can exceed the standard limit for advantages at character creation). See Creating a Legacy on this page."
         }
     }
 
@@ -146,9 +139,7 @@ EXTENSION "L5R5e_Legacies_of_War" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RLW05sT6uV8wX0yZ2aB4c: legacy_templates_reroll_up_to_two_dice
-            #L5RLW06dE7fG9hI1jK3lM5n: legacy_charge_strife_removal_or_gain
-            #L5RLW07oP8qR0sT2uV4wX6y: legacy_effects_narrative_and_mechanical
+            #L5RLW07oP8qR0sT2uV4wX6y: legacy_key_elements "Using Legacies in Play: Each Legacy has several key elements: a requirement that the predecessor PC must have met for the successor PC to select this template; types like the ones all other advantages possess; a charge that represents the character's obligation to their predecessor's memory; and an effects category that functions like that of a distinction, with any exceptions described within the individual entries."
         }
     }
 
@@ -160,32 +151,11 @@ EXTENSION "L5R5e_Legacies_of_War" EXTENDS "L5R5e_Core_Character" {
     ^"Custom Legacy Template Guidelines" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # GMs and players can create custom Legacy templates
-        # using the following framework. Legacies are designed
-        # to be thematic, narrative, and a mechanical benefit
-        # that represents the relationship of the predecessor
-        # character to the PC.
-
-        # Step 1: Determine the crux of the predecessor's
-        # character -- how did their life impact the successor?
-        # Choose the ring most commonly used with this ability.
-
-        # Step 2: Determine a requirement for the predecessor
-        # to qualify for this Legacy.
-
-        # Step 3: The charge typically follows this pattern:
-        # "At the end of a scene in which you have done [X],
-        # you remove 3 strife. At the end of a scene in which
-        # you do [Y], you gain 3 strife and 1 Void point instead."
-
-        # Step 4: Effects should include a narrative boon and
-        # a dice reroll effect. The reroll must be broad enough
-        # to be used in a variety of situations but specific
-        # enough not to be constantly applicable.
-
         RULES {
-            #L5RLW08zA9bC1dE3fG5hI7j: custom_legacy_follows_template_pattern
-            #L5RLW09kL0mN2oP4qR6sT8u: custom_legacy_reroll_should_balance_breadth
+            #L5RLW08zA9bC1dE3fG5hI7j: custom_legacy_charge_pattern "The charge usually takes the form of, \"At the end of a scene in which you have done [insert information], you remove 3 strife. At the end of a scene in which you do [insert information, may be the opposite of the first sentence], you gain 3 strife and 1 Void point instead.\" The charge may also include an additional, small effect relevant to the narrative. GMs and players should feel free to look at the templates already created and experiment with interesting charges for their PCs to take."
+            #L5RLW09kL0mN2oP4qR6sT8u: custom_legacy_effects_format "The effects section also follows a fairly simple format. The first paragraph is a narrative boon the character receives, such as possibly being recognized more favorably when invoking their Legacy. The second paragraph describes in what circumstances characters may use the Legacy to reroll dice. This part is particularly important to work closely on, because the effect needs to be broad enough to be used in a variety of situations, but specific enough not to be constantly applicable in every circumstance. GMs and players should feel free to use not only the Legacies in this section as guideposts, but also the distinctions in the core rulebook (page 101)."
+            #zkvoXVhu0a0WWP1GxPbXBm: creating_custom_legacy_templates "Creating Custom Legacy Templates: Similar to the guidance on page 137 of the core rulebook, GMs and players have the option to create custom Legacy templates if they are struck by an idea that the provided templates do not cover. Legacies are designed to be thematic, narrative, and a mechanical benefit that represents the relationship of the predecessor character to the PC."
+            #NHljyUdQrWdH6daBNSgqKP: developing_a_custom_template "Developing a Custom Template: When creating a Legacy template with a specific character in mind, it is important that the GM and player work together to develop something that feels both narratively appropriate and mechanically fair. The following process provides guidance for coming up with a template, but as long as the GM and players feel comfortable with the results, the possibilities are limitless.\n\nThe first step is to determine the crux of the predecessor's character––specifically, in what way did their life impact the character who would be using the template? Once this question is answered, the rest of the template falls in line relatively easily. Then, choose the ring that this ability would most commonly be used with.\n\nOnce the main narrative tie is established, the GM and player can determine the requirement for a predecessor to meet in order to have this as a Legacy. This is important because if a PC dies or otherwise retires, they may wish to have this be their Legacy later in the campaign, so a requirement needs to be established."
         }
     }
 
@@ -196,16 +166,6 @@ EXTENSION "L5R5e_Legacies_of_War" EXTENDS "L5R5e_Core_Character" {
     # source stat block (page 16)
     ^"Fureheshu Family" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # A vassal family to the Ichiro, the Fureheshu family is
-        # small yet produces a significant number of high-ranking
-        # Badger sumai. Often the Badger Sumai Champion is from
-        # this family while the Badger Clan Champion is an Ichiro.
-        # The two families share a healthy rivalry. Early in the
-        # clan's history, Ichiro Fureheshu traveled to Crab lands
-        # to study sumai and earned the name Oni Wrestler. Hida
-        # sumai school members accompanied him home, and his
-        # descendants were granted vassal family status.
 
         PROPERTIES {
             ^"Family" STRING "Fureheshu" FIXED
@@ -220,9 +180,8 @@ EXTENSION "L5R5e_Legacies_of_War" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RLW10vW1xY3zA5bC7dE9f: fureheshu_vassal_family_to_ichiro
-            #L5RLW11gH2iJ4kL6mN8oP0q: fureheshu_sumai_and_brewing_eminence
-            #L5RLW12rS3tU5vW7xY9zA1b: fureheshu_tradition_training_with_hida
+            #L5RLW10vW1xY3zA5bC7dE9f: fureheshu_vassal_family_origin "The Fureheshu Family: A vassal family to the Ichirō, the Fureheshu family is small, yet produces a significant number of high-ranking Badger sumai. Often, the Badger Sumai Champion is from this family, while the Badger Clan Champion is an Ichirō. The two families share a healthy rivalry, which is obvious when any competition takes place. Early in the Badger's history, a Badger samurai named Ichirō Fureheshu traveled to Crab lands to study sumai as his clan's founder once had. To prove worthy of a place in the Hida sumai school, he fought alongside Crab bushi in the Shadowlands and earned the name Oni Wrestler for tackling its monsters with his bare hands. While the Crab applauded his courage, they feared his tactics would soon make him fall victim to the Taint. Friends from the Hida sumai school accompanied him on his journey home, and with one he had a child, who became his heir. The Hida school announced that Fureheshu and his descendants were always welcome to train with them, and the Ichirō daimyō was so pleased she granted Fureheshu and his heirs status as a vassal family. As a tradition, at least one Fureheshu of each generation spends time training with the Hida."
+            #L5RLW11gH2iJ4kL6mN8oP0q: fureheshu_sumai_and_brewing_eminence "The Fureheshu Family: While the Ichirō may be the most renowned Badger family, the Fureheshu hold significant sway within the lands of the Badger Clan due to their eminence in the spheres of both sumai and brewing. The Fureheshu family's members take great pride in the traditions that make them distinct from the Ichirō and the spiritual importance of both tasks, even if most outsiders are unaware the Badger Clan has multiple independent families."
         }
     }
 
@@ -244,9 +203,6 @@ EXTENSION "L5R5e_Legacies_of_War" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
-        RULES {
-            #L5RLW13cD4eF6gH8iJ0kL2m: low_war_game_nemuranai_durable_sacred
-        }
     }
 
     # ===========================
@@ -256,12 +212,6 @@ EXTENSION "L5R5e_Legacies_of_War" EXTENDS "L5R5e_Core_Character" {
     # source stat block (page 12)
     ^"Random Encounters in Times of War" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # GMs can use these five tables to introduce new elements
-        # into games in wartime settings, either through deliberate
-        # choice or random selection using a ten-sided die. These
-        # tables offer ideas for plot twists while the PCs are
-        # preparing for or in the midst of a mass battle.
 
         ^"Table 1: Encounters on the Road" TABLE {
             ROLL "1d10"
@@ -334,8 +284,7 @@ EXTENSION "L5R5e_Legacies_of_War" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RLW14nO5pQ7rS9tU1vW3x: random_encounter_tables_wartime_d10
-            #L5RLW15yZ6aB8cD0eF2gH4i: encounter_tables_enhance_mass_battle_campaigns
+            #L5RLW14nO5pQ7rS9tU1vW3x: random_encounter_tables_wartime "Random Encounters in Times of War: GMs can use the following five tables to introduce new elements into games in wartime settings, either through deliberate choice or random selection using a ten-sided die. These tables offer ideas for plot twists while the PCs are preparing for or in the midst of a mass battle. They also fit well when the PCs aren't actively fighting but still feel the effects of war."
         }
     }
 }

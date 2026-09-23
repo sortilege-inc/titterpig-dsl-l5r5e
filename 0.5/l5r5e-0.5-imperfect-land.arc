@@ -8,7 +8,7 @@
 
 ARC "imperfect-land" EXTENDS "l5r5e" {
     NAME "Imperfect Land"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Imperfect Land: An Adventure Uncovering the Secrets of the Perfect Land Sect (Fantasy Flight Games)"

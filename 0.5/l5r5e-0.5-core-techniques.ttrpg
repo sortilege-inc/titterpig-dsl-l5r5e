@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Techniques" {
     NAME "Legend of the Five Rings 5th Edition - Technique types, categories, and core technique definitions"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -16,47 +16,18 @@ BASE "L5R5e_Core_Techniques" {
     #L5R350fG9hI1jK3lM5nO7p ^"Technique" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai", #L5R009mN0oP2qR4sT6uV8w ^"Adversary"]
 
-        # Techniques are special abilities that represent advanced training.
-        # They enable a character to perform feats more quickly or in a
-        # unique way, or to exploit opportunities others would overlook.
-
         # --- CATEGORY ---
-        # Each character is granted access to technique categories by their
-        # ^"School". The categories are:
 
         CATEGORY ENUM ["Kata", "Kihō", "Invocation", "Ritual", "Shūji", "Mahō", "Ninjutsu"]
         # Additional categories from sourcebooks: Inversion, Mantra
 
         # --- NAME ---
-        # Each technique has a name, though different schools may describe
-        # similar tactics differently. Some techniques (especially invocations)
-        # have an "Other Names" field. Players are encouraged to use them
-        # to underscore the unique traditions of individual schools.
 
         # --- PREREQUISITES ---
-        # School ranks, clan affiliations, role/schools, ring values, skill
-        # ranks, other techniques, or other qualifiers required to purchase
-        # a technique with experience.
-        #
-        # Prerequisites are WAIVED if:
-        # - A character is directly granted a technique during character
-        #   creation (or at another time), OR
-        # - The technique appears on the character's curriculum by name or
-        #   as part of a listed group (e.g. "Rank 1-3 Kata").
-        #
-        # Such techniques and groups are marked with = to denote their
-        # special status. If a character does not choose a technique to
-        # which they have special access, or advances past the school rank
-        # that enables them to buy it without purchasing it, they LOSE
-        # their special access and can no longer purchase it at reduced cost.
 
         # --- XP COST ---
-        # All techniques cost 3 XP to purchase. If a technique costs a
-        # different amount, it is listed in the entry.
 
         # --- ACTIVATION ---
-        # Each technique specifies when and how it can be used. The
-        # activation generally includes some or all of the following:
         ACTIVATION_COMPONENTS {
             #V7IwVF3r66mCKeFefueKuT ^"Use" DEF {
                 "As an Action: Character must perform an action during a conflict scene. If the action lists one or more types, it possesses each of those types."
@@ -70,27 +41,8 @@ BASE "L5R5e_Core_Techniques" {
         }
 
         # --- EFFECTS ---
-        # Each technique lists effects that occur after activation. Each
-        # paragraph represents a distinct effect.
-        #
-        # - "If you succeed" effects only resolve on successful check.
-        # - "If you fail" effects only resolve on failed check.
-        # - Effects with alternate conditions resolve under stated conditions.
-        # - Effects with no conditions always resolve.
-        #
-        # Persistent Effects: Some effects persist for a set duration
-        # (e.g. "until the beginning of your next turn", "for one round
-        # plus additional rounds equal to your bonus successes", "until
-        # the end of the scene"). A character cannot benefit (or suffer)
-        # from more than one instance of the same persistent effect, even
-        # from multiple sources. If overlapping: player chooses if beneficial,
-        # GM chooses if harmful.
 
         # --- NEW OPPORTUNITIES ---
-        # Many techniques list one or more uses of (op) specific to the
-        # check. Some are preceded by a ring requirement (e.g. "Air (op)")
-        # meaning the character can only spend (op) this way if they used
-        # that ring for the check.
 
         PROPERTIES {
             ^"Name" STRING REQUIRED
@@ -105,11 +57,13 @@ BASE "L5R5e_Core_Techniques" {
         }
 
         RULES {
-            #L5R300aB2cD4eF6gH8iJ0k: technique_categories_granted_by_school
-            #L5R301lM3nO5pQ7rS9tU1v: prerequisites_waived_for_curriculum
-            #L5R301aM3nO5pQ7rS9tU2w: lose_special_access_if_skipped
-            #L5R302wX4yZ6aB8cD0eF2g: all_techniques_cost_3xp_unless_noted
-            #L5R302aX4yZ6aB8cD0eF3h: persistent_effects_do_not_stack
+            #L5R301lM3nO5pQ7rS9tU1v: prerequisites "Prerequisites: If a character must possess any school ranks, clan affiliations, role or schools, ring values, skill ranks, other techniques, or other qualifiers in order to purchase a technique with experience, these are listed to the right of its name. School rank and clan are the most common prerequisites.\n\nNote that prerequisites are waived if a character is directly granted a technique during character creation (or at another time), or if the technique appears on a character's curriculum by name or as part of a listed group (e.g. \"Rank 1–3 Kata\"). Such techniques and groups are marked with = to denote their special status. If a character does not choose a technique to which they have special access, or advances past a school rank that enables them to buy it without purchasing it, they lose their special access to it and can no longer purchase it."
+            #L5R302wX4yZ6aB8cD0eF2g: all_techniques_cost_3xp_unless_noted "XP Cost: All techniques in this chapter cost 3 XP to purchase. If a technique costs a different amount of XP, it is listed in the entry."
+            #L5R302aX4yZ6aB8cD0eF3h: persistent_effects "Persistent Effects: Some effects persist for a set duration (such as \"until the beginning of your next turn,\" \"for one round plus additional rounds equal to your bonus successes,\" or \"until the end of the scene\"). These effects end once the stated end point is reached.\n\nA character cannot benefit (or suffer) from more than one instance of the same persistent effect, even if the effect would be applied by multiple different sources. If a character would otherwise benefit (or suffer) from more than one instance of the same persistent effect, the character chooses which one applies if it is beneficial; the GM chooses which one applies if it is harmful."
+            #CE6DIPmj5beDSOYedkNBRr: name "Name: Each technique has a name, though this name is not necessarily used by all who practice the technique. Different schools have different ways of describing similar tactics and moves. In some cases (such as invocations), these are noted in an \"Other Names\" field. Players are encouraged to use them to help underscore the secretive and unique traditions of individual schools."
+            #qpOfoP1oQjO6v5hI0Jz4sA: activation "Activation: Each technique has an activation, which specifies when and how it can be used, what targets it affects, range limitations, checks the character must perform to make the technique work, circumstantial requirements it has, and any other pertinent information for how to wield it. The activation field generally includes some or all of the following information: Use, Check, Targets, Range, and Other Requirements."
+            #bqdDTRHEzdlCAYH53zl8g9: effects "Effects: Each technique lists the effects that occur after the character performs the activation. Each paragraph represents a distinct effect. See the Actions section on page 252 for more details on resolving action effects.\n\nEffects that begin with \"If you succeed\" only resolve if the check specified in the activation is successful. Effects that begin with \"If you fail\" only resolve if the check specified in the activation is unsuccessful. Effects that list alternate conditions for resolution resolve under the stated conditions, and effects that do not list any conditions for resolution always resolve."
+            #rl34g08hOS9Vdsz2erGIJJ: new_opportunities "New Opportunities: Many techniques that involve checks list one or more uses of (op) specific to the check to activate the technique. Some opportunities are preceded by a requirement for the type of (op), such as \"Air (op).\" This means that a character can only spend (op) to activate this opportunity if they used the specified ring for the check (in the above case, their Air Ring)."
         }
     }
 
@@ -120,13 +74,8 @@ BASE "L5R5e_Core_Techniques" {
     #t3634ff8561d134679638b ^"Kata" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai", #L5R009mN0oP2qR4sT6uV8w ^"Adversary"]
 
-        # Kata are specialized combat techniques that allow martial artists
-        # to vanquish even foes who exceed them in physical strength, speed,
-        # or agility. Some kata are new actions, while others grant new ways
-        # to spend (op).
         #
         # Symbol: (kata)
-        # Available to: Schools listing Kata in technique groups
 
         # Kata have form classifications:
         FORM_CLASSIFICATIONS {
@@ -362,8 +311,6 @@ BASE "L5R5e_Core_Techniques" {
         # CLOSE COMBAT KATA
         # ==================
 
-        # Performed with Martial Arts [Melee] or Martial Arts [Unarmed] weapons.
-
         #i05F04V9dqXMYX8JbjixhJ ^"Coiling Serpent Style" DEF {
             RANK 2
             DESCRIPTION "Entrapping techniques can be performed with many different weapons, from the kusari-gama wielded by brigands to the ornate, hook-headed polearms used by the Phoenix Clan’s greatest masters of the spear."
@@ -465,8 +412,6 @@ BASE "L5R5e_Core_Techniques" {
         # RANGED COMBAT KATA
         # ==================
 
-        # Performed with Martial Arts [Ranged] weapons.
-
         #fuDZ0k1PlVOEZVJ8niH54T ^"Hawk's Precision" DEF {
             RANK 1
             DESCRIPTION "While most bushi are expected to be proficient in the use of the bow, some are terrifyingly accurate, capable of hitting targets well beyond the expected engagement range."
@@ -498,8 +443,10 @@ BASE "L5R5e_Core_Techniques" {
         }
 
         RULES {
-            #L5R303hI5jK7lM9nO1pQ3r: kata_form_classifications
-            #L5R304sT6uV8wX0yZ2aB4c: kata_activated_in_combat
+            #L5R303hI5jK7lM9nO1pQ3r: kata_form_classifications "Kata Categories: The kata in this section are organized alphabetically by their classification: General, Close Combat, and Ranged Combat."
+            #YP3u68CknIh2O90uVQ1tnH: general_kata "General Kata: The following kata are not limited to a specific weapon or combat style, and have close equivalents within most Rokugani martial arts schools."
+            #WZd5J9K1UFAVLJmiyDguTS: close_combat_kata "Close Combat Kata: The following kata are performed with weapons that use the Martial Arts [Melee] or Martial Arts [Unarmed] skill."
+            #BgOkUg6e0mw6efk50Gw8tn: ranged_combat_kata "Ranged Combat Kata: The following kata are performed with weapons that use the Martial Arts [Ranged] skill."
         }
     }
 
@@ -511,32 +458,17 @@ BASE "L5R5e_Core_Techniques" {
         ALIAS "Kiho"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai", #L5R009mN0oP2qR4sT6uV8w ^"Adversary"]
 
-        # Kihō are philosophical and spiritual techniques for aligning
-        # one's inner energy — ki — to that of the wider cosmos. This
-        # allows monks and other seekers of Enlightenment to act in
-        # harmony with the universe's natural course, tapping into its
-        # limitless potential. Kihō are new actions with two parts.
         #
         # Symbol: (kihō)
-        # Available to: Schools listing Kihō in technique groups (monks)
-
-        # Kihō have elemental classifications (Air, Earth, Fire, Water, Void).
 
         STRUCTURE {
             ^"Enhancement" "Persistent effect that lasts until the character chooses to end it, successfully activates another kihō, or the scene ends. Usually goes undetected by untrained onlookers."
             ^"Burst" "Resolves immediately if the user has the requisite number of bonus successes. Generally much more visible (gouts of flame, rumbling earth, gusts of air)."
         }
 
-        # A character can have only one kihō enhancement at a time and
-        # cannot reactivate a kihō if currently benefiting from its enhancement.
-        # Only characters with school ranks in a school listing kihō can purchase them.
-
         # ==================
         # EARTH KIHŌ
         # ==================
-
-        # Focus on securing one's roots, feeling vibrations, and waiting
-        # for the right moment to strike.
 
         #krwQclUIQMQy7qHb1lnnUT ^"Cleansing Spirit" DEF {
             RANK 1
@@ -582,10 +514,6 @@ BASE "L5R5e_Core_Techniques" {
         # AIR KIHŌ
         # ==================
 
-        # Center on hearing the whispers of the world and understanding
-        # their meaning. To align one's ki with air is to detach from
-        # earthly desires, becoming untethered from the world.
-
         #pWKnSQA7eqbEEBJ1SWdn28 ^"Air Fist" DEF {
             RANK 1
             DESCRIPTION "The monk swirls their hands in an intricate pattern, channeling their ki into the air and turning even a placid breeze into a funnel of roaring wind. A gale follows the monk’s strikes, hurling foes back and slamming them against intervening objects."
@@ -621,10 +549,6 @@ BASE "L5R5e_Core_Techniques" {
         # ==================
         # FIRE KIHŌ
         # ==================
-
-        # Function by kindling the energy within, fostering its life-giving
-        # force and channeling it outward. Some monks create flames;
-        # others manipulate heat directly.
 
         #lAQIjKFkZekzmFES1nowZn ^"Breaking Blow" DEF {
             RANK 1
@@ -670,10 +594,6 @@ BASE "L5R5e_Core_Techniques" {
         # WATER KIHŌ
         # ==================
 
-        # Allow practitioners to feel the ebb and flow in all things.
-        # Mastery over one's own ki can be extended to rejuvenate allies
-        # or twist a foe's ki with a gentle strike.
-
         #lUQz8DfxSTaNk9PIeR0qP8 ^"Freezing the Lifeblood" DEF {
             RANK 2
             DESCRIPTION "The monk touches a single point on the target’s body and, with an icy stare, causes the ki within the target to seize up, contracting muscles into a spasmed state and then making them fall slack."
@@ -718,10 +638,6 @@ BASE "L5R5e_Core_Techniques" {
         # VOID KIHŌ
         # ==================
 
-        # Involve seeing through the lie of material reality into the
-        # truth beneath. The subtlest movements can create vast ripples,
-        # and the gentlest strikes can become deadly.
-
         #51Nf3dWxc5uGMhzedo8xx0 ^"Death Touch" DEF {
             RANK 4
             DESCRIPTION "The monk delivers a blow to a single point on their target’s body and gives a dread proclamation that echoes across the ensuing stillness. The lucky are merely wounded by this experience, but a single brush from a master of such a deadly ki technique can be fatal."
@@ -755,9 +671,14 @@ BASE "L5R5e_Core_Techniques" {
         }
 
         RULES {
-            #L5R306oP8qR0sT2uV4wX6y: kiho_require_monk_school
-            #L5R307zA9bC1dE3fG5hI7j: kiho_one_enhancement_at_a_time
-            #L5R308kL0mN2oP4qR6sT8u: kiho_enhancement_and_burst_structure
+            #L5R306oP8qR0sT2uV4wX6y: kiho_available_to_schools_listing_kiho "Only characters with one or more school ranks in a school that lists \"kihō\" among its available techniques can purchase kihō."
+            #L5R307zA9bC1dE3fG5hI7j: kiho_one_enhancement_at_a_time "A character can have only one kihō enhancement effect at a time, and they cannot reactivate a kihō if they are currently benefiting from its enhancement effect."
+            #L5R308kL0mN2oP4qR6sT8u: kiho_enhancement_and_burst_structure "Kihō are techniques that have two types of effects: an enhancement effect that gives a persistent benefit to the user if they succeed on the check, and a burst effect that resolves immediately if the user has the requisite number of bonus successes on the check to activate the kihō.\n\nThe enhancement effect lasts until the character chooses to end it, until they successfully activate another kihō, or until the end of the scene. It usually goes undetected by most onlookers untrained in ki techniques.\n\nThe burst effect of a kihō is generally much more visible, at least in its effects. Gouts of flame, rumbling of earth, or gusts of air that carry the user aloft are hard for anyone to miss—though to the untrained, they often seem miraculous."
+            #GIXYeSQYnfDNwnFHRJvGBa: earth_kiho "Earth Kihō: Earth kihō focus around securing one's roots, feeling the vibrations of all that pass across the ground, and waiting patiently for the right moment to strike."
+            #otJuYbqAMfo0Rn5e1KqqY8: air_kiho "Air Kihō: Air kihō center around hearing the whispers of the world and understanding their meaning. To align one's ki with air is to detach from earthly desires, becoming untethered from the world."
+            #WCygb0EvVTfOdKLMGEoxMP: fire_kiho "Fire Kihō: Fire kihō function by kindling the energy within, fostering its life-giving force and channeling it outward to change the wider world. Some monks create flames with their ki. Others manipulate heat directly, and while their fists might not be shrouded in fire, they burn just as hot."
+            #f62pxDVnk72TCi5quOiZGk: water_kiho "Water Kihō: Water kihō allow their practitioners to feel the ebb and flow in all things, and to alter these currents to their needs. This mastery over their own ki can be extended to that of others, allowing a master of water kihō to rejuvenate an ally with a touch or cause a foe's ki to twist and tangle with a gentle strike."
+            #fbjtOmqS6WYn8SjZSTIuma: void_kiho "Void Kihō: Void kihō involve seeing through the lie of material reality and into the truth that exists beneath. When one perceives the world unclouded by the senses, the subtlest movements can create vast ripples, and the gentlest strikes can become deadly."
         }
     }
 
@@ -768,38 +689,15 @@ BASE "L5R5e_Core_Techniques" {
     #tecc1fc9c1d4da3954c5d2 ^"Invocation" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai", #L5R009mN0oP2qR4sT6uV8w ^"Adversary"]
 
-        # Invocations are prayers and offerings to powerful spirits in
-        # exchange for earthly support. They are practiced primarily by
-        # shugenja, who are elite samurai priests from ancient, secretive
-        # lineages with the power to speak directly to the kami.
-        # Invocations are new actions.
         #
         # Symbol: (invocation)
-        # Available to: Schools listing Invocations in technique groups (shugenja)
-
-        # Invocations have elemental classifications (Air, Earth, Fire,
-        # Water). Note: there are NO Void invocations.
         ELEMENTAL_CLASSIFICATIONS ["Air", "Earth", "Fire", "Water"]
 
         # --- EFFECT KEYWORDS ---
-        # Italicized keywords in invocation effects indicate function:
-        # Augment (change/bolster), Mend (restore), Purify (cast out evil),
-        # Scry (reveal info), Smite (cause harm), Summon (create something).
 
         # --- PROPER OFFERINGS ---
-        # A shugenja who makes a material offering alongside an invocation
-        # may reroll up to 3 rolled dice showing blank results. The offering
-        # is consumed. Offerings by spirit type:
-        #   Air: Incense, feathers, flowers
-        #   Earth: Salt, soil/stones from sacred places, seeds
-        #   Fire: Kindling, paper, ash, small flammable objects
-        #   Water: Coins, seashells, precious materials, seaweed, sake
-        #   Fortunes: Texts, food, origami, works of art
-        #   Ancestor Spirits: Food, incense, sake or other libations
 
         # --- CHANNELING ---
-        # Allows delaying completion of an invocation, carrying results
-        # over to the next invocation of the same Element.
         CHANNELING {
             ^"Choosing to Channel" "After Step 5: Choose Kept Dice, the character may channel any number of kept dice. Instead of resolving the rest of the check, the character reserves these dice (tracking faces shown). The check ends with no dice results or effects resolved (including success or failure)."
             ^"Using Channeled Dice" "On the character's next turn, if they perform an invocation of the same Element, during Step 3: Assemble and Roll Dice Pool, roll one fewer (ring) per reserved (ring) and one fewer (skill) per reserved (skill), then add channeled dice set to their original results."
@@ -808,9 +706,6 @@ BASE "L5R5e_Core_Techniques" {
         }
 
         # --- SPIRITUAL BACKLASH ---
-        # When 3+ (st) symbols on kept dice while performing an invocation:
-        # 3 fatigue, cannot use invocations of that element until end of
-        # scene, plus element-specific effect.
         SPIRITUAL_BACKLASH {
             "Trigger: 3 or more (st) symbols on kept dice while performing an invocation."
             "Base: 3 fatigue; cannot use invocations of that element again until end of scene."
@@ -821,26 +716,10 @@ BASE "L5R5e_Core_Techniques" {
         }
 
         # --- IMPORTUNE INVOCATIONS ---
-        # Once per scene, a character who knows 1+ invocations may attempt
-        # an unlearned invocation (even without prerequisites) by making a
-        # valuable offering to the kami (rare or unique item, lost forever).
-        # TN increased by 1 + 1 per school rank the prerequisite exceeds
-        # the character's rank. May channel as usual but perform only once.
 
         # --- PREPARED INVOCATIONS ---
-        # Downtime activity: bind an invocation into an expendable vessel.
-        # Only one prepared invocation at a time (preparing another fades
-        # the first). Anyone holding it can unleash via listed activation.
-        # Check uses the invocation's ring and TN.
-        #
-        # Wards: Parchment marked by mystic symbols.
-        #   Preparation Skill: ^"Composition"
-        #   Ingredients: Calligraphy set, 1 bu of parchment.
-        #   Place on any surface, write a triggering condition. When
-        #   fulfilled, the invocation activates at its location.
 
         # --- SPENDING (op) FOR INVOCATIONS ---
-        # General (op) options by element (GM decides applicability):
         INVOCATION_OPPORTUNITIES {
             #cDevpZXtxqd46NJqprp4rm ^"Air" DEF {
                 "Air (op)(op)+: Choose one additional target per (op)(op) spent this way."
@@ -875,10 +754,6 @@ BASE "L5R5e_Core_Techniques" {
         # ==================
         # AIR INVOCATIONS
         # ==================
-
-        # Air kami are fickle and capricious beings, but none are nimbler
-        # or more subtle. They bestow lightness of step, nimbleness of
-        # mind, and the ability to enhance or obscure sight.
 
         #NplLa67DjUuIrOWZjhEO5V ^"Blessed Wind" DEF {
             RANK 1
@@ -1079,9 +954,6 @@ BASE "L5R5e_Core_Techniques" {
         # ==================
         # EARTH INVOCATIONS
         # ==================
-
-        # Earth invocations focus on protection, defense against the
-        # Shadow, and slow but inevitable destruction.
 
         #VcpohGGPOCpYJbC7sXyawc ^"Armor of Earth" DEF {
             RANK 1
@@ -1291,10 +1163,6 @@ BASE "L5R5e_Core_Techniques" {
         # FIRE INVOCATIONS
         # ==================
 
-        # Fire kami are ferocious and direct, and invocations of fire can
-        # be equally ferocious. These prayers are some of the most
-        # destructive a shugenja can summon.
-
         #86DyTuZ2YGO79E8j8SfbMT ^"Armor of Radiance" DEF {
             RANK 2
             DESCRIPTION "By appealing to the fire kami that slumber within an object, a shugenja can turn a set of armor into a weapon. The fire kami’s creative energy expands rapidly as the incantation ends, causing shimmering radiance to burst forth into a halo of fire that encircles the armor and the wearer, searing their foes."
@@ -1471,9 +1339,6 @@ BASE "L5R5e_Core_Techniques" {
         # ==================
         # WATER INVOCATIONS
         # ==================
-
-        # Water invocations grant the shugenja speed and quick reflexes,
-        # as well as the ability to heal injuries and calm the fevered mind.
 
         #PwLDwQgQYFflDkoPz3WLcd ^"Bō of Water" DEF {
             RANK 1
@@ -1652,14 +1517,19 @@ BASE "L5R5e_Core_Techniques" {
         }
 
         RULES {
-            #L5R310gH2iJ4kL6mN8oP0q: invocations_require_shugenja_school
-            #L5R311rS3tU5vW7xY9zA1b: invocations_use_theology_check
-            #L5R312cD4eF6gH8iJ0kL2m: invocations_no_void_element
-            #L5R313nO5pQ7rS9tU1vW3x: importune_invocations
-            #L5R310aB2cD4eF6gH8iJ1k: proper_offerings_reroll_blanks
-            #L5R310bS3tU5vW7xY9zA2c: channeling_reserved_dice
-            #L5R310cD4eF6gH8iJ0kL3m: spiritual_backlash_3_strife_on_kept
-            #L5R310dO5pQ7rS9tU1vW4x: prepared_invocations_and_wards
+            #L5R311rS3tU5vW7xY9zA1b: invocation_checks_specify_a_ring "Check: Because invocations entail calling upon specific kami, each one requires a particular approach to be executed properly. As such, the checks to perform invocations almost always specify a ring to be used rather than leaving it to the GM's interpretation of the player's narration."
+            #L5R313nO5pQ7rS9tU1vW3x: importune_invocations "Importune Invocations: The kami can sometimes be cajoled to do extraordinary things. This is known as importuning an invocation, and allows characters to perform invocations they could not normally.\n\nOnce per scene, a character who knows one or more invocation techniques may choose one invocation technique that they have not learned (even if they do not meet the prerequisites) and make an offering to the kami responsible for that power. The offering must be something interesting to the kami and valuable to the character. Whether or not something is sufficiently important is left to the GM's discretion, but generally, the item should at least be rare, if not unique. The item is lost forever as the kami absconds with it.\n\nIf the GM determines that the kami is satisfied with this offering, the character may perform the action associated with that technique. However, the TN is increased by 1, plus 1 for each school rank by which the prerequisite exceeds the character's current school rank. The character may channel this invocation as usual (see Channeling), but they can only perform the action once."
+            #L5R310aB2cD4eF6gH8iJ1k: proper_offerings "Proper Offerings: Shugenja enjoy a special relationship with the kami, even over and above other priests. While anyone can theoretically reach out to the kami and receive their blessing, and all priests train in the art of doing so to some degree, only shugenja know the secrets required to unlock the pinnacle of these powers. The shugenja schools dedicate considerable resources to safeguarding their secrets, and they crush any who try to steal their sacred lore.\n\nAt the heart of even the most potent invocation is a simple transaction of faith in exchange for power. A shugenja's offering symbolizes their devotion to the spirits who grant them their incredible abilities. While material offerings might seem odd for spiritual beings, these sacraments are extremely efficacious. A trained shugenja can do without them, but it makes performing the invocation more difficult, as the shugenja's own spirit must bear the burden in place of the offering.\n\nA shugenja who makes a material offering alongside an invocation may reroll up to 3 rolled dice showing blank results. The material offering is consumed in this process."
+            #L5R310bS3tU5vW7xY9zA2c: channeling "Channeling: Appealing to the kami can be a lengthy process; even when a character is in a hurry, some spirits cannot be rushed. Patience is key when dealing with the kami, lest the kami in turn grow impatient with the shugenja.\n\nThe actual act of saying the words, performing the gestures, or undertaking the rites that activate an invocation comes only after a process of attuning oneself to the powers that make the magic possible. Channeling is a way for a character to delay the completion of an invocation, allowing them to carry results over from one check to the next invocation of the same Element.\n\nWhen making a check to perform an invocation, after Step 5: Choose Kept Dice, the character may choose to channel any number of kept dice. Instead of resolving the rest of the check, the character reserves these dice, making sure to keep track of the faces they are showing. The check ends, and the character does not resolve any dice results or effects, including success or failure.\n\nDuring the character's next turn, if they perform an invocation of the same Element, they may tap into their channeled dice. During Step 3: Assemble and Roll Dice Pool, the character rolls one fewer (ring) for each reserved (ring) and one fewer (skill) for each reserved (skill), then adds the channeled dice to the results (set to the results they were showing when channeled).\n\nA character may channel any number of times during a conflict. Outside of a conflict, a character can channel only once, and it doubles the time the invocation takes.\n\nIf a character with channeled dice performs any action other than an invocation of the same Element as the one from which they channeled the dice, all of their channeled dice are lost.\n\nIf a character becomes Dazed, Silenced, or Unconscious while channeling, their reserved dice are lost."
+            #L5R310cD4eF6gH8iJ0kL3m: spiritual_backlash "Spiritual Backlash: Shugenja wield forces beyond mortal ken, and they are extensively trained to interact with the kami without stirring their ire. However, even the most practiced shugenja risks unintended consequences when appealing to the kami. Further, if the shugenja's soul is in turmoil, the power of the kami they call forth will be similarly disordered. A shugenja whose spirit is unsettled might call forth a destructive maelstrom when beseeching a lake for a gentle current.\n\nWhen a shugenja's check generates 3 or more (st) symbols on kept dice while the shugenja is performing an invocation, they suffer spiritual backlash. The shugenja receives 3 fatigue as the raw power overtaxes their body, and they cannot use invocations of that element again until the end of the scene as the kami withdraw in the wake of their wrath. Finally, they suffer an additional effect based on the element:\n\nAir: The GM chooses up to two additional characters in range who become targets (or the GM may pick a player to choose, for an NPC).\n\nFire: The technique targets each character in range. At the GM's discretion, the terrain at range 0–2 catches ablaze, becoming Dangerous (see page 267).\n\nEarth: The terrain at range 0–3 of the character performing the invocation gains the Imbalanced (Earth) terrain quality (see page 267) for a number of days equal to the shugenja's strife.\n\nWater: The terrain at range 0–1 of the character performing the invocation turns to muck and becomes Entangling (see page 267)."
+            #L5R310dO5pQ7rS9tU1vW4x: prepared_invocations_and_wards "Prepared Invocations: With their scrolls and other proper materials, shugenja can bind invocations into expendible vessels, creating prepared invocations they or others can activate immediately later.\n\nBy default, a shugenja can have only one prepared invocation; if they prepare another, the blessing of the kami fades from the first receptacle. Anyone holding a prepared invocation can unleash it via its listed activation.\n\nPreparing an invocation is a downtime activity that requires a preparation check, which sets the skill used, and ingredients. The check uses the ring and TN of the invocation. After making the check, the player should record the results.\n\nWards are parchment marked by mystic symbols.\n\nPreparation Skill: Composition\n\nIngredients: Calligraphy set, 1 bu of parchment.\n\nActivation: A character can place a ward on any surface to which it can be affixed. They write a condition on the ward, specifying circumstances under which it is unleashed. When the ward's condition is fulfilled, the invocation activates at its current location."
+            #xXfq2I04GMIQw5WBu2eEkF: invocation_effect_keywords "Invocation Effect Keywords: Each invocation contains one or more italicized keywords in its effects. These are a reminder of how the invocation functions, and some abilities refer to them. The ones in this book include:\n\nAugment: Invocations that change or bolster their targets\n\nMend: Invocations that restore their targets\n\nPurify: Invocations that cast out evil spirits\n\nScry: Invocations that reveal information or show glimpses of other places and times\n\nSmite: Invocations that cause harm to targets\n\nSummon: Invocations that create something"
+            #rovUJCpc9WXTZ2SnzOup2A: spending_opportunities_on_invocations "Spending (op) on Invocations: Invocations have numerous new ways to spend (op), but there are also a number of suggested, general new (op) for invocations of each element. The GM is the final arbiter of whether a particular (op) from this list can be applied to a given invocation."
+            #jnCTJzUr04tOqIpnS3qrQc: spiritual_offerings "Spiritual Offerings: Different types of spirits prefer different offerings, some examples of which are provided below:\n\nAir Spirits: Incense, feathers, flowers\n\nEarth Spirits: Salt, soil or stones from sacred places, seeds\n\nWater Spirits: Coins, seashells, precious materials, seaweed, sake\n\nFire Spirits: Kindling, paper, ash, small flammable objects\n\nFortunes: Texts, food, origami, works of art\n\nAncestor Spirits: Food, incense, sake or other libations"
+            #WTMSEUfVqvFkNW4wyqtWKF: air_invocations "Air Invocations: The air kami are fickle and capricious beings, but none are nimbler or more subtle. They can bestow lightness of step, nimbleness of mind, and the ability to enhance or obscure sight."
+            #SuHztpsWAXpCTMIgZhSToE: earth_invocations "Earth Invocations: Earth invocations focus on protection, defense against the Shadow, and slow but inevitable destruction."
+            #sEgwTwWVExTVQk65GUVxs8: fire_invocations "Fire Invocations: The fire kami are ferocious and direct, and invocations of fire can be equally ferocious. These prayers are some of the most destructive a shugenja can summon."
+            #JRmZEd0Z0HcqDpPwrq8LGR: water_invocations "Water Invocations: Water invocations grant the shugenja speed and quick reflexes, as well as the ability to heal injuries and calm the fevered mind."
         }
     }
 
@@ -1670,17 +1540,8 @@ BASE "L5R5e_Core_Techniques" {
     #t182ee2283e3f5db3e29a1 ^"Ritual" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai", #L5R009mN0oP2qR4sT6uV8w ^"Adversary"]
 
-        # Rituals are religious ceremonies performed to appease the kami
-        # and draw forth their blessings. Unlike invocations, rituals are
-        # not the rarefied secrets of shugenja schools; instead, they are
-        # day-to-day practices performed by many religious functionaries
-        # throughout Rokugan. Most priests, shrine keepers, and court
-        # mystics know and perform rituals regularly. Many monks and
-        # shugenja also know how to perform rituals.
         #
         # Symbol: (ritual)
-        # Available to: Schools listing "rituals" among available techniques
-        # Activation: During downtime (and potentially other scenes at GM's discretion)
 
         # ----- Rituals (alphabetical) -----
 
@@ -1740,11 +1601,6 @@ BASE "L5R5e_Core_Techniques" {
             }
         }
 
-        RULES {
-            #L5R314yZ6aB8cD0eF2gH4i: rituals_performed_during_downtime_or_other_scenes_at_gm_discretion
-            #L5R315jK7lM9nO1pQ3rS5t: rituals_available_to_schools_listing_rituals
-            #L5R316uV8wX0yZ2aB4cD6e: rituals_cannot_remove_taint_once_taken_hold
-        }
     }
 
     # ===========================
@@ -1755,21 +1611,10 @@ BASE "L5R5e_Core_Techniques" {
         ALIAS "Shuji"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai", #L5R009mN0oP2qR4sT6uV8w ^"Adversary"]
 
-        # Shūji are social techniques, leveraging that most powerful of
-        # human tools: communication. Shūji can be used in intrigues,
-        # duels, skirmishes, and other types of conflicts as common sense
-        # and the GM's discretion dictate.
         #
         # Symbol: (shūji)
-        # Available to: Schools listing "shūji" among available techniques
-        # Elemental classifications: Air, Earth, Fire, Water, Void
 
         # ----- Air Shūji -----
-        # Air shūji are indirect, probing, and sometimes teasing. This
-        # style of conversation revolves around setting up subtle traps
-        # for others to fall into, then exploiting them. Air shūji hinge
-        # on details rather than the bigger picture, controlling the scope
-        # of conversation to deflect contrary evidence or logical argumentation.
 
         #VWaekx4sOx9p31xOOeVWoA ^"Artisan's Appraisal" DEF {
             RANK 2
@@ -1862,10 +1707,6 @@ BASE "L5R5e_Core_Techniques" {
         }
 
         # ----- Earth Shūji -----
-        # Earth shūji focus on building others up through a combination of
-        # support, expectation, and pressure when needed. A character using
-        # this rhetoric speaks at a measured pace, weighing words carefully
-        # and developing an argument from the foundation up.
 
         #OeYj4seb4GneHX6VlWs6m3 ^"Ancestry Unearthed" DEF {
             RANK 1
@@ -1950,11 +1791,6 @@ BASE "L5R5e_Core_Techniques" {
         }
 
         # ----- Fire Shūji -----
-        # Fire shūji focus on provocation in the most direct sense, eliciting
-        # a reaction immediately and with fervor. Anger, joy, despair, and the
-        # burning desire for justice are all tools of one who wields Fire shūji.
-        # A speaker can illuminate injustice or set hearts ablaze with pride,
-        # but it can also blind people to the wider situation or consequences.
 
         #2VbFS6xaG13cbbOk5miwjo ^"Bravado" DEF {
             RANK 4
@@ -2047,12 +1883,6 @@ BASE "L5R5e_Core_Techniques" {
         }
 
         # ----- Water Shūji -----
-        # Water shūji play to the heart rather than the mind, calling upon the
-        # listener to let their emotions guide them and be swept along without
-        # question. Camaraderie, shame, guilt, material needs, and base desires
-        # are all the domain of Water shūji. A skilled courtier can draw even
-        # the harshest enemies to the negotiating table by making it the path
-        # of least resistance.
 
         #NQn7sBvlEBYJctesfGDqZH ^"All in Jest" DEF {
             RANK 1
@@ -2131,10 +1961,6 @@ BASE "L5R5e_Core_Techniques" {
         }
 
         # ----- Void Shūji -----
-        # Void shūji revolve around understanding and expressing the inner
-        # mysteries of the universe to help oneself and others move toward
-        # Enlightenment, selfless goals, or otherworldly ends. Some Void
-        # shūji are limited to a specific clan (listed with RESTRICTION).
 
         #kVXN7d6hHmaHfUcKdInRxO ^"All Arts Are One" DEF {
             RANK 3
@@ -2243,9 +2069,12 @@ BASE "L5R5e_Core_Techniques" {
         }
 
         RULES {
-            #L5R317fG9hI1jK3lM5nO7p: shuji_social_techniques_usable_in_intrigues_duels_skirmishes_and_other_conflicts
-            #L5R318qR0sT2uV4wX6yZ8a: shuji_available_to_schools_listing_shuji
-            #L5R319bC1dE3fG5hI7jK9l: shuji_organized_by_elemental_classification
+            #L5R319bC1dE3fG5hI7jK9l: shuji_organized_by_elemental_classification "The shūji in this section are organized alphabetically within their elemental classification."
+            #cSNgQMLcYpOjn7Ez2OtzJx: air_shuji "Air Shūji: Air shūji are indirect, probing, and sometimes teasing. More than other forms of rhetoric, this style of conversation tends to revolve around setting up subtle traps in conversation for others to fall into before exploiting them for all they are worth. Air shūji thus tend to hinge on details rather than the bigger picture; they control the scope of the conversation to deflect away from contrary evidence or logical argumentation."
+            #pvTiPpOrretVpD5cRvsp6N: earth_shuji "Earth Shūji: Earth shūji focus on building others up through a combination of support, expectation, and pressure when needed. A character using this sort of rhetoric is likely to speak at a measured pace, weighing words carefully and developing an argument from the foundation up."
+            #D9MCW6SDNWDnrDN7ApULit: fire_shuji "Fire Shūji: Fire shūji focus on provocation in the most direct sense, eliciting a reaction immediately and with fervor. Anger, joy, despair, and the burning desire for justice are all tools of one who wields Fire shūji. With it, a speaker can illuminate injustice or set hearts ablaze with pride, but it can also blind people to the wider situation or the consequences of their actions."
+            #UkHcQhtMOZKaJZcQkRna21: water_shuji "Water Shūji: Water shūji play to the heart rather than the mind, calling upon the listener to let their emotions guide them and be swept along without question. Camaraderie, shame, and guilt, as well as material needs and base desires, are all the domain of Water shūji. With these techniques, a skilled courtier can draw even the harshest enemies to the negotiating table by making it the path of least resistance."
+            #XqdJhwTtfwDftvl9kWSWKg: void_shuji "Void Shūji: Void shūji revolve around understanding and expressing the inner mysteries of the universe to help oneself and others move toward Enlightenment, selfless goals, or otherworldly ends.\n\nSome Void shūji are limited to a specific clan, which is listed in the header. This means that only a character from that clan can take that shūji."
         }
     }
 
@@ -2257,55 +2086,21 @@ BASE "L5R5e_Core_Techniques" {
         ALIAS "Maho"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai", #L5R009mN0oP2qR4sT6uV8w ^"Adversary"]
 
-        # Kansen are evil spirits, twisted kami that spill forth from Jigoku
-        # or were once kami corrupted within Rokugan. Those mortals who dare
-        # to wield the evil sorcery called mahō are known as mahō-tsukai.
-        # Reviled by society and hunted by sworn orders, mahō-tsukai often
-        # act subtly, disguising their corruption beneath a pleasant façade.
         #
         # Symbol: (mahō)
-        # Available to: Anyone with access to evil lore (ancient tome, kansen
-        #   mentor, or ^"Shadowlands Taint" disadvantage) and the will to
-        #   seize power at any cost
 
         # --- Mahō Framework Rules ---
 
         PROPER_SACRIFICES {
-            # Kansen require sacrifice to fuel mahō — usually blood (own or
-            # another's), but particularly evil acts can also suffice at GM's
-            # discretion.
-            #
-            # Exceptional sacrifice (killing a human victim or crossing a
-            # vital personal line): may reroll up to 3 blank rolled dice
-            # during the check. The offering is consumed.
         }
 
         SPIRITUAL_BACKLASH {
-            # When a mahō-tsukai generates 3 or more (st) on kept dice while
-            # performing a mahō technique, the mahō-tsukai suffers a critical
-            # strike with severity equal to their current strife. Then, the GM
-            # assigns the ^"Shadowlands Taint" disadvantage to one of the
-            # mahō-tsukai's rings that does not already have it.
         }
 
         CHANNELING_MAHO {
-            # Like invocations, mahō techniques can be channeled (see
-            # ^"Channeling"). However, for each die a character reserves
-            # while channeling a mahō technique, the character receives
-            # 1 fatigue.
         }
 
         IMPORTUNE_MAHO {
-            # Once per scene, a ^"Tainted" character may choose one mahō
-            # technique they have not learned (even if they do not meet the
-            # prerequisites) and make a sacrifice to the kansen. To importune
-            # mahō, a character must kill a human victim or cross a previously
-            # inviolable personal line (betray a close friend, abandon a
-            # personal ideal, allow despair to overwhelm them entirely). If
-            # the GM determines the kansen is satisfied, the character may
-            # perform the action associated with that technique. The character
-            # may channel this mahō as usual but can only perform the action
-            # once.
         }
 
         # --- Mahō Techniques ---
@@ -2370,11 +2165,11 @@ BASE "L5R5e_Core_Techniques" {
         }
 
         RULES {
-            #L5R320mN2oP4qR6sT8uV0w: maho_forbidden_throughout_empire_punishable_by_death
-            #L5R321xY3zA5bC7dE9fG1h: maho_requires_blood_sacrifice_exceptional_sacrifice_rerolls_3_blanks
-            #L5R322iJ4kL6mN8oP0qR2s: maho_spiritual_backlash_critical_strike_plus_taint
-            #L5R323tU5vW7xY9zA1bC3d: maho_channeling_incurs_1_fatigue_per_reserved_die
-            #L5R324eF6gH8iJ0kL2mN4o: maho_importune_once_per_scene_requires_exceptional_sacrifice
+            #L5R321xY3zA5bC7dE9fG1h: proper_sacrifices "Proper Sacrifices: Kansen are far more mercenary by nature than kami, for loyalty is anathema to their very being. As such, a mahō-tsukai must always provide a sacrifice to fuel mahō techniques. This is usually blood (their own or someone else's), but particularly evil acts can in and of themselves function as sacrifices, at the GM's discretion. Small amounts of blood can satisfy the kansen, but exceptional sacrifices (killing a human victim or crossing a vital personal line) draw forth their greatest powers.\n\nA mahō-tsukai who makes an exceptional sacrifice alongside a mahō technique may reroll up to three blank rolled dice during the check. The material offering is consumed in this process."
+            #L5R322iJ4kL6mN8oP0qR2s: maho_spiritual_backlash "Spiritual Backlash: Kansen ceaselessly corrupt those who wield their power, turning mahō-tsukai to Fu Leng's wicked ends whether they know it or not.\n\nWhen a mahō-tsukai generates 3 or more (st) symbols on kept dice while performing a mahō technique, the mahō-tsukai suffers a critical strike with severity equal to their current strife. Then, the GM assigns the Shadowlands Taint disadvantage to one of the mahō-tsukai's rings that does not already have it."
+            #L5R323tU5vW7xY9zA1bC3d: channeling_maho "Channeling Mahō: Like invocations, mahō techniques can be channeled (see Channeling, on page 189). However, holding such potent negative energy inside one's body incurs a cost: for each die a character reserves while channeling a mahō technique, the character receives 1 fatigue."
+            #cCre0O6Adxiqeg3pr2s9AM: learning_maho "Learning Mahō: Unlike other kami, kansen respond to the call of anyone with the knowledge needed to invoke their power, as long as their price is paid. However, the knowledge to call them is in itself corruptive.\n\nTheoretically, anyone can learn mahō, provided they have access to a suitable source of evil lore (such as an ancient tome, a kansen mentor, or the instinctive knowledge imparted by a Shadowlands Taint disadvantage) and the will to seize power at any cost."
+            #YV6cQJO7tRjZl8WXmDUiXM: importune_maho "Importune Mahō: Kansen are far easier to entice than kami—provided one has the stomach to pay their grisly price.\n\nOnce per scene, a Tainted character may choose one mahō technique that they have not learned (even if they do not meet the prerequisites) and make a sacrifice to the kansen responsible for this power. To importune a mahō technique, a character must kill a human victim or cross a previously inviolable personal line. A character might betray a close friend, abandon a personal ideal, or allow despair to overwhelm them entirely.\n\nIf the GM determines that the kansen is satisfied with this exceptional offering, the character may perform the action associated with that technique. The character may channel this mahō as usual (see Channeling Mahō) but they can only perform the action once."
         }
     }
 
@@ -2385,15 +2180,8 @@ BASE "L5R5e_Core_Techniques" {
     #t1539aa6f9f1cf2e77957e ^"Ninjutsu" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai", #L5R009mN0oP2qR4sT6uV8w ^"Adversary"]
 
-        # Ninjutsu are secret techniques passed down from shinobi masters
-        # to their students. They are hardly ever committed to paper, and
-        # are written only in the minds of their practitioners. Sneaking
-        # through shadows, poisoning foes, and vanishing without a trace —
-        # to employ these tactics is to stray from the path of Bushidō, but
-        # some are willing to pay this price for their family, clan, and empire.
         #
         # Symbol: (ninjutsu)
-        # Available to: Schools listing "ninjutsu" among available techniques
 
         #Fw3nwqrRGKBgIpzO0vFakT ^"Skulk" DEF {
             RANK 1
@@ -2440,11 +2228,6 @@ BASE "L5R5e_Core_Techniques" {
             }
         }
 
-        RULES {
-            #L5R324eF6gH8iJ0kL2mN4o: ninjutsu_available_to_schools_listing_ninjutsu
-            #L5R325pQ7rS9tU1vW3xY5z: ninjutsu_secret_oral_tradition_rarely_written
-            #L5R326aB8cD0eF2gH4iJ6k: ninjutsu_strays_from_bushido
-        }
     }
 
     # ===========================
@@ -2458,12 +2241,8 @@ BASE "L5R5e_Core_Techniques" {
         # sourcebooks (Celestial Realms, etc.). Included here as a
         # category placeholder.
         #
-        # Rare and dangerous techniques that manipulate the Void itself.
-        # Practiced by ishiken (Void shugenja) and those who commune
-        # directly with the nothingness between elements.
         #
         # Symbol: (inversion)
-        # Available to: Schools listing Inversions (primarily Void shugenja)
 
         EXAMPLES {
             ^"Void Awakening" RANK 1 "(inversion). Action: Sense supernatural presences and Void disturbances."
@@ -2472,9 +2251,8 @@ BASE "L5R5e_Core_Techniques" {
         }
 
         RULES {
-            #L5R327lM9nO1pQ3rS5tU7v: inversions_require_ishiken
-            #L5R328wX0yZ2aB4cD6eF8g: inversions_cause_fatigue_on_strife
-            #L5R329hI1jK3lM5nO7pQ9r: inversions_unpredictable_consequences
+            #L5R327lM9nO1pQ3rS5tU7v: inversions_available_to_schools_listing_inversions "Only characters with one or more school ranks in a school that lists \"Inversions ((inversion))\" among its available techniques can purchase inversions."
+            #uKzmZQfiwmcxM0EBTXyPZe: inversions "Inversions: Inversions ((inversion)) are techniques used by ishiken and other Void wielders. They are not the invocations used by shugenja (though some ishiken can also use invocations), as they do not appeal to the spirits for power over the natural world or over the Spirit Realms. Instead, an inversion is the application of human will upon a fluid point in the fabric of the cosmos, temporarily or permanently altering the state of reality in the area that is around the wielder when they perform the inversion. Inversions are often quite subtle if executed properly, evading the notice of all but the spiritually sensitive, who feel the twist in reality as a chill down their spine, a mysterious sound of dripping water, or a sudden sense of déjà vu."
         }
     }
 
@@ -2489,16 +2267,9 @@ BASE "L5R5e_Core_Techniques" {
         # sourcebooks (Celestial Realms, etc.). Included here as a
         # category placeholder.
         #
-        # Contemplative techniques combining meditation and spiritual
-        # focus. Mantras bridge kihō and invocations.
         #
         # Symbol: (mantra)
-        # Available to: Sourcebook schools (Celestial Realms, etc.)
 
-        RULES {
-            #L5R330sT2uV4wX6yZ8aB0c: mantras_meditation_focus
-            #L5R331dE3fG5hI7jK9lM1n: mantras_bridge_kiho_invocations
-        }
     }
 
     # Note: Technique prerequisites are now described within the

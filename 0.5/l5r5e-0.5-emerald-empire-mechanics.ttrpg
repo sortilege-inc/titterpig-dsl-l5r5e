@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Emerald Empire: New Player Options"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -18,11 +18,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # The Imperial families serve the Emperor directly.
-        # They function as a clan for mechanical purposes but
-        # are not part of any Great Clan. They hold special
-        # authority and responsibilities within the Celestial Order.
-
         PROPERTIES {
             ^"Clan Name" STRING "Imperial" FIXED
             ^"Clan Type" STRING "Imperial"
@@ -38,7 +33,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         }
 
     }
-
 
     # ===========================
     # IMPERIAL FAMILIES
@@ -95,7 +89,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         }
     }
 
-
     # ===========================
     # NEW SCHOOLS
     # ===========================
@@ -104,11 +97,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
     ^"Miya Cartographer" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # Imperial cartographers who travel throughout the Empire
-        # mapping territories. They have standing authority to cross
-        # clan boundaries freely. Trained in both academic and
-        # wilderness survival skills.
 
         PROPERTIES {
             ^"Clan" STRING "Imperial"
@@ -122,7 +110,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA CHOOSE 1 [^"Striking as Earth", ^"Warrior's Resolve"]
@@ -202,11 +189,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Imperial messengers who deliver edicts and messages
-        # throughout the Empire. They speak with the Emperor's
-        # authority and travel freely across all boundaries. Known
-        # for speed, objectivity, and strict reporting.
-
         PROPERTIES {
             ^"Clan" STRING "Imperial"
             ^"School Name" STRING "Miya Herald" FIXED
@@ -219,7 +201,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             SHUJI CHOOSE 1 [^"Cadence", ^"Honest Assessment"]
@@ -300,11 +281,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Consummate politicians who advance Imperial agendas
-        # across the courts of the Empire. They earn favors,
-        # cultivate allies, and destroy enemies with ruthless
-        # political acumen. The ends justify the means.
-
         PROPERTIES {
             ^"Clan" STRING "Imperial"
             ^"School Name" STRING "Otomo Schemer" FIXED
@@ -317,7 +293,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             SHUJI CHOOSE 1 [^"Courtier's Resolve", ^"Stirring the Embers"]
@@ -396,11 +371,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # The spiritual protectors of the Emperor, specializing in
-        # astrology, divination, fortune-telling, and ward creation.
-        # They anticipate and preempt supernatural threats, working
-        # closely with the Palace Guard.
-
         PROPERTIES {
             ^"Clan" STRING "Imperial"
             ^"School Name" STRING "Seppun Astrologer" FIXED
@@ -413,7 +383,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             INVOCATION ^"Bind the Shadow"
@@ -495,12 +464,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # The Emperor's personal bodyguards, among the most
-        # accomplished warriors in the Empire. Trained for defense,
-        # they react instantly to threats with supreme patience and
-        # awareness. Their iaijutsu skill serves only to counter
-        # sudden attacks, not for formal dueling.
-
         PROPERTIES {
             ^"Clan" STRING "Imperial"
             ^"School Name" STRING "Seppun Palace Guard" FIXED
@@ -513,7 +476,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA CHOOSE 1 [^"Iaijutsu Cut: Crossing Blade", ^"Iaijutsu Cut: Rising Blade"]
@@ -591,11 +553,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Monks who revere the Fortunes, seeking to understand the
-        # surrounding world through service to divine spirits. They
-        # cannot commune with kami like shugenja, but earn the favor
-        # of a Fortune who grants them invocations with bonus successes.
-
         PROPERTIES {
             ^"School Name" STRING "Fortunist Monk Order" FIXED
             ^"Roles" LIST ["Monk"]
@@ -607,7 +564,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA ^"Open-Hand Style"
@@ -686,12 +642,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Devotees of Shinsei's inward-looking philosophy, seeking
-        # Enlightenment by understanding that all divisions between
-        # elements are illusory. They overcome these illusory
-        # limitations to create seemingly supernatural effects
-        # through kihō techniques.
-
         PROPERTIES {
             ^"School Name" STRING "Shinseist Monk Order" FIXED
             ^"Roles" LIST ["Monk"]
@@ -703,7 +653,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata", "Kihō", "Rituals"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA ^"Striking as Earth"
@@ -780,12 +729,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Fox spirits from Chikushudo who have chosen to live as
-        # humans in the mortal world. They may be full-blooded
-        # kitsune or descendants of a kitsune-human union. They
-        # can shapeshift between forms and possess innate magical
-        # abilities. Not a formal samurai school.
-
         PROPERTIES {
             ^"School Name" STRING "Kitsune Impersonator" FIXED
             ^"Clan" STRING "Fox"
@@ -799,7 +742,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
             ^"Starting Disadvantage" STRING "False Identity"
         }
-
 
         STARTING_TECHNIQUES {
             INVOCATION ^"Nature's Touch"
@@ -874,11 +816,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Secret agents of the Kolat conspiracy devoted to ending
-        # Rokugani reverence for the Celestial Heavens and establishing
-        # humanity as its own ruler. They operate as assassins for hire,
-        # with earnings funding the conspiracy. Not a formal school.
-
         PROPERTIES {
             ^"School Name" STRING "Kolat Saboteur" FIXED
             ^"Roles" LIST ["Shinobi"]
@@ -891,7 +828,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Disadvantage" STRING "False Identity"
             ^"Techniques Available" LIST ["Kata", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA ^"Veiled Menace Style"
@@ -1409,11 +1345,6 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
     # source (pages 248-253)
     ^"Emerald Empire Titles" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # Titles represent important narrative events and new duties.
-        # Characters study skills and techniques outside their school
-        # via the title's advancement table. Completing a title grants
-        # the title ability.
 
         ENTRIES {
             #9CQXynRmsZhECY4Lgu5sWP ^"Advisor" DEF {

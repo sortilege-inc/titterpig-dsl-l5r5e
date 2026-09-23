@@ -17,7 +17,7 @@
 # Desperate Bandits) live in the .lore / .codex.
 
 EXTENSION "L5R5e_ImperfectLand_Cast" {
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-03"
     DEPENDS_ON "L5R5e_Core_Core"
@@ -26,8 +26,6 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
 
     ^"Iwa" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # A militant sōhei, Abbot of the southern branch of the Four Temples, who
-        # has long tied her fate to Abbot Naigen and the anti-Perfect Land faction.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 9
@@ -54,14 +52,14 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
         ^"Master Sōhei" DEF { ^"Effect" STRING "Iwa may sustain two kihō enhancement effects at the same time and may perform any polearm-related kata." }
         ^"Conquering the Mountain" DEF { ^"Effect" STRING "Iwa's blows make the world tremble. She starts any duel, skirmish, or mass battle conflict scene with the Way of the Earthquake kihō's enhancement effect activated." }
         #te1429a15a1b6afd84f528 ^"Trial of Fire" DEF { ^"Effect" STRING "The first time Iwa would otherwise become Incapacitated during a scene, she refuses to accept defeat and is able to activate the effects of the kihō The Body Is an Anvil, with its burst effect aimed at whoever has dared to approach her. Then, she removes fatigue until it equals half her endurance." }
+
+        RULES {
+            #a76VwRxCzPI7cmbpOpRaBY: background "This militant sōhei, likewise born into the Phoenix Clan, has long since tied her fate to Naigen's. It was through his support that she rose to become the abbot of the southern branch of the Four Temples, and she takes all her political cues from him—to the point that some refer to her as Naigen's attack dog, though never where she can hear. She believes even more strongly than he does that the Perfect Land Sect should be stamped out, because where he is inclined to work through political channels, Iwa stands ready to crush the sect with force."
+        }
     }
 
     ^"Ichirō (Imperfect Land)" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Raised believing he was Mirumoto Masashige's biological son and in the
-        # karmic right of samurai to rule; on his gempuku he learned he was adopted
-        # from a peasant family. His world shattered, he renounced the name and
-        # turned to the Perfect Land for meaning.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 7
@@ -87,16 +85,14 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
         }
         ^"Twin Dragons Striking" DEF { ^"Effect" STRING "Ichirō may perform any Iaijutsu kata. Once per scene when dual wielding, he may reduce the cost of activating a kata to Opportunity." }
         ^"Empathic Objection" DEF { ^"Effect" STRING "Once per scene, when the Pure Land Sect or his faith are being challenged, Ichirō may vocally object and reduce his strife by a number equal to his focus. Any character who voices support of his objection also receives this benefit. In an intrigue, this ability cancels 1 momentum point gained from attacking or discrediting the sect." }
+
+        RULES {
+            #TbfpmlbJeIDbQlf9Rv3TZm: background "This passionate young man grew up believing he was the biological son of Mirumoto Masashige and believing firmly in the karmic right of samurai to rule over heimin. Once Ichirō reached his gempuku, Masashige confessed the truth—that Ichirō was adopted from a peasant family—and Ichirō's world shattered.\n\nWith everything he believed in revealed as a lie, Ichirō renounced the name he had taken and the family that had adopted him, turning to the Perfect Land for meaning. He has convinced himself that his father is a manipulative hypocrite, but the love between them is not so easily erased. If Masashige either gives his support to the sect or, conversely, persuades Ichirō that the \"spiritual merit\" that justified his adoption is real, that rift might yet be bridged."
+        }
     }
 
     ^"Yuki (Shosuro Miyako)" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Seemingly one of the many peasants who have flocked to Hige, Yuki is in
-        # truth Shosuro Miyako, a Scorpion shinobi sent by Yogo Hiroue to investigate
-        # the sect and its ties to the Dragon Clan. She has grown fond of Hige and
-        # is reluctant to act without orders — unless his life is threatened. Her
-        # first glory/status values are as "Yuki"; the second reflect her revealed
-        # identity as Shosuro Miyako.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 4
@@ -120,15 +116,14 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
         ^"Master Infiltrator" DEF { ^"Effect" STRING "Miyako is a crafty operative with a wide arsenal of tricks. She may perform any ninjutsu techniques and any Air shūji. When doing so, she may suffer 1 fatigue and 1 strife to count her target's vigilance as 1 lower." }
         ^"Snowpetal of No Importance" DEF { ^"Effect" STRING "When Miyako is disguised, any character who does not know her true identity and has no reason to pay attention to her treats their own vigilance as 1 lower." }
         ^"Clean Escape" DEF { ^"Effect" STRING "Once per scene, Miyako can use servants' tools to create improvised Obscuring terrain that extends around her up to range 1 and lasts one round." }
+
+        RULES {
+            #Abu9MSomz5a3eqZs9avvoT: background "Seemingly one of the many peasants who have flocked to Hige and the Perfect Land, Yuki is in truth Shosuro Miyako, a Scorpion shinobi sent by Yogo Hiroue to investigate the sect, with a particular eye toward its relationship with the Dragon Clan. In her time among them, however, she's developed fond feelings toward the grandfatherly Hige. Although she's aware of Ichirō's and Kanbei's secrets, she is reluctant to act without orders from her superior—the exception being if Hige's life is threatened. Miyako's first glory and status values reflect when she is acting as Yuki; the second values reflect when her identity is revealed."
+        }
     }
 
     ^"Ajari" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # A solitary tengu who has haunted the wilderness around the Mountain Song
-        # Temple for years, sometimes visiting disguised as a human monk. His ascetic
-        # contemplation lets him recognize Senzai as Shinsei; he acts only to protect
-        # her so events may take their course. Unusually powerful illusion magic lets
-        # him impersonate a specific individual.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 7
@@ -156,6 +151,10 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
         ^"Crafty Visage" DEF { ^"Effect" STRING "Ajari's Mask of Wind invocation is especially refined, allowing him to impersonate a specific individual." }
         ^"Master of the Staff" DEF { ^"Effect" STRING "Ajari can use a staff to perform any polearm or blunt weapon kata." }
         ^"Carried by the Wind" DEF { ^"Effect" STRING "During his turn, Ajari may choose to replace his current enhancement effect with the Riding the Clouds or Way of the Willow kihō. He can also move vertically and ignore the negative effects of terrain." }
+
+        RULES {
+            #FfU7jmf4gO0NFAbf4LT1nM: background "This solitary tengu has haunted the wilderness surrounding the Mountain Song Temple for many years, listening to the music of the winds and contemplating the mysteries of reality. From time to time, he visits the temple itself, disguising himself as a human monk or scholar and conversing with people there before returning to his solitary life. These long years of ascetic contemplation give him a spiritual attunement that recognizes Senzai as Shinsei, but he does not believe it is his place to reveal that secret. Instead, he acts only to protect her so that events may take their own course.\n\nAjari has an unusually powerful command of illusion magic for a tengu, allowing him to take on the appearance of a specific individual rather than only a generic human form. He is a capable fighter as well, though he prefers not to kill if it can be avoided. His spiritual gifts also give him a resilience that makes healing easier if he is wounded."
+        }
     }
 
     # ═══════════════ PROFILE-BASED LEADERS ═════════════════════════════════
@@ -214,10 +213,6 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
     }
 
     # ═══════════════ PART ONE — "THE UNDECIDED" CONCLAVE DELEGATES ═════════
-    # Persuasion targets: the TN to sway a delegate equals their Vigilance; their
-    # Demeanor (with unmasking modifiers) and the noted Check are how best to
-    # persuade them. Swaying Kaimoku or Yoshi has double the usual effect on
-    # Sympathy. Rekigan additionally has a full profile for a sparring duel.
 
     ^"Kaimoku" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"

@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
     NAME "Legend of the Five Rings 5th Edition - Celestial Realms: GM Tools"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -15,12 +15,6 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
     # source stat block (page 140)
     ^"Bond with a Spirit" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # Some individuals bond with a supernatural entity such
-        # as an elemental kami, animal spirit, or other being. Usually
-        # a shugenja who has communed with a spirit over time,
-        # but occasionally a spirit becomes fascinated with a
-        # non-shugenja and offers them abilities and challenges.
 
         PROPERTIES {
             ^"Title Type" STRING "Title" FIXED
@@ -48,19 +42,13 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
         }
 
         RULES {
-            #L5RCR38qR9sT1uV3wX5yZ7a: bond_with_spirit_spiritual_protector
-            #L5RCR39bC0dE2fG4hI6jK8l: bond_with_spirit_invocations_limited_to_spirit_elements
+            #L5RCR39bC0dE2fG4hI6jK8l: elements_of_spirits_thematically_appropriate "The Elements of Spirits: Keep in mind that a spirit may have one or more elements associated with it, but the Bond with a Spirit title only provides access to those that are thematically appropriate, as determined by the game master."
         }
     }
 
     # source stat block (page 140)
     ^"Moon Cultist" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # Acolytes of Lord Moon, from the lowliest hinin to Imperial
-        # family members. All one needs is to practice faith
-        # unquestioningly and remind others that there is perfection
-        # in chaos.
 
         PROPERTIES {
             ^"Title Type" STRING "Title" FIXED
@@ -88,8 +76,7 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
         }
 
         RULES {
-            #L5RCR40mN1oP3qR5sT7uV9w: moon_cultist_swallow_the_light
-            #L5RCR41xY2zA4bC6dE8fG0h: moon_cultist_requires_dark_secret
+            #L5RCR40mN1oP3qR5sT7uV9w: swallow_the_light "Swallow the Light (Title Ability): Once per game session as an Attack and Scheme action, you may make a Theology (Water) check targeting a character at range 0–1. The TN of the check is equal to the target's vigilance. If you succeed, choose one ring. Your target treats the value of that ring as reduced by half (to a minimum of 1), and you treat that ring as increased by the amount their ring was reduced. Your and your target's derived attributes change according to these changes (see page 36 of the core rulebook). This effect persists for a number of rounds equal to your Void Ring."
         }
     }
 
@@ -100,19 +87,12 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
     ^"Righteous Demeanor" DEF {
         APPLIES TO [#t4540de6f35155c46f41f0 ^"NPC"]
 
-        # Reflects samurai who value Gi (Righteousness) above
-        # all else. They are infused with a thirst for the right action
-        # and strive for the true ideals of Bushido.
-
         PROPERTIES {
             ^"Demeanor" STRING "Righteous" FIXED
             ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -1, Void -1"
             ^"Common Way of Unmasking" STRING "Righteous Irritation: This person forgets their manners and rudely points out flaws in others, particularly those who have recently disagreed with them. They pick apart even the subtlest of errors, lashing out callously at anyone who objects."
         }
 
-        RULES {
-            #L5RCR42iJ3kL5mN7oP9qR1s: righteous_demeanor_water_plus_2_fire_minus_1_void_minus_1
-        }
     }
 
     # ===========================
@@ -122,9 +102,6 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
     # source stat block (page 141)
     ^"Phoenix Clan Samurai Template" DEF {
         APPLIES TO [#t2513b5e05d845f4411465 ^"NPC Template"]
-
-        # Can be used with any clan samurai profile.
-        # Makes NPCs feel more like Phoenix Clan members.
 
         PROPERTIES {
             ^"Base Profile" STRING "Any clan samurai profile"
@@ -138,17 +115,11 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
             ^"Replace Demeanor" STRING "1: Ambitious, Detached, Righteous"
         }
 
-        RULES {
-            #L5RCR43tU4vW6xY8zA0bC2d: phoenix_template_air_ring_scholar_social_skills
-        }
     }
 
     # source stat block (page 141)
     ^"Centipede Clan Samurai Template" DEF {
         APPLIES TO [#t2513b5e05d845f4411465 ^"NPC Template"]
-
-        # Can be used with any clan samurai profile.
-        # Makes NPCs feel more like Centipede Clan members.
 
         PROPERTIES {
             ^"Base Profile" STRING "Any clan samurai profile"
@@ -161,9 +132,6 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
             ^"Replace Demeanor" STRING "1: Gruff, Righteous"
         }
 
-        RULES {
-            #L5RCR44eF5gH7iJ9kL1mN3o: centipede_template_fire_ring_martial_scholar_skills
-        }
     }
 
     # ===========================
@@ -173,12 +141,6 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
     # source stat block (page 141)
     ^"Baku" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-
-        # Dream-stalking creatures most commonly found in Yume-do.
-        # Appear as quadrupedal tusked beasts with flexible snouts
-        # and dappled skin. They can distort prey's perception
-        # using their Nightmare Guise ability. Persistent, more
-        # intelligent than they appear, and vicious when hungry.
 
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
@@ -210,8 +172,9 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
         }
 
         RULES {
-            #L5RCR45pQ6rS8tU0vW2xY4z: baku_dream_stalker_nightmare_guise
-            #L5RCR46aB7cD9eF1gH3iJ5k: baku_found_in_yume_do_persistent_hunters
+            #L5RCR45pQ6rS8tU0vW2xY4z: nightmare_guise "Nightmare Guise: As a Scheme action, a baku may make a Sentiment (Void) check targeting any number of characters it can see in the scene. The TN of the check is equal to the highest vigilance among the targets.\n\nIf the baku succeeds, the targets perceive the baku as their greatest fear and increase the TN of all checks they make targeting the baku by 1. At the start of each of the baku's turns this scene, each target must make a TN 5 Theology check (Void 3) to resist. If they succeed, they no longer perceive the baku as their greatest fear and cannot be affected by the effects of Nightmare Guise for the rest of the scene. If they fail, they receive 3 strife and cannot move toward the baku of their own free will during this round.\n\nFor each target that failed to resist, the baku may remove 1 strife or 1 fatigue (chosen by the GM)."
+            #L5RCR46aB7cD9eF1gH3iJ5k: dream_eaters "Dream Eaters: Baku are most commonly found in Yume-dō, though they occasionally end up in other realms, hunting beings who are or have been in places they should not be (such as a dream-being who escaped to another Spirit Realm or a waking-being who spent time in Yume-dō).\n\nOnce baku have prey in their sights, it is difficult to get rid of them. They are persistent, more intelligent than they appear, and vicious when hungry, which is almost always. However, a lone baku will generally not pursue a being that it perceives as too powerful to handle.\n\nThe few individuals believed to have encountered a baku have said that the beings are capable of speech, and their raspy, strangled voices still haunt their dreams."
+            #KtSom8IsMsN65MmS50Pvl0: baku "Baku: Baku are, for most Rokugani, simply fiction. Baku have been described as appearing in many forms, possessing the inherent ability to distort their prey's perception in order to confuse and unsettle them. Most commonly, baku appear as quadrupedal, tusked beasts with a long, flexible snout like an elephant. They often possess a scraggly mane like that of a sickly lion, and their skin is dappled with various patterns ranging from leopard-like spots to tiger stripes."
         }
     }
 
@@ -221,12 +184,6 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
 
     ^"Komainu" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-
-        # Guardian spirit for shrines and temples, based on the
-        # Manifest Earth Kami profile (core rulebook p.323). A large
-        # stone creature with lion and dog attributes that animates
-        # to attack anyone entering its shrine without the proper
-        # incantation.
 
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
@@ -268,8 +225,8 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
         }
 
         RULES {
-            #L5RCR47lM8nO0pQ2rS4tU6v: komainu_guardian_spirit_animates_to_defend_shrine
-            #L5RCR48wX9yZ1aB3cD5eF7g: komainu_living_statue_indestructible_before_animation
+            #L5RCR47lM8nO0pQ2rS4tU6v: komainu_guardian_spirit_animates_to_defend_shrine "Designing a Supernatural NPC: To illustrate how a balanced and interesting supernatural NPC can be designed for an encounter, we use the example of a komainu—a guardian spirit for shrines and temples.\n\nThe classic komainu is a large statue of a creature that has attributes of both a lion and a dog and is usually portrayed sitting atop a stone pedestal. In this example, a GM wishes to develop a komainu as the guardian of a lost shrine the PCs intend to explore. The dramatic role the GM envisions for the komainu is that a guardian who awakens and attacks anyone who attempts to enter the shrine without first speaking a particular incantation."
+            #L5RCR48wX9yZ1aB3cD5eF7g: living_statue "Living Statue: Before it becomes animate, the komainu is, in all respects, a large stone statue. If it is damaged or even destroyed in this state, upon being triggered to animate, the komainu does so entirely unharmed."
         }
     }
 
@@ -280,20 +237,15 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
     ^"Places of Power" DEF {
         APPLIES TO [#t0da7fc06147049f8ad75a ^"Mechanic"]
 
-        # Locations particularly tied to one or more Spirit Realms.
-        # Some have permanent connections (with shrines built nearby);
-        # others connect temporarily during celestial events or rituals.
-        # Each type has signs of passage, narrative effects, and
-        # mechanical effects.
-
         RULES {
-            #L5RCR49hI0jK2lM4nO6pQ8r: tengoku_place_of_power_remove_all_strife_end_of_scene_hallowed_fire
-            #L5RCR50sT1uV3wX5yZ7aB9c: yume_do_place_of_power_focus_minus_2_hallowed_air_tn2_meditation_to_shape_terrain
-            #L5RCR51dE2fG4hI6jK8lM0n: chikusho_do_sakkaku_place_of_power_vigilance_minus_1_hallowed_air_water_humans_understand_animals
-            #L5RCR52oP3qR5sT7uV9wX1y: meido_place_of_power_composure_plus_2_entangling_hallowed_earth_recently_deceased_can_cross
-            #L5RCR53zA4bC6dE8fG0hI2j: gaki_do_place_of_power_cannot_remove_exhausted_entangling_imbalanced_earth_mazoku_redirect_travel
-            #L5RCR54kL5mN7oP9qR1sT3u: toshigoku_place_of_power_deadliness_plus_3_defiled_imbalanced_water
-            #L5RCR55vW6xY8zA0bC2dE4f: jigoku_place_of_power_endurance_composure_minus_2_dangerous_defiled_learn_maho
+            #L5RCR49hI0jK2lM4nO6pQ8r: places_of_power_tengoku "Tengoku: The following are details on places of power tied to Tengoku, the Heavens.\n\nSigns of Passage: The sound of soft, pleasant music, the familiar scent of a lost family member, the hint of golden clouds just beyond a group of trees.\n\nNarrative Effects: The area seems more crisp, pure, and beautiful than logically makes sense. There is an overwhelming feeling of peace and calm, and creatures in the area seem particularly relaxed.\n\nMechanical Effects: At the end of each scene, each character removes all of their strife. Additionally, all terrain in the place of power is Hallowed (Fire) (see Terrain Qualities, on page 267 of the core rulebook)."
+            #L5RCR50sT1uV3wX5yZ7aB9c: places_of_power_yume_do "Yume-dō: The following are details on places of power tied to Yume-dō, the Realm of Dreams.\n\nSigns of Passage: The smell of one's childhood home, a split-second glimpse of an old friend out of the corner of your eye, an inescapable longing for something you cannot quite remember, an unshakable sense of déjà vu.\n\nNarrative Effects: The area in the place of power around each character is influenced by their ma'ai, reflecting their regrets, fears, or desires as motifs or even visions that alter the terrain around them (see page 23).\n\nMechanical Effects: Characters treat their focus as 2 lower. All terrain in the place of power is Hallowed (Air) (see Terrain Qualities, on page 267 of the core rulebook). As an action, any character may make a TN 2 Meditation (Air) check to make their state of mind influence the landscape more forcefully. If they succeed, they may add one terrain quality to the land from their location extending a number of range bands equal to their Void Ring, plus one additional terrain quality per two bonus successes."
+            #L5RCR51dE2fG4hI6jK8lM0n: places_of_power_chikusho_do_and_sakkaku "Chikushō-dō and Sakkaku: The following are details on places of power tied to Chikushō-dō or Sakkaku.\n\nSigns of Passage: The rustling of leaves, chittering laughter, a cold wind that raises goosebumps, the smell of loam, the footprints of animals.\n\nNarrative Effects: Humans can understand the speech of animals, and vice versa—though this does not make the animals any more trustworthy.\n\nMechanical Effects: Characters treat their vigilance as 1 lower. Additionally, all terrain in the place of power is Hallowed (Air and Water) (see Terrain Qualities, on page 267 of the core rulebook)."
+            #L5RCR52oP3qR5sT7uV9wX1y: places_of_power_meido "Meido: The following are details on places of power tied to Meido, the Realm of Waiting.\n\nSigns of Passage: The rustle of scrolls being opened and shut, the unbearable sense of being stuck in a line.\n\nNarrative Effects: The recently deceased can cross over in a place of power tied to Meido. Their willingness to do so varies based on the individual.\n\nMechanical Effects: Characters treat their composure as 2 higher. Additionally, all terrain in the place of power is Entangling and Hallowed (Earth) (see Terrain Qualities, on page 267 of the core rulebook)."
+            #L5RCR53zA4bC6dE8fG0hI2j: places_of_power_gaki_do "Gaki-dō: The following are details on places of power tied to Gaki-dō, the Realm of Hungry Ghosts.\n\nSigns of Passage: A slight but disconcerting buzz of unseen flies, the taste of burning bile in one's throat, slight nausea in the pit of the stomach, the smell of dust and wheat rotting in the fields, a drab cloud of ash swirling across the sky, the crunch of a collapsing roof.\n\nNarrative Effects: Gaki-dō is labyrinthine and nearly impossible to escape––a vast slum extending beyond sight––and the places where it touches the Mortal Realm are equally difficult to navigate. No matter where a character is attempting to go in such a place of power, if a mazoku wishes them to arrive somewhere else, they will find themself where that being desires.\n\nMechanical Effects: Characters cannot remove the Exhausted condition. Additionally, all terrain in the place of power is Entangling and Imbalanced (Earth) (see Terrain Qualities, on page 267 of the core rulebook)."
+            #L5RCR54kL5mN7oP9qR1sT3u: places_of_power_toshigoku "Tōshigoku: The following are details on places of power tied to Tōshigoku, the Realm of Slaughter.\n\nSigns of Passage: The taste of iron in the back of one's throat, a ringing of steel on steel that echoes endlessly in one's brain, the sound of footsteps squelching in blood-soaked ground, the sound of a river ferry running aground upon a shore of piled bones, copper-tinted rain.\n\nNarrative Effects: The ground itself begins to bleed, and bones protrude like stones in a farmer's field. Onryō wander the land, seeking out anyone with violent desires they can amplify. Additionally, there always seems to be a weapon in reach if one needs it, even if it is an improvised one.\n\nMechanical Effects: The deadliness of all weapons is treated as 3 higher. Additionally, all terrain in the place of power is Defiled and Imbalanced (Water) (see Terrain Qualities, on page 267 of the core rulebook)."
+            #L5RCR55vW6xY8zA0bC2dE4f: places_of_power_jigoku "Jigoku: The following are details on places of power tied to Jigoku, the Realm of Evil.\n\nSigns of Passage: The smell of sulfur and rot, a fetid breeze that suddenly snuffs one's lantern, chilling screams echoing through unseen caverns, the sound of a skull landing hollowly on stone, the stars vanishing from the sky.\n\nNarrative Effects: The shadows twist into terrible faces, whispering temptations and offering dread bargains to anyone in desperate circumstances.\n\nMechanical Effects: Characters treat their endurance and composure as 2 lower. Additionally, all terrain in the place of power is Dangerous and Defiled (see Terrain Qualities, on page 267 of the core rulebook). Further, a place of power tied to Jigoku functions as a source of sinister lore that grants any character the capacity to learn mahō techniques (see page 224 of the core rulebook); which techniques are available (and what awful price beyond mere XP a character must pay to gain them) are left to the GM's discretion."
+            #HLLdLbDGHFwrQuOChYX9x8: places_of_power "Places of Power: Some places in Rokugan are particularly tied to one or more of the Spirit Realms. Some of these, such as a particular place in Otosan Uchi and some locations in the Isawa Mori, have had shrines built in or near them and are revered for their seemingly permanent connection. Other places connect only temporarily, aligning in coincidence with certain celestial events or when a ritual is undertaken.\n\nFor each type of place of power, this section outlines several signs of passage, a set of narrative effects, and a set of mechanical effects. The GM can use these to create atmosphere as their players explore Rokugan's more spiritual corners. When the PCs enter a place of power, the GM can use the signs of passage to alert them to the supernatural nature of the place, seeding these into their narration of the transition between the Realm of Mortals and a Spirit Realm. The narrative and mechanical effects change the nature of reality in various ways, which the GM can use to create unique encounters and the players might even try to leverage to perform feats that are otherwise impossible. GMs and players alike should be creative in their exploration of the spiritual locations nestled across Rokugan."
         }
     }
 
@@ -304,25 +256,12 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
     #L5RCRtenet0Gi00000001 ^"Righteousness (Gi)" DEF {
         APPLIES TO [#t0da7fc06147049f8ad75a ^"Mechanic"]
 
-        # The tenet of the right action. Courtesy and Honor advise
-        # reasons for action; Sincerity and Duty provide guidelines;
-        # Courage and Compassion describe means. All lead to
-        # Righteousness. The character gi contains "sheep" over
-        # "the self" - placing contentment with society over selfishness.
-
-        # Trifling Breaches (forfeit 1 honor):
-        # - Allowing fear of personal loss to influence decisions
-        # - Taking offense when another points out misjudgment
-        # - Ignoring someone else's correct action to promote your own
-        #
-        # Trifling Sacrifices (receive 1 honor):
-        # - Encouraging one of lesser status who suggested the correct action
-        # - Enduring ridicule to promote the correct action
-        # - Refusing a small yet just reward for your actions
-
         RULES {
-            #L5RCR56gH7iJ9kL1mN3oP5q: righteousness_trifling_breaches_forfeit_1_honor
-            #L5RCR57rS8tU0vW2xY4zA6b: righteousness_trifling_sacrifices_receive_1_honor
+            #L5RCR56gH7iJ9kL1mN3oP5q: trifling_breaches_forfeit_1_honor "Trifling Breaches: When a character wishes to commit a breach of Righteousness less serious than a minor breach, they must first forfeit 1 honor. Examples of trifling breaches of Righteousness include:\n\nAllowing the fear of a personal loss influence your decisions\n\nTaking feigned or actual offense when another points out your misjudgment\n\nIgnoring someone else's correct action in order to promote your own"
+            #L5RCR57rS8tU0vW2xY4zA6b: trifling_sacrifices_receive_1_honor "Trifling Sacrifices: When a character makes a sacrifice in the name of Righteousness judged lesser than a minor sacrifice, they receive 1 honor. Examples of small sacrifices of Righteousness include:\n\nEncouraging one of lesser status who has suggested the correct action\n\nEnduring ridicule, scorn, or blame to promote the correct action\n\nRefusing a small yet just reward for your actions"
+            #DVB3aH3wWIogHOcQg2ZOeZ: righteousness_the_tenet_of_right_action "Tenets of Bushidō: Righteousness: All of the Seven Tenets of Bushidō are interconnected, but none is more connected to all the others than Righteousness, the tenet of the right action. Courtesy and Honor advise the reasons for an action, Sincerity and Duty provide guidelines for that action, and Courage and Compassion describe means toward proper action. Following all of these tenets leads to Righteousness—to the mindset that allows a person to always perform the right actions. Righteousness is the sum of all of Bushidō's parts."
+            #drTRnMtcHsDNIOdD3EPCHp: defining_righteousness "Defining Righteousness: The character for righteousness, gi, contains two radicals, \"sheep\" and \"the self.\" Sheep represent security and serenity. A sheep among its flock appears content, at peace with its place in its own society. By placing the sheep radical over the self, Righteousness means placing this contentment with society over the selfishness of the self. A samurai does this by acting correctly in any given situation.\n\nSome samurai see giri as a means toward Righteousness. While the character for Righteousness is the same as the first character of giri, the fact that giri contains two characters lends a clue. Righteousness is a part of duty, but duty does not encapsulate Righteousness. Giri limits a samurai to a singular, narrow application of right action, toward a singular duty. Righteousness, a purer form of giri, transcends mere duty or social obligation, yet pure Righteousness, by definition, has no action and is thus useless."
+            #xBODChDVR2MgnwAH0JmXzo: trifling_breaches_and_small_sacrifices "Trifling Breaches and Small Sacrifices: rulebook has guidelines for gaining and forfeiting honor. Minor acts can affect honor as well. A samurai strives to adhere to Bushidō in all aspects of their life, so small positive or negative demonstrations eventually add up.\n\nNote that gains and losses due to Righteousness may be difficult to identify. Only when an action has played out can any person—including the GM—judge it to be the right action. Let events come to some conclusion first before adjudicating Righteousness.\n\nThe following optional examples supplement Table 7–1: Honor and Glory Forfeits/Awards, on page 300 of the core rulebook, and the examples relating to Righteousness on page 303 of the core rulebook."
         }
     }
 
@@ -333,17 +272,10 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
     ^"Religious Group Design" DEF {
         APPLIES TO [#t0da7fc06147049f8ad75a ^"Mechanic"]
 
-        # Framework for creating religious groups in Rokugan.
-        # Groups require: core beliefs, focus of worship, believers,
-        # practices, place of worship, religious paraphernalia,
-        # and a place in society (conformity with Celestial Order).
-        # Groups that conform to the Celestial Order are more
-        # accepted. Those based on Jigoku or blasphemy are
-        # ruthlessly crushed by Imperial authorities.
-
         RULES {
-            #L5RCR58cD9eF1gH3iJ5kL7m: religious_group_requires_core_beliefs_focus_believers_practices
-            #L5RCR59nO0pQ2rS4tU6vW8x: religious_group_acceptance_depends_on_celestial_order_conformity
+            #L5RCR58cD9eF1gH3iJ5kL7m: characteristics_of_religious_groups "Characteristics of Religious Groups: While the particular foci and core beliefs of religious groups vary widely, these groups still have a number of attributes in common. The nature and importance of each of these commonalities differ from group to group but, in general, religious groups have the following:\n\nA group of believers: Obviously, a belief system with no actual believers is, at best, a historical curiosity. To be a religion, a system that includes a focus and core beliefs must attract believers who revere that focus and those beliefs. Moreover, the success of a religion is largely defined by the number of people who believe in it. In Rokugan, most of the population believes in Shinseism, Fortunism, or both, which is what makes those religions mainstream. However, a handful of adherents who believe in the divinity of a particular being or even a feature of the landscape, such as a mountain, is also a religious group.\n\nA set of practices: While it is possible for a group to participate in religious observance in a completely unstructured and impromptu way, most religions have a series of specific practices. These include the prayers, rites, rituals, offerings, and other things said and done in the course of worship.\n\nA place of worship: Nearly all religious groups have one or more locations, whether a remote forest clearing or a series of elaborate shrine complexes in large cities, where their members meet to carry out observances. Such places might themselves be central to, or even the focus of, a group's beliefs, or they might simply be convenient spots where adherents can gather. Most groups consider their places of worship sacred, even if only because they hold their observances there. Some places, or parts of them, are accessible only to particular members of the group, such as its leaders.\n\nReligious paraphernalia: While some groups may be able to express their beliefs wholly through things like oral tradition, song, and dance, many maintain one or more items they consider sacred. These can include written texts, objects used during worship, ceremonial garments, and items considered to be of divine origin (for example, a preserved fragment of a holy figure's body). Such items can range from quite mundane to extremely elaborate, and most are subject to restrictions regarding who can access, carry, or wear them and are kept in protected places when not in use."
+            #L5RCR59nO0pQ2rS4tU6vW8x: the_groups_place_in_society "The Group's Place in Society: A final, but crucial, point to consider is how the religious group fits into society. The Emerald Empire has an especially rigid social structure, which is based on the Celestial Order: divine beings such as Fortunes are preeminent, with samurai being below them in the Celestial Order, and commoners being beneath the samurai. Any religious group is judged in Rokugan, at least in part, by the extent to which it conforms to the Celestial Order. If a group conforms well, then it is more likely to be accepted by the Empire and, critically, its authorities. If it doesn't—if, for instance, the group's core belief system places the needs and welfare of commoners above those of samurai—then the authorities and much of the population will see it as heretical and treat it accordingly.\n\nThe other important aspect of a religious group is how it interacts with established religion in the Empire. For example, a group that is essentially an offshoot of Shinseism or Fortunism is more likely to win acceptance than one that reveres something untraditional, such as a deity it has newly recognized or one with gaijin roots. The mainstream may be wary even of offshoots of traditional religions, however. As described in Chapter 1, Lord Moon is a recognized part of Rokugani divinity, but groups that worship him are still considered strange. Groups like these may not be outright forbidden, but they are likely to be watched closely by the Empire, as heresy and blasphemy can more readily take hold among such fringe elements.\n\nFinally, any religious group based on something considered entirely unacceptable in the Empire is unlikely to be tolerated at all. The worship of anything related to Jigoku, for example, is certainly not accepted and will inevitably be ruthlessly crushed by the Imperial authorities. The same applies to any belief system that accepts something the mainstream religions consider blasphemous. Nearly all groups that do this have an extreme need for secrecy."
+            #BsFdfVcpZBaqTAbIlwUNVy: inside_a_religious_group "Inside a Religious Group: Regardless of their specific beliefs, all religious groups have a number of things in common. The most important commonalities are that each group has a set of core beliefs, and each has a focus of religious reverence and observances."
         }
     }
 
@@ -354,27 +286,12 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
     ^"Supernatural Encounter Design" DEF {
         APPLIES TO [#t0da7fc06147049f8ad75a ^"Mechanic"]
 
-        # Guidelines for incorporating supernatural elements.
-        # Categories: overt (prominent, major plot points) vs
-        # subtle (rare, background). Consider PC capabilities
-        # (shugenja, Sacred weapons) vs supernatural resistances.
-        # Not all supernatural encounters need to be hostile;
-        # many spirits are harmless or beneficial.
-        # Encounter balance: consider totality of supernatural
-        # effects (terrain qualities, NPC abilities) when comparing
-        # conflict rank to party group rank.
-        #
-        # Elemental kami personalities for Commune with the Spirits:
-        # Air: sociable, oblique, enjoys puzzles
-        # Earth: ponderous, blunt, strictly factual
-        # Fire: energetic, passionate, quick to lose interest, requires offerings
-        # Water: attuned to change, good on how things differ from past
-
         RULES {
-            #L5RCR60yZ1aB3cD5eF7gH9i: supernatural_encounters_overt_vs_subtle
-            #L5RCR61jK2lM4nO6pQ8rS0t: supernatural_encounters_consider_pc_capabilities
-            #L5RCR62uV3wX5yZ7aB9cD1e: supernatural_encounters_not_always_hostile
-            #L5RCR63fG4hI6jK8lM0nO2p: elemental_kami_personalities_air_earth_fire_water
+            #L5RCR60yZ1aB3cD5eF7gH9i: prevalence_of_the_supernatural "Prevalence of the Supernatural: Once a GM decides to introduce supernatural elements into a game, several aspects of the supernatural are worth considering. First, how prevalent is the supernatural? In general, the mystical can be divided into two broad categories: overt and subtle. Note that a given game session or campaign could include both at different times, if it suits the GM's story to do so."
+            #L5RCR62uV3wX5yZ7aB9cD1e: supernatural_hostility "Supernatural Hostility: Many GMs and players immediately assume that supernatural beings and elements in a game are hostile. Ghosts, for example, are usually frightening, while spirits have strange, alien motivations that are often inimical to mortals. It is certainly true that mystical adversaries can present the PCs with exciting and demanding challenges, testing the PCs' ability to confront and defeat the adversaries before the PCs can be overcome and destroyed.\n\nHowever, just as not every encounter in court, or on the road, necessarily descends into strife and bloodshed, neither does every supernatural encounter. Many mystical beings and phenomena are harmless, and some may even be beneficial. For instance, an old man by the roadside may actually be a disguised spirit, and aiding him may garner the PCs a boon of some sort (of course, ignoring him might likewise attract a curse).\n\nEven those encounters that seem hostile may not ultimately involve overt conflict. A ghost who plagues the party as they investigate a ruined shrine may be difficult or even impossible to actually fight; however, finding and properly interring its physical remains might be sufficient to put it to rest. By making some supernatural encounters benign, or even beneficial, the GM presents the players with a much more nuanced and interesting world for their characters to explore."
+            #L5RCR63fG4hI6jK8lM0nO2p: encountering_the_elemental_kami "Encountering the Elemental Kami: While encounters with the supernatural generally only occur if the GM wishes it, there are instances in which the players could themselves trigger such an encounter. In particular, the Commune with the Spirits ritual, on page 212 of the core rulebook, allows a PC who knows the ritual to interact with elemental kami in a given area. This results in what amounts to a small and specific supernatural encounter the GM may not have deliberately planned.\n\nRemember that, in each case, the spirits with whom the ritualist communes only know information related to their particular elemental nature. For instance, earth kami can know things they have experienced in or upon the earth, but they know nothing about what has happened in a nearby river, or in the sky overhead.\n\nTo portray elemental kami in a way that provides interesting roleplaying opportunities, the following information should be helpful:\n\nAir: The air kami are quite interactive, being sociable—and, therefore, much more interested in the actions of living creatures than in the inanimate—but also shrewd and nuanced. When providing information, they tend to do so obliquely, enjoying the ritualist's efforts to unravel what amount to puzzles and riddles.\n\nEarth: The earth kami are ponderous, but generally blunt and strictly factual. The information they provide is accurate, albeit tending to also be very literal.\n\nFire: The fire kami are energetic, providing very good information with intense passion, but also quickly losing interest and becoming angry if pressed. The fire kami often provide the best information overall, but they are also the most likely to require offerings (that they can burn) to keep them engaged.\n\nWater: The water kami are keenly attuned to change, so they may have little interest in things that have remained static. Accordingly, they can provide good information about how things are different than they once were, but they have little to say about things that have remained stable."
+            #RcojNjJCuaTZqx33ysTQ1I: the_overt "The Overt: When the supernatural is an overt presence in the story, it is obvious and features prominently during gameplay. Supernatural elements constitute major story and plot points, and supernatural beings may figure as important allies, antagonists, or both.\n\nAn example of a game with overt supernatural elements could be one set in a forest, such as the Shinomen Mori. In the forest, the PCs could encounter numerous spirits and strange, mystical phenomena, any of which might prove helpful to them, might hinder them, or might simply enhance the otherworldly atmosphere of the setting.\n\nIt is important for the GM to remember that if supernatural elements are overt, then this has implications for the PCs. A party that contains no shugenja, for example, may have difficulty unraveling a mystery that requires specialized knowledge of the elemental kami. Likewise, the GM should consider whether any aspects of the supernatural they plan to include are ones the PCs cannot deal with, at least without assistance. Some otherworldly creatures may be problematic for the PCs to handle if the PCs possess no means of overcoming those creatures' particular supernatural resistances or other mystical qualities."
+            #NPh0HKsb5S95qtDMFMvm7n: the_subtle "The Subtle: In the case of a subtle supernatural presence in the story, mystical beings and effects are rare or obscure, or do not seem to figure prominently during play for some other reason. This is not to say they are unimportant; indeed, crucial plot points may revolve around them. However, most of the story has—or at least appears to have—little to do with the supernatural or otherworldly.\n\nAn example of a game with subtle supernatural elements might be one that is—or appears to be—solidly rooted in the mundane. For example, the PCs could be magistrates investigating a murder in a daimyō's court amid a variety of viable, and very much ordinary, mortal suspects. However, the PCs are alerted to sightings of what appears to be the ghost of the murder victim, and they choose to follow up as a potential way of learning more about the case.\n\nIt remains important for the GM to consider the PCs' ability to interact with the supernatural, even if it has only a subtle presence in the story. If the party is expected to interact with a ghost, and help it resolve whatever is keeping it bound to the Mortal Realm, then they should possess appropriate knowledge, or have access to it in the form of, for example, an NPC, scrolls they can acquire or find, or something similar. Obtaining access to such assistance could, of course, become a quest for the players on its own."
         }
     }
 
@@ -385,27 +302,13 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
     ^"Spirit Realm Adventure Design" DEF {
         APPLIES TO [#t0da7fc06147049f8ad75a ^"Mechanic"]
 
-        # Guidance for running adventures in each Spirit Realm.
-        # Tengoku: office politics, questions of virtue, bureaucratic
-        #   administrators who care too much or too little.
-        # Yomi: family drama, demonic espionage, ancestor
-        #   interference, mysteries from the past.
-        # Chikusho-do/Sakkaku: political intrigue among animal
-        #   spirits, fairy-tale adventure, shapeshifting reveals.
-        # Yume-do: romantic comedy, imaginings of what might
-        #   have been, baku encounters, dreamworld shifts.
-        # Meido: detective stories, bureaucratic trouble, encounters
-        #   with Emma-O's administration.
-        # Jigoku/Gaki-do/Toshigoku: survival horror, war narrative,
-        #   offers of power at terrible prices, fallen comrades.
-
         RULES {
-            #L5RCR64qR5sT7uV9wX1yZ3a: tengoku_hooks_weather_divine_bureaucracy_virtue
-            #L5RCR65bC6dE8fG0hI2jK4l: yomi_hooks_past_mysteries_ancestor_drama
-            #L5RCR66mN7oP9qR1sT3uV5w: chikusho_sakkaku_hooks_animal_politics_fairy_tales
-            #L5RCR67xY8zA0bC2dE4fG6h: yume_do_hooks_dreams_romance_baku_encounters
-            #L5RCR68iJ9kL1mN3oP5qR7s: meido_hooks_detective_stories_bureaucratic_trouble
-            #L5RCR69tU0vW2xY4zA6bC8d: underworld_hooks_survival_horror_war_corruption
+            #L5RCR64qR5sT7uV9wX1yZ3a: tengoku_hooks_conflicts_and_trouble "Tengoku: Tengoku, the Heavens, is thought to exist at the very top of the Celestial Realms. It occupies the literal sky, impossibly high above the ground of Ningen-dō and accessible only via divine means. Tengoku is a vast and complicated bureaucracy, staunchly committed to virtue and the order of nature, but as vulnerable as any bureaucracy to inefficiency and internal conflict.\n\nOne might involve Tengoku in a story by…\n\nHaving something go wrong with the weather. Rokugan uses the same word for \"Heaven\" and \"sky\" for a good reason. The Elemental Dragons, who make up a portion of the Celestial Court, maintain and control the world's weather. Because many Rokugani are farmers, Rokugan lives and dies by the success of its farms. Irregular weather patterns can lead directly to starvation and death, but they also can propel an important landowner with a bumper crop to the kind of prominence and surplus that tends to fuel wars of ambition. Weather can have even more dramatic effects in wartime. Heavy rain and fog, for instance, slow the movement of cavalry and the effective range of arrows, but they also allow scouts and shinobi to move faster while evading detection. Building a memorial or making a sacrifice to the Heavens to…well, not bribe, but encourage the gods to turn the weather in an army's favor is a more reasonable task than one might think.\n\nPresenting a demonic threat. When Jigoku's operatives make a move, the Heavens take note. Marauding oni, monsters from the Shadowlands, or demon-touched warlords might motivate a divine being to manifest in Ningen-dō and exhort the PCs to defend goodness and justice, perhaps with the threat of a drought if they don't hurry.\n\nConflicts and challenges in Tengoku might include…\n\nOffice politics. Almost everyone in Tengoku thinks they are right and perfect, which means that when Fortunes or other divine beings disagree with one another, the conflicts can run long and bitter.\n\nQuestions of virtue. Despite all its bureaucracy, confusion, and petty politics, Tengoku values virtue. Adherence to the Seven Tenets of Bushidō has exalted many of Heaven's elite to where they are now. The most ardent supporters of each tenet, or virtue, can be found among Tengoku's halls and precincts—a situation that may well cause conflict if two deities each place different demands on the PCs. Figures with opposed priorities—perhaps matching the priorities of different PCs in the party—may each offer rewards to the party for siding with them and threaten punishments if they do not.\n\nTo get PCs in trouble, you might…\n\nInvoke an administrator who doesn't care. Tengoku is a busy place. Every Fortune or dragon who works in Heaven has too much to do. A bureaucrat there may assign a being's case to a Fortune who also has to attend highly formal social functions every night with the likes of Lord Moon and Lady Sun, manage a staff of subsidiary Fortunes and spirits, and answer the prayers and sacrifices of thousands of humans. Now, here the PCs are, and they've got to convince this god to pay attention to them over all these other things. Failure shouldn't shut down this storyline, though—the god could always redirect their query to a less competent subordinate…\n\nInvoke an administrator who cares too much. Or the PCs could have the opposite problem. A god who commands the resources and powers of Heaven might decide the PCs' concern is that god's crusade. Suddenly the demands on the PCs' performance grow and become more intense. In Tengoku, they might find a minor god whose entire purview and office are dedicated to the thing they're concerned with at the moment.\n\nDrag them into a scandal. Heaven is virtuous, but it is susceptible to scandal. The conflicting priorities and long histories of deities and spirits who work there sometimes boil over into scandals of propriety, reputation, or even corruption."
+            #L5RCR65bC6dE8fG0hI2jK4l: yomi_hooks_conflicts_and_trouble "Yomi: The Realm of Blessed Ancestors, Yomi, houses the venerable ancestor spirits of every family in Rokugan and resides by Tengoku. Yomi is at once beautiful and elegant and also big, politically messy, and full of bickering elders.\n\nOne might involve Yomi in a story by…\n\nTeasing a mystery from the past. What really happened on the day a PC's family lost their ancestral castle to enemy forces? Who took that secret to their grave? If the PCs visit Yomi, they might find the answer.\n\nHaving a recently deceased individual leave unfinished business behind. Sometimes, when someone dies unexpectedly, they leave their organization or clan in great disarray. Their loved ones or compatriots might feel so lost without them, or be in such great danger, that those loved ones are willing to send agents into the Realm of Blessed Ancestors to secure the information they need. Perhaps a rival heir has produced a will, and the deceased's testimony is needed to dispute it. Perhaps the loved ones need to find out whether the lowly gardener's true parent is in fact the deceased lord.\n\nConflicts and challenges in Yomi might include…\n\nFamily drama. Even in death, the venerable ancestors still snipe at and bicker with one another, vaunting their own descendants' successes or lamenting their failures as enthusiastically as if they were watching their favorite kemari teams.\n\nDemonic espionage. By taking advantage of corrupt mazoku or loopholes in Meido's systems, Fu Leng's agents sometimes gain access to Yomi or even get mistakenly approved to be sorei.\n\nWhen PCs get in trouble, you might…\n\nInvoke their ancestors' interest. Ancestor worship is nearly omnipresent throughout Rokugan. Every PC assuredly has a few prominent ancestors among those in Yomi. If any of those ancestors realize the PCs are in their neighborhood, they will stop at nothing to get involved in their lives, acting with the commitment and determination that only older relatives can muster.\n\nInvoke the interest of their antagonists' ancestors. One reliable way to generate pathos is to introduce the PCs' enemies' families, loved ones, or ancestors…especially if the PCs' own ancestors are less sympathetic. Bringing in different characters' ancestors gives you the opportunity to complicate the narrative that brought the characters to where they are today.\n\nSend unwelcome truth from above. From the heights of Yomi, the PCs can look down and see everything that goes on in the Mortal Realm. Each line of ancestors spends much of its time watching over their currently living descendants."
+            #L5RCR66mN7oP9qR1sT3uV5w: chikusho_do_and_sakkaku_hooks_conflicts_and_trouble "Chikushō-dō and Sakkaku: These two courts of sentient animal spirits represent helpful and mischievous or malicious folkloric creatures, respectively. Chikushō-dō, Sakkaku, and the many smaller courts each encompasses are locked in endless conflict for control of wild spaces and animal spirits' hearts and minds.\n\nOne might involve these realms in a story by…\n\nRevealing an NPC to be a shapeshifting spirit. A classic trope in East Asian fiction is for a certain character to be revealed as having been a fox, tanuki (raccoon dog), or similar animal all along. Their human identity doesn't have to be a wicked lie, even if they're part of Sakkaku—these spirits are frequently capricious.\n\nHaving someone run away. There are many reasons why a human might run away to the animal courts: they might fall in love with an animal spirit, wish to study fencing with a tengu, or crave the peace and solitude the wilderness promises (but will probably not actually give them). A highly repressed, buttoned-up individual who normally keeps all their feelings tamped down might be a good option for this.\n\nConflicts and challenges in Chikushōdō and Sakkaku might include…\n\nPolitical intrigue. This is the type of conflict these courts are best suited to. Animal trickster spirits tricking one another and vying for political power is the base state of affairs among these courts.\n\nFairy-tale adventure. GMs can also pattern their stories on the fairy tales that inspired Chikushō-dō and Sakkaku, such as the tales of the Crane Wife, Urashima Tarō, and Momotarō. These stories are sometimes lighter in tone than the usual samurai drama, although sadness and tragedy definitely crop up. This kind of tonal shift can provide a stark and powerful contrast with the other Legend of the Five Rings storylines.\n\nWhen PCs get in trouble, you might…\n\nIntroduce an enthusiastic but unhelpful animal spirit. As committed as Chikushō-dō is to repairing relationships between animals and humans, its denizens sometimes try too hard to impress or aid the humans whom they see as a crucial bridge between the human and animal worlds.\n\nHave them show human hypocrisy or failings to the wrong animal spirit. While some animal spirits have committed unflinchingly either to Sakkaku or Chikushō-dō, many more are less sure. They swing between the two based on the words of demagogues, the temptations offered to them, or the pressures in their lives. The worst thing such an animal spirit could see is a moment when humans align with the spiteful rhetoric Sakkaku likes to spread about them."
+            #L5RCR67xY8zA0bC2dE4fG6h: yume_do_hooks_conflicts_and_trouble "Yume-dō: Yume-dō is the Realm of Dreams, which overlaps the Realm of Mortals at dream junctures: areas in the two realms where they are most similar.\n\nOne might involve Yume-dō in a story by…\n\nHaving the wrong dream escape into the Mortal Realm, or having an unsuspecting individual disappear into dreams. Lucid dreaming is still a new discipline (see page 23). Humans are well behind the nezumi in their mastery and cultural understanding of lucid dreaming skills. It's easy for humans to become comatose, lost in dreams until someone guides them back.\n\nDeclaring an important location a dream juncture. It is unclear what, exactly, can or can't become a dream juncture, so GMs have the freedom to make locations in their existing campaigns convenient dream junctures.\n\nConflicts and challenges in Yume-dō might include…\n\nRomantic comedy. The uninhibited social interactions Yume-dō provides access to include the kind of whimsical and humorous romance that even Winter Court games might struggle to support.\n\nImaginings of what might have been. In a dream world, humans are likely to imagine their life's cast of characters in a different context. If the PCs are all samurai and their enemies are demons, what if they switched places? What if the PCs occupied completely different social roles, serving as farmers in a small village, or as actors in a theater troupe?\n\nWhen PCs get into trouble, you might…\n\nConfront the PCs with someone they know in their waking life. Yume-dō is both attractive and fearsome because Rokugani from any walk of life might meet other dreamers from any origin whatsoever there. What if the PCs' lord or greatest enemy appears beside them in the middle of a sensitive lucid dreaming session? Anything that dreamer sees may have repercussions in the Mortal Realm. Further, any human's subconscious opinion of a person may be affected by their dreams about that person. The PCs would need to be on their best behavior around their lord or enemy after meeting them in Yume-dō.\n\nSet the baku after the PCs. While some baku (dream eaters) are intelligent entities, others are little more than wild beasts, with the intelligence of a wolf or wild pig. A territorial baku protecting their favorite dream might catch a dreamwalker's scent and set out after them, hoping to chase them off through intimidation or force.\n\nChange the dreamworld around the PCs in accordance with their fears and anxieties. Yume-dō is highly sensitive to emotional changes. Any failure, no matter how slight, evokes an emotional reaction in the PCs when they are there. A PC who misses a crucial bowshot at a fleeing foe in the Realm of Dreams might inadvertently conjure an image of their hated childhood archery teacher, berating them for their failings and announcing their vulnerabilities to the other PCs as they claim the offending individual will never amount to anything."
+            #L5RCR68iJ9kL1mN3oP5qR7s: meido_hooks_conflicts_and_trouble "Meido: All Rokugan's dead must pass through Meido to be judged and processed.\n\nOne might introduce Meido to the story by…\n\nHaving the PCs die. A samurai may live three feet from death, but death is not always the end in Rokugan! PCs who die must pass through Meido, where they can get caught up in the battle for control of death between Fu Leng and Emma-Ō.\n\nHaving the PCs take a job with the Kings of Hell. Emma-Ō and his associate judges have more and more work and less and less time to do it every day. Few samurai would think of walking away from clan and family to work in the depths, but the PCs are no common samurai. Desperate PCs in need of glory, reputation, or both can find them in Emma-Ō's service, if they're willing to leave their lives and families far behind for a period of time to sojourn in the realms below.\n\nConflicts and challenges in Meido might include…\n\nDetective stories. Meido has urban areas where mazoku and humans live and work. Good, bad, and everything in between live in the souls of Meido's denizens. Any trouble they could get into in a big city, they could get into here, where nefarious agents of Fu Leng and other powers lurk in the shadows. Inquisitive PCs can earn favor with Emma-Ō if they take investigations into crime and corruption off his clipboard.\n\nVarious types of trouble… There are innumerable ways PCs could find themselves knee-deep in trouble in Meido. All it takes is angering one irritable official, taking a wrong turn down a mundane-looking alleyway, or encountering some scheming being in line. The possibilities are endless: an entire campaign could revolve around PCs getting into and out of trouble in this realm."
+            #L5RCR69tU0vW2xY4zA6bC8d: jigoku_gaki_do_and_toshigoku_hooks_conflicts_and_trouble "Jigoku, Gaki-dō, and Tōshigoku: No one visits a realm of punishment for fun. Acts of heroism or charity—or else bad luck, bad directions, or betrayal—might lead the PCs to these depths.\n\nOne might introduce one of these realms to the story by…\n\nThere's a prison break. For hundreds of years, beings in the realms over which Fu Leng has the greatest influence have been plotting to upend the Celestial Order and escape their torments. No being in the cosmos outshines Fu Leng's foul minions in their ability to break into and out of anything—and the walls, floors, and bars (literal or otherwise) of Jigoku grow less able to hold their occupants every day. If the PCs fail to contain the demons who have escaped from Jigoku, theses beings might accomplish feats like digging a tunnel into Meido or Ningen-dō, or establishing a dream juncture through which they could invade Yume-dō.\n\nThey get really lost. Gaki-dō's edges bleed into certain neighborhoods in cities of the Mortal Realm. Have the PCs crossed over into Gaki-dō through sheer bad luck? Or has Jizō, the Fortune of Mercy and patron of travelers, nudged them through the veil to interfere in a bad situation?\n\nConflict and challenges in these realms might include…\n\nSurvival horror. PCs who are lost in the underworld have a long, long way to go to get back to Ningen-dō. They are surrounded by malevolent supernatural entities on their own turf and by torments and tortures designed for far more durable beings.\n\nWar narrative. The PCs may have to enlist in the eternal battle raging across Tōshigoku if they want something from that realm. Especially if the false Mujōki and Fu Leng have made their move, Meido needs soldiers as well, to hold back the tide of warrior dead twisted into cruel killing machines. Jigoku and Meido are also in a never-ending border war over control of the ancient precincts of the dead.\n\nWhen the PCs get in trouble in Jigoku, you might…\n\nOffer power at a price. Folklore holds that the only thing a senior oni likes better than getting power and revenge for themself is corrupting others so that they take revenge as well. If the PCs look desperate—if they're backed into a corner—Fu Leng's minions may come to them with a very bad deal. Fu Leng can get them out of any scrape, they tell the PCs, if there's something in it for him.\n\nMake a show of wicked strength. In the Mortal Realm, it's easy to forget exactly how powerful the forces of Jigoku are. If the PCs do not check Fu Leng's power, he's going to build up that power—and show it. The GM should show Jigoku's forces at their most competent and organized: demons arrayed in rows marching down the corridors in perfect sync, or hellish officers bedecked in finery stolen from Meido's vaults.\n\nReveal the consequences of deception or treachery. Of course, violence and fear please Fu Leng; however, nothing warms his wicked heart and makes him feel like an evil genius more than successful trickery. If the PCs get in trouble in Jigoku, the GM may wish to reveal that a truth the heroes thought was immutable is not so.\n\nTo get PCs in trouble in Gaki-dō, you might…\n\nGet them lost. Gaki-dō is huge, vast, and sprawling—far larger than anyone, even Emma-Ō, can keep track of. One wrong move, one distracted charge in the middle of a street brawl, and the PCs could end up in the wrong part of the wrong town or cut off from the people they're supposed to be guarding or seeking.\n\nShow the border between Gaki-dō and reality. In every big Rokugani city, there are places where Gaki-dō and the real world aren't that different—where people look like hungry ghosts, or perhaps are hungry ghosts.\n\nWhen the PCs get in trouble in Tōshigoku, you might…\n\nIntroduce fallen comrades. The corruption in Meido's bureaucracy ensures that many virtuous warriors are undeserving of so bitter a fate as being sentenced to Tōshigoku. Ask the players who their PCs might know who could have ended up consigned to Tōshigoku, rightfully or otherwise. These unfortunates have a bad habit of showing up in the PCs' lives at the worst time. If the PCs are hunting down one of the false Mujōki's deadliest lieutenants to quash Mujōki's plans of assaulting Meido, perhaps an old friend turns out to be a member of the lieutenant's personal guard, believing their unjust lot to be rightful punishment.\n\nTempt the PCs to stoop to a villain's level. Tōshigoku's combatants grow callous and heartless with the endless war. Without even a thought, some of them commit cruelties that even the most hard-bitten mortal warrior would deem unconscionable. In the midst of a conflict in Tōshigoku, a character might see an opportunity to shoot an enemy in the back, attack a priest, or cut down a dangerous foe who has surrendered.\n\nIntroduce someone who doesn't deserve this foul a fate. One of the problems with Tōshigoku's corruption and the false Mujōki is that good souls who are adept martial artists are inordinately likely to wind up in Tōshigoku, fighting for the wrong side and being told they deserve it."
         }
     }
 }

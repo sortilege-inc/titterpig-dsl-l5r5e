@@ -9,7 +9,7 @@
 # structure is in l5r5e-0.5-sins-of-regret.arc and the narrative in the .lore.
 
 EXTENSION "L5R5e_SinsOfRegret_Cast" {
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-03"
     DEPENDS_ON "L5R5e_Core_Core"
@@ -18,10 +18,6 @@ EXTENSION "L5R5e_SinsOfRegret_Cast" {
 
     ^"Ichirō (Sins of Regret)" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # A bandit leader in the forest near the village: son of the village leader
-        # Setsuo, young and naïve, who abandoned the village to gather villagers into
-        # a rebel band, hoping to overthrow the unjust daimyō Jikai. Claims to have
-        # joined the Perfect Land Sect.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 2
@@ -43,13 +39,14 @@ EXTENSION "L5R5e_SinsOfRegret_Cast" {
         }
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 2, Intrigue 1. Bandit Leader."
         ^"Forest Fighter" DEF { ^"Effect" STRING "When Ichirō makes a Martial skill check while in forest, he adds one rolled Ring die." }
+
+        RULES {
+            #J0CMZHM4ZM7qjl7C9sk53A: background "Ichirō could not bear to watch his father, Setsuo, submit to Jikai's cruelty, so he abandoned the village to live in the forest. Reo the dōshin, or local law enforcer, followed him. They gathered together several of the villagers who wanted to fight rather than starve, most of whom trained with Michi (see page 11). Ichirō is young and naïve, and if the PCs swear to keep his presence secret, he does not prevent them from leaving the Hermitage. Although Ichirō tells the other bandits that the Perfect Land Sect will appear to help them one day, he cannot really know this. In the meantime, he encourages the bandits to train and hunt in secret in the forest. He hopes to ultimately help the village by overthrowing Jikai. How and when has never been established, and he fears the others will lose faith in him before he finds the resources and will to put his plan into action."
+        }
     }
 
     ^"Reju Tsugumasa" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The daimyō's magistrate, an aloof but honest man long in Reju service, sent
-        # to the village to collect the rice tax early. Accustomed to ordering
-        # servants; loyal and dedicated but with a fondness for wealth and comfort.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 2
@@ -71,13 +68,14 @@ EXTENSION "L5R5e_SinsOfRegret_Cast" {
         }
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 2, Intrigue 3. Magistrate."
         ^"Elitist" DEF { ^"Effect" STRING "When making a check to give orders to a subordinate or other character with lower status, Tsugumasa counts his Social skill ranks as 4. After making a Social skill check targeting one or more peasants, Tsugumasa receives 2 strife." }
+
+        RULES {
+            #zpiO3PDnep8QR26in9kaGf: background "The magistrate is an aloof but honest man who's been in the daimyō's service a long time. He's trusted and works hard, but his job here is very different from when his lord lived in the capital. He is accustomed to ordering servants but doesn't like dealing with farmers. Tsugumasa would rather oversee from afar and let the bushi do the work. He does not trust the newly made samurai, but they at least attempt to behave like proper samurai when he is present. He is loyal and dedicated but has a fondness for wealth and comfort that is not satisfied in his current situation."
+        }
     }
 
     ^"Michi" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # A wandering monk who once stayed at the Hermitage and trained the villagers;
-        # friendly and cryptic on the road, serious and Shinsei-quoting at the castle,
-        # where he seems to be waiting for something he will not name.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 4
@@ -105,10 +103,6 @@ EXTENSION "L5R5e_SinsOfRegret_Cast" {
 
     ^"Reju Jikai" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The daimyō of Closed Shell Castle — once an idealist, now bitter and angry,
-        # mostly with himself, deferring governance to his steward while indulging his
-        # interest in falconry, poetry, and gaijin cultures. Suffers the Exhausted
-        # condition from the nightingale-floor and the noises on the roof.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 3
@@ -130,14 +124,14 @@ EXTENSION "L5R5e_SinsOfRegret_Cast" {
         }
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 3, Intrigue 5. Daimyō of Closed Shell Castle."
         ^"Selective Hearing" DEF { ^"Effect" STRING "The first time another character makes a Social skill check targeting Jikai each scene, if there are 3 or more rolled dice containing Opportunity or Strife, that character must reroll those results." }
+
+        RULES {
+            #Ve2nj4SctREGfAFUHYbXsT: background "Reju Jikai was once an idealist, but his recent turn of fortune and subsequent troubles have made him bitter and angry—largely with himself. Recognizing his own inexperience in governing, he defers to the steward in most things, showing little interest in the lives that depend upon his every decision. Nonetheless, the art of falconry still holds interest. Although he generally conceals the fact, Jikai has always been fascinated by gaijin cultures.\n\nJikai suffers from the Exhausted condition and is unable to remove it unless the PCs resolve his sleeping problems (see Family Quarters on page 18)."
+        }
     }
 
     ^"Reju Toshio" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Jikai's spiritual advisor, who traveled with him from Otosan Uchi and
-        # resents the remote castle. Rather than righting the elemental imbalance, he
-        # has deliberately worsened it and offended the kami — a serious spiritual
-        # crime — at the steward Nobu's suggestion, in exchange for wealth and power.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 4
@@ -160,14 +154,14 @@ EXTENSION "L5R5e_SinsOfRegret_Cast" {
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 4. Embittered Shugenja."
         ^"Manipulator of Kami" DEF { ^"Effect" STRING "Each time Toshio attempts an invocation he uses a material offering, but still suffers spiritual backlash if he generates 3 or more Strife. This becomes 1 or more Strife without offerings." }
         ^"Tiny Tremors" DEF { ^"Effect" STRING "(Invocation) As an Attack action, Toshio can make a TN 1 Theology (Earth) check to summon a small vibration in the floor or ground at a chosen position at range 0–3. Opportunity+: Each character at range 0–2 of the chosen position suffer 1 physical damage per Opportunity spent this way." }
+
+        RULES {
+            #ikp4JzW4LZHBtCwJSX4BtL: background "Toshio is the daimyō's spiritual advisor. He traveled with Jikai from Otosan Uchi and resents being compelled to live in this remote castle. He insists that the castle would have to be leveled and completely rebuilt to please the kami, but this is a falsehood. Rather than attempting to right the elemental imbalance, Toshio has deliberately worsened it, ensuring the kami of the land are offended. This is at the suggestion of Nobu, who has promised Toshio wealth and autonomy if he helps Nobu gain power. If the PCs discover what Toshio has been doing and prove this to the daimyō, Toshio attempts to flee rather than admit what he has done or implicate Nobu. Deliberately angering kami not only goes against the Celestial Order, as he's hindering the very lord he should be helping, but is an affront to his status as shugenja. It is a serious spiritual crime against the land itself."
+        }
     }
 
     ^"Reju Ume" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Jikai's niece and heir, a tall, graceless girl who is a beautiful duelist —
-        # trained in Otosan Uchi by the Kakita master Kakita Chisato — and resents her
-        # uncle for dragging her to this remote home. Will speak to Jikai for PCs who
-        # best her in an iaijutsu duel.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 3
@@ -189,14 +183,14 @@ EXTENSION "L5R5e_SinsOfRegret_Cast" {
         }
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 3, Intrigue 2. Duelist and Heir."
         ^"Dramatic Duelist" DEF { ^"Effect" STRING "When performing an Attack action, Ume may spend Opportunity as follows: Opportunity Opportunity: If she succeeds, Ume inflicts no damage, and her target receives strife equal to her weapon's base damage plus her bonus successes." }
+
+        RULES {
+            #sMzE2YN1LDco7cqG0gQfER: background "Ume is Jikai's niece and heir. A tall girl who lacks grace except when she has a sword in her hand, she performs kata beautifully. In Otosan Uchi she trained with a Kakita sensei, and she misses her training with Kakita Chisato. Though the sword is her art, the capital also contained other pastimes she enjoyed, and she resents her uncle for dragging her down with him."
+        }
     }
 
     ^"Seppun Azusa" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Married to Reju Jikai (she keeps her prestigious Seppun name); a powerfully
-        # built bushi who has given up her martial duties since a hand injury and
-        # turned to obsessive devotion to Shinsei. Her Disabled Hand can be overcome,
-        # and she reconciled with Jikai, if the PCs help.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 6
@@ -224,10 +218,6 @@ EXTENSION "L5R5e_SinsOfRegret_Cast" {
 
     ^"Otomo Nobu" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The castle steward — ruthless and ambitious but hiding it well. He ran the
-        # castle for months before Jikai's appointment, grew accustomed to power, and
-        # has convinced himself that removing Jikai will make him daimyō. He murdered
-        # Otomo Nahoko and threw her bones into the well.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 1
@@ -253,9 +243,6 @@ EXTENSION "L5R5e_SinsOfRegret_Cast" {
 
     ^"Otomo Kazumi" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The commander of the rival lord's invading force, waiting for a chance to
-        # prove herself and willing to do whatever it takes to claim victory. Keen of
-        # body and mind, with no fear of death, only obscurity.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 7
@@ -277,15 +264,16 @@ EXTENSION "L5R5e_SinsOfRegret_Cast" {
         }
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 7, Intrigue 5. Commander of the rival lord's force."
         ^"Claim the Advantage" DEF { ^"Effect" STRING "In a mass battle, each opposing commander treats the TN of their initiative check as increased by 2." }
+
+        RULES {
+            #kV98jvGaXQndpxtNOntqXU: background "Kazumi has been waiting for a chance to prove her skills for a long time, and she is willing to do whatever it takes to claim victory. Her body and mind are as keen as her weapons, and she is determined to test all on the battlefield. She has no fear of death, only obscurity."
+        }
     }
 
     # ═══════════════════════ OTHERWORLDLY BEINGS ═════════════════════════
 
     ^"Kyōkotsu" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The vengeful undead remains of Otomo Nahoko, murdered by the steward Nobu
-        # and thrown into the castle well. A horrific spectral figure of decayed,
-        # unarticulated bones that screams with soul-shriving rage.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 5
@@ -305,14 +293,14 @@ EXTENSION "L5R5e_SinsOfRegret_Cast" {
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 5, Intrigue 1. The Remains of Nahoko. No societal scores (Otherworldly)."
         ^"Animated Bones" DEF { ^"Effect" STRING "A kyōkotsu is an Otherworldly being of silhouette 1. A critical strike of any severity scatters the bones and renders them inanimate for one round. It is only defeated when its fatigue exceeds its endurance." }
         ^"Vengeful Touch" DEF { ^"Effect" STRING "Anyone who comes within range 0 of the spirit or otherwise directly touches it suffers the Enraged condition (see page 272 of the core rulebook)." }
+
+        RULES {
+            #Pv6YfZXudrM50TuXjvBcjp: background "The kyōkotsu manifests as a horrific spectral figure, containing the decayed and unarticulated bones of Otomo Nahoko. It screams with rage at any who draw near, a wail that bursts ears and shrives the very soul."
+        }
     }
 
     ^"Shachihoko" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Carp with the faces of tigers, carved onto the roof to protect the keep from
-        # evil spirits and fire. Neglected by Toshio and inflamed by the spiritual
-        # turbulence, these guardian spirits have grown paranoid and attack any
-        # perceived intruder on the roof without warning.
         PROPERTIES {
             ^"Type" STRING "Minion" FIXED
             ^"Combat Conflict Rank" INTEGER 3

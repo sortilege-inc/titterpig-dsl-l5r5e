@@ -2,7 +2,7 @@
 # Authored from the doublecheck vision inventory (structured stats + abilities).
 
 EXTENSION "L5R5e_WritOfWilds_NPCs" {
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-03"
     DEPENDS_ON "L5R5e_Core_Core"
@@ -36,7 +36,8 @@ EXTENSION "L5R5e_WritOfWilds_NPCs" {
         DESCRIPTION "Togashi Remmu is atypical for an ise zumi. While most of their brethren rarely leave the desolate isolation of their homeland, Remmu happily travels the Empire. After spending a day and night in secluded discussion with Togashi Yokuni, they came to believe that they were called to walk this path, finding answers not in reclusive contemplation, but by immersing themselves in the life of Rokugan and its people. Accordingly, they wander throughout the Empire, counseling the powerful to compassion, offering succor to the distressed, giving wisdom to all who seek it, and otherwise observing and documenting all that transpires around them. Remmu does not travel according to random whim, however. They sense that, at some point, in some place in the Empire, they will be called upon to undertake some great task, the completion of which—or lack thereof—will represent both a pivotal moment in history, and a prominent milestone in their own journey through life."
         ^"Mirumoto" DEF { ^"Effect" STRING "Unlike his siblings, the Kami Togashi had no desire for mortal followers, and fully intended to remain alone when he traveled into the remote mountains in northern Rokugan to begin his contemplative solitude. Two mortals nonetheless chose to follow the Kami into his self-imposed exile—Agasha, a naturalist and priest of the elements, and Mirumoto, a warrior. Mirumoto proved an abrasive and irascible man, often aggressive, and even rude. He was also a supremely skilled swordsman, and one of the best duelists the Empire has ever known. It was, in fact, Mirumoto who developed the niten or “Two Heavens” style of dueling, a fighting technique which employs both swords of the daisho—the katana and the wakizashi—simultaneously. Even to this day, niten still vies with the draw-and-strike iaijutsu style, pioneered by the Crane Clan, as the preeminent form of the dueling art in the Empire. The Mirumoto family follows in their founder's footsteps, a lineage of skilled, pragmatic warriors and administrators, who are not afraid to innovate and use unorthodox means to achieve their goals on behalf of their clan." }
         RULES {
-            #L5Rnpc00TogashiRemmuZzZzZzZz: togashi_remmu__sociable_wanderer
+            #L5Rnpc00TogashiRemmuZzZzZzZz: blood_of_the_kami "Blood of the Kami: When Remmu successfully uses a kihō, they are considered to have three bonus successes for the purposes of resolving the effects of that kihō."
+            #glP4SMs96XBfZA4GL6I5PY: drawing_from_within "Drawing From Within: Choose four kihō from those listed beginning on page 182 of the Core Rulebook, which Remmu can use. Each of these kihō is linked to an appropriate tattoo, so benefit from their Blood of the Kami ability."
         }
     }
 
@@ -63,7 +64,7 @@ EXTENSION "L5R5e_WritOfWilds_NPCs" {
         ^"Shiro Mirumoto" DEF { ^"Effect" STRING "Also known as Last Glance Castle, Shiro Mirumoto is a stark and functional fortress built into the side of a mountain overlooking a steep, winding road ascending from the Lowlands below. The ancestral home of the Mirumoto daimyō, the castle is predominantly a fortress, intended to function as the headquarters of the Dragon army, as well as one of its main barracks. It is nowhere near as resplendent as the homes of family daimyō elsewhere in the Empire, which is why most political delegations are hosted in more accommodating locations, such as the city of Heibesu to the north, or Shiro Kitsuki to the west. Shiro Mirumoto is also home to the Path of Hojatsu dōjō, named after Mirumoto's son and the training academy for those who would become officers and leaders of the Dragon armies." }
         ^"Heibesu" DEF { ^"Effect" STRING "Located on the eastern margin of the Dragon lands, on the edge of the Dragon Heart Plain, Heibesu is a major commercial hub for the Dragon. The clan conducts most of its trade with the eastern Empire—particularly the Phoenix and Crane—here. Because space for the city is limited, it is unusual for Rokugani cities in that most buildings are multi-story, some reaching as high as four or even five floors. The Izaku Library, named after a Dragon vassal family, is located here, housing detailed lore related to agriculture and growing of crops. There are also several large temples here, including a particularly imposing temple devoted to Daikoku. Finally, the Mirumoto maintain a strong garrison here, since Heibesu is one of only a few approaches into Dragon lands from the east." }
         RULES {
-            #L5Rnpc01MirumotoKichZzZzZzZz: mirumoto_kichiru__thwarted_duelist
+            #L5Rnpc01MirumotoKichZzZzZzZz: two_heavens_style "Two Heavens Style: Once per round, when performing an Attack action, Kichiru may spend (op) as follows:\n\n(op): Perform a Strike Action with a readied weapon she has not used for an Attack action this turn."
         }
     }
 
@@ -96,9 +97,6 @@ EXTENSION "L5R5e_WritOfWilds_NPCs" {
         DESCRIPTION "ADVERSARY / CONFLICT RANK"
         ^"Agasha Shinji, Zealous Naturalist" DEF { ^"Effect" STRING "In many respects, Agasha Shinji is much like his Agasha brethren—a shugenja devoted to the study and understanding of the natural world. Unlike most other Agasha, however, Shinji has come to believe that, to the extent there is an imbalance in the Elements, it is only a logical result of the partitioning of the world into mortal and natural environments. The only way to resolve this disharmony is for the two to not simply be reconciled, but actually merged. Mortals must learn to" }
         ^"Adept Of Nature" DEF { ^"Effect" STRING "Choose 0-6 invocations and 0-3 rituals that Shinji can perform. If Shinji uses an invocation or ritual in an area that is pristine wilderness—assumed to be any location more than an hour's walk from any human construction or development—reduce the TN for performing that invocation or ritual by 1." }
-        RULES {
-            #L5Rnpc02AgashaShinjiZzZzZzZz: agasha_shinji__zealous_naturalist
-        }
     }
 
     # source stat block (page 67)
@@ -123,9 +121,6 @@ EXTENSION "L5R5e_WritOfWilds_NPCs" {
         ^"Kitsuki Noriko, Conflicted Magistrate" DEF { ^"Effect" STRING "Kitsuki Noriko believes that she was born to be a magistrate, upholding the law, and seeing justice done in the name of righteousness and honor. In this way, she would be continuing a legacy of devotion to the legal and judicial welfare of the Empire, one that included both her mother and father, and three of her grandparents. It was for this reason that, when offered an opportunity to assume a magistrate's post in Distant Paddy Village, she eagerly accepted. Not long after taking her post, though, she uncovered a black-market conspiracy—rice was being funneled from the official stocks, to help feed hungry commoners facing shortages resulting from fields left fallow by the faltering Dragon birth-rate. Noriko found herself on the horns of a dilemma; she could enforce the law, ending the black-market scheme and condemning the hungry commoners to scarcity, or she could look the other way. She has done the latter, believing it be the most 'just' course of" }
         ^"A Keen Eye" DEF { ^"Effect" STRING "Noriko always uses her Focus as her base initiative value." }
         ^"Uncovering The Truth" DEF { ^"Effect" STRING "Once per scene, when performing a Skill check to investigate (see The Art of Investigation on page 170 of the core rulebook), Noriko may spend [symbol] as follows: [symbol]+: Noriko may increase the number of successes on her Skill check by one per [symbol] spent this way." }
-        RULES {
-            #L5Rnpc03KitsukiNorikZzZzZzZz: kitsuki_noriko__conflicted_magistrate
-        }
     }
 
     # source stat block (page 73)
@@ -158,9 +153,6 @@ EXTENSION "L5R5e_WritOfWilds_NPCs" {
         #tb7610f0cbc210b9c8f479 ^"Furthest Fortress" DEF { ^"Effect" STRING "Home to a particularly militant sect of Togashi monks known the Northern Watch, Furthest Fortress offers insight into the nature of such cloistered militant orders. They tend to adopt a military-like organization, focus the vast majority of their training on martial arts and the use of weapons, and generally show reverence to their patron through developing and perfecting martial acumen. Furthest Fortress, which is believed to be the most northerly permanent settlement in the Empire, stands at the entrance to one of the very few passes in the mountains. Officially, it was constructed by the Togashi at the direction of the Dragon Clan Champion, as a fortified place to guard the pass. However, it is widely rumored that the temple actually houses the greatest secret of the Dragon Clan, an enigma known only as the Final Riddle." }
         ^"The Fires Within" DEF { ^"Effect" STRING "Choose three Fire kihō which Hayato can use." }
         ^"Commune With Flame" DEF { ^"Effect" STRING "When subjected to any effect or attack that involves fire or heat, Hayato is considered to have Resistance of Physical 4 and Supernatural 4." }
-        RULES {
-            #L5Rnpc04AgashaHayatoZzZzZzZz: agasha_hayato__stoic_guardian
-        }
     }
 
     # source stat block (page 76)
@@ -197,7 +189,9 @@ EXTENSION "L5R5e_WritOfWilds_NPCs" {
         ^"Kōta, Ambitious Agitator" DEF { ^"Effect" STRING "ADVERSARY CONFLICT RANK: 🀄3 🏵5 Kōta, who was originally a courtier of the Phoenix Clan, had occasion to visit Mountain Song Temple as part of a delegation seeking a cessation of border hostilities with the Lion Clan; the Temple was selected as neutral ground for both clans. They were immediately and utterly captivated by the 'song of stone' and resolved to devote their retirement to seeking understanding of it. Now, years later, Kōta has taken up residence at Mountain Song Temple, ostensibly to pursue communion with and insight into the enigmatic song. Kōta has an ulterior agenda, however. The current Abbot of the Temple is old and ailing, and Kōta is determined to be his successor. To this end, they are drawing upon the skills of their old life, building alliances, subtly discrediting potential rivals, and even fomenting arguments by aggravating tensions and disagreements among the monks. Kōta genuinely believes that they can bring the Temple to a position of new prominence in the Empire, attracting more pilgrims and visitors to spread appreciation for the Mountain Song and engage more of them in its contemplation. This, they believe, is key to ultimately understanding the Song itself, and thereby discerning the meaning of Shinsei's mysterious kōan." }
         ^"Instigator" DEF { ^"Effect" STRING "Once per scene, as a Support action, Kōta may make a TN 2 Sentiment (Water) check targeting up to 3 characters. If they succeed, they are able to discern potential sources of conflict among them; each target gains 3 Strife and, if they Unmask as a result, they must direct their Unmasking at another target or targets of Kōta's choice." }
         RULES {
-            #L5Rnpc05TogashiKomaMZzZzZzZz: togashi_koma__militant_adept
+            #L5Rnpc05TogashiKomaMZzZzZzZz: blood_of_the_kami "Blood of the Kami: When Hayato successfully uses a kihō, she is considered to have three bonus successes for the purposes of resolving the effects of that kihō."
+            #K7jgDgXl45qV3K7eiNuYtT: harnessing_ki "Harnessing Ki: Hayato knows the following kihō: Earthen Fist, Air Fist, Flame Fist, and Water Fist. Each of these kihō is linked to an appropriate tattoo, so benefit from her Blood of the Kami ability."
+            #yPy6vbrgVyRph7cvXrgVmU: martial_acumen "Martial Acumen: When making a Strike action with her nunchaku, Hayato may also attack with a Kick or Punch."
         }
     }
 
@@ -229,9 +223,6 @@ EXTENSION "L5R5e_WritOfWilds_NPCs" {
         }
         ^"Kōta, Ambitious Agitator" DEF { ^"Effect" STRING "ADVERSARY CONFLICT RANK: 🀄3 🏵5 Kōta, who was originally a courtier of the Phoenix Clan, had occasion to visit Mountain Song Temple as part of a delegation seeking a cessation of border hostilities with the Lion Clan; the Temple was selected as neutral ground for both clans. They were immediately and utterly captivated by the 'song of stone' and resolved to devote their retirement to seeking understanding of it. Now, years later, Kōta has taken up residence at Mountain Song Temple, ostensibly to pursue communion with and insight into the enigmatic song. Kōta has an ulterior agenda, however. The current Abbot of the Temple is old and ailing, and Kōta is determined to be his successor. To this end, they are drawing upon the skills of their old life, building alliances, subtly discrediting potential rivals, and even fomenting arguments by aggravating tensions and disagreements among the monks. Kōta genuinely believes that they can bring the Temple to a position of new prominence in the Empire, attracting more pilgrims and visitors to spread appreciation for the Mountain Song and engage more of them in its contemplation. This, they believe, is key to ultimately understanding the Song itself, and thereby discerning the meaning of Shinsei's mysterious kōan." }
         ^"Instigator" DEF { ^"Effect" STRING "Once per scene, as a Support action, Kōta may make a TN 2 Sentiment (Water) check targeting up to 3 characters. If they succeed, they are able to discern potential sources of conflict among them; each target gains 3 Strife and, if they Unmask as a result, they must direct their Unmasking at another target or targets of Kōta's choice." }
-        RULES {
-            #L5Rnpc06KōtaAmbitiouZzZzZzZz: kōta__ambitious_agitator
-        }
     }
 
     # source stat block (page 84)
@@ -266,9 +257,6 @@ EXTENSION "L5R5e_WritOfWilds_NPCs" {
         ^"The Glass Sword Philosophy" DEF { ^"Effect" STRING "The Dragonfly consider the love of bloodshed and vengeance to be a disease of the spirit. The act of killing is likened to grasping a hot coal in order to throw it at another. The Dragonfly reason that while act of killing may harm the body of the victim, it leaves the spirit intact. Meanwhile, this same act taints the soul of the killer, and the spirit long outlasts the body. This desire to preserve the spirit has led to the practice known as the 'Glass Sword Philosophy' so named as a weapon as delicate as a glass sword must be used with great care, its user employing only so much violence as is strictly necessary. One must pursue every avenue possible before resorting to violence, and then use only so much violence as needed to stop the conflict, choosing to wound or stun if possible before killing outright. Dragonfly families often commission and display glass swords as reminders of their belief in nonviolence rather than for any practical reason. However, in times of great need a glass sword is as sharp as any other, though it will only endure for one hit." }
         ^"The Dragon" DEF { ^"Effect" STRING "The Dragonfly are special to the Dragon, both for obvious practical purposes and also as a bastion of unity." }
         ^"The Phoenix" DEF { ^"Effect" STRING "As the other parent clan to the Dragonfly, the Phoenix feel kinship towards the minor clan. While the bushi school of the Dragonfly has long been disbanded, those among the Dragonfly who wish to learn have a longstanding invitation to study with the Phoenix. The few Dragonfly bushi are therefore trained exclusively by the Phoenix." }
-        RULES {
-            #L5Rnpc07TonboSadaoDaZzZzZzZz: tonbo_sadao__daimyō_of_the_dragonfly
-        }
     }
 
 }

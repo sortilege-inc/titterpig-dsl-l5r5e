@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Core" {
     NAME "Legend of the Five Rings 5th Edition - Core mechanics, ACTORs, and fundamental game rules"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -143,14 +143,10 @@ BASE "L5R5e_Core_Core" {
     #L5R011iJ2kL4mN6oP8qR0s ACTOR "Minion" DEF {
         EXTENDS #L5R009mN0oP2qR4sT6uV8w ^"Adversary"
 
-        # Weak adversaries with simplified mechanics.
-        # Minions have special rules for fatigue, critical strikes,
-        # and opportunity that distinguish them from full adversaries.
-
         RULES {
-            #L5R012tU3vW5xY7zA9bC1d: minion_special_fatigue_handling
-            #L5R012tU3vW5xY7zA9bC2e: minion_critical_strike_rules
-            #L5R012tU3vW5xY7zA9bC3f: minion_opportunity_restrictions
+            #L5R012tU3vW5xY7zA9bC1d: minion_special_fatigue_handling "When a minion's fatigue exceeds its endurance, it is simply defeated. A defeated minion is slain if the source of damage that defeated it is 7 or higher; otherwise, it is non-lethally dispatched."
+            #L5R012tU3vW5xY7zA9bC2e: minion_critical_strike_rules "If a minion would be dealt a critical strike, it receives fatigue equal to the severity instead."
+            #L5R012tU3vW5xY7zA9bC3f: minion_opportunity_restrictions "The game runs most smoothly if minions only spend (op) on options listed in their abilities, but the GM may waive this at their discretion."
         }
     }
 
@@ -174,10 +170,6 @@ BASE "L5R5e_Core_Core" {
 
     ^"Ring Die" DEF {
 
-        # Six-sided custom die representing a character's innate ring aptitude.
-        # In text represented as (ring). Provides less potent outcomes than
-        # Skill dice but always available based on ring value.
-
         FACES {
             1 "Blank"
             2 "(op) (st)"
@@ -188,16 +180,11 @@ BASE "L5R5e_Core_Core" {
         }
 
         RULES {
-            #L5R015aB6cD8eF0gH2iJ4k: ring_die_pool_equals_ring_value
-            #L5R016lM7nO9pQ1rS3tU5v: ring_die_always_available
+            #L5R015aB6cD8eF0gH2iJ4k: ring_die_pool_equals_ring_value "When making a check using a given ring, a player rolls a number of Ring dice ((ring)) equal to their value for that ring."
         }
     }
 
     ^"Skill Die" DEF {
-
-        # Twelve-sided custom die representing trained expertise.
-        # In text represented as (skill). Provides more potent outcomes
-        # including success without strife and clean explosive success.
 
         FACES {
             1 "Blank"
@@ -215,15 +202,11 @@ BASE "L5R5e_Core_Core" {
         }
 
         RULES {
-            #L5R017wX8yZ0aB2cD4eF6g: skill_die_pool_equals_skill_ranks
-            #L5R018hI9jK1lM3nO5pQ7r: skill_die_provides_cleaner_results
+            #L5R017wX8yZ0aB2cD4eF6g: skill_die_pool_equals_skill_ranks "When making a check using a given skill, a player rolls a number of Skill dice ((skill)) equal to the number of ranks their character has in that skill."
         }
     }
 
     #t202588bb0b32758539464 ^"Dice Symbols" DEF {
-
-        # Four unique symbols appearing on L5R custom dice in various
-        # combinations. Resolved in specific order during Step 6 of a check.
 
         ENUM ["Success", "Explosive Success", "Opportunity", "Strife"]
 
@@ -237,20 +220,14 @@ BASE "L5R5e_Core_Core" {
         RESOLUTION_ORDER ["(ex)", "(st)", "(op)", "(su)"]
 
         RULES {
-            #L5R019sT0uV2wX4yZ6aB8c: symbol_resolution_order
-            #L5R020dE1fG3hI5jK7lM9n: explosive_success_chain_rolling
-            #L5R021oP2qR4sT6uV8wX0y: opportunity_narrative_effects
-            #L5R022zA3bC5dE7fG9hI1j: strife_accumulation_tracking
+            #L5R019sT0uV2wX4yZ6aB8c: symbol_resolution_order "Step 6: Resolve Symbols on Kept Dice: After the dice pool has been reduced to only kept dice, the player resolves all symbols contained in the results of those dice. Symbols are resolved in the following order:"
+            #L5R020dE1fG3hI5jK7lM9n: explosive_success_chain_rolling "(ex): For each (ex) symbol, the player rolls one additional die of the same type as the one containing the (ex) symbol. After rolling a die this way, the player chooses whether it will be kept (on top of their current results) or dropped. If the die is kept, the player resolves its result in addition to the results on the rest of the kept dice in the dice pool (including further (ex) symbols)."
+            #L5R021oP2qR4sT6uV8wX0y: opportunity_narrative_effects "(op): The player may spend 1 or more (op) symbols to resolve opportunities. Opportunities are meant to prompt the player and the GM to invent and add extra effects, additional details, and narrative flourishes that occur independently of a check's success or failure (see Using Opportunity on page 28)."
+            #L5R022zA3bC5dE7fG9hI1j: strife_accumulation_tracking "(st): For each (st) symbol, the character receives 1 strife. The character's player should record any strife their character receives on their character sheet. Strife has no immediate effect, but can have effects as it accumulates (see Using Strife on page 29)."
         }
     }
 
     #t7945706680f94a9e75d70 ^"Check" DEF {
-
-        # The core resolution mechanic for L5R. Roll and Keep system:
-        # 1) Assemble dice pool (Ring dice + Skill dice)
-        # 2) Roll all dice
-        # 3) Keep dice up to ring value
-        # 4) Resolve symbols on kept dice
 
         STEPS {
             1 "Declare Intention: Player explains what character wants to accomplish"
@@ -263,20 +240,17 @@ BASE "L5R5e_Core_Core" {
         }
 
         RULES {
-            #L5R023kL4mN6oP8qR0sT2u: dice_pool_assembly
-            #L5R024vW5xY7zA9bC1dE3f: keep_limit_equals_ring_value
-            #L5R025gH6iJ8kL0mN2oP4q: success_threshold_comparison
-            #L5R026rS7tU9vW1xY3zA5b: bonus_successes_quality
-            #L5R027cD8eF0gH2iJ4kL6m: shortfall_degree_of_failure
+            #L5R023kL4mN6oP8qR0sT2u: dice_pool_assembly "Step 3: Assemble and Roll Dice Pool: The player assembles the dice pool. The player picks up a number of Skill dice ((skill)) equal to the character's ranks in the selected skill and a number of Ring dice ((ring)) equal to the value of the character's ring that is associated with the selected approach. Then, the player rolls all of these dice. After they are rolled, the dice are called rolled dice."
+            #L5R024vW5xY7zA9bC1dE3f: keep_limit_equals_ring_value "Step 5: Choose Kept Dice: After applying advantages and disadvantages, the player looks at the results and decides which of the rolled dice will become kept dice (those used in the resolution of the check) and which will become dropped dice (those that will be discarded with their results unused). The player must choose at least one die to keep, and can choose to keep a maximum up to the value of the ring the character used for the check. The player then removes all dropped dice.\n\nThen, any effects that modify kept dice are resolved."
+            #L5R025gH6iJ8kL0mN2oP4q: success_threshold_comparison "(su): If the sum total of (su) and (ex) symbols equals or exceeds the target number of successes of the check, the character succeeds at the objective declared in Step 1: Declare Intention. If this total is less than the TN of the check, the character fails at the proposed feat instead."
+            #L5R026rS7tU9vW1xY3zA5b: bonus_successes "Determining Bonus Successes: If a character succeeds on a check, their bonus successes are the number of (su) and (ex) symbols in excess of the target number of successes for the check."
+            #L5R027cD8eF0gH2iJ4kL6m: shortfall_degree_of_failure "Determining Shortfall: If a character fails a check, their shortfall is the TN of the check minus the sum of their (su) and (ex) symbols."
         }
     }
 
     #t27f6687c632e46f015c24 ^"Target Number" DEF {
 
         INTEGER MIN 1 MAX 8
-
-        # Number of (su) and (ex) symbols needed for the check to succeed.
-        # Set by the GM based on difficulty of the task.
 
         DIFFICULTY_SCALE {
             1 "An easy task for most people, such as carrying half one's weight or finding a misplaced item."
@@ -290,8 +264,7 @@ BASE "L5R5e_Core_Core" {
         }
 
         RULES {
-            #L5R028nO9pQ1rS3tU5vW7x: gm_sets_target_number
-            #L5R029yZ0aB2cD4eF6gH8i: default_tn_is_two
+            #L5R028nO9pQ1rS3tU5vW7x: gm_sets_target_number "Determine Target Number of Successes: Finally, the GM selects a target number of successes (commonly referred to as a TN). It is the number of successes the character must achieve to succeed at the check. Except in special circumstances, the GM should announce the TN of the check to the player at this point (see When to Reveal or Conceal the TN, on page 297)."
         }
     }
 
@@ -299,14 +272,9 @@ BASE "L5R5e_Core_Core" {
 
         ENUM ["Air", "Earth", "Fire", "Water", "Void"]
 
-        # Each ring represents a different approach to any skill check. The GM
-        # determines which ring applies based on how the character describes their
-        # action; this sets which ring dice to roll and how many dice to keep. The
-        # concept-words for each ring's approach are in the GUIDANCE block below.
-
         RULES {
-            #L5R030jK1lM3nO5pQ7rS9t: approach_determines_ring_used
-            #L5R031uV2wX4yZ6aB8cD0e: approach_determines_opportunity_options
+            #L5R030jK1lM3nO5pQ7rS9t: approach_determines_ring_used "Determine Approach: Next, the player provides a brief description of the methods their character employs to reach their goal. The GM selects the elemental approach (see page 142) that corresponds to reaching the original goal by the specific methods, or asks the player to pick a method. If multiple approaches are viable, the player should offer a rationale for the one they choose."
+            #L5R031uV2wX4yZ6aB8cD0e: opportunity_themes_by_ring "(op) as a Narrative Tool: The other fundamental way to use (op) is to add a narrative detail that surfaces as the character undertakes the task—a new piece of information that their character notices which can create interesting new avenues for the story. The type of detail a character can add varies by ring along the following themes:\n\nAir (op): People's strengths and weaknesses, emotions, small details in objects\n\nEarth (op): The character's own memories, history of people and objects, defensive positions\n\nFire (op): People's motivations, flashes of insight, conspicuous absences\n\nWater (op): Environmental dangers, presence of useful terrain or objects, escape routes\n\nVoid (op): Supernatural presences, flashes of premonition, instinctive warnings"
         }
     }
 
@@ -359,11 +327,6 @@ BASE "L5R5e_Core_Core" {
     }
 
     #t0be2b3f270d6247a9c35d ^"Opportunity" DEF {
-
-        # (op) symbols on kept dice can be spent for additional narrative
-        # effects. Available options depend on the ring used for the check
-        # and the context (general, conflict, initiative, skill group, downtime).
-        # General opportunities are always available regardless of context.
 
         # -----------------------------------------------
         # GENERAL EXAMPLES OF (op)
@@ -526,9 +489,9 @@ BASE "L5R5e_Core_Core" {
         }
 
         RULES {
-            #L5R032fG3hI5jK7lM9nO1p: opportunity_is_optional
-            #L5R033qR4sT6uV8wX0yZ2a: ring_and_context_determine_options
-            #L5R034bC5dE7fG9hI1jK3l: stacking_opportunity_effects
+            #L5R032fG3hI5jK7lM9nO1p: opportunity_is_optional "Unspent (op) simply goes unused and has no effect."
+            #L5R033qR4sT6uV8wX0yZ2a: interpreting_opportunity "Finally, the player gets the chance to interpret the (op) they spend as part of the check: they should indicate whether they want to spend it in a manner that steers the narrative in a direction interesting to them, in a way based on an example option appropriate to the ring used on the check, or in a manner provided by a special ability."
+            #L5R034bC5dE7fG9hI1jK3l: opportunity_once_per_check_and_scaling "A character can only resolve a given opportunity effect once per check, but many opportunities can scale with additional (op) symbols spent."
         }
     }
 
@@ -536,9 +499,6 @@ BASE "L5R5e_Core_Core" {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
         INTEGER MIN 0
-
-        # Spiritual currency representing connection to the Void.
-        # Maximum = Void ring value. Recovered slowly.
 
         STARTING_VALUE "Void ring value / 2 (rounded up)"
         MAXIMUM "Void ring value"
@@ -556,32 +516,21 @@ BASE "L5R5e_Core_Core" {
             "After the GM conceals the TN of a check from the players (see When to Reveal or Conceal the TN, on page 297)."
         }
 
-        RULES {
-            #L5R035mN6oP8qR0sT2uV4w: seize_the_moment_mechanics
-            #L5RPodIVcOv3eMiIboPYZxT9f: shattering_parry_sacrifices_the_weapon
-            #L5R037iJ8kL0mN2oP4qR6s: void_point_recovery_triggers
-        }
     }
 
     # === SCENE AND SESSION STRUCTURE ===
 
     ^"Turn" DEF {
 
-        # The amount of time needed for a character to take one action
-        # in a structured scene. Duration is abstract and narrative.
-
         RULES {
-            #L5R038tU9vW1xY3zA5bC7d: turn_duration_variable
-            #L5R039eF0gH2iJ4kL6mN8o: action_and_movement_per_turn
+            #L5R038tU9vW1xY3zA5bC7d: turn_defined "Turns: A turn is a character's chance to perform an action and accomplish other small goals, such as choosing a stance and moving (narratively, or as the conflict dictates)."
+            #L5R039eF0gH2iJ4kL6mN8o: perform_action_and_move "Step 3: Perform Action: After setting their stance, a character may perform their allotted action for the turn. Each action is a distinct effort the character undertakes, described by their player or provided among the sample actions for the encounter or by the character's personal abilities. Most actions require a check.\n\nOnce per turn, before or after performing an action, a character can also move a short distance (narratively or in range bands, as described on page 265)."
         }
     }
 
     #t0310138a2b906b0e4af7c ^"Scene" DEF {
 
         ENUM ["Narrative", "Downtime", "Conflict"]
-
-        # Basic unit of gameplay. Characters are in a specific location
-        # doing something interesting. Strife partially clears between scenes.
 
         PROPERTIES {
             ^"Scene Type" ENUM ["Narrative", "Downtime", "Conflict"]
@@ -590,19 +539,16 @@ BASE "L5R5e_Core_Core" {
         }
 
         RULES {
-            #L5R040pQ1rS3tU5vW7xY9z: strife_removal_between_scenes
-            #L5R041aB2cD4eF6gH8iJ0k: scene_transition_effects
+            #L5R040pQ1rS3tU5vW7xY9z: strife_removal_between_scenes "Removing Strife: Characters naturally remove some strife as time passes. At the end of each scene (a self-contained event or events in an ongoing adventure) each character removes strife until it is equal to half their composure, rounded up (unless it is already lower)."
+            #L5R041aB2cD4eF6gH8iJ0k: scene_transition_effects "Timing Scenes and Sessions: If you're the GM, then it's up to you to decide when one scene ends and a new one begins, based on both narrative-time and real-time considerations. Individual scenes should usually last from half an hour to three hours, though you can end a scene at any time you see fit or extend one as needed. Remember, PCs regain the use of certain abilities and remove strife and fatigue at the end of a scene.\n\nIf a scene is resolved extremely quickly, you should feel free to say that it does not count as the end of a scene for the purposes of effects that trigger at the end of a scene (such as removal of strife and fatigue). If a scene transitions to another type of scene it generally does not count as ending."
         }
     }
 
     ^"Session" DEF {
 
-        # One game session. Experience points are awarded at session end.
-        # Some effects reset between sessions.
-
         RULES {
-            #L5R042lM3nO5pQ7rS9tU1v: experience_awards_per_session
-            #L5R043wX4yZ6aB8cD0eF2g: session_effects_reset
+            #L5R042lM3nO5pQ7rS9tU1v: experience_spent_between_sessions "Over the course of play, characters gain experience points (XP), which their players can spend between sessions to make the characters more potent."
+            #L5R043wX4yZ6aB8cD0eF2g: once_per_game_session "Similarly, some abilities can be used \"once per game session,\" and some effects apply \"until the end of the game session.\" Such abilities and effects are written assuming a session that lasts from two to four hours. As the GM, you might find yourself running much shorter or longer game sessions (assuming player attention and the supply of snacks hold out). If you do, you may want to consider refreshing such abilities more or less frequently. You should always feel free to use real-time hours to define a \"game session,\" as long as you communicate these divisions clearly to the players."
         }
     }
 
@@ -610,18 +556,11 @@ BASE "L5R5e_Core_Core" {
 
         ENUM ["Intrigue", "Duel", "Skirmish", "Mass Battle"]
 
-        # Four types of structured conflict scenes, each with specific rules.
-        #
-        # Intrigue: Social/political conflicts using social skills
-        # Duel: Formal one-on-one combat (iaijutsu or taryu-jiai)
-        # Skirmish: Small-scale tactical combat
-        # Mass Battle: Army-scale warfare using abstracted mechanics
-
         RULES {
-            #L5R044hI5jK7lM9nO1pQ3r: intrigue_social_combat
-            #L5R045sT6uV8wX0yZ2aB4c: duel_formal_one_on_one
-            #L5R046dE7fG9hI1jK3lM5n: skirmish_tactical_combat
-            #L5R047oP8qR0sT2uV4wX6y: mass_battle_abstracted_warfare
+            #L5R044hI5jK7lM9nO1pQ3r: intrigue_social_combat "Intrigues are social conflicts. Even the Emperor does not make decisions without first listening to the counsel of his highest retainers. The most impactful conflicts in all of Rokugan are often the words traded between high-ranking samurai—or at least they begin with those words. Petitions to great lords, treaties, political schemes, trade agreements, pacts, and marriages change the face of Rokugan every day, and exerting political influence is the primary duty of many samurai."
+            #L5R045sT6uV8wX0yZ2aB4c: duel_formal_one_on_one "Duels are one-on-one battles of honor. When a matter cannot be resolved with will, wits, and rhetoric alone, honor sometimes demands that a samurai seek resolution by drawing steel. Duels are an important part of the political process in Rokugan, and the mere possibility of a formal challenge can be incredibly potent leverage."
+            #L5R046dE7fG9hI1jK3lM5n: skirmish_tactical_combat "Skirmishes are small-scale battles. From pitched battles between rival factions to targeted raids against enemy clans, skirmishes tend to be chaotic, small-scale battles with a few combatants on each side."
+            #L5R047oP8qR0sT2uV4wX6y: mass_battle_abstracted_warfare "Mass battles are battles between entire armies. Open warfare is relatively rare in Rokugan, but it is devastating in its impact. On the off chance that their daimyō asks it of them, any samurai must in theory be prepared to serve in war in some capacity, whether as a warrior, an advisor, a strategist, or a negotiator. Because they tend to be culminating story arc moments rather than everyday occurrences, mass battles are covered at the end of this chapter (see page 274)."
         }
     }
 
@@ -629,55 +568,26 @@ BASE "L5R5e_Core_Core" {
 
         ENUM ["Air", "Earth", "Fire", "Water", "Void"]
 
-        # In conflict scenes, each character chooses a stance at the start
-        # of their turn. The stance determines their default ring for checks
-        # and grants specific benefits.
-        #
-        # Air Stance: Increase the TN of Attack and Scheme action checks targeting
-        #   you by 1. If your school rank is 4 or higher, increase the TN by 2 instead.
-        # Earth Stance: When other characters make Attack action checks and Scheme
-        #   action checks that target you, they cannot spend (op) to inflict critical
-        #   strikes or conditions on you.
-        # Fire Stance: When you succeed on a check, you count as having one additional
-        #   bonus success for each (st) result on your check.
-        # Water Stance: During your turn, you may perform one additional action that
-        #   does not require a check. This action cannot share a type with another
-        #   action you perform this turn.
-        # Void Stance: While in a Void stance, you do not suffer strife from (st) results.
-
         RULES {
-            #L5R048zA9bC1dE3fG5hI7j: stance_chosen_at_turn_start
-            #L5R049kL0mN2oP4qR6sT8u: air_stance_raises_tn_of_attack_and_scheme_targeting_you
-            #L5R050vW1xY3zA5bC7dE9f: earth_stance_blocks_op_crits_and_conditions
-            #L5R051gH2iJ4kL6mN8oP0q: fire_stance_strife_results_become_bonus_successes
-            #L5R052rS3tU5vW7xY9zA1b: water_stance_extra_action_without_a_check
-            #L5R053cD4eF6gH8iJ0kL2m: void_stance_no_strife_from_strife_results
+            #L5R048zA9bC1dE3fG5hI7j: set_stance "Step 2: Set Stance: Next, the character sets their stance. This is a character's poise, footwork, tact, or some combination of the above depending on what the conflict entails. Each turn, a character can remain in the stance they were already in or switch to a new stance.\n\nAs part of setting a stance, a character may set the grip with which they are wielding a weapon (see page 230). A character may also drop any number of items on the ground. Readying a new weapon requires an action, however.\n\nAfter setting a stance, a character remains in that stance until the beginning of their next turn.\n\nIn addition to determining which ring a character uses for the action they perform during Step 3: Perform Action and for any other checks they make while in that stance, each stance confers a passive benefit during a conflict, described in Table 6–1: Stances."
+            #L5R049kL0mN2oP4qR6sT8u: air_stance_raises_tn_of_attack_and_scheme_targeting_you "Air: Increase the TN of Attack and Scheme action checks targeting you by 1. If your school rank is 4 or higher, increase the TN by 2 instead."
+            #L5R050vW1xY3zA5bC7dE9f: earth_stance_blocks_op_crits_and_conditions "Earth: When other characters make Attack action checks and Scheme action checks that target you, they cannot spend (op) to inflict critical strikes or conditions on you."
+            #L5R051gH2iJ4kL6mN8oP0q: fire_stance_strife_results_become_bonus_successes "Fire: When you succeed on a check, you count as having one additional bonus success for each (st) symbol on your kept dice."
+            #L5R052rS3tU5vW7xY9zA1b: water_stance_extra_action_without_a_check "Water: During your turn, you may perform one additional action that does not require a check. This action cannot share a type with another action you perform this turn."
+            #L5R053cD4eF6gH8iJ0kL2m: void_stance_no_strife_from_strife_results "Void: You do not receive strife from (st) symbols on your kept dice. You can still receive strife from other sources."
         }
     }
 
     #tf2cd15e64454ec22b5c18 ^"Initiative" DEF {
 
-        # Turn order in conflict scenes. Characters make a TN 1 Initiative
-        # check at the start of each round using any ring of their choice.
-        # The skill used depends on the conflict type:
-        #   Intrigue: Sentiment
-        #   Duel: Meditation
-        #   Skirmish: Tactics
-        #   Mass Battle: Command
-        # Characters act in order of bonus successes (highest first),
-        # with ties broken by honor (lowest honor acts first).
-
         RULES {
-            #L5R054nO5pQ7rS9tU1vW3x: initiative_check_void_ring
-            #L5R055yZ6aB8cD0eF2gH4i: bonus_successes_determine_order
-            #L5R056jK7lM9nO1pQ3rS5t: focus_breaks_ties
+            #L5R054nO5pQ7rS9tU1vW3x: initiative_checks "Initiative Checks: An Initiative check helps determine a character's initiative value for the scene. Each type of conflict uses a skill for its Initiative check, listed below:\n\nIntrigue: TN 1 Sentiment check.\n\nDuel: TN 1 Meditation check.\n\nSkirmish: TN 1 Tactics check.\n\nMass Battle: TN 1 Command check.\n\nA character can use any ring for this check. After a character resolves their Initiative check, that character enters the stance matching the ring they used.\n\nEach PC participating in a scene should make an Initiative check, as should each sufficiently important NPC (minion NPCs can generate initiative value without a check, using their focus or vigilance attribute)."
+            #L5R055yZ6aB8cD0eF2gH4i: initiative_values "Determine Initiative Values: A character's initiative value is based on their state of preparedness when the conflict began.\n\nIf the character was ready for the conflict, their base initiative value is their focus attribute.\n\nIf the character was unprepared (such as when surprised), their base initiative value is their vigilance attribute.\n\nThen, if the character succeeded on their Initiative check, they add 1 to their base initiative value, plus an additional amount equal to their bonus successes."
+            #L5R056jK7lM9nO1pQ3rS5t: initiative_order_ties_to_lowest_honor "Set Initiative Order: Organize the characters by their initiative value, highest to lowest, and record this initiative order along with the values. This is the sequence in which the characters act during Phase 2: Take Turns in many conflict types.\n\nIf two or more characters have the same initiative value, the one with the lowest honor attribute acts first, followed by the others in ascending order of honor."
         }
     }
 
     ^"Action" DEF {
-
-        # Actions available during conflict turns. Each conflict type
-        # has its own set of available actions.
 
         INTRIGUE_ACTIONS {
             ENUM ["Assist", "Calming Breath", "Persuade", "Unique Action"]
@@ -696,8 +606,8 @@ BASE "L5R5e_Core_Core" {
         }
 
         RULES {
-            #L5R057uV8wX0yZ2aB4cD6e: actions_specific_to_conflict_type
-            #L5R058fG9hI1jK3lM5nO7p: one_action_per_turn
+            #L5R057uV8wX0yZ2aB4cD6e: actions_defined "Actions: Actions are discrete tasks characters undertake during a scene, often by making a check. In a skirmish, this might mean making a precise sword stroke or leaping heroically across a chasm, while in an intrigue scene, it could entails setting one's scheme into motion. There is no limit to what an action can be except the players' imagination and the GM's approval, but each conflict type provides its own list of sample actions to get players started."
+            #L5R058fG9hI1jK3lM5nO7p: actions_in_conflict "Actions: Actions are the main way that characters interact with others and the environment during a conflict, and each represents a distinct effort, usually involving a check.\n\nMany things a player might want to accomplish fit into the listed actions for each conflict type. A player can also describe just their intention to the GM, who can propose a suitable listed action or decide upon the checks, requirements, and outcomes on a case-by-case basis."
         }
     }
 
@@ -705,32 +615,16 @@ BASE "L5R5e_Core_Core" {
 
         ENUM ["Range 0", "Range 1", "Range 2", "Range 3", "Range 4", "Range 5", "Range 6"]
 
-        # Abstract distance measurement in conflict scenes.
-        #
-        # Range 0 — Touch (1-2 feet): Grappling range and small weapons
-        #   like knives. Longer weapons are hard to wield. Objects at
-        #   range 0 are at the person's feet or on their person.
-        # Range 1 — Sword (1-2 yards): Optimal range for fighting with
-        #   a sword. A character can generally interact with people and
-        #   objects at range 1. Most manual skills require target at range 0-1.
-        # Range 2 — Spear (3-4 yards): Range at which polearms such as
-        #   spears and naginata have the greatest advantage.
-        # Range 3 — Throw (5-10 yards): Range at which thrown missile
-        #   weapons are most effective.
-        # Range 4 — Bow (11-100 yards): Midrange for missile weapons
-        #   like bows. Generally coincides with the edge of earshot.
-        # Range 5 — Volley (100+ yards): Outer edge of range at which
-        #   missile weapons are accurate. Farthest most characters can
-        #   see any details.
-        # Range 6 — Sight (more than a few hundred yards): Maximum
-        #   distance at which one can interact with a human-sized target
-        #   (albeit minimally). To travel beyond range 6, a character
-        #   must generally travel in narrative time or downtime.
-
         RULES {
-            #L5R062xY3zA5bC7dE9fG1h: melee_requires_range_zero
-            #L5R063iJ4kL6mN8oP0qR2s: ranged_weapons_have_range_limits
-            #L5R064tU5vW7xY9zA1bC3d: movement_in_range_bands
+            #L5R063iJ4kL6mN8oP0qR2s: maximum_and_minimum_range "Maximum and Minimum Range: When a distance or distances are specified for an effect or ability, the provided value(s) are both a maximum and a minimum. In other words, if an ability affects something at range 1–3, it cannot affect an object closer than range 1 any more than it can affect one farther than range 3."
+            #L5R064tU5vW7xY9zA1bC3d: range_bands "Range Bands: Instead of measuring discrete units of space, Legend of the Five Rings handles the concept of distance between two people or objects abstractly, using range bands. Range bands are a set of numbered, approximate distances that can be used to define spatial relationships between two points when that information is needed. Range bands allow narrative scenes and conflicts—especially skirmishes—to move at a faster pace, glossing over some specifics. Using range bands also means that representations on a tactical map are not strictly necessary for conflicts, though they can still be useful for helping keep track of relative positions.\n\nNote that range bands increase in scale as they increase in number—the difference in the distance between range 0 and range 1 (from arm's reach to sword reach) and the distance between range 5 and range 6 (from a hundred or more yards to the edge of perceptible range) is substantial. This reflects the difficulty inherent in closing with or escaping a foe while allowing characters to reposition strategically when not being impeded."
+            #kzoZnDyKzmvm3DNDmi2jC0: range_0_touch "Range 0 Touch (1–2 feet): At this range, two foes can grapple and use small weapons such as knives, but longer weapons are hard to wield effectively. Objects at range 0 might be at the person's feet, or even on their person, and a character can interact with them."
+            #jJctOZYGlUtA0x38N26dp4: range_1_sword "Range 1 Sword (1–2 yards): The optimal range for fighting with a sword. A character can generally interact with people and objects at range 1. Most skills that have a manual aspect require the target or object to be at range 0–1."
+            #DNPwTRdQVvNFwgOuv1cp4L: range_2_spear "Range 2 Spear (3–4 yards): The range at which polearms such as spears and naginata have the greatest advantage."
+            #IQcmsYyrmCP2M8kWxEzclM: range_3_throw "Range 3 Throw (5–10 yards): The range at which thrown missile weapons are most effective."
+            #sI59fl8B4HQVRg5BaTTbru: range_4_bow "Range 4 Bow (11–100 yards): The midrange for missile weapons like bows. Generally speaking, this range coincides with the edge of earshot for most characters."
+            #NxoaYehxNHVcf5s6JwCkl9: range_5_volley "Range 5 Volley (100+ yards): The distance to the outer edge of the range at which missile weapons are accurate. This is the farthest most characters can see any details."
+            #duSMIE0Ks00nDEzfw0IcL6: range_6_sight "Range 6 Sight (more than a few hundred yards): Range 6 represents the maximum distance at which one can interact with a human-sized target (albeit minimally). To travel beyond range 6 of their current location, a character must generally travel in narrative time or downtime."
         }
     }
 
@@ -738,18 +632,14 @@ BASE "L5R5e_Core_Core" {
 
         INTEGER MIN 0 MAX 5
 
-        # A measure of a character or object's physical size.
-        # Used to determine cover, targeting, and physical interactions.
-        #
-        # 0: Handheld objects, cats, small dogs
-        # 1: Children, large dogs, goblins
-        # 2: Adult humans, ningyo, tengu
-        # 3: Horses, naga, rakshasa, trolls
-        # 4: Ogres, elephants
-        # 5: Dragons
-
         RULES {
-            #L5R064aU5vW7xY9zA1bC3e: silhouette_determines_size_category
+            #L5R064aU5vW7xY9zA1bC3e: silhouette_determines_size_category "Silhouette: Objects in Legend of the Five Rings are classified into a number of different size categories called silhouettes. While these categories are abstract and are frequently more useful for description than for specific mechanics, they do have some important ramifications for certain techniques (see Chapter 4: Techniques, on page 171)."
+            #U9VhN0cRWaOFjv4r8h5saJ: silhouette_0 "0: Handheld objects, cats, small dogs"
+            #Nq1s6ew6rFgRH5vpMblEAK: silhouette_1 "1: Children, large dogs, goblins"
+            #7PqNaFBWtrezZyIWJcuFCF: silhouette_2 "2: Adult humans, ningyo, tengu"
+            #pTF0R95zluVSwXuVJld2dJ: silhouette_3 "3: Horses, naga, rakshasa, trolls"
+            #tpZ1mB4d7l0EBVvWMlxXkF: silhouette_4 "4: Ogres, elephants"
+            #2DBWbVlXf51bbKOoyuCV8C: silhouette_5 "5: Dragons"
         }
     }
 
@@ -757,15 +647,11 @@ BASE "L5R5e_Core_Core" {
 
         BOOLEAN DEFAULT false
 
-        # The Game Master creates the story framework, portrays NPCs,
-        # describes scenes, sets TNs, and arbitrates rules. Primary
-        # duty is ensuring all players have fun.
-
         RULES {
-            #L5R065eF6gH8iJ0kL2mN4o: setting_creation_responsibility
-            #L5R066pQ7rS9tU1vW3xY5z: npc_control
-            #L5R067aB8cD0eF2gH4iJ6k: rule_arbitration_authority
-            #L5R068lM9nO1pQ3rS5tU7v: target_number_determination
+            #L5R065eF6gH8iJ0kL2mN4o: session_preparation "Preparations: Running a session often requires some preparation. A few weeks, days, or hours ahead of time, the GM prepares the needed components, including the adventure (see more on Creating Scenarios on page 288) and the settings and NPCs within it. This can take a few minutes to hours or even days of work, and depends entirely on the complexity of the scenario and whether the GM prefers to make things up as they go along, or run sessions with a lot of advance planning. New GMs should err on the side of planning more until they figure out how comfortable they are with improvisation."
+            #L5R066pQ7rS9tU1vW3xY5z: gm_performs_npc_checks "Steps of a Check: The six steps in the following section provide a more technical breakdown that the GM can reference if they need to know when effects occur or how specific abilities interact. The GM performs all steps for non-player characters."
+            #L5R067aB8cD0eF2gH4iJ6k: rules_adjudication "Rules Adjudication: While the GM and players are collaborating to tell a story, the GM is ultimately the arbiter of all rules matters. The GM should attempt to keep the pace moving during a game session and not get too bogged down in looking up details at the table—they can always reference the relevant sections later to clarify the correct way things should be resolved in the future.\n\nThe players should endeavor to support the GM rather than undermining them. Players should feel free to offer their interpretations of a rule when it becomes relevant, or if the GM asks, but they should let the ruling stand once the GM has made it. Discussing the rules after a session can be one way to untangle unclear issues or apparent contradictions."
+            #L5R068lM9nO1pQ3rS5tU7v: sample_tns "Sample TNs: The target number of successes (TN) generally ranges from 1 to 8, but it can potentially be even higher. The GM chooses this number based on the innate difficulty of the task, the complexity of the objective the player described, and the appropriateness of the method the character is using."
         }
     }
 
@@ -802,26 +688,19 @@ BASE "L5R5e_Core_Core" {
 
         INTEGER MIN 0 MAX 999999
 
-        # Points earned through play to improve character abilities.
-        # Awarded for session participation, good roleplaying, and
-        # story milestones. Spent on skills, rings, techniques, and
-        # advantages during downtime.
-
         ADVANCEMENT_COSTS {
-            # Restrictions, from the same table:
-            #   Ring value  cannot exceed lowest ring + Void Ring; maximum 5
-            #   Skill rank  maximum 5
-            #   Technique   category must be listed among available techniques,
-            #               or the technique must appear on your curriculum
             ^"Ring Value +1" COST "3 XP × value purchased"
             ^"Skill Rank +1" COST "2 XP × rank purchased"
             ^"Technique" COST "3 XP, or other listed value"
         }
 
         RULES {
-            #L5R069wX0yZ2aB4cD6eF8g: session_awards
-            #L5R070hI1jK3lM5nO7pQ9r: milestone_bonus
-            #L5R071sT2uV4wX6yZ8aB0c: advancement_spending_rules
+            #L5R069wX0yZ2aB4cD6eF8g: awarding_xp "Awarding XP: Character growth is an important theme of Legend of the Five Rings, as each character pursues mastery within their domain while expanding their knowledge of the wider world. The recommended rate of experience point gain is 1 XP per hour of play, with an additional 3–5 XP awarded to each character in the group at the GM's discretion whenever the party overcomes a significant milestone or obstacle. Increasing the base value to 2 XP per hour will make for a more heroic-feeling game, and is often a good idea to help keep tactically oriented groups engaged."
+            #L5R070hI1jK3lM5nO7pQ9r: adjusting_xp_awards "GMs should feel free to adjust these numbers as they see fit. At their discretion, GMs can also give bonus XP for particularly strong moments of roleplaying among the group. Standardized XP across the group makes it easier for everyone to track and helps keep the characters at a roughly equivalent level of competency, but GMs should also feel free to award XP on a per-player basis if that is their group's preference."
+            #L5R071sT2uV4wX6yZ8aB0c: advancement_spending_rules "Purchasing Advancements: The ways a character can improve themself by spending experience are collectively called advancements. These include ring ranks, skill ranks, and techniques.\n\nA character may purchase any advancement by paying its listed cost, so long as it fits within the listed restrictions. Table 2–2: Advancement Costs provides the costs and restrictions for each advancement type."
+            #czKeXUMIZZ5NQl7xWip26v: restriction_ring_value "Ring value +1: Cannot increase a ring to a value greater than lowest ring + Void Ring. Maximum 5."
+            #uGdTQhKaTYilgzhD7ymbrD: restriction_skill_rank "Skill rank +1: Maximum 5."
+            #u4CBzNvyUQTS8wMz5wvxPz: restriction_technique "Technique: Category must be listed among available techniques or technique must appear on your curriculum (denoted by = symbol)."
         }
     }
 

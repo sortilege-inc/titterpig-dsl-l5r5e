@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Children of the Five Winds: New Player Options"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -18,13 +18,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # The Fox consider themselves representatives of nature
-        # and advocates for Senkyo. With literal fox spirits in their
-        # bloodline, the Fox commune with nature and bargain with
-        # forest spirits to maintain harmony between humans and
-        # animals. After centuries of isolation, they are now considering
-        # becoming more involved in the Empire's politics.
-
         PROPERTIES {
             ^"Clan Name" STRING "Fox" FIXED
             ^"Clan Type" STRING "Minor Clan"
@@ -38,11 +31,9 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RCW01aB2cD4eF6gH8iJ0: fox_representatives_of_nature
-            #L5RCW02kL3mN5oP7qR9sT1u: fox_advocates_for_senkyo
+            #L5RCW01aB2cD4eF6gH8iJ0: fox_minor_clan "The Fox Minor Clan: The Fox consider themselves to be representatives of nature and advocates for Senkyō. With literal fox spirits in their bloodline, the Fox commune with nature and bargain with forest spirits to maintain harmony between humans and animals. For most of their history, the Fox have remained distant observers of the Empire's affairs from their keep in the Kitsune Forest. But after centuries of isolation, they are now considering becoming more involved in the Empire's politics, if only to protect what remains of that forest's natural beauty."
         }
     }
-
 
     # ===========================
     # FOX FAMILIES
@@ -65,7 +56,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
         }
     }
 
-
     # ===========================
     # NEW SCHOOLS
     # ===========================
@@ -74,11 +64,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
     ^"Ganzu Guardian Tradition" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # The Ganzu people of the Hidden Valley are in some ways
-        # the sixth great family of the Unicorn Clan. Their battle
-        # traditions are suited to desert terrain, teaching warriors
-        # to fight with precision and let the foe exhaust themselves.
 
         PROPERTIES {
             ^"School Name" STRING "Ganzu Guardian Tradition" FIXED
@@ -91,7 +76,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA ^"Slashing Sandstorm Style"
@@ -162,17 +146,15 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
+        RULES {
+            #GqjaLqv44ttbDiExheEHPl: ganzu_guardian_tradition "Ganzu Guardian Tradition: The Ganzu people who reside in the Hidden Valley are in some ways the sixth great family of the Unicorn Clan, despite being little known within Rokugan's bounds. Their lands occupy a key oasis along the Sand Road, making the Ganzu a crucial vassal of the Unicorn, and their warriors often serve as part of Unicorn cohorts, especially outside of Rokugan. Given the value of their oasis, they have long had to protect it from outside powers. Their battle traditions are suited to the terrain where they most often fight: the searing deserts near their homeland, where the heat can be more lethal than the enemy, and a lack of preparation deadlier than a sword. As such, the Ganzu teach their warriors to fight with precision, wasting little effort and letting the foe exhaust themself before striking the decisive blow. Their martial styles favor a variety of weapons, but many Ganzu warriors specialize in the ax or the sword."
+        }
     }
 
     # source stat block (page 84)
     ^"Ide Emissary" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # The Ide family specializes in retaining relationships
-        # through trade and good will. Emissaries learn the customs,
-        # protocols, and styles of any court they visit, from Rokugani
-        # castles to Ujik ordus to Qamarist spires of academia.
 
         PROPERTIES {
             ^"School Name" STRING "Ide Emissary" FIXED
@@ -186,7 +168,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             SHUJI ^"Glorious Entrance"
@@ -258,18 +239,15 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
+        RULES {
+            #nKr66inH8JDc8kVhmPQfM8: ide_emissary_school "Ide Emissary School: The Ide family of the Unicorn Clan specializes in retaining relationships through trade and good will. And while the family's traders amass fortunes in foreign markets, the family's emissaries use that wealth to further the interests of the Unicorn Clan. Ide Emissaries are expected to learn the customs, protocols, and styles of any court they visit, whether in the castle of a Rokugani lord, in the ordu of an influential Ujik leader, or in one of the spires of academia in the Qamarist Caliphate. Not only must they find common ground with people of widely different cultures, but they must insinuate themselves into courts where power dynamics and alliances have existed for centuries or millennia, and each group looks at any new player as both a risk and an opportunity. This requires a great deal of education; most Ide Emissaries study alongside mentors who have served in far-flung lands for years before being chosen for a major assignment."
+        }
     }
 
     # source stat block (page 85)
     ^"Iuchi Horse Lord Disciple" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # The Iuchi's Horse Lord Disciples follow an ancient tradition
-        # established by Iuchi's eldest child. Foremost experts in
-        # equine medicine, they are specialized Meishōdō Masters
-        # who invoke equestrian spirits using unique talismans
-        # designed to adorn mounts rather than samurai.
 
         PROPERTIES {
             ^"School Name" STRING "Iuchi Horse Lord Disciple" FIXED
@@ -283,7 +261,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             INVOCATION CHOOSE 1 [^"Jurojin's Balm", ^"Nature's Touch", ^"Path to Inner Peace"]
@@ -358,17 +335,14 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
+        RULES {
+            #UCvKhD440n98DALOoR0JxN: iuchi_horse_lord_disciple "Iuchi Horse Lord Disciple: The Iuchi's Horse Lord Disciples are followers of an ancient tradition, one established by the eldest child of Iuchi himself. As they are Rokugan's foremost experts in equine medicine, their services are highly sought throughout the Empire. Yet few know that they are specialized Meishōdō Masters, invoking equestrian spirits like ki-rin and the Fortune of Horses. Their unique meishōdō talismans are meant to adorn not samurai but their mounts, empowering horses with special abilities and spiritual power."
+        }
     }
 
     ^"Kitsune Mediator" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # The Fox Clan's Kitsune Mediators are sent to places
-        # experiencing supernatural strife. They mediate between
-        # human and supernatural inhabitants, determining if
-        # problems are spiritual in nature and helping both sides
-        # reach new accords.
 
         PROPERTIES {
             ^"School Name" STRING "Kitsune Mediator" FIXED
@@ -382,7 +356,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             RITUAL ^"Commune with the Spirits"
@@ -455,16 +428,14 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
+        RULES {
+            #cJq3BL78rUX6WJbeEdvAcT: kitsune_mediator_school "Kitsune Mediator School: The Fox Clan's lands are highly spiritually active; as a result, many of its members deal with spirits and supernatural beings far more often than the average samurai does. While the clan has a shugenja tradition, when one lives deep within a primordial forest, one must sometimes parley with spirits and other strange creatures just to survive. Having learned about such negotiations for generations, some members of the Fox Clan made it their personal mission to mediate in spiritual conflicts both within the Kitsune Forest and across Rokugan at large. Eventually, those efforts became more formalized with the foundation of the Kitsune Mediator School.\n\nThe Kitsune Mediators are often sent to places in Rokugan experiencing supernatural strife. While their assignments from the Fox Clan Champion are often to mediate between aggrieved human parties, their true goal is to determine if the problem is spiritual in nature and, if so, to help the human and supernatural inhabitants of the region reach a new accord that accommodates both. Though they are not fully initiated into the mysteries of the Fox Clan's shugenja tradition, Kitsune Mediators frequently work alongside them, helping to ease tensions on the human side and even undertaking rituals to appease angered spirits more directly when necessary. In recent days, however, the Kitsune Mediators have found themselves overwhelmed with disharmonies to pursue across Rokugan…"
+        }
     }
 
     ^"Kitsune Naturalist" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # The shugenja of the Kitsune family are attuned to spirits
-        # of animals, plants, and primordial forces. Their tradition
-        # leads them to invoke elements in equal measure rather
-        # than favoring any single element.
 
         PROPERTIES {
             ^"School Name" STRING "Kitsune Naturalist" FIXED
@@ -478,7 +449,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             INVOCATION ^"Nature's Touch"
@@ -551,16 +521,14 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
+        RULES {
+            #V1Yq08MqXsVX2hUNpPgQvb: kitsune_naturalist_school "Kitsune Naturalist School: Driven from its lands centuries ago, the Fox Clan found refuge in a vast and ancient wooded realm: the Kitsune Forest. The depths of this ancient woodland are rarely seen by humans, and nature spirits flourish here. It is even said that some of these spirits joined the clan, teaching the Kitsune arts for communing with nature spirits unknown to most humans. The shugenja of the Kitsune family learn to be especially attuned to the spirits of animals, plants, and other primordial forces in the world around them. Their tradition leads them to seek a balanced approach to their art, invoking the elements in equal measure rather than creating imbalances in their environment by calling upon any one element too heavily. While many trained in this tradition focus their time on studying how the Mortal Realm and its spiritual inhabitants interact in the Kitsune Forest, others are sent out into Rokugan alongside Kitsune Mediators to help ease tensions between humans and spirits when they occur."
+        }
     }
 
     ^"Sand Road Wayfinder Tradition" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # Guides along the Sand Road who know the perils of each
-        # region's terrain, supernatural threats, and hostile humans.
-        # This school represents specialists from any region
-        # bordering the Sand Road.
 
         PROPERTIES {
             ^"School Name" STRING "Sand Road Wayfinder Tradition" FIXED
@@ -573,7 +541,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA CHOOSE 1 [^"Striking as Air", ^"Striking as Earth", ^"Striking as Fire", ^"Striking as Water"]
@@ -644,17 +611,15 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
+        RULES {
+            #Bo49JgcydBbtAIyRpfdor4: sand_road_wayfinder_tradition "Sand Road Wayfinder Tradition: The Sand Road is a dangerous place that spans a vast distance, sweeping across numerous regions and biomes. From the foothills of the Pillar of the Sky mountains to the sands around the Hidden Valley, each region has unique threats based on its terrain. As such, while the Unicorn Clan has worked hard to build trade routes across these areas, any trip can still have its perils, and there is no substitute for a regional guide. Most of the Sand Road's guides are locals who live along it, as they know best the perils of its terrain, its supernatural threats, and the humans who might be hostile to travelers. These guides use a variety of survival techniques, many of which depend on a guide's region and culture. This school can be used to represent a specialist from any of a number of regions that border the Sand Road."
+        }
     }
 
     # source stat block (page 89)
     ^"Scholar of al-Zawira Tradition" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # In the city of al-Zawira, Qamarist scholars push the
-        # bounds of knowledge in many fields. The massive scope
-        # of the Caliphate gives access to knowledge from all
-        # corners of a vast domain.
 
         PROPERTIES {
             ^"School Name" STRING "Scholar of al-Zawira Tradition" FIXED
@@ -667,7 +632,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             RITUAL ^"Shadow of Days"
@@ -738,16 +702,15 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
+        RULES {
+            #gcOZ8b7c4k5yAqYijJQyNz: scholar_of_al_zawira_tradition "Scholar of al-Zawira Tradition: In the city of al-Zawira, at the heart of the Cradle of the World, the Qamarist Caliphate's scholars push the bounds of knowledge in new and fascinating directions. Academics here ensconce themselves in deep studies of many fields, from human anatomy to philosophy, mathematics to alchemy, and theology to astronomy. Additionally, the massive scope of the Caliphate gives scholars access to knowledge from all corners of a vast domain. Between the libraries of the caliph and the archives of individual scholars, there is a near unparalleled amount of knowledge in al-Zawira, at least within the Mortal Realm. This makes the scholars of the so-called City of Books especially sought after as researchers, advisors, and counselors in many courts, from the Ivory Kingdoms to the lands beyond the Great Northern Mountains."
+        }
     }
 
     # source stat block (page 90)
     ^"Shinjo Mounted Archer" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # One of the Great Clans' oldest traditions. Students seek
-        # unity of horse and rider, mastering festival archery
-        # (yabusame and kasagake) and bowcraft from horseback.
 
         PROPERTIES {
             ^"School Name" STRING "Shinjo Mounted Archer" FIXED
@@ -761,7 +724,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA ^"Pelting Hail Style"
@@ -834,16 +796,14 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
+        RULES {
+            #wzegs4L7f960yE6ierPdVY: shinjo_mounted_archer "Shinjo Mounted Archer: Ironically, one of the Great Clans' most unconventional families champions one of the Empire's oldest traditions. The Shinjo school of horseback archery is perhaps the family's most renowned, due in no small part to the inherent difficulty of shooting arrows from horseback. Seeking the unity of horse and rider, students must steer with only their legs, release the bow at the most stable moment of a horse's gallop, perform ritualized festival archery—such as yabusame and kasagake—and master fletching and bowcraft. Horse archers can even assist in worship and the appeasement of spirits, and many wander the lands seeking to do so."
+        }
     }
 
     ^"Utaku Silent Shadow Yōjimbō" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # A relatively young school arising from the Unicorn's need
-        # to protect diplomats. Stoic, calm individuals with unyielding
-        # convictions and lethal fighting prowess, marrying Utaku
-        # and Shinjo traditions.
 
         PROPERTIES {
             ^"School Name" STRING "Utaku Silent Shadow Yōjimbō" FIXED
@@ -857,7 +817,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA ^"Crescent Moon Style"
@@ -929,16 +888,15 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
+        RULES {
+            #bqG2NA7vPzUAbXZhVUudQz: utaku_silent_shadow_yojimbo "Utaku Silent Shadow Yōjimbō: Assimilating back into the Empire—without sacrificing their identity—is perhaps the greatest diplomatic challenge the Unicorn have ever faced. A relatively young school, the Utaku Silent Shadow Yōjimbō School arose from the needs of this challenge, equipping its students not only to protect and advise the clan's diplomats but also to provide such services to those who otherwise cannot attain them. These stoic and calm individuals are known to speak few words, have unyielding convictions, and a lethal fighting prowess. Formed and maintained by the Utaku and Shinjo, this school marries both families' traditions and philosophies, protecting its charges in any terrain, deflecting both blade and damaging word."
+        }
     }
 
     # source stat block (page 92)
     ^"Ujik Nomad Tradition" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # The Ujik of the Plains of Wind and Stone live as nomadic
-        # herders. Their riders are nearly unparalleled, and members
-        # must master a wide array of skills for their way of life.
 
         PROPERTIES {
             ^"School Name" STRING "Ujik Nomad Tradition" FIXED
@@ -951,7 +909,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             SHUJI ^"Call to Ride"
@@ -1023,6 +980,9 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
+        RULES {
+            #iQ7E0LHpZN78tvNOyPXuF2: ujik_nomad_tradition "Ujik Nomad Tradition: The Ujik of the Plains of Wind and Stone live as nomadic herders in social groups called ordu, traveling with their herds across a vast swath of the continent. Ujik riders are nearly unparalleled; indeed, the Unicorn Clan learned much about cavalry from the Ujik when the two groups first met centuries ago. As a result of the Ujik's influence, the Unicorn adopted technologies and tactics like stirrups and the feigned retreat that would make them the greatest riders in the Emerald Empire upon their return. However, a member of an Ujik ordu must be able to do much more than ride. Most Ujik have a wide array of skills needed for their way of living: martial skills to protect their animals from predators and raiders alike, interpersonal skills to navigate encounters with other groups upon the plains, knowledge of animal husbandry and weather patterns to know where to move their herds. Of course, traditions tend to vary by ordu—some of which are small family groups, others massive moving cities of interwoven alliances."
+        }
     }
 
     # ===========================
@@ -1227,15 +1187,9 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
     ^"New Samurai Heritages Table" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Table 2-1: New Samurai Heritages. Backgrounds for samurai with
-        # ancestral ties to the Unicorn Clan and the lands beyond Rokugan.
-        # Used instead of the core rulebook heritage table.
-
         HERITAGE_TABLE {
 
             1 #gCFkEdJN0NrsGSzFVhq6hD ^"Ancestral Horse Line" DEF {
-                # One of your ancestors possessed a mighty Unicorn
-                # warhorse.
 
                 MODIFIERS {
                     ^"Glory" "+3"
@@ -1255,7 +1209,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
 
             2 #L8URXctUSTs5q0RApULhPA ^"Heart of the Horse" DEF {
-                # Your horse chose you.
 
                 MODIFIERS {
                     ^"Glory" "+3"
@@ -1268,7 +1221,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
 
             3-4 #KuGEkb3AAlrQ8DeDK8IIEU ^"Knowledge Exchange" DEF {
-                # An ancestor learned techniques of another school.
 
                 MODIFIERS {
                     ^"Glory" "-5"
@@ -1289,7 +1241,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
 
             5 #LwBH4oJuiMiuHceoWTSEXh ^"Lost Banner" DEF {
-                # Your family lost a symbolic banner.
 
                 MODIFIERS {
                     ^"Glory" "-5"
@@ -1301,8 +1252,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
 
             6-7 #OhRxrHSJXkLU2pLpLipNRQ ^"Splintered Loyalties" DEF {
-                # Related to non-Rokugani people or raised outside
-                # Rokugan.
 
                 MODIFIERS {
                     ^"Status" "-5"
@@ -1322,7 +1271,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
 
             8 #M6OlywRl97YLVScUZemIx6 ^"Sacred Wilderness" DEF {
-                # Ancestor established a protected sacred wilderness.
 
                 MODIFIERS {
                     ^"Status" "+5"
@@ -1334,7 +1282,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
 
             9 #1skeeUyizts1f1x9yfAlBH ^"Spirit Companion" DEF {
-                # Ancestor made an agreement with a spirit.
 
                 MODIFIERS {
                     ^"Status" "+3"
@@ -1355,7 +1302,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
             }
 
             10 #Vb7AlY2oJr6tr0FG7FRC8m ^"Spiritual Debt" DEF {
-                # Your family owes a spirit.
 
                 MODIFIERS {
                     ^"Honor" "+3"
@@ -1374,6 +1320,18 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
                     "9-10" "Void"
                 }
             }
+        }
+
+        RULES {
+            #hdO3MyyooHHe540dsmHf76: new_samurai_heritages "New Samurai Heritages: A variety of unique heritages arise from having a family lineage derived in part from the Unicorn's history. Even non-Unicorn characters may take on one of these heritages because their family has a connection to a place outside Rokugan or to the wilderness. Because of the Unicorn's unique connection to lands outside Rokugan, they have access to more syncretic or diverse heritages, whether for good or for ill.\n\nTable 2-1: New Samurai Heritages presents backgrounds for characters connected to the Unicorn or to lands outside Rokugan. This table can be used instead of Table 2-1: Samurai Heritage on page 96 of the core rulebook and should be employed in the same manner."
+            #ujKXvoxyYwABzkPS01mIM8: ancestral_horse_line "Ancestral Horse Line: One of your ancestors possessed a mighty Unicorn warhorse, and now your family's line and the horse's line parallel each other."
+            #CU0fhc8rITHVMPEaZDIf6x: heart_of_the_horse "Heart of the Horse: You did not choose your horse: it chose you. Now you have a supernatural bond with it. It has a mind of its own, however, so your relationship with the horse is reciprocal. Treat it well, and it will treat you well."
+            #Hx6ikhwWymQnvx6kUs0yfU: knowledge_exchange "Knowledge Exchange: One of your ancestors learned the techniques of another school and has passed that knowledge down the generations, finally to you."
+            #yQnGFOFkJDwgvSsaavBFZD: lost_banner "Lost Banner: Your family once possessed a banner that symbolically carries your family's spirit, but an ancestor lost it due to war, betrayal, deceit, or incompetence. Everyone in your family has sworn to find it."
+            #VwwMv7Yl2AYXEppmqUeZqg: splintered_loyalties "Splintered Loyalties: Either your family is directly related to a non-Rokugani people; or you grew up in Khanbulak, on the border of Rokugan; or you were raised on the Plains of Wind and Stone. Your feelings of loyalty lie equally with the Unicorn and the Empire, but you also have some loyalty to this non-Rokugani group."
+            #eCZZS8XeFeATMNXBg4lfFD: sacred_wilderness "Sacred Wilderness: One of your ancestors established an area on your family's lands as a protected, sacred wilderness."
+            #HJWlZccUHJ9l1bR1aq25pC: spirit_companion "Spirit Companion: One of your ancestors made an agreement with a spirit for service, and that spirit has served your family for generations."
+            #t9k2l5Q7QgIFPGR1Ysmgrm: spiritual_debt "Spiritual Debt: Your family owes a long-standing debt to a spirit. The spirit occasionally asks your family to perform tasks that may seem incomprehensible or even contrary to what your family, your clan, or the Empire wishes."
         }
     }
 
@@ -1656,46 +1614,16 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
     # ===========================
 
     ^"Meishōdō Talisman System" DEF {
-        # Optional detailed rules for meishōdō talismans.
-        # If used, replaces the second paragraph of the Iuchi Meishōdō
-        # Master's school ability with: "You can sustain a number of
-        # meishōdō talismans up to your school rank. If you create one
-        # or more in excess of this limit, you must choose a number up
-        # to your school rank and release the spirits in the rest."
 
-        # USING MEISHODO TALISMANS
-        # A character carrying a meishōdō talisman can perform any
-        # invocations sealed within it. They make a check to activate
-        # using their skill ranks and the sealed spirit's ring value in
-        # place of their own. They still keep dice equal to their own ring.
-
-        # CREATING MEISHODO TALISMANS
-        # A member of the Iuchi Meishōdō Master School or who has
-        # completed the Student of Names title can create a talisman
-        # by completing the Seal in an Object social objective during
-        # an otherworldly encounter. This seals a spirit within the object.
-
-        # TECHNIQUES CONTAINED
-        # Creator chooses one invocation matching the element of the
-        # highest ring of the sealed spirit. Rank cannot exceed the
-        # spirit's highest ring value. If two or more rings are tied,
-        # creator chooses one. If spirit is Tainted, creator may instead
-        # choose one mahō technique with the same requirements.
-
-        # STABILITY
-        # Stability = creator's excess momentum from Seal in an Object
-        # + creator's ranks in Design - spirit's ranks in Scholar skill
-        # group (or Theology if it has individual skills). Minimum 1.
-        # If stability reaches 0, spirit shatters the talisman and is
-        # unleashed on the world.
-
-        # LOSING STABILITY
-        # - Talisman gains Damaged quality: stability -1.
-        #   Gains Destroyed quality: stability reduced to 0.
-        # - Technique from talisman would cause Afflicted condition:
-        #   wielder does not suffer Afflicted, but stability -1.
-        # - Activating a technique, wielder drops one or more ring dice
-        #   containing (st)(op): stability -1.
+        RULES {
+            #qfsKZWYFMlZmEv1jcQ7Hs0: meishodo_talismans "Meishōdō Talismans: The core rulebook contains a simplified version of rules for meishōdō talismans in the Iuchi Meishōdō Master school ability, The Way of Names, on page 83. If a GM wishes to use more detailed rules for meishōdō talismans, they may use the following rules instead. If they do, the second paragraph of the Iuchi Meishōdō Master's school ability should be treated as reading: \"You can sustain a number of meishōdō talismans up to your school rank. If you create one or more meishōdō talismans in excess of this limit, you must choose a number up to your school rank and then release the spirits contained within the rest.\" All other parts of the ability are replaced by the rules here."
+            #JOLH6lJcnIBMHhLBaehOHD: using_meishodo_talismans "Using Meishōdō Talismans: A character carrying a meishōdō talisman can perform any invocations sealed within it. To do so, they make a check to activate the invocation using their skill ranks and the sealed spirit's ring value in place of their own. They still keep a total number of dice equal to their own ring, however."
+            #V95ekphaJxDwU6CRFoTTDT: creating_meishodo_talismans "Creating Meishōdō Talismans: A character who is a member of the Iuchi Meishōdō Master School or who has completed the Student of Names title (page 135) can create a meishōdō talisman by completing the Seal in an Object social objective (see page 128) during an otherworldly encounter (see page 125). This seals a spirit within the object. Once the talisman is made, the character determines the techniques it contains and its stability value."
+            #fSokZQQBsNiIf6qoeR9VG0: techniques_contained "Techniques Contained: Meishōdō talismans are valuable because they contain techniques that can be accessed by any user, even one untrained in the Way of Names. To determine what technique is contained in a talisman, the creator of the talisman chooses one invocation matching the element of the highest ring of the sealed-in spirit. The rank of the invocation cannot exceed the value of the spirit's highest ring. If two or more rings are tied, the creator chooses one.\n\nIf the spirit is Tainted, the creator has the option of instead choosing one mahō technique in the same manner, with the same requirements.\n\nAny techniques chosen this way are the techniques contained in the talisman."
+            #T9c3jxYocBM09u4rblm91g: stability "Stability: A meishōdō talisman also has a stability value. This value represents the likelihood that the spirit within will break free when the talisman is used. The stability value is determined at the time the talisman is created."
+            #I9DbJfiRv4ukM7SBkNKMeT: determine_stability "Determine Stability: To determine a talisman's stability value, add the creator's excess momentum points from the Seal in an Object social objective (see page 128) to their ranks in Design. Then, subtract the spirit's ranks in the Scholar skill group (or Theology, if it has individual skills). This value, to a minimum of 1, is the starting stability value. The higher the stability value, the harder it is for the spirit to break free.\n\nIf the stability of a talisman ever reaches 0, the spirit within shatters the talisman and is unleased on the world."
+            #o4rVMp4QOQ0bNwiCYdOxzD: losing_stability "Losing Stability: Stability can be lowered in several ways:\n\nIf the physical object that is the talisman ever gains the Damaged item quality, the stability value is reduced by 1. If it gains the Destroyed item quality, the stability value is reduced to 0.\n\nIf a technique from the talisman would otherwise cause the wielder to suffer the Afflicted condition, they do not suffer that condition, but the stability of the talisman is reduced by 1.\n\nWhen activating a technique from the talisman, if the wielder drops one or more (ring) containing (st) (op), the stability value is reduced by 1."
+        }
     }
 
     # ===========================
@@ -1729,13 +1657,10 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 116)
     ^"Hewing" DEF {
-        # Item Quality. This weapon is specifically designed to bypass
-        # or break through shields and armor.
-        # When you make an Attack action check with a Hewing weapon,
-        # you may spend (op) as follows:
-        # (op): This attack ignores any TN bonuses from an opponent's shield.
-        # (op)+: Decrease the target's physical resistance by 1 for
-        # each (op) spent this way.
+
+        RULES {
+            #BjFyrXZAtTZJex0KKPmBnB: hewing "Hewing: This weapon is specifically designed to bypass or break through shields and armor.\n\nWhen you make an Attack action check with a Hewing weapon, you may spend (op) as follows:\n\n(op): This attack ignores any TN bonuses from an opponent's shield.\n\n(op)+: Decrease the target's physical resistance by 1 for each (op) spent this way."
+        }
     }
 
     # ===========================
@@ -2211,44 +2136,26 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 133)
     ^"Centered Condition" DEF {
-        # The character has cleared their mind of distractions and
-        # doubts, allowing them to focus on their task.
-        # Effects: When the character makes a check, they may remove
-        # up to 2 (st) from the roll results.
-        # Removed When: At the end of the scene, or after the
-        # character benefits from this condition during a check
-        # (whichever comes first).
+
+        RULES {
+            #bGk8bXNbCpzogBrHCtiF2X: centered "Centered: Description: The character has cleared their mind of distractions and doubts, allowing them to focus on their task.\n\nEffects: When the character makes a check, they may remove up to 2 (st) from the roll results.\n\nRemoved When: At the end of the scene, or after the character benefits from this condition during a check (whichever comes first)."
+        }
     }
 
     # source stat block (page 133)
     ^"Emboldened Condition" DEF {
-        # The character is filled with the courage to push themselves
-        # beyond their normal limits.
-        # Effects: When the character makes a check, they may receive
-        # 1 fatigue to keep one additional rolled die.
-        # Removed When: At the end of the scene, or after the
-        # character benefits from this condition during a check
-        # (whichever comes first).
+
+        RULES {
+            #Hzek6cCeTNdu7M81Iw3xXc: emboldened "Emboldened: Description: The character is filled with the courage to push themself beyond their normal limits and achieve things that might normally be beyond their reach.\n\nEffects: When the character makes a check, they may receive 1 fatigue to keep one additional rolled die.\n\nRemoved When: At the end of the scene, or after the character benefits from this condition during a check (whichever comes first)."
+        }
     }
 
     # source stat block (page 133)
     ^"Possessed Condition" DEF {
-        # Willingly or unwillingly, the character has come under the
-        # power of a supernatural being.
-        # Effects: When Possessed, the spirit states its goal. Character
-        # can ignore the goal but receives 2 strife at the end of each
-        # scene in which they fully disregarded it. When Compromised,
-        # character must unmask and then attempt to pursue the goal
-        # until end of scene.
-        # When making a check while Possessed, character can use the
-        # spirit's skill ranks in place of their own. If the spirit knows
-        # invocations or other techniques, the character can use each
-        # of these techniques once per scene.
-        # Removed When: After spending a scene pursuing the spirit's
-        # goal, character can make a Meditation (Void) check with TN
-        # equal to the spirit's focus. If successful, Possession ends.
-        # Also removed via Dispel Possession social objective, or the
-        # spirit can choose to end it at any time.
+
+        RULES {
+            #t1FETyEP84DngtYbqTUG1p: possessed "Possessed: Description: Willingly or unwillingly, the character has come under the power of a supernatural being, which now exerts a certain influence over their actions.\n\nEffects: When the character becomes Possessed, the possessing spirit states its goal. The character can ignore that goal, but they receive 2 strife at the end of each scene in which they fully disregarded it. When the character becomes Compromised, they must unmask and then attempt to pursue the goal until the end of the scene.\n\nWhen the character makes a check while Possessed, they can use the spirit's skill ranks in place of their own. Additionally, if the spirit knows any invocations or other techniques, the character can use each of these techniques once per scene.\n\nRemoved When: After the character spends a scene pursuing the spirit's goal, they can make a Meditation (Void) check to attempt to expel the spirit. The TN for this check is equal to the spirit's focus. If the character succeeds, the Possession ends, as the spirit is cast out. Possession can also be broken when a character achieves the Dispel Possession social objective (see Otherworldly Encounters on page 125). Alternately, the spirit can choose to end the possession at any time.\n\nAfter this condition is removed, the spirit might physically manifest or might flee into a Spirit Realm, at the GM's discretion."
+        }
     }
 
     # ===========================
@@ -2257,8 +2164,9 @@ EXTENSION "L5R5e_Children_of_Five_Winds" EXTENDS "L5R5e_Core_Character" {
 
     # source stat block (page 140)
     ^"Compassionate Demeanor" DEF {
-        # Reflects Jin/Compassion virtue.
-        # Fire +2, Air -1, Water -1 for social checks.
-        # Common Way of Unmasking: Hasty Action (act without thinking).
+
+        RULES {
+            #JzazwSpcxDa0Yhmf9Di2sP: compassionate "New Demeanor: Compassionate: The following demeanor is designed to reflect a personality type common among the willful peoples of the Unicorn Clan, along with other samurai who strongly embrace the Bushidō tenet of Jin: Compassion for those of less privileged station, and even for one's enemies. These samurai avoid inflicting needless suffering, believe in social obligation, demonstrate mercy whenever possible, and strive to use their power for the betterment of everyone. The Compassionate demeanor works in the same manner as the other demeanors on page 310 of the core rulebook.\n\nSocial Skill Check TN Modifiers: Fire +2, Air –1, Water –1\n\nCommon Way of Unmasking: Hasty Action\n\nThis person acts immediately on their outrage and frustration, usually without thinking things through. Disregarding any consequences, they attempt the shortest path to what they want, even if they will regret it later."
+        }
     }
 }

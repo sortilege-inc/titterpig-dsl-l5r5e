@@ -8,7 +8,7 @@
 ARC "sins-of-regret" EXTENDS "l5r5e" {
     NAME "Sins of Regret"
     SUBTITLE "An Adventure in the Forgotten Heart of the Empire"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Sins of Regret (Fantasy Flight Games, 2020 — product L5R11)"

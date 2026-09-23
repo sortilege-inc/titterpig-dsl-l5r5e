@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
     NAME "Legend of the Five Rings 5th Edition - Fields of Victory: Expanded Mass Battle Rules"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -17,18 +17,6 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
     ^"Marshaling an Army" DEF {
         APPLIES TO [#t9446c0a7f578c8eaf296f ^"System"]
 
-        # Readying an army for battle begins long before the troops
-        # arrive on the battlefield. A character must have access to
-        # their holdings and retainers (or community, for commoners)
-        # and must make a TN 3 Command check as a downtime
-        # activity. If the character succeeds, they form an army of
-        # their retainers. The army's maximum strength is set by the
-        # character's status, and the army's discipline is set by bonus
-        # successes and honor. The check also gathers support staff
-        # and supplies needed to keep the army fighting for one month.
-        # Generally, a marshaling check can only be attempted once
-        # per month for a given set of holdings.
-
         PROPERTIES {
             ^"Activation" STRING "Downtime activity"
             ^"Check" STRING "TN 3 Command"
@@ -36,11 +24,6 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
         }
 
         ^"Table 3-1: Determining Army Strength" DEF {
-
-            # The army's maximum strength is determined by the
-            # marshaling character's status. A character can always
-            # choose to form a smaller army (minimum 5) if desired,
-            # as smaller armies are easier to maintain.
 
             ENTRIES {
                 #fMzQPFxFcs8uUodFydAtB7 ^"Status 100" DEF    { ^"Maximum Strength" INTEGER 150 }
@@ -56,18 +39,9 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
                 #f8R8oKQooR4FIVgKrBYDrG ^"Status 0-19" DEF   { ^"Maximum Strength" INTEGER 5 }
             }
 
-            RULES {
-                #L5RFVMB01aB2cD4eF6gH8i: strength_determined_by_status
-                #L5RFVMB02jK3lM5nO7pQ9r: minimum_army_strength_is_five
-            }
         }
 
         ^"Table 3-2: Determining Army Discipline" DEF {
-
-            # The army's discipline is set by the character's bonus
-            # successes on the marshaling check and their honor.
-            # Higher bonus successes also add ranks in Government
-            # and glory rank to the discipline total.
 
             ENTRIES {
                 #jGseV7ffipzJrGvWrpkI98 ^"4+ Bonus Successes" DEF { ^"Discipline" STRING "60 + ranks in Government + glory rank" }
@@ -78,15 +52,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB03sT4uV6wX8yZ0a: discipline_from_bonus_successes
-                #L5RFVMB04bC5dE7fG9hI1j: government_and_glory_modify_discipline
+                #L5RFVMB03sT4uV6wX8yZ0a: discipline_from_bonus_successes "The army's discipline is set by the character's bonus successes and their honor (see Table 3–2: Determining Army Discipline)."
             }
         }
 
         ^"Table 3-3: Spending Opportunity while Marshaling" DEF {
-
-            # Characters can spend opportunity from their marshaling
-            # check to enhance their army in various ways.
 
             ENTRIES {
                 #WNlsXl9fg7VMVYviKxRMIu ^"Any (op)+" DEF {
@@ -125,15 +95,14 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB05kL6mN8oP0qR2s: opportunity_enhances_marshaled_army
-                #L5RFVMB06tU7vW9xY1zA3b: water_koku_restricted_to_army_use
+                #L5RFVMB05kL6mN8oP0qR2s: opportunity_enhances_marshaled_army "A character can spend (op) from the check to marshal their army in a number of ways described in Table 3–3: Spending Opportunity while Marshaling an Army (see page 111)."
             }
         }
 
         RULES {
-            #L5RFVMB07cD8eF0gH2iJ4k: marshaling_tn3_command_downtime
-            #L5RFVMB08lM9nO1pQ3rS5t: once_per_month_per_holdings
-            #L5RFVMB09uV0wX2yZ4aB6c: supplies_for_one_month_included
+            #L5RFVMB07cD8eF0gH2iJ4k: marshaling_check "The Marshaling Check: To raise an army, a character must have access to their holdings and retainers (or community, for commoners), and must make a TN 3 Command check as a downtime activity. If the character succeeds, they form an army that consists of their retainers. The army's maximum strength is set by the character's status (see Table 3–1: Determining Army Strength), although a character can always choose to form a smaller army (to a minimum of 5) if they desire, as smaller armies are easier to maintain."
+            #L5RFVMB08lM9nO1pQ3rS5t: once_per_month_per_holdings "Generally, a marshaling check can only be attempted once per month for a given set of holdings, though the GM may alter that restriction as the narrative dictates."
+            #L5RFVMB09uV0wX2yZ4aB6c: supplies_for_one_month_included "The check to marshal an army not only gathers the troops to the field, but also the support staff required and the supplies needed (food, gear, travel equipment) to keep them fighting for one month. At the start of each subsequent month, a character must make another check to keep their army functional and loyal (see Maintaining an Army on Campaign on page 115)."
         }
     }
 
@@ -145,18 +114,7 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
     ^"Supplemental Forces" DEF {
         APPLIES TO [#t9446c0a7f578c8eaf296f ^"System"]
 
-        # A character can expand their army once it has been
-        # marshaled in a number of ways, including raising
-        # additional forces, hiring mercenaries, and securing allies.
-
         ^"Raising Additional Forces" DEF {
-
-            # If a character gains access to substantial new resources
-            # or a new source of potential soldiers, the GM might allow
-            # a new marshaling check, treating their status as increased
-            # by an appropriate amount. If the new check would not
-            # create a preferable army, the character can maintain
-            # their prior army.
 
             PROPERTIES {
                 ^"Activation" STRING "New marshaling check at GM discretion"
@@ -164,18 +122,12 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB10dE1fG3hI5jK7l: new_resources_allow_new_marshaling
-                #L5RFVMB11mN2oP4qR6sT8u: gm_determines_status_modifier
+                #L5RFVMB10dE1fG3hI5jK7l: raising_additional_forces "Raising Additional Forces: If a character gains access to substantial new resources or a new source of potential soldiers, the GM might allow them to make a new marshaling check, treating their status as increased by an appropriate amount for the check. For instance, if a character captures a rich city on campaign, they might be able to use the resources from that city to attempt to build an even bigger army for their next target. If the new check's result would not create a preferable army, the character can choose to simply maintain their prior army."
+                #L5RFVMB11mN2oP4qR6sT8u: temporary_status_modifiers "Temporary Status Modifiers: The following examples show how the wealth a character has access to could translate into treating their status as higher for a marshaling check:\n\nA large storehouse of food: +10\n\nA town's yearly taxes: +20\n\nA ship with luxury goods: +30\n\nA small city's yearly taxes: +40\n\nA large city's reserves: +50\n\nThe GM always has the final say of whether and how such a bonus applies."
             }
         }
 
         ^"Table 3-4: Mercenary Forces" DEF {
-
-            # Mercenaries must be paid a fixed amount each month when
-            # the commander makes the check to maintain their army.
-            # If operating independently, use Base Army Stats; if joining
-            # another army, apply Modifiers instead. Listed rules apply
-            # to the entire army if independent, or one cohort if joined.
 
             ENTRIES {
                 #Qht5uXsp31C8s7MlieKntZ ^"Ashigaru Veterans" DEF {
@@ -211,20 +163,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB12vW3xY5zA7bC9d: mercenaries_paid_monthly
-                #L5RFVMB13eF4gH6iJ8kL0m: independent_uses_base_stats
-                #L5RFVMB14nO5pQ7qR9sT1u: joined_applies_modifiers
+                #L5RFVMB12vW3xY5zA7bC9d: mercenary_forces "Mercenary Forces: A character might get the chance to hire mercenaries while on campaign, should they encounter such individuals. Mercenaries must be paid a fixed amount each month when a character makes the check to maintain their army. See Table 3–4: Mercenary Forces for various types of mercenaries a character might be able to hire. If a mercenary force is operating as an army on its own, it uses the Base Army Stats; otherwise, apply its Modifiers to the army it is joining. If the force lists a rule, it applies to the entire army if it is operating independently, or to one cohort if it has joined another army."
             }
         }
 
         ^"Table 3-5: Allied Forces" DEF {
-
-            # A character may persuade another lord to commit resources
-            # to their cause, generally requiring an Intrigue or significant
-            # roleplaying scenes. The allied lord offers support based on
-            # their status. If operating independently, use Base Army Stats;
-            # if joining another army, apply Modifiers. Listed rules apply
-            # per cohort or to the entire army as specified.
 
             ENTRIES {
                 #Q7ZpSgDM3v69V1TF0IOCTG ^"Allied Status 100" DEF {
@@ -285,29 +228,19 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB15vW4xY6zA8bC0d: allied_forces_require_intrigue
-                #L5RFVMB16eF5gH7iJ9kL1m: allied_status_determines_support
+                #L5RFVMB15vW4xY6zA8bC0d: allied_forces "Allied Forces: A character might be able to persuade another lord to commit resources to their cause. This should generally require an Intrigue or a number of significant roleplaying scenes, and a character might have to make significant offers to that lord, such as agreeing in advance to certain concessions of territory taken in battle, making pacts for favorable marriages, or promising to defeat the other lord's enemies in addition to one's own. If this effort is successful, an allied lord can offer an amount of support based on their status (see Table 3–5: Allied Forces), which are added to the character's army. If an allied force is operating as an army on its own, it uses the Base Army Stats; otherwise, apply its Modifiers to the army it is joining. If the force lists one or more rules, each rule applies to the entire army if it is operating independently, or to one cohort if it has joined another army."
             }
         }
 
         ^"Parting of Ways" DEF {
 
-            # When a force splits from an army, divide casualties and
-            # panic as evenly as possible between the splitting forces.
-            # The larger force receives additional casualties or panic
-            # if it cannot be divided evenly. If any force cannot function
-            # with the casualties or panic it receives, it disperses and
-            # its members split up.
-
             RULES {
-                #L5RFVMB17nO6pQ8rS0tU2v: split_casualties_and_panic_evenly
-                #L5RFVMB18wX7yZ9aB1cD3e: larger_force_gets_remainder
-                #L5RFVMB19fG8hI0jK2lM4n: force_disperses_if_nonfunctional
+                #L5RFVMB17nO6pQ8rS0tU2v: parting_of_ways "Parting of Ways: If a force splits from an army, divide the casualties and panic as evenly as possible between the splitting forces, with the larger forces receiving the additional casualties or panic if it cannot be divided evenly. If any force cannot function with the number of casualties or panic it receives, it disperses and its members split up."
             }
         }
 
         RULES {
-            #L5RFVMB20oP9qR1sT3uV5w: supplemental_forces_expand_army
+            #L5RFVMB20oP9qR1sT3uV5w: supplemental_forces_expand_army "Supplemental Forces: A character can expand their army once it has been marshaled in a number of ways, described in this section."
         }
     }
 
@@ -319,19 +252,7 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
     ^"Doctrines" DEF {
         APPLIES TO [#t9446c0a7f578c8eaf296f ^"System"]
 
-        # Doctrines are army and cohort rules that characters can
-        # add to their army through training. As a downtime activity,
-        # a character may make the listed training check to teach
-        # their army a new doctrine for which it meets the narrative
-        # requirements. Doctrines that apply to the entire army can
-        # only be applied once. Doctrines that apply to one cohort
-        # can be applied to multiple cohorts via separate checks.
-
         ^"Battle-Tested" DEF {
-
-            # Soldiers who have faced the enemy before as a unit
-            # are generally more reliable, as each soldier knows how
-            # their comrades will behave under the stress of battle.
 
             PROPERTIES {
                 ^"Training Check" STRING "TN 4 Command (Earth)"
@@ -341,16 +262,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB21xY0zA2bC4dE6f: battle_tested_requires_prior_combat
-                #L5RFVMB22gH1iJ3kL5mN7o: battle_tested_increases_discipline
+                #LAE61kkeAACPNSIFZvDmTp: battle_tested_description "Battle-Tested: Soldiers who have faced the enemy before as a unit are generally more reliable, as each soldier knows how their comrades will behave under the stress of battle."
             }
         }
 
         ^"Clan Doctrines" DEF {
-
-            # Each Great Clan has its own preferred strategies and
-            # tactics. The army must consist primarily of a single
-            # Great Clan's forces. No training check required.
 
             PROPERTIES {
                 ^"Training Check" STRING "None"
@@ -383,17 +299,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB23pQ2rS4tU6vW8x: clan_doctrine_no_training_check
-                #L5RFVMB24yZ3aB5cD7eF9g: clan_doctrine_requires_single_clan
+                #PXvyC6q3Pmk1kmyvxKhNek: clan_doctrines_description "Clan Doctrines: Each Great Clan has its own preferred strategies and tactics, and the samurai of each clan are trained to best support their commanders' methods of warfare.\n\nEffect: The entire army gains one of the following based on its clan."
             }
         }
 
         ^"Fervor" DEF {
-
-            # A belief in one's own righteousness is a terrifyingly
-            # effective motivator, but soldiers who believe the will
-            # of the Heavens guides their cause may also come to
-            # believe they should interpret that will for themselves.
 
             PROPERTIES {
                 ^"Training Check" STRING "TN 6 Theology (Fire)"
@@ -403,16 +313,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB25hI4jK6lM8nO0p: fervor_increases_discipline_by_ten
-                #L5RFVMB26qR5sT7uV9wX1y: fervor_increases_maintenance_tn
+                #gEsEp0rPbKDBfQdLR2Spdy: fervor_description "Fervor: A belief in one's own righteousness is a terrifyingly effective motivator, and convincing one's soldiers that the will of the Heavens guides their cause makes them far more motivated to stand against harsh odds—but also more likely to come to believe that they should be interpreting this will for themselves."
             }
         }
 
         ^"Out of Nowhere" DEF {
-
-            # Stealth tactics are viewed by some as dishonorable,
-            # but Akodo wrote with great regard for the power of
-            # infiltrators and spies.
 
             PROPERTIES {
                 ^"Training Check" STRING "TN 4 Skulduggery (Air)"
@@ -422,16 +327,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB27zA6bC8dE0fG2h: out_of_nowhere_requires_obscuring_terrain
-                #L5RFVMB28iJ7kL9mN1oP3q: out_of_nowhere_panic_in_terrain
+                #wHdsHClZusbhCk6dmjXyeo: out_of_nowhere_description "Out of Nowhere: Stealth tactics are viewed by some as dishonorable, but Akodo wrote with great regard for the power of infiltrators and spies."
             }
         }
 
         ^"Sappers" DEF {
-
-            # Capturing a fortification through direct attack is bloody
-            # and brutal. A small force using subterfuge to capture
-            # a fortification is a far more appealing option.
 
             PROPERTIES {
                 ^"Training Check" STRING "TN 3 Labor (Air)"
@@ -441,17 +341,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB29rS8tU0vW2xY4z: sappers_require_fortification_training
-                #L5RFVMB30aB9cD1eF3gH5i: sappers_bonus_momentum_vs_fortifications
+                #HtqSQHaP8DlH0h6e8FB3wm: sappers_description "Sappers: Capturing a fortification through direct attack is a bloody, brutal prospect most commanders prefer to avoid. Capturing a fortification with a small force by using subterfuge is a far more appealing option."
             }
         }
 
         ^"Siege Defenders" DEF {
-
-            # Defending a fortification against attackers is preferable
-            # to facing them in the open, but specialist troops perform
-            # better than those without experience in defending an
-            # entrenched position.
 
             PROPERTIES {
                 ^"Training Check" STRING "TN 3 Labor (Earth)"
@@ -461,17 +355,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB31jK0lM2nO4pQ6r: siege_defenders_require_fortification
-                #L5RFVMB32sT1uV3wX5yZ7a: siege_defenders_plus_two_difficulty
+                #qPMRsimDwndjVF8MIkjDGw: siege_defenders_description "Siege Defenders: Defending a fortification against attackers is preferable to facing them in the open, but specialist troops will still perform better than those without experience in defending an entrenched position."
             }
         }
 
         ^"Strike as the Storm" DEF {
-
-            # While most Rokugani warfare is based around land
-            # tactics, attacks by water are not unheard of. Mantis
-            # sailors are rightly respected for unexpected flank
-            # attacks and ambushes from the sea.
 
             PROPERTIES {
                 ^"Training Check" STRING "TN 4 Seafaring (Water)"
@@ -481,17 +369,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB33bC2dE4fG6hI8j: strike_storm_requires_warship
-                #L5RFVMB34kL3mN5oP7qR9s: strike_storm_daze_on_landing
+                #e2WEgLJr7Hyj0mzVJwoZEc: strike_as_the_storm_description "Strike as the Storm: While most Rokugani warfare is based around land tactics, attacks by water are not unheard of, and Mantis sailors are rightly respected as some of the most skilled at unexpected flank attacks and ambushes."
             }
         }
 
         ^"Thunderous Charge" DEF {
-
-            # Among the Great Clans, only the Unicorn train heavy
-            # cavalry units in significant numbers. Since their return
-            # to Rokugan, the other clans have begun to experiment
-            # with their own cavalry units.
 
             PROPERTIES {
                 ^"Training Check" STRING "TN 5 Fitness (Fire)"
@@ -501,15 +383,12 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB35tU4vW6xY8zA0b: thunderous_charge_requires_quality_steeds
-                #L5RFVMB36cD5eF7gH9iJ1k: thunderous_charge_bonus_in_open_terrain
+                #XtlDSrHY72NPDlo0ff6lW2: thunderous_charge_description "Thunderous Charge: Among the Great Clans, only the Unicorn Clan trains heavy cavalry units in significant numbers. However, since their return to Rokugan, the other Great Clans have begun to experiment with their own cavalry units."
             }
         }
 
         RULES {
-            #L5RFVMB37lM6nO8pQ0rS2t: doctrines_added_via_training_check
-            #L5RFVMB38uV7wX9yZ1aB3c: army_doctrines_apply_once_only
-            #L5RFVMB39dE8fG0hI2jK4l: cohort_doctrines_can_repeat
+            #L5RFVMB37lM6nO8pQ0rS2t: doctrines "Doctrines: Doctrines are army and cohort rules that characters can add to their army. As a downtime activity, a character may make the listed TRAINING CHECK to attempt to train their army in a new doctrine for which it meets the narrative requirements. Each doctrine specifies whether it applies to one cohort or to the entire army. If a doctrine applies to the entire army, it can only ever be applied once. If a doctrine applies to one cohort, it can be applied to multiple cohorts by succeeding at the training check multiple times."
         }
     }
 
@@ -521,17 +400,7 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
     ^"Equipment Upgrades" DEF {
         APPLIES TO [#t9446c0a7f578c8eaf296f ^"System"]
 
-        # Equipment upgrades can be added to an army by purchasing
-        # or requisitioning them. Each upgrade specifies whether it
-        # applies to one cohort or to the entire army. Cohort-specific
-        # upgrades can be applied to multiple cohorts by acquiring
-        # the upgrade multiple times.
-
         ^"Baggage Train" DEF {
-
-            # Supply logistics are crucial to keeping an army in
-            # service for long periods. Without a baggage train, an
-            # army cannot operate far from its garrison.
 
             PROPERTIES {
                 ^"Rarity" INTEGER 6
@@ -541,15 +410,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB40mN9oP1qR3sT5u: baggage_train_reduces_maintenance_tn
+                #EcxcjZ0bXARJcSin9S7J3C: baggage_train_description "Baggage Train: Supply logistics are crucial to keeping an army in service for long periods of time, and without a baggage train, an army cannot operate far from its garrison."
             }
         }
 
         ^"Battlefield Medical Supplies" DEF {
-
-            # Giving soldiers the means to staunch minor injuries
-            # can help keep an army in the field, curbing infection
-            # and the spread of disease.
 
             PROPERTIES {
                 ^"Rarity" INTEGER 3
@@ -559,14 +424,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB41vW0xY2zA4bC6d: medical_supplies_plus_one_casualty_removal
+                #dKhDaMDDVeIh9cg5oYpa2P: battlefield_medical_supplies_description "Battlefield Medical Supplies: Giving soldiers the means to staunch minor injuries can help keep an army in the field, curbing infection and the spread of disease. For the rules of a single character using this item, see page 90."
             }
         }
 
         ^"Nagae Yari" DEF {
-
-            # Needle-pointed spears arranged in a hedge are an
-            # imposing sight for anyone, even heavy cavalry.
 
             PROPERTIES {
                 ^"Rarity" INTEGER 6
@@ -576,15 +438,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB42eF1gH3iJ5kL7m: nagae_yari_dangerous_terrain_for_attackers
+                #ayTS6uqCqxR9DqzzxRUrp3: nagae_yari_description "Nagae Yari: Needle-pointed spears arranged in a hedge are an imposing sight for anyone, even heavy cavalry. For the rules of a single character using this item, see page 88."
             }
         }
 
         ^"Tetsubishi" DEF {
-
-            # Iron caltrops designed to ruin the feet and hooves
-            # of enemy troops and horses, making the prospect of
-            # attacking a unit extremely unpleasant.
 
             PROPERTIES {
                 ^"Rarity" INTEGER 4
@@ -594,16 +452,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB43nO2pQ4rS6tU8v: tetsubishi_casualties_and_panic_on_cavalry
+                #WjXMdVpvTqoIQAoOjfkWCA: tetsubishi_description "Tetsubishi: Designed to ruin the feet and hooves of enemy troops and horses, tetsubishi are iron caltrops make the prospect of attacking a unit extremely unpleasant. For the rules of a single character using this item, see page 91."
             }
         }
 
         ^"Upgraded Armor" DEF {
-
-            # Investing in soldiers' armor is expensive, but keeping
-            # troops alive longer allows them to gain vital experience
-            # on the battlefield, making the army stronger as its
-            # members become more skillful.
 
             PROPERTIES {
                 ^"Rarity" INTEGER 7
@@ -613,13 +466,12 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB44wX3yZ5aB7cD9e: upgraded_armor_bonus_successes_on_maintenance
+                #Lp50KekPomYQsuB8xGpwqT: upgraded_armor_description "Upgraded Armor: While investing in one's soldiers' armor is expensive, keeping troops alive for longer allows them to gain vital experience on the battlefield, making the army stronger as its members become more skillful."
             }
         }
 
         RULES {
-            #L5RFVMB45fG4hI6jK8lM0n: equipment_upgrades_purchased_or_requisitioned
-            #L5RFVMB46oP5qR7sT9uV1w: cohort_upgrades_can_stack_on_multiple
+            #L5RFVMB45fG4hI6jK8lM0n: equipment_upgrades "Equipment Upgrades: Equipment upgrades can be added to an army as well, by purchasing or requisitioning them. Each equipment upgrade specifies whether it applies to one cohort or to the entire army. If an equipment upgrade applies to one cohort, it can be applied to multiple cohorts by acquiring it multiple times."
         }
     }
 
@@ -630,14 +482,6 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
     # source (page 111)
     ^"Army Maintenance" DEF {
         APPLIES TO [#t9446c0a7f578c8eaf296f ^"System"]
-
-        # Once rallied, an army must be regularly maintained.
-        # At the start of each month, the commander must make
-        # a Command check to keep their army in order, distribute
-        # supplies, and reorganize in the wake of losses. The TN
-        # equals the tens digit of the army's strength (or 10 if
-        # strength exceeds 99). At this time, the commander must
-        # also pay any mercenaries they have hired.
 
         PROPERTIES {
             ^"Activation" STRING "Start of each month"
@@ -665,18 +509,9 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
                 }
             }
 
-            RULES {
-                #L5RFVMB47xY6zA8bC0dE2f: maintenance_success_removes_casualties_panic
-                #L5RFVMB48gH7iJ9kL1mN3o: maintenance_failure_army_refuses_to_fight
-                #L5RFVMB49pQ8rS0tU2vW4x: catastrophic_failure_army_revolts
-            }
         }
 
         ^"Harsh Conditions" DEF {
-
-            # A number of factors can negatively impact the
-            # commander's Army Maintenance check by increasing
-            # the TN.
 
             ENTRIES {
                 #ESa26PHhOG8wpbqmW4aXEm ^"Hostile lands without resupply" DEF   { ^"TN Modifier" STRING "+1" }
@@ -690,15 +525,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB50yZ9aB1cD3eF5g: harsh_conditions_increase_maintenance_tn
+                #L5RFVMB50yZ9aB1cD3eF5g: harsh_conditions "Harsh Conditions: A number of factors can negatively impact the commander's Army Maintenance check. See below for some examples:\n\nIf the army is in hostile lands without a path of resupply, increase the TN by 1.\n\nIf it is winter and the army is not garrisoned in a shelter, increase the TN by 2.\n\nIf the army has been on the march for two weeks of the last month (or more), increase the TN by 1.\n\nIf the army is short on food, increase the TN by 1.\n\nIf the army is short on water, increase the TN by 3.\n\nIf it is exceptionally hot, increase the TN by 1.\n\nIf the army is plagued by insects and other vermin, increase the TN by 1.\n\nIf the army is plagued by disease, increase the TN by 3."
             }
         }
 
         ^"Incentives" DEF {
-
-            # A number of factors can positively impact the
-            # commander's maintenance check by decreasing
-            # the TN (to a minimum of 1).
 
             ENTRIES {
                 #wfR1Tbhxzp3QDNTAeCzHwe ^"Commander status rank 6+" DEF                         { ^"TN Modifier" STRING "-2" }
@@ -712,16 +543,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB51hI0jK2lM4nO6p: incentives_reduce_maintenance_tn
-                #L5RFVMB52qR1sT3uV5wX7y: minimum_tn_of_one
+                #L5RFVMB51hI0jK2lM4nO6p: incentives "Incentives: On the other hand, a number of factors can positively impact the commander's maintenance check. See below for some examples:\n\nIf the commander's status rank is 6 or higher, decrease the TN by 2 (to a minimum of 1).\n\nIf the commander has publicly promoted one or more jizamurai or ashigaru for a valorous act in the last month, decrease the TN by 2 (to a minimum of 1).\n\nIf the troops have access to entertainment provided by the commander (such as small luxuries like tea or sake, bards and other entertainers, or the opportunity to participate in activities such as hunting or contests), decrease the TN by 3 (to a minimum of 1).\n\nIf the army has been victorious in a mass battle within the last month, decrease the TN by 4 (to a minimum of 1).\n\nIf food is plentiful, decrease the TN by 3 (to a minimum of 1).\n\nIf the troops are fighting a defensive conflict in their own homeland, decrease the TN by 6 (to a minimum of 1).\n\nIf the commander has the backing or mandate of a character with status rank 7 or higher, decrease the TN by 3 (to a minimum of 1).\n\nIf the commander or their backer has made a considerable sacrifice of personal wealth (forfeiting 5 or more status), decrease the TN by 1 for every 5 status forfeited this way."
             }
         }
 
         ^"Dispersing an Army" DEF {
-
-            # After an army has served its purpose, most commanders
-            # seek to dismantle it, letting members return to their
-            # previous lives and reducing strain upon their estates.
 
             PROPERTIES {
                 ^"Check" STRING "TN 4 Command (Air)"
@@ -731,15 +557,13 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB53zA2bC4dE6fG8h: dispersal_tn4_command_air
-                #L5RFVMB54iJ3kL5mN7oP9q: unpaid_mercenaries_cause_problems
+                #L5RFVMB53zA2bC4dE6fG8h: dispersing_an_army "Dispersing an Army: At the end of a successful campaign, a warlord's vassals and allies generally expect recompense for their efforts. While in Rokugan most samurai do not expect to be paid in spoils, they do expect compensation—titles, positions, status, and most of all, lands captured are considered to be the proper reward for shedding blood on one's lord's behalf. Soldiers of the line, on the other hand, such as ashigaru and conscripts, generally prefer to be paid in currency (or village tax exemption, for many commoners) for their labor unless they happen to be among the exceptional few elevated to the samurai class thanks to their heroism or deeds.\n\nAfter an army has served its purpose, most commanders seek to dismantle it, letting its various members return to their previous lives and reducing the strain upon their estates. To get an army to disperse properly, its commander must make a TN 4 Command (Air) check and pay any mercenaries their final dues. If the commander succeeds (and any paid troops are satisfied), the forces return to their homes or prior occupations without incident. If the commander fails (or fails to pay any unpaid mercenaries), the troops go on to cause problems for the local area or the commander."
             }
         }
 
         RULES {
-            #L5RFVMB55rS4tU6vW8xY0z: monthly_maintenance_check_required
-            #L5RFVMB56aB5cD7eF9gH1i: tn_equals_tens_digit_of_strength
-            #L5RFVMB57jK6lM8nO0pQ2r: unpaid_mercenaries_may_turn_hostile
+            #L5RFVMB55rS4tU6vW8xY0z: army_maintenance_check "Army Maintenance Check: Once rallied, an army must be regularly maintained. At the start of each month, the commander must make a Command check to keep their army in order, distribute supplies, and reorganize in the wake of losses. The TN of this check is equal to the 10s digit of the army's strength (or 10, if the army's strength is higher than 99), as larger formations are harder to keep organized and equipped. Depending on the result, the army may remove casualties and panic, receive additional panic, or even rebel upon its commander. See Table 3–6: Army Maintenance Check Results for details."
+            #L5RFVMB57jK6lM8nO0pQ2r: unpaid_mercenaries_may_turn_hostile "At this time, a commander must also pay any mercenaries they have hired. Unpaid mercenaries might leave, or even take their forces and turn on the army if they believe they can take valuable hostages."
         }
     }
 
@@ -751,20 +575,7 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
     ^"Hostages" DEF {
         APPLIES TO [#t9446c0a7f578c8eaf296f ^"System"]
 
-        # In the ideals many Rokugani aspire to, a samurai is expected
-        # to fight to the bitter end, but is also expected to offer mercy
-        # to worthy adversaries. When a group is surrounded or the
-        # outcome of a mass battle is clear, the GM should consider
-        # whether NPCs surrender. If some NPCs are disinclined to
-        # surrender, the victorious side may attempt to convince them.
-
         ^"Accepting Surrender" DEF {
-
-            # A representative of the winning side must make a
-            # TN 3 Courtesy (Air) check to convince a defiant foe
-            # to accept terms and become a hostage. Taking a
-            # character hostage against their will by subduing them
-            # is a minor violation of Courtesy (Rei).
 
             PROPERTIES {
                 ^"Check" STRING "TN 3 Courtesy (Air)"
@@ -773,17 +584,9 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
                 ^"Subduing Hostage" STRING "Minor violation of Courtesy (Rei); forfeit honor as normal."
             }
 
-            RULES {
-                #L5RFVMB58sT5uV7wX9yZ1a: surrender_courtesy_air_check
-                #L5RFVMB59bC6dE8fG0hI2j: subduing_is_rei_violation
-            }
         }
 
         ^"Table 3-7: Ransom Amounts" DEF {
-
-            # After a battle or campaign, it is customary to return
-            # hostages to their families, either in exchange for a
-            # hostage of equal status or for a ransom in koku.
 
             ENTRIES {
                 #SkJoRG3rYw6kgqnBIBzxFI ^"Status 100" DEF   { ^"Ransom" STRING "N/A (decorum always demands safe return)" }
@@ -800,19 +603,12 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB60kL7mN9oP1qR3s: ransom_by_status
-                #L5RFVMB61tU8vW0xY2zA4b: gm_modifies_based_on_importance
+                #L5RFVMB60kL7mN9oP1qR3s: returning_hostages "After a battle or campaign, it is customary to return any hostages taken in battle to their families. Generally, a hostage is returned either in exchange for a hostage of equal status rank taken by the other side, or for a number of koku described in Table 3–7: Ransom Amounts (see page 117). If a character returns a hostage without any demands (or frees them), this is considered a sacrifice in the name of Righteousness (Gi), and the character should generally be awarded honor equal to the hostage's status rank (and glory equal to the hostage's status rank if they do so publicly). After a character frees someone of higher status rank this way, they also gain the Ally [Name of Character Freed] advantage (see page 101 of the core rulebook)."
+                #L5RFVMB61tU8vW0xY2zA4b: gm_modifies_based_on_importance "Of course, the GM should modify any of these amounts based on the importance of the individual to those who hold the purse-strings within their clan or faction, as well as applying appropriate modifications based on negotiations undertaken by the various parties."
             }
         }
 
         ^"Hostage Treatment" DEF {
-
-            # A samurai is expected to care for any hostages as they
-            # would any esteemed guest. When a samurai takes a
-            # prisoner on the battlefield, they must stake honor and
-            # glory equal to that individual's status rank. If their
-            # hostage comes to harm, they lose the staked honor
-            # (and glory, if the failure becomes known).
 
             PROPERTIES {
                 ^"Staking" STRING "Honor and glory equal to the hostage's status rank"
@@ -822,20 +618,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB62cD9eF1gH3iJ5k: hostage_care_stake_honor_glory
-                #L5RFVMB63lM0nO2pQ4rS6t: hostage_harm_loses_staked_values
+                #L5RFVMB62cD9eF1gH3iJ5k: hostage_care_stake_honor_glory "A samurai is expected to care for any \"guests\" in their custody as they would any esteemed guest. When a samurai takes a prisoner on the battlefield, they must stake honor and glory equal to that individual's status rank. If their hostage comes to harm, they lose the staked honor (and glory, if their failure becomes known) in addition to any forfeits of honor and glory they must make if they themselves treat the hostage with anything less than the expected decorum. Refusing to return a hostage in exchange for an equivalent hostage, fair price, or suitable favor to be repaid later after hostilities have ceased is also considered a breach of Courtesy (Rei) of a scale of the GM's discretion."
             }
         }
 
         ^"Freeing Hostages" DEF {
-
-            # Returning a hostage without demands or freeing them
-            # is considered a sacrifice in the name of Righteousness (Gi).
-            # The character is generally awarded honor equal to the
-            # hostage's status rank, and glory equal to the hostage's
-            # status rank if done publicly. After freeing someone of
-            # higher status rank this way, they also gain the Ally
-            # advantage for the freed character.
 
             PROPERTIES {
                 ^"Honor Award" STRING "Equal to hostage's status rank"
@@ -843,15 +630,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
                 ^"Bonus" STRING "Gain Ally [Name of Character Freed] advantage if freed character is of higher status rank"
             }
 
-            RULES {
-                #L5RFVMB64uV1wX3yZ5aB7c: freeing_hostage_gi_sacrifice
-                #L5RFVMB65dE2fG4hI6jK8l: gain_ally_if_higher_status
-            }
         }
 
         RULES {
-            #L5RFVMB66mN3oP5qR7sT9u: hostage_system_overview
-            #L5RFVMB67vW4xY6zA8bC0d: pcs_always_choose_whether_to_surrender
+            #L5RFVMB66mN3oP5qR7sT9u: hostages "Hostages: In the purest ideals of to which many Rokugani aspire, a samurai is expected to be willing to fight to the bitter end, but an idealized samurai is also expected to offer mercy to worthy adversaries who stand defiant to the end. As such, if a small group is surrounded by the enemy, or if the outcome of a mass battle is clear (such as if an army has been routed or suffered morale collapse) and the enemy leaders cannot escape, the GM should consider whether any NPCs in that group surrender. If some of the NPCs are not inclined to surrender due to their pride or convictions, the victorious side may attempt to get them to accept their hospitality. A representative of the winning side must make a TN 3 Courtesy (Air) check; if the character succeeds, the target agrees to the terms and becomes their \"guest\" (hostage). After all, once a battle is decided, further bloodshed is pointless. If the character fails, the target attempts to fight on, which can be resolved with narration by the GM, or perhaps a duel if the winners are gracious. Taking a character hostage against their will by subduing them is a minor violation of Courtesy (Rei), and requires forfeiting honor as normal."
+            #L5RFVMB67vW4xY6zA8bC0d: pcs_always_choose_whether_to_surrender "PCs Surrendering: If the PCs are defeated in a mass battle and offered a chance to surrender, their players always make the decision on whether or not they actually do. If a player wants to let the dice decide, they can ask the GM to have an NPC make the TN 3 Courtesy (Air) check to convince them to surrender."
         }
     }
 
@@ -863,47 +646,22 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
     ^"Battle Zones" DEF {
         APPLIES TO [#t9446c0a7f578c8eaf296f ^"System"]
 
-        # Battle zones are an optional rule that GMs can add to
-        # mass battles to more closely track the position of cohorts,
-        # fortifications, terrain, and commanders within the field.
-        # They provide more tactical decisions for players.
-
         ^"Mapping the Area" DEF {
 
-            # Before the start of the mass battle, the GM should
-            # map out the area by placing key geographic features
-            # such as fortifications, mountains, hollows, roads,
-            # towns, fields, natural barriers, choke points, and
-            # impassable areas.
-
             RULES {
-                #L5RFVMB68eF5gH7iJ9kL1m: gm_places_geographic_features
-                #L5RFVMB69nO6pQ8rS0tU2v: features_define_battle_zones
+                #L5RFVMB68eF5gH7iJ9kL1m: mapping_the_area "Mapping the area: Before the start of the Mass Battle, the GM should map out the area. To do so, the first place the key geographic features such as:\n\nFortifications such as castles, fortresses, and barricades\n\nMountains and hills\n\nHollows and valleys\n\nRoads\n\nTowns and portions of cities\n\nFields and other open areas\n\nLakes, rivers, mountains, forests, and other natural barriers\n\nKey choke points such as passes, bridges, and tunnels\n\nImpassible areas"
             }
         }
 
         ^"Designating Battle Zones" DEF {
 
-            # After drawing the map, the GM divides it into battle
-            # zones. Each zone is an abstracted area defined by key
-            # geographic features. Generally, each zone should have
-            # one defining feature and potentially other modifying
-            # features. The GM outlines each zone, noting where zones
-            # overlap (adjacent zones). If two zones have overlapping
-            # edges, they are considered adjacent. Cohorts can move
-            # between adjacent zones.
-
             RULES {
-                #L5RFVMB70wX7yZ9aB1cD3e: each_zone_has_defining_feature
-                #L5RFVMB71fG8hI0jK2lM4n: overlapping_edges_are_adjacent
-                #L5RFVMB72oP9qR1sT3uV5w: gaps_for_impassable_areas
+                #L5RFVMB70wX7yZ9aB1cD3e: designating_battle_zones "Designating Battle Zones: After drawing out the map, the GM should divide the map into battle zones. Each battle zone is an abstracted area in which the battle can be fought, defined by the key geographic features it contains. Generally, each battle zone should be drawn to have one of the above key geographic features as its defining aspect, and potentially contain other features that alter it in various ways."
+                #L5RFVMB71fG8hI0jK2lM4n: overlapping_edges_are_adjacent "The GM then outlines each zone, making clear where each zone overlaps with any neighboring zones, and leaving gaps for areas where passage is normally impossible. If two zones have overlapping edges, they are considered ADJACENT zones. Cohorts can move between adjacent zones and can sometimes affect other cohorts in adjacent zones, as described later in this section."
             }
         }
 
         ^"Table 3-8: Assigning Terrain Qualities by Feature" DEF {
-
-            # The GM notes the features within each zone and
-            # any terrain qualities that affect cohorts within those zones.
 
             ENTRIES {
                 #GdJs7lfCgjhPwfeFYBvriA ^"Cliff" DEF    { ^"Terrain Qualities" STRING "Elevated, Dangerous" }
@@ -922,14 +680,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB73xY0zA2bC4dE6f: terrain_qualities_assigned_by_feature
+                #L5RFVMB73xY0zA2bC4dE6f: terrain_qualities_assigned_by_feature "Finally, the GM should note the features within each zone and any terrain qualities that affect cohorts within those zones. See Table 3–8: Assigning Terrain Qualities by Feature for ideas."
             }
         }
 
         ^"Zone Restrictions and Amendments" DEF {
-
-            # When running a mass battle with zones, use the
-            # standard mass battle rules with the following amendments.
 
             ENTRIES {
                 #SLcYq1WiWWz7AK1m9PYQe4 ^"Targeting Restriction" DEF {
@@ -944,17 +699,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB74gH1iJ3kL5mN7o: same_zone_targeting_required
-                #L5RFVMB75pQ2rS4tU6vW8x: free_move_to_adjacent_zone
-                #L5RFVMB76yZ3aB5cD7eF9g: withdrawal_causes_five_panic
+                #L5RFVMB74gH1iJ3kL5mN7o: zone_restrictions "Zone Restrictions: When running a Mass Battle with zones, use the standard rules for Mass Battles on 274 of the core rulebook with the following amendments:\n\nCohort leaders cannot target other cohort leaders who are not in the same zone.\n\nOnce during each cohort leader's turn, before or after they perform an action, that leader may move their cohort to an adjacent zone.\n\nAfter a cohort leaves a zone, if that zone was occupied by an enemy cohort, the withdrawing cohort's army suffers 5 panic."
             }
         }
 
         ^"March Action" DEF {
-
-            # A new action available to cohort leaders when using
-            # the battle zones rules, allowing repositioning of cohorts
-            # across the battlefield.
 
             PROPERTIES {
                 ^"Action Type" STRING "Movement"
@@ -964,15 +713,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB77hI4jK6lM8nO0p: march_is_movement_action
-                #L5RFVMB78qR5sT7uV9wX1y: march_additional_zones_on_success
+                #L5RFVMB77hI4jK6lM8nO0p: march "March: Activation: As a Movement action, you may reposition your cohort. You may make a TN 3 Command check to move further.\n\nEffects: You move your cohort to an adjacent zone. If you made the Command check and succeeded, you may then move your cohort one additional time to an adjacent zone, plus one additional time for every three bonus successes."
             }
         }
 
         ^"Army and Cohort Rules While Using Battle Zones" DEF {
-
-            # Some army and cohort abilities alter how they behave
-            # when using the battle zones rules.
 
             ENTRIES {
                 #x9BbkIUqg8aaDlTggcSyzd ^"Cavalry" DEF {
@@ -987,16 +732,13 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB79zA6bC8dE0fG2h: cavalry_no_withdrawal_panic
-                #L5RFVMB80iJ7kL9mN1oP3q: archers_cross_zone_from_elevated
-                #L5RFVMB81rS8tU0vW2xY4z: mystics_cross_zone_rally_from_elevated
+                #L5RFVMB79zA6bC8dE0fG2h: army_and_cohort_rules_while_using_battle_zones "Army and Cohort Rules While Using Battle Zones: Some army and cohort abilities alter how they behave when using the battle zones rules. These include:\n\nCavalry: This cohort does not suffer panic when leaving a battle zone with an enemy cohort.\n\nArchers: While in Elevated terrain, this cohort can perform Assault actions targeting cohorts in an adjacent zone, increasing the TN of the check by 1. However, while performing an Assault action targeting a cohort in an adjacent zone, this cohort cannot fulfill the following strategic objectives: Capture a Position, Cut Off the Head, Seize Victory. It can still contribute momentum points to these objectives, but cannot be the action to complete them.\n\nMystics: While in Elevated terrain, this cohort can perform Rally actions targeting cohorts in an adjacent zone, increasing the TN of the check by 1."
             }
         }
 
         RULES {
-            #L5RFVMB82aB9cD1eF3gH5i: battle_zones_optional_rule
-            #L5RFVMB83jK0lM2nO4pQ6r: zones_track_cohort_positions
-            #L5RFVMB84sT1uV3wX5yZ7a: concealed_zones_revealed_on_entry
+            #L5RFVMB82aB9cD1eF3gH5i: battle_zones "Battle Zones: The Mass Battle rules included in the core rulebook are meant to center the action on the PCs and keep the combat flowing quickly. As such, they abstract certain details, such as distance and travel time. However, for campaigns where Mass Battles will be a frequent event, having more detail can add to the flavor of the narrative and give players interesting new options based on the more tactical decisions they can make.\n\nBattle zones are an optional rule that GMs can add to their Mass Battles to more closely track the position of cohorts, fortifications, terrain, and commanders within the field."
+            #L5RFVMB84sT1uV3wX5yZ7a: concealed_zones_revealed_on_entry "Concealed Battle Zones: At the GM's discretion, certain areas might be partially or fully concealed, leaving one or both commanders uncertain what lies within. The terrain qualities, cohorts, fortifications, and other elements with these areas should be revealed only when a cohort moves into the area."
         }
     }
 
@@ -1008,15 +750,7 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
     ^"New Terrain Types" DEF {
         APPLIES TO [#t2baba6626d9f2edff18f4 ^"Terrain"]
 
-        # New terrain types especially useful for skirmishes and
-        # mass battles, but also usable in duels at the GM's discretion.
-        # These are mundane terrain types found in most regions.
-
         ^"Confining" DEF {
-
-            # Terrain cut off from multiple angles, forcing those
-            # passing through into a file. Effectively impassible
-            # if held by a dedicated defender.
 
             PROPERTIES {
                 ^"Type" STRING "Mundane"
@@ -1033,16 +767,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB85bC2dE4fG6hI8j: confining_restricts_long_range_weapons
-                #L5RFVMB86kL3mN5oP7qR9s: confining_blocks_cohort_entry
+                #SqJOWPmbJhYja5lEmqJcKW: confining_description "Confining: Confining terrain is cut off from multiple angles, forcing those passing through into a file. As a result, it is effectively impassible if held by a dedicated defender. This is a mundane terrain type found in most regions.\n\nEffects: While a character is in Confining terrain, the following applies to them based on the type of scene:"
             }
         }
 
         ^"Elevated" DEF {
-
-            # Ground significantly higher than most terrain around it,
-            # with a wide view of the area. Grants line of sight and an
-            # advantage to ballistic attacks based on relative height.
 
             PROPERTIES {
                 ^"Type" STRING "Mundane"
@@ -1056,15 +785,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB87tU4vW6xY8zA0b: elevated_reduces_ranged_tn
-                #L5RFVMB88cD5eF7gH9iJ1k: elevated_may_require_check_to_reach
+                #QhN0ELF5Bck2tXmckmmzh8: elevated_description "Elevated: Elevated ground is significantly higher than most of the terrain around it, has a wide view of the area, and grants both line of sight and an advantage to ballistic attacks based on its relative height. This is a mundane terrain type found in most regions."
             }
         }
 
         ^"Open" DEF {
-
-            # Terrain designed to facilitate movement, helping even
-            # large armies move quickly.
 
             PROPERTIES {
                 ^"Type" STRING "Mundane"
@@ -1078,14 +803,11 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB89lM6nO8pQ0rS2t: open_reduces_movement_tn
+                #ULMLbFhLhRHVLzCm3HNNjm: open_description "Open: Open terrain is designed to facilitate movement, helping even large armies move quickly. This is a mundane terrain type found in most regions."
             }
         }
 
         ^"Recessed" DEF {
-
-            # Terrain significantly lower than most terrain around it,
-            # exposed to fire from all directions.
 
             PROPERTIES {
                 ^"Type" STRING "Mundane"
@@ -1099,14 +821,12 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             }
 
             RULES {
-                #L5RFVMB90uV7wX9yZ1aB3c: recessed_reduces_tn_to_target_within
-                #L5RFVMB91dE8fG0hI2jK4l: recessed_may_require_check_to_reach
+                #a4WR81aRFYnI2OjXb8tzOo: recessed_description "Recessed: Recessed terrain is significantly lower than most of the terrain around it, and is exposed to fire from all directions. This is a mundane terrain type found in most regions."
             }
         }
 
         RULES {
-            #L5RFVMB92mN9oP1qR3sT5u: new_terrain_types_mundane
-            #L5RFVMB93vW0xY2zA4bC6d: terrain_usable_in_skirmish_mass_battle_duel
+            #L5RFVMB93vW0xY2zA4bC6d: new_terrain_types "New Terrain Types: The following are new terrain types. These terrain types are especially useful for skirmishes and mass battles, but can also be used in duels at the GM's discretion."
         }
     }
 }

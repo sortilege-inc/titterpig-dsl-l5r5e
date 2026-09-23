@@ -11,7 +11,7 @@
 
 EXTENSION "L5R5e_DeathlyTurns_Mechanics" EXTENDS "L5R5e_Core_Character" {
     NAME "Deathly Turns — New Schools"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-03"
     DEPENDS_ON "L5R5e_Core_Character"
@@ -20,12 +20,6 @@ EXTENSION "L5R5e_DeathlyTurns_Mechanics" EXTENDS "L5R5e_Core_Character" {
     ^"Mazoku's Enforcer" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # Occasionally, overworked mazoku "recruit" humans (living or dead) to serve
-        # as their swords, training them to adjudicate spiritual disputes and uphold
-        # the justice of Emma-Ō across all realms — as at the foundation of the Falcon
-        # Clan. Those trained in these arts are not shugenja, but can see and interact
-        # with spirits to pursue wayward ghosts and bring peace to their souls.
 
         PROPERTIES {
             ^"School Name" STRING "Mazoku's Enforcer Tradition" FIXED
@@ -108,18 +102,16 @@ EXTENSION "L5R5e_DeathlyTurns_Mechanics" EXTENDS "L5R5e_Core_Character" {
                 ^"Hunter of the Supernatural"
             }
         }
+
+        RULES {
+            #t7iSN7WZ3k1GXZ1rEEtlWk: mazokus_enforcer_tradition_description "Mazoku's Enforcer Tradition [Bushi, Sage]: Occasionally, overworked mazoku will \"recruit\" humans (living or dead) to serve as their swords, training them to adjudicate spiritual disputes and uphold the justice of Emma-Ō across all realms. Such was the case with the foundation of the Falcon Clan, and many of its warriors are trained in this tradition, but mazoku sometimes choose individuals of rare talent as well. While those trained in these arts are not shugenja, they are capable of seeing and interacting with spirits, allowing them to pursue wayward ghosts and bring peace to their souls no matter where they may appear. Some are even allowed to wear Emma-Ō's blessed robes of judgment to mark them as favored agents."
+        }
     }
 
     # ═══════════════ CHAMPION OF DAYS GONE TRADITION [Bushi] ═══════════════
     ^"Champion of Days Gone" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # Samurai of past ages lived and fought differently — in the days of Hantei
-        # Genji the bow held the prestige the daishō does today. Souls parted from
-        # the living since an ancient war (such as the Battle of Regret's Shadow) may
-        # find much about their modern companions unexpected. A tradition for such
-        # historical characters returned from the afterlife.
 
         PROPERTIES {
             ^"School Name" STRING "Champion of Days Gone Tradition" FIXED
@@ -206,11 +198,6 @@ EXTENSION "L5R5e_DeathlyTurns_Mechanics" EXTENDS "L5R5e_Core_Character" {
     # source stat block (page 20). Lady Mazoku's trusted agents. The Foundry
     # compendium files this title as "Spirits hunter" (a typo); the book prints
     # "Spirit Hunter" throughout. She elevates mortals to detect and banish
-    # harmful spirits; a completed holder has privileges in certain realms of the
-    # dead (Meido, Gaki-dō, or Tōshigoku) and abilities dealing with their
-    # denizens, but lives most of their life in their normal station. The PCs are
-    # offered this title after they set the shade Hagane to rest. It grants no
-    # glory award — secrecy is important to Lady Mazoku's work.
     ^"Spirit Hunter" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
         PROPERTIES {
@@ -222,13 +209,13 @@ EXTENSION "L5R5e_DeathlyTurns_Mechanics" EXTENDS "L5R5e_Core_Character" {
             ^"Title Ability" STRING "Celestial Influence: Reduce the TN of your Attack and Scheme action checks targeting Otherworldly beings by 1 (to a minimum of 1)."
             ^"Advances" STRING "Martial Skills (skill group), Social Skills (skill group), Government (skill), Theology (skill), = Rank 1 Rituals (ritual, tech group)"
         }
+
+        RULES {
+            #MhyAXODam8Md1BFBUFYTFo: spirit_hunter_description "Spirit Hunter (Title): Lady Mazoku occasionally elevates mortals to assist her in work in the Mortal Realm, detecting and banishing spirits who seek to do harm. While some mortals dedicate their lives to serving her, for most, it is part-time work at best. A character who has completed this title is one of her trusted agents. The character has privileges in certain realms of the dead (Meido, Gaki-dō, or Tōshigoku) and abilities when dealing with their denizens, but lives most of their life in their normal station."
+        }
     }
 
     # ═════════════════════ NEW NEMURANAI ═══════════════════════
-    # source (page 19). Mizutsumi, the ancestral katana of Shiba Akifusa, given to
-    # the PCs in thanks if they save him and set Hagane to rest. A katana (core
-    # rulebook profile) that is a nemuranai; its Sacred quality lets it bite
-    # through Hagane's supernatural resistance.
     ^"Mizutsumi" DEF {
         APPLIES TO [#te28b9de1d70883d12c080 ^"Item"]
         PROPERTIES {
@@ -238,6 +225,10 @@ EXTENSION "L5R5e_DeathlyTurns_Mechanics" EXTENDS "L5R5e_Core_Character" {
             ^"Quirk" STRING "Causes a gentle rain or snow to fall for a few hours the first time it is drawn each season (it has not been drawn in some years)."
             ^"Special" STRING "As the nemuranai possesses the Sacred item quality, Mizutsumi ignores Hagane's considerable physical resistance."
             ^"Sealed Invocation" STRING "Heart of the Water Dragon (see pages 208 and 307 of the core rulebook) is sealed within it; the wielder can perform the invocation once per game session using the Sentiment skill instead of Theology."
+        }
+
+        RULES {
+            #RjQSHY2Rchh1rWLDMOMEOa: mizutsumi_awarded "If the PCs both save Akifusa and set Hagane to rest, Akifusa gives them his nemuranai, Mizutsumi, in thanks for helping him absolve himself. If the PCs set Hagane to rest, they can also take Hagane and Noroi, his daishō (katana and wakizashi). If Hagane's name has been cleared publicly, returning the daishō to the Mirumoto family is a massive sacrifice in the name of Compassion. Moreover, once Hagane has been put to rest and has returned to the afterlife, Lady Mazoku offers the PCs the Spirit Hunter title (see this page)."
         }
     }
 }

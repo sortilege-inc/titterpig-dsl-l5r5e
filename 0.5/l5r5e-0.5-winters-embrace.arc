@@ -8,7 +8,7 @@
 ARC "winters-embrace" EXTENDS "l5r5e" {
     NAME "Winter's Embrace"
     SUBTITLE "An Adventure at the Winter Court"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Winter's Embrace (Fantasy Flight Games, 2019 — product L5R09; ISBN 978-1-63344-360-0)"

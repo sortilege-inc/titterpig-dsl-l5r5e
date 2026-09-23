@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Schools_Crane" {
     NAME "Legend of the Five Rings 5th Edition - Crane Clan Schools"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -15,11 +15,6 @@ BASE "L5R5e_Core_Schools_Crane" {
     #t9add0d08a192de50e8fd9 ^"Asahina Artificer" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # Art and religion intertwine for the Asahina, for to them, faith,
-        # beauty, and peace are all aspects of the same truth. The Asahina
-        # take any opportunity to teach their philosophy and try to improve
-        # harmony in the Empire.
 
         PROPERTIES {
             ^"School Name" STRING "Asahina Artificer" FIXED
@@ -54,11 +49,6 @@ BASE "L5R5e_Core_Schools_Crane" {
             "yumi (bow)", "quiver of arrows",
             "scroll satchel", "traveling pack"
         ]
-
-        # The Asahina Artificer School teaches its students invocations by
-        # Elemental names, for they continue the traditions passed down from
-        # Isawa Asahina, their founder.
-        # (See ^"Invocation Names and Traditions")
 
         CURRICULUM {
             RANK 1 {
@@ -110,6 +100,11 @@ BASE "L5R5e_Core_Schools_Crane" {
                 ^"Stir the Slumbering Spirit"
             }
         }
+
+        RULES {
+            #jjiOpoS2SBOwMjzjz2vX6u: school_description "Art and religion intertwine for the Asahina, for to them, faith, beauty, and peace are all aspects of the same truth. The Asahina take any opportunity to teach their philosophy and try to improve harmony in the Empire. Their focus on the creation of beautiful things is simply another aspect of their attempt to spread art and peace throughout Rokugan. Many a conflict has been defused by an Asahina religious ritual that presented a peaceful path forward. The Asahina do their utmost to live their pacifistic ideals in a world fraught with conflict. It is arduous, but they persevere, secure in their beliefs."
+            #hyLYXYGeMW8uUzWhc43MYD: invocation_names "Asahina Invocations: The Asahina Artificer School teaches its students invocations by Elemental names, for they continue the traditions passed down from Isawa Asahina, their founder. (See Invocation Names and Traditions on page 190 in Chapter 4: Techniques)."
+        }
     }
 
     # ===========================
@@ -119,10 +114,6 @@ BASE "L5R5e_Core_Schools_Crane" {
     ^"Daidoji Iron Warrior" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # The warriors from the Daidoji dojo form the core of their clan's
-        # small standing army. They are highly trained heavy infantry who
-        # can hold the line and delay the advance of any foe.
 
         PROPERTIES {
             ^"School Name" STRING "Daidoji Iron Warrior" FIXED
@@ -208,6 +199,10 @@ BASE "L5R5e_Core_Schools_Crane" {
                 ^"To Tread the Sword"
             }
         }
+
+        RULES {
+            #XfSbShiWGNGyJrXzZ3Noqh: school_description "The warriors from the Daidoji dōjō form the core of their clan's small standing army. They are highly trained heavy infantry who can hold the line and delay the advance of any foe. Many enemies have broken on the unwavering spears and iron discipline of the Daidoji Iron Warriors. When there are no wars to fight, many are assigned as protectors of Crane castles or as yōjimbō (bodyguards) to traveling Crane courtiers. Their watchfulness and solidarity have prevented countless heated moments from getting out of hand, though it is said that most Daidoji prefer the honesty of the battlefield."
+        }
     }
 
     # ===========================
@@ -217,11 +212,6 @@ BASE "L5R5e_Core_Schools_Crane" {
     ^"Doji Diplomat" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # No one plays the game of court better than the Crane - after all,
-        # their clan wrote the rules. The Doji Diplomats choreograph the
-        # courtly dance of favors exchanged, gifts given, and the right
-        # people invited to private gatherings.
 
         PROPERTIES {
             ^"School Name" STRING "Doji Diplomat" FIXED
@@ -307,6 +297,10 @@ BASE "L5R5e_Core_Schools_Crane" {
                 ^"The Lady's Grace"
             }
         }
+
+        RULES {
+            #vu3gVJdMwonT2Ucz22srSw: school_description "No one plays the game of court better than the Crane—after all, their clan wrote the rules. The Doji Diplomats choreograph the courtly dance of favors exchanged, gifts given, and the right people invited to private gatherings. The Doji are always on the leading edge of fashion and culture, and Doji Diplomats need never use an unkind word: their silence speaks volumes, and a simple gesture says even more. Their networks of favors, gifts, and invitations allow them to weigh the ebb and flow of the social side of the Empire and adjust the scales to their benefit."
+        }
     }
 
     # ===========================
@@ -316,11 +310,6 @@ BASE "L5R5e_Core_Schools_Crane" {
     #t2f4a03e3782b0a8fe51a9 ^"Kakita Duelist" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # The Kakita Duelist School emphasizes "one strike, one kill,"
-        # seeking for its students to master the one perfect strike performed
-        # in an iaijutsu duel. For the Kakita Duelists, such is the pinnacle
-        # of all martial skills.
 
         PROPERTIES {
             ^"School Name" STRING "Kakita Duelist" FIXED
@@ -345,11 +334,6 @@ BASE "L5R5e_Core_Schools_Crane" {
         }
 
         MASTERY_ABILITY ^"Strike with No Thought" {
-            # "Strike with No Thought" has opportunity effects:
-            # (op)+: One character of your choice at range 0-2 of your target
-            #   per (op) spent this way suffers the Dazed and Disoriented conditions.
-            # (op)(op)+: Treat the maximum range of this technique as 1 higher
-            #   per (op)(op) spent this way.
             "Once per scene, as an Attack and Movement action, you may make a Martial Arts [Melee] (Void) check targeting one character at range 2-3 using a sheathed katana or wakizashi. The TN of this check is equal to your target's vigilance. You immediately move to range 1 of your target and draw the weapon you used. If you succeed, your target suffers a critical strike with severity equal to the deadliness of your weapon plus your bonus successes. (op)+: One character of your choice at range 0-2 of your target per (op) spent this way suffers the Dazed and Disoriented conditions. (op)(op)+: Treat the maximum range of this technique as 1 higher per (op)(op) spent this way."
         }
 
@@ -410,6 +394,10 @@ BASE "L5R5e_Core_Schools_Crane" {
             RANK 6 {
                 ^"Strike with No Thought"
             }
+        }
+
+        RULES {
+            #LwEnhirQPWyhiQYBdwD5zs: school_description "The Kakita Duelist School emphasizes \"one strike, one kill,\" seeking for its students to master the one perfect strike performed in an iaijutsu duel. For the Kakita Duelists, such is the pinnacle of all martial skills. While other martial skills are not neglected, neither are they the focus of the Kakita Dueling Academy in Tsu ma. Although some might critique such single-mind ed dedication, the Kakita Duelists are the best in the Empire. Their skill with the katana in this arena complements the Doji mastery of court, and reinforces the Crane hold on the political flow of the Empire."
         }
     }
 }

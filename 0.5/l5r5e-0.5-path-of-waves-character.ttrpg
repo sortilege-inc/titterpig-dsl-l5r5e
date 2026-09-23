@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Path of Waves: Character Creation"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -46,8 +46,10 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R001aB2cD4eF6gH8iJ0kL ^"Entity"
         # Foreigners from outside Rokugan: Ujik nomads,
         # Qamarist scholars, Ivory Kingdoms warriors, etc.
-        # Begin with Status 0 in Rokugan. May have a
-        # second status value for their homeland.
+
+        RULES {
+            #nGunOQZeNWQslvvsvGLCzk: gaijin_homeland_status "Gaijin Status: The second status value reflects the gaijin's status in their own homeland. This value will very rarely be used, as the Legend of the Five Rings Roleplaying Game is designed to help players and GMs tell stories that take place in Rokugan. There are only a limited number of circumstances in which a gaijin's homeland status might come into play. Perhaps, during their adventure, the group must briefly travel the Sand Road and encounter more Ujik, or the group encounters a gaijin NPC while traveling in Rokugan. In case such a circumstance arises, the player and GM should discuss the gaijin's standing in their culture during character creation. When they agree on a value (using the table on page 305 of the core rulebook as a guideline), the player should note this value on their character sheet. Unless a gaijin is interacting with someone from their culture, their cultural status value cannot change unless the GM determines it should. For more information on different ways to run games with gaijin, see Chapter 6: Untold Stories, starting on page 173."
+        }
     }
 
     # ===========================
@@ -57,18 +59,14 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     ^"Path of Waves Character Creation" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # Limits: rings and skills have a maximum rank of 3
-        # during character creation. Starting values: 1 rank
-        # in each ring, 0 ranks in each skill.
-
         RULES {
-            #L5RPW01aB2cD4eF6gH8iJ0k: pow_rings_max_3_during_creation
-            #L5RPW02lM3nO5pQ7rS9tU1v: pow_skills_max_3_during_creation
-            #L5RPW03wX4yZ6aB8cD0eF2g: pow_ronin_base_status_24
-            #L5RPW04hI5jK7lM9nO1pQ3r: pow_peasant_base_status_15
-            #L5RPW05sT6uV8wX0yZ2aB4c: pow_gaijin_base_status_0
-            #L5RPW06dE7fG9hI1jK3lM5n: pow_giri_replaced_by_past
-            #L5RPW07oP8qR0sT2uV4wX6y: pow_glory_represents_personal_reputation
+            #L5RPW01aB2cD4eF6gH8iJ0k: pow_rings_max_3_during_creation "Limits on Skills and Rings: All characters begin with 1 rank in each ring and 0 ranks in each skill. Rings and skills have a maximum rank of 3 during character creation. If a choice would result in a ring rising above rank 3 during character creation, then the player must choose a different ring to increase instead, as long as that ring would not be increased above 3."
+            #L5RPW02lM3nO5pQ7rS9tU1v: pow_skills_max_3_during_creation "Limits on Skills and Rings: Similarly, if a choice would result in a skill rising above rank 3 during character creation, then the player must choose a different skill that is not already at rank 3 to increase instead."
+            #L5RPW03wX4yZ6aB8cD0eF2g: pow_ronin_base_status_24 "Depending on what type of character you choose, you have a particular base status value that is modified by your upbringing.\n\nIf you are a rōnin (even one with a secret upbringing) your status begins at 24."
+            #L5RPW04hI5jK7lM9nO1pQ3r: pow_peasant_base_status_15 "If you are a peasant (and are open about your upbringing) your status begins at 15."
+            #L5RPW05sT6uV8wX0yZ2aB4c: pow_gaijin_base_status_0 "If you are a gaijin your status begins at 0. For more information on how gaijin status works, see Gaijin Status on page 38."
+            #L5RPW06dE7fG9hI1jK3lM5n: pow_giri_substituted_with_past "To accomplish this for rōnin characters, giri is substituted with a \"past.\" The rōnin's past is a statement describing the circumstances surrounding how the rōnin came to be in their current position and presents something they must overcome, something to which they are constantly set against and compared. As the game proceeds, the rōnin must reconcile what they wish to do with what they've already done."
+            #L5RPW07oP8qR0sT2uV4wX6y: pow_glory_represents_personal_reputation "Glory: For non-samurai, glory instead represents personal reputation and renown. Rōnin and other characters who exist outside of polite samurai society view glory as a measure of how people generally view them, including their honesty, good works, and history of paying their debts (both their promises and monetary obligations)."
         }
     }
 
@@ -80,9 +78,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     ^"Urban Region" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant"]
 
-        # Cities are places where trade flourishes, cultures meet,
-        # and many different types of people mix and mingle.
-
         PROPERTIES {
             ^"Region" STRING "Urban" FIXED
             ^"Ring Increase" DEF { ^"Air" INTEGER 1 }
@@ -91,18 +86,17 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW08zA9bC1dE3fG5hI7j: urban_political_awareness
-            #L5RPW09kL0mN2oP4qR6sT8u: urban_cosmopolitan_connections
+            #L5RPW08zA9bC1dE3fG5hI7j: urban_political_awareness "You have a general awareness of the political climate within your city of origin. You can name major families, prominent merchants, and other leaders in the city as well as their respective positions and allegiances."
+            #L5RPW09kL0mN2oP4qR6sT8u: urban_cosmopolitan_connections "Due to the cosmopolitan culture of cities, you have made many connections during your time in your city. You personally have a family member, friend, or business associate who has traveled abroad or knows about political or business dealings in another land."
+            #S3KL5HaJ8TEY12ObgMEuBY: urban_neighborhood_knowledge "You know the layout and local residents in the neighborhood where you grew up or where you live now, along with any unusual features, shortcuts, or hidden wonders in your chosen area of the city."
+            #HAiiCNCv2S9UfkKCb4QVC3: urban_crime_poverty_unrest "You have knowledge of the impact of crime, poverty, or political unrest that you have experienced in your city during your lifetime."
+            #bcYWL4wBS6oFx8zFyEgCNa: urban_crime_or_trade_knowledge "You have moderate knowledge of some form of crime or legitimate trade related to the industry or commerce of your city."
         }
     }
 
     # source stat block (page 33)
     ^"Rural Farmland Region" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant"]
-
-        # Food is the core of any prosperous civilization.
-        # Farmers tame the land and carry the weight of
-        # civilization on their backs.
 
         PROPERTIES {
             ^"Region" STRING "Rural Farmland" FIXED
@@ -112,17 +106,18 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW10vW1xY3zA5bC7dE9f: rural_oral_tradition
-            #L5RPW11gH2iJ4kL6mN8oP0q: rural_agricultural_knowledge
+            #L5RPW10vW1xY3zA5bC7dE9f: rural_oral_tradition "You have inherited a strong oral tradition and can sing or recite folk songs or stories passed down from your ancestors."
+            #L5RPW11gH2iJ4kL6mN8oP0q: rural_agricultural_knowledge "You have a working knowledge of agricultural practices and how to make a living in your region."
+            #uJfehpTHuGp1rbr4uXZBJh: rural_political_climate "You have general knowledge of the political climate within your region. You can name major families, prosperous local farmers, and important government officials to whom your family or local community reports."
+            #WrpBhfSfy3qLIGbOUR9n40: rural_family_stories_of_upheaval "You grew up hearing stories from your parents, grandparents, and great-grandparents of major political upheavals or forces that moved through your region and can relate either detailed or exaggerated accounts of any notable events that may have taken place in your family members' lifetimes."
+            #kiqX4fA6rd6H7GSwUcMQHv: rural_harvest_and_seasons "You are aware of past and predicted harvest times, the timing of the seasons, and any peculiar weather phenomena in your region. You are also keenly aware of the impact of any events (political or otherwise) that interfere with your community's livelihood: the harvest."
+            #D38x10AeEegvooZSSJQeYx: rural_unaware_of_larger_politics "You are largely unaware of larger political movements and concerns, and your cultural awareness is mostly confined to your local community."
         }
     }
 
     # source stat block (page 34)
     ^"Sea River or Lake Region" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant"]
-
-        # The sea provides and takes away in equal measure.
-        # Water has strong ties to trade and travel.
 
         PROPERTIES {
             ^"Region" STRING "Sea, River, or Lake" FIXED
@@ -132,18 +127,18 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW12rS3tU5vW7xY9zA1b: sea_trade_route_awareness
-            #L5RPW13cD4eF6gH8iJ0kL2m: sea_water_survival_skills
+            #L5RPW12rS3tU5vW7xY9zA1b: sea_trade_route_awareness "You have a general awareness of the politics of cities and strongholds connected by the trade routes along your river or body of water. You can name major merchants, family heads, and significant leaders in these areas, and you know their respective positions and allegiances."
+            #L5RPW13cD4eF6gH8iJ0kL2m: sea_water_survival_skills "Your life near the waves has taught you how to prepare for floods and hurricanes, and how to travel on the water, whether by swimming, piloting watercraft, or other means."
+            #k8d3SMOBufN8eRwCvL7ycX: sea_power_of_water "You either have experience with, or have heard stories of, the extreme destructive power of water and the devastation wrought by storms, floods, and violent natural and unnatural phenomena that comes from living so close to water. Conversely, you are also aware of the advantages (both social and material) that come from harnessing the power of water."
+            #uqWaW5yai7bt6P5i3Uy9yG: sea_local_heroes_and_antagonists "You know stories of heroes or antagonists who either prevailed over, or succumbed to, the local waters of your region, and their significance."
+            #wYKPuMbgXuOFCBOObzblnT: sea_folk_songs_of_the_water "You are familiar with folk songs and tales passed down in your local community, particularly those that portray the spiritual and natural hazards of the water, and can recite at least one from memory."
+            #FclgWmUOzqMBZWrr6wUZK6: sea_distant_customs "You have exposure to cultural customs from distant regions that trade with your people."
         }
     }
 
     # source stat block (page 35)
     ^"Forest Region" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant"]
-
-        # Forests are wildernesses with trees more ancient
-        # than Rokugan itself. Those who live among the trees
-        # absorb a bit of that wildness into themselves.
 
         PROPERTIES {
             ^"Region" STRING "Forest" FIXED
@@ -153,18 +148,18 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW14nO5pQ7rS9tU1vW3x: forest_navigation_instincts
-            #L5RPW15yZ6aB8cD0eF2gH4i: forest_foraging_hunting_knowledge
+            #L5RPW14nO5pQ7rS9tU1vW3x: forest_navigation_instincts "Your experience navigating dense foliage and shrouded terrain has given you basic instincts that help you avoid getting lost and to find your way again in wilderness circumstances."
+            #L5RPW15yZ6aB8cD0eF2gH4i: forest_foraging_hunting_knowledge "You are able to forage, and you possess basic knowledge of hunting techniques, which helps you survive in the forest. You know how to prepare what you find and hunt for consumption."
+            #Vm178lLs8DCBcGqxsbjbP8: forest_politics_and_border_disputes "You have a general awareness of the politics and border disputes that affect your region. You know the names of major nobles, family heads, and other leaders, and you are aware of their respective positions and allegiances."
+            #cuOlA3yqIBJkHYM6qgFJIy: forest_legends_and_spirits "You are aware of any legends and stories, of spirits or otherwise, that are popular or seem dangerous in your region."
+            #D6kHgOxiKrVWK14vz6mRUF: forest_respect_for_the_undergrowth "You value the power and terror of the deep undergrowth and have a healthy respect for the dangers of your region due to either first- or secondhand experience of these hazards."
+            #Y2KNBja2jfB9DPNFULcZ4s: forest_animal_behavior "You have working knowledge of animal behaviors and are familiar with the local wildlife of your region."
         }
     }
 
     # source stat block (page 36)
     ^"Mountain Region" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant"]
-
-        # In the mountains, the peaks reach to the Heavens.
-        # This environment is perfect for monks and those
-        # seeking Enlightenment.
 
         PROPERTIES {
             ^"Region" STRING "Mountain" FIXED
@@ -174,18 +169,16 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW16jK7lM9nO1pQ3rS5t: mountain_trail_pilgrimage_knowledge
-            #L5RPW17uV8wX0yZ2aB4cD6e: mountain_extreme_survival
+            #L5RPW16jK7lM9nO1pQ3rS5t: mountain_trail_pilgrimage_knowledge "Having lived in the mountains in your early life, you know major trails and pilgrimage routes, either from traveling them yourself or from hearing from others who take them. You also possess an understanding of the convictions and tenets of nearby monasteries from the pilgrims and adherents who travel along these routes."
+            #L5RPW17uV8wX0yZ2aB4cD6e: mountain_extreme_survival "You have a unique understanding of the demands of living in such an extreme environment and have learned how to survive and secure food and water for yourself by foraging, hunting, or both. You have experience traversing your region and thus can handle similar terrain. You are also familiar with how to navigate steep slopes in extreme weather conditions."
+            #k5EhlSOsMskUwkiPKsHgu3: mountain_regional_politics "You have a general awareness of the politics of your region. You can name major nobles, family heads, and other leaders, and you know their respective positions and allegiances."
+            #wkmg0G7TtsGuGu7l350f4G: mountain_peaks_and_myths "You are able to identify the names of peaks and features of the mountains and valleys of your region, and you can recall associated myths, tales, or firsthand accounts relating to them."
         }
     }
 
     # source stat block (page 37)
     ^"Haunted Region" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant"]
-
-        # Lands affected by the Taint or otherwise desecrated
-        # by foul acts. Those who hail from such regions view
-        # the world as a much more dangerous place.
 
         PROPERTIES {
             ^"Region" STRING "Haunted" FIXED
@@ -195,8 +188,10 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW18fG9hI1jK3lM5nO7p: haunted_taint_recognition
-            #L5RPW19qR0sT2uV4wX6yZ8a: haunted_pragmatism_against_supernatural
+            #L5RPW18fG9hI1jK3lM5nO7p: haunted_taint_recognition "You are familiar with the signs of either the Taint or hauntings, and can identify such effects much earlier than others can."
+            #L5RPW19qR0sT2uV4wX6yZ8a: haunted_pragmatism_against_supernatural "Your exposure to the everyday evils of the Taint or another haunted place has numbed you to the strange and the supernatural. Firsthand or secondhand experiences of loss and decay have given you a hard-bitten edge, or at the very least relentless pragmatism when faced with the evils from beyond the Wall."
+            #wUxuI1c5aMEoNr0HFvkYVb: haunted_regional_politics "You have a general awareness of the politics of your region, and you can name major nobles, family heads, and other leaders in your area. You know their respective positions and allegiances."
+            #PLQWO29ZWonjplBd9oS1AI: haunted_marketable_technique "You have a general knowledge of either farming, mining, or another marketable technique, based on where you were raised."
         }
     }
 
@@ -204,18 +199,9 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # GAIJIN REGIONAL OPTIONS
     # ===========================
 
-    # Gaijin begin with status 0 in Rokugan. They also
-    # have a second status value reflecting standing in
-    # their homeland, determined with GM during creation.
-
     # source stat block (page 39)
     ^"Ujik of the Plains of Wind and Stone" DEF {
         APPLIES TO [#t822273f0dfaf436b4dfe8 ^"Gaijin"]
-
-        # The Ujik are a nomadic people living on expansive
-        # grassy plains north and west of Rokugan. They are
-        # supreme horsemen; Ujik begin play with a Unicorn
-        # warhorse.
 
         PROPERTIES {
             ^"Region" STRING "Ujik (Plains of Wind and Stone)" FIXED
@@ -227,19 +213,15 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW20bC1dE3fG5hI7jK9l: ujik_expert_horsemen
-            #L5RPW21mN2oP4qR6sT8uV0w: ujik_lords_of_death_religion
+            #L5RPW20bC1dE3fG5hI7jK9l: ujik_expert_horsemen "You are an expert in handling and riding horses, as well as in tending to herd animals such as sheep, goats, camels, and cattle. You are also well versed in eking out a living from a harsh and barren land, being skilled at navigating, tracking, hunting, and herbalism in such places."
+            #DPZlIU5izygdUB81iNqlOD: ujik_tribes_and_dialects "You have a detailed knowledge of the tribes that make up the Ujik people. You know the various tribal leaders, the specific customs and beliefs of the tribes, and their respective rivalries and allegiances. You also have a reasonable understanding of the numerous dialects of the Ujik language used by the different tribes."
+            #CTYWoEhVyW1NyaqOzvs9dq: ujik_mounted_combat_and_warhorse "You are skilled in mounted combat. Ujik begin play with a Unicorn warhouse; see the Unicorn Warhorses sidebar on page 327 of the core rulebook for more information."
         }
     }
 
     # source stat block (page 40)
     ^"Qamarists in the Cradle of the World" DEF {
         APPLIES TO [#t822273f0dfaf436b4dfe8 ^"Gaijin"]
-
-        # The Qamarist Caliphate is a powerful nation-state
-        # far to the west, thriving in fertile land between two
-        # great rivers. They practice a monotheistic religion
-        # and possess advanced alchemical knowledge.
 
         PROPERTIES {
             ^"Region" STRING "Qamarist (Cradle of the World)" FIXED
@@ -250,19 +232,15 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW22xY3zA5bC7dE9fG1h: qamarist_monotheistic_caliphate
-            #L5RPW23iJ4kL6mN8oP0qR2s: qamarist_alchemical_knowledge
+            #L5RPW22xY3zA5bC7dE9fG1h: qamarist_caliphate_politics "You have detailed knowledge of the Caliphate, including both the secular and religious politics that affect it. You also know about the caliph as well as the important and influential people who surround the caliph."
+            #jI8rnDTd0UJ0IqinVvrLgl: qamarist_ethnic_groups_and_languages "You have a good knowledge of the various ethnic groups that fall under the sway of the Caliphate. You know the various important figures and specific customs of each group and their respective rivalries and allegiances. You also speak the language of at least one such group—your own—fluently, and you are at least conversant with the languages of most of the others."
+            #YrIXBrXAXMqBxTJeNznysD: qamarist_folklore "You are familiar with what, to the Rokugani, would be strange folklore, some of which supposedly arises from a time before mortals. This includes creatures such as the foul undead ghul; the powerful and dangerous spirits known as djinn; the massive eagle known as roc; and the shahmaran, or Queen of the Snakes, which may be a reference to the enigmatic creatures known in Rokugan as the naga."
         }
     }
 
     # source stat block (page 41)
     ^"Yodha of the Ghostlands" DEF {
         APPLIES TO [#t822273f0dfaf436b4dfe8 ^"Gaijin"]
-
-        # Warriors from the Ivory Kingdoms who wage a
-        # never-ending struggle against evil forces in the
-        # Ghostlands (the western Shadowlands). They use
-        # gold and coral against Tainted beings.
 
         PROPERTIES {
             ^"Region" STRING "Yodha (Ghostlands)" FIXED
@@ -273,18 +251,16 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW24tU5vW7xY9zA1bC3d: yodha_ghostlands_shadowlands_fighters
-            #L5RPW25eF6gH8iJ0kL2mN4o: yodha_gold_coral_against_taint
+            #L5RPW24tU5vW7xY9zA1bC3d: yodha_shadowlands_threats "You have a detailed understanding of Shadowlands threats insofar as they apply to the Ivory Kingdoms. While the Shadowlands Taint functions the same as it does in Rokugan, many other Shadowlands aspects you know about are different, reflecting the different creatures in the Ghostlands and the ways your group has developed to combat them. For example, you know about the nature of rakshasa. The more traditionalist Yodhaviya, who dwell outside the Ghostlands, are particularly adept at recognizing these dangerous creatures irrespective of the form they assume. You also know that, with application of the correct rituals, gold and coral are powerful weapons against the Shadowlands and its minions."
+            #d4yk9CTR4HqxVSEpQfBaUf: yodha_ivory_kingdoms_politics "You have a good knowledge of the many political entities that make up the Ivory Kingdoms and of the secular and religious tensions, rivalries, and alliances that exist among them. That said, there are gaps and flaws in that knowledge, as the numerous kingdoms and relationships among them are constantly changing. Yodha speak their own language and the common language spoken by most citizens of the Ivory Kingdoms, as well as the languages of those kingdoms and states close to the Ghostlands."
+            #G11X2n8xpdGiLjzoeeExmf: yodha_nikta_and_pillars_of_purity "Yodhaniya—particularly those who wage war deep in the Ghostlands rainforest—know how to purify even the most fouled food and water using a ritual known as Nikta. You are also aware of the existence of the Pillars of Purity, ancient and mysterious stone columns that stand astride the Nadati River, removing the taint from its waters as they flow past."
+            #J7kg2BdgWQEDCo3W1vKYBN: yodha_naga "The Yodha, like most citizens of the Ivory Kingdoms, not only know the naga are real but have come to know the naga well, including some aspects of their language and culture. Known in the Ivory Kingdoms as shahmaran, naga are common in the region."
         }
     }
 
     # source stat block (page 42)
     ^"Sheelavaan of Bhavyatapura" DEF {
         APPLIES TO [#t822273f0dfaf436b4dfe8 ^"Gaijin"]
-
-        # The people of the City of Splendor in the central
-        # Ivory Kingdoms. Sophisticated, gregarious, eloquent,
-        # and skilled at bargaining through complex economies.
 
         PROPERTIES {
             ^"Region" STRING "Sheelavaan (Bhavyatapura)" FIXED
@@ -295,8 +271,10 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW26pQ7rS9tU1vW3xY5z: sheelavaan_urban_sophistication
-            #L5RPW27aB8cD0eF2gH4iJ6k: sheelavaan_trade_and_languages
+            #L5RPW26pQ7rS9tU1vW3xY5z: sheelavaan_urban_sophistication "You are most at home in urban areas and have a great facility for quickly understanding not just the physical layout of a city, but also its key power structures, factions, and underlying tensions."
+            #L5RPW27aB8cD0eF2gH4iJ6k: sheelavaan_trade_and_commerce "You have a good understanding of trade and commerce, being able to discern the value of most goods and items and to bargain for favorable prices or trades. More generally, you tend to be quite persuasive in any dealings you have with others—particularly those not familiar with the eloquence of the Sheelavaan."
+            #p2Qf7x2s3y774SfcAX0IWE: sheelavaan_factions_and_languages "You have a general knowledge of the many factions that make up the Ivory Kingdoms, but they are particularly aware of those specific to Bhavyatapura. This includes the many rivalries and alliances that exist in this massive, rambling city. You speak your own language as well as the common language of the Ivory Kingdoms, and often one or more languages of the various factions in Bhavyatapura."
+            #oDOua5MjITDaRM8womG1iC: sheelavaan_naga "Close proximity to the naga has given you an even better knowledge of the enigmatic serpent folk than most—at least, to the extent any human can understand this mysterious species. The Sheelavaan, like most citizens of the Ivory Kingdoms, not only know the naga are real but have come to know the naga well, including some aspects of their language and culture. Known in the Ivory Kingdoms as shahmaran, naga are common in the region."
         }
     }
 
@@ -323,11 +301,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # source stat block (page 43)
     ^"Fallen Noble Upbringing" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
-
-        # A fallen noble may use ring and skill increases
-        # based on their chosen clan, or +1 to any ring and
-        # +1 to any two skills. Begins with a wakizashi or
-        # gaijin equivalent.
 
         PROPERTIES {
             ^"Upbringing" STRING "Fallen Noble" FIXED
@@ -537,10 +510,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # Warriors who have honed their skill with a signature
-        # weapon. Their power and skill rival the training of
-        # even samurai of the Great Clans.
-
         PROPERTIES {
             ^"School Name" STRING "Wandering Blade" FIXED
             ^"Roles" LIST ["Bushi"]
@@ -552,7 +521,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA CHOOSE 1 [^"Striking as Air", ^"Striking as Earth", ^"Striking as Water", ^"Striking as Fire"]
@@ -630,10 +598,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # Adept at landing critical blows from distance with
-        # spears, bows, or other ranged weapons. Precision
-        # reminiscent of a viper's bite.
-
         PROPERTIES {
             ^"School Name" STRING "Student of the Talon" FIXED
             ^"Roles" LIST ["Bushi", "Shinobi"]
@@ -645,7 +609,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 30
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA CHOOSE 1 [^"Soaring Slice", ^"Hawk's Precision"]
@@ -722,10 +685,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # Roguish smooth talkers adept at dodging dangerous
-        # situations. Quick thinking and a discerning eye for
-        # untold riches from the ancient past and dangerous present.
-
         PROPERTIES {
             ^"School Name" STRING "Treasure Hunter" FIXED
             ^"Roles" LIST ["Courtier", "Bushi"]
@@ -737,7 +696,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 27
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA ^"Tactical Assessment"
@@ -815,10 +773,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # Outcasts who have become precisely what society
-        # deems them: those who slink about the shadows,
-        # sowing chaos and striking with blade, bow, or word.
-
         PROPERTIES {
             ^"School Name" STRING "School of Leaves" FIXED
             ^"Roles" LIST ["Shinobi", "Courtier"]
@@ -830,7 +784,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 26
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             SHUJI CHOOSE 1 [^"Honest Assessment", ^"Whispers of Court"]
@@ -909,10 +862,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # Shugenja who have received no formal training but
-        # have developed a knack for building positive
-        # relationships with the kami around them.
-
         PROPERTIES {
             ^"School Name" STRING "Voice of the Wilds" FIXED
             ^"Roles" LIST ["Shugenja", "Courtier"]
@@ -921,7 +870,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             INVOCATION CHOOSE 1 [^"Commune with the Spirits", ^"Divination"]
@@ -999,10 +947,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # Adept at scrounging suitable materials in almost any
-        # circumstance, using surroundings as inspiration to
-        # create inventive art from everyday items.
-
         PROPERTIES {
             ^"School Name" STRING "Artisan of the Roads" FIXED
             ^"Roles" LIST ["Artisan"]
@@ -1014,7 +958,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 30
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             SHUJI CHOOSE 1 [^"Shallow Waters", ^"Whispers of Court"]
@@ -1093,9 +1036,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # Wandering monks who dole out wisdom and practice
-        # unarmed martial arts and storytelling in equal measure.
-
         PROPERTIES {
             ^"School Name" STRING "Mystic of the Mountain" FIXED
             ^"Roles" LIST ["Monk", "Courtier"]
@@ -1107,7 +1047,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KIHO CHOOSE 1 [^"Ki Protection", ^"The Great Silence"]
@@ -1189,10 +1128,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # Diviners call upon the wisdom of the Lords of Death,
-        # honored ancestors ascended to godhood. The first
-        # vision given is their own end.
-
         PROPERTIES {
             ^"School Name" STRING "Ujik Diviner" FIXED
             ^"Roles" LIST ["Sage"]
@@ -1205,7 +1140,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Earth and Water Invocations", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             INVOCATION CHOOSE 2 [^"Commune with the Spirits", ^"Embrace of Kenro-Ji-Jin", ^"Caress of Earth", ^"Jurojin's Balm", ^"Wall of Earth"]
@@ -1285,10 +1219,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # Proud and formidable guards of the Qamarist Caliphate
-        # who use advanced alchemical arts and imposing command
-        # of shields, spears, and swords to control the battlefield.
-
         PROPERTIES {
             ^"School Name" STRING "Qamarist Shield Bearer Tradition" FIXED
             ^"Roles" LIST ["Bushi", "Sage"]
@@ -1301,7 +1231,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Close Combat and General Kata", "Rituals", "Earth Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA ^"Crescent Moon Style"
@@ -1381,10 +1310,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # Gifted alchemists who research and experiment to
-        # unlock secrets of creating elixirs, draughts, and
-        # concoctions to enhance the human body.
-
         PROPERTIES {
             ^"School Name" STRING "Qamarist Alchemist Tradition" FIXED
             ^"Roles" LIST ["Sage"]
@@ -1397,7 +1322,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 52
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             RITUAL ^"Balancing Salve"
@@ -1478,10 +1402,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # Individuals so tuned to their inner energy (lojas) that
-        # they can infuse others with it. They go on long
-        # pilgrimages seeking truths of the world.
-
         PROPERTIES {
             ^"School Name" STRING "Ivory Kingdoms Sage Tradition" FIXED
             ^"Roles" LIST ["Sage", "Bushi"]
@@ -1494,7 +1414,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata", "Kihō", "Rituals"]
         }
-
 
         STARTING_TECHNIQUES {
             KIHO CHOOSE 2 [^"Cleansing Spirit", ^"Earth Needs No Eyes", ^"Earthen Fist"]
@@ -1573,10 +1492,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # Warriors trained to wield astras (implements of the
-        # gods). They look as though they are dancing as they
-        # fight, taking on multiple enemies at once.
-
         PROPERTIES {
             ^"School Name" STRING "Ivory Kingdoms Dancing Blades Tradition" FIXED
             ^"Roles" LIST ["Bushi"]
@@ -1589,7 +1504,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA CHOOSE 1 [^"Hawk's Precision", ^"Warrior's Resolve"]
@@ -1667,9 +1581,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # QUESTIONS 1-3: REGION, UPBRINGING, SCHOOL
     # ===========================
 
-    # source (pages 36-38). Region a rōnin/peasant/gaijin comes from, in
-    # place of a clan; each gives a ring increase, a skill increase, and a
-    # starting glory. Flavor for each region lives in the .lore.
     ^"Question 1: Region" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
         PROPERTIES {
@@ -1680,7 +1591,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         # are the six ^"... Region" DEFs in this file (each carries ^"Region",
         # a Ring Increase, a Skill Increase, and a Glory); flavor is in the .lore.
         RULES {
-            #L5RPW05hshwQphe3dmS3PE: q1_choose_a_region
+            #L5RPW05hshwQphe3dmS3PE: q1_choose_a_region "1. What Region Does Your Character Come From?: For a character who doesn't fit into samurai society, the lands they hail from are as important to their identity as a clan is to a samurai. Even within Rokugan, the geography and character of the land can shift dramatically as soon as one passes over the next hill or crosses a hungry river. The place where a character has spent many years of their life imparts particular skills and may impress upon them certain inclinations regarding how to approach the world, both within and outside the environment to which the character is accostumed.\n\nWhen you create a rōnin character, you choose a regional option that interests you. A character may be boldly colored by their experiences in this region, may care little for the area but remember its lessons, or may feel shame about their association with that location. You should take this opportunity to start thinking about what sort of childhood your character had and what major life events may have led them down the path they follow now."
         }
     }
 
@@ -1695,7 +1606,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         # Ring Increase, Skill Increases, a Status Modification, and Starting
         # Wealth); flavor is in the .lore.
         RULES {
-            #L5RPW05AcyX3HMoO8siCka: q2_choose_an_upbringing
+            #L5RPW05AcyX3HMoO8siCka: q2_choose_an_upbringing "2. What Was Your Character's Upbringing?: Many rōnin were raised in the samurai caste, but some were not. Any peasant with a sword and the courage to claim they are a lordless samurai may be able to pass themselves off as rōnin. But even beyond that, playing a peasant character can be an interesting choice in rōnin-style games. The early years of characters from lower castes, from far-off lands, or who are otherwise outsiders in the eyes of samurai can vary wildly.\n\nBecause most regions include the opportunity for myriad upbringings, these are not tied to specific areas. Regardless of which region you choose for your character, you should pick an upbringing you feel is appropriate for them. If you have a very specific character idea and none of the following options fit, feel free to discuss adjusting one of these upbringings with your GM."
         }
     }
 
@@ -1711,7 +1622,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Question Text" STRING "What is your character's school, and what are its associated roles?" FIXED
         }
         RULES {
-            #L5RPW05O7jjeoqs87aA1HO: q3_choose_a_ronin_school_or_build_one
+            #L5RPW05O7jjeoqs87aA1HO: q3_choose_a_school "3. What Is Your Character's School, and What Are Its Associated Roles?: Rōnin exist in the tumultuous position of being technically samurai but cast away from samurai society. Most have lost their lord through political scheming, tragic circumstance, or their own personal failure. Some skillful peasants take up a sword and act as rōnin do, whether to defend what little they have or to attempt by some miracle to fool a lord into taking them on, advancing their social status considerably. Then, there are gaijin, the foreigners who come to Rokugan seeking trade or alliance, or perhaps to escape pursuit, hoping they will be safer in the Emerald Empire.\n\nA rōnin, peasant, or gaijin may or may not have trained in a formal dōjō. Though the schools presented in this chapter are called schools, this does not mean they belong to a specific dōjō or are commonly practiced. The schools in this chapter each represent a path for a character to follow based on the knowledge they've acquired over time, rather than a formal set of principles studied by many students.\n\nIf you would like to be able to choose from schools in the core rulebook and other supplements, you may either opt for the Fallen Noble Upbringing (see page 43), or you may work with your GM to reflavor a school to fit your character's circumstances or narratively explain how they learned Great Clan secrets.\n\nA gaijin character may choose any school listed in this chapter except for schools associated with a gaijin culture that is not their own. Each gaijin school presented in this section is specific to the culture indicated in its title and can only be taken by a gaijin who hails from that location. Again, this could be modified at the GM's discretion––perhaps a Unicorn rōnin spent a long time on the Sand Road and learned the ways of the Ujik Diviner, or a Crab Clan peasant met a warrior from the Ivory Kingdoms and learned the ideologies and techniques of that warrior's school."
         }
     }
 
@@ -1720,12 +1631,8 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # CHARACTER IN AND OUT OF TROUBLE?
     # ===========================
 
-    # source stat block (page 118)
     ^"Question 4: Trouble" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
-
-        # Choose one option that best describes your character's
-        # personality. This determines an additional ring increase.
 
         PROPERTIES {
             ^"Question" INTEGER 4 FIXED
@@ -1741,7 +1648,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW45aB2cD4eF6gH8iJ0k: q4_choose_one_ring_increase
+            #L5RPW45aB2cD4eF6gH8iJ0k: q4_choose_one_ring_increase "4. What Gets Your Character In and Out of Trouble?: In the rough-and-tumble world of merchants, guards, and thieves, every character has some method they use to try to get themselves out of trouble––and that same method probably gets them there in the first place! Depending on a character's history, they are likely to approach situations very differently from others, whether because of training or because of natural temperament.\n\nChoose one of the following options and increase your ring value by the specified amount:\n\nAbrasive, honest, driven (+1 Fire): A character who naturally leans toward the Fire approach tends to get into trouble because they are abrasive, too honest, painfully curious, or just driven to a fault. Once they're in trouble though, that honesty might in turn win them allies, their curiosity might translate into an inventive solution, or their drive might propel them to succeed.\n\nEmpathetic, tricky, clever (+1 Air): A character who gravitates toward an Air approach might find themself in trouble because they empathize deeply with others' situations, because they get caught in the middle of a con, or because their glib attitude rubbed someone the wrong way. Once they're in trouble, these characters are quick to come up with another brilliant plan or ploy, or to use their persuasive personalities to talk their way out of sticky situations.\n\nGregarious, adaptable, charming (+1 Water): Characters who go with the flow and prefer using Water approaches in their day-to-day lives tend to get in trouble because they're a little too friendly and often too charming for their own good. Once they've gotten themselves into a less-than-favorable situation, their adaptability can help them out of it, or they can use that charm and social prowess in a plan of escape, often smoothing over faux pas with a liquid grace.\n\nPatient, stoic, thorough (+1 Earth): A character who prefers the grounded approaches of Earth can sometimes finds themself at odds with those around them, as their patience and desire for thoroughness can lead to indecision. A character who favors Earth also tends to exemplify Rokugan's typical reserved stoicism, but at its extreme, this can appear to others to be simple indifference, defiance, or worse. When such a character gets themself into trouble, their thoughtfulness and patience usually allow them to win out in wars of attrition, and their attention to detail allows them to consider all possible plans of escape.\n\nContemplative, self-aware, insightful (+1 Void): Those who favor the comfort and endlessness of the Void and prefer to use its approaches tend to be contemplative and filled with a wealth of insight, although their ability to use these observations to facilitate action can be limited. Characters like this tend to get into trouble because they know themselves and follow their insights rather than following protocol, and this can lead to catastrophe when unknown variables rear their heads. Once in a predicament, these characters are able to use that same insight and thoughtful nature to overcome their obstacles."
         }
     }
 
@@ -1751,7 +1658,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # (REPLACES GIRI)
     # ===========================
 
-    # source stat block (page 215)
     ^"Question 5: The Past" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
@@ -1760,22 +1666,11 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Question Text" STRING "What is your character's past and how does it affect them?" FIXED
         }
 
-        # Ronin, peasants, and gaijin do not have the same giri
-        # attribute as samurai. Instead, giri is replaced by the
-        # character's past. The past represents the character's
-        # history and what drove them onto the path of waves.
-        # It functions mechanically similar to giri but reflects
-        # the character's relationship with their former life
-        # rather than duty to a lord.
         #
-        # Choose or roll on the Sample Pasts table (d100).
-        # The past creates problems and conflicts with ninjō.
-        # If you choose the "Duty" past, you may optionally use
-        # the rules for giri from the core rulebook.
 
         RULES {
-            #L5RPW42jK9lM1nO3pQ5rS7t: past_replaces_giri_for_ronin
-            #L5RPW43uV0wX2yZ4aB6cD8e: past_represents_history_on_path_of_waves
+            #L5RPW42jK9lM1nO3pQ5rS7t: past_propels_the_character "Selecting One's Past Properly: A past should be a force that propels the character forward, similar to giri, or duty. A past is usually some sort of personal obligation, antagonizing entity, or choice that the character or someone else made that haunts the character even now.\n\nWhen selecting a past, it's important to keep in mind that this is not something that a character will be able to avoid! Players should choose a past that has the potential to cause problems that the player finds interesting, because the GM will be using these pasts to present challenges, interesting narrative scenes, and discord. When a character's past comes up in a session, it will likely make a character's day unpleasant, conflicting with their ninjō, getting them into trouble, or even threatening their life. There might be hard decisions or tough fights ahead for the character when their past rears its head, and selecting a past that strikes a chord with a player is important in having fun! Characters will struggle, and that struggle should remain fun for players as they watch their character grow."
+            #L5RPW43uV0wX2yZ4aB6cD8e: past_is_a_story "Selecting One's Past Properly: A past is a story, one that can deeply impact a person. Because rōnin have lost their place in samurai society their stories tend to be tragic, ones of circumstances that have kept them from fulfilling their promise or destiny. While Table 2–1: Sample Pasts provides a wide range of different pasts, players should feel free to develop their own rather than roll if they desire. The pasts presented here can be used as inspiration to help tell unique, personal stories that offer fun narrative moments!"
         }
     }
 
@@ -1804,19 +1699,13 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     ^"Question 6: Ninjō" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # What does your character long for, and how might their
-        # past impact their ninjō? Same concept as core Q6 but
-        # reframed around past instead of giri. Narrative only --
-        # choose or create a ninjō. The ninjō should conflict with
-        # the character's past.
-
         PROPERTIES {
             ^"Question" INTEGER 6 FIXED
             ^"Question Text" STRING "What does your character long for, and how might their past impact their ninjō?" FIXED
         }
 
         RULES {
-            #L5RPW46lM3nO5pQ7rS9tU1v: q6_ninjo_conflicts_with_past
+            #L5RPW46lM3nO5pQ7rS9tU1v: q6_ninjo_conflicts_with_past "Selecting One's Ninjō Properly: Outsiders have as many desires as there are stars in the sky. The path of waves requires incredible fortitude, and no human can withstand that stress without wanting something. In general, players should have the freedom to come up with their characters' ninjō. The Table 2–2: Sample Ninjō only represents a tiny sample of potential desires (and players may roll or choose one from here, if they desire); players and GMs can use them to galvanize their own imaginations. To create a good personal desire for a character, this desire needs to have the potential to conflict with their past. On pages 90–91 of the core rulebook there is more information on creating interesting and impactful ninjō."
         }
     }
 
@@ -1852,18 +1741,8 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     ^"Question 7: Known For" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # DIFFERS FROM CORE Q7 (clan relationship).
-        # In PoW, Q7 asks what the character is known for in
-        # their community. Choose one path:
         #
-        # Path A: Known for intentional deeds, skills, or behavior
-        #   that has helped others (even if shunned about it).
-        #   Gain +5 Glory.
         #
-        # Path B: Known for deeds perceived as wicked, harmful,
-        #   or exceptionally selfish (or at odds with culture/family).
-        #   Gain +1 rank in a skill currently at 0 ranks. The skill
-        #   should represent the choices that upset normal order.
 
         PROPERTIES {
             ^"Question" INTEGER 7 FIXED
@@ -1876,7 +1755,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW47wX4yZ6aB8cD0eF2g: q7_glory_or_skill_choice
+            #L5RPW47wX4yZ6aB8cD0eF2g: q7_glory_or_skill_choice "7. What Is Your Character Known For?: No two people follow the same path as they journey through life. While two or more rōnin and travelers far from home may band together to increase their chances of survival, their values, abilities, and actions may vary wildly, affecting how each is remembered by the people they meet along the way.\n\nChoose a talent, event, or other deed that your character is known for. It can be positive or negative, and it may or may not be connected to their past. A rōnin might be known for abandoning their lord, for having a way with animals, or for going out of their way to help peasants. A gaijin might be known for their skilled craftsmanship or their exemplary fighting style. Or perhaps they are known for a being an embarrassment, which has caused them to leave home and wander Rokugan instead of staying with their own people.\n\nIf your character is known for an intentional deed, skill, or pattern of behavior that has helped others, even if they have been shunned or embarrassed about it, they gain +5 glory to represent their social prestige.\n\nIf your character is known for deeds, actions, skills, or even a single event that others have perceived as wicked, harmful, or exceptionally selfish, or if your character did something badly at odds their culture's or family's values, then your character gains 1 rank in a skill that they currently have 0 ranks in. This skill should represent the choices your character has made that have upset the normal order of things in the eyes of their family or society."
         }
     }
 
@@ -1888,17 +1767,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     ^"Question 8: Bushido" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # DIFFERS FROM CORE Q8 (two options).
-        # PoW Q8 has THREE options instead of two.
-        # Also choose one tenet as paramount and one as
-        # less significant (same as core).
         #
-        # Option A: Staunch dedication to Bushido -> +10 Honor
-        # Option B: Values diverge from Bushido -> gain one item
-        #   of rarity 5 or lower
-        # Option C: Know little about Bushido (gaijin option) ->
-        #   +1 rank in one of: Commerce, Labor, Medicine,
-        #   Seafaring, Skulduggery, or Survival
 
         PROPERTIES {
             ^"Question" INTEGER 8 FIXED
@@ -1912,7 +1781,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW48hI5jK7lM9nO1pQ3r: q8_three_way_bushido_choice
+            #L5RPW48hI5jK7lM9nO1pQ3r: q8_three_way_bushido_choice "8. What Does Your Character Think of Bushidō?: Everyone who lives or travels within Rokugan must decide how they feel about the core of its society: Bushidō. The tenets and teachings of Bushidō encompass all that samurai do—and it is difficult, if not impossible, to do anything within the Emerald Empire without being affected, at least tangentially, by the samurai class. Though peasants are not expected to adhere to Bushidō in most contexts, and rōnin are in a strange position of being samurai with none of the inherent benefits, each should understand what Bushidō is enough to have feelings about it.\n\nHowever, this may not be true for gaijin characters. Someone who has just arrived in Rokugan may know very little about its culture, which puts them at a big disadvantage. Still, it is more likely that a gaijin visitor would be somewhat versed in the ways of the Empire—at least enough to know how to avoid an untimely death.\n\nWhether you are playing a character from the Emerald Empire or a gaijin from a faraway place, stories set in Rokugan work best if you to decide how your character feels about Bushidō and the other primary aspects of the Empire's culture.\n\nIf you are playing a foreign character, you might choose to think about Bushidō's tenets as a guideline for thinking about core values of your character's home country. The tenets cover a wide range of values, and though your character may not believe in Bushidō, they do believe in something.\n\nLike the Great Clans, individuals and cultures place different levels of emphasis on various tenets and values. To represent the individuality and nuances of your character's personal beliefs, choose one tenet of Bushidō as paramount and one tenet as less significant (see The Clans' Views of Bushidō, page 301 of the core rulebook, for more information). Then, choose one of the following options:\n\nYour dedication to Bushidō affects all that you do. If your character's belief in living an orthodox interpretation of Bushidō is very staunch, gain +10 honor.\n\nIf your character's values diverge from some or all of the common values of Bushidō, gain one item of rarity 5 or lower to represent a time when that divergence both benefited your character and pulled them further from the true path.\n\nYou know little about Bushidō and its significance to Rokugani culture. Your ignorance will be short-lived, however, because you will either learn quickly or meet your end at the hand of an angered samurai. Gain 1 rank in one of the following skills to represent your ignorance of Bushidō: Commerce, Labor, Medicine, Seafaring, Skulduggery, or Survival."
         }
     }
 
@@ -1923,10 +1792,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     ^"Question 9: Distinction" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # What is your character's greatest accomplishment so far?
-        # Same structure as core Q9. Gain one Distinction advantage.
-        # May choose from core distinctions or PoW distinctions.
-
         PROPERTIES {
             ^"Question" INTEGER 9 FIXED
             ^"Question Text" STRING "What is your character's greatest accomplishment so far?" FIXED
@@ -1934,7 +1799,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW49sT6uV8wX0yZ2aB4c: q9_gain_one_distinction
+            #L5RPW49sT6uV8wX0yZ2aB4c: q9_gain_one_distinction "9. What Is Your Character's Greatest Accomplishment So Far?: What is your character's greatest achievement so far in life, and how did they accomplish it? Your character likely possesses some ability or strength of character that assisted in this noteworthy achievement, which you should also select at this stage. If desired, it can be interesting to create a contrast between what the character thinks are their strengths and what their strengths really are; your character might not be aware of their own best quality, or they might mistakenly attribute their success to a quality that did not in fact affect it.\n\nThis is an excellent time to look back at your previous choices regarding your past and ninjō and incorporate those into your choices for questions 9–12.\n\nIn addition to deciding on your character's greatest achievement in their life so far, choose one distinction advantage that was key to accomplishing that success or that your character developed as a result of it. See the Specific Distinctions sections beginning on page 101 of the core rulebook and on page 68 of this book for various options. If you want to create your own distinction, consult with your GM using the guidance in Creating Custom Advantages and Disadvantages, which starts on page 137 of the core rulebook."
         }
     }
 
@@ -1943,13 +1808,8 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # CHARACTER BACK?
     # ===========================
 
-    # source stat block (page 8)
     ^"Question 10: Adversity" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
-
-        # What holds your character back most in life?
-        # Same structure as core Q10. Gain one Adversity disadvantage.
-        # May choose from core adversities or PoW adversities.
 
         PROPERTIES {
             ^"Question" INTEGER 10 FIXED
@@ -1958,7 +1818,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW50dE7fG9hI1jK3lM5n: q10_gain_one_adversity
+            #L5RPW50dE7fG9hI1jK3lM5n: q10_gain_one_adversity "10. What Holds Your Character Back Most in Life?: All rōnin have some ongoing challenge in their life that makes pursuing their survival and desires even more difficult. This challenge might be a personality quirk such as naiveté, selfishness, or a bad temper; it could be a physical hindrance; or it might even be a spiritual vulnerability such as a family curse.\n\nWhen choosing a challenge, you should select something that you think you will enjoy roleplaying (especially at times when your character does not enjoy facing this difficulty).\n\nChoose one adversity disadvantage for your character. See the Specific Adversities sections beginning on page 116 of the core rulebook and on page 71 of this book for various options. If you want to create your own adversity, consult with your GM using the guidance in Creating Custom Advantages and Disadvantages, which starts on page 137 of the core rulebook."
         }
     }
 
@@ -1967,13 +1827,8 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # CHARACTER FEEL AT PEACE?
     # ===========================
 
-    # source stat block (page 8)
     ^"Question 11: Passion" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
-
-        # What activity most makes your character feel at peace?
-        # Same structure as core Q11. Gain one Passion advantage.
-        # May choose from core passions or PoW passions.
 
         PROPERTIES {
             ^"Question" INTEGER 11 FIXED
@@ -1982,7 +1837,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW51oP8qR0sT2uV4wX6y: q11_gain_one_passion
+            #L5RPW51oP8qR0sT2uV4wX6y: q11_gain_one_passion "11. What Activity Most Makes Your Character Feel at Peace?: The answer to this question could be anything from food and drink to specific activities, certain material possessions, or particular persons. Why does your character like or dislike these things? Does it stem from sharing the activity with a loved one in the past, or from a seemingly spontaneous fascination with the subject itself? How has an enjoyment of this activity shaped your character's life? Have they made friends—or enemies—as a result of this hobby?\n\nChoose one passion advantage related to your character's interests or hobbies. See the Specific Passions sections beginning on page 111 of the core rulebook and page 70 of this book for various options. If you want to create your own passion, consult with your GM using the guidance in Creating Custom Advantages and Disadvantages, which starts on page 137 of the core rulebook."
         }
     }
 
@@ -1991,13 +1846,8 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # YOUR CHARACTER?
     # ===========================
 
-    # source stat block (page 8)
     ^"Question 12: Anxiety" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
-
-        # What concern, fear, or foible troubles your character most?
-        # Same structure as core Q12. Gain one Anxiety disadvantage.
-        # May choose from core anxieties or PoW anxieties.
 
         PROPERTIES {
             ^"Question" INTEGER 12 FIXED
@@ -2006,7 +1856,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW52zA9bC1dE3fG5hI7j: q12_gain_one_anxiety
+            #L5RPW52zA9bC1dE3fG5hI7j: q12_gain_one_anxiety "12. What Concern, Fear, or Foible Troubles Your Character Most?: Samurai are expected to maintain a controlled facade befitting their station at most times, but no human can avoid having some things that make them anxious, afraid, or angry. Are your character's fears or frustrations derived from past experiences, trauma, or personal failure? Are they related to a person or specific event? Does your character fully understand the source of their emotional turmoil, or do they have trouble expressing or processing these feelings? As with the adversity you selected, you should select something that you think you will enjoy roleplaying when it challenges your character.\n\nChoose one anxiety disadvantage for your character. See the Specific Anxieties sections beginning on page 130 of the core rulebook and page 73 of this book for various options. If you want to create your own anxiety, consult with your GM using the guidance in Creating Custom Advantages and Disadvantages, which starts on page 137 of the core rulebook."
         }
     }
 
@@ -2015,16 +1865,10 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # CHARACTER LEARNED MOST FROM?
     # ===========================
 
-    # source stat block (page 8)
     ^"Question 13: Mentor" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # Who has your character learned the most from during
-        # their life? Same structure as core Q13. Choose one:
         #
-        # Option A: Gain one advantage related to your mentor.
-        # Option B: Gain one disadvantage related to your mentor,
-        #   AND +1 rank in a skill developed from that relationship.
 
         PROPERTIES {
             ^"Question" INTEGER 13 FIXED
@@ -2037,7 +1881,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW53kL0mN2oP4qR6sT8u: q13_advantage_or_disadvantage_plus_skill
+            #L5RPW53kL0mN2oP4qR6sT8u: q13_advantage_or_disadvantage_plus_skill "13. Who Has Your Character Learned the Most From During Their Life?: Nearly every human owes some portion of their personality, strengths, and weaknesses to the people around them, and usually, a few people in particular stand out as mentors—although their influence is not always positive. Who has taught your character the most about life, for better or for worse? An instructor might have set them on their current path, or a parent's influence might still guide their actions. Your character's old lord might have served as a political mentor, showing them the value of compassion—or of ruthlessness—and thereby shaped their ethos for life.\n\nA good marriage might have led your character to a true peer who helped them overcome a challenge or personal obstacle, while a bad marriage might have left them jaded about relationships overall. Having to care for a younger sibling or child might have caused your character to develop in unforeseen ways. Losing a loved one might have driven your character into anguish, or it might have forced them to grow in ways they never thought possible to stand on their own. A disastrously bad relationship or a long-running feud with a hated rival could have forged your character into the person they are today. Your character might even have met a supernatural being who has served as a guide or patron, or one who set a curse upon your character in exchange for giving your character power or as punishment for spiritual transgressions.\n\nIn the Relationships, Habits, Bonds, and Quirks section of the character sheet, record the name of the person from whom your character has learned the most, along with the nature of their relationship. Then, choose one of the following options and gain the listed feature:\n\nOne advantage related to your character's mentor and their relationship.\n\nOne disadvantage related to your character's mentor and their relationship, and 1 rank in a skill that your character developed as a result of that relationship.\n\nFor specific advantages and disadvantages, see the lists beginning on page 99 of the core rulebook and page 68 of this book. If you want to create your own advantage or disadvantage, consult with your GM using the guidance in Creating Custom Advantages and Disadvantages, which starts on page 137 of the core rulebook."
         }
     }
 
@@ -2049,15 +1893,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     ^"Question 14: Prized Possession" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # DIFFERS FROM CORE Q14 ("What do people notice first?").
-        # PoW Q14: When all of your life can fit in a pack on your
-        # back, what is the one item that matters most?
         #
-        # Choose one item from starting outfit OR a single item of
-        # rarity 5 or lower. If you choose an item from starting
-        # outfit, you may add the Ceremonial or Resplendent quality.
-        # Record what makes the item stand out in Personality,
-        # Habits, Bonds, and Quirks.
 
         PROPERTIES {
             ^"Question" INTEGER 14 FIXED
@@ -2066,7 +1902,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW54vW1xY3zA5bC7dE9f: q14_prized_possession_item_or_quality
+            #L5RPW54vW1xY3zA5bC7dE9f: q14_prized_possession_item_or_quality "When all of your life can fit in a pack on your back or in a few saddlebags, each possession is special and often holds more sentimental value than its monetary value might suggest. From a common garden trowel a grandparent gave a character to a pillow book they've read a hundred times, everyone has something they value above everything else among their belongings.\n\nChoose one item, either something your character starts with (as listed under their school) or a single item of rarity 5 or lower (subject to your GM's discretion). If you choose an item from your character's starting outfit, you may add either the Ceremonial or the Resplendent item quality to it.\n\nRecord the answer in the Personality, Habits, Bonds, and Quirks section of your character sheet. Additionally, choose some aspect of the item or something you do with the item that makes it stand out. You might fiddle with it in public, it might be overly large or small, you may believe it is worth much more than it is, or perhaps you wear the item in a strange manner (such as wearing a gardening trowel around your neck on a strap)."
         }
     }
 
@@ -2074,14 +1910,8 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # QUESTION 15: STRESS REACTION
     # ===========================
 
-    # source stat block (page 8)
     ^"Question 15: Stress Reaction" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
-
-        # How does your character react to stressful situations?
-        # Same as core Q15 -- purely narrative. Describe a noteworthy
-        # physical response during stress. Note it under Personality,
-        # Habits, and Quirks. It may play a part when unmasking.
 
         PROPERTIES {
             ^"Question" INTEGER 15 FIXED
@@ -2090,7 +1920,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW55gH2iJ4kL6mN8oP0q: q15_narrative_stress_response
+            #L5RPW55gH2iJ4kL6mN8oP0q: q15_narrative_stress_response "What emotions does your character show, and why? What events or feelings can make them lose their self-control? Conversely, what emotions can they always control, no matter what? Describe a noteworthy physical response that your character has during times of stress and note it under the Personality, Habits, and Quirks section of the character sheet. As your character's strife approaches their composure, they might display this behavior, and it could play a part any time they unmask. See page 31 of the core rulebook and page 182 of this book for suggestions."
         }
     }
 
@@ -2098,18 +1928,10 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # QUESTION 16: RELATIONSHIPS
     # ===========================
 
-    # source stat block (page 8)
     ^"Question 16: Relationships" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # DIFFERS FROM CORE Q16 (heritage table roll).
-        # PoW Q16: What are your relationships to your family,
-        # the clans, peasants, and others?
         #
-        # Choose one item of rarity 7 or lower that was a gift
-        # from a group your character has a positive relationship
-        # with. Record noteworthy history, quarrels, alliances,
-        # or grievances in the Relationships section.
 
         PROPERTIES {
             ^"Question" INTEGER 16 FIXED
@@ -2118,7 +1940,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW56rS3tU5vW7xY9zA1b: q16_relationship_item_rarity_7
+            #L5RPW56rS3tU5vW7xY9zA1b: q16_relationship_item_rarity_7 "What experiences has your character had with other individuals and groups that have left impressions on your character? How does your character feel about those they travel with, peasants, lorded samurai, and gaijin? Does your character have sympathy for a particular people, or do they harbor resentment and anger toward certain groups?\n\nRecord any noteworthy history, quarrels, alliances, or grievances your character has with other groups in the Relationships section of your character sheet. Choose one item of rarity 7 or lower that was a gift from one of the groups your character has a positive relationship with."
         }
     }
 
@@ -2126,25 +1948,11 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # QUESTION 17: SHARED GROUP HISTORY
     # ===========================
 
-    # source stat block (page 8)
     ^"Question 17: Group History" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # COMPLETELY DIFFERENT FROM CORE Q17 ("Parent's opinion").
-        # PoW Q17: What shared history does your character have
-        # with their group? Work with GM and group to establish
-        # a shared bond/experience.
         #
-        # Choose one prompt (or create with GM approval):
-        # - Which PC/NPC have you gone through the unthinkable with?
-        # - Which character knows a secret you'd rather forget?
-        # - You owe a debt to someone in your group. To whom?
-        # - You have intense feelings for someone in the group.
-        # - You conquered a great beast with two other members.
-        # - You are impressed/jealous of another member's skill.
-        # - You share blood or history with one other member.
         #
-        # After choosing, work with GM to determine an appropriate bond.
 
         PROPERTIES {
             ^"Question" INTEGER 17 FIXED
@@ -2152,9 +1960,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
             ^"Gain" STRING "One bond (narrative, determined with GM and group)"
         }
 
-        # The prompts were stated only in the comment above, so composition
-        # dropped them and no consumer could offer the choice the question asks
-        # for. An NPC may stand in for another player character in any of them.
         PROMPTS {
             "The unthinkable" "Which PC (or NPC) have you gone through the unthinkable with? With whom have you survived, doing things you regret to this day? What did you do?"
             "A secret" "Which character knows a secret you would rather forget about? What is the secret?"
@@ -2166,7 +1971,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW57cD4eF6gH8iJ0kL2m: q17_shared_group_bond
+            #L5RPW57cD4eF6gH8iJ0kL2m: q17_shared_group_bond "If your GM has decided to start your group off already knowing one another, choose one of the following questions, or come up with your own (with GM approval) and answer it with your group and GM. If you or your GM would like some or all members of your group to roleplay through the first time they meet, players may choose an NPC for any of these options instead of another player character:\n\nOnce you choose and answer a question, you should work with your GM to determine an appropriate bond to apply to your relationship. See page 187 for rules on and options for bonds."
         }
     }
 
@@ -2178,14 +1983,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     ^"Question 18: Who Raised You" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # COMPLETELY DIFFERENT FROM CORE Q18 (Samurai Heritage Table).
-        # PoW Q18: Who raised your character? Record the relationship
-        # with parents/guardians.
         #
-        # Gain +1 rank in one skill in which your character currently
-        # has 0 ranks. Determine whether parents/guardians approve
-        # of this extracurricular interest or see it as a regrettable
-        # deviation, and why. Record in Relationships section.
 
         PROPERTIES {
             ^"Question" INTEGER 18 FIXED
@@ -2194,7 +1992,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW58nO5pQ7rS9tU1vW3x: q18_skill_from_upbringing
+            #L5RPW58nO5pQ7rS9tU1vW3x: q18_skill_from_those_who_raised_you "18. Who Raised You?: Most people know who their parents are, whether they are noble samurai, humble peasants, or from a far-off land. Occasionally, however, a character does not know their parents or has been raised by others. A village might have pitched in to raise a child, or a child might have been abandoned outside a monastery, geisha house, or home of a samurai. Whatever the circumstances, your character's parents or guardians undoubtedly affected the kind of person they have become.\n\nRecord the nature of the relationship between your character and their parents or guardians in the Relationships section of your character sheet.\n\nAdditionally, gain 1 rank in one skill in which your character has 0 ranks. Determine whether your character's parents or guardians approve of this extracurricular interest or see it as a regrettable deviation, and why."
         }
     }
 
@@ -2202,13 +2000,8 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     # QUESTION 19: PERSONAL NAME
     # ===========================
 
-    # source stat block (page 8)
     ^"Question 19: Name" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
-
-        # What is your character's personal name?
-        # Same concept as core Q19. Narrative only.
-        # May reference PoW name tables (pp. 228-232).
 
         PROPERTIES {
             ^"Question" INTEGER 19 FIXED
@@ -2217,7 +2010,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW59yZ6aB8cD0eF2gH4i: q19_choose_name
+            #L5RPW59yZ6aB8cD0eF2gH4i: q19_choose_name "19. What Is Your Name?: Whether your character's parents or guardians chose their name or your character chose it for themself, their name can say a lot about who they are or where they are from. Some characters may only have personal names, whereas others may still bear their family name (or names) as well. Feel free to come up with your own name or roll randomly on the name tables found on pages 228–232."
         }
     }
 
@@ -2229,12 +2022,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     ^"Question 20: Death" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # How should your character die?
-        # Same concept as core Q20. Narrative only.
-        # The death of a ronin or gaijin in a foreign land is
-        # not usually remarkable. Most succumb to the elements,
-        # illness, or malnutrition. But your character is different.
-
         PROPERTIES {
             ^"Question" INTEGER 20 FIXED
             ^"Question Text" STRING "How should your character die?" FIXED
@@ -2242,7 +2029,7 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RPW60jK7lM9nO1pQ3rS5t: q20_determine_death
+            #L5RPW60jK7lM9nO1pQ3rS5t: q20_determine_death "20. How Should Your Character Die?: The death of a rōnin or a gaijin in a foreign land isn't usually remarkable. Most succumb to the elements, illness, or malnutrition. Still, some meet their demise in a dramatic fight with a formidable beast or samurai. Depending on what cultures your group's characters hail from and whether or not they hold the Celestial Order close to their heart, their opinions on what an honorable or good death looks like will vary. Some may fear the looming end, while others may look forward to having the chance to be born again, hopefully into a higher station.\n\nHow would you like your character to meet their end? Will they earn honor in a courageous death and ascend in the celestial hierarchy? Will they bring honor to their ancestors? Or will they find themself punished for their misdeeds or lost in one of the Spirit Realms, far from home? This has no mechanical implications, but you should keep it in mind. Your GM certainly will…"
         }
     }
 
@@ -2359,7 +2146,6 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
         }
     }
 
-    # source stat block (page 125)
     ^"Honest Work" DEF {
         EXTENDS #L5R267zA9bC1dE3fG5hI7j ^"Passion"
 
@@ -2569,15 +2355,8 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
     ^"Sage Role" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # Like shugenja, sages wield special powers, but theirs
-        # are bestowed by other means, usually outside the
-        # bounds of what is considered appropriate in Rokugan.
-        # A sage may wield powers granted by gods that rule
-        # in lands outside the Empire's borders, or they may
-        # use techniques such as kihō in unfamiliar ways.
-
         RULES {
-            #L5RPW44fG1hI3jK5lM7nO9p: sage_role_non_rokugani_powers
+            #L5RPW44fG1hI3jK5lM7nO9p: sage_role_non_rokugani_powers "Roles: Like shugenja, sages are individuals who wield special powers, but theirs are bestowed by other means, usually outside the bounds of what is considered appropriate in Rokugan."
         }
     }
 
@@ -2587,6 +2366,5 @@ EXTENSION "L5R5e_Path_of_Waves_Character" EXTENDS "L5R5e_Core_Character" {
 
     MODIFY #L5R260aB2cD4eF6gH8iJ0k ^"School Role" {
         ENUM EXTEND ["Sage", "Artisan"]
-        # Path of Waves introduces two new school roles for gaijin and ronin traditions
     }
 }

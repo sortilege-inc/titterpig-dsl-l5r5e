@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_GM_Screen_Reference" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - GM Screen Quick Reference"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -22,13 +22,8 @@ EXTENSION "L5R5e_GM_Screen_Reference" EXTENDS "L5R5e_Core_Character" {
     ^"Dice Symbols Reference" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # Success (su) - counts toward meeting or exceeding TN
-        # Explosive Success (ex) - counts as success + roll extra die
-        # Opportunity (op) - spendable for special effects
-        # Strife (st) - character receives 1 strife per symbol
-
         RULES {
-            #L5RGS01aB2cD4eF6gH8iJ0k: ref_dice_symbols
+            #L5RGS01aB2cD4eF6gH8iJ0k: ref_dice_symbols "Dice Symbols: The success symbol ((su)) represents the sum total of the character's effort when they attempt to complete a task. More (su) symbols mean a higher chance of carrying out the task successfully.\n\nThe explosive success symbol ((ex)) represents a particularly effective part of the character's effort. In addition to counting as a (su) symbol, it gives the character a chance to roll an additional die and decide whether to add its result to the check—potentially letting them succeed at a task they normally couldn't overcome. See (ex) under Step 6: Resolve Symbols of Kept Dice, on page 24.\n\nThe opportunity symbol ((op)) does not contribute directly to success, but it lets the character resolve an opportunity—a chance to do or notice something useful that is unrelated to their goal at the outset, or expand on their success with an additional effect or story detail.\n\nThe strife symbol ((st)) represents an upwelling of emotion. Strife does not affect success or failure on the check but instead accumulates over time, potentially leading to outward displays of emotion that can alter the direction of the story for good or for ill. The more it accumulates, the harder it is to maintain the decorum expected of a samurai—a key struggle in the genre of samurai drama."
         }
     }
 
@@ -39,19 +34,8 @@ EXTENSION "L5R5e_GM_Screen_Reference" EXTENDS "L5R5e_Core_Character" {
     ^"Five Rings Reference" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # Air: A graceful, cunning, and precise approach; subtle
-        # and nuanced.
-        # Earth: A steady, thorough, and grounded approach; cautious
-        # and reliable.
-        # Fire: A ferocious, direct, and inventive approach; explosive
-        # and intense.
-        # Water: An adaptable, powerful, and perceptive approach;
-        # balanced and reversible.
-        # Void: A centered, unflinching approach; enlightened
-        # and accepting.
-
         RULES {
-            #L5RGS02lM3nO5pQ7rS9tU1v: ref_five_rings_approaches
+            #L5RGS02lM3nO5pQ7rS9tU1v: ref_five_rings_approaches "The Five Rings: Air: A graceful, cunning, and precise approach; subtle and nuanced.\n\nEarth: A steady, thorough, and grounded approach; cautious and reliable.\n\nFire: A ferocious, direct, and inventive approach; explosive and intense.\n\nWater: An adaptable, powerful, and perceptive approach; balanced and reversible.\n\nVoid: A centered, unflinching approach; enlightened and accepting."
         }
     }
 
@@ -62,17 +46,8 @@ EXTENSION "L5R5e_GM_Screen_Reference" EXTENDS "L5R5e_Core_Character" {
     ^"Making a Check Reference" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # 1. GM sets skill, approach, and TN based on player intention.
-        # 2. Player assembles dice pool: Ring dice (ring) + Skill dice (skill).
-        # 3. Player rolls dice and keeps dice equal to Ring used.
-        # 4. Resolve dice and determine outcome:
-        #    (ex): Roll one additional die of same type. Choose to keep/drop.
-        #    (st): Character receives 1 strife per symbol.
-        #    (op): Player may spend 1+ (op) to resolve opportunities.
-        #    (su): If total (su) + (ex) >= TN, check succeeds. Extras = bonus successes.
-
         RULES {
-            #L5RGS03wX4yZ6aB8cD0eF2g: ref_making_a_check_procedure
+            #L5RGS03wX4yZ6aB8cD0eF2g: ref_making_a_check_procedure "Making a Check: 1. GM sets skill, approach, and TN based on player intention.\n\n2. Player assembles dice pool of Ring dice ((ring)) and Skill dice ((skill)).\n\n3. Player rolls dice and keeps dice equal to Ring used.\n\n4. Resolve dice and determine outcome:\n\n(ex): For each (ex), roll one additional die of the same type as the one showing the (ex). After rolling, choose whether it will be kept or dropped. If kept, its effects are added to those from the other dice.\n\n(st): For each (st), the character receives 1 strife.\n\n(op): The player may spend 1 or more (op) to resolve opportunities.\n\n(su): If the sum total of (su) and (ex) results equals or exceeds the TN, the check is successful. Any (su) beyond the ones needed to reach the TN are bonus successes."
         }
     }
 
@@ -83,13 +58,8 @@ EXTENSION "L5R5e_GM_Screen_Reference" EXTENDS "L5R5e_Core_Character" {
     ^"Turn Structure Reference" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # 1. Resolve "Beginning of Turn" effects
-        # 2. Set Stance (lasts until beginning of next turn)
-        # 3. Perform Action (may also move a short distance)
-        # 4. Resolve "End of Turn" effects
-
         RULES {
-            #L5RGS04hI5jK7lM9nO1pQ3r: ref_turn_structure
+            #L5RGS04hI5jK7lM9nO1pQ3r: ref_turn_structure "Turn Structure: 1. Resolve \"Beginning of Turn\" effects\n\n2. Set Stance (lasts until beginning of next turn)\n\n3. Perform Action (may also move a short distance)\n\n4. Resolve \"End of Turn\" effects"
         }
     }
 
@@ -100,18 +70,8 @@ EXTENSION "L5R5e_GM_Screen_Reference" EXTENDS "L5R5e_Core_Character" {
     ^"Stances Reference" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # Earth: Attackers/schemers targeting you cannot spend (op) to
-        # inflict critical strikes or conditions on you.
-        # Water: One additional action per turn that does not require a
-        # check. Cannot share a type with another action this turn.
-        # Fire: On success, count one additional bonus success per (st)
-        # result on your check.
-        # Air: Increase TN of Attack and Scheme checks targeting you
-        # by 1. If school rank 4+, increase by 2 instead.
-        # Void: Do not suffer strife from (st) results.
-
         RULES {
-            #L5RGS05sT6uV8wX0yZ2aB4c: ref_stances_five_types
+            #L5RGS05sT6uV8wX0yZ2aB4c: ref_stances_five_types "Stances: Earth: When other characters make Attack action checks and Scheme action checks that target you, they cannot spend (op) to inflict critical strikes or conditions on you.\n\nWater: During your turn, you may perform one additional action that does not require a check. This action cannot share a type with another action you perform this turn.\n\nFire: When you succeed on a check, you count as having one additional bonus success for each (st) result on your check.\n\nAir: Increase the TN of Attack and Scheme action checks targeting you by 1. If your school rank is 4 or higher, increase the TN by 2 instead.\n\nVoid: While in a Void stance, you do not suffer strife from (st) results."
         }
     }
 
@@ -122,19 +82,8 @@ EXTENSION "L5R5e_GM_Screen_Reference" EXTENDS "L5R5e_Core_Character" {
     ^"Initiative Reference" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # Conflict type determines check:
-        # - Intrigue: TN 1 Sentiment check
-        # - Duel: TN 1 Meditation check
-        # - Skirmish: TN 1 Tactics check
-        # - Mass Battle: TN 1 Command check
-        #
-        # Any ring may be used. Add 1 + bonus successes to:
-        # - Focus (if ready for the conflict)
-        # - Vigilance (if not ready or surprised)
-        # Character enters stance matching the ring used.
-
         RULES {
-            #L5RGS06dE7fG9hI1jK3lM5n: ref_initiative_by_conflict_type
+            #L5RGS06dE7fG9hI1jK3lM5n: ref_initiative_by_conflict_type "Initiative: Conflict type determines check to make:\n\nIntrigue: TN 1 Sentiment check.\n\nDuel: TN 1 Meditation check.\n\nSkirmish: TN 1 Tactics check.\n\nMass Battle: TN 1 Command check.\n\nA character can use any ring they choose for this check. Add 1 plus number of bonus successes on check to either focus or vigilance, depending on preparedness for the conflict, to determine final initiative value.\n\nIf ready for the conflict: use focus attribute.\n\nIf not ready or surprised: use vigilance attribute.\n\nThe character then enters the stance matching the ring used for the check."
         }
     }
 
@@ -145,23 +94,9 @@ EXTENSION "L5R5e_GM_Screen_Reference" EXTENDS "L5R5e_Core_Character" {
     ^"Void Points Reference" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # Spending:
-        # - Seize the Moment: During check, spend 1 Void point to
-        #   roll one additional Ring die and keep one additional die.
-        # - Shattering Parry: When resisting a critical strike, spend
-        #   1 Void point to intercept with a weapon to increase
-        #   survival chance, potentially sacrificing the weapon.
-        #
-        # Gaining:
-        # - After failing a check on which one adversity was resolved.
-        # - Once per scene, after an anxiety causes strife to increase.
-        # - After choosing to be affected by a complication the GM (or
-        #   player) introduced into the scene.
-        # - After the GM conceals the TN of a check from the players.
-
         RULES {
-            #L5RGS07oP8qR0sT2uV4wX6y: ref_void_points_spending
-            #L5RGS08zA9bC1dE3fG5hI7j: ref_void_points_gaining
+            #L5RGS07oP8qR0sT2uV4wX6y: ref_void_points_spending "Spending: Seize the Moment: While making a check, may spend 1 Void point to roll one additional Ring die and keep one additional die.\n\nShattering Parry: When resisting a critical strike, may spend 1 Void point to intercept the attack with a weapon to increase survival chance, potentially sacrificing the weapon."
+            #L5RGS08zA9bC1dE3fG5hI7j: ref_void_points_gaining "Gaining: After failing a check on which one adversity was resolved (page 22).\n\nOnce per scene, after an anxiety causes strife to increase (page 22).\n\nAfter choosing to be affected by a complication that the GM (or player) introduced into the scene (page 37).\n\nAfter the GM conceals the TN of a check from the players."
         }
     }
 
@@ -172,20 +107,9 @@ EXTENSION "L5R5e_GM_Screen_Reference" EXTENDS "L5R5e_Core_Character" {
     ^"Advantages and Disadvantages Reference" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # Advantages:
-        # - Distinctions: When making applicable check, may reroll
-        #   up to 2 dice.
-        # - Passions: When making applicable check, remove 3 strife.
-        #
-        # Disadvantages:
-        # - Adversities: When making applicable check, must reroll
-        #   up to 2 dice with (su) or (ex). Regain 1 Void point if failed.
-        # - Anxieties: When making applicable check, receive 2 strife.
-        #   Regain 1 Void point if first occurrence in scene.
-
         RULES {
-            #L5RGS09kL0mN2oP4qR6sT8u: ref_advantages_distinctions_passions
-            #L5RGS10vW1xY3zA5bC7dE9f: ref_disadvantages_adversities_anxieties
+            #L5RGS09kL0mN2oP4qR6sT8u: ref_advantages_distinctions_passions "Advantages: Distinctions: When making a check to which distinction applies, may reroll up to 2 dice.\n\nPassions: When making a check to which passion applies, remove 3 strife."
+            #L5RGS10vW1xY3zA5bC7dE9f: ref_disadvantages_adversities_anxieties "Disadvantages: Adversities: When making a check to which adversity applies, must reroll up to 2 dice with (su) or (ex). Regain 1 Void point if failed check.\n\nAnxieties: When making a check to which anxiety applies, receive 2 strife. Regain 1 Void point if this is the first occurrence in the scene."
         }
     }
 
@@ -206,9 +130,6 @@ EXTENSION "L5R5e_GM_Screen_Reference" EXTENDS "L5R5e_Core_Character" {
             ^"Range 6" STRING "Sight (several hundred yards)"
         }
 
-        RULES {
-            #L5RGS11gH2iJ4kL6mN8oP0q: ref_range_bands
-        }
     }
 
     # ===========================
@@ -218,19 +139,8 @@ EXTENSION "L5R5e_GM_Screen_Reference" EXTENDS "L5R5e_Core_Character" {
     ^"Sample TNs Reference" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # TN 0: Simple task (carrying normal weight, remembering name).
-        #        Generally shouldn't require a check.
-        # TN 1: Easy (carrying half weight, finding misplaced item).
-        # TN 2: Average (10-foot ditch jump, recognizing disguise).
-        # TN 3: Difficult (cliff without rope, well-hidden object).
-        # TN 4: Very hard (waterfall dive, recalling exact words years later).
-        # TN 5: Extremely hard (stirring demoralized army to action, one-hand hurl).
-        # TN 6: Extraordinary (crime from subtle clue, felling tree in one blow).
-        # TN 7: Heroic (outwrestling a troll, naming all ancestors in order).
-        # TN 8+: Legendary (shattering stone barehanded, outwitting a Fortune).
-
         RULES {
-            #L5RGS12rS3tU5vW7xY9zA1b: ref_sample_target_numbers
+            #L5RGS12rS3tU5vW7xY9zA1b: ref_sample_target_numbers "Sample Tasks and Target Numbers: TN 0\n\nA simple task (carrying a normal weight or remembering a friend's name). Generally, such a task shouldn't require a check.\n\nTN 1\n\nAn easy task (carrying half one's weight or finding a misplaced item).\n\nTN 2\n\nAn average task (jumping a ten-foot ditch or recognizing someone in disguise).\n\nTN 3\n\nA difficult task (scaling a cliff without rope or finding a well-hidden object).\n\nTN 4\n\nA very hard task (diving safely from the top of a waterfall or recalling someone's exact words years later).\n\nTN 5\n\nAn extremely hard task (stirring a demoralized army to action or hurling someone using only one hand).\n\nTN 6\n\nAn extraordinary task (solving a crime using only a very subtle clue or felling a tree with a single blow).\n\nTN 7\n\nA heroic task (outwrestling a troll or naming all of one's ancestors in order).\n\nTN 8+\n\nA legendary task (shattering stone with one's bare hands or outwitting a Fortune)."
         }
     }
 
@@ -250,9 +160,6 @@ EXTENSION "L5R5e_GM_Screen_Reference" EXTENDS "L5R5e_Core_Character" {
             ^"Silhouette 5" STRING "Dragons"
         }
 
-        RULES {
-            #L5RGS13cD4eF6gH8iJ0kL2m: ref_silhouettes
-        }
     }
 
     # ===========================
@@ -262,18 +169,8 @@ EXTENSION "L5R5e_GM_Screen_Reference" EXTENDS "L5R5e_Core_Character" {
     ^"Conflict Actions Reference" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # - Assist
-        # - Calming Breath
-        # - Challenge
-        # - Guard
-        # - Maneuver
-        # - Prepare Item
-        # - Skill Use
-        # - Strike
-        # - Wait
-
         RULES {
-            #L5RGS14nO5pQ7rS9tU1vW3x: ref_common_conflict_actions
+            #L5RGS14nO5pQ7rS9tU1vW3x: ref_common_conflict_actions "Common Conflict Actions: Assist\n\nCalming Breath\n\nChallenge\n\nGuard\n\nManeuver\n\nPrepare Item\n\nSkill Use\n\nStrike\n\nWait"
         }
     }
 
@@ -284,19 +181,12 @@ EXTENSION "L5R5e_GM_Screen_Reference" EXTENDS "L5R5e_Core_Character" {
     ^"Commonly Referenced Rules Index" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # Social Attributes: Ninjō (p. 38), Giri (p. 39), Honor (p. 300),
-        # Glory (p. 304), Status (p. 305).
-        # Alternate Check Types: Assistance (p. 26), Competitive (p. 26),
-        # Investigations (p. 170), Resisting (p. 26).
-        # Conflict Types: Intrigues (p. 254), Duels (p. 258),
-        # Skirmishes (p. 262).
-        # Harm and Terrain: Fatigue (p. 269), Falling Damage (p. 269),
-        # Terrain Qualities (p. 267).
-        # Exceeding Composure: Becoming Compromised (p. 30),
-        # Examples of Unmasking (p. 31).
-
         RULES {
-            #L5RGS15yZ6aB8cD0eF2gH4i: ref_commonly_referenced_rules_index
+            #L5RGS15yZ6aB8cD0eF2gH4i: commonly_referenced_social_attributes "Social Attributes: Ninjō page 38\n\nGiri page 39\n\nHonor page 300\n\nGlory page 304\n\nStatus page 305"
+            #OrtLBa6F72W0tsNbPrAeve: commonly_referenced_alternate_check_types "Alternate Check Types: Assistance page 26\n\nCompetitive page 26\n\nInvestigations page 170\n\nResisting page 26"
+            #WIYuppzPzAcUVL2IoXlzWC: commonly_referenced_conflict_types "Conflict Types: Intrigues page 254\n\nDuels page 258\n\nSkirmishes page 262"
+            #sSZaMwkGko5A892NWxskKN: commonly_referenced_harm_and_terrain "Harm and Terrain: Fatigue page 269\n\nFalling Damage page 269\n\nTerrain Qualities page 267"
+            #IfZpSM4zbEfGNGO6dln4Iq: commonly_referenced_exceeding_composure "Exceeding Composure: Becoming Compromised page 30\n\nExamples of Unmasking page 31"
         }
     }
 
@@ -307,130 +197,74 @@ EXTENSION "L5R5e_GM_Screen_Reference" EXTENDS "L5R5e_Core_Character" {
     ^"Condition: Afflicted" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # Effects: Vigilance counts as 1. When making a check, GM may
-        # alter one kept (ring) to a face set to (op)(st).
-        # Removed When: A ritual such as Cleansing Rite (p. 212) or
-        # another ability cleanses it.
-
         RULES {
-            #L5RGS16jK7lM9nO1pQ3rS5t: ref_condition_afflicted
+            #L5RGS16jK7lM9nO1pQ3rS5t: ref_condition_afflicted "Afflicted: Effects: The character's vigilance counts as 1, and when they make a check the GM may alter one kept (ring) to a face set to (op) (st).\n\nRemoved When: A ritual such as Cleansing Rite (see page 212) or another ability cleanses it."
         }
     }
 
     ^"Condition: Bleeding" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # Effects: When keeping (st) results on dice, suffer same amount
-        # of physical damage, ignoring resistance. Such damage inflicts
-        # a critical strike with severity equal to current fatigue.
-        # Removed When: Character at range 0-1 makes TN 2 Medicine
-        # (Earth) check as a Support action.
-
         RULES {
-            #L5RGS17uV8wX0yZ2aB4cD6e: ref_condition_bleeding
+            #L5RGS17uV8wX0yZ2aB4cD6e: ref_condition_bleeding "Bleeding: Effects: When keeping (st) results on dice, the character suffers the same amount of physical damage, ignoring their resistance. Such damage inflicts a critical strike with severity equal to the character's current fatigue.\n\nRemoved When: A character at range 0–1 of a Bleeding character makes a TN 2 Medicine (Earth) check as a Support action to remove it."
         }
     }
 
     ^"Condition: Compromised" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # Effects: Cannot keep dice with (st) symbols (minimum 0 kept
-        # dice). Vigilance counts as 1.
-        # Removed When: Strife reduced to <= composure.
-
         RULES {
-            #L5RGS18fG9hI1jK3lM5nO7p: ref_condition_compromised
+            #L5RGS18fG9hI1jK3lM5nO7p: ref_condition_compromised "Compromised: Effects: Cannot keep dice with (st) symbols (to a possible minimum of 0 kept dice). Their vigilance counts as 1.\n\nRemoved When: Strife is reduced to a value lower than or equal to their composure."
         }
     }
 
     ^"Condition: Dazed" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # Effects: Increase TN of Attack and Scheme action checks by 2.
-        # Removed When: End of turn, if character did not perform an
-        # Attack or Scheme action.
-
         RULES {
-            #L5RGS19qR0sT2uV4wX6yZ8a: ref_condition_dazed
+            #L5RGS19qR0sT2uV4wX6yZ8a: ref_condition_dazed "Dazed: Effects: Increase the TN of Attack and Scheme action checks by 2.\n\nRemoved When: At the end of turn, if the character did not perform an Attack or Scheme action."
         }
     }
 
     ^"Condition: Disoriented" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # Effects: Increase TN of Movement and Support action checks by 2.
-        # Removed When: End of turn, if character did not perform a
-        # Movement or Support action.
-
         RULES {
-            #L5RGS20bC1dE3fG5hI7jK9l: ref_condition_disoriented
+            #L5RGS20bC1dE3fG5hI7jK9l: ref_condition_disoriented "Disoriented: Effects: Increase TN of Movement and Support action checks by 2.\n\nRemoved When: At the end of turn, if the character did not perform a Movement or Support action."
         }
     }
 
     ^"Condition: Dying [X Rounds]" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # Effects: After X rounds (or narrative time), character perishes
-        # at the end of their next turn (or after completing one task in
-        # a narrative scene).
-        # Removed When: Character at range 0-1 makes TN 4 Medicine
-        # (Air) check as a Support action. If failed, reduce rounds
-        # remaining by shortfall.
-
         RULES {
-            #L5RGS21mN2oP4qR6sT8uV0w: ref_condition_dying
+            #L5RGS21mN2oP4qR6sT8uV0w: ref_condition_dying "Dying [X Rounds]: Effects: After X number of rounds (or an amount of narrative time has passed, the character perishes at the end of their next turn (or after completing one task in a narrative scene).\n\nRemoved When: A character at range 0–1 of a Dying character makes a TN 4 Medicine (Air) check as a Support action to remove it. If they fail, reduce the number of rounds remaining for the Dying condition by their shortfall."
         }
     }
 
     ^"Condition: Incapacitated" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # Effects: Cannot perform actions requiring checks. Cannot defend
-        # against damage. Critical strikes inflict Unconscious condition
-        # in addition to other effects.
-        # Removed When: Fatigue reduced to <= endurance.
-
         RULES {
-            #L5RGS22xY3zA5bC7dE9fG1h: ref_condition_incapacitated
+            #L5RGS22xY3zA5bC7dE9fG1h: ref_condition_incapacitated "Incapacitated: Effects: Cannot perform actions that require checks and cannot defend against damage. Critical strikes inflict the Unconscious condition in addition to any other effects.\n\nRemoved When: Fatigue is reduced to a value lower than or equal to the character's endurance."
         }
     }
 
     ^"Condition: Prone" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # Effects: Can move a maximum of 1 range band.
-        # Removed When: (If desired) end of turn, if character did not
-        # perform a Movement action.
-
         RULES {
-            #L5RGS23iJ4kL6mN8oP0qR2s: ref_condition_prone
+            #L5RGS23iJ4kL6mN8oP0qR2s: ref_condition_prone "Prone: Effects: Can move a maximum of 1 range band.\n\nRemoved When: (If desired) at the end of their turn, if the character did not perform a Movement action."
         }
     }
 
     ^"Condition: Wounded" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # Two forms: Lightly Wounded and Severely Wounded.
-        # Removed When: TN 4 Medicine (Water) check as downtime
-        # activity. Success removes Lightly Wounded or reduces Severely
-        # Wounded to Lightly Wounded. Once per wounded ring per week.
-        # Also heals through bed rest (p. 273).
-        #
-        # Lightly Wounded [One Ring]:
-        # - Increase TN of checks with affected ring by 1.
-        # - If suffer Severely Wounded for same ring, remove this.
-        # - If suffer Lightly Wounded again for same ring, remove it
-        #   and suffer Severely Wounded for that ring.
-        #
-        # Severely Wounded [One Ring]:
-        # - Increase TN of checks with affected ring by 3.
-        # - If suffer Lightly/Severely Wounded for same ring again,
-        #   remove that condition and suffer effects of severity 8
-        #   critical strike for that ring as if failed the resist check.
-
         RULES {
-            #L5RGS24tU5vW7xY9zA1bC3d: ref_condition_wounded_lightly
-            #L5RGS25eF6gH8iJ0kL2mN4o: ref_condition_wounded_severely
+            #L5RGS24tU5vW7xY9zA1bC3d: ref_condition_wounded_lightly "Lightly Wounded [One Ring]: Effects: Increase the TN of checks with the affected ring by 1.\n\nIf the character suffers the Severely Wounded condition for the same ring, remove this condition.\n\nIf the character would suffer the Lightly Wounded condition again for the same ring, they remove it and suffer the Severely Wounded condition for that ring."
+            #L5RGS25eF6gH8iJ0kL2mN4o: ref_condition_wounded_severely "Severely Wounded [One Ring]: Effects: Increase the TN of checks with the affected ring by 3.\n\nIf the character suffers the Lightly Wounded or Severely Wounded condition for the same ring, they remove that condition and suffer the effects of a severity 8 critical strike for that ring as if they had failed the check to resist it (see page 270)."
+            #ukFXm8UNa5141MC8Z6GNgy: ref_condition_wounded "Wounded: Effects: This condition has two forms: Lightly Wounded and Severely Wounded.\n\nRemoved When: A character makes a TN 4 Medicine (Water) check as a downtime activity. If they succeed, the wounded character removes Lightly Wounded or reduces Severely Wounded to Lightly Wounded. This check can be attempted once per wounded ring per week. Characters can also heal through bed rest (page 273)."
         }
     }
 
@@ -441,107 +275,72 @@ EXTENSION "L5R5e_GM_Screen_Reference" EXTENDS "L5R5e_Core_Character" {
     ^"Item Quality: Ceremonial" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # Reduce TN of checks to convince others of your real or assumed
-        # identity as the known owner (or ally) by 1. At end of any scene
-        # using a Ceremonial item of a higher-status character without
-        # permission, forfeit 3 honor.
-
         RULES {
-            #L5RGS26pQ7rS9tU1vW3xY5z: ref_quality_ceremonial
+            #L5RGS26pQ7rS9tU1vW3xY5z: ref_quality_ceremonial "Ceremonial: Reduce TN of checks to convince others of your real or assumed identity as the known owner of that item (or one of their allies) by 1.\n\nAt the end of any scene in which you use a Ceremonial item of a character with higher status without their permission, you forfeit 3 honor."
         }
     }
 
     ^"Item Quality: Cumbersome" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # Cumbersome armor: Increase TN of maneuver checks (Movement
-        # actions, etc.) by 1. Cumbersome weapon: If you moved this turn,
-        # increase TN of Attack action checks by 1.
-
         RULES {
-            #L5RGS27aB8cD0eF2gH4iJ6k: ref_quality_cumbersome
+            #L5RGS27aB8cD0eF2gH4iJ6k: ref_quality_cumbersome "Cumbersome: While wearing Cumbersome armor, increase TN of your other checks to maneuver in your environment (such as Movement action checks) by 1.\n\nIf you moved this turn, increase the TN of Attack action checks using a Cumbersome weapon by 1."
         }
     }
 
     ^"Item Quality: Damaged" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # Weapon/tool: Increase TN of checks to use it by 1.
-        # Armor: Reduce all resistances by 2 (minimum 0).
-        # If Damaged again: becomes Destroyed instead.
-
         RULES {
-            #L5RGS28lM9nO1pQ3rS5tU7v: ref_quality_damaged
+            #L5RGS28lM9nO1pQ3rS5tU7v: ref_quality_damaged "Damaged: If a weapon or tool becomes Damaged, increase the TN of checks to use it by 1.\n\nIf armor becomes Damaged, reduce all resistances it provides by 2 (to a minimum of 0).\n\nIf a Damaged item becomes Damaged again, it loses Damaged and becomes Destroyed instead."
         }
     }
 
     ^"Item Quality: Prepare" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # After use, cannot use again until prepared. As a Support
-        # action while readied, prepares the item for use.
-
         RULES {
-            #L5RGS29wX0yZ2aB4cD6eF8g: ref_quality_prepare
+            #L5RGS29wX0yZ2aB4cD6eF8g: ref_quality_prepare "Prepare: After you use this item, you cannot use it again until it has been prepared. As a Support action, while it is readied, prepares this item for use."
         }
     }
 
     ^"Item Quality: Razor-Edged" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # On successful Attack dealing damage reduced to 0 before
-        # defense, weapon becomes Damaged. May spend (op)+ to treat
-        # deadliness as 1 higher per (op).
-
         RULES {
-            #L5RGS30hI1jK3lM5nO7pQ9r: ref_quality_razor_edged
+            #L5RGS30hI1jK3lM5nO7pQ9r: ref_quality_razor_edged "Razor-Edged: When you succeed at an Attack action check that deals damage to a target using a Razor-Edged item, if the damage dealt is reduced to 0 before they defend, this item becomes Damaged.\n\nWhen using a Razor-Edged weapon, you may spend (op)+ to treat the deadliness of this weapon as 1 higher per (op) spent this way."
         }
     }
 
     ^"Item Quality: Sacred" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # Otherworldly being's Attack/Intrigue targeting wearer:
-        # increase TN by 1. If would gain Afflicted, choose one Sacred
-        # item to become Damaged instead. Sacred weapons ignore all
-        # resistances of Otherworldly and Tainted beings.
-
         RULES {
-            #L5RGS31sT2uV4wX6yZ8aB0c: ref_quality_sacred
+            #L5RGS31sT2uV4wX6yZ8aB0c: ref_quality_sacred "Sacred: When an Otherworldly being makes an Attack or Intrigue action check targeting the wearer of one or more Sacred items, increase the TN by 1.\n\nWhile carrying one or more Sacred items, if you would gain the Afflicted condition, must choose one of them to become Damaged instead.\n\nSacred weapons ignore all resistances possessed by Otherworldly and Tainted beings."
         }
     }
 
     ^"Item Quality: Snaring" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # During Attack action, may spend (op)+: One target with
-        # vigilance <= (op) spent suffers Immobilized condition.
-
         RULES {
-            #L5RGS32dE3fG5hI7jK9lM1n: ref_quality_snaring
+            #L5RGS32dE3fG5hI7jK9lM1n: ref_quality_snaring "Snaring: When performing an Attack action with a Snaring weapon, you may spend (op) as follows:\n\n(op)+: One target of the attack with vigilance lower than or equal to the (op) spent this way suffers the Immobilized condition."
         }
     }
 
     ^"Item Quality: Unholy" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # After suffering critical strike from Unholy weapon: gain
-        # Afflicted. At end of scene using Unholy item: gain Afflicted.
-        # Unholy weapons ignore all resistances of Otherworldly beings.
-
         RULES {
-            #L5RGS33oP4qR6sT8uV0wX2y: ref_quality_unholy
+            #L5RGS33oP4qR6sT8uV0wX2y: ref_quality_unholy "Unholy: After a character suffers a critical strike from an Unholy weapon, they suffer the Afflicted condition.\n\nAt the end of each scene in which you use an Unholy item, you suffer the Afflicted condition.\n\nUnholy weapons ignore all resistances possessed by Otherworldly beings."
         }
     }
 
     ^"Item Quality: Wargear" DEF {
         APPLIES TO [#t4bb5a837984a5a2879be0 ^"Game Rules"]
 
-        # When another character suffers 1+ strife due to actions of
-        # someone wearing Wargear, they suffer that amount plus 1.
-
         RULES {
-            #L5RGS34zA5bC7dE9fG1hI3j: ref_quality_wargear
+            #L5RGS34zA5bC7dE9fG1hI3j: ref_quality_wargear "Wargear: Whenever another character suffers 1 or more strife due to the actions of someone wearing one or more Wargear items, they suffer that amount plus 1 instead."
         }
     }
 }

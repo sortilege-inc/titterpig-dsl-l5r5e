@@ -7,7 +7,7 @@
 # pregenerated PCs live in l5r5e-0.5-wedding-kyotei-pregens.actor.
 
 EXTENSION "L5R5e_WeddingKyotei_Cast" {
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-02"
     DEPENDS_ON "L5R5e_Core_Core"
@@ -16,8 +16,6 @@ EXTENSION "L5R5e_WeddingKyotei_Cast" {
 
     ^"Tsume no Doji Takashi" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The groom; Kyotei Castle's daimyō in service to the Crane. Trained at the
-        # Kakita Duelist Academy. Giri: defend Kyotei Castle. Ninjō: reunite with Reika.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 3
@@ -40,12 +38,14 @@ EXTENSION "L5R5e_WeddingKyotei_Cast" {
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 3, Intrigue 6."
         ^"Whispering Winds" DEF { ^"Effect" STRING "Once per session as an action, Takashi may make a Courtesy (Air) check targeting one character in the scene. The TN is equal to 6 minus the target's glory rank (to a minimum of 1). If he succeeds, Takashi learns a rumor about the target. Opportunity Opportunity: Takashi learns one of the target's advantages or disadvantages of the target's choice." }
         ^"Fanning the Flames" DEF { ^"Effect" STRING "When making a Social skill (Fire) check, Takashi may spend Opportunity in the following way: Fire Opportunity: One target gains the Dazed condition." }
+
+        RULES {
+            #HSN26MIYtPr5k90amZ5Wq1: background "Tsume no Doji Takashi (TSOO-mey no DOH-jee TAHkah-shee) is the groom and a friend to the PCs. His giri, or duty, is to defend Kyotei Castle in service to the Crane Clan as its daimyō. His ninjō, or personal drive, is to find out what happened to Reika and rekindle the love they once shared—even if that means making her his consort after he is wed. He sees the position of being daimyō as a burden he never truly wanted, although he can hardly admit that even to his closest friends.\n\nTakashi is a young man in his twenties who wears his black hair in a high ponytail. He doesn't have the ruthlessness needed to govern the valley. He's a sensitive and introverted young man, who would rather dedicate his life to the arts than defend a military strongpoint. He seems aloof, and frequently defers to Nasu Shizuma in important matters, although he excitedly chats about anything related to artisanry. He trained at the Kakita Duelist Academy, although he wished he could have studied at its Artisan Academy instead."
+        }
     }
 
     ^"Nasu no Shiba Shizuma" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Lord Takashi's general and chief advisor; formerly Tsume Retsu's yojimbo.
-        # Bears the Nasu no Shiba name; a devout follower of Shinsei's teachings.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 7
@@ -67,11 +67,14 @@ EXTENSION "L5R5e_WeddingKyotei_Cast" {
         }
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 7, Intrigue 6."
         ^"Lord's Command" DEF { ^"Effect" STRING "Once per scene, as a Support action, Shizuma may advise a character who can hear them on how to complete a task they wish the character to perform. The character may use his ring or skill in place of their own for the next check they make to complete this task before the end of the game session." }
+
+        RULES {
+            #sghbMUsKegFvvqeItO24Cg: background "Nasu no Shiba Shizuma (NAH-soo no SHEE-bah SHEEzoo-mah) is Lord Takashi's general and chief advisor. As a man well past retirement age, he also served the late Tsume Retsu in the same role. Decades ago, after Tsume Retsu came to the assistance of the besieged Phoenix clan at Nikesake Castle, Nasu no Shiba Shizuma swore his fealty to Retsu and was given permission by his lord to become Retsu's yojimbo, to help unite the Phoenix and Crane in the valley against the Damasu no Akodo family. Though he still honors the Phoenix Clan and still bears the Nasu no Shiba name, he has served the Crane Clan for decades and is as much a Crane as he is a Phoenix. Despite his history of waging war, he is a devout follower of Shinsei's teachings. He struggled to counsel Retsu toward more peaceable resolutions. However, he now fears that Takashi will fail to uphold everything Retsu sacrificed to attain."
+        }
     }
 
     ^"Tsume Kotonoha" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Takashi's captain of the guard, responsible for security within the castle.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 4
@@ -94,12 +97,14 @@ EXTENSION "L5R5e_WeddingKyotei_Cast" {
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 2."
         ^"Crescent Moon Style" DEF { ^"Effect" STRING "When performing a Guard action, Kotonoha may spend Opportunity in the following way: Opportunity: After another character performs an Attack action targeting Kotonoha or another character she is guarding, Kotonoha may perform a Strike action targeting them. This effect persists until the start of Kotonoha's next turn or until she performs a Strike action." }
         ^"Sworn Protector" DEF { ^"Effect" STRING "Once per scene, when an Attack action check targeting another character at range 0–1 succeeds, Kotonoha may intervene, becoming the target of the action instead." }
+
+        RULES {
+            #gM2AUTdclosBJjx3EhhHMx: background "Tsume Kotonoha (TSOO-mey KOH-TOH-no-hah) is Takashi's captain of the guard. While Shizuma oversees the Tsume family forces when they venture beyond the castle, it is Kotonoha who is responsible for security within the castle—and for Lord Takashi himself. Any breaches of spies within the castle walls—or attempts on Takashi's life—would be a terrible stain on her honor and glory, and she takes that possibility very seriously. Unsurprisingly, she prefers to resolve such threats against her lord by force of arms—hers against theirs."
+        }
     }
 
     ^"Tsume Yemon" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The head priest of the Kyotei Castle shrine; his sanity eroded by the
-        # Damasu ghost infestation. Blames the vengeful ghosts of the Damasu.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 4
@@ -122,12 +127,14 @@ EXTENSION "L5R5e_WeddingKyotei_Cast" {
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 3."
         ^"Commune with the Spirits" DEF { ^"Effect" STRING "(Ritual) As a downtime activity or Support action, Yemon may make a TN 1 Theology check using Air, Earth, Fire, Water, or Void to appeal to nearby spirits of that Element (appeal to the departed, such as ancestor spirits, and other non-elemental supernatural presences if using Void) for aid. If successful, he may choose and receive one of the following boons from the spirit or spirits he contacted: Sense the Kami: Detect all spirits and uses of their magic by shugenja within a number of range bands equal to the ring he used plus his bonus successes. Spiritual Knowledge: Learn one fact the spirits know about the area. Elemental Gift: The kami deliver a small amount of the Element in question to him. For instance, a prayer to a water kami might cause it to begin raining lightly, for a short time." }
         ^"Threshold Barrier" DEF { ^"Effect" STRING "(Ritual) As a downtime activity, Yemon may make a TN 2 Theology check using Air, Earth, Fire, Water, or Void targeting a threshold, gate, or other entryway at range 0–1. If successful, the threshold is barred against a particular type of entity, based on the ring he chose, for one hour, plus additional hours equal to his bonus successes. When an entity of this type attempts to enter, it must resist with a TN 3 Meditation (Void) check or be repelled by the spiritual barrier. Whether it succeeds or fails, Yemon immediately becomes aware of its attempted entry. The particular type of being is based on the ring he chose, as follows: Air: Ethereal Otherworldly beings such as spirits and ghosts. Earth: Living Tainted beings. Fire: Undead beings with corporeal form. Water: Wild animals. Void: Humans. New Opportunities — Opportunity: Instead of protecting a threshold, Yemon may protect the entirety of a sealed area that extends a number of range bands around him no greater than his bonus successes. Opportunity: If any beings of the type Yemon is attempting to seal the threshold against have passed through the threshold within the last twenty-four hours, he becomes aware of their passage." }
+
+        RULES {
+            #OZ6sNDg04depe1CcRlYpcC: background "The head priest of the Kyotei Castle shrine is Tsume Yemon (TSOO-mey YEH-mohn), a forty-something man who came to Kyotei Castle after serving as Tsume Retsu's spiritual advisor. Unfortunately, his post caused him to quickly discover the extent of the Damasu ghost infestation, and their constant haunting of the grounds has slowly eroded away his sanity. As a result, whenever something bad happens to the Tsume family or\n\nthe castle, he immediately casts blame at the vengeful ghosts of the Damasu. So far, all of his attempts to mediate with the ghosts or to exorcise them have been met with failure. He is becoming increasingly desperate to be rid of them—almost obsessively so. Even if presented with evidence to the contrary, Yemon still believes the dead cranes (see page 19) to be a sign from the spirits—and he pleads with the PCs to help him banish them."
+        }
     }
 
     ^"Doji Kuzunobu" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Husband to Crane Clan Champion Doji Hotaru; grew up among the Fox Clan in
-        # the Kitsune Forest and carries the shapeshifter's blood.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 4
@@ -150,15 +157,16 @@ EXTENSION "L5R5e_WeddingKyotei_Cast" {
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 3."
         ^"On Friendly Terms" DEF { ^"Effect" STRING "Doji Kuzunobu can talk to animals and understand their speech (though he usually hides this ability)." }
         ^"Mysterious Escape" DEF { ^"Effect" STRING "Should Doji Kuzunobu be declared the target of an attack, he vanishes in a swirl of leaves and condescending laughter." }
+
+        RULES {
+            #oiIJVsSOHY780Cjy7OkhFu: background "As the husband to Crane Clan Champion Doji Hotaru, Doji Kuzunobu (DOH-jee KOO-zoo-noh-boo) is perhaps the highest-ranking guest at Kyotei. His attendance is somewhat perfunctory, however, as his mere presence allows Hotaru to relay her approval of her vassal without diverting her attention from the war at hand. These past few years, Kuzunobu has served as Hotaru's stand-in at countless courts and ceremonies, and the constant stream of entertainment has lost its luster.\n\nAlthough he always maintains an appreciative and lighthearted air, in his heart he longs to return to the Kitsune Forest, where he grew up among the Fox Clan. That wild streak is no more evident than in his gift—what some might call a curse—of being a shapeshifter. If asked for advice concerning Takashi's infatuation with Maeda, Kuzunobu offers the advice that one must always do their duty, but love has nothing to do with duty."
+        }
     }
 
     # ═══════════════════════ LION CLAN CAST ════════════════════════════════
 
     ^"Damasu no Akodo Maeda" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The antagonist: born Damasu no Akodo Maeda, daughter of Damasu Kojima
-        # (former lord of Kyotei); raised as the geisha Reika, murdered Tsume Retsu,
-        # readopted into the Lion as Akodo Maeda. Plans to hijack the wedding.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 6
@@ -185,8 +193,6 @@ EXTENSION "L5R5e_WeddingKyotei_Cast" {
 
     ^"Itto" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Rōnin and Maeda's bodyguard; once loyal to her father Kojima. Originally of
-        # the Goseki family — the Kitsu Medium's lost uncle.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 4
@@ -209,14 +215,16 @@ EXTENSION "L5R5e_WeddingKyotei_Cast" {
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 2."
         ^"School of the Wolf" DEF { ^"Effect" STRING "Once per round, when an Attack action check targeting him succeeds, Itto may suffer 3 fatigue to change the target to another character (other than the attacker) at range 0–1 of him." }
         ^"Striking as Fire" DEF { ^"Effect" STRING "When performing an Attack action (Fire) check, Itto may spend Opportunity as follows: Fire Opportunity+: Increase the severity of any critical strike dealt as part of this attack by 2 per Opportunity spent this way." }
+
+        RULES {
+            #c9TorwI00x57rZtmtKlnAb: background "Rōnin and Maeda's bodyguard, Itto (EE-toh, slight pause between syllables) will not hesitate to sacrifice himself for her. Long ago, he was loyal to her father, Kojima, and his final charge was to smuggle Reika out of the castle when she was still an infant. Since then, he remained in the vicinity of Chikuzen, championing the peasants there—but also to protect and watch over Reika as she came of age in the Pine House.\n\nAfter Reika murdered Tsume Retsu, Itto helped her flee the town to forge a new life for herself. He saw the deed a justice done, and thus not in conflict with the tenets of Bushido he has always held dear. Since then, he trained Reika as best he could in the ways of the warrior, always vigilant for the chance for her to regain her place as Lord of Kyotei Castle as a Damasu. As fate would have it, the chance eventually came. After Reika was adopted as Akodo Maeda, Itto remained as a rōnin, having originally hailed from the Goseki family—he is the Kitsu Medium's lost uncle, which the ancestors will affirm if the Kitsu communes with them."
+        }
     }
 
     # ═══════════════════════ PHOENIX CLAN CAST ═════════════════════════════
 
     ^"Shiba Itsuyo" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The bride-to-be; daughter of the lord of Nikesake. A trained bushi who sees
-        # this marriage as her current battlefield.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 4
@@ -239,12 +247,14 @@ EXTENSION "L5R5e_WeddingKyotei_Cast" {
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 4."
         ^"Crescent Moon Style" DEF { ^"Effect" STRING "When performing a Guard action, Itsuyo may spend Opportunity in the following way: Opportunity: After another character performs an Attack action targeting Itsuyo or another character she is guarding, Itsuyo may perform a Strike action targeting them. This effect persists until the start of Itsuyo's next turn or until Itsuyo performs a Strike action." }
         ^"Sworn Protector" DEF { ^"Effect" STRING "Once per scene, when an Attack action check targeting another character at range 0–1 succeeds, Itsuyo may intervene, becoming the target of the action instead." }
+
+        RULES {
+            #TrHjYSjnLuFU2UnccztAfX: background "Shiba Itsuyo (SHEE-bah ee-TSOO-yoh) is the bride-to-be and daughter of the lord of Nikesake, a nearby Phoenix Clan village that was once threatened by Takashi's father. She is trepidatiously entering into this marriage in order to make her family happy and do her duty to the Phoneix Clan, but the sight of Takashi swooning over Maeda at the party causes her to have second thoughts—will she have to put up with a consort in the castle so soon? Nevertheless, she is a soldier at heart, and she sees this marriage as her current battlefield and will fight her battles with honor. After the marriage, she fully intends to assume all the duties of the castle lord in everything but name, having heard that her future husband was more interested in the privileges of power than its responsibilities. This way, the future security of the Phoenix Clan will be truly assured."
+        }
     }
 
     ^"Shiba Katsuda" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Lord of Nikesake and Itsuyo's father, proud of the match Nasu Shizuma
-        # helped arrange. Younger daughter Kanoka is his intended successor.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 7
@@ -266,12 +276,14 @@ EXTENSION "L5R5e_WeddingKyotei_Cast" {
         }
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 7, Intrigue 6."
         ^"Lord's Command" DEF { ^"Effect" STRING "Once per scene, as a Support action, Katsuda may advise a character who can hear them on how to complete a task they wish the character to perform. The character may use Katsuda's ring or skill in place of their own for the next check they make to complete this task before the end of the game session." }
+
+        RULES {
+            #RMVeANdYhvikeKuMYWNf8J: background "Shiba Katsuda (SHEE-bah kah-TSOO-dah) and Chisei, the Lord and Lady of Nikesake are proud of the match they've made for their daughter and thankful to Nasu Shizuma for his help in coordinating with the matchmaker to see it through. With their daughter's hand, they will do more for the peace of Golden Valley than they've been able to accomplish in decades. Their younger daughter, Kanoka, will assume stewardship of Nikesake after they are gone so long as she is appointed by the Phoenix Clan Champion, ensuring their legacy. Together, they are resolved to see this marriage through. Katsuda looks the stereotypical samurai, with an impressive beard and a stern expression."
+        }
     }
 
     ^"Lady Chisei" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Raised among the librarians of the Asako family and trained as a scholar; a
-        # resource for PCs needing a primer on history or theology.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 1
@@ -294,13 +306,14 @@ EXTENSION "L5R5e_WeddingKyotei_Cast" {
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 1, Intrigue 5. She does not need to make checks to recall scholarly information."
         ^"Whispering Winds" DEF { ^"Effect" STRING "Once per session as an action, Chisei may make a Courtesy (Air) check targeting one character in the scene. The TN is equal to 6 minus the target's glory rank (to a minimum of 1). If they succeed, Chisei learns a rumor about the target. Opportunity Opportunity: Chisei learns one of the target's advantages or disadvantages of the target's choice." }
         ^"Fanning the Flames" DEF { ^"Effect" STRING "When making a Social skill (Fire) check, Chisei may spend Opportunity in the following way: Fire Opportunity: One target gains the Dazed condition." }
+
+        RULES {
+            #xSIOleZ14kFyrGFMPRBUU0: background "Lady Chisei (CHEE-say) comports herself with an aloof bearing, having been raised among the librarians of the Asako family and trained as a scholar. She is a resource for any PCs who need a primer on history or theology, and she does not need to make checks to recall scholarly information."
+        }
     }
 
     ^"Asako Maezawa" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Phoenix Clan Champion Shiba Tsukune's newest personal advisor; a trained
-        # healer, scholar, philosopher, and investigator sent to look into the
-        # elemental imbalance and the slaughtered cranes (found no mahō-tsukai).
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 5
@@ -323,15 +336,16 @@ EXTENSION "L5R5e_WeddingKyotei_Cast" {
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 5, Intrigue 5."
         ^"Whispering Winds" DEF { ^"Effect" STRING "Once per session as an action, Maezawa may make a Courtesy (Air) check targeting one character in the scene. The TN is equal to 6 minus the target's glory rank (to a minimum of 1). If they succeed, Maezawa learns a rumor about the target. Opportunity Opportunity: Maezawa learns one of the target's advantages or disadvantages of the target's choice." }
         ^"Fanning the Flames" DEF { ^"Effect" STRING "When making a Social skill (Fire) check, Maezawa may spend Opportunity in the following way: Fire Opportunity: One target gains the Dazed condition." }
+
+        RULES {
+            #qVIvTw0LD3iGnJzf3jReO6: background "Asako Maezawa (ah-SAH-koh MAH-ey-ZAH-WAH) is fledgling Phoenix Clan Champion Shiba Tsukune's newest personal advisor. After a rocky rough start, Maezawa is sworn to Tsukune's service and loyal to her over all others. While the Elemental Masters are looking into possible sources of the elemental imbalance, Maezawa has been sent to ensure that the Phoenix are strong in their military defenses lest any of the other clans learn of their difficulties communing with the elemental kami. When he heard about the slaughtered cranes, Maezawa investigated for signs of mahō-tsukai, but found no evidence of evil sorcery."
+        }
     }
 
     # ═══════════════════════ SCORPION CLAN CAST ════════════════════════════
 
     ^"Soshi Ozuru" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # A courtier of the Scorpion Clan sent to lead intrepid investigators off the
-        # trail of the Scorpion operative (Shosuro Yu). Works unknowingly in concert
-        # with Yu; a shrewd courtier under handler Lady Kachiko.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 2
@@ -354,13 +368,14 @@ EXTENSION "L5R5e_WeddingKyotei_Cast" {
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 2, Intrigue 7."
         ^"Whispering Winds" DEF { ^"Effect" STRING "Once per session as an action, Ozuru may make a Courtesy (Air) check targeting one character in the scene. The TN is equal to 6 minus the target's glory rank (to a minimum of 1). If Ozuru succeeds, Ozuru learns a rumor about the target. Opportunity Opportunity: Ozuru learns one of the target's advantages or disadvantages of the target's choice." }
         ^"Fanning the Flames" DEF { ^"Effect" STRING "When making a Social skill (Fire) check, Ozuru may spend Opportunity in the following way: Fire Opportunity: One target gains the Dazed condition." }
+
+        RULES {
+            #qm77JMnB9DXcnNyo8gagcY: background "There are many courtiers of the Scorpion Clan in the Imperial Court—so many that Lady Kachiko can spare them for errands such as the one Soshi Ozuru (soh-SHEE oh-ZOO-roo) has been assigned. While Shosuro Yu (see Ide Torao, on page 13) and Ozuru are separated by many layers of handlers, spymasters, and shady contacts, they are unknowingly working in concert. Ozuru has been sent to lead any intrepid investigators off the trail of the Scorpion Clan operative. His mission is to gauge the appropriate level of \"suspiciousness\" and act in that manner."
+        }
     }
 
     ^"Ide Torao aka Shosuro Yu" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # A guise of Shosuro Yu, a Shosuro-trained actor and agent of one of Bayushi
-        # Shoju's spymasters. Stirred up bandit activity, killed the Crane to force
-        # the wedding to move, and coordinated the kidnapping and the Akodo attack.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 1
@@ -383,5 +398,9 @@ EXTENSION "L5R5e_WeddingKyotei_Cast" {
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 1, Intrigue 5. A Vigilance 4 character can discern that Torao/Yu's eyes are hazel, and capable of seeming as both."
         ^"Whispering Winds" DEF { ^"Effect" STRING "Once per session as an action, Yu may make a Courtesy (Air) check targeting one character in the scene. The TN is equal to 6 minus the target's glory rank (to a minimum of 1). If they succeed, Yu learns a rumor about the target. Opportunity Opportunity: The courtier learns one of the target's advantages or disadvantages of the target's choice." }
         ^"Fanning the Flames" DEF { ^"Effect" STRING "When making a Social skill (Fire) check, Yu may spend Opportunity in the following way: Fire Opportunity: One target gains the Dazed condition." }
+
+        RULES {
+            #UUz52lk4rF4miHWRyvjTyT: background "Ide Torao (EE-day TOH-rah-OH) is a guise of Shosuro Yu (show-SOO-row YOU), a superb Shosuro-trained actor who is able to take on any persona with ease. Their hazel eyes seem to change color with their clothing—green for Torao and brown for Yu (a Vigilance 4 character can discern that their eyes are hazel, and capable of seeming as both). Yu is the agent of one of Bayushi Shoju's spymasters and has been sent to prevent an alliance between the Crane and Phoenix. Yu has been stirring up bandit activity in the region, killed the Crane to force the wedding to move, and passed information to Itto and Maeda's band to coordinate the kidnapping and the Akodo attack on the castle."
+        }
     }
 }

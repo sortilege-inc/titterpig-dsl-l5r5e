@@ -14,15 +14,13 @@
 
 EXTENSION "L5R5e_BloodOfTheLioness_Cast" {
     NAME "Blood of the Lioness — Cast"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-05"
 
     # ═══════════════ MATSU SAKURA, LION GENERAL ═══════════════
     #L5RBOLcastMatsuSakura01 ^"Matsu Sakura" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The Lion general leading the reclamation of the Snow Plain; both her
-        # parents were Matsu, but she trained at the Akodo War College.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Title" STRING "Lion General"
@@ -50,10 +48,6 @@ EXTENSION "L5R5e_BloodOfTheLioness_Cast" {
     # ═══════════════ KITSU YŪ, ANCESTRAL SUMMONER ═══════════════
     #L5RBOLcastKitsuYuu0001 ^"Kitsu Yū" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # A Kitsu warrior who discovers her latent shugenja gift at Snow Plain when
-        # ancestor spirits answer her prayers; her discovery leads to the founding
-        # of the Golden Lantern Dōjō. Kitsu Ayako (the present-day PC ally) uses
-        # this same profile.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Title" STRING "Ancestral Summoner"
@@ -81,13 +75,15 @@ EXTENSION "L5R5e_BloodOfTheLioness_Cast" {
             "Ancestral Summons" -> #td0c67ab0f81aad9a88d6f ^"Ancestral Summons"
         }
         #td0c67ab0f81aad9a88d6f ^"Ancestral Summons" DEF { ^"Type" STRING "Invocation"  ^"Effect" STRING "Once per game session as a Support action, the shugenja may attract numerous ancestral spirits to fight at her side. In a skirmish, these are treated as six Loyal Bushi (see page 312 of the core rulebook) who have physical resistance 10 and are Otherworldly beings. In a mass battle, increase the strength of her army by 20. These effects persist until Yū becomes incapacitated or, if she does not, until the end of the scene." }
+
+        RULES {
+            #os26KgSDfomo8BUJljK4uq: kitsu_ayako "Ayako is represented by the profile for Kitsu Yū (see page 13) as she channels Yū's personality and skills."
+        }
     }
 
     # ═══════════════ SHINJO KAMU, UNICORN GENERAL ═══════════════
     #L5RBOLcastShinjoKamu001 ^"Shinjo Kamu" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The proud, traditional Unicorn general holding the Snow Plain; he prefers
-        # battle to diplomacy and resents his orders to keep the peace.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Title" STRING "Unicorn General"
@@ -121,8 +117,6 @@ EXTENSION "L5R5e_BloodOfTheLioness_Cast" {
 
     #L5RBOLcastShosuroAmane01 ^"Shosuro Amane" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # An ambitious, opportunistic Scorpion sent to "negotiate" between Unicorn
-        # and Lion, whose true aim is to secure a still-productive diamond mine.
         PROPERTIES {
             ^"Type" STRING "NPC" FIXED
             ^"Profile" STRING "Seasoned Courtier (page 313 of the core rulebook), with the addition of the Trickster template (page 311 of the core rulebook) and the ninjutsu techniques Skulk and Silencing Stroke (see page 226 of the core rulebook)"
@@ -132,8 +126,6 @@ EXTENSION "L5R5e_BloodOfTheLioness_Cast" {
 
     #L5RBOLcastMatsuHisoka001 ^"Matsu Hisoka" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Sakura's husband and subordinate officer; quiet and contemplative, he
-        # defers to her in all things and only offers advice when asked.
         PROPERTIES {
             ^"Type" STRING "NPC" FIXED
             ^"Profile" STRING "Loyal Bushi (page 312 of the core rulebook)"

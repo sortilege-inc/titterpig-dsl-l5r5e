@@ -8,7 +8,7 @@
 # live in the .lore / .codex. The six pregens are in l5r5e-0.5-highwayman-pregens.actor.
 
 EXTENSION "L5R5e_Highwayman_Cast" {
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-02"
     DEPENDS_ON "L5R5e_Core_Core"
@@ -17,9 +17,6 @@ EXTENSION "L5R5e_Highwayman_Cast" {
 
     ^"Hidetaka Sasuke" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # A large, barrel-chested peasant bartender who owns the Kawacho sake
-        # house; brother of the missing courier Hidetaka Nori. Fiercely protective
-        # of his family.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 2
@@ -41,15 +38,16 @@ EXTENSION "L5R5e_Highwayman_Cast" {
         }
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 2, Intrigue 2."
         ^"Bearish Strength" DEF { ^"Effect" STRING "Once per scene, as a Movement action, Sasuke may receive 3 fatigue. If he does, he treats his Earth Ring as 5 until the end of his next turn and reduces the TN of Attack action checks he makes by 1 (minimum 1)." }
+
+        RULES {
+            #ME0DfIUyndQdJRaJwya901: background "A large, barrel-chested peasant bartender with an eye for drink and fine-featured men. Sasuke is fiercely protective of his family and would do anything to help the ones he cares for."
+        }
     }
 
     # ═══════════════════════ ACT 2 — THE SHINOMEN ═════════════════════════
 
     ^"Sayaka" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # A cloaked, muscular trader — originally Bataar Badma of the Burning Sands,
-        # who lived in the shadow of Khanbulak. Changes her name often. An optional
-        # helpful NPC who can guide the PCs and warns of the red crescent marks.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 2
@@ -77,9 +75,6 @@ EXTENSION "L5R5e_Highwayman_Cast" {
 
     ^"Lady Yukiko" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The Highwayman: a rakshasa of the Ghostlands that plague the Ivory
-        # Kingdoms — a shapeshifting, reality-bending being with a taste for human
-        # flesh. Bored, arrogant, short-tempered, and painfully sweet.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 8
@@ -103,14 +98,14 @@ EXTENSION "L5R5e_Highwayman_Cast" {
         ^"Illusory Hunter" DEF { ^"Effect" STRING "Lady Yukiko is an Otherworldly being of silhouette 3 that can change her form to appear as a creature of silhouette 2–4. At the start of a scene characters must make a TN 6 Survival or Theology check (Air 8, Void 4) to attempt to see through her illusionary form. If they fail, they cannot attempt see through the illusion for the remainder of the scene." }
         ^"Just a Taste" DEF { ^"Effect" STRING "When Yukiko makes an Attack action check, she may spend Opportunity in the following ways: Opportunity: If she succeeds, the target suffers the Bleeding condition. Opportunity Opportunity: If she succeeds and the target is Bleeding, Yukiko removes 2 fatigue and 2 strife. Opportunity Opportunity: If she succeeds, she may choose one additional target within range 0–1 to suffer damage equal to the base damage of her weapon." }
         ^"Darker Purpose" DEF { ^"Effect" STRING "If Yukiko would suffer a critical strike of severity 7 or higher, she explodes in a rain of blood with a menacing cackle. She is defeated." }
+
+        RULES {
+            #afXK006DN7Fu11trCJAe4c: background "Yukiko is a rakshasa of Ghostlands that plague the Ivory Kingdoms. Yukiko easily becomes bored and restless, and so longs to be entertained. She values herself highly, and scoffs at the thought of being seriously hurt by such lowly creatures as the PCs. She is arrogant, has a short temper, and can come across as painfully sweet."
+        }
     }
 
     ^"Lady Atsuko" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # An oni born from the very marsh the estate is built on — the Taint mixed
-        # with the spiritual power of the Shinomen. True form: a giant 15-foot
-        # centipede with the body of an old woman. Intensely jealous of Yukiko's
-        # beauty; averse to fire.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 7
@@ -134,13 +129,14 @@ EXTENSION "L5R5e_Highwayman_Cast" {
         ^"Constricting Body" DEF { ^"Effect" STRING "Atsuko is a Otherworldly, Tainted being of silhouette 3. When she makes an Attack action check using her Crushing Body, she may spend Opportunity in the following ways: Opportunity: If she succeeds, she may immediately make an Attack action check against the same target using her Venomous Bite. Opportunity+: If she succeeds, the target suffers one of the following conditions for each Opportunity spent this way: Dazed, Immobilized, Silenced. Opportunity Opportunity: If she succeeds, the target is Immobilized and the target begins to suffocate until they are no longer Immobilized (see page 269 of the core rulebook)." }
         ^"Painted Words" DEF { ^"Effect" STRING "As a Scheme action, Atsuko may make a Social (Fire) check targeting one character within the scene, with a TN equal to the target's vigilance. If she succeeds, she influences the target's mind, causing them to receive 2 strife, plus 1 strife for every 2 bonus successes." }
         ^"Venomous Strike" DEF { ^"Effect" STRING "When Atsuko makes an Attack action check using her Venomous Bite, she may spend Opportunity in the following way: Opportunity Opportunity: The target becomes Disoriented and Intoxicated." }
+
+        RULES {
+            #XCwUiVdApR8xlPVgwOOaNe: background "Atsuko was born from the very marsh the estate is built on, made from the corrupting powers of the Taint mixed with the spiritual power of the Shinomen. Her true form is that of a giant, 15 foot long centipede with the body of an old woman on the top. She is intensely jealous of Yukiko's beauty, though whether she means Yukiko's illusory form or her real one, is unclear."
+        }
     }
 
     ^"Lord Kenta" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # A massive, muscular ogre-like oni with the head of a wolf, originating
-        # from the pits of Jigoku by way of the Shadowlands. Easy to please —
-        # eating and wrestling — and strangely honest for an oni; he hates cheating.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 7
@@ -162,5 +158,9 @@ EXTENSION "L5R5e_Highwayman_Cast" {
         }
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 7, Intrigue 4. A wolf-headed oni of Jigoku."
         ^"Crushing Grip" DEF { ^"Effect" STRING "Kenta is a Otherworldly, Tainted being of silhouette 4. At the end of Kenta's turn, he makes an additional Attack action check, if able. When Kenta makes an Attack action check, he may spend Opportunity in the following way: Opportunity: The attack gains the Snaring quality. Opportunity+: Increase the deadliness of the attack by 1 for each Opportunity spent this way." }
+
+        RULES {
+            #Tduh2EEjaDLISMIq4Mbqjo: background "Kenta is a massive, muscular ogre-like creature with the head of a wolf. His skin is ruddy and covered in hair. His dim, silver eyes often stare blankly around him, as if his head were filled with nothing at all. Kenta originates from the vile pits of Jigoku, and made his way to Rokugan by way of the Shadowlands. Kenta is fairly easy to please, as his two pleasures are eating and wrestling. He is also strangely honest for an oni, and seems to have little desire to lie, and actually hates cheating."
+        }
     }
 }

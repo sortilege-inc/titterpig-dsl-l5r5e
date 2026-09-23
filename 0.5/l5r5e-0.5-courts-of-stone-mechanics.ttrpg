@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Courts of Stone: New Player Options"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -18,15 +18,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # The Deer seek societal balance. When the Great Clans
-        # are equal in power, they strive to outdo each other but
-        # do not dare go to war. When the Deer observe that one
-        # clan is strong and another weak, they strive to make them
-        # equal. They are manipulators working for balance within
-        # the Empire. Shika Matchmakers mingle with high society
-        # to collect information and guide the courts, while
-        # Speardancers carry out secret missions in the shadows.
-
         PROPERTIES {
             ^"Clan Name" STRING "Deer" FIXED
             ^"Clan Type" STRING "Minor Clan"
@@ -40,7 +31,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         }
 
     }
-
 
     # ===========================
     # DEER FAMILIES
@@ -63,7 +53,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         }
     }
 
-
     # ===========================
     # NEW SCHOOLS
     # ===========================
@@ -72,12 +61,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
     ^"Bayushi Deathdealer" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # The school of warriors Bayushi founded trains under
-        # the principle that it is always better to be underestimated.
-        # Its curriculum includes the bow, the sword, and subtler
-        # weapons still. Students are always reminded that iaijutsu
-        # is merely a tool of power like any other.
 
         PROPERTIES {
             ^"School Name" STRING "Bayushi Deathdealer" FIXED
@@ -91,7 +74,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA CHOOSE 1 [^"Striking as Air", ^"Striking as Fire"]
@@ -170,12 +152,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Seen as nothing more than simple bureaucrats, clerks,
-        # or scribes, the Daidoji Spymasters operate as intelligence-
-        # gathering agents who report directly to the Daidoji daimyo.
-        # They monitor other clan representatives, infiltrate organizations,
-        # kidnap potential threats, and steal private documents.
-
         PROPERTIES {
             ^"School Name" STRING "Daidoji Spymaster" FIXED
             ^"Clan" STRING "Crane"
@@ -188,7 +164,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             SHUJI ^"Ancestry Unearthed"
@@ -267,12 +242,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Formidable negotiators and researchers capable of
-        # understanding complex systems of commerce, bureaucracy,
-        # and esoteric laws. Their familiarity with Rokugani law allows
-        # them to navigate the Imperial Court while turning the
-        # intricacies of the law against their rivals.
-
         PROPERTIES {
             ^"School Name" STRING "Doji Bureaucrat" FIXED
             ^"Clan" STRING "Crane"
@@ -285,7 +254,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 55
             ^"Techniques Available" LIST ["Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             SHUJI ^"Courtier's Resolve"
@@ -364,12 +332,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # The Lion Clan's Ikoma family trains a small number of
-        # students in stealth, political subterfuge, and even battlefield
-        # sabotage. These Ikoma Shadows infiltrate enemy camps in
-        # wartime and enemy castles in peacetime, stealing or altering
-        # messages and inflaming tensions between other clans.
-
         PROPERTIES {
             ^"School Name" STRING "Ikoma Shadow" FIXED
             ^"Clan" STRING "Lion"
@@ -382,7 +344,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             SHUJI ^"Whispers of Court"
@@ -462,14 +423,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Without family, honor, or remorse, Mercenary Ninja
-        # move without a trace to ply their lethal trade. Consisting
-        # of highly skilled commoners and former Great Clan shinobi,
-        # they exist as disposable and deniable assets. Daimyo and
-        # nobles purchase their loyalty to kill and steal with
-        # ruthless efficiency. No formal schools exist for such
-        # lawless individuals.
-
         PROPERTIES {
             ^"School Name" STRING "Mercenary Ninja Training" FIXED
             ^"Roles" LIST ["Shinobi"]
@@ -481,7 +434,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 20
             ^"Techniques Available" LIST ["Kata", "Ninjutsu", "Rituals"]
         }
-
 
         STARTING_TECHNIQUES {
             NINJUTSU ^"Skulk"
@@ -560,11 +512,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Renowned throughout Rokugan for their deeply spiritual
-        # works of art, the Phoenix Clan's Shiba Artists are highly
-        # sought after for festivals and special events. They always
-        # make the act of creation a part of the work itself.
-
         PROPERTIES {
             ^"School Name" STRING "Shiba Artist" FIXED
             ^"Clan" STRING "Phoenix"
@@ -577,7 +524,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             RITUAL ^"Tea Ceremony"
@@ -655,12 +601,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Shika Matchmakers are shugenja guided by Musubi, the
-        # secretive Fortune who binds together the fates of people.
-        # Their greatest power is their ability to see the bonds people
-        # form. A practitioner of Musubu can sense the future results
-        # of fortuitous or inopportune matches.
-
         PROPERTIES {
             ^"School Name" STRING "Shika Matchmaker" FIXED
             ^"Clan" STRING "Deer"
@@ -673,7 +613,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Air and Water Invocations", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             RITUAL ^"The Ties that Bind"
@@ -751,14 +690,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Shika Speardancers are yojimbo and shinobi, but to the
-        # outside world, they are simply seen as messengers known
-        # for their swiftness and neutrality. Their cover as couriers
-        # frees them to work as bodyguards or assassins without
-        # drawing attention. They practice a unique set of kata that
-        # combine dizzying spins, lightning-speed twirls, and deadly
-        # accuracy with their yari.
-
         PROPERTIES {
             ^"School Name" STRING "Shika Speardancer" FIXED
             ^"Clan" STRING "Deer"
@@ -771,7 +702,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 35
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA ^"Trip the Leg"
@@ -849,13 +779,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # By learning and meditating upon the stories of the past,
-        # the Dragon Clan's Togashi Chroniclers see into the future.
-        # They collect stories, folktales, and lore to capture truth,
-        # searching for patterns to illuminate the conflicts of
-        # humanity. They use insight into human nature to foresee
-        # that which is yet to come.
-
         PROPERTIES {
             ^"School Name" STRING "Togashi Chronicler" FIXED
             ^"Clan" STRING "Dragon"
@@ -868,7 +791,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             RITUAL ^"Divination"
@@ -946,12 +868,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Skillful and cunning warriors who protect people traveling
-        # to, from, or within the Crab lands and escort caravans
-        # bringing vital supplies to the front lines. They employ keen
-        # awareness and strong knowledge of terrain to combat
-        # threats and prioritize the safety of those under their watch.
-
         PROPERTIES {
             ^"School Name" STRING "Yasuki Yōjimbō" FIXED
             ^"Clan" STRING "Crab"
@@ -964,7 +880,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA ^"Crescent Moon Style"
@@ -1143,8 +1058,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
     ^"Overconfidence in [Feature]" DEF {
         EXTENDS #L5R268kL0mN2oP4qR6sT8u ^"Adversity"
 
-        # Pick One: Charm (Water) [Interpersonal], Creativity (Fire) [Mental], Toughness (Earth) [Physical], Spiritual Sensitivity (Void) [Spiritual], Subtlety (Air) [Interpersonal]
-
         PROPERTIES {
             ^"Ring" STRING "Various"
             ^"Types" LIST ["Various"]
@@ -1153,6 +1066,10 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
         EFFECT {
             "You are overconfident in a particular capacity, which blinds you to your limitations."
             "When performing a check for which you need to leverage the capacity about which you are overconfident (such as Fitness [Earth] to run several li or Composition [Fire] to draft an exciting poem), you must choose and reroll two dice containing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+        }
+
+        RULES {
+            #Mcw47npTVHYWT8Ei3TcAIQ: overconfidence_pick_one "Pick One: Charm (Water) [Interpersonal], Creativity (Fire) [Mental], Toughness (Earth) [Physical], Spiritual Sensitivity (Void) [Spiritual], Subtlety (Air) [Interpersonal]"
         }
     }
 
@@ -1577,7 +1494,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
                 ^"Cost" STRING "3 bu"
             }
 
-
         }
 
     }
@@ -1788,11 +1704,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
     ^"Bonds" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Bonds are a new way to spend experience points,
-        # reflecting the deepening of connection between two
-        # people. Experience spent on bonds does not contribute
-        # toward school curriculum rank or a title.
-
         ^"Bond Ranks" DEF {
             #KgV28EwqbZziQ2ezCuwzKw ^"Rank 1" DEF {
                 ^"XP Cost" INTEGER 3
@@ -1834,6 +1745,10 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
+        RULES {
+            #cJ9zlzyDQ4oInRVJiqUv7C: bonds_new_way_to_spend_experience "Bonds: Bonds are a new way to spend experience points, reflecting the deepening of the connection between two people as they invest energy and emotion in one another. This is commonly done by spending time together, but it can also happen via letter writing, or even during times of separation, as long as the two are deeply connected. Bonds can take many forms. Friends can obviously have bonds, and so can lovers, family, and colleagues. However, rivals and even enemies can also have bonds that define their relationships; many samurai stories are driven by a character's desire to vanquish a specific foe, or to surpass a fellow warrior whose strength inspires them to obsession."
+            #VCQFBE5FeLiPccjYkHYqmE: forging_and_advancing_a_bond "Forging and Advancing a Bond: If the GM has chosen to include bonds in the campaign, a player may request to have their character forge or advance a bond with someone else by spending experience. The GM decides if the bond makes sense, and if they agree, the player may spend experience to form a bond or to advance an existing bond. If two or more PCs are forging or advancing a bond, each PC must individually spend the full amount of XP for the bond at the same time (as they all gain its benefits). Experience spent on bonds does not contribute toward a character's current school curriculum rank or to a title."
+        }
     }
 
     # ===========================
@@ -1844,25 +1759,14 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
     ^"Courts of Stone Heritages" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Table 2-1: New Samurai Heritages (page 104).
-        # New heritages for samurai with ancestral connections
-        # to the Crane Clan or the mysterious underworld of the
-        # shinobi. Used instead of Table 2-1 in the core rulebook.
-
         HERITAGE_TABLE {
 
             1 #v4pzleB1tNtdgU1XO9iCEx ^"Dishonorable Cheat" DEF {
-                # One of your kin was caught cheating in a high-profile
-                # duel. Instead of committing seppuku to purge their
-                # dishonor and redeem their family, they ran away and
-                # became a rōnin, disgracing their bloodline.
 
                 MODIFIERS {
                     ^"Glory" "-5"
                 }
 
-                # Sub-table (roll 1d10): a skill to aid you in bringing
-                # your disgraced kin to justice.
                 EFFECT {
                     "Roll a ten-sided die to determine a skill to aid you in bringing your disgraced kin to justice."
                 }
@@ -1875,11 +1779,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             }
 
             2-3 #s0sUwIEvvlrRubJEwMn8PO ^"Triumph over the Lion" DEF {
-                # In your family line one of your ancestors held a decisive
-                # victory over the Lion. It may have been a duel, a critical
-                # game of Go, a battle, or any number of things. The
-                # circumstances are irrelevant; the Lion were embarrassed,
-                # and your ancestor brought honor to your clan.
 
                 MODIFIERS {
                     ^"Honor" "+5"
@@ -1899,11 +1798,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             }
 
             4-5 #f4DhOygATi36KX70HPMmnW ^"Unforgivable Performance" DEF {
-                # In the recent past one of your kin gave a truly horrible
-                # performance in the presence of the Imperial line. Through
-                # their embarrassing acting in a scene they caused the
-                # Emperor to leave the theatre, and now rumors abound of
-                # your family being cursed by the Fortunes for such a failure.
 
                 MODIFIERS {
                     ^"Status" "-3"
@@ -1913,7 +1807,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
                     "Gain the ^\"Benten's Curse (Air)\" disadvantage (core rulebook page 116)"
                 }
 
-                # Sub-table (roll 1d10): a skill that will help redeem your family.
                 SUB_TABLE "1d10" {
                     "1-3" "Gain +1 ^\"Performance\""
                     "4-6" "Gain +1 ^\"Culture\""
@@ -1923,8 +1816,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             }
 
             6-7 #IE4tFxWFofbGuImnBkFxlI ^"Triumph During Gempuku" DEF {
-                # One of your parents was a Topaz Champion and brought
-                # honor to your clan and your family.
 
                 MODIFIERS {
                     ^"Honor" "+3"
@@ -1937,18 +1828,12 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             }
 
             8-9 #vzCnLJmsIrSOsRx7N3erZs ^"A Little Too Close to Heaven" DEF {
-                # One of your ancestors is rumored to have had an
-                # illegitimate child with an Emperor. While you may be able
-                # to link your heritage to the Imperial line, the disgrace
-                # of such an affair stains this joy.
 
                 MODIFIERS {
                     ^"Status" "+5"
                     ^"Honor" "-5"
                 }
 
-                # Sub-table (roll 1d10): a skill that can aid you in
-                # discovering the truth about your lineage.
                 EFFECT {
                     "Roll a ten-sided die to determine a skill that can aid you in discovering the truth about your lineage."
                 }
@@ -1963,11 +1848,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             }
 
             10 #GJzMXJAC0TdPMBdtGDaT4e ^"Elegant Craftsman" DEF {
-                # Your ancestor was a truly gifted artisan and produced in
-                # their lifetime a masterwork that is still renowned today.
-                # You now live in the shadow of this ancestor, and your clan
-                # expects your complete focus in bringing glory to your line
-                # once again.
 
                 MODIFIERS {
                     ^"Glory" "+5"
@@ -1978,6 +1858,16 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
                     "Choose one of your character's rings; you may reduce the value of this ring by 1 to increase the value of your Fire or Air Ring by 1 (this still cannot raise it above 3)"
                 }
             }
+        }
+
+        RULES {
+            #Xi36GKxGlFOA5fQM1IShp4: new_samurai_heritages "New Samurai Heritages: A variety of unique heritages arise from having a bloodline derived—at least in part—from the Crane. This is true even for non-Crane characters, who may bear Crane blood because of the marriage of members of that clan into their family lineage. There are also more mysterious heritages that might apply, if the family has some involvement in the secretive lives of shinobi.\n\nTable 2—1: New Samurai Heritages represents these backgrounds when creating a new samurai PC who has ancestral connections with the Crane Clan or to the mysterious underworld of the shinobi. This table can be used instead of Table 2—1: Samurai Heritages on page 96 of the core rulebook, and is used in the same manner."
+            #BKIgZsdU7pZPNEFf4uqKJX: dishonorable_cheat "Dishonorable Cheat: One of your kin was caught cheating in a high-profile duel. Instead of committing seppuku to purge their dishonor and redeem their family, they ran away and became a rōnin, disgracing their bloodline."
+            #uCl4mwT4N8orr1bKtvBiYr: triumph_over_the_lion "Triumph over the Lion: In your family line one of your ancestors held a decisive victory over the Lion. It may have been a duel, a critical game of Go, a battle, or any number of things. The circumstances are irrelevant; the Lion were embarrassed, and your ancestor brought honor to your clan."
+            #Q932mQGS63MovsT0SykcOv: unforgivable_performance "Unforgivable Performance: In the recent past one of your kin gave a truly horrible performance in the presence of the Imperial line. Through their embarrassing acting in a scene they caused the Emperor to leave the theatre and now rumors abound of your family being cursed by the Fortunes for such a failure."
+            #rsbIhK3ZDFywoNe7JtOkdy: triumph_during_gempuku "Triumph During Gempuku: One of your parents was a Topaz Champion and brought honor to your clan and your family."
+            #DPwLeeuMEcImlu9fXMT9vC: a_little_too_close_to_heaven "A Little Too Close to Heaven: One of your ancestors is rumored to have had an illegitimate child with an Emperor. While you may be able to link your heritage to the Imperial line, the disgrace of such an affair stains this joy."
+            #LjhGJvLY2tQVqbhSO8Kas6: elegant_craftsman "Elegant Craftsman: Your ancestor was a truly gifted artisan and produced in their lifetime a masterwork that is still renowned today. You now live in the shadow of this ancestor, and your clan expects your complete focus in bringing glory to your line once again."
         }
     }
 
@@ -2171,25 +2061,23 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
     ^"Courtesy Honor Rules" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Optional additions to the core honor and glory forfeits/awards table.
-
         ^"Trifling Breaches" DEF {
-            # When a character wishes to commit a breach of Courtesy
-            # judged less serious than a minor breach, they must first
-            # forfeit 1 honor. Examples include:
-            # - Cursing in the presence of someone of higher status
-            # - Publicly discussing finances or mercantile pursuits
-            # - Forgetting specifics of a minor societal ritual before someone of higher status
+
+            RULES {
+                #Lrin0E9afDhuxEJmU44oTt: trifling_breaches_of_courtesy "Trifling Breaches: When a character wishes to commit a breach of Courtesy that is judged to be less serious than a minor breach, they must first forfeit 1 honor.\n\nExamples of trifling breaches of Courtesy:\n\nCursing or using disrespectful language in the presence of someone of higher status.\n\nPublicly and explicitly discussing your finances or mercantile pursuits.\n\nForgetting the specifics of a minor societal ritual in the presence of someone of higher status (turning your teacup the wrong direction or using an improper form of address)."
+            }
         }
 
         ^"Small Sacrifices" DEF {
-            # When a character makes a sacrifice in the name of
-            # Courtesy judged less significant than a minor sacrifice,
-            # they are awarded 1 honor. Examples include:
-            # - Paying an honest compliment to an enemy during battle
-            # - Letting a serious insult to your person pass
+
+            RULES {
+                #dyECCKsmyFE7VPHKE0vGdh: small_sacrifices_of_courtesy "Small Sacrifices: When a character makes a sacrifice in the name of Courtesy, but it is judged to be less significant than a minor sacrifice, they are awarded 1 honor.\n\nExamples of small sacrifices of Courtesy:\n\nPaying an honest compliment to an enemy during battle.\n\nLetting a serious insult (one that requires you to forfeit 1 or more glory to ignore) to your person pass."
+            }
         }
 
+        RULES {
+            #YLXM9XOdIZXCIYKJOj3LpX: trifling_breaches_and_small_sacrifices_of_courtesy "Trifling Breaches and Small Sacrifices: In the Legend of the Five Rings core rulebook, there are guidelines for gaining honor for virtuous deeds, as well as guidelines for forfeiting honor in order to act disgracefully. However, minor acts can affect one's honor as well. A samurai ideally adheres to Bushidō in all aspects of their life, and many small positive or negative demonstrations eventually add up.\n\nWhat follows are optional additions to Table 7–1: Honor and Glory Forfeits/Awards on page 300 of the core rulebook and to the examples related to Courtesy on pages 302 of the core rulebook."
+        }
     }
 
     # ===========================
@@ -2199,11 +2087,6 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
     # source (page 132)
     ^"Intrigue Opportunity Tables" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # Optional opportunity expenditures for Winter Court games
-        # and other intrigue-oriented games. Can be used in any game
-        # for intrigue scenes such as arguments, romance, and
-        # investigative challenges.
 
         ^"Spending Opportunity in Negotiations" DEF {
             ENTRIES {
@@ -2265,5 +2148,8 @@ EXTENSION "L5R5e_Courts_of_Stone" EXTENDS "L5R5e_Core_Character" {
             }
         }
 
+        RULES {
+            #r3JBEwLSWfjCUqak2NgdMA: spending_opportunity_in_winter_court_games "Spending Opportunity in \"Winter Court\" Games: The following tables give players and GMs additional options for (op) expenditures. GMs running Winter Court games or other intrigue-oriented games may use these tables to allow players additional means of spending (op) in their games, or as inspiration for new options of their devising. The tables may also be useful in any type of game for intrigue scenes (see page 254 of the core rulebook) such as arguments, romantic circumstances, and investigative challenges. Options are included for negotiation, romance, and espionage.\n\nIf an effect calls for a player to do something but the character is an NPC, the GM does so instead."
+        }
     }
 }

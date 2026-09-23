@@ -14,7 +14,7 @@
 
 EXTENSION "L5R5e_GM_Kit_Mechanics" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Game Master's Kit Mechanics"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -25,13 +25,6 @@ EXTENSION "L5R5e_GM_Kit_Mechanics" EXTENDS "L5R5e_Core_Character" {
     ^"Tortoise Minor Clan" DEF {
         EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # Founded after the Battle of White Stag in the fifth century,
-        # officially charged with maintaining the walls of Otosan Uchi.
-        # In actuality, tasked with monitoring and covertly trading with
-        # gaijin to prevent another tragedy. Operates more like a
-        # smuggling cartel than a proper clan. Has the direct authority
-        # and protection of the Emperor.
 
         PROPERTIES {
             ^"Clan Name" STRING "Tortoise" FIXED
@@ -46,10 +39,11 @@ EXTENSION "L5R5e_GM_Kit_Mechanics" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RGMK00aB2cD4eF6gH8iJ0k: tortoise_gaijin_trade
+            #L5RGMK00aB2cD4eF6gH8iJ0k: tortoise_gaijin_trade "In actuality, the Tortoise Clan has a secret and unique duty: it is tasked with monitoring and covertly trading with the gaijin, in order to ensure the tragedy of White Stag is never repeated. Tortoise ships sail across the Sea of Amaterasu, visiting gaijin ports, where their crews learn about (and keep watch on) foreign cultures and trade for exotic goods to bring back to Rokugan. As a result, the Tortoise Clan more closely resembles a smuggling cartel than a proper clan. The Tortoise do not have a conventional program of training for their samurai in the manner of other clans. On the contrary, the second Tortoise Clan Champion, Kasuga Genjiko, told her people to each follow their own path as they saw fit."
+            #mRgIRR4ELC1Mz3JbrQJj0F: tortoise_clan_official_charge "The Tortoise Clan: Of all the minor clans of Rokugan, the clan of the Tortoise is perhaps both the most obscure and the most bizarre. Founded in the aftermath of the Battle of White Stag in the fifth century, the Tortoise Clan is—officially—merely a tiny clan charged with maintaining the ancient walls of Otosan Uchi. It was granted land in a modest territory northwest of the Imperial City, and has established small holdings across that area. The Tortoise are known to be quite eccentric, living alongside peasants and following an individualistic ethos that most samurai would consider odd and even shameful."
+            #ORvPtow21vTIhsxtckJLRr: tortoise_clan_imperial_protection "Unsurprisingly, the Great Clans view the Tortoise with contempt when they bother to think about them at all. The curious might ask how the Tortoise survive while routinely breaking the Empire's laws and customs. There are two answers. The first is that when this Tortoise Clan was established, it was done under the direct authority and protection of the Emperor; this impedes any samurai who might otherwise cut them down or lead an army to exterminate them. The second is that it is a small clan whose members avoid notice and keep their worst activities well out of sight. Many Rokugani do not even know the clan exists, and most have never met a Tortoise samurai. The Tortoise Clan's true purpose—to keep watch on the gaijin—is known only to its members and to the Emperor. Most Emerald Magistrates are unaware of the deal, although the Emerald Champion might be."
         }
     }
-
 
     # ===========================
     # TORTOISE FAMILIES
@@ -72,7 +66,6 @@ EXTENSION "L5R5e_GM_Kit_Mechanics" EXTENDS "L5R5e_Core_Character" {
         }
     }
 
-
     # ===========================
     # KASUGA SMUGGLER SCHOOL
     # ===========================
@@ -80,11 +73,6 @@ EXTENSION "L5R5e_GM_Kit_Mechanics" EXTENDS "L5R5e_Core_Character" {
     ^"Kasuga Smuggler" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # The Kasuga Smuggler School trains its disciples in the art
-        # of covert trade and diplomatic maneuvering with those outside
-        # the Empire. Kasuga smugglers operate under the Emperor's
-        # direct mandate, trading with gaijin to keep the Empire safe.
 
         PROPERTIES {
             ^"School Name" STRING "Kasuga Smuggler" FIXED
@@ -170,6 +158,10 @@ EXTENSION "L5R5e_GM_Kit_Mechanics" EXTENDS "L5R5e_Core_Character" {
             RANK 6 {
                 ^"Shell of the Tortoise"
             }
+        }
+
+        RULES {
+            #t5d0tA5KcU93nnORW9b5M8: kasuga_smuggler_school_description "Kasuga Smuggler School [Courtier]: The Kasuga have several schools that are the public faces of the Tortoise. Outsiders who are even aware of the Smuggler school believe it to be linked to tawdry merchant affairs, and thus beneath their notice. The Tortoise do their best to foster this misconception, for it actually trains their samurai who oversee the clan's extensive smuggling and covert trading operations.\n\nKasuga smugglers must be proficient in a wide range of activities, from simple deception and disguise to negotiating with gaijin traders and Rokugani criminals. Many travel to gaijin lands and might spend long periods at sea. As they rise through the school, their focus can shift from base smuggling and dockside brawls to more refined operations as they interact with wider stratas of Rokugani society of various legitimacies. At the height of their power, they may acquire foreign works of art for Rokugani collectors or command large trading concerns that interact with many other clans. Some even \"retire\" to small merchant concerns, using their years of experience to better monitor gaijin activities and gaijin goods at a lower level. No loyal Kasuga ever forgets the true reason for the Tortoise, after all, and all know the price should they fail."
         }
     }
 
@@ -331,6 +323,10 @@ EXTENSION "L5R5e_GM_Kit_Mechanics" EXTENDS "L5R5e_Core_Character" {
         }
         PROPERTIES {
             ^"Demeanor" STRING "Assertive (Earth +2, Water -2)"
+        }
+
+        RULES {
+            #VZncQPVCw5QJoCxY7PkNcd: warehouse_guards "The Guards: The ruffians should be numerous enough to offer some challenge to the PCs, but not so many as to pose a real threat of defeat—perhaps an encounter rank equal to half or two-thirds of the group rank (see page Constructing Conflicts on page 310 of the Core Rulebook). Their default action is to fight. Once it becomes clear they are outmatched, though, those who can flee do so, preferably via whichever entrance(s) the PCs did not use. This can lead to a chase, since the PCs probably want to take at least one prisoner for interrogation. (Alternatively, PCs who employ clever tactics in combat may be able to defeat one or more of the gang members without using lethal force, removing the need for a chase.)"
         }
     }
 

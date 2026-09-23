@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Chargen" {
     NAME "Legend of the Five Rings 5th Edition - Character Creation Rules"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -25,11 +25,6 @@ BASE "L5R5e_Core_Chargen" {
     ^"Starting Values" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # All characters begin with the following baseline values
-        # before applying modifications from the Twenty Questions.
-        # During character creation, no ring may exceed 3 and no
-        # skill may exceed 3.
-
         PROPERTIES {
             ^"All Rings" INTEGER DEFAULT 1         # Air, Earth, Fire, Water, Void
             ^"All Skills" INTEGER DEFAULT 0        # All skills start untrained
@@ -40,11 +35,9 @@ BASE "L5R5e_Core_Chargen" {
         }
 
         RULES {
-            #L5R300aB2cD4eF6gH8iJ0k: ring_maximum_during_creation_is_three
-            #L5R301lM3nO5pQ7rS9tU1v: skill_maximum_during_creation_is_three
-            #L5R302wX4yZ6aB8cD0eF2g: each_ring_starts_at_one
-            #L5R303hI5jK7lM9nO1pQ3r: each_skill_starts_at_zero
-            #L5R304sT6uV8wX0yZ2aB4c: derived_values_calculated_after_all_questions
+            #L5R300aB2cD4eF6gH8iJ0k: ring_maximum_during_creation_is_three "Limits on Skills and Rings: All characters begin with 1 rank in each ring and 0 ranks in each skill. You cannot raise a ring or skill above rank 3 during character creation. If a choice would result in a ring rising above rank 3 during character creation, then you must choose a different ring to increase instead, as long as that ring would also not be increased above rank 3."
+            #L5R301lM3nO5pQ7rS9tU1v: skill_maximum_during_creation_is_three "Similarly, if a choice would result in a skill rising above rank 3 during character creation, then you must choose a different skill that is not already at rank 3 to increase instead."
+            #L5R304sT6uV8wX0yZ2aB4c: starting_values "Starting Values: When you begin to answer the Game of Twenty Questions, keep in mind the following baseline values for your character:\n\nRings: 1 rank in each ring.\n\nSkills: 0 ranks in each skill.\n\nHonor: Determined in Question 3.\n\nGlory: Determined in Question 2.\n\nStatus: Determined in Question 1.\n\nEndurance: Calculated based on your final ring values; (Earth + Fire) x 2.\n\nComposure: Calculated based on your final ring values; (Earth + Water) x 2.\n\nFocus: Calculated based on your final ring values; Fire + Air.\n\nVigilance: Calculated based on your final ring values; (Air + Water) / 2."
         }
     }
 
@@ -55,21 +48,13 @@ BASE "L5R5e_Core_Chargen" {
     ^"Game of Twenty Questions" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # The character creation process is structured as twenty questions
-        # answered collaboratively between player and GM. Each question
-        # determines specific mechanical and narrative aspects of the
-        # character. Questions are grouped into seven parts and answered
-        # in order.
         #
         # This replaces the abbreviated version in
         # l5r5e-0.3-core-character.ttrpg with the correct and complete
         # mechanical effects for each question.
 
         RULES {
-            #L5R310aB2cD4eF6gH8iJ0k: twenty_questions_complete_character
-            #L5R311lM3nO5pQ7rS9tU1v: questions_are_collaborative
-            #L5R312wX4yZ6aB8cD0eF2g: gm_may_adjust_options
-            #L5R313hI5jK7lM9nO1pQ3r: questions_answered_in_order
+            #L5R310aB2cD4eF6gH8iJ0k: the_game_of_twenty_questions "The Game of Twenty Questions: Ever since the publication of its first edition in 1997, the Legend of the Five Rings Roleplaying Game has used the Game of Twenty Questions to help players create the backgrounds and personalities of their characters. The game encourages you, the player, to ask key questions about your character: What kind of character do you want to play? What is their history like? What are their goals? What is the most important thing in the world to them?\n\nThese questions are also used to build your character mechanically. As you answer the questions, you will be instructed to note down ring and skill increases, as well as other static values to be applied to your character. You will want to keep a running tally of your current ring and skill ranks."
         }
 
         PHASES {
@@ -86,29 +71,8 @@ BASE "L5R5e_Core_Chargen" {
                         ^"Question Text" STRING "What Clan Does Your Character Belong To?" FIXED
                     }
 
-                    # Choose one of the seven Great Clans (or a Minor Clan
-                    # with GM approval). The clan determines the character's
-                    # cultural identity and grants starting attributes.
-                    #
-                    # Mechanical effects:
-                    #   - Gain +1 rank to the clan's specified ring
-                    #   - Gain +1 rank to the clan's specified skill
-                    #   - Set starting ^"Status" to the clan's status value
-                    #
-                    # Clan options and values:
-                    #   ^"Crab Clan"     +1 Earth,  +1 Fitness,       Status 30
-                    #   ^"Crane Clan"    +1 Air,    +1 Culture,       Status 35
-                    #   ^"Dragon Clan"   +1 Fire,   +1 Meditation,    Status 30
-                    #   ^"Lion Clan"     +1 Water,  +1 Tactics,       Status 35
-                    #   ^"Phoenix Clan"  +1 Void,   +1 Theology,      Status 30
-                    #   ^"Scorpion Clan" +1 Air,    +1 Skulduggery,   Status 35
-                    #   ^"Unicorn Clan"  +1 Water,  +1 Survival,      Status 30
-
                     RULES {
-                        #L5R320aB2cD4eF6gH8iJ0k: q1_sets_clan
-                        #L5R321lM3nO5pQ7rS9tU1v: q1_applies_clan_ring_bonus
-                        #L5R322wX4yZ6aB8cD0eF2g: q1_applies_clan_skill_bonus
-                        #L5R323hI5jK7lM9nO1pQ3r: q1_sets_starting_status
+                        #L5R320aB2cD4eF6gH8iJ0k: q1_choose_clan "The seven Great Clans of Rokugan have ruled in the name of the Emperor since the founding of the Emerald Empire, and generations of legendary heroes have fought and died to maintain their power, prestige, and influence. A samurai of one of the Great Clans is inheritor to a weighty legacy. Each clan has an ancient and unique assortment of beliefs and ideals it imparts upon its members, set forth by the clan's founding Kami and developed over the centuries.\n\nWhen creating a character, you should choose a clan whose culture and values you find interesting from a storytelling standpoint. Whether your character wishes to rigidly adhere to these strictures, chafes under the pressure of them, or perhaps does a bit of both, clan identity is very important to who your character is and how they exist in the world."
                     }
                 }
 
@@ -118,26 +82,13 @@ BASE "L5R5e_Core_Chargen" {
                         ^"Question Text" STRING "What Family Does Your Character Belong To?" FIXED
                     }
 
-                    # Choose a family within your clan (or outside it with
-                    # GM approval). The family determines a ring choice,
-                    # two skill increases, starting glory, and wealth.
-                    #
-                    # Mechanical effects:
-                    #   - Choose one of the family's two ring options: gain +1
-                    #   - Gain +1 rank to each of the family's two skills
-                    #   - Set starting ^"Glory" to the family's glory value
-                    #   - Set starting wealth (koku) to the family's value
                     #
                     # See clan definitions in l5r5e-0.3-core-character.ttrpg
                     # for family listings with ring choices, skills, glory,
                     # and wealth values.
 
                     RULES {
-                        #L5R324sT6uV8wX0yZ2aB4c: q2_sets_family
-                        #L5R325dE7fG9hI1jK3lM5n: q2_choose_one_of_two_rings
-                        #L5R326oP8qR0sT2uV4wX6y: q2_applies_two_skill_increases
-                        #L5R327zA9bC1dE3fG5hI7j: q2_sets_starting_glory
-                        #L5R328kL0mN2oP4qR6sT8u: q2_sets_starting_wealth
+                        #L5R324sT6uV8wX0yZ2aB4c: q2_choose_family "Even within a single clan, the customs and traditions of the various families inform the creation of a wide variety of characters. Once your clan is chosen, pick which of the clan's families your character hails from."
                     }
                 }
             }
@@ -153,36 +104,21 @@ BASE "L5R5e_Core_Chargen" {
                         ^"Question Text" STRING "What Is Your Character's School, and What Roles Does That School Fall Into?" FIXED
                     }
 
-                    # Choose a school, typically from your clan. Choosing a
-                    # school from another clan requires GM approval and
-                    # narrative justification.
-                    #
-                    # Mechanical effects:
-                    #   - Gain ring increases as specified by the school
-                    #     (typically +1 to two rings)
-                    #   - Gain starting skills as specified by the school
-                    #     (typically choose 5 from a list of 7)
-                    #   - Set starting ^"Honor" to the school's honor value
-                    #   - Gain the school's starting techniques
-                    #   - Gain the school's School Ability
-                    #   - Receive the school's starting outfit
-                    #   - Set available technique groups for advancement
                     #
                     # See l5r5e-0.3-core-schools-*.ttrpg files for
                     # individual school definitions.
 
                     RULES {
-                        #L5R329vW1xY3zA5bC7dE9f: q3_sets_school
-                        #L5R330gH2iJ4kL6mN8oP0q: q3_applies_ring_increases
-                        #L5R331rS3tU5vW7xY9zA1b: q3_applies_starting_skills
-                        #L5R332cD4eF6gH8iJ0kL2m: q3_sets_starting_honor
-                        #L5R333nO5pQ7rS9tU1vW3x: q3_grants_starting_techniques
-                        #L5R334yZ6aB8cD0eF2gH4i: q3_grants_school_ability
-                        #L5R335jK7lM9nO1pQ3rS5t: q3_grants_starting_outfit
-                        #L5R336uV8wX0yZ2aB4cD6e: q3_other_clan_school_requires_gm_approval
+                        #L5R329vW1xY3zA5bC7dE9f: q3_choose_school_other_clan_with_gm_permission "During this step, a player chooses a single school within their clan for their character. If you wish for your character to study at another school outside of their clan, ask your GM's permission and work out a set of circumstances that have allowed for your character to receive their unusual training."
+                        #L5R330gH2iJ4kL6mN8oP0q: q3_school_rings "Rings: When you select this school, this specifies which of your character's rings you increase by the specified amount."
+                        #L5R331rS3tU5vW7xY9zA1b: q3_school_starting_skills "Starting Skills: This entry specifies a collection of skills that you can elect to give your character a rank in. It also specifies the number of skills you can choose (unlike the rings, you must choose a number from the overall list)."
+                        #L5R332cD4eF6gH8iJ0kL2m: q3_school_honor "Honor: This is your character's starting honor."
+                        #L5R333nO5pQ7rS9tU1vW3x: q3_school_starting_techniques "Starting Techniques: These are techniques your character starts the game with. Unless the entry specifies that you must choose from a list, your character starts with everything listed here. Techniques are listed in Chapter 4."
+                        #L5R334yZ6aB8cD0eF2gH4i: q3_school_ability "School Ability: Each school has a unique ability associated with it. Your character gains that ability when you choose the school."
+                        #L5R335jK7lM9nO1pQ3rS5t: q3_school_starting_outfit "Starting Outfit: This is the clothing and equipment your character starts play with."
+                        #UvxTTOZpkgbPhcZPNEz8E3: q3_school_techniques_available "Techniques Available: These are the types of techniques your character can purchase when they advance after character creation."
                     }
                 }
-
 
                 ^"Question 4: How Does Your Character Stand Out Within Their School?" DEF {
                     PROPERTIES {
@@ -190,17 +126,9 @@ BASE "L5R5e_Core_Chargen" {
                         ^"Question Text" STRING "How Does Your Character Stand Out Within Their School?" FIXED
                     }
 
-                    # Determine what makes the character unique among their
-                    # peers. This reflects the character's personal approach
-                    # that distinguishes them from a typical graduate of
-                    # their school.
-                    #
-                    # Mechanical effect:
-                    #   - Choose one ring and gain +1 rank to it
-
                     RULES {
-                        #L5R337fG9hI1jK3lM5nO7p: q4_choose_any_ring_plus_one
-                        #L5R338qR0sT2uV4wX6yZ8a: q4_reflects_unique_approach
+                        #L5R337fG9hI1jK3lM5nO7p: q4_choose_ring_increase_option "Choose one of the following options and increase your ring rank by the specified amount:\n\nCreativity, passion, or drive (+1 Fire Ring): Your character is recognized by their teachers and peers for their inventive ideas, their sincere love for the craft of their school, or their intense and irrepressible desire to succeed in their field. Their energy and enthusiasm inspire fellow students and galvanize rivals to put forth their best as well.\n\nGrace, eloquence, or empathy (+1 Air Ring): Your character stands out in their school for their finesse, the refinement with which they express themself in social situations, or their sensitivity to the feelings of others. To other students, their successes often appear effortless, but the truth of the matter is that their innate attention to detail means that they work as hard as anyone else, if not harder.\n\nAdaptability, friendliness, or awareness (+1 Water Ring): Your character's willingness to roll with the punches, gregariousness, or understanding of their environment stands out among their peers. Your character tends not to get stuck in mental ruts the same way many people do, or at least they have ways to get out of them.\n\nThoroughness, patience, or calm (+1 Earth Ring): Stoicism is a trait valued greatly in Rokugan, and your character bears challenges and hardships without complaint. Your character's teachers might have come to rely upon them as an assistant instructor, while their peers are likely to see them as a source of wisdom and stability.\n\nSelf-awareness, insight, or mysticism (+1 Void Ring): At a certain point, all arts become a study of the universe, oneself, and the relationship between the two, and your character is more adept at seeing things within both than most of their peers are. They might even seem to have a supernatural sense of things, and to act based on hunches about what is to come in addition to possessing insight about their place in the wider universe."
+                        #L5R338qR0sT2uV4wX6yZ8a: q4_students_excel_in_different_areas "Even in a training system as regulated as that of a dōjō, different students excel in different areas. Even a pair of twins from the same family attending the same school might differ in temperament, aptitude, or inclination."
                     }
                 }
             }
@@ -217,18 +145,9 @@ BASE "L5R5e_Core_Chargen" {
                         ^"Question Text" STRING "Who Is Your Lord, and What Is Your Character's Duty to Them?" FIXED
                     }
 
-                    # Determine the character's ^"Giri" (sworn duty). This
-                    # is a specific obligation to a lord, clan, or other
-                    # authority. The duty should be concrete and achievable,
-                    # creating meaningful tension with the character's
-                    # personal desires.
-                    #
-                    # Mechanical effect:
-                    #   - Set the character's ^"Giri"
-
                     RULES {
-                        #L5R339bC1dE3fG5hI7jK9l: q5_sets_giri
-                        #L5R340mN2oP4qR6sT8uV0w: q5_giri_should_be_specific
+                        #L5R339bC1dE3fG5hI7jK9l: q5_record_giri "Write down your answer on your character sheet under \"Giri.\" Giri is how your character acquires esteem in the eyes of their lord, and thus is related to your character's reputation within the Empire, their glory. See more under Giri, on page 39 of Chapter 1: Playing the Game."
+                        #L5R340mN2oP4qR6sT8uV0w: q5_selecting_giri_properly "Selecting One's Giri Properly: Giri provides characters with the first of their two primary drives within the story. You should be able to answer the following questions in the affirmative when considering your character's giri and ninjō (personal feelings) together, and if you cannot, you should talk to your GM about selecting a different giri:\n\nIs this giri something you want to see your character pursue or contend with during the story? This does not mean that your character should always enjoy the weight of their duty, but you, the player, should be excited by the prospect of getting to watch your character struggle with it.\n\nCan your character make progress toward completing this giri no matter where the campaign takes your character? A good giri has clear paths you can explore with it even when it does not tie in with the main plot, and it should be something that can influence your character's choices no matter what location they travel to or what obstacles they face.\n\nIs this giri likely to conflict with your ninjō at least occasionally? Being pulled between duty and desires is a key part of many works of samurai fiction, and even if the two are not diametrically opposed, your character should sometimes have to make hard decisions about which is more important in the moment."
                     }
                 }
 
@@ -238,18 +157,9 @@ BASE "L5R5e_Core_Chargen" {
                         ^"Question Text" STRING "What Does Your Character Long For, and How Might This Impede Their Duty?" FIXED
                     }
 
-                    # Determine the character's ^"Ninjō" (personal desire).
-                    # This is a deeply personal longing that exists in
-                    # tension with the character's Giri. It need not be
-                    # selfish, but it must create meaningful dramatic
-                    # conflict with duty.
-                    #
-                    # Mechanical effect:
-                    #   - Set the character's ^"Ninjō"
-
                     RULES {
-                        #L5R341xY3zA5bC7dE9fG1h: q6_sets_ninjo
-                        #L5R342iJ4kL6mN8oP0qR2s: q6_ninjo_must_conflict_with_giri
+                        #L5R341xY3zA5bC7dE9fG1h: q6_record_ninjo "Write down your character's personal question, goal, or core desire on your character sheet under \"Ninjō.\" Ninjō is a challenge that you set before your character, forcing them to confront the ideals of Bushidō and the cost to uphold them as they pursue their desire—thus, it is related to their honor. Another way to look at ninjō is to ask yourself: what goal might tempt the character to disobey their lord or do other dishonorable things? What would be worth such risks to them? See more under Ninjō, on page 38 of"
+                        #L5R342iJ4kL6mN8oP0qR2s: q6_giri_and_ninjo_should_be_able_to_conflict "Samurai drama revolves around competing desires. To create quandaries for your samurai that enhance drama and make for enjoyable roleplaying, you should think about how your character's giri and ninjō might come into conflict. They do not need to be in constant opposition, but there should always be the possibility for friction between the two—and the conflict your character would feel at such times should be interesting to you!\n\nIf you can't imagine a few exciting moments that might arise from your character being forced to choose between the two (or you wouldn't enjoy roleplaying those moments), modify one or both selections until you can. The GM will be working to bring both up during the course of the campaign, which leads to difficult choices for your character (and thus, interesting choices for you, the player!)."
                     }
                 }
 
@@ -259,19 +169,8 @@ BASE "L5R5e_Core_Chargen" {
                         ^"Question Text" STRING "What Is Your Character's Relationship With Their Clan?" FIXED
                     }
 
-                    # Determine whether the character embraces or diverges
-                    # from clan expectations. This reflects the balance
-                    # between social standing and personal development.
-                    #
-                    # Choose one:
-                    #   A) Character embraces clan identity:
-                    #      Gain +5 ^"Glory"
-                    #   B) Character has pursued independent interests:
-                    #      Gain +1 rank in any one skill currently at rank 0
-
                     RULES {
-                        #L5R343tU5vW7xY9zA1bC3d: q7_choose_glory_or_skill
-                        #L5R344eF6gH8iJ0kL2mN4o: q7_option_b_skill_must_be_at_zero
+                        #L5R343tU5vW7xY9zA1bC3d: q7_choose_glory_or_skill "Choose one of the following:\n\nIf your character believes firmly in the precepts of their clan and the values it holds dear, gain +5 glory based on their reputation as an upstanding member of their community.\n\nIf your character has a fundamental disagreement with their clan's beliefs, policies, or practices and has defied these in the past, gain 1 rank in a skill in which you have 0 ranks. Consider why this skill represents a divergence from the clan's training or values."
                     }
                 }
 
@@ -281,27 +180,8 @@ BASE "L5R5e_Core_Chargen" {
                         ^"Question Text" STRING "What Does Your Character Think of Bushido?" FIXED
                     }
 
-                    # Determine the character's relationship with the code
-                    # of ^"Bushido". The character chooses one tenet as
-                    # paramount (most important) and one as less significant
-                    # (least important).
-                    #
-                    # Mechanical effects:
-                    #   - Set ^"Bushido" paramount tenet
-                    #   - Set ^"Bushido" less significant tenet
-                    #
-                    # Then choose one:
-                    #   A) Character is deeply devoted to Bushido:
-                    #      Gain +10 ^"Honor"
-                    #   B) Character takes a more nuanced view:
-                    #      Gain +1 rank in one skill from: ^"Command",
-                    #      ^"Commerce", ^"Culture", ^"Games", ^"Medicine",
-                    #      ^"Performance", or ^"Survival"
-
                     RULES {
-                        #L5R345pQ7rS9tU1vW3xY5z: q8_sets_paramount_tenet
-                        #L5R346aB8cD0eF2gH4iJ6k: q8_sets_less_significant_tenet
-                        #L5R347lM9nO1pQ3rS5tU7v: q8_choose_honor_or_skill
+                        #L5R347lM9nO1pQ3rS5tU7v: q8_choose_honor_or_skill "Choose one of the following:\n\nIf your character's belief in living by an orthodox interpretation of Bushidō is very staunch, gain +10 honor.\n\nIf your character diverges from some or all common beliefs about how samurai should behave honorably, gain 1 rank in one of the following skills to reflect past behavior that was unbefitting of a samurai or deeply defied the norm: Commerce, Labor, Medicine, Seafaring, Skulduggery, or Survival."
                     }
                 }
             }
@@ -318,17 +198,11 @@ BASE "L5R5e_Core_Chargen" {
                         ^"Question Text" STRING "What Is Your Character's Greatest Accomplishment So Far?" FIXED
                     }
 
-                    # Determine a defining positive quality or achievement.
-                    # The player chooses a Distinction that represents the
-                    # character's greatest strength or most notable deed.
-                    #
-                    # Mechanical effect:
-                    #   - Gain one ^"Distinction" (advantage)
                     #
                     # See l5r5e-0.3-core-distinctions.ttrpg for options.
 
                     RULES {
-                        #L5R348wX0yZ2aB4cD6eF8g: q9_grants_one_distinction
+                        #L5R348wX0yZ2aB4cD6eF8g: q9_grants_one_distinction "In addition to deciding on your character's greatest achievement in their life so far, choose one distinction advantage that was key to accomplishing this success, or that your character developed as a result of it. See Specific Distinctions, on page 101, for a list of options. If you want to create your own distinction, consult with your GM using the guidance in Creating Custom Advantages and Disadvantages, on page 137."
                     }
                 }
 
@@ -338,17 +212,11 @@ BASE "L5R5e_Core_Chargen" {
                         ^"Question Text" STRING "What Holds Your Character Back the Most in Life?" FIXED
                     }
 
-                    # Determine the character's most significant hardship
-                    # or limitation. The player chooses an Adversity that
-                    # represents an ongoing burden.
-                    #
-                    # Mechanical effect:
-                    #   - Gain one ^"Adversity" (disadvantage)
                     #
                     # See l5r5e-0.3-core-adversities.ttrpg for options.
 
                     RULES {
-                        #L5R349hI1jK3lM5nO7pQ9r: q10_grants_one_adversity
+                        #L5R349hI1jK3lM5nO7pQ9r: q10_grants_one_adversity "Choose one adversity disadvantage for your character. See Specific Adversities, on page 116, for a list of options. If you want to create your own adversity, consult with your GM using the guidance in Creating Custom Advantages and Disadvantages, on page 137."
                     }
                 }
 
@@ -358,17 +226,11 @@ BASE "L5R5e_Core_Chargen" {
                         ^"Question Text" STRING "What Activity Most Makes Your Character Feel at Peace?" FIXED
                     }
 
-                    # Determine what the character does for solace and
-                    # relaxation, unrelated to their duties. The player
-                    # chooses a Passion that represents this activity.
-                    #
-                    # Mechanical effect:
-                    #   - Gain one ^"Passion" (advantage)
                     #
                     # See l5r5e-0.3-core-passions.ttrpg for options.
 
                     RULES {
-                        #L5R350sT2uV4wX6yZ8aB0c: q11_grants_one_passion
+                        #L5R350sT2uV4wX6yZ8aB0c: q11_grants_one_passion "Choose one passion advantage related to your character's interests or hobbies. See Specific Passions, on page 111, for a list of options. If you want to create your own passion, consult with your GM using the guidance in Creating Custom Advantages and Disadvantages, on page 137."
                     }
                 }
 
@@ -378,17 +240,11 @@ BASE "L5R5e_Core_Chargen" {
                         ^"Question Text" STRING "What Concern, Fear, or Foible Troubles Your Character the Most?" FIXED
                     }
 
-                    # Determine the character's deepest fear, worry, or
-                    # emotional vulnerability. The player chooses an Anxiety
-                    # that represents this weakness.
-                    #
-                    # Mechanical effect:
-                    #   - Gain one ^"Anxiety" (disadvantage)
                     #
                     # See l5r5e-0.3-core-anxieties.ttrpg for options.
 
                     RULES {
-                        #L5R351dE3fG5hI7jK9lM1n: q12_grants_one_anxiety
+                        #L5R351dE3fG5hI7jK9lM1n: q12_grants_one_anxiety "Choose one anxiety disadvantage for your character. See Specific Anxieties, on page 130, for a list of options. If you want to create your own anxiety, consult with your GM using the guidance in Creating Custom Advantages and Disadvantages, on page 137."
                     }
                 }
 
@@ -398,20 +254,8 @@ BASE "L5R5e_Core_Chargen" {
                         ^"Question Text" STRING "Who Has Your Character Learned the Most From During Their Life?" FIXED
                     }
 
-                    # Determine the character's most important mentor and
-                    # the nature of that relationship. The mentor's
-                    # influence grants either additional strengths or
-                    # challenges with compensating skills.
-                    #
-                    # Choose one:
-                    #   A) Gain one additional ^"Advantage"
-                    #      (^"Distinction" or ^"Passion")
-                    #   B) Gain one additional ^"Disadvantage"
-                    #      (^"Adversity" or ^"Anxiety")
-                    #      AND gain +1 rank in any one skill
-
                     RULES {
-                        #L5R352oP4qR6sT8uV0wX2y: q13_advantage_or_disadvantage_plus_skill
+                        #L5R352oP4qR6sT8uV0wX2y: q13_record_mentor_choose_advantage_or_disadvantage_and_skill "In the Relationships section of the character sheet, record the name of the person from whom your character has learned the most, along with the nature of their relationship. Then, choose one of the following options and gain the listed feature:\n\nOne advantage related to your character's mentor and their relationship.\n\nOne disadvantage related to your character's mentor and their relationship, and 1 rank in a skill that your character developed as a result of your character's closest confidante and their relationship.\n\nIf you want to create your own advantage or disadvantage, consult with your GM using the guidance in Creating Custom Advantages and Disadvantages, on page 137."
                     }
                 }
             }
@@ -428,24 +272,14 @@ BASE "L5R5e_Core_Chargen" {
                         ^"Question Text" STRING "What Do People Notice First Upon Encountering Your Character?" FIXED
                     }
 
-                    # Determine the character's most striking feature or
-                    # quality that others observe upon first meeting: unusual
-                    # looks, strange dress, far-flung ancestry, a minor
-                    # behavior such as chewing one's lip when nervous — or a
-                    # deliberate absence of memorable details.
-                    #
-                    # Mechanical effects:
-                    #   - Record the answer in Personality, Habits and Quirks
-                    #   - Choose one distinctive aesthetic accoutrement the
-                    #     character carries or wears most of the time
                     #
                     # Core Rulebook p. 93. The question does NOT set a
                     # Demeanor: Demeanor is an NPC statblock field (see
                     # ^"Core NPCs"), not an output of character creation.
 
                     RULES {
-                        #L5RUJzt0ASYmGCRLUS8WpfO6k: q14_records_personality_habits_quirks
-                        #L5R354kL6mN8oP0qR2sT4u: q14_grants_aesthetic_item
+                        #L5RUJzt0ASYmGCRLUS8WpfO6k: q14_records_personality_habits_quirks "Record the answer in the Personality, Habits and Quirks section of your character sheet."
+                        #L5R354kL6mN8oP0qR2sT4u: q14_grants_aesthetic_item "Additionally, choose one distinctive aesthetic accoutrement that your character carries or wears most of the time (e.g. a scarf, hair ornament, engraved scabbard, eyepatch, etc). This bit of personal flair might accent their striking features or stand in contrast to them."
                     }
                 }
 
@@ -455,17 +289,8 @@ BASE "L5R5e_Core_Chargen" {
                         ^"Question Text" STRING "How Does Your Character React to Stressful Situations?" FIXED
                     }
 
-                    # Determine the character's emotional response to
-                    # pressure. This is a roleplaying guide that informs
-                    # behavior when Compromised or under emotional stress.
-                    # Examples: stoic silence, nervous laughter, cold fury,
-                    # reckless action, withdrawal.
-                    #
-                    # Mechanical effect:
-                    #   - None (narrative and roleplaying guide)
-
                     RULES {
-                        #L5R355vW7xY9zA1bC3dE5f: q15_narrative_stress_response
+                        #L5R355vW7xY9zA1bC3dE5f: q15_narrative_stress_response "Describe a noteworthy physical response that your character has during times of stress and note it under the Personality, Habits, and Quirks section of the character sheet. As your character's strife approaches their composure, your character might display this behavior, and it could play a part any time they unmask."
                     }
                 }
 
@@ -475,18 +300,9 @@ BASE "L5R5e_Core_Chargen" {
                         ^"Question Text" STRING "What Are Your Character's Preexisting Relationships With Other Clans, Families, Organizations, and Traditions?" FIXED
                     }
 
-                    # Establish the character's relationships with other
-                    # player characters and key NPCs. Also determine a
-                    # personal item of significance — a gift, memento,
-                    # or tool from a relationship.
-                    #
-                    # Mechanical effects:
-                    #   - Establish relationships with other PCs
-                    #   - Gain one item of rarity 7 or lower
-
                     RULES {
-                        #L5R356gH8iJ0kL2mN4oP6q: q16_establish_pc_relationships
-                        #L5R357rS9tU1vW3xY5zA7b: q16_grants_item_rarity_seven_or_lower
+                        #L5R356gH8iJ0kL2mN4oP6q: q16_record_relationships_with_other_groups "Record any noteworthy history, quarrels, alliances, or grievances your character has with other groups in the Relationships section of your character sheet."
+                        #L5R357rS9tU1vW3xY5zA7b: q16_grants_item_rarity_seven_or_lower "Additionally, choose one item of rarity 7 or lower that your character received as a gift from one such group, took in battle fighting against them, or that otherwise relates to or symbolizes the character's past and ongoing relationship with them. Add this item to your starting outfit."
                     }
                 }
 
@@ -496,17 +312,9 @@ BASE "L5R5e_Core_Chargen" {
                         ^"Question Text" STRING "How Would Your Character's Parents Describe Them?" FIXED
                     }
 
-                    # Determine the character's relationship with their
-                    # parents and what was learned outside formal schooling.
-                    # The character gains a skill representing knowledge
-                    # passed down within the family.
-                    #
-                    # Mechanical effect:
-                    #   - Gain +1 rank in any one skill currently at rank 0
-
                     RULES {
-                        #L5R358cD0eF2gH4iJ6kL8m: q17_grants_skill_at_rank_zero
-                        #L5R359nO1pQ3rS5tU7vW9x: q17_skill_must_be_at_zero
+                        #L5R358cD0eF2gH4iJ6kL8m: q17_grants_skill_at_rank_zero "Additionally, gain one rank of one skill in which your character has 0 ranks, and determine whether your character's parents approve of this extracurricular interest or see it as a regrettable deviation, and why."
+                        #L5R359nO1pQ3rS5tU7vW9x: q17_record_relationship_with_parents "Record the nature of the relationship between your character and their parents or immediate family members in the Relationships section of your character sheet."
                     }
                 }
 
@@ -516,20 +324,12 @@ BASE "L5R5e_Core_Chargen" {
                         ^"Question Text" STRING "Who Was Your Character Named to Honor?" FIXED
                     }
 
-                    # Determine the character's samurai heritage by rolling
-                    # on the ^"Samurai Heritage Table" (Table 2-1).
-                    #
-                    # Procedure:
-                    #   1. Roll 1d10 twice on the Heritage table
-                    #   2. Choose one of the two results
-                    #   3. Roll 1d10 on the sub-table for that entry
-                    #   4. Apply modifiers and effects
                     #
                     # See ^"Samurai Heritage Table" below for full details.
 
                     RULES {
-                        #L5R360yZ2aB4cD6eF8gH0i: q18_roll_heritage_twice_choose_one
-                        #L5R361jK3lM5nO7pQ9rS1t: q18_then_roll_sub_table
+                        #L5R360yZ2aB4cD6eF8gH0i: q18_roll_heritage_twice_choose_one "First, roll a ten-sided die twice. Consult those numbers in Table 2–1: Samurai Heritage on the next page to see entries on two potential famous relatives from the last few generations. Choose one of those two options as the relative for whom your character is named. Then, roll a ten-sided die again as specified by that entry."
+                        #L5R361jK3lM5nO7pQ9rS1t: q18_gm_may_allow_either_or_both_results "At the GM's discretion, all players in a game may choose the first result, the second result, or both results."
                     }
                 }
 
@@ -539,16 +339,8 @@ BASE "L5R5e_Core_Chargen" {
                         ^"Question Text" STRING "What Is Your Character's Personal Name?" FIXED
                     }
 
-                    # Choose or create a personal name. In Rokugan, names
-                    # carry weight and meaning — often reflecting parents'
-                    # hopes, a notable event at birth, or a quality the
-                    # family wishes the character to embody.
-                    #
-                    # Mechanical effect:
-                    #   - None (narrative only)
-
                     RULES {
-                        #L5R362uV4wX6yZ8aB0cD2e: q19_narrative_only
+                        #L5R362uV4wX6yZ8aB0cD2e: q19_choose_personal_name "After you have chosen the name of the ancestor your character's name honors, choose the personal name derived from it that your character is be known by. It might be the same name or an alteration with significance to your character. This is the name that is recorded in the family register, replacing the name they used as a child. In the Rokugani style, the character typically is addressed by their family name (chosen in Question 18), with the appropriate honorific, but close associates may refer to them simply by their personal name.\n\nWhat does your character's name mean? Does your character's appearance fit with their name, or are the two incongruous?"
                     }
                 }
 
@@ -558,17 +350,8 @@ BASE "L5R5e_Core_Chargen" {
                         ^"Question Text" STRING "How Should Your Character Die?" FIXED
                     }
 
-                    # Determine the character's ideal death — the death
-                    # they would choose if given the option. In Rokugan,
-                    # how one dies reflects on one's entire life and
-                    # family legacy. This is a deeply personal question
-                    # that reveals the character's deepest values.
-                    #
-                    # Mechanical effect:
-                    #   - None (narrative only)
-
                     RULES {
-                        #L5R363fG5hI7jK9lM1nO3p: q20_narrative_only
+                        #L5R363fG5hI7jK9lM1nO3p: q20_narrative_only "This has no mechanical implications, but you should keep it in mind. Your GM certainly will…"
                     }
                 }
             }
@@ -586,12 +369,6 @@ BASE "L5R5e_Core_Chargen" {
         # Table 2-1: Samurai Heritage (pages 96-97)
         # Used in Question 18 of the Twenty Questions.
         #
-        # Procedure:
-        #   1. Roll 1d10 twice on this table
-        #   2. Choose one of the two results
-        #   3. Apply the entry's honor/glory/status modifiers
-        #   4. Roll 1d10 on the chosen entry's sub-table
-        #   5. Apply the sub-table result
 
         HERITAGE_TABLE {
 
@@ -601,9 +378,6 @@ BASE "L5R5e_Core_Chargen" {
             # differed from the book. Restored from the page.
 
             1 ^"Famous Deed" DEF {
-                # One of your ancestors won a great victory for their clan or
-                # even the Emperor, and was rewarded with an item of incredible
-                # quality.
 
                 MODIFIERS {
                     ^"Glory" "+3"
@@ -623,9 +397,6 @@ BASE "L5R5e_Core_Chargen" {
             }
 
             2 ^"Glorious Sacrifice" DEF {
-                # One of your ancestors perished nobly in battle, and one of
-                # their signature items vanished with them or was lost in the
-                # subsequent years.
 
                 MODIFIERS {
                     ^"Honor" "+5"
@@ -646,16 +417,11 @@ BASE "L5R5e_Core_Chargen" {
             }
 
             3 ^"Wondrous Work" DEF {
-                # One of your ancestors crafted a piece of great beauty that won
-                # renown for your family, and others expect you to live up to
-                # that legacy.
 
                 MODIFIERS {
                     ^"Glory" "+5"
                 }
 
-                # Roll a ten-sided die again to determine an Artisan skill;
-                # gain +1 rank in that skill.
                 EFFECT {
                     "Roll a ten-sided die again to determine an Artisan skill; gain +1 rank in that skill."
                 }
@@ -669,17 +435,11 @@ BASE "L5R5e_Core_Chargen" {
             }
 
             4 ^"Dynasty Builder" DEF {
-                # One of your ancestors was instrumental in the rise of a
-                # powerful lord, using cunning stratagems and shrewd advice to
-                # secure their ascension. You have heard this story many times
-                # and know the importance of power subtly wielded.
 
                 MODIFIERS {
                     ^"Glory" "-3"
                 }
 
-                # Roll a ten-sided die again to determine a Social skill;
-                # gain +1 rank in that skill.
                 EFFECT {
                     "Roll a ten-sided die again to determine a Social skill; gain +1 rank in that skill."
                 }
@@ -693,17 +453,11 @@ BASE "L5R5e_Core_Chargen" {
             }
 
             5 ^"Discovery" DEF {
-                # One of your ancestors made an incredible discovery, invented
-                # something of great importance, or uncovered an ancient secret.
-                # Thanks to family lore, you have at least a rudimentary
-                # understanding of the subject of their discovery.
 
                 MODIFIERS {
                     ^"Glory" "+3"
                 }
 
-                # Roll a ten-sided die again to determine a Scholar skill;
-                # gain +1 rank in that skill.
                 EFFECT {
                     "Roll a ten-sided die again to determine a Scholar skill; gain +1 rank in that skill."
                 }
@@ -718,17 +472,11 @@ BASE "L5R5e_Core_Chargen" {
             }
 
             6 ^"Ruthless Victor" DEF {
-                # One of your ancestors claimed a bloody victory over a rival,
-                # smashing their forces with a cunning maneuver or seizing their
-                # domain after vanquishing them in battle. From this relative or
-                # their story, you learned well the importance of brute force.
 
                 MODIFIERS {
                     ^"Honor" "-5"
                 }
 
-                # Roll a ten-sided die again to determine a Martial skill;
-                # gain +1 rank in that skill.
                 EFFECT {
                     "Roll a ten-sided die again to determine a Martial skill; gain +1 rank in that skill."
                 }
@@ -744,19 +492,12 @@ BASE "L5R5e_Core_Chargen" {
             }
 
             7 ^"Elevated for Service" DEF {
-                # One of your ancestors was a jizamurai or even a commoner who
-                # served with such distinction that their position was elevated
-                # to that of a Great Clan samurai by marriage or mandate of a
-                # daimyō. As a child, you learned the basics of the skills for
-                # which they won their esteem.
 
                 MODIFIERS {
                     ^"Glory" "-3"
                     ^"Honor" "+3"
                 }
 
-                # Roll a ten-sided die again to determine a Trade skill;
-                # gain +1 rank in that skill.
                 EFFECT {
                     "Roll a ten-sided die again to determine a Trade skill; gain +1 rank in that skill."
                 }
@@ -771,9 +512,6 @@ BASE "L5R5e_Core_Chargen" {
             }
 
             8 ^"Stolen Knowledge" DEF {
-                # One of your ancestors learned a secret of another school and
-                # clandestinely passed it down through the ages; now, it has
-                # reached you.
 
                 MODIFIERS {
                     ^"Honor" "-5"
@@ -794,7 +532,6 @@ BASE "L5R5e_Core_Chargen" {
             }
 
             9 ^"Imperial Heritage" DEF {
-                # You can trace your lineage back to the Imperial line.
 
                 MODIFIERS {
                     ^"Status" "+10"
@@ -806,11 +543,6 @@ BASE "L5R5e_Core_Chargen" {
             }
 
             10 ^"Unusual Name Origin" DEF {
-                # Your character was not named for an ancestor—perhaps they were
-                # named for an outsider who did a great service to the clan,
-                # perhaps their name was bestowed upon them for a unique deed, or
-                # perhaps someone was trying to send a specific message in the
-                # selection of their name.
 
                 MODIFIERS {
                     ^"Glory" "-3"
@@ -824,14 +556,11 @@ BASE "L5R5e_Core_Chargen" {
         }      HERITAGE_TABLE {
 
             1 ^"Famous Deed" DEF {
-                # Your ancestor won a great victory for the clan,
-                # and their name is still celebrated.
 
                 MODIFIERS {
                     ^"Glory" "+3"
                 }
 
-                # Sub-table (roll 1d10): What heirloom was left behind?
                 SUB_TABLE "1d10" {
                     "1-2" "A famous weapon: Receive one weapon of rarity 7 or lower"
                     "3-4" "A set of armor: Receive one set of armor of rarity 7 or lower"
@@ -842,16 +571,12 @@ BASE "L5R5e_Core_Chargen" {
             }
 
             2 ^"Glorious Sacrifice" DEF {
-                # Your ancestor perished nobly in service to the clan.
-                # Their sacrifice is honored, but something was lost
-                # with them forever.
 
                 MODIFIERS {
                     ^"Honor" "+5"
                     ^"Glory" "+5"
                 }
 
-                # Sub-table (roll 1d10): What was lost with the ancestor?
                 SUB_TABLE "1d10" {
                     "1-2" "A weapon: One item of your starting outfit is of diminished quality"
                     "3-4" "Irreplaceable knowledge: Your family lacks knowledge of a subject others take for granted"
@@ -862,14 +587,11 @@ BASE "L5R5e_Core_Chargen" {
             }
 
             3 ^"Wondrous Work" DEF {
-                # Your ancestor crafted or created a lasting
-                # masterwork that brought glory to the family.
 
                 MODIFIERS {
                     ^"Glory" "+5"
                 }
 
-                # Sub-table (roll 1d10): Artisan skill associated with the work
                 SUB_TABLE "1d10" {
                     "1-3" "Gain +1 ^\"Aesthetics\""
                     "4-5" "Gain +1 ^\"Composition\""
@@ -879,15 +601,11 @@ BASE "L5R5e_Core_Chargen" {
             }
 
             4 ^"Dynasty Builder" DEF {
-                # Your ancestor forged important alliances through
-                # social cunning and negotiation, working behind
-                # the scenes with little public recognition.
 
                 MODIFIERS {
                     ^"Glory" "-3"
                 }
 
-                # Sub-table (roll 1d10): Social skill passed down
                 SUB_TABLE "1d10" {
                     "1-2" "Gain +1 ^\"Command\""
                     "3-4" "Gain +1 ^\"Courtesy\""
@@ -898,14 +616,11 @@ BASE "L5R5e_Core_Chargen" {
             }
 
             5 ^"Discovery" DEF {
-                # Your ancestor made a notable scholarly discovery
-                # or uncovered hidden knowledge.
 
                 MODIFIERS {
                     ^"Glory" "+3"
                 }
 
-                # Sub-table (roll 1d10): Scholar skill associated with the discovery
                 SUB_TABLE "1d10" {
                     "1-3" "Gain +1 ^\"Culture\""
                     "4-5" "Gain +1 ^\"Government\""
@@ -916,15 +631,11 @@ BASE "L5R5e_Core_Chargen" {
             }
 
             6 ^"Ruthless Victor" DEF {
-                # Your ancestor won a battle or conflict through
-                # ruthless or dishonorable means, achieving victory
-                # at the cost of personal honor.
 
                 MODIFIERS {
                     ^"Honor" "-5"
                 }
 
-                # Sub-table (roll 1d10): Martial skill honed by the ancestor
                 SUB_TABLE "1d10" {
                     "1-2" "Gain +1 ^\"Fitness\""
                     "3-4" "Gain +1 ^\"Martial Arts [Melee]\""
@@ -935,16 +646,12 @@ BASE "L5R5e_Core_Chargen" {
             }
 
             7 ^"Elevated for Service" DEF {
-                # Your ancestor was elevated from a lower social
-                # station for exceptional service. This origin brings
-                # practical skills but lingering social stigma.
 
                 MODIFIERS {
                     ^"Glory" "-3"
                     ^"Honor" "+3"
                 }
 
-                # Sub-table (roll 1d10): Trade skill reflecting humble origins
                 SUB_TABLE "1d10" {
                     "1-2" "Gain +1 ^\"Commerce\""
                     "3-4" "Gain +1 ^\"Labor\""
@@ -955,17 +662,11 @@ BASE "L5R5e_Core_Chargen" {
             }
 
             8 ^"Stolen Knowledge" DEF {
-                # Your ancestor acquired secret techniques or
-                # knowledge through espionage, theft, or betrayal
-                # of trust — and passed them down to your family.
 
                 MODIFIERS {
                     ^"Honor" "-5"
                 }
 
-                # Sub-table (roll 1d10): Stolen technique category
-                # The character may learn techniques from this additional
-                # category as though it were in their available groups.
                 SUB_TABLE "1d10" {
                     "1-3" "Gain access to Kata"
                     "4-5" "Gain access to Shūji"
@@ -976,31 +677,22 @@ BASE "L5R5e_Core_Chargen" {
             }
 
             9 ^"Imperial Heritage" DEF {
-                # Your ancestor was of Imperial blood — a member of
-                # the Imperial families or closely connected to the
-                # Emperor's line. This carries immense prestige.
 
                 MODIFIERS {
                     ^"Status" "+10"
                 }
 
-                # No sub-table; instead gain a specific distinction.
                 EFFECT {
                     "Gain the ^\"Blessed Lineage\" distinction"
                 }
             }
 
             10 ^"Unusual Name Origin" DEF {
-                # Your ancestor gained the family name under unusual
-                # circumstances — adoption from outside the clan,
-                # foreign origins, or a mysterious past that lingers
-                # in the family's reputation.
 
                 MODIFIERS {
                     ^"Glory" "-3"
                 }
 
-                # Sub-table (roll 1d10): Nature of unusual origin
                 SUB_TABLE "1d10" {
                     "1-5" "Choose two of your rings and swap their values"
                     "6-10" "Gain one item of rarity 6 or lower not typically associated with your clan"
@@ -1009,11 +701,16 @@ BASE "L5R5e_Core_Chargen" {
         }
 
         RULES {
-            #L5R370aB2cD4eF6gH8iJ0k: heritage_roll_1d10_twice_on_main_table
-            #L5R371lM3nO5pQ7rS9tU1v: heritage_choose_one_of_two_results
-            #L5R372wX4yZ6aB8cD0eF2g: heritage_roll_1d10_on_sub_table
-            #L5R373hI5jK7lM9nO1pQ3r: heritage_modifiers_adjust_social_attributes
-            #L5R374sT6uV8wX0yZ2aB4c: heritage_skill_gains_respect_creation_maximum
+            #pF0VEDiidERBiVMiAt1Pnq: heritage_famous_deed "Famous Deed: One of your ancestors won a great victory for their clan or even the Emperor, and was rewarded with an item of incredible quality."
+            #VFlS7X19crey8ERWBDHois: heritage_glorious_sacrifice "Glorious Sacrifice: One of your ancestors perished nobly in battle, and one of their signature items vanished with them or was lost in the subsequent years."
+            #yrJyJhiSxYCPiMiRKzMif5: heritage_wondrous_work "Wondrous Work: One of your ancestors crafted a piece of great beauty that won renown for your family, and others expect you to live up to that legacy."
+            #kJhzAHvuY7K46OCoyX505d: heritage_dynasty_builder "Dynasty Builder: One of your ancestors was instrumental in the rise of a powerful lord, using cunning stratagems and shrewd advice to secure their ascension. You have heard this story many times and know the importance of power subtly wielded."
+            #e2hFysBdTn4m3Wsc73yqLR: heritage_discovery "Discovery: One of your ancestors made an incredible discovery, invented something of great importance, or uncovered an ancient secret. Thanks to family lore, you have at least a rudimentary understanding of the subject of their discovery."
+            #vp8kZctH8qoiEGjfOd4eUC: heritage_ruthless_victor "Ruthless Victor: One of your ancestors claimed a bloody victory over a rival, smashing their forces with a cunning maneuver or seizing their domain after vanquishing them in battle. From this relative or their story, you learned well the importance of brute force."
+            #kf2SsSrcdN781zMoMsLlN6: heritage_elevated_for_service "Elevated for Service: One of your ancestors was a jizamurai or even a commoner who served with such distinction that their position was elevated to that of a Great Clan samurai by marriage or mandate of a daimyō. As a child, you learned the basics of the skills for which they won their esteem."
+            #fTRorjyQn7pcknIyFLo4C0: heritage_stolen_knowledge "Stolen Knowledge: One of your ancestors learned a secret of another school and clandestinely passed it down through the ages; now, it has reached you."
+            #s4YN9xISUKjOtZmzfserGn: heritage_imperial_heritage "Imperial Heritage: You can trace your lineage back to the Imperial line."
+            #yjQsLYgpA8wUATd6lIuGfZ: heritage_unusual_name_origin "Unusual Name Origin: Your character was not named for an ancestor—perhaps they were named for an outsider who did a great service to the clan, perhaps their name was bestowed upon them for a unique deed, or perhaps someone was trying to send a specific message in the selection of their name."
         }
     }
 
@@ -1025,15 +722,10 @@ BASE "L5R5e_Core_Chargen" {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
         # Table 2-2: Advancement (page 98)
-        # After character creation, characters spend experience points
-        # (XP) earned during play to improve rings, skills, and learn
-        # techniques. XP is typically spent during downtime scenes.
 
         ADVANCEMENT_COSTS {
 
             ^"Skill Rank Increase" COST "new rank × 2 XP" {
-                # Increase one skill by 1 rank.
-                # Maximum skill rank: 5
                 "Rank 0 → 1" "2 XP"
                 "Rank 1 → 2" "4 XP"
                 "Rank 2 → 3" "6 XP"
@@ -1042,8 +734,6 @@ BASE "L5R5e_Core_Chargen" {
             }
 
             ^"Ring Increase" COST "new value × 3 XP" {
-                # Increase one ring by 1 rank.
-                # Maximum ring value: lowest ring + Void ring (capped at 5)
                 "Ring 1 → 2" "6 XP"
                 "Ring 2 → 3" "9 XP"
                 "Ring 3 → 4" "12 XP"
@@ -1051,23 +741,16 @@ BASE "L5R5e_Core_Chargen" {
             }
 
             ^"Technique" COST "3 XP" {
-                # Learn one new technique.
-                # Must meet ALL of the following requirements:
-                #   - Technique rank <= character's school rank
-                #   - Technique category must be in the character's
-                #     available technique groups OR the technique must
-                #     be listed in the character's school curriculum
-                #     at or below the character's current rank
             }
         }
 
         RULES {
-            #L5R380aB2cD4eF6gH8iJ0k: ring_max_equals_lowest_ring_plus_void
-            #L5R381lM3nO5pQ7rS9tU1v: ring_max_capped_at_five
-            #L5R382wX4yZ6aB8cD0eF2g: skill_max_is_five
-            #L5R383hI5jK7lM9nO1pQ3r: technique_must_be_available_category_or_curriculum
-            #L5R384sT6uV8wX0yZ2aB4c: technique_rank_limited_by_school_rank
-            #L5R385dE7fG9hI1jK3lM5n: advancement_typically_during_downtime
+            #L5R380aB2cD4eF6gH8iJ0k: ring_increase_restrictions "Ring value +1: Cannot increase a ring to a value greater than lowest ring + Void Ring. Maximum 5."
+            #L5R382wX4yZ6aB8cD0eF2g: skill_max_is_five "Skill rank +1: Maximum 5."
+            #L5R383hI5jK7lM9nO1pQ3r: technique_restrictions "Technique: Category must be listed among available techniques or technique must appear on your curriculum (denoted by = symbol)."
+            #L5R384sT6uV8wX0yZ2aB4c: restrictions_and_prerequisites "Restrictions and Prerequisites: Advancements also have certain restrictions, also listed in Table 2–2: Advancement Costs and Restrictions. A character cannot make a purchase that exceeds these restrictions.\n\nAdditionally, techniques have prerequisites, special requirements to that a character has to meet before they buy individual techniques. Prerequisites are listed in the same line as the technique's name, and are usually character traits such as a certain school rank or clan affiliation. To purchase a technique, a character must meet all of its prerequisites.\n\nIf a technique is listed by name or as part of a technique group for the current rank in their curriculum table (or as one of their starting techniques), it is a special exception. They can buy it without meeting the prerequisites, and it is indicated with the = symbol."
+            #L5R385dE7fG9hI1jK3lM5n: real_world_experience_versus_school_secrets "Real-World Experience versus School Secrets: A little bit of practical experience can be as potent as years of training. Characters in any campaign should be allowed to spend their experience on skills and rings during play as they desire, as one can learn through practice no matter their circumstances.\n\nIn the fiction of the setting, a character is usually taught school secrets, like techniques, by an instructor in their school or another individual who knows the technique. Advancing to the next school rank might be a more involved process, requiring the character to undertake tests or visit specific locations and meet with particular instructors of their tradition.\n\nIn practice, many campaigns are not conducive to having characters return to their dōjō as frequently as they would like to spend experience or increase their school rank. As a result, the game's default assumption is that characters can learn techniques and increase school rank wherever they go, presumably receiving foundational methods to practice on their travels or scrolls containing deeper mysteries for them to decipher during their journeys. A character might need to return to their school to formally verify their newly elevated rank within their school from a thematic standpoint, but they can use its mechanical benefits as soon as they earn it.\n\nIf you, as a GM, want to maintain the narrative element of learning techniques and advancing school ranks, you can do so by specifying that a character must use a downtime activity to visit their dōjō or search for an NPC who knows the technique. School ranks can only be increased after visiting the proper dōjō and passing the requisite test or training under an individual who has attained a higher rank in that school. If you decide to take this route for your game, be sure that you inform your players before the game begins and provide the PCs with sufficient opportunities to spend their hard-earned experience on techniques."
+            #vJoKQtuBqBRiPiyYzX6puB: purchasing_advancements "Purchasing Advancements: The ways a character can improve themself by spending experience are collectively called advancements. These include ring ranks, skill ranks, and techniques.\n\nA character may purchase any advancement by paying its listed cost, so long as it fits within the listed restrictions. Table 2–2: Advancement Costs provides the costs and restrictions for each advancement type.\n\nEach character also has a curriculum table (see tables beginning on page 57), the collected wisdom of their school, to guide them in their specialized role. A character receives extra benefits for purchasing advancements listed there (but remember, they can buy any advancement that they're not restricted from purchasing). Note that rings are not included in any curriculum."
         }
     }
 
@@ -1078,41 +761,15 @@ BASE "L5R5e_Core_Chargen" {
     ^"Curriculum Progression" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Characters advance through school ranks by spending XP on
-        # skills, rings, and techniques listed in their school's
-        # curriculum. Curriculum XP accumulation determines when a
-        # character advances to the next school rank.
-        #
-        # Each school's curriculum (defined in the school files) lists
-        # specific skills, skill groups, rings, and techniques at
-        # each rank. Purchasing matching entries contributes to
-        # curriculum completion.
-
         ^"Curriculum XP Contribution" DEF {
-            # When a character spends XP, the amount that counts toward
-            # curriculum completion depends on whether the purchase
-            # matches a curriculum entry at the character's current rank.
-            #
-            # IN-CURRICULUM:
-            #   The full XP cost counts toward curriculum completion.
-            #   A purchase is in-curriculum if it matches any skill,
-            #   skill group, ring, technique, or technique group
-            #   entry in the current rank's curriculum.
-            #
-            # OUT-OF-CURRICULUM:
-            #   Half the XP cost (rounded up) counts toward
-            #   curriculum completion.
 
             RULES {
-                #L5R386oP8qR0sT2uV4wX6y: in_curriculum_full_xp_contribution
-                #L5R387zA9bC1dE3fG5hI7j: out_of_curriculum_half_xp_rounded_up
+                #L5R386oP8qR0sT2uV4wX6y: in_curriculum_full_xp_contribution "Spending XP in Curriculum: Any XP spent on advances that appear on one's current school rank curriculum table fully contributes to the current rank. Record the full value of this XP as part of the total needed to complete the current rank."
+                #L5R387zA9bC1dE3fG5hI7j: out_of_curriculum_half_xp_rounded_up "Spending XP out of Curriculum: Any XP spent on advances that do not appear on one's current school rank curriculum table (including any purchases of Ring advancements) partially contributes to the current rank. Record half the value of this XP (rounded up) as part of the total needed to complete the current rank."
             }
         }
 
         ^"Rank Advancement Thresholds" DEF {
-            # Curriculum XP that must be accumulated at the current
-            # rank to advance to the next school rank. This total
-            # resets to zero upon advancing.
 
             THRESHOLDS {
                 "Rank 1 → Rank 2" "20 curriculum XP"
@@ -1123,30 +780,23 @@ BASE "L5R5e_Core_Chargen" {
             }
 
             RULES {
-                #L5R388kL0mN2oP4qR6sT8u: curriculum_xp_resets_each_rank
-                #L5R389vW1xY3zA5bC7dE9f: threshold_must_be_met_to_advance
+                #L5R388kL0mN2oP4qR6sT8u: curriculum_xp_resets_each_rank "Once a character completes a rank, their school rank increases and they move on to the next rank in their curriculum table. Further experience they spend now counts toward completing their new rank. After a character completes a rank, they do not count the XP spent to complete previous ranks as part of their progress to complete their new rank."
+                #L5R389vW1xY3zA5bC7dE9f: completing_school_ranks "Completing School Ranks: To complete their current school rank, a character must spend XP on advancements listed on the curriculum table for that rank. The amount of XP to complete each school rank varies: 20 for Rank 1, 24 for Rank 2, 32 for Rank 3, 44 for Rank 4, and 60 for Rank 5. Advances that do not appear on the curriculum table at that rank contribute only half their XP cost."
             }
         }
 
         ^"Rank 6 Mastery" DEF {
-            # Upon accumulating 60 curriculum XP at Rank 5, the
-            # character advances to Rank 6 and unlocks their school's
-            # ^"Mastery Ability". This represents the pinnacle of the
-            # school's teachings and the character's complete mastery
-            # of their tradition.
             #
             # See individual school definitions for Mastery Abilities.
 
             RULES {
-                #L5R390gH2iJ4kL6mN8oP0q: mastery_ability_unlocked_at_rank_six
-                #L5R391rS3tU5vW7xY9zA1b: rank_six_is_final_school_rank
+                #L5R390gH2iJ4kL6mN8oP0q: mastery_ability_unlocked_at_rank_six "Unlocking Mastery Abilities: Once a character finishes the fifth rank in their school, they are invited to learn its deepest mysteries. They unlock and gain a Rank 6 Mastery ability that is the capstone to the samurai's studies and allows them to unlock their true potential."
             }
         }
 
         RULES {
-            #L5R392cD4eF6gH8iJ0kL2m: curriculum_entries_define_in_curriculum_purchases
-            #L5R393nO5pQ7rS9tU1vW3x: individual_school_files_define_curriculum
-            #L5R394yZ6aB8cD0eF2gH4i: advancement_occurs_during_downtime
+            #L5R392cD4eF6gH8iJ0kL2m: advancing_in_a_school "Advancing in a School: Each dōjō has developed a school curriculum over the centuries that represents its tried-and-true method. A school curriculum consists of a set of tables, each of which corresponds to one of the first five school ranks of a character's school, and a Mastery Ability (Rank 6) that a character unlocks upon completing the first five ranks."
+            #L5R394yZ6aB8cD0eF2gH4i: rank_tests_and_ceremonies "Rank Tests and Ceremonies: Some GMs prefer to require that PCs must return to their dōjō to be tested by their teachers to begin each new school rank. Others simply let PCs \"rank up\" immediately. See Real World Experience versus School Secrets for advice on these two methods."
         }
     }
 }

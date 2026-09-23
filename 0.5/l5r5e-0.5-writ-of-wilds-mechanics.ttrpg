@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Writ of the Wilds: New Player Options"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -19,12 +19,6 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # The Dragonfly seek knowledge and understanding.
-        # As gatekeepers for the Dragon, they have met and
-        # mingled with a vast array of samurai and peasants,
-        # stoking their desire to gather information and compare
-        # the differing views of the Great Clans and others.
-
         PROPERTIES {
             ^"Clan Name" STRING "Dragonfly" FIXED
             ^"Clan Type" STRING "Minor Clan"
@@ -38,10 +32,11 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RWW00aB1cD3eF5gH7iJ9kL: dragonfly_minor_clan_traits
+            #L5RWW00aB1cD3eF5gH7iJ9kL: dragonfly_minor_clan "The Dragonfly Minor Clan: The Dragonfly seek knowledge and understanding. During their time as gatekeepers for the Dragon, they have met and mingled with a vast array of samurai and peasants alike. These interactions have stoked the clan's desire to gather as much information as possible so that they can compare and contrast the differing views of the Great Clans and others in the Empire."
+            #bsiGoYrNp5jSw2MpzFr304: what_does_your_character_know "What Does Your Character Know?: All Dragonfly characters have a greater awareness of the following topics:\n\nYou have a strong awareness of the multitude of political dealings that happen with the small lands of the Dragonfly, as well as a general awareness of the happenings with the lands of the Dragon and Phoenix.\n\nYou know the general state of the relationship between the Phoenix and the Dragon, as well as the movements of nearby Lion Clan armies.\n\nYou are comfortable navigating The Great Climb and most mountainous areas."
+            #IXP7FzbG9OZvEjP4fXM5Ge: what_does_bushido_mean_to_your_clan "What Does Bushidō Mean to Your Clan?: To the Dragonfly, the most important tenets of Bushidō are Courtesy and Duty, which they consider to be inexorably linked. It is their duty to stay courteous in the face of disdain and fiery tempers, as well as to serve the Dragon and perform their duty as messengers and gatekeepers to the best of their ability."
         }
     }
-
 
     # ===========================
     # DRAGONFLY FAMILIES
@@ -65,7 +60,6 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         }
     }
 
-
     # ===========================
     # NEW SCHOOLS
     # ===========================
@@ -73,14 +67,6 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
     ^"Dragonfly Grace of the Spirits" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # The Dragonfly are known for their tact and seemingly
-        # endless capacity for patience. Their shugenja call upon
-        # the kami, particularly the graceful and capricious kami of
-        # the air, to aid them in political and social endeavors.
-        # Tonbo family shugenja also refine the practice of
-        # divination to better perform their duties and eventually
-        # reach enlightenment.
 
         PROPERTIES {
             ^"School Name" STRING "Dragonfly Grace of the Spirits" FIXED
@@ -94,7 +80,6 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             INVOCATION ^"Dominion of Suijin"
@@ -174,13 +159,6 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # The people of the Laughing Mountain tribe are nestled
-        # deep in the Spine of the World mountains. Their most
-        # revered tradition is that of the Hearthstone: dedicated
-        # hosts, entertainers, listeners, and mediators who are
-        # particularly adept at honing in on the emotions and
-        # needs of others.
-
         PROPERTIES {
             ^"School Name" STRING "Laughing Mountain Hearthstone Tradition" FIXED
             ^"Roles" LIST ["Courtier", "Monk"]
@@ -192,7 +170,6 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 28
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             SHUJI CHOOSE 2 [^"Sensational Distraction", ^"Stirring the Embers", ^"Truth Burns through Lies"]
@@ -269,14 +246,6 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Some serpentine Shinomen Mori Naga possess the
-        # training and natural aptitude to cloak themselves in
-        # illusory guises. Seers are adept at bending others'
-        # perceptions and are occasionally sent out to interact
-        # with and learn about human cultures. They are also
-        # dangerous combatants due to their physical size and
-        # massive tails.
-
         PROPERTIES {
             ^"School Name" STRING "Shinomen Naga Seer Tradition" FIXED
             ^"Roles" LIST ["Courtier", "Bushi"]
@@ -288,7 +257,6 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 55
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA CHOOSE 1 [^"Crescent Moon Style", ^"Striking as Water"]
@@ -366,13 +334,6 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # The dexterous and adaptive nezumi of the Tattered
-        # Ear tribe dwell deep in the Shinomen Mori. Expert
-        # hunters, scavengers, and survivalists. Though cautious
-        # and observant, they are eager to learn about Rokugan
-        # and its peoples. Every generation, one or two scouts
-        # are given permission to leave and explore.
-
         PROPERTIES {
             ^"School Name" STRING "Nezumi Tattered Ear Explorer Tradition" FIXED
             ^"Roles" LIST ["Bushi"]
@@ -384,7 +345,6 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 18
             ^"Techniques Available" LIST ["Kata", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA ^"Razor Bite"
@@ -463,12 +423,6 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # The tengu are bird-like yokai who soar through the air
-        # and change their appearances. The Mask of Air tradition
-        # shrouds the tengu in illusions so complete they feel real
-        # to the touch. Practitioners wander from their mountain
-        # homes to explore Rokugan and learn about its peoples.
-
         PROPERTIES {
             ^"School Name" STRING "Tengu Mask of Air Tradition" FIXED
             ^"Roles" LIST ["Monk", "Sage"]
@@ -480,7 +434,6 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 55
             ^"Techniques Available" LIST ["Invocations", "Kihō", "Rituals"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA ^"Flight"
@@ -559,12 +512,6 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # The Woolen Hooves are Yobanjin residing in mountains
-        # north of Dragon lands. Thought by some to share ancestry
-        # with the Utaku Battle Maidens as they breed woolly ponies
-        # and are adept horseback riders. Their survival and trapping
-        # skills have been honed to near perfection over generations.
-
         PROPERTIES {
             ^"School Name" STRING "Woolen Hooves Trapper Tradition" FIXED
             ^"Roles" LIST ["Artisan", "Bushi"]
@@ -576,7 +523,6 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 28
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA CHOOSE 2 [^"Bear's Swipe Style", ^"Hawk's Precision", ^"Striking as Earth", ^"Striking as Water"]
@@ -657,18 +603,8 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
     ^"Woolly Pony" DEF {
         APPLIES TO [#te28b9de1d70883d12c080 ^"Item"]
 
-        # Stout and enduring, bred for cold weather and rough
-        # conditions. Based on Rokugani Pony (core rulebook p326)
-        # with the following modifications: Remove Skittish
-        # disadvantage, add one of Exact Memory (Earth), Sharp
-        # Eyes (Water), or Reliable (Earth). Also gains
-        # Cold-Weather Endurance (Earth). Increase endurance by
-        # +2, composure by +5, replace Hide (Physical 2) with
-        # Woolen Pelt (Physical 3). Increase conflict rank by +1
-        # and intrigue rank by +2.
-
         RULES {
-            #L5RWW13oP4qR6sT8uV0wX2yZ: woolly_pony_cold_weather_modifications
+            #L5RWW13oP4qR6sT8uV0wX2yZ: woolly_pony_cold_weather_modifications "Woolly Pony: Woolly ponies are stout and enduring, bred for cold weather and rough conditions. A woolly pony can be represented with the following modifications to the Rokugani Pony profile found on page 326 of the core rulebook:\n\nRemove the Skittish disadvantage, and then add either Exact Memory (Earth) [Scholar; Mental], Sharp Eyes (Water) [Scholar; Physical], or Reliable (Earth) [Social; Interpersonal, Mental]. It also gains Cold-Weather Endurance (Earth) [Martial; Physical].\n\nIncrease its endurance by +2, composure by +5, and replace Hide (Physical 2) with Woolen Pelt (Physical 3).\n\nIncrease its conflict rank (conflict symbol glyph) by +1 and its intrigue rank (intrigue symbol glyph) by +2."
         }
     }
 
@@ -679,10 +615,6 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
     # source stat block (page 90)
     ^"Craftsperson Upbringing" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # Craftspeople and artisans breathe life into the mundane
-        # things that make work easier as well as cultural things
-        # that make life worth living.
 
         PROPERTIES {
             ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Void"] INTEGER 1 }
@@ -695,17 +627,13 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RWW14aB5cD7eF9gH1iJ3kL: craftsperson_upbringing
+            #L5RWW14aB5cD7eF9gH1iJ3kL: craftsperson_upbringing "Craftspeople and artisans breathe life into the mundane things that make work easier as well as into the cultural things that make life worth living. The act of creation can also be dao: a path, a way of living. The patience, discipline, foresight, and skill to craft a good or piece of art serve as examples to take hold of in life. Such a work benefits the community, improving life and improving the dao of the creator and of those who interact with the work.\n\nAnyone who creates something practices this kind of dao, whether they are a carpenter constructing a sturdy house, a weaver making protective clothes for winter, or a brewer making sake. Those who know a craft, such as papermakers, potters, stonemasons, and smiths, can always find work somewhere."
         }
     }
 
     # source stat block (page 90)
     ^"Farmer Upbringing" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # Farmers, the backbone and stomach of Rokugan, contend
-        # with problematic weather, difficult soil, banditry, and
-        # strain on personal health.
 
         PROPERTIES {
             ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Water"] INTEGER 1 }
@@ -718,17 +646,13 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RWW15mN6oP8qR0sT2uV4wX: farmer_upbringing
+            #L5RWW15mN6oP8qR0sT2uV4wX: farmer_upbringing "Farmers, the backbone and stomach of Rokugan, contend with problematic weather, difficult soil, banditry, and strain on personal health to ensure that the Emerald Empire continues to see a new sunrise. Yet, events beyond their control—overtaxation, years of poor harvest, war—threaten not only their livelihoods but their very lives.\n\nAs a result, the popular image of farmers being happy and content in their lot ignores the complexities of their reality. While of course those who have suffered no calamities may indeed be happy, many farmers see no relief from endless struggle. A character playing a farmer is often hard-working, pragmatic, and loyal to their own. Such characters may also be skeptical of outsiders, particularly if they have had bad experiences in the past with others."
         }
     }
 
     # source stat block (page 91)
     ^"Hunter or Fisher Upbringing" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # The land and ocean give abundantly, provided a person
-        # is patient and clever enough to take advantage of that
-        # plenty.
 
         PROPERTIES {
             ^"Ring Increase" DEF { CHOOSE 1 [^"Earth", ^"Water"] INTEGER 1 }
@@ -741,17 +665,13 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RWW16yZ7aB9cD1eF3gH5iJ: hunter_fisher_upbringing
+            #L5RWW16yZ7aB9cD1eF3gH5iJ: hunter_fisher_upbringing "The land and the ocean give abundantly, provided a person is patient and clever enough to take advantage of that plenty. Traps and nets can increase a hunter's or fisher's range, while understanding tracks and the currents can bring them to the right place at the right time. This knowledge gets passed down from generation to generation, preserving expertise through apprenticeships, instruction, and inheritance.\n\nIntrepid hunters and fishers must endure the vicissitudes of the weather, the perils of wilderness and ocean, and the risk of predators. As the wind, earth, and water temper these people, it's no wonder they associate themselves with those elements. Because of this close relationship, hunters and fishers don't think of themselves as masters of the earth or water, but rather as their children. To acquire expertise as a hunter or fisher requires experience, specialized knowledge, and a sense of adventure to find new hunting grounds and fishing spots."
         }
     }
 
     # source stat block (page 91)
     ^"Temple Upbringing" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # Many temples are open to those who wish to find
-        # spiritual Enlightenment and who seek to better
-        # understand their inner self.
 
         PROPERTIES {
             ^"Ring Increase" DEF { CHOOSE 1 [^"Void", ^"Air"] INTEGER 1 }
@@ -764,7 +684,7 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RWW17kL8mN0oP2qR4sT6uV: temple_upbringing
+            #L5RWW17kL8mN0oP2qR4sT6uV: temple_upbringing "Many temples are open to those who wish to find spiritual Enlightenment and who seek to better understand their inner self, even at a young age. Other youth might join a temple to flee a bad situation or an abusive home life. Occasionally, unprepared parents leave children at the threshold of a temple, hoping that the monks within will provide what they either cannot or will not.\n\nThose who have spent formative years in a temple may find themselves caught in a teetering balance between being at peace with the will of the world and seeing myriad examples of that peace being tarnished when they venture outside the temple grounds. Not everyone who is raised in a spiritual house is driven by a desire for justice, but many are, wishing to bring harmony and Enlightenment to those around them."
         }
     }
 
@@ -956,15 +876,9 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
     ^"New Samurai Heritages (Dragon)" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Table 2-3: New Samurai Heritages for characters with
-        # ancestral connections to the Dragon Clan. Can be used
-        # instead of Table 2-1 in the core rulebook. Roll d10.
-
         HERITAGE_TABLE {
 
             1 ^"At One with Nature" DEF {
-                # One of your ancestors was known as a true protector
-                # of nature, appreciated by humans and kami alike.
 
                 MODIFIERS {
                     ^"Glory" "+5"
@@ -984,9 +898,6 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
             }
 
             2-3 ^"Ties to the Perfect Land Sect" DEF {
-                # One of your ancestors was a suspected member of the
-                # Perfect Land Sect, a blasphemous cult set on
-                # dismantling the Empire.
 
                 MODIFIERS {
                     ^"Glory" "-5"
@@ -1006,8 +917,6 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
             }
 
             4-5 ^"Medical Innovator" DEF {
-                # Your ancestor was renowned for using unconventional
-                # methods for treating illnesses in humans and animals.
 
                 MODIFIERS {
                     ^"Honor" "+5"
@@ -1019,8 +928,6 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
             }
 
             6-7 ^"Gaijin Consort" DEF {
-                # Your ancestor was rumored to trade and work with
-                # northern gaijin.
 
                 MODIFIERS {
                     ^"Honor" "-2"
@@ -1033,9 +940,6 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
             }
 
             8-9 ^"Revered Parent" DEF {
-                # Your ancestor was blessed with many children, an
-                # oddity in the Dragon Clan, all of whom grew to
-                # adulthood and bore many children of their own.
 
                 MODIFIERS {
                     ^"Status" "+3"
@@ -1047,8 +951,6 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
             }
 
             10 ^"Path to Enlightenment" DEF {
-                # One of your ancestors was known for their dedication
-                # to achieving true Enlightenment and offering guidance.
 
                 MODIFIERS {
                     ^"Glory" "+3"
@@ -1064,7 +966,13 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RWW29yZ0aB2cD4eF6gH8iJ: dragon_samurai_heritages_table
+            #L5RWW29yZ0aB2cD4eF6gH8iJ: dragon_samurai_heritages_table "New Samurai Heritages: A variety of unique heritages arise from having a bloodline derived – at least in part – from the Dragon. This is true even for non-Dragon characters, who may bear Dragon blood because of marriage of members of their clan into their family lineage.\n\nTable 2–3: New Samurai Heritages represents these backgrounds when creating a new samurai PC who has ancestral connections with the Dragon Clan. This table can be used instead of Table 2–1: Samurai Heritages on page 96 of the core rulebook, and is used in the same manner."
+            #NzpgFCf0FYAfS1iqO6GbUO: heritage_at_one_with_nature "At One with Nature: One of your ancestors was known as a true protector of nature, and their preservation and reverence was appreciated by humans and kami alike."
+            #HOPSFZchPSmSZOj9jovX82: heritage_ties_to_the_perfect_land_sect "Ties to the Perfect Land Sect: One of your ancestors was a suspected member of the Perfect Land Sect, a blasphemous cult set on dismantling the Empire and bringing power to those who are low."
+            #mzOeBMeefcvwiiJol0rda6: heritage_medical_innovator "Medical Innovator: Your ancestor was renowned for using unconventional and innovative means and methods for treating illnesses in both humans and animals. Your family has retained this tradition and takes pride in healing all who are in need."
+            #SqqlErQYtJBH5gLmMFq5ac: heritage_gaijin_consort "Gaijin Consort: Your ancestor was rumored to trade and work with northern gaijin. Though the Dragon Clan often looks the other way, other clans are not as understanding."
+            #ZbdTLeJaNtNDsCPhsEWu9r: heritage_revered_parent "Revered Parent: Your ancestor was blessed with many children, an oddity in the Dragon Clan. More so, all of those children grew to adulthood and went on to bear many children of their own."
+            #Bn5mEukmJL9qF1N6J1PHGD: heritage_path_to_enlightenment "Path to Enlightenment: One of your ancestors was known for their dedication to achieving true Enlightenment and serenity and offering guidance to those who wished to walk the same path."
         }
     }
 
@@ -1080,16 +988,7 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
     ^"Question 1: What Region Does Your Character Come From?" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # For a character who doesn't fit into samurai society,
-        # the lands they hail from are as important to their
-        # identity as a clan is to a samurai. The place where a
-        # character has spent many years of their life imparts
-        # particular skills and may impress upon them certain
-        # inclinations regarding how to approach the world.
         #
-        # Writ of the Wilds offers three regions suited to
-        # characters who live outside the cities and towns
-        # of Rokugan: Rural Farmland, Forest, and Mountain.
 
         PROPERTIES {
             ^"Question" INTEGER 1 FIXED
@@ -1103,20 +1002,12 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RWW30aB1cD3eF5gH7iJ9kL: wow_q1_region_selection
+            #L5RWW30aB1cD3eF5gH7iJ9kL: wow_q1_region_selection "For a character who doesn't fit into samurai society, the lands they hail from are as important to their identity as a clan is to a samurai. Even within Rokugan, the geography and character of the land can shift dramatically as soon as one passes over the next hill or crosses a hungry river. The place where a character has spent many years of their life imparts particular skills and may impress upon them certain inclinations regarding how to approach the world, both within and outside the environment to which the character is accustomed."
         }
     }
 
     ^"Question 2: What Was Your Character's Upbringing?" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
-
-        # The following options are appropriate for characters
-        # built outside of the samurai society of Rokugan.
-        # Because most regions include the opportunity for
-        # myriad upbringings, these are not tied to specific
-        # areas. Regardless of which region you choose for your
-        # character, you should pick an upbringing you feel is
-        # appropriate for them.
 
         PROPERTIES {
             ^"Question" INTEGER 2 FIXED
@@ -1131,7 +1022,7 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RWW31mN2oP4qR6sT8uV0wX: wow_q2_upbringing_selection
+            #L5RWW31mN2oP4qR6sT8uV0wX: wow_q2_upbringing_selection "The following options are appropriate for characters built outside of the samurai society of Rokugan. Because most regions include the opportunity for myriad upbringings, these are not tied to specific areas. Regardless of which region you choose for your character, you should pick an upbringing you feel is appropriate for them. If you have a very specific character idea and none of the following options fit, feel free to discuss adjusting one of these upbringings with your GM."
         }
     }
 
@@ -1139,16 +1030,7 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
     ^"Question 5: What is Your Character's Past and How Does It Affect Them?" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # A past is a story, one that can deeply impact a person.
-        # Because ronin have lost their place in samurai society
-        # their stories tend to be tragic. The pasts presented
-        # here can be used as inspiration to help tell unique,
-        # personal stories that offer fun narrative moments.
         #
-        # A past should be a force that propels the character
-        # forward, similar to giri. It is usually some sort of
-        # personal obligation, antagonizing entity, or choice
-        # that haunts the character even now.
 
         PROPERTIES {
             ^"Question" INTEGER 5 FIXED
@@ -1156,7 +1038,20 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RWW32yZ3aB5cD7eF9gH1iJ: wow_q5_past_selection
+            #L5RWW32yZ3aB5cD7eF9gH1iJ: wow_q5_past_selection "A past is a story, one that can deeply impact a person. Because rōnin have lost their place in samurai society their stories tend to be tragic, ones of circumstances that have kept them from fulfilling their promise or destiny. While Table 2–1: Sample Pasts provides a wide range of different pasts, players should feel free to develop their own rather than roll if they desire. The pasts presented here can be used as inspiration to help tell unique, personal stories that offer fun narrative moments!\n\nA past should be a force that propels the character forward, similar to giri, or duty. A past is usually some sort of personal obligation, antagonizing entity, or choice that the character or someone else made that haunts the character even now.\n\nWhen selecting a past, it's important to keep in mind that this is not something that a character will be able to avoid! Players should choose a past that has the potential to cause problems that the player finds interesting, because the GM will be using these pasts to present challenges, interesting narrative scenes, and discord. When a character's past comes up in a session, it will likely make a character's day unpleasant, conflicting with their ninjō, getting them into trouble, or even threatening their life. There might be hard decisions or tough fights ahead for the character when their past rears its head, and selecting a past that strikes a chord with a player is important in having fun! Characters will struggle, and that struggle should remain fun for players as they watch their character grow."
+            #ctxoHhpO79gWyfRsogj1Pq: past_01_06_spiritual_troubles "Spiritual Troubles: Because you desecrated a shrine, ignored an oath, or crossed the Fortunes (or other spirits) in some other way, these forces hound you at every turn. You face curses; misfortune; subtle distrust from those around you, even if they do not know what you did; or direct attacks by spirits."
+            #JYAkjfwyjdeQCSzXXC2fnU: past_07_14_bad_family_history "Bad Family History: Your family may or may not have been falsely accused, but sometimes the accusation is enough. Too many people know and judge you for it."
+            #IBWbWI1XhBo8NpIhhFEuyx: past_15_22_bad_reputation "Bad Reputation: Due to an actual or imagined wrongdoing, your name is a burden to you. You, or a close relation associated with you, may have:\n\nBeen accused of murder\n\nAuthored an inappropriate work (a pillow book, a heretical tract, or a satire about the Emperor)\n\nHad a messy affair and perhaps produced a child\n\nEngaged in thievery\n\nVoluntarily left your liege"
+            #yi6W64BAS0EPtjDg3nck8C: past_23_30_debts_to_pay "Debts to Pay: You owe a vast sum of money to some individual or family, and you must pay back a percentage of it on a regular basis. If you fail to make a payment, you may find yourself the target of a bounty."
+            #afEPQzM664ZJoPxMtY1Ksx: past_31_38_desertion "Desertion: Whether due to cowardice or for admirable reasons, you left your post. Your commander, liege, or peers intend to bring you back to answer for your crime."
+            #TXHFOXPT7sCbW7Djm6shMo: past_39_46_duty "Duty: You still adhere to an ideal, whether it comes from a clan, your monastic vows, a governmental post, your family, or other outsiders. Without this ideal, you would fall apart. If you choose this past, you may optionally use the rules for giri in the core rulebook, with your GM's approval (pages 88–90)."
+            #WHKhJBhkzuverYlfGYDPzt: past_47_54_fallen_family_legacy "Fallen Family Legacy: Your family once had a name, land, and title. You still have the name, but nothing else. Your name, however, does not protect you from bitter heimin or ruthless bandits, and other samurai treat you worse than dirt."
+            #EoRl46njpYK2WcbzzMhvQ9: past_55_62_family_in_need "Family in Need: Your family needs money, medicine, care, attention, rescue from a rival clan or mysterious captors, or some other thing from you. Without it, they will perish."
+            #wcoo6R2uuWFxvp3WLJBmRU: past_63_70_forsaken_vows "Forsaken Vows: Perhaps you still keep your head shaved, but you were expelled from a monastery or left for personal reasons. You cannot return until you resolve those issues."
+            #v2bEsb4n2zjnuQDzwkYHn5: past_71_78_long_path_of_waves "Long Path of Waves: After your gempukku, you set out to explore the world. You have not returned to your home, and your family seeks to take you back."
+            #vXjcfn1NSEZIbQCrBOBZ94: past_79_86_lifelong_enemy "Lifelong Enemy: An individual or a family has competed against you for the same love, position, power, wealth, or fame all your life. They block you at every turn."
+            #mqaBCiVDXLyGpbuYz7FL5G: past_87_93_unearned_heroism "Unearned Heroism: You won a duel or contest against a master by accident or via nefarious means. The master or their subordinate seeks you out, and the pressures of your reputation follow you."
+            #FSFAh4faFUh7brdZZyEqO3: past_94_100_witness "Witness: You know too much, having observed a crime, spied on some evil magic, or seen nobility where they shouldn't have been. You've kept your mouth shut, but the spied-upon party wants you silent permanently."
         }
     }
 
@@ -1164,20 +1059,33 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
     ^"Question 6: What Does Your Character Long For, And How Might Their Past Affect Their Ninjō?" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # Outsiders have as many desires as there are stars in
-        # the sky. The path of waves requires incredible
-        # fortitude, and no human can withstand that stress
-        # without wanting something. To create a good personal
-        # desire for a character, this desire needs to have the
-        # potential to conflict with their past.
-
         PROPERTIES {
             ^"Question" INTEGER 6 FIXED
             ^"Question Text" STRING "What does your character long for, and how might their past affect their ninjō?" FIXED
         }
 
         RULES {
-            #L5RWW33kL4mN6oP8qR0sT2uV: wow_q6_ninjo_selection
+            #L5RWW33kL4mN6oP8qR0sT2uV: wow_q6_ninjo_selection "Outsiders have as many desires as there are stars in the sky. The path of waves requires incredible fortitude, and no human can withstand that stress without wanting something. In general, players should have the freedom to come up with their characters' ninjō. The Table 2–2: Sample Ninjō only represents a tiny sample of potential desires (and players may roll or choose one from here, if they desire); players and GMs can use them to galvanize their own imaginations. To create a good personal desire for a character, this desire needs to have the potential to conflict\n\nwith their past. On pages 90–91 of the core rulebook there is more information on creating interesting and impactful ninjō. For this book, that advice can be applied to the conflict between ninjō and pasts, rather than ninjō and giri."
+            #p9Qpkm6C6KL3PYIrSMcZdY: ninjo_01_04_achieve_mastery "Achieve Mastery: Whether at swordplay, art, calligraphy, poetry, or even butchery, you seek to be the best through constant challenges. You may, however, settle for merely being seen as the best."
+            #RFw1YLASrGQ5eq8DoUEtM0: ninjo_05_08_amass_followers "Amass Followers: You claim to be a bandit leader, crime lord, or head of a heretical cult. You may actually be charismatic or have an elitist or populist message, but you still need an audience to appreciate you."
+            #ubfRV1XdfaykAj1ho5QXlM: ninjo_09_13_assist_the_spirits "Assist the Spirits: While others deal with the corporeal, your concern lies with the spiritual. Plenty of spirits are lost, abused by humans, or unmoored from where they belong, and they require compassion."
+            #LIREzhCK8W1KtpcsyXNwfc: ninjo_14_18_atonement "Atonement: You did a great wrong and must make up for it. Your guilt drives you, as does the belief that your death can't correct the mistake: only your actions can."
+            #vhidU8KA4IGd6vwVS7Of30: ninjo_19_23_construct_a_great_work "Construct a Great Work: You are driven to construct a masterwork, whether a gate, sculpture, painting, text, or shrine. You need the best materials, ideal location, and perfect inspiration, however, to make your magnum opus last the ages."
+            #CDbf9rgpwIjipGOq0QMI8e: ninjo_24_28_discover_a_family_heritage "Discover a Family Heritage: Your family has lost a claim to greatness. You must find it. It could be a lineage scroll, an ancient relic, or a piece of art or architecture."
+            #LT6CQoEqtrCCbL5bo9CTMa: ninjo_29_33_enact_justice "Enact Justice: The Celestial Order has been disrupted. You intend to embody justice by exposing a vicious secret, revealing evidence of a crime, or getting a criminal to confess."
+            #joljbaM4nJx6sz9Wnpqc6s: ninjo_34_38_establish_a_family "Establish a Family: You want to begin a grand lineage. Love in this case is secondary, but your partner, or partners, must share your goal for this family to be strong and united."
+            #p3H7sWTqOkXYAsV5V2QHU7: ninjo_39_43_find_a_lord_to_serve "Find a Lord to Serve: You wish to do what many rōnin long to for––find a lord, a house, and a place where you belong. You wish to regain a status you once lost, improve your station, or integrate into a foreign society as fully as you are able."
+            #NDtXhM4BQHWrdG1LY6vbIg: ninjo_44_48_find_a_sensei "Find a Sensei: To study under the great masters is the path to becoming a great master yourself, and a sensei's recognition of your potential is the greatest compliment. For those less scrupulous, this also means benefiting from a sensei's reputation."
+            #kPWsSlF0qAIuC6p2Y7eTpF: ninjo_49_53_find_true_love "Find True Love: Love may be a frivolous emotion, but it brings you happiness. The world scoffs at such trivialities, making true love rare, but rarity makes it all the more valuable."
+            #kKovciEmdswrMHBfGsweJj: ninjo_54_58_gain_mystical_power "Gain Mystical Power: You want the power to change the world—reality itself—through legitimate study or as a mahō-tsukai, a blood magic practitioner. You might obtain this power through ancient knowledge, bargaining with a spirit, or supernatural insight from kami or kansen."
+            #OW6TrYDqXRvCJdSGVYkXsh: ninjo_59_63_kill_monsters "Kill Monsters: Demons cause misery and weaken society. They may also have caused harm to you or your loved ones. You must destroy these spirits of corruption, both for your own sake and for the sake of the world."
+            #DE3FWvt26yCPGM3EsfUAqT: ninjo_64_68_regain_your_home "Regain Your Home: Perhaps you have traveled far from your homeland and have since lost your way, or maybe your home was destroyed by a natural event, a supernatural creature, or an angry noble. Whatever it was, your home is gone, and you desperately wish to return to or rebuild it."
+            #Wrvqrw1vgpn8kI3Glb7bGB: ninjo_69_73_personal_security "Personal Security: Be it a parcel of land, money to buy your way into a more secure living situation, or a financial stipend, you want some reliable material resource to ensure that you and your family have a future."
+            #nIlEjyNQhEDLnHXpxMph7X: ninjo_74_78_recover_a_relic "Recover a Relic: History is a story, and stories carry power. A relic holds all three, connecting you to the past. The relic you strive to recover—whether it has cultural, monetary, or spiritual power—can grant you a future."
+            #yRVesMxnp0ibFHwTjAsvfS: ninjo_79_83_build_a_reputation "Build a Reputation: You want your reputation to spread throughout Rokugan, to samurai and heimin alike. Perhaps with a little inspiration, your deeds will be written into history."
+            #enICAe5xrdgDxfjw5L4nCK: ninjo_84_88_tame_a_great_beast "Tame a Great Beast: Terrifying creatures roam Rokugan. They harass farmers and hunters and disrupt the order of life. Only you can end this threat, by taming it, but there is always another one in the next forest."
+            #c6iLassy9kedLbIi6lmlkc: ninjo_89_93_uncover_a_conspiracy "Uncover a Conspiracy: Whispers in the shadows and behind walls hint of a plot to overthrow or murder those in power. Friends may be foes, and trust is a rare commodity. You walk in those same shadows to bring the conspirators into the light."
+            #WRxrGmTZhIMpJiVxrSuEP4: ninjo_94_100_wreak_vengeance "Wreak Vengeance: A villain has wronged you or someone you care about. The wrongdoer may or may not know or remember you. You have pledged something worse than death for them."
         }
     }
 
@@ -1185,15 +1093,7 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
     ^"Question 7: What is Your Character Known For?" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
 
-        # No two people follow the same path as they journey
-        # through life. While two or more ronin and travelers
-        # far from home may band together to increase their
-        # chances of survival, their values, abilities, and
-        # actions may vary wildly, affecting how each is
-        # remembered by the people they meet along the way.
         #
-        # Choose a talent, event, or other deed that your
-        # character is known for.
 
         PROPERTIES {
             ^"Question" INTEGER 7 FIXED
@@ -1206,21 +1106,13 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RWW34wX5yZ7aB9cD1eF3gH: wow_q7_known_for_selection
+            #L5RWW34wX5yZ7aB9cD1eF3gH: wow_q7_known_for_selection "No two people follow the same path as they journey through life. While two or more rōnin and travelers far from home may band together to increase their chances of survival, their values, abilities, and actions may vary wildly, affecting how each is remembered by the people they meet along the way.\n\nChoose a talent, event, or other deed that your character is known for. It can be positive or negative, and it may or may not be connected to their past. A rōnin might be known for abandoning their lord, for having a way with animals, or for going out of their way to help peasants. A gaijin might be known for their skilled craftsmanship or their exemplary fighting style. Or perhaps they are known for a being an embarrassment, which has caused them to leave home and wander Rokugan instead of staying with their own people.\n\nIf your character is known for an intentional deed, skill, or pattern of behavior that has helped others, even if they have been shunned or embarrassed about it, they gain +5 glory to represent their social prestige.\n\nIf your character is known for deeds, actions, skills, or even a single event that others have perceived as wicked, harmful, or exceptionally selfish, or if your character did something badly at odds their culture's or family's values, then your character gains 1 rank in a skill that they currently have 0 ranks in. This skill should represent the choices your character has made that have upset the normal order of things in the eyes of their family or society."
         }
     }
 
     # source stat block (page 93)
     ^"Question 8: What Does Your Character Think of Bushidō?" DEF {
         APPLIES TO [#t14626300ed0f58aa6f93a ^"Ronin", #L5R007qR8sT0uV2wX4yZ6a ^"Peasant", #t822273f0dfaf436b4dfe8 ^"Gaijin"]
-
-        # Everyone who lives or travels within Rokugan must
-        # decide how they feel about the core of its society:
-        # Bushido. Though peasants are not expected to adhere
-        # to Bushido in most contexts, and ronin are in a
-        # strange position of being samurai with none of the
-        # inherent benefits, each should understand what Bushido
-        # is enough to have feelings about it.
 
         PROPERTIES {
             ^"Question" INTEGER 8 FIXED
@@ -1234,7 +1126,7 @@ EXTENSION "L5R5e_Writ_of_Wilds" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RWW35iJ6kL8mN0oP2qR4sT: wow_q8_bushido_selection
+            #L5RWW35iJ6kL8mN0oP2qR4sT: wow_q8_bushido_selection "Everyone who lives or travels within Rokugan must decide how they feel about the core of its society: Bushidō. The tenets and teachings of Bushidō encompass all that samurai do—and it is difficult, if not impossible, to do anything within the Emerald Empire without being affected, at least tangentially, by the samurai class. Though peasants are not expected to adhere to Bushidō in most contexts, and rōnin are in a strange position of being samurai with none of the inherent benefits, each should understand what Bushidō is enough to have feelings about it.\n\nHowever, this may not be true for gaijin characters. Someone who has just arrived in Rokugan may know very little about its culture, which puts them at a big disadvantage. Still, it is more likely that a gaijin visitor would be somewhat versed in the ways of the Empire—at least enough to know how to avoid an untimely death.\n\nLike the Great Clans, individuals and cultures place different levels of emphasis on various tenets and values. To represent the individuality and nuances of your character's personal beliefs, choose one tenet of Bushidō as paramount and one tenet as less significant (see The Clans' Views of Bushidō, page 301 of the core rulebook, for more information). Then, choose one of the following options:\n\nYour dedication to Bushidō affects all that you do. If your character's belief in living an orthodox interpretation of Bushidō is very staunch, gain +10 honor.\n\nIf your character's values diverge from some or all of the common values of Bushidō, gain one item of rarity 5 or lower to represent a time when that divergence both benefited your character and pulled them further from the true path.\n\nYou know little about Bushidō and its significance to Rokugani culture. Your ignorance will be short-lived, however, because you will either learn quickly or meet your end at the hand of an angered samurai. Gain 1 rank in one of the following skills to represent your ignorance of Bushidō: Commerce, Labor, Medicine, Seafaring, Skulduggery, or Survival."
         }
     }
 }

@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Fields of Victory: New Player Options"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -19,17 +19,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R250aB2cD4eF6gH8iJ0k ^"Clan"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # While most clans seem to spend all their time fighting
-        # each other, the Badger steadfastly defend the northwest
-        # border of the Emerald Empire. The trivialities of courtly
-        # life and interclan intrigue are less than important. Only
-        # the Crab face a more constant threat. Often forgotten
-        # by most of the major powers of the Empire, the Badger
-        # continue their charged duty with little to no outside
-        # support. Only by being as strong, resilient, and self-
-        # reliant as the mountains themselves can the Badger
-        # ensure no invaders gain entrance to Rokugan.
-
         PROPERTIES {
             ^"Clan Name" STRING "Badger" FIXED
             ^"Clan Type" STRING "Minor Clan"
@@ -43,12 +32,11 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RFV01aB2cD4eF6gH8iJ0k: badger_defend_northwest_border
-            #L5RFV02lM3nO5pQ7rS9tU1v: badger_bushido_righteousness_gi_important
-            #L5RFV03wX4yZ6aB8cD0eF2g: badger_bushido_courtesy_rei_less_important
+            #L5RFV01aB2cD4eF6gH8iJ0k: badger_minor_clan "The Badger Minor Clan: While most clans seem to spend all their time fighting each other, the Badger steadfastly defend the northwest border of the Emerald Empire. The trivialities of courtly life and interclan intrigue are less than important—and not even interesting. Only the Crab face a more constant threat. Still, although the Badger readily admit that no gaijin invader rivals the terrors of the Shadowlands, this doesn't diminish the importance of their duty deep in the Great Wall of the North mountains. Often forgotten by most of the major powers of the Empire, the Badger continue their charged duty with little to no outside support. Only by being as strong, resilient, and self-reliant as the mountains themselves can the Badger ensure no invaders gain entrance to Rokugan through the mountainous terrain they guard."
+            #L5RFV02lM3nO5pQ7rS9tU1v: badger_bushido_righteousness_gi_important "What Does Bushidō Mean to Your Clan?: The Badger are one of the most isolated clans in the Empire, and their samurai are as direct and hard as the mountains themselves. Sumai teaches them that strength comes from honest application of muscle and skill, not from honeyed words or blind acceptance. For this clan, to defend the border is to protect the Empire, and there can be no weakness in this area. When truth and honesty are forgotten, there is little to separate samurai from foreigners. For this reason, Righteousness (Gi) holds a special place for the Badger."
+            #L5RFV03wX4yZ6aB8cD0eF2g: badger_bushido_courtesy_rei_less_important "The Badger rarely leave their mountains, and while they are lively and enjoy games of all sorts, there is rarely need for mannered behavior within their lands. Every time they visit another court, they see only deceit and underhanded ways of twisting the truth for political gains. For a clan that prizes strength and iron, those samurai who rely on words instead of muscle are to be frowned upon at best. Thus, the Bushidō tenet of Courtesy (Rei) is less important to members of the Badger Clan.\n\nSee page 301 of the core rulebook for more information on how these can affect your honor and glory."
         }
     }
-
 
     # ===========================
     # BADGER FAMILIES
@@ -72,7 +60,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         }
     }
 
-
     # ===========================
     # NEW SCHOOLS
     # ===========================
@@ -81,14 +68,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
     ^"Agasha Ascetic" DEF {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # Combining the teachings of mystic and warrior, the
-        # samurai of the Agasha Ascetic School fill a valuable
-        # role when the Dragon Clan goes to war. Their skills in
-        # calling upon the kami are impressive, but their martial
-        # abilities mean they can attack and defend in combat
-        # as well as any bushi. This battlefield flexibility makes
-        # them dangerous and vital to the clan's small armies.
 
         PROPERTIES {
             ^"School Name" STRING "Agasha Ascetic" FIXED
@@ -102,7 +81,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Invocations", "Kata", "Rituals"]
         }
-
 
         STARTING_TECHNIQUES {
             INVOCATION CHOOSE 2 [^"Caress of Earth", ^"Cloak of Night", ^"Wall of Earth", ^"Yari of Air"]
@@ -182,15 +160,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Lion samurai are renowned across Rokugan for their
-        # prowess in war, and Akodo Soldiers are no exception.
-        # Almost all are products of the Akodo War College,
-        # where they specialize in having no specialization. Each
-        # can fill almost any role in the clan's order of battle,
-        # wielding any of Akodo's vaunted six weapons of the
-        # samurai with equal expertise. They can also provide
-        # battlefield medical support and tactical advice.
-
         PROPERTIES {
             ^"School Name" STRING "Akodo Soldier" FIXED
             ^"Clan" STRING "Lion"
@@ -203,7 +172,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA CHOOSE 1 [^"Striking as Fire", ^"Striking as Water"]
@@ -284,15 +252,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Rumors have long run of Daidoji battlefield agents who
-        # gather intelligence and disrupt enemy supply lines. Under
-        # the leadership of the most recent Daidoji daimyo, the
-        # Harrier corps has become far more effective at ending
-        # conflicts before they begin. Through sabotage,
-        # assassination, and forgery, a single harrier might negate
-        # tens, if not hundreds, of enemy warriors and ensure the
-        # Crane Clan is well defended.
-
         PROPERTIES {
             ^"School Name" STRING "Daidoji Harrier" FIXED
             ^"Clan" STRING "Crane"
@@ -305,7 +264,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 40
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA CHOOSE 1 [^"Soaring Slice", ^"Striking as Air"]
@@ -384,15 +342,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Unlike all other clans, the Crab are continually at war.
-        # The Shadowlands never sleeps, so neither can the
-        # stalwart samurai who are the primary defenders along
-        # the Wall. Hida Battle Leaders oversee this war, and
-        # must rely on tactics and sheer grit to counter the
-        # overwhelming forces of Fu Leng. These are the most
-        # respected commanders of the Crab Clan, as adept on
-        # a tactical board as they are on the field of battle.
-
         PROPERTIES {
             ^"School Name" STRING "Hida Battle Leader" FIXED
             ^"Clan" STRING "Crab"
@@ -405,7 +354,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 55
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA ^"Tactical Assessment"
@@ -485,16 +433,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Sumai is a very serious sport in most of Rokugan, with
-        # traditions and rituals that date back hundreds of years.
-        # Few are as devoted to it as the Badger and Crab Clans.
-        # Those who train exclusively as Ichiro Grapplers apply
-        # their skills in all aspects of their lives, fending off gaijin
-        # invaders just as they stand firm against their opponents
-        # in wrestling matches. In battle, a skilled Grappler needs
-        # no weapons other than their tenacious grip and
-        # immovable body to ensure none of their foes pass.
-
         PROPERTIES {
             ^"School Name" STRING "Ichiro Grappler" FIXED
             ^"Clan" STRING "Badger"
@@ -507,7 +445,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 45
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             KATA ^"Fierce Badger Style"
@@ -586,16 +523,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # While the Kakita and other swordsmith schools produce
-        # weapons that are unparalleled works of art, the hard
-        # realities of life in the mountains means a different path
-        # for the Ichiro. There is little call for art in this school,
-        # which concentrates on weapons and armor as tough and
-        # reliable as the rugged hills the Badger call home. Ichiro
-        # Ironsmiths are also famous for the speed with which
-        # they produce weaponry, something the Lion Clan relies
-        # upon greatly to arm its legions of ashigaru.
-
         PROPERTIES {
             ^"School Name" STRING "Ichiro Ironsmith" FIXED
             ^"Clan" STRING "Badger"
@@ -609,7 +536,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
             ^"Starting Patterns" STRING "Ichiro Pattern"
         }
-
 
         STARTING_TECHNIQUES {
             SHUJI CHOOSE 2 [^"Coursing March Chant", ^"Courtier's Resolve", ^"Honest Assessment", ^"Stirring the Embers"]
@@ -688,17 +614,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Ide Messengers call upon the powerful steeds of the
-        # Unicorn Clan to allow them to traverse the Emerald
-        # Empire with information useful to their clan. They do
-        # more than simply carry messages. They carefully
-        # interpret these messages so as to ensure that
-        # information can convey multiple layers of meaning for
-        # both originator and recipient. The grace and subtlety
-        # these diplomats display is legendary, as the Messengers
-        # use their travels to gather information useful for the
-        # Unicorn in both courts and battlefields.
-
         PROPERTIES {
             ^"School Name" STRING "Ide Messenger" FIXED
             ^"Clan" STRING "Unicorn"
@@ -711,7 +626,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             SHUJI ^"Lady Shinjo's Speed"
@@ -790,14 +704,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # The shugenja of the Isawa Tensai School practice an
-        # even more elite and specialized path than other Isawa
-        # schools. Isawa Tensai concentrate on a single element
-        # with which they have a natural affinity. This allows them
-        # to focus their energies upon that element and develop
-        # a unique link to the kami who embody it, letting them
-        # wield powers few can match.
-
         PROPERTIES {
             ^"School Name" STRING "Isawa Tensai" FIXED
             ^"Clan" STRING "Phoenix"
@@ -807,7 +713,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             ^"Starting Honor" INTEGER DEFAULT 50
             ^"Techniques Available" LIST ["Invocations", "Rituals", "Shūji"]
         }
-
 
         STARTING_TECHNIQUES {
             INVOCATION CHOOSE 1 [^"Any one rank 1 invocation of your inspired element"]
@@ -886,15 +791,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # All Matsu bushi are ferocious warriors, but Beastmasters
-        # are doubly dangerous, for they always have devoted
-        # animal companions fighting at their sides. This school
-        # teaches how to strengthen what could be an existing
-        # bond between human and beast. Their combined roar
-        # as they charge into battle is often enough to send
-        # lesser samurai running before steel or fang have even
-        # reached them.
-
         PROPERTIES {
             ^"School Name" STRING "Matsu Beastmaster" FIXED
             ^"Clan" STRING "Lion"
@@ -908,7 +804,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             ^"Techniques Available" LIST ["Kata", "Rituals", "Shūji"]
             ^"Starting Advantage" STRING "Animal Bond"
         }
-
 
         STARTING_TECHNIQUES {
             KATA ^"Warrior's Resolve"
@@ -988,19 +883,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         EXTENDS #L5R252wX4yZ6aB8cD0eF2g ^"School"
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Stories say that when the Yogo curse comes to pass
-        # in a betrayal too painful to bear, the betrayer may be
-        # offered a place in the Penitent Order. In monasteries
-        # scattered across Scorpion lands, these monks train
-        # their skills to a razor's edge. Unlike many other monks,
-        # who look inward for Enlightenment, those belonging
-        # to the Yogo Penitent Order seek redemption through
-        # service. Anyone who makes the pilgrimage to one of
-        # these hidden monasteries may plead their case to the
-        # Order. If the Order agrees the cause serves the good
-        # of Rokugan, it dispatches a deadly agent who serves
-        # that person's cause, even unto death.
-
         PROPERTIES {
             ^"School Name" STRING "Yogo Penitent Order" FIXED
             ^"Clan" STRING "Scorpion"
@@ -1014,7 +896,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             ^"Techniques Available" LIST ["Kata", "Kihō", "Rituals"]
             ^"Starting Disadvantage" STRING "Dark Secret or another disadvantage suitable to your past betrayal"
         }
-
 
         STARTING_TECHNIQUES {
             KATA CHOOSE 1 [^"Iron Forest Style", ^"Veiled Menace Style"]
@@ -1218,16 +1099,9 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
     ^"Fields of Victory Heritages" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # New heritages for samurai with ancestral connections
-        # to the Lion Clan or to famous masters of the battlefield.
-        # Used instead of the core rulebook heritage table.
-
         HERITAGE_TABLE {
 
             1 #0SK0L6ks5W2WD8kM6OrdPa ^"Born on the Battlefield" DEF {
-                # One of your ancestors was born amid war and bloodshed,
-                # even if not literally on the front lines. The omens of
-                # your birth reflect an affinity for that ancestor.
 
                 MODIFIERS {
                     ^"Glory" "-3"
@@ -1239,8 +1113,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             }
 
             2 #iIQZVjxDNrycKFXhdMG7Hj ^"Strategic Mastermind" DEF {
-                # You are descended from a warrior known for their cunning
-                # and wartime acumen.
 
                 MODIFIERS {
                     ^"Glory" "+5"
@@ -1262,8 +1134,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             }
 
             3 #UoXZRWG1ytFoEZdC6nporA ^"Victory against the Crane" DEF {
-                # In your family, one of your ancestors held a decisive
-                # victory over the Crane.
 
                 MODIFIERS {
                     ^"Glory" "+3"
@@ -1283,9 +1153,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             }
 
             4 #XScIgfsSgDKDaKU0n7aYn3 ^"Victory against Invaders" DEF {
-                # The Lion Clan's foremost duty is to protect the Empire
-                # from outside threats, and one of your kin acquitted
-                # themselves honorably in this endeavor long ago.
 
                 MODIFIERS {
                     ^"Honor" "+3"
@@ -1306,10 +1173,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             }
 
             5 #NzTSDxYLs8FeZuG1bs5wg9 ^"Shamed by Defeat" DEF {
-                # Among your kin is one who failed the clan. Whether
-                # beaten in battle or a duel, humiliated in court, or
-                # something else, the need to redeem your line burns
-                # within you.
 
                 MODIFIERS {
                     ^"Glory" "-3"
@@ -1321,9 +1184,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             }
 
             6 #4Ur9bjb2KL8cCmXcYAChv4 ^"Blade of 10,000 Battles" DEF {
-                # You have been entrusted with a storied weapon with an
-                # ancient history and lineage, and you must prove yourself
-                # worthy to continue its legacy.
 
                 MODIFIERS {
                     ^"Glory" "+3"
@@ -1336,9 +1196,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             }
 
             7 #MGZl7UIrPFoKcDf5AI1foe ^"Lost Heirloom" DEF {
-                # An ancestor of yours was once entrusted with a peerless
-                # weapon, but through their own failure, they lost it. It
-                # has fallen to you to recover it.
 
                 MODIFIERS {
                     ^"Honor" "+5"
@@ -1352,9 +1209,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             }
 
             8 #FSTRVOZDQHw7x7NkI1UEoL ^"Selfless Sentinel" DEF {
-                # Your ancestor was not well-known or highly favored, but
-                # they served with honor, if not glory, and protected Lion
-                # lands from attack for all their life.
 
                 MODIFIERS {
                     ^"Honor" "+5"
@@ -1367,9 +1221,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             }
 
             9 #vqXA6ao42WwxQ7K78n1ozk ^"Mighty Conqueror" DEF {
-                # One of your ancestors once seized a valuable prize for
-                # the Lion Clan in a past war, such as a village, castle,
-                # or valuable hostage.
 
                 MODIFIERS {
                     ^"Glory" "+3"
@@ -1382,8 +1233,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
             }
 
             10 #OXecHLPnQEYf96GmYWNcdY ^"Right Hand of the Emperor" DEF {
-                # The crowning glory of your line is the victory one of
-                # your ancestors won in the name of a past Emperor.
 
                 MODIFIERS {
                     ^"Status" "+3"
@@ -1394,6 +1243,20 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
                     "The group chosen must be the Seppun, Otomo, or Miya family, or the Imperial Legions"
                 }
             }
+        }
+
+        RULES {
+            #E1g2D1tJ4VTUj9og4YrkUh: new_samurai_heritages "New Samurai Heritages: A variety of unique heritages arise from having a bloodline derived—at least in part—from the Lion. This is true even for non-Lion characters, who may bear Lion blood because of the marriages of members of that clan into their family lineage. Some heritages are also appropriate to the great warriors and generals of all clans, even if they are most common within the Lion.\n\nTable 2–1: New Samurai Heritages represents these backgrounds when players create a new samurai PC who has ancestral connections to the Lion Clan or to famous masters of the battlefield. This table can be used instead of Table 2–1: Samurai Heritages on page 96 of the core rulebook and should be employed in the same manner."
+            #hHF2QUexSEcGUoCtsTQRYK: heritage_born_on_the_battlefield "Born on the Battlefield: One of your ancestors was born amid war and bloodshed, even if not literally on the front lines. The omens of your birth reflect an affinity for that ancestor, as such omens have done for others in your family line."
+            #gWbXwrJeaLDWfafMz6iaLZ: heritage_strategic_mastermind "Strategic Mastermind: You are descended from a warrior known for their cunning and wartime acumen."
+            #tVNfkkRgwEEHkgWSkhpPtF: heritage_victory_against_the_crane "Victory against the Crane: In your family, one of your ancestors held a decisive victory over the Crane. It may have been a battle, a game of shōgi, a duel, or any number of other things. The circumstances are irrelevant; the Crane were humbled, and your ancestor brought honor to your clan."
+            #s2mCEHI9uvsZOmg7rxWODq: heritage_victory_against_invaders "Victory against Invaders: The Lion Clan's foremost duty is to protect the Empire from outside threats, and one of your kin acquitted themselves honorably in this endeavor long ago."
+            #y9baYZm1927ZVW4Nu8ND2B: heritage_shamed_by_defeat "Shamed by Defeat: Among your kin is one who failed the clan. Whether they were beaten in battle or a duel, humiliated in court, or something else, the need to redeem your line burns within you and drives you to excel."
+            #NmCYXDQjLU0twXjc2y9l5y: heritage_blade_of_10000_battles "Blade of 10,000 Battles: You have been entrusted with a storied weapon with an ancient history and lineage, and you must prove yourself worthy to continue its legacy."
+            #vJSb2ioGtJAQZVlRxR12DO: heritage_lost_heirloom "Lost Heirloom: An ancestor of yours was once entrusted with a peerless weapon, but through their own failure, they lost it. It may have been taken by another clan as a trophy in battle after your ancestor's defeat, stolen by bandits or shinobi, or even dishonorably sold to cover gambling debts. Whatever its fate, it has fallen to you to recover it."
+            #JdzihQIoqNorhpyJuzZNF6: heritage_selfless_sentinel "Selfless Sentinel: Your ancestor was not wellknown or highly favored, but they served with honor, if not glory, and protected Lion lands from attack for all their life."
+            #Dq3VoRIusNo7FSysXgJTgL: heritage_mighty_conqueror "Mighty Conqueror: One of your ancestors once seized a valuable prize for the Lion Clan in a past war, such as a village, castle, or valuable hostage. The benefits of this prize still come to those of their descent."
+            #qE30w5EiCO7sr8lzsqch6N: heritage_right_hand_of_the_emperor "Right Hand of the Emperor: The crowning glory of your line is the victory one of your ancestors won in the name of a past Emperor. They may have crushed an enemy of the Empire, won great political favor, or even been a close associate or friend of the Emperor in times past. As such, the Imperial families have more respect for you than for most clan samurai—and they expect you to achieve accomplishments as glorious as those of your ancestor."
         }
     }
 
@@ -1472,7 +1335,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RFV32dE3fG5hI7jK9lM1n: fov_weapons_extend_core
+            #L5RFV32dE3fG5hI7jK9lM1n: weapons "Weapons: Fighting for the Empire and for honor demands armaments, and the Lion call upon smiths from their lands and beyond to fill this need. While most of the clan's bushi wield katana, some of which have been passed down through generations, others employ different weapons. This especially holds true for the vast legions of ashigaru and conscripted peasants who make up the bulk of most Lion armies."
         }
     }
 
@@ -1483,9 +1346,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
     # source (page 89)
     ^"Fields of Victory Yajiri" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
-
-        # When used with a bow, these arrows modify the
-        # weapon's profile as follows.
 
         ENTRIES {
             #xRmXrELYQwbVtS8A4ebvdO ^"Steel-Tip Yajiri" DEF {
@@ -1508,7 +1368,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RFV33oP4qR6sT8uV0wX2y: fov_yajiri_modify_bow_profile
+            #L5RFV33oP4qR6sT8uV0wX2y: yajiri "Yajiri (Specialized Arrowheads): As varied and unique as the artisans who craft them, yajiri are ornate steel arrowheads. These artisans favor the traditional inverted heart shape for its ability to pierce armor and hide. Many yajiri crafters engrave sacred or accusatory patterns into their arrowheads, along with ornate mon or personal sigils—either their own or those of the intended wielders. Others split the arrowhead points into two- or three-headed tips or add additional flourishes to make wielders' shots especially deadly. While many favor steel yajiri, others craft arrowheads of copper, iron, jade, or even obsidian.\n\nWhen used with a bow, these arrows modify the weapon's profile as follows:"
         }
     }
 
@@ -1612,7 +1472,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RFV34zA5bC7dE9fG1hI3j: fov_personal_effects_extend_core
+            #L5RFV34zA5bC7dE9fG1hI3j: personal_effects "Personal Effects: Soldiers in wartime must equip themselves both for the battlefield and for respite afterward. To successfully navigate the chaos of war, warriors must bring the right tools."
         }
     }
 
@@ -1656,7 +1516,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RFV35kL6mN8oP0qR2sT4u: fov_blessed_treasures_nemuranai
+            #L5RFV35kL6mN8oP0qR2sT4u: blessed_treasures "Blessed Treasures: The following blessed treasures pertain to Rokugan's glorious history of warfare, and as can be imagined, many are tied to the Lion Clan. Many are nemuranai, or awakened items (see page 307 of the core rulebook). All are rare and hard to acquire; GMs may wish to require characters to engage in long quests to locate or prove themselves worthy of such items."
         }
     }
 
@@ -1734,7 +1594,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RFV36vW7xY9zA1bC3dE5f: fov_item_patterns_crafting_secrets
+            #L5RFV36vW7xY9zA1bC3dE5f: item_patterns "Item Patterns: Not all items are created equally. Depending on the smith or artisan and the materials used in its creation, weapons, armor, and even clothing can vary greatly, not just in style, but in performance. The patterns used in item creation are usually carefully guarded secrets, ones that a master would entrust only to the worthiest of their apprentices.\n\nThere are two methods for gaining an item with one of these patterns. The first is for a character to apprentice themselves to a master to learn the means of crafting a new item with the desired pattern; this requires the PC to win the master's trust within the story of the game and then to spend the XP to learn the pattern. The other method is to requisition, purchase, or find an existing item with the pattern. The price is the same, but the rarity is altered by the pattern's listed rarity modifier."
         }
     }
 
@@ -2032,7 +1892,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RFV37gH8iJ0kL2mN4oP6q: fov_techniques_extend_core
+            #L5RFV37gH8iJ0kL2mN4oP6q: new_techniques "New Techniques: The following are new techniques that samurai from the Lion and other clans can use to lead armies and engage in battle on behalf of their clan and the Empire."
         }
     }
 
@@ -2294,8 +2154,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RFV38rS9tU1vW3xY5zA7b: fov_titles_narrative_advancement
-            #L5RFV39cD0eF2gH4iJ6kL8m: fov_titles_grant_ability_on_completion
+            #L5RFV38rS9tU1vW3xY5zA7b: new_titles "New Titles: The courts of Rokugan like to reward remarkable Imperial citizens with prestigious titles reflecting their glorious deeds and honorable souls. The various positions within a Rokugani army require titles as well. The following new titles follow the rules described on page 305 of the core rulebook."
         }
     }
 
@@ -2307,12 +2166,6 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
     ^"Honorable Demeanor" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # The Honorable demeanor reflects a personality often
-        # found in Lion Clan members and in other samurai who
-        # value the tenet of Meiyo (Honor) above all others. Such
-        # characters do not hesitate to overcome their fear and
-        # act correctly regardless of the consequences.
-
         PROPERTIES {
             ^"Demeanor" STRING "Honorable"
             ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
@@ -2320,7 +2173,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RFV40nO1pQ3rS5tU7vW9x: honorable_demeanor_fire_plus_two_earth_minus_two
+            #L5RFV40nO1pQ3rS5tU7vW9x: new_demeanor_honorable "New Demeanor: Honorable: The following new demeanor is designed to reflect a personality often found in Lion Clan members and in other samurai who value the tenet of Meiyo—Honor—above all others. Such characters do not hesitate to overcome their fear and act correctly regardless of the consequences. Honorable works in the same manner as the other demeanors on page 310 of the core rulebook."
         }
     }
 
@@ -2343,7 +2196,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RFV41yZ2aB4cD6eF8gH0i: fov_badger_clan_samurai_template
+            #L5RFV41yZ2aB4cD6eF8gH0i: fov_badger_clan_samurai_template "Badger Clan Samurai: This template can be used with any clan samurai profile."
         }
     }
 
@@ -2362,7 +2215,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RFV42aB3cD5eF7gH9iJ1kL: fov_historian_template
+            #L5RFV42aB3cD5eF7gH9iJ1kL: fov_historian_template "Historian: This template can be used with any clan samurai profile or subjects of Rokugan."
         }
     }
 
@@ -2381,7 +2234,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RFV43mN4oP6qR8sT0uV2wX: fov_imperial_legionnaire_template
+            #L5RFV43mN4oP6qR8sT0uV2wX: fov_imperial_legionnaire_template "Imperial Legionnaire: This template can be used with any clan samurai profile as well as the trained ashigaru and skillful rōnin profiles."
         }
     }
 
@@ -2401,7 +2254,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RFV44yZ5aB7cD9eF1gH3iJ: fov_instructor_template
+            #L5RFV44yZ5aB7cD9eF1gH3iJ: fov_instructor_template "Instructor: Apply this template to someone who is passing their skills on to someone else."
         }
     }
 
@@ -2421,7 +2274,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RFV45kL6mN8oP0qR2sT4uV: fov_lion_clan_samurai_template
+            #L5RFV45kL6mN8oP0qR2sT4uV: fov_lion_clan_samurai_template "Lion Clan Samurai: This template can be used with any clan samurai profile."
         }
     }
 
@@ -2440,7 +2293,7 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
         }
 
         RULES {
-            #L5RFV46wX7yZ9aB1cD3eF5gH: fov_mercenary_template
+            #L5RFV46wX7yZ9aB1cD3eF5gH: fov_mercenary_template "Mercenary: This template can be used with any bandit, rōnin, or ashigaru profile, or for someone selling their services."
         }
     }
 
@@ -2454,35 +2307,41 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
 
         ^"Mass Battle Opportunities" DEF {
             # Table 3-9: Spending Opportunity in Mass Battles
-            # Air (op)+: Choose an allied leader. Reduce TN of their next Scheme action by 1 per (op) spent. Persists until end of scene.
-            # Air (op)(op): Choose a leader in a fortification. That leader's cohort loses the benefits of the fortification until the beginning of your next turn.
-            # Earth (op)+: Remove 1 panic from your army per (op) spent.
-            # Earth (op)(op): Choose an allied leader. That leader's cohort cannot be targeted by Attack actions until the beginning of your next turn.
-            # Fire (op)+: The enemy army suffers 1 panic per (op) spent.
-            # Fire (op)+: When performing an Attack action against a cohort of an enemy leader with vigilance lower than or equal to (op) spent, after effects resolved, inflict a critical strike with severity equal to the deadliness of one of your weapons on that leader.
-            # Water (op)+: Choose an allied leader. Reduce TN of their next Movement action by 1 per (op) spent.
-            # Water (op)(op): Choose an enemy leader. That leader's cohort cannot perform Movement actions until the beginning of your next turn.
-            # Void (op)+: Your army and each enemy army suffer 2 attrition per (op) spent.
-            # Void (op)(op): When you perform a Support action, after effects resolved, you may immediately perform a Challenge action targeting an enemy cohort's leader.
-            # Void (op)(op): Increase the army's strength and discipline by 3. Persists until end of scene.
+
+            RULES {
+                #YeM3lns2eUQ1uh5RAwah59: mass_battle_air_op_plus "Air (op)+: Choose an allied leader other than yourself. Reduce the TN of that leader's next check for a Scheme action by 1 per (op) spent this way. This persists until the end of the scene."
+                #i96HB4NpfkEUZupphbFOEN: mass_battle_air_op_op "Air (op)(op): Choose a leader in a fortification. That leader's cohort loses the benefits of the fortification until the beginning of your next turn."
+                #hjLIZRRtqVYEc6oAfTuDoz: mass_battle_earth_op_plus "Earth (op)+: Remove 1 panic from your army per (op) spent this way."
+                #i9CedAGZn4guhENsasgJfK: mass_battle_earth_op_op "Earth (op)(op): Choose an allied leader other than yourself. That leader's cohort cannot be targeted by Attack actions until the beginning of your next turn."
+                #kHeXiPVqXbxWaQRQKF3Td2: mass_battle_fire_op_plus_panic "Fire (op)+: The enemy army suffers 1 panic per (op) spent this way."
+                #XWndl8dDfEVf8JenUJr0l0: mass_battle_fire_op_plus_critical_strike "Fire (op)+: When performing an Attack action against the cohort of an enemy leader with vigilance lower than or equal to (op) spent this way, after its effects are resolved, inflict a critical strike with severity equal to the deadliness of one of your weapons on that leader."
+                #Klay2HhGoJX5LDQIb2FJ45: mass_battle_water_op_plus "Water (op)+: Choose an allied leader other than yourself. Reduce the TN of that leader's next check for a Movement action by 1 per (op) spent this way."
+                #GtaGv52eYHFlVOPllexH4z: mass_battle_water_op_op "Water (op)(op): Choose an enemy leader. That leader's cohort cannot perform Movement actions until the beginning of your next turn."
+                #NRZ538gX2nlRN3nEqJ1EV4: mass_battle_void_op_plus "Void (op)+: Your army and each enemy army suffer 2 attrition per (op) spent this way."
+                #r02H6rJi1yrMObu4mihmy2: mass_battle_void_op_op_challenge "Void (op)(op): When you perform a Support action, after its effects are resolved, you may immediately perform a Challenge action targeting an enemy cohort's leader."
+                #ZsX09asvAruASIDNkv1Lrg: mass_battle_void_op_op_strength_discipline "Void (op)(op): Increase the army's strength and discipline by 3. This persists until the end of the scene."
+            }
         }
 
         ^"Contested Territory Opportunities" DEF {
             # Table 3-10: Spending Opportunity in Contested Territory
-            # Air (op): Discern signs of incoming trouble. Next conflict scene this session, add a kept die showing (op) to your Initiative check.
-            # Air (op)(op) or (op)(op)(op): Create a clever disguise or ruse. Next conflict scene, after Initiative, choose one character; on their next check, they must reroll all results containing (su).
-            # Earth (op): Reduce TN of next check dealing with unfamiliar situation or opponent by 1.
-            # Earth (op): Remove 1 strife for each condition you are currently suffering.
-            # Fire (op)(op): Immediately attempt a Scholar skill check to learn about current situation or present NPC, lowering TN by 1 (minimum 1).
-            # Fire (op)+: Any number of allies may remove 1 strife per (op) spent; for each character affected, you receive 1 strife.
-            # Water (op)(op)+: For each (op)(op) spent, one hostile character becomes friendlier toward you.
-            # Water (op)(op): Learn of one key feature, fortification, or terrain quality, and whether enemies have passed through recently.
-            # Void (op)+: You and a hostile character each recover 2 strife per (op) spent.
-            # Void (op)(op): Discover a neutral meeting place, protective legal precedent, or similar safe haven.
+
+            RULES {
+                #tWv7nAszVUIwoNBJqTp8YC: contested_territory_air_op "Air (op): You discern subtle signs of incoming trouble and can take steps to avoid it. The next time you enter a conflict scene this session, you may add a kept die showing (op) to your Initiative check."
+                #qtauHUnfGQoyfwO9zBf9RK: contested_territory_air_op_op "Air (op)(op) or (op)(op)(op): You create a clever disguise or ruse to get the jump on potential foes. The next time you enter a conflict scene this game session, after Initiative has been determined, choose one character in the scene. On that character's next check, they must reroll all results containing (su) symbols."
+                #oU1pT0XngisYzWmX8webp8: contested_territory_earth_op_unfamiliar "Earth (op): Not even the chaos of war or the strangeness of foreign lands can faze you. Reduce the TN of the next check you make to deal with an unfamiliar situation or opponent by 1."
+                #XdwJs0sGer0nsr6r9gD0sH: contested_territory_earth_op_conditions "Earth (op): You hold fast to the thought of home while in distant locales and dangerous situations. You may remove 1 strife for each condition you are currently suffering."
+                #pecXHiPwa0dvIbMUkQGjmo: contested_territory_fire_op_op "Fire (op)(op): A clever theory fills in the gaps in your knowledge. You may immediately attempt a Scholar skill check of your choice to learn about your current situation or an NPC who is present, lowering the TN by 1 (to a minimum of 1)."
+                #fE58fAlAOarl01VdQZ0ZFU: contested_territory_fire_op_plus "Fire (op)+: As you incite your allies to great fervor, any number of them may remove 1 strife for each (op) you spend. For each character affected, you receive 1 strife as you let your passion overtake you."
+                #Tsts8rw7uHE6b1DFwqrYYF: contested_territory_water_op_op_plus "Water (op)(op)+: Your charm wins over even enemies. For each (op)(op) spent, one hostile character within the scene becomes friendlier toward you. What exactly that means depends on context—it may defuse an imminent conflict, or encourage your foes to try to take you alive, but it won't stop bloodshed altogether once blades have been drawn."
+                #hgQrbA4JyghBnm86ErqYiE: contested_territory_water_op_op "Water (op)(op): With cunning, you flow smoothly from one conclusion to the next. You learn of one key feature, fortification, or terrain quality present in the surrounding area, and whether or not enemies have passed through recently."
+                #dKUu9X8AaHvAXKGhvW5frd: contested_territory_void_op_plus "Void (op)+: In all things, one can find balance, even in a duel of words or blades. You and a hostile character of the GM's choice in the same scene each recover 2 strife for each (op) spent in this way."
+                #jh8zDTjywZbj11QmwxMdH5: contested_territory_void_op_op "Void (op)(op): You find serenity amid adversity. You discover a neutral meeting place, protective legal precedent, or similar safe haven applicable to your situation."
+            }
         }
 
         RULES {
-            #L5RFV42jK3lM5nO7pQ9rS1t: fov_opportunity_tables_mass_battle_and_territory
+            #L5RFV42jK3lM5nO7pQ9rS1t: spending_opportunity_in_times_of_war "Spending Opportunity in Times of War: The unprepared rarely survive war, and only those with the drive to seize an advantage when it presents itself thrive amid war's chaos and danger. Whether driven by honor, glory, or merely survival, samurai at war must make use of every weapon in their arsenal.\n\nGMs running war-focused games may use Table 3–9: Spending Opportunity in Mass Battles to give players additional means of spending (op) in their games, or as inspiration for new options of their devising. The table focuses on the rules for Mass Battles found on page 274 of the core rulebook, but similar results could be used in other types of conflict scenes."
         }
     }
 
@@ -2494,29 +2353,16 @@ EXTENSION "L5R5e_Fields_of_Victory" EXTENDS "L5R5e_Core_Character" {
     ^"Honor Rules" DEF {
         APPLIES TO [#L5R003xY4zA6bC8dE0fG2hI ^"Samurai"]
 
-        # Optional additions to the core honor and glory forfeits/awards table.
-
         ^"Trifling Breaches" DEF {
-            # When a character wishes to commit a breach of honor
-            # judged less serious than a minor breach, they must first
-            # forfeit 1 honor. Examples include:
-            # - Telling a half-truth to make a story more interesting
-            # - Carrying out your lord's orders in a less expedient manner for personal convenience
-            # - Privately, but verbally, cursing the actions of a higher-status samurai
         }
 
         ^"Small Sacrifices" DEF {
-            # When a character makes a sacrifice in the name of
-            # honor judged less significant than a minor sacrifice,
-            # they are awarded 1 honor. Examples include:
-            # - Allowing a verbal insult directed at you to pass without reprisal
-            # - Refusing to use information overheard from behind a closed door as testimony
-            # - Aiding a friend who has been publicly disgraced but you know to be innocent
         }
 
         RULES {
-            #L5RFV43uV4wX6yZ8aB0cD2e: trifling_breach_forfeit_one_honor
-            #L5RFV44fG5hI7jK9lM1nO3p: small_sacrifice_gain_one_honor
+            #L5RFV43uV4wX6yZ8aB0cD2e: trifling_breaches "Trifling Breaches: When a character wishes to commit a breach of honor that is judged to be less serious than a minor breach, they must first forfeit 1 honor.\n\nExamples of trifling breaches of honor:\n\nTelling a half-truth to make a story more interesting.\n\nCarrying out your lord's orders in a less expedient manner for personal convenience.\n\nPrivately, but verbally, cursing the actions of a higher-status samurai."
+            #L5RFV44fG5hI7jK9lM1nO3p: small_sacrifices "Small Sacrifices: When a character makes a sacrifice in the name of honor, but it is judged to be less significant than a minor sacrifice, they are awarded 1 honor.\n\nExamples of small sacrifices of honor:\n\nAllowing a verbal insult directed at you (one that causes you to forfeit 1 glory or more to ignore) to pass without reprisal.\n\nRefusing to use information overheard from behind a closed door as testimony.\n\nAiding a friend who has been publicly disgraced but you know to be innocent."
+            #uTFf2szkEKHjdQxeuh208P: trifling_breaches_and_small_sacrifices "Trifling Breaches and Small Sacrifices: The Legend of the Five Rings core rulebook contains guidelines for gaining honor for virtuous deeds, as well as guidelines for forfeiting honor in order to act disgracefully. However, minor acts can affect a character's honor as well. A samurai strives to adhere to Bushidō in all aspects of their life, and many small positive or negative demonstrations eventually add up.\n\nWhat follows are optional additions to Table 7–1: Honor and Glory Forfeits/Awards, on page 300 of the core rulebook, and to the examples related to honor on page 303 of the core rulebook."
         }
     }
 }

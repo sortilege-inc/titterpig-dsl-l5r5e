@@ -15,15 +15,13 @@
 
 EXTENSION "L5R5e_WheelOfJudgment_Cast" {
     NAME "Wheel of Judgment — Cast"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-05"
 
     # ═══════════════ MAZOKU GUARD (Minroki) ═══════════════
     #L5RWOJcastMazokuGuard01 ^"Mazoku Guard" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The mazoku who herd newly arrived souls into the queues of Meido. Minroki
-        # (a muscular, red-skinned, hot-tempered guard) uses this profile.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 4
@@ -46,13 +44,15 @@ EXTENSION "L5R5e_WheelOfJudgment_Cast" {
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 4, Intrigue 2. Mazoku guards ensure a peaceful procession of souls to be judged and deal with any unruly dead. A mazoku guard who does their duty loyally and consistently can hope for a rebirth as an animal or perhaps even a human."
         ^"Roamer of Realms" DEF { ^"Effect" STRING "A mazoku is an Otherworldly being. Once per round as a Movement action, a mazoku can move to any other position in their current realm instantaneously. When they do, they may choose any number of captives or companions at range 0–1 to move with them." }
         ^"Herder of Spirits" DEF { ^"Effect" STRING "A mazoku can clearly perceive and interact with spirits and shades normally, regardless of their tangibility. When a spirit or shade attempts to hide from a mazoku, increase the TN of their check by 1." }
+
+        RULES {
+            #DBrH15tgbCtYrnp1KHzwL1: minroki "Minroki, Mazoku Guard: Minroki is a muscular, red-skinned mazoku standing a head taller than the tallest Rokugani, even without his horns. He tries to perform his duties perfectly, but his explosive temper sometimes gets him into trouble. Minroki has been partnered with Rikakima as long as he can remember, and he trusts her judgment. He looks up to her and would be furious to learn she takes bribes. He has a great respect for bushi and loves to hear them recount their battles.\n\nTo represent Minroki, use the Mazoku Guard profile below."
+        }
     }
 
     # ═══════════════ MAZOKU BUREAUCRAT (Rikakima) ═══════════════
     #L5RWOJcastMazokuBureau01 ^"Mazoku Bureaucrat" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The mazoku who process the paperwork of Meido. Rikakima (a glum,
-        # blue-skinned magistrate who takes bribes) uses this profile.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 2
@@ -75,13 +75,15 @@ EXTENSION "L5R5e_WheelOfJudgment_Cast" {
         DESCRIPTION "ADVERSARY. Conflict Rank — Combat 2, Intrigue 4. Mazoku bureaucrats are responsible for the various procedures that allow souls to progress through Meido, receive their judgment, and reincarnate. Regardless of their specific duties, these mazoku deal with a range of processes and documents."
         ^"Roamer of Realms" DEF { ^"Effect" STRING "A mazoku is an Otherworldly being. Once per round as a Movement action, a mazoku can move to any other position in their current realm instantaneously. When they do, they may choose any number of captives or companions at range 0–1 to move with them." }
         ^"Herder of Spirits" DEF { ^"Effect" STRING "A mazoku can clearly perceive and interact with spirits and shades normally, regardless of their tangibility. When a spirit or shade attempts to hide from a mazoku, increase the TN of their check by 1." }
+
+        RULES {
+            #zcZBTPV9IEWTWCpk0QmhtC: rikakima "Rikakima, Mazoku Magistrate: A blue-skinned mazoku with horns that curl downward, her expression is invariably glum. She wears the simple robes of the mazoku magistrates and carries the tools necessary to record any indiscretions. Her partner is currently Minroki, but her previous partner earned reincarnation as a human centuries ago for dealing with a sudden influx of gaki. She still resents that he was so well rewarded. She considers that because she is clever enough to take bribes without getting caught, she deserves them, and like many mazoku considers any food or drink smuggled from the Mortal Realm a delicacy.\n\nTo represent Rikakima, use the Mazoku Bureaucrat profile below."
+        }
     }
 
     # ═══════════════ TORIKKUSUTĀ, THE TRICKSTER ONI ═══════════════
     #L5RWOJcastTricksterOni01 ^"Trickster Oni" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # An oni who poses as a mazoku, giving her name as Torikkusutā; weak, she
-        # survives by trickery. In life she was a Togashi monk.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Also Known As" STRING "Torikkusutā"
@@ -112,8 +114,6 @@ EXTENSION "L5R5e_WheelOfJudgment_Cast" {
     # ═══════════════ BLADED ONI ═══════════════
     #L5RWOJcastBladedOni0001 ^"Bladed Oni" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # An oni sheathed in armor fused to its flesh, with katana-like arms. In
-        # life a samurai, sent to Jigoku through the Phantasm's machinations.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 6
@@ -138,14 +138,15 @@ EXTENSION "L5R5e_WheelOfJudgment_Cast" {
             "Phantasmal Oni" -> #L5RWOJcastPhantasmalOni1 ^"Phantasmal Oni"
         }
         ^"Poor Loser" DEF { ^"Effect" STRING "If at any time during a duel the Bladed Oni's current fatigue exceeds its opponent's, it gains the Enraged condition. If the Bladed Oni becomes Compromised, it may unmask by gaining the Enraged condition." }
+
+        RULES {
+            #OLrqfeZ0JW9xjB16BpVSpX: past_life "The Bladed Oni was a samurai who died in a duel, sent to Jigoku through the machinations of the Phantasm."
+        }
     }
 
     # ═══════════════ WORD-HUNGRY ONI ═══════════════
     #L5RWOJcastWordHungryOni1 ^"Word-Hungry Oni" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # An oni of many ever-writing hands that absorbs knowledge but cannot
-        # contain it. In life a Kuni shugenja whose vile experiments earned her
-        # reincarnation as a demon. An agent of the Phantasm.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 7
@@ -169,12 +170,15 @@ EXTENSION "L5R5e_WheelOfJudgment_Cast" {
         ^"Absorb Knowledge" DEF { ^"Effect" STRING "The Word-Hungry Oni is an Otherworldly, Tainted being. By placing a hand directly on a victim's flesh, the oni can draw knowledge from them, gaining one piece of information per round as long as it maintains contact (this includes any target Immobilized by the oni's clawing hands). After 1 round, the victim gains the Disoriented condition (see page 272 of the core rulebook). After 4 rounds, the victim gains the Muteness (Air) disadvantage (see page 126 of the core rulebook)." }
         ^"Flurry of Hands" DEF { ^"Effect" STRING "When making a Strike action using its clawing hands, the Word-Hungry Oni may spend (op) as follows: (op)+: If the oni succeeds, deal 5 physical damage to the target or to another target at range 0–1 per (op) spent this way." }
         ^"Hand Separation" DEF { ^"Effect" STRING "As a Support action, the Word-Hungry Oni may detach a hand, which then uses the Word-Hungry Hand profile. Up to ten hands may operate independently at a time. If any remain detached when the oni sleeps, it begins to grow a new hand in its place, leaving the extra hand to roam until destroyed." }
+
+        RULES {
+            #XfjNCJh1wHRQUvKSc2rBON: past_life "The Word-Hungry Oni was a Kuni shugenja whose vile experiments earned her reincarnation as a demon."
+        }
     }
 
     # ═══════════════ WORD-HUNGRY HAND (Minion) ═══════════════
     #L5RWOJcastWordHungryHnd1 ^"Word-Hungry Hand" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # A detached hand of the Word-Hungry Oni, retaining its hunger for knowledge.
         PROPERTIES {
             ^"Type" STRING "Minion" FIXED
             ^"Combat Conflict Rank" INTEGER 1
@@ -202,8 +206,6 @@ EXTENSION "L5R5e_WheelOfJudgment_Cast" {
     # ═══════════════ SCRIBE OF JIGOKU ═══════════════
     #L5RWOJcastScribeJigoku01 ^"Scribe of Jigoku" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Tools made by Fu Leng from the fabric of Jigoku; the one in the archive is
-        # also an agent of the Phantasm.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 1
@@ -229,8 +231,6 @@ EXTENSION "L5R5e_WheelOfJudgment_Cast" {
     # ═══════════════ GAKI ═══════════════
     #L5RWOJcastGaki00000001 ^"Gaki" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The starving spirits of those who indulged their appetites in life,
-        # inhabiting Gaki-dō, the Realm of the Hungry Dead.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 1
@@ -257,8 +257,6 @@ EXTENSION "L5R5e_WheelOfJudgment_Cast" {
     # ═══════════════ PHANTASMAL ONI (the Phantasm) ═══════════════
     #L5RWOJcastPhantasmalOni1 ^"Phantasmal Oni" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # The demon of illusion behind the sabotage in Meido; the adventure's chief
-        # antagonist. It manifests physically from the fabric of the realm.
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Also Known As" STRING "the Phantasm"
