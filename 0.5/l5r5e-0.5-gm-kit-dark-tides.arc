@@ -15,7 +15,7 @@
 
 ARC "L5R5e_DarkTides" {
     NAME "Dark Tides"
-    VERSION "0.5.4"
+    VERSION "0.5.5"
     SPEC_VERSION "0.5"
     DEPENDS_ON "L5R5e_Core_Core"
     USES_EXTENSION "L5R5e_GM_Kit_Mechanics"
@@ -699,12 +699,9 @@ ARC "L5R5e_DarkTides" {
             }
             CHECK ^"Deduce When Suzaku Died" {
                 SKILL "Skulduggery"
+                SKILL "Medicine"
                 TN 2
-                ALTERNATIVE {
-                    SKILL "Medicine"
-                    TN 2
-                    RING_TN "Fire" 1
-                }
+                RING_TN "Fire" 1
                 ON_SUCCESS "From their description, the PCs can deduce with a TN 2 Skulduggery or Medicine (Fire 1) check that Suzaku had died shortly before arriving in the alley, meaning she was held prisoner somewhere for a couple of weeks before her death."
             }
             CHECK ^"Convince Burakumin to Share" {
