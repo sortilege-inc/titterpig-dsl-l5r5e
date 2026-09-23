@@ -5,7 +5,7 @@
 
 ARC "L5R5e_LostWriter" {
     NAME "The Lost Writer in the City of the Rich Frog"
-    VERSION "0.5.2"
+    VERSION "0.5.3"
     SPEC_VERSION "0.5"
     DEPENDS_ON "L5R5e_Core_Core"
     USES_EXTENSION "L5R5e_Children_of_Five_Winds"
@@ -370,10 +370,23 @@ ARC "L5R5e_LostWriter" {
 
         CHECKS {
             CHECK ^"Stir the Leaves" {
-                SKILL "social"
-                RING "air"
+                SKILL "Courtesy"
+                SKILL "Performance"
+                RING "Air"
                 TN 3
                 ON_FAILURE "Each character who fails increases the TN of their next check targeting Kotone by 1."
+            }
+            CHECK ^"Know Tonbo Kuma" {
+                SKILL "Culture"
+                RING "Fire"
+                TN 2
+                ON_SUCCESS "Dragon PCs, Goro especially, will know that Kuma oversees the Dragonfly's shrine gardens and holds a significant amount of political sway within the city. Other PCs can glean this information with a TN 2 Culture (Fire) check."
+            }
+            CHECK ^"Learn What Hana-no-Ame Asked" {
+                SKILL "Courtesy"
+                RING "Water"
+                TN 4
+                ON_SUCCESS "If the PCs accrued 10 or more momentum points, or if they accrued 5 or more and now succeed on a TN 4 Courtesy (Water) check, then Kotone adds that Hana-no-Ame asked specifically about spirits and spiritual artifacts from non-Rokugani cultures and locales."
             }
         }
 
@@ -414,15 +427,17 @@ ARC "L5R5e_LostWriter" {
 
         CHECKS {
             CHECK ^"Game of Go" {
-                SKILL "social"
-                RING "air"
+                SKILL "Games"
+                RING "Water"
+                RING "Air"
                 TN 2
                 ON_SUCCESS "Once they have reason to trust the PCs, Kuma has them swear to be discreet and fills them in on the conversation with Higuchi at the teahouse."
                 ON_FAILURE "All Kuma is willing to divulge initially is that Higuchi requested a meeting to consult with them about some research she was doing; Kuma does not reveal any of the specifics of their conversation."
             }
             CHECK ^"Appeal to Compassion or Duty" {
-                SKILL "social"
-                RING "fire"
+                SKILL "Courtesy"
+                RING "Fire"
+                RING "Earth"
                 TN 3
                 ON_SUCCESS "Once they have reason to trust the PCs, Kuma has them swear to be discreet and fills them in on the conversation with Higuchi at the teahouse."
                 ON_FAILURE "All Kuma is willing to divulge initially is that Higuchi requested a meeting to consult with them about some research she was doing; Kuma does not reveal any of the specifics of their conversation."
@@ -466,21 +481,27 @@ ARC "L5R5e_LostWriter" {
 
         CHECKS {
             CHECK ^"Dockside Search" {
-                SKILL "social"
-                RING "water"
+                SKILL "Culture"
+                SKILL "Sentiment"
+                SKILL "Command"
+                SKILL "Courtesy"
+                SKILL "Commerce"
+                SKILL "Skulduggery"
+                SKILL "Aesthetics"
+                SKILL "Design"
                 TN 3
                 ON_SUCCESS "Successful checks can be rewarded with fragments of useful information, such as the following:\n\nSome people say they have seen Higuchi around recently; others have seen someone they think was her.\n\nThe Unicorn Clan trades in a lot of foreign goods, so the odds are good that multiple merchants or ships carry items from the Burning Sands.\n\nA mysterious Fox Clan individual has been seen around recently, but not much else can be gleaned about their presence."
             }
             CHECK ^"Convince the Peacekeepers" {
-                SKILL "social"
-                RING "earth"
+                SKILL "Command"
+                RING "Earth"
                 TN 3
                 ON_SUCCESS "However, with a successful TN 3 Command (Earth) check, the PCs convince them to talk; they do not know much about the situation, but they offer to bring the party to their informal captain, Kaeru Haya, to see what she knows (see Find the Peacekeeper)."
                 ON_FAILURE "If the PCs fail this check, a fight ensues (see Confrontation)."
             }
             CHECK ^"Find the Peacekeeper" {
-                SKILL "scholar"
-                RING "water"
+                SKILL "Government"
+                RING "Water"
                 TN 1
                 ON_SUCCESS "Haya is amiable and willing to chat, provided the PCs have not stirred up too much trouble beforehand. She admits to having recently spoken with someone claiming to be Hana-no-Ame, but she does not divulge specifics—she was sworn to secrecy, and she takes her vows very seriously. Haya was told that there were a number of people in the city who Hana-no-Ame wished to avoid meeting—dangerous people, possibly, but not the sorts who would lay down their lives in pursuit of her. In no uncertain terms, Haya says she will reveal what she knows only if the PCs prove that their search is not motivated by malice by facing her in a duel (see Confrontation). She will duel them only if they agree to leave the wharf if she wins."
             }
@@ -528,23 +549,33 @@ ARC "L5R5e_LostWriter" {
         }
 
         CHECKS {
-            CHECK ^"Bribe Chiharu" {
-                SKILL "trade"
-                RING "water"
-                TN 3
+            CHECK ^"Bribe or Cow Chiharu" {
+                SKILL "Command"
+                RING "Earth"
+                TN 2
+                ALTERNATIVE {
+                    SKILL "Commerce"
+                    RING "Water"
+                    TN 3
+                }
+                ALTERNATIVE {
+                    SKILL "Government"
+                    RING "Fire"
+                    TN 2
+                }
                 ON_SUCCESS "Once Chiharu has been sufficiently bribed or cowed, they agree to come clean."
                 ON_FAILURE "If the PCs failed to cajole or strong-arm them in a narrative scene, then Chiharu provides the following information only if the entire party agrees to become indebted to them for a future favor."
             }
             CHECK ^"See Through Chiharu's Lies" {
-                SKILL "scholar"
-                RING "air"
+                SKILL "Sentiment"
+                RING "Air"
                 TN 2
                 ON_SUCCESS "Their lies having been exposed, Chiharu switches tactics: they say that, as it is clear the PCs could each benefit from their knowledge, they will be happy to share what they know—but only with whoever makes them the best offer."
                 ON_FAILURE "Chiharu lies, deflects, tries to convince the PCs to buy something—anything to avoid talking about Higuchi and potentially implicating themself in something untoward."
             }
             CHECK ^"Decipher the Sealing Ritual" {
-                SKILL "scholar"
-                RING "water"
+                SKILL "Theology"
+                RING "Water"
                 TN 4
                 ON_SUCCESS "According to the deciphered information, the talisman's spirit must be removed from its current vessel, whether by force or by diplomacy, before the ritual described in the document commences. Then, any person or group may follow the document's instructions to perform a sealing ritual on the subdued spirit, sealing it inside a new vessel. (Upon hearing this, Chiharu offers to sell the PCs a brand-new vessel for just 2 koku—a discount, they assure them, and a safety measure in case the party cannot retrieve the talisman or something else suitable.)"
             }
@@ -626,8 +657,8 @@ ARC "L5R5e_LostWriter" {
 
         CHECKS {
             CHECK ^"Assess the Situation" {
-                SKILL "scholar"
-                RING "fire"
+                SKILL "Theology"
+                RING "Fire"
                 TN 2
                 ON_SUCCESS "On a success, they conclude that Higuchi has been possessed by a spirit. Depending on other information they have obtained in their investigation, they may also realize that Higuchi accidentally purchased a real meishōdō talisman, and that the spirit bound to it is one from the Burning Sands. These revelations give players an extra (skill)(skill) on Theology checks against the ifrit spirit."
                 ON_FAILURE "If the PCs' check fails, then Nao comes to the same conclusions, but the party gain the extra (skill)(skill) benefit of their successful investigation."
@@ -678,25 +709,37 @@ ARC "L5R5e_LostWriter" {
         }
 
         CHECKS {
-            CHECK ^"Perform Sealing Ritual" {
-                SKILL "scholar"
-                RING "void"
+            CHECK ^"Recognize Nehiri" {
+                SKILL "Culture"
+                RING "Earth"
+                TN 1
+                ON_SUCCESS "She also occasionally speaks in a language the PCs can recognize as a form of Nehiri with a TN 1 Culture (Earth) check."
+            }
+            CHECK ^"Recognize the Ifrit" {
+                SKILL "Theology"
+                RING "Fire"
                 TN 2
-                APPROACH "void"
-                ON_SUCCESS "To seal the ifrit in a new vessel, they must fend it off while Nao or another shugenja performs the sealing ritual the PCs obtained in the Curiosity Shop. For the ritual to succeed, the shugenja performing it must succeed on three TN 2 Theology (Void) checks on their turns, at which point the ritual takes effect and the ifrit becomes sealed within its new vessel."
+                ON_SUCCESS "Anyone who passes a TN 2 Theology (Fire) check will recognize the spirit as an ifrit."
+            }
+            CHECK ^"Understand the Ifrit" {
+                SKILL "Theology"
+                RING "Fire"
+                TN 2
+                ON_SUCCESS "The PCs may use a Commune with the Spirits ritual to establish a line of communication with the ifrit, but they must also succeed on a TN 2 Theology (Fire) check to understand and be understood by it (unless they already passed the check to identify the spirit)."
             }
             CHECK ^"Calm or Trick the Ifrit" {
-                SKILL "social"
-                RING "water"
+                SKILL "Courtesy"
+                RING "Water"
+                RING "Air"
                 TN 3
                 ON_SUCCESS "A subsequent successful TN 3 Courtesy (Water or Air) check can be used to calm or trick the ifrit and encourage it to peacefully exit Higuchi's body, provided the PCs are willing to allow it to go free (something that some characters—especially Nao—have a strong objection to)."
                 ON_FAILURE "If the PCs do not promise to let it go free, the ifrit does not agree to leave of its own accord."
             }
-            CHECK ^"Recognize the Ifrit" {
-                SKILL "scholar"
-                RING "fire"
+            CHECK ^"Perform Sealing Ritual" {
+                SKILL "Theology"
+                RING "Void"
                 TN 2
-                ON_SUCCESS "Anyone who passes a TN 2 Theology (Fire) check will recognize the spirit as an ifrit."
+                ON_SUCCESS "To seal the ifrit in a new vessel, they must fend it off while Nao or another shugenja performs the sealing ritual the PCs obtained in the Curiosity Shop. For the ritual to succeed, the shugenja performing it must succeed on three TN 2 Theology (Void) checks on their turns, at which point the ritual takes effect and the ifrit becomes sealed within its new vessel."
             }
         }
 
