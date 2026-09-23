@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
     NAME "Legend of the Five Rings 5th Edition - Fields of Victory: Expanded Mass Battle Rules"
-    VERSION "0.5.1"
+    VERSION "0.5.2"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -60,22 +60,22 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
 
             ENTRIES {
                 #WNlsXl9fg7VMVYviKxRMIu ^"Any (op)+" DEF {
-                    ^"Effect" STRING "Reduce the TN of your first army maintenance check by 1 per (op) spent this way."
+                    ^"Effect" STRING "Reduce the TN of your first army maintenance check (see page 115) by 1 per (op) spent this way."
                 }
                 #2yBIYrcjsGgjtGWw4RYqjD ^"Earth (op)" DEF {
-                    ^"Effect" STRING "You are given use of a fortification near your lands for the war effort. This fortification counts as an outpost (reduce attrition suffered by 2, difficulty value 6)."
+                    ^"Effect" STRING "In addition to the army, you are given use of a fortification near your lands for the war effort. This fortification counts as an outpost (reduce attrition suffered by 2, difficulty value 6)."
                 }
                 #VTfSRzQekhDpizV8Nm9pLX ^"Earth (op)(op)" DEF {
                     ^"Effect" STRING "Increase the army's discipline by 5."
                 }
                 #xd1mrhcjwU0XXn5bVxcWIm ^"Water (op)+" DEF {
-                    ^"Effect" STRING "You raise 100 koku per (op) spent this way. You must forfeit 10 honor to spend this money on anything but equipment upgrades, mercenary forces, or other expenses that benefit the army or the cause."
+                    ^"Effect" STRING "In addition to the army, you raise 100 koku per (op) spent this way. You must forfeit 10 honor to spend this money on anything but equipment upgrades (see page 114), mercenary forces (see page 110), or other expenses that the GM deems to benefit the army or the cause."
                 }
                 #G3p58mBoe6t14VoIIYQECe ^"Water (op)(op)" DEF {
-                    ^"Effect" STRING "The army gains one of the following equipment upgrades: Baggage Train, Battlefield Medical Supplies."
+                    ^"Effect" STRING "The army gains one of the following equipment upgrades (see page 114): Baggage Train, Battlefield Medical Supplies."
                 }
                 #ws12JpLyHWws6ttCtbqINB ^"Fire (op)" DEF {
-                    ^"Effect" STRING "For the first mass battle in which the army participates, reduce the TN of each of its leaders' first Assault actions by 1 (to a minimum of 1)."
+                    ^"Effect" STRING "For the first mass battle in which the army participates, reduce the TN of each of its leaders first Assault actions by 1 (to a minimum of 1)."
                 }
                 #4fDGc83OwEJ1rHg5u2xXJx ^"Fire (op)(op)" DEF {
                     ^"Effect" STRING "Increase the army's strength by 5."
@@ -84,10 +84,10 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
                     ^"Effect" STRING "The army assembles without attracting the attention of any local powers not currently at war with you."
                 }
                 #O2bYHTPdQRmSe8OXFnJB4f ^"Air (op)(op)" DEF {
-                    ^"Effect" STRING "One cohort gains one of the following doctrines: Out of Nowhere, Sappers."
+                    ^"Effect" STRING "One cohort gains one of the following doctrines (see page 112): Out of Nowhere, Sappers."
                 }
                 #q7X4mg4vwa34r2nUqoaaCB ^"Void (op)" DEF {
-                    ^"Effect" STRING "The army assembles at a place of your choosing (that soldiers could plausibly reach) in up to one month in the future rather than assembling immediately at your current location."
+                    ^"Effect" STRING "The army assembles at a place of your choosing (that a large numbers of soldiers could plausibly reach) in up to one month in the future rather than assembling immediately at your current location."
                 }
                 #ZWwiFzdkmGIXSciDENpAPj ^"Void (op)(op)" DEF {
                     ^"Effect" STRING "Increase the army's strength and discipline by 3."
@@ -118,7 +118,7 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
 
             PROPERTIES {
                 ^"Activation" STRING "New marshaling check at GM discretion"
-                ^"Status Modifier Examples" STRING "Large storehouse of food: +10; Town's yearly taxes: +20; Ship with luxury goods: +30; Small city's yearly taxes: +40; Large city's reserves: +50"
+                ^"Status Modifier Examples" STRING "A large storehouse of food: +10\n\nA town's yearly taxes: +20\n\nA ship with luxury goods: +30\n\nA small city's yearly taxes: +40\n\nA large city's reserves: +50"
             }
 
             RULES {
@@ -133,13 +133,13 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
                 #Qht5uXsp31C8s7MlieKntZ ^"Ashigaru Veterans" DEF {
                     ^"Base Army Stats" STRING "Strength 20, Discipline 40"
                     ^"Modifiers" STRING "Strength +10, Discipline +5"
-                    ^"Rule" STRING "Rank Formation (core rulebook p. 280)"
+                    ^"Rule" STRING "Rank Formation (see page 280 of the core rulebook)"
                     ^"Cost" STRING "200 koku per month"
                 }
                 #nI4zcpbsmU9x2vU27vDFMz ^"Foreign Sellswords" DEF {
                     ^"Base Army Stats" STRING "Strength 25, Discipline 25"
                     ^"Modifiers" STRING "Strength +15, Discipline -10"
-                    ^"Rule" STRING "Elite Training: Infantry (core rulebook p. 280)"
+                    ^"Rule" STRING "Elite Training: Infantry (see page 280 of the core rulebook)"
                     ^"Cost" STRING "400 koku per month"
                 }
                 #RApyz0NHPNnlQSShEatrug ^"Mantis Privateers" DEF {
@@ -173,27 +173,27 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
                 #Q7ZpSgDM3v69V1TF0IOCTG ^"Allied Status 100" DEF {
                     ^"Base Army Stats" STRING "Strength 150, Discipline 80"
                     ^"Modifiers" STRING "Strength +135, Discipline +20"
-                    ^"Rules" STRING "Elite Training (one per cohort): Cavalry, Siege Specialists, Infantry, Archers, Mystics; Siege Defenders"
+                    ^"Rules" STRING "Elite Training (one per cohort): Cavalry, Siege Specialists, Infantry, Archers, and Mystics (see page 280 of the core rulebook), Siege Defenders (see page 114)"
                 }
                 #AJaN2tsg8zxkdMFa03w88c ^"Allied Status 90-99" DEF {
                     ^"Base Army Stats" STRING "Strength 120, Discipline 75"
                     ^"Modifiers" STRING "Strength +95, Discipline +15"
-                    ^"Rules" STRING "Elite Training (one per cohort): Cavalry, Siege Specialists, Infantry, Archers, Mystics; Siege Defenders"
+                    ^"Rules" STRING "Elite Training (one per cohort): Cavalry, Siege Specialists, Infantry, Archers, and Mystics (see page 280 of the core rulebook), Siege Defenders (see page 114)"
                 }
                 #vRmfn5X2AvnNwFGRnEmcZl ^"Allied Status 80-89" DEF {
                     ^"Base Army Stats" STRING "Strength 100, Discipline 70"
                     ^"Modifiers" STRING "Strength +75, Discipline +10"
-                    ^"Rules" STRING "Clan Doctrine; Elite Training (one per cohort): Cavalry, Siege Specialists, Infantry, Archers, Mystics"
+                    ^"Rules" STRING "Clan Doctrine (see page 113), Elite Training (one per cohort): Cavalry, Siege Specialists, Infantry, Archers, and Mystics (see page 280 of the core rulebook)"
                 }
                 #rFJA8HG6WfLitIL0TxkguX ^"Allied Status 70-79" DEF {
                     ^"Base Army Stats" STRING "Strength 80, Discipline 65"
                     ^"Modifiers" STRING "Strength +55, Discipline +5"
-                    ^"Rules" STRING "Clan Doctrine; Elite Training (one per cohort): Cavalry, Siege Specialists, Infantry, Archers"
+                    ^"Rules" STRING "Clan Doctrine (see page 113), Elite Training (one per cohort): Cavalry, Siege Specialists, Infantry, and Archers (see page 280 of the core rulebook)"
                 }
                 #wvEVgFdSAEC7ZJUMu7tObJ ^"Allied Status 60-69" DEF {
                     ^"Base Army Stats" STRING "Strength 65, Discipline 60"
                     ^"Modifiers" STRING "Strength +35, Discipline +0"
-                    ^"Rules" STRING "Clan Doctrine; Elite Training (one per cohort): Cavalry, Infantry, Archers"
+                    ^"Rules" STRING "Clan Doctrine (see page 113), Elite Training (one per cohort): Cavalry, Infantry, and Archers (see p. 280 of the core rulebook)"
                 }
                 #gRH4zvGZF76iHI8NZz0ZM7 ^"Allied Status 50-59" DEF {
                     ^"Base Army Stats" STRING "Strength 60, Discipline 50"
@@ -270,31 +270,31 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
 
             PROPERTIES {
                 ^"Training Check" STRING "None"
-                ^"Narrative Requirements" STRING "The army must consist primarily of a single Great Clan's forces."
+                ^"Narrative Requirements" STRING "The army must consist primarily of the forces of a single Great Clan."
                 ^"Applies To" STRING "Entire army"
             }
 
             ENTRIES {
                 #dxKPx8PvmcrwIr7rhzX2Gc ^"Crab" DEF {
-                    ^"Effect" STRING "When this army would receive panic, it receives that amount minus 2 instead (to a minimum of 1)."
+                    ^"Effect" STRING "When this army would receive panic, it receives that amount of panic minus 2 instead (to a minimum of 1)."
                 }
                 #0HXL64iE8cS08HBtrLh9D1 ^"Crane" DEF {
-                    ^"Effect" STRING "After a leader makes a successful Challenge action check, if the challenging leader wins the clash, the enemy receives panic equal to that character's glory rank. If the challenger loses, their own army receives panic equal to their glory rank."
+                    ^"Effect" STRING "After a leader in this army makes a successful check to perform a Challenge action, if the challenging leader wins the clash, the enemy receives panic equal to that character's glory rank. If the challenging leader loses, their army receives panic equal to their glory rank."
                 }
                 #rJa4ylUlNif5yhs6gU4L3A ^"Dragon" DEF {
-                    ^"Effect" STRING "When performing the Rally action, if a leader succeeds, add bonus successes equal to that leader's ranks in Meditation."
+                    ^"Effect" STRING "When performing the Rally action, if a leader in this army succeeds, add a number of bonus successes equal to that leader's ranks in Meditation."
                 }
                 #dlT1X6fb97x7lNFZyzLQrd ^"Lion" DEF {
                     ^"Effect" STRING "When this army would remove 1 or more casualties or panic, it may remove an amount equal to the status rank of its commander instead."
                 }
                 #rnBLRoZsJDb5ZHwkd7UJHe ^"Phoenix" DEF {
-                    ^"Effect" STRING "After a leader performs an Assault action, if they succeed, the enemy army suffers attrition equal to that leader's ranks in Theology instead of Command."
+                    ^"Effect" STRING "After a leader in this army performs an Assault action, if they succeed, the enemy army suffers attrition equal to that leader's ranks in Theology instead of Command."
                 }
                 #145NPDgieeAvieL9V6gKTh ^"Scorpion" DEF {
-                    ^"Effect" STRING "Reduce the TN of the first Scheme action check each leader makes each mass battle by 1 (to a minimum of 1). If the army's commander is also a leader, reduce the TN of their first Scheme action check by 2 instead (to a minimum of 1)."
+                    ^"Effect" STRING "Reduce the TN of the first Scheme action check each leader in this army makes each mass battle by 1 (to a minimum of 1). If this army's commander is also a leader, reduce the TN of the first Scheme action check the commander makes by 2 instead (to a minimum of 1)."
                 }
                 #7rBgc9mj85xryQKczFFzjG ^"Unicorn" DEF {
-                    ^"Effect" STRING "When performing the Rally action, a leader may make a TN 1 Survival check instead of a Command check."
+                    ^"Effect" STRING "When performing the Rally action, a leader in this army may make a TN 1 Survival check instead of a Command check."
                 }
             }
 
@@ -323,7 +323,7 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
                 ^"Training Check" STRING "TN 4 Skulduggery (Air)"
                 ^"Narrative Requirements" STRING "The army must have access to a forest or other large piece of Obscuring terrain in which to train."
                 ^"Applies To" STRING "One cohort"
-                ^"Effect" STRING "When this cohort's leader performs an Assault action, if the target cohort is in Confining or Obscuring terrain, the leader may spend (op) as follows: (op)+: The enemy army receives panic equal to the leader's ranks in Skulduggery plus (op) spent this way."
+                ^"Effect" STRING "When this cohort's leader performs an Assault action, if the target cohort is in Confining or Obscuring, the leader may spend (op) as follows:\n\n(op)+: The enemy army receives panic equal to the leader's ranks in Skulduggery plus (op) spent this way."
             }
 
             RULES {
@@ -337,7 +337,7 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
                 ^"Training Check" STRING "TN 3 Labor (Air)"
                 ^"Narrative Requirements" STRING "The army must have access to a fortification in which to train."
                 ^"Applies To" STRING "One cohort"
-                ^"Effect" STRING "When this cohort's leader generates momentum points toward a strategic objective to seize a fortification (such as Capture a Position against a fortification), they generate 2 additional momentum points toward that objective."
+                ^"Effect" STRING "When this cohort's leader generates momentum points toward a strategic objective to seize a fortification (such as the Capture a Position objective against a fortification), they generate 2 additional momentum points toward that objective."
             }
 
             RULES {
@@ -363,9 +363,9 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
 
             PROPERTIES {
                 ^"Training Check" STRING "TN 4 Seafaring (Water)"
-                ^"Narrative Requirements" STRING "The army must have access to at least one warship, or several smaller vessels, capable of carrying the cohort."
+                ^"Narrative Requirements" STRING "The army must have access to at least one warship, or several smaller vessels, capable of carrying the cohort with this ability."
                 ^"Applies To" STRING "One cohort"
-                ^"Effect" STRING "When the leader of this cohort performs the Assault action as part of their initial landing, they may spend (op) as follows: (op): The target cohort's leader suffers the Dazed condition. (op)(op)+: One additional enemy leader per (op)(op) spent this way suffers the Dazed condition. If using battle zones, this can only affect leaders whose cohorts are in the same zone as the target."
+                ^"Effect" STRING "When the leader of this cohort performs the Assault action as part of their initial landing, they may spend (op) as follows:\n\n(op): The target cohort's leader suffers the Dazed condition.\n\n(op) (op)+: One additional enemy leader per (op) (op) spent this way suffers the Dazed condition. If using the rules for Battle Zones, this can only affect leaders whose cohorts are in the same zone as the target."
             }
 
             RULES {
@@ -377,7 +377,7 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
 
             PROPERTIES {
                 ^"Training Check" STRING "TN 5 Fitness (Fire)"
-                ^"Narrative Requirements" STRING "The army must have access to enough quality steeds (Unicorn warhorses or equivalent) to equip a cohort."
+                ^"Narrative Requirements" STRING "The army must have access to enough quality steeds (Unicorn warhorses or equivalent) to equip a cohort with this ability."
                 ^"Applies To" STRING "One cohort"
                 ^"Effect" STRING "The first time the leader of this cohort performs an Assault action during each mass battle, if the enemy cohort is in Open terrain and the leader succeeds, they inflict additional attrition and panic to the enemy army equal to their ranks in Survival."
             }
@@ -434,7 +434,7 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
                 ^"Rarity" INTEGER 6
                 ^"Cost" STRING "1,000 koku"
                 ^"Applies To" STRING "One cohort"
-                ^"Effect" STRING "When an enemy leader performs an Attack action check against this cohort, they treat all terrain as Dangerous terrain."
+                ^"Effect" STRING "When an enemy leader performs an Attack action check against this cohort, they treat all terrain as Dangerous terrain (see page 267 of the core rulebook)."
             }
 
             RULES {
@@ -479,14 +479,14 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
     # ARMY MAINTENANCE
     # ===========================
 
-    # source (page 111)
+    # source (pages 115-116)
     ^"Army Maintenance" DEF {
         APPLIES TO [#t9446c0a7f578c8eaf296f ^"System"]
 
         PROPERTIES {
             ^"Activation" STRING "Start of each month"
             ^"Check" STRING "Command"
-            ^"TN Calculation" STRING "Tens digit of army strength (maximum TN 10)"
+            ^"TN Calculation" STRING "The TN of this check is equal to the 10s digit of the army's strength (or 10, if the army's strength is higher than 99), as larger formations are harder to keep organized and equipped."
         }
 
         ^"Table 3-6: Army Maintenance Check Results" DEF {
@@ -499,13 +499,13 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
                     ^"Effect" STRING "Remove casualties and panic from the army equal to your ranks in Government."
                 }
                 #fKyMk49pIX3q0YV9ijElij ^"Failure with 1-3 Shortfall" DEF {
-                    ^"Effect" STRING "The army receives panic equal to your shortfall. If the army's panic exceeds its discipline this way, reduce the army's panic to its discipline. However, the army refuses to fight for the next month."
+                    ^"Effect" STRING "The army receives panic equal to your shortfall. If the army's panic exceeds its discipline this way, reduce the army's panic until it is equal to its discipline. However, the army refuses to fight for the next month."
                 }
                 #e2cTS8Pi9ODcxnWnGyuvgH ^"Failure with 4-6 Shortfall" DEF {
-                    ^"Effect" STRING "The army receives panic equal to two times your shortfall. If the army's panic exceeds its discipline, it breaks apart into multiple chunks. These new armies and warbands spread across the countryside, pursuing their own agendas or turning to banditry."
+                    ^"Effect" STRING "The army receives panic equal to two times your shortfall. If the army's panic exceeds its discipline this way, it breaks apart into multiple chunks. These new armies and warbands spread across the countryside, pursuing their own agendas or even turning to banditry."
                 }
                 #Nqj2od9Voy34DRJ3hXUO7L ^"Failure with 7+ Shortfall" DEF {
-                    ^"Effect" STRING "The army revolts and attempts to overthrow its commander and their leaders. Chaos ensues, and the commander must fight for their life, negotiate, or flee to survive."
+                    ^"Effect" STRING "The army revolts, and attempts to overthrow its commander and their leaders. Chaos ensues, and the commander must fight for their life, negotiate, or flee to survive!"
                 }
             }
 
@@ -552,8 +552,8 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
             PROPERTIES {
                 ^"Check" STRING "TN 4 Command (Air)"
                 ^"Requirement" STRING "Pay any mercenaries their final dues"
-                ^"Success" STRING "Forces return to their homes or prior occupations without incident."
-                ^"Failure" STRING "The troops go on to cause problems for the local area or the commander."
+                ^"Success" STRING "If the commander succeeds (and any paid troops are satisfied), the forces return to their homes or prior occupations without incident."
+                ^"Failure" STRING "If the commander fails (or fails to pay any unpaid mercenaries), the troops go on to cause problems for the local area or the commander."
             }
 
             RULES {
@@ -579,9 +579,9 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
 
             PROPERTIES {
                 ^"Check" STRING "TN 3 Courtesy (Air)"
-                ^"Success" STRING "The target agrees to terms and becomes your 'guest' (hostage)."
-                ^"Failure" STRING "The target attempts to fight on, resolved by GM narration or a duel."
-                ^"Subduing Hostage" STRING "Minor violation of Courtesy (Rei); forfeit honor as normal."
+                ^"Success" STRING "if the character succeeds, the target agrees to the terms and becomes their \"guest\" (hostage)."
+                ^"Failure" STRING "If the character fails, the target attempts to fight on, which can be resolved with narration by the GM, or perhaps a duel if the winners are gracious."
+                ^"Subduing Hostage" STRING "Taking a character hostage against their will by subduing them is a minor violation of Courtesy (Rei), and requires forfeiting honor as normal."
             }
 
         }
@@ -611,10 +611,10 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
         ^"Hostage Treatment" DEF {
 
             PROPERTIES {
-                ^"Staking" STRING "Honor and glory equal to the hostage's status rank"
-                ^"Harm to Hostage" STRING "Lose staked honor; lose staked glory if failure becomes known"
-                ^"Mistreatment" STRING "Additional forfeits of honor and glory for anything less than expected decorum"
-                ^"Refusing Return" STRING "Breach of Courtesy (Rei) at GM's discretion"
+                ^"Staking" STRING "When a samurai takes a prisoner on the battlefield, they must stake honor and glory equal to that individual's status rank."
+                ^"Harm to Hostage" STRING "If their hostage comes to harm, they lose the staked honor (and glory, if their failure becomes known)"
+                ^"Mistreatment" STRING "in addition to any forfeits of honor and glory they must make if they themselves treat the hostage with anything less than the expected decorum."
+                ^"Refusing Return" STRING "Refusing to return a hostage in exchange for an equivalent hostage, fair price, or suitable favor to be repaid later after hostilities have ceased is also considered a breach of Courtesy (Rei) of a scale of the GM's discretion."
             }
 
             RULES {
@@ -626,8 +626,8 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
 
             PROPERTIES {
                 ^"Honor Award" STRING "Equal to hostage's status rank"
-                ^"Glory Award" STRING "Equal to hostage's status rank (if freed publicly)"
-                ^"Bonus" STRING "Gain Ally [Name of Character Freed] advantage if freed character is of higher status rank"
+                ^"Glory Award" STRING "glory equal to the hostage's status rank if they do so publicly"
+                ^"Bonus" STRING "After a character frees someone of higher status rank this way, they also gain the Ally [Name of Character Freed] advantage (see page 101 of the core rulebook)."
             }
 
         }
@@ -642,7 +642,7 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
     # BATTLE ZONES
     # ===========================
 
-    # source (pages 121-123)
+    # source (pages 118-121)
     ^"Battle Zones" DEF {
         APPLIES TO [#t9446c0a7f578c8eaf296f ^"System"]
 
@@ -694,7 +694,7 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
                     ^"Rule" STRING "Once during each cohort leader's turn, before or after they perform an action, that leader may move their cohort to an adjacent zone."
                 }
                 #hZBU78Un44M4GWoR4phimY ^"Withdrawal Panic" DEF {
-                    ^"Rule" STRING "After a cohort leaves a zone occupied by an enemy cohort, the withdrawing cohort's army suffers 5 panic."
+                    ^"Rule" STRING "After a cohort leaves a zone, if that zone was occupied by an enemy cohort, the withdrawing cohort's army suffers 5 panic."
                 }
             }
 
@@ -762,7 +762,7 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
                     ^"Effect" STRING "When a character makes a check to wield a weapon or activate a technique with a maximum range of 2 or higher, increase the TN by 2."
                 }
                 #3lCLvpIvYYiW47zc04XptG ^"Mass Battle Effect" DEF {
-                    ^"Effect" STRING "When a cohort occupies Confining terrain, other cohorts cannot move into the same area of terrain. If using battle zones, other cohorts can enter the zone but cannot pass through it."
+                    ^"Effect" STRING "When a cohort occupies Confining terrain, other cohorts cannot move into the same area of terrain. If using the rules for battle zones on page 118, other cohorts can enter the zone but cannot pass through it."
                 }
             }
 
@@ -780,7 +780,7 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
 
             ENTRIES {
                 #gN7IUtRSqs3pxbbj6i6EZQ ^"Effect" DEF {
-                    ^"Effect" STRING "While within Elevated terrain, a character reduces the TN of their Martial Arts [Ranged] checks targeting characters outside of Elevated terrain by 1 (to a minimum of 1). At the GM's discretion, this benefit could extend to other ranged attacks such as invocations. Elevated terrain might require a check to reach depending on height and steepness."
+                    ^"Effect" STRING "While within Elevated terrain, a character reduces the TN of their Martial Arts [Ranged] checks targeting characters outside of Elevated terrain by 1 (to a minimum of 1). At the GM's discretion, this benefit could extend to other ranged attacks, such as the invocations of shugenja. Depending on its height and steepness, Elevated terrain might require a check to reach."
                 }
             }
 
@@ -816,7 +816,7 @@ EXTENSION "L5R5e_Fields_of_Victory_Mass_Battle" EXTENDS "L5R5e_Core_Systems" {
 
             ENTRIES {
                 #nJdEmQ2h5XVkKwVU2prXZU ^"Effect" DEF {
-                    ^"Effect" STRING "While a character is within Recessed terrain, the TN of each Martial Arts [Ranged] check targeting them is reduced by 1 (to a minimum of 1). At the GM's discretion, this benefit could extend to other ranged attacks such as invocations. Recessed terrain might require a check to reach depending on depth and steepness."
+                    ^"Effect" STRING "While a character is within Recessed terrain, the TN of each Martial Arts [Ranged] check targeting them is reduced by 1 (to a minimum of 1). At the GM's discretion, this benefit could extend to other ranged attacks, such as the invocations of shugenja. Depending on its depth and steepness, Recessed terrain might require a check to reach."
                 }
             }
 

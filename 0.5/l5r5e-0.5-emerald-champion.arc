@@ -7,12 +7,12 @@
 
 ARC "emerald-champion" EXTENDS "l5r5e" {
     NAME "In the Palace of the Emerald Champion"
-    VERSION "0.5.1"
+    VERSION "0.5.2"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "In the Palace of the Emerald Champion: A Bonus Adventure for the L5R Roleplaying Beginner Game (Fantasy Flight Games, 2018)"
     LEAD_WRITER "Tim Huckelbery (design); Daniel Lovat Clark and Mari Murdock (writing)"
-    DESCRIPTION "A bonus adventure for the Legend of the Five Rings Roleplaying Beginner Game, designed to follow The Topaz Championship. Having proven themselves at the Topaz Championship, the newly-adult PCs travel to Shiro Yogasha — the Castle of the Emerald Champion — to train as Emerald Magistrates. There, the acting Emerald Champion Agasha Sumiko charges them with quietly investigating the death of the previous Emerald Champion, Doji Satsume, whose ghost has followed them from Tsuma. The PCs must weigh the public truth against the private one, learning that a magistrate's findings can carry consequences far beyond the facts."
+    DESCRIPTION "In the Palace of the Emerald Champion is a bonus adventure for the Legend of the Five Rings Roleplaying Beginner Game. It is designed to follow the events of The Topaz Championship, the adventure included in the Beginner Game.\n\nDuring the last adventure, the PCs engaged in the Topaz Championship and hopefully foiled Bayushi Sugai's plot for revenge. These feats proved their worth in the eyes of Agasha Sumiko, the Ruby Champion; impressed by their heroism and commitment to justice, she recommended them to become Emerald Magistrates. They are set to go to the palace of the Emerald Champion, also known as Shiro Yogasha, for training. However, questions surrounding Doji Satsume, their ghostly visitor, still linger. Satsume, the previous Emerald Champion, died there, so this journey promises to reveal new secrets surrounding his shadowy past and mysterious death."
 
     THEMES ["Coming of age: from tournament victors to Emerald Magistrates", "The public truth versus the private truth", "A magistrate's findings have political consequences", "Justice, loyalty, and the good of the Empire in tension", "The hidden hand of the Kolat"]
 
@@ -27,11 +27,11 @@ ARC "emerald-champion" EXTENDS "l5r5e" {
     PARTS {
         PART 1 "Act 1: The Journey" {
             SCENES ["A Familiar Face (Ryu)", "The Bandit Ambush (Goro)", "Goblins and Teru the Ogre", "The Mysterious Stranger (Airi the Tengu)", "Satsume's Ghost by the Fire"]
-            DESCRIPTION "The road from Tsuma runs roughly six hundred li north to Shiro Yogasha — about eight days on foot, on a rough detour path since the main road is under repair. The journey should be rife with conflict: the PCs meet the familiar peasant Ryu again, are ambushed by Goro's bandits, encounter a horde of goblins led by Teru the Ogre far north of the Wall (a sign vile magic may be at work), and are tested by Airi, an ancient tengu sword-master disguised as an old woman. Each evening the ghost of Doji Satsume joins them at the fire, his visage clearer as he nears the completion of his mission, and charges them: ensure the matter of his death brings no shame or retribution upon his family."
+            DESCRIPTION "Act 1: The Journey (page 10) takes place on the road from Tsuma to the Emerald Champion's castle. The journey takes several days and should be rife with conflict as the PCs travel the several hundred miles along dangerous terrain, proving their newfound skills against the measure of the open road. They once again encounter the ghost of the previous Emerald Champion and begin to unravel what he desires of them."
         }
         PART 2 "Act 2: The Castle" {
             SCENES ["Arrival at Shiro Yogasha", "Sumiko's Charge", "Daily Training", "Questioning the Witnesses (Sō, Kāgi, 'Bayushi Ago', Hiruma Shigeki)", "Satsume's Papers and the Secret Room", "The Assassin Strikes (Kitsuki Tomo)"]
-            DESCRIPTION "Over four days — the day of arrival and three days of training — the PCs immerse themselves in becoming Emerald Magistrates while Agasha Sumiko secretly commands them to investigate Satsume's death, insisting the official story remains that the case is closed and no foul play was involved. Interviewing witnesses and suspects (the peasant Sō who found the body, the curious steward Kitsuki Kāgi, the disguised Scorpion 'Bayushi Ago,' the paranoid Crab magistrate Hiruma Shigeki), searching Satsume's offices, the secret room, and the Emerald Archives, they piece together a tangle: heretical correspondence in Satsume's own hand, a Scorpion scheme to frame Doji Hotaru, and evidence of the Kolat. It culminates when Kitsuki Tomo — the Kolat assassin sent to kill Satsume, thwarted only because Satsume died of natural causes first — turns his blade on the Ruby Champion."
+            DESCRIPTION "Act 2: The Castle (page 18) has the PCs immersing themselves in their training as Emerald Magistrates. Alongside their studies, however, Agasha Sumiko also commands the PCs to investigate Doji Satsume's murder. They must interview potential witnesses and suspects while gathering clues in order to piece together the truth. This takes place over four days, consisting of the day they arrive and then three days of training."
 
             # Rumors and Information from the Clan Representatives (page 20): where
             # each clan's representative meets its PC, and what each conveys about
@@ -71,16 +71,16 @@ ARC "emerald-champion" EXTENDS "l5r5e" {
                 ^"Unicorn" DEF {
                     ^"Representative" STRING "Shinjo Akiba"
                     ^"Meeting Location" STRING "Stables"
-                    ^"Information Provided" STRING "Satsume was a great compromiser, ensuring that no one was happy with his decisions but also that no one was too angry with them. He didn't get along with most people, though. One time, Akiba says, she overheard Sumiko and Satsume arguing about their duties to the Emperor, but the disagreement went unresolved."
+                    ^"Information Provided" STRING "Satsume was a great compromiser, ensuring that no one was happy with his decisions but also that no one was too angry with them. He didn't get along with most here, though. One time, Akiba says, she overheard Sumiko and Satsume arguing about their duties to the Emperor, but the disagreement went unresolved."
                 }
             }
         }
         PART 3 "Act 3: The Findings" {
             SCENES ["Your Report to the Ruby Champion", "Report Options (Natural Causes / Assassination / Something Else)", "The Official Finding", "The Ruby Champion's Statement"]
-            DESCRIPTION "The PCs present their evidence and conclusions to Sumiko in her private estate, having debated which version of the truth to tell. Sumiko clearly hopes for a finding of 'natural causes' — the best outcome for the Empire's stability — and accepts it readily; a finding of assassination or Kolat involvement she resists and sets aside. The PCs learn that the public truth and the private truth are often vastly different, that a magistrate's findings bend to political consequence, and that they may withhold evidence, keep it as leverage, or forfeit honor to go public and shame the Ruby Champion. Sumiko then releases her official declaration: the Emerald Champion died of natural causes."
+            DESCRIPTION "Act 3: The Findings (page 35) is when the PCs present their evidence to Sumiko, having debated about which version of the truth to tell. They must learn that the public truth and the private truth are sometimes vastly different—especially since their announcement could have far-reaching consequences concerning the fate of many in Rokugan. This portion of the adventure lasts one day, when the PCs become Emerald Magistrates and present their findings."
         }
         PART 4 "Epilogue: Emerald Magistrates" {
-            DESCRIPTION "The PCs complete their training and become Emerald Magistrates. Whether or not Sumiko used their findings officially, the investigation has proven their mettle and armed them with knowledge of major powers in Rokugan for later adventures — the Scorpion's schemes, the Kolat's reach, Satsume's secrets. Threads left open (the true identity of 'Bayushi Ago,' who hired Goro's bandits, the fate of the heretical correspondent at Otosan Uchi) seed future play."
+            DESCRIPTION "The PCs are now Emerald Magistrates, and soon will be sent out from the palace to investigate and enforce the Emperor's Law.\n\nDepending on how Satsume's death was resolved, the PCs may have also made some powerful enemies or allies among the inhabitants of Shiro Yogasha. These could have further-reaching repercussions for their interactions in the future on a personal or even a Great Clan level. Angering a lowly magistrate might deny a person the ear of the Emperor later. However, kindness shown toward a single peasant might save one's life in the future."
         }
     }
 
@@ -94,7 +94,7 @@ ARC "emerald-champion" EXTENDS "l5r5e" {
         }
         ^"Shiro Yogasha" DEF {
             TYPE "Castle"
-            DESCRIPTION "The Castle of the Emerald Champion, seat of the office and home to the Emerald Archives and the Court of Judgment. Roughly six hundred li north of Tsuma. The recent death of its master, Doji Satsume, has left the whole castle recovering; the Ruby Champion Agasha Sumiko now administers it, aided by the steward Kitsuki Kāgi. It holds Satsume's offices and audience room, the magistrates' quarters, the dining hall, the training locations, a secret room, and Sumiko's private estate tower."
+            DESCRIPTION "Shiro Yogasha, the castle of the Emerald Champion, has been the primary home of the Emerald Champion for centuries. The stronghold is located on a hill bordered by wide, empty plains, making the approach of visitors or enemies visible far in advance. Inside the castle walls are numerous courtyards and spacious halls, and the buildings' sloped roofs are topped with glistening, emerald-colored tiles. The luxurious grandeur of the main keep suits the prestigious office that commands it."
             NPCS [^"Agasha Sumiko", ^"Kitsuki Kāgi", ^"Shosuro Hametsu", ^"Kitsuki Tomo"]
         }
     }

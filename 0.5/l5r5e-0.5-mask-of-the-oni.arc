@@ -8,12 +8,12 @@
 
 ARC "mask-of-the-oni" EXTENDS "l5r5e" {
     NAME "Mask of the Oni"
-    VERSION "0.5.1"
+    VERSION "0.5.2"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Mask of the Oni: An Adventure in the Shadowlands (Fantasy Flight Games, product L5R07)"
     LEAD_WRITER "Fantasy Flight Games"
-    DESCRIPTION "An adventure for the Legend of the Five Rings Roleplaying Game, set in 1123, in which the PCs leave the relative security of the Emerald Empire and pass through the lands and defenses of the Crab Clan into the Shadowlands, to the ruins of Shiro Hiruma (Daylight Castle) — the once-proud stronghold of the Hiruma. There they must face dangerous opponents, stark horror, and their deepest fears to stop the mahō-tsukai Kitsu Sokori from reversing Hiruma Masami's ancient soul-saving ritual and forging the fallen Hiruma into a corrupted army."
+    DESCRIPTION "Mask of the Oni is an adventure for the Legend of the Five Rings Roleplaying Game. During the course of this adventure, the player characters leave the relative security of the Emerald Empire and pass through the lands and defenses of the Crab Clan to the Shadowlands. This perilous journey takes them to the ruins of Shiro Hiruma, the once-proud stronghold of the Hiruma family of the Crab. There, the characters must face dangerous opponents, stark horror, and their deepest fears if they wish to succeed in stopping a powerful blood magic practitioner, a mahō-tsukai, from achieving her nefarious goals."
 
     THEMES ["The vigil of the Crab against the Shadowlands", "Honor and sacrifice — Hiruma Masami's ritual", "Blood magic and the corruption of the fallen", "Facing one's deepest fears in a defiled place", "A castle's burning shame reclaimed"]
 
@@ -54,13 +54,13 @@ ARC "mask-of-the-oni" EXTENDS "l5r5e" {
     LOCATIONS {
         ^"Kaiu Wall" DEF {
             TYPE "Wall"
-            DESCRIPTION "One hundred feet of dark stone battlements, redoubts, and watchtowers standing between Rokugan and the Shadowlands — the eternal vigil of the Crab. The PCs pass through it (and its heavily defended gate) to begin their journey."
+            DESCRIPTION "The Kaiu Wall looms over you, one hundred feet of dark stone battlements, redoubts, and watchtowers standing between Rokugan and the Shadowlands beyond. You pass by signs of a recent battle as you approach: wounded Crab bushi being tended by healers and shugenja, burakumin carrying off the dead to be cremated, and yet more warriors cleaning and repairing armor and weapons. More troops stand guard atop the Wall, as the vigil of the Crab against the darkness never ends. Suspicious stares follow you as you pass by, until a sentinel close to the Wall turns to you and barks, \"What is your business here?\""
             NPCS [^"Hida Nagahide"]
         }
         ^"Shiro Hiruma" DEF {
             TYPE "Castle"
             DANGER_LEVEL "Shadowlands ruin (heavily Tainted)"
-            DESCRIPTION "Daylight Castle, the ancestral seat of the Hiruma family, fallen to the Shadowlands in the eighth century and a bleak, Taint-warped ruin ever since — gaping holes where walls once stood, ominous and confusing even for Crab samurai. It holds the library with Masami's hidden scroll, the three keys, and the site of the final confrontation."
+            DESCRIPTION "Daylight Castle, the ultimate destination of the PCs in Mask of the Oni, is an ancient castle that has suffered not only from the attack by the Maw that led to its downfall, but also from the corruption of the Shadowlands in the centuries since. The combined effects of battle damage, the passage of time, and the Taint of Jigoku have rendered the place ominous and confusing, even for Crab samurai.\n\nAs you round a rocky spur that thrusts out from a line of jagged, barren hills, you see the walls and towers of a fortress looming ahead of you, dominating the blasted landscape around it. This is Shiro Hiruma, once the ancestral home and seat of power of the Hiruma family. Now, it is a bleak ruin, with gaping holes where walls have slumped and collapsed. The watchtowers and the great keep inside the walls claw at the darkening sky like ghastly fingers. A brooding stillness hangs over the place; the air is heavy with an oppressive sense of expectation, as though something cataclysmic could happen at any moment."
             NPCS [^"Kitsu Sokori", ^"Atsumari no Oni"]
         }
     }

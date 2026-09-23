@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
     NAME "Legend of the Five Rings 5th Edition - Path of Waves: New Techniques"
-    VERSION "0.5.1"
+    VERSION "0.5.2"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -22,11 +22,11 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "General"
             ^"Rank" INTEGER 2
-            ^"Activation" STRING "As a Movement and Scheme action using a readied improvised weapon, make a TN 2 Survival (Air) check targeting one position at range 1-2."
-            ^"Effect" STRING "Throw improvised weapon to chosen position. If you succeed, choose one terrain quality (Dangerous, Entangling, or Obscuring). All terrain within 1 range band of targeted position gains that quality. Persists for 1 round plus 1 additional round per two bonus successes. If you fail, weapon lands at target position."
+            ^"Activation" STRING "As a Movement and Scheme action using a readied improvised weapon, you may make a TN 2 Survival (Air) check targeting one position at range 1–2."
+            ^"Effect" STRING "You throw the improvised weapon to the chosen position.\n\nIf you succeed, choose one of the following terrain qualities: Dangerous, Entangling, or Obscuring. The weapon lands at the target position. All terrain within 1 range band of the targeted position gains that terrain quality. This effect persists for one round, plus one additional round for every two bonus successes.\n\nIf you fail, the weapon lands at the target position."
         }
         RULES {
-            #L5RPW01qZ7xW5gJ2kY8dH7pP3tT: chaotic_scattering_opportunity "(op): Choose one additional terrain quality (Dangerous, Entangling, or Obscuring) to apply."
+            #L5RPW01qZ7xW5gJ2kY8dH7pP3tT: chaotic_scattering_opportunity "(op)(op): Choose one additional terrain quality (Dangerous, Entangling, or Obscuring) to apply to the terrain."
         }
     }
 
@@ -37,8 +37,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "General"
             ^"Rank" INTEGER 3
-            ^"Activation" STRING "When you perform a Guard action, if you have not moved any range bands this turn, you may spend opportunities."
-            ^"Effect" STRING "Earth or Void (op)+: Choose one character you can perceive per (op) spent. The next time you defend against physical damage from that character, your fatigue cannot be increased to a value greater than your endurance. Persists until end of your next turn."
+            ^"Activation" STRING "When you perform a Guard action, if you have not moved any range bands this turn, you may spend (op) in the following way:"
+            ^"Effect" STRING "Earth or Void (op)(op)+: Choose one character you can perceive per (op)(op) spent this way. The next time you defend against physical damage from that character, your fatigue cannot be increased to a value greater than your endurance. This effect persists until the end of your next turn."
         }
     }
 
@@ -49,11 +49,11 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "General"
             ^"Rank" INTEGER 1
-            ^"Activation" STRING "Once per scene, after you perform an action that does not require a check while in a Void stance, make a TN 1 Meditation (Void) check."
-            ^"Effect" STRING "If you succeed, the next time you would receive strife, reduce the amount by 3 plus 1 per two bonus successes. Persists until start of your next turn."
+            ^"Activation" STRING "Once per scene, after you perform an action that does not require a check while in a Void stance, you may make a TN 1 Meditation (Void) check."
+            ^"Effect" STRING "If you succeed, the next time you would receive strife, reduce the amount you receive by 3, plus 1 per two bonus successes. This effect persists until the start of your next turn."
         }
         RULES {
-            #L5RPW01mE4zI6pV4dT5aN8sE1fZ: minds_edge_void_op "Void (op): This effect applies each time you would receive strife before start of your next turn instead."
+            #L5RPW01mE4zI6pV4dT5aN8sE1fZ: minds_edge_void_op "Void (op): This effect applies each time you would receive strife before the start of your next turn instead."
             #L5RPW01hM0eL6gF9gK5vO2qB1bX: minds_edge_void_op2 "Void (op)(op): You may use this technique one additional time this scene."
         }
     }
@@ -66,7 +66,7 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Subtype" STRING "General"
             ^"Rank" INTEGER 2
             ^"Activation" STRING "As a Movement and Support action, if you are riding a mount, you may spur it to move more quickly."
-            ^"Effect" STRING "Your mount receives fatigue up to your ranks in Survival, then carries you that many range bands plus one, to a maximum of 6."
+            ^"Effect" STRING "Your mount receives an amount of fatigue up to your ranks in Survival, then carries you that many range bands plus one, to a maximum of 6."
         }
     }
 
@@ -77,8 +77,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "General"
             ^"Rank" INTEGER 4
-            ^"Activation" STRING "When you make a Fitness check as part of a Movement action while mounted, you may spend opportunities."
-            ^"Effect" STRING "(op)+: One character at range 0 of your ending position per (op) spent suffers fatigue and strife equal to your mount's silhouette unless they immediately move 1 range band away. (op)(op): Your mount may perform a Strike action with your assistance targeting one character at range 0."
+            ^"Activation" STRING "When you make a Fitness check as part of a Movement action while mounted, you may spend (op) in the following way:"
+            ^"Effect" STRING "(op)+: One character at range 0 of your ending position per (op) spent this way suffers fatigue and strife equal to your mount's silhouette unless they choose to immediately move 1 range band away from you.\n\n(op)(op)(op): Your mount may perform a Strike action with your assistance, targeting one character at range 0 (see Assistance, on page 26 of the core rulebook)."
         }
     }
 
@@ -89,8 +89,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "General"
             ^"Rank" INTEGER 5
-            ^"Activation" STRING "When you make a Meditation (Void) check during a duel or skirmish, you may spend opportunities."
-            ^"Effect" STRING "(op)(op): Choose one character you can perceive, then secretly select a number. Next time you are dealt damage or suffer a critical strike from that character, reveal the number. If number is higher than damage/severity, suffer as normal. If lower or equal, reduce by that amount (minimum 0). If reduced to 0, character suffers 5 strife. If critical strike reduced to 0, you do not suffer it. Persists until end of your next turn."
+            ^"Activation" STRING "When you make a Meditation (Void) check during a duel or skirmish, you may spend (op) in the following way:"
+            ^"Effect" STRING "(op)(op): Choose one character you can perceive, then secretly select a number. The next time you are dealt damage by that character or suffer a critical strike inflicted by that character, reveal the number you chose. If the number is higher than the damage or the severity of the critical strike (before any reductions), you suffer it as normal and this effect ends. If the number is lower than or equal to the damage or the severity of the critical strike, reduce it by that amount, to a minimum of 0. If you reduce it to 0, the character you chose suffers 5 strife. If you reduce the severity of a critical strike to 0 this way, you do not suffer it. This effect persists until the end of your next turn."
         }
     }
 
@@ -103,12 +103,12 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Close Combat"
             ^"Rank" INTEGER 3
-            ^"Activation" STRING "As a Movement and Support action, make a TN 2 Tactics (Water) or Smithing (Water) check using a readied improvised weapon."
-            ^"Effect" STRING "If you succeed, choose a Martial Arts [Melee] weapon profile for a similar weapon. Treat improvised weapon as having that profile with damage and deadliness reduced by 1. Persists until end of scene, then weapon gains Destroyed quality."
+            ^"Activation" STRING "As a Movement and Support action, you may make a TN 2 Tactics (Water) or Smithing (Water) check using a readied improvised weapon."
+            ^"Effect" STRING "If you succeed, you may choose a Martial Arts [Melee] weapon profile for a weapon similar in shape to the improvised weapon (the GM has discretion over whether the substitution is appropriate). Treat the improvised weapon as having that profile, with its damage and deadliness reduced by 1. This effect persists until the end of the scene, at which point the improvised weapon gains the Destroyed quality."
         }
         RULES {
-            #L5RPW02eL9iO0bV4pQ1fA1uC7hF: improvised_assault_water_op "Water (op): Immediately perform a Strike action using the readied weapon."
-            #L5RPW02oG0xT6pE7eK6cF2jF7lL: improvised_assault_water_op2 "Water (op)(op): Choose one item quality (Cumbersome, Razor-Edged, or Snaring). Weapon is treated as having that quality."
+            #L5RPW02eL9iO0bV4pQ1fA1uC7hF: improvised_assault_water_op "Water (op)(op): You may immediately perform a Strike action using the readied weapon."
+            #L5RPW02oG0xT6pE7eK6cF2jF7lL: improvised_assault_water_op2 "Water (op)(op)(op): If you succeed, choose one of the following item qualities: Cumbersome, Razor-Edged, or Snaring. The weapon is treated as having that quality."
         }
     }
 
@@ -119,8 +119,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Close Combat"
             ^"Rank" INTEGER 3
-            ^"Activation" STRING "When you make a check to resist a critical strike during a skirmish, if you are Enraged and not Incapacitated, you may spend opportunities."
-            ^"Effect" STRING "Fire or Void (op)+: Choose one unarmed profile or readied improvised weapon. Each other character at range 0-1 with vigilance lower than or equal to (op) spent suffers physical damage equal to base damage of unarmed profile plus 1 for each (op) spent in excess of their vigilance."
+            ^"Activation" STRING "When you make a check to resist a critical strike during a skirmish, if you are Enraged and not Incapacitated, you may spend (op) in the following way:"
+            ^"Effect" STRING "Fire or Void (op)+: Choose one of your unarmed profiles or a readied improvised weapon. Each other character at range 0–1 with vigilance lower than or equal to (op) spent this way suffers physical damage equal to the base damage of your unarmed profile plus 1 for each (op) spent in excess of their vigilance."
         }
     }
 
@@ -131,8 +131,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Close Combat"
             ^"Rank" INTEGER 5
-            ^"Activation" STRING "When you make an Attack action check with a Cumbersome weapon, you may spend opportunities."
-            ^"Effect" STRING "(op)(op): If target would suffer a critical strike, instead of making a check to resist, they suffer the severity 5-6: Debilitating Gash result."
+            ^"Activation" STRING "When you make an Attack action check with a Cumbersome weapon, you may spend (op) in the following way:"
+            ^"Effect" STRING "(op)(op): If your target would suffer a critical strike as a result of this check, instead of making a check to resist, they suffer the severity 5–6: Debilitating Gash result (see Table 6–6: Results of Critical Strikes by Severity, on page 270 of the core rulebook)."
         }
     }
 
@@ -143,11 +143,11 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Close Combat"
             ^"Rank" INTEGER 3
-            ^"Activation" STRING "As an Attack and Movement action using a readied Snaring weapon, make a TN 3 Martial Arts [Melee] (Water) check targeting one position within range you could not normally reach."
-            ^"Effect" STRING "If you succeed, snag weapon and swing to the position."
+            ^"Activation" STRING "As an Attack and Movement action using a readied Snaring weapon, you may make a TN 3 Martial Arts [Melee] (Water) check targeting one position within range of your weapon that you could not normally reach. The GM is the final arbiter of whether it is reasonable that you could swing to this position."
+            ^"Effect" STRING "If you succeed, you snag your weapon on that position (or another nearby feature of the terrain, such as a beam or tree branch) and then swing to the position."
         }
         RULES {
-            #L5RPW02kZ7mZ2rJ2rG2fF1mZ3vF: daring_swing_water_op "Water (op)+: Choose a character at range 0 of final position with vigilance lower than or equal to (op) spent. That character suffers physical damage equal to range bands traveled this round plus bonus successes."
+            #L5RPW02kZ7mZ2rJ2rG2fF1mZ3vF: daring_swing_water_op "Water (op)+: Choose a character at range 0 of your final position with vigilance lower than or equal to the (op) you spent this way. That character suffers physical damage equal to the number of range bands you traveled this round plus your bonus successes."
         }
     }
 
@@ -158,11 +158,11 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Close Combat"
             ^"Rank" INTEGER 3
-            ^"Activation" STRING "As a Movement and Support action using a readied Cumbersome weapon, make a TN 2 Martial Arts [Melee] (Earth) check."
-            ^"Effect" STRING "If you succeed, treat physical resistance against attacks from characters at range 2-6 as increased by your ranks in Fitness."
+            ^"Activation" STRING "As a Movement and Support action using a readied Cumbersome weapon, you may make a TN 2 Martial Arts [Melee] (Earth) check."
+            ^"Effect" STRING "If you succeed, treat your physical resistance against attacks made by characters at range 2–6 as increased by your ranks in Fitness."
         }
         RULES {
-            #L5RPW02jI5dA5oD2sG8sT7eR3yP: deflective_defense_earth_op "Earth (op)(op): After defending against physical damage from range 2-6 attack, that character suffers 2 strife."
+            #L5RPW02jI5dA5oD2sG8sT7eR3yP: deflective_defense_earth_op "Earth (op)(op): After you defend against physical damage from an attack made by a character at range 2–6, that character suffers 2 strife."
         }
     }
 
@@ -173,11 +173,11 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Close Combat"
             ^"Rank" INTEGER 2
-            ^"Activation" STRING "As an Attack and Scheme action using a readied weapon, make a Martial Arts [Melee] (Air or Fire) check targeting one character in weapon's range. TN equals target's vigilance."
-            ^"Effect" STRING "If you succeed, target must choose: receive strife equal to your ranks in Performance and the Dazed condition; OR suffer a critical strike with severity equal to your weapon's deadliness."
+            ^"Activation" STRING "As an Attack and Scheme action using a readied weapon, you may make a Martial Arts [Melee] (Air or Fire) check targeting one character in your weapon's range. The TN of this check is equal to your target's vigilance."
+            ^"Effect" STRING "If you succeed, your target must choose one of the following:\n\nReceive strife equal to your ranks in Performance and the Dazed condition.\n\nSuffer a critical strike with severity equal to your weapon's deadliness."
         }
         RULES {
-            #L5RPW02xH4iD5oD1sQ2pJ0fA5dK: flashing_steel_cumbersome "(op)(op)+: If weapon is Cumbersome, choose one additional target with vigilance lower than or equal to original target's per (op)(op) spent."
+            #L5RPW02xH4iD5oD1sQ2pJ0fA5dK: flashing_steel_cumbersome "(op)(op)+: If your weapon is Cumbersome, choose one additional target with vigilance lower than or equal to your original target's vigilance per (op)(op) spent this way."
         }
     }
 
@@ -188,11 +188,11 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Close Combat"
             ^"Rank" INTEGER 4
-            ^"Activation" STRING "As an Attack, Movement, and Scheme action using a sheathed Razor-Edged weapon, make a Martial Arts [Melee] check targeting one character at range 1. TN equals target's vigilance."
-            ^"Effect" STRING "Draw and ready weapon in one-handed grip. You suffer Disoriented condition. If you succeed, target suffers physical damage equal to weapon's deadliness plus 1 per two bonus successes."
+            ^"Activation" STRING "As an Attack, Movement, and Scheme action using a sheathed Razor-Edged weapon, you may make a Martial Arts [Melee] check targeting one character at range 1. The TN of this check is equal to your target's vigilance."
+            ^"Effect" STRING "You draw and ready the sheathed weapon in a one-handed grip. You suffer the Disoriented condition. If you succeed, your target suffers physical damage equal to your weapon's deadliness plus 1 for every two bonus successes."
         }
         RULES {
-            #L5RPW02dA2rD9nT6pA1iC5aK0oM: reverse_draw_crit "(op): If damage causes target to become Incapacitated, they suffer a critical strike with severity equal to weapon's deadliness plus bonus successes."
+            #L5RPW02dA2rD9nT6pA1iC5aK0oM: reverse_draw_crit "(op)(op): If this damage causes your target to become Incapacitated, they suffer a critical strike with severity equal to the weapon's deadliness plus your bonus successes."
         }
     }
 
@@ -203,11 +203,11 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Close Combat"
             ^"Rank" INTEGER 2
-            ^"Activation" STRING "As an Attack and Movement action using a sheathed Razor-Edged weapon, make a TN 2 Martial Arts [Melee] check targeting one character at range 0-1."
-            ^"Effect" STRING "If you succeed, target suffers 5 physical damage with deadliness 2 plus additional damage equal to bonus successes. Draw and ready weapon in one hand and sheath in the other."
+            ^"Activation" STRING "As an Attack and Movement action using a sheathed Razor-Edged weapon, you may make a TN 2 Martial Arts [Melee] check targeting one character at range 0–1."
+            ^"Effect" STRING "If you succeed, your target suffers 5 physical damage with deadliness 2, plus additional damage equal to your bonus successes.\n\nYou draw and ready the sheathed weapon in a one-handed grip in one hand and its sheath (see page 112) in a one-handed grip in the other hand."
         }
         RULES {
-            #L5RPW02kZ3rB5iD5cN6qO2rZ4lW: sword_and_sheath_dazed "(op): If you succeed, target suffers the Dazed condition."
+            #L5RPW02kZ3rB5iD5cN6qO2rZ4lW: sword_and_sheath_dazed "(op)(op): If you succeed, your target suffers the Dazed condition."
         }
     }
 
@@ -218,11 +218,11 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Close Combat"
             ^"Rank" INTEGER 2
-            ^"Activation" STRING "As an Attack and Scheme action, make a Martial Arts [Melee] (Earth or Water) check targeting one character in weapon's range. TN equals target's vigilance, or TN 1 if target is in Dangerous, Entangling, or Obscuring terrain."
-            ^"Effect" STRING "If you succeed, target must choose: receive fatigue equal to your ranks in Fitness and the Prone condition; OR switch to a different stance and suffer the Immobilized condition."
+            ^"Activation" STRING "As an Attack and Scheme action, you may make a Martial Arts [Melee] (Earth or Water) check targeting one character in your weapon's range. The TN is equal to the target's vigilance. If your target is in Dangerous, Entangling, or Obscuring terrain, the TN is 1 instead."
+            ^"Effect" STRING "If you succeed, your target must choose one of the following:\n\nReceive fatigue equal to your ranks in Fitness and the Prone condition.\n\nSwitch to a different stance of their choice and suffer the Immobilized condition."
         }
         RULES {
-            #L5RPW02aO7yZ1jF4fX5dY1vV7uF: landslide_cumbersome "(op)+: If weapon has Cumbersome quality, choose one additional target with vigilance lower than or equal to original target's per (op)(op) spent."
+            #L5RPW02aO7yZ1jF4fX5dY1vV7uF: landslide_cumbersome "(op)(op)+: If your weapon has the Cumbersome quality, choose one additional target with vigilance lower than or equal to your original target's vigilance per (op)(op) spent this way."
         }
     }
 
@@ -233,13 +233,13 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Close Combat"
             ^"Rank" INTEGER 4
-            ^"Activation" STRING "When targeted by an Attack action, if you have an empty hand, spend 1 Void point to immediately make a Martial Arts [Unarmed] (Air) check targeting another character at range 0-1 (not the attacker). TN equals new target's vigilance."
-            ^"Effect" STRING "If you succeed, you cease being the target of the Attack action; your target becomes the target instead."
+            ^"Activation" STRING "When you are targeted by an Attack action, if you have an empty hand, you may spend 1 Void point to immediately make a Martial Arts [Unarmed] (Air) check targeting another character at range 0–1 other than the attacker. The TN is equal to the new target's vigilance."
+            ^"Effect" STRING "If you succeed, you cease being the target of the Attack action, and your target becomes the target of that action instead."
         }
         RULES {
-            #L5RPW02oK2mB2kI9fG8zW9uM6rR: laughing_fox_move "(op): Move 1 range band away from attacker."
-            #L5RPW02hM5sU9oC9pL7dA1aB5lI: laughing_fox_damage "(op)(op): New target also suffers physical damage equal to your ranks in Skulduggery."
-            #L5RPW02wV0lN0dQ5aR0gN1oB1zW: laughing_fox_prone "(op)(op)(op): Both attacker and new target suffer the Prone condition."
+            #L5RPW02oK2mB2kI9fG8zW9uM6rR: laughing_fox_move "(op): If you succeed, move 1 range band away from the attacker."
+            #L5RPW02hM5sU9oC9pL7dA1aB5lI: laughing_fox_damage "(op)(op): If you succeed, the new target also suffers physical damage equal to your ranks in Skulduggery."
+            #L5RPW02wV0lN0dQ5aR0gN1oB1zW: laughing_fox_prone "(op)(op): If you succeed, both the attacker and the new target suffer the Prone condition."
         }
     }
 
@@ -250,8 +250,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Close Combat"
             ^"Rank" INTEGER 3
-            ^"Activation" STRING "When you make an Attack action check using an ax or polearm, you may spend opportunities."
-            ^"Effect" STRING "(op): Treat weapon's deadliness as increased by number of range bands you have traveled this round, and if thrown, add range bands the weapon has traveled."
+            ^"Activation" STRING "When you make an Attack action check using an ax or polearm, you may spend (op) in the following way:"
+            ^"Effect" STRING "(op): Treat the deadliness of your weapon as increased by the number of range bands you have traveled this round, and if you threw it, add the number of range bands it has traveled this round."
         }
     }
 
@@ -262,11 +262,11 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Close Combat"
             ^"Rank" INTEGER 2
-            ^"Activation" STRING "As an Attack and Movement action using unarmed punch or kick profile, make a TN 3 Martial Arts [Unarmed] (Fire) check to launch at target at range 2-3."
-            ^"Effect" STRING "Move to range 0 of target; suffer Prone condition. Reduce TN of target's next Attack action targeting you by 1. If you succeed, target suffers damage equal to base unarmed damage plus ranks in Fitness and must make TN 3 Fitness check (Water 2, Air 5) or suffer Prone."
+            ^"Activation" STRING "As an Attack and Movement action using your unarmed punch or kick profile, you may make a TN 3 Martial Arts [Unarmed] (Fire) check to launch yourself at a target at range 2–3."
+            ^"Effect" STRING "You move to range 0 of your target and suffer the Prone condition. Reduce the TN of your target's next Attack action check targeting you by 1. If you succeed, your target suffers damage equal to the base damage of your unarmed punch or kick profile plus your ranks in Fitness and must make a TN 3 Fitness check (Water 2, Air 5) or suffer the Prone condition."
         }
         RULES {
-            #L5RPW02uV4kG0mU5jP0fP1hC3kW: reckless_lunge_strife "(op): Target receives strife equal to bonus successes."
+            #L5RPW02uV4kG0mU5jP0fP1hC3kW: reckless_lunge_strife "(op): If you succeed, your target receives strife equal to your bonus successes."
             #L5RPW02iJ8gU0dK5cN6tT2aZ2qX: reckless_lunge_no_prone "(op)(op): You do not suffer the Prone condition."
         }
     }
@@ -278,8 +278,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Close Combat"
             ^"Rank" INTEGER 3
-            ^"Activation" STRING "When you perform a Maneuver action during your turn, you may spend opportunities."
-            ^"Effect" STRING "Fire or Water (op)(op): After you move, perform a Strike action using a readied Martial Arts [Melee] weapon or unarmed profile targeting one character in range. TN equals target's vigilance. You can only target a character you moved toward."
+            ^"Activation" STRING "When you perform a Maneuver action during your turn, you may spend (op) in the following way:"
+            ^"Effect" STRING "Fire or Water (op)(op): After you move, you may perform a Strike action using a readied Martial Arts [Melee] weapon or Martial Arts [Unarmed] profile targeting one character. The target must be in range of the readied weapon or unarmed profile, and the TN for the Strike action is equal to your target's vigilance. You can only target a character you moved toward this way."
         }
     }
 
@@ -290,11 +290,11 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Close Combat"
             ^"Rank" INTEGER 1
-            ^"Activation" STRING "As an Attack and Support action using a readied blunt weapon or polearm, make a TN 3 Fitness (Earth) check targeting one character at range 0-1."
-            ^"Effect" STRING "If you succeed, target suffers physical damage equal to 5 plus bonus successes with deadliness 2."
+            ^"Activation" STRING "As an Attack and Support action using a readied blunt weapon or polearm, you may make a TN 3 Fitness (Earth) check targeting one character at range 0–1."
+            ^"Effect" STRING "If you succeed, your target suffers physical damage equal to 5 plus your bonus successes with deadliness 2."
         }
         RULES {
-            #L5RPW02hM4oJ1wA4qX9pL7iT0wH: snapping_branch_push "(op)(op)+: Target must resist with TN 4 Fitness check (Air 2, Water 5) or be pushed 1 range band per (op)(op) spent."
+            #L5RPW02hM4oJ1wA4qX9pL7iT0wH: snapping_branch_push "(op)(op)+: Your target must resist with a TN 4 Fitness check (Air 2, Water 5) or be pushed 1 range band away from you per (op)(op) spent this way."
         }
     }
 
@@ -305,8 +305,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Close Combat"
             ^"Rank" INTEGER 5
-            ^"Activation" STRING "When you make a Martial Arts [Melee] check with a blunt weapon or polearm, you may spend opportunities."
-            ^"Effect" STRING "(op)+: Choose one character in range of your weapon (not your target) with vigilance lower than or equal to (op) spent. That character suffers physical damage equal to weapon's base damage. May activate multiple times choosing different characters."
+            ^"Activation" STRING "When you make a Martial Arts [Melee] check with a blunt weapon or polearm, you may spend (op) in the following way:"
+            ^"Effect" STRING "(op)+: Choose one character in range of your weapon other than your target with vigilance lower than or equal to (op) spent this way. That character suffers physical damage equal to your weapon's base damage. You may activate this (op) multiple times, choosing a different character each time."
         }
     }
 
@@ -317,8 +317,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Close Combat"
             ^"Rank" INTEGER 2
-            ^"Activation" STRING "When you make an Attack action check with a blunt weapon, you may spend opportunities."
-            ^"Effect" STRING "Fire (op)(op)+: One character at range 0-1 of your target per (op)(op) spent receives 1 fatigue, or 3 fatigue if suffering the Dazed condition."
+            ^"Activation" STRING "When you make an Attack action check with a blunt weapon, you may spend (op) in the following way:"
+            ^"Effect" STRING "Fire (op)(op)+: One character at range 0–1 of your target per (op)(op) spent this way receives 1 fatigue, or 3 fatigue if they are suffering the Dazed condition."
         }
     }
 
@@ -329,8 +329,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Close Combat"
             ^"Rank" INTEGER 3
-            ^"Activation" STRING "When you perform an Attack action check using a sword or ax, if you have another readied weapon of the same category, you may spend opportunities."
-            ^"Effect" STRING "(op)(op): If target suffers a critical strike, increase its severity by the deadliness of your other readied weapon."
+            ^"Activation" STRING "When you perform an Attack action check using a sword or ax, if you have another readied weapon of the same category, you may spend (op) in the following way:"
+            ^"Effect" STRING "(op)(op): If your target suffers a critical strike as a result of this check, increase its severity by the deadliness of your other readied weapon."
         }
     }
 
@@ -341,12 +341,12 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Close Combat"
             ^"Rank" INTEGER 3
-            ^"Activation" STRING "As an Attack and Movement action targeting a character with silhouette 2 or lower using unarmed punch profile, make a Martial Arts [Unarmed] (Water) check targeting one character at range 0. TN equals target's vigilance."
-            ^"Effect" STRING "If you succeed, hurl target 1 range band in direction of your choice plus 1 per two bonus successes. Target suffers effects of falling the distance moved."
+            ^"Activation" STRING "As an Attack and Movement action targeting a character with silhouette 2 or lower using your unarmed punch profile, you may make a Martial Arts [Unarmed] (Water) check targeting one character at range 0. The TN of this check is equal to your target's vigilance."
+            ^"Effect" STRING "If you succeed, you hurl your target 1 range band in the direction of your choice, plus 1 range band for every two bonus successes. Your target suffers the effects of falling the distance they were moved (see page 269 of the core rulebook)."
         }
         RULES {
-            #L5RPW02gC9gN1oE0hK7vV3iT0iL: wheeling_sweep_hurl "(op): Choose one character within range bands equal to distance thrown. Instead of hurling to ground, hurl at that character, who must resist TN 4 Fitness (Earth 3, Fire 6) or suffer same falling damage and Prone."
-            #L5RPW02sG3kA8cK5bX1bF8kG5iR: wheeling_sweep_reduce "(op)+: Reduce physical damage target suffers from falling by 2 per (op) spent."
+            #L5RPW02gC9gN1oE0hK7vV3iT0iL: wheeling_sweep_hurl "(op): Choose one character within a number of range bands equal to the distance you threw the target. Instead of hurling your original target into the ground, you hurl the target at that character, who must resist with a TN 4 Fitness check (Earth 3, Fire 6) or suffer the same amount of damage the original target suffers from falling and the Prone condition."
+            #L5RPW02sG3kA8cK5bX1bF8kG5iR: wheeling_sweep_reduce "(op)+: Reduce the physical damage your target suffers from falling this way by 2 per (op) spent this way."
         }
     }
 
@@ -359,8 +359,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Ranged Combat"
             ^"Rank" INTEGER 4
-            ^"Activation" STRING "As an Attack and Movement action using a readied ranged weapon, make a Martial Arts [Ranged] (Void) check targeting one character within range to whom you do not have line of sight. TN equals target's vigilance."
-            ^"Effect" STRING "If you succeed, target suffers physical damage equal to weapon's base damage and receives strife equal to bonus successes."
+            ^"Activation" STRING "As an Attack and Movement action using a readied ranged weapon, you may make a Martial Arts [Ranged] (Void) check targeting one character within your weapon's range to whom you do not have direct line of sight. The TN of the check is equal to the target's vigilance."
+            ^"Effect" STRING "If you succeed, your target suffers physical damage equal to your weapon's base damage and receives strife equal to your bonus successes."
         }
     }
 
@@ -371,11 +371,11 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Ranged Combat"
             ^"Rank" INTEGER 5
-            ^"Activation" STRING "Once per scene as an Attack and Movement action using a readied ranged weapon, make a Martial Arts [Ranged] (Void) check targeting one character within range. TN equals target's vigilance."
-            ^"Effect" STRING "If you succeed, at start of target's next turn, they suffer a critical strike with severity equal to weapon's deadliness."
+            ^"Activation" STRING "Once per scene as an Attack and Movement action using a readied ranged weapon, you may make a Martial Arts [Ranged] (Void) check targeting one character within your weapon's range. The TN of this check is equal to your target's vigilance."
+            ^"Effect" STRING "If you succeed, at the start of your target's next turn, they suffer a critical strike with severity equal to your weapon's deadliness."
         }
         RULES {
-            #L5RPW03kF7oF7aT0uO6vD6wP8vM: falling_heavens_delay "(op)+: Delay effect for one additional round per (op) spent. For each round delayed, increase deadliness of critical strike by 2."
+            #L5RPW03kF7oF7aT0uO6vD6wP8vM: falling_heavens_delay "(op)+: You may delay this effect for one additional round per (op) spent this way. For each round you delay this way, you increase the deadliness of the critical strike by 2."
         }
     }
 
@@ -386,8 +386,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Ranged Combat"
             ^"Rank" INTEGER 2
-            ^"Activation" STRING "When you perform a Martial Arts [Ranged] check, you may spend opportunities."
-            ^"Effect" STRING "Earth or Fire (op): Target treats all terrain as Dangerous. Persists until end of your next turn. Air or Water (op): Target treats all terrain as Entangling. Persists until end of your next turn."
+            ^"Activation" STRING "When you perform a Martial Arts [Ranged] check, you may spend (op) in the following way:"
+            ^"Effect" STRING "Earth or Fire (op)(op): Your target treats all terrain as having the Dangerous quality. This effect persists until the end of your next turn.\n\nAir or Water (op)(op): Your target treats all terrain as having the Entangling quality. This effect persists until the end of your next turn."
         }
     }
 
@@ -398,8 +398,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Ranged Combat"
             ^"Rank" INTEGER 3
-            ^"Activation" STRING "When you perform a Maneuver action during your turn, you may spend opportunities."
-            ^"Effect" STRING "Air or Water (op)(op): After you move, perform a Strike action using a readied ranged weapon targeting one character in range (TN equals target's vigilance). Can only target a character you moved away from."
+            ^"Activation" STRING "When you perform a Maneuver action during your turn, you may spend (op) in the following way:"
+            ^"Effect" STRING "Air or Water (op)(op): After you move, you may perform a Strike action using a readied Martial Arts [Ranged] weapon targeting one character in range, treating the TN as equal to your target's vigilance. You can only target a character you moved away from this way."
         }
     }
 
@@ -410,8 +410,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Kata"
             ^"Subtype" STRING "Ranged Combat"
             ^"Rank" INTEGER 4
-            ^"Activation" STRING "When you perform a Martial Arts [Ranged] check, you may spend opportunities."
-            ^"Effect" STRING "Air or Void (op)(op): If you did not succeed, choose another target at range 0-2 of your target with vigilance lower than or equal to your target's. New target suffers physical damage equal to weapon's base damage."
+            ^"Activation" STRING "When you perform a Martial Arts [Ranged] check, you may spend (op) in the following way:"
+            ^"Effect" STRING "Air or Void (op)(op): If you did not succeed, choose another target at range 0–2 of your target with vigilance lower than or equal to your target's. The new target suffers physical damage equal to your weapon's base damage."
         }
     }
 
@@ -428,12 +428,12 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Shūji"
             ^"Subtype" STRING "Earth"
             ^"Rank" INTEGER 1
-            ^"Activation" STRING "Once per scene as a Support action, make a TN 2 Command (Earth) check targeting one Compromised or Incapacitated character."
-            ^"Effect" STRING "If you succeed and target is Compromised, they remove strife until strife equals composure minus 1. If target is Incapacitated, they remove fatigue until fatigue equals endurance minus 1."
+            ^"Activation" STRING "Once per scene as a Support action, you may make a TN 2 Command (Earth) check targeting one Compromised or Incapacitated character."
+            ^"Effect" STRING "If you succeed and your target is Compromised, they remove strife until their strife is equal to their composure minus 1.\n\nIf you succeed and your target is Incapacitated, they remove fatigue until their fatigue is equal to their endurance minus 1."
         }
         RULES {
-            #L5RPW04rK3rV7tR6vA3cR0eL1wY: bellow_resolve_reuse "Earth (op): Use this technique one additional time this scene."
-            #L5RPW04tQ1aE6yO5yD1hT9rR9pI: bellow_resolve_mass "Earth (op)(op): Technique instead targets any number of Compromised and Incapacitated characters in the scene."
+            #L5RPW04rK3rV7tR6vA3cR0eL1wY: bellow_resolve_reuse "Earth (op)(op): You may use this technique one additional time this scene."
+            #L5RPW04tQ1aE6yO5yD1hT9rR9pI: bellow_resolve_mass "Earth (op)(op)(op): This technique instead targets any number of Compromised and Incapacitated characters of your choice in the scene."
         }
     }
 
@@ -444,8 +444,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Shūji"
             ^"Subtype" STRING "Earth"
             ^"Rank" INTEGER 3
-            ^"Activation" STRING "When you make a check to resist an effect, you may spend opportunities."
-            ^"Effect" STRING "Earth (op)+: One character per (op) spent may immediately switch to a stance of their choice."
+            ^"Activation" STRING "When you make a check to resist an effect, you may spend (op) in the following way:"
+            ^"Effect" STRING "Earth (op)+: One character per (op) spent this way may immediately switch to a stance of their choice."
         }
     }
 
@@ -456,8 +456,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Shūji"
             ^"Subtype" STRING "Earth"
             ^"Rank" INTEGER 5
-            ^"Activation" STRING "Once per scene as a Support action, make a TN 4 Command (Earth) or TN 4 Performance (Earth) check targeting one character."
-            ^"Effect" STRING "If you succeed, choose one of your kata, ninjutsu, or shūji techniques. Your target may use that technique as if they knew it. Persists until end of scene."
+            ^"Activation" STRING "Once per scene as a Support action, you may make a TN 4 Command (Earth) or TN 4 Performance (Earth) check targeting one character."
+            ^"Effect" STRING "If you succeed, choose one of your kata, ninjutsu, or shūji techniques. Your target may use that technique as if they knew it. This effect persists until the end of the scene."
         }
     }
 
@@ -470,12 +470,12 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Shūji"
             ^"Subtype" STRING "Air"
             ^"Rank" INTEGER 1
-            ^"Activation" STRING "Once per scene as a Scheme and Support action, make a Courtesy (Air) or Tactics (Air) check targeting two other characters who are not hostile to each other. TN equals highest vigilance among targets."
-            ^"Effect" STRING "If you succeed, choose one target and increase TN of their next check by 2. Decrease TN of other target's next check by 2. Persists until end of your next turn."
+            ^"Activation" STRING "Once per scene, as a Scheme and Support action, you may make a Courtesy (Air) or Tactics (Air) check targeting two other characters who are not hostile to each other. The TN of the check is equal to the highest vigilance among your targets."
+            ^"Effect" STRING "If you succeed, choose one target and increase the TN of their next check by 2. Decrease the TN of the other target's next check by 2. This effect persists until the end of your next turn."
         }
         RULES {
-            #L5RPW04zL3pS6eE4fR6iB2vL7eM: flowering_deceptions_hidden "Air (op): Neither target realizes your duplicity."
-            #L5RPW04dS8uS1xH4qU2cL6dY2eW: flowering_deceptions_reuse "Air (op)(op): Use this technique one additional time this scene."
+            #L5RPW04zL3pS6eE4fR6iB2vL7eM: flowering_deceptions_hidden "Air (op): Neither of your targets realizes your duplicity in hindering one to help the other."
+            #L5RPW04dS8uS1xH4qU2cL6dY2eW: flowering_deceptions_reuse "Air (op)(op): You can use this technique one additional time this scene."
         }
     }
 
@@ -486,11 +486,11 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Shūji"
             ^"Subtype" STRING "Air"
             ^"Rank" INTEGER 3
-            ^"Activation" STRING "As a Scheme action, make a TN 3 Social skill (Air) check targeting one character."
-            ^"Effect" STRING "If you succeed, each character who performs an Attack or Scheme action targeting that character counts as having your assistance. Persists until end of your next turn."
+            ^"Activation" STRING "As a Scheme action, you may make a TN 3 Social skill (Air) check targeting one character."
+            ^"Effect" STRING "If you succeed, each character who performs an Attack or Scheme action targeting that character counts as having your assistance (see Assistance, on page 26 of the core rulebook). This effect persists until the end of your next turn."
         }
         RULES {
-            #L5RPW04fD3sU7yZ7qI7hR7rI5aF: pack_gambit_exploit "Air (op)(op): Choose one of target's disadvantages you know. Each attacking character may exploit that disadvantage without spending a Void point."
+            #L5RPW04fD3sU7yZ7qI7hR7rI5aF: pack_gambit_exploit "Air (op)(op): Choose one of the target's disadvantages you know. Each character who performs an Attack or Scheme action targeting that character may exploit that disadvantage without spending a Void point (see Exploiting a Target's Disadvantage, on page 101 of the core rulebook)."
         }
     }
 
@@ -501,8 +501,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Shūji"
             ^"Subtype" STRING "Air"
             ^"Rank" INTEGER 5
-            ^"Activation" STRING "As a Scheme action, make a Command (Air) check targeting any number of characters not hostile to each other. TN equals highest vigilance. In mass battle, must target all commanders."
-            ^"Effect" STRING "In intrigue/skirmish/duel: exchange initiative values of any number of targets. In mass battle: reveal that two leaders of the same army have exchanged cohorts and positions."
+            ^"Activation" STRING "As a Scheme action, you may make a Command (Air) check targeting any number of characters in the scene who are not hostile to each other. The TN is equal to the highest vigilance among your targets. In a mass battle, you must target all commanders (other than yourself, if applicable)."
+            ^"Effect" STRING "If you succeed on that check during an intrigue, skirmish, or duel, you may exchange the initiative values of any number of the targets. If you succeed on that check during a mass battle, you may reveal that two leaders of the same army have exchanged cohorts and positions."
         }
     }
 
@@ -515,12 +515,12 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Shūji"
             ^"Subtype" STRING "Water"
             ^"Rank" INTEGER 1
-            ^"Activation" STRING "Once per game session at start of scene, or as a Support action, make a TN 2 Scholar skill (Water) check targeting one character."
-            ^"Effect" STRING "If you succeed, target treats focus as 2 lower (minimum 1) and vigilance as 2 higher. Persists until end of scene."
+            ^"Activation" STRING "Once per game session at the start of a scene, or as a Support action, you may make a TN 2 Scholar skill (Water) check targeting one character."
+            ^"Effect" STRING "If you succeed, that character treats their focus as 2 lower (to a minimum of 1) and their vigilance as 2 higher. This effect persists until the end of the scene."
         }
         RULES {
-            #L5RPW04kL7kM1sJ9nJ7kE8lG9pV: eyes_up_extra_target "Water (op)+: Choose one additional target per (op) spent."
-            #L5RPW04cP0pJ4jS7jF1rX2pP2bM: eyes_up_extended "Water (op): Persists until end of next scene instead."
+            #L5RPW04kL7kM1sJ9nJ7kE8lG9pV: eyes_up_extra_target "Water (op)+: Choose one additional target per (op) spent this way."
+            #L5RPW04cP0pJ4jS7jF1rX2pP2bM: eyes_up_extended "Water (op): This effect persists until the end of the next scene instead."
         }
     }
 
@@ -531,8 +531,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Shūji"
             ^"Subtype" STRING "Water"
             ^"Rank" INTEGER 2
-            ^"Activation" STRING "When you make a Commerce (Water) check to negotiate payment for a job, you may spend opportunities."
-            ^"Effect" STRING "Water (op)+: If you succeed, also convince client to pay 10% of fee up front per (op) spent."
+            ^"Activation" STRING "When you make a Commerce (Water) check to negotiate payment for a job, you may spend (op) in the following way:"
+            ^"Effect" STRING "Water (op)+: If you succeed, you also convince the client to pay 10% of the fee up front per (op) spent this way."
         }
     }
 
@@ -543,11 +543,11 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Shūji"
             ^"Subtype" STRING "Water"
             ^"Rank" INTEGER 3
-            ^"Activation" STRING "Once per scene as a Movement and Support action, make a TN 2 Command (Water) check targeting two willing characters at range 0-2 who could reach each other's positions."
-            ^"Effect" STRING "If you succeed, targets immediately move to switch places. If they do, each may select a new stance."
+            ^"Activation" STRING "Once per scene as a Movement and Support action, you may make a TN 2 Command (Water) check targeting two willing characters at range 0–2 of you who could reasonably reach one another's positions."
+            ^"Effect" STRING "If you succeed, your targets immediately move the range bands to switch places. If they do, each target may select a new stance."
         }
         RULES {
-            #L5RPW04fC2iZ8nQ8xN2lL9rX7aH: malleable_formation_reuse "Water (op)(op): Use this technique one additional time this scene."
+            #L5RPW04fC2iZ8nQ8xN2lL9rX7aH: malleable_formation_reuse "Water (op)(op): You can use this technique one additional time this scene."
         }
     }
 
@@ -558,8 +558,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Shūji"
             ^"Subtype" STRING "Water"
             ^"Rank" INTEGER 5
-            ^"Activation" STRING "Once per scene as a Movement and Support action, if you are in a Water stance, call for a character at range 0-2 to cover you."
-            ^"Effect" STRING "Chosen character may immediately perform a Guard action targeting you, ignoring range restrictions. If they succeed, you may move up to 2 range bands. Reduce TN of your next action check this turn by 1."
+            ^"Activation" STRING "Once per scene as a Movement and Support action, if you are in a Water stance, you may call for a character at range 0–2 to cover you while you rush to complete an important task."
+            ^"Effect" STRING "The character you chose may immediately perform a Guard action (see page 265 of the core rulebook) targeting you, ignoring range restrictions. If they succeed, you may move up to 2 range bands. Reduce the TN of the next action check you perform this turn by 1."
         }
     }
 
@@ -572,12 +572,12 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Shūji"
             ^"Subtype" STRING "Fire"
             ^"Rank" INTEGER 1
-            ^"Activation" STRING "Once per session at start of scene, or as a Support action, make a TN 2 Scholar skill (Fire) check targeting one character."
-            ^"Effect" STRING "If you succeed, target treats vigilance as 2 lower (minimum 1) and focus as 2 higher. Persists until end of scene."
+            ^"Activation" STRING "Once per session at the start of a scene, or as a Support action, you may make a TN 2 Scholar skill (Fire) check targeting one character."
+            ^"Effect" STRING "If you succeed, that character treats their vigilance as 2 lower (to a minimum of 1) and their focus as 2 higher. This effect persists until the end of the scene."
         }
         RULES {
-            #L5RPW04qV9yR9tY3eZ6fC5dT5oQ: illuminate_extra_target "Fire (op)+: Choose one additional target per (op) spent."
-            #L5RPW04oM0aE0lU2vD1nU4wF9lD: illuminate_extended "Fire (op): Persists until end of next scene instead."
+            #L5RPW04qV9yR9tY3eZ6fC5dT5oQ: illuminate_extra_target "Fire (op)+: Choose one additional target per (op) spent this way."
+            #L5RPW04oM0aE0lU2vD1nU4wF9lD: illuminate_extended "Fire (op): This effect persists until the end of the next scene instead."
         }
     }
 
@@ -588,11 +588,11 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Shūji"
             ^"Subtype" STRING "Fire"
             ^"Rank" INTEGER 3
-            ^"Activation" STRING "Once per scene as a Scheme action, make a Performance (Fire) or Tactics (Fire) check targeting one character. TN equals target's vigilance."
-            ^"Effect" STRING "In intrigue/duel: target receives strife equal to honor rank unless they forfeit that much honor. In skirmish: target must move 2 range bands toward you or receive 3 strife plus 1 per 2 bonus successes. In mass battle: target must target your cohort with Assault or Challenge next turn or receive 3 strife plus 1 per 2 bonus successes. Succeed or fail, reduce TN of target's next check by 1."
+            ^"Activation" STRING "Once per scene as a Scheme action, you may make a Performance (Fire) or Tactics (Fire) check targeting one character. The TN of the check is equal to your target's vigilance."
+            ^"Effect" STRING "If you succeed during an intrigue encounter or a duel, your target receives strife equal to their honor rank unless they forfeit that much honor. If you succeed on the check during a skirmish, that character must immediately move 2 range bands toward you unless they choose to receive 3 strife, plus 1 additional strife for every 2 bonus successes. If you succeed on the check during a mass battle, that character must target your cohort with an Assault or Challenge action next turn, unless they choose to receive 3 strife, plus 1 additional strife for every 2 bonus successes. If you succeed or fail, reduce the TN of your target's next check by 1."
         }
         RULES {
-            #L5RPW04vH2fI7nZ9jA3zH4wP2bB: goading_taunt_reuse "Fire (op)(op): Use this technique one additional time this scene."
+            #L5RPW04vH2fI7nZ9jA3zH4wP2bB: goading_taunt_reuse "Fire (op)(op): You may use this technique one additional time this scene."
         }
     }
 
@@ -603,11 +603,11 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Shūji"
             ^"Subtype" STRING "Fire"
             ^"Rank" INTEGER 5
-            ^"Activation" STRING "Once per scene as a Support action, make a TN 3 Command (Fire) check targeting a friendly character."
-            ^"Effect" STRING "In skirmish: target may immediately perform a Strike action with your assistance. In mass battle: target's cohort may immediately perform an Assault action with your assistance."
+            ^"Activation" STRING "Once per scene as a Support action, you may make a TN 3 Command (Fire) check targeting a friendly character."
+            ^"Effect" STRING "If you succeed during a skirmish, your target may immediately perform a Strike action with your assistance (see Assistance, on page 26 of the core rulebook). If you succeed on the check during a mass battle, your target's cohort may immediately perform an Assault action (see page 278 of the core rulebook) with your assistance on the check."
         }
         RULES {
-            #L5RPW04nQ5hE2rR7oX9rY7gM0zJ: roar_of_encouragement_extra "Fire (op)(op)+: Choose one additional target to immediately perform a Strike (or Assault) action per (op)(op) spent."
+            #L5RPW04nQ5hE2rR7oX9rY7gM0zJ: roar_of_encouragement_extra "Fire (op)(op)+: Choose one additional target to immediately perform a Strike (or Assault) action per (op)(op) spent this way."
         }
     }
 
@@ -620,8 +620,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Shūji"
             ^"Subtype" STRING "Void"
             ^"Rank" INTEGER 1
-            ^"Activation" STRING "Once per scene as a Support action, if you are in a Void stance, focus on protecting what is important to you."
-            ^"Effect" STRING "Remove 3 fatigue and 3 strife, plus 3 fatigue and 3 strife for each Compromised or Incapacitated character in the scene with whom you share a bond."
+            ^"Activation" STRING "Once per scene as a Support action, if you are in a Void stance, you may focus on protecting what is important to you."
+            ^"Effect" STRING "You remove 3 fatigue and 3 strife, plus 3 fatigue and 3 strife for each Compromised or Incapacitated character in the scene with whom you share a bond (see Bonds, on page 187)."
         }
     }
 
@@ -632,8 +632,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Shūji"
             ^"Subtype" STRING "Void"
             ^"Rank" INTEGER 3
-            ^"Activation" STRING "Once per game session as a Scheme and Support action, make a TN 3 Social skill (Void) check targeting one character currently fighting in a duel or clash."
-            ^"Effect" STRING "If you succeed, immediately replace target in the duel or clash, staking your own honor and glory. Target forfeits half their staked honor and glory. If you share a bond with the character you are replacing or their adversary, no character must forfeit honor or glory."
+            ^"Activation" STRING "Once per game session as a Scheme and Support action, you may make a TN 3 Social skill (Void) check targeting one character who is currently fighting in a duel or clash."
+            ^"Effect" STRING "If you succeed, you immediately replace your target in the duel or clash, staking your own honor and glory as usual. Your target forfeits half the honor and glory they staked upon fighting uninterrupted. If you share a bond with the character you are replacing or with their adversary (see Bonds, on page 187), no character must forfeit honor or glory for your interruption."
         }
     }
 
@@ -644,8 +644,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Shūji"
             ^"Subtype" STRING "Void"
             ^"Rank" INTEGER 5
-            ^"Activation" STRING "Once per game session as a Support action, make a TN 5 Performance (Void) check targeting each character who shares a bond with you in the scene."
-            ^"Effect" STRING "If you succeed, each target removes 5 strife and 5 fatigue, plus 1 per two bonus successes."
+            ^"Activation" STRING "Once per game session as a Support action, you may make a TN 5 Performance (Void) check targeting each character who shares a bond with you in the scene."
+            ^"Effect" STRING "If you succeed, each target removes 5 strife and 5 fatigue, plus 1 for every two bonus successes (see Bonds, on page 187)."
         }
     }
 
@@ -660,12 +660,12 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Ritual"
             ^"Subtype" STRING "Qamarist"
             ^"Rank" INTEGER 1
-            ^"Activation" STRING "Once per scene as a Support action using an alchemy kit, make a TN 2 Medicine (Air) check targeting one character with the Dying or Afflicted condition."
-            ^"Effect" STRING "If you succeed, remove Dying or Afflicted condition from target. Target suffers Unconscious condition and cannot be awakened until end of scene."
+            ^"Activation" STRING "Once per scene as a Support action using an alchemy kit (see page 114), you may make a TN 2 Medicine (Air) check targeting one character with the Dying or Afflicted condition."
+            ^"Effect" STRING "If you succeed, remove the Dying or Afflicted condition from that character. The target suffers the Unconscious condition and cannot be awakened until the end of the scene."
         }
         RULES {
-            #L5RPW05wL0eO1eH7hF3tC3kU8sN: balancing_salve_appear_dead "(op): If inspected by someone who does not know this ritual, target appears to be dead."
-            #L5RPW05iF5vL3mS1vH5qV5uZ4hM: balancing_salve_extra "(op)(op)+: Choose one additional target per (op)(op) spent."
+            #L5RPW05wL0eO1eH7hF3tC3kU8sN: balancing_salve_appear_dead "(op): If inspected by someone who does not know this ritual, the target appears to be dead."
+            #L5RPW05iF5vL3mS1vH5qV5uZ4hM: balancing_salve_extra "(op)(op)+: Choose one additional target per (op)(op) spent this way."
         }
     }
 
@@ -676,11 +676,11 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Ritual"
             ^"Subtype" STRING "Qamarist"
             ^"Rank" INTEGER 2
-            ^"Activation" STRING "As a downtime activity using an alchemy kit, make a TN 3 Medicine (Water) check targeting one character."
-            ^"Effect" STRING "If you succeed, target removes twice as much fatigue when resting and reduces TN of checks to remove conditions by 2. Persists until end of game session."
+            ^"Activation" STRING "As a downtime activity using an alchemy kit (see page 114), you may make a TN 3 Medicine (Water) check targeting one character."
+            ^"Effect" STRING "If you succeed, your target removes twice as much fatigue when they rest and reduces the TN of their checks to remove conditions by 2. This effect persists until the end of the game session."
         }
         RULES {
-            #L5RPW05aG1zY8aP4hK9jW7rW3vU: elixir_recovery_extra "(op)(op)+: Choose one additional target per (op)(op) spent."
+            #L5RPW05aG1zY8aP4hK9jW7rW3vU: elixir_recovery_extra "(op)(op)+: Choose one additional target per (op)(op) spent this way."
         }
     }
 
@@ -691,12 +691,12 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Ritual"
             ^"Subtype" STRING "Qamarist"
             ^"Rank" INTEGER 3
-            ^"Activation" STRING "As a downtime activity using an alchemy kit, make a TN 4 Medicine (Earth) check targeting one character."
-            ^"Effect" STRING "If you succeed, target adds one bonus success to successful checks to resist critical strikes, plus one per two bonus successes on the Medicine check. Persists until end of next scene."
+            ^"Activation" STRING "As a downtime activity using an alchemy kit (see page 114), you may make a TN 4 Medicine (Earth) check targeting one character."
+            ^"Effect" STRING "If you succeed, your target adds one bonus success to their successful checks to resist critical strikes, plus one for every two bonus successes on the Medicine check. This effect persists until the end of the next scene."
         }
         RULES {
-            #L5RPW05xN6pN3hS1hQ1aY9aJ4aJ: fortitude_draught_extra "(op)+: Choose one additional target per (op) spent."
-            #L5RPW05fZ9eV1uL9pX2oG5qE1wX: fortitude_draught_supernatural "(op): Target also adds same number of bonus successes to checks to resist supernatural effects."
+            #L5RPW05xN6pN3hS1hQ1aY9aJ4aJ: fortitude_draught_extra "(op)+: Choose one additional target per (op) spent this way."
+            #L5RPW05fZ9eV1uL9pX2oG5qE1wX: fortitude_draught_supernatural "(op): If you succeed, your target also adds the same number of bonus successes to their successful checks to resist supernatural effects (such as the effect of an invocation or mahō technique)."
         }
     }
 
@@ -707,11 +707,11 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Ritual"
             ^"Subtype" STRING "Qamarist"
             ^"Rank" INTEGER 5
-            ^"Activation" STRING "As a downtime activity using an alchemy kit, make a TN 6 Medicine (Void) check targeting one character who suffered a critical strike of severity 7-8 Permanent Injury or 9-11 Maiming Blow in the previous scene. Must have severed limb if applicable."
-            ^"Effect" STRING "If you succeed, remove any disadvantage received from the critical strike. Character gains the Horrible Scar adversity instead."
+            ^"Activation" STRING "As a downtime activity using an alchemy kit (see page 114), you may make a TN 6 Medicine (Void) check targeting one character who suffered a critical strike of severity 7–8 Permanent Injury or severity 9–11 Maiming Blow in the previous scene. If a limb was detached, you must have that limb to attempt this ritual."
+            ^"Effect" STRING "If you succeed, you remove any disadvantage the character received as a result of the critical strike, and they instead gain the Horrible Scar adversity (see page 72)."
         }
         RULES {
-            #L5RPW05cK7lE8jY6tQ2bN5iT1dO: restorative_transmutation_dashing "(op)(op)+: Instead of gaining Horrible Scar, character gains the Dashing Scar distinction."
+            #L5RPW05cK7lE8jY6tQ2bN5iT1dO: restorative_transmutation_dashing "(op)(op)(op)+: If you succeed, instead of gaining the Horrible Scar adversity, the character gains the Dashing Scar distinction on page 69."
         }
     }
 
@@ -722,12 +722,12 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Ritual"
             ^"Subtype" STRING "Ivory Kingdoms"
             ^"Rank" INTEGER 3
-            ^"Activation" STRING "As a downtime activity using a small piece of coral and one koku's worth of gold, make a TN 3 Theology (Void) check targeting food and water sufficient for one person for a day. Does not consume coral or gold."
-            ^"Effect" STRING "If you succeed, food and water are cleansed of Unholy quality and are safe to consume for 24 hours."
+            ^"Activation" STRING "As a downtime activity using a small piece of coral and one koku's worth of gold, you may make a TN 3 Theology (Void) check targeting a quantity of food and water sufficient for one person for a day. This does not consume the coral or gold."
+            ^"Effect" STRING "If you succeed, the food and water are cleansed of the Unholy item quality if they had it, and they are spiritually safe to consume. They remain this way for twenty-four hours."
         }
         RULES {
-            #L5RPW05eO6wC6tR8hC5dV7dS1jC: cleansing_extra_person "(op)+: Cleanse food and water sufficient for one additional person per (op) spent."
-            #L5RPW05zL5fJ1tS4oS1tT7fI1vR: cleansing_resistance "(op)(op)+: Each consumer reduces TN of next check to resist Otherworldly, Tainted, or mahō effects by 1 per (op)(op) spent. Persists until end of game session."
+            #L5RPW05eO6wC6tR8hC5dV7dS1jC: cleansing_extra_person "(op)+: If you succeed, you cleanse food and water sufficient for one additional person per (op) spent this way."
+            #L5RPW05zL5fJ1tS4oS1tT7fI1vR: cleansing_resistance "(op)(op)+: If you succeed, each character who partakes of this food and water reduces the TN of their next check to resist any effect from an Otherworldly or Tainted being, or from a mahō technique, by 1 per (op)(op) spent this way. This effect persists until the end of the game session."
         }
     }
 
@@ -738,11 +738,11 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Type" STRING "Ritual"
             ^"Subtype" STRING "Ronin"
             ^"Rank" INTEGER 2
-            ^"Activation" STRING "Once per game session as a downtime activity at a crossroads or in the wilderness, make a TN 3 Meditation check."
-            ^"Effect" STRING "If you succeed, encounter a sign based on ring used: Earth (direction of someone with whom you share a bond), Water (direction of opportunity to make money), Fire (direction of nearest large-scale conflict), Air (direction of a person related to your past or desire), Void (direction in which you are needed most)."
+            ^"Activation" STRING "Once per game session as a downtime activity while at a crossroads, in the wilderness, or in another place where your path is unclear, you may make a TN 3 Meditation check."
+            ^"Effect" STRING "If you succeed, you encounter a sign of one of the following based on the ring you used:\n\nEarth: Direction of someone with whom you share a bond.\n\nWater: Direction of an opportunity to make money.\n\nFire: Direction of the nearest large-scale conflict.\n\nAir: Direction of a person related to your past or desire.\n\nVoid: Direction in which you are needed most."
         }
         RULES {
-            #L5RPW05rL9uG0aL6oL5xJ0lQ7oP: wayfarers_path_extra "(op)(op)+: See a sign revealing same information for one additional person in the scene per (op)(op) spent."
+            #L5RPW05rL9uG0aL6oL5xJ0lQ7oP: wayfarers_path_extra "(op)(op)+: You see a sign revealing the same information for one additional person in the scene per (op)(op) spent this way."
         }
     }
 
@@ -751,9 +751,9 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
     # ===========================
 
     # --- MANTRA TECHNIQUES ---
-    # (Celestial Implements System rules are in path-of-waves-systems.ttrpg)
+    # (Celestial Implements System rules are in l5r5e-0.5-path-of-waves-systems.ttrpg)
 
-    # Path of Waves p. 98. The technique exists independently for each
+    # Path of Waves p. 99. The technique exists independently for each
     # celestial implement; its printed title is "Summoning Mantra:
     # [Implement Name]" (recorded in ^"Name").
 
@@ -772,8 +772,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Effect" STRING "If you succeed, you summon and augment one readied item that becomes the celestial implement. Then, you must stake honor equal to two times your honor rank on upholding the implement's restriction while you have the implement (see page 99). The implement persists until the end of the scene or until it is dispelled, at which point the blessing ends. If you break the implement's restriction during this time, you lose your staked honor and the implement is dispelled. You cannot summon this implement again this scene."
         }
         RULES {
-            #L5RPW06wW2yF1kP5dW3nC5pK6xM: summoning_mantra_unique "Each Summoning Mantra is for a specific implement and must be purchased independently."
-            #L5RPW06bD5oI5gG3cI8wG3wG0lA: summoning_mantra_access "Requires the Astradhari title from a high sage."
+            #L5RPW06wW2yF1kP5dW3nC5pK6xM: summoning_mantra_unique "Note that the Summoning Mantra: [Name of Implement] technique exists independently for each celestial implement. Each must be purchased independently to gain access to a specific implement (i.e., Summoning Mantra: Banhi's Thunderous Astra only ever grants access to that specific weapon, and it must be learned separately from Summoning Mantra: River Stone of Flowing Water, which calls forth a different distinct item)."
+            #L5RPW06bD5oI5gG3cI8wG3wG0lA: summoning_mantra_access "A character must acquire the astradhari title (see page 187) from a high sage to learn the mantra to invoke a celestial implement. This title grants access to mantra techniques (see beginning on this page)."
         }
     }
 
@@ -783,8 +783,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
         PROPERTIES {
             ^"Type" STRING "Mantra"
             ^"Rank" INTEGER 4
-            ^"Activation" STRING "When a character you can perceive makes a check to use a celestial implement, if you have a readied implement of your own, immediately make a TN 5 Theology check. If your implement's element matches the counter element, TN is 2 instead."
-            ^"Effect" STRING "If you succeed, target's implement is dispelled. Target counts as having failed with shortfall equal to your ranks in Theology, and does not apply boons."
+            ^"Activation" STRING "When a character you can perceive makes a check to use a celestial implement, if you have a readied celestial implement of your own, you may immediately make a TN 5 Theology check targeting that character to attempt to counter their implement's effects. If your celestial implement's element matches the counter element of the target's implement, the TN is 2 instead."
+            ^"Effect" STRING "If you succeed, your target's implement is dispelled. Your target counts as having failed the check to use it, with a shortfall equal to your ranks in Theology, and they do not apply any of its boons to the check."
         }
     }
 
@@ -859,7 +859,7 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
     ^"Implement Form: Projectile" DEF {
         APPLIES TO [#tac037e8b1df3edd35ce4b ^"Celestial Implement"]
         PROPERTIES {
-            ^"Description" STRING "Arrow, crossbow bolt, slingstone, or javelin."
+            ^"Description" STRING "An arrow, crossbow bolt, or slingstone that modifies the profile of the weapon with which it is used is adjusted as follows: (Damage +4, Deadliness +4, Razor-Edged). Or a javelin with the following profile when thrown: (Range 2–4, Damage 4, Deadliness 6, Razor-Edged)."
             ^"Profile Modification" STRING "Arrow/bolt/stone: Damage +4, Deadliness +4, Razor-Edged. Javelin: Range 2-4, Damage 4, Deadliness 6, Razor-Edged."
         }
     }
@@ -867,70 +867,70 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
     ^"Implement Form: Melee Weapon" DEF {
         APPLIES TO [#tac037e8b1df3edd35ce4b ^"Celestial Implement"]
         PROPERTIES {
-            ^"Description" STRING "A melee weapon with its standard profile."
-            ^"Profile Modification" STRING "Damage +3, Deadliness +2, Razor-Edged or Wargear."
+            ^"Description" STRING "A melee weapon, with its standard profile, is granted the following benefits, though GMs may change the modifications based on the chosen weapon:"
+            ^"Profile Modification" STRING "Damage +3, Deadliness +2, Razor-Edged or Wargear"
         }
     }
 
     ^"Implement Form: Armor" DEF {
         APPLIES TO [#tac037e8b1df3edd35ce4b ^"Celestial Implement"]
         PROPERTIES {
-            ^"Description" STRING "A set of armor with its standard profile."
-            ^"Profile Modification" STRING "Physical resistance +2, Supernatural resistance +2."
+            ^"Description" STRING "A set of armor, with its standard profile, is granted the following benefits:"
+            ^"Profile Modification" STRING "Physical resistance +2, supernatural resistance +2"
         }
     }
 
     ^"Implement Form: Utility Object" DEF {
         APPLIES TO [#tac037e8b1df3edd35ce4b ^"Celestial Implement"]
         PROPERTIES {
-            ^"Description" STRING "A non-weapon, non-armor item (incense holder, bucket, kit component, jewelry, etc.)."
-            ^"Profile Modification" STRING "Standard effects plus GM-approved benefits."
+            ^"Description" STRING "The following boons maybe applied to non-weapon, non-armor items, such as incense holders, buckets, various kit components, and jewelry. The GM is the final arbiter of what constitutes a utility item."
+            ^"Profile Modification" STRING "An item, with its standard effects and profile, maybe granted a wide range of benefits and such benefits are subject to GM approval."
         }
     }
 
     # --- IMPLEMENT BOONS ---
 
     ENTRIES {
-        ^"General Boon: Aura of Power" STRING "When performing a Support action check, spend (op) to choose one additional target per (op) spent."
-        ^"General Boon: Beguile the Senses" STRING "On Attack or Scheme check, spend (op)+ to inflict condition based on element (Fire: Dazed, Air: Disoriented, Earth: Immobilized, Water: Exhausted, Void: Unconscious) on targets with vigilance <= (op) spent. Implement dispelled after."
-        ^"General Boon: Blessed Revitalization" STRING "On Support check, spend (op)(op) to remove condition based on element (Fire: Silenced, Air: Dying, Earth: Exhausted, Water: Enraged/Burning, Void: Afflicted/Dying). Implement dispelled after."
-        ^"General Boon: Celestial Step" STRING "On Movement check, spend (op)(op) to teleport instead of moving. Ignore terrain and obstruction. Must perceive destination."
-        ^"General Boon: Cosmic Devastation" STRING "On Attack check, spend (op)+ to inflict condition based on element (Fire: Burning, Air: Silenced, Earth: Lightly Wounded [One Ring of Target's Choice], Water: Bleeding, Void: Dying [5 rounds]) on targets with vigilance <= (op) spent. Implement dispelled after."
-        ^"General Boon: Defensive" STRING "When resisting effects or using Countering Mantra with implement readied, reduce TN by 2."
-        ^"General Boon: Earthshaker" STRING "On Attack or Scheme check, spend (op)(op) to add/remove terrain qualities based on element (Fire: add Dangerous, remove Obscuring; Air: add Obscuring, remove Entangling; Earth: add Entangling, remove Imbalanced [One Element, chosen by you]; Water: add Imbalanced [One Element, chosen by you], remove Dangerous; Void: add or remove Hallowed [One Element, chosen by you]). Implement dispelled after."
-        ^"General Boon: Flurry" STRING "On Attack or Scheme check, spend (op)+ to choose one additional target per (op) spent. Target's vigilance cannot be higher than the highest among original targets."
-        ^"General Boon: Overwhelming Force" STRING "On Attack check, spend (op)+. Target's next resistance check automatically fails with shortfall equal to (op) spent."
-        ^"General Boon: Shifting Shape" STRING "On summon or check, spend (op) to change to different object of same form."
-        ^"General Boon: Transfiguration" STRING "On summon or check, spend (op)(op) to change to different form entirely."
-        ^"General Boon: Unassuming" STRING "On summon or check, spend (op) to lose Resplendent and gain Subtle quality."
-        ^"Projectile Boon: Animal Transformation" STRING "On Ranged check, spend (op)+. After resolving, implement becomes animals (chosen profile) with total silhouette less than or equal to 2x (op) spent. Animals hostile to targets, persist until end of scene. Implement dispelled."
-        ^"Projectile Boon: Binding" STRING "On Attack check, spend (op)(op). Target suffers Immobilized. Removing requires TN 5 Theology check."
-        ^"Projectile Boon: Deadly Venom" STRING "On Attack check, spend (op). If succeed, target suffers Dying (3 rounds). Implement dispelled."
-        ^"Projectile Boon: Detonation" STRING "On Ranged check, spend (op)+. All characters within (op) range bands suffer supernatural damage equal to base damage plus (op) spent and are hurled 1 range band. Implement dispelled."
-        ^"Projectile Boon: Duplication" STRING "On summon, spend (op)+ to create copies. On Attack, spend (op) up to copies at range 0-1 to increase damage by 1 per (op)."
-        ^"Projectile Boon: Fortress Breaker" STRING "On Attack, spend (op)(op). Skirmish: target's armor destroyed. Mass battle: fortifications annihilated. Implement dispelled, you suffer Exhausted."
-        ^"Projectile Boon: Obliteration" STRING "On Attack, spend (op)(op)(op). If critical strike and target fails to resist, target slain outright (unless 1 Void point spent). Implement dispelled, you suffer Exhausted."
-        ^"Projectile Boon: Returning" STRING "On Ranged check, spend (op)+ equal to range bands to target. Projectile returns to hand unless dispelled."
-        ^"Projectile Boon: Unerring" STRING "On Attack, spend (op). Target cannot defend against damage unless they spend 1 Void point."
-        ^"Melee Boon: Independence" STRING "Implement fights without being held. Treat as readied while at range 0-4. Support action to move it a number of range bands equal to ranks in Meditation. Once per round on Attack with other weapon, spend (op)+ to deal base damage to character with vigilance lower than (op) spent."
-        ^"Melee Boon: Inexorable" STRING "On Attack, spend (op)(op) to ignore target's resistances."
-        ^"Melee Boon: Resounding Arrival" STRING "On summon, spend (op)+. Skirmish: characters at range 1-3 suffer supernatural damage and strife equal to (op). Mass battle: enemy suffers attrition and panic equal to (op)."
-        ^"Melee Boon: Rising Power" STRING "On Attack, spend (op)+. If you fail, reserve (op) dropped dice. On next Melee check with implement, add as kept dice."
-        ^"Melee Boon: Unleashed Fury" STRING "On Attack, spend (op)+ to choose additional targets at range 0-2 of another target per (op) spent (even if not within weapon's range). Target's vigilance cannot be higher than the highest among original targets."
-        ^"Armor Boon: Agility of Legend" STRING "On resist critical strike, spend (op)+. Characters up to (op) spent may immediately move 2 range bands."
-        ^"Armor Boon: Burst of Force" STRING "On resist critical strike, spend (op)(op). Characters at range 1-3 suffer supernatural damage equal to bonus successes and pushed 1 range band. Implement dispelled."
-        ^"Armor Boon: Harm Returned" STRING "On resist, spend (op)(op)(op). Attacker suffers same severity critical strike or effect."
-        ^"Armor Boon: Inviolable" STRING "On resist critical strike, spend (op)+. If succeed and severity reduced to (op) or lower, do not suffer it."
-        ^"Armor Boon: Overwhelming Radiance" STRING "On resist, spend (op)+. Each character at range 0-3 receives 1 strife plus 1 per (op) in excess of their vigilance."
-        ^"Utility Boon: Grand Inspiration" STRING "On Support check, spend (op)+. Skirmish: increase target's composure by 1 per (op). Mass battle: increase army discipline by 1 per (op)."
-        ^"Utility Boon: Illusions Shattered" STRING "On Support check, spend (op)+ to remove one ongoing supernatural effect per (op) spent."
-        ^"Utility Boon: Mark of Doom" STRING "On Scheme check, spend (op)+ to reduce TN of next Attack against target by 1 per (op)."
-        ^"Utility Boon: Resounding Rhetoric" STRING "On Support check, spend (op)+. Skirmish: characters at range 0-1 remove fatigue and strife equal to (op). Mass battle: remove attrition and panic equal to (op). Implement dispelled, you suffer Exhausted."
-        ^"Utility Boon: Root of Language" STRING "When readied, on check to read/understand text or language, spend (op) to gain understanding of that language until dispelled."
-        ^"Utility Boon: Subterranean Secrets" STRING "On Movement check, spend (op)+ to create tunnel within (op) range bands. Mass battle: create fortification reducing attrition by Theology ranks with difficulty equal to (op)."
-        ^"Utility Boon: Soothing Words" STRING "On Scheme or Support check, spend (op)+ to remove 1 strife per (op). Reduce TN of next check targeting them by strife removed. Implement dispelled."
-        ^"Utility Boon: Unlimited Negation" STRING "On Countering Mantra check, spend (op) to counter any supernatural effect, not just celestial implements."
-        ^"Utility Boon: Vitality" STRING "On Support check targeting another character, spend (op)+ to reduce TN of their resistance checks by 1 per (op) until end of their next turn."
+        ^"General Boon: Aura of Power" STRING "When performing a Support action check using this implement, you may spend (op) to choose one additional target per (op) spent this way."
+        ^"General Boon: Beguile the Senses" STRING "When you make an Attack or Scheme action check using this implement, you may spend (op)+ to cause each target with vigilance lower than or equal to (op) spent this way to suffer one of the following conditions, based on the implement's element: Fire (Dazed), Air (Disoriented), Earth (Immobilized), Water (Exhausted), Void (Unconscious). After the check is resolved, the implement is dispelled."
+        ^"General Boon: Blessed Revitalization" STRING "When you make a Support action check using this implement, you may spend (op)(op) to have each target remove one of the following conditions, based the implement's element: Fire (Silenced), Air (Dying), Earth (Exhausted), Water (Enraged or Burning), Void (Afflicted or Dying). After the check is resolved, the implement is dispelled."
+        ^"General Boon: Celestial Step" STRING "When you make a Movement action check using this item, you may spend (op)(op) to teleport the distance you would move as part of the action instead of moving conventionally. You ignore the effects of terrain and obstruction while teleporting, and you can reach locations you otherwise could not this way, but you still must be able to perceive your destination."
+        ^"General Boon: Cosmic Devastation" STRING "When you make an Attack action check using this implement, you may spend (op)+ to cause each target with vigilance lower than or equal to (op) spent this way to suffer one of the following conditions, based on the implement's element: Fire (Burning), Air (Silenced), Earth (Lightly Wounded [One Ring of Target's Choice]), Water (Bleeding), Void (Dying [5 rounds]). After the check is resolved, the implement is dispelled."
+        ^"General Boon: Defensive" STRING "When you make a check to resist an effect or to use the Countering Mantra technique, if this implement is readied, reduce the TN by 2."
+        ^"General Boon: Earthshaker" STRING "When you make an Attack or Scheme action check using this implement, you may spend (op)(op) to add one terrain quality, remove one terrain quality, or both from the surrounding area, based on the implement's element: Fire (add Dangerous, remove Obscuring), Air (add Obscuring, remove Entangling), Earth (add Entangling, remove Imbalanced [One Element, chosen by you]), Water (add Imbalanced [One Element, chosen by you], remove Dangerous), Void (add or remove Hallowed [One Element, chosen by you]). After the check is resolved, the implement is dispelled."
+        ^"General Boon: Flurry" STRING "When performing an Attack or Scheme action check with this implement, you may spend (op)+ to choose one additional target per (op) spent this way. This target's vigilance cannot be higher than the highest among the original targets."
+        ^"General Boon: Overwhelming Force" STRING "When performing an Attack action check using this implement, you may spend (op)+. If you do, the next time your target would make a check to resist an effect, they automatically count as failing with a shortfall equal to (op) spent this way."
+        ^"General Boon: Shifting Shape" STRING "When you summon this implement or make a check using it, you may spend (op) to change it to a different object of the same form (see Form, on page 101)."
+        ^"General Boon: Transfiguration" STRING "When you summon this implement or make a check using it, you may spend (op)(op) to change it to a different object of a different form (see Form, on page 101)."
+        ^"General Boon: Unassuming" STRING "When you summon this implement or make a check using it, you may spend (op) to cause it to lose the Resplendent quality and gain the Subtle quality."
+        ^"Projectile Boon: Animal Transformation" STRING "Choose an animal profile (such as Elegant Pit Viper, on page 236). When you make a Martial Arts [Ranged] check using this implement, you may spend (op)+. After resolving success or failure, the implement is dispelled as it transforms into a number of the chosen animals with total less than or equal to (op) spent this way times two. These animals are hostile to any targets of the check, and they persist until the end of the scene, or until they are slain."
+        ^"Projectile Boon: Binding" STRING "When you perform an Attack action check using this implement, you may spend (op)(op) to cause the target to suffer the Immobilized condition. Each time the target would remove this condition, they must make a TN 5 Theology check; if they fail, they do not remove the condition, instead."
+        ^"Projectile Boon: Deadly Venom" STRING "When you make an Attack action check using this implement, you may spend (op)(op); if you do and you succeed at the check, you cause the target to suffer the Dying (3 rounds) condition. Then, this implement is dispelled."
+        ^"Projectile Boon: Detonation" STRING "When you make a Martial Arts [Ranged] check using this implement, you may spend (op)+. In a skirmish, each character within a number of range bands equal to (op) spent this way suffers supernatural damage equal to the weapon's base damage plus (op) spent this way and is hurled one range band away from the point of impact. In a mass battle, the target cohort leader suffers the damage, and the enemy army suffers attrition and panic equal to (op) spent this way. After the check is resolved, the implement is dispelled."
+        ^"Projectile Boon: Duplication" STRING "When you make a check to summon this implement, you may spend (op)+ to summon that many additional copies of it. When you perform an Attack action check with this implement, you may spend (op) up to the number of copies at range 0–1 of the target to increase any damage you inflict by 1 per (op) spent this way."
+        ^"Projectile Boon: Fortress Breaker" STRING "When you perform an Attack action check using this implement, you may spend (op)(op). If you do during a skirmish, your target's armor receives the Destroyed condition. If you do during a mass battle, each fortification occupied by a target is annihilated and no longer provides any benefit. The enemy army suffers attrition equal to your bonus successes, and each leader in the fortification suffers a critical strike with severity equal to your bonus successes. After the check is resolved, the implement is dispelled, and you suffer the Exhausted condition."
+        ^"Projectile Boon: Obliteration" STRING "When you perform an Attack action check using this implement, you may spend (op)(op). If you do and the check inflicts a critical strike, if the target fails their check to resist the critical strike, they are slain outright unless they spend 1 Void point. After the check is resolved, the implement is dispelled, and you suffer the Exhausted condition."
+        ^"Projectile Boon: Returning" STRING "When you perform a Martial Arts [Ranged] check using this implement, you may spend (op)+; if you spend (op) equal to the number of range bands between you and your target, the projectile returns to your hand unless it was dispelled."
+        ^"Projectile Boon: Unerring" STRING "When performing an Attack action check using this implement, you may spend (op). If you do, the target cannot defend against damage caused by the action unless they spend 1 Void point."
+        ^"Melee Boon: Independence" STRING "This implement moves and fights even when you are not holding it in your hand. As long as this implement is at range 0–4 of you, you may treat it as readied and wield it. As a Support action, you may make it move a number of range bands equal to your ranks in Meditation. Once per round when you perform an Attack action check using a different weapon, you may spend (op)+. Choose a character in range of this celestial implement with vigilance lower than (op) spent this way; that character suffers physical damage equal to the celestial implement's base damage."
+        ^"Melee Boon: Inexorable" STRING "When you perform an Attack action check using this implement, you may spend (op)(op) to ignore your target's resistances."
+        ^"Melee Boon: Resounding Arrival" STRING "When you make a check to summon this implement, you may spend (op)+. If you do so during a skirmish, each character at range 1–3 of you suffers supernatural damage equal to (op) spent this way and receives that much strife. If you do so in a mass battle, the enemy army suffers that much attrition and panic."
+        ^"Melee Boon: Rising Power" STRING "When you make an Attack action check using this implement, you may spend (op)+. If you fail the check, you may reserve a number of dropped dice equal to (op) spent this way. On your next Martial Arts [Melee] check using the implement, add those dice as kept dice. This effect persists until the reserved dice are used or until the end of the scene."
+        ^"Melee Boon: Unleashed Fury" STRING "When you make an Attack action check using this implement, you may spend (op)+ to choose one additional target per (op) spent this way at range 0–2 of another target (even if they are not within the weapon's range). This target's vigilance cannot be higher than the highest among the original targets."
+        ^"Armor Boon: Agility of Legend" STRING "When you make a check to resist a critical strike while wearing this armor, you may spend (op)+. If you do, a number of characters up to (op) spent this way, of your choice, may immediately move up to 2 range bands."
+        ^"Armor Boon: Burst of Force" STRING "When you make a check to resist a critical strike while wearing this armor, you may spend (op)(op). If you do so during a skirmish, each character at range 1–3 of you suffers supernatural damage equal to your bonus successes on the check and is pushed one range band away from you. If you do so during a mass battle, the enemy army suffers attrition and panic equal to your bonus successes. After the check is resolved, the implement is dispelled."
+        ^"Armor Boon: Harm Returned" STRING "When you make a check to resist an effect or critical strike while wearing this armor, you may spend (op)(op)(op). If you do, the attacker suffers a critical strike with the same severity as the one you suffered (before reductions) or the same effect."
+        ^"Armor Boon: Inviolable" STRING "When you make a check to resist a critical strike while wearing this armor, you may spend (op)+. If you succeed at the check to resist, and the critical strike would otherwise be reduced to a severity of (op) spent or lower, you do not suffer it instead."
+        ^"Armor Boon: Overwhelming Radiance" STRING "When you make a check to resist an effect while wearing this armor, you may spend (op)+. If you do, each character at range 0–3 of you receives 1 strife, plus 1 strife for each (op) spent in excess of their vigilance."
+        ^"Utility Boon: Grand Inspiration" STRING "When you make a Support action check using this implement, you may spend (op)+. If you do so in a skirmish, increase each target's composure by 1 per (op) spent this way until the end of the scene. If you do so in a mass battle, increase your army's discipline by 1 per (op) spent this way."
+        ^"Utility Boon: Illusions Shattered" STRING "When you make a Support action check using this implement, you may spend (op)+ to remove up to one ongoing supernatural effect (such as a persistent effect of a kihō, mahō, invocation, mantra, or celestial implement) from a target of your check per (op) spent this way."
+        ^"Utility Boon: Mark of Doom" STRING "When you make a Scheme action check using this implement, you may spend (op)+ to reduce the TN of the next Attack action check targeting one of your targets by 1 per (op) spent this way."
+        ^"Utility Boon: Resounding Rhetoric" STRING "When you make a Support action check using this implement, you may spend (op)+. If you do so in a skirmish, you may choose any number of other characters at range 0–1 to remove fatigue and strife equal to (op) spent this way. If you do so in a mass battle, you may remove attrition and panic from your army equal to (op) spent this way. After the check is resolved, the implement is dispelled and you suffer the Exhausted condition."
+        ^"Utility Boon: Root of Language" STRING "If you have this implement readied and are using or holding it, then when you make a check to read, understand, or interact with a piece of text or spoken language, you may spend (op) to gain an understanding of that language until your implement is dispelled."
+        ^"Utility Boon: Subterranean Secrets" STRING "When you make a Movement action check using this implement, you may spend (op)+ to create a tunnel through the ground to a location within a number of range bands equal to (op) spent this way. If you use this during a mass battle, you may create a fortification (see page 276 of the core rulebook) that reduces attrition by your ranks in Theology and has a difficulty value equal to (op) spent this way."
+        ^"Utility Boon: Soothing Words" STRING "When you make a Scheme or Support action check using this item, you may spend (op)+ to remove 1 strife from your target per (op) spent this way. Reduce the TN of your next Scheme or Support action check targeting them by 1 per strife removed this way. After the check is resolved, the implement is dispelled."
+        ^"Utility Boon: Unlimited Negation" STRING "When you make a check to use the Countering Mantra technique, you may spend (op) to use it to counter any supernatural effect (such as an effect of a kihō, mahō, or invocation) instead of only the effect of a celestial implement."
+        ^"Utility Boon: Vitality" STRING "When you make a Support action check targeting another character, you may spend (op)+ to reduce the TN of their checks to resist effects by 1 per (op) spent this way. This effect persists until the end of that character's next turn."
     }
 
     # --- SAMPLE CELESTIAL IMPLEMENTS ---
@@ -955,8 +955,8 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Blessing Source" STRING "Kajri, Builder of Heaven's Clouds"
             ^"Element" STRING "Air"
             ^"Counter Element" STRING "Fire"
-            ^"Restriction" STRING "Always hear out those in need. Always be willing to put your hands to work for the good of the innocent."
-            ^"Form" STRING "Modified Traveling Clothes (Physical 2, Supernatural 2, Resplendent, Sacred)"
+            ^"Restriction" STRING "You must always hear out those who are in need, and you must always be willing to put your hands to work for the good of the innocent."
+            ^"Form" STRING "Modified traveling clothes (Physical 2, Supernatural 2, Resplendent, Sacred)"
             ^"Boons" LIST OF STRING ["Celestial Step", "Inviolable", "Unassuming"]
         }
     }
@@ -968,11 +968,11 @@ EXTENSION "L5R5e_Path_of_Waves_Techniques" EXTENDS "L5R5e_Core_Techniques" {
             ^"Blessing Source" STRING "Neha, The Grieving Deity"
             ^"Element" STRING "Water"
             ^"Counter Element" STRING "Fire"
-            ^"Restriction" STRING "Treat all comrades as siblings and cherish your time with them."
+            ^"Restriction" STRING "Treat all those who walk beside you as comrades as your siblings, and cherish your time with them."
             ^"Form" STRING "Flat smooth stone (Resplendent, Sacred)"
             ^"Boons" LIST OF STRING ["Aura of Power", "Illusions Shattered", "Subterranean Secrets"]
         }
     }
 
-    # School Building System rules are in path-of-waves-systems.ttrpg
+    # School Building System rules are in l5r5e-0.5-path-of-waves-systems.ttrpg
 }

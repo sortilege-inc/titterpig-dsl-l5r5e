@@ -4,8 +4,8 @@
 # invocation (Ancestral Army) and one new distinction (Student of Akodo), both
 # tied to Lion/Kitsu tradition. All text is transcribed VERBATIM from the source
 # page images (p.9). The invocation's opportunity symbols are written with the
-# corpus (op) convention; the distinction's effect prose is mirrored in the .lore
-# per the l5r5e convention (distinction DEFs carry Ring + Types only).
+# corpus (op) convention; the distinction's effect is its EFFECT block, as in
+# l5r5e-0.5-core-distinctions.ttrpg; how to acquire it is its acquisition rule.
 #
 # The "Legacy" advantage the booklet mentions (p.2) is NOT defined here: the text
 # points to "the Blood of the Lioness online supplement" for those rules, and no
@@ -13,7 +13,7 @@
 
 EXTENSION "L5R5e_BloodOfTheLioness_Mechanics" EXTENDS "L5R5e_Core_Techniques" {
     NAME "Blood of the Lioness — New Mechanics"
-    VERSION "0.5.1"
+    VERSION "0.5.2"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-05"
     DEPENDS_ON "L5R5e_Core_Techniques"
@@ -46,9 +46,13 @@ EXTENSION "L5R5e_BloodOfTheLioness_Mechanics" EXTENDS "L5R5e_Core_Techniques" {
             ^"Types" LIST ["Interpersonal", "Mental"]
         }
 
+        EFFECT {
+            "You have studied the famous text known as Akodo's Leadership, which has given you an insight into Lion culture. You can identify the proper purpose of all Rokugani battlefield weapons, even if you are not personally proficient in their use, and you know about most common military maneuvers and engagements, especially those preferred by the Lion Clan."
+            "When making a check to understand the Lion Clan mindset or strategy (such as a Culture [Void] check to intuit the correct way to broach a difficult subject to a Lion Clan character of higher status or Tactics [Void] check to predict what strategy a Lion Clan general will employ), you may reroll up to two dice."
+        }
+
         RULES {
             #JoZwTcyD5oet84hFkKFosu: acquisition "Akodo's Leadership: This important text is required reading for every Lion student, bushi and courtier alike. At the GM's discretion, a non-Lion character who spends a downtime activity studying Leadership and succeeds at a TN 4 Composition or Culture (Void) check to understand the manuscript may purchase the following distinction for 3 XP:"
-            #zAxX3xPbqr0Ee6zdNB9mKc: effects "You have studied the famous text known as Akodo's Leadership, which has given you an insight into Lion culture. You can identify the proper purpose of all Rokugani battlefield weapons, even if you are not personally proficient in their use, and you know about most common military maneuvers and engagements, especially those preferred by the Lion Clan.\n\nWhen making a check to understand the Lion Clan mindset or strategy (such as a Culture [Void] check to intuit the correct way to broach a difficult subject to a Lion Clan character of higher status or Tactics [Void] check to predict what strategy a Lion Clan general will employ), you may reroll up to two dice."
         }
     }
 }

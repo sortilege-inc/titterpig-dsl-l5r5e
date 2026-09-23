@@ -11,12 +11,12 @@
 
 ARC "blood-of-the-lioness" EXTENDS "l5r5e" {
     NAME "Blood of the Lioness"
-    VERSION "0.5.1"
+    VERSION "0.5.2"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Blood of the Lioness: An Adventure at the Battle of Snow Plain (Fantasy Flight Games)"
     LEAD_WRITER "Fantasy Flight Games"
-    DESCRIPTION "A military-themed Lion Clan adventure in which the PCs investigate a centuries-old dispute over a diamond mine, are drawn into a vision of the Battle of Snow Plain (820), and return to the present to arbitrate its consequences. The sourcebook Fields of Victory expands and continues it."
+    DESCRIPTION "Blood of the Lioness is a military-themed adventure for the Legend of the Five Rings Roleplaying Game in which the player characters (PCs) have the opportunity to experience firsthand the struggles of war, honor, and sacrifice alongside the formidable Lion Clan. Serving as the Right Hand of the Emperor and revered as some of the Empire's most accomplished warriors and historians, the Lion are often viewed as an unstoppable force. During the course of this adventure, however, PCs will hear and experience conflicting stories about a critical battle in the Lion's past, and the truths they discover could change how the past is understood and how the future unfolds. The sourcebook Fields of Victory is an excellent resource for those interested in expanding this adventure or continuing it after its conclusion."
 
     THEMES ["War, honor, and sacrifice alongside the Lion Clan", "History as a contested narrative — truth versus harmony", "Ancestry and the bond between a samurai and their forebears", "The awakening of a latent ancestral summoner"]
 
@@ -31,7 +31,7 @@ ARC "blood-of-the-lioness" EXTENDS "l5r5e" {
     PARTS {
         PART 1 "Part One: The Official Record (Castle of the Swift Sword, 1123)" {
             SCENES ["A Warm Welcome (Kitsu Yayoi)", "A Three-Hour Tour (the parade grounds; Akodo Atsushi)", "Castle of the Swift Sword", "Akodo War College", "The Military Library (Kitsu Ayako; the official scroll; Kitsu Yū's shade)", "Exploring the Library", "The Halls", "The Ancestral Shrine (Kitsu Taigen)", "The Ikoma Hall of Scribes", "Akodo's Leadership", "Meeting the Daimyō (Kitsu Takeko)"]
-            DESCRIPTION "Arriving as Emerald Magistrates (or by clan-specific motive), the PCs are welcomed by the advisor Kitsu Yayoi, toured past the drill sergeant Akodo Atsushi, and left in the military library with the peasant-born librarian Kitsu Ayako — who is unknowingly shadowed by the restless shade of her ancestor Kitsu Yū. The official scroll of the Battle of Snow Plain, signed by Yū, omits a crucial truth (Yū's ancestral summoning). Following the historian Ikoma Hideri's assignment record to the Ikoma Hall of Scribes, and prompted by the contradictory histories, the PCs place an offering at the ancestral shrine and are pulled into a vision of the battle."
+            DESCRIPTION "The adventure begins with the PCs arriving at the Castle of the Swift Sword, the home of the Akodo War College, in the early afternoon. In the default version of this adventure, the PCs are assumed to be Emerald Magistrates. For groups with different motives, see Conflicting Motives on the next page. As magistrates, the PCs are tasked with investigating the history of the Battle of Snow Plain by researching all available written records and utilizing the oral traditions of the Ikoma. By the end of their review, they should have enough evidence to determine whether the Scorpion Clan has a legitimate claim to the diamond mine in Unicorn territory."
 
             # Clan-specific and generic entry hooks are detailed in the .lore
             # (Player Character Motives, page 3).
@@ -39,7 +39,7 @@ ARC "blood-of-the-lioness" EXTENDS "l5r5e" {
 
         PART 2 "Part Two: The Vision (Battle of Snow Plain, 820)" {
             SCENES ["Historical Figures / The Advisors", "Clan Motives (820)", "Overview of the Battle (four days)", "Day 1 — Playing Sakura's Advisors; Offering Advice; The First Sparks (Test Their Mettle)", "Day 1 — The Generals Converse; Seizing the Hilltop", "Day 2 — The Snowstorm; Spy in the Camp; The Five Pillars", "Day 3 — Unicorn Reinforcements; Yū's Intervention (ancestral summoning awakens)", "Day 4 — Imperial Emissary; Amane's Betrayal Revealed; The Duel"]
-            DESCRIPTION "The PCs relive the four-day Battle of Snow Plain as historical figures advising the Lion general Matsu Sakura against the Unicorn general Shinjo Kamu, whose Scorpion 'peace envoy' Shosuro Amane is secretly manipulating both sides for a diamond mine. Across a mass battle (strategic objectives, momentum, and the Maintain the General's Favor ongoing social objective), the PCs can uncover a spy in the camp (Shosuro Yasu, impersonating the medic Akodo Kamayoko, who murders the historian Ikoma Hideri), witness Kitsu Yū awaken as an ancestral summoner, and reach a climactic duel — where a PC or advisor stands in for Sakura against Kamu. What they learn here becomes the leverage of Part Three."
+            DESCRIPTION "In this part of the adventure, the PCs experience the Battle of Snow Plain in 820, enabling them to witness the events for themselves. Whether what the PCs do and say during the vision affects Rokugani history is up to the GM (and might even be ambiguous, if the GM wishes to run it this way, as many \"changes\" could also be attributed to errors in the historical record), but the consequences of their experience become apparent when completing their mission in the present (see Living in the Past on page 2). Major events during the vision are inevitable, but PCs should feel like their decisions still make a difference."
 
             # Momentum thresholds toward the strategic objective 'Test Their Mettle'
             # equal Shinjo Kamu's focus (7). The Maintain the General's Favor ongoing
@@ -49,7 +49,7 @@ ARC "blood-of-the-lioness" EXTENDS "l5r5e" {
 
         PART 3 "Part Three: The Truth (Castle of the Swift Sword, 1123)" {
             SCENES ["Visionaries (returning from the vision)", "Status and Truth", "After the Vision — Preparing for the Arbitration", "Gather Witness Testimony", "Acquire Written Testimony", "Forge Written Testimony", "Other Clever Plots", "Rendering Judgment (Kitsuki Kāgi, Shosuro Aishi, Ide Tsubame arrive)", "Running the Intrigue", "The Duel (if carried from the vision)", "Player Rewards / Choosing Sides"]
-            DESCRIPTION "Returned to the present with three days before the magistrate Kitsuki Kāgi arrives, the PCs prepare for the arbitration — gathering witness testimony, acquiring or forging written testimony, and pursuing other plots — then argue the case before Kāgi against the Scorpion descendant Shosuro Aishi and the Unicorn descendant Ide Tsubame. The intrigue's social objectives decide whether the mine goes to the Unicorn, the Scorpion, Imperial control, or another faction — and whether the PCs' new knowledge prevents further war or starts one."
+            DESCRIPTION "Once the PCs have returned to the present from the vision, they must decide how they'll handle the information they discovered throughout Part Two. Depending on their affiliations and personal motivations, the way each PC approaches the final intrigue may differ. Whether they change history while in the vision or not, experiencing the battle firsthand may have made them see the past differently. In this section, the PCs will participate in an intrigue that determines how their new information changes history, and which of the Great Clans benefits from it!"
 
             # Arbitration social objectives (momentum thresholds), reproduced verbatim.
             INTRIGUE_TABLE "Arbitration Social Objectives (Rendering Judgment)" {
@@ -71,7 +71,7 @@ ARC "blood-of-the-lioness" EXTENDS "l5r5e" {
                 }
                 ^"Discredit Aishi, Tsubame, or Someone Else" DEF {
                     ^"Momentum Points Needed" STRING "Cause the target to become Compromised"
-                    ^"Upon Completion" STRING "Aishi or Tsubame loses up to 8 momentum points acquired so far; they are not removed from the scene and can continue to accrue momentum points."
+                    ^"Upon Completion" STRING "Aishi or Tsubame loses up to 8 momentum points they have acquired so far. However, they are not removed from the scene, and can continue trying to accrue momentum points."
                 }
             }
         }
@@ -81,7 +81,7 @@ ARC "blood-of-the-lioness" EXTENDS "l5r5e" {
     # CAST ROSTER (statblocks in the -cast file; narrative figures in the .lore/.codex)
     # ─────────────────────────────────────────────
     PARTY {
-        NOTE "The players use their own characters throughout. In Part Two they also play historical figures — either the premade Advisors (page 12) or their own historical selves — optionally linked to their present PCs via a Legacy (from the external Blood of the Lioness online supplement)."
+        NOTE "When Part Two arrives, the GM should discuss with the players whether they would rather use premade characters (see The Advisors on page 12) or make up their own unique historical characters for this part. Some players might relish the chance to try a new school or roleplay a character concept wildly different from their normal character. To reinforce the theme of ancestry, the players might consider whether and how their two characters could be related. If using the rules for Legacies from the Blood of the Lioness online supplement, the GM can also tell the players that they have a chance to acquire a Legacy, a special new advantage linking their historical character to their contemporary one."
         CAST_FILE "l5r5e-0.5-blood-of-the-lioness-cast.ttrpg"
         ADVISORS_FILE "l5r5e-0.5-blood-of-the-lioness-pregens.actor"
         ADVISORS ["Matsu Sugi", "Akodo Heihachi", "Ikoma Tsurayui", "Kitsu Ryōma", "Matsu no Shion Yui", "Matsu no Shion Nori"]

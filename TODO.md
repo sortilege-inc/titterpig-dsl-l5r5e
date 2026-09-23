@@ -339,9 +339,41 @@ about the encoding, each keep recorded with its reason.
   supplements' advantage EFFECTs). Also duplicated DEFs (a stale HERITAGE_TABLE in core-chargen,
   three NPCs in emerald-empire-npcs, the Writ of the Wilds NPCs), NPC values that disagree with
   their stat blocks, and kept comments citing wrong pages or 0.3 filenames.
-- **Root cause, open:** the spec still permits a text-less rule (§12). A proposal to the owner:
-  the validator warns on one.
+- **Root cause, closed** (owner: "Please add"): spec §12 now requires a rule to carry the source's
+  statement; the validator warns on a text-less one (titterpig-dsl `ecb1973`).
 
 The buyer watermark the retailer stamps into the PDFs had reached one string here (the Sentiment
 skill's guidance, p. 158) — removed in `a42bd48` as an explicit owner override of the verbatim
 rule; the lift's sources strip it and its verifier rejects any text carrying it.
+
+## 2026-09-23 — data strings in the book's words; the defects the lift found — DONE
+
+Owner: "Please fix." Every string of 40+ characters in the corpus is now the book's own text, or a
+recorded exemption with its reason. Tool and ledger: `titterpig-audit/l5r5e/lift_rules/mend.py`,
+`MEND-BRIEF.md`, `mend/applied/`.
+
+- **3,187** strings replaced with the book's text (technique Activation/Effects/opportunities,
+  condition effects, action text, the severity and score tables, school and advantage abilities,
+  NPC and adventure descriptions, the pregenerated characters from their own sheets); **359** value
+  and name corrections found on the pages (stat blocks read a cell off, rings, TN modifiers,
+  conflict ranks, swapped glory/status, the Umbrella's grip errata copied onto four other items);
+  **944** lines of duplicated or stale definitions removed (a stale HERITAGE_TABLE, duplicate NPC
+  files for Writ of the Wilds and Children of the Five Winds — the complete, book-checked stat
+  blocks kept — invented Inversion examples, an invented seventh step of a check, paraphrased
+  blocks that repeated verbatim rules); **3** text-layer repairs.
+- **1,161** exemptions, each with its reason: composed stat lines built from a stat block's cells,
+  the encoding's own structure (names, arc TONE/SETTING/THEMES fields), text-layer damage where
+  the corpus is right, and 15 strings verified against another book (errata composites, the
+  Deathly Turns PDF's p. 25).
+- **Proof:** every replacement verified at its cited page; the verifier tightened on the way — a
+  passage may now resume only at a text-layer line break (it had accepted fragments of unrelated
+  table entries), numbers on a page are text unless they are its folio, and the dice glyphs of
+  the adventure PDFs and Path of Waves' control characters are mapped. Corpus-wide string gate
+  **PASS, 0 files open**; rules-lift gate PASS; validator 164 files 0/0; §5d 2,291 sites 0
+  hashless; 382 guidance 0 errors (the four gone are the copied grip errata).
+- **Readings, not the page's words — for the owner:** Courts of Stone p. 93 prints an empty glyph
+  box in *Victory Is the Greatest Honor* and *One with the Shadows*; they read (su) and (ring).
+  Dark Tides keeps nine authored ON_FAILURE outcomes where the book states none (the Lost Writer
+  arc's were deleted) — filler, recommended for removal. Remaining gaps a string fix cannot close
+  (the duel's Unique Action, "Using <NPC>" sidebars, Reckless Lunge's second opportunity) are in
+  FOLLOWUPS.md there.

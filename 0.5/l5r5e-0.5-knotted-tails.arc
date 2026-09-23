@@ -7,12 +7,12 @@
 
 ARC "the-knotted-tails" EXTENDS "l5r5e" {
     NAME "The Knotted Tails"
-    VERSION "0.5.1"
+    VERSION "0.5.2"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "The Knotted Tails: A Supplemental Storyline for Mask of the Oni (Fantasy Flight Games, 2020)"
     LEAD_WRITER "Alexis Dykema"
-    DESCRIPTION "An optional bonus storyline for the Legend of the Five Rings Roleplaying Game, played within Mask of the Oni (before the PCs reach Shiro Hiruma) or adapted to any Shadowlands campaign. The PCs meet the human-sized, rat-like nezumi of the Knotted Tails tribe — who pride themselves on remembering the past and believe their ancestors were allies of the Hiruma — and discover the horror stalking the tribe for nezumi blood."
+    DESCRIPTION "This is an optional bonus storyline that may be played within Mask of the Oni, an adventure for the Legend of the Five Rings Roleplying Game. Encounters are designed for a party of four PCs of rank 2, though these can be adjusted for parties of any size and ranks by using Gauging an Encounter on page 310 of the core rulebook.\n\nThe Knotted Tails takes place before the PCs reach Shiro Hiruma, but after the optional encounter \"The Lost\" on page 15 of that adventure. Alternatively, it can be adapted for use within any campaign in the Shadowlands. Whether PCs are involved in Mask of the Oni or not, these encounters allow them to meet and learn about the human-sized, rat-like nezumi and discovr what horror is stalking this tribe through the Shadowlands."
 
     THEMES ["The nezumi: outsiders with their own honor", "Memory and the keeping of the past", "Allies made or enemies earned in the Shadowlands", "A threat that hunts from within dreams", "Redemption through remembering"]
 
@@ -25,22 +25,22 @@ ARC "the-knotted-tails" EXTENDS "l5r5e" {
     # ─────────────────────────────────────────────
     PARTS {
         PART 1 "Part 1: Storyline Background" {
-            DESCRIPTION "GM background on the Knotted Tails nezumi and how the storyline ties into Mask of the Oni: the tribe's claimed alliance with the Hiruma (their ancestor Silver Ears made an honorary samurai), their protectiveness of Shiro Hiruma's ruins, their Transcendents, and the threat hunting them."
+            DESCRIPTION "General information about the nezumi and how this adventure ties into Mask of the Oni."
         }
         PART 2 "Part 2: Being Watched" {
             SCENES ["The Patrol", "The Parasite"]
-            DESCRIPTION "A nezumi patrol shadows the PCs through the Shadowlands, then hails them (the scout Nine Claws requesting help). Cooperating costs glory if discovered but may win useful allies; the nezumi warn of the castle and of the unknown threat, and can treat a parasite affliction (e.g. Hida Kurumi from Mask of the Oni) with the Dreamer's brew."
+            DESCRIPTION "The PCs encounter a nezumi patrol and must decide whether or not to help the tribe, which may lead the PCs closer to their goal in the Shadowlands."
         }
         PART 3 "Part 3: The Knotted Tails Village" {
             SCENES ["The Leader's Tent", "Meeting the Rememberer", "The Shrine to Memory", "Nezumi Games", "The Unknown Threat"]
-            DESCRIPTION "In the tents-and-burrows village, the PCs meet leader Lucky Silver (who wields her ancestor Silver Ears' Kaiu blade), hear the tribe's history from the Rememberer, may pray at the Shrine to Memory, and consult the Dreamer One Eye. They piece together that a nezumi who knows the tribe — someone angry at Lucky Silver — is behind the disappearances, and that the Rememberer's apprentice Quick Shadow was sent to the graveyard."
+            DESCRIPTION "At the village, the PCs are introduced to the Knotted Tails leader, nezumi culture, and have the opportunity to investigate the disappearances."
         }
         PART 4 "Part 4: The Nezumi Graveyard" {
             SCENES ["Lucky Silver in the Graveyard", "The Confrontation"]
-            DESCRIPTION "At the open-pit nezumi graveyard, the PCs find slain scouts and the vanished apprentice's trail. Frayed Whisker springs his ambush — controlled and outcast nezumi assault Lucky Silver — and One Eye's Dreamreader frees the ensnared. Slaying or capturing Frayed Whisker ends his hold; leaving Lucky Silver to fight alone costs the PCs honor and dooms the tribe. Terrain is Defiled and Dangerous."
+            DESCRIPTION "The PCs face the final confrontation in the nezumi graveyard and must choose to jeapordize their mission in the Shadowlands to help creatures in need."
         }
         PART 5 "Part 5: Resolution" {
-            DESCRIPTION "If Frayed Whisker falls and the tribe is saved, the grateful Knotted Tails give the PCs gifts, pledge loyalty (the Support of the Knotted Tails advantage), and offer the infiltrator Three Tooth as a guide into Shiro Hiruma. Rewards: XP for the skirmish and for freeing controlled nezumi; 4 honor for risking their lives to save Lucky Silver; honor for capturing Frayed Whisker alive."
+            DESCRIPTION "The PCs either resolve the aftermath of the graveyard and depart the tribe, or face the consequences of killing the scouts or ignoring the nezumi's requests for aid."
         }
     }
 
@@ -51,13 +51,13 @@ ARC "the-knotted-tails" EXTENDS "l5r5e" {
         ^"The Knotted Tails Village" DEF {
             TYPE "Village"
             DANGER_LEVEL "Shadowlands (mobile nezumi encampment)"
-            DESCRIPTION "A scattering of mismatched tents and underground burrows hidden among the rocks of the Shadowlands, home to the nomadic Knotted Tails tribe. Holds the Leader's Tent, the Rememberer's place, and the Shrine to Memory."
+            DESCRIPTION "The nezumi pause as they reach the brow of a hill, looking expectantly at you. Standing on the crest, you get your first view of the nezumi village, a scattering of mismatched tents hidden amongst the rocks below. Furred figures emerge from numerous burrows and stand to watch your approach. The smallest among them, nezumi about the size of human infants, swarm up the hill on all fours, squeaking excitedly.\n\nBurrows for sleeping are underground, where the Knotted Tails feel safer. The tents above are skeletal structures of wood and metal, with scraps of cloth and dried vegetation stretched between struts to provide shelter and shade. A small fire heats a cooking pot inside one, and within another the PCs might glimpse a nezumi beating salvaged metal into usable shapes with a rock, the dull clanging muffled by the fabric of the tent. If a PC enters one of the burrows, they take 1 strife due to the cramped, dirty conditions."
             NPCS [^"Lucky Silver", ^"One Eye", ^"Knotted Tails Warrior", ^"Nezumi Pup (Knotted Tails)", ^"Three Tooth"]
         }
         ^"The Nezumi Graveyard" DEF {
             TYPE "Landmark"
             DANGER_LEVEL "Defiled and Dangerous terrain"
-            DESCRIPTION "A natural pit used by several tribes over centuries, filled with the exposed bones and skulls of the nezumi dead — a sign of respect, for their dead are not hidden and Rememberers can recognize their skulls and tell their stories. Site of Frayed Whisker's ambush."
+            DESCRIPTION "Although the Knotted Tails are nomadic, they often return to the same locations, and they regularly visit the graveyard on their route. Once the PCs learn there is a graveyard, any nezumi can point the PCs in the right direction to reach it, though none offer to accompany them. Used by several tribes, it is a grisley sight: a natural pit the nezumi have filled with the corpses of their dead over the centuries, leaving their bones and skulls exposed. While this is a horrifying thought for any samurai, for the nezumi it is a sign of respect. Their dead are not hidden and forgotten, and Rememberers can recognize their skulls and tell their stories."
         }
         ^"Shiro Hiruma" DEF {
             TYPE "Castle"

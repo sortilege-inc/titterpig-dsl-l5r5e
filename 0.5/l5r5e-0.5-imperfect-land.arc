@@ -8,12 +8,12 @@
 
 ARC "imperfect-land" EXTENDS "l5r5e" {
     NAME "Imperfect Land"
-    VERSION "0.5.1"
+    VERSION "0.5.2"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Imperfect Land: An Adventure Uncovering the Secrets of the Perfect Land Sect (Fantasy Flight Games)"
     LEAD_WRITER "Fantasy Flight Games"
-    DESCRIPTION "An adventure for the Legend of the Five Rings Roleplaying Game that places the PCs at the heart of a religious conflict: as debate over the unorthodox and controversial Perfect Land Sect threatens to tear the Brotherhood of Shinsei apart, the PCs help shape the spiritual future of Rokugan. Set at the Mountain Song Temple in Dragon lands under the hospitality of Mirumoto Masashige, it moves from a courtly conclave of persuasion, through the arrival of the sect's leader Hige, to a wilderness rescue of the injured Senzai — the reincarnation of Shinsei — and back to a fraught final vote and an assassination attempt."
+    DESCRIPTION "Imperfect Land is an adventure for the Legend of the Five Rings Roleplaying Game. It places the characters at the heart of a religious conflict: as debate over the unorthodox and controversial Perfect Land Sect threatens to tear the Brotherhood of Shinsei apart, the PCs have a chance to shape the spiritual future of Rokugan—and their own futures as well."
 
     THEMES ["Faith versus orthodoxy — the making of a heresy", "The Age of Declining Virtue (Suijindai)", "The reincarnation of Shinsei walking among mortals", "Persuasion and consensus as the real battlefield", "The Kolat steering a religious movement toward rebellion"]
 
@@ -31,19 +31,19 @@ ARC "imperfect-land" EXTENDS "l5r5e" {
     PARTS {
         PART 1 "Part One: The Brotherhood Gathers" {
             SCENES ["Arrival at the Mountain Song Temple", "A Guide to the Brotherhood", "Swaying the Undecided (Sympathy)", "The Puzzle of the Conclave", "Meeting Naigen or Anmoku"]
-            DESCRIPTION "At the Mountain Song Temple, the Brotherhood convenes to vote on whether to declare the Perfect Land Sect a False Path; too little consensus in either direction risks a violent schism. Masashige sets the PCs to work as guards, clerks, and assistants, giving them access to the undecided abbots. Through preparation, persuasion (a Social check against each delegate's Vigilance), blackmail, and tailored arguments, the PCs shift the conclave's Sympathy toward support or condemnation, and may investigate why the conclave is oddly being held in Dragon lands under a bushi host (the sect's adherents lobbied Anmoku, and Naigen interfered to keep the delegation out)."
+            DESCRIPTION "Imperfect Land begins with the leaders of the Brotherhood's various orders gathering at the Mountain Song Temple in Dragon lands (described on page 76 of Writ of the Wilds), under the hospitality of Dragon family daimyō Mirumoto Masashige. The Brotherhood holds such a conclave each year and conducts other points of business during the event, but everyone is aware that this year's main agenda item is a vote on whether to formally bestow the label of False Path on the Perfect Land Sect. Failure to achieve a sufficient degree of consensus in one direction or the other would mean the Brotherhood would risk falling into a violent schism. Masashige requests the PCs help with the gathering, acting as guards, clerks, or other assistants, depending on their skills and backgrounds.\n\nIn Part One, the PCs have a chance to sway the vote toward support for or opposition to the Perfect Land Sect. Their duties to the conclave give them many opportunities to speak with the leaders who are still undecided, using a variety of tactics to make those leaders more receptive to their arguments."
         }
         PART 2 "Part Two: The Perfect Land Arrives" {
             SCENES ["At the Gate", "Letting Them In / Turning Them Away", "Hige Speaks", "Investigating the Origins", "Evaluating the Sutra"]
-            DESCRIPTION "A delegation led by the sect's leader Hige climbs to the temple gate, where the PCs (on watch) must decide whether to admit them — unbalancing the conclave. If admitted, Hige speaks before the Brotherhood, and the PCs can investigate the sect's true origins (the ninth-century monk Yuzue, her student Gatai, and the founding sutra) and help evaluate the sutra's authenticity, shaping the debate."
+            DESCRIPTION "In Part Two, a delegation of Perfect Land adherents arrives, including their leader, Hige. This provides an opportunity to investigate the origins of the sect more closely, gives rise to a familial confrontation, and presents a chance to uncover a spy."
         }
         PART 3 "Part Three: The Silent Song" {
             SCENES ["The Mountain Song Falls Silent", "To the Peak", "At the Ruin (Ajari and the enemies)", "Saving the Stranger (Senzai)"]
-            DESCRIPTION "An elemental imbalance halts the conclave: the constant Mountain Song falls into a true and lasting silence. Seeking the cause, the PCs journey into the surrounding wilderness to a tengu ruin, where the tengu Ajari secretly shelters an injured woman — Senzai, the reincarnation of Shinsei — from those who would harm her. Warned by Iwa that a 'delusional heretic' wanders nearby, the PCs confront a variety of enemies (Kolat-hired bandits and others) to reach and save the stranger, whose fate will decide everything."
+            DESCRIPTION "In Part Three, an eruption of the elemental imbalance brings the constant melody of the Mountain Song to an abrupt halt, possibly in response to the strife of the conclave. The PCs are tasked to investigate, which takes them outside the temple to a tengu ruin, where they may confront a variety of enemies to save a stranger."
         }
         PART 4 "Part Four: The Vote and the Assassins" {
             SCENES ["Return to the Conclave", "The Assassins (Kanbei's attempt)", "The Final Vote (Sympathy resolved)", "The Fate of the Perfect Land"]
-            DESCRIPTION "The PCs return to the conclave. Whether Senzai is alive (and revealed as Shinsei) or dead reshapes the ending. The Kolat master Kanbei launches an assassination attempt (with Yuki, Ichirō, and the bitter rōnin Satto) to push the sect toward violent rebellion; the PCs must thwart it. The conclave then resolves: the accumulated Sympathy (from –12 to +12, starting at 0) determines whether the Perfect Land is branded a False Path, left in ambiguity, spared condemnation, or recognized as an order following the reborn Shinsei — deciding the spiritual future of the Empire."
+            DESCRIPTION "In Part Four, the final segment of this adventure, the PCs return to the conclave, thwart an assassination attempt, and help decide the ultimate fate of the Perfect Land Sect—along with that of Rokugan itself."
         }
     }
 
@@ -53,12 +53,12 @@ ARC "imperfect-land" EXTENDS "l5r5e" {
     LOCATIONS {
         #te4013301f2fe7da3be2ff ^"Mountain Song Temple" DEF {
             TYPE "Temple"
-            DESCRIPTION "A Brotherhood temple in Dragon lands (Writ of the Wilds p76) that seems to grow out of the mountains, wrapped in the constant rise and fall of the Mountain Song. Host to this year's conclave under Mirumoto Masashige; its halls, libraries, and shrines shelter a fractious assembly of monks — and, in the wilderness beyond, a tengu ruin."
+            DESCRIPTION "The temple seems to grow out of the mountains themselves, blending harmoniously with the surrounding terrain. Within its perimeter lies an extensive complex of halls, libraries, sleeping chambers, and shrines, all with an austere beauty that complements the constant rise and fall of the Mountain Song. This is a place of peace—but the assemblage of fractious monks gathered here threatens to crack that peace."
             NPCS [^"Mirumoto Masashige", ^"Naigen", ^"Anmoku", ^"Iwa"]
         }
         ^"The Tengu Ruin" DEF {
             TYPE "Landmark"
-            DESCRIPTION "An old ruin in the wilderness around the Mountain Song Temple, haunted for years by the tengu Ajari, who has brought the injured Senzai here to shelter her from those who would harm her. The site of Part Three's confrontation."
+            DESCRIPTION "The setup at the ruin atop the peak is a simple one, but how it plays out will depend on who arrives first. Before anyone else reaches the peak, a tengu named Ajari has brought the wounded Senzai to safety in an old ruin of his people's there. He is reluctant to allow anyone near her."
             NPCS [^"Ajari"]
         }
     }

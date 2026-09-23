@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Winds" {
     NAME "Legend of the Five Rings 5th Edition - Children of the Five Winds: GM Tools"
-    VERSION "0.5.1"
+    VERSION "0.5.3"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -19,24 +19,24 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         ^"Mortal Social Objectives" DEF {
             ENTRIES {
                 #auk1Gml1uPhxcgPvMg7XzP ^"Create a Pact" DEF {
-                    ^"Momentum Required" STRING "Spirit's focus + higher of (intrigue rank or combat rank) + 2"
-                    ^"Description" STRING "Accumulate momentum to establish a binding agreement between mortal and spirit."
+                    ^"Momentum Required" STRING "A character can forge a spirit pact by accumulating a number of momentum points equal to the objective's difficulty value. The difficulty value is equal to the spirit's focus value plus its intrigue or combat conflict rank plus 2 (whichever is higher)."
+                    ^"Description" STRING "At the end of any round in which a character accumulates momentum points equal to the objective's difficulty value, the character convinces the spirit to agree to a pact. See Spirit Pacts, page 131."
                 }
                 #WYMBIiE8xFE54bCOx34L2Y ^"Dispel Possession" DEF {
-                    ^"Momentum Required" STRING "Spirit's focus + intrigue conflict rank (plus spirit's vigilance if possessing one of the characters pursuing this objective)"
-                    ^"Description" STRING "Drive out a spirit that has possessed a character."
+                    ^"Momentum Required" STRING "A character can dispel a spirit possessing someone else by accumulating a number of momentum points equal to the objective's difficulty value. The difficulty value is the spirit's focus plus its intrigue conflict ranks. If the spirit is possessing one of the characters pursuing this objective, the difficulty value is the spirit's focus plus its intrigue conflict ranks plus its own vigilance."
+                    ^"Description" STRING "At the end of any round in which a character accumulates momentum points equal to the objective's difficulty value, the possessing spirit is driven out of the possessed character's body. That character removes the Possessed condition (see page 133). The spirit must then either flee into a Spirit Realm, if able, or take physical form of some kind in the Mortal Realm. If characters wish to force a battle, the Threshold Barrier ritual (see page 213 in the core rulebook) can be used to prevent a malign spirit from fleeing."
                 }
                 #mFkH7FK4IAsz6C4WaYgwZP ^"Invoke for Aid" DEF {
-                    ^"Momentum Required" STRING "Spirit's intrigue conflict rank + rank of invocation desired (or +6 for effects more potent than an invocation)"
-                    ^"Description" STRING "Request a spirit perform an invocation or other supernatural feat."
+                    ^"Momentum Required" STRING "A character can convince a spirit to perform an invocation of the character's choosing by accumulating a number of momentum points equal to the objective's difficulty value. The difficulty value is the spirit's intrigue conflict ranks plus the rank of the invocation the character desires it to perform (or plus 6 if the requested effect is something the GM deems to be more potent than what an invocation could normally achieve). In its place of power, a spirit can generally perform an invocation with a rank prerequisite less than the higher of its combat conflict ranks and intrigue conflict ranks. Spirits associated with one or more specific elements might only be able to perform invocations of those elements, at the GM's discretion. If a character's request is for an invocation the spirit cannot perform, the spirit should inform the character before they attempt the social objective.\n\nAt the GM's discretion, a character can also use the Invoke for Aid social objective to ask a Tainted spirit (kansen) to perform a mahō technique (see page 224 of the core rulebook). In this case, as a cost for receiving aid, the character suffers the Tainted disadvantage for the ring of the mahō technique."
+                    ^"Description" STRING "At the end of any round in which a character accumulates momentum points equal to the objective's difficulty value, the spirit performs the invocation using its profile as the character requests. If the character's request cannot be resolved with an invocation (such as if the character asks for a lost limb to be restored or for a soul to be bound back to the body it recently departed, or if they request some other feat that borders on the miraculous), the GM determines whether or not it can be achieved and, if it can, how the spirit goes about doing so. If any element of the character's request is ambiguous, the spirit interprets it in good faith as best it can—unless it is a Tainted spirit performing mahō, in which case it interprets ambiguous information maliciously."
                 }
                 #5Cqhwbt3YAyOsKwrC4ee7e ^"Placate" DEF {
-                    ^"Momentum Required" STRING "Spirit's focus + combat conflict rank"
-                    ^"Description" STRING "Calm an enraged spirit."
+                    ^"Momentum Required" STRING "A character can calm a raging spirit by accumulating a number of momentum points equal to the objective's difficulty value. The difficulty value is the spirit's focus plus its combat conflict ranks."
+                    ^"Description" STRING "At the end of any round in which a character accumulates momentum points equal to the objective's difficulty value, the spirit is calmed. If it is attempting to harm the player characters through physical means, it ceases doing so. It can shift to pursuing a social objective at the GM's discretion. Additionally, until the end of the scene, its focus is treated as 1."
                 }
                 #joFPnbIVJXlZJezhNCROKL ^"Seal in an Object" DEF {
-                    ^"Momentum Required" STRING "Spirit's focus + double its intrigue conflict rank"
-                    ^"Description" STRING "Bind a spirit in a physical vessel. The object gains the Sacred or Unholy quality. Way of Names practitioners may create a meishōdō talisman."
+                    ^"Momentum Required" STRING "A character can seal a spirit inside of an object by accumulating a number of momentum points equal to the objective's difficulty value. The difficulty value is the spirit's focus plus double its intrigue conflict rank."
+                    ^"Description" STRING "At the end of any round in which a character accumulates momentum points equal to the objective's difficulty value, the character may seal the spirit within the chosen object. The object gains the Sacred item quality, or the Unholy item quality if the spirit is Tainted, and the spirit cannot escape the object unless the object is destroyed.\n\nA character who has knowledge of meishōdō (such as by being an Iuchi Meishōdō Master or having completed the Student of Names title) and has learned the spirit's true name can instead choose to create a meishōdō talisman by completing this objective (see Meishōdō Talismans, page 106).\n\nIf a character chooses not to complete this objective when they have the requisite number of momentum points, they can gain further momentum points beyond the difficulty value. Doing so can help keep a spiritual being that is sealed in a meishōdō talisman more securely confined (see Stability, page 106)."
                 }
             }
 
@@ -48,20 +48,20 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         ^"Spirit Social Objectives" DEF {
             ENTRIES {
                 #FJkkIF0wpHN4e0UMd88zsJ ^"Curse" DEF {
-                    ^"Momentum Required" STRING "Target's focus + Theology ranks"
-                    ^"Description" STRING "Lay a curse on a character."
+                    ^"Momentum Required" STRING "A spirit can curse a character by accumulating a number of momentum points equal to the objective's difficulty value. The difficulty value is equal to the character's focus plus their ranks in Theology."
+                    ^"Description" STRING "At the end of any round in which a spirit accumulates momentum points equal to the objective's difficulty value, the spirit lays a curse upon the character. The character gains the Curse of [Spirit's Name] disadvantage."
                 }
                 #03HJp28PruV1DJmH3aGE5K ^"Inspire Awe" DEF {
-                    ^"Momentum Required" STRING "Target's vigilance + Meditation ranks"
-                    ^"Description" STRING "Terrify mortals with supernatural dread."
+                    ^"Momentum Required" STRING "A spirit can inspire awe in a character by accumulating a number of momentum points equal to the objective's difficulty value. The difficulty value is equal to the character's vigilance plus their ranks in Meditation."
+                    ^"Description" STRING "At the end of any round in which a spirit accumulates momentum points equal to the objective's difficulty value, the spirit strikes the character with awe, causing them to receive strife equal to the higher of the spirit's combat conflict ranks or intrigue conflict ranks. If a character becomes Compromised this way, they must immediately leave the scene unless they accede to a demand of some kind made by the spirit."
                 }
                 #CPBFSKAPxYHehWnCzo7BCq ^"Possession" DEF {
-                    ^"Momentum Required" STRING "2 x (target's focus + Command ranks)"
-                    ^"Description" STRING "Take over a character's body."
+                    ^"Momentum Required" STRING "A spirit can possess a character by accumulating a number of momentum points equal to the objective's difficulty value. The difficulty value is equal to twice the sum total of the character's focus and ranks in Command."
+                    ^"Description" STRING "At the end of any round in which a spirit accumulates momentum points equal to the objective's difficulty value, the spirit causes the character to gain the Possessed condition (see page 133). If the spirit has taken a physical form in the Mortal Realm, that form vanishes as the spirit inhabits the body of the possessed."
                 }
                 #4JCB3OFMN1mj7q7yI0HwHP ^"Request an Offering" DEF {
                     ^"Minimum Momentum" INTEGER 1
-                    ^"Description" STRING "Spirits request tribute from mortals."
+                    ^"Description" STRING "At the end of any round in which a spirit accumulates 1 or more momentum points, the spirit can request an offering of an item with rarity equal to the momentum points it has accumulated thus far. After it does so, any character opposing the spirit in the intrigue may make that offering to add momentum points equal to the rarity of the item they are offering to their own social objective for the scene."
                 }
             }
 
@@ -73,10 +73,14 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         ^"New Encounter Actions" DEF {
             ENTRIES {
                 #6XBAvPXGSI2KwO6cYFRGkD ^"Compel" DEF {
-                    ^"Description" STRING "Use a spirit's true name to force cooperation. Requires Way of Names training."
+                    ^"Description" STRING "You attempt to overpower a spirit by using its true name."
+                    ^"Activation" STRING "As a Scheme action targeting one spirit whose true name you know, you may make a TN 1 Theology (Void) check. You must be trained in the Way of Names to use this action."
+                    ^"Effects" STRING "If you succeed, you add 1 momentum point toward your current social objective. Then, the spirit must resist with a TN 3 Meditation check (Void 1). If it fails, you add a number of additional momentum points toward your current objective equal to its shortfall. If it succeeds, increase the TN of the next check it makes to resist the Compel action by 1 until the end of the scene. This effect is cumulative, increasing the TN by 1 each time."
                 }
                 #Y7oucRys8raxIufqcmBry7 ^"Entice" DEF {
-                    ^"Description" STRING "Win a spirit's favor with offerings. Provides momentum and bonus information opportunities."
+                    ^"Description" STRING "You attempt to win a spirit's favor with a small offering."
+                    ^"Activation" STRING "As a Scheme action targeting one spirit, you may offer up an item of value and make a Theology check. The TN of this check is equal to the spirit's intrigue conflict ranks minus the rarity of the item."
+                    ^"Effects" STRING "If you succeed, the spirit accepts the item, and you add 1 momentum point to an appropriate objective, plus 1 momentum point for every two bonus successes."
                 }
             }
 
@@ -223,31 +227,41 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         APPLIES TO [#L5R464yZ6aB8cD0eF2gH4i ^"Table"]
         ENTRIES {
             #wxmoJlp7hQleJfJDW5BezW ^"Ide Traveling Pony" DEF {
-                ^"Description" STRING "Hardy breed with +2 Endurance, +4 Composure, Intrigue +1. Removes Skittish disadvantage, adds Even-Tempered advantage. Built for endurance over long journeys."
+                ^"Description" STRING "The Ide maintain the second-largest horse and pony herds in the Unicorn Clan, but their horses are ill-suited to war. While smaller and more mild-tempered than other Unicorn steeds, Ide traveling ponies are extremely hardy; they can subsist on little forage, endure a wide variety of climates, and travel long distances with modest burdens on their backs. The Ide widely trade surplus traveling ponies as goods. As these ponies are prized traveling companions, there is high demand for the breed throughout the Empire.\n\nAn Ide from the Ide Trader, Ide Emissary, or Ide Messenger schools may replace their horse or Unicorn warhorse with an Ide traveling pony. To represent an Ide traveling pony, apply this template to the Horse (Rokugani Pony) profile:"
+                ^"Conflict Rank Modifier" STRING "Intrigue +1"
+                ^"Endurance Modifier" STRING "+2"
+                ^"Composure Modifier" STRING "+4"
+                ^"Advantages (add)" LIST OF STRING ["Even-Tempered (Water) [Social; Mental)"]
+                ^"Disadvantages (remove)" LIST OF STRING ["Skittish"]
             }
             #vgWA6jMT36mCWycF52scTL ^"Iuchi Riding Steed" DEF {
-                ^"Description" STRING "Intelligent breed trained by Iuchi shugenja to respond to verbal and hand-gesture commands."
+                ^"Description" STRING "The smaller steeds bred by the Iuchi family are bred not for speed or power, but for intelligence. Iuchi riding steeds are so intelligent that they can be trained to respond to a variety of commands, both verbal and from hand gestures in sign language. Stories of horses assisting with complex math problems are probably apocryphal.\n\nAn Iuchi Meishōdō Master may replace their Unicorn warhorse with an Iuchi riding steed. To represent an Iuchi riding steed, apply this template to the Horse (Rokugani Pony) profile:"
                 ^"Conflict Rank Modifier" STRING "Intrigue +1"
                 ^"Advantages (add 1)" LIST OF STRING ["Smart as a Human (Air) [Social; Mental]"]
                 ^"Disadvantages (remove)" LIST OF STRING ["Skittish"]
                 ^"Demeanor" STRING "Detached"
             }
             #7Y6DEOtPOC61uzvqgWBRPE ^"Moto Charger" DEF {
-                ^"Description" STRING "Hot-tempered breed known for strength, size, and explosive gallop. Carries heavily armored lancers into battle but lacks stamina for prolonged journeys."
+                ^"Description" STRING "The Moto claim the largest horses of any Unicorn family—larger even than the famed Utaku steeds—and they freely trade breeding stock with the peoples outside Rokugan's borders. As a consequence, the Moto have a diverse array of hoofstock suitable for diverse needs. The most famous of these is the Moto charger, a hot-tempered breed known for its strength, size, and explosive gallop, which comes at the cost of stamina. It can carry a heavily armored Moto lancer into the thickest battle, but for prolonged journeys, most warriors ride something else.\n\nA Moto Conqueror may replace their Unicorn warhorse with a Moto charger. To represent a Moto charger, apply this template to the Horse (Rokugani Pony) profile:"
                 ^"Conflict Rank Modifier" STRING "Combat +1"
                 ^"Advantages (remove)" LIST OF STRING ["Tireless Runner"]
-                ^"Advantages (add 2)" LIST OF STRING ["Brute Strength (Fire) [Martial; Physical]", "Fearsome Presence (Fire) [Social; Interpersonal]", "Masterful Fighter (Earth) [Martial; Mental]"]
-                ^"Disadvantages (replace 1)" LIST OF STRING ["Quick to Anger (Fire) [Social; Interpersonal]", "Willful (Earth) [Social; Interpersonal]"]
+                ^"Advantages (add 2)" LIST OF STRING ["Brute Strength (Fire) [Martial; Physical)", "Fearsome Presence (Fire) [Social; Interpersonal]", "Masterful Fighter (Earth) [Martial; Mental]"]
+                ^"Disadvantages (replace 1)" LIST OF STRING ["Quick to Anger (Fire) [Social; Interpersonal)", "Willful (Earth) [Social; Interpersonal]"]
             }
             #lOih52tqteoqBWy8UrO2G2 ^"Shinjo Courser" DEF {
-                ^"Description" STRING "Renowned for speed and stamina but high-spirited and flighty. Ideal for scouts, courtiers, and mounted archers, but ill-suited to traditional battle."
+                ^"Description" STRING "Shinjo coursers are most closely related to the breeds common in Qamari territory. These breeds are renowned for their speed and stamina, but they are also high-spirited and flighty. They are ideal steeds for scouts, courtiers, and mounted archers, but ill-suited to traditional battle.\n\nA Shinjo Outrider or Shinjo Mounted Archer may replace their Unicorn warhorse with a Shinjo courser. To represent a Shinjo courser, apply this template to the Horse (Rokugani Pony) profile:"
                 ^"Conflict Rank Modifier" STRING "Combat +1"
                 ^"Endurance Modifier" STRING "+2"
-                ^"Advantages (add)" LIST OF STRING ["Fleet of Foot (Water) [Martial; Physical]"]
+                ^"Advantages (add)" LIST OF STRING ["Fleet of Foot (Water) [Martial; Physical)"]
                 ^"Demeanor" STRING "Cautious [Air +2, Earth -2]"
             }
             #oFqZgrfnnnZDT2QSRb4Anu ^"Utaku Warhorse" DEF {
-                ^"Description" STRING "Ideal blend of power, speed, and stamina bred by Utaku Horse Lord Disciples. Combat +1, +4 Endurance, +4 Composure. Removes Skittish disadvantage, adds one of: Fearsome Presence, Masterful Fighter, or Veteran's Instincts."
+                ^"Description" STRING "Famous for their superior steeds, the Utaku family are widely regarded as the foremost horse breeders and trainers throughout the Great Clans. But this is not merely because of their access to steeds from the famous Blessed Herd—indeed, Utaku steeds are wild horses and are not trained or bred in the traditional manner—but because of their excellent warhorse breeds, an ideal blend of power, speed, and stamina. These warhorses set the standard for the \"Unicorn warhorse\" and are a symbol of prestige within the clan, widely traded to Unicorn samurai of all descriptions.\n\nThe default Unicorn warhorse is, in fact, an Utaku warhorse. PCs from any Unicorn family may have one as part of their starting package. To represent a Unicorn warhorse, apply this template to the Horse (Rokugani Pony) profile on page 326 of the core rulebook:"
+                ^"Conflict Rank Modifier" STRING "Combat +1"
+                ^"Endurance Modifier" STRING "+4"
+                ^"Composure Modifier" STRING "+4"
+                ^"Advantages (add 1)" LIST OF STRING ["Fearsome Presence (Fire) [Social; Interpersonal]", "Masterful Fighter (Earth) [Martial; Mental]", "Veteran's Instincts (Water) [Scholar; Mental]"]
+                ^"Disadvantages (remove)" LIST OF STRING ["Skittish"]
             }
         }
 
@@ -269,7 +283,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Category" STRING "Animal"
             ^"Combat Conflict Rank" INTEGER 8
             ^"Intrigue Conflict Rank" INTEGER 1
-            ^"Description" STRING "Massive wild cattle with equally massive horns. They travel in herds of roughly thirty."
             ^"Rings" DEF {
                 ^"Air" INTEGER 1
                 ^"Earth" INTEGER 5
@@ -283,8 +296,8 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Vigilance" INTEGER 3
             ^"Silhouette" INTEGER 4
             ^"Demeanor" STRING "Laconic"
-            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
-            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 0", "Social 0", "Trade 0"]
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
+            ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 0", "Trade 0"]
             ^"Advantages" LIST OF STRING ["Enormous Stature (Earth) [Martial; Physical]"]
             ^"Disadvantages" LIST OF STRING ["Bad Temper (Fire) [Martial; Mental]"]
             ^"Favored Weapons" LIST OF STRING ["Horns: Range 1, Damage 8, Deadliness 6, Durable"]
@@ -309,7 +322,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Category" STRING "Animal"
             ^"Combat Conflict Rank" INTEGER 2
             ^"Intrigue Conflict Rank" INTEGER 1
-            ^"Description" STRING "Solitary burrowing creature, prized in some communities and considered bad luck in others. Ferociously defends itself and its young when threatened."
             ^"Rings" DEF {
                 ^"Air" INTEGER 1
                 ^"Earth" INTEGER 3
@@ -323,7 +335,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Vigilance" INTEGER 2
             ^"Silhouette" INTEGER 1
             ^"Demeanor" STRING "Stubborn"
-            ^"Social Skill Check TN Modifiers" STRING "Water +2, Earth -2"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Water -2"
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 0"]
             ^"Advantages" LIST OF STRING ["Fast Burrowing (Earth) [Martial; Physical]"]
             ^"Disadvantages" LIST OF STRING ["Nocturnal (Earth) [Trade; Physical]", "Hot-Tempered (Fire) [Martial; Mental]"]
@@ -348,7 +360,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Category" STRING "Animal"
             ^"Combat Conflict Rank" INTEGER 1
             ^"Intrigue Conflict Rank" INTEGER 1
-            ^"Description" STRING "Docile creatures with wingspans nearing five feet and foxlike features. Considered good luck in Rokugani culture. Orchard farmers regard them with unmitigated pleasure."
             ^"Rings" DEF {
                 ^"Air" INTEGER 4
                 ^"Earth" INTEGER 1
@@ -362,7 +373,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Vigilance" INTEGER 3
             ^"Silhouette" INTEGER 1
             ^"Demeanor" STRING "Gregarious"
-            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 0"]
             ^"Advantages" LIST OF STRING ["Keen Senses (Water) [Martial; Mental, Physical]", "Pack Tactics (Water) [Martial, Social; Interpersonal]"]
             ^"Disadvantages" LIST OF STRING ["Nocturnal (Earth) [Trade; Physical]"]
@@ -387,7 +398,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Category" STRING "Animal"
             ^"Combat Conflict Rank" INTEGER 2
             ^"Intrigue Conflict Rank" INTEGER 1
-            ^"Description" STRING "Largest birds of prey in Rokugan, with strength greater than their size suggests. Used in pairs by falconers to hunt deer, foxes, and other game."
             ^"Rings" DEF {
                 ^"Air" INTEGER 4
                 ^"Earth" INTEGER 1
@@ -401,7 +411,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Vigilance" INTEGER 3
             ^"Silhouette" INTEGER 1
             ^"Demeanor" STRING "Proud"
-            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Air -2"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 0"]
             ^"Advantages" LIST OF STRING ["Fleet of Foot (Water) [Martial; Physical]", "Sharp Eyesight (Water) [Martial, Trade; Physical]"]
             ^"Disadvantages" LIST OF STRING ["Hollow Bones (Earth) [Martial; Physical]", "Quick to Anger (Fire) [Social; Interpersonal]"]
@@ -426,7 +436,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Category" STRING "Animal"
             ^"Combat Conflict Rank" INTEGER 1
             ^"Intrigue Conflict Rank" INTEGER 1
-            ^"Description" STRING "Extremely rare domesticated deer bred as stealthy woodland mounts by the Fox and Deer Clans."
             ^"Rings" DEF {
                 ^"Air" INTEGER 1
                 ^"Earth" INTEGER 2
@@ -440,7 +449,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Vigilance" INTEGER 3
             ^"Silhouette" INTEGER 3
             ^"Demeanor" STRING "Flighty"
-            ^"Social Skill Check TN Modifiers" STRING "Air +2, Earth -2"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 0", "Scholar 0", "Social 1", "Trade 0"]
             ^"Advantages" LIST OF STRING ["Forest Runner (Earth) [Martial; Physical]", "Lightning Reflexes (Fire) [Martial; Mental, Physical]"]
             ^"Disadvantages" LIST OF STRING ["Skittish (Fire) [Martial; Mental]"]
@@ -466,7 +475,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Category" STRING "Animal"
             ^"Combat Conflict Rank" INTEGER 6
             ^"Intrigue Conflict Rank" INTEGER 1
-            ^"Description" STRING "Aggressive brown bears of the Shinomen Forest, occasionally called upon as ursine mounts by especially woodsy shugenja."
             ^"Rings" DEF {
                 ^"Air" INTEGER 1
                 ^"Earth" INTEGER 4
@@ -480,7 +488,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Vigilance" INTEGER 2
             ^"Silhouette" INTEGER 3
             ^"Demeanor" STRING "Intimidating"
-            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Air -2"
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 0"]
             ^"Advantages" LIST OF STRING ["Enormous Stature (Earth) [Martial; Physical]"]
             ^"Disadvantages" LIST OF STRING ["Opportunist (Fire) [Martial; Mental]"]
@@ -510,7 +518,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Category" STRING "Animal"
             ^"Combat Conflict Rank" INTEGER 6
             ^"Intrigue Conflict Rank" INTEGER 1
-            ^"Description" STRING "Solitary predator with distinctive striped fur. Associated with nobility, pride, and fierceness by the Ujik, Nehiri, and Suhili."
             ^"Rings" DEF {
                 ^"Air" INTEGER 4
                 ^"Earth" INTEGER 3
@@ -524,7 +531,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Vigilance" INTEGER 4
             ^"Silhouette" INTEGER 3
             ^"Demeanor" STRING "Aggressive"
-            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Air -2"
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 0", "Social 0", "Trade 0"]
             ^"Advantages" LIST OF STRING ["Swift and Agile (Fire) [Martial; Physical]"]
             ^"Disadvantages" LIST OF STRING ["Pride (Air) [Social; Mental]"]
@@ -554,7 +561,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Category" STRING "Animal"
             ^"Combat Conflict Rank" INTEGER 2
             ^"Intrigue Conflict Rank" INTEGER 1
-            ^"Description" STRING "Short and stocky pony breeds of the Ujik tribes. Hardy, strong, and resistant to illness, prized by the Utaku and Moto for crossbreeding."
             ^"Rings" DEF {
                 ^"Air" INTEGER 1
                 ^"Earth" INTEGER 3
@@ -568,7 +574,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Vigilance" INTEGER 2
             ^"Silhouette" INTEGER 3
             ^"Demeanor" STRING "Loyal"
-            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Air -2, Water -2"
+            ^"Social Skill Check TN Modifiers" STRING "Air +1, Earth -2, Fire -2"
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 0"]
             ^"Advantages" LIST OF STRING ["Brute Strength (Fire) [Martial; Physical]", "Tireless Runner (Earth) [Martial; Physical]"]
             ^"Disadvantages" LIST OF STRING ["Skittish (Fire) [Martial; Mental]"]
@@ -594,7 +600,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Category" STRING "Animal"
             ^"Combat Conflict Rank" INTEGER 2
             ^"Intrigue Conflict Rank" INTEGER 1
-            ^"Description" STRING "Massive war dogs of wolf or jackal ancestry, bred for battle, sentry duty, and tracking."
             ^"Rings" DEF {
                 ^"Air" INTEGER 2
                 ^"Earth" INTEGER 2
@@ -607,7 +612,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Focus" INTEGER 3
             ^"Vigilance" INTEGER 4
             ^"Demeanor" STRING "Loyal"
-            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Air -2, Water -2"
+            ^"Social Skill Check TN Modifiers" STRING "Air +1, Earth -2, Fire -2"
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 0"]
             ^"Advantages" LIST OF STRING ["Keen Tracker (Water) [Trade; Physical]", "Fearsome Presence (Fire) [Social; Interpersonal]"]
             ^"Disadvantages" LIST OF STRING ["Dependent on Humans (Fire) [Trade; Mental]"]
@@ -633,7 +638,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Category" STRING "Animal"
             ^"Combat Conflict Rank" INTEGER 3
             ^"Intrigue Conflict Rank" INTEGER 1
-            ^"Description" STRING "Untamed feral horses roaming the steppes and deserts beyond Rokugan. Shorter and stockier than domesticated breeds, with strong fight-or-flight instincts."
             ^"Rings" DEF {
                 ^"Air" INTEGER 1
                 ^"Earth" INTEGER 3
@@ -649,14 +653,14 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Demeanor" STRING "Cautious"
             ^"Social Skill Check TN Modifiers" STRING "Air +2, Earth -2"
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 1", "Trade 0"]
-            ^"Advantages" LIST OF STRING ["Pack Tactics (Water) [Martial, Social; Interpersonal]", "Tireless Runner (Water) [Martial; Physical]"]
-            ^"Disadvantages" LIST OF STRING ["Skittish (Water) [Martial; Mental]"]
+            ^"Advantages" LIST OF STRING ["Pack Tactics (Water) [Martial, Social; Interpersonal]", "Tireless Runner (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Skittish (Fire) [Martial; Mental]"]
             ^"Favored Weapons" LIST OF STRING ["Hooves: Range 1-2, Damage 6, Deadliness 5", "Bucking Kick: Range 1, Damage 8, Deadliness 6"]
             ^"Gear" LIST OF STRING ["Hide (Physical 2)"]
         }
 
         ^"Thundering Escape" DEF {
-            ^"Description" STRING "A wild horse is a silhouette 3 creature with a strong flight response. When performing an Attack action check, it may spend :opp: in the following way: :opp:: Immediately attempt a Movement action after the attack resolves."
+            ^"Description" STRING "A wild horse is a silhouette 3 creature with a strong flight response. When performing an Attack action check, it may spend (op) in the following way:\n\n(op): Immediately attempt a Movement action after the attack resolves."
         }
 
         ^"Crushing Blow" DEF {
@@ -680,7 +684,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 1
             ^"Intrigue Conflict Rank" INTEGER 4
-            ^"Description" STRING "Scholar of Qamarist natural philosophy, dedicated to rigorous study of ethics, principles, and the natural world."
             ^"Rings" DEF {
                 ^"Air" INTEGER 4
                 ^"Earth" INTEGER 2
@@ -696,15 +699,15 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Glory" INTEGER 30
             ^"Status" INTEGER 45
             ^"Demeanor" STRING "Aloof"
-            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
             ^"Skills" LIST OF STRING ["Artisan 2", "Martial 0", "Scholar 3", "Social 2", "Trade 1"]
             ^"Advantages" LIST OF STRING ["Flexible Mind (Air) [Scholar; Mental, Spiritual]"]
-            ^"Disadvantages" LIST OF STRING ["Obsessive (Air) [Social; Interpersonal, Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Obsessive (Fire) [Social; Interpersonal, Mental]"]
             ^"Gear" LIST OF STRING ["Passable clothes", "Abacus", "Sextant or astrolabe", "Calligraphy set", "Laboratory or small personal library"]
         }
 
         ^"Natural Philosophy" DEF {
-            ^"Description" STRING "The Qamarist philosopher may make a Culture (Air) check, targeting one character in the scene. The TN is equal to the target's Air Ring. If the philosopher succeeds, they make a scientific or academic observation that lets them learn one fact about the target. :opp::opp:: The Qamarist philosopher learns one of the target's advantages or disadvantages of the target's choice."
+            ^"Description" STRING "The Qamarist philosopher may make a Culture (Air) check, targeting one character in the scene. The TN is equal to the target's Air Ring. If the philosopher succeeds, they make a scientific or academic observation that lets them learn one fact about the target.\n\n(op) (op): The Qamarist philosopher learns one of the target's advantages or disadvantages of the target's choice."
         }
 
         RULES {
@@ -720,7 +723,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Type" STRING "Minion" FIXED
             ^"Combat Conflict Rank" INTEGER 1
             ^"Intrigue Conflict Rank" INTEGER 2
-            ^"Description" STRING "Traveler on a spiritual pilgrimage to holy sites, seeking enlightenment and visiting family."
             ^"Rings" DEF {
                 ^"Air" INTEGER 4
                 ^"Earth" INTEGER 2
@@ -736,10 +738,10 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Glory" INTEGER 20
             ^"Status" INTEGER 15
             ^"Demeanor" STRING "Meditative"
-            ^"Social Skill Check TN Modifiers" STRING "Void +2, Fire -2"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Void -2"
             ^"Skills" LIST OF STRING ["Artisan 1", "Martial 0", "Scholar 1", "Social 2", "Trade 2"]
             ^"Advantages" LIST OF STRING ["Partial Enlightenment (Void) [Scholar; Spiritual]"]
-            ^"Disadvantages" LIST OF STRING ["Deferential (Void) [Social; Interpersonal, Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Deferential (Water) [Social; Interpersonal, Mental]"]
             ^"Favored Weapons" LIST OF STRING ["Improvised Weapon: Range 1, Damage 2, Deadliness 3/4"]
             ^"Gear" LIST OF STRING ["Traveling clothes (Physical 2, Durable, Mundane, Subtle)", "Offerings", "Camel or horse", "Gifts for family and friends"]
         }
@@ -761,7 +763,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Type" STRING "Minion" FIXED
             ^"Combat Conflict Rank" INTEGER 2
             ^"Intrigue Conflict Rank" INTEGER 2
-            ^"Description" STRING "Expert navigator of the Sand Road with unmatched knowledge of the paths between Rokugan and the Caliphate."
             ^"Rings" DEF {
                 ^"Air" INTEGER 2
                 ^"Earth" INTEGER 3
@@ -780,13 +781,13 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 2", "Trade 2"]
             ^"Advantages" LIST OF STRING ["Perfect Sense of Direction (Earth) [Trade; Mental]"]
-            ^"Disadvantages" LIST OF STRING ["Too Talkative (Earth) [Social; Infamy]"]
+            ^"Disadvantages" LIST OF STRING ["Too Talkative (Air) [Social; Infamy]"]
             ^"Favored Weapons" LIST OF STRING ["Hunting Bow: Range 2-4, Damage 4, Deadliness 5", "Spear: Range 2, Damage 5, Deadliness 3"]
             ^"Gear" LIST OF STRING ["Traveling clothes (Physical 2, Durable, Mundane, Subtle)", "Quiver", "Horse or camel", "Recently hunted small game", "Collection of pelts"]
         }
 
         ^"Improvised Tools" DEF {
-            ^"Description" STRING "When making a Trade skill (Fire) check, the Ujik guide may spend :opp: in the following way: :opp:: The Ujik guide can scavenge enough materials for the equivalent of a single-use kit (such as a bowyer's kit, divination kit, or medicine kit)."
+            ^"Description" STRING "When making a Trade skill (Fire) check, the Ujik guide may spend (op) in the following way:\n\n(op): The Ujik guide can scavenge enough materials for the equivalent of a single-use kit (such as a bowyer's kit, divination kit, or medicine kit)."
         }
 
         RULES {
@@ -802,7 +803,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Type" STRING "Minion" FIXED
             ^"Combat Conflict Rank" INTEGER 2
             ^"Intrigue Conflict Rank" INTEGER 3
-            ^"Description" STRING "Bustling trader leveraging knowledge of Rokugani and Qamarist cultures to facilitate trade along the Sand Road."
             ^"Rings" DEF {
                 ^"Air" INTEGER 2
                 ^"Earth" INTEGER 2
@@ -818,7 +818,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Glory" INTEGER 29
             ^"Status" INTEGER 9
             ^"Demeanor" STRING "Gregarious"
-            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
             ^"Skills" LIST OF STRING ["Artisan 1", "Martial 1", "Scholar 0", "Social 2", "Trade 3"]
             ^"Advantages" LIST OF STRING ["Daikoku's Blessing (Water) [Social; Interpersonal, Spiritual]"]
             ^"Disadvantages" LIST OF STRING ["Quarrelsome (Void) [Social; Interpersonal]"]
@@ -827,7 +827,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         }
 
         ^"The Right Prize, The Right Price" DEF {
-            ^"Description" STRING "Once per scene as an action, the Ujik trader may make a Commerce (Water) check to determine whether an item they have is something another character wants. The TN is equal to the item's rarity minus 2, along with other modifiers per GM's discretion. :opp::opp:: The Ujik trader can increase the price of this item by one-quarter per :opp::opp: spent this way, and the item is not available anywhere else at this time."
+            ^"Description" STRING "Once per scene as an action, the Ujik trader may make a Commerce (Water) check to determine whether an item they have is something another character wants. The TN is equal to item's rarity minus 2, along with other modifiers per GM's discretion.\n\n(op) (op): The Ujik trader can increase the price of this item by one-quarter per (op) (op) spent this way, and the item is not available anywhere else at this time."
         }
 
         RULES {
@@ -848,7 +848,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Category" STRING "Spirit"
             ^"Combat Conflict Rank" INTEGER 5
             ^"Intrigue Conflict Rank" INTEGER 4
-            ^"Description" STRING "Primordial elemental being bound by ancient Rempet sorcery, enslaved to lamps, rings, or other objects."
             ^"Rings" DEF {
                 ^"Air" INTEGER 4
                 ^"Earth" INTEGER 1
@@ -878,7 +877,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         }
 
         ^"Incredible Power" DEF {
-            ^"Description" STRING "The djinni's enemies treat the area at range 0-1 of the djinni as Dangerous terrain. The area around the djinni at range 0-3 is Imbalanced (Water and Air), as the kami are fearful of djinn. Additionally, the djinni may attempt any Air or Fire invocation they want. The being to whom the djinni is bound is immune to this ability's effects."
+            ^"Description" STRING "The djinni's enemies treat the area at range 0–1 of the djinni as Dangerous terrain. The area around the djinni at range 0–3 is Imbalanced (Water and Air), as the kami are fearful of djinn. Additionally, the djinni may attempt any Air or Fire invocation they wish. The being to whom the djinni is bound is immune to this ability's effects."
         }
 
         RULES {
@@ -895,7 +894,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Category" STRING "Spirit"
             ^"Combat Conflict Rank" INTEGER 7
             ^"Intrigue Conflict Rank" INTEGER 5
-            ^"Description" STRING "Physical djinni with an imposing body and animalistic features, proud of great elemental powers."
             ^"Rings" DEF {
                 ^"Air" INTEGER 6
                 ^"Earth" INTEGER 2
@@ -937,7 +935,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Category" STRING "Spirit"
             ^"Combat Conflict Rank" INTEGER 4
             ^"Intrigue Conflict Rank" INTEGER 5
-            ^"Description" STRING "Noble kitsune spirit with three or more tails, entitled to rank within the courts of Senkyo. Can be benevolent guardian, trickster, or spirit of vengeance."
             ^"Rings" DEF {
                 ^"Air" INTEGER 5
                 ^"Earth" INTEGER 2
@@ -953,9 +950,9 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Glory" INTEGER 35
             ^"Status" INTEGER 35
             ^"Demeanor" STRING "Mischievous"
-            ^"Social Skill Check TN Modifiers" STRING "Air +2, Earth -2"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 3", "Social 3", "Trade 1"]
-            ^"Advantages" LIST OF STRING ["Dangerous Allure (Fire) [Social; Interpersonal, Physical]", "Royalty of Senkyo (Void) [Social; Interpersonal]"]
+            ^"Advantages" LIST OF STRING ["Dangerous Allure (Fire) [Social; Interpersonal, Physical]", "Royalty of Senkyō (Air) [Social; Interpersonal]"]
             ^"Disadvantages" LIST OF STRING ["Short Temper (Fire) [Martial, Social; Mental]", "Vain (Void) [Social; Interpersonal, Mental]"]
             ^"Favored Weapons" LIST OF STRING ["Claws and Fangs: Range 0-1, Damage 3, Deadliness 4, Razor-Edged", "Kitsune-bi: Range 2-4, Damage 5, Deadliness 3, deals supernatural damage"]
         }
@@ -982,7 +979,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Category" STRING "Spirit"
             ^"Combat Conflict Rank" INTEGER 8
             ^"Intrigue Conflict Rank" INTEGER 4
-            ^"Description" STRING "Golden-winged king of the birds, associated with courage, honesty, and community. Guardian of the Ujik mountains and opponent of all serpents."
             ^"Rings" DEF {
                 ^"Air" INTEGER 6
                 ^"Earth" INTEGER 3
@@ -996,20 +992,20 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Vigilance" INTEGER 4
             ^"Silhouette" INTEGER 4
             ^"Demeanor" STRING "Stoic"
-            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Fire -2"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Earth -2"
             ^"Skills" LIST OF STRING ["Artisan 1", "Martial 3", "Scholar 2", "Social 2", "Trade 2"]
             ^"Advantages" LIST OF STRING ["Cunning Tactician (Air) [Martial; Fame, Mental, Physical]", "Indomitable Will (Earth) [Martial, Social; Interpersonal, Mental]"]
-            ^"Disadvantages" LIST OF STRING ["Sworn Enemy of Serpents (Void) [Social; Fame, Interpersonal, Mental]"]
+            ^"Disadvantages" LIST OF STRING ["Sworn Enemy of Serpents (Earth) [Social; Fame, Interpersonal, Mental]"]
             ^"Favored Weapons" LIST OF STRING ["Beak and Talons: Range 1-2, Damage 8, Deadliness 6, Razor-Edged"]
             ^"Gear" LIST OF STRING ["Golden feathers (Physical 3, Sacred, Supernatural 4)"]
         }
 
         ^"Mystical Guardian" DEF {
-            ^"Description" STRING "A Golden Bird Lord is an Otherworldly being of silhouette 4 who can fly. They can move vertically, and they ignore the negative effects of terrain. Additionally, once per scene, they may perform any invocation other than Fire, Air, and Wrath of Kaze-no-Kami. The invocation counts as succeeding with three bonus successes and :opp::opp:."
+            ^"Description" STRING "A Golden Bird Lord is an Otherworldly being of silhouette 4 who can fly. They can move vertically, and they ignore the negative effects of terrain. Additionally, once per scene, they may perform any Air invocation other than Rise, Air and Wrath of Kaze-no-Kami. The invocation counts as succeeding with three bonus successes and (op) (op)."
         }
 
         ^"Swoop" DEF {
-            ^"Description" STRING "When performing an Attack action check, a Golden Bird Lord may spend :opp: as follows: :opp:: Move 1 range band away from the target (or :opp: spent this way). If the target is human-sized (silhouette 2) or smaller, the Golden Bird Lord may carry it to its destination instead."
+            ^"Description" STRING "When performing an Attack action check, a Golden Bird Lord may spend (op) as follows:\n\n(op): Move 1 range band away from the target per (op) spent this way. If the target is human-sized (silhouette 2) or smaller, the Golden Bird Lord may carry it to its destination instead."
         }
 
         RULES {
@@ -1026,7 +1022,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Category" STRING "Spirit"
             ^"Combat Conflict Rank" INTEGER 9
             ^"Intrigue Conflict Rank" INTEGER 7
-            ^"Description" STRING "Greatest of the djinn, once worshipped as gods. Humanoid giants formed from the elements, capable of granting wishes."
             ^"Rings" DEF {
                 ^"Air" INTEGER 6
                 ^"Earth" INTEGER 4
@@ -1042,8 +1037,8 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Demeanor" STRING "Detached"
             ^"Social Skill Check TN Modifiers" STRING "Earth +1, Fire +1, Void -2"
             ^"Skills" LIST OF STRING ["Artisan 3", "Martial 4", "Scholar 4", "Social 3", "Trade 2"]
-            ^"Advantages" LIST OF STRING ["Giant's Strength (Earth) [Martial; Physical, Spiritual]", "Impossible Feats (Air) [Martial; Physical, Spiritual]", "Massive Stature (Earth) [Martial; Physical]"]
-            ^"Disadvantages" LIST OF STRING ["Prideful and Vengeful (Earth) [Social; Mental]"]
+            ^"Advantages" LIST OF STRING ["Giant's Strength (Earth) [Martial; Physical, Spiritual]", "Impossible Feats (Void) [Martial; Physical, Spiritual]", "Massive Stature (Earth) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Prideful and Vengeful (Fire) [Social; Mental]"]
             ^"Favored Weapons" LIST OF STRING ["Massive Fists: Range 0-2, Damage 7, Deadliness 5"]
         }
 
@@ -1052,7 +1047,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         }
 
         ^"Incredible Power" DEF {
-            ^"Description" STRING "The marid's enemies treat the area within range 0-1 of the marid as Dangerous terrain. The area around the marid at range 0-3 is Imbalanced (Air and Water), the kami are fearful of djinn. Additionally, the marid may attempt any invocation they want. If the marid is bound to another being, that being is immune to this ability's effects."
+            ^"Description" STRING "The marid's enemies treat the area within range 0–1 of the marid as Dangerous terrain. The area around the marid at range 0–3 is Imbalanced (Air and Water), as the kami are fearful of djinn. Additionally, the marid may attempt any invocation they wish. If the marid is bound to another being, that being is immune to this ability's effects."
         }
 
         ^"Invisibility" DEF {
@@ -1065,7 +1060,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
     }
 
     # source stat block (page 153)
-    ^"Jorogumo" DEF {
+    ^"Jorōgumo" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
 
         PROPERTIES {
@@ -1073,7 +1068,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Category" STRING "Spirit"
             ^"Combat Conflict Rank" INTEGER 3
             ^"Intrigue Conflict Rank" INTEGER 4
-            ^"Description" STRING "Shapeshifting spider spirit capable of weaving complex sensory illusions. Ancestral enemy of kitsune, known for vengefulness and patience."
             ^"Rings" DEF {
                 ^"Air" INTEGER 4
                 ^"Earth" INTEGER 2
@@ -1089,16 +1083,16 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
             ^"Skills" LIST OF STRING ["Artisan 3", "Martial 2", "Scholar 3", "Social 1", "Trade 1"]
             ^"Advantages" LIST OF STRING ["Dangerous Allure (Fire) [Social; Interpersonal, Physical]", "Incredible Patience (Air) [Social; Interpersonal]"]
-            ^"Disadvantages" LIST OF STRING ["Physically Weak (Fire) [Martial; Physical]"]
+            ^"Disadvantages" LIST OF STRING ["Physically Weak (Earth) [Martial; Physical]"]
             ^"Favored Weapons" LIST OF STRING ["Fangs: Range 0-1, Damage 2, Deadliness 7", "Poison Webs: Range 2-3, Damage 3, Deadliness 5, Concealable, deals supernatural damage"]
         }
 
         ^"Shapeshifter" DEF {
-            ^"Description" STRING "As a Support action, a jorogumo can transform into human or spider form. While in spider form, they are silhouette 0. When they become Compromised in their human form, their long spider legs appear, or their spider fangs protrude from their mouth."
+            ^"Description" STRING "As a Support action, a jorōgumo can transform into human or spider form. While in spider form, they are silhouette 0. When they become Compromised in their human form,, their long spider legs appear, or their spider fangs protrude from their mouth."
         }
 
         ^"Illusionary Webs" DEF {
-            ^"Description" STRING "As a downtime activity, the jorogumo may weave an illusion out of webs. They may create any scenery they choose, including objects, within range 4 of themself. These illusions are visually and tangibly convincing, even when consumed as food or used as weaponry. They are, however, ultimately fake. Targets may suspect something is not what it seems even if they still believe what their senses tell them. The illusion lasts until it is willingly dropped, or until the jorogumo becomes Compromised. When dropped, the illusions become Entangling and Obscuring terrain. Additionally, the jorogumo knows the invocations False Realm of the Fox Spirits and Vapor of Nightmares."
+            ^"Description" STRING "As a downtime activity, the jorōgumo may weave an illusion out of webs. They may create any scenery they choose, including objects, within range 4 of themself. These illusions are visually and tangibly convincing, even when consumed as food or used as weaponry. They are, however, ultimately fake. Targets may suspect something is not what it seems even if they still believe what their senses tell them. The illusion lasts until it is willingly dropped, or until the jorōgumo becomes Compromised. When dropped, the illusions become Entangling and Obscuring terrain.\n\nAdditionally, the jorōgumo knows the invocations False Realm of the Fox Spirits and Vapor of Nightmares."
         }
 
         RULES {
@@ -1115,7 +1109,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Category" STRING "Spirit"
             ^"Combat Conflict Rank" INTEGER 8
             ^"Intrigue Conflict Rank" INTEGER 6
-            ^"Description" STRING "Giant water spirit known as the king of serpents and dragon king, protector of freshwater purity. Resembles an enormous horned serpent with brilliant silver-blue scales."
             ^"Rings" DEF {
                 ^"Air" INTEGER 5
                 ^"Earth" INTEGER 1
@@ -1129,20 +1122,20 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Vigilance" INTEGER 4
             ^"Silhouette" INTEGER 5
             ^"Demeanor" STRING "Aloof"
-            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
             ^"Skills" LIST OF STRING ["Artisan 2", "Martial 3", "Scholar 2", "Social 3", "Trade 2"]
             ^"Advantages" LIST OF STRING ["Ethereal Form (Air) [Martial, Trade; Physical]", "Terrifying Presence (Void) [Social, Trade; Fame, Mental, Spiritual]"]
-            ^"Disadvantages" LIST OF STRING ["Proud (Air) [Social; Infamy, Interpersonal]"]
+            ^"Disadvantages" LIST OF STRING ["Proud (Void) [Social; Infamy, Interpersonal]"]
             ^"Favored Weapons" LIST OF STRING ["Lightning Strikes: Range 1-4, Damage 7, Deadliness 6, Sacred, deals physical or supernatural damage"]
             ^"Gear" LIST OF STRING ["Shrouded by storm clouds (Physical 4, Supernatural 5, Sacred)"]
         }
 
         ^"Electric Aura" DEF {
-            ^"Description" STRING "After performing a successful Attack action check, the luusyn khan may spend :opp: as follows: :opp:: Characters within range 1 of the luusyn khan must make a TN 4 Fitness check (Earth 5, Void 5). If they fail, they gain the Disoriented condition."
+            ^"Description" STRING "After performing a successful Attack action check, the luusyn khan may spend (op) as follows:\n\n(op)+: Characters within range 1 of the luusyn khan must make a TN 4 Fitness check (Earth 5, Void 5). If they fail, they gain the Disoriented condition."
         }
 
         ^"Spirit of Storm and Stream" DEF {
-            ^"Description" STRING "A luusyn khan is an Otherworldly being of silhouette 5 that can fly. They can move vertically, and they ignore the negative effects of terrain. Additionally, once per scene, they may perform any Air or Water invocation other than Rise, Air; Even Changing Waves; and Rise, Water. The invocation counts as succeeding with three bonus successes and :opp::opp:."
+            ^"Description" STRING "A luusyn khan is an Otherworldly being of silhouette 5 that can fly. They can move vertically, and they ignore the negative effects of terrain. Additionally, once per scene, they may perform any Air or Water invocation other than Rise, Air; Ever-Changing Waves; and Rise, Water. The invocation counts as succeeding with three bonus successes and (op) (op)."
         }
 
         RULES {
@@ -1159,7 +1152,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Category" STRING "Spirit"
             ^"Combat Conflict Rank" INTEGER 4
             ^"Intrigue Conflict Rank" INTEGER 3
-            ^"Description" STRING "Ageless shapeshifting being from Caliphate folklore. Sustains itself on human flesh while delighting in riddles and wordplay."
             ^"Rings" DEF {
                 ^"Air" INTEGER 2
                 ^"Earth" INTEGER 2
@@ -1201,7 +1193,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Category" STRING "Spirit"
             ^"Combat Conflict Rank" INTEGER 6
             ^"Intrigue Conflict Rank" INTEGER 7
-            ^"Description" STRING "Mountain spirit with white fur and turquoise mane, leaping from peak to peak. Associated with strength, joy, and playfulness by the Ujik."
             ^"Rings" DEF {
                 ^"Air" INTEGER 4
                 ^"Earth" INTEGER 6
@@ -1215,7 +1206,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Vigilance" INTEGER 3
             ^"Silhouette" INTEGER 3
             ^"Demeanor" STRING "Joyful"
-            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Void -2"
             ^"Skills" LIST OF STRING ["Artisan 1", "Martial 2", "Scholar 3", "Social 3", "Trade 2"]
             ^"Advantages" LIST OF STRING ["Playfulness (Air) [Social; Fame, Mental, Spiritual]", "Trickster (Air) [Martial, Social, Trade; Interpersonal, Mental]"]
             ^"Disadvantages" LIST OF STRING ["Easily Distracted (Air) [Social; Mental]"]
@@ -1224,7 +1215,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         }
 
         ^"Mystical Being" DEF {
-            ^"Description" STRING "A snow lion is an Otherworldly being of silhouette 3. While they cannot fly vertically, they still ignore the negative effects of terrain. Additionally, once per scene, they may perform a kihō (holy). The kihō counts as succeeding with three bonus successes and :opp::opp:."
+            ^"Description" STRING "A snow lion is an Otherworldly being of silhouette 3. While they cannot fly vertically, they still ignore the negative effects of terrain. Additionally, once per scene, they may perform a Void shūji. The shūji counts as succeeding with three bonus successes and (op) (op)."
         }
 
         ^"Roar of Emptiness" DEF {
@@ -1245,7 +1236,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Category" STRING "Spirit"
             ^"Combat Conflict Rank" INTEGER 7
             ^"Intrigue Conflict Rank" INTEGER 1
-            ^"Description" STRING "Massive Otherworldly horse equated with the Ujik soul. Its appearance portends good luck in the form of peace, wealth, and harmony."
             ^"Rings" DEF {
                 ^"Air" INTEGER 4
                 ^"Earth" INTEGER 4
@@ -1259,7 +1249,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Vigilance" INTEGER 3
             ^"Silhouette" INTEGER 4
             ^"Demeanor" STRING "Temperamental"
-            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Air -2"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Fire -2"
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 0", "Trade 0"]
             ^"Advantages" LIST OF STRING ["Faster Than Any Mortal Horse (Fire) [Martial; Physical]"]
             ^"Disadvantages" LIST OF STRING ["Untamable (Fire) [Martial, Social; Mental, Spiritual]", "Quick to Anger (Fire) [Social; Interpersonal]"]
@@ -1268,7 +1258,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         }
 
         ^"Soul of Wind and Light" DEF {
-            ^"Description" STRING "A wind horse is an Otherworldly being of silhouette 4 and can pass through solid objects along with any riders. Additionally, once per scene, they may perform a Fire kihō. The kihō counts as succeeding with three bonus successes and :opp::opp:."
+            ^"Description" STRING "A wind horse is an Otherworldly being of silhouette 4 and can pass through solid objects along with any riders. Additionally, once per scene, they may perform a Fire kihō. The kihō counts as succeeding with three bonus successes and (op) (op)."
         }
 
         ^"Spirit of Freedom" DEF {
@@ -1292,7 +1282,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 3
             ^"Intrigue Conflict Rank" INTEGER 2
-            ^"Description" STRING "Shrine keeper of Utaku Seido with mysterious connection to the Blessed Herd."
             ^"Rings" DEF {
                 ^"Air" INTEGER 1
                 ^"Earth" INTEGER 3
@@ -1312,13 +1301,13 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Skills" LIST OF STRING ["Artisan 2", "Martial 3", "Scholar 2", "Social 0", "Trade 0"]
             ^"Advantages" LIST OF STRING ["Affinity with Horses (Void) [Social; Interpersonal]", "Local Folklorist (Earth) [Scholar; Mental]"]
             ^"Disadvantages" LIST OF STRING ["Overprotective (Fire) [Martial; Mental]"]
-            ^"Favored Weapons" LIST OF STRING ["Broom (improvised weapon): Treat as bo (staff)"]
+            ^"Favored Weapons" LIST OF STRING ["Broom (improvised weapon): Treat as bō (staff)"]
             ^"Gear" LIST OF STRING ["Shrine keeper robes (Physical 1, Supernatural 3, Ceremonial)", "Offerings"]
             ^"Companions" LIST OF STRING ["Taiyo (see Utaku warhorse on page 143)"]
         }
 
         ^"Path to Inner Peace" DEF {
-            ^"Description" STRING "Invocation. As a Support action, may make a TN 2 Theology (Water) check targeting a character at range 0-2. If Asagao succeeds, the target removes 3 fatigue, plus 1 per bonus success. A target can be affected by Path to Inner Peace only once per scene."
+            ^"Description" STRING "As a Support action, may make a TN 2 Theology (Water) check targeting a character at range 0–2. If Asagao succeeds, the target removes 3 fatigue, plus 1 per bonus success. A target can be affected by Path to Inner Peace only once per scene."
         }
 
         RULES {
@@ -1334,7 +1323,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 5
             ^"Intrigue Conflict Rank" INTEGER 3
-            ^"Description" STRING "Meishōdō Master maintaining Dreamer's Forest wards. Tempted by a fox spirit claiming innocence."
             ^"Rings" DEF {
                 ^"Air" INTEGER 2
                 ^"Earth" INTEGER 3
@@ -1355,7 +1343,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Advantages" LIST OF STRING ["Syncretic Philosophy (Water) [Social; Interpersonal]"]
             ^"Disadvantages" LIST OF STRING ["Vain (Void) [Social; Interpersonal, Mental]", "Haunted (Void) [Social; Interpersonal, Spiritual]"]
             ^"Favored Weapons" LIST OF STRING ["Kiseru (smoking pipe): Range 0, Damage 2, Deadliness 2, Concealable, Mundane"]
-            ^"Gear" LIST OF STRING ["1 to 4 meishōdō talismans (see Abilities)", "Sanctified robes (Physical 1, Supernatural 3, Ceremonial)", "Divination kit", "Medicine kit", "Up to three omamori"]
+            ^"Gear" LIST OF STRING ["1 to 4 meishōdō talismans (see Abilities, below)", "Sanctified robes (Physical 1, Supernatural 3, Ceremonial)", "Divination kit", "Medicine kit", "Up to three omamori"]
             ^"Companions" LIST OF STRING ["Natsu (see Iuchi riding steed on page 141)"]
         }
 
@@ -1373,14 +1361,13 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
     }
 
     # source stat block (page 66)
-    ^"Ide Yuto" DEF {
+    ^"Ide Yūto" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
 
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 1
             ^"Intrigue Conflict Rank" INTEGER 3
-            ^"Description" STRING "Adventurous diplomat's son who claims an impossible underwater journey. Craves excitement."
             ^"Rings" DEF {
                 ^"Air" INTEGER 2
                 ^"Earth" INTEGER 2
@@ -1401,15 +1388,15 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Advantages" LIST OF STRING ["Tall Tales (Air) [Scholar; Interpersonal]", "Unfettered (Earth) [Social, Trade; Mental]"]
             ^"Disadvantages" LIST OF STRING ["Impetuous Risk-Taker (Fire) [Martial; Mental]"]
             ^"Gear" LIST OF STRING ["Traveling clothes (Physical 2, Durable, Mundane, Subtle)", "Traveling supplies", "Various trinkets", "String of koku"]
-            ^"Companions" LIST OF STRING ["Riding pony Kushami (see Horse [Rokugani Pony] in the core rulebook, page 326)"]
+            ^"Companions" LIST OF STRING ["Riding pony (\"Kushami\") (see Horse [Rokugani Pony] in the core rulebook, page 326)"]
         }
 
         ^"Quick Assessment" DEF {
-            ^"Description" STRING "As a Support action, Yuto may target an NPC within range 0-3 who is currently engaged in conversation or combat. He discerns the target's demeanor, vigilance, and composure (and may reveal them to his allies)."
+            ^"Description" STRING "As a Support action, Yūto may target an NPC within range 0–3 who is currently engaged in conversation or combat. He discerns the target's demeanor, vigilance, and composure (and may reveal them to his allies)."
         }
 
         ^"Unassuming" DEF {
-            ^"Description" STRING "When Yuto makes a check targeting a character with a higher status rank, he treats the target's vigilance as 1 lower."
+            ^"Description" STRING "When Yūto makes a check targeting a character with a higher status rank, he treats the target's vigilance as 1 lower."
         }
 
         RULES {
@@ -1417,7 +1404,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         }
     }
 
-    # source stat block (page 67)
+    # source stat block (page 72)
     ^"Moto Syujiko" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
 
@@ -1425,7 +1412,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 3
             ^"Intrigue Conflict Rank" INTEGER 1
-            ^"Description" STRING "Traveling samurai, storyteller, and Ujik diviner. Reads fortunes through knuckle bone divination and channels the Lords of Death."
             ^"Rings" DEF {
                 ^"Air" INTEGER 2
                 ^"Earth" INTEGER 3
@@ -1447,7 +1433,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Disadvantages" LIST OF STRING ["Thick-Headed (Air) [Scholar, Social; Mental]"]
             ^"Favored Weapons" LIST OF STRING ["Scimitar: Range 1, Damage 4, Deadliness 5, Durable, Razor-Edged", "Horsebow: Range 2-4, Damage 4, Deadliness 5, Wargear"]
             ^"Gear" LIST OF STRING ["Wakizashi (short sword)", "Traveling supplies", "Divination kit", "Various trinkets", "String of koku"]
-            ^"Companions" LIST OF STRING ["Two camels (see Camel in Path of Waves, page 235)"]
+            ^"Companions" LIST OF STRING ["Two camels (see Camel in Path of Waves: The Essential Guide to Rōnin, page 235)"]
         }
 
         ^"Death Lord Divination" DEF {
@@ -1471,7 +1457,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 6
             ^"Intrigue Conflict Rank" INTEGER 5
-            ^"Description" STRING "The Unicorn Champion's only biological daughter. One of the most talented horse archers of her generation, seeking a new purpose after Imperial censure shut all her former paths."
             ^"Rings" DEF {
                 ^"Air" INTEGER 4
                 ^"Earth" INTEGER 3
@@ -1501,7 +1486,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         }
 
         ^"Wishes at Dawn" DEF {
-            ^"Description" STRING "In addition to her martial pursuits, Haruko also has a great love for the theater. Her most recent play, Wishes at Dawn, debuted at a provincial Winter Court and was met with significant praise. It depicts two star-crossed lovers, a Kakita and a Matsu, who must cross swords on the battlefield despite their secret love. While popular, neither the Matsu nor the Kakita family is particularly amused."
+            ^"Description" STRING "In addition to her martial pursuits, Haruko also has a great love for the theater. Her most recent play, Wishes at Dawn, debuted at a provincial Winter Court and was met with significant praise. It depicts two star-crossed lovers, a Kakita and a Matsu, who must cross swords on the battlefield despite their secret love. While it is popular, neither the Matsu nor the Kakita family is particularly amused."
         }
 
         RULES {
@@ -1510,14 +1495,13 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
     }
 
     # source stat block (page 80)
-    ^"Kitsune Ryosei" DEF {
+    ^"Kitsune Ryōsei" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
 
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 6
             ^"Intrigue Conflict Rank" INTEGER 3
-            ^"Description" STRING "Young Fox Clan Champion. Recently made several Sakkaku pacts and underwent a sudden personality change. May have been replaced by a trickster spirit."
             ^"Rings" DEF {
                 ^"Air" INTEGER 3
                 ^"Earth" INTEGER 3
@@ -1542,15 +1526,15 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         }
 
         ^"On Friendly Terms" DEF {
-            ^"Description" STRING "Ryosei can talk to animals and understands their speech."
+            ^"Description" STRING "Ryōsei can talk to animals and understands their speech."
         }
 
         ^"Instinctive Pathfinding" DEF {
-            ^"Description" STRING "While in dense or forested surroundings, Ryosei ignores the effects of Entangling and Obscuring terrain. Once per scene as a Support action, she may extend this ability to up to two targets at range 0-1. The effects of this ability last for as long as affected targets remain in these surroundings."
+            ^"Description" STRING "While in dense or forested surroundings, Ryōsei ignores the effects of Entangling and Obscuring terrain. Once per scene as a Support action, she may extend this ability to up to two targets at range 0–1. The effects of this ability last for as long as affected targets remain in these surroundings."
         }
 
         ^"Trickster Magic" DEF {
-            ^"Description" STRING "When Ryosei performs an action to activate an invocation, she may spend (op) in the following way: (op): A target at range 0-1 suffers the Disoriented condition. Additionally, she knows the following invocations: Path of Beasts (Celestial Realms, page 109), Messenger of Chikusho-do (Celestial Realms, page 106), Nature's Touch (core rulebook, page 194), and Inari's Blessing (core rulebook, page 209)."
+            ^"Description" STRING "When Ryōsei performs an action to activate an invocation, she may spend (op) in the following way:\n\n(op): A target at range 0–1 suffers the Disoriented condition.\n\nAdditionally, she knows the following invocations: Path of Beasts (Celestial Realms, page 109), Messenger of Chikushō-dō (Celestial Realms, page 106), Nature's Touch (core rulebook, page 194), and Inari's Blessing (core rulebook, page 209)."
         }
 
         RULES {
@@ -1571,7 +1555,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 4
             ^"Intrigue Conflict Rank" INTEGER 1
-            ^"Description" STRING "Popular author of stories and poems (pen name Hana-no-Ame), possessed by an ifrit from a meishōdō talisman while visiting the City of the Rich Frog."
             ^"Rings" DEF {
                 ^"Air" INTEGER 3
                 ^"Earth" INTEGER 2
@@ -1596,7 +1579,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         }
 
         ^"Truth Burns through Lies" DEF {
-            ^"Description" STRING "When making a Scholar skill (Fire) check to assess a character's story, Higuchi may spend :opp: as follows: Fire :opp:: If there is a single statement upon which the character's story hinges, she determines what it is and what she would need to do to verify or disprove it."
+            ^"Description" STRING "When making a Scholar skill (Fire) check to assess a character's story, Higuchi may spend (op) as follows:\n\nFire (op): If there is a single statement upon which the character's story hinges, she determines what it is and what she would need to do to verify or disprove it."
         }
 
         ^"Flame Fist" DEF {
@@ -1604,7 +1587,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         }
 
         ^"Searing Caress" DEF {
-            ^"Description" STRING "When performing an Attack action check, Higuchi may spend :opp: as follows: :opp:+: The target and up to one other character per :opp: spent this way at range 0-1 of the target suffer the Burning condition."
+            ^"Description" STRING "When performing an Attack action check, Higuchi may spend (op) as follows:\n\n(op)+: The target and up to one other character per (op) spent this way at range 0–1 of the target suffer the Burning condition."
         }
 
         RULES {
@@ -1620,7 +1603,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 1
             ^"Intrigue Conflict Rank" INTEGER 4
-            ^"Description" STRING "Tea master and owner of the Teahouse with No Name in the City of the Rich Frog's Lion district. Diligent and professional, with a weakness for gossip and taboo romance stories."
             ^"Rings" DEF {
                 ^"Air" INTEGER 3
                 ^"Earth" INTEGER 2
@@ -1663,7 +1645,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 2
             ^"Intrigue Conflict Rank" INTEGER 1
-            ^"Description" STRING "Old peacekeeper of the Kaeru family of ronin, leading the security group along the wharf in the City of the Rich Frog's Unicorn district. Has developed an interest in spiritual artifacts from beyond Rokugan."
             ^"Rings" DEF {
                 ^"Air" INTEGER 2
                 ^"Earth" INTEGER 3
@@ -1688,7 +1669,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         }
 
         ^"Striking as Earth" DEF {
-            ^"Description" STRING "When Haya makes a Martial Arts [Melee, Ranged, or Unarmed] (Earth) check, she may spend :opp: as follows: Earth :opp:: Treat your physical resistance as 1 higher per :opp: spent this way until the beginning of your next turn."
+            ^"Description" STRING "When Haya makes a Martial Arts [Melee, Ranged, or Unarmed] (Earth) check, she may spend (op) as follows:\n\nEarth (op): Treat your physical resistance as 1 higher per (op) spent this way until the beginning of your next turn."
         }
 
         ^"Way of the Frog" DEF {
@@ -1708,7 +1689,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Type" STRING "Minion" FIXED
             ^"Combat Conflict Rank" INTEGER 1
             ^"Intrigue Conflict Rank" INTEGER 1
-            ^"Description" STRING "Peacekeepers of the Kaeru family of ronin, patrolling the Unicorn wharf in the City of the Rich Frog, on the lookout for illegal smuggling."
             ^"Rings" DEF {
                 ^"Air" INTEGER 2
                 ^"Earth" INTEGER 2
@@ -1724,7 +1704,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Glory" INTEGER 20
             ^"Status" INTEGER 20
             ^"Demeanor" STRING "Gruff"
-            ^"Social Skill Check TN Modifiers" STRING "Water +2, Earth -2"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Air -2"
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 1", "Scholar 0", "Social 0", "Trade 1"]
             ^"Advantages" LIST OF STRING ["Seasoned Warrior (Earth) [Martial; Physical]"]
             ^"Disadvantages" LIST OF STRING ["Quick to Anger (Fire) [Social; Interpersonal]"]
@@ -1733,7 +1713,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         }
 
         ^"Subdual" DEF {
-            ^"Description" STRING "When making an Attack action (Earth) check, the peacekeeper may spend :opp: as follows: Earth :opp:: The target suffers the Dazed condition."
+            ^"Description" STRING "When making an Attack action (Earth) check, the peacekeeper may spend (op) as follows:\n\nEarth (op): The target suffers the Dazed condition."
         }
 
         RULES {
@@ -1749,7 +1729,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 1
             ^"Intrigue Conflict Rank" INTEGER 3
-            ^"Description" STRING "Unicorn antiquarian and seller of artifacts who recently purchased several supposedly mystical items from a Fox Clan merchant, then sold one to Higuchi."
             ^"Rings" DEF {
                 ^"Air" INTEGER 3
                 ^"Earth" INTEGER 1
@@ -1774,7 +1753,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         }
 
         ^"Shallow Waters" DEF {
-            ^"Description" STRING "When Chiharu makes a Social skill (Water) check targeting a character, they may spend :opp: as follows: Water :opp:: Learn of one material item or worldly experience the target desires. Water :opp::opp:: Learn the target's ninjō."
+            ^"Description" STRING "When Chiharu makes a Social skill (Water) check targeting a character, they may spend (op) as follows:\n\nWater (op): Learn of one material item or worldly experience the target desires.\n\nWater (op) (op): Learn the target's ninjō."
         }
 
         RULES {
@@ -1790,7 +1769,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 2
             ^"Intrigue Conflict Rank" INTEGER 2
-            ^"Description" STRING "Crane shugenja visiting Daidoji Shin in the City of the Rich Frog. An old friend of the governor Miya Tetsua, called upon to assist with the situation involving Shinjo Higuchi."
             ^"Rings" DEF {
                 ^"Air" INTEGER 2
                 ^"Earth" INTEGER 2
@@ -1815,11 +1793,11 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         }
 
         ^"The Fires from Within" DEF {
-            ^"Description" STRING "Invocation. As an Attack action, Nao may make a TN 3 Theology (Fire) check targeting a number of characters up to her Fire Ring at range 1-3. If she succeeds, each target suffers 3 supernatural damage, plus 1 per bonus success. :opp:+: Choose 1 additional target per :opp: spent this way."
+            ^"Description" STRING "As an Attack action, Nao may make a TN 3 Theology (Fire) check targeting a number of characters up to her Fire Ring at range 1–3. If she succeeds, each target suffers 3 supernatural damage, plus 1 per bonus success.\n\n(op)+: Choose 1 additional target per (op) spent this way."
         }
 
         ^"Path to Inner Peace" DEF {
-            ^"Description" STRING "Invocation. As a Support action, Nao may make a TN 2 Theology (Water) check targeting herself or another character at range 0-2. If she succeeds, the target removes 3 fatigue, plus 1 per bonus success. A target can only be affected by this invocation once per scene. Water :opp:: Choose one of the following conditions: Bleeding, Dazed, Disoriented, or Lightly Wounded. Remove that condition from each target. Water :opp:: Your target also removes strife equal to your bonus successes."
+            ^"Description" STRING "As a Support action, Nao may make a TN 2 Theology (Water) check targeting herself or another character at range 0–2. If she succeeds, the target removes 3 fatigue, plus 1 per bonus success. A target can only be affected by the Path to Inner Peace invocation once per scene.\n\nWater (op): Choose one of the following conditions: Bleeding, Dazed, Disoriented, or Lightly Wounded. Remove that condition from each target.\n\nWater (op): Your target also removes strife equal to your bonus successes."
         }
 
         ^"Practiced Ritualist" DEF {
@@ -1840,7 +1818,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Category" STRING "Spirit"
             ^"Combat Conflict Rank" INTEGER 9
             ^"Intrigue Conflict Rank" INTEGER 2
-            ^"Description" STRING "Fire spirit from the Burning Sands, long dormant within a magical talisman. Accidentally awoken by Higuchi, it has possessed her in its confusion. This profile represents the ifrit in its natural, unbound form."
             ^"Rings" DEF {
                 ^"Air" INTEGER 2
                 ^"Earth" INTEGER 2
@@ -1862,7 +1839,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         }
 
         ^"Living Fire Spirit" DEF {
-            ^"Description" STRING "The ifrit is an Otherworldly being. Once per scene as an action of the appropriate types, the ifrit may perform any one Fire invocation (other than Rise, Fire). It counts as succeeding with 3 bonus successes and 2 :opp:."
+            ^"Description" STRING "The ifrit is an Otherworldly being. Once per scene as an action of the appropriate types, the ifrit may perform any one Fire invocation (other than Rise, Fire). It counts as succeeding with 3 bonus successes and 2 (op)."
         }
 
         ^"Mantle of Smoke and Ash" DEF {
@@ -1870,7 +1847,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
         }
 
         ^"Searing Caress" DEF {
-            ^"Description" STRING "When performing an Attack action check, the ifrit may spend :opp: as follows: :opp:+: The target and up to one other character per :opp: spent this way at range 0-1 of the target suffer the Burning condition."
+            ^"Description" STRING "When performing an Attack action check, the ifrit may spend (op) as follows:\n\n(op)+: The target and up to one other character per (op) spent this way at range 0–1 of the target suffer the Burning condition."
         }
 
         RULES {
@@ -1886,7 +1863,6 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 2
             ^"Intrigue Conflict Rank" INTEGER 5
-            ^"Description" STRING "Governor of the City of the Rich Frog, friend to many influential citizens. Has been housing Shinjo Higuchi while she writes her newest novel."
             ^"Rings" DEF {
                 ^"Air" INTEGER 4
                 ^"Earth" INTEGER 2
@@ -1902,7 +1878,7 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
             ^"Glory" INTEGER 55
             ^"Status" INTEGER 60
             ^"Demeanor" STRING "Shrewd"
-            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
             ^"Skills" LIST OF STRING ["Artisan 3", "Martial 2", "Scholar 4", "Social 4", "Trade 1"]
             ^"Advantages" LIST OF STRING ["Kuge Lineage (Earth) [Social; Interpersonal]"]
             ^"Disadvantages" LIST OF STRING ["Irrepressible Flirtation (Fire) [Social; Interpersonal]"]
@@ -1922,13 +1898,12 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
     # source stat block (page 174)
     ^"Daidoji Shin" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Full stat block in l5r5e-0.3-daidoji-shin-npcs.ttrpg
+        # Full stat block in l5r5e-0.5-daidoji-shin-npcs.ttrpg
 
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 5
             ^"Intrigue Conflict Rank" INTEGER 11
-            ^"Description" STRING "Louche layabout and wastrel turned amateur gentleman detective. Crane Clan's trade envoy in the City of the Rich Frog."
         }
 
         RULES {
@@ -1939,13 +1914,12 @@ EXTENSION "L5R5e_Children_of_Five_Winds_GM" EXTENDS "L5R5e_Children_of_Five_Wind
     # source stat block (page 175)
     ^"Hiramori Kasami" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
-        # Full stat block in l5r5e-0.3-daidoji-shin-npcs.ttrpg
+        # Full stat block in l5r5e-0.5-daidoji-shin-npcs.ttrpg
 
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 9
             ^"Intrigue Conflict Rank" INTEGER 7
-            ^"Description" STRING "Daidoji Shin's long-suffering friend and bodyguard, ever loyal and determined to keep him out of harm's way."
         }
 
         RULES {

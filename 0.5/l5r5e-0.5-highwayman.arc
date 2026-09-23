@@ -6,12 +6,12 @@
 
 ARC "the-highwayman" EXTENDS "l5r5e" {
     NAME "The Highwayman"
-    VERSION "0.5.1"
+    VERSION "0.5.2"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "The Highwayman: The Legend of the Five Rings 2019 Gen Con Adventure (Fantasy Flight Games, 2020)"
     LEAD_WRITER "Josiah \"Duke\" Harrist and Alexis Dykema with Tyler Parrott"
-    DESCRIPTION "An introductory scenario for the Legend of the Five Rings Roleplaying Game that lets players take the roles of gaijin, rōnin, and peasant characters — the outsiders and outcasts of Rokugan. The PCs investigate a missing shipment of sake for the merchant Ito Moronoka; a straightforward search spirals into a deadly otherworldly fight against the dreaded Highwayman, deep in the Shinomen Forest."
+    DESCRIPTION "In The Highwayman, the PCs investigate the disappearance of a missing shipment of sake on behalf of the merchant Ito Moronoka [Mo-ROW-no-ka]. What starts out as a straightforward search for some missing goods spirals into a deadly otherworldly fight for their lives against the dreaded Highwayman.\n\nThis adventure is an introductory scenario for the Legend of the Five Rings Roleplaying Game. To play, you will need to have a copy of the Legend of the Five Rings Core Rulebook.\n\nThe Highwayman allows players to play as gaijin (foreigner), rōnin (lordless samurai), and peasant characters. These new character types offer a different roleplaying experience than the honor-bound samurai. Through their relationship with the tenets of Bushidō and their varied character backgrounds, PCs will be able to experience a new facet of Rokugan: as the outsiders, the unknown, and the outcasts."
 
     THEMES ["The outsider's view of Rokugan", "Legend versus reality", "Hospitality as a trap", "The ancient, indifferent wilderness", "The Shadowlands Taint creeping into the Shinomen"]
 
@@ -30,15 +30,15 @@ ARC "the-highwayman" EXTENDS "l5r5e" {
         }
         PART 2 "Act 2: Exploring the Shinomen" {
             SCENES ["Into the Shinomen", "Kodama (Forest Spirits)", "Nori's Wagon"]
-            DESCRIPTION "Following Nori's trail into the ancient, watchful Shinomen — an unreliable, ethereal place that neither welcomes nor accommodates outsiders. The PCs may meet okuri-inu (supernatural wolf-dogs), sorrowful kodama tending trees scarred with the Mark of the Highwayman, and other unsettling wonders, before finding the courier's overturned sky-blue wagon deep in the forest."
+            DESCRIPTION "Following Nori's trail into the Shinomen eventually leads to the courier's overturned, sky-blue wagon deep in the forest. The spiritual disturbances are strong here, alongside many threats of the ancient wood. Once PCs reach the forest, read or paraphrase the following out loud:\n\nAs you enter the sea of ancient trees, following the worn path, the foliage overhead grows denser and denser, letting in less and less light. Keeping to the path is difficult, and something feels off about how quiet the forest is. The trees seem to watch your every movement with palpable anticipation."
         }
         PART 3 "Act 3: The Estate" {
             SCENES ["Approaching the Entrance", "The Illusion", "The Feast", "Trusting Yukiko / Refusing the Feast", "Exploring the Estate", "The Skirmish"]
-            DESCRIPTION "The signs lead to a grand estate in a clearing — an illusion the rakshasa Lady Kuriyama Yukiko casts over a fetid marsh, staffed by undead servants. Yukiko invites the PCs to a banquet with her honored guests, the oni Lady Atsuko and Lord Kenta. The PCs must navigate the intrigue of the feast (whether to eat, whether to see through the illusion, whether to trust Yukiko's offer to take them to Nori) before it erupts into a skirmish against Yukiko, Atsuko, and Kenta among the estate's rooms — the Banquet Hall, Atrium, Kitchens, and Atsuko's Shrine."
+            DESCRIPTION "Following the signs, the players arrive at a large estate in a clearing. This is all an illusion created by the rakshasa; in reality, the estate is built on a fetid marsh, and smells like bilious tar."
         }
         PART 4 "Act 4: Conclusion" {
             SCENES ["Kawacho Aftermath", "Ito Moronoka's Shop"]
-            DESCRIPTION "The survivors return: to Kawacho with tales that dissuade or rouse the villagers, and to the merchant Ito Moronoka with whatever sake they recovered. How many crates they bring and how well they explain the loss determines their pay (up to 6 koku each and the Ally [Ito Moronoka] distinction). Rewards: XP for completing the adventure and each conflict; glory for defeating Yukiko, Atsuko, and Kenta; honor for wrestling Lord Kenta alone."
+            DESCRIPTION "Assuming the PCs are not all dead, a number of post-adventure scenes may play out, depending on time. Additionally, GMs might consider incorporating some of the supernatural Shinomen forest encounters if their players have managed to complete things quickly.\n\nThe PCs gain the following for their efforts:\n\n3 XP: For completing the adventure\n\n1 XP: For each intrigue, skirmish, or duel a PC completes\n\n4 Glory: For defeating each of the three major enemies; Lady Yukiko, Lady Atsuko, and Lord Kenta (a total of 12 glory possible)\n\n4 Honor: For wrestling Lord Kenta alone"
         }
     }
 
@@ -48,17 +48,17 @@ ARC "the-highwayman" EXTENDS "l5r5e" {
     LOCATIONS {
         ^"Kawacho" DEF {
             TYPE "Town"
-            DESCRIPTION "A small town controlled by the Soshi through a vassal family, built near very fertile land and known for the excellent sake produced at its small riverside distillery. Home of the Hidetaka family."
+            DESCRIPTION "Kawacho is a small town controlled by the Soshi through a vassal family. The town is built near an area of very fertile land, producing notably abundant rice yields each year. The town is known for their excellent sake produced by their small distillery on the river."
             NPCS [^"Hidetaka Sasuke"]
         }
         ^"Shinomen Forest" DEF {
             TYPE "Forest"
-            DESCRIPTION "A vast, ancient, ethereal tangle of trees that dwarfs Great Clan holdings and predates the Chrysanthemum Throne. Neither hostile to outsiders nor accommodating; the Shadowlands Taint has crept into its heart. Scarred throughout with the red crescent-moon Mark of the Highwayman; home to kodama, okuri-inu, and worse."
+            DESCRIPTION "The Shinomen Forest is a mysterious, sprawling tangle of ancient trees that dwarfs most Great Clan castles and holdings. It has endured long before the establishment of the Chrysanthemum Throne and will continue long after Rokugan has fallen. Under its shadowy boughs, the air is still and windless, and the spirits and wildlife exist, unconcerned with the world outside. Under cover of darkness, the wicked creatures who seek destruction have crept into the heart of the Shinomen where they wait patiently. One such creature––the rakshasa who masquerades as the Highwayman––has invited two oni to be her honored guests at a final banquet before they sow discord in the rest of Rokugan.\n\nThe Shinomen Forest is a strange, ancient place that is not inherently hostile to outsiders, but does not accommodate them either. The ethereal nature of the Shinomen is mysterious and, rightly so, terrifies most people."
         }
         ^"Yukiko's Estate" DEF {
             TYPE "Building"
             DANGER_LEVEL "Defiled marsh (illusory manor)"
-            DESCRIPTION "A grand, ornately carved estate in a Shinomen clearing — an illusion the rakshasa Lady Kuriyama Yukiko casts over a fetid, festering marsh, staffed by undead servants. Its rooms include the Banquet Hall, the Atrium (where Lord Kenta waits), the Kitchens (a grisly larder of human remains and the missing sake), and Atsuko's Shrine between two guesthouses."
+            DESCRIPTION "As the trees break, you are greeted by a sprawling complex of ornately carved buildings of a grand estate. Overhead, the lidless eye of the moon casts the place in a ghostly pallor. A short walkway lit with braziers leads to the front entrance of the main hall. There are no gates or walls here.\n\nTranquil music streams out of an open door on the cool night breeze. The scent on the air, however, is that of a vile marsh.\n\nThe main estate of the manor filled with dozens of rooms. If the illusion has been dispelled, the manor is instead a large outcropping in the middle of a festering swamp. A rudimentary framework of gnarled branches separates the 'rooms.' Listed below are the main areas the PCs may find themselves in."
             NPCS [^"Lady Yukiko", ^"Lady Atsuko", ^"Lord Kenta"]
         }
     }

@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
     NAME "Legend of the Five Rings 5th Edition - Shadowlands: NPCs"
-    VERSION "0.5.1"
+    VERSION "0.5.2"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -23,12 +23,12 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
             ^"Type" STRING "Minion" FIXED
             ^"Combat Conflict Rank" INTEGER 14
             ^"Intrigue Conflict Rank" INTEGER 0
-            ^"Rings" INTEGER 6
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 6 ^"Fire" INTEGER 4 ^"Water" INTEGER 2 ^"Void" INTEGER 2 }
             ^"Demeanor" STRING "Aggressive"
             ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
-            ^"Endurance" INTEGER 42
-            ^"Composure" INTEGER 20
-            ^"Focus" STRING "Infinity"
+            ^"Endurance" INTEGER 20
+            ^"Composure" STRING "Infinity"
+            ^"Focus" INTEGER 6
             ^"Vigilance" INTEGER 2
             ^"Silhouette" INTEGER 5
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 5", "Scholar 0", "Social 1", "Trade 0"]
@@ -69,8 +69,8 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
             ^"Focus" INTEGER 9
             ^"Vigilance" INTEGER 3
             ^"Honor" INTEGER 0
-            ^"Glory" INTEGER 0
-            ^"Status" INTEGER 5
+            ^"Glory" INTEGER 5
+            ^"Status" INTEGER 0
             ^"Skills" LIST OF STRING ["Artisan 2", "Martial 2", "Scholar 0", "Social 2", "Trade 1"]
             ^"Advantages" LIST OF STRING ["Expert in Disguise (Air) [Social; Interpersonal]"]
             ^"Disadvantages" LIST OF STRING ["Impatience (Earth) [Social; Mental]"]
@@ -95,12 +95,12 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
             ^"Type" STRING "Minion" FIXED
             ^"Combat Conflict Rank" INTEGER 3
             ^"Intrigue Conflict Rank" INTEGER 2
-            ^"Rings" INTEGER 4
+            ^"Rings" DEF { ^"Air" INTEGER 3 ^"Earth" INTEGER 2 ^"Fire" INTEGER 1 ^"Water" INTEGER 3 ^"Void" INTEGER 1 }
             ^"Demeanor" STRING "Shrewd"
             ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
-            ^"Endurance" INTEGER 13
-            ^"Composure" INTEGER 6
-            ^"Focus" INTEGER 10
+            ^"Endurance" INTEGER 6
+            ^"Composure" INTEGER 10
+            ^"Focus" INTEGER 4
             ^"Vigilance" INTEGER 3
             ^"Silhouette" INTEGER 3
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 1", "Trade 0"]
@@ -111,7 +111,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
         }
 
         ^"Masses of Paper" DEF {
-            ^"Description" STRING "A kyorinrin is an Otherworldly, Tainted being of silhouette 3. When a kyorinrin defends against fire damage (such as from a Fire invocation, kihō, or a flame), its resistance counts as 0. When a kyorinrin makes a successful Attack action check, it may spend (op)(op) as follows: (op)(op)+: The target begins to suffocate (see page 269 of the core rulebook). After a character suffers strife and fatigue at the start of their turn from suffocating this way, the character may make a TN 3 Fitness check (Fire 2, Earth 5) to break free and breathe normally."
+            ^"Description" STRING "A kyōrinrin is an Otherworldly, Tainted being of silhouette 3. When a kyōrinrin defends against fire damage (such as from a Fire invocation, kihō, or a flame), its resistance counts as 0. When a kyōrinrin makes a successful Attack action check, it may spend (op) (op) as follows: (op) (op)+: The target begins to suffocate (see page 269 of the core rulebook). After a character suffers strife and fatigue at the start of their turn from suffocating this way, the character may make a TN 3 Fitness check (Fire 2, Earth 5) to break free and breath normally."
         }
 
         RULES {
@@ -151,7 +151,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
         }
 
         ^"Feaster of Blood" DEF {
-            ^"Description" STRING "A penanggalan is an Otherworldly, Tainted being. While bodiless, it is silhouette 0; while wearing a body, it is silhouette 2. When a penanggalan inflicts a critical strike on its target, it removes fatigue from itself equal to the severity (after the check to resist). Optionally, the GM may choose 0-2 mahō that a penanggalan can perform; add 1 to this character's combat rank for each mahō chosen this way."
+            ^"Description" STRING "A penanggalan is an Otherworldly, Tainted being. While bodiless, it is silhouette 0; while wearing a body, it is silhouette 2. When a penanggalan inflicts a critical strike on its target, it removes fatigue from itself equal to the severity (after the check to resist). Optionally, the GM may choose 0–2 mahō (see page 224 of the core rulebook and page 118 of this book) that a penanggalan can perform; add 1 to this character's combat rank for each mahō chosen this way."
         }
 
         RULES {
@@ -175,7 +175,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
                 ^"Void" INTEGER 1
             }
             ^"Demeanor" STRING "Gruff"
-            ^"Social Skill Check TN Modifiers" STRING "Water +2, Earth -2"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Earth -2"
             ^"Endurance" INTEGER 17
             ^"Composure" INTEGER 7
             ^"Focus" INTEGER 4
@@ -232,7 +232,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
         }
 
         ^"Powerful Servant" DEF {
-            ^"Description" STRING "A revenant is an Otherworldly, Tainted being. It may issue orders to undead creatures if they were created by the same mahō-tsukai. Undead creatures under its orders ignore their disadvantages and count as having the Revenant's assistance on all Scholar, Social, and Trade checks they make. At the GM's discretion, a revenant might be armed with a different weapon or even heavier armor."
+            ^"Description" STRING "A revenant is an Otherworldly, Tainted being. It may issue orders to undead creatures if they were created by the same mahō-tsukai (see page 118). Undead creatures under its orders ignore their disadvantages and count as having the Revenant's assistance on all Scholar, Social, and Trade checks they make. At the GM's discretion, a revenant might be armed with a different weapon or even heavier armor."
         }
 
         RULES {
@@ -248,12 +248,12 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
             ^"Type" STRING "Minion" FIXED
             ^"Combat Conflict Rank" INTEGER 2
             ^"Intrigue Conflict Rank" INTEGER 0
-            ^"Rings" INTEGER 3
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 1 ^"Void" INTEGER 0 }
             ^"Demeanor" STRING "Aggressive"
             ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
-            ^"Endurance" INTEGER 21
-            ^"Composure" INTEGER 4
-            ^"Focus" INTEGER 6
+            ^"Endurance" INTEGER 4
+            ^"Composure" INTEGER 6
+            ^"Focus" INTEGER 3
             ^"Vigilance" INTEGER 1
             ^"Silhouette" INTEGER 1
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 1", "Trade 1"]
@@ -280,12 +280,12 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 5
             ^"Intrigue Conflict Rank" INTEGER 0
-            ^"Rings" INTEGER 3
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 5 ^"Fire" INTEGER 3 ^"Water" INTEGER 1 ^"Void" INTEGER 1 }
             ^"Demeanor" STRING "Hungry"
             ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -1"
-            ^"Endurance" INTEGER 31
-            ^"Composure" INTEGER 18
-            ^"Focus" STRING "Infinity"
+            ^"Endurance" INTEGER 18
+            ^"Composure" STRING "Infinity"
+            ^"Focus" INTEGER 3
             ^"Vigilance" INTEGER 2
             ^"Silhouette" INTEGER 3
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 0", "Trade 0"]
@@ -336,7 +336,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
         }
 
         ^"Fiery Soultaker" DEF {
-            ^"Description" STRING "A wanyudo is an Otherworldly, Tainted being of silhouette 2. When making an Attack action check, the wanyudo may spend (op)(op) to inflict the Burning condition on its target. Characters who perish while at range 0 of a wanyudo have their souls dragged to Jigoku. The ramifications of this terrible outcome are at the GM's discretion, such as that they cannot be reincarnated until they are rescued."
+            ^"Description" STRING "A wanyūdō is an Otherworldly, Tainted being of silhouette 2. When making an Attack action check, the wanyūdō may spend (op) (op) to inflict the Burning condition on its target. Characters who perish while at range 0 of a wanyūdō have their souls dragged to Jigoku. The ramifications of this terrible outcome are at the GM's discretions, such as that they cannot be reincarnated until they are rescued."
         }
 
         RULES {
@@ -354,12 +354,12 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
             ^"Type" STRING "Minion" FIXED
             ^"Combat Conflict Rank" INTEGER 3
             ^"Intrigue Conflict Rank" INTEGER 0
-            ^"Rings" INTEGER 3
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 3 ^"Fire" INTEGER 2 ^"Water" INTEGER 2 ^"Void" INTEGER 0 }
             ^"Demeanor" STRING "Aggressive"
             ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
-            ^"Endurance" INTEGER 22
-            ^"Composure" INTEGER 10
-            ^"Focus" STRING "Infinity"
+            ^"Endurance" INTEGER 10
+            ^"Composure" STRING "Infinity"
+            ^"Focus" INTEGER 3
             ^"Vigilance" INTEGER 2
             ^"Silhouette" INTEGER 3
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 0", "Social 0", "Trade 1"]
@@ -446,7 +446,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
             ^"Advantages" LIST OF STRING ["Ageless Tactician (Water) [Martial; Mental]"]
             ^"Disadvantages" LIST OF STRING ["Shameful Failure (Water) [Social; Interpersonal]"]
             ^"Favored Weapons" LIST OF STRING ["Scimitar of the Moto: Range 1, Damage 6, Deadliness 5, Ceremonial, Durable, Razor-Edged, Unholy"]
-            ^"Gear" LIST OF STRING ["Corrupted daimyo armor (Physical 3, Supernatural 2, Unholy)", "Horsebow and quiver", "Wakizashi", "Kyofu (his Dark Moto onikage steed)"]
+            ^"Gear" LIST OF STRING ["Corrupted daimyō armor (Physical 3, Supernatural 2, Unholy)", "Horsebow and quiver", "Wakizashi", "Kyofu (his Dark Moto onikage steed)"]
         }
 
         ^"Master of Tactics and Terror" DEF {
@@ -466,12 +466,12 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
             ^"Type" STRING "Minion" FIXED
             ^"Combat Conflict Rank" INTEGER 2
             ^"Intrigue Conflict Rank" INTEGER 0
-            ^"Rings" INTEGER 3
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 2 ^"Fire" INTEGER 3 ^"Water" INTEGER 2 ^"Void" INTEGER 1 }
             ^"Demeanor" STRING "Fierce"
             ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
-            ^"Endurance" INTEGER 32
-            ^"Composure" INTEGER 10
-            ^"Focus" STRING "Infinity"
+            ^"Endurance" INTEGER 10
+            ^"Composure" STRING "Infinity"
+            ^"Focus" INTEGER 3
             ^"Vigilance" INTEGER 2
             ^"Silhouette" INTEGER 3
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 0", "Trade 1"]
@@ -498,12 +498,12 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
             ^"Type" STRING "Minion" FIXED
             ^"Combat Conflict Rank" INTEGER 2
             ^"Intrigue Conflict Rank" INTEGER 0
-            ^"Rings" INTEGER 3
+            ^"Rings" DEF { ^"Air" INTEGER 1 ^"Earth" INTEGER 2 ^"Fire" INTEGER 3 ^"Water" INTEGER 2 ^"Void" INTEGER 1 }
             ^"Demeanor" STRING "Fierce"
             ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
-            ^"Endurance" INTEGER 32
-            ^"Composure" INTEGER 10
-            ^"Focus" STRING "Infinity"
+            ^"Endurance" INTEGER 10
+            ^"Composure" STRING "Infinity"
+            ^"Focus" INTEGER 3
             ^"Vigilance" INTEGER 2
             ^"Silhouette" INTEGER 3
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 0", "Social 0", "Trade 1"]
@@ -514,7 +514,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
         }
 
         ^"Unnatural Steed" DEF {
-            ^"Description" STRING "A Dark Moto onikage is an Otherworldly, Tainted being of silhouette 3. It can be ridden by any human-sized (silhouette 2 or lower) rider, using the Mounts and Riding rules from page 326 of the core rulebook."
+            ^"Description" STRING "An onikage is an Otherworldly, Tainted being of silhouette 3. It can be ridden by any human-sized (silhouette 2 or lower) rider, using the Mounts and Riding rules from page 326 of the core rulebook. Unless the rider is Tainted, though, an onikage will attempt to throw the rider and then attack them."
         }
 
         ^"Deadly Steed" DEF {
@@ -559,7 +559,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
         }
 
         ^"Unholy Shrine Guardian" DEF {
-            ^"Description" STRING "The skull-cleaving oni is a Tainted, Otherworldly being of silhouette 3. At night, its appearance changes to that of a placid monk of silhouette 2, and its cleaver to that of a walking stick. The oni may dismiss the illusion at any time, and it always does so before engaging in combat. Characters can make a TN 4 Theology check (Water 3, Earth 5) to see through this false appearance. Once per scene as a Support action, the oni may chant to summon and control 6 fudoshi vines that act at Initiative 1 each round. The vines remain until a character interrupts the oni's chant by inflicting the Dazed, Disoriented, or Silenced condition on the oni (or killing it), returning the foliage to normal."
+            ^"Description" STRING "The skull-cleaving oni is a Tainted, Otherworldly being of silhouette 3. At night, its appearance changes to that of a placid monk of silhouette 2, and its cleaver to that of a walking stick. The oni may dismiss the illusion at any time, and it always does so before engaging in combat. Characters can make a TN 4 Theology check (Water 3, Earth 5) to see through this false appearance. Once per scene as a Support action, the oni may chant to summon and control 6 fudoshi vines (see page 22) that act at Initiative 1 each round. The vines remain until a character interrupts the oni's chant by inflicting the Dazed, Disoriented, or Silenced condition on the oni (or killing it), returning the foliage to normal."
         }
 
         RULES {
@@ -618,12 +618,12 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
             ^"Type" STRING "Adversary" FIXED
             ^"Combat Conflict Rank" INTEGER 2
             ^"Intrigue Conflict Rank" INTEGER 3
-            ^"Rings" INTEGER 4
+            ^"Rings" DEF { ^"Air" INTEGER 2 ^"Earth" INTEGER 2 ^"Fire" INTEGER 2 ^"Water" INTEGER 2 ^"Void" INTEGER 4 }
             ^"Demeanor" STRING "Cowardly"
             ^"Social Skill Check TN Modifiers" STRING "Earth +2, Fire -2"
-            ^"Endurance" INTEGER 22
+            ^"Endurance" INTEGER 8
             ^"Composure" INTEGER 8
-            ^"Focus" INTEGER 8
+            ^"Focus" INTEGER 4
             ^"Vigilance" INTEGER 3
             ^"Silhouette" INTEGER 1
             ^"Skills" LIST OF STRING ["Artisan 1", "Martial 1", "Scholar 2", "Social 1", "Trade 2"]
@@ -634,7 +634,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
         }
 
         ^"Favored of Fu Leng" DEF {
-            ^"Description" STRING "A goblin accursed priest is a Tainted being of silhouette 1 who reduces the TN of Command checks they make targeting goblins by 1. Once per scene, they may call on Fu Leng's favor to change any die result containing (st) to a result containing (ex). The GM can choose 1-3 mahō that the goblin accursed priest can perform. Add 1 to this character's combat rank for each mahō chosen this way."
+            ^"Description" STRING "A goblin accursed priest is a Tainted being of silhouette 1 who reduces the TN of Command checks they make targeting goblins by 1. Once per scene, they may call on Fu Leng's favor to change any die result containing (st) to a result containing (ex). The GM can choose 1–3 mahō (see page 224 of the core rulebook or page 118 of this book) that the goblin accursed priest can perform. Add 1 to this character's combat rank for each mahō chosen this way."
         }
 
         RULES {
@@ -674,7 +674,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
         }
 
         ^"Through Tainted Glass" DEF {
-            ^"Description" STRING "The Obsidian Flower is an Otherworldly, Tainted being. Each time PCs face the Obsidian Flower, choose two different Shadowlands Powers for her. Once per scene as an Attack and Scheme action, the Obsidian Flower may summon a dark reflection of each PC. This reflection uses the same profile as the character, cannot perform Attack or Scheme actions targeting any character other than the PC it mirrors, and has the same Shadowlands Powers as the Obsidian Flower."
+            ^"Description" STRING "The Obsidian Flower is an Otherworldly, Tainted being. Each time PCs face the Obsidian Flower, choose two different Shadowlands Powers (see page 137) for her. Once per scene as an Attack and Scheme action, the Obsidian Flower may summon a dark reflection of each PC. This reflection uses the same profile as the character, cannot perform Attack or Scheme actions targeting any character other the PC it mirrors, and has the same Shadowlands Powers as the Obsidian Flower."
         }
 
         RULES {
@@ -698,7 +698,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
                 ^"Void" INTEGER 3
             }
             ^"Demeanor" STRING "Assertive"
-            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Air -2"
             ^"Endurance" INTEGER 8
             ^"Composure" INTEGER 6
             ^"Focus" INTEGER 5
@@ -754,7 +754,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
         }
 
         ^"Call of the Kansen" DEF {
-            ^"Description" STRING "A fallen scholar is a Tainted being. While in the Lost Library, they count the TN of all Scholar skill checks they make as 1. The GM may choose 0-3 mahō that a fallen scholar can perform. Add 1 to this character's combat rank for each mahō technique chosen this way."
+            ^"Description" STRING "A fallen scholar is a Tainted being. While in the Lost Library, they count the TN of all Scholar skill checks they make as 1. The GM may choose 0–3 mahō (see page 224 of the core rulebook or page 118 of this book) that a fallen scholar can perform. Add 1 to this character's combat rank for each mahō technique chosen this way."
         }
 
         RULES {
@@ -764,7 +764,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
 
     # --- Daylight Castle Denizens ---
 
-    # source stat block (page 38)
+    # source stat block (page 39)
     ^"The Siren" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
 
@@ -820,7 +820,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
                 ^"Void" INTEGER 3
             }
             ^"Demeanor" STRING "Shrewd"
-            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -2"
             ^"Endurance" INTEGER 16
             ^"Composure" INTEGER 18
             ^"Focus" INTEGER 7
@@ -860,7 +860,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
                 ^"Void" INTEGER 2
             }
             ^"Demeanor" STRING "Assertive"
-            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Water -2"
             ^"Endurance" INTEGER 14
             ^"Composure" INTEGER 18
             ^"Focus" INTEGER 5
@@ -912,12 +912,12 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
             ^"Skills" LIST OF STRING ["Artisan 1", "Martial 2", "Scholar 3", "Social 2", "Trade 2"]
             ^"Advantages" LIST OF STRING ["Mystical Insight (Void) [Scholar; Spiritual]"]
             ^"Disadvantages" LIST OF STRING ["Arrogance (Fire) [Martial; Interpersonal]"]
-            ^"Favored Weapons" LIST OF STRING ["Carved Staff: Range 1, Damage 4, Deadliness 3, Durable, Mundane"]
-            ^"Gear" LIST OF STRING ["Robes woven with nezumi symbols (Physical 1, Supernatural 2)", "Nezumi scrolls and tokens"]
+            ^"Favored Weapons" LIST OF STRING ["Nezumi Blade: Range 0–1, Damage 3, Deadliness 3"]
+            ^"Gear" LIST OF STRING ["Stolen robes (Physical 2, Supernatural 2)", "Several Rokugani and nezumi scrolls"]
         }
 
-        ^"Dreamer's Touch" DEF {
-            ^"Description" STRING "A Third Whisker Dreamer can never gain the Afflicted condition or the Shadowlands Taint disadvantage. Once per scene, a Third Whisker Dreamer may make a Theology (Void) check with a TN equal to a target's Void ring at range 0-2 to perceive the target's past. If the check is successful, the Dreamer learns one of the target's advantages, disadvantages, or a significant event from their past."
+        ^"Dreamshaper" DEF {
+            ^"Description" STRING "A Third Whisker Dreamer is a being of silhouette 1 who can never gain the Afflicted condition or the Shadowlands Taint disadvantage. Once per scene, the Third Whisker Dreamer can make a Theology (Void) check to improve the destiny of a target at range 2. The TN of the check is equal to the target's Void Ring. If the check is successful, the target gains 1 Void point."
         }
 
         RULES {
@@ -955,7 +955,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
         }
 
         ^"Stealer of Fates" DEF {
-            ^"Description" STRING "A Renegade Dreamer can never gain the Afflicted condition or the Shadowlands Taint disadvantage. Once per scene, a Renegade Dreamer can make a Theology (Void) check to snip away at the destiny of a target at range 2. The TN of the check is equal to the target's Void Ring. If the check is successful, the target loses 1 Void point and gains the Disoriented condition. If the Renegade Dreamer is killed, the target regains the Void point."
+            ^"Description" STRING "A Renegade Dreamer is a being of silhouette 1 who can never gain the Afflicted condition or the Shadowlands Taint disadvantage. Once per scene, a Renegade Dreamer can make a Theology (Void) check to snip away at the destiny of a target at range 2. The TN of the check is equal to the target's Void Ring. If the check is successful, the target loses 1 Void point and gains the Disoriented condition. If the Renegade Dreamer is killed, the target regains the Void point."
         }
 
         ^"Dark Illusions" DEF {
@@ -996,7 +996,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
         }
 
         ^"Tribal Warrior" DEF {
-            ^"Description" STRING "A Cracked Bone warrior can never gain the Afflicted condition or the Shadowlands Taint disadvantage. While making an Attack action check against a target at range 0-1, a Cracked Bone warrior may spend (op)(op) to lash their foe with their tail, inflicting 3 physical damage and causing their target to suffer the Immobilized condition. Additionally, once per scene when an enemy succeeds on an Attack action check targeting another nezumi at range 0-1, a Cracked Bone Warrior may intervene, becoming the target of the action instead."
+            ^"Description" STRING "A Cracked Bone warrior is a being of silhouette 2 who can never gain the Afflicted condition or the Shadowlands Taint disadvantage. While making an Attack action check against a target at range 0–1, a Cracked Bone warrior may spend (op) (op) to lash their foe with their tail, inflicting 3 physical damage and causing their target to suffer the Immobilized condition. Additionally, once per scene when an enemy succeeds on an Attack action check targeting another nezumi at range 0–1, a Cracked Bone Warrior may intervene, becoming the target of the action instead."
         }
 
         RULES {
@@ -1034,7 +1034,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
         }
 
         ^"Keeper of History" DEF {
-            ^"Description" STRING "A Burnt Paws Rememberer can never gain the Afflicted condition or the Shadowlands Taint disadvantage. Whenever a character in a scene with the Rememberer makes a Scholar skill check involving the Shadowlands, the character may spend (op) to have the Rememberer relate something tangentially useful, such as where additional components for a medicine just applied can be found, or how long ago their tribe managed to defeat an oni similar to the one threatening the group currently."
+            ^"Description" STRING "A Burnt Paws Rememberer is a being of silhouette 1 who can never gain the Afflicted condition or the Shadowlands Taint disadvantage. Whenever a character in a scene with the Rememberer makes a Scholar skill check involving the Shadowlands, the character may spend (op) to have the Remembrancer relate something tangentially useful, such as where additional components for a medicine just applied can be found, or how long ago their tribe managed to defeat an oni similar to the one threatening the group currently."
         }
 
         RULES {
@@ -1072,7 +1072,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
         }
 
         ^"Inquisitive" DEF {
-            ^"Description" STRING "A nezumi pup can never gain the Afflicted condition or the Shadowlands Taint disadvantage. Their curiosity means they might be found almost anywhere in the Shadowlands, such as curled up in a backpack or behind a tent flap. As a downtime activity, a character may observe a nezumi pup's playful antics and remove 3 strife. A character who targets a nezumi pup with an Attack action receives 5 strife."
+            ^"Description" STRING "A nezumi pup is a being of silhouette 0 who can never gain the Afflicted condition or the Shadowlands Taint disadvantage. Their curiosity means they might be found almost anywhere in the Shadowlands, such as curled up in a backpack or behind a tent flap. As a downtime activity, a character may observe a nezumi pup's playful antics and remove 3 strife. A character who targets a nezumi pup with an Attack action receives 5 strife."
         }
 
         RULES {
@@ -1110,7 +1110,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
         }
 
         ^"Ferocious Defender" DEF {
-            ^"Description" STRING "An outcast nezumi can never gain the Afflicted condition or the Shadowlands Taint disadvantage. When it is the target of an Attack action check, it may receive 1 strife to remove (op) from the attacker's check result."
+            ^"Description" STRING "An outcast nezumi is a being of silhouette 1 who can never gain the Afflicted condition or the Shadowlands Taint disadvantage. When it is the target of an Attack action check, it may receive 1 strife to remove (op) from the attacker's check result."
         }
 
         RULES {
@@ -1140,7 +1140,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
                 ^"Void" INTEGER 1
             }
             ^"Demeanor" STRING "Gruff"
-            ^"Social Skill Check TN Modifiers" STRING "Water +2, Earth -2"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Fire -2"
             ^"Endurance" INTEGER 12
             ^"Composure" INTEGER 16
             ^"Focus" INTEGER 4
@@ -1152,7 +1152,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
             ^"Advantages" LIST OF STRING ["Large Stature (Earth) [Martial; Physical]"]
             ^"Disadvantages" LIST OF STRING ["Slow Moving (Earth) [Martial; Physical]"]
             ^"Favored Weapons" LIST OF STRING ["Tetsubō: Range 1-2, Damage 7, Deadliness 3, Cumbersome, Durable, Wargear"]
-            ^"Gear" LIST OF STRING ["O-yoroi armor (Physical 6 [3 if suffering Disoriented, Dazed, or Immobilized], Ceremonial, Cumbersome, Wargear)", "Wakizashi"]
+            ^"Gear" LIST OF STRING ["Ō-yoroi armor (Physical 6 [3 if suffering the Disoriented, Dazed, or Immobilized condition], Ceremonial, Cumbersome, Wargear)", "Wakizashi"]
         }
 
         ^"Defender of the Wall" DEF {
@@ -1220,7 +1220,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
                 ^"Void" INTEGER 2
             }
             ^"Demeanor" STRING "Ambitious"
-            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
             ^"Endurance" INTEGER 10
             ^"Composure" INTEGER 12
             ^"Focus" INTEGER 4
@@ -1236,7 +1236,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
         }
 
         ^"Expert Repairs" DEF {
-            ^"Description" STRING "As a downtime activity, Kaiu Suzue may attempt to remove the Damaged or Destroyed quality from a number of items by making a TN 1 Artisan (Earth) skill check. If she succeeds, she repairs 1 item, plus additional 1 item per bonus success. She may spend (op) to add the Durable quality to any item she successfully repairs this way. If she is unable to repair an item, she can usually tell its owner what they will need to do to repair it. The item's owner receives 1 strife, but the TN of the next check a character makes to repair the item is reduced by 1."
+            ^"Description" STRING "As a downtime activity, Kaiu Suzue may attempt to remove the Damaged or Destroyed quality from a number of items by making a TN 1 Artisan (Earth) skill check. If she succeeds, she repairs 1 item, plus additional 1 item per bonus success. She may spend (op) to add the Durable quality to any item she successfully repairs this way. If she is unable to repair an item, she can usually tell its owner what they will need to do to repair it—but lacks rare supplies or specific expertise. The item's owner receives 1 strife, but the TN of the next check a character makes to repair the item is reduced by 1."
         }
 
         RULES {
@@ -1300,7 +1300,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
                 ^"Void" INTEGER 2
             }
             ^"Demeanor" STRING "Ambitious"
-            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
             ^"Endurance" INTEGER 8
             ^"Composure" INTEGER 12
             ^"Focus" INTEGER 3
@@ -1340,7 +1340,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
                 ^"Void" INTEGER 3
             }
             ^"Demeanor" STRING "Ambitious"
-            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Water -2"
+            ^"Social Skill Check TN Modifiers" STRING "Fire +2, Earth -2"
             ^"Endurance" INTEGER 18
             ^"Composure" INTEGER 18
             ^"Focus" INTEGER 6
@@ -1420,7 +1420,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
                 ^"Void" INTEGER 1
             }
             ^"Demeanor" STRING "Assertive"
-            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Air -2"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Water -2"
             ^"Endurance" INTEGER 16
             ^"Composure" INTEGER 12
             ^"Focus" INTEGER 5
@@ -1460,7 +1460,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
                 ^"Void" INTEGER 2
             }
             ^"Demeanor" STRING "Gruff"
-            ^"Social Skill Check TN Modifiers" STRING "Water +2, Earth -2"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Earth -2"
             ^"Endurance" INTEGER 14
             ^"Composure" INTEGER 14
             ^"Focus" INTEGER 5
@@ -1472,11 +1472,11 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
             ^"Advantages" LIST OF STRING ["Jurojin's Blessing (Void) [Martial; Spiritual]"]
             ^"Disadvantages" LIST OF STRING ["Cynicism (Fire) [Social; Interpersonal]"]
             ^"Favored Weapons" LIST OF STRING ["Oyumi: Range 2-5, Damage 7, Deadliness 3, Prepare, Wargear"]
-            ^"Gear" LIST OF STRING ["Ashigaru armor (Physical 3, Wargear)", "Katana", "Wakizashi", "Quiver", "Hand-drawn maps", "Traveling pack", "Finger of jade"]
+            ^"Gear" LIST OF STRING ["Ashigaru armor (Physical 3, Wargear)", "Katana", "Wakizashi", "Quiver", "Hand-drawn maps", "Traveling pack", "Finger of jade", "Should the situation require it, Motoko and his patrol can be mounted on horseback; in this case, he carries a daikyū (Range 3–5, Damage 6, Deadliness 4, Wargear) instead of his oyumi."]
         }
 
         ^"Always Finds a Way" DEF {
-            ^"Description" STRING "Once per scene while in the Shadowlands, Motoko can spend 1 Void point to discover a hidden escape route out of a hopeless battle. The way is never easy, however, and every other character who is with him suffers 4 strife and 2 fatigue in the process. Should the situation require it, Motoko and his patrol can be mounted on horseback; in this case, he carries a daikyu (Range 3-5, Damage 6, Deadliness 4, Wargear) instead of his oyumi."
+            ^"Description" STRING "Once per scene while in the Shadowlands, Motoko can spent 1 Void point to discover a hidden escape route out of a hopeless battle. The way is never easy, however, and every other character who is with him suffers 4 strife and 2 fatigue in the process."
         }
 
         RULES {
@@ -1504,7 +1504,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
                 ^"Void" INTEGER 4
             }
             ^"Demeanor" STRING "Detached"
-            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Fire +1, Void -2"
+            ^"Social Skill Check TN Modifiers" STRING "Earth +1, Fire +1, Void -1"
             ^"Endurance" INTEGER 14
             ^"Composure" INTEGER 16
             ^"Focus" INTEGER 7
@@ -1520,7 +1520,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
         }
 
         ^"Penetrating Sight" DEF {
-            ^"Description" STRING "As a descendant of the first Falcon daimyo, Hatsue can discern Otherworldly beings such as gaki and always recognize any such beings that attempt to disguise themselves as human or otherwise mundane. This does not, however, mean she always feels it is in the best interest of the Falcon or the being involved to reveal this to those around her."
+            ^"Description" STRING "As a descendant of the first Falcon daimyō, Hatsue can discern Otherworldly beings such as gaki and always recognize any such beings that attempt to disguise themselves as human or otherwise mundane. This does not, however, mean she always feels it is in the best interest of the Falcon or the being involved to reveal this to those around her."
         }
 
         RULES {
@@ -1604,7 +1604,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
         }
 
         ^"Veteran Gaki Hunter" DEF {
-            ^"Description" STRING "Many centuries operating in Ningen-do means Lady Mazoku has exceptional experience. Once per scene, should a PC sufficiently impress her with devotion to the cause of capturing and containing malign spirits, she may impart to the PC some of her wisdom concerning this subject. The PC lowers the TN of their checks targeting such spirits by 1 for the remainder of the session."
+            ^"Description" STRING "Many centuries operating in Ningen-dō means Lady Mazoku has honor 70, glory 70, and composure 20. Once per scene, should a PC sufficiently impress her with devotion to the cause of capturing and containing malign spirits, she may impart to the PC some of her wisdom concerning this subject. The PC lowers the TN of their checks targeting such spirits by 1 for the remainder of the session."
         }
 
         RULES {
@@ -1694,7 +1694,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
         }
 
         ^"Restricted Action" DEF {
-            ^"Description" STRING "During a conflict, if a shikigami and the ritualist who created it are both present, the shikigami does not take its own turn. During the shugenja's turn, it can move up to 1 range band. As a Support action, the ritualist may have the shikigami perform an action with their assistance."
+            ^"Description" STRING "During a conflict, if a shikigami and the ritualist who created it are both present, the shikigami does not take its own turn. During the shugenja's turn, it can move up to 1 range band. As a Support action, the ritualist may have the shikigami perform an action with their assistance (see page 26 of the core rulebook)."
         }
 
         RULES {
@@ -1734,7 +1734,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
         }
 
         ^"Segment of Jigoku" DEF {
-            ^"Description" STRING "An oni fragment is an Otherworldly, Tainted being of silhouette 0. It may use any Shadowlands powers appropriate to its form, so an oni's tongue might speak with a Captivating Voice, while an oni with envenomed claws may have the Shadowlands Venom power apply to its claws' attacks while its hand is separated. If the fragment is an eye, add 1 to its Air Ring; if a hand, add 1 to its Fire Ring; and if a tongue, add 1 to its Water Ring."
+            ^"Description" STRING "An oni fragment is an Otherworldly, Tainted being of silhouette 0. It may use any Shadowlands powers appropriate to its form, so an oni's tongue might speak with a Captivating Voice, while an oni with envenomed claws may have the Shadowlands Venom power apply to its claws' attacks while its hand is separated. If the fragment is an eye, add 1 to its Air Ring; if a hand, add 1 to its Fire Ring; and if a tongue add 1 to its Water Ring."
         }
 
         RULES {
@@ -1803,7 +1803,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
                 ^"Void" INTEGER 2
             }
             ^"Demeanor" STRING "Near Feral"
-            ^"Social Skill Check TN Modifiers" STRING "Water +1, Fire -1"
+            ^"Social Skill Check TN Modifiers" STRING "Air +1, Fire -1"
             ^"Endurance" INTEGER 18
             ^"Composure" INTEGER 12
             ^"Focus" INTEGER 7
@@ -1844,7 +1844,7 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
                 ^"Void" INTEGER 4
             }
             ^"Demeanor" STRING "Capricious"
-            ^"Social Skill Check TN Modifiers" STRING "Water +2, Earth -2"
+            ^"Social Skill Check TN Modifiers" STRING "Air +2, Earth -2"
             ^"Endurance" INTEGER 20
             ^"Composure" INTEGER 18
             ^"Focus" INTEGER 9
@@ -1854,14 +1854,14 @@ EXTENSION "L5R5e_Shadowlands_NPCs" EXTENDS "L5R5e_Shadowlands" {
             ^"Glory" INTEGER 7
             ^"Status" INTEGER 0
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 2", "Social 3", "Trade 1"]
-            ^"Advantages" LIST OF STRING ["Devious Cunning (Void) [Scholar; Spiritual]"]
+            ^"Advantages" LIST OF STRING ["Devious Cunning (Water) [Scholar; Spiritual]"]
             ^"Disadvantages" LIST OF STRING ["Sickening Visage (Water) [Social; Interpersonal]"]
             ^"Favored Weapons" LIST OF STRING ["Bone Naginata: Range 2, Damage 6, Deadliness 7, Durable, Razor-Edged, Unholy"]
             ^"Gear" LIST OF STRING ["Thick demonic hide (Physical 3, Supernatural 3, Unholy)"]
         }
 
         ^"Sorcery of Jigoku" DEF {
-            ^"Description" STRING "A hellish sorcerer oni is a Tainted, Otherworldly being of silhouette 3. It automatically possesses the Tainted Sorcery Shadowlands power, and it may purchase up to two additional Shadowlands powers from those beginning on page 137."
+            ^"Description" STRING "A hellish sorcerer oni is a Tainted, Otherworldly being of silhouette 3. It automatically possesses the Tainted Sorcery Shadowlands power, and it may purchase up to two additional Shadowlands powers from those beginner on page 137."
         }
 
         RULES {

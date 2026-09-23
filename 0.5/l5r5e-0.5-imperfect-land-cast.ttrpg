@@ -17,7 +17,7 @@
 # Desperate Bandits) live in the .lore / .codex.
 
 EXTENSION "L5R5e_ImperfectLand_Cast" {
-    VERSION "0.5.1"
+    VERSION "0.5.2"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-03"
     DEPENDS_ON "L5R5e_Core_Core"
@@ -45,7 +45,7 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
             ^"Favored Weapons" LIST OF STRING ["Vicious Bisentō: Range 2, Damage 4/6, Deadliness 6, Cumbersome, Durable, Razor-Edged, Wargear"]
             ^"Gear" LIST OF STRING ["Gear (equipped): Sōhei robes (Supernatural 2, Durable)"]
         }
-        DESCRIPTION "ADVERSARY. Conflict Rank — Combat 9, Intrigue 4. Scaling note: if the PC party is small, low-rank, or not combat-oriented, replace her bisentō with a bō, remove the Trial of Fire ability, or reduce her Earth and Fire rings from 4 to 3."
+        DESCRIPTION "Note: If the PC party is small, has a low group rank, or is not combat oriented, replace her bisentō with a bō, remove the Trial of Fire ability, or reduce her Earth and Fire rings from 4 to 3."
         REFERENCES {
             "Trial of Fire" -> #te1429a15a1b6afd84f528 ^"Trial of Fire"
         }
@@ -83,7 +83,7 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
         REFERENCES {
             "Mirumoto Masashige" -> #te90b9e3d93bb1dc0748b0 ^"Mirumoto Masashige"
         }
-        ^"Twin Dragons Striking" DEF { ^"Effect" STRING "Ichirō may perform any Iaijutsu kata. Once per scene when dual wielding, he may reduce the cost of activating a kata to Opportunity." }
+        ^"Twin Dragons Striking" DEF { ^"Effect" STRING "Ichirō may perform any Iaijutsu kata. Once per scene when dual wielding, he may reduce the cost of activating a kata to (op)." }
         ^"Empathic Objection" DEF { ^"Effect" STRING "Once per scene, when the Pure Land Sect or his faith are being challenged, Ichirō may vocally object and reduce his strife by a number equal to his focus. Any character who voices support of his objection also receives this benefit. In an intrigue, this ability cancels 1 momentum point gained from attacking or discrediting the sect." }
 
         RULES {
@@ -163,50 +163,50 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
-            ^"Profile" STRING "Seasoned Courtier (core rulebook page 313) with the Spiritualist template (page 311), adjusting his skills to Artisan 0, Trade 3"
+            ^"Profile" STRING "Hige can be represented using the Seasoned Courtier profile (see page 313 of the core rulebook) with the Spiritualist template (page 311 of the core rulebook), adjusting his skills to Artisan 0, Trade 3."
             ^"Demeanor" STRING "Generous and humble"
         }
-        DESCRIPTION "Leader of the Perfect Land movement — a generous, humble old man, formerly a Brotherhood monk of the Fortune of Compassion and Forgiveness, who labors alongside his followers. Behind the kindly exterior is a firm will: his belief in Shinsei's benevolence (fed by a dream five years ago — a distorted echo of Togashi Kazue's interaction with Senzai) has, under Kanbei's subtle pressure, hardened into strident opposition to samurai rule and Fortunist worship. Nothing short of meeting the Little Teacher herself will change his faith."
+        DESCRIPTION "There may be few truly good-hearted people in the world, but the old man who leads the Perfect Land Sect (insofar as such a far-flung and decentralized group can be led) is one of them. Generous and humble, Hige used to be a monk of the Brotherhood, serving in a small shrine dedicated to the Fortune of Compassion and Forgiveness. Now, despite his leadership position, he refuses the fine robes and ostentation of many established orders and instead regularly labors alongside his followers to keep their community fed and clothed.\n\nBehind that kindly exterior, however, lies a firm will. Hige believes with every shred of his soul in Shinsei's benevolence, especially after his dream five years ago (actually a distorted echo of Togashi Kazue's interaction with Senzai). He will not back down from his belief, and under subtle pressure from Kanbei, it has steadily become a more strident opposition to samurai rule and Fortunist worship. Nothing short of meeting the Little Teacher herself will change his faith."
     }
 
     ^"Kanbei" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
-            ^"Profile" STRING "Seasoned Courtier (core rulebook page 313) with the Trickster template (page 311)"
+            ^"Profile" STRING "Kanbei can be represented using the Seasoned Courtier profile (see page 313 of the core rulebook) with the Trickster template (page 311 of the core rulebook)."
             ^"Demeanor" STRING "Ruthless"
         }
-        DESCRIPTION "A wealthy heimin merchant and the master of the Mountain Sect, a Kolat organization dedicated to controlling the Perfect Land movement and directing it toward the overthrow of the samurai order. He steadily encourages Hige to condemn the samurai and forbid Fortune-worship, and does not hesitate to shed blood if someone threatens his efforts. He launches the assassination attempt in Part Four."
+        DESCRIPTION "The wealthy merchant Kanbei almost wishes the Kolat could take credit for the creation of Perfect Land theology, as he finds it so conducive to his goals. He is the master of the Mountain Sect, a Kolat organization dedicated to controlling the Perfect Land movement and directing it toward the overthrow of the current samurai order.\n\nIn pursuit of this goal, he has been steadily encouraging Hige to condemn the samurai outright, and also to forbid the worship of the Fortunes by his followers (on the grounds that they should need only Shinsei's mercy). He is utterly ruthless and does not hesitate to shed blood if someone threatens his efforts."
     }
 
     ^"Anmoku" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
-            ^"Profile" STRING "Scholarly Shugenja (core rulebook page 314), replacing the invocations with kihō and adding the Sage template (page 311)"
+            ^"Profile" STRING "Anmoku can be represented using the Scholarly Shugenja profile (see page 314 of the core rulebook), replacing the invocations with kihō and adding the Sage template (see page 311 of the core rulebook)."
             ^"Demeanor" STRING "Open-minded"
         }
-        DESCRIPTION "Abbot of the Stone Sages order and leader of the pro-Perfect Land faction. Through devotion to the Fortune of Wisdom and Mercy, she holds the Dragon philosophy of mental openness and fears the Brotherhood has grown too entrenched. She supports admitting the sect as an order, though she is troubled by Hige's demand that followers abandon the Fortunes; she hopes he can be persuaded to show the powers of the world proper respect."
+        DESCRIPTION "Through her devotion to the Fortune of Wisdom and Mercy, Anmoku has come to have an enlightened view of wisdom: however much humans know, there is always more that lies beyond their ken. She and the Stone Sages order she leads embody the Dragon philosophy of mental openness, and she fears that the Brotherhood of Shinsei and Rokugani society as a whole have become too entrenched in the comforts of what they know. Because of this, she supports the Perfect Land Sect and wants to see it admitted to the Brotherhood as an order—though she is understandably troubled by Hige's growing tendency to demand that his followers abandon the worship of the Fortunes. Anmoku hopes he can be persuaded to agree that there is benefit in showing proper respect to the powers of the world, even if escape from the wheel of rebirth comes through Shinsei."
     }
 
     ^"Naigen" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
-            ^"Profile" STRING "Scholarly Shugenja (core rulebook page 314), replacing the invocations with kihō and adding the Socialite template (page 311)"
+            ^"Profile" STRING "Naigen can be represented using the Scholarly Shugenja profile (see page 314 of the core rulebook), replacing the invocations with kihō and adding the Socialite template (see page 311 of the core rulebook)."
             ^"Demeanor" STRING "Rigid"
         }
-        DESCRIPTION "Abbot of the eastern branch of the Four Temples and leader of the anti-Perfect Land faction. His rigid worldview will not accept the Little Teacher even when she stands before him. Iwa, the militant sōhei, has long tied her fate to his."
+        DESCRIPTION "The Phoenix-born abbot of the eastern branch of the Four Temples is not an evil man. He is, however, entrenched in a theology that happens to support the status quo and his comfortable position within it. Therefore, he rejects out of hand anything that threatens to upset the balance of Rokugan, while justifying that rejection to himself as being grounded in unassailable wisdom.\n\nTo him, the Perfect Land is the greatest threat of his generation. Because he condemns it as a heresy, every critique its members make of Rokugani society is a priori invalid, and any faction that tolerates them—such as the Dragon Clan—is tainted by their heresy. Tragically for Naigen, this rigid worldview means he cannot recognize the Little Teacher, even when she stands before him."
     }
 
     #te90b9e3d93bb1dc0748b0 ^"Mirumoto Masashige" DEF {
         EXTENDS #t4540de6f35155c46f41f0 ^"NPC"
         PROPERTIES {
             ^"Type" STRING "Adversary" FIXED
-            ^"Profile" STRING "Venerable Provincial Daimyō (core rulebook page 315), with two kata of the GM's choosing"
+            ^"Profile" STRING "Masashige can be represented using the Venerable Provincial Daimyō profile (see page 315 of the core rulebook), with two kata of the GM's choosing."
             ^"Demeanor" STRING "Careworn"
         }
-        DESCRIPTION "Daimyō of the Mirumoto family and, with the Clan Champion away, acting leader of the Dragon; host of the Brotherhood's conclave at the Mountain Song Temple. His feelings toward the sect are complicated — long worried about its destabilizing potential, bound by his Champion's policy of toleration, and thrown into turmoil when his adopted son Ichirō left to join it. Officially neutral, he is open to persuasion, and to reconciling with his son."
+        DESCRIPTION "Many cares weigh down the shoulders of the Mirumoto family daimyō. His Clan Champion having left the fastness of the High House of Light, leadership of the Dragon falls to Masashige at a time when the Empire is in the greatest state of upheaval it has seen since the Day of Thunder. And thanks to the behind-the-scenes machinations of the Perfect Land Sect, he finds himself with the responsibility of hosting the Brotherhood's conclave.\n\nMasashige's feelings toward the sect are complicated. He has long been worried about its destabilizing potential, but because his Clan Champion's policy has been one of toleration, Masashige has taken no direct action against the Perfect Land. When his son—for he truly considers Ichirō to be his son—abandoned him to join its ranks, Masashige's heart was thrown into even more turmoil. Although his official position is one of neutrality toward the sect, the Empire's ongoing troubles mean he's open to being persuaded that the Perfect Land is correct about the Age of Declining Virtue and reconciling with his son.\n\nIf he were to be persuaded, his support would carry weight with the conclave, even though he is not a member of the Brotherhood of Shinsei."
         REFERENCES {
             "Mountain Song Temple" -> #te4013301f2fe7da3be2ff ^"Mountain Song Temple"
         }
@@ -223,7 +223,7 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
             ^"Demeanor" STRING "Meticulous (+1 Fire, +1 Water, –1 Air, –1 Earth)"
             ^"Persuasion Check" STRING "TN 3 Government"
         }
-        DESCRIPTION "Seeks to understand how the Perfect Land fits into Rokugani society; interested in tales of peasant resistance and rebellion. Because of their influential position, swaying Kaimoku has double the usual effect on Sympathy."
+        DESCRIPTION "As the northern temple is dedicated to understanding the world, Kaimoku seeks to understand how the Perfect Land fits into Rokugani society. They are interested in hearing tales of peasant resistance and rebellion, whether justified or otherwise. Because of their influential position, swaying Kaimoku has double the usual effect on Sympathy."
     }
 
     ^"Kūen" DEF {
@@ -235,7 +235,7 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
             ^"Demeanor" STRING "Watchful (+2 Fire, –1 Earth, –1 Void)"
             ^"Persuasion Check" STRING "TN 2 Meditation (Earth 1, Void 1, Fire 4)"
         }
-        DESCRIPTION "A woman of few words who embodies her order's philosophy of seeking the right moment to act. She will listen to those who show their patience by first meditating with her."
+        DESCRIPTION "A woman of few words, Kūen embodies her order's philosophy of seeking the right moment to act. She will listen to those who show their patience by first meditating with her."
     }
 
     ^"Rekigan" DEF {
@@ -246,9 +246,9 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
             ^"Vigilance" INTEGER 4
             ^"Demeanor" STRING "Direct (+2 Air, –1 Fire, –1 Water)"
             ^"Persuasion Check" STRING "Sparring bout duel"
-            ^"Profile" STRING "Skillful Rōnin (core rulebook page 316) with the Spiritualist template (page 311)"
+            ^"Profile" STRING "use the Skillful Rōnin profile with the Spiritualist template for Rekigan; see pages 316 and 311 of the core rulebook"
         }
-        DESCRIPTION "A scarred, heavily muscled sōhei who respects those who show their strength; more willing to heed those who first acquit themselves well in a bout of sparring."
+        DESCRIPTION "This scarred and heavily muscled sōhei respects those who show their strength. He is more willing to heed those who first acquit themselves well in a bout of sparring (use the Skillful Rōnin profile with the Spiritualist template for Rekigan; see pages 316 and 311 of the core rulebook)."
     }
 
     ^"Fuchō" DEF {
@@ -260,7 +260,7 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
             ^"Demeanor" STRING "Fervent (+1 Air, +1 Water, –1 Fire, –1 Void)"
             ^"Persuasion Check" STRING "TN 3 Theology"
         }
-        DESCRIPTION "A scholarly woman who wants to bring everyone to Shinsei's way; she appreciates theological arguments about the dangers of heresy or the possibility that Perfect Land practices will redirect peasant attention from the Fortunes to the Tao."
+        DESCRIPTION "This scholarly woman wants to bring everyone to Shinsei's way. Fuchō appreciates theological arguments about the dangers of heresy or the possibility that Perfect Land practices will redirect peasant attention from the Fortunes to the Tao."
     }
 
     ^"Shōka" DEF {
@@ -272,7 +272,7 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
             ^"Demeanor" STRING "Sociable (+1 Air, +1 Earth, –1 Fire, –1 Water)"
             ^"Persuasion Check" STRING "TN 3 Fitness (Water or Earth 2)"
         }
-        DESCRIPTION "An elder sōhei who still likes to drink and will happily discuss the Perfect Land with someone who can hold their sake."
+        DESCRIPTION "Not all monks are contemplative and ascetic. Shōka still likes to drink, and this elder sōhei will happily discuss the Perfect Land with someone who can hold their sake."
     }
 
     ^"Tanbu" DEF {
@@ -284,7 +284,7 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
             ^"Demeanor" STRING "Refined (+1 Earth, +1 Water, –1 Air, –1 Fire)"
             ^"Persuasion Check" STRING "TN 3 Performance"
         }
-        DESCRIPTION "Clearly a former courtier; his attention is drawn to an argument's elegance as much as its content. He can be persuaded by those with a flair for the dramatic."
+        DESCRIPTION "Clearly a former courtier, Tanbu finds his attention drawn to an argument's elegance as much as to its content. He can be persuaded by those with a flair for the dramatic."
     }
 
     ^"Yoshi" DEF {
@@ -296,7 +296,7 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
             ^"Demeanor" STRING "Meticulous (+1 Fire, +1 Water, –2 Earth)"
             ^"Persuasion Check" STRING "Scholar approach to a relevant skill, TN 3"
         }
-        DESCRIPTION "Knows two of his fellow abbots are firmly set against the Perfect Land, but has not yet made up his mind. Historical arguments are most persuasive to him — especially ones citing previous False Paths or unusual sects admitted to the Brotherhood. Because of his influential position, swaying Yoshi has double the usual effect on Sympathy."
+        DESCRIPTION "Yoshi knows two of his fellow abbots are firmly set against the Perfect Land, but he has not yet made up his mind. Historical arguments are the most persuasive to him, especially ones citing previous examples of False Paths or unusual sects admitted to the Brotherhood. Because of his influential position, swaying Yoshi has double the usual effect on Sympathy."
     }
 
     ^"Yuro" DEF {
@@ -308,7 +308,7 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
             ^"Demeanor" STRING "Compassionate (+2 Water, –2 Void)"
             ^"Persuasion Check" STRING "TN 3 Medicine"
         }
-        DESCRIPTION "A follower of Jurōjin, the Fortune of Longevity; his heart is moved by stories of individual suffering, whether peasants hurt by samurai injustice or innocents hurt by Perfect Land fanatics."
+        DESCRIPTION "Followers of Jurōjin, the Fortune of Longevity, have seen much suffering in their mission to heal the injured and sick. Yuro's heart is moved by stories of individual suffering, whether peasants hurt by samurai injustice or innocents hurt by Perfect Land fanatics."
     }
 
     ^"Zenjō" DEF {
@@ -320,6 +320,6 @@ EXTENSION "L5R5e_ImperfectLand_Cast" {
             ^"Demeanor" STRING "Patient (+1 Fire, +1 Water, –1 Air, –1 Void)"
             ^"Persuasion Check" STRING "TN 3 Composition (Air 2, Fire 4)"
         }
-        DESCRIPTION "Has taken an unbreakable vow of silence, expressing herself through writing. Her hearing is fine, but she admires fine calligraphy and gives more credence to arguments expressed through that medium."
+        DESCRIPTION "Like others of her order, Zenjō has taken an unbreakable vow of silence, expressing herself instead through writing. While her hearing is fine, she admires fine calligraphy and gives more credence to arguments expressed through that medium."
     }
 }

@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
     NAME "Legend of the Five Rings 5th Edition - Celestial Realms: GM Tools"
-    VERSION "0.5.1"
+    VERSION "0.5.2"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -59,10 +59,6 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
             ^"Title Ability" STRING "Swallow the Light"
         }
 
-        ^"Swallow the Light" DEF {
-            ^"Description" STRING "Once per session as an Attack and Scheme action, make a Theology (Water) check targeting a character at range 0-1 (TN = target's vigilance). If you succeed, choose one ring. Target treats that ring as reduced by half (min 1), and you treat yours as increased by the amount reduced. Derived attributes change accordingly. Persists for rounds equal to your Void Ring."
-        }
-
         CURRICULUM {
             #tU8p4kTIi1yFaMdlP75Q6z ^"Rank 1" DEF {
                 "Scholar" SKILL_GROUP
@@ -90,7 +86,7 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
         PROPERTIES {
             ^"Demeanor" STRING "Righteous" FIXED
             ^"Social Skill Check TN Modifiers" STRING "Water +2, Fire -1, Void -1"
-            ^"Common Way of Unmasking" STRING "Righteous Irritation: This person forgets their manners and rudely points out flaws in others, particularly those who have recently disagreed with them. They pick apart even the subtlest of errors, lashing out callously at anyone who objects."
+            ^"Common Way of Unmasking" STRING "Righteous Irritation: This person seems to forget their manners and rudely points out flaws in others, particularly those who have recently disagreed with them. They pick apart even the subtlest of errors, lashing out callously at anyone who objects to their behavior."
         }
 
     }
@@ -111,7 +107,7 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
             ^"Skill Modifier" STRING "+1 Scholar and Social skills"
             ^"Replace Advantages" STRING "0-2: In Tune with the Spirits (Void) [Scholar, Social; Mental, Spiritual], Pledged Protector (Earth) [Martial; Mental, Physical], Talented Archer (Air) [Martial; Mental, Physical], Trained Philosopher (Fire) [Scholar; Mental]"
             ^"Replace Disadvantages" STRING "0-2: Bitter Heart (Water) [Social; Mental], Elitist (Water) [Social; Interpersonal, Mental], Limited Perspective (Earth) [Social; Interpersonal, Mental]"
-            ^"Add Techniques" STRING "0-2: Invocations (invocation), Kata (kata), Rituals (ritual)"
+            ^"Add Techniques" STRING "0-2: Invocations ((invocation)), Kata ((kata)), Rituals ((ritual))"
             ^"Replace Demeanor" STRING "1: Ambitious, Detached, Righteous"
         }
 
@@ -128,7 +124,7 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
             ^"Skill Modifier" STRING "+1 Martial and Scholar skills"
             ^"Replace Advantages" STRING "0-2: Pillar of Amaterasu (Fire) [Scholar; Interpersonal, Mental], Radiant Personality (Fire) [Social; Interpersonal, Mental]"
             ^"Replace Disadvantages" STRING "0-2: Lack of Subtlety (Air) [Martial, Social; Interpersonal, Physical], Stubbornly Traditional (Earth) [Scholar, Social; Interpersonal, Mental]"
-            ^"Add Techniques" STRING "0-2: Invocations (Fire) (invocation), Kata (kata), Shūji (Fire or Air) (shuji)"
+            ^"Add Techniques" STRING "0-2: Invocations (Fire) ((invocation)), Kata ((kata)), Shūji (Fire or Air) ((shuji))"
             ^"Replace Demeanor" STRING "1: Gruff, Righteous"
         }
 
@@ -154,10 +150,10 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
                 ^"Water" INTEGER 2
                 ^"Void" INTEGER 4
             }
-            ^"Endurance" INTEGER 22
-            ^"Composure" INTEGER 15
-            ^"Focus" INTEGER 12
-            ^"Vigilance" INTEGER 6
+            ^"Endurance" INTEGER 15
+            ^"Composure" INTEGER 12
+            ^"Focus" INTEGER 6
+            ^"Vigilance" INTEGER 4
             ^"Demeanor" STRING "Persistent"
             ^"Social Skill Check TN Modifiers" STRING "Water +1, Fire +2, Earth -2, Air -1"
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 2", "Social 1", "Trade 3"]
@@ -165,10 +161,6 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
             ^"Disadvantages" LIST OF STRING ["Insatiable Hunger (Fire) [Social; Mental]"]
             ^"Favored Weapons" LIST OF STRING ["Tusks and Claws: Range 0-1, Damage 5, Deadliness 3, Razor-Edged"]
             ^"Gear" LIST OF STRING ["Dreamhide: Physical 2, Supernatural 4"]
-        }
-
-        ^"Nightmare Guise" DEF {
-            ^"Description" STRING "As a Scheme action, Sentiment (Void) check targeting any number of visible characters (TN = highest vigilance). On success, targets perceive the baku as their greatest fear and increase TN of checks targeting baku by 1. Each of baku's turns, targets must make TN 5 Theology (Void 3) check to resist. Failure: 3 strife and cannot move toward baku this round. For each failed target, baku removes 1 strife or 1 fatigue."
         }
 
         RULES {
@@ -190,7 +182,7 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
             ^"Category" STRING "Spirit"
             ^"Combat Conflict Rank" INTEGER 8
             ^"Intrigue Conflict Rank" INTEGER 1
-            ^"Description" STRING "Modified Manifest Earth Kami (core rulebook p.323). Guardian stone lion-dog that animates to defend shrines and temples."
+            ^"Description" STRING "The classic komainu is a large statue of a creature that has attributes of both a lion and a dog and is usually portrayed sitting atop a stone pedestal.\n\nAfter examining various sources and getting a good understanding of the cultural and mythological background of the komainu, the GM decides a good starting point for it is the Manifest Earth Kami, on page 323 of the core rulebook."
             ^"Rings" DEF {
                 ^"Air" INTEGER 1
                 ^"Earth" INTEGER 5
@@ -204,24 +196,20 @@ EXTENSION "L5R5e_Celestial_Realms_GM" EXTENDS "L5R5e_Celestial_Realms" {
             ^"Vigilance" INTEGER 5
             ^"Silhouette" INTEGER 3
             ^"Demeanor" STRING "Obstinate"
-            ^"Social Skill Check TN Modifiers" STRING "Earth +2, Void -2"
+            ^"Social Skill Check TN Modifiers" STRING "Water +2, Air -2"
             ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 3", "Social 0", "Trade 0"]
             ^"Advantages" LIST OF STRING ["Massive Stature (Earth) [Martial, Trade; Physical]"]
-            ^"Disadvantages" LIST OF STRING ["Honest to a Fault (Earth) [Social, Trade; Mental]"]
-            ^"Favored Weapons" LIST OF STRING ["Stone Claws and Fangs: Range 0-1, Deadliness 5, Razor-Edged"]
+            ^"Disadvantages" LIST OF STRING ["Honest to a Fault (Air) [Social, Trade; Mental]"]
+            ^"Favored Weapons" LIST OF STRING ["Stone Claws and Fangs: Range 0-1, Damage 7, Deadliness 5, Razor-Edged, deals physical or supernatural damage"]
             ^"Gear" LIST OF STRING ["Rocky Hide (Physical 6, Sacred)"]
         }
 
         ^"Living Earth Spirit" DEF {
-            ^"Description" STRING "The komainu is an Otherworldly being of silhouette 3. Additionally, once per scene as an action of the appropriate types, the komainu may perform any one Earth invocation other than Rise, Earth. It counts as succeeding with 3 bonus successes and 2 (op)."
-        }
-
-        ^"Living Statue" DEF {
-            ^"Description" STRING "Before animating, the komainu is in all respects a large stone statue. If damaged or destroyed in this state, upon being triggered to animate, it does so entirely unharmed."
+            ^"Description" STRING "None of the listed abilities for the manifest earth kami are really appropriate for the komainu, so the GM keeps it as \"an Otherworldly being of silhouette 3,\" but otherwise gives it two new abilities that better reflect its nature:"
         }
 
         ^"Pouncing Attack" DEF {
-            ^"Description" STRING "When performing an Attack action check, the komainu may spend opportunity as follows: (op): The target suffers the Dazed and Prone conditions."
+            ^"Description" STRING "When performing an Attack action check, the komainu may spend (op) as follows: (op) The target suffers the Dazed and Prone conditions."
         }
 
         RULES {

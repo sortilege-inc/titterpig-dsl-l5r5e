@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Core" {
     NAME "Legend of the Five Rings 5th Edition - Core mechanics, ACTORs, and fundamental game rules"
-    VERSION "0.5.1"
+    VERSION "0.5.2"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -211,10 +211,10 @@ BASE "L5R5e_Core_Core" {
         ENUM ["Success", "Explosive Success", "Opportunity", "Strife"]
 
         SYMBOL_DEFINITIONS {
-            ^"Success (su)" "Counts toward meeting or exceeding TN. Each (su) = 1 success."
-            ^"Explosive Success (ex)" "Counts as (su) and allows rolling 1 additional die of same type. New die may be kept or dropped."
-            ^"Opportunity (op)" "Narrative currency for secondary effects. Does not affect success or failure directly."
-            ^"Strife (st)" "Emotional accumulation. Does not affect success or failure but tracks toward Compromised condition."
+            ^"Success (su)" "The success symbol ((su)) represents the sum total of the character's effort when they attempt to complete a task. More (su) symbols mean a higher chance of carrying out the task successfully."
+            ^"Explosive Success (ex)" "The explosive success symbol ((ex)) represents a particularly effective part of the character's effort. In addition to counting as a (su) symbol, it gives the character a chance to roll an additional die and decide whether to add its result to the check—potentially letting them succeed at a task they normally couldn't overcome. See (ex) under Step 6: Resolve Symbols of Kept Dice, on page 24."
+            ^"Opportunity (op)" "The opportunity symbol ((op)) does not contribute directly to success, but it lets the character resolve an opportunity—a chance to do or notice something useful that is unrelated to their goal at the outset, or expand on their success with an additional effect or story detail."
+            ^"Strife (st)" "The strife symbol ((st)) represents an upwelling of emotion. Strife does not affect success or failure on the check but instead accumulates over time, potentially leading to outward displays of emotion that can alter the direction of the story for good or for ill. The more it accumulates, the harder it is to maintain the decorum expected of a samurai—a key struggle in the genre of samurai drama."
         }
 
         RESOLUTION_ORDER ["(ex)", "(st)", "(op)", "(su)"]
@@ -230,13 +230,12 @@ BASE "L5R5e_Core_Core" {
     #t7945706680f94a9e75d70 ^"Check" DEF {
 
         STEPS {
-            1 "Declare Intention: Player explains what character wants to accomplish"
-            2 "Determine Details: GM assigns skill, ring (approach), and TN"
-            3 "Assemble and Roll Dice Pool: Ring dice = ring value, Skill dice = skill ranks"
-            4 "Modify Rolled Dice: Apply advantages/disadvantages that cause rerolls"
-            5 "Choose Kept Dice: Select up to ring value dice to keep"
-            6 "Resolve Symbols on Kept Dice: (ex) then (st) then (op) then (su)"
-            7 "Narrate Results: GM and player narrate the outcome based on success/failure and spent opportunity"
+            1 "Declare Intention: When a character tries to accomplish something in the story, the GM may ask for a check. That character's player clearly explains what they want their character to accomplish."
+            2 "Determine Details: Based on the description, the GM decides which skill and ring the player will roll, along with the target number of successes (TN) needed."
+            3 "Assemble and Roll Dice Pool: First, the player picks up a number of Ring dice ((ring)) equal to their character's ring the GM chose. This can be found on the character sheet under Rings.\n\nNext, the player picks up a number of Skill dice ((skill)) equal to their character's ranks in the skill the GM chose.\n\nThen, the player rolls all of the dice together."
+            4 "Modify Rolled Dice: The GM and player apply any effects that modify the dice, such as advantages and disadvantages that cause rerolls."
+            5 "Choose Kept Dice: The player selects a number of dice up to their ring to keep."
+            6 "Resolve Symbols on Kept Dice: The player resolves symbols from results of kept dice in the following order to determine the check's outcome:\n\nExplosive Success ((ex)): For each (ex), the player may roll 1 extra die of the type on which it appears and choose to keep or drop it.\n\nStrife ((st)): The character receives 1 strife per (st).\n\nOpportunity ((op)): Spend (op) to add story details.\n\nTotal Successes ((su) / (ex)): If total (su) and (ex) equal or exceed the TN, the character succeeds."
         }
 
         RULES {
@@ -282,7 +281,7 @@ BASE "L5R5e_Core_Core" {
         ENTRY ^"ring-approach-concepts" #L5RG06bC7dE8fG9hI0jK1l {
             CONCERNS [ #ta2a3de96d67e6cfc017ed ^"Approach" ]
             TOPICS [ "rings", "approaches" ]
-            TEXT "Each ring corresponds with a set of methods that relate to the following concepts (explored in more detail in Chapter 3: Skills): Air: Grace, cunning, precision, subtlety. Earth: Resilience, patience, memory, calm. Fire: Passion, invention, candor, ferocity. Water: Flexibility, awareness, efficiency, charm. Void: Mysticism, intuition, instinct, wisdom."
+            TEXT "Each ring corresponds with a set of methods that relate to the following concepts and are explored in more detail in Chapter 3: Skills (see page 140):\n\nAir: Grace, cunning, precision, subtlety\n\nEarth: Resilience, patience, memory, calm\n\nFire: Passion, invention, candor, ferocity\n\nWater: Flexibility, awareness, efficiency, charm\n\nVoid: Mysticism, intuition, instinct, wisdom"
         }
         ENTRY ^"checks-in-text" #L5RG07cD8eF9gH0iJ1kL2m {
             CONCERNS [ #t7945706680f94a9e75d70 ^"Check" ]
@@ -322,7 +321,7 @@ BASE "L5R5e_Core_Core" {
         ENTRY ^"opportunity-descriptors" #L5RG16lM7nO8pQ9rS0tU1v {
             CONCERNS [ #t0be2b3f270d6247a9c35d ^"Opportunity" ]
             TOPICS [ "opportunity", "narration" ]
-            TEXT "One way to use (op) is to add a descriptive adverb to the verb that describes one's activity in a check, based on the ring used for the check. Adding one of these descriptors can significantly change the way a character's activity (the check) actually occurs in the narrative. The GM should consider how the character's descriptor might change how their success or failure is received, what consequences it has, or what new narrative opportunities it might create. The other fundamental way to use (op) is to add a narrative detail that surfaces as the character undertakes the task—a new piece of information that their character notices which can create interesting new avenues for the story. The type of detail a character can add varies by ring."
+            TEXT "One way to use (op) is to add a descriptive adverb to the verb that describes one's activity in a check, based on the ring used for the check:\n\nAir (op): Act precisely, stealthily, or subtly\n\nEarth (op): Act cautiously, calmly, or thoroughly\n\nFire (op): Act creatively, fearsomely, or noticeably\n\nWater (op): Act efficiently, flexibly, or gregariously\n\nVoid (op): Act instinctively, inscrutably, or sagely\n\nAdding one of these descriptors can significantly change the way a character's activity (the check) actually occurs in the narrative. The GM should consider how the character's descriptor might change how their success or failure is received, what consequences it has, or what new narrative opportunities it might create."
         }
     }
 
@@ -337,7 +336,7 @@ BASE "L5R5e_Core_Core" {
             ANY {
                 "(op): If you failed, determine the easiest way to accomplish the task you were attempting (skill and approach)."
                 "(op)+: Remove 1 strife you gained from this check per (op) spent this way."
-                "(op)(op): Provide assistance to the next character to attempt a check to accomplish something similar."
+                "(op) (op): Provide assistance (see page 26) to the next character to attempt a check to accomplish something similar."
             }
             AIR {
                 "(op): Learn another character in the scene's demeanor (if an NPC) and current strife."
@@ -357,7 +356,7 @@ BASE "L5R5e_Core_Core" {
             WATER {
                 "(op): Remove 2 strife from yourself."
                 "(op)+: Perform the task efficiently, completing it more quickly or saving supplies. Extra (op) further reduces the time or materials expended."
-                "(op)(op): Spot an interesting physical detail present in your environment not directly related to your check. At the GM's discretion, you may establish a piece of terrain or a mundane object nearby."
+                "(op) (op): Spot an interesting physical detail present in your environment not directly related to your check. At the GM's discretion, you may establish a piece of terrain (see page 267) or a mundane object nearby."
             }
             VOID {
                 "(op): Choose a ring other than Void. Reduce the TN of your next check by 1 if it uses that ring."
@@ -378,7 +377,7 @@ BASE "L5R5e_Core_Core" {
                 "(op)(op): Increase the TN of the next Martial Arts [Ranged] check targeting you before the start of your next turn by 2."
             }
             EARTH {
-                "(op): During a Movement action, ignore one terrain quality of your choice."
+                "(op): During a Movement action, ignore one terrain quality (see page 267) of your choice."
                 "(op)+: Reduce the severity of the next critical strike you suffer before the start of your next turn by 1 per (op) spent this way."
                 "(op)(op): Do not apply one of your disadvantages to checks until the end of your next turn."
             }
@@ -393,7 +392,7 @@ BASE "L5R5e_Core_Core" {
                 "(op)(op): Move 1 range band."
             }
             VOID {
-                "(op): During the next Attack action check you make before the end of your next turn, ignore one terrain quality of your choice."
+                "(op): During the next Attack action check you make before the end of your next turn, ignore one terrain quality (see page 267) of your choice."
                 "(op)+: During a Support action check, increase your Initiative value by 1 per (op) spent this way."
                 "(op)(op): Ignore the effects of one condition you are suffering until the end of your next turn."
             }
@@ -406,19 +405,19 @@ BASE "L5R5e_Core_Core" {
 
         INITIATIVE_OPPORTUNITIES {
             AIR {
-                "(op): Assess one foe's weakness. Learn one of their disadvantages of that foe's choice."
+                "(op): On an Initiative check, assess one foe's weakness. Learn one of their disadvantages of that foe's choice."
             }
             EARTH {
-                "(op): Choose another character's disadvantage you know. They do not apply that disadvantage to their checks this scene."
+                "(op): On an Initiative check, choose another character's disadvantage you know. They do not apply that disadvantage to their checks this scene."
             }
             FIRE {
-                "(op): Use your focus instead of your vigilance for your initiative when surprised."
+                "(op): On an Initiative check, use your focus instead of your vigilance for your initiative when surprised."
             }
             WATER {
-                "(op): Assess the qualities of all terrain in the scene."
+                "(op): On an Initiative check, assess the qualities of all terrain in the scene (see page 267)."
             }
             VOID {
-                "(op): Sense if there is an Otherworldly being in the scene."
+                "(op): On an Initiative check, sense if there is an Otherworldly being in the scene."
             }
         }
 
@@ -430,7 +429,7 @@ BASE "L5R5e_Core_Core" {
         SKILL_OPPORTUNITIES {
             AIR {
                 ARTISAN "(op): If you succeed, add the Resplendent or Subtle quality to an item that you are refining."
-                SCHOLAR "(op): Learn something about a character who created or used the item you are studying (such as one of their advantages or disadvantages of the GM's choice that affected their creation or use of the item)."
+                SCHOLAR "(op): Learn a something about a character who created or used the item you are studying (such as one of their advantages or disadvantages of the GM's choice that affected their creation or use of the item)."
                 SOCIAL "(op): Learn if the honor, glory, or status attribute of a character in the scene is higher, lower, or equal to yours."
                 TRADE "(op): Convince a buyer to pay an additional 10% for an item you are selling."
             }
@@ -472,7 +471,7 @@ BASE "L5R5e_Core_Core" {
             }
             EARTH {
                 "(op)+: Another character in your company may remove 1 strife or fatigue per (op) spent this way."
-                "(op)(op): Memorize a small but vital detail from your activity; you can recall it later without a check."
+                "(op) (op): Memorize a small but vital detail from to your activity; you can recall it later without a check."
             }
             FIRE {
                 "(op)+: Assist one other character per (op) spent this way with their next downtime activity check this session."
@@ -504,7 +503,7 @@ BASE "L5R5e_Core_Core" {
         MAXIMUM "Void ring value"
 
         USES {
-            ^"Seize the Moment" "A samurai should know the right moment to act, but sometimes, even the hand of fate must be nudged by bold action. While making a check, during Step 3: Assemble and Roll Dice Pool, a character may spend 1 Void point to roll one additional Ring die (ring) and subsequently keep one additional die during Step 5: Choose Kept Dice."
+            ^"Seize the Moment" "A samurai should know the right moment to act, but sometimes, even the hand of fate must be nudged by bold action. While making a check, during Step 3: Assemble and Roll Dice Pool, a character may spend 1 Void point to roll one additional Ring die ((ring)) and subsequently keep one additional die during Step 5: Choose Kept Dice."
             ^"Shattering Parry" "When faced with death, a samurai must sometimes accept terrible losses to survive. When trying to survive a critical strike, a character may spend 1 Void point to dramatically intercept the attack with their weapon to increase their chance of survival, potentially sacrificing the weapon in the process as described on page 270."
             ^"Techniques and Other Abilities" "Certain techniques and other character abilities require spending a Void point to activate."
         }
@@ -720,7 +719,7 @@ BASE "L5R5e_Core_Core" {
         ENTRY ^"reading-the-dice-symbols" #KKSwUCKWmoocoqkeI0U2Oi {
             CONCERNS [ #t202588bb0b32758539464 ^"Dice Symbols" ]
             TOPICS [ "dice", "symbols", "strife" ]
-            TEXT "The strife symbol ([Strife icon]) represents an upwelling of emotion. Strife does not affect success or failure on the check but instead accumulates over time, potentially leading to outward displays of emotion that can alter the direction of the story for good or for ill. The more it accumulates, the harder it is to maintain the decorum expected of a samurai—a key struggle in the genre of samurai drama. The explosive success symbol (Explosive Success) represents a particularly effective part of the character’s effort. In addition to counting as a Success symbol, it gives the character a chance to roll an additional die and decide whether to add its result to the check—potentially letting them succeed at a task they normally couldn’t overcome. See Explosive Success under Step 6: Resolve Symbols of Kept Dice, on page 24. The opportunity symbol (Opportunity) does not contribute directly to success, but it lets the character resolve an opportunity—a chance to do or notice something useful that is unrelated to their goal at the outset, or expand on their success with an additional effect or story detail. undefined"
+            TEXT "The strife symbol ((st)) represents an upwelling of emotion. Strife does not affect success or failure on the check but instead accumulates over time, potentially leading to outward displays of emotion that can alter the direction of the story for good or for ill. The more it accumulates, the harder it is to maintain the decorum expected of a samurai—a key struggle in the genre of samurai drama."
         }
     }
 }

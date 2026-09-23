@@ -5,7 +5,7 @@
 
 ARC "L5R5e_LostWriter" {
     NAME "The Lost Writer in the City of the Rich Frog"
-    VERSION "0.5.1"
+    VERSION "0.5.2"
     SPEC_VERSION "0.5"
     DEPENDS_ON "L5R5e_Core_Core"
     USES_EXTENSION "L5R5e_Children_of_Five_Winds"
@@ -28,7 +28,7 @@ ARC "L5R5e_LostWriter" {
 
             PROPERTIES {
                 ^"Role"        STRING "The missing author, possessed by an ifrit"
-                ^"Description" STRING "Popular author of stories and poems (pen name Hana-no-Ame), possessed by an ifrit from a meishōdō talisman while visiting the City of the Rich Frog."
+                ^"Description" STRING "A popular—if a bit controversial—author of stories and poems, Hana-no-Ame (real name: Shinjo Higuchi) has reportedly gone missing while visiting the City of the Rich Frog."
                 ^"Combat Conflict Rank"  INTEGER 4
                 ^"Intrigue Conflict Rank" INTEGER 1
                 ^"Rings" DEF {
@@ -54,7 +54,7 @@ ARC "L5R5e_LostWriter" {
 
             PROPERTIES {
                 ^"Role"        STRING "Governor of the City of the Rich Frog"
-                ^"Description" STRING "Governor of the City of the Rich Frog, friend to many influential citizens. Has been housing Shinjo Higuchi while she writes her newest novel."
+                ^"Description" STRING "The governor of the City of the Rich Frog, Miya Tetsua is friend to many an influential citizen. He has been housing Shinjo Higuchi while she writes her newest novel, but he has been concerned about her behavior as of late."
                 ^"Combat Conflict Rank"  INTEGER 2
                 ^"Intrigue Conflict Rank" INTEGER 5
                 ^"Rings" DEF {
@@ -80,7 +80,7 @@ ARC "L5R5e_LostWriter" {
 
             PROPERTIES {
                 ^"Role"        STRING "Tea master at the Teahouse with No Name"
-                ^"Description" STRING "Tea master and owner of the Teahouse with No Name in the Lion district. Diligent and professional, with a weakness for gossip and taboo romance stories."
+                ^"Description" STRING "Ikoma Kotone is the tea master and owner of the Teahouse with No Name in the City of the Rich Frog's Lion district. While she is diligent and professional, she does have a weak spot for gossip, and she has a particular love for taboo romance stories."
                 ^"Combat Conflict Rank"  INTEGER 1
                 ^"Intrigue Conflict Rank" INTEGER 4
                 ^"Rings" DEF {
@@ -106,24 +106,7 @@ ARC "L5R5e_LostWriter" {
 
             PROPERTIES {
                 ^"Role"        STRING "Dragonfly shrine keeper"
-                ^"Description" STRING "A quiet Dragonfly shrine keeper who tends the gardens in the Dragon district. Observed Higuchi's growing obsession with a foreign talisman."
-                ^"Combat Conflict Rank"  INTEGER 1
-                ^"Intrigue Conflict Rank" INTEGER 2
-                ^"Rings" DEF {
-                    ^"Air" INTEGER 2
-                    ^"Earth" INTEGER 3
-                    ^"Fire" INTEGER 2
-                    ^"Water" INTEGER 3
-                    ^"Void" INTEGER 3
-                }
-                ^"Endurance" INTEGER 10
-                ^"Composure" INTEGER 12
-                ^"Focus" INTEGER 5
-                ^"Vigilance" INTEGER 3
-                ^"Honor"  INTEGER 55
-                ^"Glory"  INTEGER 30
-                ^"Status"  INTEGER 30
-                ^"Skills" LIST OF STRING ["Artisan 1", "Martial 1", "Scholar 3", "Social 2", "Trade 1"]
+                ^"Description" STRING "A shrine keeper of the Dragonfly Minor Clan, Tonbo Kuma is a member of the Tonbo family, which maintains the extensive shrine gardens in the City of the Rich Frog. The Dragonfly's de facto leader within this city, Tonbo is a good friend of its governor, Miya Tetsua."
             }
         }
 
@@ -132,7 +115,7 @@ ARC "L5R5e_LostWriter" {
 
             PROPERTIES {
                 ^"Role"        STRING "Ronin peacekeeper of the Unicorn wharf"
-                ^"Description" STRING "Old peacekeeper of the Kaeru family of ronin, leading the security group along the wharf in the Unicorn district. Has developed an interest in spiritual artifacts from beyond Rokugan."
+                ^"Description" STRING "Haya is an old peacekeeper of the Kaeru family of rōnin. She leads the group that manages security along the wharf in the City of the Rich Frog's Unicorn district. Having overseen the comings and goings of Unicorn merchants for quite some time, she has developed an interest in spiritual artifacts from lands beyond Rokugan."
                 ^"Combat Conflict Rank"  INTEGER 2
                 ^"Intrigue Conflict Rank" INTEGER 1
                 ^"Rings" DEF {
@@ -158,7 +141,7 @@ ARC "L5R5e_LostWriter" {
 
             PROPERTIES {
                 ^"Role"        STRING "Unicorn antiquarian and artifact dealer"
-                ^"Description" STRING "Unicorn antiquarian and seller of artifacts who recently purchased several supposedly mystical items from a Fox Clan merchant, then sold one to Higuchi."
+                ^"Description" STRING "A Unicorn antiquarian and seller of artifacts, Ide Chiharu recently purchased several supposedly mystical items from a mysterious Fox Clan merchant. Even more recently, Chiharu sold one of those items to Higuchi."
                 ^"Combat Conflict Rank"  INTEGER 1
                 ^"Intrigue Conflict Rank" INTEGER 3
                 ^"Rings" DEF {
@@ -184,7 +167,7 @@ ARC "L5R5e_LostWriter" {
 
             PROPERTIES {
                 ^"Role"        STRING "Crane trade envoy and amateur detective"
-                ^"Description" STRING "Louche layabout and wastrel turned amateur gentleman detective. Crane Clan's trade envoy in the City of the Rich Frog."
+                ^"Description" STRING "This louche layabout and wastrel has recently turned amateaur, gentleman detective. After coasting through his role as the Crane Clan's trade envoy in the City of the Rich Frog, Shin found himself swept up in the mysteries of the city and discovered a taste for investigation. He is rarely seen without his bodyguard—and reluctant friend—Kasami."
                 ^"Combat Conflict Rank"  INTEGER 5
                 ^"Intrigue Conflict Rank" INTEGER 11
                 ^"Rings" DEF {
@@ -210,7 +193,7 @@ ARC "L5R5e_LostWriter" {
 
             PROPERTIES {
                 ^"Role"        STRING "Crane shugenja with meishōdō expertise"
-                ^"Description" STRING "Crane shugenja visiting Daidoji Shin in the City of the Rich Frog. An old friend of the governor, called upon to assist with the situation involving Shinjo Higuchi."
+                ^"Description" STRING "Asahina Nao is a Crane shugenja visiting Daidoji Shin in the City of the Rich Frog. An old friend of the city's governor, Miya Tetsua, she has been called upon to assist with the situation involving Shinjo Higuchi."
                 ^"Combat Conflict Rank"  INTEGER 2
                 ^"Intrigue Conflict Rank" INTEGER 2
                 ^"Rings" DEF {
@@ -236,7 +219,7 @@ ARC "L5R5e_LostWriter" {
 
             PROPERTIES {
                 ^"Role"        STRING "Fire spirit possessing Higuchi"
-                ^"Description" STRING "Fire spirit from the Burning Sands, long dormant within a magical meishōdō talisman. Accidentally awoken by Higuchi, it has possessed her in its confusion. This profile represents the ifrit in its natural, unbound form."
+                ^"Description" STRING "A fire spirit originating from the Burning Sands, this ifrit has long lain dormant within a magical talisman. Accidentally awoken by Higuchi, it has possessed her in its confusion.\n\nThis profile represents the ifrit in its natural, unbound form. For the spirit's stats while it is still inhabiting Higuchi's body, see Shinjo Higuchi, Possessed (page 170)."
                 ^"Combat Conflict Rank"  INTEGER 9
                 ^"Intrigue Conflict Rank" INTEGER 2
                 ^"Rings" DEF {
@@ -260,41 +243,41 @@ ARC "L5R5e_LostWriter" {
     # =============
 
     LOCATION ^"City of the Rich Frog" #rich_frog_5a7470c08c15 {
-        DESCRIPTION "An Imperial holding situated at a river junction, strategically important to the Dragon, Lion, and Unicorn clans as well as the Dragonfly Minor Clan. The city is divided into three clan districts, with neutral ronin from the Kaeru family serving as peacekeepers."
+        DESCRIPTION "Located at the junction of the Three Sides River and Drowned Merchant River, the City of the Rich Frog is one of Rokugan's most vital river ports, facilitating trade among its people. To three Great Clans—the Dragon, Lion, and Unicorn—and to the Dragonfly Minor Clan, it is a city of particularly vital strategic and economic importance."
         TAGS ["urban", "trade-hub", "contested", "imperial-holding"]
 
         LOCATION ^"Teahouse with No Name" #teahouse_de442dc16e12 {
-            DESCRIPTION "An elegant teahouse in the Lion district, owned by Ikoma Kotone. The interior is refined and spare, with hanging scrolls of calligraphy and a garden view. Tea ceremonies here follow strict protocol."
+            DESCRIPTION "In the Lion Clan's district within the City of the Rich Frog, an old and renowned teahouse overlooks the banks of the Drowned Merchant River. It has been there since the earliest days, when the city was just the Village of the Rich Frog. This teahouse's ownership has changed hands countless times over the years: so many times, in fact, that its original name has long been lost. The Teahouse with No Name—one of the city's more popular teahouses—is frequented by a wide variety of locals and travelers alike. It is here, at the subject of each of your search's last known location, that you have been drawn in your efforts to learn more."
             TAGS ["lion-district", "social", "formal"]
         }
 
         LOCATION ^"Shrine Gardens" #shrine_gardens_78e5e14cd094 {
-            DESCRIPTION "A tranquil garden complex tended by the Dragonfly shrine keeper Tonbo Kuma. Stone paths wind between ancient trees and moss-covered lanterns. Higuchi visited here frequently before her disappearance."
+            DESCRIPTION "In the Dragon Clan district, the Dragonfly Clan operates a number of shrines that have been built along the riverbanks. Encircling these shrines are beautiful, lavish gardens that are guarded at all times by a contingent of Dragonfly bushi. On a balcony overlooking one of the gardens, you see a person drinking tea and studying a Go board. As you draw near, they call out and beckon you over, introducing themselves as you take a seat as Tonbo Kuma, leader of the Dragonfly who live in the City of the Rich Frog. Kuma's invitation to sit and join them is welcome and genuine, but the faces of the guards who have kept watch since your approach warn you to watch yourselves."
             TAGS ["dragon-district", "spiritual", "peaceful"]
         }
 
         LOCATION ^"Unicorn Wharf" #unicorn_wharf_211102ec18fb {
-            DESCRIPTION "The bustling riverside docks of the Unicorn district, patrolled by Kaeru peacekeepers. Crates of foreign goods are stacked alongside fishing boats. Smuggling is an open secret."
+            DESCRIPTION "The grand Unicorn Clan wharf lies along the western bank of the Three Sides River. Constructed almost entirely of polished black granite, it sees most of the trade that flows into the city, especially goods from outside Rokugan. In addition to merchant vessels and storage warehouses, the shops of numerous Unicorn merchants line the wharf, drawing an increasing number of visitors to this popular trade district."
             TAGS ["unicorn-district", "trade", "dangerous"]
         }
 
         LOCATION ^"Ide Chiharu's Curiosity Shop" #curiosity_shop_0db706f82ac7 {
-            DESCRIPTION "A cluttered shop in the Unicorn district filled with artifacts, curios, and items of dubious provenance. Shelves groan under the weight of foreign talismans, carved figurines, and sealed scrolls."
+            DESCRIPTION "A small shop sits nestled away from the bustling wharf's main thoroughfare. Its windows are covered with thick drapes of dark cloth that leave only a sliver of window uncovered. As you peer through it into the gloom, you see a room filled to the brim, cluttered full of all manner of old, strange antiques and curiosities. As you pass through the curtain hanging in the doorway, the shop's purveyor—a venerable antiquarian with a long, long beard—greets you, beckoning you farther inside."
             TAGS ["unicorn-district", "trade", "meishōdō"]
         }
 
         LOCATION ^"Daidoji Shin's Residence" #shins_residence_466a1cdd0ec9 {
-            DESCRIPTION "An extravagant residence in the Unicorn district, appointed with Crane elegance but lived in with cheerful disorder. Daidoji Shin holds court here among tea sets, gambling debts, and visiting friends."
+            DESCRIPTION "Daidoji Shin's home lies on the outskirts of the Unicorn district, among a group of similarly violet-roofed buildings in the heart of the city's commercial center. A thick wall and screened windows isolate the building from the busy streets nearby. Outside, in a neat little garden, two women share a kettle of tea in the midday sun. One, dressed in the elaborate ceremonial robes of a shugenja, sips her tea with a pleasant demeanor. The other, who bears the countenance—and weaponry—of a bushi, seems significantly less happy to be there."
             TAGS ["unicorn-district", "social", "crane"]
         }
 
         LOCATION ^"Governor's Manor" #governors_manor_6ca10e6cf749 {
-            DESCRIPTION "The official residence of Governor Miya Tetsua, situated on a small island connected to the city by a stone bridge. The manor gardens are beautiful and meticulously maintained — and conceal Higuchi's current location."
+            DESCRIPTION "Located on a small island in the middle of the river junction is the resplendent governor's manor. The setting sun reflects off the waters as you take the ferry across, casting the city in pinkish-orange light. You take this time to prepare yourselves for whatever awaits you on the island.\n\nWhen you arrive, a pair of guards escorts you inside to a great meeting room. There, seated at a table, are two men: Daidoji Shin, whom you recognize from earlier in the day, and Governor Miya Tetsua himself."
             TAGS ["island", "imperial", "formal", "gardens"]
         }
 
         LOCATION ^"Manor Gardens" #manor_gardens_bea638c27ae6 {
-            DESCRIPTION "The sprawling formal gardens behind the Governor's Manor. Cherry trees, koi ponds, and stone walkways create a serene atmosphere — but fire damage and scorch marks betray the ifrit's presence."
+            DESCRIPTION "Nao recommends moving Higuchi to the manor's interior garden for the confrontation, while Tetsua ensures that any potential prying eyes or innocent bystanders are sent away from the island."
             TAGS ["island", "outdoor", "dangerous", "supernatural"]
         }
     }
@@ -305,14 +288,14 @@ ARC "L5R5e_LostWriter" {
 
     FLOW {
         PHASE ^"Background" {
-            DESCRIPTION "The PCs arrive in the City of the Rich Frog and learn of the missing author"
+            DESCRIPTION "Part One provides necessary context regarding the missing writer, Hana-no-Ame, and the events preceding the adventure. It also features background information on the City of the Rich Frog and on the four primary factions within it: the Dragon, Lion, and Unicorn Clans, and the Kaeru rōnin."
             PACING "1 scene, establishing the situation and stakes"
 
             SCENE_REF #arrival_7933e585a909
         }
 
         PHASE ^"Investigation" {
-            DESCRIPTION "The PCs gather clues from NPCs and locations across the city's three districts"
+            DESCRIPTION "In Part Two, the PCs follow a trail of clues to various locations in the City of the Rich Frog to track down Hana-no-Ame. They speak with important NPCs and engage in some intrigue conflict scenes; they may take part in one or more duels or skirmishes as well. Each scene opens with narration that you may read aloud or paraphrase to set the stage."
             PACING "3-6 scenes depending on PC choices, player-driven exploration"
 
             SCENE_REF #tea_ceremony_b774e4c0f0de
@@ -324,14 +307,14 @@ ARC "L5R5e_LostWriter" {
         }
 
         PHASE ^"Confrontation" {
-            DESCRIPTION "The PCs face the possessed Higuchi and the ifrit in the manor gardens"
+            DESCRIPTION "In Part Three, the PCs meet with the governor of the City of the Rich Frog and ready their allies. In the gardens of the governor's manor, they have their final confrontation and determine the fate of the lost writer."
             PACING "1 scene, climactic combat and moral decision"
 
             SCENE_REF #confrontation_fb324e23a5aa
         }
 
         PHASE ^"Resolution" {
-            DESCRIPTION "Aftermath of the confrontation, consequences and rewards"
+            DESCRIPTION "In this final section, the players face the aftermath of the final confrontation. They receive their rewards, as determined by their actions, and are given an opportunity to reflect on the adventure and their choices."
             PACING "1 scene, denouement"
 
             SCENE_REF #aftermath_6ff3fca6b17e
@@ -347,7 +330,7 @@ ARC "L5R5e_LostWriter" {
     SCENE ^"Arrival in the City of the Rich Frog" #arrival_7933e585a909 {
         TYPE "Roleplay"
         LOCATION #rich_frog_5a7470c08c15
-        DESCRIPTION "The PCs arrive in the city and learn that the famous author Hana-no-Ame (real name Shinjo Higuchi) has gone missing. Governor Miya Tetsua or another patron conveys the situation: Higuchi was visiting the city to write her newest novel and has not been seen for several days. The PCs are asked to investigate discreetly."
+        DESCRIPTION "Each pair of premade PCs (available for free at edge-studio.net) have their own reasons for searching the City of the Rich Frog for the missing author. (If any of the premade characters has not been selected by a player, then that character is not joining their partner for this part of the investigation.)\n\nHiguchi's publisher, Ide Yuina, has not received her regular correspondence from Higuchi in some time. Concerned, she has traveled to the City of the Rich Frog to seek her out, starting with the last place Higuchi mentioned visiting—the Teahouse with No Name—in her final letter. Joining Yuina is Iuchi Minoru, who was among the shugenja that Higuchi had mentioned in her letters to Yuina. Minoru had neglected to warn Higuchi about the dangers meishōdō may pose to the inexperienced, so when Yuina arrived at their home saying that Higuchi had gone missing, they felt it was their responsibility to make sure the author was found safe.\n\nMatsu Rin is a dedicated Lion bushi in the City of the Rich Frog. Her daimyō, as well as others, have publicly denounced Hana-no-Ame's work as inappropriate, and now rumors have begun to circulate that the Lion Clan may have targeted the author as a political danger. Rin's lord wishes the author found, not just to prove that the Lion's hands are clean but also so the Lion can persuade the author to leave them out of her stories. Rin has called upon the assistance of an old battlefield companion, Kaeru Akiara, who has since turned rōnin. Unlike the Lion, rōnin have been described favorably in Hana-no-Ame's works, so Akiara feels a vested interest in ensuring the writer's safety. His connections with the other rōnin peacekeepers of the city have brought an interesting rumor to his attention: supposedly, the infamous Hana-no-Ame had been overheard discussing her new book at the Teahouse with No Name.\n\nKitsuki Tsubasa is one of several Dragon Clan investigators called to the City of the Rich Frog to root out a foreign artifact smuggling ring. Their investigation has drawn them to a suspicious stranger in the city—one whom witnesses claim has been calling herself \"Higuchi\"—who has reportedly been asking all over about gaijin magic and talismans. Tsubasa, along with Tonbo Goro—a Dragonfly shugenja who has noticed a recent increase in spiritual disturbances and desires to get to the bottom of it—have tracked the stranger to her last known location: the Teahouse with No Name.\n\nAlthough none of these pairs of PCs know the others, their investigations are about to converge on the same unassuming Lion district teahouse…"
 
         OBJECTIVES {
             REQUIRED "Learn about Higuchi's disappearance and accept the investigation"
@@ -357,24 +340,18 @@ ARC "L5R5e_LostWriter" {
 
         CLUES {
             CLUE ^"Higuchi's Identity" {
-                DESCRIPTION "Hana-no-Ame is the pen name of Shinjo Higuchi, a Unicorn author of considerable fame"
-                DISCOVERED_BY "Provided freely during the briefing"
+                DESCRIPTION "This author, under the pseudonym Hana-no-Ame (her true name is Shinjo Higuchi; see Shinjo Higuchi, Possessed profile, page 170), arose seemingly from nowhere and has published an impressive collection of novels, poems, and plays in a relatively short amount of time."
             }
             CLUE ^"Last Known Movements" {
-                DESCRIPTION "Higuchi was last seen several days ago. She had been frequenting the Shrine Gardens and various shops in the Unicorn district"
-                DISCOVERED_BY "Provided freely during the briefing"
-            }
-            CLUE ^"The Governor's Hospitality" {
-                DESCRIPTION "Higuchi has been staying at the Governor's Manor as Miya Tetsua's personal guest"
-                DISCOVERED_BY "Provided freely during the briefing"
+                DESCRIPTION "Higuchi's publisher, Ide Yuina, has not received her regular correspondence from Higuchi in some time. Concerned, she has traveled to the City of the Rich Frog to seek her out, starting with the last place Higuchi mentioned visiting—the Teahouse with No Name—in her final letter."
             }
         }
 
         RESOLUTIONS {
             RESOLUTION ^"Investigation Begins" {
-                CONDITION "PCs accept the task and choose where to begin"
-                OUTCOME "The city is open to explore. PCs may visit locations in any order."
-                LEADS_TO [#tea_ceremony_b774e4c0f0de, #shrine_visit_5bcf354ce4a7, #wharf_investigation, #curiosity_shop_visit, #shins_consultation]
+                CONDITION "Each pair of premade PCs (available for free at edge-studio.net) have their own reasons for searching the City of the Rich Frog for the missing author."
+                OUTCOME "Although none of these pairs of PCs know the others, their investigations are about to converge on the same unassuming Lion district teahouse…"
+                LEADS_TO [#tea_ceremony_b774e4c0f0de]
             }
         }
     }
@@ -384,59 +361,43 @@ ARC "L5R5e_LostWriter" {
     SCENE ^"Tea Ceremony at the Teahouse with No Name" #tea_ceremony_b774e4c0f0de {
         TYPE "Intrigue"
         LOCATION #teahouse_de442dc16e12
-        DESCRIPTION "The PCs attend a tea ceremony hosted by Ikoma Kotone, the Lion tea master. Kotone is a diligent professional but has a weakness for gossip and taboo romance stories. She knew Higuchi personally and can share information — but the formal setting of the tea ceremony means PCs must navigate strict social protocol to extract what she knows."
+        DESCRIPTION "Whether separately or together, the PCs have arrived at the Teahouse with No Name to gather more information about Hana-no-Ame's disappearance or, in Kitsuki Tsubasa and Tonbo Goro's case, about the same mysterious woman who has been making inquiries about gaijin magic and talismans. Awaiting the arrival of the tea master in the teahouse's sitting room gives the PCs an opportunity to introduce themselves to each other and get acquainted. When the PCs are ready to proceed, a host invites them through a low door into the tea chamber proper.\n\nShortly thereafter, Tea Master Ikoma Kotone (see profile on page 171) arrives and begins the tea ceremony. Over the course of this ceremony, the PCs take part in an intrigue conflict scene in which they attempt to probe the revered tea master about Higuchi's (or the mysterious stranger's) visit in order to learn more about the author's movements and actions."
 
         OBJECTIVES {
-            REQUIRED "Learn what Kotone knows about Higuchi's recent behavior"
+            REQUIRED "Appeal to Tea Master Ikoma Kotone."
             OPTIONAL "Avoid breaching tea ceremony protocol"
-            OPTIONAL "Discover Kotone's personal connection to Higuchi's writing"
         }
 
         CHECKS {
-            CHECK ^"Tea Ceremony Etiquette" {
+            CHECK ^"Stir the Leaves" {
                 SKILL "social"
                 RING "air"
-                TN 2
-                ON_SUCCESS "The PCs observe proper form and earn Kotone's respect, lowering the TN of subsequent social checks with her by 1"
-                ON_FAILURE "A breach of protocol; Kotone is polite but guarded, increasing the TN of subsequent checks by 1"
-            }
-            CHECK ^"Draw Out Gossip" {
-                SKILL "social"
-                RING "water"
                 TN 3
-                ON_SUCCESS "Kotone reveals that Higuchi had become obsessed with a foreign artifact she purchased from a shop in the Unicorn district"
-                ON_FAILURE "Kotone deflects with pleasantries and literary discussion"
-            }
-            CHECK ^"Read Kotone's Demeanor" {
-                SKILL "social"
-                RING "air"
-                TN 2
-                ON_SUCCESS "Kotone is genuinely worried about Higuchi — they were friends, bonded over a shared love of forbidden romance stories"
-                ON_FAILURE "Kotone appears professionally concerned, nothing more"
+                ON_FAILURE "Each character who fails increases the TN of their next check targeting Kotone by 1."
             }
         }
 
         CLUES {
-            CLUE ^"The Foreign Artifact" {
-                DESCRIPTION "Higuchi purchased a foreign talisman from a curiosity shop in the Unicorn district and became increasingly fixated on it"
-                DISCOVERED_BY "Successful TN 3 Social/Water check with Kotone"
+            CLUE ^"Meeting with Tonbo Kuma" {
+                DESCRIPTION "Kotone is more than happy to reveal that not only did Hana-no-Ame indeed attend a ceremony at her teahouse recently, but that she did not attend it alone. She appeared to be meeting with none other than Tonbo Kuma (see profile on page 174), a shrine keeper and the head of the Dragonfly Clan within the city, and she asked them all sorts of questions about spirits, yōkai, and other mystical beings. Dragon PCs, Goro especially, will know that Kuma oversees the Dragonfly's shrine gardens and holds a significant amount of political sway within the city. Other PCs can glean this information with a TN 2 Culture (Fire) check."
+                DISCOVERED_BY "If the PCs have accrued 5 or more momentum points"
             }
-            CLUE ^"Higuchi's Obsession" {
-                DESCRIPTION "In the days before her disappearance, Higuchi stopped attending social engagements and spent her time researching the talisman's inscriptions"
-                DISCOVERED_BY "Successful TN 2 Social/Air check or by offering gossip in trade"
+            CLUE ^"Spirits from Beyond Rokugan" {
+                DESCRIPTION "Kotone adds that Hana-no-Ame asked specifically about spirits and spiritual artifacts from non-Rokugani cultures and locales. She suggests that since the Unicorn are the Rokugani who deal with foreign goods most often, the author's next stop may have been at the Unicorn wharf. Kotone then refers the PCs to a friend of hers who works those docks, a peacekeeper called Kaeru Haya (see profile on page 171)."
+                DISCOVERED_BY "If the PCs accrued 10 or more momentum points, or if they accrued 5 or more and now succeed on a TN 4 Courtesy (Water) check"
             }
         }
 
         RESOLUTIONS {
             RESOLUTION ^"Productive Visit" {
                 CONDITION "PCs obtain at least one clue"
-                OUTCOME "Kotone wishes them well and offers her teahouse as a safe meeting place if needed"
-                LEADS_TO [#shrine_visit_5bcf354ce4a7, #curiosity_shop_visit, #wharf_investigation]
+                OUTCOME "As the PCs exit the teahouse, they are approached by a man who introduces himself as Daidoji Shin (see profile on page 174). He is looking into rumors about the smuggling of dangerous magical artifacts from the Burning Sands west of Rokugan, and he overheard the PCs' conversation. He asks the PCs to let him know anything they may learn about such items being traded or transported as they search for Higuchi. Before making his exit, he also tells them directions to his residence in the Unicorn District in case they need to confer with him or find themselves in need of assistance as they continue their investigation.\n\nFollowing the scene at the Teahouse with No Name, the PCs may proceed to any location in the city they wish. Depending on what they have learned, they might choose to visit the Dragonfly Clan's shrine gardens to speak with Tonbo Kuma, the Unicorn Clan's wharf to find Kaeru Haya, or Daidoji Shin's lodgings if they need guidance on what to do next."
+                LEADS_TO [#shrine_visit_5bcf354ce4a7, #wharf_investigation, #shins_consultation]
             }
             RESOLUTION ^"Unproductive Visit" {
                 CONDITION "PCs fail to extract useful information"
-                OUTCOME "A pleasant but uninformative tea ceremony. The investigation must continue elsewhere."
-                LEADS_TO [#shrine_visit_5bcf354ce4a7, #curiosity_shop_visit, #wharf_investigation]
+                OUTCOME "As the PCs exit the teahouse, they are approached by a man who introduces himself as Daidoji Shin (see profile on page 174). He is looking into rumors about the smuggling of dangerous magical artifacts from the Burning Sands west of Rokugan, and he overheard the PCs' conversation. He asks the PCs to let him know anything they may learn about such items being traded or transported as they search for Higuchi. Before making his exit, he also tells them directions to his residence in the Unicorn District in case they need to confer with him or find themselves in need of assistance as they continue their investigation.\n\nFollowing the scene at the Teahouse with No Name, the PCs may proceed to any location in the city they wish. Depending on what they have learned, they might choose to visit the Dragonfly Clan's shrine gardens to speak with Tonbo Kuma, the Unicorn Clan's wharf to find Kaeru Haya, or Daidoji Shin's lodgings if they need guidance on what to do next."
+                LEADS_TO [#shrine_visit_5bcf354ce4a7, #wharf_investigation, #shins_consultation]
             }
         }
     }
@@ -444,55 +405,50 @@ ARC "L5R5e_LostWriter" {
     SCENE ^"The Shrine Gardens" #shrine_visit_5bcf354ce4a7 {
         TYPE "Roleplay"
         LOCATION #shrine_gardens_78e5e14cd094
-        DESCRIPTION "The PCs visit the tranquil Shrine Gardens in the Dragon district, where Dragonfly shrine keeper Tonbo Kuma tends the grounds. Kuma observed Higuchi visiting the gardens frequently in the weeks before her disappearance, and noticed her growing spiritual distress. Kuma is forthcoming but speaks in the elliptical manner of the Dragonfly, requiring patience to parse."
+        DESCRIPTION "In this narrative scene, the PCs have the opportunity to converse with Tonbo Kuma to learn more about Kuma's meeting with Higuchi at the Teahouse with No Name. Known for their warm and gregarious nature, Kuma has an extensive network of social connections with various powerful individuals throughout the city."
 
         OBJECTIVES {
-            REQUIRED "Learn about Higuchi's spiritual state before her disappearance"
+            REQUIRED "converse with Tonbo Kuma to learn more about Kuma's meeting with Higuchi at the Teahouse with No Name"
             OPTIONAL "Gain Tonbo Kuma's trust and assistance for later events"
         }
 
         CHECKS {
-            CHECK ^"Interpret Kuma's Riddles" {
-                SKILL "scholar"
+            CHECK ^"Game of Go" {
+                SKILL "social"
                 RING "air"
                 TN 2
-                ON_SUCCESS "The PCs understand that Kuma is describing a spiritual possession — something foreign has taken hold of Higuchi"
-                ON_FAILURE "Kuma's metaphors about 'fires within' and 'caged birds' seem poetic but unclear"
+                ON_SUCCESS "Once they have reason to trust the PCs, Kuma has them swear to be discreet and fills them in on the conversation with Higuchi at the teahouse."
+                ON_FAILURE "All Kuma is willing to divulge initially is that Higuchi requested a meeting to consult with them about some research she was doing; Kuma does not reveal any of the specifics of their conversation."
             }
-            CHECK ^"Theology Assessment" {
-                SKILL "scholar"
-                RING "void"
+            CHECK ^"Appeal to Compassion or Duty" {
+                SKILL "social"
+                RING "fire"
                 TN 3
-                ON_SUCCESS "The PCs recognize the signs Kuma describes as consistent with meishōdō — name magic from the Burning Sands. The talisman is the key."
-                ON_FAILURE "The spiritual disturbance is clearly supernatural, but its precise nature remains uncertain"
+                ON_SUCCESS "Once they have reason to trust the PCs, Kuma has them swear to be discreet and fills them in on the conversation with Higuchi at the teahouse."
+                ON_FAILURE "All Kuma is willing to divulge initially is that Higuchi requested a meeting to consult with them about some research she was doing; Kuma does not reveal any of the specifics of their conversation."
             }
         }
 
         CLUES {
-            CLUE ^"Spiritual Distress" {
-                DESCRIPTION "Higuchi was showing signs of spiritual possession — erratic behavior, speaking in tongues, and an unnatural warmth radiating from her person"
-                DISCOVERED_BY "Tonbo Kuma shares this freely with respectful visitors"
+            CLUE ^"Higuchi's Research" {
+                DESCRIPTION "Higuchi sought out Kuma to discuss matters concerning humans' interactions with spirits and to find out what methods might allow a person to contact or otherwise engage with a spirit. As it is exceedingly rare for an individual untrained in the spiritual arts to communicate with a spirit by chance, Kuma advised that the most likely method might be via a talisman or shrine in which a spirit resides."
+                DISCOVERED_BY "Once they have reason to trust the PCs, Kuma has them swear to be discreet and fills them in on the conversation with Higuchi at the teahouse."
             }
-            CLUE ^"Meishōdō Connection" {
-                DESCRIPTION "The possession is connected to meishōdō, name magic from the Burning Sands. The foreign talisman Higuchi activated is a meishōdō artifact containing a bound spirit."
-                DISCOVERED_BY "Successful TN 3 Scholar/Void check"
+            CLUE ^"Asahina Nao" {
+                DESCRIPTION "Kuma also mentions that Higuchi intended to consult other shugenja in the city as well. Asahina Nao, a Crane Clan shugenja and meishōdō expert currently visiting the area, seemed to greatly pique her interest."
+                DISCOVERED_BY "Once they have reason to trust the PCs"
             }
-            CLUE ^"Kuma's Warning" {
-                DESCRIPTION "Kuma sensed the disturbance growing stronger over several days, then suddenly it vanished — as if moved elsewhere. He believes whoever is sheltering Higuchi is concealing her."
-                DISCOVERED_BY "Successful TN 2 Scholar/Air check"
+            CLUE ^"The Governor's Referral" {
+                DESCRIPTION "If the PCs ask directly, Kuma reveals that it was Governor Miya Tetsua who suggested that Higuchi get in touch with Kuma."
+                DISCOVERED_BY "If the PCs ask directly"
             }
         }
 
         RESOLUTIONS {
-            RESOLUTION ^"Spiritual Insight" {
-                CONDITION "PCs understand the nature of the possession"
-                OUTCOME "The investigation gains focus — the PCs now know they are dealing with a spirit possession connected to a foreign artifact"
-                LEADS_TO [#curiosity_shop_visit, #shins_consultation, #governor_meeting]
-            }
-            RESOLUTION ^"Partial Understanding" {
-                CONDITION "PCs learn of the distress but not the meishōdō connection"
-                OUTCOME "Something supernatural is happening to Higuchi, but the PCs need more information"
-                LEADS_TO [#curiosity_shop_visit, #wharf_investigation, #shins_consultation]
+            RESOLUTION ^"Kuma's Lead" {
+                CONDITION "If the PCs have not learned that Higuchi's research might have led her to the Unicorn wharf"
+                OUTCOME "Kuma may add that Higuchi mentioned planning to pick up a gift for the governor at the Unicorn markets near that wharf, and that this might be a good place to inquire about her whereabouts."
+                LEADS_TO [#wharf_investigation]
             }
         }
     }
@@ -500,7 +456,7 @@ ARC "L5R5e_LostWriter" {
     SCENE ^"Unicorn Wharf Investigation" #wharf_investigation {
         TYPE "Combat"
         LOCATION #unicorn_wharf_211102ec18fb
-        DESCRIPTION "The PCs investigate the Unicorn wharf, where Higuchi was reportedly seen before her disappearance. The Kaeru peacekeepers, led by Kaeru Haya, patrol the docks and are suspicious of outsiders asking questions — especially about smuggled goods or foreign artifacts. The investigation may escalate into a skirmish if the PCs push too hard."
+        DESCRIPTION "In this scene, PCs arrive to investigate the marketplace by the Unicorn district's wharf. Kaeru Akiara is the somewhat distant cousin of Kaeru Haya. Kuma let them know that Higuchi had planned to visit the wharf. This investigation begins as a narrative scene but might progress to a duel or skirmish depending on how the PCs handle its challenges.\n\nIf the PCs make a general investigation along the wharf, proceed to Dockside Search, page 165."
 
         OBJECTIVES {
             REQUIRED "Investigate the wharf for information about Higuchi's movements"
@@ -509,26 +465,24 @@ ARC "L5R5e_LostWriter" {
         }
 
         CHECKS {
-            CHECK ^"Question Dockworkers" {
+            CHECK ^"Dockside Search" {
                 SKILL "social"
                 RING "water"
-                TN 2
-                ON_SUCCESS "A dockworker remembers Higuchi visiting a curiosity shop several times, always leaving with wrapped packages"
-                ON_FAILURE "The dockworkers are tight-lipped around strangers"
+                TN 3
+                ON_SUCCESS "Successful checks can be rewarded with fragments of useful information, such as the following:\n\nSome people say they have seen Higuchi around recently; others have seen someone they think was her.\n\nThe Unicorn Clan trades in a lot of foreign goods, so the odds are good that multiple merchants or ships carry items from the Burning Sands.\n\nA mysterious Fox Clan individual has been seen around recently, but not much else can be gleaned about their presence."
             }
-            CHECK ^"Negotiate with Kaeru Haya" {
+            CHECK ^"Convince the Peacekeepers" {
                 SKILL "social"
                 RING "earth"
                 TN 3
-                ON_SUCCESS "Haya respects directness and shares what she knows — foreign artifacts have been flowing through the wharf from a Fox Clan merchant"
-                ON_FAILURE "Haya tells the PCs to leave her wharf and stop interfering with her peacekeepers"
+                ON_SUCCESS "However, with a successful TN 3 Command (Earth) check, the PCs convince them to talk; they do not know much about the situation, but they offer to bring the party to their informal captain, Kaeru Haya, to see what she knows (see Find the Peacekeeper)."
+                ON_FAILURE "If the PCs fail this check, a fight ensues (see Confrontation)."
             }
-            CHECK ^"Search the Docks" {
-                SKILL "trade"
+            CHECK ^"Find the Peacekeeper" {
+                SKILL "scholar"
                 RING "water"
-                TN 2
-                ON_SUCCESS "Evidence of recent foreign goods shipments, including crates marked with Burning Sands script"
-                ON_FAILURE "The docks are busy and the PCs find nothing distinctive"
+                TN 1
+                ON_SUCCESS "Haya is amiable and willing to chat, provided the PCs have not stirred up too much trouble beforehand. She admits to having recently spoken with someone claiming to be Hana-no-Ame, but she does not divulge specifics—she was sworn to secrecy, and she takes her vows very seriously. Haya was told that there were a number of people in the city who Hana-no-Ame wished to avoid meeting—dangerous people, possibly, but not the sorts who would lay down their lives in pursuit of her. In no uncertain terms, Haya says she will reveal what she knows only if the PCs prove that their search is not motivated by malice by facing her in a duel (see Confrontation). She will duel them only if they agree to leave the wharf if she wins."
             }
         }
 
@@ -539,26 +493,26 @@ ARC "L5R5e_LostWriter" {
         }
 
         CLUES {
-            CLUE ^"Fox Clan Connection" {
-                DESCRIPTION "A Fox Clan merchant recently sold a shipment of foreign artifacts through the wharf. Ide Chiharu purchased several items from this shipment."
-                DISCOVERED_BY "Successful TN 3 Social/Earth check with Haya or TN 2 Trade/Water search"
+            CLUE ^"The Artifact Dealer" {
+                DESCRIPTION "Higuchi visited the markets daily for a couple of weeks, asking nearly everyone she encountered about spirits and foreign talismans. Haya personally intervened, warning Higuchi against that kind of behavior while a smuggling investigation was underway, at which point Higuchi revealed her identity as Hana-no-Ame to her. As Hana-no-Ame, Higuchi has written favorably, even romantically, about the tragic valor of the rōnin. Haya was only too eager to assist, directing Higuchi toward a particular artifact dealer in the markets who might have what she needed. She now guides the PCs to the same dealer (see Curiosity Shop, page 166)."
+                DISCOVERED_BY "If the PCs win the duel or skirmish, the rōnin divulge what they know"
             }
-            CLUE ^"Burning Sands Script" {
-                DESCRIPTION "Crates on the wharf bear markings in Burning Sands script, confirming the foreign origin of the artifacts"
-                DISCOVERED_BY "Successful TN 2 Trade/Water search of the docks"
+            CLUE ^"A Mysterious Fox Clan Individual" {
+                DESCRIPTION "A mysterious Fox Clan individual has been seen around recently, but not much else can be gleaned about their presence."
+                DISCOVERED_BY "Successful checks can be rewarded with fragments of useful information"
             }
         }
 
         RESOLUTIONS {
-            RESOLUTION ^"Peaceful Investigation" {
-                CONDITION "PCs gather information without provoking the peacekeepers"
-                OUTCOME "The Kaeru remain neutral and the PCs leave with useful intelligence"
-                LEADS_TO [#curiosity_shop_visit, #shins_consultation]
+            RESOLUTION ^"Duel or Skirmish Won" {
+                CONDITION "If the PCs win the duel or skirmish"
+                OUTCOME "She now guides the PCs to the same dealer (see Curiosity Shop, page 166)."
+                LEADS_TO [#curiosity_shop_visit]
             }
-            RESOLUTION ^"Skirmish on the Docks" {
-                CONDITION "PCs provoke or are provoked by the Kaeru peacekeepers"
-                OUTCOME "A brief fight breaks out. Regardless of outcome, the PCs attract attention and word reaches the Governor."
-                LEADS_TO [#governor_meeting]
+            RESOLUTION ^"Duel or Skirmish Lost" {
+                CONDITION "If the PCs lose the duel or skirmish"
+                OUTCOME "the Kaeru peacekeepers eject them from the Unicorn wharf, requiring them to continue their investigation elsewhere."
+                LEADS_TO [#shrine_visit_5bcf354ce4a7, #shins_consultation]
             }
         }
     }
@@ -566,67 +520,60 @@ ARC "L5R5e_LostWriter" {
     SCENE ^"The Curiosity Shop" #curiosity_shop_visit {
         TYPE "Intrigue"
         LOCATION #curiosity_shop_0db706f82ac7
-        DESCRIPTION "The PCs visit Ide Chiharu's curiosity shop to learn about the talisman she sold to Higuchi. Chiharu is a shrewd dealer who will not part with information freely — she expects compensation, favors, or leverage. She knows the talisman was dangerous but did not warn Higuchi, and fears the consequences if this becomes known."
+        DESCRIPTION "In this shop, the PCs face another intrigue conflict scene to learn more about Higuchi's actions and what, if anything, she purchased here. If time is short, this intrigue may be replaced with a narrative scene.\n\nIf the PCs ask about Higuchi, the shop owner, Ide Chiharu (see profile on page 172), initially feigns ignorance—they have caught on to the fact that they may have incidentally played a part in some illegal smuggling, and they are not in the business of giving away customer secrets, after all! Chiharu lies, deflects, tries to convince the PCs to buy something—anything to avoid talking about Higuchi and potentially implicating themself in something untoward. Their deceptions are simple enough for the PCs to see through them with a successful TN 2 Sentiment (Air) check."
 
         OBJECTIVES {
             REQUIRED "Learn the nature and origin of the talisman sold to Higuchi"
             OPTIONAL "Obtain documentation about the sealing ritual for the talisman's spirit"
-            OPTIONAL "Discover that Chiharu knowingly sold a dangerous artifact"
         }
 
         CHECKS {
-            CHECK ^"Negotiate for Information" {
-                SKILL "social"
+            CHECK ^"Bribe Chiharu" {
+                SKILL "trade"
                 RING "water"
                 TN 3
-                ON_SUCCESS "Chiharu reveals the talisman was a meishōdō artifact — a sealed vessel containing a fire spirit called an ifrit"
-                ON_FAILURE "Chiharu offers only generalities about the talisman being 'unusual'"
+                ON_SUCCESS "Once Chiharu has been sufficiently bribed or cowed, they agree to come clean."
+                ON_FAILURE "If the PCs failed to cajole or strong-arm them in a narrative scene, then Chiharu provides the following information only if the entire party agrees to become indebted to them for a future favor."
             }
-            CHECK ^"Detect Chiharu's Guilt" {
-                SKILL "social"
-                RING "air"
-                TN 3
-                ON_SUCCESS "Chiharu knew the talisman might be dangerous when she sold it. She is worried about liability."
-                ON_FAILURE "Chiharu appears to be a simple merchant caught up in events beyond her control"
-            }
-            CHECK ^"Obtain Sealing Documentation" {
+            CHECK ^"See Through Chiharu's Lies" {
                 SKILL "scholar"
-                RING "fire"
+                RING "air"
                 TN 2
-                ON_SUCCESS "Chiharu provides a scroll documenting the original binding ritual used to seal the ifrit. This will be crucial during the confrontation."
-                ON_FAILURE "Chiharu claims no such documentation exists"
+                ON_SUCCESS "Their lies having been exposed, Chiharu switches tactics: they say that, as it is clear the PCs could each benefit from their knowledge, they will be happy to share what they know—but only with whoever makes them the best offer."
+                ON_FAILURE "Chiharu lies, deflects, tries to convince the PCs to buy something—anything to avoid talking about Higuchi and potentially implicating themself in something untoward."
+            }
+            CHECK ^"Decipher the Sealing Ritual" {
+                SKILL "scholar"
+                RING "water"
+                TN 4
+                ON_SUCCESS "According to the deciphered information, the talisman's spirit must be removed from its current vessel, whether by force or by diplomacy, before the ritual described in the document commences. Then, any person or group may follow the document's instructions to perform a sealing ritual on the subdued spirit, sealing it inside a new vessel. (Upon hearing this, Chiharu offers to sell the PCs a brand-new vessel for just 2 koku—a discount, they assure them, and a safety measure in case the party cannot retrieve the talisman or something else suitable.)"
             }
         }
 
         CLUES {
-            CLUE ^"The Meishōdō Talisman" {
-                DESCRIPTION "The talisman is a meishōdō artifact from the Burning Sands containing an ifrit — a powerful fire spirit. Higuchi accidentally activated it by reading the inscriptions aloud."
-                DISCOVERED_BY "Successful TN 3 Social/Water check"
+            CLUE ^"The Talisman Sale" {
+                DESCRIPTION "At this point, Chiharu admits that a woman visited the shop a couple of weeks ago, asking about spirits and in search of foreign artifacts. They say that they exclusively deal with collectors and were about to shoo her off when she claimed that she was the Hana-no-Ame—a more prestigious customer than they expected! Sensing an easy sale, they reluctantly admit to selling her a talisman that supposedly contained a wild spirit from the Burning Sands—a story that Chiharu did not believe but that easily convinced Higuchi to make the purchase."
+                DISCOVERED_BY "Once Chiharu has been sufficiently bribed or cowed"
             }
-            CLUE ^"Chiharu's Negligence" {
-                DESCRIPTION "Chiharu suspected the talisman was dangerous but sold it to Higuchi anyway, motivated by profit"
-                DISCOVERED_BY "Successful TN 3 Social/Air check"
+            CLUE ^"The Fox Clan Traveler" {
+                DESCRIPTION "Chiharu mostly sells objects whose worth stems more from form than from function, but they had recently obtained several valuable artifacts from a traveler bearing the mon, or symbol, of the Fox Clan. The traveler claimed that each of the pieces possessed some mystical significance. The shopkeeper notes that the traveler displayed some peculiar mannerisms unlike those of any samurai they have ever met."
+                DISCOVERED_BY "Once Chiharu has been sufficiently bribed or cowed"
             }
-            CLUE ^"Sealing Ritual Scroll" {
-                DESCRIPTION "A scroll documenting the original binding ritual. This knowledge can be used to re-seal the ifrit during the confrontation."
-                DISCOVERED_BY "Successful TN 2 Scholar/Fire check"
+            CLUE ^"The Ritual Documentation" {
+                DESCRIPTION "Although they already sold the talisman, Chiharu has part of the documentation that came with it. The documentation Chiharu still possesses features ritual instructions for sealing or gaining protection against the talisman's purported spirit. Chiharu had planned to sell this information to Higuchi at a later date, assuming that it was the second part of ritual instructions they had sold her along with the talisman (in actuality, it is information on a complete second ritual, not only part of a ritual). They are more than happy to part with the document for the PCs' trouble."
+                DISCOVERED_BY "Once Chiharu has been sufficiently bribed or cowed"
             }
         }
 
         RESOLUTIONS {
             RESOLUTION ^"Full Disclosure" {
-                CONDITION "PCs learn about the ifrit and obtain the sealing scroll"
-                OUTCOME "The PCs now understand exactly what happened to Higuchi and have the tools to help her"
+                CONDITION "Once Chiharu has been sufficiently bribed or cowed"
+                OUTCOME "They are more than happy to part with the document for the PCs' trouble."
                 LEADS_TO [#shins_consultation, #governor_meeting]
             }
-            RESOLUTION ^"Partial Information" {
-                CONDITION "PCs learn about the talisman but not the sealing ritual"
-                OUTCOME "The PCs know the problem but lack a complete solution. They need more help."
-                LEADS_TO [#shins_consultation, #governor_meeting]
-            }
-            RESOLUTION ^"Stonewalled" {
-                CONDITION "PCs fail to extract meaningful information"
-                OUTCOME "Chiharu deflects all inquiries. The PCs must find answers elsewhere."
+            RESOLUTION ^"Indebted for a Future Favor" {
+                CONDITION "If the PCs failed to cajole or strong-arm them in a narrative scene"
+                OUTCOME "then Chiharu provides the following information only if the entire party agrees to become indebted to them for a future favor."
                 LEADS_TO [#shins_consultation, #governor_meeting]
             }
         }
@@ -635,115 +582,73 @@ ARC "L5R5e_LostWriter" {
     SCENE ^"Consultation with Daidoji Shin" #shins_consultation {
         TYPE "Roleplay"
         LOCATION #shins_residence_466a1cdd0ec9
-        DESCRIPTION "An optional but rewarding scene. The PCs visit Daidoji Shin, the Crane trade envoy and amateur detective, at his residence. Shin is accompanied by his bodyguard Hiramori Kasami and the shugenja Asahina Nao. Shin has been independently investigating Higuchi's disappearance out of personal curiosity, and Nao has expertise in meishōdō that could prove invaluable."
+        DESCRIPTION "This optional narrative scene is available for any group of PCs who may need a little extra assistance during their investigation. This scene would be most useful for a group of unlucky or curious PCs who missed out on some crucial information, or who would benefit from some NPC muscle or a shugenja who can help them perform rituals. Most other groups can skip this scene without missing out on much.\n\nDaidoji Shin is currently preoccupied with his investigation and is not home. Knowing he might have visitors and not wanting to be a poor host, he has posted his bodyguard, Hiramori Kasami (see profile on page 175), to await the PCs' arrival. Kasami is certain that this is simply an excuse to get out from under her watchful eye, and she is not happy about being made to wait. She knows this is not the PCs' fault, of course, and she is happy to shed insight on Shin's ongoing investigation.\n\nJoining Kasami is Asahina Nao (see profile on page 173), a well-respected Crane Clan shugenja and personal friend to both Daidoji Shin and Governor Miya Tetsua. She is in the city to visit Shin but has become caught up in the various happenings and now feels obligated to stay and assist. She will gladly help the party if they need any spiritual guidance, and she can assist in deciphering the sealing ritual if the PCs have already visited the Curiosity Shop."
 
         OBJECTIVES {
-            REQUIRED "Share findings with Shin and pool investigative resources"
             OPTIONAL "Enlist Asahina Nao's help with the meishōdō talisman"
             OPTIONAL "Learn Shin's own theories about the disappearance"
         }
 
-        CHECKS {
-            CHECK ^"Impress Shin" {
-                SKILL "scholar"
-                RING "fire"
-                TN 2
-                ON_SUCCESS "Shin is genuinely impressed by the PCs' progress and shares everything he knows freely"
-                ON_FAILURE "Shin is amused but unimpressed; he shares information but in a leisurely, roundabout fashion"
-            }
-            CHECK ^"Consult Nao on Meishōdō" {
-                SKILL "scholar"
-                RING "void"
-                TN 2
-                ON_SUCCESS "Nao confirms the ifrit theory and explains how a sealing ritual might work — or how the spirit might be freed safely"
-                ON_FAILURE "Nao provides general information about meishōdō but nothing actionable"
-            }
-        }
-
         CLUES {
-            CLUE ^"Shin's Deduction" {
-                DESCRIPTION "Shin has deduced that the Governor is hiding Higuchi in the manor. Tetsua's household staff have been purchasing unusual quantities of ice and requesting shugenja wards against fire."
-                DISCOVERED_BY "Shin shares this if the PCs have gathered at least 3 other clues"
+            CLUE ^"Kasami's Insights" {
+                DESCRIPTION "\"Shin has been searching for Higuchi as a person of interest in his magical artifacts smuggling case. She has been seen very publicly asking about foreign artifacts in recent weeks.\"\n\n\"Purportedly, a number of dangerous magical items from the Burning Sands have made their way into the city. Several witnesses have mentioned seeing suspicious characters down by the wharves at night. Several reported about a specific unfamiliar individual wearing a Fox Clan mon.\"\n\n\"Shin has primarily been investigating the area by the Unicorn wharf. You might wish to ask around there, if you have not already.\"\n\n\"The City Governor has been acting strange lately. In the last week or two, he has missed some of his usual engagements. Nao here can tell you more.\""
+                DISCOVERED_BY "She knows this is not the PCs' fault, of course, and she is happy to shed insight on Shin's ongoing investigation."
             }
-            CLUE ^"Meishōdō Expertise" {
-                DESCRIPTION "Asahina Nao explains that the ifrit can potentially be freed, re-sealed, or destroyed — each option carries different spiritual and ethical consequences"
-                DISCOVERED_BY "Successful TN 2 Scholar/Void check with Nao"
+            CLUE ^"Nao's Insights" {
+                DESCRIPTION "\"I came to the City of the Rich Frog to visit Shin, but I've been asked by the governor to stay for some favor he needs. He wouldn't specify what, just that he might need an expert on possession. So now I am here, waiting for him to call me to his manor.\"\n\n\"Earlier in my visit here, I received a letter from someone named Higuchi who wanted to ask about spirits and talismans. Seems my talents are in high demand here.\"\n\nIf the PCs describe the talisman or the sealing ritual: \"That sounds like the work of name magic right there. Binding spirits to borrow their strength. It can be very dangerous to mess around with talismans like that without proper training.\""
+                DISCOVERED_BY "She will gladly help the party if they need any spiritual guidance, and she can assist in deciphering the sealing ritual if the PCs have already visited the Curiosity Shop."
             }
         }
 
         RESOLUTIONS {
-            RESOLUTION ^"Alliance Formed" {
-                CONDITION "PCs share their findings and gain Shin's support"
-                OUTCOME "Shin and Nao will assist at the Governor's Manor if asked. The PCs gain powerful allies for the confrontation."
-                LEADS_TO [#governor_meeting]
-            }
-            RESOLUTION ^"Cordial Parting" {
-                CONDITION "PCs visit but do not share enough information to form a partnership"
-                OUTCOME "Shin wishes them luck with characteristic nonchalance. The PCs proceed without his direct aid."
+            RESOLUTION ^"A Little Assistance" {
+                CONDITION "If the number of PCs is small, or if they might struggle on an upcoming challenge"
+                OUTCOME "Nao or Kasami (or both!) could join the party for the rest of the adventure. Nao will be present for the final scene at the governor's manor, but she could always join the group early and accompany them there."
                 LEADS_TO [#governor_meeting]
             }
         }
     }
 
     SCENE ^"Audience with the Governor" #governor_meeting {
-        TYPE "Intrigue"
+        TYPE "Roleplay"
         LOCATION #governors_manor_6ca10e6cf749
-        DESCRIPTION "The PCs confront Governor Miya Tetsua at his manor. Tetsua has been sheltering the possessed Higuchi, trying to manage the situation quietly to avoid a scandal. He is reluctant to admit the truth but can be persuaded, pressured, or confronted with evidence. Once the truth is out, Tetsua asks the PCs to resolve the situation — setting up the final confrontation."
+        DESCRIPTION "If PCs try to visit the island without first exhausting their other options, they are turned away from the ferry by the governor's guards, who explain that the ferry is already full or that the governor is not taking visitors until later. Once the PCs have completed their business in the Unicorn district, they become able to access the island; this is a point of no return, so be sure that the party has done all they want in the Unicorn district.\n\nIn this narrative scene, the PCs meet with the governor of the City of the Rich Frog. Here, everything comes together as they learn what has happened with Higuchi."
 
         PREREQUISITES {
             MINIMUM_CLUES 4
         }
 
         OBJECTIVES {
-            REQUIRED "Persuade or compel Tetsua to reveal Higuchi's location"
+            REQUIRED "learn what has happened with Higuchi"
             REQUIRED "Gain access to Higuchi in the manor gardens"
             OPTIONAL "Understand Tetsua's motives for concealing the situation"
         }
 
         CHECKS {
-            CHECK ^"Diplomatic Pressure" {
-                SKILL "social"
-                RING "earth"
-                TN 3
-                ON_SUCCESS "Tetsua concedes — he has been trying to protect Higuchi and the city's reputation, but the situation has grown beyond his control"
-                ON_FAILURE "Tetsua deflects, insisting everything is under control"
-            }
-            CHECK ^"Present Evidence" {
+            CHECK ^"Assess the Situation" {
                 SKILL "scholar"
                 RING "fire"
                 TN 2
-                ON_SUCCESS "The weight of evidence is undeniable. Tetsua admits to sheltering Higuchi and reveals the situation is deteriorating — the ifrit grows stronger each day."
-                ON_FAILURE "Tetsua disputes the PCs' conclusions but appears shaken"
-            }
-            CHECK ^"Appeal to Duty" {
-                SKILL "social"
-                RING "void"
-                TN 3
-                ON_SUCCESS "Tetsua is moved. As an Imperial servant, his duty is to the wellbeing of all — including Higuchi. He opens the manor gardens to the PCs."
-                ON_FAILURE "Tetsua invokes his authority as governor and stonewalls"
+                ON_SUCCESS "On a success, they conclude that Higuchi has been possessed by a spirit. Depending on other information they have obtained in their investigation, they may also realize that Higuchi accidentally purchased a real meishōdō talisman, and that the spirit bound to it is one from the Burning Sands. These revelations give players an extra (skill)(skill) on Theology checks against the ifrit spirit."
+                ON_FAILURE "If the PCs' check fails, then Nao comes to the same conclusions, but the party gain the extra (skill)(skill) benefit of their successful investigation."
             }
         }
 
         CLUES {
-            CLUE ^"The Governor's Burden" {
-                DESCRIPTION "Tetsua has been using Imperial resources to contain Higuchi — shugenja wards, isolation, and secrecy. But the ifrit's power is growing, and the wards are failing."
-                DISCOVERED_BY "Successful check or presenting sufficient prior evidence"
+            CLUE ^"The Awful Truth" {
+                DESCRIPTION "Tetsua says he has been noticing some strange behaviors from her for over a week now, but that something has been particularly wrong with her since early this morning. He is afraid that in her search, she may have angered a spirit and become stricken with a curse. Tetsua adds that he has spent the day trying to find someone who can help her quietly, and that for this reason he has called upon Tonbo Kuma and Asahina Nao for help, seeking spiritual wisdom."
+                DISCOVERED_BY "In this narrative scene, the PCs meet with the governor of the City of the Rich Frog. Here, everything comes together as they learn what has happened with Higuchi."
             }
             CLUE ^"Higuchi's Location" {
-                DESCRIPTION "Higuchi is in the manor gardens, contained within a circle of prayer wards. The wards will not hold much longer."
-                DISCOVERED_BY "Tetsua reveals this once persuaded"
+                DESCRIPTION "Higuchi, a friend of Tetsua's, has been staying on the island while researching her latest book."
+                DISCOVERED_BY "Tetsua says"
             }
         }
 
         RESOLUTIONS {
             RESOLUTION ^"Governor Cooperates" {
-                CONDITION "PCs successfully persuade Tetsua"
-                OUTCOME "Tetsua grants full access to the gardens and offers whatever support he can provide"
-                LEADS_TO [#confrontation_fb324e23a5aa]
-            }
-            RESOLUTION ^"Forced Entry" {
-                CONDITION "PCs bypass Tetsua or enter the gardens without permission"
-                OUTCOME "The PCs reach Higuchi but have made an enemy of the Governor. Complications will follow."
+                CONDITION "When the PCs are ready"
+                OUTCOME "In this part of the adventure, the PCs—having gathered as many clues as they can—attempt to confront Higuchi. They must use the knowledge they have accumulated to fight, entrap, or free the spirit possessing her."
                 LEADS_TO [#confrontation_fb324e23a5aa]
             }
         }
@@ -754,7 +659,7 @@ ARC "L5R5e_LostWriter" {
     SCENE ^"The Possessed Author" #confrontation_fb324e23a5aa {
         TYPE "Combat"
         LOCATION #manor_gardens_bea638c27ae6
-        DESCRIPTION "The climactic encounter. In the manor gardens, the PCs find Shinjo Higuchi within a failing circle of prayer wards. The ifrit's fire burns within her — scorch marks scar the garden, the air shimmers with heat, and Higuchi speaks in two voices. The PCs must decide how to resolve the situation: free the ifrit, seal it back into the talisman, or destroy it. Each choice carries moral weight and mechanical consequences."
+        DESCRIPTION "Nao recommends moving Higuchi to the manor's interior garden for the confrontation, while Tetsua ensures that any potential prying eyes or innocent bystanders are sent away from the island. It is up to the PCs to decide how they wish to deal with the errant spirit once they have excised it from Higuchi: Free it? Trap it once again inside a talisman? Banish it for good?\n\nNao is strongly opposed to freeing the spirit and even refuses to help with the ritual if the party decides to go that route. Tetsua does not care about what happens with the spirit, so long as Higuchi is unharmed. If any players want to play up their PCs' differing opinions on the resolution of the adventure, now may be the last opportunity for them to do so!\n\nWhen the PCs are ready, they head out to the manor's interior gardens, where Tetsua soon joins them, guiding Higuchi behind him. This scene begins as a narrative scene, but it may become a skirmish; the players ultimately decide how events play out.\n\nUpon her arrival, the author seems disoriented, asking where she is and what is going on in a voice that does not sound entirely her own. She also occasionally speaks in a language the PCs can recognize as a form of Nehiri with a TN 1 Culture (Earth) check. Anyone who passes a TN 2 Theology (Fire) check will recognize the spirit as an ifrit."
 
         PREREQUISITES {
             COMPLETED_SCENES [#governor_meeting]
@@ -776,43 +681,41 @@ ARC "L5R5e_LostWriter" {
             CHECK ^"Perform Sealing Ritual" {
                 SKILL "scholar"
                 RING "void"
-                TN 4
+                TN 2
                 APPROACH "void"
-                ON_SUCCESS "The ifrit is re-sealed within the talisman. Higuchi is freed but weakened."
-                ON_FAILURE "The ritual falters. The ifrit breaks free of the wards entirely and must be confronted directly."
+                ON_SUCCESS "To seal the ifrit in a new vessel, they must fend it off while Nao or another shugenja performs the sealing ritual the PCs obtained in the Curiosity Shop. For the ritual to succeed, the shugenja performing it must succeed on three TN 2 Theology (Void) checks on their turns, at which point the ritual takes effect and the ifrit becomes sealed within its new vessel."
             }
-            CHECK ^"Commune with the Ifrit" {
+            CHECK ^"Calm or Trick the Ifrit" {
                 SKILL "social"
-                RING "fire"
-                TN 4
-                ON_SUCCESS "The ifrit is a sentient being, confused and frightened. It did not choose to possess Higuchi. It can be reasoned with."
-                ON_FAILURE "The ifrit lashes out with fire, treating the attempt at communication as an attack"
-            }
-            CHECK ^"Subdue Higuchi" {
-                SKILL "martial"
                 RING "water"
                 TN 3
-                ON_SUCCESS "Higuchi is restrained without serious injury, buying time for a ritual or negotiation"
-                ON_FAILURE "Higuchi fights with supernatural strength; the ifrit's power surges"
+                ON_SUCCESS "A subsequent successful TN 3 Courtesy (Water or Air) check can be used to calm or trick the ifrit and encourage it to peacefully exit Higuchi's body, provided the PCs are willing to allow it to go free (something that some characters—especially Nao—have a strong objection to)."
+                ON_FAILURE "If the PCs do not promise to let it go free, the ifrit does not agree to leave of its own accord."
+            }
+            CHECK ^"Recognize the Ifrit" {
+                SKILL "scholar"
+                RING "fire"
+                TN 2
+                ON_SUCCESS "Anyone who passes a TN 2 Theology (Fire) check will recognize the spirit as an ifrit."
             }
         }
 
         RESOLUTIONS {
             RESOLUTION ^"Free the Ifrit" {
                 CONDITION "PCs negotiate with the ifrit and help it separate from Higuchi willingly"
-                OUTCOME "The ifrit departs peacefully, returning to the spirit realms. Higuchi is saved. The PCs have shown compassion to a sentient being, but some may question releasing a dangerous spirit. Governor Tetsua is relieved but uneasy."
+                OUTCOME "If Higuchi survives, she will thank the players for all that they have done to help her. Governor Tetsua will thank them too, and offers a favor for their deeds."
             }
             RESOLUTION ^"Seal the Ifrit" {
                 CONDITION "PCs perform the sealing ritual successfully (requires the sealing scroll from Chiharu)"
-                OUTCOME "The ifrit is imprisoned once more. Higuchi is freed. The PCs have obeyed the Governor's wishes and followed duty — but they have condemned a sentient being to eternal captivity."
+                OUTCOME "If Higuchi survives, she will thank the players for all that they have done to help her. Governor Tetsua will thank them too, and offers a favor for their deeds. If the ifrit is sealed away once again, Nao will offer to buy the vessel from the party for a high price. The PCs may also choose to bring the vessel to the peacekeepers or Kitsuki Investigators for a—slightly less substantial—reward."
             }
             RESOLUTION ^"Destroy the Ifrit" {
                 CONDITION "PCs defeat the ifrit in combat"
-                OUTCOME "The ifrit is destroyed. Higuchi survives but is deeply traumatized. The threat is ended, but at the cost of a life — even a spirit's."
+                OUTCOME "If Higuchi survives, she will thank the players for all that they have done to help her. Governor Tetsua will thank them too, and offers a favor for their deeds."
             }
-            RESOLUTION ^"Catastrophic Failure" {
-                CONDITION "PCs fail to contain or resolve the situation"
-                OUTCOME "The ifrit breaks free entirely, causing significant damage to the manor gardens before fleeing into the countryside. Higuchi survives but the ifrit remains a threat. The Governor is furious."
+            RESOLUTION ^"Higuchi Dies" {
+                CONDITION "It is possible that the PCs might fight Higuchi while she is still possessed (see Shinjo Higuchi, Possessed, page 170)."
+                OUTCOME "If she dies, the ifrit exits her body and attempts to flee, at which point it can be released, destroyed, or sealed as described earlier in this section."
             }
         }
     }
@@ -822,27 +725,24 @@ ARC "L5R5e_LostWriter" {
     SCENE ^"Aftermath" #aftermath_6ff3fca6b17e {
         TYPE "Montage"
         LOCATION #governors_manor_6ca10e6cf749
-        DESCRIPTION "The aftermath of the confrontation. The PCs deal with the consequences of their choices, receive recognition or censure, and reflect on the ethical weight of their decision. The city returns to its uneasy equilibrium."
+        DESCRIPTION "Depending on how the PCs choose to approach the final confrontation and deal with the ifrit, this adventure may conclude in any of several ways.\n\nThe period when your group winds down from their victory offers an opportunity for players to reflect on the adventure and for you to elicit some concluding statements from them. Read the following questions aloud; ask the players to consider them and determine what their characters think:"
 
         MONTAGE {
-            MOMENT ^"Higuchi's Recovery" {
-                DESCRIPTION "Shinjo Higuchi recovers from the ordeal. If the PCs treated her with compassion, she expresses deep gratitude and promises to write of their deeds. If the ifrit was sealed or destroyed, she is haunted by guilt over its fate."
+            MOMENT ^"Hana-no-Ame's Fate" {
+                DESCRIPTION "Hana-no-Ame's fate: Did Higuchi perish in the conflict, or was she freed from the ifrit? What will happen to her next? Who is satisfied with this outcome, and who is dissatisfied?"
             }
-            MOMENT ^"The Governor's Judgment" {
-                DESCRIPTION "Miya Tetsua assesses the PCs' handling of the situation. Cooperative PCs receive his formal thanks and a letter of commendation. Those who forced entry or caused a scene receive a more measured response."
+            MOMENT ^"The Ifrit" {
+                DESCRIPTION "The ifrit: What is the ifrit's ultimate fate? Who is satisfied with this outcome, and who is not? Do you believe the ifrit could—or should—have been handled a different way?"
             }
-            MOMENT ^"Chiharu's Fate" {
-                DESCRIPTION "If the PCs exposed Chiharu's negligence, she faces consequences — her shop may be closed, or she may seek to make amends. If not, she continues her trade, wiser but unrepentant."
-            }
-            MOMENT ^"The City Endures" {
-                DESCRIPTION "The City of the Rich Frog returns to its routine of trade, rivalry, and uneasy coexistence. But the PCs have left their mark, and the factions remember."
+            MOMENT ^"Personal Goals" {
+                DESCRIPTION "Personal goals: Did you achieve what you set out to accomplish? Is your character satisfied with the way things turned out? How did (or will) they resolve their personal goals in the aftermath of this incident?"
             }
         }
 
         RESOLUTIONS {
             RESOLUTION ^"A Story Ends" {
                 CONDITION "All aftermath moments are resolved"
-                OUTCOME "The adventure concludes. The PCs carry the weight of their choices forward."
+                OUTCOME "For their part in the adventure, each PC should receive 3 XP plus an extra 1 XP for each hour of play."
             }
         }
     }
@@ -854,19 +754,10 @@ ARC "L5R5e_LostWriter" {
     REWARDS {
         XP_BASE 3
         CONDITIONAL_REWARDS {
-            REWARD "Saved Shinjo Higuchi's life" {
+            REWARD "Each hour of play" {
                 XP 1
             }
-            REWARD "Resolved the ifrit's situation with compassion (freed or negotiated)" {
-                XP 1
-            }
-            REWARD "Maintained the Governor's trust and cooperation throughout" {
-                XP 1
-            }
-            REWARD "Discovered the full truth about the meishōdō talisman's origin" {
-                XP 1
-            }
-            REWARD "Achieved personal goals related to ninjo or giri" {
+            REWARD "any players felt that their character achieved their personal goal for this adventure" {
                 XP 2
             }
         }

@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
     NAME "Legend of the Five Rings 5th Edition - Emerald Empire: New Player Options"
-    VERSION "0.5.1"
+    VERSION "0.5.2"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -393,11 +393,11 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         }
 
         SCHOOL_ABILITY "Just as Predicted" {
-            "At the beginning of a game session or as a downtime activity, make a TN 1 Theology check using any ring. If you succeed, choose a number of kept dice up to your school rank to reserve. Until end of session or next downtime scene, when any character makes a skill check using the chosen ring, you may replace one or more kept dice with the same number of reserved dice of the same type."
+            "At the beginning of a game session or as a downtime activity, you may make a TN 1 Theology check using any ring. If you succeed, choose a number of kept dice up to your school rank to reserve. Until the end of the game session or the next downtime scene, when any character makes a skill check using the chosen ring, you may replace one or more kept dice with the same number of reserved dice of the same type."
         }
 
         MASTERY_ABILITY ^"Foreseen in the Stars" {
-            "Once per game session, spend 1 Void point to reveal you have foreseen an event in the current scene. Retroactively declare one or more preparations you have taken, subject to GM approval. If preparations require a skill check, make it when you use this ability."
+            "Once per game session, you may spend 1 Void point to reveal that you have foreseen an event in the current scene. You may retroactively declare one or more preparations you have taken, subject to the GM's approval. If any preparations would require a skill check, such as the preparation of a ward, you make the check when you use this ability."
         }
         STARTING_OUTFIT [
             "sanctified robes", "concealed armor",
@@ -573,11 +573,11 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         }
 
         SCHOOL_ABILITY "Blessing of the Fortunes" {
-            "You have gained the goodwill of a Fortune who grants you invocations. When making a check to use an invocation learned this way, add additional bonus successes equal to your school rank. Select a Fortune as the primary object of your veneration and choose one appropriate invocation for which you meet the rank prerequisite. You learn that invocation without paying its XP cost. Each time your school rank increases, you gain one additional invocation this way."
+            "You have gained the goodwill of the Fortune you serve, who grants you certain invocations. When you make a check to use an invocation you learned this way, add additional bonus successes equal to your school rank. Select a Fortune to be the primary object of your veneration and choose one appropriate invocation (see the sidebar The Fortunes and their Blessings) for which you meet the rank prerequisite. You learn that invocation (without paying its XP cost).\n\nEach time your school rank increases, you gain one additional invocation this way."
         }
 
         MASTERY_ABILITY ^"Favor of the Fortunes" {
-            "Once per scene, you may importune one invocation without making the sacrifices usually required and without the usual TN increase. Use the Meditation skill in place of the skill check normally required (you must still use the ring required for the invocation)."
+            "Once per scene, you may importune one invocation without making the sacrifices usually required and without the usual TN increase. You use the Meditation skill in place of the skill check normally required to use the invocation (you must still use the ring required for the invocation)."
         }
         STARTING_OUTFIT [
             "sanctified robes", "ceremonial clothes",
@@ -660,11 +660,11 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         }
 
         SCHOOL_ABILITY "Embrace the Void" {
-            "When you spend a Void point to Seize the Moment, you may also treat your ranks in the skill you are using as being equal to your school rank. If your ranks in the skill are equal to or higher than your school rank, or if you have 5 ranks in the skill, you may add one kept (ring) set to an (op) result instead."
+            "When you spend a Void point to Seize the Moment (see page 36 of the core rulebook), you may also treat your ranks in the skill you are using as being equal to your school rank. If your ranks in the skill are equal to or higher than your school rank, or if you have 5 ranks in the skill, you may add one kept (ring) set to an (op) result instead."
         }
 
         MASTERY_ABILITY ^"One with the Void" {
-            "Once per scene, you may use one kihō technique you do not know. You may use the Meditation skill in place of the skill check normally required (you must still use the ring required for the kihō)."
+            "Once per scene, you may use one kihō technique you do not know. You may use the Meditation skill in place of the skill check normally required to use the kihō (you must still use the ring required for the kihō)."
         }
         STARTING_OUTFIT [
             "common clothes", "bō (staff) or nunchaku (linked staff)",
@@ -754,9 +754,9 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         }
 
         MASTERY_ABILITY ^"Ninth Tail Ascension" {
-            "Your true form now has nine tails. While you are in your true form, your supernatural resistance and physical resistance each increase by 2, and when you make a skill check, you may alter the result of one die containing (op) to a result containing (st). While you are in your true form, your Attack action checks gain the following new opportunity: (op)(op): After resolving this action, if your target is Incapacitated or Unconscious, you devour or banish their body or soul, instantly killing them."
+            "Your true form now has nine tails. While you are in your true form, your supernatural resistance and physical resistance each increase by 2, and when you make a skill check, you may alter the result of one die containing (su) to a result containing (ex). While you are in your true form, your Attack action checks gain the following new opportunity:\n\n(op) (op): After resolving this action, if your target is Incapacitated or Unconscious, you devour or banish their body or soul, instantly killing them."
         }
-        STARTING_OUTFIT ["Take the starting outfit of any one other school as appropriate to your false identity"]
+        STARTING_OUTFIT ["Take the starting outfit of any one other school, as appropriate to your false identity."]
 
         CURRICULUM {
             RANK 1 {
@@ -1010,7 +1010,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         }
     }
 
-    # source (page 242)
+    # source (pages 242-243)
     ^"Well Connected" DEF {
         EXTENDS #L5R266oP8qR0sT2uV4wX6y ^"Distinction"
 
@@ -1148,8 +1148,8 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         }
 
         EFFECT {
-            "You were born a peasant before being adopted into a samurai family, and some know your origins."
-            "When you make a check to deal authoritatively with a samurai who knows of your peasant birth (such as Command [Fire] to order a subordinate or Courtesy [Fire] to impugn another's honor), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+            "Although adopted by a samurai family, you were born a peasant. Other samurai who know this fact are likely to look down upon you and may use this fact against you socially."
+            "When you make a check to deal authoritatively or collegially with a samurai who knows of your peasant birth (such as a Command [Fire] check to give an order to a subordinate or a Courtesy [Fire] check to impugn another's honor), you must choose and reroll two dice showing (su) or (ex) results. After resolving the check, if you failed, you regain 1 Void point."
         }
     }
 
@@ -1163,8 +1163,8 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         }
 
         EFFECT {
-            "You have a severe allergy to a common substance."
-            "When you make a check that exposes you to the source of your allergy (such as Fitness [Air] to run through a swarm of bees or Courtesy [Air] to sample a dish containing your allergen), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+            "Choose a common natural substance. You have a strong allergy to it, and exposure causes severe discomfort or even a life-threatening reaction."
+            "When you make a check that exposes you to the source of your allergy (such as a Fitness [Air] check to run through a swarm of bees or a Courtesy [Air] check to sample a dish containing your allergen without offending your host), you must choose and reroll two dice showing (su) or (ex) results. After resolving the check, if you failed, you regain 1 Void point."
         }
     }
 
@@ -1178,8 +1178,8 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         }
 
         EFFECT {
-            "Your family line is cursed, and the curse manifests when you delve into your heritage."
-            "When making a check that does or could invoke the curse (such as Culture [Void] to understand your family history or Theology [Void] to seek your ancestors' blessing), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+            "Your family carries a curse. Decide with the GM how this curse manifests."
+            "When making a check that does or could invoke the curse (such as a Culture [Void] check to understand your family history or a Theology [Void] check to seek your ancestors' blessing), you must choose and reroll two dice showing (su) or (ex) results. After resolving the check, if you failed, you regain 1 Void point."
         }
     }
 
@@ -1194,7 +1194,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
 
         EFFECT {
             "You are infamous among the residents of a particular city (chosen with the GM). People within this city resist cooperating with you and may actively hinder your activities within the city."
-            "When performing a check to gain assistance or cooperation from a resident of the city that despises you (such as a Courtesy [Water] check to learn the latest sake house rumors or a Commerce [Water] check to purchase goods within the city), you must choose and reroll two dice showing (op) or (st) results. After resolving the check, if you failed, you regain 1 Void point."
+            "When performing a check to gain assistance or cooperation from a resident of the city that despises you (such as a Courtesy [Water] check to learn the latest sake house rumors or a Commerce [Water] check to purchase goods within the city), you must choose and reroll two dice showing (su) or (ex) results. After resolving the check, if you failed, you regain 1 Void point."
         }
     }
 
@@ -1208,8 +1208,8 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
         }
 
         EFFECT {
-            "The spirits of Chikushodo have marked you, and animals are hostile toward you."
-            "When performing a check to interact with an animal (such as Survival [Earth] to calm a frightened horse or Fitness [Earth] to go unnoticed by a hungry wolf), you must choose and reroll two dice showing (su) or (ex). After resolving the check, if you failed, gain 1 Void point."
+            "Animals dislike you and show it in a variety of ways. Dogs bark in your presence, cats hiss, and wild animals flee from you or become aggressive."
+            "When performing a check to interact with an animal (such as a Survival [Earth] check to calm a frightened horse or a Fitness [Earth] check to go unnoticed by a hungry wolf), you must choose and reroll two dice showing (su) or (ex) results. After resolving the check, if you failed, you regain 1 Void point."
         }
     }
 
@@ -1224,7 +1224,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
 
         EFFECT {
             "You do not believe in the divinity of the Kami, the existence of spirits, or the veracity of the Celestial Order. If discovered, this constitutes grave blasphemy and might even be a crime against the Emperor."
-            "When you make a check that relies on the existence of the Spirit Realms (such as a Medicine [Void] check to diagnose a malady of the soul or a Theology [Void] check to detect the presence of a kami), you must choose and reroll two dice showing (op) or (st) results. After resolving the check, if you failed, you regain 1 Void point."
+            "When you make a check that relies on the existence of the Spirit Realms (such as a Medicine [Void] check to diagnose a malady of the soul or a Theology [Void] check to detect the presence of a kami), you must choose and reroll two dice showing (su) or (ex) results. After resolving the check, if you failed, you regain 1 Void point."
         }
     }
 
@@ -1322,8 +1322,8 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
                 ^"Rank" INTEGER 3
                 ^"Activation" STRING "Once per game session, during a narrative scene or as a downtime activity"
                 ^"Check" STRING "TN 2 Skulduggery (Air)"
-                ^"Effect" STRING "If you succeed, recruit a minor or previously unknown NPC (GM discretion) as a Kolat asset. Record them under your Relationships. Once per game session you may call on one asset you can reasonably contact. The NPC aids you during a single scene or conducts a single downtime activity."
-                ^"Opportunities" STRING "Air (op): If you succeed, choose one skill. The NPC has ranks in that skill equal to your school rank and can perform checks with that skill to assist you."
+                ^"Effect" STRING "If you succeed, you recruit a minor or previously unknown NPC (at the GM's discretion) as a Kolat asset. Record them under your Relationships. From now on, once per game session you may call on one of your assets whom you can reasonably contact. The NPC can aid you during a single scene, doing their best to perform tasks you assign them, or they can conduct a single downtime activity. If a profile is required, use an appropriate NPC of the GM's choice."
+                ^"Opportunities" STRING "Air (op): If you succeed, choose one skill. The NPC has a number of ranks in that skill equal to your school rank and can perform checks with that skill to assist you."
             }
 
             #8ImsWcnNktegB5jaUT03UR ^"Awe of Heaven" DEF {
@@ -1331,7 +1331,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
                 ^"Subtype" STRING "Void Shūji (Imperial)"
                 ^"Rank" INTEGER 4
                 ^"Activation" STRING "Once per scene, as an Attack and Scheme action"
-                ^"Check" STRING "Command (Void) check targeting any number of characters in the scene. TN equals the highest status rank among targets."
+                ^"Check" STRING "you may make a Command (Void) check targeting any number of characters in the scene. The TN of the check is equal to the highest status rank among your targets."
                 ^"Effect" STRING "If you succeed, each target suffers the Silenced condition."
             }
         }
@@ -1348,11 +1348,11 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
 
         ENTRIES {
             #9CQXynRmsZhECY4Lgu5sWP ^"Advisor" DEF {
-                ^"Assigned By" STRING "Daimyo, Emerald Magistrates, military leaders, high-ranking courtiers"
+                ^"Assigned By" STRING "Daimyō, Emerald Magistrates, military leaders, high-ranking courtiers, and other individuals of import can appoint Advisors, and do so at their discretion."
                 ^"Status Award" STRING "+10 (minimum 40)"
                 ^"XP to Completion" INTEGER 36
                 ^"Title Ability" STRING "Skilled Attendant"
-                ^"Title Ability Effect" STRING "When you provide assistance on a Scholar skill check, the character you are assisting may roll (skill) equal to your ranks in that skill instead of their own."
+                ^"Title Ability Effect" STRING "When you provide assistance on a Scholar skill check, the character you are assisting may also roll (skill) equal to your ranks in that skill instead of rolling (skill) equal to their own ranks in that skill."
                 ^"Advancement" LIST OF STRING [
                     "Scholar Skills (Skill Group)",
                     "Commerce (Skill)",
@@ -1365,11 +1365,11 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
 
             #2rL7DUPKnOVgiSUClqYBUW ^"Clan Magistrate" DEF {
-                ^"Assigned By" STRING "Clan champions, daimyo, and other clan leaders"
+                ^"Assigned By" STRING "Clan champions, daimyō, and other leaders within a clan may appoint magistrates to enforce the law within the clan's territories and among its vassals."
                 ^"Status Award" STRING "+10 (minimum 45)"
                 ^"XP to Completion" INTEGER 30
                 ^"Title Ability" STRING "Justice of the Champion"
-                ^"Title Ability Effect" STRING "When you make a Command or Courtesy check targeting a member of your clan, you may spend (op)+: The target receives or removes (your choice) strife equal to (op) spent this way."
+                ^"Title Ability Effect" STRING "When you make a Command or Courtesy check targeting a member of your clan, you may spend (op) as follows:\n\n(op)+: The target receives or removes (your choice) strife equal to (op) spent this way."
                 ^"Advancement" LIST OF STRING [
                     "Scholar Skills (Skill Group)",
                     "Social Skills (Skill Group)",
@@ -1399,7 +1399,7 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
 
             #Q93fb38lIZlK7MrgtxkTBc ^"Gunso" DEF {
-                ^"Assigned By" STRING "A daimyo or superior officer within the military rank structure"
+                ^"Assigned By" STRING "A daimyō may assign a samurai a rank within their military forces, and samurai serving within the military rank structure may be promoted by a superior officer."
                 ^"Status Award" STRING "+5 (minimum 20)"
                 ^"XP to Completion" INTEGER 24
                 ^"Title Ability" STRING "Lead from the Front"
@@ -1416,11 +1416,11 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
 
             #ZDJ7xKw5n6xnfyWCHXX1aw ^"Monastic Acolyte" DEF {
-                ^"Assigned By" STRING "Most monasteries accept anyone who takes the required vows and shaves their head"
+                ^"Assigned By" STRING "Most monasteries accept anyone as a monk, as long as they take the required vows and shave their head. A samurai who becomes a monk leaves their old life behind, including both their clan and family identity, and takes a new name."
                 ^"Status Award" STRING "Status becomes 25"
                 ^"XP to Completion" INTEGER 24
                 ^"Title Ability" STRING "Enlightened"
-                ^"Title Ability Effect" STRING "When you are selected as a target of an action requiring a skill check, you may spend a Void point to increase or decrease the TN of the check by an amount up to your ranks in Meditation (minimum 1)."
+                ^"Title Ability Effect" STRING "When you are selected as a target of an action requiring a skill check, you may spend a Void point to increase or decrease the TN of the check by an amount up to your ranks in Meditation (to a minimum of 1)."
                 ^"Advancement" LIST OF STRING [
                     "Martial Skills (Skill Group)",
                     "Scholar Skills (Skill Group)",
@@ -1433,11 +1433,11 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
 
             #kEHbRqdefVeY9ETA922fOI ^"Priest" DEF {
-                ^"Assigned By" STRING "Most priests train from a young age; some are assigned by a head priest at a shrine or temple"
+                ^"Assigned By" STRING "Most priests train for their role from a young age. In rare cases, an individual who has shown a particular devotion to or affinity for the kami may take up duties at a shrine or temple, where the head priest assigns their title."
                 ^"Status Award" STRING "+10 (minimum 40)"
                 ^"XP to Completion" INTEGER 24
                 ^"Title Ability" STRING "Servant of the Kami"
-                ^"Title Ability Effect" STRING "You may importune invocations even if you do not know any invocations. When you importune, do not increase the TN by 1 (although you still increase TN if the invocation rank is higher than your school rank)."
+                ^"Title Ability Effect" STRING "You may importune invocations even if you do not know any invocations. When you importune an invocation, do not increase the TN by 1 (although you still increase the TN if the rank of the invocation is higher than your school rank)."
                 ^"Advancement" LIST OF STRING [
                     "Social Skills (Skill Group)",
                     "Composition (Skill)",
@@ -1450,11 +1450,11 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
 
             #3ZdGc94SVvP7M9TEirn2j7 ^"Spy" DEF {
-                ^"Assigned By" STRING "Daimyo, clan champions, magistrates, and clandestine organizations (never announced publicly)"
+                ^"Assigned By" STRING "Daimyō, clan champions, magistrates, and clandestine organizations surreptitiously task a samurai with acting as a spy. Unlike other titles, of course, this is never announced publicly."
                 ^"Status Award" STRING "-5"
                 ^"XP to Completion" INTEGER 24
                 ^"Title Ability" STRING "Ears Everywhere"
-                ^"Title Ability Effect" STRING "Once per game session as a Scheme and Support action or downtime activity targeting a location or social group, make a TN 4 Sentiment (Air) check. If you succeed, discover the latest relevant happenings and which current rumors are false. If discerning someone's qualities is your social objective in an intrigue, score momentum points equal to your Air Ring plus bonus successes. (op): Plant a rumor that spreads among the targeted group."
+                ^"Title Ability Effect" STRING "Once per game session as a Scheme and Support action or as a downtime activity targeting a particular location or social group, you may gather and sift through the current rumors for credible intelligence by making a TN 4 Sentiment (Air) check. If you succeed, you discover the latest happenings relevant to your current location or social group, as well as which current rumors are false. If discerning someone's qualities is your social objective in an intrigue scene, you score momentum points equal to your Air Ring plus your bonus successes.\n\n(op): You plant a rumor that spreads among the characters in the scene or the targeted group (although they don't necessarily believe it)."
                 ^"Advancement" LIST OF STRING [
                     "Social Skills (Skill Group)",
                     "Government (Skill)",
@@ -1467,11 +1467,11 @@ EXTENSION "L5R5e_Emerald_Empire" EXTENDS "L5R5e_Core_Character" {
             }
 
             #8L56PqWyoquPGtIJVM4lXO ^"Yojimbo" DEF {
-                ^"Assigned By" STRING "Daimyo, Emerald Magistrates, military leaders, high-ranking courtiers"
+                ^"Assigned By" STRING "Daimyō, Emerald Magistrates, military leaders, high-ranking courtiers, and other individuals of import can appoint yōjimbō, and do so at their discretion."
                 ^"Status Award" STRING "+10 (minimum 40)"
                 ^"XP to Completion" INTEGER 36
                 ^"Title Ability" STRING "No Sacrifice Too Great"
-                ^"Title Ability Effect" STRING "One character is assigned as your charge; they can order you to treat someone else as your charge until they lift this order. If your charge is at range 0-2, you may spend 1 Void point to replace your charge as the target of an Attack action. If you suffer a critical strike as a result, gain 1 Void point."
+                ^"Title Ability Effect" STRING "One character is assigned as your charge; this character can order you to treat someone else as your charge instead until they lift this order. If your charge is at range 0–2, you may spend 1 Void point to replace your charge as the target of an Attack action. If you suffer a critical strike as a result of this Attack action, gain 1 Void point."
                 ^"Advancement" LIST OF STRING [
                     "Martial Skills (Skill Group)",
                     "Government (Skill)",
