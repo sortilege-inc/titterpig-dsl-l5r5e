@@ -15,7 +15,7 @@
 
 ARC "L5R5e_DarkTides" {
     NAME "Dark Tides"
-    VERSION "0.5.2"
+    VERSION "0.5.3"
     SPEC_VERSION "0.5"
     DEPENDS_ON "L5R5e_Core_Core"
     USES_EXTENSION "L5R5e_GM_Kit_Mechanics"
@@ -415,7 +415,6 @@ ARC "L5R5e_DarkTides" {
                 RING "earth"
                 TN 3
                 ON_SUCCESS "Alternatively, the GM can have the PCs make a TN 3 Government (Earth 2) check to be aware of the Tortoise Clan's unique aspects and protections."
-                ON_FAILURE "PCs enter Slow Tide Harbor without foreknowledge of the Tortoise situation"
             }
         }
 
@@ -477,21 +476,18 @@ ARC "L5R5e_DarkTides" {
                 RING "void"
                 TN 2
                 ON_SUCCESS "(A TN 2 Sentiment [Void 1] check can reveal hints as to her motivations during their questioning.)"
-                ON_FAILURE "Her motivations remain unclear"
             }
             CHECK ^"Convince Mikoto to Cooperate" {
                 SKILL "Courtesy"
                 RING "void"
                 TN 2
                 ON_SUCCESS "Threats probably won't be useful (and require a TN 4 Command check), but attempts to get Mikoto on the PCs' side should generally be successful, as they lessen any disruption. These should require a TN 2 Courtesy (Void 1) check."
-                ON_FAILURE "Mikoto minimizes the significance of events"
             }
             CHECK ^"Threaten Mikoto" {
                 SKILL "Command"
                 RING "fire"
                 TN 4
-                ON_SUCCESS "Mikoto reluctantly shares information"
-                ON_FAILURE "Mikoto stonewalls and becomes hostile"
+                ON_SUCCESS "Threats probably won't be useful (and require a TN 4 Command check)"
             }
         }
 
@@ -536,21 +532,18 @@ ARC "L5R5e_DarkTides" {
                 SKILL "Sentiment"
                 TN 1
                 ON_SUCCESS "A TN 1 Sentiment check can let the PCs realize she will give them more information if they are friendly than if they are stern."
-                ON_FAILURE "PCs may inadvertently intimidate her"
             }
             CHECK ^"Friendly Approach" {
                 SKILL "Courtesy"
                 RING "water"
                 TN 2
                 ON_SUCCESS "If they are friendly, she quickly relaxes and becomes chatty, with her sons occasionally chipping in answers as well."
-                ON_FAILURE "Chiyu remains cautious"
             }
             CHECK ^"Stern Approach" {
                 SKILL "Command"
                 RING "fire"
                 TN 2
-                ON_SUCCESS "Chiyu answers reluctantly"
-                ON_FAILURE "Chiyu clams up, sons remain silent"
+                ON_SUCCESS "PCs can overcome these obstacles either by being sufficiently threatening (a TN 2 Command [Fire 1, Air 3] check) or sufficiently charming (a TN 2 Courtesy [Water 1, Earth 3] check)."
             }
         }
 
@@ -595,14 +588,12 @@ ARC "L5R5e_DarkTides" {
                 SKILL "Command"
                 TN 1
                 ON_SUCCESS "If the PCs can endure his ramblings and occasional petulant demands, however, and succeed at a TN 1 Command check, he can potentially share some useful information. If a character succeeds on the check, they receive one item of information, plus one additional item per bonus success. Different characters may each make a check to find out more information."
-                ON_FAILURE "Amano babbles incoherently"
             }
             CHECK ^"Learn Amano Accused Kizo" {
                 SKILL "Courtesy"
                 RING "fire"
                 TN 2
                 ON_SUCCESS "Amano is in hiding now because four days ago, after he realized Toru had also disappeared, he became overly paranoid and publicly accused Boss Kizo of murdering his friends. However, he is very reluctant to admit this rather terrible breach of public etiquette. The PCs need to wheedle it out of him with a TN 2 Courtesy (Fire 3, Water 1) check, or perhaps by purchasing some Blue Flame for him (a TN 1 Sentiment or Medicine check can indicate his need)."
-                ON_FAILURE "Amano conceals this breach of etiquette"
             }
 
             # --- Hade ---
@@ -611,14 +602,12 @@ ARC "L5R5e_DarkTides" {
                 RING "earth"
                 TN 2
                 ON_SUCCESS "He witnessed a portion of Hiroshige's kidnapping: on his way back from visiting Ikue, he saw a trio of men dragging Hiroshige out of the Wallow, following the Street of Lowering Clouds. He shouted and started to pursue, but then one of the men turned and shouted something. \"Sounded kind of like a prayer, maybe, but there was something wrong about it. And then I was… afraid. I've been afraid ever since.\" He starts to weep. \"It was magic, some kind of curse! It made me into a coward!\""
-                ON_FAILURE "Hade is too frightened and incoherent to share useful information"
             }
             CHECK ^"Detect Maho on Hade" {
                 SKILL "Theology"
                 RING "earth"
                 TN 2
                 ON_SUCCESS "Kansen—corrupted elemental kami—that vile incantation summoned are still lurking around Hade, so everyone feels a bit queasy around him. Hade's stable counts as Defiled terrain (see page 267 of the Core Rulebook) . PCs may make a TN 2 Theology (Earth 3, Fire 1) check to determine that he was targeted with a mahō spell."
-                ON_FAILURE "Something is wrong but the precise nature is unclear"
             }
 
             # --- Boss Kizo ---
@@ -636,7 +625,6 @@ ARC "L5R5e_DarkTides" {
                 RING "water"
                 TN 2
                 ON_SUCCESS "Once any unpleasantness is concluded (or avoided altogether), Aoi can share the following, with each (su) on a check providing one item of information. PCs may spend (op) on a successful check to have additional (and useful) flavor added to a response.\n\nAoi knows that three of her more frequent customers—Toru, Hiroshige, and a rōnin named Fubato—have vanished in the last few weeks. Toru was the most recent (probably five days, as that is when he was last seen). This isn't the first time this has happened, but it is quite unusual for so many samurai to vanish at once (disappearances and murders among peasant addicts are much more common).\n\nIf the PCs ask if she has heard of any other disappearances, Aoi says there are rumors that customers at the competing Green Rest opium den have also gone missing or been found dead, although she has no details. If the PCs don't ask specifically about this subject, (op) on other checks can be used to have her reveal this.\n\nIf the PCs question her about the specific events surrounding Hiroshige and Toru, Aoi can recount a brusque, unsympathetic version of the same story the PCs may have heard from Amano or Hade. Hiroshige left the place after running out of money, Toru was thrown out after getting into a quarrel with another customer, and neither has been seen again.\n\nIf the PCs ask about the notorious Blue Flame drug, Aoi smirks. \"What, you interested in a free sample, samurai-sama?\" She tries to shrug off the question, but if pressed (and if the PCs assure her she is safe from arrest), she reluctantly admits that it is a new drug supplied by a \"gaijin merchant\" named Azif, who can be found in the Dockside."
-                ON_FAILURE "Aoi evades and makes vague threats"
             }
 
             # --- Green Rest ---
@@ -645,7 +633,6 @@ ARC "L5R5e_DarkTides" {
                 RING "earth"
                 TN 2
                 ON_SUCCESS "Awa can identify two missing regular customers, Yasuki Suzaku and Kasuga Michiko, and has heard rumors that Suzaku's body was found elsewhere in the Wallow. He also has heard rumors that some of the regular customers at the Golden Dream have likewise disappeared, including one—Kasuga Toru—who also visited the Green Rest with some frequency.\n\nHe has no specific information on Suzaku and Michiko's disappearances at first, but if a PC used the Fire approach and got at least one (op), he slaps his fist into his palm: \"Ah, I remember. Suzaku-san was talking with a big rōnin with a tattoo on his neck, the last night she was here. I remember because I hadn't seen that fellow before—he wasn't a regular here.\" He has not seen the tattooed rōnin since then."
-                ON_FAILURE "Awa is too nervous to share useful details"
             }
 
             # --- Hiroshige's Kidnapping Site ---
@@ -654,7 +641,6 @@ ARC "L5R5e_DarkTides" {
                 RING "air"
                 TN 3
                 ON_SUCCESS "Additionally, PCs who have a vigilance of 3 or higher notice that one of the kidnappers caught their clothing on the splintered beam of an adjacent building. PCs who make a TN 3 Skulduggery (Air 2, Earth 4) check determine that the piece of linen is stained with raw opium, suggesting it was worn in someplace where large amounts of the drug were stored. This is also a clue pointing to the warehouse they will seek out later on."
-                ON_FAILURE "No useful physical evidence beyond what vigilance reveals"
             }
 
             # --- Burakumin Village ---
@@ -663,7 +649,6 @@ ARC "L5R5e_DarkTides" {
                 RING "fire"
                 TN 1
                 ON_SUCCESS "PCs who can bring themselves to travel north to the burakumin village and speak with the hunched, cowering \"nonpeople\" who live there can learn a great deal more. The GM may wish to inflict strife or increase the effects of strife on fastidious or rigidly conventional PCs. The burakumin are not accustomed to magistrates who actually seek information from them, but if the PCs convince them of their sincerity (a TN 1 Command [Fire 2, Water 3] check or a TN 3 Courtesy [Earth 2, Air 4] check), they readily share the following:\n\nYasuki Suzaku was beaten heavily, but the cause of death appeared to be knife wounds. With (op), the burakumin also say they believe she was fighting someone before being stabbed as there were bruises and blood on her knuckles and blood and hair under her fingernails.\n\nSuzaku's body showed signs that she had been kept as a prisoner, such as rope burns and chafing on her wrists and ankles. One wrist and hand were severely abraded and had bled heavily, suggesting her hand was pulled forcibly out of a manacle. (This was part of her escape attempt.)\n\nThe burakumin kept Suzaku's clothes and eventually sold them (something they are allowed to do this with unclaimed bodies). They say her clothing had thick dust and many wood splinters on it, as though she had been inside a dirty, wooden building. There was also raw opium ground into her clothing as though she had fallen in or lain on it.\n\nThe burakumin are aware of the various warehouses on the outskirts of town that gangs and smugglers control. Some of the warehouses are near their village, but they do not meddle with them as it isn't worth their lives."
-                ON_FAILURE "Burakumin are too frightened to cooperate"
             }
 
             # --- Doro the Moneylender ---
@@ -739,34 +724,30 @@ ARC "L5R5e_DarkTides" {
                 SKILL "Fitness"
                 TN 3
                 ON_SUCCESS "The PCs can approach the situation in whatever manner they choose. Breaking down the main exterior door requires a TN 3 Fitness check; the TN for the side door is one lower as it lacks the heavy bracing of the main door. (op) can be spent to allow the PCs to smash open a door suddenly and violently enough to surprise the ruffians inside."
-                ON_FAILURE "Door holds; PCs must try another approach"
             }
             CHECK ^"Break Down Side Door" {
                 SKILL "Fitness"
                 TN 2
-                ON_SUCCESS "Side door breached"
-                ON_FAILURE "Door holds"
+                ON_SUCCESS "the TN for the side door is one lower as it lacks the heavy bracing of the main door."
             }
             CHECK ^"Pick a Door Lock/Bar" {
                 SKILL "Skulduggery"
                 RING "air"
                 TN 3
-                ON_SUCCESS "Door bar lifted stealthily"
-                ON_FAILURE "PCs alert the guards"
+                ON_SUCCESS "Certain invocations may also be effective, or a PC could use a TN 3 Skulduggery (Air 2, Fire 4) check to try to open a door by stealth. This could be done by sliding a blade or other item through a crack in the door to lift the blocking bar out of place."
             }
             CHECK ^"Intimidate Guards Into Opening" {
                 SKILL "Command"
                 RING "fire"
                 TN 2
                 ON_SUCCESS "More creative PCs might try to coerce the ruffians by shouting orders, announcing themselves as magistrates conducting an inspection, or making similar loud commands. This approach, together with a TN 2 Command (Fire 1, Earth 3) check, can cow one or more of the ruffians into opening the doors."
-                ON_FAILURE "Guards prepare to fight"
             }
             CHECK ^"Chase Fleeing Ruffians" {
                 SKILL "Fitness"
                 RING "fire"
                 TN 3
-                ON_SUCCESS "PC catches a fleeing ruffian"
-                ON_FAILURE "Ruffian escapes into the town"
+                ON_SUCCESS "If the PC wins, they have caught one of the ruffians."
+                ON_FAILURE "If the ruffian wins, they keep running."
             }
             CHECK ^"Interrogate Captured Ruffian" {
                 SKILL "Command"
@@ -780,21 +761,18 @@ ARC "L5R5e_DarkTides" {
                 RING "water"
                 TN 2
                 ON_SUCCESS "A TN 2 Survival (Water 1, Fire 3) check can reveal the number of prisoners kept there (five) and roughly how long they were there (the longest time period being about six weeks, the most recent less than a week)."
-                ON_FAILURE "Evidence is inconclusive"
             }
             CHECK ^"Find Hiroshige's Name" {
                 SKILL "Aesthetics"
                 RING "earth"
                 TN 2
                 ON_SUCCESS "A TN 2 Aesthetics (Earth 1, Air 3) check uncovers that some kanji scratched into the wall next to one of the manacles can be read as the name \"Hiroshige.\""
-                ON_FAILURE "The scratches are not recognized as writing"
             }
             CHECK ^"Identify Ruffians' Employer" {
                 SKILL "Skulduggery"
                 RING "earth"
                 TN 2
                 ON_SUCCESS "Examining the ruffians can uncover some evidence of their employer. They all have distinctive tattoos and clothing, which vary according to which group they belong to; a TN 3 Aesthetics (Air 2) or TN 2 Skulduggery (Earth 1) check verifies the identity of the group. Their belongings also indicate this, as follows:\n\nIf they work for Azif, many of them have gaijin items and gaijin coins on their persons. Some of them have a gaijin appearance and tattoos of symbols and creatures not seen in Rokugan.\n\nIf they work for Yaguro, there is obvious evidence of opium addiction or at least familiarity with the drug: pipes, pouches of opium, etc. Their clothing is worn and stained.\n\nIf they work for Kasuga Yumiko, their clothing and gear are of somewhat better quality, and at least one of them carries travel papers stamped with a Tortoise mon."
-                ON_FAILURE "Their affiliation is unclear"
             }
         }
 
@@ -853,36 +831,32 @@ ARC "L5R5e_DarkTides" {
                 SKILL "Fitness"
                 RING "earth"
                 TN 2
-                ON_SUCCESS "PC reaches the ship"
-                ON_FAILURE "PC struggles in the water"
+                ON_SUCCESS "If the ship manages to get away from the pier, the PCs can still pursue by swimming out to it (a TN 2 Fitness [Earth 3, Water 1] check) or by making a suitable invocation (such as Stride the Waves or Call upon the Wind)."
             }
             CHECK ^"Commandeer a Kobune" {
                 SKILL "Seafaring"
                 RING "fire"
                 TN 2
-                ON_SUCCESS "PCs reach the enemy ship in two turns"
-                ON_FAILURE "PCs reach the enemy ship in three turns"
+                ON_SUCCESS "If a PC makes a TN 2 Seafaring [Fire 1, Earth 3] check they reach their foes in two turns"
+                ON_FAILURE "otherwise reaching them takes three turns."
             }
             CHECK ^"Board Enemy Ship" {
                 SKILL "Fitness"
                 RING "water"
                 TN 2
-                ON_SUCCESS "PC boards successfully"
-                ON_FAILURE "PC knocked back by defenders"
+                ON_SUCCESS "This can lead to a dramatic pursuit across the lagoon and a boarding action, with the PCs climbing up the side of the enemy ship or leaping across decks (a TN 2 Fitness [Water 1, Earth 3] or Seafaring [Water 1, Earth 3] check)."
             }
             CHECK ^"Intimidate Enemies" {
                 SKILL "Command"
                 RING "fire"
                 TN 3
-                ON_SUCCESS "Some enemies flee in terror"
-                ON_FAILURE "Enemies fight on"
+                ON_SUCCESS "For example, a PC who makes an intimidating speech or bellows a terrifying war cry could make a TN 3 Command (Fire 2, Water 4) check to intimidate some of the enemies into fleeing."
             }
             CHECK ^"Provoke Gaku into Revealing Information" {
                 SKILL "Command"
                 RING "air"
                 TN 3
                 ON_SUCCESS "However, clever PCs may be able to use a TN 3 Command (Air 2, Earth 1) or Courtesy (Fire 4) check to get him to shout out a few bits of useful information during the fight, such as the name of his master, Kitsu Sokori."
-                ON_FAILURE "Gaku fights silently"
             }
         }
 
