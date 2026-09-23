@@ -284,14 +284,18 @@ turned up:
    reads the sheet from the ACTOR finds no Ninjō on them (the VTT shows it under "Also on the
    sheet"). *Recommendation:* rename to `^"Ninjō"` in the pregens (a VERSION patch bump each).
 
-## House rule: round up, everywhere — a deliberate departure from the printed text
+## House rule: round up by default; round down only where the text says so
 
-**Owner, 2026-09-23:** "the rule should be round up anywhere that needs to be rounded, not round
-down" … "round up the Path of Waves kami strife too." The corpus rounds UP wherever it rounds.
+**Owner, 2026-09-23:** "Where it explicitly says rounded down, we should round down. Round up should
+be the default unless otherwise specified." So:
 
-The Path of Waves tiny manifest kami (air, earth, fire, water) are printed "that character suffers
-half as much strife (rounded down)" (Path of Waves pp. 241–257). They now read "(rounded up)" in
-`path-of-waves-systems.ttrpg` (the four `*_kami_spirit` RULES lines, VERSION 0.5.1) and in
-`path-of-waves-chapter7-npcs.lore` (four paragraphs, Version 0.5.1). **These eight lines differ from
-the source on purpose — a verbatim check against the PDF / `Temp/sources` will flag them; do not
-revert them.** With the Vigilance FORMULA (above), the corpus now contains no "rounded down".
+- **A rounding the source leaves unstated rounds up.** Vigilance: the core (p. 41) prints only
+  "(Air + Water) / 2", so `core-traits` `^"Vigilance"` FORMULA is `"(Air + Water) / 2 (rounded up)"`
+  (0.5.1, now 0.5.2) — the conversion's added "(rounded down)" was the error.
+- **A rounding the source states is kept as printed.** The Path of Waves tiny manifest kami
+  (air, earth, fire, water) print "half as much strife (rounded down)" (PDF pp. 250–252; confirmed
+  against the PDF's text layer 2026-09-23) and read so verbatim in `path-of-waves-systems.ttrpg` and
+  `path-of-waves-chapter7-npcs.lore` (0.5.0). A brief change of these to "rounded up" (`57072fd`) was
+  reverted.
+- Every other rounding in the corpus is stated "rounded up" (Starting Void Points, out-of-curriculum
+  XP, the core-systems composure note).
