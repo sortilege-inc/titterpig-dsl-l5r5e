@@ -267,7 +267,8 @@ The VTT evaluates the corpus's own `FORMULA` strings for the derived attributes 
 made in its creator (a printed stat block's values always win, per the note above). Two things it
 turned up:
 
-1. **Vigilance's FORMULA adds a rounding the book does not print.**
+1. **RESOLVED 2026-09-23 (owner: "the rule should be round up anywhere that needs to be rounded, not round down").** `core-traits` `^"Vigilance"` FORMULA is now `"(Air + Water) / 2 (rounded up)"` (VERSION 0.5.1); it was the only conversion-written round-down. The four Path of Waves tiny-kami rules that print "half as much strife (rounded down)" are the book's own words (pp. 241–257) and stay verbatim. Validator 164 files 0/0; §5d 2,313 sites 0 hashless; 386 guidance 0 errors. The finding as first reported:
+   **Vigilance's FORMULA adds a rounding the book does not print.**
    `l5r5e-0.5-core-traits.ttrpg` `^"Vigilance"` has `FORMULA "(Air + Water) / 2 (rounded down)"`
    (and the same words in its comment). The core rulebook, p. 41, prints only
    "Vigilance: Calculated based on your final ring values; (Air + Water) / 2."
