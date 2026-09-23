@@ -278,7 +278,8 @@ turned up:
    *Recommendation:* find the book's rounding rule (not located in the core md by a grep for
    "round up"/"rounded up") and correct the FORMULA to it; until then a created character's
    Vigilance is one lower than the pregens' convention whenever Air + Water is odd.
-2. **The pregens spell `^"Ninjo"`; the Samurai ACTOR declares `^"Ninjō"`.** 26 pregens across
+2. **RESOLVED 2026-09-23 (owner: "fix the Ninjo spelling in the pregens too").** All 33 `^"Ninjo"` in the five `*-pregens.actor` files (26 pregens, the six Blood of the Lioness personas and their type) are now `^"Ninjō"`; each file VERSION 0.5.1. Validator 164 files 0/0; §5d 2,313 sites 0 hashless; 386 guidance 0 errors. As first reported:
+   **The pregens spell `^"Ninjo"`; the Samurai ACTOR declares `^"Ninjō"`.** 26 pregens across
    four `.actor` files (e.g. `highwayman-pregens.actor` `^"Ninjo" STRING …`), so a consumer that
    reads the sheet from the ACTOR finds no Ninjō on them (the VTT shows it under "Also on the
    sheet"). *Recommendation:* rename to `^"Ninjō"` in the pregens (a VERSION patch bump each).
