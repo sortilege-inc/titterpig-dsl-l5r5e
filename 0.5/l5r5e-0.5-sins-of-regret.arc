@@ -8,7 +8,7 @@
 ARC "sins-of-regret" EXTENDS "l5r5e" {
     NAME "Sins of Regret"
     SUBTITLE "An Adventure in the Forgotten Heart of the Empire"
-    VERSION "0.5.2"
+    VERSION "0.5.3"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Sins of Regret (Fantasy Flight Games, 2020 — product L5R11)"
@@ -46,15 +46,15 @@ ARC "sins-of-regret" EXTENDS "l5r5e" {
     # LOCATIONS
     # ─────────────────────────────────────────────
     LOCATIONS {
-        ^"Twin Blessings Village" DEF {
+        #LcnJJahby6hDXeMOzCMQL9 ^"Twin Blessings Village" DEF {
             TYPE "Village"
             DESCRIPTION "As introduced in Path of Waves, Twin Blessings Village has no hard-and-fast location, to allow GMs to situate it based on the needs of their own campaigns—for this story, it is assumed to be somewhere rural and remote. Far from any major holding, the word of the local daimyō is law—as long as he can enforce it. This is important, as it inspires the PCs to make their own decisions and act without orders. While the daimyō seemingly does not feel responsible for upholding Bushidō, the PCs might, as there is no one else to come to the villagers' aid. Or they may feel able to act outside the laws of Bushidō as his samurai do.\n\nRural villages like the one encountered in this adventure exist all across Rokugan. Even if the GM decides to locate the village within the territory of a particular clan, it can remain on the fringes, far from any major family holding. Such villages are compact and independent societies, each one individual but working towards the common goals of survival and paying the rice tax."
-            NPCS [^"Ichirō (Sins of Regret)", ^"Reju Tsugumasa", ^"Michi"]
+            NPCS [#IgXuKjRwdNj1nekgSiqIO4 ^"Ichirō (Sins of Regret)", #VakzLUNGNDAKSTKuL71kkN ^"Reju Tsugumasa", #l61kx7lWynQSxZbxBC41Ww ^"Michi"]
         }
-        ^"Closed Shell Castle" DEF {
+        #3mr22VwlWzREBecelOjDsb ^"Closed Shell Castle" DEF {
             TYPE "Castle"
             DESCRIPTION "Otomo Nahoko is a name some PCs might recognize if they have studied military history. She was a successful general who won many battles, developing tactics the Imperial Legions still practice, such as the inescapable \"closed shell\" maneuver. What the histories fail to mention is that as she aged, she grew paranoid, seeing enemies everywhere, and yet refused to retire to a monastery. Her family's solution was to give her land to build herself a castle and live out the remainder of her life governing a small territory.\n\nNahoko designed the Castle of the Closed Shell herself, and her growing paranoia is evident in everything from the unusually deep moat and vast number of yasama (arrow-slits), to the numerous trick doors and trapdoors. Though the land Nahoko was given to govern was small and relatively safe, surrounded by other imperial holdings, she built so many defenses that courtiers laughed about it behind their fans. Even the hill the castle stands on is artificial, as Nahoko lamented there was no location in her new territory with suitable natural defenses.\n\nOfficially, Nahoko died of old age, barricaded inside a castle that never saw a siege, but rumor has it her death was hastened by her own successor, who grew tired of being embarrassed by her. Some say both Nahoko's ghost and that of her successor haunt the family rooms in the castle, and their arguments keep the resident family awake at night.\n\nThe area Nahoko had cleared around the castle remains barren and unsightly, and the elemental imbalance is clear here. This means that no village has ever grown up in the shadow of the castle, and Twin Blessings Village serves most of the castle's needs. According to the resident spiritual advisor, Reju Toshio, the imbalance is due to the kami Nahoko angered when she built the castle, failing to listen to her advisers and take care that the castle fitted well with its surroundings. However, this does not explain why the imbalance is now spreading and worsening.\n\nThe new daimyō and his court lament the lack of comfort and aesthetically pleasing features in the castle, but some people might find a stark, utilitarian beauty in it. Longstanding servants like Shaki (see page 15) are proud of the castle's odd history and are willing to educate visitors, and do so without disparaging the castle."
-            NPCS [^"Reju Jikai", ^"Seppun Azusa", ^"Reju Ume", ^"Reju Toshio", ^"Otomo Nobu", ^"Kyōkotsu", ^"Shachihoko"]
+            NPCS [#APx8F7vNrSmS6NscQxgJ8D ^"Reju Jikai", #WEzOnmPr5f8K9Vc8KbIVM7 ^"Seppun Azusa", #ZKJd0HgKn2mEL3e0CH4G47 ^"Reju Ume", #koqrICBoGbBHpXaRu277T5 ^"Reju Toshio", #F2qA63OrsPT8TuqHPOcb0M ^"Otomo Nobu", #SeKQrBxBlbiAmyTJ29PTVf ^"Kyōkotsu", #6vI9lbp7EqTS2pdbFancTU ^"Shachihoko"]
         }
     }
 
@@ -62,10 +62,10 @@ ARC "sins-of-regret" EXTENDS "l5r5e" {
     # CAST (resolve to l5r5e-0.5-sins-of-regret-cast.ttrpg)
     # ─────────────────────────────────────────────
     KEY_NPCS {
-        VILLAGE [^"Ichirō (Sins of Regret)", ^"Reju Tsugumasa", ^"Michi"]
-        REJU [^"Reju Jikai", ^"Seppun Azusa", ^"Reju Ume", ^"Reju Toshio"]
-        SCHEMERS [^"Otomo Nobu", ^"Otomo Kazumi"]
-        SPIRITS [^"Kyōkotsu", ^"Shachihoko"]
+        VILLAGE [#IgXuKjRwdNj1nekgSiqIO4 ^"Ichirō (Sins of Regret)", #VakzLUNGNDAKSTKuL71kkN ^"Reju Tsugumasa", #l61kx7lWynQSxZbxBC41Ww ^"Michi"]
+        REJU [#APx8F7vNrSmS6NscQxgJ8D ^"Reju Jikai", #WEzOnmPr5f8K9Vc8KbIVM7 ^"Seppun Azusa", #ZKJd0HgKn2mEL3e0CH4G47 ^"Reju Ume", #koqrICBoGbBHpXaRu277T5 ^"Reju Toshio"]
+        SCHEMERS [#F2qA63OrsPT8TuqHPOcb0M ^"Otomo Nobu", #8loFqh5F9CGPD5uWX7WSFt ^"Otomo Kazumi"]
+        SPIRITS [#SeKQrBxBlbiAmyTJ29PTVf ^"Kyōkotsu", #6vI9lbp7EqTS2pdbFancTU ^"Shachihoko"]
     }
 
     # An adventure for the players' own rōnin characters, so there is no PARTY /

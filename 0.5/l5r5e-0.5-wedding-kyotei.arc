@@ -6,7 +6,7 @@
 
 ARC "wedding-kyotei-castle" EXTENDS "l5r5e" {
     NAME "Wedding at Kyotei Castle"
-    VERSION "0.5.2"
+    VERSION "0.5.3"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Wedding at Kyotei Castle: The 2018 L5R Gen Con Adventure (Fantasy Flight Games, 2019)"
@@ -57,38 +57,38 @@ ARC "wedding-kyotei-castle" EXTENDS "l5r5e" {
     # LOCATIONS
     # ─────────────────────────────────────────────
     LOCATIONS {
-        ^"Kyotei Castle" DEF {
+        #94zzQoD5HrLMGw3onxEIw8 ^"Kyotei Castle" DEF {
             TYPE "Castle"
             REGION "The Kintani (Golden Valley)"
             DESCRIPTION "Twenty years ago, the Damasu family of the Lion Clan ruled the Golden Valley from their stronghold at Kyotei Castle, which lies along a merchant's road between Otosan Uchi and Toshi Ranbo. The castle and the nearby town of Chikuzen are strategically located between Lion, Crane, and Phoenix lands, making the castle one of many witnesses to bloodshed over the last several centuries.\n\nTsume Retsu, a vassal to the Doji family of the Crane Clan, conquered Kyotei Castle by force of arms. Lord Damasu Kojima and the entirety of the Damasu family (a vassal family sworn to the Akodo family of the Lion Clan) fell in battle. After the dust had settled, the Doji family allowed Retsu to hold the castle as its new lord. However, the Doji had not ordered Retsu to take such drastic action, and so the Doji's diplomatic arm found itself busy trying to hold back the furious vengeance of the Lion Clan and assuage fears of further aggression on the part of Lord Tsume toward the Phoenix.\n\nRumors have always swirled that the castle is haunted by the Lions who fell there. Perhaps it is cursed, for after seventeen years of ruling the Golden Valley from Kyotei Castle, Lord Retsu was discovered dead in his very chambers, apparently a victim of murder. A search went out for the culprit, and after weeks of fruitless investigation, a castle guard was charged with the lord's murder and executed."
-            NPCS [^"Tsume no Doji Takashi", ^"Nasu no Shiba Shizuma", ^"Tsume Kotonoha", ^"Tsume Yemon"]
+            NPCS [#UH9YhxLjjeoOde71MqOXv0 ^"Tsume no Doji Takashi", #t6dYqjCmp3px4f5605LRDG ^"Nasu no Shiba Shizuma", #Dvw1Lu2m7QpqDF0a5A9W1j ^"Tsume Kotonoha", #zq8m9duYS3bWSkcX7hAqSc ^"Tsume Yemon"]
         }
-        ^"The Kintani" DEF {
+        #LPehK6XmzxQ67ruzKA2xQv ^"The Kintani" DEF {
             TYPE "Region"
             DESCRIPTION "The dirt road through the Golden Valley was once known for its gentle hills, immaculately kept inns, and friendly merchants, but in these troubled times, travelers are as likely to meet with bandits as they are fellow samurai. Crane and Lion clan forces clash in the nearby foothills of Toshi Ranbo, and ragged mercenary soldiers look to the supply trains that flow between the palaces of the Crane and Kyotei Castle for supplemental recompense. There is safety in numbers, and as fate would have it, you find yourself journeying alongside others who proudly wear their wakizashi and clan crests."
         }
-        ^"Kyotei Shrine" DEF {
+        #KUxn7am8ARCWzuavYshnaT ^"Kyotei Shrine" DEF {
             TYPE "Temple"
             DESCRIPTION "The castle shrine is small, large enough to hold the name plaques of a single family and a vessel to house a single kami. Tsume Yemon, the head priest, has gone into the surrounding forest in order to purify himself and request the forgiveness of the local spirits. And so, it is up to the three shrine keepers to clean up the mess and begin preparations for reconsecrating the shrine. When the PCs arrive, they see two of the shrine keepers are pouring water over the gravel to clean the blood from the ground, while a third off to one side is on her hands and knees scrubbing a stepping stone. Upon passing under the threshold torii gate to the shrine, every character can feel a chill down their spine and the hair on the back of their necks standing up. Something is very wrong here, spiritually."
         }
-        ^"Golden Valley Shrine" DEF {
+        #RyCnU0wTyEWKSadvTr3PEY ^"Golden Valley Shrine" DEF {
             TYPE "Temple"
             DESCRIPTION "The local shrine on the castle's outskirts to which the wedding ceremony is moved after the desecration of Kyotei Shrine; site of the Scene 4a showdown."
         }
-        ^"Chikuzen" DEF {
+        #YTlsDZDisT7mKwEzYzF6hI ^"Chikuzen" DEF {
             TYPE "Town"
             DESCRIPTION "The town near Kyotei Castle, home to the Pine House geisha establishment where the infant Damasu heir was hidden and raised as Reika."
         }
-        ^"Pine House" DEF {
+        #hzjWLAtaxvQabWq4jHbpzC ^"Pine House" DEF {
             TYPE "Building"
             SETTLEMENT "Chikuzen"
             DESCRIPTION "The geisha house where Damasu no Akodo Maeda was raised and trained as the geisha Reika, and where she seduced Tsume Takashi to gain access to the castle."
         }
-        ^"Nikesake" DEF {
+        #289nlwQHoXWSf0lb3YLQ3h ^"Nikesake" DEF {
             TYPE "City"
             DESCRIPTION "A neighboring Phoenix Clan city, home of the bride Shiba Itsuyo and her father Shiba Katsuda, once relieved from siege by Tsume Retsu."
         }
-        ^"Toshi Ranbo" DEF {
+        #LSrpK8vRPPLpw9Q29KOqMt ^"Toshi Ranbo" DEF {
             TYPE "City"
             DESCRIPTION "The contested city at the heart of the Crane–Lion border conflict; Kyotei Castle guards the Crane's land-based supply lines to it."
         }
@@ -98,15 +98,15 @@ ARC "wedding-kyotei-castle" EXTENDS "l5r5e" {
     # CAST (resolve to l5r5e-0.5-wedding-kyotei-cast.ttrpg)
     # ─────────────────────────────────────────────
     KEY_NPCS {
-        ANTAGONISTS [^"Damasu no Akodo Maeda", ^"Itto", ^"Ide Torao aka Shosuro Yu", ^"Soshi Ozuru"]
-        CRANE [^"Tsume no Doji Takashi", ^"Nasu no Shiba Shizuma", ^"Tsume Kotonoha", ^"Tsume Yemon", ^"Doji Kuzunobu"]
-        PHOENIX [^"Shiba Itsuyo", ^"Shiba Katsuda", ^"Lady Chisei", ^"Asako Maezawa"]
+        ANTAGONISTS [#y8CEub8orO5qjMqJ0JRyAc ^"Damasu no Akodo Maeda", #ZZIF2kGdhvsJPaUw30b9A5 ^"Itto", #ZXcZtrUYFjOWWeCgYA8iKb ^"Ide Torao aka Shosuro Yu", #Iw3BhfwuAQXhqNPnceDSGI ^"Soshi Ozuru"]
+        CRANE [#UH9YhxLjjeoOde71MqOXv0 ^"Tsume no Doji Takashi", #t6dYqjCmp3px4f5605LRDG ^"Nasu no Shiba Shizuma", #Dvw1Lu2m7QpqDF0a5A9W1j ^"Tsume Kotonoha", #zq8m9duYS3bWSkcX7hAqSc ^"Tsume Yemon", #jknaRUzeg6hz5t8D4apE5R ^"Doji Kuzunobu"]
+        PHOENIX [#GgTX6wKxW4cE4jNBHylppy ^"Shiba Itsuyo", #7rDy9sSDbpM8oNAkkGCuce ^"Shiba Katsuda", #cIf2Uo7ewkaZZlABmFdShI ^"Lady Chisei", #QaRk93hHlGWVRmVtRrBms5 ^"Asako Maezawa"]
     }
 
     # ─────────────────────────────────────────────
     # PREGENS (resolve to l5r5e-0.5-wedding-kyotei-pregens.actor)
     # ─────────────────────────────────────────────
     PARTY {
-        PREGENS [^"Bayushi Hibiki", ^"Kaito Natsuyuki", ^"Kakita Hikaru", ^"Kitsu Kohaku", ^"Kitsuki Sora", ^"Utaku Azami", ^"Yasuki Toru"]
+        PREGENS [#Vsvs3jlQI5Hh8XeoN1kLE3 ^"Bayushi Hibiki", #JQjUmxaMDWvsKGwAeu0ayD ^"Kaito Natsuyuki", #Rl6BFMrYEMEyaqCcRUm2Pg ^"Kakita Hikaru", #gfE4VVJHOHIuaf1UZ6XLKp ^"Kitsu Kohaku", #GrRQkuGG0fOpQkCsVPo3Ga ^"Kitsuki Sora", #y6vPP6stQ7khksNdGTRbsj ^"Utaku Azami", #uasvsqsnjLLL5wAlcRPMlC ^"Yasuki Toru"]
     }
 }

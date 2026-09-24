@@ -8,7 +8,7 @@
 ARC "winters-embrace" EXTENDS "l5r5e" {
     NAME "Winter's Embrace"
     SUBTITLE "An Adventure at the Winter Court"
-    VERSION "0.5.2"
+    VERSION "0.5.3"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Winter's Embrace (Fantasy Flight Games, 2019 — product L5R09; ISBN 978-1-63344-360-0)"
@@ -34,7 +34,7 @@ ARC "winters-embrace" EXTENDS "l5r5e" {
             # Poem intrigue in the Poetry Competition, so the GM need not roll them.
             # Columns are the five artisan approaches (ring in parentheses).
             RESULTS_TABLE "Competitors' Scores (Poetry Competition)" {
-                ^"Ikoma Rumiko" DEF {
+                #dDa5H0ZRoDxD7x7I1c7PSp ^"Ikoma Rumiko" DEF {
                     ^"Recall (Earth)" INTEGER 0
                     ^"Charm (Water)" INTEGER 2
                     ^"Invent (Fire)" INTEGER 1
@@ -42,7 +42,7 @@ ARC "winters-embrace" EXTENDS "l5r5e" {
                     ^"Attune (Void)" INTEGER 0
                     ^"Total" INTEGER 4
                 }
-                ^"Doji Chiyoe" DEF {
+                #QAQwrzNM9SzOmrp8WKNjtm ^"Doji Chiyoe" DEF {
                     ^"Recall (Earth)" INTEGER 1
                     ^"Charm (Water)" INTEGER 1
                     ^"Invent (Fire)" INTEGER 1
@@ -50,7 +50,7 @@ ARC "winters-embrace" EXTENDS "l5r5e" {
                     ^"Attune (Void)" INTEGER 1
                     ^"Total" INTEGER 6
                 }
-                ^"Lady Magami" DEF {
+                #fo78FCzS5QIYEODVFVmUWg ^"Lady Magami" DEF {
                     ^"Recall (Earth)" INTEGER 1
                     ^"Charm (Water)" INTEGER 3
                     ^"Invent (Fire)" INTEGER 2
@@ -58,7 +58,7 @@ ARC "winters-embrace" EXTENDS "l5r5e" {
                     ^"Attune (Void)" INTEGER 1
                     ^"Total" INTEGER 7
                 }
-                ^"Otomo Koryusai" DEF {
+                #EqcdmiX7MpLaDXOIe6wp5j ^"Otomo Koryusai" DEF {
                     ^"Recall (Earth)" INTEGER 1
                     ^"Charm (Water)" INTEGER 0
                     ^"Invent (Fire)" INTEGER 2
@@ -66,7 +66,7 @@ ARC "winters-embrace" EXTENDS "l5r5e" {
                     ^"Attune (Void)" INTEGER 0
                     ^"Total" INTEGER 4
                 }
-                ^"Doji Hatsuhina" DEF {
+                #Q9HobVjS3bfTwNrfG0bZtG ^"Doji Hatsuhina" DEF {
                     ^"Recall (Earth)" INTEGER 1
                     ^"Charm (Water)" INTEGER 2
                     ^"Invent (Fire)" INTEGER 1
@@ -89,10 +89,10 @@ ARC "winters-embrace" EXTENDS "l5r5e" {
     # LOCATIONS
     # ─────────────────────────────────────────────
     LOCATIONS {
-        ^"Kyūden Doji" DEF {
+        #qW8t8T3w2xVTWcc6ebUgqz ^"Kyūden Doji" DEF {
             TYPE "Palace"
             DESCRIPTION "The Esteemed Palaces of the Crane, host to this year's Winter Court and the Emperor's retinue, celebrating Doji Hotaru's ascension. Home to the main court chamber, the Imperial guesthouse, the Crane and Mantis guesthouses, the floating teahouse, the theater, and the Fantastic Gardens of the Crane."
-            NPCS [^"Doji Hatsuhina", ^"Kakita Ryoku", ^"Ikoma Rumiko", ^"Miya Satoshi", ^"Otomo Koryusai", ^"Susano-o no Izen", ^"Lady Magami"]
+            NPCS [^"Doji Hatsuhina", #kssCuIG1ODlghakgpPeBrA ^"Kakita Ryoku", ^"Ikoma Rumiko", #PbvEIuEOUj92dRLC7aCgdI ^"Miya Satoshi", ^"Otomo Koryusai", #0QEZBFPqxUdSWa4K4SVWCE ^"Susano-o no Izen", ^"Lady Magami"]
         }
     }
 
@@ -100,9 +100,9 @@ ARC "winters-embrace" EXTENDS "l5r5e" {
     # CAST (resolve to l5r5e-0.5-winters-embrace-cast.ttrpg)
     # ─────────────────────────────────────────────
     KEY_NPCS {
-        CRANE [^"Kakita Ryoku", ^"Doji Hatsuhina", ^"Doji Chiyoe", ^"Doji Shigeru", ^"Asahina Takako"]
-        MANTIS [^"Lord Yoritomo", ^"Lady Magami", ^"Susano-o no Izen"]
-        IMPERIAL [^"Miya Satoshi", ^"Otomo Koryusai"]
+        CRANE [#kssCuIG1ODlghakgpPeBrA ^"Kakita Ryoku", ^"Doji Hatsuhina", ^"Doji Chiyoe", #Xp0SZHXg3vuXcHndJCs3wM ^"Doji Shigeru", #9uWRT00R8UrX11XsyngoLA ^"Asahina Takako"]
+        MANTIS [#dyN6riLcxqCLsj2Zx50J6f ^"Lord Yoritomo", ^"Lady Magami", #0QEZBFPqxUdSWa4K4SVWCE ^"Susano-o no Izen"]
+        IMPERIAL [#PbvEIuEOUj92dRLC7aCgdI ^"Miya Satoshi", ^"Otomo Koryusai"]
         LION [^"Ikoma Rumiko"]
     }
 

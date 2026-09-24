@@ -8,7 +8,7 @@
 
 ARC "mask-of-the-oni" EXTENDS "l5r5e" {
     NAME "Mask of the Oni"
-    VERSION "0.5.2"
+    VERSION "0.5.3"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Mask of the Oni: An Adventure in the Shadowlands (Fantasy Flight Games, product L5R07)"
@@ -52,16 +52,16 @@ ARC "mask-of-the-oni" EXTENDS "l5r5e" {
     # LOCATIONS
     # ─────────────────────────────────────────────
     LOCATIONS {
-        ^"Kaiu Wall" DEF {
+        #Kk0bICKWg5dzm7RKmKiK6I ^"Kaiu Wall" DEF {
             TYPE "Wall"
             DESCRIPTION "The Kaiu Wall looms over you, one hundred feet of dark stone battlements, redoubts, and watchtowers standing between Rokugan and the Shadowlands beyond. You pass by signs of a recent battle as you approach: wounded Crab bushi being tended by healers and shugenja, burakumin carrying off the dead to be cremated, and yet more warriors cleaning and repairing armor and weapons. More troops stand guard atop the Wall, as the vigil of the Crab against the darkness never ends. Suspicious stares follow you as you pass by, until a sentinel close to the Wall turns to you and barks, \"What is your business here?\""
-            NPCS [^"Hida Nagahide"]
+            NPCS [#H39Fu7eQrvB4ZxD5U5zXLz ^"Hida Nagahide"]
         }
-        ^"Shiro Hiruma" DEF {
+        #k0fyufj3ODA21YOZWPZ59X ^"Shiro Hiruma" DEF {
             TYPE "Castle"
             DANGER_LEVEL "Shadowlands ruin (heavily Tainted)"
             DESCRIPTION "Daylight Castle, the ultimate destination of the PCs in Mask of the Oni, is an ancient castle that has suffered not only from the attack by the Maw that led to its downfall, but also from the corruption of the Shadowlands in the centuries since. The combined effects of battle damage, the passage of time, and the Taint of Jigoku have rendered the place ominous and confusing, even for Crab samurai.\n\nAs you round a rocky spur that thrusts out from a line of jagged, barren hills, you see the walls and towers of a fortress looming ahead of you, dominating the blasted landscape around it. This is Shiro Hiruma, once the ancestral home and seat of power of the Hiruma family. Now, it is a bleak ruin, with gaping holes where walls have slumped and collapsed. The watchtowers and the great keep inside the walls claw at the darkening sky like ghastly fingers. A brooding stillness hangs over the place; the air is heavy with an oppressive sense of expectation, as though something cataclysmic could happen at any moment."
-            NPCS [^"Kitsu Sokori", ^"Atsumari no Oni"]
+            NPCS [^"Kitsu Sokori", #0sb0csLT4xayKYIKaXvynp ^"Atsumari no Oni"]
         }
     }
 
@@ -69,8 +69,8 @@ ARC "mask-of-the-oni" EXTENDS "l5r5e" {
     # CAST (resolve to l5r5e-0.5-mask-of-the-oni-cast.ttrpg)
     # ─────────────────────────────────────────────
     KEY_NPCS {
-        ANTAGONISTS [^"Kitsu Sokori", ^"Atsumari no Oni"]
-        ALLIES [^"Hida Nagahide"]
+        ANTAGONISTS [^"Kitsu Sokori", #0sb0csLT4xayKYIKaXvynp ^"Atsumari no Oni"]
+        ALLIES [#H39Fu7eQrvB4ZxD5U5zXLz ^"Hida Nagahide"]
     }
 
     # A Shadowlands adventure for the players' own characters, so there is no

@@ -5,7 +5,7 @@
 
 ARC "L5R5e_LostWriter" {
     NAME "The Lost Writer in the City of the Rich Frog"
-    VERSION "0.5.3"
+    VERSION "0.5.4"
     SPEC_VERSION "0.5"
     DEPENDS_ON "L5R5e_Core_Core"
     USES_EXTENSION "L5R5e_Children_of_Five_Winds"
@@ -369,7 +369,7 @@ ARC "L5R5e_LostWriter" {
         }
 
         CHECKS {
-            CHECK ^"Stir the Leaves" {
+            CHECK #0VDeckbNgpBJyQnoibqr0E ^"Stir the Leaves" {
                 SKILL "Courtesy"
                 SKILL "Performance"
                 RING "Air"

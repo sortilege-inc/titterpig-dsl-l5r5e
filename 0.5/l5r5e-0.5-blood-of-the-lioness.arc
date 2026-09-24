@@ -11,7 +11,7 @@
 
 ARC "blood-of-the-lioness" EXTENDS "l5r5e" {
     NAME "Blood of the Lioness"
-    VERSION "0.5.2"
+    VERSION "0.5.3"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Blood of the Lioness: An Adventure at the Battle of Snow Plain (Fantasy Flight Games)"
@@ -53,23 +53,23 @@ ARC "blood-of-the-lioness" EXTENDS "l5r5e" {
 
             # Arbitration social objectives (momentum thresholds), reproduced verbatim.
             INTRIGUE_TABLE "Arbitration Social Objectives (Rendering Judgment)" {
-                ^"Appeal to Kāgi — the Unicorn or the Scorpion" DEF {
+                #H5rqudml8PKmaOuwFdxiFY ^"Appeal to Kāgi — the Unicorn or the Scorpion" DEF {
                     ^"Momentum Points Needed" STRING "16"
                     ^"Upon Completion" STRING "Kāgi rules in favor of either the Unicorn or Scorpion based on the outcome."
                 }
-                ^"Appeal to Kāgi — Imperial Control" DEF {
+                #LK0CYZ9ZGcvJBbNDgx2SIY ^"Appeal to Kāgi — Imperial Control" DEF {
                     ^"Momentum Points Needed" STRING "14"
                     ^"Upon Completion" STRING "Kāgi rules in favor of putting the mine under Imperial control."
                 }
-                ^"Appeal to Kāgi — Another Faction" DEF {
+                #ywsyGF6zuOAIRh6X5ECEFl ^"Appeal to Kāgi — Another Faction" DEF {
                     ^"Momentum Points Needed" STRING "24"
                     ^"Upon Completion" STRING "Kāgi rules in favor of the chosen Great Clan, Minor Clan, other faction, or even an individual."
                 }
-                ^"Appeal to Aishi or Tsubame to Drop Their Clan's Claim" DEF {
+                #1DthgQ3JBPfgu46a3SBUs9 ^"Appeal to Aishi or Tsubame to Drop Their Clan's Claim" DEF {
                     ^"Momentum Points Needed" STRING "18"
                     ^"Upon Completion" STRING "Aishi or Tsubame relinquishes their clan's claim to the mine."
                 }
-                ^"Discredit Aishi, Tsubame, or Someone Else" DEF {
+                #QnlVhehc7s79g2hwrwjQSM ^"Discredit Aishi, Tsubame, or Someone Else" DEF {
                     ^"Momentum Points Needed" STRING "Cause the target to become Compromised"
                     ^"Upon Completion" STRING "Aishi or Tsubame loses up to 8 momentum points they have acquired so far. However, they are not removed from the scene, and can continue trying to accrue momentum points."
                 }

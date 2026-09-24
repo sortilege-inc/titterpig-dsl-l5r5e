@@ -7,7 +7,7 @@
 
 ARC "the-knotted-tails" EXTENDS "l5r5e" {
     NAME "The Knotted Tails"
-    VERSION "0.5.2"
+    VERSION "0.5.3"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "The Knotted Tails: A Supplemental Storyline for Mask of the Oni (Fantasy Flight Games, 2020)"
@@ -48,18 +48,18 @@ ARC "the-knotted-tails" EXTENDS "l5r5e" {
     # LOCATIONS
     # ─────────────────────────────────────────────
     LOCATIONS {
-        ^"The Knotted Tails Village" DEF {
+        #mDw5qUW765rHXSWh5aSwdT ^"The Knotted Tails Village" DEF {
             TYPE "Village"
             DANGER_LEVEL "Shadowlands (mobile nezumi encampment)"
             DESCRIPTION "The nezumi pause as they reach the brow of a hill, looking expectantly at you. Standing on the crest, you get your first view of the nezumi village, a scattering of mismatched tents hidden amongst the rocks below. Furred figures emerge from numerous burrows and stand to watch your approach. The smallest among them, nezumi about the size of human infants, swarm up the hill on all fours, squeaking excitedly.\n\nBurrows for sleeping are underground, where the Knotted Tails feel safer. The tents above are skeletal structures of wood and metal, with scraps of cloth and dried vegetation stretched between struts to provide shelter and shade. A small fire heats a cooking pot inside one, and within another the PCs might glimpse a nezumi beating salvaged metal into usable shapes with a rock, the dull clanging muffled by the fabric of the tent. If a PC enters one of the burrows, they take 1 strife due to the cramped, dirty conditions."
-            NPCS [^"Lucky Silver", ^"One Eye", ^"Knotted Tails Warrior", ^"Nezumi Pup (Knotted Tails)", ^"Three Tooth"]
+            NPCS [#V0DWYrR5xlokHfdS7hvCDx ^"Lucky Silver", #kPaySOUpYzXXBfUCAQxVgU ^"One Eye", #SZMkstPtGBzXrSFeh58WrH ^"Knotted Tails Warrior", #rcXekxnwN7g2K7ewseN1If ^"Nezumi Pup (Knotted Tails)", #LdWBN2MKdWSsJh5eBEtGnl ^"Three Tooth"]
         }
-        ^"The Nezumi Graveyard" DEF {
+        #MQvUaPZsJXQoN4gAdIo5Va ^"The Nezumi Graveyard" DEF {
             TYPE "Landmark"
             DANGER_LEVEL "Defiled and Dangerous terrain"
             DESCRIPTION "Although the Knotted Tails are nomadic, they often return to the same locations, and they regularly visit the graveyard on their route. Once the PCs learn there is a graveyard, any nezumi can point the PCs in the right direction to reach it, though none offer to accompany them. Used by several tribes, it is a grisley sight: a natural pit the nezumi have filled with the corpses of their dead over the centuries, leaving their bones and skulls exposed. While this is a horrifying thought for any samurai, for the nezumi it is a sign of respect. Their dead are not hidden and forgotten, and Rememberers can recognize their skulls and tell their stories."
         }
-        ^"Shiro Hiruma" DEF {
+        #sQUFPI395zzLW3caIY0KcJ ^"Shiro Hiruma" DEF {
             TYPE "Castle"
             DANGER_LEVEL "Shadowlands ruin"
             DESCRIPTION "The ruined ancestral castle of the Hiruma family, deep in the Shadowlands; the Knotted Tails remain protective of it but are too fearful to venture inside, warning travelers of ghosts, goblins, and worse. The destination of Mask of the Oni."
@@ -70,8 +70,8 @@ ARC "the-knotted-tails" EXTENDS "l5r5e" {
     # CAST (resolve to l5r5e-0.5-knotted-tails-cast.ttrpg)
     # ─────────────────────────────────────────────
     KEY_NPCS {
-        TRIBE [^"Lucky Silver", ^"One Eye", ^"Three Tooth", ^"Knotted Tails Warrior", ^"Nezumi Pup (Knotted Tails)"]
-        THREAT [^"Frayed Whisker", ^"Outcast Nezumi (Knotted Tails)"]
+        TRIBE [#V0DWYrR5xlokHfdS7hvCDx ^"Lucky Silver", #kPaySOUpYzXXBfUCAQxVgU ^"One Eye", #LdWBN2MKdWSsJh5eBEtGnl ^"Three Tooth", #SZMkstPtGBzXrSFeh58WrH ^"Knotted Tails Warrior", #rcXekxnwN7g2K7ewseN1If ^"Nezumi Pup (Knotted Tails)"]
+        THREAT [#E9nmYkxG8ExCjVm3Z9OzBH ^"Frayed Whisker", #bOHDyovyZHp6VlzBa3dQmv ^"Outcast Nezumi (Knotted Tails)"]
     }
 
     # A supplement to Mask of the Oni; the players use their existing Shadowlands

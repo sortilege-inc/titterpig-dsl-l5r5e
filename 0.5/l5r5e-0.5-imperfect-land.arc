@@ -8,7 +8,7 @@
 
 ARC "imperfect-land" EXTENDS "l5r5e" {
     NAME "Imperfect Land"
-    VERSION "0.5.2"
+    VERSION "0.5.3"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Imperfect Land: An Adventure Uncovering the Secrets of the Perfect Land Sect (Fantasy Flight Games)"
@@ -54,12 +54,12 @@ ARC "imperfect-land" EXTENDS "l5r5e" {
         #te4013301f2fe7da3be2ff ^"Mountain Song Temple" DEF {
             TYPE "Temple"
             DESCRIPTION "The temple seems to grow out of the mountains themselves, blending harmoniously with the surrounding terrain. Within its perimeter lies an extensive complex of halls, libraries, sleeping chambers, and shrines, all with an austere beauty that complements the constant rise and fall of the Mountain Song. This is a place of peace—but the assemblage of fractious monks gathered here threatens to crack that peace."
-            NPCS [^"Mirumoto Masashige", ^"Naigen", ^"Anmoku", ^"Iwa"]
+            NPCS [^"Mirumoto Masashige", #RGKIz7OLmZRu5daolD1h0j ^"Naigen", #oiI2Fqkg76RMNv2f8pSOS3 ^"Anmoku", #AXD267WIXyAZGt8oCbRt9C ^"Iwa"]
         }
-        ^"The Tengu Ruin" DEF {
+        #wZCOoEqdDixIV5VZ9qAviT ^"The Tengu Ruin" DEF {
             TYPE "Landmark"
             DESCRIPTION "The setup at the ruin atop the peak is a simple one, but how it plays out will depend on who arrives first. Before anyone else reaches the peak, a tengu named Ajari has brought the wounded Senzai to safety in an old ruin of his people's there. He is reluctant to allow anyone near her."
-            NPCS [^"Ajari"]
+            NPCS [#a7YAN7zdDZI1MCUmlPG7LQ ^"Ajari"]
         }
     }
 
@@ -67,10 +67,10 @@ ARC "imperfect-land" EXTENDS "l5r5e" {
     # CAST (resolve to l5r5e-0.5-imperfect-land-cast.ttrpg)
     # ─────────────────────────────────────────────
     KEY_NPCS {
-        PERFECT_LAND [^"Hige", ^"Anmoku", ^"Ichirō (Imperfect Land)", ^"Kanbei"]
-        BROTHERHOOD [^"Naigen", ^"Iwa", ^"Mirumoto Masashige"]
-        HIDDEN [^"Yuki (Shosuro Miyako)", ^"Ajari"]
-        DELEGATES [^"Kaimoku", ^"Kūen", ^"Rekigan", ^"Fuchō", ^"Shōka", ^"Tanbu", ^"Yoshi", ^"Yuro", ^"Zenjō"]
+        PERFECT_LAND [#x24hsoq9T0IzoYvD5OIESk ^"Hige", #oiI2Fqkg76RMNv2f8pSOS3 ^"Anmoku", #iKb9RZPFLEOAsfUXsmf4VC ^"Ichirō (Imperfect Land)", #uMxrJGM66fSPnqwRqZj0yt ^"Kanbei"]
+        BROTHERHOOD [#RGKIz7OLmZRu5daolD1h0j ^"Naigen", #AXD267WIXyAZGt8oCbRt9C ^"Iwa", ^"Mirumoto Masashige"]
+        HIDDEN [#Dfa8eyQqqWGDed4OVeQfwh ^"Yuki (Shosuro Miyako)", #a7YAN7zdDZI1MCUmlPG7LQ ^"Ajari"]
+        DELEGATES [#dIsceCkPGs8VD5U6XaCUft ^"Kaimoku", #oX0zIch30qAe8QKzM2pckm ^"Kūen", #ZclACjttVkklWAAxn8qn3Z ^"Rekigan", #sw2WDlg5G2XGQJkvFEuuLq ^"Fuchō", #jAzYnRqs5Z2eBqJCQmg6Nq ^"Shōka", #U8DUGrJpAUUA6C80QIUjj7 ^"Tanbu", #MKn4V19GcNe9Q7i1kbMJfu ^"Yoshi", #LEhDULfqCnRKRX9UNwuy5k ^"Yuro", #bM9JswAetLL81H1Zp4Cw6c ^"Zenjō"]
     }
 
     # A conclave adventure for the players' own characters, so there is no PARTY /

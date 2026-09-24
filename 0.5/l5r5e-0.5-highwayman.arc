@@ -6,7 +6,7 @@
 
 ARC "the-highwayman" EXTENDS "l5r5e" {
     NAME "The Highwayman"
-    VERSION "0.5.2"
+    VERSION "0.5.3"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "The Highwayman: The Legend of the Five Rings 2019 Gen Con Adventure (Fantasy Flight Games, 2020)"
@@ -46,20 +46,20 @@ ARC "the-highwayman" EXTENDS "l5r5e" {
     # LOCATIONS
     # ─────────────────────────────────────────────
     LOCATIONS {
-        ^"Kawacho" DEF {
+        #6Qdw4SGRGpjnDj2vUY9n3b ^"Kawacho" DEF {
             TYPE "Town"
             DESCRIPTION "Kawacho is a small town controlled by the Soshi through a vassal family. The town is built near an area of very fertile land, producing notably abundant rice yields each year. The town is known for their excellent sake produced by their small distillery on the river."
-            NPCS [^"Hidetaka Sasuke"]
+            NPCS [#RlmdJOMvXt82vLvXukob5x ^"Hidetaka Sasuke"]
         }
-        ^"Shinomen Forest" DEF {
+        #CQOT5IYTQffyf2X0Z7jsjG ^"Shinomen Forest" DEF {
             TYPE "Forest"
             DESCRIPTION "The Shinomen Forest is a mysterious, sprawling tangle of ancient trees that dwarfs most Great Clan castles and holdings. It has endured long before the establishment of the Chrysanthemum Throne and will continue long after Rokugan has fallen. Under its shadowy boughs, the air is still and windless, and the spirits and wildlife exist, unconcerned with the world outside. Under cover of darkness, the wicked creatures who seek destruction have crept into the heart of the Shinomen where they wait patiently. One such creature––the rakshasa who masquerades as the Highwayman––has invited two oni to be her honored guests at a final banquet before they sow discord in the rest of Rokugan.\n\nThe Shinomen Forest is a strange, ancient place that is not inherently hostile to outsiders, but does not accommodate them either. The ethereal nature of the Shinomen is mysterious and, rightly so, terrifies most people."
         }
-        ^"Yukiko's Estate" DEF {
+        #q3jjgbCZCz00py9X8ehMzX ^"Yukiko's Estate" DEF {
             TYPE "Building"
             DANGER_LEVEL "Defiled marsh (illusory manor)"
             DESCRIPTION "As the trees break, you are greeted by a sprawling complex of ornately carved buildings of a grand estate. Overhead, the lidless eye of the moon casts the place in a ghostly pallor. A short walkway lit with braziers leads to the front entrance of the main hall. There are no gates or walls here.\n\nTranquil music streams out of an open door on the cool night breeze. The scent on the air, however, is that of a vile marsh.\n\nThe main estate of the manor filled with dozens of rooms. If the illusion has been dispelled, the manor is instead a large outcropping in the middle of a festering swamp. A rudimentary framework of gnarled branches separates the 'rooms.' Listed below are the main areas the PCs may find themselves in."
-            NPCS [^"Lady Yukiko", ^"Lady Atsuko", ^"Lord Kenta"]
+            NPCS [#cvEfIvnE1yL99XGZVXnJgw ^"Lady Yukiko", #0gkDqXwZmpMNnyG2myLVab ^"Lady Atsuko", #h7zoU54KUJc1dNa2D5ZCtl ^"Lord Kenta"]
         }
     }
 
@@ -67,14 +67,14 @@ ARC "the-highwayman" EXTENDS "l5r5e" {
     # CAST (resolve to l5r5e-0.5-highwayman-cast.ttrpg)
     # ─────────────────────────────────────────────
     KEY_NPCS {
-        ANTAGONISTS [^"Lady Yukiko", ^"Lady Atsuko", ^"Lord Kenta"]
-        ALLIES [^"Hidetaka Sasuke", ^"Sayaka"]
+        ANTAGONISTS [#cvEfIvnE1yL99XGZVXnJgw ^"Lady Yukiko", #0gkDqXwZmpMNnyG2myLVab ^"Lady Atsuko", #h7zoU54KUJc1dNa2D5ZCtl ^"Lord Kenta"]
+        ALLIES [#RlmdJOMvXt82vLvXukob5x ^"Hidetaka Sasuke", #naISmwEA1cEFXEbfrotO7j ^"Sayaka"]
     }
 
     # ─────────────────────────────────────────────
     # PREGENS (resolve to l5r5e-0.5-highwayman-pregens.actor)
     # ─────────────────────────────────────────────
     PARTY {
-        PREGENS [^"Ahuja Mishti", ^"Akagi Daichi", ^"Hiyabayashi Kenshin", ^"Maki Haruko", ^"Noboru", ^"Otgontogoch Turgen"]
+        PREGENS [#KezAtQsi7CSsgfyRtXheXX ^"Ahuja Mishti", #PcvolFjH6kH5NgpTGoertf ^"Akagi Daichi", #tTQklf0JPs25ixPVf39nb8 ^"Hiyabayashi Kenshin", #hXxrMMjB1Vz4btnMWdcfLC ^"Maki Haruko", #Yv8K4TUGBfB6eqW2RJbbUJ ^"Noboru", #IydtfQxLH1KAQb7G3Wc28W ^"Otgontogoch Turgen"]
     }
 }

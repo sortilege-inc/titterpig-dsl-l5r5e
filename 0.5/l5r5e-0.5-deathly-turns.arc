@@ -10,7 +10,7 @@
 
 ARC "deathly-turns" EXTENDS "l5r5e" {
     NAME "Deathly Turns"
-    VERSION "0.5.2"
+    VERSION "0.5.3"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Deathly Turns: Supplemental Encounters for Wheel of Judgment (Fantasy Flight Games)"
@@ -35,30 +35,30 @@ ARC "deathly-turns" EXTENDS "l5r5e" {
             # Table 1-1 (page 3): how many oni to field in the final battle,
             # by PC group rank. Ranges reproduced as printed (they overlap at 12).
             ENCOUNTER_SCALING "Oni Battle Scaling" {
-                ^"PC Group Rank 7 or lower" DEF { ^"Combatants" STRING "The Brute" }
-                ^"PC Group Rank 8–12" DEF { ^"Combatants" STRING "The Brute and one member of the Trio of Vicious Oni" }
-                ^"PC Group Rank 12–16" DEF { ^"Combatants" STRING "The Brute and two members of the Trio of Vicious Oni" }
-                ^"PC Group Rank 16+" DEF { ^"Combatants" STRING "The Brute and all three members of the Trio of Vicious Oni" }
+                #eGy5vm0zoIkAWXslTV92v8 ^"PC Group Rank 7 or lower" DEF { ^"Combatants" STRING "The Brute" }
+                #UcTeTIpp0QJ3LjLESeLNVI ^"PC Group Rank 8–12" DEF { ^"Combatants" STRING "The Brute and one member of the Trio of Vicious Oni" }
+                #3ExVwSwtLLY14oUJRX8kvh ^"PC Group Rank 12–16" DEF { ^"Combatants" STRING "The Brute and two members of the Trio of Vicious Oni" }
+                #HQ2U8rR6OJzeIHcMgOdJsW ^"PC Group Rank 16+" DEF { ^"Combatants" STRING "The Brute and all three members of the Trio of Vicious Oni" }
             }
 
             # Table 1-2 (page 6): social objectives for the intrigue with the oni.
             INTRIGUE_TABLE "Blood and Magic Participants and Objectives" {
-                ^"Appeal to the Brute" DEF {
+                #2lLmcfodG2qR264aRHZHdT ^"Appeal to the Brute" DEF {
                     ^"Participant" STRING "One or more PCs"
                     ^"Momentum Points Needed" STRING "6"
                     ^"Base TN" STRING "3 (Water +2, Fire –2)"
                 }
-                ^"Appeal to the Trio of Vicious Oni" DEF {
+                #8t2JP6m7RhM0ikXiV1hx4y ^"Appeal to the Trio of Vicious Oni" DEF {
                     ^"Participant" STRING "One or more PCs"
                     ^"Momentum Points Needed" STRING "8"
                     ^"Base TN" STRING "2 (Earth +2, Air –2)"
                 }
-                ^"Intimidate the new arrivals" DEF {
+                #XNmbUclQ1iaZYAtg5dN35U ^"Intimidate the new arrivals" DEF {
                     ^"Participant" STRING "The Brute"
                     ^"Momentum Points Needed" STRING "Highest PC focus"
                     ^"Base TN" STRING "Highest PC vigilance"
                 }
-                ^"Start a brawl" DEF {
+                #1k9iv5CIvfaJtAlI9B8oIf ^"Start a brawl" DEF {
                     ^"Participant" STRING "The Trio of Vicious Oni"
                     ^"Momentum Points Needed" STRING "Highest PC focus +5"
                     ^"Base TN" STRING "Highest PC vigilance –1"
@@ -71,32 +71,32 @@ ARC "deathly-turns" EXTENDS "l5r5e" {
 
             # Table 1-3 (page 12): social objectives for talking Hiniku down.
             INTRIGUE_TABLE "Dissuade Hiniku Participants and Objectives" {
-                ^"Appeal to Hiniku's sense of duty" DEF {
+                #e5xwDe6ln25LgKBbGLyfEf ^"Appeal to Hiniku's sense of duty" DEF {
                     ^"Participant" STRING "One or more PCs"
                     ^"Momentum Points Needed" STRING "16"
                     ^"Base TN" STRING "3 (Air 2, Earth 4, Water 4)"
                 }
-                ^"Convince Hiniku that they will report her to her lord, the Hungry Governor (see page 13)" DEF {
+                #UjwRtMRkzFwprCdCHaw4IU ^"Convince Hiniku that they will report her to her lord, the Hungry Governor (see page 13)" DEF {
                     ^"Participant" STRING "One or more PCs"
                     ^"Momentum Points Needed" STRING "8"
                     ^"Base TN" STRING "4 (Air 3, Earth 5, Water 5)"
                 }
-                ^"Convince Hiniku's staff of bureaucrats to refuse to go along with her plan" DEF {
+                #tfTaiU7odHIWirZ80PJKx0 ^"Convince Hiniku's staff of bureaucrats to refuse to go along with her plan" DEF {
                     ^"Participant" STRING "One or more PCs"
                     ^"Momentum Points Needed" STRING "9"
                     ^"Base TN" STRING "3 (Earth 4, Fire 4, Void 1)"
                 }
-                ^"Convince the PCs she has given up on her plan (when in actuality she just intends to wait until they leave)" DEF {
+                #U1lcRtVE9uS85QL6LrqQp7 ^"Convince the PCs she has given up on her plan (when in actuality she just intends to wait until they leave)" DEF {
                     ^"Participant" STRING "Hiniku"
                     ^"Momentum Points Needed" STRING "Highest PC focus –2"
                     ^"Base TN" STRING "Highest PC vigilance"
                 }
-                ^"Convince the PCs her plan is really for the greater good" DEF {
+                #KATWZ3avFiyEHL94BuY8ro ^"Convince the PCs her plan is really for the greater good" DEF {
                     ^"Participant" STRING "Hiniku"
                     ^"Momentum Points Needed" STRING "Highest PC focus +3"
                     ^"Base TN" STRING "Highest PC vigilance –1"
                 }
-                ^"Get the PCs to offer to solve the root problem" DEF {
+                #Rf2OrU96vhAZfhzGK1EwD2 ^"Get the PCs to offer to solve the root problem" DEF {
                     ^"Participant" STRING "One Mazoku Bureaucrat (representing Hiniku's staff)"
                     ^"Momentum Points Needed" STRING "Highest PC focus +5"
                     ^"Base TN" STRING "Highest PC vigilance"
@@ -109,27 +109,27 @@ ARC "deathly-turns" EXTENDS "l5r5e" {
 
             # Table 1-4 (page 19): social objectives for turning the shade Hagane aside.
             INTRIGUE_TABLE "Convincing Hagane to Turn Aside Participants and Objectives" {
-                ^"Appeal to Hagane to abandon the grudge for the sake of his own spiritual growth" DEF {
+                #syAxjNQuSQjzgC8uDSDjAM ^"Appeal to Hagane to abandon the grudge for the sake of his own spiritual growth" DEF {
                     ^"Participant" STRING "One or more PCs"
                     ^"Momentum Points Needed" STRING "14"
                     ^"Base TN" STRING "3 (Air 1, Earth 5)"
                 }
-                ^"Convince Hagane to accept Akifusa's public apology" DEF {
+                #AJ2rezZx8OyV8E7zXRR4T0 ^"Convince Hagane to accept Akifusa's public apology" DEF {
                     ^"Participant" STRING "One or more PCs"
                     ^"Momentum Points Needed" STRING "8"
                     ^"Base TN" STRING "4 (Air 2, Earth 6)"
                 }
-                ^"Convince Akifusa to make a public apology" DEF {
+                #1H58OcjoDIRWnCQ7Ku3okv ^"Convince Akifusa to make a public apology" DEF {
                     ^"Participant" STRING "One or more PCs"
                     ^"Momentum Points Needed" STRING "4"
                     ^"Base TN" STRING "3 (Void 2)"
                 }
-                ^"Convince Hagane to spare Emihiko and the PCs in exchange for only Akifusa's life" DEF {
+                #9SPWrJfC0DgNyhh2Ghu0sA ^"Convince Hagane to spare Emihiko and the PCs in exchange for only Akifusa's life" DEF {
                     ^"Participant" STRING "Akifusa"
                     ^"Momentum Points Needed" STRING "12"
                     ^"Base TN" STRING "Highest PC vigilance"
                 }
-                ^"Convince Akifusa to fight a final duel with Hagane (and certainly die) to make things right" DEF {
+                #RpLkNB6m1wrVTAg6SKvvfb ^"Convince Akifusa to fight a final duel with Hagane (and certainly die) to make things right" DEF {
                     ^"Participant" STRING "Hagane"
                     ^"Momentum Points Needed" STRING "Highest PC focus +3"
                     ^"Base TN" STRING "3"
@@ -145,17 +145,17 @@ ARC "deathly-turns" EXTENDS "l5r5e" {
     # LOCATIONS (Spirit Realms)
     # ─────────────────────────────────────────────
     LOCATIONS {
-        ^"The Bleak Place" DEF {
+        #WPcvHqzvEomVlTRzF6R47M ^"The Bleak Place" DEF {
             TYPE "Landmark"
             DANGER_LEVEL "Jigoku (spiritually dead cavern)"
             DESCRIPTION "The Bleak Place, a cavern holding nothing but pools of stagnant water, is one of the very few parts of Jigoku that does not change or shift unnervingly. This is because it is, spiritually, utterly dead. In a past age, perhaps, some great desecration blasted all essence of vitality from the place, leaving it barren and desolate, even for an unhallowed place like Jigoku. Jya-Aku has chosen to meet the Brute here because she knows that the denizens of Jigoku shun the Bleak Place, making it as \"safe\" a place as one could likely find in the hellish realm."
-            NPCS [^"The Brute", ^"Jya-Aku", ^"Trio of Vicious Oni"]
+            NPCS [#ZDW6SYBQgS4k9KVGjdigSQ ^"The Brute", #P2zbS6qPjvzxP5NxfusKAy ^"Jya-Aku", #wtP2JzwACxQ1R08t2xhFDK ^"Trio of Vicious Oni"]
         }
-        ^"Hiniku's Estate" DEF {
+        #PStAWilPdspH2Xd5X2IhFt ^"Hiniku's Estate" DEF {
             TYPE "Building"
             DANGER_LEVEL "Gaki-dō"
             DESCRIPTION "If the PCs follow the gaki, they eventually reach a luxurious house surrounded by gardens and a stone wall perimeter. The building stands in stark contrast to the dreary, foul landscape all around it. Throngs of gaki mill about outside the estate, with more arriving every moment. Several small, blue, servile mazoku (formerly mortal souls who have become demons bound to serve Emma-Ō) periodically appear atop the wall, dumping baskets of what appear to be fruit and vegetables over it, where the horde of gaki ravenously consumes them. Vicious fights break out among the gaki as they compete for the food.\n\nInside the estate, the PCs find respite from the relentlessly bleak realm outside. The estate is sumptuous and luxurious. However, it is also noticeably disheveled and dilapidated, as though it's not being properly cleaned or maintained. The garden inside is abundant with fruit and vegetables. The plants are supernaturally enhanced, blossoming and growing new fruit almost as soon as the existing food has been picked by the small, servile mazoku. These mazoku are deferential to the PCs, but they excuse themselves after only brief snippets of conversation; they are too busy harvesting the fruit and dumping it over the wall to linger and talk."
-            NPCS [^"Hiniku", ^"Hogo-sha"]
+            NPCS [#1JFeQ5a0giGTIjuPdAxqEt ^"Hiniku", #nDZ1RlYYBfSqKJJlD1nRkI ^"Hogo-sha"]
         }
     }
 
@@ -163,9 +163,9 @@ ARC "deathly-turns" EXTENDS "l5r5e" {
     # CAST (resolve to l5r5e-0.5-deathly-turns-cast.ttrpg)
     # ─────────────────────────────────────────────
     KEY_NPCS {
-        JIGOKU [^"The Brute", ^"Trio of Vicious Oni", ^"Jya-Aku"]
-        GAKIDO [^"Hiniku", ^"Hogo-sha"]
-        NINGENDO [^"Lady Mazoku (Deathly Turns)", ^"Hagane"]
+        JIGOKU [#ZDW6SYBQgS4k9KVGjdigSQ ^"The Brute", #wtP2JzwACxQ1R08t2xhFDK ^"Trio of Vicious Oni", #P2zbS6qPjvzxP5NxfusKAy ^"Jya-Aku"]
+        GAKIDO [#1JFeQ5a0giGTIjuPdAxqEt ^"Hiniku", #nDZ1RlYYBfSqKJJlD1nRkI ^"Hogo-sha"]
+        NINGENDO [#9ycb61EMTU6r75l0xyviDL ^"Lady Mazoku (Deathly Turns)", #ckbmZb8v0wxEKS75xKpL8x ^"Hagane"]
     }
 
     # Supplemental encounters for the players' own characters, so there is no

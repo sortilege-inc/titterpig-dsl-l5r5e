@@ -8,7 +8,7 @@
 
 ARC "cresting-waves" EXTENDS "l5r5e" {
     NAME "Cresting Waves"
-    VERSION "0.5.2"
+    VERSION "0.5.3"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Cresting Waves: Supplemental Encounters for Sins of Regret (Fantasy Flight Games)"
@@ -44,24 +44,24 @@ ARC "cresting-waves" EXTENDS "l5r5e" {
     # LOCATIONS (resolve to the Sins of Regret / Path of Waves graph)
     # ─────────────────────────────────────────────
     LOCATIONS {
-        ^"Twin Blessings Village" DEF {
+        #8BHyWGahBfnmowtwwtgjWA ^"Twin Blessings Village" DEF {
             TYPE "Village"
             DESCRIPTION "The backwater village of Sins of Regret, led by Setsuo, with the former dōshin Miyoko among its people. Cursed by the onryō of the murdered Jimba until his killer, Banji, is brought to justice."
-            NPCS [^"Onryō, Vengeful Ghost", ^"Banji, Murderous Villager"]
+            NPCS [#lfUrCMiA8RyIyXDSmhQstU ^"Onryō, Vengeful Ghost", #S45dDdYNsovNr4AKV35SK0 ^"Banji, Murderous Villager"]
         }
-        ^"Nestled Village" DEF {
+        #FEGiOZmurEx8j6RSRGQ7eH ^"Nestled Village" DEF {
             TYPE "Village"
             DESCRIPTION "A village rival to Twin Blessings, across the common-land forest; home of Sora and of the elder Sayaka, who leads a party to retrieve their own missing youth."
         }
-        ^"Aguri's Hut" DEF {
+        #uozSly23iUOG7ODJwmAOkw ^"Aguri's Hut" DEF {
             TYPE "Building"
             DESCRIPTION "The trail leads you deep into the forest, and up a low hill where the trees finally thin a little. Here, the trail seems to disappear, but through the woods ahead you spy a small, sad-looking hut with balding thatch. It appears unoccupied.\n\nHowever the PCs deal with the yamauba, simply looking inside the hut reveals the prisoners, as well as jars of strong sake, broken tools, and bundles of herbs. There are several gnawed-upon bones in one corner; a TN 2 Medicine check (Water 1, Fire 3) reveals these to be human. The discovery of the prisoners cues the arrival of a party of peasants from Sora's village.\n\nThe hut is cluttered with pots, tools, and jars, all strewn about the bare earth floor. At the back, half-hidden in the gloom and propped up against the wall, are two bound figures. They do not move, even when the sounds of hurried feet and angry shouts come from outside."
-            NPCS [^"Aguri, Yamauba"]
+            NPCS [#GKb24dnRy84ftAiCFe1nAs ^"Aguri, Yamauba"]
         }
-        ^"Closed Shell Castle" DEF {
+        #qH4F4DL8fUzBzLA8RBQ0yJ ^"Closed Shell Castle" DEF {
             TYPE "Castle"
             DESCRIPTION "The castle the PCs journey to in Sins of Regret. Its daimyō has over-hunted the surrounding woods; the wolf guardian Mamoru Nakama appears here as a wounded visiting courtier."
-            NPCS [^"Mamoru Nakama, Wolf Guardian"]
+            NPCS [#ZGqjZnY2RORYxvNHpkHtFN ^"Mamoru Nakama, Wolf Guardian"]
         }
     }
 
@@ -69,7 +69,7 @@ ARC "cresting-waves" EXTENDS "l5r5e" {
     # CAST (resolve to l5r5e-0.5-cresting-waves-cast.ttrpg)
     # ─────────────────────────────────────────────
     KEY_NPCS {
-        ADVERSARIES [^"Onryō, Vengeful Ghost", ^"Banji, Murderous Villager", ^"Aguri, Yamauba", ^"Mamoru Nakama, Wolf Guardian"]
+        ADVERSARIES [#lfUrCMiA8RyIyXDSmhQstU ^"Onryō, Vengeful Ghost", #S45dDdYNsovNr4AKV35SK0 ^"Banji, Murderous Villager", #GKb24dnRy84ftAiCFe1nAs ^"Aguri, Yamauba", #ZGqjZnY2RORYxvNHpkHtFN ^"Mamoru Nakama, Wolf Guardian"]
         ALLIES [^"Setsuo", ^"Daizō"]
     }
 

@@ -8,7 +8,7 @@
 
 ARC "topaz-championship" EXTENDS "l5r5e" {
     NAME "The Topaz Championship"
-    VERSION "0.5.2"
+    VERSION "0.5.3"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "The Topaz Championship: the adventure included in the L5R Roleplaying Beginner Game (Fantasy Flight Games)"
@@ -59,10 +59,10 @@ ARC "topaz-championship" EXTENDS "l5r5e" {
     # LOCATION
     # ─────────────────────────────────────────────
     LOCATIONS {
-        ^"Tsuma" DEF {
+        #Qk5CahfwIAvNXDGBNItox1 ^"Tsuma" DEF {
             TYPE "Town"
             DESCRIPTION "The adventure takes place in Tsuma, a small village located within lands controlled by the Crane Clan. Tsuma is a small fishing village on the Tangu River, with only a few dozen homes, barns, storehouses, and artisan shops. It has enormous cultural significance, however, as the site of the Topaz Championship, the most celebrated coming-of-age ritual ceremony, or gempuku, in the Emerald Empire."
-            NPCS [^"Bayushi Sugai"]
+            NPCS [#t54e13c3e188733ae9c3d4 ^"Bayushi Sugai"]
         }
     }
 
@@ -70,7 +70,7 @@ ARC "topaz-championship" EXTENDS "l5r5e" {
     # CAST (resolve to l5r5e-0.5-topaz-championship-cast.ttrpg)
     # ─────────────────────────────────────────────
     KEY_NPCS {
-        ANTAGONISTS [^"Bayushi Sugai", ^"Ruffian (Topaz Championship)"]
+        ANTAGONISTS [#t54e13c3e188733ae9c3d4 ^"Bayushi Sugai", #hViONy5InE6DIMvB8ThVgd ^"Ruffian (Topaz Championship)"]
     }
 
     # ─────────────────────────────────────────────
@@ -79,6 +79,6 @@ ARC "topaz-championship" EXTENDS "l5r5e" {
     #  characters are used in both Beginner Game adventures)
     # ─────────────────────────────────────────────
     PARTY {
-        PREGENS [^"Akodo Masako", ^"Bayushi Kyo", ^"Doji Ren", ^"Hida Sugi", ^"Isawa Aki", ^"Shinjo Takuya", ^"Togashi Yoshi"]
+        PREGENS [#borV4EPfbO4461EG1D2A6y ^"Akodo Masako", #mdgXo3dyN1anVTTGuMLtFq ^"Bayushi Kyo", #yRz6zse1MHa80ptJjVYc9w ^"Doji Ren", #dOuhA27JA1FkxCGArVmQjf ^"Hida Sugi", #BumtE0gc6rxfR3PrDZKWR6 ^"Isawa Aki", #byjZjCnTY0YQyqgASFSQlJ ^"Shinjo Takuya", #0VUc4xhd1UkVKVR92AL2sT ^"Togashi Yoshi"]
     }
 }

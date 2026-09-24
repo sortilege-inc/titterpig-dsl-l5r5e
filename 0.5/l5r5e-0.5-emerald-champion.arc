@@ -7,7 +7,7 @@
 
 ARC "emerald-champion" EXTENDS "l5r5e" {
     NAME "In the Palace of the Emerald Champion"
-    VERSION "0.5.2"
+    VERSION "0.5.3"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "In the Palace of the Emerald Champion: A Bonus Adventure for the L5R Roleplaying Beginner Game (Fantasy Flight Games, 2018)"
@@ -38,37 +38,37 @@ ARC "emerald-champion" EXTENDS "l5r5e" {
             # Satsume. Getting information from another clan's rep needs a TN 2
             # Courtesy or Sentiment check.
             REFERENCE_TABLE "Rumors and Information from the Clan Representatives" {
-                ^"Crab" DEF {
+                #aauMCiOtGKP8CXP4f1ukRO ^"Crab" DEF {
                     ^"Representative" STRING "Hida Mikoro"
                     ^"Meeting Location" STRING "Armory"
                     ^"Information Provided" STRING "Satsume was a strict father. He hardly spoke to his eldest daughter, Hotaru, after his wife's death. Not that he spoke with her much before it, either."
                 }
-                ^"Crane" DEF {
+                #flAfXg3W1lqFqIOvaaSlg7 ^"Crane" DEF {
                     ^"Representative" STRING "Asahina Tadane"
                     ^"Meeting Location" STRING "Private Dining Hall"
                     ^"Information Provided" STRING "Since the death of his wife, Satsume was not very well liked, even among his own clan. Everyone secretly blamed him for her untimely end, his daughter Hotaru most of all."
                 }
-                ^"Dragon" DEF {
+                #Id3l0rvLTaxXDislfHWpaA ^"Dragon" DEF {
                     ^"Representative" STRING "Mirumoto Tanetsu"
                     ^"Meeting Location" STRING "Room of Law"
                     ^"Information Provided" STRING "Sumiko would often grumble about Satsume's secrets, frustrated with how he felt no obligation to keep her informed of his efforts and whereabouts. She absolutely did not trust him."
                 }
-                ^"Lion" DEF {
+                #4YhnDhlOwyhLKCCY2fruR0 ^"Lion" DEF {
                     ^"Representative" STRING "Kitsu Tsuguri"
                     ^"Meeting Location" STRING "Training Dōjō"
                     ^"Information Provided" STRING "Satsume was an aggressive sparring partner, at times needlessly injuring his soldiers during martial practices in the training yard. He was often very harsh in his criticisms, and demanded more from everyone around him."
                 }
-                ^"Phoenix" DEF {
+                #j7ERiWSGbI4GAAcGnFaMzZ ^"Phoenix" DEF {
                     ^"Representative" STRING "Shiba Sono"
                     ^"Meeting Location" STRING "Garden of Verdant Serenity"
                     ^"Information Provided" STRING "During the last several months, Satsume spent more and more time in the library, where he used to spend hours referencing the Rokugani law books. It seems that he had become interested in precedent and ways to justify novel interpretations of Imperial law."
                 }
-                ^"Scorpion" DEF {
+                #X18IHHIhpcFhOUkBfhMi61 ^"Scorpion" DEF {
                     ^"Representative" STRING "Bayushi Negi"
                     ^"Meeting Location" STRING "Courtyard of Punishment"
                     ^"Information Provided" STRING "Satsume disappeared often, but no one could figure out how he left the castle or by what entrance he returned. This would suggest some secret in the castle's architecture."
                 }
-                ^"Unicorn" DEF {
+                #qVcSCiEveGSZJYTQt2GYNa ^"Unicorn" DEF {
                     ^"Representative" STRING "Shinjo Akiba"
                     ^"Meeting Location" STRING "Stables"
                     ^"Information Provided" STRING "Satsume was a great compromiser, ensuring that no one was happy with his decisions but also that no one was too angry with them. He didn't get along with most here, though. One time, Akiba says, she overheard Sumiko and Satsume arguing about their duties to the Emperor, but the disagreement went unresolved."
@@ -88,11 +88,11 @@ ARC "emerald-champion" EXTENDS "l5r5e" {
     # LOCATIONS
     # ─────────────────────────────────────────────
     LOCATIONS {
-        ^"Tsuma" DEF {
+        #Qhd2xdfB8A7pRGPNn4edXk ^"Tsuma" DEF {
             TYPE "Town"
             DESCRIPTION "The town that hosts the Topaz Championship, where the PCs underwent their gempuku and first encountered Satsume's ghost. The adventure's road begins here, roughly six hundred li south of Shiro Yogasha."
         }
-        ^"Shiro Yogasha" DEF {
+        #dwO7DrDVV3yrr0KelCZ40C ^"Shiro Yogasha" DEF {
             TYPE "Castle"
             DESCRIPTION "Shiro Yogasha, the castle of the Emerald Champion, has been the primary home of the Emerald Champion for centuries. The stronghold is located on a hill bordered by wide, empty plains, making the approach of visitors or enemies visible far in advance. Inside the castle walls are numerous courtyards and spacious halls, and the buildings' sloped roofs are topped with glistening, emerald-colored tiles. The luxurious grandeur of the main keep suits the prestigious office that commands it."
             NPCS [^"Agasha Sumiko", ^"Kitsuki Kāgi", ^"Shosuro Hametsu", ^"Kitsuki Tomo"]
@@ -106,13 +106,13 @@ ARC "emerald-champion" EXTENDS "l5r5e" {
         GHOST [^"Doji Satsume"]
         CASTLE [^"Agasha Sumiko", ^"Kitsuki Kāgi"]
         ANTAGONISTS [^"Shosuro Hametsu", ^"Kitsuki Tomo"]
-        ROAD [^"Ryu", ^"Goro the Bandit Leader", ^"Bandits", ^"Airi the Tengu", ^"Goblins", ^"Teru the Ogre"]
+        ROAD [#s7gusTIxD30b5PmmAaqv24 ^"Ryu", ^"Goro the Bandit Leader", ^"Bandits", #Z2M3KpXbNN5SQFuJ1gl9RX ^"Airi the Tengu", #nHc6LNpbEQg7StnIvyXfal ^"Goblins", ^"Teru the Ogre"]
     }
 
     # ─────────────────────────────────────────────
     # PREGENS (resolve to l5r5e-0.5-emerald-champion-pregens.actor)
     # ─────────────────────────────────────────────
     PARTY {
-        PREGENS [^"Akodo Masako", ^"Bayushi Kyo", ^"Doji Ren", ^"Hida Sugi", ^"Isawa Aki", ^"Shinjo Takuya", ^"Togashi Yoshi"]
+        PREGENS [#borV4EPfbO4461EG1D2A6y ^"Akodo Masako", #mdgXo3dyN1anVTTGuMLtFq ^"Bayushi Kyo", #yRz6zse1MHa80ptJjVYc9w ^"Doji Ren", #dOuhA27JA1FkxCGArVmQjf ^"Hida Sugi", #BumtE0gc6rxfR3PrDZKWR6 ^"Isawa Aki", #byjZjCnTY0YQyqgASFSQlJ ^"Shinjo Takuya", #0VUc4xhd1UkVKVR92AL2sT ^"Togashi Yoshi"]
     }
 }

@@ -1,6 +1,6 @@
 BASE "L5R5e_Core_Core" {
     NAME "Legend of the Five Rings 5th Edition - Core mechanics, ACTORs, and fundamental game rules"
-    VERSION "0.5.2"
+    VERSION "0.5.3"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -70,8 +70,8 @@ BASE "L5R5e_Core_Core" {
 
         RULES {
             #L5R004jK5lM7nO9pQ1rS3t: WHEN [^"Samurai" CREATED] THEN REQUIRE ^"Clan", ^"School"
-            #L5R005uV6wX8yZ0aB2cD4e: WHEN [^"Strife" > ^"Composure"] THEN ^"Samurai" IS compromised
-            #L5R006fG7hI9jK1lM3nO5p: WHEN [^"Fatigue" > ^"Endurance"] THEN ^"Samurai" IS incapacitated
+            #L5R005uV6wX8yZ0aB2cD4e: WHEN [^"Strife" > #FsnaRF33dQ29iQVjTmI5bV ^"Composure"] THEN ^"Samurai" IS compromised
+            #L5R006fG7hI9jK1lM3nO5p: WHEN [^"Fatigue" > #R7N0xh9Z4geEr9f19Lf2yF ^"Endurance"] THEN ^"Samurai" IS incapacitated
         }
     }
 
@@ -168,7 +168,7 @@ BASE "L5R5e_Core_Core" {
 
     # === DICE AND CHECK SYSTEM ===
 
-    ^"Ring Die" DEF {
+    #sIJKm9Og6gaUSJUQptaUNZ ^"Ring Die" DEF {
 
         FACES {
             1 "Blank"
@@ -184,7 +184,7 @@ BASE "L5R5e_Core_Core" {
         }
     }
 
-    ^"Skill Die" DEF {
+    #eoqgsYsNWTop3A1iMbyhQb ^"Skill Die" DEF {
 
         FACES {
             1 "Blank"
@@ -519,7 +519,7 @@ BASE "L5R5e_Core_Core" {
 
     # === SCENE AND SESSION STRUCTURE ===
 
-    ^"Turn" DEF {
+    #DZ64KqDU4Od0f9EHUV3ZnO ^"Turn" DEF {
 
         RULES {
             #L5R038tU9vW1xY3zA5bC7d: turn_defined "Turns: A turn is a character's chance to perform an action and accomplish other small goals, such as choosing a stance and moving (narratively, or as the conflict dictates)."
@@ -543,7 +543,7 @@ BASE "L5R5e_Core_Core" {
         }
     }
 
-    ^"Session" DEF {
+    #AUTPId6XR7LRlrloo73lGq ^"Session" DEF {
 
         RULES {
             #L5R042lM3nO5pQ7rS9tU1v: experience_spent_between_sessions "Over the course of play, characters gain experience points (XP), which their players can spend between sessions to make the characters more potent."
@@ -563,7 +563,7 @@ BASE "L5R5e_Core_Core" {
         }
     }
 
-    ^"Stance" DEF {
+    #ynDEf5tmE2FXVJeDDg63yT ^"Stance" DEF {
 
         ENUM ["Air", "Earth", "Fire", "Water", "Void"]
 
@@ -586,7 +586,7 @@ BASE "L5R5e_Core_Core" {
         }
     }
 
-    ^"Action" DEF {
+    #a1Z7NV1VD4ScqFUT9hfUjE ^"Action" DEF {
 
         INTRIGUE_ACTIONS {
             ENUM ["Assist", "Calming Breath", "Persuade", "Unique Action"]
@@ -627,7 +627,7 @@ BASE "L5R5e_Core_Core" {
         }
     }
 
-    ^"Silhouette" DEF {
+    #Ul7Tn8ZKqj23ck5i3cnoUD ^"Silhouette" DEF {
 
         INTEGER MIN 0 MAX 5
 

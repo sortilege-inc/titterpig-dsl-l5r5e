@@ -7,7 +7,7 @@
 
 ARC "the-scroll-or-the-blade" EXTENDS "l5r5e" {
     NAME "The Scroll or the Blade"
-    VERSION "0.5.2"
+    VERSION "0.5.3"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "The Scroll or the Blade: A Supplemental Adventure for Winter's Embrace (Fantasy Flight Games, 2020)"
@@ -30,15 +30,15 @@ ARC "the-scroll-or-the-blade" EXTENDS "l5r5e" {
 
             # Table 1-1 (page 7): social objectives for keeping order during the storm.
             INTRIGUE_TABLE "Objectives at the Temple" {
-                ^"Calming Attendees" DEF {
+                #v6gfWi1YPZ9wo5OnHhOtjv ^"Calming Attendees" DEF {
                     ^"Difficulty" STRING "TN 3 Courtesy (Earth 2, Fire 4) check or a TN 3 Command (Earth 2, Fire 4) check"
                     ^"Momentum Required" STRING "4"
                 }
-                ^"Consoling Masayo" DEF {
+                #NYbJi82Ur8lWeyyKA0h9em ^"Consoling Masayo" DEF {
                     ^"Difficulty" STRING "TN 3 Sentiment (Water 2, Air 4) check or a TN 4 Theology (Void 3, Air 3, Earth 5) check"
                     ^"Momentum Required" STRING "4"
                 }
-                ^"Reinforcing the Temple" DEF {
+                #9rVTH6qn4BvPqo1jgb1pWw ^"Reinforcing the Temple" DEF {
                     ^"Difficulty" STRING "TN 3 Labor (Fire 2, Air 4) check or a TN 2 Fitness (Earth 2, Void 4) check"
                     ^"Momentum Required" STRING "4"
                 }
@@ -47,12 +47,12 @@ ARC "the-scroll-or-the-blade" EXTENDS "l5r5e" {
             # Table 1-2 (page 8): example claims each clan offers for Masayo's placement,
             # grouped by clan (the source lists three per clan).
             REFERENCE_TABLE "Clan Claims" {
-                ^"Phoenix" DEF {
+                #k7YivV6SVCEmmM2vkTzwdM ^"Phoenix" DEF {
                     ^"Claim 1" STRING "Prior to her disappearance, Shiba Miku was a Phoenix shugenja. Records exist of her birthmark which consists of three wavy lines. This matches the birthmark found on Masayo's neck."
                     ^"Claim 2" STRING "There is a precedence for talented shugenja to join the Phoenix, even though a heritable connection exists with other clans."
                     ^"Claim 3" STRING "Existing maps show the village of Chisanrū was formerly a part of Phoenix lands, and Phoenix scrolls were found at the destroyed villa that Masayo came from."
                 }
-                ^"Dragon" DEF {
+                #SlM0oo7vHHESOwOnX3NCT5 ^"Dragon" DEF {
                     ^"Claim 1" STRING "The katana recovered by Bunji is an old Dragon design, its blade etched with murals of an epic battle in the mountains, its hilt adorned with the markings of the Kitsuki family mon."
                     ^"Claim 2" STRING "Historical documents exist showing the foundation of the Chisanrū village and its position within Dragon borders."
                     ^"Claim 3" STRING "The teachings of the Hinokami Prophecy speak of a child of two families who joins the Dragon Clan, her destiny to defeat a massive creature that will threaten Dragon holdings. The Dragon believe Masayo is this child."
@@ -66,27 +66,27 @@ ARC "the-scroll-or-the-blade" EXTENDS "l5r5e" {
             # Table 1-3 (page 11): pre-rolled per-round dice results for each NPC
             # contestant, so the GM need not roll them ((op) = Opportunity, (st) = strife).
             RESULTS_TABLE "Kemari Tournament Results" {
-                ^"Asako Haruki" DEF {
+                #SoU5fkLrTMqEsealXbwGun ^"Asako Haruki" DEF {
                     ^"Round 1 (TN 2)" STRING "Success with 1 bonus (op), and 1 (st)"
                     ^"Round 2 (TN 3)" STRING "Success with 0 bonus (op)"
                     ^"Round 3 (TN 4)" STRING "Knocked out"
                 }
-                ^"Daidoji Aki" DEF {
+                #eIwbPJhnFoZI1bKUbMzVEG ^"Daidoji Aki" DEF {
                     ^"Round 1 (TN 2)" STRING "Success with 2 bonus (op), and 2 (st)"
                     ^"Round 2 (TN 3)" STRING "Success with 2 bonus (op), and 1 (st)"
                     ^"Round 3 (TN 4)" STRING "Success with 1 bonus (op), and 1 (st)"
                 }
-                ^"Isawa Yoshiko" DEF {
+                #zeAs0kbv9r7ESDqghMgV7V ^"Isawa Yoshiko" DEF {
                     ^"Round 1 (TN 2)" STRING "Success with 2 bonus (op), and 2 (st)"
                     ^"Round 2 (TN 3)" STRING "Success with 2 bonus (op), and 1 (st)"
                     ^"Round 3 (TN 4)" STRING "Success with 1 bonus (op)"
                 }
-                ^"Kitsuki Tomoyo" DEF {
+                #kSoHYGMoJMVCOwaPs6ExxG ^"Kitsuki Tomoyo" DEF {
                     ^"Round 1 (TN 2)" STRING "Success with 1 bonus (op)"
                     ^"Round 2 (TN 3)" STRING "Success with 0 bonus (op), and 1 (st)"
                     ^"Round 3 (TN 4)" STRING "Success with 0 bonus (op)"
                 }
-                ^"Mirumoto Kazuya" DEF {
+                #wotxf3IfUzRQEw0q2E2rLf ^"Mirumoto Kazuya" DEF {
                     ^"Round 1 (TN 2)" STRING "Success with 2 bonus (op)"
                     ^"Round 2 (TN 3)" STRING "Success with 1 bonus (op)"
                     ^"Round 3 (TN 4)" STRING "Success with 0 bonus (op), and 1 (st)"
@@ -103,12 +103,12 @@ ARC "the-scroll-or-the-blade" EXTENDS "l5r5e" {
     # LOCATIONS
     # ─────────────────────────────────────────────
     LOCATIONS {
-        ^"Kyūden Doji" DEF {
+        #niwyWoJFsHVr4fw9aI6OUT ^"Kyūden Doji" DEF {
             TYPE "Palace"
             DESCRIPTION "The Esteemed Palaces of the Crane, also known as Kyūden Doji, stands atop the white cliffs on the eastern shore of Rokugan. However, nestled in the hills behind the grand castle, beyond the surrounding city, and atop a winding staircase, is a Shinseist temple complex. Comprised of several white and gold buildings with red tiled roofs, each fashioned to hold up to 100 guests, with the main temple large enough to house 250. Ornately carved 12-foot-high heavy wooden doors, fashioned from a single oak tree, welcome guests to the comfortable interior. Spacious and simple, the temple contains polished wooden floors and row after row of kneeling mats before reaching a raised platform that monks use to give their sermons."
-            NPCS [^"Miya Bunji", ^"Masayo", ^"Shika Yuki", ^"Daidoji Aki"]
+            NPCS [#MklMVziFFER4Fq75gaqtBx ^"Miya Bunji", #27LrDOWn433b8zr4eTE2Kg ^"Masayo", #Ykrbqbvzw93sVuZyE4IFzj ^"Shika Yuki", ^"Daidoji Aki"]
         }
-        ^"Chisanrū" DEF {
+        #U484yE1eyquhRYEJuw6dNV ^"Chisanrū" DEF {
             TYPE "Village"
             DESCRIPTION "The village of Chisanrū was long-forgotten, hidden among the valleys of the Eastern Dragon provinces, nestled near the borders of both Dragon and Phoenix lands. Unbeknown to its inhabitants, a sacred shrine to Yamakaze lay buried beneath the village.\n\nYears after its establishment, the village became the secret rendezvous location for two samurai; Kitsuki Taiki, a Dragon warrior, and Shiba Miku, a Phoenix shugenja. Over time, the two built a small villa, eventually giving birth to a daughter, Masayo, who possessed an affinity for the elements. Soon after Masayo was born, a minor fortune of the mountain winds, known as Yamakaze, saw Masayo's natural affinity and became enraptured by her. After several years, the relative peace of the villa was shattered when an avalanche roared down from the mountain and killed Taiki and Miku, though Masayo was saved by Yamakaze. The displaced snow blocked Dragon patrol paths, isolating the village further until it fell into obscurity."
         }
@@ -118,11 +118,11 @@ ARC "the-scroll-or-the-blade" EXTENDS "l5r5e" {
     # CAST (resolve to l5r5e-0.5-scroll-or-blade-cast.ttrpg)
     # ─────────────────────────────────────────────
     KEY_NPCS {
-        CHILD_AND_GUARDIAN [^"Masayo", ^"Miya Bunji"]
+        CHILD_AND_GUARDIAN [#27LrDOWn433b8zr4eTE2Kg ^"Masayo", #MklMVziFFER4Fq75gaqtBx ^"Miya Bunji"]
         DRAGON [^"Kitsuki Tomoyo", ^"Mirumoto Kazuya"]
         PHOENIX [^"Asako Haruki", ^"Isawa Yoshiko"]
-        DEER_AND_HOST [^"Shika Yuki", ^"Daidoji Aki"]
-        HIRED [^"Mercenary Shinobi"]
+        DEER_AND_HOST [#Ykrbqbvzw93sVuZyE4IFzj ^"Shika Yuki", ^"Daidoji Aki"]
+        HIRED [#Ie80baMavQo1xAi2reeR3R ^"Mercenary Shinobi"]
     }
 
     # This is a supplement to Winter's Embrace; the players use their existing
