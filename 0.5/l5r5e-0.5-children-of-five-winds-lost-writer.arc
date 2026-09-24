@@ -5,7 +5,7 @@
 
 ARC "L5R5e_LostWriter" {
     NAME "The Lost Writer in the City of the Rich Frog"
-    VERSION "0.5.4"
+    VERSION "0.5.5"
     SPEC_VERSION "0.5"
     DEPENDS_ON "L5R5e_Core_Core"
     USES_EXTENSION "L5R5e_Children_of_Five_Winds"
@@ -73,6 +73,9 @@ ARC "L5R5e_LostWriter" {
                 ^"Status"  INTEGER 60
                 ^"Skills" LIST OF STRING ["Artisan 3", "Martial 2", "Scholar 4", "Social 4", "Trade 1"]
             }
+            REFERENCES {
+                "Miya Tetsua" -> #AEzCQP2Drp0S9YJeerwTbW ^"Miya Tetsua"
+            }
         }
 
         #L5RCW52wX4yZ6aB8cD0eF2g ^"Ikoma Kotone" DEF {
@@ -98,6 +101,9 @@ ARC "L5R5e_LostWriter" {
                 ^"Glory"  INTEGER 50
                 ^"Status"  INTEGER 39
                 ^"Skills" LIST OF STRING ["Artisan 2", "Martial 0", "Scholar 2", "Social 3", "Trade 0"]
+            }
+            REFERENCES {
+                "Ikoma Kotone" -> #FZJCOTmVRYNPtVan44l9gu ^"Ikoma Kotone"
             }
         }
 
@@ -134,6 +140,9 @@ ARC "L5R5e_LostWriter" {
                 ^"Status"  INTEGER 20
                 ^"Skills" LIST OF STRING ["Artisan 0", "Martial 2", "Scholar 1", "Social 0", "Trade 1"]
             }
+            REFERENCES {
+                "Haya" -> #pdVhgInaM72wsgKXE7k3Y2 ^"Kaeru Haya"
+            }
         }
 
         #L5RCW55dE7fG9hI1jK3lM5n ^"Ide Chiharu" DEF {
@@ -159,6 +168,9 @@ ARC "L5R5e_LostWriter" {
                 ^"Glory"  INTEGER 40
                 ^"Status"  INTEGER 20
                 ^"Skills" LIST OF STRING ["Artisan 2", "Martial 0", "Scholar 0", "Social 2", "Trade 3"]
+            }
+            REFERENCES {
+                "Ide Chiharu" -> #1ySCaZs0RLO4Dq8bugIG21 ^"Ide Chiharu"
             }
         }
 
@@ -186,6 +198,9 @@ ARC "L5R5e_LostWriter" {
                 ^"Status"  INTEGER 40
                 ^"Skills" LIST OF STRING ["Artisan 5", "Martial 2", "Scholar 3", "Social 5", "Trade 2"]
             }
+            REFERENCES {
+                "Shin" -> #x5geDvzE1ao7Au4ilnhQFy ^"Daidoji Shin"
+            }
         }
 
         #L5RCW57zA9bC1dE3fG5hI7j ^"Asahina Nao" DEF {
@@ -212,6 +227,9 @@ ARC "L5R5e_LostWriter" {
                 ^"Status"  INTEGER 40
                 ^"Skills" LIST OF STRING ["Artisan 3", "Martial 0", "Scholar 3", "Social 2", "Trade 0"]
             }
+            REFERENCES {
+                "Asahina Nao" -> #MdVzluWZUlLJM8s6sIBKqK ^"Asahina Nao"
+            }
         }
 
         #L5RCW58kL0mN2oP4qR6sT8u ^"Adventure Ifrit" DEF {
@@ -234,6 +252,9 @@ ARC "L5R5e_LostWriter" {
                 ^"Focus" INTEGER 4
                 ^"Vigilance" INTEGER 1
                 ^"Skills" LIST OF STRING ["Artisan 0", "Martial 3", "Scholar 3", "Social 2", "Trade 3"]
+            }
+            REFERENCES {
+                "ifrit" -> #3XqIrJ05JKkc7Iz9bHiDuy ^"Adventure Ifrit"
             }
         }
     }
