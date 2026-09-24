@@ -1,6 +1,6 @@
 EXTENSION "L5R5e_Path_of_Waves_Systems" EXTENDS "L5R5e_Core_Systems" {
     NAME "Legend of the Five Rings 5th Edition - Path of Waves: Systems, Titles, Bonds, and NPCs"
-    VERSION "0.5.3"
+    VERSION "0.5.4"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-03-01"
 
@@ -2002,12 +2002,14 @@ EXTENSION "L5R5e_Path_of_Waves_Systems" EXTENDS "L5R5e_Core_Systems" {
 
         # source table (page 79). Suggested second ring increase by what the school is known for.
         #L5RPW07IGE9GL53SPJKXE3 ^"Table 2-6: Suggested Second Ring Bonus" DEF {
-            ENTRIES {
-                #L5RPW074U4ldUjxeI7M4qA ^"Air" DEF { ^"Trait School Is Known For" STRING "Precision, grace, or manners" }
-                #L5RPW07rBsIeAyfMzNqMIJ ^"Earth" DEF { ^"Trait School Is Known For" STRING "Patience, tradition, or resilience" }
-                #L5RPW07iAV3JBl92tL7b1e ^"Fire" DEF { ^"Trait School Is Known For" STRING "Inventiveness, ferocity, or speed" }
-                #L5RPW07dI3JLYbkSLz0ExT ^"Void" DEF { ^"Trait School Is Known For" STRING "Philosophy, selflessness, or insight" }
-                #L5RPW07kzKF4IuoF4hArLz ^"Water" DEF { ^"Trait School Is Known For" STRING "Adaptability, flexibility, or awareness" }
+            # each row names the core's ring (core-traits) — the table lists them, it does not define them
+            TABLE {
+                COLUMNS ["Ring Increase", "Trait School Is Known For"]
+                ROW [#L5Rring0Air00000000001 ^"Air", "Precision, grace, or manners"]
+                ROW [#L5Rring0Earth000000001 ^"Earth", "Patience, tradition, or resilience"]
+                ROW [#L5Rring0Fire0000000001 ^"Fire", "Inventiveness, ferocity, or speed"]
+                ROW [#L5Rring0Void0000000001 ^"Void", "Philosophy, selflessness, or insight"]
+                ROW [#L5Rring0Water000000001 ^"Water", "Adaptability, flexibility, or awareness"]
             }
         }
 
@@ -2039,14 +2041,17 @@ EXTENSION "L5R5e_Path_of_Waves_Systems" EXTENDS "L5R5e_Core_Systems" {
 
         # source table (page 82). The worked example of a rank's seven advances (one skill group, three skills, one technique group, two techniques).
         #L5RPW07zIl3BYkF4Rpq7MU ^"Table 2-9: Morgan's Rank 1 Sample Curriculum" DEF {
-            ENTRIES {
-                #L5RPW07XCnCku5wyND4Lgu ^"Artisan Skills" DEF { ^"Type" STRING "Skl. Grp." }
-                #L5RPW074T3NWZTonTZ75TO ^"Courtesy" DEF { ^"Type" STRING "Skill" }
-                #L5RPW07uVLv2Q3KXrJNhT6 ^"Theology" DEF { ^"Type" STRING "Skill" }
-                #L5RPW07CeaDDE7OjqpeUtj ^"Martial Arts [Melee]" DEF { ^"Type" STRING "Skill" }
-                #L5RPW070vbjhOJcEOCsDsZ ^"Rank 1 Shūji" DEF { ^"Type" STRING "Tech. Grp." ^"Category" STRING "✎" }
-                #L5RPW07mPDEc8xqVnM7LAC ^"Civility Foremost" DEF { ^"Type" STRING "Technique" ^"Category" STRING "✎" }
-                #L5RPW07756pnwg8LS2K3ne ^"Snapping Branch Style" DEF { ^"Type" STRING "Technique" ^"Category" STRING "⚔" }
+            # skills and a technique the core defines are named by the core's hash; the groups are not
+            # entities; "Snapping Branch Style" is printed so (the technique on p. 90 is "Snapping Branch Strike")
+            TABLE {
+                COLUMNS ["Advance", "Type", "Category"]
+                ROW ["Artisan Skills", "Skl. Grp.", ""]
+                ROW [#L5Rskill0Courtesy00001 ^"Courtesy", "Skill", ""]
+                ROW [#L5Rskill0Theology00001 ^"Theology", "Skill", ""]
+                ROW [#Nz42rDSYYoVFWHst6Mu3QY ^"Martial Arts [Melee]", "Skill", ""]
+                ROW ["Rank 1 Shūji", "Tech. Grp.", "✎"]
+                ROW [#YRrwJlgAyPpVIMmg9hKPC4 ^"Civility Foremost", "Technique", "✎"]
+                ROW ["Snapping Branch Style", "Technique", "⚔"]
             }
         }
 
