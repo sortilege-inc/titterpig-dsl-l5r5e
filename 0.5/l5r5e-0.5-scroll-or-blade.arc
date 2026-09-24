@@ -7,7 +7,7 @@
 
 ARC "the-scroll-or-the-blade" EXTENDS "l5r5e" {
     NAME "The Scroll or the Blade"
-    VERSION "0.5.3"
+    VERSION "0.5.4"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "The Scroll or the Blade: A Supplemental Adventure for Winter's Embrace (Fantasy Flight Games, 2020)"
@@ -66,31 +66,12 @@ ARC "the-scroll-or-the-blade" EXTENDS "l5r5e" {
             # Table 1-3 (page 11): pre-rolled per-round dice results for each NPC
             # contestant, so the GM need not roll them ((op) = Opportunity, (st) = strife).
             RESULTS_TABLE "Kemari Tournament Results" {
-                #SoU5fkLrTMqEsealXbwGun ^"Asako Haruki" DEF {
-                    ^"Round 1 (TN 2)" STRING "Success with 1 bonus (op), and 1 (st)"
-                    ^"Round 2 (TN 3)" STRING "Success with 0 bonus (op)"
-                    ^"Round 3 (TN 4)" STRING "Knocked out"
-                }
-                #eIwbPJhnFoZI1bKUbMzVEG ^"Daidoji Aki" DEF {
-                    ^"Round 1 (TN 2)" STRING "Success with 2 bonus (op), and 2 (st)"
-                    ^"Round 2 (TN 3)" STRING "Success with 2 bonus (op), and 1 (st)"
-                    ^"Round 3 (TN 4)" STRING "Success with 1 bonus (op), and 1 (st)"
-                }
-                #zeAs0kbv9r7ESDqghMgV7V ^"Isawa Yoshiko" DEF {
-                    ^"Round 1 (TN 2)" STRING "Success with 2 bonus (op), and 2 (st)"
-                    ^"Round 2 (TN 3)" STRING "Success with 2 bonus (op), and 1 (st)"
-                    ^"Round 3 (TN 4)" STRING "Success with 1 bonus (op)"
-                }
-                #kSoHYGMoJMVCOwaPs6ExxG ^"Kitsuki Tomoyo" DEF {
-                    ^"Round 1 (TN 2)" STRING "Success with 1 bonus (op)"
-                    ^"Round 2 (TN 3)" STRING "Success with 0 bonus (op), and 1 (st)"
-                    ^"Round 3 (TN 4)" STRING "Success with 0 bonus (op)"
-                }
-                #wotxf3IfUzRQEw0q2E2rLf ^"Mirumoto Kazuya" DEF {
-                    ^"Round 1 (TN 2)" STRING "Success with 2 bonus (op)"
-                    ^"Round 2 (TN 3)" STRING "Success with 1 bonus (op)"
-                    ^"Round 3 (TN 4)" STRING "Success with 0 bonus (op), and 1 (st)"
-                }
+                COLUMNS ["NPC", "Round 1 (TN 2)", "Round 2 (TN 3)", "Round 3 (TN 4)"]
+                ROW [#GIWEMDFZmBUEsKaY5htgwR ^"Asako Haruki", "Success with 1 bonus (op), and 1 (st)", "Success with 0 bonus (op)", "Knocked out"]
+                ROW [#m2a7hu6Fovvu1fey7xaeLZ ^"Daidoji Aki", "Success with 2 bonus (op), and 2 (st)", "Success with 2 bonus (op), and 1 (st)", "Success with 1 bonus (op), and 1 (st)"]
+                ROW [#lsEmFaXZECi8cc8S1UDFHN ^"Isawa Yoshiko", "Success with 2 bonus (op), and 2 (st)", "Success with 2 bonus (op), and 1 (st)", "Success with 1 bonus (op)"]
+                ROW [#HIAWSJv8szdMDp82vaA5RX ^"Kitsuki Tomoyo", "Success with 1 bonus (op)", "Success with 0 bonus (op), and 1 (st)", "Success with 0 bonus (op)"]
+                ROW [#Nd0oZEf58ZRl26ZUMFQZGh ^"Mirumoto Kazuya", "Success with 2 bonus (op)", "Success with 1 bonus (op)", "Success with 0 bonus (op), and 1 (st)"]
             }
         }
         PART 3 "Act 3: Those Who Receive" {
@@ -106,7 +87,7 @@ ARC "the-scroll-or-the-blade" EXTENDS "l5r5e" {
         #niwyWoJFsHVr4fw9aI6OUT ^"Kyūden Doji" DEF {
             TYPE "Palace"
             DESCRIPTION "The Esteemed Palaces of the Crane, also known as Kyūden Doji, stands atop the white cliffs on the eastern shore of Rokugan. However, nestled in the hills behind the grand castle, beyond the surrounding city, and atop a winding staircase, is a Shinseist temple complex. Comprised of several white and gold buildings with red tiled roofs, each fashioned to hold up to 100 guests, with the main temple large enough to house 250. Ornately carved 12-foot-high heavy wooden doors, fashioned from a single oak tree, welcome guests to the comfortable interior. Spacious and simple, the temple contains polished wooden floors and row after row of kneeling mats before reaching a raised platform that monks use to give their sermons."
-            NPCS [#MklMVziFFER4Fq75gaqtBx ^"Miya Bunji", #27LrDOWn433b8zr4eTE2Kg ^"Masayo", #Ykrbqbvzw93sVuZyE4IFzj ^"Shika Yuki", ^"Daidoji Aki"]
+            NPCS [#MklMVziFFER4Fq75gaqtBx ^"Miya Bunji", #27LrDOWn433b8zr4eTE2Kg ^"Masayo", #Ykrbqbvzw93sVuZyE4IFzj ^"Shika Yuki", #m2a7hu6Fovvu1fey7xaeLZ ^"Daidoji Aki"]
         }
         #U484yE1eyquhRYEJuw6dNV ^"Chisanrū" DEF {
             TYPE "Village"
@@ -119,9 +100,9 @@ ARC "the-scroll-or-the-blade" EXTENDS "l5r5e" {
     # ─────────────────────────────────────────────
     KEY_NPCS {
         CHILD_AND_GUARDIAN [#27LrDOWn433b8zr4eTE2Kg ^"Masayo", #MklMVziFFER4Fq75gaqtBx ^"Miya Bunji"]
-        DRAGON [^"Kitsuki Tomoyo", ^"Mirumoto Kazuya"]
-        PHOENIX [^"Asako Haruki", ^"Isawa Yoshiko"]
-        DEER_AND_HOST [#Ykrbqbvzw93sVuZyE4IFzj ^"Shika Yuki", ^"Daidoji Aki"]
+        DRAGON [#HIAWSJv8szdMDp82vaA5RX ^"Kitsuki Tomoyo", #Nd0oZEf58ZRl26ZUMFQZGh ^"Mirumoto Kazuya"]
+        PHOENIX [#GIWEMDFZmBUEsKaY5htgwR ^"Asako Haruki", #lsEmFaXZECi8cc8S1UDFHN ^"Isawa Yoshiko"]
+        DEER_AND_HOST [#Ykrbqbvzw93sVuZyE4IFzj ^"Shika Yuki", #m2a7hu6Fovvu1fey7xaeLZ ^"Daidoji Aki"]
         HIRED [#Ie80baMavQo1xAi2reeR3R ^"Mercenary Shinobi"]
     }
 

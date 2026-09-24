@@ -8,7 +8,7 @@
 ARC "winters-embrace" EXTENDS "l5r5e" {
     NAME "Winter's Embrace"
     SUBTITLE "An Adventure at the Winter Court"
-    VERSION "0.5.3"
+    VERSION "0.5.4"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Winter's Embrace (Fantasy Flight Games, 2019 — product L5R09; ISBN 978-1-63344-360-0)"
@@ -34,46 +34,12 @@ ARC "winters-embrace" EXTENDS "l5r5e" {
             # Poem intrigue in the Poetry Competition, so the GM need not roll them.
             # Columns are the five artisan approaches (ring in parentheses).
             RESULTS_TABLE "Competitors' Scores (Poetry Competition)" {
-                #dDa5H0ZRoDxD7x7I1c7PSp ^"Ikoma Rumiko" DEF {
-                    ^"Recall (Earth)" INTEGER 0
-                    ^"Charm (Water)" INTEGER 2
-                    ^"Invent (Fire)" INTEGER 1
-                    ^"Refine (Air)" INTEGER 1
-                    ^"Attune (Void)" INTEGER 0
-                    ^"Total" INTEGER 4
-                }
-                #QAQwrzNM9SzOmrp8WKNjtm ^"Doji Chiyoe" DEF {
-                    ^"Recall (Earth)" INTEGER 1
-                    ^"Charm (Water)" INTEGER 1
-                    ^"Invent (Fire)" INTEGER 1
-                    ^"Refine (Air)" INTEGER 2
-                    ^"Attune (Void)" INTEGER 1
-                    ^"Total" INTEGER 6
-                }
-                #fo78FCzS5QIYEODVFVmUWg ^"Lady Magami" DEF {
-                    ^"Recall (Earth)" INTEGER 1
-                    ^"Charm (Water)" INTEGER 3
-                    ^"Invent (Fire)" INTEGER 2
-                    ^"Refine (Air)" INTEGER 0
-                    ^"Attune (Void)" INTEGER 1
-                    ^"Total" INTEGER 7
-                }
-                #EqcdmiX7MpLaDXOIe6wp5j ^"Otomo Koryusai" DEF {
-                    ^"Recall (Earth)" INTEGER 1
-                    ^"Charm (Water)" INTEGER 0
-                    ^"Invent (Fire)" INTEGER 2
-                    ^"Refine (Air)" INTEGER 1
-                    ^"Attune (Void)" INTEGER 0
-                    ^"Total" INTEGER 4
-                }
-                #Q9HobVjS3bfTwNrfG0bZtG ^"Doji Hatsuhina" DEF {
-                    ^"Recall (Earth)" INTEGER 1
-                    ^"Charm (Water)" INTEGER 2
-                    ^"Invent (Fire)" INTEGER 1
-                    ^"Refine (Air)" INTEGER 2
-                    ^"Attune (Void)" INTEGER 0
-                    ^"Total" INTEGER 5
-                }
+                COLUMNS ["Character", "Recall (Earth)", "Charm (Water)", "Invent (Fire)", "Refine (Air)", "Attune (Void)", "Total"]
+                ROW [#3Behf4OwSDkdG4lc375iqc ^"Ikoma Rumiko", 0, 2, 1, 1, 0, 4]
+                ROW [#MwIHCAnkwj67O51GHcL9ru ^"Doji Chiyoe", 1, 1, 1, 2, 1, 6]
+                ROW [#2sbLoahW5crxLE2IifZ6le ^"Lady Magami", 1, 3, 2, 0, 1, 7]
+                ROW [#dvZJLaCOXw6FWIuMlQ5f21 ^"Otomo Koryusai", 1, 0, 2, 1, 0, 4]
+                ROW [#zdhVuywGJSCX9U6hdRwmq1 ^"Doji Hatsuhina", 1, 2, 1, 2, 0, 5]
             }
         }
         PART 2 "Act II: The Tale of the Fisherman's Daughter" {
@@ -92,7 +58,7 @@ ARC "winters-embrace" EXTENDS "l5r5e" {
         #qW8t8T3w2xVTWcc6ebUgqz ^"Kyūden Doji" DEF {
             TYPE "Palace"
             DESCRIPTION "The Esteemed Palaces of the Crane, host to this year's Winter Court and the Emperor's retinue, celebrating Doji Hotaru's ascension. Home to the main court chamber, the Imperial guesthouse, the Crane and Mantis guesthouses, the floating teahouse, the theater, and the Fantastic Gardens of the Crane."
-            NPCS [^"Doji Hatsuhina", #kssCuIG1ODlghakgpPeBrA ^"Kakita Ryoku", ^"Ikoma Rumiko", #PbvEIuEOUj92dRLC7aCgdI ^"Miya Satoshi", ^"Otomo Koryusai", #0QEZBFPqxUdSWa4K4SVWCE ^"Susano-o no Izen", ^"Lady Magami"]
+            NPCS [#zdhVuywGJSCX9U6hdRwmq1 ^"Doji Hatsuhina", #kssCuIG1ODlghakgpPeBrA ^"Kakita Ryoku", #3Behf4OwSDkdG4lc375iqc ^"Ikoma Rumiko", #PbvEIuEOUj92dRLC7aCgdI ^"Miya Satoshi", #dvZJLaCOXw6FWIuMlQ5f21 ^"Otomo Koryusai", #0QEZBFPqxUdSWa4K4SVWCE ^"Susano-o no Izen", #2sbLoahW5crxLE2IifZ6le ^"Lady Magami"]
         }
     }
 
@@ -100,10 +66,10 @@ ARC "winters-embrace" EXTENDS "l5r5e" {
     # CAST (resolve to l5r5e-0.5-winters-embrace-cast.ttrpg)
     # ─────────────────────────────────────────────
     KEY_NPCS {
-        CRANE [#kssCuIG1ODlghakgpPeBrA ^"Kakita Ryoku", ^"Doji Hatsuhina", ^"Doji Chiyoe", #Xp0SZHXg3vuXcHndJCs3wM ^"Doji Shigeru", #9uWRT00R8UrX11XsyngoLA ^"Asahina Takako"]
-        MANTIS [#dyN6riLcxqCLsj2Zx50J6f ^"Lord Yoritomo", ^"Lady Magami", #0QEZBFPqxUdSWa4K4SVWCE ^"Susano-o no Izen"]
-        IMPERIAL [#PbvEIuEOUj92dRLC7aCgdI ^"Miya Satoshi", ^"Otomo Koryusai"]
-        LION [^"Ikoma Rumiko"]
+        CRANE [#kssCuIG1ODlghakgpPeBrA ^"Kakita Ryoku", #zdhVuywGJSCX9U6hdRwmq1 ^"Doji Hatsuhina", #MwIHCAnkwj67O51GHcL9ru ^"Doji Chiyoe", #Xp0SZHXg3vuXcHndJCs3wM ^"Doji Shigeru", #9uWRT00R8UrX11XsyngoLA ^"Asahina Takako"]
+        MANTIS [#dyN6riLcxqCLsj2Zx50J6f ^"Lord Yoritomo", #2sbLoahW5crxLE2IifZ6le ^"Lady Magami", #0QEZBFPqxUdSWa4K4SVWCE ^"Susano-o no Izen"]
+        IMPERIAL [#PbvEIuEOUj92dRLC7aCgdI ^"Miya Satoshi", #dvZJLaCOXw6FWIuMlQ5f21 ^"Otomo Koryusai"]
+        LION [#3Behf4OwSDkdG4lc375iqc ^"Ikoma Rumiko"]
     }
 
     # A Winter Court adventure for the players' own characters, so there is no
