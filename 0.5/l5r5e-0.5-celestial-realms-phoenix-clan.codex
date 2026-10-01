@@ -1,13 +1,14 @@
 # .codex SECTION — Celestial Realms: The Soul of the Empire (Amaterasu Seidō and
-# the Centipede founder). Stand-off graph over
-# l5r5e-0.5-celestial-realms-phoenix-clan.lore (spec §25). Part of the L5R5e
-# system graph; DEPENDS_ON the shared schema. Despite the filename, the essay
-# concerns Moshi Azami, Amaterasu Seidō, and the Centipede/Moshi tradition. The
-# Centipede Clan Faction is defined in the Centipede Clan section.
+# the Centipede founder). Stand-off graph (spec §25). Part of the L5R5e system
+# graph; DEPENDS_ON the shared schema. Despite the filename, these entities are
+# Centipede/Moshi: since the lore was regenerated in book order (2026-10-01) their
+# text is in l5r5e-0.5-celestial-realms-centipede-clan.lore (chapter 2), not in
+# phoenix-clan.lore. The Centipede Clan Faction is defined in the Centipede Clan
+# section.
 
 CODEX "L5R5e_CR_PhoenixClan_Codex" {
     NAME "Celestial Realms: The Soul of the Empire — Lore Graph"
-    VERSION "0.5.0"
+    VERSION "0.5.1"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-02"
     FOR EDITION "l5r5e"
@@ -15,16 +16,16 @@ CODEX "L5R5e_CR_PhoenixClan_Codex" {
 
     ENTITY #L5RcxCRphx01amatseid ^"Amaterasu Seidō" {
         IS ^"Temple"
-        SOURCE "l5r5e-0.5-celestial-realms-phoenix-clan.lore" AT "the-soul-of-the-empire"
+        SOURCE "l5r5e-0.5-celestial-realms-centipede-clan.lore" AT "amaterasu-seidō-the-shrine-of-the-lady-sun"
     }
     ENTITY #L5RcxCRphx02elevdaug ^"Eleven Daughters" {
         IS ^"Landmark"
-        SOURCE "l5r5e-0.5-celestial-realms-phoenix-clan.lore" AT "the-soul-of-the-empire"
+        SOURCE "l5r5e-0.5-celestial-realms-centipede-clan.lore" AT "the-shrine-where-ningen-dō-touches-tengoku"
         RELATIONSHIPS { ^"located-near" -> ^"Amaterasu Seidō" FROM "these pillars are known as the Eleven Daughters and are believed to house their spirits as they keep watch over the shrine" }
     }
     ENTITY #L5RcxCRphx03moshazam ^"Moshi Azami" {
         IS ^"Person"
-        SOURCE "l5r5e-0.5-celestial-realms-phoenix-clan.lore" AT "the-soul-of-the-empire"
+        SOURCE "l5r5e-0.5-celestial-realms-centipede-clan.lore" AT "the-centipede-clan"
         RELATIONSHIPS {
             ^"member-of"  -> ^"Phoenix Clan"   FROM "dating from long before Isawa Azami stepped foot into the valley"
             ^"founder-of" -> ^"Centipede Clan" FROM "Amaterasu taught Moshi Azami these invocations"
@@ -32,7 +33,7 @@ CODEX "L5R5e_CR_PhoenixClan_Codex" {
     }
     ENTITY #L5RcxCRphx04lightdoj ^"Light of the Lady Sun Dōjō" {
         IS ^"School"
-        SOURCE "l5r5e-0.5-celestial-realms-phoenix-clan.lore" AT "the-soul-of-the-empire"
+        SOURCE "l5r5e-0.5-celestial-realms-centipede-clan.lore" AT "the-light-of-the-lady-sun-dōjō"
         RELATIONSHIPS {
             ^"operated-by" -> ^"Centipede Clan"  FROM "Many Moshi, as well as students from other clans, go there to learn the Fire and Air invocations the Centipede are known for"
             ^"located-near" -> ^"Amaterasu Seidō" FROM "The shrine's accompanying school sits farther down the mountain"

@@ -102,10 +102,9 @@ main checkout as of this audit).
 | five-winds | 40 | 39 | 1 | 0 |
 | courts-of-stone / emerald-empire / mantis / writ-of-the-wilds / daidoji-shin | 58 | 58 | 0 | 0 |
 
-- [ ] **Celestial Realms is the largest untouched set** — 11 of 12 printed adversaries absent:
-  Akodo Tadeo, Asako Hisa, The Forgotten Spirit, Shun, Akiara, Destined Shugenja, Kyōrinrin of the
-  Library, Asako Hikaru, Apprehensive Courtier, Centipede Clan Champion, Headstrong Adept. Only
-  `Baku` and the derived `Komainu` are modelled.
+- [x] **Celestial Realms** — all 12 printed adversaries are in the corpus (2026-10-01): the 8 that
+  were absent are generated into `l5r5e-0.5-celestial-realms-npcs.ttrpg` from the book (see the
+  2026-10-01 section below); Akodo Tadeo, Moshi Chiasa, Akodo Hinata and Baku were already there.
 
 - [ ] **Path of Waves sample-village and named NPCs** — Setsuo, Hiroto, Reo, Michi, Otoha, Haru,
   Osamu, Kijimuna, Nekomata, Kami of the Hot Spring, Seppun Sora, Seppun Ishima, Otomo Kazuko,
@@ -377,3 +376,102 @@ recorded exemption with its reason. Tool and ledger: `titterpig-audit/l5r5e/lift
   arc's were deleted) — filler, recommended for removal. Remaining gaps a string fix cannot close
   (the duel's Unique Action, "Using <NPC>" sidebars, Reckless Lunge's second opportunity) are in
   FOLLOWUPS.md there.
+
+## 2026-10-01 — Celestial Realms completed; decision log
+
+Brief (owner): "missing most of Celestial Realms … fix it completely". Done to the coverage gate.
+Workspace (local, not a repo): `~/Sortilege/Titterpig/Temp/l5r5e-cr-fix/`. **Rebuild:**
+`P=~/Sortilege/Titterpig/Temp/vtm5e-conversion/pdfenv/bin/python; cd` there; `$P cr_extract.py && $P
+qa_cr.py && $P cr_gen.py && $P qa_gen.py && python3 qa_codex.py && python3 cr_toc.py`. The CR lore,
+the generated NPC block, the seeds frame and the master codex's CR pins are GENERATED — fix the
+generator, never the file.
+
+**Why it was missing (evidence):** the extraction always had chapter 1 (the doublecheck text layer
+and `Temp/sources/l5r5e/celestial-realms-md/` both hold every page); the conversion lost it. 0.1
+(Feb 2026) never had Asako Hisa or Politics of the Dead; the 2026-09-02 regeneration (3de7341, a
+vision pass rerouted to Gemini after 92 of 144 windows were refused) dropped Sanpuku Seidō and the
+Lost Shrine, which 0.1–0.3 had. Doublecheck's inventory held 106 mechanical units, so D3 could not
+see narrative gaps, and no coverage manifest existed.
+
+Decisions (method calls mine; content calls marked):
+1. **Method — a deterministic layout read of the PDF** (PyMuPDF fonts/positions/drawn panels; no
+   vision, no model). Owner approved the layout read 2026-10-01. Wording proven against poppler's
+   text layer, a second reader.
+2. **The CR lore is regenerated whole, in book order**: introduction (new file), cosmology (ch. 1 to
+   the Phoenix Clan), phoenix-clan, centipede-clan (ch. 2 to New Schools), character-options,
+   power-of-worship (ch. 3, new file). The old lore was LLM output, out of order (Centipede text in
+   phoenix-clan.lore, ch. 3 fiction in character-options.lore) and not verbatim: 53 of its 411
+   blocks hold sentences the book does not print ("looks like himself" for the book's "themself",
+   "a student" for "that student", glyph garbage). Nothing the book prints was lost: recall below.
+3. **Placement:** headings at their printed tier; sidebars and margin notes as `> **Title**` block
+   quotes where they sit, bulleted entries as `> -`; a stat block as its name, description and
+   abilities (its numbers are the NPC DEF's — the corpus's existing mirror); seeds are the frame's
+   and tables the mechanics', not repeated in the lore.
+4. **8 NPCs generated** (Asako Hisa, The Forgotten Spirit, Shun, Akiara, Isawa Manami, Kyōrinrin
+   of the Library, Asako Hikaru, Kaito Tsunade) in the shape of Tadeo/Chiasa/Hinata. Rings read by
+   the grid's geometry (human 2-2-1 Earth, Air / Water, Fire / Void; creature 2-3 Earth, Air /
+   Water, Void, Fire), proven on the 4 already-correct blocks and checked by eye on all 8 renders.
+   TN modifiers in the corpus's form ("Fire +2, Earth -2"); weapon text as printed (en dashes).
+5. **Existing NPCs untouched** (scope: their divergences are the out-of-scope D1 set). The parser
+   reads the book differently from the corpus in three places: Tadeo's *Devoted Sermon* is two
+   paragraphs, Chiasa's Righteous Sunlight prints "Range 1–2" (corpus "1-2") and the book's curly
+   quotes are straightened.
+6. **Seeds:** the frame regenerated in its existing format ("Hook … Rising Action … Climax …", the
+   one CR entry byte-identical); the introduction's legend as the frame DESCRIPTION + RULES
+   (Shadowlands' shape); the margin ornaments 一 二 三 dropped; `SACRED TIMBER` now as printed
+   ("Sacred Timber"). The book prints two different seeds titled *Before the Gates of Heaven*
+   (pages 17, 40): the first keeps the title, the second is `… (page 40)`.
+7. **Icon notation**, the corpus's majority form: (op) (su) (ex) (st) (ring) (skill), rings by name,
+   technique types (invocation) (kata) (ritual) (shuji) (inversion).
+8. **Line-end hyphens** decided by this book's own words, then the other L5R books', then the
+   dictionary; two are genuinely undecidable from the text (*front-line*, *ink-makers*: kept).
+9. **Codex:** 8 entities repointed to where their text now is (Amaterasu Seidō, Eleven Daughters,
+   Moshi Azami, Light of the Lady Sun Dōjō → centipede-clan.lore; Isawa Yasu, Kaito Shin →
+   introduction.lore; Isawa Chizue → power-of-worship.lore; Shrine to Lord Shiba → the-sanctuary).
+   3 FROM quotes failed before and still do (not caused here): Elemental River's is an elided "…"
+   quote; Emma-Ō's Estate's and Court of Emma-Ō's sit under the Meido heading, not their own.
+10. **Coverage manifest** `titterpig-mastra/coverage/l5r5e-celestial-realms.manifest.json`; its
+    toc.txt/units.json are built from the extraction by `cr_toc.py` (Sidebar is strict-prose).
+    Front matter and covers (pdf 1–4, 146) are structural and not inventoried.
+11. **Doublecheck:** 83 of 144 vision windows were cached EMPTY while `inventory.meta.json` said
+    144/144 read. Filled from the text layer (`text_window_fallback.ts`, owner rule: no paid
+    vision), coverage note stating why; the pre-fill cache is kept in the workspace,
+    `doublecheck-before-fill/`.
+
+Gates (2026-10-01, final output):
+- `qa_cr.py` order 0 / 8,958 same-column joins; precision 4,073/4,073; recall 9 lines (Table 2–1
+  cells, in the mechanics).
+- `qa_gen.py`: verbatim 2,182/2,182 blocks the book's character for character; split paragraphs 0;
+  numbers 152/152 printed; recall 8,537 lines, 15 not in the CR files — all in existing mechanics
+  entities (below). Each check watched failing on planted defects (a misspelling, a dropped word,
+  a swapped word, Honor 93, Scholar 6; the split check found 130 on the first build).
+- validator 164 files 0/0; §5d 2,355 sites 0 errors 0 hashless; constructs 382 guidance 0 errors;
+  synthesist resolves 1,462 entities (HEAD 1,454: +8), 0 missing parents, overrides 41 (unchanged);
+  `--merge` writes both artifacts with all 8 NPCs.
+- `coverageAudit.ts` 550/550, PASS, exit 0 (against HEAD's CR files: 204 uncovered, exit 1).
+- sentence probe: 2,369 of 3,832 sentences not in the corpus (62%, 67 pages ≥80%) → 335 (9%, 2
+  pages: the covers). The 335 are the probe's own artifacts (running heads glued to sentences,
+  two-column interleave, stat grids, table cells).
+- generator idempotent (two reruns, every output byte-identical); watermark 0.
+
+Open — for the owner (not done here):
+- [ ] **Doublecheck D1 cannot see the 8 new NPCs.** A planted paraphrase and a wrong Endurance in
+  them were NOT reported, before and after the window fill: text-layer units carry no names, and
+  `runChecks` stays in slice mode (art-only pages have no units), where D1 skips any entity with no
+  named unit. The substitute proofs are qa_gen checks 1 and 3 and the renders. Fix belongs in
+  doublecheck (name text-layer statblock units, or leave slice mode once every window is read).
+- [ ] **Doublecheck now reports 89 errors** (was 26 before the window fill): D1 19 (was 20; the
+  out-of-scope existing-entity set), D5 5 (unchanged), D3 65. All 65 D3 are text-layer unit
+  artifacts, none missing content: 40 are fragments whose every word is in the corpus (bullet
+  glyphs "$$", the drop-capped "rst Court"), 23 stat-block grid labels ("45 GLORY 45 STATUS"),
+  2 column interleaves. Needs a doublecheck change (or owner-signed dispositions), not a corpus fix.
+- [ ] **Doublecheck D6 scoping:** 141 lore warnings, a page-scoping artifact (a section is placed by
+  its heading's first printing in the inventory: Sanpuku Seidō's "Approaching the Shrine" is judged
+  against pp. 39–40, the Hantei shrine's).
+- [ ] **Existing-entity divergences the recall found** (the out-of-scope D1 set): the school tables
+  drop "(Mastery Ability, Action)" — the *Action* tag is lost for Experimental Concoction, Shadow
+  Assassin and Master of Beasts; Agasha rank 4 prints "Rank 1–4 Ranged Combat Kata" (corpus "Ranged
+  Kata"); Table 2–1's Sacrifice and Spirit of the Phoenix rows lose their printed sentences ("Roll
+  a ten-sided die again and add the resulting heirloom to your starting items …") to SUB_TABLE rows;
+  Baku's derived attributes (above).
+
