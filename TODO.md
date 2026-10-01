@@ -475,3 +475,87 @@ Open — for the owner (not done here):
   a ten-sided die again and add the resulting heirloom to your starting items …") to SUB_TABLE rows;
   Baku's derived attributes (above).
 
+## 2026-10-01 — every other L5R5e book audited (coverage + probe); no book converted
+
+Owner brief step 6: audit each book the same way, report real gaps with evidence, convert nothing
+without sign-off. Tool: `~/Sortilege/Titterpig/Temp/l5r5e-audit/l5r_audit.py` (a coverage manifest per
+book in `titterpig-mastra/coverage/l5r5e-<book>.manifest.json`, the inventory read off the book's PDF:
+its bookmarks, its ADVERSARY/MINION labels, its Table captions; credits/contents excluded per the
+settled policy) and `analyze.py` (a stricter absent test than the probe: a sentence is absent when
+under 60% of its 5-word windows are anywhere in the corpus — the probe's own key also fails on
+running heads and column interleave). Pilot: on Celestial Realms the method reports 72 uncovered
+units against the old corpus and 0 against the new, so it sees real gaps; the complete Celestial
+Realms still scores **5% absent**, which is this method's noise floor (covers, tables, stat grids).
+Sidebars are not enumerated generically. Results in `report.json` / `gaps.json` there.
+
+| book | corpus files | coverage covered/units | probe missing | absent (stricter) | absent pages |
+|---|---:|---:|---:|---:|---:|
+| celestial-realms | 10 | 245/245 | 333/3832 (9%) | 176 (5%) | 2 |
+| core | 22 | 751/787 | 2277/7849 (29%) | 1492 (19%) | 18 |
+| beginner-rulebook | 0 | 1/116 | 966/1285 (75%) | 873 (68%) | 30 |
+| children-of-five-winds | 13 | 203/219 | 657/4056 (16%) | 436 (11%) | 5 |
+| courts-of-stone | 8 | 162/185 | 462/3622 (13%) | 305 (8%) | 2 |
+| emerald-empire | 12 | 129/137 | 556/6543 (8%) | 333 (5%) | 4 |
+| fields-of-victory | 10 | 130/150 | 475/3294 (14%) | 289 (9%) | 1 |
+| legacies-of-war | 2 | 48/87 | 72/370 (19%) | 52 (14%) | 2 |
+| path-of-waves | 14 | 286/305 | 1049/5793 (18%) | 664 (11%) | 4 |
+| shadowlands | 11 | 232/236 | 490/3493 (14%) | 283 (8%) | 1 |
+| writ-of-wilds | 11 | 126/138 | 363/3394 (11%) | 191 (6%) | 4 |
+| errata-faq-2019 | 1 | 5/19 | 12/56 (21%) | 8 (14%) | 0 |
+| errata-faq-2020 | 1 | 20/43 | 51/190 (27%) | 36 (19%) | 1 |
+| gm-screen | 1 | 42/109 | 45/185 (24%) | 23 (12%) | 0 |
+| gm-kit | 3 | 16/20 | 395/878 (45%) | 346 (39%) | 6 |
+| mantis-clan | 2 | 42/48 | 101/192 (53%) | 80 (42%) | 2 |
+| daidoji-shin | 1 | 4/12 | 9/16 (56%) | 9 (56%) | 0 |
+| emerald-champion | 4 | 47/120 | 1091/1181 (92%) | 1063 (90%) | 35 |
+| topaz-championship | 3 | 23/56 | 925/984 (94%) | 918 (93%) | 33 |
+| winters-embrace | 3 | 44/151 | 886/1027 (86%) | 874 (85%) | 28 |
+| mask-of-the-oni | 3 | 27/57 | 838/896 (94%) | 828 (92%) | 28 |
+| sins-of-regret | 3 | 23/36 | 859/959 (90%) | 848 (88%) | 29 |
+| wedding-kyotei | 4 | 13/16 | 432/666 (65%) | 407 (61%) | 12 |
+| imperfect-land | 3 | 28/61 | 562/665 (85%) | 548 (82%) | 23 |
+| highwayman | 4 | 31/45 | 467/551 (85%) | 455 (83%) | 15 |
+| knotted-tails | 3 | 36/65 | 611/694 (88%) | 603 (87%) | 18 |
+| cresting-waves | 3 | 9/13 | 560/625 (90%) | 555 (89%) | 17 |
+| scroll-or-blade | 3 | 40/88 | 488/596 (82%) | 473 (79%) | 16 |
+| wheel-of-judgment | 3 | 25/42 | 868/1004 (86%) | 860 (86%) | 28 |
+| blood-of-the-lioness | 5 | 23/34 | 974/1097 (89%) | 952 (87%) | 27 |
+| deathly-turns | 4 | 55/103 | 507/623 (81%) | 491 (79%) | 19 |
+
+Findings, with evidence (each sample phrase grepped in 0.5/, 14 of 16 absent; the 2 found were
+reordered text the page test also flags):
+
+- **The adventures were summarized by design, not converted.** 13 adventure lore files declare it
+  in their own header ("… is summarized faithfully — the full detail lives in the source PDF") and
+  Wedding at Kyotei's says its GM text is summarized. 79–93% of their sentences are absent: The Topaz Championship 918 of 984, In the Palace of
+  the Emerald Champion 1,063 of 1,181, Mask of the Oni 828 of 896, Sins of Regret 848 of 959 (the
+  right PDF, `L5R11_Sins_of_Regret.pdf`; the old probe read an arbitrary file of the folder). Dark
+  Tides (gm-kit) the same, 39%. The read-aloud boxes are kept; the GM text is not.
+- **The Beginner Game Rulebook has no corpus files** (1 of 116 units covered, by name overlap).
+- **Core: 1,492 sentences absent (19%), in specific places**: the opening fiction (pp. 5–6, "27th
+  Day of the Month of Togashi, 1118"), the illustrative story under every advantage and disadvantage
+  (pp. 105–128: "Ryuichi, a poor blacksmith", "Kakita Toshimoko crept silently…"), the sidebars
+  *Tainted Characters in Rokugan* (p. 129), *Flirting with PCs* (p. 135), *When to Apply Advantages
+  and Disadvantages to Checks* (p. 138), the worked example on p. 24 ("Kat wants to have her
+  character Sakura leap…"), and *Scenes* (p. 248); 36 units uncovered, most of them the GM chapter's
+  headings (Goals of the Game, Awarding XP, Concession, How to Start a Campaign, Managing Players).
+- **Path of Waves 11%**: Hirosaka's economy (p. 151 "Commodities are produced"), the educational
+  works list (p. 206), the Trinkets and Name Tables (pp. 220–222). **Children of the Five Winds
+  11%**: the Lost Writer's stat page (p. 177), the conflict-mode reference (p. 6). **Courts of Stone
+  8%**: *Safety Signals* (p. 123), NPC guidance (p. 126). **Writ of the Wilds**: "How does Society
+  React…" (p. 125). **Mantis Clan 42%**: its opening fiction (p. 3, "the Shimakage had crept up on
+  the plodding merchant ship"). Emerald Empire, Fields of Victory and Shadowlands sit near the floor.
+- Errata 2019/2020, GM Screen, Legacies of War, Daidoji Shin: small books whose uncovered units are
+  mostly front matter, screen labels and advertising (their headings come from the font read, not
+  bookmarks); the 2020 errata's three tables (1–1 to 1–3) are not in the corpus.
+
+Recommendation (owner to decide; nothing converted):
+1. **Re-convert the 15 adventures verbatim** (the 14 summarized + Dark Tides), the largest gap and a
+   breach of the verbatim rule. They are 30-page FFG booklets in the Celestial Realms layout; the
+   `l5r5e-cr-fix` extractor is the starting point. Trade-off: the `.arc` scene structure is built on
+   the summaries and must be re-pointed; the VTT's 16 arcs rebuild after.
+2. **Core's missing passages** next: it is the base every other book leans on.
+3. **Beginner Game Rulebook**: convert, or record it as superseded by core (owner call: it restates
+   core rules in a teaching form).
+4. Path of Waves, Five Winds, Courts of Stone, Writ, Mantis: page-level fills from the evidence above.
+
