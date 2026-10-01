@@ -13,7 +13,7 @@
 
 CODEX "L5R5e_ImperfectLand_Codex" {
     NAME "Imperfect Land — Lore Graph"
-    VERSION "0.5.1"
+    VERSION "0.5.2"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-03"
     FOR EDITION "l5r5e"
@@ -22,15 +22,15 @@ CODEX "L5R5e_ImperfectLand_Codex" {
     # ---- The Kolat front & the founding sutra -----------------------------
     ENTITY #L5RcxIL01mountainsect ^"Mountain Sect" {
         IS ^"Organization"
-        SOURCE "l5r5e-0.5-imperfect-land.lore" AT "adventure-background"
+        SOURCE "l5r5e-0.5-imperfect-land.lore" AT "the-assassins"
         RELATIONSHIPS {
-            ^"operated-by" -> ^"Kolat"  FROM "the merchant Kanbei, master of the Mountain Sect (a Kolat organization)"
-            ^"led-by"      -> ^"Kanbei" FROM "the merchant Kanbei, master of the Mountain Sect" }
+            ^"operated-by" -> ^"Kolat"  FROM "He is the master of the Mountain Sect, a Kolat organization dedicated to controlling the Perfect Land movement and directing it toward the overthrow of the current samurai order."
+            ^"led-by"      -> ^"Kanbei" FROM "Unless they come from Kanbei’s own Mountain Sect, though, he doesn’t involve them in his assassination plans—different sects rarely have any knowledge of each other or coordinate their efforts." }
     }
     ENTITY #L5RcxIL02perfectlandsutra ^"The Perfect Land Sutra" {
         IS ^"Document"
         SOURCE "l5r5e-0.5-imperfect-land.lore" AT "the-perfect-land"
-        RELATIONSHIPS { ^"authored-by" -> ^"Yuzue" FROM "the founding sutra Yuzue allegedly wrote before her death, which describes a realm within the Celestial Court — the Perfect Land" }
+        RELATIONSHIPS { ^"authored-by" -> ^"Yuzue" }
     }
 
     # ---- Lore-only figures -------------------------------------------------
@@ -38,49 +38,49 @@ CODEX "L5R5e_ImperfectLand_Codex" {
         IS ^"Person"
         SOURCE "l5r5e-0.5-imperfect-land.lore" AT "the-perfect-land"
         RELATIONSHIPS {
-            ^"founder-of" -> ^"Perfect Land Sect"       FROM "a young monk of the Shrine of the Seven Thunders, theorized that the Little Teacher's conversation with Hantei had begun the Age of Celestial Virtue"
-            ^"authored"   -> ^"The Perfect Land Sutra"   FROM "the founding sutra Yuzue allegedly wrote before her death" }
+            ^"founder-of" -> ^"Perfect Land Sect"       FROM "The origins of the controversial Perfect Land Sect lie in the late ninth century, when Yuzue, a young monk who belonged to the Shrine of the Seven Thunders, theorized that the Little Teacher’s conversation with Hantei had begun the Age of Celestial Virtue in Rokugan: a period lasting eight centuries (one hundred years for each founding deity who heard his teachings), during which the Empire prospered and was spirituality strong."
+            ^"authored"   -> ^"The Perfect Land Sutra" }
     }
     ENTITY #L5RcxIL04gataistudent ^"Gatai" {
         IS ^"Person"
         SOURCE "l5r5e-0.5-imperfect-land.lore" AT "the-perfect-land"
-        RELATIONSHIPS { ^"student-of" -> ^"Yuzue" FROM "The movement became an organized force only after Yuzue's passing, thanks to her student Gatai" }
+        RELATIONSHIPS { ^"student-of" -> ^"Yuzue" FROM "The sect as an organized movement came into existence only after Yuzue’s passing, thanks to the efforts of her student Gatai." }
     }
     ENTITY #L5RcxIL05senzaishinsei ^"Senzai" {
         IS ^"Person"
-        SOURCE "l5r5e-0.5-imperfect-land.lore" AT "part-three-the-silent-song"
+        SOURCE "l5r5e-0.5-imperfect-land.lore" AT "the-perfect-land"
     }
     ENTITY #L5RcxIL06togashikazue ^"Togashi Kazue" {
         IS ^"Person"
-        SOURCE "l5r5e-0.5-imperfect-land.lore" AT "part-three-the-silent-song"
-        RELATIONSHIPS { ^"member-of" -> ^"Togashi" FROM "The ise zumi Togashi Kazue found her, and in the ensuing battle used his interlaced-knot tattoo to bring her a moment of kenshō" }
+        SOURCE "l5r5e-0.5-imperfect-land.lore" AT "at-the-gate"
+        RELATIONSHIPS { ^"member-of" -> ^"Togashi" FROM "The vision Hige experienced took place on the same night when the ise zumi Togashi Kazue, a tattooed monk from the Dragon Clan, used her knot tattoo to enlighten Senzai, as described in the novella The Eternal Knot." }
     }
     ENTITY #L5RcxIL07yogohiroue ^"Yogo Hiroue" {
         IS ^"Person"
-        SOURCE "l5r5e-0.5-imperfect-land.lore" AT "part-two-the-perfect-land-arrives"
-        RELATIONSHIPS { ^"member-of" -> ^"Yogo" FROM "the Scorpion shinobi Shosuro Miyako, sent by Yogo Hiroue to investigate the sect" }
+        SOURCE "l5r5e-0.5-imperfect-land.lore" AT "yuki-shosuro-miyako"
+        RELATIONSHIPS { ^"member-of" -> ^"Yogo" FROM "Seemingly one of the many peasants who have flocked to Hige and the Perfect Land, Yuki is in truth Shosuro Miyako, a Scorpion shinobi sent by Yogo Hiroue to investigate the sect, with a particular eye toward its relationship with the Dragon Clan." }
     }
 
     # ---- Amendments to existing graph nodes --------------------------------
     ENTITY #ZlJn80SQg3wLoLTBMAdZz0 ^"Perfect Land Sect" {
-        SOURCE "l5r5e-0.5-imperfect-land.lore" AT "adventure-background"
+        SOURCE "l5r5e-0.5-imperfect-land.lore" AT "imperfect-land"
         RELATIONSHIPS {
-            ^"led-by"      -> ^"Hige"  FROM "the sect's humble leader Hige"
-            ^"founded-by"  -> ^"Yuzue" FROM "The sect's origins lie in the late ninth century, when Yuzue, a young monk of the Shrine of the Seven Thunders" }
+            ^"led-by"      -> ^"Hige"  FROM "These new arrivals are members of the Perfect Land Sect: Hige, the sect’s leader; Ichirō and Satto, two rōnin; Kanbei, a merchant; and Yuki, a peasant."
+            ^"founded-by"  -> ^"Yuzue" FROM "The origins of the controversial Perfect Land Sect lie in the late ninth century, when Yuzue, a young monk who belonged to the Shrine of the Seven Thunders, theorized that the Little Teacher’s conversation with Hantei had begun the Age of Celestial Virtue in Rokugan: a period lasting eight centuries (one hundred years for each founding deity who heard his teachings), during which the Empire prospered and was spirituality strong." }
     }
     ENTITY #6eXfYl3z3YoS3IjdOjXiz1 ^"Mountain Song Temple" {
-        SOURCE "l5r5e-0.5-imperfect-land.lore" AT "part-one-the-brotherhood-gathers"
+        SOURCE "l5r5e-0.5-imperfect-land.lore" AT "adventure-overview"
         RELATIONSHIPS { ^"overseen-by" -> ^"Mirumoto Masashige" FROM "under the hospitality of Dragon family daimyō Mirumoto Masashige" }
     }
     ENTITY #plXV7MQzo3EHGSSBMdDEYx ^"Kolat" {
-        SOURCE "l5r5e-0.5-imperfect-land.lore" AT "adventure-background"
-        RELATIONSHIPS { ^"has-member" -> ^"Kanbei" FROM "the merchant Kanbei, master of the Mountain Sect (a Kolat organization)" }
+        SOURCE "l5r5e-0.5-imperfect-land.lore" AT "the-assassins"
+        RELATIONSHIPS { ^"has-member" -> ^"Kanbei" FROM "If any PCs are members of a Kolat cell, they might choose to free Kanbei instead." }
     }
     ENTITY #gGDAgAO1MiYrlqM0eZCJTC ^"Shosuro" {
-        SOURCE "l5r5e-0.5-imperfect-land.lore" AT "part-two-the-perfect-land-arrives"
-        RELATIONSHIPS { ^"has-member" -> ^"Yuki (Shosuro Miyako)" FROM "'Yuki' — in truth the Scorpion shinobi Shosuro Miyako" }
+        SOURCE "l5r5e-0.5-imperfect-land.lore" AT "yuki-shosuro-miyako"
+        RELATIONSHIPS { ^"has-member" -> ^"Yuki (Shosuro Miyako)" FROM "Yuki (Shosuro Miyako)" }
     }
     ENTITY #W68PeOXDLBuycMspRCHJ8M ^"Brotherhood of Shinsei" {
-        SOURCE "l5r5e-0.5-imperfect-land.lore" AT "adventure-background"
+        SOURCE "l5r5e-0.5-imperfect-land.lore" AT "imperfect-land"
     }
 }

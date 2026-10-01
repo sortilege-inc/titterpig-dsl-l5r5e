@@ -14,7 +14,7 @@
 
 CODEX "L5R5e_WeddingKyotei_Codex" {
     NAME "Wedding at Kyotei Castle — Lore Graph"
-    VERSION "0.5.1"
+    VERSION "0.5.2"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-02"
     FOR EDITION "l5r5e"
@@ -23,7 +23,7 @@ CODEX "L5R5e_WeddingKyotei_Codex" {
     # ---- Places -----------------------------------------------------------
     ENTITY #L5RcxWed01kyoteic ^"Kyotei Castle" {
         IS ^"Castle"
-        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "the-bloody-history-of-kyotei-castle"
+        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "nasu-no-shiba-shizuma"
         RELATIONSHIPS {
             ^"located-in" -> ^"Kintani"                 FROM "the Damasu family of the Lion Clan ruled the Golden Valley from their stronghold at Kyotei Castle"
             ^"located-near" -> ^"Toshi Ranbo"           FROM "which lies along a merchant's road between Otosan Uchi and Toshi Ranbo"
@@ -32,24 +32,24 @@ CODEX "L5R5e_WeddingKyotei_Codex" {
     }
     ENTITY #L5RcxWed02kyoteish ^"Kyotei Shrine" {
         IS ^"Temple"
-        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "scene-2-ill-omens"
+        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "kyotei-shrine"
         RELATIONSHIPS {
             ^"part-of"    -> ^"Kyotei Castle" FROM "The castle shrine is small, large enough to hold the name plaques of a single family and a vessel to house a single kami"
-            ^"operated-by" -> ^"Tsume Yemon"  FROM "head priest, Tsume Yemon, has gone into the surrounding forest in order to purify himself" }
+            ^"operated-by" -> ^"Tsume Yemon" }
     }
     ENTITY #L5RcxWed03goldvals ^"Golden Valley Shrine" {
         IS ^"Temple"
-        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "scene-4a-the-wedding"
-        RELATIONSHIPS { ^"located-near" -> ^"Kyotei Castle" FROM "the wedding ceremony must be moved to a local shrine on the outskirts of the castle... the Golden Valley Shrine" }
+        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "scene-2-ill-omens"
+        RELATIONSHIPS { ^"located-near" -> ^"Kyotei Castle" }
     }
     ENTITY #L5RcxWed04chikuzen ^"Chikuzen" {
         IS ^"Town"
-        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "the-bloody-history-of-kyotei-castle"
+        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "nasu-no-shiba-shizuma"
         RELATIONSHIPS { ^"located-near" -> ^"Kyotei Castle" FROM "the nearby town of Chikuzen are strategically located between Lion, Crane, and Phoenix lands" }
     }
     ENTITY #L5RcxWed05pinehou ^"Pine House" {
         IS ^"Building"
-        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "adventure-background"
+        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "damasu-no-akodo-maeda"
         RELATIONSHIPS {
             ^"located-in" -> ^"Chikuzen"                 FROM "he sold her to one of the geisha houses in nearby Chikuzen, the Pine House"
             ^"held-by"    -> ^"Damasu no Akodo Maeda"    FROM "where she trained to become the geisha named Reika" }
@@ -70,68 +70,68 @@ CODEX "L5R5e_WeddingKyotei_Codex" {
     # ---- Vassal families (Factions; the cast NPCs are DEFs, referenced) ---
     ENTITY #L5RcxWed08tsumefamily ^"Tsume" {
         IS ^"Faction"
-        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "the-bloody-history-of-kyotei-castle"
+        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "nasu-no-shiba-shizuma"
         RELATIONSHIPS {
             ^"vassal-of" -> ^"Doji"        FROM "Tsume Retsu, a vassal to the Doji family of the Crane Clan, conquered Kyotei Castle by force of arms"
             ^"part-of"   -> ^"Crane Clan"  FROM "a vassal to the Doji family of the Crane Clan" }
     }
     ENTITY #L5RcxWed09nasufamily ^"Nasu" {
         IS ^"Faction"
-        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "player-handouts"
-        RELATIONSHIPS { ^"part-of" -> ^"Phoenix Clan" FROM "Nasu no Shiba Shizuma... he still honors the Phoenix Clan and still bears the Nasu no Shiba name" }
+        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "nasu-no-shiba-shizuma"
+        RELATIONSHIPS { ^"part-of" -> ^"Phoenix Clan" FROM "Though he still honors the Phoenix Clan and still bears the Nasu no Shiba name, he has served the Crane Clan for decades and is as much a Crane as he is a Phoenix." }
     }
 
     # ---- Lore-only historical figures -------------------------------------
     ENTITY #L5RcxWed10tsumeret ^"Tsume Retsu" {
         IS ^"Person"
-        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "the-bloody-history-of-kyotei-castle"
+        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "nasu-no-shiba-shizuma"
         RELATIONSHIPS {
             ^"member-of"  -> ^"Tsume"                    FROM "Tsume Retsu, a vassal to the Doji family of the Crane Clan, conquered Kyotei Castle"
-            ^"enemy-of"   -> ^"Damasu"                   FROM "Lord Damasu Kojima and the entirety of the Damasu family... fell in battle" }
+            ^"enemy-of"   -> ^"Damasu"                   FROM "Decades ago, after Tsume Retsu came to the assistance of the besieged Phoenix clan at Nikesake Castle, Nasu no Shiba Shizuma swore his fealty to Retsu and was given permission by his lord to become Retsu’s yojimbo, to help unite the Phoenix and Crane in the valley against the Damasu no Akodo family." }
     }
     ENTITY #L5RcxWed11damkojim ^"Damasu Kojima" {
         IS ^"Person"
-        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "the-bloody-history-of-kyotei-castle"
+        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "nasu-no-shiba-shizuma"
         RELATIONSHIPS {
             ^"leads"     -> ^"Damasu"       FROM "Lord Damasu Kojima and the entirety of the Damasu family (a vassal family sworn to the Akodo family of the Lion Clan) fell in battle"
-            ^"enemy-of"  -> ^"Tsume Retsu"  FROM "Lord Damasu Kojima and the entirety of the Damasu family fell in battle" }
+            ^"enemy-of"  -> ^"Tsume Retsu" }
     }
     ENTITY #L5RcxWed12ikoujak ^"Ikoma Ujiaki" {
         IS ^"Person"
-        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "player-handouts"
+        SOURCE "l5r5e-0.5-wedding-kyotei-handouts.lore" AT "playing-the-kitsu-medium"
         RELATIONSHIPS { ^"member-of" -> ^"Ikoma" FROM "Ikoma Ujiaki, chief diplomat for the Lion Clan, expected an invitation to the wedding" }
     }
     ENTITY #L5RcxWed13idetadaj ^"Ide Tadaji" {
         IS ^"Person"
-        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "player-handouts"
+        SOURCE "l5r5e-0.5-wedding-kyotei-handouts.lore" AT "playing-the-utaku-battle-maiden"
         RELATIONSHIPS { ^"member-of" -> ^"Ide" FROM "you were charged by Ide Tadaji to accept the invitation to Tsume Takashi's wedding on his behalf" }
     }
     ENTITY #L5RcxWed14bayshoju ^"Bayushi Shoju" {
         IS ^"Person"
-        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "player-handouts"
+        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "ide-torao-aka-shosuro-yu"
         RELATIONSHIPS { ^"member-of" -> ^"Scorpion Clan" FROM "Yu is the agent of one of Bayushi Shoju's spymasters" }
     }
     ENTITY #L5RcxWed15akototur ^"Akodo Toturi" {
         IS ^"Person"
-        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "adventure-background"
+        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "damasu-no-akodo-maeda"
         RELATIONSHIPS {
-            ^"member-of" -> ^"Akodo"                   FROM "she was found by a Lion Clan magistrate... and brought to Akodo Toturi himself"
+            ^"member-of" -> ^"Akodo"                   FROM "Eventually, she was found by a Lion Clan magistrate (thanks to Kuu and her Scorpion allies) and brought to Akodo Toturi himself."
             ^"leads"     -> ^"Lion Clan"               FROM "brought to Akodo Toturi himself. Itto vouched for her lineage, and she was formally reinducted into the clan" }
     }
 
     # ---- Amendments to entities already in the graph ----------------------
     ENTITY #2YYSc0cydXPcNGvOD7HAHj ^"Kintani" {
-        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "adventure-background"
-        RELATIONSHIPS { ^"contains" -> ^"Kyotei Castle" FROM "To ensure peace in the Golden Valley... Kyotei Castle" }
+        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "wedding-at-kyotei-castle-the-2018-l5r-gen-con-adventure"
+        RELATIONSHIPS { ^"contains" -> ^"Kyotei Castle" }
     }
     ENTITY #iUH8dWr7UJRkQfeCGTv67U ^"Damasu" {
-        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "the-bloody-history-of-kyotei-castle"
+        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "nasu-no-shiba-shizuma"
         RELATIONSHIPS {
             ^"vassal-of" -> ^"Akodo"      FROM "the Damasu family (a vassal family sworn to the Akodo family of the Lion Clan)"
             ^"part-of"   -> ^"Lion Clan"  FROM "the Damasu family of the Lion Clan ruled the Golden Valley" }
     }
     ENTITY #IPeIubDkGxqljAL3e3y5pg ^"Goseki" {
-        SOURCE "l5r5e-0.5-wedding-kyotei.lore" AT "player-handouts"
+        SOURCE "l5r5e-0.5-wedding-kyotei-handouts.lore" AT "ninjō"
         RELATIONSHIPS { ^"serves" -> ^"Damasu" FROM "Your uncle, Goseki Yobuhito, was a servant of Damasu Kojima, the slain Lion lord of Kyotei Castle" }
     }
 }

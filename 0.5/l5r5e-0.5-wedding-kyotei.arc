@@ -1,12 +1,13 @@
 # L5R 5E — Wedding at Kyotei Castle (.arc)
 # Structure of the 2018 L5R Gen Con adventure (FFG, 2019). The GM narrative,
-# read-aloud text, and handouts live in l5r5e-0.5-wedding-kyotei.lore; the cast
+# read-aloud text live in l5r5e-0.5-wedding-kyotei.lore, the handouts in
+# l5r5e-0.5-wedding-kyotei-handouts.lore; the cast
 # adversaries in l5r5e-0.5-wedding-kyotei-cast.ttrpg; the seven pregenerated PCs
 # in l5r5e-0.5-wedding-kyotei-pregens.actor. NPC carets resolve to those DEFs.
 
 ARC "wedding-kyotei-castle" EXTENDS "l5r5e" {
     NAME "Wedding at Kyotei Castle"
-    VERSION "0.5.3"
+    VERSION "0.5.4"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "Wedding at Kyotei Castle: The 2018 L5R Gen Con Adventure (Fantasy Flight Games, 2019)"

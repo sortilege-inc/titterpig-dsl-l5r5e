@@ -13,7 +13,7 @@
 
 CODEX "L5R5e_EmeraldChampion_Codex" {
     NAME "In the Palace of the Emerald Champion — Lore Graph"
-    VERSION "0.5.1"
+    VERSION "0.5.2"
     SPEC_VERSION "0.5"
     RELEASE_DATE "2026-09-03"
     FOR EDITION "l5r5e"
@@ -22,62 +22,62 @@ CODEX "L5R5e_EmeraldChampion_Codex" {
     # ---- The offices (Titles) ---------------------------------------------
     ENTITY #L5RcxEmC01emeraldchampion ^"Emerald Champion" {
         IS ^"Title"
-        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "adventure-background"
+        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "welcome-to-the-palace-of-the-emerald-champion-the-story-so-far"
     }
     ENTITY #L5RcxEmC02rubychampionttl ^"Ruby Champion" {
         IS ^"Title"
-        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "adventure-background"
-        RELATIONSHIPS { ^"held-by-person" -> ^"Agasha Sumiko" FROM "Their heroism impressed Agasha Sumiko, the Ruby Champion, who recommended them to become Emerald Magistrates" }
+        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "agasha-sumiko-ruby-champion-and-acting-emerald-champion"
+        RELATIONSHIPS { ^"held-by-person" -> ^"Agasha Sumiko" FROM "Agasha Sumiko, Ruby Champion and Acting Emerald Champion" }
     }
     ENTITY #L5RcxEmC03emeraldmagistrate ^"Emerald Magistrate" {
         IS ^"Title"
-        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "adventure-background"
+        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "if-you-are-a-hero-player-stop-reading-here"
     }
 
     # ---- The town ---------------------------------------------------------
     ENTITY #L5RcxEmC04tsumatown ^"Tsuma" {
         IS ^"Town"
-        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "act-1-the-journey"
+        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "adventure-structure"
     }
 
     # ---- Lore-only figures (suspects; the cast NPCs are DEFs, referenced) --
     ENTITY #L5RcxEmC05bayushisugai ^"Bayushi Sugai" {
         IS ^"Person"
-        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "adventure-background"
-        RELATIONSHIPS { ^"member-of" -> ^"Bayushi" FROM "the Player Characters ... foiled Bayushi Sugai's plot for revenge" }
+        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "the-real-story-so-far"
+        RELATIONSHIPS { ^"member-of" -> ^"Bayushi" FROM "During the last adventure, the PCs engaged in the Topaz Championship and hopefully foiled Bayushi Sugai’s plot for revenge." }
     }
     ENTITY #L5RcxEmC06hirumashigeki ^"Hiruma Shigeki" {
         IS ^"Person"
-        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "act-2-the-castle"
+        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "breakfast"
         RELATIONSHIPS {
-            ^"member-of"    -> ^"Hiruma"        FROM "Hiruma Shigeki — an Emerald Magistrate from deep in the Crab lands"
-            ^"holds-title"  -> ^"Emerald Magistrate" FROM "Hiruma Shigeki — an Emerald Magistrate from deep in the Crab lands"
-            ^"rival-of"     -> ^"Doji Satsume"  FROM "a fierce, borderline-paranoid opponent of all things Shadowlands who had arguments with Satsume, and thus a possible motive for eliminating him" }
+            ^"member-of"    -> ^"Hiruma"        FROM "Hiruma Shigeki, an Emerald Magistrate of the Crab Clan, is at breakfast today."
+            ^"holds-title"  -> ^"Emerald Magistrate" FROM "Hiruma Shigeki, an Emerald Magistrate of the Crab Clan, is at breakfast today."
+            ^"rival-of"     -> ^"Doji Satsume" }
     }
 
     # ---- Amendments to existing graph nodes --------------------------------
     ENTITY #RdV5riRl0XzUSW1G0lcCK7 ^"Doji Satsume" {
-        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "adventure-background"
+        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "the-real-story-so-far"
         RELATIONSHIPS {
-            ^"holds-title" -> ^"Emerald Champion" FROM "questions surrounding Doji Satsume, their ghostly visitor and the previous Emerald Champion, still linger"
-            ^"parent-of"   -> ^"Doji Hotaru"      FROM "the late Emerald Champion, \"the Grinning Crane\"; father of Doji Hotaru"
-            ^"oversees"    -> ^"Shiro Yogasha"    FROM "They now travel to the palace of the Emerald Champion — Shiro Yogasha — for training"
-            ^"member-of"   -> ^"Doji"             FROM "Doji Satsume, their ghostly visitor and the previous Emerald Champion" }
+            ^"holds-title" -> ^"Emerald Champion" FROM "It concerns the death of Doji Satsume, the Emerald Champion."
+            ^"parent-of"   -> ^"Doji Hotaru"      FROM "It seems that Doji Hotaru, the daughter of Doji Satsume, wishes to speak with them."
+            ^"oversees"    -> ^"Shiro Yogasha"
+            ^"member-of"   -> ^"Doji"             FROM "However, questions surrounding Doji Satsume, their ghostly visitor, still linger." }
     }
     ENTITY #XWHoYnkH5Tg8vklPKFJxu9 ^"Shiro Yogasha" {
-        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "act-2-the-castle"
+        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "day-1-arrival"
         RELATIONSHIPS { ^"overseen-by" -> ^"Agasha Sumiko" FROM "Sumiko is quite busy with shouldering all the duties of both Emerald Champion and Ruby Champion in the wake of Satsume's demise" }
     }
     ENTITY #UPB0THDIrvPil8LkPlVpDW ^"Kolat" {
-        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "act-2-the-castle"
-        RELATIONSHIPS { ^"has-member" -> ^"Kitsuki Tomo" FROM "Kitsuki Tomo, a fanatical Kolat posing as one of Kāgi's assistants" }
+        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "kitsuki-tomo-kolat-assassin"
+        RELATIONSHIPS { ^"has-member" -> ^"Kitsuki Tomo" FROM "Kitsuki Tomo, Kolat Assassin" }
     }
     ENTITY #Rd23HPaVtkPBbjH5ybXcM8 ^"Bayushi Kachiko" {
-        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "adventure-background"
-        RELATIONSHIPS { ^"sibling-of" -> ^"Shosuro Hametsu" FROM "the Scorpion daimyō Shosuro Hametsu, brother of Bayushi Kachiko" }
+        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "shosuro-hametsu-family-daimyō"
+        RELATIONSHIPS { ^"sibling-of" -> ^"Shosuro Hametsu" FROM "Shosuro Hametsu is the daimyō of the Shosuro family and brother of Bayushi Kachiko." }
     }
     ENTITY #yUGSKokLiApZrjs5L62SLo ^"Shosuro" {
-        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "the-cast-at-a-glance"
-        RELATIONSHIPS { ^"led-by" -> ^"Shosuro Hametsu" FROM "Shosuro Hametsu — Shosuro family daimyō and Bayushi Kachiko's brother" }
+        SOURCE "l5r5e-0.5-emerald-champion.lore" AT "shosuro-hametsu-family-daimyō"
+        RELATIONSHIPS { ^"led-by" -> ^"Shosuro Hametsu" FROM "Shosuro Hametsu, Family Daimyō" }
     }
 }

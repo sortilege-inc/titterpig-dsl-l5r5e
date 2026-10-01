@@ -559,3 +559,103 @@ Recommendation (owner to decide; nothing converted):
    core rules in a teaching form).
 4. Path of Waves, Five Winds, Courts of Stone, Writ, Mantis: page-level fills from the evidence above.
 
+
+## 2026-10-01 — the 15 adventures re-converted verbatim, with their companions; decision log
+
+Owner, 2026-10-01: "go with your recommendations" — recommendation 1 above (re-convert the 15 adventures
+verbatim), then core's missing passages, the Beginner Game Rulebook, the page fills. This section is
+recommendation 1, done to its gates. Workspace (local, not a repo): `~/Sortilege/Titterpig/Temp/l5r5e-books/`.
+**Rebuild:** `cd` there; `P=~/Sortilege/Titterpig/Temp/vtm5e-conversion/pdfenv/bin/python`; per book
+`./runall.sh <book>` (`ffg_extract.py` → `ffg_gen.py` → `qa.py`; `books.py` holds every book's config); then
+`$P cast_add.py --write`, `python3 codex_fix.py <codex> --write --drop-unproven`, `python3 repin.py`. The 20 lore
+files, the generated NPC blocks and the codex placements are GENERATED — fix the generator, never the file.
+
+Decisions (method calls mine; content calls marked):
+1. **Method — the Celestial Realms layout read, generalised** (`ffg_extract.py`: PyMuPDF fonts, positions, panels;
+   no vision, no model; poppler's text layer the second reader). Proven per book by `qa.py`, then scaled.
+2. **Whole lore regenerated per book in book order** (keeps each file's name, title and Source line): read-aloud as
+   `> `, boxes and margin notes as titled block quotes, tables as Markdown tables, a stat block as its name,
+   description and abilities (its numbers are the cast's — the CR shape). The old files said of themselves that the
+   GM text was "summarized"; nothing printed is now left out (gates below).
+3. **Companions added as lore** (the product is the booklet and its PDFs): Highwayman, Wedding and Winter's Embrace
+   handouts (`*-handouts.lore`; Winter's = its calendar + character list), the Beginner Game's *Read This First* and
+   its seven character folios (merged in book order, `make_merged.py`).
+4. **Pages: every content page; the front cover, credits, contents and the back cover's blurb out** (the CR rule).
+   *My error, caught and fixed:* the first ranges assumed the credits close every booklet; in nine they sit on pdf 2,
+   so each book's last content page was left out (Highwayman pdf 19, Winter's Embrace pdf 31 "Romancing Yoritomo",
+   Mask, Sins, Imperfect Land, Wheel, Blood and Dark Tides' last pages; Wedding pdf 30). `qa.py` check 0 now fails on
+   any page left out that is none of those (proven: Highwayman's old range fails it). A credits block set under the
+   last content (a display-size "Credits" over the names) is cut from that line down.
+5. **The recall gate no longer counts a codex quote or an arc note as the text being kept** — Winter's Embrace's lost
+   page passed through its codex's old FROM quote. Recall is against the book's lore, cast and pregens only.
+6. **New `qa.py` check 6, doubled text**: a phrase repeated back to back that the book prints once (Sins'
+   "Ichirō, Bandit Leader , Bandit Leader", from a shadow text layer, had passed checks 1–5). The book's own slip
+   stays ("The character with the with the lowest result", Sins pdf 19, as printed).
+7. **Extractor fixes, each A/B'd over all 20 books (the differing lines reviewed, every difference a fix):** a second
+   text layer repeating lines in pieces (Deathly Turns: 170 QA failures → 0); a line's height from its ink, not a
+   blank glyph (Dark Tides' merged table rows); an epigraph's dash-led attribution ends its paragraph; overlapping
+   pieces of one heading joined ("Lady M"+"Mazoku"); same-baseline pieces of a table cell one line; advantage-grid
+   labels dropped whole (they had survived as bare "Haughty:" lines in 7 books; the cast holds them); per-role column
+   edges (read-aloud no longer split at every line-end full stop — Blood's "I am Kitsu Yayoi…").
+8. **6 printed stat blocks the casts lacked, generated** (`cast_add.py`): Emerald Champion's Terrified Merchants,
+   Rampaging Boar, Jealous Emerald Magistrates; Wedding's Bandits, Bandit Leader; Wheel's Insectoid Oni. Type from
+   the block's MINION/ADVERSARY label; the Beginner-style Emerald blocks print none, so a group name is a Minion (the
+   cast file's own rule). Values checked against the line dumps. A name another file already defines takes the
+   corpus's "Name (Book)" — "Bandits (Wedding at Kyotei Castle)" (Emerald's cast and Fields of Victory both define
+   "Bandits"; the synthesist resolves by name, so it would have shadowed one).
+9. **Codex, all 15** (`codex_fix.py`): every FROM quote must be the book's words; an old quote that is not is
+   re-taken from a sentence of the book naming both ends (95 re-quoted), and an entity is placed under the heading
+   holding its quotes, in the companion lore when they stand only there (a handout's people). **45 FROM quotes no
+   sentence of the book supports are dropped, their relationships kept** (spec §25: FROM is "the verbatim source
+   phrase", optional; the standing verbatim rules forbid a paraphrase there). The 45, each with its old quote:
+   `Temp/l5r5e-books/codex-unproven-dropped.txt` — for the owner's audit; any can be restored. A slug the summaries
+   padded maps to the book's heading it contains ("the-prisoners" → "prisoners").
+10. **Coverage inventory read as printed**: an outline title the page prints otherwise takes the page's wording
+    ("Part Five" → "Part 5", Mask; "Part Two" → "Part 2", Knotted Tails); Word's "_GoBack" bookmark is no unit;
+    Wheel's outline entry "Fu-Lang Fortress (map)" marks pdf 22–23, printed "Fu Leng's Fortress" and holding no map;
+    a back cover's display lines are no headings (Deathly Turns pdf 28).
+11. **Two arc comments** pointed at the handouts' old home; corrected (highwayman.arc, wedding-kyotei.arc). Arcs
+    reference lore only in comments — nothing structural to re-point.
+12. **Stat-block names read by eye** where `statblocks.py` cannot reach them (`books.py` `statblock_names`): Topaz
+    pdf 31 the Ruffian; Emerald pdf 19 Kitsuki Kāgi, pdf 34 Kitsuki Tomo; Sins pdf 17 Reju Toshio's second half;
+    Cresting pdf 9 Banji's second half. All five are in their casts.
+
+Gates (2026-10-01, final output):
+- `qa.py`, all 20 lore files: 0 failures, 0 recall misses, 0 lines lost (checks 0 pages, 1 order, 2 verbatim,
+  3 recall, 4 split, 5 line recall, 6 doubled). Proven by planting (`plant_test.py highwayman`): a misspelling, a
+  dropped word, swapped words, a split paragraph, a lost paragraph — 5/5 caught, file restored byte for byte;
+  check 6 caught both of Sins' old doubled headings; check 0 caught Highwayman's old range.
+- `statblocks.py`: 15/15 books, every printed block has its NPC DEF.
+- coverage (`l5r_audit.py` → `coverageAudit.ts`): 16/16 PASS, exit 0 (the 15 + `beginner-game`).
+- sentence probe, before → after: Topaz 94% → 6%; Emerald Champion 92% → 6%; Winter's Embrace 86% → 8%; Mask 94% →
+  5%; Sins 90% → 8%; Wedding 65% → 9%; Imperfect Land 85% → 10%; Highwayman 85% → 7%; Knotted Tails 88% → 6%;
+  Cresting Waves 90% → 7%; Scroll or Blade 82% → 10%; Wheel 86% → 7%; Blood 89% → 7%; Dark Tides 45% → 7%; Deathly
+  Turns 81% → 10%; Beginner Game companions (new) 14%. The one page ≥80% left in six books is each back cover.
+  Celestial Realms complete scores 5–9%: the method's floor.
+- validator 164 files 0/0 (was 92 coherence warnings, the codex slugs); §5d 2,361 sites 0 errors 0 hashless
+  (+6, the new NPCs); constructs 382 guidance 0 errors; structure PASS; synthesist (built first) 1,468 entities
+  (HEAD 1,462: +6), implicitly overridden 41 (unchanged), 0 missing parents.
+- VERSION one patch above HEAD on every touched file, 0.5.0 on new ones; watermark 0 in the diff.
+- doublecheck D1: not applicable — it has no inventory for the adventures (manifests exist for the sourcebooks only).
+
+Open — for the owner:
+- [ ] **The filled character sheets** (Highwayman, Wedding "All Character Sheets", Five Winds DLC01): the
+  characters are already in the `*-pregens.actor` files (rings, skills, ninjō/giri, advantages, gear,
+  relationships). What the sheets print beyond them is (a) the sheet template — stance summary, conflict-turn
+  summary, "Using Void Points", the permission line — and (b) each character's technique pages, the core's
+  techniques abridged by FFG with the character's numbers filled in ("your Earth Ring (3)"). Measured with
+  `sheet_recall.py`: 485/1,154, 241/759, 254/700 segments not in the corpus, of which 324, 189, 177 are the
+  repeated template. *Recommendation:* exclude both as reprints of core text, with that reason in the manifests;
+  the alternative is a verbatim lore per sheet set (~25k words, nearly all duplicate). Not converted.
+- [ ] Blank forms (Expanded Character/Campaign Sheet, the army sheet): recommend excluding as blank forms.
+- [ ] The master codex leaves lore unpinned (pre-existing: path-of-waves ×3, blood-of-the-lioness, wheel-of-judgment,
+  core ×3, five-winds gifts-of-world; now also the five companion lores). Pin all, or keep the pin set curated?
+- [ ] Downstream: the L5R5e VTT, Portents & Fortunes and The Bushi Oni build from these lore files — rebuild.
+
+STOPPED HERE (recommendations 2–4) — to resume run:
+`cd ~/Sortilege/Titterpig/Temp/l5r5e-books; $P ffg_extract.py core; $P ffg_fill.py core; $P qa.py core`.
+Core's fill (`ffg_fill.py`: only the paragraphs the corpus lacks, under their book headings, into
+`l5r5e-0.5-core-passages.lore`) is drafted and NOT committed: first pass 1,424 of 6,094 nodes, qa 32 failures,
+9 misses, 26 lost — chapter 5's running head set in odd spacing, the school panels, the glossary's term column, the
+Seven Fortunes art labels. Then the Beginner Game Rulebook (convert), then the page fills (Path of Waves, Five
+Winds, Courts of Stone, Writ, Mantis).

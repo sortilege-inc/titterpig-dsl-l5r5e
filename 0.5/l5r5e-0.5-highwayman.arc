@@ -1,12 +1,13 @@
 # L5R 5E — The Highwayman (.arc)
 # Structure of the 2019 L5R Gen Con adventure (FFG, 2020). GM narrative,
-# read-aloud text, and handouts live in l5r5e-0.5-highwayman.lore; the cast
+# and read-aloud text live in l5r5e-0.5-highwayman.lore, the handouts in
+# l5r5e-0.5-highwayman-handouts.lore; the cast
 # adversaries in l5r5e-0.5-highwayman-cast.ttrpg; the six pregenerated PCs
 # (gaijin, rōnin, peasant, monk) in l5r5e-0.5-highwayman-pregens.actor.
 
 ARC "the-highwayman" EXTENDS "l5r5e" {
     NAME "The Highwayman"
-    VERSION "0.5.3"
+    VERSION "0.5.4"
     SPEC_VERSION "0.5"
     SYSTEM "l5r5e"
     SOURCE "The Highwayman: The Legend of the Five Rings 2019 Gen Con Adventure (Fantasy Flight Games, 2020)"
