@@ -775,4 +775,12 @@ Gates (2026-10-02, final output):
 - validator 166 files 0/0; §5d 2,379 sites 0 errors; structure PASS; synthesist 1,486 entities (+18, the two casts),
   implicit overrides 41 (unchanged), 0 missing parents. VERSION one patch above HEAD per modified file; watermark 0.
 
-Open for the owner (unchanged): character sheets and blank forms; the seed boxes' step paragraphs (8 above) if wanted.
+Open for the owner (unchanged): character sheets and blank forms.
+
+### 2026-10-02 (later) — the seed boxes' steps are paragraphs of their own (owner: "fix the seed box paragraph breaks too")
+
+Item 8's seed boxes: a step label set apart on its own tab ("Hook" / "Rising Action" / "Climax"), its text starting to
+its right on its baseline, now opens a paragraph in a box (`ffg_extract.py`, the box's `step` rule). A/B over every lore
+against the pushed copies (`snap-seed`): the 21 generated lores, core and Mantis byte-identical; the Path of Waves, Five
+Winds, Courts and Writ fills changed only by the new breaks (their text, blank lines and quote marks aside, identical),
+each VERSION one patch up; no merged steps left in any fill. qa 0/0/0 on every lore; coverage exit 0 on the four.
