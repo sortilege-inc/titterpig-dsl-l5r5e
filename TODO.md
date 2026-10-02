@@ -704,9 +704,75 @@ Gates (2026-10-01, final output):
 - validator 164 files 0/0; §5d 2,361 sites 0 errors; constructs 382 guidance 0 errors; structure PASS; synthesist
   1,468 entities (unchanged), overrides 41, 0 missing parents. VERSION one patch above HEAD per file; watermark 0.
 
-STOPPED HERE (recommendations 3–4) — to resume run:
+(Recommendations 3–4 done 2026-10-02 — see below.) Was: STOPPED HERE (recommendations 3–4) — to resume run:
 `cd ~/Sortilege/Titterpig/Temp/l5r5e-books`, add `beginner-rulebook` to `books.py` (`Beginner Game/Rulebook.pdf`,
 no corpus files: a whole-book lore, `ffg_gen`), then `./runall.sh beginner-rulebook`; then the page fills — Path of
 Waves, Five Winds, Courts of Stone, Writ, Mantis — each as core's: a `books.py` entry with `prefix`, `ffg_extract.py`,
 `ffg_fill.py`, `qa.py` to 0/0/0, then `l5r_audit.py <book>`.
 
+## 2026-10-02 — Beginner Game Rulebook converted; the five page fills; extractor and QA refined; decision log
+
+Workspace `~/Sortilege/Titterpig/Temp/l5r5e-books` (not a repo). **Rebuild a page fill:** `./fill.sh <book>`
+(extract, fill, QA); the Beginner Rulebook: `./runall.sh beginner-rulebook`; casts: `collect_blocks.py`, then
+`cast_add.py --book=<book> --write`. Generated, never hand-edited: every `*-passages.lore`, the Beginner Rulebook's lore,
+`l5r5e-0.5-beginner-rulebook-cast.ttrpg`, `l5r5e-0.5-path-of-waves-cast.ttrpg`.
+
+Decisions:
+1. **Beginner Game Rulebook** (owner, "go with your recommendations": recommendation 3): converted whole into
+   `l5r5e-0.5-beginner-rulebook.lore` (pdf 2–50; pdf 49 the index, out), and its 14 chapter-5 NPC profiles into a new
+   `l5r5e-0.5-beginner-rulebook-cast.ttrpg`. A name another file defines takes "Name (Beginner Game Rulebook)" (Ashigaru,
+   Experienced Bandit). The peasant prints "NPC ABILITY: NONE": no ability DEF, a comment. The Ogre's block runs on to
+   the top of the page's right column (pdf 48), its weapons and three abilities there: the collector now reads the same
+   page's next column before the next page's. The outline's two file-name bookmarks ("Binder1.pdf", "Beginner Game
+   Rulebook Interior") are excluded with the reason (no page prints them).
+2. **The five page fills** (recommendation 4), each as core's: a `*-passages.lore` of every printed paragraph, box or
+   table whose sentence the curated files lack, under the book's headings. Ranges: Path of Waves pdf 5–252, Five Winds
+   5–177, Courts of Stone 5–145, Writ 5–145, Mantis 3–11 (covers, credits, contents, index out). Courts pdf 145 is
+   content (chapter 3's end and "The Court Sheet" section) — first misread as the blank form, corrected by eye.
+3. **Path of Waves' text layer is broken** in 29 of its Type0 fonts (a font's ToUnicode lists 9 of the glyphs it draws:
+   "“Thank you.”" read "º/h>n\x8e"). Read instead from `merged/path-of-waves-repaired.pdf` (`repair_tounicode.py`):
+   each font's map completed from the same typeface's other subsets in the book and from seven agreeing FFG PDFs
+   (core, Five Winds, Courts, Writ, Emerald Empire, Shadowlands, Celestial Realms; any donor typeface disagreeing on a
+   shared glyph refused — Fields of Victory and Legacies of War are another build), six glyphs read by eye (pdf 17, 98,
+   175, 182, 211). Proof: 0 unknown glyphs left; 587 of the 609 repaired spans of 25+ letters verbatim in the curated
+   corpus (the other 22 are prose the corpus lacks). Before the repair the fill "took" 858 nodes; after, 565.
+4. **Path of Waves cast:** four printed stat blocks had no NPC entity (Michi, the Monk; Seppun Sora; Otomo Kazuko; Seppun
+   Ishima) → new `l5r5e-0.5-path-of-waves-cast.ttrpg` (Otomo Kazuko verified field by field against pdf 162). The other
+   books' blocks all have one (the finder now folds macrons — the curated files spell "Asako Raiku" — and keys a cast
+   name's lead; four unreadable names and the Ifrit named by eye in `books.py`). A cast name another file defines —
+   as a caret DEF, an ACTOR or a TEMPLATE — takes "Name (Book)": core's ACTOR "Peasant" had been shadowed by the
+   Beginner Rulebook's peasant (caught by the synthesist's implicit-override count, 41 → 42); now "Peasant (Beginner Game
+   Rulebook)", and Scholarly Shugenja, Seasoned Courtier and Kitsune likewise.
+5. **Extractor changes, A/B'd over all 21 generated lores and core, every diff reviewed:** a technique's rank set on its
+   name's baseline joins the name ("Osano-wo’s Boast (Mantis) Rank 3"; core's 170 bare "Rank N" headings now name their
+   technique); two stat blocks' ability titles side by side are not a table (core's DIRTY TRICKS / STRIKING AS FIRE); a
+   curriculum's choice lines are rows of their own (TYPE tables only — a Deathly Turns row of wrapped cells was cut by
+   the first version and is whole again); a table's lines start under or left of its last label (Path of Waves pdf 83's
+   box was read into its TYPE column; as a side effect six adventures' tables now sit under their captions — Topaz,
+   Winter's, Emerald, Scroll, Deathly Turns, the Beginner Rulebook — content identical); the buyer-stamp filter matches
+   the stamp's own form (the buyer's full name, then "(Order" and its number), not a word of it — Path of Waves pdf 222's "A vibrant peacock is depicted on the
+   side" had been dropped; Path of Waves' mantra icon is "(mantra)", as its curated files type it.
+6. **QA changes:** a block read in two runs must break where the layer breaks a line (a dropped or swapped word breaks
+   mid-line) — prose blocks only; pdftotext's glued runs ("Sociable WandererWhile most") count when each part is held;
+   a joined rank title is in the layer when both pieces are; the planted-defect test plants into a paragraph holding a
+   printed line no other file holds (a fill paragraph can be held line by line elsewhere, and losing it loses nothing).
+   Each reviewed exemption is in `books.py` with its reason (Writ pdf 85, Courts pdf 7, Five Winds pdf 81, Path of Waves
+   pdf 248, the Beginner Rulebook's pdf 6 mid-line).
+7. **Coverage outline artefacts, each recorded in `l5r_audit.py` with its reason:** Path of Waves' outline spells two
+   questions with typos (read as printed, pdf 32 and 44); Courts of Stone's first bookmark names its cover file;
+   Five Winds' character-sheet outline names five field values, each held as a value in `-pregens.actor` (excluded with
+   where it is held).
+8. **Not changed:** the seed boxes' Hook / Rising Action / Climax steps are one paragraph in every fill (text and order
+   right, the paragraph breaks not kept); core's Glory table's two merged rows (a cell spanning two rows) stay as before.
+
+Gates (2026-10-02, final output):
+- `qa.py`: 0 failures / 0 recall misses / 0 lines lost on all 21 generated lores, core and the five fills.
+- planted defects: 20 of 20 caught (Writ, Path of Waves, the Beginner Rulebook, core), each lore restored byte for byte.
+- coverage: Path of Waves 306/306, Five Winds 219/219, Courts 185/185, Writ 138/138, Mantis 48/48, Beginner Rulebook
+  116/116, core 787/787 — all exit 0. Sentence probe: the pages still ≥80% are credits pages, back covers and one Five
+  Winds character-sheet page (the open character-sheet decision).
+- statblocks: every printed block has an NPC entity in Path of Waves, Five Winds, Courts, Writ, the Beginner Rulebook.
+- validator 166 files 0/0; §5d 2,379 sites 0 errors; structure PASS; synthesist 1,486 entities (+18, the two casts),
+  implicit overrides 41 (unchanged), 0 missing parents. VERSION one patch above HEAD per modified file; watermark 0.
+
+Open for the owner (unchanged): character sheets and blank forms; the seed boxes' step paragraphs (8 above) if wanted.
