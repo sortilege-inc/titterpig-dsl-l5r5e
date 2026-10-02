@@ -652,10 +652,61 @@ Open — for the owner:
   core ×3, five-winds gifts-of-world; now also the five companion lores). Pin all, or keep the pin set curated?
 - [ ] Downstream: the L5R5e VTT, Portents & Fortunes and The Bushi Oni build from these lore files — rebuild.
 
-STOPPED HERE (recommendations 2–4) — to resume run:
-`cd ~/Sortilege/Titterpig/Temp/l5r5e-books; $P ffg_extract.py core; $P ffg_fill.py core; $P qa.py core`.
-Core's fill (`ffg_fill.py`: only the paragraphs the corpus lacks, under their book headings, into
-`l5r5e-0.5-core-passages.lore`) is drafted and NOT committed: first pass 1,424 of 6,094 nodes, qa 32 failures,
-9 misses, 26 lost — chapter 5's running head set in odd spacing, the school panels, the glossary's term column, the
-Seven Fortunes art labels. Then the Beginner Game Rulebook (convert), then the page fills (Path of Waves, Five
-Winds, Courts of Stone, Writ, Mantis).
+Recommendation 2 (core's missing passages) — DONE 2026-10-01, below. Recommendations 3–4 open.
+
+## 2026-10-01 — core's missing passages filled; the extractor refined (adventures re-generated); decision log
+
+Workspace as above. **Rebuild core's fill:** `$P ffg_extract.py core; $P ffg_fill.py core; $P qa.py core`.
+`l5r5e-0.5-core-passages.lore` is GENERATED.
+
+Decisions:
+1. **Core's curated files are not rewritten; one new lore holds what they lack** (`ffg_fill.py`): every printed
+   paragraph, box or table any of whose sentences (24+ letters) is in none of core's files, whole, under the book's
+   heading chain; then every printed line still missing, its node taken, until none is; and every book heading the
+   corpus names nowhere (no lore heading, no DEF), so the book's structure is in the corpus with its rules left in
+   the .ttrpg. Pages: pdf 5 (the opening fiction) to 333 (the reading list); pdf 1–2 the stamp's blank pages, 3 the
+   credits, 4 the contents, 334–337 the index (settled policy).
+2. **Extractor changes, each A/B'd over all 20 adventure lores, every difference reviewed** (snapshots in the
+   workspace): bulleted lists printed with their bullet on a line of its own now render as lists (they had been
+   dropped — Imperfect Land's "Naigen … Iwa …" read as one run); a bold label opens an entry after a line ending in
+   plain type or a finished label entry, never inside an open bracket (stat lines, "Gear (equipped)" / "Gear
+   (other)", "Starting Techniques:"); a one-line entry that stops short before a sentence at its own edge ends
+   ("Status: 25" / "It is possible…"); pieces of one line joined by centre line and icons kept ("Earth (op): This
+   effect…", core pdf 200; Deathly Turns' "Starting Outfit:" with its value); a bare icon joins no text to its right
+   (a curriculum's (ritual) stays in its cell); a table's two-line labels whole ("MOMENTUM POINTS NEEDED", "Explosive
+   Success"); a column's edge where its lines share it (a value centred in its row stays in its column); a text
+   column running out of a panel is not the panel's (core pdf 61's school panels); a panel read in bands where
+   headings span both columns (core pdf 24; Topaz pdf 10 now reads section by section); text painted over by a later
+   fill is not read (core pdf 66's stale curriculum copy, decided by glyph origin); vertical labels read as one
+   ("毘沙門 B I S H A M O N"); the chapter label "CHAPTER 8" apart from its title; a glossary's term and definition
+   one entry; a reading list's columns and hanging entries; Deathly Turns' font maps "–2"…"–5" to "Ŏ"+a control
+   code — decoded as printed (read off the page by eye).
+3. **Reviewed QA exemptions** (`books.py` `qa_exempt`, each with its reason; check 2 gained the hook): the Seven
+   Fortunes' vertical names (pdftotext reads kanji apart from romaji); core pdf 24's last line (pdftotext prepends the
+   dice key's glyphs); pdf 98's three body lines (pdftotext joins them to Table 2–2 beside them); two glossary terms
+   pdftotext reads apart from their definitions; Deathly Turns' five decoded curriculum cells. Chapter 5's running
+   head, set in odd letter-spacing, is furniture. Check 4 no longer reads a list entry or a line after a table row
+   as a broken sentence.
+4. **Not carried:** core pdf 24's dice key — large symbols set beside each step of Kat's play, repeating the symbols
+   her text already names (art, not text).
+5. **Coverage inventory:** core pdf 326's MINION block is the Cat (the read took the Bear's grid digits "4 3"; the
+   outline lists Cat; `core-npcs.ttrpg` defines it).
+6. Sins of Regret's codex: one quote re-taken (Genzo → Reju) — the old quote ran across two roster entries the old
+   reading had merged.
+
+Gates (2026-10-01, final output):
+- `qa.py core`: 0 failures, 0 recall misses (18,070 printed lines), 0 lost; planted defects 5/5 caught
+  (`plant_test.py core`), file restored byte for byte. All 20 adventure lores still 0/0/0 on the final `qa.py`.
+- coverage: core 787/787 PASS, exit 0 (was 751/787); the 16 adventure manifests still PASS.
+- sentence probe, core: 2,277 of 7,849 sentences missing (29%) → 1,167 (15%). A sample of 25 of the 1,167: 20 have
+  their first or last 30 letters in core's files; the other 5 are curriculum grid rows and icon lines the probe's
+  words cannot match. `qa.py`'s line recall finds no printed line missing.
+- validator 164 files 0/0; §5d 2,361 sites 0 errors; constructs 382 guidance 0 errors; structure PASS; synthesist
+  1,468 entities (unchanged), overrides 41, 0 missing parents. VERSION one patch above HEAD per file; watermark 0.
+
+STOPPED HERE (recommendations 3–4) — to resume run:
+`cd ~/Sortilege/Titterpig/Temp/l5r5e-books`, add `beginner-rulebook` to `books.py` (`Beginner Game/Rulebook.pdf`,
+no corpus files: a whole-book lore, `ffg_gen`), then `./runall.sh beginner-rulebook`; then the page fills — Path of
+Waves, Five Winds, Courts of Stone, Writ, Mantis — each as core's: a `books.py` entry with `prefix`, `ffg_extract.py`,
+`ffg_fill.py`, `qa.py` to 0/0/0, then `l5r_audit.py <book>`.
+
